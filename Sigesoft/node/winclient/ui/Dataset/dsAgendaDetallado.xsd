@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAgendaDetallado" targetNamespace="http://tempuri.org/dsAgendaDetallado.xsd" xmlns:mstns="http://tempuri.org/dsAgendaDetallado.xsd" xmlns="http://tempuri.org/dsAgendaDetallado.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAgendaDetallado" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAgendaDetallado" msprop:Generator_UserDSName="dsAgendaDetallado">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtAgendaDetallado" msprop:Generator_TableClassName="dtAgendaDetalladoDataTable" msprop:Generator_TableVarName="tabledtAgendaDetallado" msprop:Generator_RowChangedName="dtAgendaDetalladoRowChanged" msprop:Generator_TablePropName="dtAgendaDetallado" msprop:Generator_RowDeletingName="dtAgendaDetalladoRowDeleting" msprop:Generator_RowChangingName="dtAgendaDetalladoRowChanging" msprop:Generator_RowEvHandlerName="dtAgendaDetalladoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAgendaDetalladoRowDeleted" msprop:Generator_RowClassName="dtAgendaDetalladoRow" msprop:Generator_UserTableName="dtAgendaDetallado" msprop:Generator_RowEvArgName="dtAgendaDetalladoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="v_Pacient" msprop:Generator_ColumnVarNameInTable="columnv_Pacient" msprop:Generator_ColumnPropNameInRow="v_Pacient" msprop:Generator_ColumnPropNameInTable="v_PacientColumn" msprop:Generator_UserColumnName="v_Pacient" type="xs:string" minOccurs="0" />
+              <xs:element name="v_ServiceComponentName" msprop:Generator_ColumnVarNameInTable="columnv_ServiceComponentName" msprop:Generator_ColumnPropNameInRow="v_ServiceComponentName" msprop:Generator_ColumnPropNameInTable="v_ServiceComponentNameColumn" msprop:Generator_UserColumnName="v_ServiceComponentName" type="xs:string" minOccurs="0" />
+              <xs:element name="v_ServiceComponentStatusName" msprop:Generator_ColumnVarNameInTable="columnv_ServiceComponentStatusName" msprop:Generator_ColumnPropNameInRow="v_ServiceComponentStatusName" msprop:Generator_ColumnPropNameInTable="v_ServiceComponentStatusNameColumn" msprop:Generator_UserColumnName="v_ServiceComponentStatusName" type="xs:string" minOccurs="0" />
+              <xs:element name="Precio" msprop:Generator_ColumnVarNameInTable="columnPrecio" msprop:Generator_ColumnPropNameInRow="Precio" msprop:Generator_ColumnPropNameInTable="PrecioColumn" msprop:Generator_UserColumnName="Precio" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

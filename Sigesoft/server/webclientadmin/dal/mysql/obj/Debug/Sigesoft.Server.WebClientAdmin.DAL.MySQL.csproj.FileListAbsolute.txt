@@ -1,0 +1,9 @@
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\bin\Debug\Sigesoft.Server.WebClientAdmin.DAL.MySQL.dll
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\bin\Debug\Sigesoft.Server.WebClientAdmin.DAL.MySQL.pdb
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.dll
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\bin\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.dll
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.pdb
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\bin\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.pdb
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.MySQL.csprojResolveAssemblyReference.cache
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.MySQL.dll
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\MySQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.MySQL.pdb

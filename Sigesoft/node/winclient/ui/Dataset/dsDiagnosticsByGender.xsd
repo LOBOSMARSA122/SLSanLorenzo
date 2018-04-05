@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsDiagnosticsByGender" targetNamespace="http://tempuri.org/dsDiagnosticsByGender.xsd" xmlns:mstns="http://tempuri.org/dsDiagnosticsByGender.xsd" xmlns="http://tempuri.org/dsDiagnosticsByGender.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsDiagnosticsByGender" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsDiagnosticsByGender" msprop:Generator_UserDSName="dsDiagnosticsByGender">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtDiagnosticsByGender" msprop:Generator_TableClassName="dtDiagnosticsByGenderDataTable" msprop:Generator_TableVarName="tabledtDiagnosticsByGender" msprop:Generator_TablePropName="dtDiagnosticsByGender" msprop:Generator_RowDeletingName="dtDiagnosticsByGenderRowDeleting" msprop:Generator_RowChangingName="dtDiagnosticsByGenderRowChanging" msprop:Generator_RowEvHandlerName="dtDiagnosticsByGenderRowChangeEventHandler" msprop:Generator_RowDeletedName="dtDiagnosticsByGenderRowDeleted" msprop:Generator_UserTableName="dtDiagnosticsByGender" msprop:Generator_RowChangedName="dtDiagnosticsByGenderRowChanged" msprop:Generator_RowEvArgName="dtDiagnosticsByGenderRowChangeEvent" msprop:Generator_RowClassName="dtDiagnosticsByGenderRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="GeneroTrabajador" msprop:Generator_ColumnVarNameInTable="columnGeneroTrabajador" msprop:Generator_ColumnPropNameInRow="GeneroTrabajador" msprop:Generator_ColumnPropNameInTable="GeneroTrabajadorColumn" msprop:Generator_UserColumnName="GeneroTrabajador" type="xs:string" minOccurs="0" />
+              <xs:element name="v_DiseasesName" msprop:Generator_ColumnVarNameInTable="columnv_DiseasesName" msprop:Generator_ColumnPropNameInRow="v_DiseasesName" msprop:Generator_ColumnPropNameInTable="v_DiseasesNameColumn" msprop:Generator_UserColumnName="v_DiseasesName" type="xs:string" minOccurs="0" />
+              <xs:element name="NroHallazgos" msprop:Generator_ColumnVarNameInTable="columnNroHallazgos" msprop:Generator_ColumnPropNameInRow="NroHallazgos" msprop:Generator_ColumnPropNameInTable="NroHallazgosColumn" msprop:Generator_UserColumnName="NroHallazgos" type="xs:int" minOccurs="0" />
+              <xs:element name="b_Logo" msprop:Generator_ColumnVarNameInTable="columnb_Logo" msprop:Generator_ColumnPropNameInRow="b_Logo" msprop:Generator_ColumnPropNameInTable="b_LogoColumn" msprop:Generator_UserColumnName="b_Logo" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="EmpresaPropietariaTelefono" msprop:Generator_ColumnVarNameInTable="columnEmpresaPropietariaTelefono" msprop:Generator_ColumnPropNameInRow="EmpresaPropietariaTelefono" msprop:Generator_ColumnPropNameInTable="EmpresaPropietariaTelefonoColumn" msprop:Generator_UserColumnName="EmpresaPropietariaTelefono" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpresaPropietariaEmail" msprop:Generator_ColumnVarNameInTable="columnEmpresaPropietariaEmail" msprop:Generator_ColumnPropNameInRow="EmpresaPropietariaEmail" msprop:Generator_ColumnPropNameInTable="EmpresaPropietariaEmailColumn" msprop:Generator_UserColumnName="EmpresaPropietariaEmail" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpresaPropietariaDireccion" msprop:Generator_ColumnVarNameInTable="columnEmpresaPropietariaDireccion" msprop:Generator_ColumnPropNameInRow="EmpresaPropietariaDireccion" msprop:Generator_ColumnPropNameInTable="EmpresaPropietariaDireccionColumn" msprop:Generator_UserColumnName="EmpresaPropietariaDireccion" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtDiagnosticsByGenderCabecera" msprop:Generator_TableClassName="dtDiagnosticsByGenderCabeceraDataTable" msprop:Generator_TableVarName="tabledtDiagnosticsByGenderCabecera" msprop:Generator_TablePropName="dtDiagnosticsByGenderCabecera" msprop:Generator_RowDeletingName="dtDiagnosticsByGenderCabeceraRowDeleting" msprop:Generator_RowChangingName="dtDiagnosticsByGenderCabeceraRowChanging" msprop:Generator_RowEvHandlerName="dtDiagnosticsByGenderCabeceraRowChangeEventHandler" msprop:Generator_RowDeletedName="dtDiagnosticsByGenderCabeceraRowDeleted" msprop:Generator_UserTableName="dtDiagnosticsByGenderCabecera" msprop:Generator_RowChangedName="dtDiagnosticsByGenderCabeceraRowChanged" msprop:Generator_RowEvArgName="dtDiagnosticsByGenderCabeceraRowChangeEvent" msprop:Generator_RowClassName="dtDiagnosticsByGenderCabeceraRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="EmpresaPropietaria" msprop:Generator_ColumnVarNameInTable="columnEmpresaPropietaria" msprop:Generator_ColumnPropNameInRow="EmpresaPropietaria" msprop:Generator_ColumnPropNameInTable="EmpresaPropietariaColumn" msprop:Generator_UserColumnName="EmpresaPropietaria" type="xs:string" minOccurs="0" />
+              <xs:element name="EmpresaCliente" msprop:Generator_ColumnVarNameInTable="columnEmpresaCliente" msprop:Generator_ColumnPropNameInRow="EmpresaCliente" msprop:Generator_ColumnPropNameInTable="EmpresaClienteColumn" msprop:Generator_UserColumnName="EmpresaCliente" type="xs:string" minOccurs="0" />
+              <xs:element name="LogoCliente" msprop:Generator_ColumnVarNameInTable="columnLogoCliente" msprop:Generator_ColumnPropNameInRow="LogoCliente" msprop:Generator_ColumnPropNameInTable="LogoClienteColumn" msprop:Generator_UserColumnName="LogoCliente" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="LogoPropietaria" msprop:Generator_ColumnVarNameInTable="columnLogoPropietaria" msprop:Generator_ColumnPropNameInRow="LogoPropietaria" msprop:Generator_ColumnPropNameInTable="LogoPropietariaColumn" msprop:Generator_UserColumnName="LogoPropietaria" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="dtDetalle" msprop:Generator_TableClassName="dtDetalleDataTable" msprop:Generator_TableVarName="tabledtDetalle" msprop:Generator_RowChangedName="dtDetalleRowChanged" msprop:Generator_TablePropName="dtDetalle" msprop:Generator_RowDeletingName="dtDetalleRowDeleting" msprop:Generator_RowChangingName="dtDetalleRowChanging" msprop:Generator_RowEvHandlerName="dtDetalleRowChangeEventHandler" msprop:Generator_RowDeletedName="dtDetalleRowDeleted" msprop:Generator_RowClassName="dtDetalleRow" msprop:Generator_UserTableName="dtDetalle" msprop:Generator_RowEvArgName="dtDetalleRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Trabajadores" msprop:Generator_ColumnVarNameInTable="columnTrabajadores" msprop:Generator_ColumnPropNameInRow="Trabajadores" msprop:Generator_ColumnPropNameInTable="TrabajadoresColumn" msprop:Generator_UserColumnName="Trabajadores" type="xs:string" minOccurs="0" />
+              <xs:element name="Dx" msprop:Generator_ColumnVarNameInTable="columnDx" msprop:Generator_ColumnPropNameInRow="Dx" msprop:Generator_ColumnPropNameInTable="DxColumn" msprop:Generator_UserColumnName="Dx" type="xs:string" minOccurs="0" />
+              <xs:element name="CantidadTrabajadores" msprop:Generator_ColumnVarNameInTable="columnCantidadTrabajadores" msprop:Generator_ColumnPropNameInRow="CantidadTrabajadores" msprop:Generator_ColumnPropNameInTable="CantidadTrabajadoresColumn" msprop:Generator_UserColumnName="CantidadTrabajadores" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

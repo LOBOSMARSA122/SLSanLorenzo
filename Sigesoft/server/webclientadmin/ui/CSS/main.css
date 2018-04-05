@@ -1,0 +1,34 @@
+﻿.mayus 
+{
+	text-transform: uppercase;	
+}
+.datecontainer .x-form-field-trigger-wrap
+{
+    margin-right: 10px;
+}
+.mright
+{
+    margin-right: 10px;
+}
+.mleft
+{
+    margin-left: 10px;
+}
+.mrightmayus
+{
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.page
+{
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    width: 1024px;
+    height: 768px;
+    margin-left: -512px;
+    background-color: #fff;
+}
+
+/* ------------------------------------------------------------------------- */

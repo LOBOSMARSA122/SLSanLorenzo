@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCartaCotizacion" targetNamespace="http://tempuri.org/dsCartaCotizacion.xsd" xmlns:mstns="http://tempuri.org/dsCartaCotizacion.xsd" xmlns="http://tempuri.org/dsCartaCotizacion.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCartaCotizacion" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCartaCotizacion" msprop:Generator_UserDSName="dsCartaCotizacion">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtCartaCotizacion" msprop:Generator_TableClassName="dtCartaCotizacionDataTable" msprop:Generator_TableVarName="tabledtCartaCotizacion" msprop:Generator_RowChangedName="dtCartaCotizacionRowChanged" msprop:Generator_TablePropName="dtCartaCotizacion" msprop:Generator_RowDeletingName="dtCartaCotizacionRowDeleting" msprop:Generator_RowChangingName="dtCartaCotizacionRowChanging" msprop:Generator_RowEvHandlerName="dtCartaCotizacionRowChangeEventHandler" msprop:Generator_RowDeletedName="dtCartaCotizacionRowDeleted" msprop:Generator_RowClassName="dtCartaCotizacionRow" msprop:Generator_UserTableName="dtCartaCotizacion" msprop:Generator_RowEvArgName="dtCartaCotizacionRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LogoPropietaria" msprop:Generator_ColumnVarNameInTable="columnLogoPropietaria" msprop:Generator_ColumnPropNameInRow="LogoPropietaria" msprop:Generator_ColumnPropNameInTable="LogoPropietariaColumn" msprop:Generator_UserColumnName="LogoPropietaria" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="EmpresaCliente" msprop:Generator_ColumnVarNameInTable="columnEmpresaCliente" msprop:Generator_ColumnPropNameInRow="EmpresaCliente" msprop:Generator_ColumnPropNameInTable="EmpresaClienteColumn" msprop:Generator_UserColumnName="EmpresaCliente" type="xs:string" minOccurs="0" />
+              <xs:element name="RucCliente" msprop:Generator_ColumnVarNameInTable="columnRucCliente" msprop:Generator_ColumnPropNameInRow="RucCliente" msprop:Generator_ColumnPropNameInTable="RucClienteColumn" msprop:Generator_UserColumnName="RucCliente" type="xs:string" minOccurs="0" />
+              <xs:element name="DireccionCliente" msprop:Generator_ColumnVarNameInTable="columnDireccionCliente" msprop:Generator_ColumnPropNameInRow="DireccionCliente" msprop:Generator_ColumnPropNameInTable="DireccionClienteColumn" msprop:Generator_UserColumnName="DireccionCliente" type="xs:string" minOccurs="0" />
+              <xs:element name="FirmaSa" msprop:Generator_ColumnVarNameInTable="columnFirmaSa" msprop:Generator_ColumnPropNameInRow="FirmaSa" msprop:Generator_ColumnPropNameInTable="FirmaSaColumn" msprop:Generator_UserColumnName="FirmaSa" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="NombreEmpresaPropietaria" msprop:Generator_ColumnVarNameInTable="columnNombreEmpresaPropietaria" msprop:Generator_ColumnPropNameInRow="NombreEmpresaPropietaria" msprop:Generator_ColumnPropNameInTable="NombreEmpresaPropietariaColumn" msprop:Generator_UserColumnName="NombreEmpresaPropietaria" type="xs:string" minOccurs="0" />
+              <xs:element name="Representante_Legal_Propietaria" msprop:Generator_ColumnVarNameInTable="columnRepresentante_Legal_Propietaria" msprop:Generator_ColumnPropNameInRow="Representante_Legal_Propietaria" msprop:Generator_ColumnPropNameInTable="Representante_Legal_PropietariaColumn" msprop:Generator_UserColumnName="Representante_Legal_Propietaria" type="xs:string" minOccurs="0" />
+              <xs:element name="Contacto_RRHH_Propietaria" msprop:Generator_ColumnVarNameInTable="columnContacto_RRHH_Propietaria" msprop:Generator_ColumnPropNameInRow="Contacto_RRHH_Propietaria" msprop:Generator_ColumnPropNameInTable="Contacto_RRHH_PropietariaColumn" msprop:Generator_UserColumnName="Contacto_RRHH_Propietaria" type="xs:string" minOccurs="0" />
+              <xs:element name="Contacto_Medico_Propietaria" msprop:Generator_ColumnVarNameInTable="columnContacto_Medico_Propietaria" msprop:Generator_ColumnPropNameInRow="Contacto_Medico_Propietaria" msprop:Generator_ColumnPropNameInTable="Contacto_Medico_PropietariaColumn" msprop:Generator_UserColumnName="Contacto_Medico_Propietaria" type="xs:string" minOccurs="0" />
+              <xs:element name="Email_Representante_Legal_Propietaria" msprop:Generator_ColumnVarNameInTable="columnEmail_Representante_Legal_Propietaria" msprop:Generator_ColumnPropNameInRow="Email_Representante_Legal_Propietaria" msprop:Generator_ColumnPropNameInTable="Email_Representante_Legal_PropietariaColumn" msprop:Generator_UserColumnName="Email_Representante_Legal_Propietaria" type="xs:string" minOccurs="0" />
+              <xs:element name="Email_Contacto_RRHH_Propietaria" msprop:Generator_ColumnVarNameInTable="columnEmail_Contacto_RRHH_Propietaria" msprop:Generator_ColumnPropNameInRow="Email_Contacto_RRHH_Propietaria" msprop:Generator_ColumnPropNameInTable="Email_Contacto_RRHH_PropietariaColumn" msprop:Generator_UserColumnName="Email_Contacto_RRHH_Propietaria" type="xs:string" minOccurs="0" />
+              <xs:element name="Email_Contacto_Medico_Propietaria" msprop:Generator_ColumnVarNameInTable="columnEmail_Contacto_Medico_Propietaria" msprop:Generator_ColumnPropNameInRow="Email_Contacto_Medico_Propietaria" msprop:Generator_ColumnPropNameInTable="Email_Contacto_Medico_PropietariaColumn" msprop:Generator_UserColumnName="Email_Contacto_Medico_Propietaria" type="xs:string" minOccurs="0" />
+              <xs:element name="Telefono_Propietaria" msprop:Generator_ColumnVarNameInTable="columnTelefono_Propietaria" msprop:Generator_ColumnPropNameInRow="Telefono_Propietaria" msprop:Generator_ColumnPropNameInTable="Telefono_PropietariaColumn" msprop:Generator_UserColumnName="Telefono_Propietaria" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

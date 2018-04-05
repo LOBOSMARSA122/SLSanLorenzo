@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsExamenOrinaCompleto" targetNamespace="http://tempuri.org/dsExamenOrinaCompleto.xsd" xmlns:mstns="http://tempuri.org/dsExamenOrinaCompleto.xsd" xmlns="http://tempuri.org/dsExamenOrinaCompleto.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsExamenOrinaCompleto" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsExamenOrinaCompleto" msprop:Generator_UserDSName="dsExamenOrinaCompleto">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtExamenOrinaCompleto" msprop:Generator_TableClassName="dtExamenOrinaCompletoDataTable" msprop:Generator_TableVarName="tabledtExamenOrinaCompleto" msprop:Generator_RowChangedName="dtExamenOrinaCompletoRowChanged" msprop:Generator_TablePropName="dtExamenOrinaCompleto" msprop:Generator_RowDeletingName="dtExamenOrinaCompletoRowDeleting" msprop:Generator_RowChangingName="dtExamenOrinaCompletoRowChanging" msprop:Generator_RowEvHandlerName="dtExamenOrinaCompletoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtExamenOrinaCompletoRowDeleted" msprop:Generator_RowClassName="dtExamenOrinaCompletoRow" msprop:Generator_UserTableName="dtExamenOrinaCompleto" msprop:Generator_RowEvArgName="dtExamenOrinaCompletoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Paciente" msprop:Generator_ColumnVarNameInTable="columnPaciente" msprop:Generator_ColumnPropNameInRow="Paciente" msprop:Generator_ColumnPropNameInTable="PacienteColumn" msprop:Generator_UserColumnName="Paciente" type="xs:string" minOccurs="0" />
+              <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" type="xs:string" minOccurs="0" />
+              <xs:element name="Puesto" msprop:Generator_ColumnVarNameInTable="columnPuesto" msprop:Generator_ColumnPropNameInRow="Puesto" msprop:Generator_ColumnPropNameInTable="PuestoColumn" msprop:Generator_UserColumnName="Puesto" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="Color" msprop:Generator_ColumnVarNameInTable="columnColor" msprop:Generator_ColumnPropNameInRow="Color" msprop:Generator_ColumnPropNameInTable="ColorColumn" msprop:Generator_UserColumnName="Color" type="xs:string" minOccurs="0" />
+              <xs:element name="Aspecto" msprop:Generator_ColumnVarNameInTable="columnAspecto" msprop:Generator_ColumnPropNameInRow="Aspecto" msprop:Generator_ColumnPropNameInTable="AspectoColumn" msprop:Generator_UserColumnName="Aspecto" type="xs:string" minOccurs="0" />
+              <xs:element name="Densidad" msprop:Generator_ColumnVarNameInTable="columnDensidad" msprop:Generator_ColumnPropNameInRow="Densidad" msprop:Generator_ColumnPropNameInTable="DensidadColumn" msprop:Generator_UserColumnName="Densidad" type="xs:string" minOccurs="0" />
+              <xs:element name="Ph" msprop:Generator_ColumnVarNameInTable="columnPh" msprop:Generator_ColumnPropNameInRow="Ph" msprop:Generator_ColumnPropNameInTable="PhColumn" msprop:Generator_UserColumnName="Ph" type="xs:string" minOccurs="0" />
+              <xs:element name="CelulasEpiteliales" msprop:Generator_ColumnVarNameInTable="columnCelulasEpiteliales" msprop:Generator_ColumnPropNameInRow="CelulasEpiteliales" msprop:Generator_ColumnPropNameInTable="CelulasEpitelialesColumn" msprop:Generator_UserColumnName="CelulasEpiteliales" type="xs:string" minOccurs="0" />
+              <xs:element name="Leucocitos" msprop:Generator_ColumnVarNameInTable="columnLeucocitos" msprop:Generator_ColumnPropNameInRow="Leucocitos" msprop:Generator_ColumnPropNameInTable="LeucocitosColumn" msprop:Generator_UserColumnName="Leucocitos" type="xs:string" minOccurs="0" />
+              <xs:element name="Hematies" msprop:Generator_ColumnVarNameInTable="columnHematies" msprop:Generator_ColumnPropNameInRow="Hematies" msprop:Generator_ColumnPropNameInTable="HematiesColumn" msprop:Generator_UserColumnName="Hematies" type="xs:string" minOccurs="0" />
+              <xs:element name="Germenes" msprop:Generator_ColumnVarNameInTable="columnGermenes" msprop:Generator_ColumnPropNameInRow="Germenes" msprop:Generator_ColumnPropNameInTable="GermenesColumn" msprop:Generator_UserColumnName="Germenes" type="xs:string" minOccurs="0" />
+              <xs:element name="Cilindros" msprop:Generator_ColumnVarNameInTable="columnCilindros" msprop:Generator_ColumnPropNameInRow="Cilindros" msprop:Generator_ColumnPropNameInTable="CilindrosColumn" msprop:Generator_UserColumnName="Cilindros" type="xs:string" minOccurs="0" />
+              <xs:element name="Cristales" msprop:Generator_ColumnVarNameInTable="columnCristales" msprop:Generator_ColumnPropNameInRow="Cristales" msprop:Generator_ColumnPropNameInTable="CristalesColumn" msprop:Generator_UserColumnName="Cristales" type="xs:string" minOccurs="0" />
+              <xs:element name="Nitritos" msprop:Generator_ColumnVarNameInTable="columnNitritos" msprop:Generator_ColumnPropNameInRow="Nitritos" msprop:Generator_ColumnPropNameInTable="NitritosColumn" msprop:Generator_UserColumnName="Nitritos" type="xs:string" minOccurs="0" />
+              <xs:element name="Proteinas" msprop:Generator_ColumnVarNameInTable="columnProteinas" msprop:Generator_ColumnPropNameInRow="Proteinas" msprop:Generator_ColumnPropNameInTable="ProteinasColumn" msprop:Generator_UserColumnName="Proteinas" type="xs:string" minOccurs="0" />
+              <xs:element name="Glucosa" msprop:Generator_ColumnVarNameInTable="columnGlucosa" msprop:Generator_ColumnPropNameInRow="Glucosa" msprop:Generator_ColumnPropNameInTable="GlucosaColumn" msprop:Generator_UserColumnName="Glucosa" type="xs:string" minOccurs="0" />
+              <xs:element name="Cetonas" msprop:Generator_ColumnVarNameInTable="columnCetonas" msprop:Generator_ColumnPropNameInRow="Cetonas" msprop:Generator_ColumnPropNameInTable="CetonasColumn" msprop:Generator_UserColumnName="Cetonas" type="xs:string" minOccurs="0" />
+              <xs:element name="Urobilinogeno" msprop:Generator_ColumnVarNameInTable="columnUrobilinogeno" msprop:Generator_ColumnPropNameInRow="Urobilinogeno" msprop:Generator_ColumnPropNameInTable="UrobilinogenoColumn" msprop:Generator_UserColumnName="Urobilinogeno" type="xs:string" minOccurs="0" />
+              <xs:element name="Bilirrubinas" msprop:Generator_ColumnVarNameInTable="columnBilirrubinas" msprop:Generator_ColumnPropNameInRow="Bilirrubinas" msprop:Generator_ColumnPropNameInTable="BilirrubinasColumn" msprop:Generator_UserColumnName="Bilirrubinas" type="xs:string" minOccurs="0" />
+              <xs:element name="Sangre" msprop:Generator_ColumnVarNameInTable="columnSangre" msprop:Generator_ColumnPropNameInRow="Sangre" msprop:Generator_ColumnPropNameInTable="SangreColumn" msprop:Generator_UserColumnName="Sangre" type="xs:string" minOccurs="0" />
+              <xs:element name="Hemoglobina" msprop:Generator_ColumnVarNameInTable="columnHemoglobina" msprop:Generator_ColumnPropNameInRow="Hemoglobina" msprop:Generator_ColumnPropNameInTable="HemoglobinaColumn" msprop:Generator_UserColumnName="Hemoglobina" type="xs:string" minOccurs="0" />
+              <xs:element name="FirmaMedico" msprop:Generator_ColumnVarNameInTable="columnFirmaMedico" msprop:Generator_ColumnPropNameInRow="FirmaMedico" msprop:Generator_ColumnPropNameInTable="FirmaMedicoColumn" msprop:Generator_UserColumnName="FirmaMedico" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="LogoEmpresa" msprop:Generator_ColumnVarNameInTable="columnLogoEmpresa" msprop:Generator_ColumnPropNameInRow="LogoEmpresa" msprop:Generator_ColumnPropNameInTable="LogoEmpresaColumn" msprop:Generator_UserColumnName="LogoEmpresa" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

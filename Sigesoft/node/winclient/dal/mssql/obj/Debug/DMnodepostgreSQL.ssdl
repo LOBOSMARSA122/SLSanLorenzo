@@ -1,0 +1,3462 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Sigesoft.Node.WinClient.DAL.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:devart="http://devart.com/schemas/edml/StorageSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="SigesoftEntitiesModelStoreContainer">
+    <EntitySet Name="applicationhierarchies" EntityType="Sigesoft.Node.WinClient.DAL.Store.applicationhierarchy" store:Type="Tables" Schema="dbo" Table="applicationhierarchy" />
+    <EntitySet Name="areas" EntityType="Sigesoft.Node.WinClient.DAL.Store.area" store:Type="Tables" Schema="dbo" Table="area" />
+    <EntitySet Name="attentioninareas" EntityType="Sigesoft.Node.WinClient.DAL.Store.attentioninarea" store:Type="Tables" Schema="dbo" Table="attentioninarea" />
+    <EntitySet Name="attentioninareacomponents" EntityType="Sigesoft.Node.WinClient.DAL.Store.attentioninareacomponent" store:Type="Tables" Schema="dbo" Table="attentioninareacomponent" />
+    <EntitySet Name="authorizedpersons" EntityType="Sigesoft.Node.WinClient.DAL.Store.authorizedperson" store:Type="Tables" Schema="dbo" Table="authorizedperson" />
+    <EntitySet Name="auxiliaryexams" EntityType="Sigesoft.Node.WinClient.DAL.Store.auxiliaryexam" store:Type="Tables" Schema="dbo" Table="auxiliaryexam" />
+    <EntitySet Name="blacklistpersons" EntityType="Sigesoft.Node.WinClient.DAL.Store.blacklistperson" store:Type="Tables" Schema="dbo" Table="blacklistperson" />
+    <EntitySet Name="calendars" EntityType="Sigesoft.Node.WinClient.DAL.Store.calendar" store:Type="Tables" Schema="dbo" Table="calendar" />
+    <EntitySet Name="cie10s" EntityType="Sigesoft.Node.WinClient.DAL.Store.cie10" store:Type="Tables" Schema="dbo" Table="cie10" />
+    <EntitySet Name="CIIUIs" EntityType="Sigesoft.Node.WinClient.DAL.Store.CIIUI" store:Type="Tables" Schema="dbo" Table="CIIUI" />
+    <EntitySet Name="CodigoEmpresas" EntityType="Sigesoft.Node.WinClient.DAL.Store.CodigoEmpresa" store:Type="Tables" Schema="dbo" Table="CodigoEmpresa" />
+    <EntitySet Name="components" EntityType="Sigesoft.Node.WinClient.DAL.Store.component" store:Type="Tables" Schema="dbo" Table="component" />
+    <EntitySet Name="componentfields" EntityType="Sigesoft.Node.WinClient.DAL.Store.componentfield" store:Type="Tables" Schema="dbo" Table="componentfield" />
+    <EntitySet Name="componentfields1" EntityType="Sigesoft.Node.WinClient.DAL.Store.componentfields" store:Type="Tables" Schema="dbo" Table="componentfields" />
+    <EntitySet Name="componentfieldvalues" EntityType="Sigesoft.Node.WinClient.DAL.Store.componentfieldvalues" store:Type="Tables" Schema="dbo" Table="componentfieldvalues" />
+    <EntitySet Name="componentfieldvaluesrecommendations" EntityType="Sigesoft.Node.WinClient.DAL.Store.componentfieldvaluesrecommendation" store:Type="Tables" Schema="dbo" Table="componentfieldvaluesrecommendation" />
+    <EntitySet Name="componentfieldvaluesrestrictions" EntityType="Sigesoft.Node.WinClient.DAL.Store.componentfieldvaluesrestriction" store:Type="Tables" Schema="dbo" Table="componentfieldvaluesrestriction" />
+    <EntitySet Name="datahierarchies" EntityType="Sigesoft.Node.WinClient.DAL.Store.datahierarchy" store:Type="Tables" Schema="dbo" Table="datahierarchy" />
+    <EntitySet Name="deploymentfiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.deploymentfile" store:Type="Tables" Schema="dbo" Table="deploymentfile" />
+    <EntitySet Name="diagnosticrepositories" EntityType="Sigesoft.Node.WinClient.DAL.Store.diagnosticrepository" store:Type="Tables" Schema="dbo" Table="diagnosticrepository" />
+    <EntitySet Name="diseases" EntityType="Sigesoft.Node.WinClient.DAL.Store.diseases" store:Type="Tables" Schema="dbo" Table="diseases" />
+    <EntitySet Name="dxfrecuentes" EntityType="Sigesoft.Node.WinClient.DAL.Store.dxfrecuente" store:Type="Tables" Schema="dbo" Table="dxfrecuente" />
+    <EntitySet Name="dxfrecuentedetalles" EntityType="Sigesoft.Node.WinClient.DAL.Store.dxfrecuentedetalle" store:Type="Tables" Schema="dbo" Table="dxfrecuentedetalle" />
+    <EntitySet Name="emails" EntityType="Sigesoft.Node.WinClient.DAL.Store.email" store:Type="Tables" Schema="dbo" Table="email" />
+    <EntitySet Name="facturacions" EntityType="Sigesoft.Node.WinClient.DAL.Store.facturacion" store:Type="Tables" Schema="dbo" Table="facturacion" />
+    <EntitySet Name="facturaciondetalles" EntityType="Sigesoft.Node.WinClient.DAL.Store.facturaciondetalle" store:Type="Tables" Schema="dbo" Table="facturaciondetalle" />
+    <EntitySet Name="familymedicalantecedents" EntityType="Sigesoft.Node.WinClient.DAL.Store.familymedicalantecedents" store:Type="Tables" Schema="dbo" Table="familymedicalantecedents" />
+    <EntitySet Name="ges" EntityType="Sigesoft.Node.WinClient.DAL.Store.ges" store:Type="Tables" Schema="dbo" Table="ges" />
+    <EntitySet Name="groupoccupations" EntityType="Sigesoft.Node.WinClient.DAL.Store.groupoccupation" store:Type="Tables" Schema="dbo" Table="groupoccupation" />
+    <EntitySet Name="histories" EntityType="Sigesoft.Node.WinClient.DAL.Store.history" store:Type="Tables" Schema="dbo" Table="history" />
+    <EntitySet Name="locations" EntityType="Sigesoft.Node.WinClient.DAL.Store.location" store:Type="Tables" Schema="dbo" Table="location" />
+    <EntitySet Name="logs" EntityType="Sigesoft.Node.WinClient.DAL.Store.log" store:Type="Tables" Schema="dbo" Table="log" />
+    <EntitySet Name="masterrecommendationrestricctions" EntityType="Sigesoft.Node.WinClient.DAL.Store.masterrecommendationrestricction" store:Type="Tables" Schema="dbo" Table="masterrecommendationrestricction" />
+    <EntitySet Name="medications" EntityType="Sigesoft.Node.WinClient.DAL.Store.medication" store:Type="Tables" Schema="dbo" Table="medication" />
+    <EntitySet Name="movements" EntityType="Sigesoft.Node.WinClient.DAL.Store.movement" store:Type="Tables" Schema="dbo" Table="movement" />
+    <EntitySet Name="movementdetails" EntityType="Sigesoft.Node.WinClient.DAL.Store.movementdetail" store:Type="Tables" Schema="dbo" Table="movementdetail" />
+    <EntitySet Name="multimediafiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.multimediafile" store:Type="Tables" Schema="dbo" Table="multimediafile" />
+    <EntitySet Name="nodes" EntityType="Sigesoft.Node.WinClient.DAL.Store.node" store:Type="Tables" Schema="dbo" Table="node" />
+    <EntitySet Name="nodedatabasestatus" EntityType="Sigesoft.Node.WinClient.DAL.Store.nodedatabasestatus" store:Type="Tables" Schema="dbo" Table="nodedatabasestatus" />
+    <EntitySet Name="nodeorganizationlocationprofiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationprofile" store:Type="Tables" Schema="dbo" Table="nodeorganizationlocationprofile" />
+    <EntitySet Name="nodeorganizationlocationwarehouseprofiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationwarehouseprofile" store:Type="Tables" Schema="dbo" Table="nodeorganizationlocationwarehouseprofile" />
+    <EntitySet Name="nodeorganizationprofiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationprofile" store:Type="Tables" Schema="dbo" Table="nodeorganizationprofile" />
+    <EntitySet Name="nodeserviceprofiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.nodeserviceprofile" store:Type="Tables" Schema="dbo" Table="nodeserviceprofile" />
+    <EntitySet Name="nodesyncstatus" EntityType="Sigesoft.Node.WinClient.DAL.Store.nodesyncstatus" store:Type="Tables" Schema="dbo" Table="nodesyncstatus" />
+    <EntitySet Name="noxioushabits" EntityType="Sigesoft.Node.WinClient.DAL.Store.noxioushabits" store:Type="Tables" Schema="dbo" Table="noxioushabits" />
+    <EntitySet Name="occupations" EntityType="Sigesoft.Node.WinClient.DAL.Store.occupation" store:Type="Tables" Schema="dbo" Table="occupation" />
+    <EntitySet Name="OrdenReportes" EntityType="Sigesoft.Node.WinClient.DAL.Store.OrdenReporte" store:Type="Tables" Schema="dbo" Table="OrdenReporte" />
+    <EntitySet Name="organizations" EntityType="Sigesoft.Node.WinClient.DAL.Store.organization" store:Type="Tables" Schema="dbo" Table="organization" />
+    <EntitySet Name="pacients" EntityType="Sigesoft.Node.WinClient.DAL.Store.pacient" store:Type="Tables" Schema="dbo" Table="pacient" />
+    <EntitySet Name="pacientmultimediadatas" EntityType="Sigesoft.Node.WinClient.DAL.Store.pacientmultimediadata" store:Type="Tables" Schema="dbo" Table="pacientmultimediadata" />
+    <EntitySet Name="people" EntityType="Sigesoft.Node.WinClient.DAL.Store.person" store:Type="Tables" Schema="dbo" Table="person" />
+    <EntitySet Name="personmedicalhistories" EntityType="Sigesoft.Node.WinClient.DAL.Store.personmedicalhistory" store:Type="Tables" Schema="dbo" Table="personmedicalhistory" />
+    <EntitySet Name="plans" EntityType="Sigesoft.Node.WinClient.DAL.Store.plan" store:Type="Tables" Schema="dbo" Table="plan" />
+    <EntitySet Name="procedurebyservices" EntityType="Sigesoft.Node.WinClient.DAL.Store.procedurebyservice" store:Type="Tables" Schema="dbo" Table="procedurebyservice" />
+    <EntitySet Name="products" EntityType="Sigesoft.Node.WinClient.DAL.Store.product" store:Type="Tables" Schema="dbo" Table="product" />
+    <EntitySet Name="productsformigrations" EntityType="Sigesoft.Node.WinClient.DAL.Store.productsformigration" store:Type="Tables" Schema="dbo" Table="productsformigration" />
+    <EntitySet Name="productwarehouses" EntityType="Sigesoft.Node.WinClient.DAL.Store.productwarehouse" store:Type="Tables" Schema="dbo" Table="productwarehouse" />
+    <EntitySet Name="professionals" EntityType="Sigesoft.Node.WinClient.DAL.Store.professional" store:Type="Tables" Schema="dbo" Table="professional" />
+    <EntitySet Name="protocols" EntityType="Sigesoft.Node.WinClient.DAL.Store.protocol" store:Type="Tables" Schema="dbo" Table="protocol" />
+    <EntitySet Name="protocolcomponents" EntityType="Sigesoft.Node.WinClient.DAL.Store.protocolcomponent" store:Type="Tables" Schema="dbo" Table="protocolcomponent" />
+    <EntitySet Name="protocolsystemusers" EntityType="Sigesoft.Node.WinClient.DAL.Store.protocolsystemuser" store:Type="Tables" Schema="dbo" Table="protocolsystemuser" />
+    <EntitySet Name="recetas" EntityType="Sigesoft.Node.WinClient.DAL.Store.receta" store:Type="Tables" Schema="dbo" Table="receta" />
+    <EntitySet Name="recetadespachos" EntityType="Sigesoft.Node.WinClient.DAL.Store.recetadespacho" store:Type="Tables" Schema="dbo" Table="recetadespacho" />
+    <EntitySet Name="recommendations" EntityType="Sigesoft.Node.WinClient.DAL.Store.recommendation" store:Type="Tables" Schema="dbo" Table="recommendation" />
+    <EntitySet Name="restrictedwarehouseprofiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.restrictedwarehouseprofile" store:Type="Tables" Schema="dbo" Table="restrictedwarehouseprofile" />
+    <EntitySet Name="restrictions" EntityType="Sigesoft.Node.WinClient.DAL.Store.restriction" store:Type="Tables" Schema="dbo" Table="restriction" />
+    <EntitySet Name="rolcuotas" EntityType="Sigesoft.Node.WinClient.DAL.Store.rolcuota" store:Type="Tables" Schema="dbo" Table="rolcuota" />
+    <EntitySet Name="rolcuotadetalles" EntityType="Sigesoft.Node.WinClient.DAL.Store.rolcuotadetalle" store:Type="Tables" Schema="dbo" Table="rolcuotadetalle" />
+    <EntitySet Name="rolenodes" EntityType="Sigesoft.Node.WinClient.DAL.Store.rolenode" store:Type="Tables" Schema="dbo" Table="rolenode" />
+    <EntitySet Name="rolenodecomponentprofiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.rolenodecomponentprofile" store:Type="Tables" Schema="dbo" Table="rolenodecomponentprofile" />
+    <EntitySet Name="rolenodeprofiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.rolenodeprofile" store:Type="Tables" Schema="dbo" Table="rolenodeprofile" />
+    <EntitySet Name="secuentials" EntityType="Sigesoft.Node.WinClient.DAL.Store.secuential" store:Type="Tables" Schema="dbo" Table="secuential" />
+    <EntitySet Name="servernodesyncs" EntityType="Sigesoft.Node.WinClient.DAL.Store.servernodesync" store:Type="Tables" Schema="dbo" Table="servernodesync" />
+    <EntitySet Name="serversyncstatus" EntityType="Sigesoft.Node.WinClient.DAL.Store.serversyncstatus" store:Type="Tables" Schema="dbo" Table="serversyncstatus" />
+    <EntitySet Name="services" EntityType="Sigesoft.Node.WinClient.DAL.Store.service" store:Type="Tables" Schema="dbo" Table="service" />
+    <EntitySet Name="servicecomponents" EntityType="Sigesoft.Node.WinClient.DAL.Store.servicecomponent" store:Type="Tables" Schema="dbo" Table="servicecomponent" />
+    <EntitySet Name="servicecomponentfields" EntityType="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfields" store:Type="Tables" Schema="dbo" Table="servicecomponentfields" />
+    <EntitySet Name="servicecomponentfieldvalues" EntityType="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfieldvalues" store:Type="Tables" Schema="dbo" Table="servicecomponentfieldvalues" />
+    <EntitySet Name="servicecomponentfieldValuesmultimedias" EntityType="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfieldValuesmultimedia" store:Type="Tables" Schema="dbo" Table="servicecomponentfieldValuesmultimedia" />
+    <EntitySet Name="servicecomponentmultimedias" EntityType="Sigesoft.Node.WinClient.DAL.Store.servicecomponentmultimedia" store:Type="Tables" Schema="dbo" Table="servicecomponentmultimedia" />
+    <EntitySet Name="servicemultimedias" EntityType="Sigesoft.Node.WinClient.DAL.Store.servicemultimedia" store:Type="Tables" Schema="dbo" Table="servicemultimedia" />
+    <EntitySet Name="serviceorders" EntityType="Sigesoft.Node.WinClient.DAL.Store.serviceorder" store:Type="Tables" Schema="dbo" Table="serviceorder" />
+    <EntitySet Name="serviceorderdetails" EntityType="Sigesoft.Node.WinClient.DAL.Store.serviceorderdetail" store:Type="Tables" Schema="dbo" Table="serviceorderdetail" />
+    <EntitySet Name="softwarecomponentreleases" EntityType="Sigesoft.Node.WinClient.DAL.Store.softwarecomponentrelease" store:Type="Tables" Schema="dbo" Table="softwarecomponentrelease" />
+    <EntitySet Name="suppliers" EntityType="Sigesoft.Node.WinClient.DAL.Store.supplier" store:Type="Tables" Schema="dbo" Table="supplier" />
+    <EntitySet Name="systemparameters" EntityType="Sigesoft.Node.WinClient.DAL.Store.systemparameter" store:Type="Tables" Schema="dbo" Table="systemparameter" />
+    <EntitySet Name="systemusers" EntityType="Sigesoft.Node.WinClient.DAL.Store.systemuser" store:Type="Tables" Schema="dbo" Table="systemuser" />
+    <EntitySet Name="systemusergobalprofiles" EntityType="Sigesoft.Node.WinClient.DAL.Store.systemusergobalprofile" store:Type="Tables" Schema="dbo" Table="systemusergobalprofile" />
+    <EntitySet Name="systemuserrolenodes" EntityType="Sigesoft.Node.WinClient.DAL.Store.systemuserrolenode" store:Type="Tables" Schema="dbo" Table="systemuserrolenode" />
+    <EntitySet Name="typeofeeps" EntityType="Sigesoft.Node.WinClient.DAL.Store.typeofeep" store:Type="Tables" Schema="dbo" Table="typeofeep" />
+    <EntitySet Name="warehouses" EntityType="Sigesoft.Node.WinClient.DAL.Store.warehouse" store:Type="Tables" Schema="dbo" Table="warehouse" />
+    <EntitySet Name="workstationdangers" EntityType="Sigesoft.Node.WinClient.DAL.Store.workstationdangers" store:Type="Tables" Schema="dbo" Table="workstationdangers" />
+    <AssociationSet Name="Fk_Location_Area_v_AreaCode" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Location_Area_v_AreaCode">
+      <End Role="location" EntitySet="locations" />
+      <End Role="area" EntitySet="areas" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Node_AttentionInArea_i_NodeId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Node_AttentionInArea_i_NodeId">
+      <End Role="node" EntitySet="nodes" />
+      <End Role="attentioninarea" EntitySet="attentioninareas" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_AttentionArea_AttentionAreaComponent_v_AttentionAreaId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_AttentionArea_AttentionAreaComponent_v_AttentionAreaId">
+      <End Role="attentioninarea" EntitySet="attentioninareas" />
+      <End Role="attentioninareacomponent" EntitySet="attentioninareacomponents" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Component_AttentionAreaComponent_v_ComponentId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Component_AttentionAreaComponent_v_ComponentId">
+      <End Role="component" EntitySet="components" />
+      <End Role="attentioninareacomponent" EntitySet="attentioninareacomponents" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Component_AuxiliaryExam_v_ComponentId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Component_AuxiliaryExam_v_ComponentId">
+      <End Role="component" EntitySet="components" />
+      <End Role="auxiliaryexam" EntitySet="auxiliaryexams" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Service_AuxiliaryExam_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Service_AuxiliaryExam_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="auxiliaryexam" EntitySet="auxiliaryexams" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_BlackListPerson_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_BlackListPerson_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="blacklistperson" EntitySet="blacklistpersons" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_Calendar_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_Calendar_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="calendar" EntitySet="calendars" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Service_Calendar_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Service_Calendar_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="calendar" EntitySet="calendars" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Component_ComponentFields_v_MedicalExamFields" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Component_ComponentFields_v_MedicalExamFields">
+      <End Role="component" EntitySet="components" />
+      <End Role="componentfields" EntitySet="componentfields1" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ComponentField_ComponentFields_v_ComponentFieldId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_ComponentField_ComponentFields_v_ComponentFieldId">
+      <End Role="componentfield" EntitySet="componentfields" />
+      <End Role="componentfields" EntitySet="componentfields1" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Diseases_ComponentFieldValues_v_Diseases" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Diseases_ComponentFieldValues_v_Diseases">
+      <End Role="diseases" EntitySet="diseases" />
+      <End Role="componentfieldvalues" EntitySet="componentfieldvalues" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ComponentFieldId_ComponentFieldValues_v_ComponentFieldValues" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_ComponentFieldId_ComponentFieldValues_v_ComponentFieldValues">
+      <End Role="componentfield" EntitySet="componentfields" />
+      <End Role="componentfieldvalues" EntitySet="componentfieldvalues" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ComponentFieldValues_ComponentFieldVauesRecommendation_v_Com" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_ComponentFieldValues_ComponentFieldVauesRecommendation_v_Com">
+      <End Role="componentfieldvalues" EntitySet="componentfieldvalues" />
+      <End Role="componentfieldvaluesrecommendation" EntitySet="componentfieldvaluesrecommendations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_MasterRecommendationRestricction_ComponentFieldValuesRecomme" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_MasterRecommendationRestricction_ComponentFieldValuesRecomme">
+      <End Role="masterrecommendationrestricction" EntitySet="masterrecommendationrestricctions" />
+      <End Role="componentfieldvaluesrecommendation" EntitySet="componentfieldvaluesrecommendations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ComponentFieldValues_ComponentFieldVauesRestriction_v_Compon" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_ComponentFieldValues_ComponentFieldVauesRestriction_v_Compon">
+      <End Role="componentfieldvalues" EntitySet="componentfieldvalues" />
+      <End Role="componentfieldvaluesrestriction" EntitySet="componentfieldvaluesrestrictions" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_MasterRecommendationRestricction_ComponentFieldValuesRestric" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_MasterRecommendationRestricction_ComponentFieldValuesRestric">
+      <End Role="masterrecommendationrestricction" EntitySet="masterrecommendationrestricctions" />
+      <End Role="componentfieldvaluesrestriction" EntitySet="componentfieldvaluesrestrictions" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ComponentField_DiagnosticRepository_v_ComponentFieldsId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_ComponentField_DiagnosticRepository_v_ComponentFieldsId">
+      <End Role="componentfields" EntitySet="componentfields1" />
+      <End Role="diagnosticrepository" EntitySet="diagnosticrepositories" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_DiseasesId_DiagnosticRepository_v_DiseasesId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_DiseasesId_DiagnosticRepository_v_DiseasesId">
+      <End Role="diseases" EntitySet="diseases" />
+      <End Role="diagnosticrepository" EntitySet="diagnosticrepositories" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Service_DiagnosticRepository_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Service_DiagnosticRepository_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="diagnosticrepository" EntitySet="diagnosticrepositories" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Cie10_Diseases_v_CIE10Id" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Cie10_Diseases_v_CIE10Id">
+      <End Role="cie10" EntitySet="cie10s" />
+      <End Role="diseases" EntitySet="diseases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dxfrecuente_cie10_v_CIE10Id" Association="Sigesoft.Node.WinClient.DAL.Store.FK_dxfrecuente_cie10_v_CIE10Id">
+      <End Role="cie10" EntitySet="cie10s" />
+      <End Role="dxfrecuente" EntitySet="dxfrecuentes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dxfrecuente_dxfrecuente_vDiseasesId" Association="Sigesoft.Node.WinClient.DAL.Store.FK_dxfrecuente_dxfrecuente_vDiseasesId">
+      <End Role="diseases" EntitySet="diseases" />
+      <End Role="dxfrecuente" EntitySet="dxfrecuentes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dxfrecuentedetalle_dxfrecuentedetalle_v_DxFrecuenteId" Association="Sigesoft.Node.WinClient.DAL.Store.FK_dxfrecuentedetalle_dxfrecuentedetalle_v_DxFrecuenteId">
+      <End Role="dxfrecuente" EntitySet="dxfrecuentes" />
+      <End Role="dxfrecuentedetalle" EntitySet="dxfrecuentedetalles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_facturaciondetalle_Facturacion_v_FacturacionId" Association="Sigesoft.Node.WinClient.DAL.Store.FK_facturaciondetalle_Facturacion_v_FacturacionId">
+      <End Role="facturacion" EntitySet="facturacions" />
+      <End Role="facturaciondetalle" EntitySet="facturaciondetalles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Diseases_FamilyMedicalAntecedents_v_DiseasesId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Diseases_FamilyMedicalAntecedents_v_DiseasesId">
+      <End Role="diseases" EntitySet="diseases" />
+      <End Role="familymedicalantecedents" EntitySet="familymedicalantecedents" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_FamilyMedicalAntecedents_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_FamilyMedicalAntecedents_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="familymedicalantecedents" EntitySet="familymedicalantecedents" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Area_Ges_v_AreaCode" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Area_Ges_v_AreaCode">
+      <End Role="area" EntitySet="areas" />
+      <End Role="ges" EntitySet="ges" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Location_GroupOccupation_v_GroupOccupationCode" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Location_GroupOccupation_v_GroupOccupationCode">
+      <End Role="location" EntitySet="locations" />
+      <End Role="groupoccupation" EntitySet="groupoccupations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_History_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_History_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="history" EntitySet="histories" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Organization_Location_v_OrganizationId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Organization_Location_v_OrganizationId">
+      <End Role="organization" EntitySet="organizations" />
+      <End Role="location" EntitySet="locations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Service_Medication_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Service_Medication_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="medication" EntitySet="medications" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Supplier_Movement_i_SupplierId_i_NodeId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Supplier_Movement_i_SupplierId_i_NodeId">
+      <End Role="supplier" EntitySet="suppliers" />
+      <End Role="movement" EntitySet="movements" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Warehouse_Movement_i_WarehouseId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Warehouse_Movement_i_WarehouseId">
+      <End Role="warehouse" EntitySet="warehouses" />
+      <End Role="movement" EntitySet="movements" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Movement_MovementDetail_i_MovementId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Movement_MovementDetail_i_MovementId">
+      <End Role="movement" EntitySet="movements" />
+      <End Role="movementdetail" EntitySet="movementdetails" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Product_MovementDetail_i_ProductId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Product_MovementDetail_i_ProductId">
+      <End Role="product" EntitySet="products" />
+      <End Role="movementdetail" EntitySet="movementdetails" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Warehouse_MovementDetail_i_WarehouseId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Warehouse_MovementDetail_i_WarehouseId">
+      <End Role="warehouse" EntitySet="warehouses" />
+      <End Role="movementdetail" EntitySet="movementdetails" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_MultimediaFile_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_MultimediaFile_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="multimediafile" EntitySet="multimediafiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Location_NodeOrganizationLocationProfile_v_LocationId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Location_NodeOrganizationLocationProfile_v_LocationId">
+      <End Role="location" EntitySet="locations" />
+      <End Role="nodeorganizationlocationprofile" EntitySet="nodeorganizationlocationprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Node_NodeOrganizationLocationProfile_v_NodeId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Node_NodeOrganizationLocationProfile_v_NodeId">
+      <End Role="node" EntitySet="nodes" />
+      <End Role="nodeorganizationlocationprofile" EntitySet="nodeorganizationlocationprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Organization_NodeOrganizationLocationProfile_v_OrganizationI" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Organization_NodeOrganizationLocationProfile_v_OrganizationI">
+      <End Role="organization" EntitySet="organizations" />
+      <End Role="nodeorganizationlocationprofile" EntitySet="nodeorganizationlocationprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Node_NodeOrganizationLocationWarehouseProfile_i_NodeId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Node_NodeOrganizationLocationWarehouseProfile_i_NodeId">
+      <End Role="node" EntitySet="nodes" />
+      <End Role="nodeorganizationlocationwarehouseprofile" EntitySet="nodeorganizationlocationwarehouseprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Organization_NodeOrganizationLocationWarehouseProfile_v_Orga" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Organization_NodeOrganizationLocationWarehouseProfile_v_Orga">
+      <End Role="location" EntitySet="locations" />
+      <End Role="nodeorganizationlocationwarehouseprofile" EntitySet="nodeorganizationlocationwarehouseprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Warehouse_NodeOrganizationLocationWarehouseProfile_v_Warehou" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Warehouse_NodeOrganizationLocationWarehouseProfile_v_Warehou">
+      <End Role="warehouse" EntitySet="warehouses" />
+      <End Role="nodeorganizationlocationwarehouseprofile" EntitySet="nodeorganizationlocationwarehouseprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Organization_NodeOrganizationLocationWarehouseProfile_v_Loca" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Organization_NodeOrganizationLocationWarehouseProfile_v_Loca">
+      <End Role="organization" EntitySet="organizations" />
+      <End Role="nodeorganizationlocationwarehouseprofile" EntitySet="nodeorganizationlocationwarehouseprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_Node_Node_Organization_i_NodeId" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_Node_Node_Organization_i_NodeId">
+      <End Role="node" EntitySet="nodes" />
+      <End Role="nodeorganizationprofile" EntitySet="nodeorganizationprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_Organization_NodeOrganization_i_OrganizationId" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_Organization_NodeOrganization_i_OrganizationId">
+      <End Role="organization" EntitySet="organizations" />
+      <End Role="nodeorganizationprofile" EntitySet="nodeorganizationprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Node_NodeServiceProfile_i_NodeId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Node_NodeServiceProfile_i_NodeId">
+      <End Role="node" EntitySet="nodes" />
+      <End Role="nodeserviceprofile" EntitySet="nodeserviceprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_NoxiousHabits_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_NoxiousHabits_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="noxioushabits" EntitySet="noxioushabits" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Ges_Occupation_v_GesCode" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Ges_Occupation_v_GesCode">
+      <End Role="ges" EntitySet="ges" />
+      <End Role="occupation" EntitySet="occupations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_GroupOccupation_Occupation_v_GroupOccupationCode" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_GroupOccupation_Occupation_v_GroupOccupationCode">
+      <End Role="groupoccupation" EntitySet="groupoccupations" />
+      <End Role="occupation" EntitySet="occupations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_Pacient_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_Pacient_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="pacient" EntitySet="pacients" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_pacient_pacientemultimediadata_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_pacient_pacientemultimediadata_v_PersonId">
+      <End Role="pacient" EntitySet="pacients" />
+      <End Role="pacientmultimediadata" EntitySet="pacientmultimediadatas" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Diseases_PersonalmMedicalHistory_v_DiseasesId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Diseases_PersonalmMedicalHistory_v_DiseasesId">
+      <End Role="diseases" EntitySet="diseases" />
+      <End Role="personmedicalhistory" EntitySet="personmedicalhistories" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_PersonMedicalHistory_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_PersonMedicalHistory_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="personmedicalhistory" EntitySet="personmedicalhistories" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Service_Procedure_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Service_Procedure_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="procedurebyservice" EntitySet="procedurebyservices" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Product_ProductWarehouse_i_ProductId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Product_ProductWarehouse_i_ProductId">
+      <End Role="product" EntitySet="products" />
+      <End Role="productwarehouse" EntitySet="productwarehouses" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Warehouse_ProductWarehouse_i_WarehouseId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Warehouse_ProductWarehouse_i_WarehouseId">
+      <End Role="warehouse" EntitySet="warehouses" />
+      <End Role="productwarehouse" EntitySet="productwarehouses" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_Person_Professional_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_Person_Professional_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="professional" EntitySet="professionals" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Component_ProtocolComponent_v_ComponentId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Component_ProtocolComponent_v_ComponentId">
+      <End Role="component" EntitySet="components" />
+      <End Role="protocolcomponent" EntitySet="protocolcomponents" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Protocol_ProtocolComponent_v_ProtocolId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Protocol_ProtocolComponent_v_ProtocolId">
+      <End Role="protocol" EntitySet="protocols" />
+      <End Role="protocolcomponent" EntitySet="protocolcomponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AppHerarchy_ProtocolSystemUser_i_AppHerarchyId" Association="Sigesoft.Node.WinClient.DAL.Store.FK_AppHerarchy_ProtocolSystemUser_i_AppHerarchyId">
+      <End Role="applicationhierarchy" EntitySet="applicationhierarchies" />
+      <End Role="protocolsystemuser" EntitySet="protocolsystemusers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Protocol_ProtocolSystemUser_v_ProtocolId" Association="Sigesoft.Node.WinClient.DAL.Store.FK_Protocol_ProtocolSystemUser_v_ProtocolId">
+      <End Role="protocol" EntitySet="protocols" />
+      <End Role="protocolsystemuser" EntitySet="protocolsystemusers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SystemUser_ProtocolSystemUser_i_SystemUserId" Association="Sigesoft.Node.WinClient.DAL.Store.FK_SystemUser_ProtocolSystemUser_i_SystemUserId">
+      <End Role="systemuser" EntitySet="systemusers" />
+      <End Role="protocolsystemuser" EntitySet="protocolsystemusers" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Component_Recommendation_v_RecommendationId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Component_Recommendation_v_RecommendationId">
+      <End Role="component" EntitySet="components" />
+      <End Role="recommendation" EntitySet="recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_DiagnosticRepository_Recommendation_v_DiagnosticRepositoryId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_DiagnosticRepository_Recommendation_v_DiagnosticRepositoryId">
+      <End Role="diagnosticrepository" EntitySet="diagnosticrepositories" />
+      <End Role="recommendation" EntitySet="recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Service_Recommendation_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Service_Recommendation_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="recommendation" EntitySet="recommendations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_SystemUser_RestrictedWarehouseProfile_v_SystemUserId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_SystemUser_RestrictedWarehouseProfile_v_SystemUserId">
+      <End Role="systemuser" EntitySet="systemusers" />
+      <End Role="restrictedwarehouseprofile" EntitySet="restrictedwarehouseprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Warehouse_RestrictedWarehouseProfile_v_WarehouseId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Warehouse_RestrictedWarehouseProfile_v_WarehouseId">
+      <End Role="warehouse" EntitySet="warehouses" />
+      <End Role="restrictedwarehouseprofile" EntitySet="restrictedwarehouseprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Component_Restricction_v_ComponentId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Component_Restricction_v_ComponentId">
+      <End Role="component" EntitySet="components" />
+      <End Role="restriction" EntitySet="restrictions" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_DiagnosticRepository_RestrictionByDiagnostic_v_DiagnosticRep" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_DiagnosticRepository_RestrictionByDiagnostic_v_DiagnosticRep">
+      <End Role="diagnosticrepository" EntitySet="diagnosticrepositories" />
+      <End Role="restriction" EntitySet="restrictions" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Service_Restricction_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Service_Restricction_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="restriction" EntitySet="restrictions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_rolcuotadetalle_rolcuotadetalle_v_RolCuotaId" Association="Sigesoft.Node.WinClient.DAL.Store.FK_rolcuotadetalle_rolcuotadetalle_v_RolCuotaId">
+      <End Role="rolcuota" EntitySet="rolcuotas" />
+      <End Role="rolcuotadetalle" EntitySet="rolcuotadetalles" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_node_rolenode_i_NodeId" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_node_rolenode_i_NodeId">
+      <End Role="node" EntitySet="nodes" />
+      <End Role="rolenode" EntitySet="rolenodes" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Component_RoleNodeComponent_v_ComponentId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Component_RoleNodeComponent_v_ComponentId">
+      <End Role="component" EntitySet="components" />
+      <End Role="rolenodecomponentprofile" EntitySet="rolenodecomponentprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_RoleNode_RoleNodeComponent_i_NodeId_i_RoleId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_RoleNode_RoleNodeComponent_i_NodeId_i_RoleId">
+      <End Role="rolenode" EntitySet="rolenodes" />
+      <End Role="rolenodecomponentprofile" EntitySet="rolenodecomponentprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_applicationhierarchy_rolenodeprofile_i_ApplicationHierarchyI" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_applicationhierarchy_rolenodeprofile_i_ApplicationHierarchyI">
+      <End Role="applicationhierarchy" EntitySet="applicationhierarchies" />
+      <End Role="rolenodeprofile" EntitySet="rolenodeprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_RoleNode_RoleNodeProfile_i_NodeId_i_RoleId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_RoleNode_RoleNodeProfile_i_NodeId_i_RoleId">
+      <End Role="rolenode" EntitySet="rolenodes" />
+      <End Role="rolenodeprofile" EntitySet="rolenodeprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_Service_v_PersonId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_Service_v_PersonId">
+      <End Role="person" EntitySet="people" />
+      <End Role="service" EntitySet="services" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Protocol_Service_v_ProtocolId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Protocol_Service_v_ProtocolId">
+      <End Role="protocol" EntitySet="protocols" />
+      <End Role="service" EntitySet="services" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Component_ServiceComponent_v_ComponentId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Component_ServiceComponent_v_ComponentId">
+      <End Role="component" EntitySet="components" />
+      <End Role="servicecomponent" EntitySet="servicecomponents" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Service_ServiceComponent_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Service_ServiceComponent_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="servicecomponent" EntitySet="servicecomponents" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_ComponentFields_ServiceComponentFields_v_MedicalExamFieldsId" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_ComponentFields_ServiceComponentFields_v_MedicalExamFieldsId">
+      <End Role="componentfields" EntitySet="componentfields1" />
+      <End Role="servicecomponentfields" EntitySet="servicecomponentfields" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_ServiceComponent_ServiceComponentComponentFields" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_ServiceComponent_ServiceComponentComponentFields">
+      <End Role="servicecomponent" EntitySet="servicecomponents" />
+      <End Role="servicecomponentfields" EntitySet="servicecomponentfields" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_ComponentFieldValues_ServiceComponentFieldValues_v_Component" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_ComponentFieldValues_ServiceComponentFieldValues_v_Component">
+      <End Role="componentfieldvalues" EntitySet="componentfieldvalues" />
+      <End Role="servicecomponentfieldvalues" EntitySet="servicecomponentfieldvalues" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_ServiceComponentFieldIds_ServiceComponentFieldValues" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_ServiceComponentFieldIds_ServiceComponentFieldValues">
+      <End Role="servicecomponentfields" EntitySet="servicecomponentfields" />
+      <End Role="servicecomponentfieldvalues" EntitySet="servicecomponentfieldvalues" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_ServiceComponentFieldValues_ServiceComponentFieldValuesMulti" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_ServiceComponentFieldValues_ServiceComponentFieldValuesMulti">
+      <End Role="servicecomponentfieldvalues" EntitySet="servicecomponentfieldvalues" />
+      <End Role="servicecomponentfieldValuesmultimedia" EntitySet="servicecomponentfieldValuesmultimedias" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_MultimediaFile_ServiceComponentFieldValuesMultimedia_v_Multi" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_MultimediaFile_ServiceComponentFieldValuesMultimedia_v_Multi">
+      <End Role="multimediafile" EntitySet="multimediafiles" />
+      <End Role="servicecomponentfieldValuesmultimedia" EntitySet="servicecomponentfieldValuesmultimedias" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_MultimediaFile_ServiceComponentMultimedia_v_MultimediaFileId" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_MultimediaFile_ServiceComponentMultimedia_v_MultimediaFileId">
+      <End Role="multimediafile" EntitySet="multimediafiles" />
+      <End Role="servicecomponentmultimedia" EntitySet="servicecomponentmultimedias" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_ServiceComponent_ServiceComponentMultimedia_v_ServiceCompone" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_ServiceComponent_ServiceComponentMultimedia_v_ServiceCompone">
+      <End Role="servicecomponent" EntitySet="servicecomponents" />
+      <End Role="servicecomponentmultimedia" EntitySet="servicecomponentmultimedias" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_MultimediaFile_ServiceMultimedia_v_MultimediaFileId" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_MultimediaFile_ServiceMultimedia_v_MultimediaFileId">
+      <End Role="multimediafile" EntitySet="multimediafiles" />
+      <End Role="servicemultimedia" EntitySet="servicemultimedias" />
+    </AssociationSet>
+    <AssociationSet Name="Pk_Service_ServiceMultimedia_v_ServiceId" Association="Sigesoft.Node.WinClient.DAL.Store.Pk_Service_ServiceMultimedia_v_ServiceId">
+      <End Role="service" EntitySet="services" />
+      <End Role="servicemultimedia" EntitySet="servicemultimedias" />
+    </AssociationSet>
+    <AssociationSet Name="FK_serviceorderdetail_protocol_v_ProtocolId" Association="Sigesoft.Node.WinClient.DAL.Store.FK_serviceorderdetail_protocol_v_ProtocolId">
+      <End Role="protocol" EntitySet="protocols" />
+      <End Role="serviceorderdetail" EntitySet="serviceorderdetails" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ServiceOrder_ServiceOrderDetail_v_ServiceOrderId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_ServiceOrder_ServiceOrderDetail_v_ServiceOrderId">
+      <End Role="serviceorder" EntitySet="serviceorders" />
+      <End Role="serviceorderdetail" EntitySet="serviceorderdetails" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_DeplymentFile_SoftwareComponentRelease_i_DeploymentFileId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_DeplymentFile_SoftwareComponentRelease_i_DeploymentFileId">
+      <End Role="deploymentfile" EntitySet="deploymentfiles" />
+      <End Role="softwarecomponentrelease" EntitySet="softwarecomponentreleases" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Person_SystemUser_i_PersonId_i_NodeId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Person_SystemUser_i_PersonId_i_NodeId">
+      <End Role="person" EntitySet="people" />
+      <End Role="systemuser" EntitySet="systemusers" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_ApplicationHerarchy_SystemUserGlobal_i_ApplicationId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_ApplicationHerarchy_SystemUserGlobal_i_ApplicationId">
+      <End Role="applicationhierarchy" EntitySet="applicationhierarchies" />
+      <End Role="systemusergobalprofile" EntitySet="systemusergobalprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_SystemUser_SystemUserGlobalProfile_v_SystemUserId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_SystemUser_SystemUserGlobalProfile_v_SystemUserId">
+      <End Role="systemuser" EntitySet="systemusers" />
+      <End Role="systemusergobalprofile" EntitySet="systemusergobalprofiles" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_RoleNode_SystemUserRoleNode_i_NodeId_i_RoleId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_RoleNode_SystemUserRoleNode_i_NodeId_i_RoleId">
+      <End Role="rolenode" EntitySet="rolenodes" />
+      <End Role="systemuserrolenode" EntitySet="systemuserrolenodes" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_SystemUser_SystemUSerRoleNode_i_SystemUserId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_SystemUser_SystemUSerRoleNode_i_SystemUserId">
+      <End Role="systemuser" EntitySet="systemusers" />
+      <End Role="systemuserrolenode" EntitySet="systemuserrolenodes" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_History_TypeofEPP_v_HistoryId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_History_TypeofEPP_v_HistoryId">
+      <End Role="history" EntitySet="histories" />
+      <End Role="typeofeep" EntitySet="typeofeeps" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Location_Warehouse_v_LocationId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Location_Warehouse_v_LocationId">
+      <End Role="location" EntitySet="locations" />
+      <End Role="warehouse" EntitySet="warehouses" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Organization_Warehouse_i_OrganizationId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_Organization_Warehouse_i_OrganizationId">
+      <End Role="organization" EntitySet="organizations" />
+      <End Role="warehouse" EntitySet="warehouses" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_History_WorkstationDangers_v_HistoryId" Association="Sigesoft.Node.WinClient.DAL.Store.Fk_History_WorkstationDangers_v_HistoryId">
+      <End Role="history" EntitySet="histories" />
+      <End Role="workstationdangers" EntitySet="workstationdangers" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="applicationhierarchy">
+    <Key>
+      <PropertyRef Name="i_ApplicationHierarchyId" />
+    </Key>
+    <Property Name="i_ApplicationHierarchyId" Type="int" Nullable="false" />
+    <Property Name="i_ApplicationHierarchyTypeId" Type="int" />
+    <Property Name="i_Level" Type="int" />
+    <Property Name="v_Description" Type="varchar" MaxLength="100" />
+    <Property Name="v_Form" Type="varchar" MaxLength="100" />
+    <Property Name="v_Code" Type="varchar" MaxLength="250" />
+    <Property Name="i_ParentId" Type="int" />
+    <Property Name="i_ScopeId" Type="int" />
+    <Property Name="i_TypeFormId" Type="int" />
+    <Property Name="i_ExternalUserFunctionalityTypeId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="area">
+    <Key>
+      <PropertyRef Name="v_AreaId" />
+    </Key>
+    <Property Name="v_AreaId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_LocationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="attentioninarea">
+    <Key>
+      <PropertyRef Name="v_AttentionInAreaId" />
+    </Key>
+    <Property Name="v_AttentionInAreaId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="v_Name" Type="varchar" MaxLength="100" />
+    <Property Name="v_OfficeNumber" Type="varchar" MaxLength="20" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="attentioninareacomponent">
+    <Key>
+      <PropertyRef Name="v_AttentioninAreaComponentId" />
+    </Key>
+    <Property Name="v_AttentioninAreaComponentId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_AttentionInAreaId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="authorizedperson">
+    <Key>
+      <PropertyRef Name="v_AuthorizedPersonId" />
+    </Key>
+    <Property Name="v_AuthorizedPersonId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="v_FirstLastName" Type="varchar" MaxLength="50" />
+    <Property Name="v_SecondLastName" Type="varchar" MaxLength="50" />
+    <Property Name="i_DocTypeId" Type="int" />
+    <Property Name="v_DocTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="v_DocNumber" Type="varchar" MaxLength="50" />
+    <Property Name="i_SexTypeId" Type="int" />
+    <Property Name="v_SexTypeName" Type="varchar" MaxLength="50" />
+    <Property Name="d_BirthDate" Type="datetime2" />
+    <Property Name="v_OccupationName" Type="varchar" MaxLength="50" />
+    <Property Name="v_OrganitationName" Type="varchar" MaxLength="100" />
+    <Property Name="d_EntryToMedicalCenter" Type="datetime2" />
+    <Property Name="v_ProtocolId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ProtocolName" Type="varchar" MaxLength="200" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="auxiliaryexam">
+    <Key>
+      <PropertyRef Name="v_AuxiliaryExamId" />
+    </Key>
+    <Property Name="v_AuxiliaryExamId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="blacklistperson">
+    <Key>
+      <PropertyRef Name="v_BlackListPerson" />
+    </Key>
+    <Property Name="v_BlackListPerson" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Comment" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_Status" Type="int" />
+    <Property Name="d_DateRegister" Type="date" />
+    <Property Name="d_DateDetection" Type="date" />
+    <Property Name="d_DateSolution" Type="date" />
+  </EntityType>
+  <EntityType Name="calendar">
+    <Key>
+      <PropertyRef Name="v_CalendarId" />
+    </Key>
+    <Property Name="v_CalendarId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" MaxLength="16" />
+    <Property Name="d_DateTimeCalendar" Type="datetime2" />
+    <Property Name="d_CircuitStartDate" Type="datetime2" />
+    <Property Name="d_EntryTimeCM" Type="datetime2" />
+    <Property Name="i_ServiceTypeId" Type="int" />
+    <Property Name="i_CalendarStatusId" Type="int" />
+    <Property Name="i_ServiceId" Type="int" />
+    <Property Name="v_ProtocolId" Type="varchar" MaxLength="16" />
+    <Property Name="i_NewContinuationId" Type="int" />
+    <Property Name="i_LineStatusId" Type="int" />
+    <Property Name="i_IsVipId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="d_SalidaCM" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="cie10">
+    <Key>
+      <PropertyRef Name="v_CIE10Id" />
+    </Key>
+    <Property Name="v_CIE10Id" Type="varchar" Nullable="false" MaxLength="20" />
+    <Property Name="v_CIE10Description1" Type="varchar" MaxLength="8000" />
+    <Property Name="v_CIE10Description2" Type="varchar" MaxLength="8000" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="CIIUI">
+    <Key>
+      <PropertyRef Name="v_CIIUId" />
+    </Key>
+    <Property Name="v_CIIUId" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="v_CIIUDescription1" Type="varchar" MaxLength="8000" />
+    <Property Name="v_CIIUDescription2" Type="varchar" MaxLength="8000" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CodigoEmpresa">
+    <Key>
+      <PropertyRef Name="v_CodigoEmpresaId" />
+    </Key>
+    <Property Name="v_CodigoEmpresaId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_CIIUId" Type="varchar" MaxLength="50" />
+    <Property Name="v_Name" Type="varchar" MaxLength="5000" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="component">
+    <Key>
+      <PropertyRef Name="v_ComponentId" />
+    </Key>
+    <Property Name="v_ComponentId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="250" />
+    <Property Name="i_CategoryId" Type="int" />
+    <Property Name="r_BasePrice" Type="real" />
+    <Property Name="i_DiagnosableId" Type="int" />
+    <Property Name="i_IsApprovedId" Type="int" />
+    <Property Name="i_ComponentTypeId" Type="int" />
+    <Property Name="i_UIIsVisibleId" Type="int" />
+    <Property Name="i_UIIndex" Type="int" />
+    <Property Name="i_ValidInDays" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="v_IdUnidadProductiva" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="componentfield">
+    <Key>
+      <PropertyRef Name="v_ComponentFieldId" />
+    </Key>
+    <Property Name="v_ComponentFieldId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_TextLabel" Type="varchar" MaxLength="250" />
+    <Property Name="i_LabelWidth" Type="int" />
+    <Property Name="v_abbreviation" Type="varchar" MaxLength="10" />
+    <Property Name="v_DefaultText" Type="varchar" MaxLength="8000" />
+    <Property Name="i_ControlId" Type="int" />
+    <Property Name="i_GroupId" Type="int" />
+    <Property Name="i_ItemId" Type="int" />
+    <Property Name="i_WidthControl" Type="int" />
+    <Property Name="i_HeightControl" Type="int" />
+    <Property Name="i_MaxLenght" Type="int" />
+    <Property Name="i_IsRequired" Type="int" />
+    <Property Name="i_IsCalculate" Type="int" />
+    <Property Name="v_Formula" Type="text" />
+    <Property Name="i_Order" Type="int" />
+    <Property Name="i_MeasurementUnitId" Type="int" />
+    <Property Name="r_ValidateValue1" Type="real" />
+    <Property Name="r_ValidateValue2" Type="real" />
+    <Property Name="i_Column" Type="int" />
+    <Property Name="i_defaultIndex" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_NroDecimales" Type="int" />
+    <Property Name="i_ReadOnly" Type="int" />
+    <Property Name="i_Enabled" Type="int" />
+  </EntityType>
+  <EntityType Name="componentfields">
+    <Key>
+      <PropertyRef Name="v_ComponentId" />
+      <PropertyRef Name="v_ComponentFieldId" />
+    </Key>
+    <Property Name="v_ComponentId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ComponentFieldId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_Group" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="componentfieldvalues">
+    <Key>
+      <PropertyRef Name="v_ComponentFieldValuesId" />
+    </Key>
+    <Property Name="v_ComponentFieldValuesId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_Diseases" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentFieldId" Type="varchar" MaxLength="16" />
+    <Property Name="v_AnalyzingValue1" Type="varchar" MaxLength="100" />
+    <Property Name="v_AnalyzingValue2" Type="varchar" MaxLength="100" />
+    <Property Name="i_OperatorId" Type="int" />
+    <Property Name="v_LegalStandard" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsAnormal" Type="int" />
+    <Property Name="i_ValidationMonths" Type="int" />
+    <Property Name="i_GenderId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="componentfieldvaluesrecommendation">
+    <Key>
+      <PropertyRef Name="v_ComponentFieldValuesRecommendationId" />
+    </Key>
+    <Property Name="v_ComponentFieldValuesRecommendationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ComponentFieldValuesId" Type="varchar" MaxLength="16" />
+    <Property Name="v_MasterRecommendationRestricctionId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="componentfieldvaluesrestriction">
+    <Key>
+      <PropertyRef Name="v_ComponentFieldValuesRestrictionId" />
+    </Key>
+    <Property Name="v_ComponentFieldValuesRestrictionId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ComponentFieldValuesId" Type="varchar" MaxLength="16" />
+    <Property Name="v_MasterRecommendationRestricctionId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="datahierarchy">
+    <Key>
+      <PropertyRef Name="i_GroupId" />
+      <PropertyRef Name="i_ItemId" />
+    </Key>
+    <Property Name="i_GroupId" Type="int" Nullable="false" />
+    <Property Name="i_ItemId" Type="int" Nullable="false" />
+    <Property Name="v_Value1" Type="varchar" MaxLength="200" />
+    <Property Name="v_Value2" Type="varchar" MaxLength="200" />
+    <Property Name="v_Field" Type="varchar" MaxLength="200" />
+    <Property Name="i_ParentItemId" Type="int" />
+    <Property Name="i_Sort" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="deploymentfile">
+    <Key>
+      <PropertyRef Name="i_DeploymentFileId" />
+    </Key>
+    <Property Name="i_DeploymentFileId" Type="int" Nullable="false" />
+    <Property Name="v_FileName" Type="varchar" MaxLength="250" />
+    <Property Name="b_FileData" Type="image" />
+    <Property Name="v_Description" Type="text" />
+    <Property Name="i_SoftwareComponentId" Type="int" />
+    <Property Name="v_TargetSoftwareComponentVersion" Type="varchar" MaxLength="11" />
+    <Property Name="v_PackageFiles" Type="text" />
+    <Property Name="r_PackageSizeKb" Type="real" />
+  </EntityType>
+  <EntityType Name="diagnosticrepository">
+    <Key>
+      <PropertyRef Name="v_DiagnosticRepositoryId" />
+    </Key>
+    <Property Name="v_DiagnosticRepositoryId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" MaxLength="16" />
+    <Property Name="v_DiseasesId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentFieldId" Type="varchar" MaxLength="16" />
+    <Property Name="i_AutoManualId" Type="int" />
+    <Property Name="i_PreQualificationId" Type="int" />
+    <Property Name="i_FinalQualificationId" Type="int" />
+    <Property Name="i_DiagnosticTypeId" Type="int" />
+    <Property Name="i_IsSentToAntecedent" Type="int" />
+    <Property Name="d_ExpirationDateDiagnostic" Type="datetime2" />
+    <Property Name="i_GenerateMedicalBreak" Type="int" />
+    <Property Name="v_Recomendations" Type="varchar" MaxLength="8000" />
+    <Property Name="i_DiagnosticSourceId" Type="int" />
+    <Property Name="i_ShapeAccidentId" Type="int" />
+    <Property Name="i_BodyPartId" Type="int" />
+    <Property Name="i_ClassificationOfWorkAccidentId" Type="int" />
+    <Property Name="i_RiskFactorId" Type="int" />
+    <Property Name="i_ClassificationOfWorkdiseaseId" Type="int" />
+    <Property Name="i_SendToInterconsultationId" Type="int" />
+    <Property Name="i_InterconsultationDestinationId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="v_InterconsultationDestinationId" Type="varchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="diseases">
+    <Key>
+      <PropertyRef Name="v_DiseasesId" />
+    </Key>
+    <Property Name="v_DiseasesId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_CIE10Id" Type="varchar" MaxLength="20" />
+    <Property Name="v_Name" Type="varchar" MaxLength="500" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="dxfrecuente">
+    <Key>
+      <PropertyRef Name="v_DxFrecuenteId" />
+    </Key>
+    <Property Name="v_DxFrecuenteId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_DiseasesId" Type="varchar" MaxLength="16" />
+    <Property Name="v_CIE10Id" Type="varchar" MaxLength="20" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="dxfrecuentedetalle">
+    <Key>
+      <PropertyRef Name="v_DxFrecuenteDetalleId" />
+    </Key>
+    <Property Name="v_DxFrecuenteDetalleId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_DxFrecuenteId" Type="varchar" MaxLength="16" />
+    <Property Name="v_MasterRecommendationRestricctionId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="email">
+    <Key>
+      <PropertyRef Name="i_EmailId" />
+    </Key>
+    <Property Name="i_EmailId" Type="int" Nullable="false" />
+    <Property Name="v_Email" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="facturacion">
+    <Key>
+      <PropertyRef Name="v_FacturacionId" />
+    </Key>
+    <Property Name="v_FacturacionId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="d_FechaRegistro" Type="date" />
+    <Property Name="d_FechaCobro" Type="date" />
+    <Property Name="v_NumeroFactura" Type="varchar" MaxLength="50" />
+    <Property Name="i_EstadoFacturacion" Type="int" />
+    <Property Name="v_EmpresaCliente" Type="varchar" MaxLength="16" />
+    <Property Name="v_EmpresaSede" Type="varchar" MaxLength="16" />
+    <Property Name="d_Detraccion" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="d_SubTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="d_Igv" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="d_MontoTotal" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="d_FechaInicio" Type="datetime" />
+    <Property Name="d_FechaFin" Type="datetime" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime" />
+    <Property Name="v_Descripcion" Type="varchar" MaxLength="500" />
+    <Property Name="d_Descuento" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="facturaciondetalle">
+    <Key>
+      <PropertyRef Name="v_FacturacionDetalleId" />
+    </Key>
+    <Property Name="v_FacturacionDetalleId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_FacturacionId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ServicioId" Type="varchar" MaxLength="16" />
+    <Property Name="d_Monto" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="familymedicalantecedents">
+    <Key>
+      <PropertyRef Name="v_FamilyMedicalAntecedentsId" />
+    </Key>
+    <Property Name="v_FamilyMedicalAntecedentsId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="v_DiseasesId" Type="varchar" MaxLength="16" />
+    <Property Name="i_TypeFamilyId" Type="int" />
+    <Property Name="v_Comment" Type="varchar" MaxLength="8000" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="ges">
+    <Key>
+      <PropertyRef Name="v_GesId" />
+    </Key>
+    <Property Name="v_GesId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_AreaId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="groupoccupation">
+    <Key>
+      <PropertyRef Name="v_GroupOccupationId" />
+    </Key>
+    <Property Name="v_GroupOccupationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_LocationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="history">
+    <Key>
+      <PropertyRef Name="v_HistoryId" />
+    </Key>
+    <Property Name="v_HistoryId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="d_StartDate" Type="date" />
+    <Property Name="d_EndDate" Type="date" />
+    <Property Name="v_Organization" Type="varchar" MaxLength="250" />
+    <Property Name="v_TypeActivity" Type="varchar" MaxLength="250" />
+    <Property Name="i_GeografixcaHeight" Type="int" />
+    <Property Name="v_workstation" Type="varchar" MaxLength="250" />
+    <Property Name="b_RubricImage" Type="image" />
+    <Property Name="b_FingerPrintImage" Type="image" />
+    <Property Name="t_RubricImageText" Type="text" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_TypeOperationId" Type="int" />
+    <Property Name="i_TrabajoActual" Type="int" />
+    <Property Name="v_FechaUltimaMamo" Type="varchar" MaxLength="500" />
+    <Property Name="v_FechaUltimoPAP" Type="varchar" MaxLength="500" />
+    <Property Name="v_ResultadoMamo" Type="varchar" MaxLength="5000" />
+    <Property Name="v_ResultadosPAP" Type="varchar" MaxLength="5000" />
+    <Property Name="i_SoloAnio" Type="int" />
+  </EntityType>
+  <EntityType Name="location">
+    <Key>
+      <PropertyRef Name="v_LocationId" />
+    </Key>
+    <Property Name="v_LocationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_OrganizationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="log">
+    <Key>
+      <PropertyRef Name="v_LogId" />
+    </Key>
+    <Property Name="v_LogId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_NodeLogId" Type="int" />
+    <Property Name="i_EventTypeId" Type="int" />
+    <Property Name="v_OrganizationId" Type="varchar" MaxLength="16" />
+    <Property Name="d_Date" Type="datetime2" />
+    <Property Name="i_SystemUserId" Type="int" />
+    <Property Name="v_ProcessEntity" Type="varchar" MaxLength="1000" />
+    <Property Name="v_ElementItem" Type="varchar" MaxLength="1000" />
+    <Property Name="i_Success" Type="int" />
+    <Property Name="v_ErrorException" Type="text" />
+  </EntityType>
+  <EntityType Name="masterrecommendationrestricction">
+    <Key>
+      <PropertyRef Name="v_MasterRecommendationRestricctionId" />
+    </Key>
+    <Property Name="v_MasterRecommendationRestricctionId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="8000" />
+    <Property Name="i_TypifyingId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="medication">
+    <Key>
+      <PropertyRef Name="v_MedicationId" />
+    </Key>
+    <Property Name="v_MedicationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ProductId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ProductName" Type="varchar" MaxLength="250" />
+    <Property Name="v_PresentationName" Type="varchar" MaxLength="250" />
+    <Property Name="r_Quantity" Type="real" />
+    <Property Name="r_QuantityVendida" Type="real" />
+    <Property Name="v_Doses" Type="text" />
+    <Property Name="i_ViaId" Type="int" />
+    <Property Name="i_SeVendio" Type="int" />
+    <Property Name="i_SeCreoAca" Type="int" />
+    <Property Name="v_TipoDocVenta" Type="varchar" MaxLength="250" />
+    <Property Name="v_NroDocVenta" Type="varchar" MaxLength="250" />
+    <Property Name="d_PrecioVenta" Type="decimal" Precision="18" Scale="3" />
+    <Property Name="v_MedioPago" Type="varchar" MaxLength="250" />
+    <Property Name="v_Vendedor" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="movement">
+    <Key>
+      <PropertyRef Name="v_MovementId" />
+    </Key>
+    <Property Name="v_MovementId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_WarehouseId" Type="varchar" MaxLength="16" />
+    <Property Name="v_SupplierId" Type="varchar" MaxLength="16" />
+    <Property Name="i_ProcessTypeId" Type="int" />
+    <Property Name="v_ParentMovementId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Motive" Type="varchar" MaxLength="50" />
+    <Property Name="i_MotiveTypeId" Type="int" />
+    <Property Name="d_Date" Type="datetime2" />
+    <Property Name="r_TotalQuantity" Type="real" />
+    <Property Name="i_MovementTypeId" Type="int" />
+    <Property Name="i_RequireRemoteProcess" Type="int" />
+    <Property Name="v_RemoteWarehouseId" Type="varchar" MaxLength="16" />
+    <Property Name="i_CurrencyId" Type="int" />
+    <Property Name="r_ExchangeRate" Type="real" />
+    <Property Name="v_ReferenceDocument" Type="varchar" MaxLength="20" />
+    <Property Name="i_CostCenterId" Type="int" />
+    <Property Name="v_Observations" Type="varchar" MaxLength="250" />
+    <Property Name="i_IsLocallyProcessed" Type="int" />
+    <Property Name="i_IsRemoteProcessed" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_UpdateNodeId" Type="int" />
+  </EntityType>
+  <EntityType Name="movementdetail">
+    <Key>
+      <PropertyRef Name="v_MovementId" />
+      <PropertyRef Name="v_ProductId" />
+      <PropertyRef Name="v_WarehouseId" />
+    </Key>
+    <Property Name="v_MovementId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ProductId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_WarehouseId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="r_StockMax" Type="real" />
+    <Property Name="r_StockMin" Type="real" />
+    <Property Name="i_MovementTypeId" Type="int" />
+    <Property Name="r_Quantity" Type="real" />
+    <Property Name="r_Price" Type="real" />
+    <Property Name="r_SubTotal" Type="real" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="multimediafile">
+    <Key>
+      <PropertyRef Name="v_MultimediaFileId" />
+    </Key>
+    <Property Name="v_MultimediaFileId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="v_FileName" Type="varchar" MaxLength="150" />
+    <Property Name="b_File" Type="image" />
+    <Property Name="b_ThumbnailFile" Type="image" />
+    <Property Name="v_Comment" Type="varchar" MaxLength="500" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="node">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="v_Description" Type="varchar" MaxLength="250" />
+    <Property Name="v_GeografyLocationId" Type="varchar" MaxLength="6" />
+    <Property Name="v_GeografyLocationDescription" Type="varchar" MaxLength="250" />
+    <Property Name="i_NodeTypeId" Type="int" />
+    <Property Name="d_BeginDate" Type="date" />
+    <Property Name="d_EndDate" Type="date" />
+    <Property Name="v_PharmacyWarehouseId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="nodedatabasestatus">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="v_CurrentDatabaseVersion" Type="varchar" MaxLength="11" />
+    <Property Name="v_PreviousDatabaseVersion" Type="varchar" MaxLength="11" />
+    <Property Name="i_CurrentDatabaseStatus" Type="int" />
+    <Property Name="d_LastDatabaseUpgrade" Type="datetime2" />
+    <Property Name="d_LastDatabaseDataSync" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="nodeorganizationlocationprofile">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+      <PropertyRef Name="v_OrganizationId" />
+      <PropertyRef Name="v_LocationId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="v_OrganizationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_LocationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="nodeorganizationlocationwarehouseprofile">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+      <PropertyRef Name="v_OrganizationId" />
+      <PropertyRef Name="v_LocationId" />
+      <PropertyRef Name="v_WarehouseId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="v_OrganizationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_LocationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_WarehouseId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="nodeorganizationprofile">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+      <PropertyRef Name="v_OrganizationId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="v_OrganizationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="nodeserviceprofile">
+    <Key>
+      <PropertyRef Name="v_NodeServiceProfileId" />
+    </Key>
+    <Property Name="v_NodeServiceProfileId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_NodeId" Type="int" />
+    <Property Name="i_ServiceTypeId" Type="int" />
+    <Property Name="i_MasterServiceId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="nodesyncstatus">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="v_DataSyncVersion" Type="varchar" MaxLength="11" />
+    <Property Name="i_DataSyncFrecuency" Type="int" />
+    <Property Name="d_LastSuccessfulDataSync" Type="datetime2" />
+    <Property Name="i_LastServerProcessStatus" Type="int" />
+    <Property Name="i_LastNodeProcessStatus" Type="int" />
+    <Property Name="d_NextDataSync" Type="datetime2" />
+    <Property Name="v_LastServerPackageFileName" Type="varchar" MaxLength="250" />
+    <Property Name="v_LastServerProcessErrorMessage" Type="text" />
+    <Property Name="v_LastNodePackageFileName" Type="varchar" MaxLength="250" />
+    <Property Name="v_LastNodeProcessErrorMessage" Type="text" />
+  </EntityType>
+  <EntityType Name="noxioushabits">
+    <Key>
+      <PropertyRef Name="v_NoxiousHabitsId" />
+    </Key>
+    <Property Name="v_NoxiousHabitsId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="i_TypeHabitsId" Type="int" />
+    <Property Name="v_Frequency" Type="varchar" MaxLength="100" />
+    <Property Name="v_Comment" Type="varchar" MaxLength="8000" />
+    <Property Name="v_DescriptionHabit" Type="varchar" MaxLength="200" />
+    <Property Name="v_DescriptionQuantity" Type="varchar" MaxLength="200" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="occupation">
+    <Key>
+      <PropertyRef Name="v_OccupationId" />
+    </Key>
+    <Property Name="v_OccupationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_GesId" Type="varchar" MaxLength="16" />
+    <Property Name="v_GroupOccupationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="20" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="OrdenReporte">
+    <Key>
+      <PropertyRef Name="v_OrdenReporteId" />
+    </Key>
+    <Property Name="v_OrdenReporteId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_OrganizationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_NombreReporte" Type="varchar" MaxLength="150" />
+    <Property Name="v_ComponenteId" Type="varchar" MaxLength="16" />
+    <Property Name="i_Orden" Type="int" />
+    <Property Name="v_NombreCrystal" Type="varchar" MaxLength="500" />
+    <Property Name="i_NombreCrystalId" Type="int" />
+  </EntityType>
+  <EntityType Name="organization">
+    <Key>
+      <PropertyRef Name="v_OrganizationId" />
+    </Key>
+    <Property Name="v_OrganizationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_OrganizationTypeId" Type="int" />
+    <Property Name="i_SectorTypeId" Type="int" />
+    <Property Name="v_SectorName" Type="varchar" MaxLength="5000" />
+    <Property Name="v_SectorCodigo" Type="varchar" MaxLength="20" />
+    <Property Name="v_IdentificationNumber" Type="varchar" MaxLength="20" />
+    <Property Name="v_Name" Type="varchar" MaxLength="250" />
+    <Property Name="v_Address" Type="varchar" MaxLength="250" />
+    <Property Name="v_PhoneNumber" Type="varchar" MaxLength="8000" />
+    <Property Name="v_Mail" Type="varchar" MaxLength="8000" />
+    <Property Name="v_ContacName" Type="varchar" MaxLength="8000" />
+    <Property Name="v_Contacto" Type="varchar" MaxLength="5000" />
+    <Property Name="v_EmailContacto" Type="varchar" MaxLength="5000" />
+    <Property Name="v_Observation" Type="varchar" MaxLength="8000" />
+    <Property Name="i_NumberQuotasOrganization" Type="int" />
+    <Property Name="i_NumberQuotasMen" Type="int" />
+    <Property Name="i_NumberQuotasWomen" Type="int" />
+    <Property Name="i_DepartmentId" Type="int" />
+    <Property Name="i_ProvinceId" Type="int" />
+    <Property Name="i_DistrictId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="b_Image" Type="image" />
+    <Property Name="v_ContactoMedico" Type="varchar" MaxLength="5000" />
+    <Property Name="v_EmailMedico" Type="varchar" MaxLength="5000" />
+  </EntityType>
+  <EntityType Name="pacient">
+    <Key>
+      <PropertyRef Name="v_PersonId" />
+    </Key>
+    <Property Name="v_PersonId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_UpdateNodeId" Type="int" />
+  </EntityType>
+  <EntityType Name="pacientmultimediadata">
+    <Key>
+      <PropertyRef Name="v_PacientMultimediaDataId" />
+    </Key>
+    <Property Name="v_PacientMultimediaDataId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="person">
+    <Key>
+      <PropertyRef Name="v_PersonId" />
+    </Key>
+    <Property Name="v_PersonId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="v_FirstLastName" Type="varchar" MaxLength="50" />
+    <Property Name="v_SecondLastName" Type="varchar" MaxLength="50" />
+    <Property Name="i_DocTypeId" Type="int" />
+    <Property Name="v_DocNumber" Type="varchar" MaxLength="20" />
+    <Property Name="d_Birthdate" Type="date" />
+    <Property Name="v_BirthPlace" Type="varchar" MaxLength="100" />
+    <Property Name="i_SexTypeId" Type="int" />
+    <Property Name="i_MaritalStatusId" Type="int" />
+    <Property Name="i_LevelOfId" Type="int" />
+    <Property Name="v_TelephoneNumber" Type="varchar" MaxLength="15" />
+    <Property Name="v_AdressLocation" Type="varchar" MaxLength="250" />
+    <Property Name="v_GeografyLocationId" Type="varchar" MaxLength="6" />
+    <Property Name="v_ContactName" Type="varchar" MaxLength="50" />
+    <Property Name="v_EmergencyPhone" Type="varchar" MaxLength="15" />
+    <Property Name="b_PersonImage" Type="image" />
+    <Property Name="v_Mail" Type="varchar" MaxLength="100" />
+    <Property Name="i_BloodGroupId" Type="int" />
+    <Property Name="i_BloodFactorId" Type="int" />
+    <Property Name="b_FingerPrintTemplate" Type="image" />
+    <Property Name="b_RubricImage" Type="image" />
+    <Property Name="b_FingerPrintImage" Type="image" />
+    <Property Name="t_RubricImageText" Type="text" />
+    <Property Name="v_CurrentOccupation" Type="varchar" MaxLength="100" />
+    <Property Name="i_DepartmentId" Type="int" />
+    <Property Name="i_ProvinceId" Type="int" />
+    <Property Name="i_DistrictId" Type="int" />
+    <Property Name="i_ResidenceInWorkplaceId" Type="int" />
+    <Property Name="v_ResidenceTimeInWorkplace" Type="varchar" MaxLength="200" />
+    <Property Name="i_TypeOfInsuranceId" Type="int" />
+    <Property Name="i_NumberLivingChildren" Type="int" />
+    <Property Name="i_NumberDependentChildren" Type="int" />
+    <Property Name="i_OccupationTypeId" Type="int" />
+    <Property Name="v_OwnerName" Type="varchar" MaxLength="200" />
+    <Property Name="i_NumberLiveChildren" Type="int" />
+    <Property Name="i_NumberDeadChildren" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_InsertNodeId" Type="int" />
+    <Property Name="i_UpdateNodeId" Type="int" />
+    <Property Name="i_Relationship" Type="int" />
+    <Property Name="v_ExploitedMineral" Type="varchar" MaxLength="200" />
+    <Property Name="i_AltitudeWorkId" Type="int" />
+    <Property Name="i_PlaceWorkId" Type="int" />
+    <Property Name="v_NroPoliza" Type="varchar" MaxLength="50" />
+    <Property Name="v_Deducible" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="i_NroHermanos" Type="int" />
+    <Property Name="v_Password" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="personmedicalhistory">
+    <Key>
+      <PropertyRef Name="v_PersonMedicalHistoryId" />
+    </Key>
+    <Property Name="v_PersonMedicalHistoryId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="v_DiseasesId" Type="varchar" MaxLength="16" />
+    <Property Name="i_TypeDiagnosticId" Type="int" />
+    <Property Name="d_StartDate" Type="date" />
+    <Property Name="v_DiagnosticDetail" Type="varchar" MaxLength="8000" />
+    <Property Name="v_TreatmentSite" Type="varchar" MaxLength="250" />
+    <Property Name="i_AnswerId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_SoloAnio" Type="int" />
+  </EntityType>
+  <EntityType Name="plan">
+    <Key>
+      <PropertyRef Name="i_PlanId" />
+    </Key>
+    <Property Name="i_PlanId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="v_OrganizationSeguroId" Type="nvarchar" MaxLength="16" />
+    <Property Name="v_ProtocoloId" Type="nvarchar" MaxLength="16" />
+    <Property Name="v_IdUnidadProductiva" Type="nvarchar" MaxLength="16" />
+    <Property Name="i_EsDeducible" Type="int" />
+    <Property Name="i_EsCoaseguro" Type="int" />
+    <Property Name="d_Importe" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="procedurebyservice">
+    <Key>
+      <PropertyRef Name="v_ProcedureByServiceId" />
+    </Key>
+    <Property Name="v_ProcedureByServiceId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" MaxLength="16" />
+    <Property Name="i_ProcedureId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_ProcedureTypeId" Type="int" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="v_ProductId" />
+    </Key>
+    <Property Name="v_ProductId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_CategoryId" Type="int" />
+    <Property Name="v_Name" Type="varchar" MaxLength="200" />
+    <Property Name="v_GenericName" Type="varchar" MaxLength="100" />
+    <Property Name="v_BarCode" Type="varchar" MaxLength="20" />
+    <Property Name="v_ProductCode" Type="varchar" MaxLength="50" />
+    <Property Name="v_Brand" Type="varchar" MaxLength="100" />
+    <Property Name="v_Model" Type="varchar" MaxLength="100" />
+    <Property Name="v_SerialNumber" Type="varchar" MaxLength="200" />
+    <Property Name="d_ExpirationDate" Type="datetime2" />
+    <Property Name="i_MeasurementUnitId" Type="int" />
+    <Property Name="r_ReferentialCostPrice" Type="real" />
+    <Property Name="r_ReferentialSalesPrice" Type="real" />
+    <Property Name="v_Presentation" Type="varchar" MaxLength="200" />
+    <Property Name="v_AdditionalInformation" Type="varchar" MaxLength="250" />
+    <Property Name="b_Image" Type="image" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="productsformigration">
+    <Key>
+      <PropertyRef Name="i_ProductForMigrationId" />
+    </Key>
+    <Property Name="i_ProductForMigrationId" Type="int" Nullable="false" />
+    <Property Name="v_WarehouseId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ProductId" Type="varchar" MaxLength="16" />
+    <Property Name="i_CategoryId" Type="int" />
+    <Property Name="v_Name" Type="varchar" MaxLength="250" />
+    <Property Name="r_StockMin" Type="real" />
+    <Property Name="r_StockMax" Type="real" />
+    <Property Name="r_StockActual" Type="real" />
+    <Property Name="i_MovementTypeId" Type="int" />
+    <Property Name="v_MovementType" Type="varchar" MaxLength="250" />
+    <Property Name="i_MotiveTypeId" Type="int" />
+    <Property Name="v_MotiveType" Type="varchar" MaxLength="250" />
+    <Property Name="d_MovementDate" Type="datetime2" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="productwarehouse">
+    <Key>
+      <PropertyRef Name="v_WarehouseId" />
+      <PropertyRef Name="v_ProductId" />
+    </Key>
+    <Property Name="v_WarehouseId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ProductId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="r_StockMin" Type="real" />
+    <Property Name="r_StockMax" Type="real" />
+    <Property Name="r_StockActual" Type="real" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="professional">
+    <Key>
+      <PropertyRef Name="v_PersonId" />
+    </Key>
+    <Property Name="v_PersonId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_ProfessionId" Type="int" />
+    <Property Name="v_ProfessionalCode" Type="varchar" MaxLength="20" />
+    <Property Name="v_ProfessionalInformation" Type="varchar" MaxLength="100" />
+    <Property Name="b_SignatureImage" Type="image" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_UpdateNodeId" Type="int" />
+  </EntityType>
+  <EntityType Name="protocol">
+    <Key>
+      <PropertyRef Name="v_ProtocolId" />
+    </Key>
+    <Property Name="v_ProtocolId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="100" />
+    <Property Name="v_EmployerOrganizationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_EmployerLocationId" Type="varchar" MaxLength="16" />
+    <Property Name="i_EsoTypeId" Type="int" />
+    <Property Name="v_GroupOccupationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_CustomerOrganizationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_CustomerLocationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_NombreVendedor" Type="varchar" MaxLength="250" />
+    <Property Name="v_WorkingOrganizationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_WorkingLocationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_CostCenter" Type="varchar" MaxLength="50" />
+    <Property Name="i_MasterServiceTypeId" Type="int" />
+    <Property Name="i_MasterServiceId" Type="int" />
+    <Property Name="i_HasVigency" Type="int" />
+    <Property Name="i_ValidInDays" Type="int" />
+    <Property Name="i_IsActive" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="v_AseguradoraOrganizationId" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="protocolcomponent">
+    <Key>
+      <PropertyRef Name="v_ProtocolComponentId" />
+    </Key>
+    <Property Name="v_ProtocolComponentId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ProtocolId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="r_Price" Type="real" />
+    <Property Name="i_OperatorId" Type="int" />
+    <Property Name="i_Age" Type="int" />
+    <Property Name="i_GenderId" Type="int" />
+    <Property Name="i_GrupoEtarioId" Type="int" />
+    <Property Name="i_IsConditionalId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_IsConditionalIMC" Type="int" />
+    <Property Name="r_Imc" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="i_IsAdditional" Type="int" />
+  </EntityType>
+  <EntityType Name="protocolsystemuser">
+    <Key>
+      <PropertyRef Name="v_ProtocolSystemUserId" />
+    </Key>
+    <Property Name="v_ProtocolSystemUserId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_SystemUserId" Type="int" Nullable="false" />
+    <Property Name="v_ProtocolId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_ApplicationHierarchyId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="receta">
+    <Key>
+      <PropertyRef Name="i_IdReceta" />
+    </Key>
+    <Property Name="i_IdReceta" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="v_DiagnosticRepositoryId" Type="varchar" MaxLength="16" />
+    <Property Name="d_Cantidad" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="v_Posologia" Type="varchar" MaxLength="150" />
+    <Property Name="v_Duracion" Type="varchar" MaxLength="150" />
+    <Property Name="t_FechaFin" Type="datetime" />
+    <Property Name="v_IdProductoDetalle" Type="varchar" MaxLength="16" />
+    <Property Name="v_Lote" Type="nvarchar" MaxLength="30" />
+    <Property Name="i_IdAlmacen" Type="int" />
+    <Property Name="i_Lleva" Type="int" />
+    <Property Name="i_NoLleva" Type="int" />
+    <Property Name="v_IdVentaPaciente" Type="nvarchar" MaxLength="16" />
+    <Property Name="v_IdVentaAseguradora" Type="nvarchar" MaxLength="16" />
+    <Property Name="v_IdUnidadProductiva" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="recetadespacho">
+    <Key>
+      <PropertyRef Name="i_IdDespacho" />
+    </Key>
+    <Property Name="i_IdDespacho" Type="int" Nullable="false" />
+    <Property Name="i_IdReceta" Type="int" />
+    <Property Name="d_MontoDespachado" Type="decimal" Precision="18" Scale="4" />
+    <Property Name="t_FechaDespacho" Type="datetime" />
+  </EntityType>
+  <EntityType Name="recommendation">
+    <Key>
+      <PropertyRef Name="v_RecommendationId" />
+    </Key>
+    <Property Name="v_RecommendationId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" MaxLength="16" />
+    <Property Name="v_DiagnosticRepositoryId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="v_MasterRecommendationId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="restrictedwarehouseprofile">
+    <Key>
+      <PropertyRef Name="i_SystemUserId" />
+      <PropertyRef Name="v_WarehouseId" />
+      <PropertyRef Name="i_NodeId" />
+    </Key>
+    <Property Name="i_SystemUserId" Type="int" Nullable="false" />
+    <Property Name="v_WarehouseId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="restriction">
+    <Key>
+      <PropertyRef Name="v_RestrictionId" />
+    </Key>
+    <Property Name="v_RestrictionId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_DiagnosticRepositoryId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="v_MasterRestrictionId" Type="varchar" MaxLength="16" />
+    <Property Name="d_StartDateRestriction" Type="date" />
+    <Property Name="d_EndDateRestriction" Type="date" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+  </EntityType>
+  <EntityType Name="rolcuota">
+    <Key>
+      <PropertyRef Name="v_RolCuotaId" />
+    </Key>
+    <Property Name="v_RolCuotaId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_RolId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="rolcuotadetalle">
+    <Key>
+      <PropertyRef Name="v_RolCuotaDetalleId" />
+    </Key>
+    <Property Name="v_RolCuotaDetalleId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_IdProducto" Type="varchar" MaxLength="16" />
+    <Property Name="v_ProductoNombre" Type="varchar" MaxLength="500" />
+    <Property Name="v_RolCuotaId" Type="varchar" MaxLength="16" />
+    <Property Name="i_Cuota" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="rolenode">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+      <PropertyRef Name="i_RoleId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="i_RoleId" Type="int" Nullable="false" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="rolenodecomponentprofile">
+    <Key>
+      <PropertyRef Name="v_RoleNodeComponentId" />
+    </Key>
+    <Property Name="v_RoleNodeComponentId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_NodeId" Type="int" />
+    <Property Name="i_RoleId" Type="int" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="i_Read" Type="int" />
+    <Property Name="i_Write" Type="int" />
+    <Property Name="i_Dx" Type="int" />
+    <Property Name="i_Approved" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="rolenodeprofile">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+      <PropertyRef Name="i_RoleId" />
+      <PropertyRef Name="i_ApplicationHierarchyId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="i_RoleId" Type="int" Nullable="false" />
+    <Property Name="i_ApplicationHierarchyId" Type="int" Nullable="false" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="secuential">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+      <PropertyRef Name="i_TableId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="i_TableId" Type="int" Nullable="false" />
+    <Property Name="i_SecuentialId" Type="int" />
+  </EntityType>
+  <EntityType Name="servernodesync">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="v_DataSyncVersion" Type="varchar" MaxLength="11" />
+    <Property Name="i_DataSyncFrecuency" Type="int" />
+    <Property Name="i_Enabled" Type="int" />
+    <Property Name="d_LastSuccessfulDataSync" Type="datetime2" />
+    <Property Name="i_LastServerProcessStatus" Type="int" />
+    <Property Name="i_LastNodeProcessStatus" Type="int" />
+    <Property Name="d_NextDataSync" Type="datetime2" />
+    <Property Name="v_LastServerPackageFileName" Type="varchar" MaxLength="250" />
+    <Property Name="v_LastServerProcessErrorMessage" Type="text" />
+    <Property Name="v_LastNodePackageFileName" Type="varchar" MaxLength="250" />
+    <Property Name="v_LastNodeProcessErrorMessage" Type="text" />
+  </EntityType>
+  <EntityType Name="serversyncstatus">
+    <Key>
+      <PropertyRef Name="i_NodeId" />
+    </Key>
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="i_Enabled" Type="int" />
+  </EntityType>
+  <EntityType Name="service">
+    <Key>
+      <PropertyRef Name="v_ServiceId" />
+    </Key>
+    <Property Name="v_ServiceId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ProtocolId" Type="varchar" MaxLength="16" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="i_MasterServiceId" Type="int" />
+    <Property Name="i_ServiceStatusId" Type="int" />
+    <Property Name="v_Motive" Type="varchar" MaxLength="250" />
+    <Property Name="i_AptitudeStatusId" Type="int" />
+    <Property Name="d_ServiceDate" Type="datetime2" />
+    <Property Name="d_GlobalExpirationDate" Type="datetime2" />
+    <Property Name="d_ObsExpirationDate" Type="datetime2" />
+    <Property Name="i_FlagAgentId" Type="int" />
+    <Property Name="v_OrganizationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_LocationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_MainSymptom" Type="text" />
+    <Property Name="i_TimeOfDisease" Type="int" />
+    <Property Name="i_TimeOfDiseaseTypeId" Type="int" />
+    <Property Name="v_Story" Type="text" />
+    <Property Name="i_DreamId" Type="int" />
+    <Property Name="i_UrineId" Type="int" />
+    <Property Name="i_DepositionId" Type="int" />
+    <Property Name="i_AppetiteId" Type="int" />
+    <Property Name="i_ThirstId" Type="int" />
+    <Property Name="d_Fur" Type="date" />
+    <Property Name="v_CatemenialRegime" Type="varchar" MaxLength="100" />
+    <Property Name="i_MacId" Type="int" />
+    <Property Name="i_IsNewControl" Type="int" />
+    <Property Name="i_HasMedicalBreakId" Type="int" />
+    <Property Name="d_MedicalBreakStartDate" Type="datetime2" />
+    <Property Name="d_MedicalBreakEndDate" Type="datetime2" />
+    <Property Name="v_GeneralRecomendations" Type="text" />
+    <Property Name="i_DestinationMedicationId" Type="int" />
+    <Property Name="i_TransportMedicationId" Type="int" />
+    <Property Name="d_StartDateRestriction" Type="datetime2" />
+    <Property Name="d_EndDateRestriction" Type="datetime2" />
+    <Property Name="i_HasRestrictionId" Type="int" />
+    <Property Name="i_HasSymptomId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="d_NextAppointment" Type="date" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="i_SendToTracking" Type="int" />
+    <Property Name="i_InsertUserMedicalAnalystId" Type="int" />
+    <Property Name="i_UpdateUserMedicalAnalystId" Type="int" />
+    <Property Name="d_InsertDateMedicalAnalyst" Type="datetime2" />
+    <Property Name="d_UpdateDateMedicalAnalyst" Type="datetime2" />
+    <Property Name="i_InsertUserOccupationalMedicalId" Type="int" />
+    <Property Name="i_UpdateUserOccupationalMedicaltId" Type="int" />
+    <Property Name="d_InsertDateOccupationalMedical" Type="datetime2" />
+    <Property Name="d_UpdateDateOccupationalMedical" Type="datetime2" />
+    <Property Name="i_HazInterconsultationId" Type="int" />
+    <Property Name="v_Gestapara" Type="varchar" MaxLength="250" />
+    <Property Name="v_Menarquia" Type="varchar" MaxLength="250" />
+    <Property Name="d_PAP" Type="datetime2" />
+    <Property Name="d_Mamografia" Type="datetime2" />
+    <Property Name="v_CiruGine" Type="varchar" MaxLength="250" />
+    <Property Name="v_Findings" Type="varchar" MaxLength="250" />
+    <Property Name="i_StatusLiquidation" Type="int" />
+    <Property Name="i_ServiceTypeOfInsurance" Type="int" />
+    <Property Name="i_ModalityOfInsurance" Type="int" />
+    <Property Name="i_IsFac" Type="int" />
+    <Property Name="i_InicioEnf" Type="int" />
+    <Property Name="i_CursoEnf" Type="int" />
+    <Property Name="i_Evolucion" Type="int" />
+    <Property Name="v_ExaAuxResult" Type="text" />
+    <Property Name="v_ObsStatusService" Type="varchar" MaxLength="8000" />
+    <Property Name="d_FechaEntrega" Type="datetime" />
+    <Property Name="v_AreaId" Type="varchar" MaxLength="16" />
+    <Property Name="v_FechaUltimoPAP" Type="varchar" MaxLength="500" />
+    <Property Name="v_ResultadosPAP" Type="varchar" MaxLength="500" />
+    <Property Name="v_FechaUltimaMamo" Type="varchar" MaxLength="500" />
+    <Property Name="v_ResultadoMamo" Type="varchar" MaxLength="500" />
+    <Property Name="r_Costo" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="i_EnvioCertificado" Type="int" />
+    <Property Name="i_EnvioHistoria" Type="int" />
+    <Property Name="v_IdVentaCliente" Type="nvarchar" MaxLength="16" />
+    <Property Name="v_IdVentaAseguradora" Type="nvarchar" MaxLength="16" />
+  </EntityType>
+  <EntityType Name="servicecomponent">
+    <Key>
+      <PropertyRef Name="v_ServiceComponentId" />
+    </Key>
+    <Property Name="v_ServiceComponentId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="i_ServiceComponentStatusId" Type="int" />
+    <Property Name="i_ExternalInternalId" Type="int" />
+    <Property Name="i_ServiceComponentTypeId" Type="int" />
+    <Property Name="i_IsVisibleId" Type="int" />
+    <Property Name="i_IsInheritedId" Type="int" />
+    <Property Name="d_CalledDate" Type="datetime2" />
+    <Property Name="d_StartDate" Type="datetime2" />
+    <Property Name="d_EndDate" Type="datetime2" />
+    <Property Name="i_index" Type="int" />
+    <Property Name="r_Price" Type="real" />
+    <Property Name="i_IsInvoicedId" Type="int" />
+    <Property Name="i_IsRequiredId" Type="int" />
+    <Property Name="i_IsManuallyAddedId" Type="int" />
+    <Property Name="i_QueueStatusId" Type="int" />
+    <Property Name="v_NameOfice" Type="varchar" MaxLength="500" />
+    <Property Name="v_Comment" Type="text" />
+    <Property Name="i_Iscalling" Type="int" />
+    <Property Name="i_IsApprovedId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_ApprovedInsertUserId" Type="int" />
+    <Property Name="i_ApprovedUpdateUserId" Type="int" />
+    <Property Name="d_ApprovedInsertDate" Type="datetime2" />
+    <Property Name="d_ApprovedUpdateDate" Type="datetime2" />
+    <Property Name="i_InsertUserMedicalAnalystId" Type="int" />
+    <Property Name="i_UpdateUserMedicalAnalystId" Type="int" />
+    <Property Name="d_InsertDateMedicalAnalyst" Type="datetime2" />
+    <Property Name="d_UpdateDateMedicalAnalyst" Type="datetime2" />
+    <Property Name="i_InsertUserTechnicalDataRegisterId" Type="int" />
+    <Property Name="i_UpdateUserTechnicalDataRegisterId" Type="int" />
+    <Property Name="d_InsertDateTechnicalDataRegister" Type="datetime2" />
+    <Property Name="d_UpdateDateTechnicalDataRegister" Type="datetime2" />
+    <Property Name="i_Iscalling_1" Type="int" />
+    <Property Name="i_AuditorInsertUserId" Type="int" />
+    <Property Name="d_AuditorInsertUser" Type="datetime" />
+    <Property Name="i_AuditorUpdateUserId" Type="int" />
+    <Property Name="d_AuditorUpdateUser" Type="datetime" />
+    <Property Name="v_IdUnidadProductiva" Type="nvarchar" MaxLength="16" />
+    <Property Name="d_SaldoPaciente" Type="decimal" Precision="18" Scale="2" />
+    <Property Name="d_SaldoAseguradora" Type="decimal" Precision="18" Scale="2" />
+  </EntityType>
+  <EntityType Name="servicecomponentfields">
+    <Key>
+      <PropertyRef Name="v_ServiceComponentFieldsId" />
+    </Key>
+    <Property Name="v_ServiceComponentFieldsId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ComponentFieldId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="servicecomponentfieldvalues">
+    <Key>
+      <PropertyRef Name="v_ServiceComponentFieldValuesId" />
+    </Key>
+    <Property Name="v_ServiceComponentFieldValuesId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ComponentFieldValuesId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ServiceComponentFieldsId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Value1" Type="varchar" MaxLength="8000" />
+    <Property Name="v_Value2" Type="varchar" MaxLength="8000" />
+    <Property Name="i_Index" Type="int" />
+    <Property Name="i_Value1" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="servicecomponentfieldValuesmultimedia">
+    <Key>
+      <PropertyRef Name="v_ServiceComponentFieldValuesMultimediaId" />
+    </Key>
+    <Property Name="v_ServiceComponentFieldValuesMultimediaId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_MultimediaFileId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceComponentFieldValuesId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="servicecomponentmultimedia">
+    <Key>
+      <PropertyRef Name="v_ServiceComponentMultimediaId" />
+    </Key>
+    <Property Name="v_ServiceComponentMultimediaId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceComponentId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_MultimediaFileId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_Comment" Type="varchar" MaxLength="500" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="servicemultimedia">
+    <Key>
+      <PropertyRef Name="v_ServiceMultimediaId" />
+    </Key>
+    <Property Name="v_ServiceMultimediaId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_MultimediaFileId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="serviceorder">
+    <Key>
+      <PropertyRef Name="v_ServiceOrderId" />
+    </Key>
+    <Property Name="v_ServiceOrderId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_CustomServiceOrderId" Type="varchar" MaxLength="20" />
+    <Property Name="v_Description" Type="varchar" MaxLength="200" />
+    <Property Name="v_Comentary" Type="varchar" MaxLength="200" />
+    <Property Name="i_NumberOfWorker" Type="int" />
+    <Property Name="r_TotalCost" Type="real" />
+    <Property Name="d_DeliveryDate" Type="datetime2" />
+    <Property Name="i_ServiceOrderStatusId" Type="int" />
+    <Property Name="i_LineaCreditoId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_MostrarPrecio" Type="int" />
+    <Property Name="i_EsProtocoloEspecial" Type="int" />
+  </EntityType>
+  <EntityType Name="serviceorderdetail">
+    <Key>
+      <PropertyRef Name="v_ServiceOrderDetailId" />
+    </Key>
+    <Property Name="v_ServiceOrderDetailId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_ServiceOrderId" Type="varchar" MaxLength="16" />
+    <Property Name="v_ProtocolId" Type="varchar" MaxLength="16" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="r_ProtocolPrice" Type="real" />
+    <Property Name="i_NumberOfWorkerProtocol" Type="int" />
+    <Property Name="r_Total" Type="real" />
+  </EntityType>
+  <EntityType Name="softwarecomponentrelease">
+    <Key>
+      <PropertyRef Name="i_SoftwareComponentId" />
+      <PropertyRef Name="v_SoftwareComponentVersion" />
+    </Key>
+    <Property Name="i_SoftwareComponentId" Type="int" Nullable="false" />
+    <Property Name="v_SoftwareComponentVersion" Type="varchar" Nullable="false" MaxLength="11" />
+    <Property Name="i_DeploymentFileId" Type="int" />
+    <Property Name="d_ReleaseDate" Type="datetime2" />
+    <Property Name="v_DatabaseVersionRequired" Type="varchar" MaxLength="11" />
+    <Property Name="v_ReleaseNotes" Type="text" />
+    <Property Name="v_AdditionalInformation1" Type="text" />
+    <Property Name="v_AdditionalInformation2" Type="text" />
+    <Property Name="i_IsPublished" Type="int" />
+    <Property Name="i_IsLastVersion" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="v_SupplierId" />
+    </Key>
+    <Property Name="v_SupplierId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="i_SectorTypeId" Type="int" />
+    <Property Name="v_IdentificationNumber" Type="varchar" MaxLength="20" />
+    <Property Name="v_Name" Type="varchar" MaxLength="250" />
+    <Property Name="v_Address" Type="varchar" MaxLength="250" />
+    <Property Name="v_PhoneNumber" Type="varchar" MaxLength="15" />
+    <Property Name="v_Mail" Type="varchar" MaxLength="200" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_UpdateNodeId" Type="int" />
+  </EntityType>
+  <EntityType Name="systemparameter">
+    <Key>
+      <PropertyRef Name="i_GroupId" />
+      <PropertyRef Name="i_ParameterId" />
+    </Key>
+    <Property Name="i_GroupId" Type="int" Nullable="false" />
+    <Property Name="i_ParameterId" Type="int" Nullable="false" />
+    <Property Name="v_Value1" Type="varchar" MaxLength="8000" />
+    <Property Name="v_Value2" Type="varchar" MaxLength="200" />
+    <Property Name="v_Field" Type="varchar" MaxLength="200" />
+    <Property Name="i_ParentParameterId" Type="int" />
+    <Property Name="i_Sort" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="systemuser">
+    <Key>
+      <PropertyRef Name="i_SystemUserId" />
+    </Key>
+    <Property Name="i_SystemUserId" Type="int" Nullable="false" />
+    <Property Name="v_PersonId" Type="varchar" MaxLength="16" />
+    <Property Name="v_UserName" Type="varchar" MaxLength="100" />
+    <Property Name="v_Password" Type="varchar" MaxLength="100" />
+    <Property Name="v_SecretQuestion" Type="varchar" MaxLength="100" />
+    <Property Name="v_SecretAnswer" Type="varchar" MaxLength="200" />
+    <Property Name="d_ExpireDate" Type="datetime2" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_SystemUserTypeId" Type="int" />
+    <Property Name="i_RolVentaId" Type="int" />
+  </EntityType>
+  <EntityType Name="systemusergobalprofile">
+    <Key>
+      <PropertyRef Name="i_SystemUserId" />
+      <PropertyRef Name="i_ApplicationHierarchyId" />
+    </Key>
+    <Property Name="i_SystemUserId" Type="int" Nullable="false" />
+    <Property Name="i_ApplicationHierarchyId" Type="int" Nullable="false" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="systemuserrolenode">
+    <Key>
+      <PropertyRef Name="i_SystemUserId" />
+      <PropertyRef Name="i_NodeId" />
+      <PropertyRef Name="i_RoleId" />
+    </Key>
+    <Property Name="i_SystemUserId" Type="int" Nullable="false" />
+    <Property Name="i_NodeId" Type="int" Nullable="false" />
+    <Property Name="i_RoleId" Type="int" Nullable="false" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="typeofeep">
+    <Key>
+      <PropertyRef Name="v_TypeofEEPId" />
+    </Key>
+    <Property Name="v_TypeofEEPId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_HistoryId" Type="varchar" MaxLength="16" />
+    <Property Name="i_TypeofEEPId" Type="int" />
+    <Property Name="r_Percentage" Type="real" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="warehouse">
+    <Key>
+      <PropertyRef Name="v_WarehouseId" />
+    </Key>
+    <Property Name="v_WarehouseId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_OrganizationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_LocationId" Type="varchar" MaxLength="16" />
+    <Property Name="v_Name" Type="varchar" MaxLength="200" />
+    <Property Name="v_AdditionalInformation" Type="varchar" MaxLength="250" />
+    <Property Name="i_CostCenterId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+  </EntityType>
+  <EntityType Name="workstationdangers">
+    <Key>
+      <PropertyRef Name="v_WorkstationDangersId" />
+    </Key>
+    <Property Name="v_WorkstationDangersId" Type="varchar" Nullable="false" MaxLength="16" />
+    <Property Name="v_HistoryId" Type="varchar" MaxLength="16" />
+    <Property Name="i_DangerId" Type="int" />
+    <Property Name="i_IsDeleted" Type="int" />
+    <Property Name="i_InsertUserId" Type="int" />
+    <Property Name="d_InsertDate" Type="datetime2" />
+    <Property Name="i_UpdateUserId" Type="int" />
+    <Property Name="d_UpdateDate" Type="datetime2" />
+    <Property Name="i_NoiseSource" Type="int" />
+    <Property Name="i_NoiseLevel" Type="int" />
+    <Property Name="v_TimeOfExposureToNoise" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <Association Name="Fk_Location_Area_v_AreaCode">
+    <End Role="location" Type="Sigesoft.Node.WinClient.DAL.Store.location" Multiplicity="0..1" />
+    <End Role="area" Type="Sigesoft.Node.WinClient.DAL.Store.area" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="v_LocationId" />
+      </Principal>
+      <Dependent Role="area">
+        <PropertyRef Name="v_LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Node_AttentionInArea_i_NodeId">
+    <End Role="node" Type="Sigesoft.Node.WinClient.DAL.Store.node" Multiplicity="1" />
+    <End Role="attentioninarea" Type="Sigesoft.Node.WinClient.DAL.Store.attentioninarea" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="node">
+        <PropertyRef Name="i_NodeId" />
+      </Principal>
+      <Dependent Role="attentioninarea">
+        <PropertyRef Name="i_NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_AttentionArea_AttentionAreaComponent_v_AttentionAreaId">
+    <End Role="attentioninarea" Type="Sigesoft.Node.WinClient.DAL.Store.attentioninarea" Multiplicity="0..1" />
+    <End Role="attentioninareacomponent" Type="Sigesoft.Node.WinClient.DAL.Store.attentioninareacomponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="attentioninarea">
+        <PropertyRef Name="v_AttentionInAreaId" />
+      </Principal>
+      <Dependent Role="attentioninareacomponent">
+        <PropertyRef Name="v_AttentionInAreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Component_AttentionAreaComponent_v_ComponentId">
+    <End Role="component" Type="Sigesoft.Node.WinClient.DAL.Store.component" Multiplicity="0..1" />
+    <End Role="attentioninareacomponent" Type="Sigesoft.Node.WinClient.DAL.Store.attentioninareacomponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="v_ComponentId" />
+      </Principal>
+      <Dependent Role="attentioninareacomponent">
+        <PropertyRef Name="v_ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Component_AuxiliaryExam_v_ComponentId">
+    <End Role="component" Type="Sigesoft.Node.WinClient.DAL.Store.component" Multiplicity="0..1" />
+    <End Role="auxiliaryexam" Type="Sigesoft.Node.WinClient.DAL.Store.auxiliaryexam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="v_ComponentId" />
+      </Principal>
+      <Dependent Role="auxiliaryexam">
+        <PropertyRef Name="v_ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Service_AuxiliaryExam_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="0..1" />
+    <End Role="auxiliaryexam" Type="Sigesoft.Node.WinClient.DAL.Store.auxiliaryexam" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="auxiliaryexam">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_BlackListPerson_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1" />
+    <End Role="blacklistperson" Type="Sigesoft.Node.WinClient.DAL.Store.blacklistperson" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="blacklistperson">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_Calendar_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1" />
+    <End Role="calendar" Type="Sigesoft.Node.WinClient.DAL.Store.calendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="calendar">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Service_Calendar_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="0..1" />
+    <End Role="calendar" Type="Sigesoft.Node.WinClient.DAL.Store.calendar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="calendar">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Component_ComponentFields_v_MedicalExamFields">
+    <End Role="component" Type="Sigesoft.Node.WinClient.DAL.Store.component" Multiplicity="1" />
+    <End Role="componentfields" Type="Sigesoft.Node.WinClient.DAL.Store.componentfields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="v_ComponentId" />
+      </Principal>
+      <Dependent Role="componentfields">
+        <PropertyRef Name="v_ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ComponentField_ComponentFields_v_ComponentFieldId">
+    <End Role="componentfield" Type="Sigesoft.Node.WinClient.DAL.Store.componentfield" Multiplicity="1" />
+    <End Role="componentfields" Type="Sigesoft.Node.WinClient.DAL.Store.componentfields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componentfield">
+        <PropertyRef Name="v_ComponentFieldId" />
+      </Principal>
+      <Dependent Role="componentfields">
+        <PropertyRef Name="v_ComponentFieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Diseases_ComponentFieldValues_v_Diseases">
+    <End Role="diseases" Type="Sigesoft.Node.WinClient.DAL.Store.diseases" Multiplicity="0..1" />
+    <End Role="componentfieldvalues" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvalues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="diseases">
+        <PropertyRef Name="v_DiseasesId" />
+      </Principal>
+      <Dependent Role="componentfieldvalues">
+        <PropertyRef Name="v_Diseases" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ComponentFieldId_ComponentFieldValues_v_ComponentFieldValues">
+    <End Role="componentfield" Type="Sigesoft.Node.WinClient.DAL.Store.componentfield" Multiplicity="0..1" />
+    <End Role="componentfieldvalues" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvalues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componentfield">
+        <PropertyRef Name="v_ComponentFieldId" />
+      </Principal>
+      <Dependent Role="componentfieldvalues">
+        <PropertyRef Name="v_ComponentFieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ComponentFieldValues_ComponentFieldVauesRecommendation_v_Com">
+    <End Role="componentfieldvalues" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvalues" Multiplicity="0..1" />
+    <End Role="componentfieldvaluesrecommendation" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvaluesrecommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componentfieldvalues">
+        <PropertyRef Name="v_ComponentFieldValuesId" />
+      </Principal>
+      <Dependent Role="componentfieldvaluesrecommendation">
+        <PropertyRef Name="v_ComponentFieldValuesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_MasterRecommendationRestricction_ComponentFieldValuesRecomme">
+    <End Role="masterrecommendationrestricction" Type="Sigesoft.Node.WinClient.DAL.Store.masterrecommendationrestricction" Multiplicity="0..1" />
+    <End Role="componentfieldvaluesrecommendation" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvaluesrecommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="masterrecommendationrestricction">
+        <PropertyRef Name="v_MasterRecommendationRestricctionId" />
+      </Principal>
+      <Dependent Role="componentfieldvaluesrecommendation">
+        <PropertyRef Name="v_MasterRecommendationRestricctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ComponentFieldValues_ComponentFieldVauesRestriction_v_Compon">
+    <End Role="componentfieldvalues" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvalues" Multiplicity="0..1" />
+    <End Role="componentfieldvaluesrestriction" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvaluesrestriction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componentfieldvalues">
+        <PropertyRef Name="v_ComponentFieldValuesId" />
+      </Principal>
+      <Dependent Role="componentfieldvaluesrestriction">
+        <PropertyRef Name="v_ComponentFieldValuesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_MasterRecommendationRestricction_ComponentFieldValuesRestric">
+    <End Role="masterrecommendationrestricction" Type="Sigesoft.Node.WinClient.DAL.Store.masterrecommendationrestricction" Multiplicity="0..1" />
+    <End Role="componentfieldvaluesrestriction" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvaluesrestriction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="masterrecommendationrestricction">
+        <PropertyRef Name="v_MasterRecommendationRestricctionId" />
+      </Principal>
+      <Dependent Role="componentfieldvaluesrestriction">
+        <PropertyRef Name="v_MasterRecommendationRestricctionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ComponentField_DiagnosticRepository_v_ComponentFieldsId">
+    <End Role="componentfields" Type="Sigesoft.Node.WinClient.DAL.Store.componentfields" Multiplicity="0..1" />
+    <End Role="diagnosticrepository" Type="Sigesoft.Node.WinClient.DAL.Store.diagnosticrepository" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componentfields">
+        <PropertyRef Name="v_ComponentId" />
+        <PropertyRef Name="v_ComponentFieldId" />
+      </Principal>
+      <Dependent Role="diagnosticrepository">
+        <PropertyRef Name="v_ComponentId" />
+        <PropertyRef Name="v_ComponentFieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_DiseasesId_DiagnosticRepository_v_DiseasesId">
+    <End Role="diseases" Type="Sigesoft.Node.WinClient.DAL.Store.diseases" Multiplicity="0..1" />
+    <End Role="diagnosticrepository" Type="Sigesoft.Node.WinClient.DAL.Store.diagnosticrepository" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="diseases">
+        <PropertyRef Name="v_DiseasesId" />
+      </Principal>
+      <Dependent Role="diagnosticrepository">
+        <PropertyRef Name="v_DiseasesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Service_DiagnosticRepository_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="0..1" />
+    <End Role="diagnosticrepository" Type="Sigesoft.Node.WinClient.DAL.Store.diagnosticrepository" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="diagnosticrepository">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Cie10_Diseases_v_CIE10Id">
+    <End Role="cie10" Type="Sigesoft.Node.WinClient.DAL.Store.cie10" Multiplicity="0..1" />
+    <End Role="diseases" Type="Sigesoft.Node.WinClient.DAL.Store.diseases" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cie10">
+        <PropertyRef Name="v_CIE10Id" />
+      </Principal>
+      <Dependent Role="diseases">
+        <PropertyRef Name="v_CIE10Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dxfrecuente_cie10_v_CIE10Id">
+    <End Role="cie10" Type="Sigesoft.Node.WinClient.DAL.Store.cie10" Multiplicity="0..1" />
+    <End Role="dxfrecuente" Type="Sigesoft.Node.WinClient.DAL.Store.dxfrecuente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cie10">
+        <PropertyRef Name="v_CIE10Id" />
+      </Principal>
+      <Dependent Role="dxfrecuente">
+        <PropertyRef Name="v_CIE10Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dxfrecuente_dxfrecuente_vDiseasesId">
+    <End Role="diseases" Type="Sigesoft.Node.WinClient.DAL.Store.diseases" Multiplicity="0..1" />
+    <End Role="dxfrecuente" Type="Sigesoft.Node.WinClient.DAL.Store.dxfrecuente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="diseases">
+        <PropertyRef Name="v_DiseasesId" />
+      </Principal>
+      <Dependent Role="dxfrecuente">
+        <PropertyRef Name="v_DiseasesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dxfrecuentedetalle_dxfrecuentedetalle_v_DxFrecuenteId">
+    <End Role="dxfrecuente" Type="Sigesoft.Node.WinClient.DAL.Store.dxfrecuente" Multiplicity="0..1" />
+    <End Role="dxfrecuentedetalle" Type="Sigesoft.Node.WinClient.DAL.Store.dxfrecuentedetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="dxfrecuente">
+        <PropertyRef Name="v_DxFrecuenteId" />
+      </Principal>
+      <Dependent Role="dxfrecuentedetalle">
+        <PropertyRef Name="v_DxFrecuenteId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_facturaciondetalle_Facturacion_v_FacturacionId">
+    <End Role="facturacion" Type="Sigesoft.Node.WinClient.DAL.Store.facturacion" Multiplicity="0..1" />
+    <End Role="facturaciondetalle" Type="Sigesoft.Node.WinClient.DAL.Store.facturaciondetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="facturacion">
+        <PropertyRef Name="v_FacturacionId" />
+      </Principal>
+      <Dependent Role="facturaciondetalle">
+        <PropertyRef Name="v_FacturacionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Diseases_FamilyMedicalAntecedents_v_DiseasesId">
+    <End Role="diseases" Type="Sigesoft.Node.WinClient.DAL.Store.diseases" Multiplicity="0..1" />
+    <End Role="familymedicalantecedents" Type="Sigesoft.Node.WinClient.DAL.Store.familymedicalantecedents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="diseases">
+        <PropertyRef Name="v_DiseasesId" />
+      </Principal>
+      <Dependent Role="familymedicalantecedents">
+        <PropertyRef Name="v_DiseasesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_FamilyMedicalAntecedents_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1" />
+    <End Role="familymedicalantecedents" Type="Sigesoft.Node.WinClient.DAL.Store.familymedicalantecedents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="familymedicalantecedents">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Area_Ges_v_AreaCode">
+    <End Role="area" Type="Sigesoft.Node.WinClient.DAL.Store.area" Multiplicity="0..1" />
+    <End Role="ges" Type="Sigesoft.Node.WinClient.DAL.Store.ges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="area">
+        <PropertyRef Name="v_AreaId" />
+      </Principal>
+      <Dependent Role="ges">
+        <PropertyRef Name="v_AreaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Location_GroupOccupation_v_GroupOccupationCode">
+    <End Role="location" Type="Sigesoft.Node.WinClient.DAL.Store.location" Multiplicity="0..1" />
+    <End Role="groupoccupation" Type="Sigesoft.Node.WinClient.DAL.Store.groupoccupation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="v_LocationId" />
+      </Principal>
+      <Dependent Role="groupoccupation">
+        <PropertyRef Name="v_LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_History_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1" />
+    <End Role="history" Type="Sigesoft.Node.WinClient.DAL.Store.history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="history">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Organization_Location_v_OrganizationId">
+    <End Role="organization" Type="Sigesoft.Node.WinClient.DAL.Store.organization" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="location" Type="Sigesoft.Node.WinClient.DAL.Store.location" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organization">
+        <PropertyRef Name="v_OrganizationId" />
+      </Principal>
+      <Dependent Role="location">
+        <PropertyRef Name="v_OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Service_Medication_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="0..1" />
+    <End Role="medication" Type="Sigesoft.Node.WinClient.DAL.Store.medication" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="medication">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Supplier_Movement_i_SupplierId_i_NodeId">
+    <End Role="supplier" Type="Sigesoft.Node.WinClient.DAL.Store.supplier" Multiplicity="0..1" />
+    <End Role="movement" Type="Sigesoft.Node.WinClient.DAL.Store.movement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="v_SupplierId" />
+      </Principal>
+      <Dependent Role="movement">
+        <PropertyRef Name="v_SupplierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Warehouse_Movement_i_WarehouseId">
+    <End Role="warehouse" Type="Sigesoft.Node.WinClient.DAL.Store.warehouse" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="movement" Type="Sigesoft.Node.WinClient.DAL.Store.movement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="warehouse">
+        <PropertyRef Name="v_WarehouseId" />
+      </Principal>
+      <Dependent Role="movement">
+        <PropertyRef Name="v_WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Movement_MovementDetail_i_MovementId">
+    <End Role="movement" Type="Sigesoft.Node.WinClient.DAL.Store.movement" Multiplicity="1" />
+    <End Role="movementdetail" Type="Sigesoft.Node.WinClient.DAL.Store.movementdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="movement">
+        <PropertyRef Name="v_MovementId" />
+      </Principal>
+      <Dependent Role="movementdetail">
+        <PropertyRef Name="v_MovementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Product_MovementDetail_i_ProductId">
+    <End Role="product" Type="Sigesoft.Node.WinClient.DAL.Store.product" Multiplicity="1" />
+    <End Role="movementdetail" Type="Sigesoft.Node.WinClient.DAL.Store.movementdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="v_ProductId" />
+      </Principal>
+      <Dependent Role="movementdetail">
+        <PropertyRef Name="v_ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Warehouse_MovementDetail_i_WarehouseId">
+    <End Role="warehouse" Type="Sigesoft.Node.WinClient.DAL.Store.warehouse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="movementdetail" Type="Sigesoft.Node.WinClient.DAL.Store.movementdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="warehouse">
+        <PropertyRef Name="v_WarehouseId" />
+      </Principal>
+      <Dependent Role="movementdetail">
+        <PropertyRef Name="v_WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_MultimediaFile_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1" />
+    <End Role="multimediafile" Type="Sigesoft.Node.WinClient.DAL.Store.multimediafile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="multimediafile">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Location_NodeOrganizationLocationProfile_v_LocationId">
+    <End Role="location" Type="Sigesoft.Node.WinClient.DAL.Store.location" Multiplicity="1" />
+    <End Role="nodeorganizationlocationprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="v_LocationId" />
+      </Principal>
+      <Dependent Role="nodeorganizationlocationprofile">
+        <PropertyRef Name="v_LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Node_NodeOrganizationLocationProfile_v_NodeId">
+    <End Role="node" Type="Sigesoft.Node.WinClient.DAL.Store.node" Multiplicity="1" />
+    <End Role="nodeorganizationlocationprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="node">
+        <PropertyRef Name="i_NodeId" />
+      </Principal>
+      <Dependent Role="nodeorganizationlocationprofile">
+        <PropertyRef Name="i_NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Organization_NodeOrganizationLocationProfile_v_OrganizationI">
+    <End Role="organization" Type="Sigesoft.Node.WinClient.DAL.Store.organization" Multiplicity="1" />
+    <End Role="nodeorganizationlocationprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organization">
+        <PropertyRef Name="v_OrganizationId" />
+      </Principal>
+      <Dependent Role="nodeorganizationlocationprofile">
+        <PropertyRef Name="v_OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Node_NodeOrganizationLocationWarehouseProfile_i_NodeId">
+    <End Role="node" Type="Sigesoft.Node.WinClient.DAL.Store.node" Multiplicity="1" />
+    <End Role="nodeorganizationlocationwarehouseprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationwarehouseprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="node">
+        <PropertyRef Name="i_NodeId" />
+      </Principal>
+      <Dependent Role="nodeorganizationlocationwarehouseprofile">
+        <PropertyRef Name="i_NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Organization_NodeOrganizationLocationWarehouseProfile_v_Orga">
+    <End Role="location" Type="Sigesoft.Node.WinClient.DAL.Store.location" Multiplicity="1" />
+    <End Role="nodeorganizationlocationwarehouseprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationwarehouseprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="v_LocationId" />
+      </Principal>
+      <Dependent Role="nodeorganizationlocationwarehouseprofile">
+        <PropertyRef Name="v_LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Warehouse_NodeOrganizationLocationWarehouseProfile_v_Warehou">
+    <End Role="warehouse" Type="Sigesoft.Node.WinClient.DAL.Store.warehouse" Multiplicity="1" />
+    <End Role="nodeorganizationlocationwarehouseprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationwarehouseprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="warehouse">
+        <PropertyRef Name="v_WarehouseId" />
+      </Principal>
+      <Dependent Role="nodeorganizationlocationwarehouseprofile">
+        <PropertyRef Name="v_WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Organization_NodeOrganizationLocationWarehouseProfile_v_Loca">
+    <End Role="organization" Type="Sigesoft.Node.WinClient.DAL.Store.organization" Multiplicity="1" />
+    <End Role="nodeorganizationlocationwarehouseprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationlocationwarehouseprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organization">
+        <PropertyRef Name="v_OrganizationId" />
+      </Principal>
+      <Dependent Role="nodeorganizationlocationwarehouseprofile">
+        <PropertyRef Name="v_OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_Node_Node_Organization_i_NodeId">
+    <End Role="node" Type="Sigesoft.Node.WinClient.DAL.Store.node" Multiplicity="1" />
+    <End Role="nodeorganizationprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="node">
+        <PropertyRef Name="i_NodeId" />
+      </Principal>
+      <Dependent Role="nodeorganizationprofile">
+        <PropertyRef Name="i_NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_Organization_NodeOrganization_i_OrganizationId">
+    <End Role="organization" Type="Sigesoft.Node.WinClient.DAL.Store.organization" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="nodeorganizationprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeorganizationprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organization">
+        <PropertyRef Name="v_OrganizationId" />
+      </Principal>
+      <Dependent Role="nodeorganizationprofile">
+        <PropertyRef Name="v_OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Node_NodeServiceProfile_i_NodeId">
+    <End Role="node" Type="Sigesoft.Node.WinClient.DAL.Store.node" Multiplicity="0..1" />
+    <End Role="nodeserviceprofile" Type="Sigesoft.Node.WinClient.DAL.Store.nodeserviceprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="node">
+        <PropertyRef Name="i_NodeId" />
+      </Principal>
+      <Dependent Role="nodeserviceprofile">
+        <PropertyRef Name="i_NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_NoxiousHabits_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1" />
+    <End Role="noxioushabits" Type="Sigesoft.Node.WinClient.DAL.Store.noxioushabits" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="noxioushabits">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Ges_Occupation_v_GesCode">
+    <End Role="ges" Type="Sigesoft.Node.WinClient.DAL.Store.ges" Multiplicity="0..1" />
+    <End Role="occupation" Type="Sigesoft.Node.WinClient.DAL.Store.occupation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ges">
+        <PropertyRef Name="v_GesId" />
+      </Principal>
+      <Dependent Role="occupation">
+        <PropertyRef Name="v_GesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_GroupOccupation_Occupation_v_GroupOccupationCode">
+    <End Role="groupoccupation" Type="Sigesoft.Node.WinClient.DAL.Store.groupoccupation" Multiplicity="0..1" />
+    <End Role="occupation" Type="Sigesoft.Node.WinClient.DAL.Store.occupation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="groupoccupation">
+        <PropertyRef Name="v_GroupOccupationId" />
+      </Principal>
+      <Dependent Role="occupation">
+        <PropertyRef Name="v_GroupOccupationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_Pacient_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="1" />
+    <End Role="pacient" Type="Sigesoft.Node.WinClient.DAL.Store.pacient" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="pacient">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_pacient_pacientemultimediadata_v_PersonId">
+    <End Role="pacient" Type="Sigesoft.Node.WinClient.DAL.Store.pacient" Multiplicity="0..1" />
+    <End Role="pacientmultimediadata" Type="Sigesoft.Node.WinClient.DAL.Store.pacientmultimediadata" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pacient">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="pacientmultimediadata">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Diseases_PersonalmMedicalHistory_v_DiseasesId">
+    <End Role="diseases" Type="Sigesoft.Node.WinClient.DAL.Store.diseases" Multiplicity="0..1" />
+    <End Role="personmedicalhistory" Type="Sigesoft.Node.WinClient.DAL.Store.personmedicalhistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="diseases">
+        <PropertyRef Name="v_DiseasesId" />
+      </Principal>
+      <Dependent Role="personmedicalhistory">
+        <PropertyRef Name="v_DiseasesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_PersonMedicalHistory_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1" />
+    <End Role="personmedicalhistory" Type="Sigesoft.Node.WinClient.DAL.Store.personmedicalhistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="personmedicalhistory">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Service_Procedure_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="0..1" />
+    <End Role="procedurebyservice" Type="Sigesoft.Node.WinClient.DAL.Store.procedurebyservice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="procedurebyservice">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Product_ProductWarehouse_i_ProductId">
+    <End Role="product" Type="Sigesoft.Node.WinClient.DAL.Store.product" Multiplicity="1" />
+    <End Role="productwarehouse" Type="Sigesoft.Node.WinClient.DAL.Store.productwarehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="v_ProductId" />
+      </Principal>
+      <Dependent Role="productwarehouse">
+        <PropertyRef Name="v_ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Warehouse_ProductWarehouse_i_WarehouseId">
+    <End Role="warehouse" Type="Sigesoft.Node.WinClient.DAL.Store.warehouse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="productwarehouse" Type="Sigesoft.Node.WinClient.DAL.Store.productwarehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="warehouse">
+        <PropertyRef Name="v_WarehouseId" />
+      </Principal>
+      <Dependent Role="productwarehouse">
+        <PropertyRef Name="v_WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_Person_Professional_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="1" />
+    <End Role="professional" Type="Sigesoft.Node.WinClient.DAL.Store.professional" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="professional">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Component_ProtocolComponent_v_ComponentId">
+    <End Role="component" Type="Sigesoft.Node.WinClient.DAL.Store.component" Multiplicity="0..1" />
+    <End Role="protocolcomponent" Type="Sigesoft.Node.WinClient.DAL.Store.protocolcomponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="v_ComponentId" />
+      </Principal>
+      <Dependent Role="protocolcomponent">
+        <PropertyRef Name="v_ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Protocol_ProtocolComponent_v_ProtocolId">
+    <End Role="protocol" Type="Sigesoft.Node.WinClient.DAL.Store.protocol" Multiplicity="0..1" />
+    <End Role="protocolcomponent" Type="Sigesoft.Node.WinClient.DAL.Store.protocolcomponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="protocol">
+        <PropertyRef Name="v_ProtocolId" />
+      </Principal>
+      <Dependent Role="protocolcomponent">
+        <PropertyRef Name="v_ProtocolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AppHerarchy_ProtocolSystemUser_i_AppHerarchyId">
+    <End Role="applicationhierarchy" Type="Sigesoft.Node.WinClient.DAL.Store.applicationhierarchy" Multiplicity="0..1" />
+    <End Role="protocolsystemuser" Type="Sigesoft.Node.WinClient.DAL.Store.protocolsystemuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="applicationhierarchy">
+        <PropertyRef Name="i_ApplicationHierarchyId" />
+      </Principal>
+      <Dependent Role="protocolsystemuser">
+        <PropertyRef Name="i_ApplicationHierarchyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Protocol_ProtocolSystemUser_v_ProtocolId">
+    <End Role="protocol" Type="Sigesoft.Node.WinClient.DAL.Store.protocol" Multiplicity="1" />
+    <End Role="protocolsystemuser" Type="Sigesoft.Node.WinClient.DAL.Store.protocolsystemuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="protocol">
+        <PropertyRef Name="v_ProtocolId" />
+      </Principal>
+      <Dependent Role="protocolsystemuser">
+        <PropertyRef Name="v_ProtocolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SystemUser_ProtocolSystemUser_i_SystemUserId">
+    <End Role="systemuser" Type="Sigesoft.Node.WinClient.DAL.Store.systemuser" Multiplicity="1" />
+    <End Role="protocolsystemuser" Type="Sigesoft.Node.WinClient.DAL.Store.protocolsystemuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="systemuser">
+        <PropertyRef Name="i_SystemUserId" />
+      </Principal>
+      <Dependent Role="protocolsystemuser">
+        <PropertyRef Name="i_SystemUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Component_Recommendation_v_RecommendationId">
+    <End Role="component" Type="Sigesoft.Node.WinClient.DAL.Store.component" Multiplicity="0..1" />
+    <End Role="recommendation" Type="Sigesoft.Node.WinClient.DAL.Store.recommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="v_ComponentId" />
+      </Principal>
+      <Dependent Role="recommendation">
+        <PropertyRef Name="v_ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_DiagnosticRepository_Recommendation_v_DiagnosticRepositoryId">
+    <End Role="diagnosticrepository" Type="Sigesoft.Node.WinClient.DAL.Store.diagnosticrepository" Multiplicity="0..1" />
+    <End Role="recommendation" Type="Sigesoft.Node.WinClient.DAL.Store.recommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="diagnosticrepository">
+        <PropertyRef Name="v_DiagnosticRepositoryId" />
+      </Principal>
+      <Dependent Role="recommendation">
+        <PropertyRef Name="v_DiagnosticRepositoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Service_Recommendation_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="0..1" />
+    <End Role="recommendation" Type="Sigesoft.Node.WinClient.DAL.Store.recommendation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="recommendation">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_SystemUser_RestrictedWarehouseProfile_v_SystemUserId">
+    <End Role="systemuser" Type="Sigesoft.Node.WinClient.DAL.Store.systemuser" Multiplicity="1" />
+    <End Role="restrictedwarehouseprofile" Type="Sigesoft.Node.WinClient.DAL.Store.restrictedwarehouseprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="systemuser">
+        <PropertyRef Name="i_SystemUserId" />
+      </Principal>
+      <Dependent Role="restrictedwarehouseprofile">
+        <PropertyRef Name="i_SystemUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Warehouse_RestrictedWarehouseProfile_v_WarehouseId">
+    <End Role="warehouse" Type="Sigesoft.Node.WinClient.DAL.Store.warehouse" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="restrictedwarehouseprofile" Type="Sigesoft.Node.WinClient.DAL.Store.restrictedwarehouseprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="warehouse">
+        <PropertyRef Name="v_WarehouseId" />
+      </Principal>
+      <Dependent Role="restrictedwarehouseprofile">
+        <PropertyRef Name="v_WarehouseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Component_Restricction_v_ComponentId">
+    <End Role="component" Type="Sigesoft.Node.WinClient.DAL.Store.component" Multiplicity="0..1" />
+    <End Role="restriction" Type="Sigesoft.Node.WinClient.DAL.Store.restriction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="v_ComponentId" />
+      </Principal>
+      <Dependent Role="restriction">
+        <PropertyRef Name="v_ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_DiagnosticRepository_RestrictionByDiagnostic_v_DiagnosticRep">
+    <End Role="diagnosticrepository" Type="Sigesoft.Node.WinClient.DAL.Store.diagnosticrepository" Multiplicity="0..1" />
+    <End Role="restriction" Type="Sigesoft.Node.WinClient.DAL.Store.restriction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="diagnosticrepository">
+        <PropertyRef Name="v_DiagnosticRepositoryId" />
+      </Principal>
+      <Dependent Role="restriction">
+        <PropertyRef Name="v_DiagnosticRepositoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Service_Restricction_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="0..1" />
+    <End Role="restriction" Type="Sigesoft.Node.WinClient.DAL.Store.restriction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="restriction">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_rolcuotadetalle_rolcuotadetalle_v_RolCuotaId">
+    <End Role="rolcuota" Type="Sigesoft.Node.WinClient.DAL.Store.rolcuota" Multiplicity="0..1" />
+    <End Role="rolcuotadetalle" Type="Sigesoft.Node.WinClient.DAL.Store.rolcuotadetalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rolcuota">
+        <PropertyRef Name="v_RolCuotaId" />
+      </Principal>
+      <Dependent Role="rolcuotadetalle">
+        <PropertyRef Name="v_RolCuotaId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_node_rolenode_i_NodeId">
+    <End Role="node" Type="Sigesoft.Node.WinClient.DAL.Store.node" Multiplicity="1" />
+    <End Role="rolenode" Type="Sigesoft.Node.WinClient.DAL.Store.rolenode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="node">
+        <PropertyRef Name="i_NodeId" />
+      </Principal>
+      <Dependent Role="rolenode">
+        <PropertyRef Name="i_NodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Component_RoleNodeComponent_v_ComponentId">
+    <End Role="component" Type="Sigesoft.Node.WinClient.DAL.Store.component" Multiplicity="0..1" />
+    <End Role="rolenodecomponentprofile" Type="Sigesoft.Node.WinClient.DAL.Store.rolenodecomponentprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="v_ComponentId" />
+      </Principal>
+      <Dependent Role="rolenodecomponentprofile">
+        <PropertyRef Name="v_ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_RoleNode_RoleNodeComponent_i_NodeId_i_RoleId">
+    <End Role="rolenode" Type="Sigesoft.Node.WinClient.DAL.Store.rolenode" Multiplicity="0..1" />
+    <End Role="rolenodecomponentprofile" Type="Sigesoft.Node.WinClient.DAL.Store.rolenodecomponentprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rolenode">
+        <PropertyRef Name="i_NodeId" />
+        <PropertyRef Name="i_RoleId" />
+      </Principal>
+      <Dependent Role="rolenodecomponentprofile">
+        <PropertyRef Name="i_NodeId" />
+        <PropertyRef Name="i_RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_applicationhierarchy_rolenodeprofile_i_ApplicationHierarchyI">
+    <End Role="applicationhierarchy" Type="Sigesoft.Node.WinClient.DAL.Store.applicationhierarchy" Multiplicity="1" />
+    <End Role="rolenodeprofile" Type="Sigesoft.Node.WinClient.DAL.Store.rolenodeprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="applicationhierarchy">
+        <PropertyRef Name="i_ApplicationHierarchyId" />
+      </Principal>
+      <Dependent Role="rolenodeprofile">
+        <PropertyRef Name="i_ApplicationHierarchyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_RoleNode_RoleNodeProfile_i_NodeId_i_RoleId">
+    <End Role="rolenode" Type="Sigesoft.Node.WinClient.DAL.Store.rolenode" Multiplicity="1" />
+    <End Role="rolenodeprofile" Type="Sigesoft.Node.WinClient.DAL.Store.rolenodeprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rolenode">
+        <PropertyRef Name="i_NodeId" />
+        <PropertyRef Name="i_RoleId" />
+      </Principal>
+      <Dependent Role="rolenodeprofile">
+        <PropertyRef Name="i_NodeId" />
+        <PropertyRef Name="i_RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_Service_v_PersonId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1" />
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="service">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Protocol_Service_v_ProtocolId">
+    <End Role="protocol" Type="Sigesoft.Node.WinClient.DAL.Store.protocol" Multiplicity="0..1" />
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="protocol">
+        <PropertyRef Name="v_ProtocolId" />
+      </Principal>
+      <Dependent Role="service">
+        <PropertyRef Name="v_ProtocolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Component_ServiceComponent_v_ComponentId">
+    <End Role="component" Type="Sigesoft.Node.WinClient.DAL.Store.component" Multiplicity="0..1" />
+    <End Role="servicecomponent" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="component">
+        <PropertyRef Name="v_ComponentId" />
+      </Principal>
+      <Dependent Role="servicecomponent">
+        <PropertyRef Name="v_ComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Service_ServiceComponent_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="0..1" />
+    <End Role="servicecomponent" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="servicecomponent">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_ComponentFields_ServiceComponentFields_v_MedicalExamFieldsId">
+    <End Role="componentfields" Type="Sigesoft.Node.WinClient.DAL.Store.componentfields" Multiplicity="0..1" />
+    <End Role="servicecomponentfields" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componentfields">
+        <PropertyRef Name="v_ComponentId" />
+        <PropertyRef Name="v_ComponentFieldId" />
+      </Principal>
+      <Dependent Role="servicecomponentfields">
+        <PropertyRef Name="v_ComponentId" />
+        <PropertyRef Name="v_ComponentFieldId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_ServiceComponent_ServiceComponentComponentFields">
+    <End Role="servicecomponent" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponent" Multiplicity="0..1" />
+    <End Role="servicecomponentfields" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfields" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servicecomponent">
+        <PropertyRef Name="v_ServiceComponentId" />
+      </Principal>
+      <Dependent Role="servicecomponentfields">
+        <PropertyRef Name="v_ServiceComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_ComponentFieldValues_ServiceComponentFieldValues_v_Component">
+    <End Role="componentfieldvalues" Type="Sigesoft.Node.WinClient.DAL.Store.componentfieldvalues" Multiplicity="0..1" />
+    <End Role="servicecomponentfieldvalues" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfieldvalues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="componentfieldvalues">
+        <PropertyRef Name="v_ComponentFieldValuesId" />
+      </Principal>
+      <Dependent Role="servicecomponentfieldvalues">
+        <PropertyRef Name="v_ComponentFieldValuesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_ServiceComponentFieldIds_ServiceComponentFieldValues">
+    <End Role="servicecomponentfields" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfields" Multiplicity="0..1" />
+    <End Role="servicecomponentfieldvalues" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfieldvalues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servicecomponentfields">
+        <PropertyRef Name="v_ServiceComponentFieldsId" />
+      </Principal>
+      <Dependent Role="servicecomponentfieldvalues">
+        <PropertyRef Name="v_ServiceComponentFieldsId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_ServiceComponentFieldValues_ServiceComponentFieldValuesMulti">
+    <End Role="servicecomponentfieldvalues" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfieldvalues" Multiplicity="0..1" />
+    <End Role="servicecomponentfieldValuesmultimedia" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfieldValuesmultimedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servicecomponentfieldvalues">
+        <PropertyRef Name="v_ServiceComponentFieldValuesId" />
+      </Principal>
+      <Dependent Role="servicecomponentfieldValuesmultimedia">
+        <PropertyRef Name="v_ServiceComponentFieldValuesId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_MultimediaFile_ServiceComponentFieldValuesMultimedia_v_Multi">
+    <End Role="multimediafile" Type="Sigesoft.Node.WinClient.DAL.Store.multimediafile" Multiplicity="1" />
+    <End Role="servicecomponentfieldValuesmultimedia" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentfieldValuesmultimedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="multimediafile">
+        <PropertyRef Name="v_MultimediaFileId" />
+      </Principal>
+      <Dependent Role="servicecomponentfieldValuesmultimedia">
+        <PropertyRef Name="v_MultimediaFileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_MultimediaFile_ServiceComponentMultimedia_v_MultimediaFileId">
+    <End Role="multimediafile" Type="Sigesoft.Node.WinClient.DAL.Store.multimediafile" Multiplicity="1" />
+    <End Role="servicecomponentmultimedia" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentmultimedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="multimediafile">
+        <PropertyRef Name="v_MultimediaFileId" />
+      </Principal>
+      <Dependent Role="servicecomponentmultimedia">
+        <PropertyRef Name="v_MultimediaFileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_ServiceComponent_ServiceComponentMultimedia_v_ServiceCompone">
+    <End Role="servicecomponent" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponent" Multiplicity="1" />
+    <End Role="servicecomponentmultimedia" Type="Sigesoft.Node.WinClient.DAL.Store.servicecomponentmultimedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servicecomponent">
+        <PropertyRef Name="v_ServiceComponentId" />
+      </Principal>
+      <Dependent Role="servicecomponentmultimedia">
+        <PropertyRef Name="v_ServiceComponentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_MultimediaFile_ServiceMultimedia_v_MultimediaFileId">
+    <End Role="multimediafile" Type="Sigesoft.Node.WinClient.DAL.Store.multimediafile" Multiplicity="1" />
+    <End Role="servicemultimedia" Type="Sigesoft.Node.WinClient.DAL.Store.servicemultimedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="multimediafile">
+        <PropertyRef Name="v_MultimediaFileId" />
+      </Principal>
+      <Dependent Role="servicemultimedia">
+        <PropertyRef Name="v_MultimediaFileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pk_Service_ServiceMultimedia_v_ServiceId">
+    <End Role="service" Type="Sigesoft.Node.WinClient.DAL.Store.service" Multiplicity="1" />
+    <End Role="servicemultimedia" Type="Sigesoft.Node.WinClient.DAL.Store.servicemultimedia" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="service">
+        <PropertyRef Name="v_ServiceId" />
+      </Principal>
+      <Dependent Role="servicemultimedia">
+        <PropertyRef Name="v_ServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_serviceorderdetail_protocol_v_ProtocolId">
+    <End Role="protocol" Type="Sigesoft.Node.WinClient.DAL.Store.protocol" Multiplicity="0..1" />
+    <End Role="serviceorderdetail" Type="Sigesoft.Node.WinClient.DAL.Store.serviceorderdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="protocol">
+        <PropertyRef Name="v_ProtocolId" />
+      </Principal>
+      <Dependent Role="serviceorderdetail">
+        <PropertyRef Name="v_ProtocolId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ServiceOrder_ServiceOrderDetail_v_ServiceOrderId">
+    <End Role="serviceorder" Type="Sigesoft.Node.WinClient.DAL.Store.serviceorder" Multiplicity="0..1" />
+    <End Role="serviceorderdetail" Type="Sigesoft.Node.WinClient.DAL.Store.serviceorderdetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="serviceorder">
+        <PropertyRef Name="v_ServiceOrderId" />
+      </Principal>
+      <Dependent Role="serviceorderdetail">
+        <PropertyRef Name="v_ServiceOrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_DeplymentFile_SoftwareComponentRelease_i_DeploymentFileId">
+    <End Role="deploymentfile" Type="Sigesoft.Node.WinClient.DAL.Store.deploymentfile" Multiplicity="0..1" />
+    <End Role="softwarecomponentrelease" Type="Sigesoft.Node.WinClient.DAL.Store.softwarecomponentrelease" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="deploymentfile">
+        <PropertyRef Name="i_DeploymentFileId" />
+      </Principal>
+      <Dependent Role="softwarecomponentrelease">
+        <PropertyRef Name="i_DeploymentFileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Person_SystemUser_i_PersonId_i_NodeId">
+    <End Role="person" Type="Sigesoft.Node.WinClient.DAL.Store.person" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="systemuser" Type="Sigesoft.Node.WinClient.DAL.Store.systemuser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="person">
+        <PropertyRef Name="v_PersonId" />
+      </Principal>
+      <Dependent Role="systemuser">
+        <PropertyRef Name="v_PersonId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_ApplicationHerarchy_SystemUserGlobal_i_ApplicationId">
+    <End Role="applicationhierarchy" Type="Sigesoft.Node.WinClient.DAL.Store.applicationhierarchy" Multiplicity="1" />
+    <End Role="systemusergobalprofile" Type="Sigesoft.Node.WinClient.DAL.Store.systemusergobalprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="applicationhierarchy">
+        <PropertyRef Name="i_ApplicationHierarchyId" />
+      </Principal>
+      <Dependent Role="systemusergobalprofile">
+        <PropertyRef Name="i_ApplicationHierarchyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_SystemUser_SystemUserGlobalProfile_v_SystemUserId">
+    <End Role="systemuser" Type="Sigesoft.Node.WinClient.DAL.Store.systemuser" Multiplicity="1" />
+    <End Role="systemusergobalprofile" Type="Sigesoft.Node.WinClient.DAL.Store.systemusergobalprofile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="systemuser">
+        <PropertyRef Name="i_SystemUserId" />
+      </Principal>
+      <Dependent Role="systemusergobalprofile">
+        <PropertyRef Name="i_SystemUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_RoleNode_SystemUserRoleNode_i_NodeId_i_RoleId">
+    <End Role="rolenode" Type="Sigesoft.Node.WinClient.DAL.Store.rolenode" Multiplicity="1" />
+    <End Role="systemuserrolenode" Type="Sigesoft.Node.WinClient.DAL.Store.systemuserrolenode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rolenode">
+        <PropertyRef Name="i_NodeId" />
+        <PropertyRef Name="i_RoleId" />
+      </Principal>
+      <Dependent Role="systemuserrolenode">
+        <PropertyRef Name="i_NodeId" />
+        <PropertyRef Name="i_RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_SystemUser_SystemUSerRoleNode_i_SystemUserId">
+    <End Role="systemuser" Type="Sigesoft.Node.WinClient.DAL.Store.systemuser" Multiplicity="1" />
+    <End Role="systemuserrolenode" Type="Sigesoft.Node.WinClient.DAL.Store.systemuserrolenode" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="systemuser">
+        <PropertyRef Name="i_SystemUserId" />
+      </Principal>
+      <Dependent Role="systemuserrolenode">
+        <PropertyRef Name="i_SystemUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_History_TypeofEPP_v_HistoryId">
+    <End Role="history" Type="Sigesoft.Node.WinClient.DAL.Store.history" Multiplicity="0..1" />
+    <End Role="typeofeep" Type="Sigesoft.Node.WinClient.DAL.Store.typeofeep" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="history">
+        <PropertyRef Name="v_HistoryId" />
+      </Principal>
+      <Dependent Role="typeofeep">
+        <PropertyRef Name="v_HistoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Location_Warehouse_v_LocationId">
+    <End Role="location" Type="Sigesoft.Node.WinClient.DAL.Store.location" Multiplicity="0..1" />
+    <End Role="warehouse" Type="Sigesoft.Node.WinClient.DAL.Store.warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="location">
+        <PropertyRef Name="v_LocationId" />
+      </Principal>
+      <Dependent Role="warehouse">
+        <PropertyRef Name="v_LocationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Organization_Warehouse_i_OrganizationId">
+    <End Role="organization" Type="Sigesoft.Node.WinClient.DAL.Store.organization" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="warehouse" Type="Sigesoft.Node.WinClient.DAL.Store.warehouse" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="organization">
+        <PropertyRef Name="v_OrganizationId" />
+      </Principal>
+      <Dependent Role="warehouse">
+        <PropertyRef Name="v_OrganizationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_History_WorkstationDangers_v_HistoryId">
+    <End Role="history" Type="Sigesoft.Node.WinClient.DAL.Store.history" Multiplicity="0..1" />
+    <End Role="workstationdangers" Type="Sigesoft.Node.WinClient.DAL.Store.workstationdangers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="history">
+        <PropertyRef Name="v_HistoryId" />
+      </Principal>
+      <Dependent Role="workstationdangers">
+        <PropertyRef Name="v_HistoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="DevolverProductos" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="DevolverProductos">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" MaxLength="250" />
+    <Parameter Name="IdAlmacen" Type="int" Mode="In" />
+    <Parameter Name="RolId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="DevolverValoresComponente" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="DevolverValoresComponente">
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="CategoryId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="LlenarGrillaSigesoft" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="LlenarGrillaSigesoft">
+    <Parameter Name="Dni" Type="varchar" Mode="In" MaxLength="16" />
+    <Parameter Name="v_CustomerOrganizationId" Type="varchar" Mode="In" MaxLength="16" />
+    <Parameter Name="v_CustomerLocationId" Type="varchar" Mode="In" MaxLength="16" />
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="i_EsoTypeId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="ReporteAtencionMedica" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" StoreFunctionName="ReporteAtencionMedica">
+    <Parameter Name="FechaInicio" Type="datetime" Mode="In" />
+    <Parameter Name="FechaFin" Type="datetime" Mode="In" />
+    <Parameter Name="IdProfesional" Type="int" Mode="In" />
+  </Function>
+</Schema>

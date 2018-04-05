@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F4650C86-DB62-4FA8-8475-0887031A0C05}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sigesoft.Node.WinClient.BLL</RootNamespace>
+    <AssemblyName>Sigesoft.Node.WinClient.BLL</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AreaBL.cs" />
+    <Compile Include="AuthorizedPersonBL.cs" />
+    <Compile Include="BlackListBL.cs" />
+    <Compile Include="CalendarBL.cs" />
+    <Compile Include="DataHierarchyBL.cs" />
+    <Compile Include="DxFrecuenteBL.cs" />
+    <Compile Include="EmailBL.cs" />
+    <Compile Include="FacturacionBL.cs" />
+    <Compile Include="GesBL.cs" />
+    <Compile Include="GroupOccupationBL.cs" />
+    <Compile Include="HistoryBL.cs" />
+    <Compile Include="LocationBL.cs" />
+    <Compile Include="LogBL.cs" />
+    <Compile Include="MasterRecommendationRestricctionBL.cs" />
+    <Compile Include="MigracionBL.cs" />
+    <Compile Include="MovementBL.cs" />
+    <Compile Include="MedicalExamBL.cs" />
+    <Compile Include="MedicalExamFieldsBL.cs" />
+    <Compile Include="MedicalExamFieldValuesBL.cs" />
+    <Compile Include="MultimediaFileBL.cs" />
+    <Compile Include="NodeBL.cs" />
+    <Compile Include="OccupationBL.cs" />
+    <Compile Include="OrganizationBL.cs" />
+    <Compile Include="PacientBL.cs" />
+    <Compile Include="ProductBL.cs" />
+    <Compile Include="ProfessionalBL.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolBL.cs" />
+    <Compile Include="RolCuotaBL.cs" />
+    <Compile Include="RolCuotaDetalleBL.cs" />
+    <Compile Include="SecurityBL.cs" />
+    <Compile Include="ServiceBL.cs" />
+    <Compile Include="ServiceOrderBL.cs" />
+    <Compile Include="SupplierBL.cs" />
+    <Compile Include="SystemParameterBL.cs" />
+    <Compile Include="Utils.cs" />
+    <Compile Include="WarehouseBL.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\Sigesoft.Common.csproj">
+      <Project>{83b4875b-6b20-49f1-891d-b1f379760899}</Project>
+      <Name>Sigesoft.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BE\Sigesoft.Node.WinClient.BE.csproj">
+      <Project>{ff8e51f3-510e-4e90-9627-0ad3e9cb8f5c}</Project>
+      <Name>Sigesoft.Node.WinClient.BE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dal\mssql\Sigesoft.Node.WinClient.DAL.MSSQL.csproj">
+      <Project>{0b732067-fec9-4da2-afd9-6da773094e3e}</Project>
+      <Name>Sigesoft.Node.WinClient.DAL.MSSQL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

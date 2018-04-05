@@ -1,0 +1,5 @@
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\BE\bin\Debug\Sigesoft.Node.WinClient.BE.dll
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\BE\bin\Debug\Sigesoft.Node.WinClient.BE.pdb
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.dll
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.pdb
+E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.csprojResolveAssemblyReference.cache

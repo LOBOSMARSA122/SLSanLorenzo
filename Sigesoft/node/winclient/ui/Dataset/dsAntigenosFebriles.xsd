@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsAntigenosFebriles" targetNamespace="http://tempuri.org/dsAntigenosFebriles.xsd" xmlns:mstns="http://tempuri.org/dsAntigenosFebriles.xsd" xmlns="http://tempuri.org/dsAntigenosFebriles.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsAntigenosFebriles" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsAntigenosFebriles" msprop:Generator_UserDSName="dsAntigenosFebriles">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtAntigenosFebriles" msprop:Generator_TableClassName="dtAntigenosFebrilesDataTable" msprop:Generator_TableVarName="tabledtAntigenosFebriles" msprop:Generator_RowChangedName="dtAntigenosFebrilesRowChanged" msprop:Generator_TablePropName="dtAntigenosFebriles" msprop:Generator_RowDeletingName="dtAntigenosFebrilesRowDeleting" msprop:Generator_RowChangingName="dtAntigenosFebrilesRowChanging" msprop:Generator_RowEvHandlerName="dtAntigenosFebrilesRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAntigenosFebrilesRowDeleted" msprop:Generator_RowClassName="dtAntigenosFebrilesRow" msprop:Generator_UserTableName="dtAntigenosFebriles" msprop:Generator_RowEvArgName="dtAntigenosFebrilesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Trabajador" msprop:Generator_ColumnVarNameInTable="columnTrabajador" msprop:Generator_ColumnPropNameInRow="Trabajador" msprop:Generator_ColumnPropNameInTable="TrabajadorColumn" msprop:Generator_UserColumnName="Trabajador" type="xs:string" minOccurs="0" />
+              <xs:element name="FirmaMedico" msprop:Generator_ColumnVarNameInTable="columnFirmaMedico" msprop:Generator_ColumnPropNameInRow="FirmaMedico" msprop:Generator_ColumnPropNameInTable="FirmaMedicoColumn" msprop:Generator_UserColumnName="FirmaMedico" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="EmpresaTrabajador" msprop:Generator_ColumnVarNameInTable="columnEmpresaTrabajador" msprop:Generator_ColumnPropNameInRow="EmpresaTrabajador" msprop:Generator_ColumnPropNameInTable="EmpresaTrabajadorColumn" msprop:Generator_UserColumnName="EmpresaTrabajador" type="xs:string" minOccurs="0" />
+              <xs:element name="Puesto" msprop:Generator_ColumnVarNameInTable="columnPuesto" msprop:Generator_ColumnPropNameInRow="Puesto" msprop:Generator_ColumnPropNameInTable="PuestoColumn" msprop:Generator_UserColumnName="Puesto" type="xs:string" minOccurs="0" />
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
+              <xs:element name="ParatificoA" msprop:Generator_ColumnVarNameInTable="columnParatificoA" msprop:Generator_ColumnPropNameInRow="ParatificoA" msprop:Generator_ColumnPropNameInTable="ParatificoAColumn" msprop:Generator_UserColumnName="ParatificoA" type="xs:string" minOccurs="0" />
+              <xs:element name="ParatificoADeseable" msprop:Generator_ColumnVarNameInTable="columnParatificoADeseable" msprop:Generator_ColumnPropNameInRow="ParatificoADeseable" msprop:Generator_ColumnPropNameInTable="ParatificoADeseableColumn" msprop:Generator_UserColumnName="ParatificoADeseable" type="xs:string" minOccurs="0" />
+              <xs:element name="ParatificoB" msprop:Generator_ColumnVarNameInTable="columnParatificoB" msprop:Generator_ColumnPropNameInRow="ParatificoB" msprop:Generator_ColumnPropNameInTable="ParatificoBColumn" msprop:Generator_UserColumnName="ParatificoB" type="xs:string" minOccurs="0" />
+              <xs:element name="ParatificoBDeseable" msprop:Generator_ColumnVarNameInTable="columnParatificoBDeseable" msprop:Generator_ColumnPropNameInRow="ParatificoBDeseable" msprop:Generator_ColumnPropNameInTable="ParatificoBDeseableColumn" msprop:Generator_UserColumnName="ParatificoBDeseable" type="xs:string" minOccurs="0" />
+              <xs:element name="TificoH" msprop:Generator_ColumnVarNameInTable="columnTificoH" msprop:Generator_ColumnPropNameInRow="TificoH" msprop:Generator_ColumnPropNameInTable="TificoHColumn" msprop:Generator_UserColumnName="TificoH" type="xs:string" minOccurs="0" />
+              <xs:element name="TificoHDeseable" msprop:Generator_ColumnVarNameInTable="columnTificoHDeseable" msprop:Generator_ColumnPropNameInRow="TificoHDeseable" msprop:Generator_ColumnPropNameInTable="TificoHDeseableColumn" msprop:Generator_UserColumnName="TificoHDeseable" type="xs:string" minOccurs="0" />
+              <xs:element name="TificoO" msprop:Generator_ColumnVarNameInTable="columnTificoO" msprop:Generator_ColumnPropNameInRow="TificoO" msprop:Generator_ColumnPropNameInTable="TificoOColumn" msprop:Generator_UserColumnName="TificoO" type="xs:string" minOccurs="0" />
+              <xs:element name="TificoODeseable" msprop:Generator_ColumnVarNameInTable="columnTificoODeseable" msprop:Generator_ColumnPropNameInRow="TificoODeseable" msprop:Generator_ColumnPropNameInTable="TificoODeseableColumn" msprop:Generator_UserColumnName="TificoODeseable" type="xs:string" minOccurs="0" />
+              <xs:element name="Brucella" msprop:Generator_ColumnVarNameInTable="columnBrucella" msprop:Generator_ColumnPropNameInRow="Brucella" msprop:Generator_ColumnPropNameInTable="BrucellaColumn" msprop:Generator_UserColumnName="Brucella" type="xs:string" minOccurs="0" />
+              <xs:element name="BrucellaDeseable" msprop:Generator_ColumnVarNameInTable="columnBrucellaDeseable" msprop:Generator_ColumnPropNameInRow="BrucellaDeseable" msprop:Generator_ColumnPropNameInTable="BrucellaDeseableColumn" msprop:Generator_UserColumnName="BrucellaDeseable" type="xs:string" minOccurs="0" />
+              <xs:element name="LogoEmpresa" msprop:Generator_ColumnVarNameInTable="columnLogoEmpresa" msprop:Generator_ColumnPropNameInRow="LogoEmpresa" msprop:Generator_ColumnPropNameInTable="LogoEmpresaColumn" msprop:Generator_UserColumnName="LogoEmpresa" type="xs:base64Binary" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

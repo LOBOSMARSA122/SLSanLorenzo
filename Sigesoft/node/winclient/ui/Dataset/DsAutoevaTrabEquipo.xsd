@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DsAutoevaTrabEquipo" targetNamespace="http://tempuri.org/DsAutoevaTrabEquipo.xsd" xmlns:mstns="http://tempuri.org/DsAutoevaTrabEquipo.xsd" xmlns="http://tempuri.org/DsAutoevaTrabEquipo.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DsAutoevaTrabEquipo" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DsAutoevaTrabEquipo" msprop:Generator_UserDSName="DsAutoevaTrabEquipo">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtAutoevaTrabEquipo" msprop:Generator_TableClassName="dtAutoevaTrabEquipoDataTable" msprop:Generator_TableVarName="tabledtAutoevaTrabEquipo" msprop:Generator_RowChangedName="dtAutoevaTrabEquipoRowChanged" msprop:Generator_TablePropName="dtAutoevaTrabEquipo" msprop:Generator_RowDeletingName="dtAutoevaTrabEquipoRowDeleting" msprop:Generator_RowChangingName="dtAutoevaTrabEquipoRowChanging" msprop:Generator_RowEvHandlerName="dtAutoevaTrabEquipoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtAutoevaTrabEquipoRowDeleted" msprop:Generator_RowClassName="dtAutoevaTrabEquipoRow" msprop:Generator_UserTableName="dtAutoevaTrabEquipo" msprop:Generator_RowEvArgName="dtAutoevaTrabEquipoRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="LOGO_PROPIETARIA" msprop:Generator_ColumnVarNameInTable="columnLOGO_PROPIETARIA" msprop:Generator_ColumnPropNameInRow="LOGO_PROPIETARIA" msprop:Generator_ColumnPropNameInTable="LOGO_PROPIETARIAColumn" msprop:Generator_UserColumnName="LOGO_PROPIETARIA" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="NOMBRE_APELLIDO_TRABAJADOR" msprop:Generator_ColumnVarNameInTable="columnNOMBRE_APELLIDO_TRABAJADOR" msprop:Generator_ColumnPropNameInRow="NOMBRE_APELLIDO_TRABAJADOR" msprop:Generator_ColumnPropNameInTable="NOMBRE_APELLIDO_TRABAJADORColumn" msprop:Generator_UserColumnName="NOMBRE_APELLIDO_TRABAJADOR" type="xs:string" minOccurs="0" />
+              <xs:element name="PUESTO_TRABAJADOR" msprop:Generator_ColumnVarNameInTable="columnPUESTO_TRABAJADOR" msprop:Generator_ColumnPropNameInRow="PUESTO_TRABAJADOR" msprop:Generator_ColumnPropNameInTable="PUESTO_TRABAJADORColumn" msprop:Generator_UserColumnName="PUESTO_TRABAJADOR" type="xs:string" minOccurs="0" />
+              <xs:element name="DNI_TRABAJADOR" msprop:Generator_ColumnVarNameInTable="columnDNI_TRABAJADOR" msprop:Generator_ColumnPropNameInRow="DNI_TRABAJADOR" msprop:Generator_ColumnPropNameInTable="DNI_TRABAJADORColumn" msprop:Generator_UserColumnName="DNI_TRABAJADOR" type="xs:string" minOccurs="0" />
+              <xs:element name="EMPRESA_CLIENTE" msprop:Generator_ColumnVarNameInTable="columnEMPRESA_CLIENTE" msprop:Generator_ColumnPropNameInRow="EMPRESA_CLIENTE" msprop:Generator_ColumnPropNameInTable="EMPRESA_CLIENTEColumn" msprop:Generator_UserColumnName="EMPRESA_CLIENTE" type="xs:string" minOccurs="0" />
+              <xs:element name="FECHA_ATENCION" msprop:Generator_ColumnVarNameInTable="columnFECHA_ATENCION" msprop:Generator_ColumnPropNameInRow="FECHA_ATENCION" msprop:Generator_ColumnPropNameInTable="FECHA_ATENCIONColumn" msprop:Generator_UserColumnName="FECHA_ATENCION" type="xs:string" minOccurs="0" />
+              <xs:element name="TIPO_ESO" msprop:Generator_ColumnVarNameInTable="columnTIPO_ESO" msprop:Generator_ColumnPropNameInRow="TIPO_ESO" msprop:Generator_ColumnPropNameInTable="TIPO_ESOColumn" msprop:Generator_UserColumnName="TIPO_ESO" type="xs:string" minOccurs="0" />
+              <xs:element name="DIAGNOSTICO_EXAMEN" msprop:Generator_ColumnVarNameInTable="columnDIAGNOSTICO_EXAMEN" msprop:Generator_ColumnPropNameInRow="DIAGNOSTICO_EXAMEN" msprop:Generator_ColumnPropNameInTable="DIAGNOSTICO_EXAMENColumn" msprop:Generator_UserColumnName="DIAGNOSTICO_EXAMEN" type="xs:string" minOccurs="0" />
+              <xs:element name="FIRMA_USUARIO_GRABA" msprop:Generator_ColumnVarNameInTable="columnFIRMA_USUARIO_GRABA" msprop:Generator_ColumnPropNameInRow="FIRMA_USUARIO_GRABA" msprop:Generator_ColumnPropNameInTable="FIRMA_USUARIO_GRABAColumn" msprop:Generator_UserColumnName="FIRMA_USUARIO_GRABA" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="__1ME_SIENTO" msprop:Generator_ColumnVarNameInTable="column__1ME_SIENTO" msprop:Generator_ColumnPropNameInRow="__1ME_SIENTO" msprop:Generator_ColumnPropNameInTable="__1ME_SIENTOColumn" msprop:Generator_UserColumnName="__1ME_SIENTO" type="xs:string" minOccurs="0" />
+              <xs:element name="__2ME_SIENTO" msprop:Generator_ColumnVarNameInTable="column__2ME_SIENTO" msprop:Generator_ColumnPropNameInRow="__2ME_SIENTO" msprop:Generator_ColumnPropNameInTable="__2ME_SIENTOColumn" msprop:Generator_UserColumnName="__2ME_SIENTO" type="xs:string" minOccurs="0" />
+              <xs:element name="__3RECIBO_RE" msprop:Generator_ColumnVarNameInTable="column__3RECIBO_RE" msprop:Generator_ColumnPropNameInRow="__3RECIBO_RE" msprop:Generator_ColumnPropNameInTable="__3RECIBO_REColumn" msprop:Generator_UserColumnName="__3RECIBO_RE" type="xs:string" minOccurs="0" />
+              <xs:element name="__4TENGO_UNA" msprop:Generator_ColumnVarNameInTable="column__4TENGO_UNA" msprop:Generator_ColumnPropNameInRow="__4TENGO_UNA" msprop:Generator_ColumnPropNameInTable="__4TENGO_UNAColumn" msprop:Generator_UserColumnName="__4TENGO_UNA" type="xs:string" minOccurs="0" />
+              <xs:element name="__5TENGO_LIB" msprop:Generator_ColumnVarNameInTable="column__5TENGO_LIB" msprop:Generator_ColumnPropNameInRow="__5TENGO_LIB" msprop:Generator_ColumnPropNameInTable="__5TENGO_LIBColumn" msprop:Generator_UserColumnName="__5TENGO_LIB" type="xs:string" minOccurs="0" />
+              <xs:element name="__6SE_RESOLV" msprop:Generator_ColumnVarNameInTable="column__6SE_RESOLV" msprop:Generator_ColumnPropNameInRow="__6SE_RESOLV" msprop:Generator_ColumnPropNameInTable="__6SE_RESOLVColumn" msprop:Generator_UserColumnName="__6SE_RESOLV" type="xs:string" minOccurs="0" />
+              <xs:element name="__7TENGO_CON" msprop:Generator_ColumnVarNameInTable="column__7TENGO_CON" msprop:Generator_ColumnPropNameInRow="__7TENGO_CON" msprop:Generator_ColumnPropNameInTable="__7TENGO_CONColumn" msprop:Generator_UserColumnName="__7TENGO_CON" type="xs:string" minOccurs="0" />
+              <xs:element name="__8SOY_PRODU" msprop:Generator_ColumnVarNameInTable="column__8SOY_PRODU" msprop:Generator_ColumnPropNameInRow="__8SOY_PRODU" msprop:Generator_ColumnPropNameInTable="__8SOY_PRODUColumn" msprop:Generator_UserColumnName="__8SOY_PRODU" type="xs:string" minOccurs="0" />
+              <xs:element name="__9TENGO_UN" msprop:Generator_ColumnVarNameInTable="column__9TENGO_UN" msprop:Generator_ColumnPropNameInRow="__9TENGO_UN" msprop:Generator_ColumnPropNameInTable="__9TENGO_UNColumn" msprop:Generator_UserColumnName="__9TENGO_UN" type="xs:string" minOccurs="0" />
+              <xs:element name="__10TRABAJO" msprop:Generator_ColumnVarNameInTable="column__10TRABAJO" msprop:Generator_ColumnPropNameInRow="__10TRABAJO" msprop:Generator_ColumnPropNameInTable="__10TRABAJOColumn" msprop:Generator_UserColumnName="__10TRABAJO" type="xs:string" minOccurs="0" />
+              <xs:element name="__11ESTOY_DE" msprop:Generator_ColumnVarNameInTable="column__11ESTOY_DE" msprop:Generator_ColumnPropNameInRow="__11ESTOY_DE" msprop:Generator_ColumnPropNameInTable="__11ESTOY_DEColumn" msprop:Generator_UserColumnName="__11ESTOY_DE" type="xs:string" minOccurs="0" />
+              <xs:element name="__12RESPALDO" msprop:Generator_ColumnVarNameInTable="column__12RESPALDO" msprop:Generator_ColumnPropNameInRow="__12RESPALDO" msprop:Generator_ColumnPropNameInTable="__12RESPALDOColumn" msprop:Generator_UserColumnName="__12RESPALDO" type="xs:string" minOccurs="0" />
+              <xs:element name="__13MI_TRABAJ" msprop:Generator_ColumnVarNameInTable="column__13MI_TRABAJ" msprop:Generator_ColumnPropNameInRow="__13MI_TRABAJ" msprop:Generator_ColumnPropNameInTable="__13MI_TRABAJColumn" msprop:Generator_UserColumnName="__13MI_TRABAJ" type="xs:string" minOccurs="0" />
+              <xs:element name="PUNTAJE" msprop:Generator_ColumnVarNameInTable="columnPUNTAJE" msprop:Generator_ColumnPropNameInRow="PUNTAJE" msprop:Generator_ColumnPropNameInTable="PUNTAJEColumn" msprop:Generator_UserColumnName="PUNTAJE" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

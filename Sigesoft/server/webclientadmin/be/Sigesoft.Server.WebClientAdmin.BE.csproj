@@ -1,0 +1,208 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B78BC42C-F0B2-4842-8C13-8D0DF6DBE65D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sigesoft.Server.WebClientAdmin.BE</RootNamespace>
+    <AssemblyName>Sigesoft.Server.WebClientAdmin.BE</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Custom\Anexo312.cs" />
+    <Compile Include="Custom\ApplicationHierarchyList.cs" />
+    <Compile Include="Custom\AttentionInAreaComponentList.cs" />
+    <Compile Include="Custom\AttentionInAreaList.cs" />
+    <Compile Include="Custom\AutorizationList.cs" />
+    <Compile Include="Custom\CalendarList.cs" />
+    <Compile Include="Custom\CamposAuditoria.cs" />
+    <Compile Include="Custom\Categoria.cs" />
+    <Compile Include="Custom\CIE10List.cs" />
+    <Compile Include="Custom\ComponentDetailList.cs" />
+    <Compile Include="Custom\DataHierarchyList.cs" />
+    <Compile Include="Custom\DeploymentFileList.cs" />
+    <Compile Include="Custom\DiagnosticRepositoryList.cs" />
+    <Compile Include="Custom\FamilyMedicalAntecedentsList.cs" />
+    <Compile Include="Custom\HistoryList.cs" />
+    <Compile Include="Custom\ListConfDx.cs" />
+    <Compile Include="Custom\ListOrgano.cs" />
+    <Compile Include="Custom\LogList.cs" />
+    <Compile Include="Custom\masterrecommendationrestricctionList.cs" />
+    <Compile Include="Custom\MovementList.cs" />
+    <Compile Include="Custom\MusculoEsqueleticoInter.cs" />
+    <Compile Include="Custom\MyListWeb.cs" />
+    <Compile Include="Custom\NodeList.cs" />
+    <Compile Include="Custom\NodeOrganizationLoactionWarehouseList.cs" />
+    <Compile Include="Custom\NodeServiceProfileList.cs" />
+    <Compile Include="Custom\NoxiousHabitsList.cs" />
+    <Compile Include="Custom\ObtenerIdsImporacion.cs" />
+    <Compile Include="Custom\OrganizationList.cs" />
+    <Compile Include="Custom\PacientList.cs" />
+    <Compile Include="Custom\PersonList.cs" />
+    <Compile Include="Custom\PersonMedicalHistoryList.cs" />
+    <Compile Include="Custom\ProductList.cs" />
+    <Compile Include="Custom\ProductWarehouseList.cs" />
+    <Compile Include="Custom\ProtocolSystemUserList.cs" />
+    <Compile Include="Custom\RecomendationList.cs" />
+    <Compile Include="Custom\ReporteAltura18_CI.cs" />
+    <Compile Include="Custom\ReportEstadistica.cs" />
+    <Compile Include="Custom\ReportOdontograma_CI.cs" />
+    <Compile Include="Custom\ReportOftalmologia_CI.cs" />
+    <Compile Include="Custom\ReportOsteomuscular_CI.cs" />
+    <Compile Include="Custom\ReportTamizajeDermatologicoCI.cs" />
+    <Compile Include="Custom\RestrictedWarehouseProfileList.cs" />
+    <Compile Include="Custom\RestrictionList.cs" />
+    <Compile Include="Custom\RoleNodeComponentProfileList.cs" />
+    <Compile Include="Custom\RoleNodeList.cs" />
+    <Compile Include="Custom\ServerNodeSyncList.cs" />
+    <Compile Include="Custom\ServiceComponentList.cs" />
+    <Compile Include="Custom\ServiceList.cs" />
+    <Compile Include="Custom\ServiceShort.cs" />
+    <Compile Include="Custom\SoftwareComponentReleaseList.cs" />
+    <Compile Include="Custom\SupplierList.cs" />
+    <Compile Include="Custom\SystemParameterList.cs" />
+    <Compile Include="Custom\SystemUserContexProfileList.cs" />
+    <Compile Include="Custom\SystemUserList.cs" />
+    <Compile Include="Custom\WarehouseList.cs" />
+    <Compile Include="Custom\OrganizationShortList.cs" />
+    <Compile Include="Generated\applicationhierarchyDto.cs" />
+    <Compile Include="Generated\areaDto.cs" />
+    <Compile Include="Generated\attentioninareaDto.cs" />
+    <Compile Include="Generated\attentioninareacomponentDto.cs" />
+    <Compile Include="Generated\authorizedpersonDto.cs" />
+    <Compile Include="Generated\auxiliaryexamDto.cs" />
+    <Compile Include="Generated\blacklistpersonDto.cs" />
+    <Compile Include="Generated\calendarDto.cs" />
+    <Compile Include="Generated\cie10Dto.cs" />
+    <Compile Include="Generated\ciiuiDto.cs" />
+    <Compile Include="Generated\codigoempresaDto.cs" />
+    <Compile Include="Generated\componentDto.cs" />
+    <Compile Include="Generated\componentfieldDto.cs" />
+    <Compile Include="Generated\componentfieldsDto.cs" />
+    <Compile Include="Generated\componentfieldvaluesDto.cs" />
+    <Compile Include="Generated\componentfieldvaluesrecommendationDto.cs" />
+    <Compile Include="Generated\componentfieldvaluesrestrictionDto.cs" />
+    <Compile Include="Generated\datahierarchyDto.cs" />
+    <Compile Include="Generated\deploymentfileDto.cs" />
+    <Compile Include="Generated\diagnosticrepositoryDto.cs" />
+    <Compile Include="Generated\diseasesDto.cs" />
+    <Compile Include="Generated\dxfrecuenteDto.cs" />
+    <Compile Include="Generated\dxfrecuentedetalleDto.cs" />
+    <Compile Include="Generated\emailDto.cs" />
+    <Compile Include="Generated\workstationdangersDto.cs" />
+    <Compile Include="Generated\warehouseDto.cs" />
+    <Compile Include="Generated\typeofeepDto.cs" />
+    <Compile Include="Generated\systemuserrolenodeDto.cs" />
+    <Compile Include="Generated\systemusergobalprofileDto.cs" />
+    <Compile Include="Generated\systemuserDto.cs" />
+    <Compile Include="Generated\systemparameterDto.cs" />
+    <Compile Include="Generated\supplierDto.cs" />
+    <Compile Include="Generated\softwarecomponentreleaseDto.cs" />
+    <Compile Include="Generated\serviceorderdetailDto.cs" />
+    <Compile Include="Generated\serviceorderDto.cs" />
+    <Compile Include="Generated\servicemultimediaDto.cs" />
+    <Compile Include="Generated\servicecomponentmultimediaDto.cs" />
+    <Compile Include="Generated\servicecomponentfieldvaluesmultimediaDto.cs" />
+    <Compile Include="Generated\servicecomponentfieldvaluesDto.cs" />
+    <Compile Include="Generated\servicecomponentfieldsDto.cs" />
+    <Compile Include="Generated\servicecomponentDto.cs" />
+    <Compile Include="Generated\serviceDto.cs" />
+    <Compile Include="Generated\serversyncstatusDto.cs" />
+    <Compile Include="Generated\servernodesyncDto.cs" />
+    <Compile Include="Generated\secuentialDto.cs" />
+    <Compile Include="Generated\rolenodeprofileDto.cs" />
+    <Compile Include="Generated\rolenodecomponentprofileDto.cs" />
+    <Compile Include="Generated\rolenodeDto.cs" />
+    <Compile Include="Generated\rolcuotadetalleDto.cs" />
+    <Compile Include="Generated\rolcuotaDto.cs" />
+    <Compile Include="Generated\restrictionDto.cs" />
+    <Compile Include="Generated\restrictedwarehouseprofileDto.cs" />
+    <Compile Include="Generated\recommendationDto.cs" />
+    <Compile Include="Generated\recetadespachoDto.cs" />
+    <Compile Include="Generated\recetaDto.cs" />
+    <Compile Include="Generated\protocolsystemuserDto.cs" />
+    <Compile Include="Generated\protocolcomponentDto.cs" />
+    <Compile Include="Generated\protocolDto.cs" />
+    <Compile Include="Generated\professionalDto.cs" />
+    <Compile Include="Generated\productwarehouseDto.cs" />
+    <Compile Include="Generated\productsformigrationDto.cs" />
+    <Compile Include="Generated\productDto.cs" />
+    <Compile Include="Generated\procedurebyserviceDto.cs" />
+    <Compile Include="Generated\planDto.cs" />
+    <Compile Include="Generated\personmedicalhistoryDto.cs" />
+    <Compile Include="Generated\personDto.cs" />
+    <Compile Include="Generated\pacientmultimediadataDto.cs" />
+    <Compile Include="Generated\pacientDto.cs" />
+    <Compile Include="Generated\organizationDto.cs" />
+    <Compile Include="Generated\ordenreporteDto.cs" />
+    <Compile Include="Generated\occupationDto.cs" />
+    <Compile Include="Generated\noxioushabitsDto.cs" />
+    <Compile Include="Generated\nodesyncstatusDto.cs" />
+    <Compile Include="Generated\nodeserviceprofileDto.cs" />
+    <Compile Include="Generated\nodeorganizationprofileDto.cs" />
+    <Compile Include="Generated\nodeorganizationlocationwarehouseprofileDto.cs" />
+    <Compile Include="Generated\nodeorganizationlocationprofileDto.cs" />
+    <Compile Include="Generated\nodedatabasestatusDto.cs" />
+    <Compile Include="Generated\nodeDto.cs" />
+    <Compile Include="Generated\multimediafileDto.cs" />
+    <Compile Include="Generated\movementdetailDto.cs" />
+    <Compile Include="Generated\movementDto.cs" />
+    <Compile Include="Generated\medicationDto.cs" />
+    <Compile Include="Generated\masterrecommendationrestricctionDto.cs" />
+    <Compile Include="Generated\logDto.cs" />
+    <Compile Include="Generated\locationDto.cs" />
+    <Compile Include="Generated\historyDto.cs" />
+    <Compile Include="Generated\groupoccupationDto.cs" />
+    <Compile Include="Generated\gesDto.cs" />
+    <Compile Include="Generated\familymedicalantecedentsDto.cs" />
+    <Compile Include="Generated\facturaciondetalleDto.cs" />
+    <Compile Include="Generated\facturacionDto.cs" />
+    <Compile Include="Generated\reporteatencionmedicaResultDto.cs" />
+    <Compile Include="Generated\llenargrillasigesoftResultDto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
