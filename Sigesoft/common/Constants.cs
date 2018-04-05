@@ -2582,9 +2582,9 @@ namespace Sigesoft.Common
         public const string CODODERECHO = "N009-MF000003163";
         public const string RODILLAIZQUIERDO = "N009-MF000003164";
         public const string RODILLADERECHO = "N009-MF000003165";
-        public const string ABDOMEN = "N009-MF000003166";
-        public const string CADERA = "N009-MF000003168";
-        public const string MUSLO = "N009-MF000003170";
+        public const string ABDOMEN_ID = "N009-MF000003166";
+        public const string CADERA_ID = "N009-MF000003168";
+        public const string MUSLO_ID = "N009-MF000003170";
         public const string LATERAL = "N009-MF000003172";
         public const string ABDOMEN_COMEN = "N009-MF000003167";
         public const string CADERA_COMEN = "N009-MF000003169";
