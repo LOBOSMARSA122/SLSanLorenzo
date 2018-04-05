@@ -2345,7 +2345,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.ELECTROCARDIOGRAMA_ID + ".pdf";
                     objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ELECTROCARDIOGRAMA_ID + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;

@@ -7,3 +7,12 @@ E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\bi
 E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.csprojResolveAssemblyReference.cache
 E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.dll
 E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.pdb
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\bin\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.dll
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\bin\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.pdb
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\bin\Debug\Sigesoft.Node.WinClient.BE.dll
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.dll
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\bin\Debug\Sigesoft.Node.WinClient.BE.pdb
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.pdb
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.csprojResolveAssemblyReference.cache
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.dll
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\DAL\PostgreSQL\obj\Debug\Sigesoft.Server.WebClientAdmin.DAL.PostgreSQL.pdb

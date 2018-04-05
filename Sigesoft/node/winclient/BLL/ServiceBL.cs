@@ -18169,7 +18169,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 								 where A.v_ServiceId == pstrserviceId
 								 select new ReportEstudioElectrocardiografico
-								 {
+								 { //ron
 									 NroFicha = E.v_ServiceComponentId,
                                      TipoESO = C.i_EsoTypeId.Value,
 									 NroHistoria = A.v_ServiceId,

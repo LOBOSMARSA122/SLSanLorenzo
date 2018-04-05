@@ -2,3 +2,7 @@ E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\BE\bin\Debug\Sige
 E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\BE\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.pdb
 E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\BE\obj\Debug\Sigesoft.Server.WebClientAdmin.BE.dll
 E:\Project\Omeganet\SLCajamarca\Sigesoft\Server\WebClientAdmin\BE\obj\Debug\Sigesoft.Server.WebClientAdmin.BE.pdb
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\BE\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.dll
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\BE\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.pdb
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\BE\obj\Debug\Sigesoft.Server.WebClientAdmin.BE.dll
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\BE\obj\Debug\Sigesoft.Server.WebClientAdmin.BE.pdb

@@ -2550,6 +2550,49 @@ namespace Sigesoft.Common
         public const string VERTICES = "N009-MF000002501";
         #endregion
 
+        #region Ostio Coimalache
+
+        public const string ESCOLIOSIS = "N009-MF000003136";
+        public const string CIFOSIS = "N009-MF000003137";
+        public const string LORDOSIS = "N009-MF000003138";
+        public const string ESCOLIOSIS_COMEN = "N009-MF000003139";
+        public const string CIFOSIS_COMEN = "N009-MF000003140";
+        public const string LORDOSIS_COMEN = "N009-MF000003141";
+        public const string FLEXIONADELANTE = "N009-MF000003142";
+        public const string HIPEREXTESION = "N009-MF000003144";
+        public const string FLEXIONIZQUIERDO = "N009-MF000003146";
+        public const string FLEXIONDERECHO = "N009-MF000003148";
+        public const string ROTACIONIZQUIERDO = "N009-MF000003150";
+        public const string ROTACIONDERECHO = "N009-MF000003152";
+        public const string FUERZALEVANTASE = "N009-MF000003154";
+        public const string FLEXIONADELANTE_COMEN = "N009-MF000003143";
+        public const string HIPEREXTESION_COMEN = "N009-MF000003145";
+        public const string FLEXIONIZQUIERDO_COMEN = "N009-MF000003147";
+        public const string FLEXIONDERECHO_COMEN = "N009-MF000003149";
+        public const string ROTACIONIZQUIERDO_COMEN = "N009-MF000003151";
+        public const string ROTACIONDERECHO_COMEN = "N009-MF000003153";
+        public const string FUERZALEVANTASE_COMEN = "N009-MF000003155";
+        public const string CORRIENDO = "N009-MF000003156";
+        public const string CAMINANDO = "N009-MF000003158";
+        public const string PONERSECUCLILLA = "N009-MF000003160";
+        public const string CORRIENDO_COMEN = "N009-MF000003157";
+        public const string CAMINANDO_COMEN = "N009-MF000003159";
+        public const string PONERSECUCLILLA_COMEN = "N009-MF000003161";
+        public const string CODOIZQUIERDO = "N009-MF000003162";
+        public const string CODODERECHO = "N009-MF000003163";
+        public const string RODILLAIZQUIERDO = "N009-MF000003164";
+        public const string RODILLADERECHO = "N009-MF000003165";
+        public const string ABDOMEN = "N009-MF000003166";
+        public const string CADERA = "N009-MF000003168";
+        public const string MUSLO = "N009-MF000003170";
+        public const string LATERAL = "N009-MF000003172";
+        public const string ABDOMEN_COMEN = "N009-MF000003167";
+        public const string CADERA_COMEN = "N009-MF000003169";
+        public const string MUSLO_COMEN = "N009-MF000003171";
+        public const string LATERAL_COMEN = "N009-MF000003173";
+
+        #endregion
+
         #region Vacunas
 
         public const string VACUNA_ANTIRRABICA = "N009-ME000000068";
@@ -3274,7 +3317,7 @@ namespace Sigesoft.Common
         public const string COLUMNA_DORSAL = "N009-MF000000171";
         public const string COLUMNA_CERVICAL = "N009-MF000000832";
         public const string DESCRIPCION = "N009-MF000000232";
-
+        public const string APTITUDESPALDA = "N009-MF000003174";
         public const string APTITUD = "N009-MF000000621";
         #endregion
 
