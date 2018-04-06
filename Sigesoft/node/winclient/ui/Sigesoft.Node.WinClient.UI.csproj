@@ -64,6 +64,10 @@
     <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AxInterop.ZKFPEngXControl, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\SLSanjoaquin\ExternalLibraries\AxInterop.ZKFPEngXControl.dll</HintPath>
+    </Reference>
     <Reference Include="Controls">
       <HintPath>..\..\..\..\ExternalLibraries\Controls.dll</HintPath>
     </Reference>

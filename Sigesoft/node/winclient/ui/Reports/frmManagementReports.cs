@@ -2352,18 +2352,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Export();
                     rp.Close();
 
-                    rp = new Reports.crApendice05_EKG();
-                    rp.SetDataSource(dsGetRepo);
-                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    objDiskOpt = new DiskFileDestinationOptions();
-                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_02" + ".pdf";
-                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    rp.ExportOptions.DestinationOptions = objDiskOpt;
-
-                    rp.Export();
-                    rp.Close();
-
                     rp = new Reports.crInformeElectroCardiografiaoGoldField_EKG();
                     rp.SetDataSource(dsGetRepo);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
