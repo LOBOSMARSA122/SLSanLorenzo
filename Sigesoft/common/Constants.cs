@@ -962,16 +962,18 @@ namespace Sigesoft.Common
         public const string INFORME_CERTIFICADO_APTITUD_COMPLETO = "CAPC";
         public const string INFORME_CERTIFICADO_APTITUD_SIN_DX = "CAPSD";
         public const string CONSENTIMIENTO_INFORMADO = "CI";
+        
         public const string INFORME_FICHA_MEDICA_TRABAJADOR_CI = "FMT_CI";
         public const string HISTORIA_CLINICA = "HIST_CLI";
         public const string FORMATO_ATENCION = "FA";
-
-
         public const string INFORME_ANEXO_16_COIMOLACHE = "7C-COIMOLACHE";
         public const string INFORME_ANEXO_16_YANACOCHA = "7C-YANACOCHA";
         public const string INFORME_ANEXO_16_SHAHUINDO = "7C-SHAHUINDO";
         public const string INFORME_ANEXO_16_GOLD_FIELD = "7C-GOLD_FIELD";
+        public const string INFORME_ANTECEDENTE_PATOLOGICO = "ANTECEDENTE_PATL";
 
+        public const string INFORME_DECLARACION_CI = "DECLARACION_CI";
+        public const string INFORME_ESPIROMETRIA = "INFORME_ESPIRO";
         #endregion
 
     
@@ -3761,7 +3763,7 @@ namespace Sigesoft.Common
         public const string TOXICOLOGICO_COLINESTERASA_RESULTADO = "N009-MF000000393";
         public const string TOXICOLOGICO_COLINESTERASA_DESEABLE = "N009-MF000000394";
 
-
+        public const string ELECTRO_GOLD = "N009-ME000000412";
 
         public const string TOXICOLOGICO_ID = "N009-ME000000303";
 

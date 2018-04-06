@@ -7,6 +7,7 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class FichaAudiometricaAudiomax
     {
+        //
         public string ServiceId { get; set; }
         public string ServiceComponentId { get; set; }
         public string ApellidosNombre { get; set; }
