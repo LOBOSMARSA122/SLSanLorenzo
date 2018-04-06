@@ -108,7 +108,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 Yanacocha", v_ComponentId = Constants.INFORME_ANEXO_16_YANACOCHA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 Shahuindo", v_ComponentId = Constants.INFORME_ANEXO_16_SHAHUINDO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 Gold Field", v_ComponentId = Constants.INFORME_ANEXO_16_GOLD_FIELD });
-             
+
                 var ResultadoAnexo312 = serviceComponents.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
                 if (ResultadoAnexo312.Count() != 0)
                 {
@@ -118,7 +118,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 if (ResultadoFisico7C.Count() != 0)
                 {
                     serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 7C", v_ComponentId = Constants.INFORME_ANEXO_7C });
-                    
+
                 }
                 serviceComponents.Add(new ServiceComponentList { Orden = 7, v_ComponentName = "HISTORIA OCUPACIONAL", v_ComponentId = Constants.INFORME_HISTORIA_OCUPACIONAL });
 
@@ -249,18 +249,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
                     ent.Orden = 32;
                 }
-                //else if (item.v_ComponentId == Constants.SINTOMATICO_RESPIRATORIO)
-                //{
-                //    var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                //    ent.Orden = 33;
-                //}
+
 
 
             }
-
-
-
-
 
             #region Consolidado de Reportes
             string[] ConsolidadoReportesForPrint = new string[] 
@@ -473,31 +465,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             #region Examen For Print
 
 
@@ -668,7 +635,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 if (ResultadoFisico7C.Count() != 0)
                 {
                     fichasMedicas.Add(new ServiceComponentList { v_ComponentName = "Anexo 7C", v_ComponentId = Constants.INFORME_ANEXO_7C });
-                    
+
                 }
             }
 
@@ -858,7 +825,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateAnexo16GoldField(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, Constants.INFORME_ANEXO_16_GOLD_FIELD)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, componentId)));
                     break;
-                
+
                 case Constants.INFORME_CLINICO:
                     GenerateInformeExamenClinico(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, Constants.INFORME_CLINICO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, componentId)));
@@ -1095,7 +1062,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                                     pathFile);
 
         }
-       
+
         private void GenerateAnexo16Yanacocha(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -1121,7 +1088,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                                     pathFile);
 
         }
-        
+
         private void GenerateAnexo16Shahuindo(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -1147,7 +1114,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                                     pathFile);
 
         }
-       
+
         private void GenerateAnexo16GoldField(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -1974,12 +1941,35 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.CONSENTIMIENTO_INFORMADO + ".pdf";
                     objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
+
+                    if(pintIdCrystal == 50){
+                        rp = new Reports.crConsentimiento_YanaGold();
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    objDiskOpt = new DiskFileDestinationOptions();
+                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO + "02"+".pdf";
+                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                    rp.Export();
+                    rp.Close();
+                    }else
+                    if (pintIdCrystal == 51)
+                    {
+                        rp = new Reports.crDeclaracion_YanaGold();
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO + "03" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                    }
                     break;
 
                 case Constants.AUDIOMETRIA_AUDIOMAX_ID:
@@ -2202,25 +2192,26 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.INFORME_HISTORIA_OCUPACIONAL + ".pdf";
                     objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
 
-                    rp = new Reports.crApendice01_HistoriaOcupacional();
-                    rp.SetDataSource(dsGetRepo);
-                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    objDiskOpt = new DiskFileDestinationOptions();
-                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_02" + ".pdf";
-                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                    if (pintIdCrystal == 37)
+                    {
+                        rp = new Reports.crApendice01_HistoriaOcupacional();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_02" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
 
-                    rp.Export();
-                    rp.Close();
-
+                        rp.Export();
+                        rp.Close();
+                    }
                     rp = new Reports.crfichaComplementaria_HO();
                     rp.SetDataSource(dsGetRepo);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -2340,7 +2331,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp = new Reports.crEstudioElectrocardiografico();
                     }
 
-                    //hoy
                     rp.SetDataSource(dsGetRepo);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -2350,19 +2340,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
-
-                    rp = new Reports.crApendice05_EKG();
-                    rp.SetDataSource(dsGetRepo);
-                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    objDiskOpt = new DiskFileDestinationOptions();
-                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_02" + ".pdf";
-                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    rp.ExportOptions.DestinationOptions = objDiskOpt;
-
-                    rp.Export();
-                    rp.Close();
-
+                    if (pintIdCrystal == 43)
+                    {
+                        rp = new Reports.crApendice05_EKG();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_02" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                    }else 
+                        if(pintIdCrystal == 53){
                     rp = new Reports.crInformeElectroCardiografiaoGoldField_EKG();
                     rp.SetDataSource(dsGetRepo);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -2374,8 +2365,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     rp.Export();
                     rp.Close();
-
+                        }
                     break;
+
                 case Constants.PRUEBA_ESFUERZO_ID:
                     var aptitudeCertificate = new ServiceBL().GetReportPruebaEsfuerzo(_serviceId, Constants.PRUEBA_ESFUERZO_ID);
                     var FuncionesVitales1 = new ServiceBL().ReportFuncionesVitales(_serviceId, Constants.FUNCIONES_VITALES_ID);
@@ -2558,7 +2550,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.AUDIOMETRIA_ID + ".pdf";
                         objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.AUDIOMETRIA_ID + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
@@ -2566,6 +2557,19 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.Close();
                     }
 
+                    if (pintIdCrystal == 40)
+                    {
+                        rp = new Reports.crApendice03_Audio();
+                        rp.SetDataSource(dsAudiometria);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.AUDIOMETRIA_ID + "_03" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                    }
 
 
 
@@ -2695,13 +2699,28 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.ALTURA_ESTRUCTURAL_ID + ".pdf";
                     objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.OFTALMOLOGIA_ID + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
                     break;
+
+                    if (pintIdCrystal == 39)
+                    {
+                        rp = new Reports.crApendice02_Oftalmo();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.OFTALMOLOGIA_ID + "_02" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                        break;
+                    }
+
 
                 case Constants.PSICOLOGIA_ID:
                     var PSICOLOGIA_ID = new PacientBL().GetFichaPsicologicaOcupacional(_serviceId);
@@ -2726,7 +2745,61 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Export();
                     rp.Close();
 
+                    if (pintIdCrystal == 42)
+                    {
+
+                        rp = new Reports.crApendice04_Psico_01();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + "_01" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+
+                        rp = new Reports.crApendice04_Psico_02();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + "_02" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                        
+                    }else 
+                        if (pintIdCrystal == 55)
+                    {
+
+                        rp = new Reports.crHistoriaClinicaPsicologica_GOLD  ();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + "01" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+
+                        rp = new Reports.crHistoriaClinicaPsicologica2_GOLD();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.PSICOLOGIA_ID + "02" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                        
+                    }
+
                     break;
+
                 case Constants.RX_TORAX_ID:
 
 
@@ -2783,6 +2856,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
                     rp.Close();
+                    if (pintIdCrystal == 45)
+                    {
+                        rp = new Reports.crApendice06_OIT();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.OIT_ID + ".pdf";
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.OIT_ID + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                    }
                     break;
                 case Constants.TAMIZAJE_DERMATOLOGIO_ID:
                     var TAMIZAJE_DERMATOLOGIO_ID = new ServiceBL().ReportTamizajeDermatologico(_serviceId, Constants.TAMIZAJE_DERMATOLOGIO_ID);
@@ -2823,45 +2910,50 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Export();
                     rp.Close();
 
+                    if (pintIdCrystal == 54)
+                    {
 
-                    rp = new Reports.crEspiroCuestionarioGoldField();
-                    rp.SetDataSource(dsGetRepo);
-                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    objDiskOpt = new DiskFileDestinationOptions();
-                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_02" + ".pdf";
-                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp = new Reports.crEspiroCuestionarioGoldField();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_02" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
 
-                    rp.Export();
-                    rp.Close();
+                        rp.Export();
+                        rp.Close();
+                    }else
+                    if (pintIdCrystal == 35)
+                    {
+                        rp = new Reports.crApendice08_Espiro01();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_03" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
 
+                        rp.Export();
+                        rp.Close();
+                    }else
+                    if (pintIdCrystal == 46)
+                    {
+                        rp = new Reports.crApendice08_Espiro02();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_04" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
 
-                    rp = new Reports.crApendice08_Espiro01();
-                    rp.SetDataSource(dsGetRepo);
-                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    objDiskOpt = new DiskFileDestinationOptions();
-                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_03" + ".pdf";
-                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    rp.ExportOptions.DestinationOptions = objDiskOpt;
-
-                    rp.Export();
-                    rp.Close();
-
-
-                    rp = new Reports.crApendice08_Espiro02();
-                    rp.SetDataSource(dsGetRepo);
-                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    objDiskOpt = new DiskFileDestinationOptions();
-                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ESPIROMETRIA_ID + "_04" + ".pdf";
-                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    rp.ExportOptions.DestinationOptions = objDiskOpt;
-
-                    rp.Export();
-                    rp.Close();
-
+                        rp.Export();
+                        rp.Close();
+                    }else
+                    if(pintIdCrystal == 58){
                     rp = new Reports.crAnexo05_Espiro();
                     rp.SetDataSource(dsGetRepo);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -2873,7 +2965,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     rp.Export();
                     rp.Close();
-
+                    }
 
                     break;
 
@@ -3895,18 +3987,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Export();
                     rp.Close();
 
+                    if(pintIdCrystal == 48){
+                        rp = new Reports.crApendice09_Drogas();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID + "02" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
 
-                    //rp = new Reports.crCocainaMarihuana02();
-                    //rp.SetDataSource(dsGetRepo);
-                    //rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    //rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    //objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID + "02.pdf";
-                    //_filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    //rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                    }
 
-                    //rp.Export();
-                    //rp.Close();
                     break;
 
                 case "N009-ME000000337":
@@ -4014,7 +4108,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateAnexo16GoldField(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, Constants.INFORME_ANEXO_16_GOLD_FIELD)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, componentId)));
                     break;
-                
+
                 case Constants.INFORME_CLINICO:
                     GenerateInformeExamenClinico(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_CLINICO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
