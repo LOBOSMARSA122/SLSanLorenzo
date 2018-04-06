@@ -14,16 +14,16 @@
       </applicationRequestMinimum>
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
-          Opciones del manifiesto de Control de cuentas de usuario
-          Si desea cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el 
-          nodo requestedExecutionLevel por alguno de los siguientes.
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         Si desea usar la virtualización de archivos y del Registro para la 
-         compatibilidad con versiones anteriores, elimine el nodo requestedExecutionLevel.
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
       </requestedPrivileges>
@@ -39,6 +39,46 @@
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Devart.Data" version="5.0.792.0" publicKeyToken="09AF7300EEC23701" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Devart.Data.PostgreSql" version="6.8.333.0" publicKeyToken="09AF7300EEC23701" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Infragistics4.Shared.v15.1" version="15.1.20151.1000" publicKeyToken="7DD5C3163F2CD0CB" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Infragistics4.Win.Misc.v15.1" version="15.1.20151.1000" publicKeyToken="7DD5C3163F2CD0CB" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Infragistics4.Win.UltraWinEditors.v15.1" version="15.1.20151.1000" publicKeyToken="7DD5C3163F2CD0CB" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Infragistics4.Win.UltraWinGrid.v15.1" version="15.1.20151.1000" publicKeyToken="7DD5C3163F2CD0CB" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Infragistics4.Win.UltraWinStatusBar.v15.1" version="15.1.20151.1000" publicKeyToken="7DD5C3163F2CD0CB" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Infragistics4.Win.v15.1" version="15.1.20151.1000" publicKeyToken="7DD5C3163F2CD0CB" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
   <dependency>
@@ -563,18 +603,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.TeamFoundation.Client.resources.dll" size="220752">
-      <assemblyIdentity name="Microsoft.TeamFoundation.Client.resources" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>4DY1DUMoJwBdiawETla41n8F41I=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.TeamFoundation.Common.dll" size="646184">
       <assemblyIdentity name="Microsoft.TeamFoundation.Common" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -583,18 +611,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
         <dsig:DigestValue>r5fW0/U+nSGo53ljGwkiOcpEk98=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.TeamFoundation.Common.resources.dll" size="89680">
-      <assemblyIdentity name="Microsoft.TeamFoundation.Common.resources" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>QX6EoB436oMCWiuL7SxsgeQ8ERI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -611,18 +627,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.TeamFoundation.Diff.resources.dll" size="19528">
-      <assemblyIdentity name="Microsoft.TeamFoundation.Diff.resources" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>wVDJh5sWfRotsJYYrko2/P6PwLk=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.VisualBasic.PowerPacks.Vs.dll" size="269344">
       <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -631,18 +635,6 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
         <dsig:DigestValue>fGPnwWRQge7eDX6YlUg8yRubzSI=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="es\Microsoft.VisualBasic.PowerPacks.Vs.resources.dll" size="65128">
-      <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs.resources" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="es" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>DhOcLsZLOsJUzgYNQO96184Nhps=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -774,7 +766,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>HNMzldUlgNex04PAzK3foxALh9s=</dsig:DigestValue>
+        <dsig:DigestValue>CpdBuadb6sk+Ax3kLdLVYsAePz0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -786,7 +778,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>d+kfAVtKHmrudfotbA3D/VbzupE=</dsig:DigestValue>
+        <dsig:DigestValue>NvGfPgMxBwqnOuvcoDlgDm0+E10=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -810,7 +802,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>958psOwrJNQ9Cyp/W3NoHMLnNxI=</dsig:DigestValue>
+        <dsig:DigestValue>RnqAfN/c88dGKGCAinE2QPHTdk4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -822,19 +814,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>nJhgbTXy0lhpmjQkEB1M9vm+tNg=</dsig:DigestValue>
+        <dsig:DigestValue>VjnSZPp8czU4+7gW2foj22VtZ+Y=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sigesoft.Node.WinClient.UI.exe" size="98973184">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sigesoft.Node.WinClient.UI.exe" size="98984448">
       <assemblyIdentity name="Sigesoft.Node.WinClient.UI" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ORaRxztb1i7MGzfzq15Ma/iUGxw=</dsig:DigestValue>
+        <dsig:DigestValue>LfqKU3UHvjX6dYZsl8yLM+5+nUI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -851,14 +843,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="32192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="16384">
       <assemblyIdentity name="stdole" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>l54gWeb/UrsCray+NG6hRFjWDf4=</dsig:DigestValue>
+        <dsig:DigestValue>umKzfUIzuIlI/cL/7QjzyC6GJ/E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -1054,13 +1046,13 @@
       <dsig:DigestValue>qAR25CHxGNQChVz1Qrc346GGMww=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Sigesoft.Common.pdb" size="1902080">
+  <file name="Sigesoft.Common.pdb" size="1912320">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>76oP3ShAZfmL8kBavMm/3QROVcg=</dsig:DigestValue>
+      <dsig:DigestValue>eoWox/PkADzOv95DzbC3imOlT48=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Sigesoft.Node.WinClient.BE.pdb" size="298496">
@@ -1078,34 +1070,34 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>3V/bGeEbRNgXltDntIjWvRynGNk=</dsig:DigestValue>
+      <dsig:DigestValue>hPz2oIxhDs0d6XlnUtzmBUEn8mg=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Sigesoft.Node.WinClient.DAL.MSSQL.pdb" size="1936896">
+  <file name="Sigesoft.Node.WinClient.DAL.MSSQL.pdb" size="1992192">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>VfANGldQpuhGg1PZWJBe8800vqk=</dsig:DigestValue>
+      <dsig:DigestValue>0MjwKM8zTSWV2I0ZhcRNiRMCo5g=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Sigesoft.Node.WinClient.UI.exe.config" size="3614">
+  <file name="Sigesoft.Node.WinClient.UI.exe.config" size="3604">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>1rNo4osXTqFzwUs63GMkiUs/O1g=</dsig:DigestValue>
+      <dsig:DigestValue>AjksiDXkK0PnaLc7NiNmsRszEro=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="Sigesoft.Node.WinClient.UI.pdb" size="15793664">
+  <file name="Sigesoft.Node.WinClient.UI.pdb" size="16135680">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>PHW1jpyDbUHAC22P+nKrbJHl4Y4=</dsig:DigestValue>
+      <dsig:DigestValue>v4egeY1zMsL4vfBU+aVnsbODHQA=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>
