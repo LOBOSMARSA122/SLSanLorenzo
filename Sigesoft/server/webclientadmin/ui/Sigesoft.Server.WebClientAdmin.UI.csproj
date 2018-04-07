@@ -63,7 +63,7 @@
     </Reference>
     <Reference Include="FineUI, Version=3.2.6.0, Culture=neutral, PublicKeyToken=0ff1835d01c384a9, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\SLSigesoftClinicaInternacional\server\webclientadmin\ui\bin\FineUI.dll</HintPath>
+      <HintPath>..\..\..\..\ExternalLibraries\FineUI.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
       <HintPath>..\..\..\..\..\HoloSaludAntiguo\Sigesoft\common\bin\Debug\itextsharp.dll</HintPath>

@@ -1,17 +1,3 @@
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Node.WinClient.DAL.MSSQL.dll
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Node.WinClient.DAL.MSSQL.pdb
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Node.WinClient.BE.dll
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Server.WebClientAdmin.DAL.MSSQL.dll
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.dll
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Server.WebClientAdmin.DAL.MSSQL.pdb
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Node.WinClient.BE.pdb
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Server.WebClientAdmin.BE.pdb
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\obj\Debug\DMnodepostgreSQL.ssdl
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\obj\Debug\DMnodepostgreSQL.csdl
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\obj\Debug\DMnodepostgreSQL.msl
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\obj\Debug\Sigesoft.Node.WinClient.DAL.MSSQL.csprojResolveAssemblyReference.cache
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\obj\Debug\Sigesoft.Node.WinClient.DAL.MSSQL.dll
-E:\Project\Omeganet\SLCajamarca\Sigesoft\Node\WinClient\DAL\MSSQL\obj\Debug\Sigesoft.Node.WinClient.DAL.MSSQL.pdb
 D:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Node.WinClient.DAL.MSSQL.dll
 D:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Node.WinClient.DAL.MSSQL.pdb
 D:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\DAL\MSSQL\bin\Debug\Sigesoft.Node.WinClient.BE.dll
