@@ -7,7 +7,11 @@ E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\bin\Debug\Sigesoft.N
 E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\bin\Debug\Sigesoft.Node.WinClient.BE.pdb
 E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.dll
 E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.pdb
+<<<<<<< HEAD
 D:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\bin\Debug\Sigesoft.Node.WinClient.BE.dll
 D:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\bin\Debug\Sigesoft.Node.WinClient.BE.pdb
 D:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.dll
 D:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.pdb
+=======
+E:\Project\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.csprojResolveAssemblyReference.cache
+>>>>>>> origin/rony
