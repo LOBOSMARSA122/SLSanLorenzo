@@ -206,8 +206,8 @@ namespace Sigesoft.Node.WinClient.BE
         public  string COLUMNA_CERVICAL {get;set;}// "N009-MF000000832";
         public  string DESCRIPCION {get;set;}// "N009-MF000000232";
 
-        public  string APTITUD {get;set;}// "N009-MF000000621";
-
+        public string APTITUD { get; set; }// "N009-MF000000621" ;
+        public string APTITUDESPALDA { get; set; }// N009-MF000003174;
         public string NOMBRE_PACIENTE { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public int EDAD { get; set; }
@@ -230,7 +230,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public byte[] FirmaTrabajador{ get; set; }
         public byte[] HuellaTrabajadr { get; set; }
-
+       public int TIPOESO{ get; set; }
         public string DxCIE10 { get; set; }
         public string Recomendaciones { get; set; }
     }

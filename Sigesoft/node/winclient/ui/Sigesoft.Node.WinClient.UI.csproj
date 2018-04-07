@@ -339,6 +339,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMaslachestres.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsOstioCoimolache.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOstioCoimolache.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\dsReporteAsistencia.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -4683,6 +4688,17 @@
     </None>
     <None Include="Dataset\dsOjoSeco.xss">
       <DependentUpon>dsOjoSeco.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsOstioCoimolache.xsc">
+      <DependentUpon>dsOstioCoimolache.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsOstioCoimolache.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsOstioCoimolache.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsOstioCoimolache.xss">
+      <DependentUpon>dsOstioCoimolache.xsd</DependentUpon>
     </None>
     <None Include="Dataset\dsOtoscopia.xsc">
       <DependentUpon>dsOtoscopia.xsd</DependentUpon>

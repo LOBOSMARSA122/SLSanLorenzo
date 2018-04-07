@@ -142,6 +142,7 @@
     <Compile Include="Custom\MedicalExamFieldValuesList.cs" />
     <Compile Include="Custom\MedicalExamFieldsList.cs" />
     <Compile Include="Custom\OsteomuscularNuevo.cs" />
+    <Compile Include="Custom\OstioCoimolache.cs" />
     <Compile Include="Custom\PersonMedicalHistoryList.cs" />
     <Compile Include="Custom\Piso.cs" />
     <Compile Include="Custom\planDto.cs" />

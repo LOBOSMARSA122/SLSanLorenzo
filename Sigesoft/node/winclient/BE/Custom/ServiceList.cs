@@ -254,7 +254,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Total2 { get; set; }
 
         public string AptitudMusculoEsqueletico { get; set; }
-
+        public string AptitudMusculoEsqueleticoEspalda { get; set; }
         public int i_DocTypeId { get; set; }
 
         public int? HijosVivos { get; set; }

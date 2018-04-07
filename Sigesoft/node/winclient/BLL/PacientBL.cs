@@ -1609,7 +1609,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                Total2 = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQABDUCC) == null? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.HOMBRO_IZQABDUCC).v_Value1,
                                AptitudMusculoEsqueletico = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.APTITUD) == null? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.APTITUD).v_Value1,
                                Conclusiones = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DESCRIPCION) == null? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.DESCRIPCION).v_Value1,
-
+                               AptitudMusculoEsqueleticoEspalda = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.APTITUDESPALDA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.APTITUDESPALDA).v_Value1,
                                ReflejoTotulianoDerechoSiNo = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_PLANO_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_PLANO_IZQUIERDO).v_Value1Name,
                                //ReflejoTotulianoIzquierdoSiNo = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OSTEO_MUSCULAR_REFLEJO_TOTULIANO_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OSTEO_MUSCULAR_REFLEJO_TOTULIANO_IZQUIERDO).v_Value1Name,
                                ReflejoAquileoDerechoSiNo = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_CAVO_IZQUIERDO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PIE_CAVO_IZQUIERDO).v_Value1Name,
@@ -4850,7 +4850,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  where A.v_ServiceId == pstrserviceId
 
                                  select new OsteomuscularNuevo
-                                 {
+                                 {//rrr
                                      IdServicio = A.v_ServiceId,
                                      NOMBRE_PACIENTE = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
                                      PUESTO_TRABAJO = B.v_CurrentOccupation,
@@ -4858,6 +4858,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      FechaNacimiento = B.d_Birthdate.Value,
                                      i_SEXO = B.i_SexTypeId.Value,
                                      NroDNI = B.v_DocNumber,
+                                     TIPOESO = I.i_EsoTypeId.Value,
                                      FirmaGraba = pme.b_SignatureImage,
                                      FirmaTrabajador = B.b_FingerPrintImage,
                                      HuellaTrabajadr = B.b_RubricImage,
@@ -5095,6 +5096,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
                                EmpresaPropietariaEmail = MedicalCenter.v_Mail,
                                NroDNI = a.NroDNI,
+                               TIPOESO = a.TIPOESO,
                                Recomendaciones = GetRecomendationByServiceIdAndComponentConcatec(a.IdServicio, Constants.OSTEO_MUSCULAR_ID_1),
                                DxCIE10 = GetDisgnosticsCIE10ByServiceIdAndComponentConcatec(a.IdServicio, Constants.OSTEO_MUSCULAR_ID_1)
                            }).ToList();
