@@ -7,7 +7,7 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class ReportToxicologico
     {
-        public string ServiceId { get; set; }
+        public string ServiceId { get; set; }//
         public DateTime? Fecha { get; set; }
         public string Trabajador { get; set; }
         public int Edad { get; set; }

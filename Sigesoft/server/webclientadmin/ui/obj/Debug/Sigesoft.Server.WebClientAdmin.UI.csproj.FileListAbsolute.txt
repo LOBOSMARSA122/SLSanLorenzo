@@ -660,7 +660,6 @@ F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\UI\bin\Dapper.d
 F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\UI\bin\SAMBHS.Common.BE.dll
 F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\UI\bin\SAMBHS.Common.Resource.dll
 F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\UI\bin\SAMBHS.Almacen.BL.dll
-F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\UI\bin\Interop.ZKFPEngXControl.dll
 F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\UI\bin\SAMBHS.Common.BL.dll
 F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\UI\bin\SAMBHS.CommonWIN.BL.dll
 F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Server\WebClientAdmin\UI\bin\SAMBHS.Common.DataModel.MSSQL.dll

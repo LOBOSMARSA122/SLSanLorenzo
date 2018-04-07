@@ -18277,6 +18277,8 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+
+
 		public List<ReportInformeRadiografico> ReportInformeRadiografico(string pstrserviceId, string pstrComponentId)
 		{
 			try
@@ -24769,6 +24771,39 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+        public List<FichaAntecedentePatologico> GetReportAntecedentePatologico(string pstrServiceId, string pstrComponentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.personmedicalhistory
+                                 join B in dbContext.diseases on A.v_DiseasesId equals B.v_DiseasesId 
+                                 where A.v_PersonId == pstrServiceId
+
+                                 select new 
+                                 {
+                                        Nombre = B.v_Name
+                                 }).ToList();
+
+                var FichaAntecedentePatologico = new FichaAntecedentePatologico();
+                List<FichaAntecedentePatologico> list = new List<BE.FichaAntecedentePatologico>();
+
+                FichaAntecedentePatologico.Alergia = objEntity.Find(p => p.Nombre == "Alergia") == null ? " " : "X";
+                FichaAntecedentePatologico.Asma = objEntity.Find(p => p.Nombre == "Asma") == null ? " " : "X";
+                FichaAntecedentePatologico.Diabetes = objEntity.Find(p => p.Nombre == "Diabetes") == null ? " " : "X";
+
+                list.Add(FichaAntecedentePatologico);
+
+                return list;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+
+        }
 		public List<ReportToxicologico> GetReportToxicologico(string pstrServiceId, string pstrComponentId)
 		{
 			//mon.IsActive = true;
