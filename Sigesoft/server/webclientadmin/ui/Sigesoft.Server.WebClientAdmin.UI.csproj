@@ -75,8 +75,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\ExternalLibraries\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PdfViewer">
-      <HintPath>..\..\..\..\..\HoloSaludAntiguo\Sigesoft\common\bin\Debug\PdfViewer.dll</HintPath>
+    <Reference Include="PdfViewer, Version=1.0.5485.17827, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ExternalLibraries\PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData">
