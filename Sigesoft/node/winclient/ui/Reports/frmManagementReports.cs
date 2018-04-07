@@ -124,7 +124,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 }
                 serviceComponents.Add(new ServiceComponentList { Orden = 7, v_ComponentName = "HISTORIA OCUPACIONAL", v_ComponentId = Constants.INFORME_HISTORIA_OCUPACIONAL });
-
             }
 
             foreach (var item in serviceComponents)
@@ -1935,11 +1934,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
 
                 case Constants.OSTEO_COIMO:
-                    var OSTEO_COIMO = new ServiceBL().GetReportAntecedentePatologico(_serviceId, Constants.OSTEO_COIMO);
+                    var OSTEO_COIMO = new ServiceBL().GetReportOsteoCoimalache(_serviceId, Constants.OSTEO_COIMO);
 
                     dsGetRepo = new DataSet();
                     DataTable dtOSTEO_COIMO = BLL.Utils.ConvertToDatatable(OSTEO_COIMO);
-                    dtOSTEO_COIMO.TableName = "dsFichaAntecedentePatologico";
+                    dtOSTEO_COIMO.TableName = "OstioCoimolache";
                     dsGetRepo.Tables.Add(dtOSTEO_COIMO);
 
                     rp = new crOstioCoimolache();

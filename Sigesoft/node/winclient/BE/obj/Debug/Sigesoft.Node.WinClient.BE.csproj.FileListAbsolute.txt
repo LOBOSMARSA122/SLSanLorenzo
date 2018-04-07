@@ -1,4 +1,0 @@
-F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\bin\Debug\Sigesoft.Node.WinClient.BE.dll
-F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\bin\Debug\Sigesoft.Node.WinClient.BE.pdb
-F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.dll
-F:\Projects\Omeganet\SLSanLorenzo\Sigesoft\Node\WinClient\BE\obj\Debug\Sigesoft.Node.WinClient.BE.pdb
