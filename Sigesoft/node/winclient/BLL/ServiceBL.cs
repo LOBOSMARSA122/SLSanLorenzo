@@ -24904,6 +24904,82 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+        public List<ReportToxicologico> GetReportOsteoCoimalache(string pstrServiceId, string pstrComponentId)
+        {
+            //mon.IsActive = true;
+            var groupUbigeo = 113;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_CustomerOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join P1 in dbContext.person on new { a = A.v_PersonId }
+                                         equals new { a = P1.v_PersonId } into P1_join
+                                 from P1 in P1_join.DefaultIfEmpty()
+
+                                 join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
+                                                                     equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+                                 select new ReportToxicologico
+                                 {
+                                     ServiceId = A.v_ServiceId,
+                                     Fecha = A.d_ServiceDate.Value,
+                                     FechaNacimiento = P1.d_Birthdate,
+                                     Trabajador = P1.v_FirstName + " " + P1.v_FirstLastName + " " + P1.v_SecondLastName,
+                                     Dni = P1.v_DocNumber,
+                                     EmpresaTrabajador = C.v_Name,
+                                     FirmaMedico = pme.b_SignatureImage,
+                                     FirmaTrabajador = P1.b_RubricImage,
+                                     HuellaTrabajador = P1.b_FingerPrintImage,
+                                     Puesto = P1.v_CurrentOccupation,
+                                     NOMBRE_EMPRESA_CLIENTE = C.v_Name,
+                                 });
+
+
+                var MedicalCenter = GetInfoMedicalCenter();
+
+                var sql = (from a in objEntity.ToList()
+                           let LogoEmpresa = GetLogoMedicalCenter()
+                           select new ReportToxicologico
+                           {
+                               LogoEmpresa = LogoEmpresa,
+                               ServiceId = a.ServiceId,
+                               Fecha = a.Fecha,
+                               FechaNacimiento = a.FechaNacimiento,
+                               Trabajador = a.Trabajador,
+                               Dni = a.Dni,
+                               EmpresaTrabajador = a.EmpresaTrabajador,
+                               FirmaMedico = a.FirmaMedico,
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               HuellaTrabajador = a.HuellaTrabajador,
+                               Puesto = a.Puesto,
+                               Empresa = MedicalCenter.v_Name,
+                             }).ToList();
+
+                return sql;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
 		public List<ReportToxicologico> GetReportCocainaMarihuana(string pstrServiceId, string pstrComponentId)
 		{
 			//mon.IsActive = true;
