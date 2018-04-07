@@ -4170,6 +4170,12 @@ namespace Sigesoft.Common
 
 
         #endregion
+
+        #region OSTEO_COIMO
+
+        public const string OSTEO_COIMO = "N009-ME000000414";
+
+        #endregion
         #endregion
 
     }
