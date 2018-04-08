@@ -17037,6 +17037,12 @@ namespace Sigesoft.Node.WinClient.BLL
 								 from distri in distri_join.DefaultIfEmpty()
 								 //*********************************************************************************************
 
+                                 join su in dbContext.systemuser on A.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
+                                 from su in su_join.DefaultIfEmpty()
+
+                                 join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
+                                 from pr in pr_join.DefaultIfEmpty()
+
 								 let varDpto = dep.v_Value1 == null ? "" : dep.v_Value1
 								 let varProv = prov.v_Value1 == null ? "" : prov.v_Value1
 								 let varDistri = distri.v_Value1 == null ? "" : distri.v_Value1
@@ -17058,7 +17064,7 @@ namespace Sigesoft.Node.WinClient.BLL
 									 FechaInicio = D.d_StartDate,
 									 FechaFin = D.d_EndDate,
 									 Empresa = D.v_Organization,
-                                     ActividadEmpresa = D1.v_SectorName,
+                                     ActividadEmpresa = D.v_ActividadEmpresa,
 									 Altitud = D.i_GeografixcaHeight.Value,
 									 AreaTrabajo = D.v_TypeActivity,
 									 PuestoTrabajo = D.v_workstation,
@@ -17069,7 +17075,7 @@ namespace Sigesoft.Node.WinClient.BLL
 									 FirmaMedico = F.b_SignatureImage == null ? p7c.b_SignatureImage : F.b_SignatureImage,
 									 FirmaTrabajador = B.b_RubricImage,
 									 HuellaTrabajador = B.b_FingerPrintImage,
-
+                                     FirmaAuditor = pr.b_SignatureImage
                                  });
 
 				var MedicalCenter = GetInfoMedicalCenter();
@@ -17112,7 +17118,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   EmpresaPropietariaDireccion = MedicalCenter.v_Address,
 							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
 							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
-
+                               FirmaAuditor = a.FirmaAuditor
 						   }).ToList();
 
 				return sql;
@@ -17179,7 +17185,7 @@ namespace Sigesoft.Node.WinClient.BLL
 					   a.i_IsDeleted == 0
 					   select new
 					   {
-						   v_Epps = C1.v_Value1
+						   v_Epps = C1.v_Value1 + " ("+ a.r_Percentage + " %)"
 					   }).ToList();
 
 			return string.Join(", ", qry.Select(p => p.v_Epps));

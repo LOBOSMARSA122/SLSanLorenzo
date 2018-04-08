@@ -1842,6 +1842,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                      FirmaDoctor = pme.b_SignatureImage,
                                      FirmaTecnologo = prtec.b_SignatureImage,
                                      NombreTecnologo = petec.v_FirstLastName + " " + petec.v_SecondLastName + " " + petec.v_FirstName,
+                                     TipoEso = C.i_EsoTypeId.Value,
+                                     HuellaPaciente = B.b_FingerPrintImage,
+                                     FirmaPaciente = B.b_RubricImage
                                      //v_ServiceComponentId = E.v_ServiceComponentId
                                  });
 
@@ -1871,7 +1874,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                              PuestoTrabajo = a.PuestoTrabajo,
                                              USO_DE_CORRECTORES = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000172") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000172").v_Value1,
 
-                                             
+                                            HuellaPaciente = a.HuellaPaciente,
+                                            FirmaPaciente = a.FirmaPaciente,
                                              SI  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000224") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000224").v_Value1,
 
                                              NO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000719") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000719").v_Value1,

@@ -2285,8 +2285,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.Export();
                         rp.Close();
                     }
-                    else
-                        if (pintIdCrystal == 56)
+                    else if (pintIdCrystal == 56)
                         {
 
                             rp = new Reports.crfichaComplementaria_HO();
@@ -2301,36 +2300,35 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                             rp.Export();
                             rp.Close();
                         }
-                        else
-                            if (pintIdCrystal == 57)
-                            {
+                    else if (pintIdCrystal == 57)
+                        {
 
-                                rp = new Reports.crAnexo02_HistoriaOcupacional();
-                                rp.SetDataSource(dsGetRepo);
-                                rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                                rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                                objDiskOpt = new DiskFileDestinationOptions();
-                                objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + "_04" + ".pdf";
-                                _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                                rp.ExportOptions.DestinationOptions = objDiskOpt;
+                            rp = new Reports.crAnexo02_HistoriaOcupacional();
+                            rp.SetDataSource(dsGetRepo);
+                            rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                            rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                            objDiskOpt = new DiskFileDestinationOptions();
+                            objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + "_04" + ".pdf";
+                            _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                            rp.ExportOptions.DestinationOptions = objDiskOpt;
 
-                                rp.Export();
-                                rp.Close();
-                            }
-                            else
-                            {
-                                rp = new Reports.crHistoriaOcupacional();
-                                rp.SetDataSource(dsGetRepo);
-                                rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                                rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                                objDiskOpt = new DiskFileDestinationOptions();
-                                objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + ".pdf";
-                                _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                                rp.ExportOptions.DestinationOptions = objDiskOpt;
-                                rp.Export();
-                                rp.Close();
+                            rp.Export();
+                            rp.Close();
+                        }
+                    else
+                        {
+                            rp = new Reports.crHistoriaOcupacional();
+                            rp.SetDataSource(dsGetRepo);
+                            rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                            rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                            objDiskOpt = new DiskFileDestinationOptions();
+                            objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + ".pdf";
+                            _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                            rp.ExportOptions.DestinationOptions = objDiskOpt;
+                            rp.Export();
+                            rp.Close();
 
-                            }
+                        }
 
                     break;
                 case Constants.ALTURA_7D_ID:
@@ -2730,57 +2728,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.OFTALMOLOGIA_ID:
 
-                    var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
-
-                    if (MedicalCenter.v_IdentificationNumber == "20505518145")
-                    {
-                        var OFTALMO_ANTIGUO = new ServiceBL().GetReportOftalmologiaAntiguo(_serviceId, Constants.OFTALMOLOGIA_ID);
-
-                        dsGetRepo = new DataSet();
-
-                        DataTable dt_OFTALMO_ANTIGUO = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(OFTALMO_ANTIGUO);
-
-                        dt_OFTALMO_ANTIGUO.TableName = "dtOftalmologiaAntiguo";
-
-                        dsGetRepo.Tables.Add(dt_OFTALMO_ANTIGUO);
-
-
-                        if (pintIdCrystal == 2)
-                        {
-                            rp = new Reports.crOftalmologiaMedico();
-                        }
-                        else if (pintIdCrystal == 3)
-                        {
-                            rp = new Reports.crOftalmologiaSinFirma();
-                        }
-                        else if (pintIdCrystal == 31)
-                        {
-                            rp = new Reports.crOftalmologia_S_J();
-                        }
-                        else if (pintIdCrystal == 33)
-                        {
-                            rp = new Reports.crOftalmologia_S_J_Medico();
-                        }
-                        else
-                        {
-                            rp = new Reports.crOftalmologia();
-                        }
-                    }
-                    else if (pintIdCrystal == 39)
-                    {
-                        rp = new Reports.crApendice02_Oftalmo();
-                       // rp.SetDataSource(dsGetRepo);
-                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                        objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.OFTALMOLOGIA_ID + "_02" + ".pdf";
-                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                        rp.ExportOptions.DestinationOptions = objDiskOpt;
-                        rp.Export();
-                        rp.Close();
-                    }
-                    else
-                    {
                         var OFTALMO_ANTIGUO = new PacientBL().GetOftalmologia(_serviceId, Constants.OFTALMOLOGIA_ID);
 
                         dsGetRepo = new DataSet();
@@ -2792,27 +2739,43 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         dsGetRepo.Tables.Add(dt_OFTALMO_ANTIGUO);
 
 
-                        if (pintIdCrystal == 2)
-                        {
-                            rp = new Reports.crOftalmologiaMedico();
-                        }
-                        else if (pintIdCrystal == 3)
-                        {
-                            rp = new Reports.crOftalmologiaSinFirma();
-                        }
-                        else if (pintIdCrystal == 31)
-                        {
-                            rp = new Reports.crOftalmologia_S_J();
-                        }
-                        else if (pintIdCrystal == 33)
-                        {
-                            rp = new Reports.crOftalmologia_S_J_Medico();
-                        }
-                        else
-                        {
-                            rp = new Reports.crOftalmologia();
-                        }
+                        //if (pintIdCrystal == 2)
+                        //{
+                        //    rp = new Reports.crOftalmologiaMedico();
+                        //}
+                        //else if (pintIdCrystal == 3)
+                        //{
+                        //    rp = new Reports.crOftalmologiaSinFirma();
+                        //}
+                        //else if (pintIdCrystal == 31)
+                        //{
+                        //    rp = new Reports.crOftalmologia_S_J();
+                        //}
+                        //else if (pintIdCrystal == 33)
+                        //{
+                        //    rp = new Reports.crOftalmologia_S_J_Medico();
+                        //}
+                        //else
+                        //{
+                        //    rp = new Reports.crOftalmologia();
+                        //}
 
+                    if (pintIdCrystal == 39)
+                    {
+                        rp = new Reports.crApendice02_Oftalmo();
+                        rp.SetDataSource(dsGetRepo);
+                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                        objDiskOpt = new DiskFileDestinationOptions();
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.OFTALMOLOGIA_ID + "_02" + ".pdf";
+                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                        rp.ExportOptions.DestinationOptions = objDiskOpt;
+                        rp.Export();
+                        rp.Close();
+                    }
+                    else
+                    {
+                        rp = new Reports.crOftalmologia();
                         rp.SetDataSource(dsGetRepo);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
@@ -2821,9 +2784,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
-                        rp.Close();
+                        rp.Close(); 
                     }
-
+                  
                     break;
 
                 case Constants.PSICOLOGIA_ID:
