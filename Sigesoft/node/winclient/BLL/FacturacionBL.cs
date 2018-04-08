@@ -607,425 +607,96 @@ namespace Sigesoft.Node.WinClient.BLL
 
             try
             {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //var query = null;//dbContext.llenargrillasigesoft(psrtDni, pstrIdOrganization, pstrIdLocation, FechaInico, FechaFin, pintTipoExamen).ToList();//.OrderBy(p => p.T_Id_Componente).ToList().FindAll(p => p.T_Total != 0);
+                //List<llenarConsultaSigesoft> Lista = new List<llenarConsultaSigesoft>();
+                //llenarConsultaSigesoft o;
 
-                var query = dbContext.llenargrillasigesoft(psrtDni, pstrIdOrganization, pstrIdLocation, FechaInico, FechaFin, pintTipoExamen).ToList();//.OrderBy(p => p.T_Id_Componente).ToList().FindAll(p => p.T_Total != 0);
-
-                //List<devolvervalorescomponenteResult> TieneValores = dbContext.devolvervalorescomponente(FechaInico, FechaFin, 1).ToList();
-
-                List<llenarConsultaSigesoft> Lista = new List<llenarConsultaSigesoft>();
-                llenarConsultaSigesoft o;
-
-                foreach (llenargrillasigesoftResult cs in query)
-                {
-
-                    //o = new llenarConsultaSigesoft();
-                    //o.IdComponente = cs.IdComponente;
-                    //o.IdService = cs.IdServicio;
-                    //o.Geso = cs.Geso;
-                    //o.EmpresaCliente = cs.EmpresaCliente;
-                    //o.ProtocoloId = cs.IdProtocolo;
-
-                    ////VERIFICAR SI ES UN COMPONENTE DE LABORATORIO
-                    //var EsLab = query.FindAll(p => ExamenesLaboratorio.Contains(o.IdComponente) && p.IdServicio == o.IdService).ToList();
+                //foreach (llenargrillasigesoftResult cs in query)
+                //{
+                //    o = new llenarConsultaSigesoft();
+                //    o.EmpresaCliente = cs.T_EmpresaCliente;
+                //    o.Nombre_Componente = cs.T_Nombre_Completo;
+                //    o.Geso = cs.T_GESO;
+                //    o.IdService = cs.T_Id_Servicio;
+                //    //o.TipoESO = cs.T_ESO;
+                //    o.ProtocoloId = cs.T_IdProtocolo;
+                //    o.Total = Math.Round(Decimal.Parse(cs.T_Total.Value.ToString()), 2);
+                //    Lista.Add(o);
+                //}
 
 
-                    //if (EsLab != null && EsLab.Count() != 0)
-                    //{                     
+                //if (pintTipoReporte == 1)
+                //{
 
-                    //    foreach (var item in TieneValores)
-                    //    {
-                    //#region MyRegion
+                //    var ListaFiltrada = Lista.FindAll(p => ArrayServicios.Contains(p.IdService));
+                //    var result_dt1 = (from r in ListaFiltrada.AsEnumerable()
+                //                      group r by r.Nombre_Componente into dtGroup
+                //                      select new llenarConsultaSigesoft
+                //                      {
+                //                          Nombre_Componente = dtGroup.Key,
+                //                          Contador = dtGroup.Count(),
+                //                          Total = dtGroup.Sum(r => r.Total)
+                //                          //Total = dtGroup.Key.tot
+                //                      }).ToList();
 
+                //    return result_dt1;
+                //}
+                //else if (pintTipoReporte == 2)
+                //{
+                //    ServiceBL oServiceBL = new ServiceBL();
 
-                    //if (item.IDCAMPO == Constants.GLUCOSA_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.GLUCOSA_ID).Geso;                               
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.GLUCOSA_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.GLUCOSA_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.LABORATORIO_HEMATOCRITO_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.LABORATORIO_HEMATOCRITO_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.LABORATORIO_HEMATOCRITO_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.LABORATORIO_HEMATOCRITO_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.VDRL_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.VDRL_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.VDRL_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.VDRL_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.HEPATITIS_A_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.HEPATITIS_A_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.HEPATITIS_A_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.HEPATITIS_A_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.HEPATITIS_C_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.HEPATITIS_C_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.HEPATITIS_C_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.HEPATITIS_C_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.LABORATORIO_HEMOGLOBINA_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.LABORATORIO_HEMOGLOBINA_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.LABORATORIO_HEMOGLOBINA_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.LABORATORIO_HEMOGLOBINA_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.ANTIGENO_PROSTATICO_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.ANTIGENO_PROSTATICO_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.ANTIGENO_PROSTATICO_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.ANTIGENO_PROSTATICO_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.PARASITOLOGICO_SIMPLE_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.PARASITOLOGICO_SIMPLE_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.PARASITOLOGICO_SIMPLE_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.PARASITOLOGICO_SIMPLE_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.ACIDO_URICO_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.ACIDO_URICO_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.ACIDO_URICO_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.ACIDO_URICO_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.COLESTEROL_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.COLESTEROL_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.COLESTEROL_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.COLESTEROL_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.TRIGLICERIDOS_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.TRIGLICERIDOS_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.TRIGLICERIDOS_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.TRIGLICERIDOS_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.AGLUTINACIONES_LAMINA_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.AGLUTINACIONES_LAMINA_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.AGLUTINACIONES_LAMINA_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.AGLUTINACIONES_LAMINA_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.SUB_UNIDAD_BETA_CUALITATIVO_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.SUB_UNIDAD_BETA_CUALITATIVO_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.SUB_UNIDAD_BETA_CUALITATIVO_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.SUB_UNIDAD_BETA_CUALITATIVO_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.CREATININA_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.CREATININA_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.CREATININA_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.CREATININA_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.EXAMEN_ELISA_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.EXAMEN_ELISA_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.EXAMEN_ELISA_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.EXAMEN_ELISA_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.HEMOGRAMA_COMPLETO_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.EXAMEN_COMPLETO_DE_ORINA_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.PARASITOLOGICO_SERIADO_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.PARASITOLOGICO_SERIADO_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.PARASITOLOGICO_SERIADO_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.PARASITOLOGICO_SERIADO_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-
-                    //else if (item.IDCAMPO == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.TGO_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.TGO_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.TGO_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.TGO_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.TGP_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.TGP_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.TGP_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.TGP_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.PLOMO_SANGRE_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.PLOMO_SANGRE_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.PLOMO_SANGRE_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.PLOMO_SANGRE_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.UREA_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.UREA_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.UREA_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.UREA_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.COLESTEROL_HDL_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.COLESTEROL_HDL_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.COLESTEROL_HDL_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.COLESTEROL_HDL_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.COLESTEROL_LDL_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.COLESTEROL_LDL_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.COLESTEROL_LDL_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.COLESTEROL_LDL_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //else if (item.IDCAMPO == Constants.COLESTEROL_VLDL_ID_REALIZADO && item.VALUE1 == "1" && item.v_ServiceId == o.IdService)
-                    //{
-                    //    o = new llenarConsultaSigesoft();
-                    //    o.EmpresaCliente = cs.EmpresaCliente;
-                    //    o.ProtocoloId = cs.IdProtocolo;
-                    //    o.Geso = query.Find(p => p.IdComponente == Constants.COLESTEROL_VLDL_ID).Geso;
-                    //    o.Nombre_Componente = query.Find(p => p.IdComponente == Constants.COLESTEROL_VLDL_ID).Nombre_Componente;
-                    //    o.Total = Math.Round(Decimal.Parse(query.Find(p => p.IdComponente == Constants.COLESTEROL_VLDL_ID).Total.ToString()));
-
-                    //    Lista.Add(o);
-                    //}
-                    //#endregion
-                    //    }
-                    //}
-                    //else
-                    //{
-                    o = new llenarConsultaSigesoft();
-                    o.EmpresaCliente = cs.T_EmpresaCliente;
-                    o.Nombre_Componente = cs.T_Nombre_Completo;
-                    o.Geso = cs.T_GESO;
-                    o.IdService = cs.T_Id_Servicio;
-                    //o.TipoESO = cs.T_ESO;
-                    o.ProtocoloId = cs.T_IdProtocolo;
-                    o.Total = Math.Round(Decimal.Parse(cs.T_Total.Value.ToString()), 2);
-
-                    Lista.Add(o);
-                    //}
-                }
+                //    var ListaFiltrada = Lista.FindAll(p => ArrayServicios.Contains(p.IdService));
+                //    //var TipoESO = oServiceBL.DEvolverTipoESOConcatenado(ListaFiltrada);  
+                //    var result_dt2 = (from r in ListaFiltrada.AsEnumerable()
+                //                      group r by new { r.Geso, r.ProtocoloId, r.IdService, r.TipoESO } into dtGroup
+                //                      select new llenarConsultaSigesoft
+                //                      {
+                //                          Nombre_Componente = "EXÁMENES OCUPACIONALES PERFIL: " + dtGroup.Key.Geso,
+                //                          Contador = dtGroup.Count(),
+                //                          Total = dtGroup.Sum(r => r.Total),
+                //                          IdService = dtGroup.Key.IdService,
+                //                          ProtocoloId = dtGroup.Key.ProtocoloId,
+                //                          TipoESO = dtGroup.Key.TipoESO
+                //                      }).ToList();
 
 
-                if (pintTipoReporte == 1)
-                {
-
-                    var ListaFiltrada = Lista.FindAll(p => ArrayServicios.Contains(p.IdService));
-                    var result_dt1 = (from r in ListaFiltrada.AsEnumerable()
-                                      group r by r.Nombre_Componente into dtGroup
-                                      select new llenarConsultaSigesoft
-                                      {
-                                          Nombre_Componente = dtGroup.Key,
-                                          Contador = dtGroup.Count(),
-                                          Total = dtGroup.Sum(r => r.Total)
-                                          //Total = dtGroup.Key.tot
-                                      }).ToList();
-
-                    return result_dt1;
-                }
-                else if (pintTipoReporte == 2)
-                {
-                    ServiceBL oServiceBL = new ServiceBL();
-
-                    var ListaFiltrada = Lista.FindAll(p => ArrayServicios.Contains(p.IdService));
-                    //var TipoESO = oServiceBL.DEvolverTipoESOConcatenado(ListaFiltrada);  
-                    var result_dt2 = (from r in ListaFiltrada.AsEnumerable()
-                                      group r by new { r.Geso, r.ProtocoloId, r.IdService, r.TipoESO } into dtGroup
-                                      select new llenarConsultaSigesoft
-                                      {
-                                          Nombre_Componente = "EXÁMENES OCUPACIONALES PERFIL: " + dtGroup.Key.Geso,
-                                          Contador = dtGroup.Count(),
-                                          Total = dtGroup.Sum(r => r.Total),
-                                          IdService = dtGroup.Key.IdService,
-                                          ProtocoloId = dtGroup.Key.ProtocoloId,
-                                          TipoESO = dtGroup.Key.TipoESO
-                                      }).ToList();
+                //    var final = (from x in result_dt2
+                //                 group x by new { x.ProtocoloId, x.Geso, x.Nombre_Componente,x.TipoESO } into g
+                //                 select new llenarConsultaSigesoft
+                //                 {
+                //                     Nombre_Componente = g.Key.Nombre_Componente,  //"EXÁMENES OCUPACIONALES PERFIL: " + g.Key.Geso,
+                //                     Contador = g.Count(),
+                //                     Total = g.Sum(r => r.Total),
+                //                     TipoESO =g.Key.TipoESO
+                //                 }).ToList();
 
 
-                    var final = (from x in result_dt2
-                                 group x by new { x.ProtocoloId, x.Geso, x.Nombre_Componente,x.TipoESO } into g
-                                 select new llenarConsultaSigesoft
-                                 {
-                                     Nombre_Componente = g.Key.Nombre_Componente,  //"EXÁMENES OCUPACIONALES PERFIL: " + g.Key.Geso,
-                                     Contador = g.Count(),
-                                     Total = g.Sum(r => r.Total),
-                                     TipoESO =g.Key.TipoESO
-                                 }).ToList();
+                //    return final;
+                //}
+                //else
+                //{
+                //    ServiceBL oServiceBL = new ServiceBL();
+                //    var ListaFiltrada = Lista.FindAll(p => ArrayServicios.Contains(p.IdService));
+                //    //Calcular el nro de servicios
+                //    int Servicios = ListaFiltrada.GroupBy(x => new { x.IdService })                                            
+                //                            .ToList().Count();
 
+                //    var TipoESO = oServiceBL.DEvolverTipoESOConcatenado(ListaFiltrada);  
+                //    var result_dt3 = (from r in ListaFiltrada.AsEnumerable()
+                //                      group r by r.EmpresaCliente into dtGroup
+                //                      select new llenarConsultaSigesoft
+                //                      {
+                //                          Nombre_Componente = "EXÁMENES MÉDICOS OCUPACIONALES ",
+                //                          Contador = Servicios,
+                //                          Total = dtGroup.Sum(r => r.Total),
+                //                          TipoESO = TipoESO
+                //                      }).ToList();
 
-                    return final;
-                }
-                else
-                {
-                    ServiceBL oServiceBL = new ServiceBL();
-                    var ListaFiltrada = Lista.FindAll(p => ArrayServicios.Contains(p.IdService));
-                    //Calcular el nro de servicios
-                    int Servicios = ListaFiltrada.GroupBy(x => new { x.IdService })                                            
-                                            .ToList().Count();
+                //    return result_dt3;
+                //}
 
-                    var TipoESO = oServiceBL.DEvolverTipoESOConcatenado(ListaFiltrada);  
-                    var result_dt3 = (from r in ListaFiltrada.AsEnumerable()
-                                      group r by r.EmpresaCliente into dtGroup
-                                      select new llenarConsultaSigesoft
-                                      {
-                                          Nombre_Componente = "EXÁMENES MÉDICOS OCUPACIONALES ",
-                                          Contador = Servicios,
-                                          Total = dtGroup.Sum(r => r.Total),
-                                          TipoESO = TipoESO
-                                      }).ToList();
-
-                    return result_dt3;
-                }
-
+                return null;
             }
             catch (Exception ex)
             {
