@@ -49,6 +49,7 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOccupationalHistory));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkPuestoActual = new System.Windows.Forms.CheckBox();
             this.ddlTypeOperationId = new System.Windows.Forms.ComboBox();
@@ -81,6 +82,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.ultraValidator1 = new Infragistics.Win.Misc.UltraValidator(this.components);
+            this.txtActividad = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataDangers)).BeginInit();
@@ -94,6 +97,8 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtActividad);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.chkPuestoActual);
             this.groupBox1.Controls.Add(this.ddlTypeOperationId);
             this.groupBox1.Controls.Add(this.label8);
@@ -114,7 +119,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(990, 84);
+            this.groupBox1.Size = new System.Drawing.Size(990, 106);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Generales";
@@ -162,11 +167,11 @@
             // 
             // txtOccupation
             // 
-            this.txtOccupation.Location = new System.Drawing.Point(109, 47);
+            this.txtOccupation.Location = new System.Drawing.Point(81, 47);
             this.txtOccupation.Margin = new System.Windows.Forms.Padding(2);
             this.txtOccupation.MaxLength = 250;
             this.txtOccupation.Name = "txtOccupation";
-            this.txtOccupation.Size = new System.Drawing.Size(253, 20);
+            this.txtOccupation.Size = new System.Drawing.Size(281, 20);
             this.txtOccupation.TabIndex = 5;
             this.ultraValidator1.GetValidationSettings(this.txtOccupation).DataType = typeof(string);
             this.ultraValidator1.GetValidationSettings(this.txtOccupation).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
@@ -214,7 +219,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(98, 19);
             this.label6.TabIndex = 11;
-            this.label6.Text = "Puesto de Trabajo";
+            this.label6.Text = "Puesto";
             // 
             // label5
             // 
@@ -298,7 +303,7 @@
             this.groupBox2.Controls.Add(this.btnDeleteDanger);
             this.groupBox2.Controls.Add(this.btnMoveDanger);
             this.groupBox2.Controls.Add(this.grdDataDangers);
-            this.groupBox2.Location = new System.Drawing.Point(20, 108);
+            this.groupBox2.Location = new System.Drawing.Point(20, 126);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -419,7 +424,7 @@
             this.groupBox3.Controls.Add(this.btnDeleteEPP);
             this.groupBox3.Controls.Add(this.btnMoveEPP);
             this.groupBox3.Controls.Add(this.grdDataEPP);
-            this.groupBox3.Location = new System.Drawing.Point(524, 111);
+            this.groupBox3.Location = new System.Drawing.Point(524, 129);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
@@ -542,7 +547,7 @@
             // 
             // modificarToolStripMenuItem
             // 
-            this.modificarToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.modificarToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("modificarToolStripMenuItem.Image")));
             this.modificarToolStripMenuItem.Name = "modificarToolStripMenuItem";
             this.modificarToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.modificarToolStripMenuItem.Text = "Editar";
@@ -577,6 +582,27 @@
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // txtActividad
+            // 
+            this.txtActividad.Location = new System.Drawing.Point(81, 71);
+            this.txtActividad.Margin = new System.Windows.Forms.Padding(2);
+            this.txtActividad.MaxLength = 250;
+            this.txtActividad.Name = "txtActividad";
+            this.txtActividad.Size = new System.Drawing.Size(281, 20);
+            this.txtActividad.TabIndex = 20;
+            this.ultraValidator1.GetValidationSettings(this.txtActividad).DataType = typeof(string);
+            this.ultraValidator1.GetValidationSettings(this.txtActividad).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.ultraValidator1.GetValidationSettings(this.txtActividad).IsRequired = true;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(15, 72);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(98, 19);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Actividad";
             // 
             // frmOccupationalHistory
             // 
@@ -645,5 +671,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox ddlTypeOperationId;
         private System.Windows.Forms.CheckBox chkPuestoActual;
+        private System.Windows.Forms.TextBox txtActividad;
+        private System.Windows.Forms.Label label9;
     }
 }

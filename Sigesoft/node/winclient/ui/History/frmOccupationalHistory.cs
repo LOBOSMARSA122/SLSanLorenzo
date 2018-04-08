@@ -135,7 +135,7 @@ namespace Sigesoft.Node.WinClient.UI
                 txtOccupation.Text = _objhistoryDto.v_workstation;
                 ddlTypeOperationId.SelectedValue = _objhistoryDto.i_TypeOperationId.ToString();
                 txtGeographicalHeight.Text = _objhistoryDto.i_GeografixcaHeight == 0 ? "" : _objhistoryDto.i_GeografixcaHeight.ToString();
-
+                txtActividad.Text = _objhistoryDto.v_ActividadEmpresa;
                 if (_objhistoryDto.i_TrabajoActual != null)
                 {
                     if ( _objhistoryDto.i_TrabajoActual == 1)
@@ -231,7 +231,7 @@ namespace Sigesoft.Node.WinClient.UI
                     _objhistoryDto.i_TrabajoActual = chkPuestoActual.Checked == true? 1 :0;
                     _objhistoryDto.i_TypeOperationId = int.Parse(ddlTypeOperationId.SelectedValue.ToString());
                     _objhistoryDto.i_GeografixcaHeight = txtGeographicalHeight.Text == "" ? 0 : int.Parse(txtGeographicalHeight.Text.ToString());
-
+                    _objhistoryDto.v_ActividadEmpresa = txtActividad.Text;
                  _HistoryId = objHistoryBL.AddHistory(ref objOperationResult,_TempWorkstationDangersList,_TempTypeOfEEPList, _objhistoryDto, Globals.ClientSession.GetAsList());
 
                 }
@@ -246,7 +246,7 @@ namespace Sigesoft.Node.WinClient.UI
                     _objhistoryDto.i_TrabajoActual = chkPuestoActual.Checked == true ? 1 : 0;
                     _objhistoryDto.i_TypeOperationId = int.Parse(ddlTypeOperationId.SelectedValue.ToString());
                     _objhistoryDto.i_GeografixcaHeight = txtGeographicalHeight.Text == "" ? 0 : int.Parse(txtGeographicalHeight.Text.ToString());
-
+                    _objhistoryDto.v_ActividadEmpresa = txtActividad.Text;
                     //Temporal Peligros
                     foreach (var item in _TempWorkstationDangersList)
                     {
