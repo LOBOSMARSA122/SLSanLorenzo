@@ -143,7 +143,6 @@
     <Compile Include="GeneratedAssemblers\facturaciondetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\reporteatencionmedicaResultAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\llenargrillasigesoftResultAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -168,6 +167,7 @@
       <DependentUpon>DMnodepostgreSQL.edmx</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
