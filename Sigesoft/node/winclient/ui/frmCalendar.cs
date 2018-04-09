@@ -610,7 +610,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdDataCalendar_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
         {
-            btnConsentimiento.Enabled = btnExportExcel.Enabled = btnExportPdf.Enabled = (grdDataCalendar.Selected.Rows.Count > 0);
+            btnConsentimiento.Enabled = btnExportExcel.Enabled = btnExportPdf.Enabled = btnAdjuntar.Enabled = (grdDataCalendar.Selected.Rows.Count > 0);
             btnSendEmail.Enabled = (grdDataCalendar.Selected.Rows.Count > 0 && _sendEmailEnabled);
             
 
@@ -1333,6 +1333,13 @@ namespace Sigesoft.Node.WinClient.UI
             //// destroy the tooltip
             //_customizedToolTip.DestroyToolTip(this);
         }
-    
+
+        private void btnAdjuntar_Click(object sender, EventArgs e)
+        {
+            frmAdjuntarDeclaracionJurada frm = new frmAdjuntarDeclaracionJurada(_serviceId);
+            frm.Show();
+        }
+
+       
     }
 }

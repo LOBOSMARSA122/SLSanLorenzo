@@ -487,8 +487,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnSordera;
             
-            private global::System.Data.DataColumn columnOtalgia;
-            
             private global::System.Data.DataColumn columnAcufenos;
             
             private global::System.Data.DataColumn columnSecrecionOtica;
@@ -575,8 +573,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnUsdOtotoxicos;
             
-            private global::System.Data.DataColumn columnOTALGIA;
-            
             private global::System.Data.DataColumn columnSarampion1;
             
             private global::System.Data.DataColumn columnDepartamento;
@@ -588,6 +584,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             private global::System.Data.DataColumn columnDireccionPaciente;
             
             private global::System.Data.DataColumn columnTelefono;
+            
+            private global::System.Data.DataColumn columnOtalgia1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -891,14 +889,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             public global::System.Data.DataColumn SorderaColumn {
                 get {
                     return this.columnSordera;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OtalgiaColumn {
-                get {
-                    return this.columnOtalgia;
                 }
             }
             
@@ -1248,14 +1238,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OTALGIAColumn {
-                get {
-                    return this.columnOTALGIA;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn Sarampion1Column {
                 get {
                     return this.columnSarampion1;
@@ -1299,6 +1281,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             public global::System.Data.DataColumn TelefonoColumn {
                 get {
                     return this.columnTelefono;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Otalgia1Column {
+                get {
+                    return this.columnOtalgia1;
                 }
             }
             
@@ -1374,7 +1364,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string PracticaTiro, 
                         string Otros, 
                         string Sordera, 
-                        string Otalgia, 
                         string Acufenos, 
                         string SecrecionOtica, 
                         string Vertigos, 
@@ -1418,13 +1407,13 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string Sinusitis, 
                         string Parotiditis, 
                         string UsdOtotoxicos, 
-                        string OTALGIA1, 
                         string Sarampion1, 
                         string Departamento, 
                         string Provincia, 
                         string Distrito, 
                         string DireccionPaciente, 
-                        string Telefono) {
+                        string Telefono, 
+                        string Otalgia1) {
                 dtAudiometriaRow rowdtAudiometriaRow = ((dtAudiometriaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Puesto,
@@ -1461,7 +1450,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         PracticaTiro,
                         Otros,
                         Sordera,
-                        Otalgia,
                         Acufenos,
                         SecrecionOtica,
                         Vertigos,
@@ -1505,13 +1493,13 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         Sinusitis,
                         Parotiditis,
                         UsdOtotoxicos,
-                        OTALGIA1,
                         Sarampion1,
                         Departamento,
                         Provincia,
                         Distrito,
                         DireccionPaciente,
-                        Telefono};
+                        Telefono,
+                        Otalgia1};
                 rowdtAudiometriaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtAudiometriaRow);
                 return rowdtAudiometriaRow;
@@ -1568,7 +1556,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnPracticaTiro = base.Columns["PracticaTiro"];
                 this.columnOtros = base.Columns["Otros"];
                 this.columnSordera = base.Columns["Sordera"];
-                this.columnOtalgia = base.Columns["Otalgia"];
                 this.columnAcufenos = base.Columns["Acufenos"];
                 this.columnSecrecionOtica = base.Columns["SecrecionOtica"];
                 this.columnVertigos = base.Columns["Vertigos"];
@@ -1612,13 +1599,13 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnSinusitis = base.Columns["Sinusitis"];
                 this.columnParotiditis = base.Columns["Parotiditis"];
                 this.columnUsdOtotoxicos = base.Columns["UsdOtotoxicos"];
-                this.columnOTALGIA = base.Columns["OTALGIA"];
                 this.columnSarampion1 = base.Columns["Sarampion1"];
                 this.columnDepartamento = base.Columns["Departamento"];
                 this.columnProvincia = base.Columns["Provincia"];
                 this.columnDistrito = base.Columns["Distrito"];
                 this.columnDireccionPaciente = base.Columns["DireccionPaciente"];
                 this.columnTelefono = base.Columns["Telefono"];
+                this.columnOtalgia1 = base.Columns["Otalgia1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1692,8 +1679,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnOtros);
                 this.columnSordera = new global::System.Data.DataColumn("Sordera", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSordera);
-                this.columnOtalgia = new global::System.Data.DataColumn("Otalgia", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOtalgia);
                 this.columnAcufenos = new global::System.Data.DataColumn("Acufenos", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnAcufenos);
                 this.columnSecrecionOtica = new global::System.Data.DataColumn("SecrecionOtica", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1780,8 +1765,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnParotiditis);
                 this.columnUsdOtotoxicos = new global::System.Data.DataColumn("UsdOtotoxicos", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsdOtotoxicos);
-                this.columnOTALGIA = new global::System.Data.DataColumn("OTALGIA", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOTALGIA);
                 this.columnSarampion1 = new global::System.Data.DataColumn("Sarampion1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSarampion1);
                 this.columnDepartamento = new global::System.Data.DataColumn("Departamento", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1794,6 +1777,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnDireccionPaciente);
                 this.columnTelefono = new global::System.Data.DataColumn("Telefono", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTelefono);
+                this.columnOtalgia1 = new global::System.Data.DataColumn("Otalgia1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtalgia1);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4772,22 +4757,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Otalgia {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtAudiometria.OtalgiaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Otalgia\' in table \'dtAudiometria\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtAudiometria.OtalgiaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Acufenos {
                 get {
                     try {
@@ -5485,22 +5454,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string OTALGIA {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtAudiometria.OTALGIAColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OTALGIA\' in table \'dtAudiometria\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtAudiometria.OTALGIAColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Sarampion1 {
                 get {
                     try {
@@ -5592,6 +5545,22 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 }
                 set {
                     this[this.tabledtAudiometria.TelefonoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Otalgia1 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometria.Otalgia1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Otalgia1\' in table \'dtAudiometria\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometria.Otalgia1Column] = value;
                 }
             }
             
@@ -6001,18 +5970,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetSorderaNull() {
                 this[this.tabledtAudiometria.SorderaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOtalgiaNull() {
-                return this.IsNull(this.tabledtAudiometria.OtalgiaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOtalgiaNull() {
-                this[this.tabledtAudiometria.OtalgiaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6533,18 +6490,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOTALGIANull() {
-                return this.IsNull(this.tabledtAudiometria.OTALGIAColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOTALGIANull() {
-                this[this.tabledtAudiometria.OTALGIAColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsSarampion1Null() {
                 return this.IsNull(this.tabledtAudiometria.Sarampion1Column);
             }
@@ -6613,6 +6558,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTelefonoNull() {
                 this[this.tabledtAudiometria.TelefonoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOtalgia1Null() {
+                return this.IsNull(this.tabledtAudiometria.Otalgia1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOtalgia1Null() {
+                this[this.tabledtAudiometria.Otalgia1Column] = global::System.Convert.DBNull;
             }
         }
         

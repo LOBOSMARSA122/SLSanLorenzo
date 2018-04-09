@@ -2014,10 +2014,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     if (pintIdCrystal == 50)
                     {
                         rp = new Reports.crConsentimiento_YanaGold();
+                        rp.SetDataSource(dsGetRepo);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO + "02" + ".pdf";
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
                         rp.Export();
@@ -2416,19 +2417,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 case Constants.ELECTRO_GOLD:
 
                     var ELECTRO_GOLD = new ServiceBL().GetReportEstudioElectrocardiografico(_serviceId, Constants.ELECTRO_GOLD);
-
                     dsGetRepo = new DataSet();
-
-                    DataTable dt_ELECTRO_GOLD = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(ELECTRO_GOLD);
+                    DataTable dt_ELECTRO_GOLD = BLL.Utils.ConvertToDatatable(ELECTRO_GOLD);
                     dt_ELECTRO_GOLD.TableName = "dtEstudioElectrocardiografico";
                     dsGetRepo.Tables.Add(dt_ELECTRO_GOLD);
 
-                        rp = new Reports.crInformeElectroCardiografiaoGoldField_EKG();
+                        rp = new crInformeElectroCardiografiaoGoldField_EKG();
                         rp.SetDataSource(dsGetRepo);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ELECTRO_GOLD + "_03" + ".pdf";
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ELECTRO_GOLD + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
 
@@ -2729,36 +2728,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 case Constants.OFTALMOLOGIA_ID:
 
                         var OFTALMO_ANTIGUO = new PacientBL().GetOftalmologia(_serviceId, Constants.OFTALMOLOGIA_ID);
-
                         dsGetRepo = new DataSet();
-
                         DataTable dt_OFTALMO_ANTIGUO = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(OFTALMO_ANTIGUO);
-
                         dt_OFTALMO_ANTIGUO.TableName = "dtOftalmologia";
-
                         dsGetRepo.Tables.Add(dt_OFTALMO_ANTIGUO);
-
-
-                        //if (pintIdCrystal == 2)
-                        //{
-                        //    rp = new Reports.crOftalmologiaMedico();
-                        //}
-                        //else if (pintIdCrystal == 3)
-                        //{
-                        //    rp = new Reports.crOftalmologiaSinFirma();
-                        //}
-                        //else if (pintIdCrystal == 31)
-                        //{
-                        //    rp = new Reports.crOftalmologia_S_J();
-                        //}
-                        //else if (pintIdCrystal == 33)
-                        //{
-                        //    rp = new Reports.crOftalmologia_S_J_Medico();
-                        //}
-                        //else
-                        //{
-                        //    rp = new Reports.crOftalmologia();
-                        //}
 
                     if (pintIdCrystal == 39)
                     {
