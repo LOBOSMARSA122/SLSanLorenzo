@@ -58,6 +58,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string TotalMeses { get; set; }
 
         public byte[] FirmaAuditor { get; set; }
-    
+        public byte[] b_Logo_Cliente { get; set; }
     }
 }

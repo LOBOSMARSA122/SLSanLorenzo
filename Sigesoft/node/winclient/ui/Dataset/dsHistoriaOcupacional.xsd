@@ -47,6 +47,7 @@
               <xs:element name="ActividadEmpresa" msprop:Generator_ColumnVarNameInTable="columnActividadEmpresa" msprop:Generator_ColumnPropNameInRow="ActividadEmpresa" msprop:Generator_ColumnPropNameInTable="ActividadEmpresaColumn" msprop:Generator_UserColumnName="ActividadEmpresa" type="xs:string" minOccurs="0" />
               <xs:element name="TotalMeses" msprop:Generator_ColumnVarNameInTable="columnTotalMeses" msprop:Generator_ColumnPropNameInRow="TotalMeses" msprop:Generator_ColumnPropNameInTable="TotalMesesColumn" msprop:Generator_UserColumnName="TotalMeses" type="xs:string" minOccurs="0" />
               <xs:element name="FirmaAuditor" msprop:Generator_ColumnVarNameInTable="columnFirmaAuditor" msprop:Generator_ColumnPropNameInRow="FirmaAuditor" msprop:Generator_ColumnPropNameInTable="FirmaAuditorColumn" msprop:Generator_UserColumnName="FirmaAuditor" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="b_Logo_Cliente" msprop:Generator_ColumnVarNameInTable="columnb_Logo_Cliente" msprop:Generator_ColumnPropNameInRow="b_Logo_Cliente" msprop:Generator_ColumnPropNameInTable="b_Logo_ClienteColumn" msprop:Generator_UserColumnName="b_Logo_Cliente" type="xs:base64Binary" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
