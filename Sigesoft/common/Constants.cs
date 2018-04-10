@@ -974,6 +974,8 @@ namespace Sigesoft.Common
 
         public const string INFORME_DECLARACION_CI = "DECLARACION_CI";
         public const string INFORME_ESPIROMETRIA = "INFORME_ESPIRO";
+
+        public const string APTITUD_YANACOCHA = "APT_YANA";
         #endregion
 
     

@@ -24267,6 +24267,120 @@ namespace Sigesoft.Node.WinClient.BLL
 
 		}
 
+        public List<UcOsteo> ReporteUCOsteoCoimalache(string pstrserviceId, string pstrComponentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                 join C in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
+                                                                       equals new { a = C.v_ServiceId, b = C.v_ComponentId }
+
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on C.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+
+                                 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId
+
+                                 join E1 in dbContext.protocol on A.v_ProtocolId equals E1.v_ProtocolId
+
+                                 join et in dbContext.systemparameter on new { a = E1.i_EsoTypeId.Value, b = 118 }
+                                               equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
+                                 from et in et_join.DefaultIfEmpty()
+                                 where A.v_ServiceId == pstrserviceId
+                                 select new UcOsteo
+                                 {
+                                     Trabajador = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                     FechaNacimiento = B.d_Birthdate,
+                                     FechaEvaluacion = A.d_ServiceDate,
+                                     Puesto = B.v_CurrentOccupation,
+                                     ServicioId = A.v_ServiceId,
+                                     FirmaUsuarioGraba = pme.b_SignatureImage,
+                                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_FirstLastName + " " + Z.v_FirstName,
+                                     HuellaTrabajador = B.b_FingerPrintImage,
+                                     FirmaTrabajador = B.b_RubricImage,
+                                     TipoEso = et.v_Value1,
+                                     Dni = B.v_DocNumber
+                                 });
+                var ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, "N009-ME000000052").ToList();
+                var MedicalCenter = GetInfoMedicalCenter();
+                var sql = (from a in objEntity.ToList()
+                           select new UcOsteo
+                           {
+                               TipoEso = a.TipoEso,
+                               Dni = a.Dni,
+                               Trabajador = a.Trabajador,
+                               FechaNacimiento = a.FechaNacimiento,
+                               FechaEvaluacion = a.FechaEvaluacion,
+                               Puesto = a.Puesto,
+                               ServicioId = a.ServicioId,
+                               FirmaUsuarioGraba = a.FirmaUsuarioGraba,
+                               NombreUsuarioGraba = a.NombreUsuarioGraba,
+                               HuellaTrabajador = a.HuellaTrabajador,
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               Edad = GetAge(a.FechaNacimiento.Value),
+
+
+                               UC_OSTEO_FLEXIBILIDAD = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_FLEXIBILIDAD) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_FLEXIBILIDAD).v_Value1,
+                               UC_OSTEO_FLEXIBILIDAD_PTJ = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_FLEXIBILIDAD_PTJ) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_FLEXIBILIDAD_PTJ).v_Value1,
+                               UC_OSTEO_FLEXIBILIDAD_OBS = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_FLEXIBILIDAD_OBS) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_FLEXIBILIDAD_OBS).v_Value1,
+                               UC_OSTEO_CADERA = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_CADERA) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_CADERA).v_Value1,
+                               UC_OSTEO_CADERA_PTJ = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_CADERA_PTJ) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_CADERA_PTJ).v_Value1,
+                               UC_OSTEO_CADERA_OBS = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_CADERA_OBS) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_CADERA_OBS).v_Value1,
+                               UC_OSTEO_MUSLO = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_MUSLO) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_MUSLO).v_Value1,
+                               UC_OSTEO_MUSLO_PTJ = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_MUSLO_PTJ) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_MUSLO_PTJ).v_Value1,
+                               UC_OSTEO_MUSLO_OBS = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_MUSLO_OBS) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_MUSLO_OBS).v_Value1,
+                               UC_OSTEO_ABDOMEN = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABDOMEN) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABDOMEN).v_Value1,
+
+
+                               UC_OSTEO_ABDOMEN_PTJ = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABDOMEN_PTJ) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABDOMEN_PTJ).v_Value1,
+                               UC_OSTEO_ABDOMEN_OBS = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABDOMEN_OBS) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABDOMEN_OBS).v_Value1,
+                               UC_OSTEO_ABD_180 = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_180) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_180).v_Value1,
+                               UC_OSTEO_ABD_180_PTJ = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_180_PTJ) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_180_PTJ).v_Value1,
+                               UC_OSTEO_ABD_180_SINO = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_180_SINO) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_180_SINO).v_Value1,
+                               UC_OSTEO_ABD_60 = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_60) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_60).v_Value1,
+                               UC_OSTEO_ABD_60_PTJ = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_60_PTJ) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_60_PTJ).v_Value1,
+                               UC_OSTEO_ABD_60_SINO = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_60_SINO) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_60_SINO).v_Value1,
+                               UC_OSTEO_ABD_90 = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_90) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_90).v_Value1,
+                               UC_OSTEO_ABD_90_PTJ = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_90_PTJ) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_90_PTJ).v_Value1,
+
+
+                               UC_OSTEO_ABD_90_SINO = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_90_SINO) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ABD_90_SINO).v_Value1,
+                               UC_OSTEO_ROTACION = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ROTACION) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ROTACION).v_Value1,
+                               UC_OSTEO_ROTACION_PTJ = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ROTACION_PTJ) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ROTACION_PTJ).v_Value1,
+                               UC_OSTEO_ROTACION_SINO = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ROTACION_SINO) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_ROTACION_SINO).v_Value1,
+                               UC_OSTEO_OBS = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_OBS) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_OBS).v_Value1,
+                               UC_OSTEO_TOTAL1 = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_TOTAL1) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_TOTAL1).v_Value1,
+                               UC_OSTEO_TOTAL2 = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_TOTAL2) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.UC_OSTEO_TOTAL2).v_Value1,
+
+
+                               b_Logo = MedicalCenter.b_Image,
+                               EmpresaPropietaria = MedicalCenter.v_Name,
+                               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+
+                           }).ToList();
+
+
+                return sql;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+
 		public List<OjoSeco> ReporteOjoSeco(string pstrserviceId, string pstrComponentId)
 		{
 			try
@@ -25034,7 +25148,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
                 var MedicalCenter = GetInfoMedicalCenter();
-                var Valores = ValoresComponente(pstrServiceId, "N009-ME000000052").ToList();
+                var Valores = ValoresComponente(pstrServiceId, pstrComponentId).ToList();
                 var sql = (from a in objEntity.ToList()
                            select new OstioCoimolache
                            {

@@ -31,7 +31,7 @@ namespace Sigesoft.Node.WinClient.UI
             rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("DeclaracionJurada"));
 
             ext = Path.GetExtension(_filePath);
-            File.Copy(_filePath, rutaOrigen + _serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO + ext);
+            File.Copy(_filePath, rutaOrigen + _serviceId + "-" + "DJ" + ext);
             MessageBox.Show("Se adjuntó correctamente", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
