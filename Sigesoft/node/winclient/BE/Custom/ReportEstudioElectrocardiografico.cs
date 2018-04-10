@@ -136,6 +136,17 @@ namespace Sigesoft.Node.WinClient.BE
         public string OtrasAlteracionesElectro { get; set; }  
         public string Conclusiones { get; set; }
         public string ConclusionesApendice05 { get; set; }
+
+
+        public string PrGold { get; set; }
+        public string QrsGold { get; set; }
+        public string QtcGold { get; set; }
+        public string EjeCardicacoGold { get; set; }
+        public string HallazgoGold { get; set; }
+        public string ObservacionesGold { get; set; }
+
+        public byte[] HuellaPaciente { get; set; }
+        public byte[] FirmaPaciente { get; set; }
         
     }
 }

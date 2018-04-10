@@ -18189,7 +18189,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									 NombreDoctor = X.v_FirstLastName + " " + X.v_SecondLastName + " " + X.v_FirstName,
 									 NombreTecnologo = Y.v_FirstLastName + " " + Y.v_SecondLastName + " " + Y.v_FirstName,
 									 NombreUsuarioGraba = X.v_FirstLastName + " " + X.v_SecondLastName + " " + X.v_FirstName,
-									 b_Imagen = G1.b_File
+									 b_Imagen = G1.b_File,
+                                    HuellaPaciente = B.b_FingerPrintImage,
+                                    FirmaPaciente = B.b_RubricImage
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
@@ -18213,7 +18215,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							   Edad = GetAge(a.FechaNacimiento),
 							   NombreDoctor = a.NombreDoctor,
 							   NombreTecnologo = a.NombreTecnologo,
-
+                               HuellaPaciente =a.HuellaPaciente,
+                               FirmaPaciente =a.FirmaPaciente,
 							   SoploSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_SOPLO_CARDIACO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_SOPLO_CARDIACO_ID).v_Value1,
 							   CansancioSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_CANSANCIO_RAPIDO_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_CANSANCIO_RAPIDO_ID).v_Value1,
 							   MareosSiNo = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_MAREOS_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_MAREOS_ID).v_Value1,
@@ -18268,9 +18271,18 @@ namespace Sigesoft.Node.WinClient.BLL
 							   //Descripcion = GetServiceComponentFielValue(a.IdServicio, pstrComponentId, Constants.OSTEO_MUSCULAR_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
 							   //Recomendacion = GetRecommendationByServiceId(a.IdServicio),
 
-                                FrecuenciaCardiaca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003128") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003128").v_Value1,
-                                RitmoCardiaco = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003129") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003129").v_Value1,
-                                CalculoIntervaloPr = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003130") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003130").v_Value1,
+                               FrecuenciaCardiaca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003119") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003119").v_Value1,
+                               RitmoCardiaco = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003120") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003120").v_Value1,
+
+                               PrGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003121") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003121").v_Value1,
+                               QrsGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003122") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003122").v_Value1,
+                               QtcGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003123") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003123").v_Value1,
+                               EjeCardicacoGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003124") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003124").v_Value1,
+                               HallazgoGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003125") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003125").v_Value1,
+                               ObservacionesGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126").v_Value1,
+                              
+                               
+                               CalculoIntervaloPr = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003130") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003130").v_Value1,
                                 CalculoIntervaloQt = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003131") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003131").v_Value1,
                                 EjeElectrico = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003132") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003132").v_Value1,
                                 AlteracionesSegmentoSt = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003133") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003133").v_Value1,
@@ -19102,6 +19114,20 @@ namespace Sigesoft.Node.WinClient.BLL
 				return email;
 			}
 		}
+
+        //public string GetActividadEconomicaEmpPropietaria()
+        //{
+        //    using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+        //    {
+
+        //        var result = (from n in dbContext.organization
+        //                      join b in dbContext.ciiui on n.v_SectorCodigo equals b.
+        //                     where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+        //                     select SP2.v_Value1).SingleOrDefault<string>();
+
+        //        return result;
+        //    }
+        //}
 
 		// Alejandro
 		public organizationDto GetInfoMedicalCenter()
@@ -20636,7 +20662,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 				var objEntity = (from A in dbContext.service
 
-								 join B in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
+                                 join B in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
 																	 equals new { a = B.v_ServiceId, b = B.v_ComponentId } into B_join
 								 from B in B_join.DefaultIfEmpty()
 
@@ -20684,6 +20710,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join pme in dbContext.professional on F1.v_PersonId equals pme.v_PersonId into pme_join
                                  from pme in pme_join.DefaultIfEmpty()
 
+
 								 where A.v_ServiceId == pstrserviceId
 								 && (G.i_IsDeleted == 0 || G.i_IsDeleted == null)
 								 select new ReportCuestionarioEspirometria
@@ -20704,13 +20731,13 @@ namespace Sigesoft.Node.WinClient.BLL
                                      TipoEso = C.i_EsoTypeId.Value,
                                      EmpresaContratista = D2.v_Name,
                                      RazonSocial = D.v_Name,
-                                     ActividadEconomica = SP2.v_Value1,
+                                     //ActividadEconomica = SP2.v_Value1,
                                      PuestoTrabajo = E.v_CurrentOccupation,
                                      LogoCliente = D.b_Image
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-
+                //var ActividadEconomica = GetActividadEconomicaEmpPropietaria();
 				var sql = (from a in objEntity.ToList()
 
 						   let Espirometria = ValoresComponente(pstrserviceId, Constants.ESPIROMETRIA_ID)
@@ -20725,11 +20752,12 @@ namespace Sigesoft.Node.WinClient.BLL
 							   IdServicio = a.IdServicio,
                                ServiceComponentId = a.ServiceComponentId,
                                TipoEso = a.TipoEso,
+                               Fecha =  a.Fecha,
 							   Fecha_S = a.Fecha.Value.ToString("dd/MM/yyyy"),
 							   NombreTrabajador = a.NombreTrabajador,
 							   FechaNacimineto_S = a.FechaNacimineto.Value.ToString("dd/MM/yyyy"),
                                RazonSocial = a.RazonSocial,
-                               ActividadEconomica = a.ActividadEconomica,
+                               ActividadEconomica = MedicalCenter.v_SectorName,
                                PuestoTrabajo = a.PuestoTrabajo,
                                LogoCliente = a.LogoCliente,
                                TiempoTrabajo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_TIEMPO_TRABAJO_ID).v_Value1,

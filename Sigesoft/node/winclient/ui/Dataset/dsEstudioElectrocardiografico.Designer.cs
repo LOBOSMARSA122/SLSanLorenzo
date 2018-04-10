@@ -419,6 +419,22 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnConclusionesApendice05;
             
+            private global::System.Data.DataColumn columnHuellaPaciente;
+            
+            private global::System.Data.DataColumn columnFirmaPaciente;
+            
+            private global::System.Data.DataColumn columnPrGold;
+            
+            private global::System.Data.DataColumn columnQrsGold;
+            
+            private global::System.Data.DataColumn columnQtcGold;
+            
+            private global::System.Data.DataColumn columnEjeCardicacoGold;
+            
+            private global::System.Data.DataColumn columnHallazgoGold;
+            
+            private global::System.Data.DataColumn columnObservacionesGold;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtEstudioElectrocardiograficoDataTable() {
@@ -1014,6 +1030,70 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HuellaPacienteColumn {
+                get {
+                    return this.columnHuellaPaciente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FirmaPacienteColumn {
+                get {
+                    return this.columnFirmaPaciente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PrGoldColumn {
+                get {
+                    return this.columnPrGold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QrsGoldColumn {
+                get {
+                    return this.columnQrsGold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn QtcGoldColumn {
+                get {
+                    return this.columnQtcGold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EjeCardicacoGoldColumn {
+                get {
+                    return this.columnEjeCardicacoGold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn HallazgoGoldColumn {
+                get {
+                    return this.columnHallazgoGold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ObservacionesGoldColumn {
+                get {
+                    return this.columnObservacionesGold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1119,7 +1199,15 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string EjeElectrico, 
                         string AlteracionesSegmentoSt, 
                         string OtrasAlteracionesElectro, 
-                        string ConclusionesApendice05) {
+                        string ConclusionesApendice05, 
+                        byte[] HuellaPaciente, 
+                        byte[] FirmaPaciente, 
+                        string PrGold, 
+                        string QrsGold, 
+                        string QtcGold, 
+                        string EjeCardicacoGold, 
+                        string HallazgoGold, 
+                        string ObservacionesGold) {
                 dtEstudioElectrocardiograficoRow rowdtEstudioElectrocardiograficoRow = ((dtEstudioElectrocardiograficoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NroFicha,
@@ -1191,7 +1279,15 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         EjeElectrico,
                         AlteracionesSegmentoSt,
                         OtrasAlteracionesElectro,
-                        ConclusionesApendice05};
+                        ConclusionesApendice05,
+                        HuellaPaciente,
+                        FirmaPaciente,
+                        PrGold,
+                        QrsGold,
+                        QtcGold,
+                        EjeCardicacoGold,
+                        HallazgoGold,
+                        ObservacionesGold};
                 rowdtEstudioElectrocardiograficoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtEstudioElectrocardiograficoRow);
                 return rowdtEstudioElectrocardiograficoRow;
@@ -1284,6 +1380,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnAlteracionesSegmentoSt = base.Columns["AlteracionesSegmentoSt"];
                 this.columnOtrasAlteracionesElectro = base.Columns["OtrasAlteracionesElectro"];
                 this.columnConclusionesApendice05 = base.Columns["ConclusionesApendice05"];
+                this.columnHuellaPaciente = base.Columns["HuellaPaciente"];
+                this.columnFirmaPaciente = base.Columns["FirmaPaciente"];
+                this.columnPrGold = base.Columns["PrGold"];
+                this.columnQrsGold = base.Columns["QrsGold"];
+                this.columnQtcGold = base.Columns["QtcGold"];
+                this.columnEjeCardicacoGold = base.Columns["EjeCardicacoGold"];
+                this.columnHallazgoGold = base.Columns["HallazgoGold"];
+                this.columnObservacionesGold = base.Columns["ObservacionesGold"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1429,6 +1533,22 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnOtrasAlteracionesElectro);
                 this.columnConclusionesApendice05 = new global::System.Data.DataColumn("ConclusionesApendice05", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnConclusionesApendice05);
+                this.columnHuellaPaciente = new global::System.Data.DataColumn("HuellaPaciente", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHuellaPaciente);
+                this.columnFirmaPaciente = new global::System.Data.DataColumn("FirmaPaciente", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFirmaPaciente);
+                this.columnPrGold = new global::System.Data.DataColumn("PrGold", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPrGold);
+                this.columnQrsGold = new global::System.Data.DataColumn("QrsGold", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQrsGold);
+                this.columnQtcGold = new global::System.Data.DataColumn("QtcGold", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnQtcGold);
+                this.columnEjeCardicacoGold = new global::System.Data.DataColumn("EjeCardicacoGold", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEjeCardicacoGold);
+                this.columnHallazgoGold = new global::System.Data.DataColumn("HallazgoGold", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHallazgoGold);
+                this.columnObservacionesGold = new global::System.Data.DataColumn("ObservacionesGold", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnObservacionesGold);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2756,6 +2876,142 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] HuellaPaciente {
+                get {
+                    try {
+                        return ((byte[])(this[this.tabledtEstudioElectrocardiografico.HuellaPacienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HuellaPaciente\' in table \'dtEstudioElectrocardiografico\' is" +
+                                " DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.HuellaPacienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] FirmaPaciente {
+                get {
+                    try {
+                        return ((byte[])(this[this.tabledtEstudioElectrocardiografico.FirmaPacienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FirmaPaciente\' in table \'dtEstudioElectrocardiografico\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.FirmaPacienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PrGold {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtEstudioElectrocardiografico.PrGoldColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'PrGold\' in table \'dtEstudioElectrocardiografico\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.PrGoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string QrsGold {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtEstudioElectrocardiografico.QrsGoldColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QrsGold\' in table \'dtEstudioElectrocardiografico\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.QrsGoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string QtcGold {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtEstudioElectrocardiografico.QtcGoldColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'QtcGold\' in table \'dtEstudioElectrocardiografico\' is DBNull" +
+                                ".", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.QtcGoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EjeCardicacoGold {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtEstudioElectrocardiografico.EjeCardicacoGoldColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EjeCardicacoGold\' in table \'dtEstudioElectrocardiografico\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.EjeCardicacoGoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string HallazgoGold {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtEstudioElectrocardiografico.HallazgoGoldColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'HallazgoGold\' in table \'dtEstudioElectrocardiografico\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.HallazgoGoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ObservacionesGold {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtEstudioElectrocardiografico.ObservacionesGoldColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ObservacionesGold\' in table \'dtEstudioElectrocardiografico\'" +
+                                " is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.ObservacionesGoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNroFichaNull() {
                 return this.IsNull(this.tabledtEstudioElectrocardiografico.NroFichaColumn);
             }
@@ -3592,6 +3848,102 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetConclusionesApendice05Null() {
                 this[this.tabledtEstudioElectrocardiografico.ConclusionesApendice05Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHuellaPacienteNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.HuellaPacienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHuellaPacienteNull() {
+                this[this.tabledtEstudioElectrocardiografico.HuellaPacienteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFirmaPacienteNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.FirmaPacienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFirmaPacienteNull() {
+                this[this.tabledtEstudioElectrocardiografico.FirmaPacienteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPrGoldNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.PrGoldColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPrGoldNull() {
+                this[this.tabledtEstudioElectrocardiografico.PrGoldColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQrsGoldNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.QrsGoldColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQrsGoldNull() {
+                this[this.tabledtEstudioElectrocardiografico.QrsGoldColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsQtcGoldNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.QtcGoldColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetQtcGoldNull() {
+                this[this.tabledtEstudioElectrocardiografico.QtcGoldColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEjeCardicacoGoldNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.EjeCardicacoGoldColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEjeCardicacoGoldNull() {
+                this[this.tabledtEstudioElectrocardiografico.EjeCardicacoGoldColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsHallazgoGoldNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.HallazgoGoldColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetHallazgoGoldNull() {
+                this[this.tabledtEstudioElectrocardiografico.HallazgoGoldColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsObservacionesGoldNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.ObservacionesGoldColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetObservacionesGoldNull() {
+                this[this.tabledtEstudioElectrocardiografico.ObservacionesGoldColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -316,6 +316,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCuestionario_Istas.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsEstudioElectrocardiografico.cs">
+      <DependentUpon>dsEstudioElectrocardiografico.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Dataset\dsFichaAntecedentePatologico.cs">
       <DependentUpon>dsFichaAntecedentePatologico.xsd</DependentUpon>
     </Compile>
@@ -351,6 +355,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMaslachestres.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\dsOstioCoimolache.cs">
+      <DependentUpon>dsOstioCoimolache.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dataset\dsOstioCoimolache.Designer.cs">
       <AutoGen>True</AutoGen>

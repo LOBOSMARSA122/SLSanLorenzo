@@ -1611,6 +1611,21 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
                 }
 
+                //ESPIRO
+                rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgPSICOOrigen").ToString());
+                FileInfo[] files3 = rutaOrigen.GetFiles();
+
+                foreach (FileInfo file in files3)
+                {
+                    if (file.ToString().Count() > 16)
+                    {
+                        if (file.ToString().Substring(0, 17) == o.DNI + "-" + Fecha)
+                        {
+                            _filesNameToMerge.Add(rutaOrigen + file.ToString());
+                        };
+                    }
+                }
+
                 ////RX
                 //rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgRxOrigen").ToString());
                 //FileInfo[] files3 = rutaOrigen.GetFiles();
@@ -2885,7 +2900,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.INFORME_ESPIROMETRIA:
 
-                    var INFORME_ESPIROMETRIA = new ServiceBL().GetReportCuestionarioEspirometria(_serviceId, Constants.INFORME_ESPIROMETRIA);
+                    var INFORME_ESPIROMETRIA = new ServiceBL().GetReportCuestionarioEspirometria(_serviceId, Constants.ESPIROMETRIA_ID);
 
                     dsGetRepo = new DataSet();
                     DataTable dtINFORME_ESPIROMETRIA = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(INFORME_ESPIROMETRIA);
