@@ -17074,7 +17074,8 @@ namespace Sigesoft.Node.WinClient.BLL
 									 FirmaMedico = F.b_SignatureImage == null ? p7c.b_SignatureImage : F.b_SignatureImage,
 									 FirmaTrabajador = B.b_RubricImage,
 									 HuellaTrabajador = B.b_FingerPrintImage,
-                                     FirmaAuditor = pr.b_SignatureImage
+                                     FirmaAuditor = pr.b_SignatureImage,
+                                     b_Logo_Cliente = D1.b_Image
                                  });
 
 				var MedicalCenter = GetInfoMedicalCenter();
@@ -17117,7 +17118,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							   EmpresaPropietariaDireccion = MedicalCenter.v_Address,
 							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
 							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
-                               FirmaAuditor = a.FirmaAuditor
+                               FirmaAuditor = a.FirmaAuditor,
+                               b_Logo_Cliente = a.b_Logo_Cliente
 						   }).ToList();
 
 				return sql;
@@ -17184,10 +17186,10 @@ namespace Sigesoft.Node.WinClient.BLL
 					   a.i_IsDeleted == 0
 					   select new
 					   {
-						   v_Epps = C1.v_Value1 + " ("+ a.r_Percentage + " %)"
+						   v_Epps = C1.v_Value1,
+                           Procentaje =  a.r_Percentage.Value
 					   }).ToList();
-
-			return string.Join(", ", qry.Select(p => p.v_Epps));
+            return string.Join(", ", qry.Select(p => p.v_Epps + " (" + p.Procentaje.ToString() + "%)"));
 		}
 
 		public string GetValueOdontogramaAusente(string pstrServiceId, string pstrComponentId, string pstrFieldId, string pstrPath)

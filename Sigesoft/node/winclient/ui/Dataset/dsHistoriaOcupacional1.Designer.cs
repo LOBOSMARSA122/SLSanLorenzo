@@ -343,6 +343,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnFirmaAuditor;
             
+            private global::System.Data.DataColumn columnb_Logo_Cliente;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public HistoriaOcupacionalDataTable() {
@@ -634,6 +636,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn b_Logo_ClienteColumn {
+                get {
+                    return this.columnb_Logo_Cliente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -701,7 +711,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string EmpresaPropietariaDireccion, 
                         string ActividadEmpresa, 
                         string TotalMeses, 
-                        byte[] FirmaAuditor) {
+                        byte[] FirmaAuditor, 
+                        byte[] b_Logo_Cliente) {
                 HistoriaOcupacionalRow rowHistoriaOcupacionalRow = ((HistoriaOcupacionalRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Trabajador,
@@ -735,7 +746,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         EmpresaPropietariaDireccion,
                         ActividadEmpresa,
                         TotalMeses,
-                        FirmaAuditor};
+                        FirmaAuditor,
+                        b_Logo_Cliente};
                 rowHistoriaOcupacionalRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowHistoriaOcupacionalRow);
                 return rowHistoriaOcupacionalRow;
@@ -790,6 +802,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnActividadEmpresa = base.Columns["ActividadEmpresa"];
                 this.columnTotalMeses = base.Columns["TotalMeses"];
                 this.columnFirmaAuditor = base.Columns["FirmaAuditor"];
+                this.columnb_Logo_Cliente = base.Columns["b_Logo_Cliente"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -859,6 +872,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnTotalMeses);
                 this.columnFirmaAuditor = new global::System.Data.DataColumn("FirmaAuditor", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirmaAuditor);
+                this.columnb_Logo_Cliente = new global::System.Data.DataColumn("b_Logo_Cliente", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnb_Logo_Cliente);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1520,6 +1535,22 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] b_Logo_Cliente {
+                get {
+                    try {
+                        return ((byte[])(this[this.tableHistoriaOcupacional.b_Logo_ClienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'b_Logo_Cliente\' in table \'HistoriaOcupacional\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableHistoriaOcupacional.b_Logo_ClienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsTrabajadorNull() {
                 return this.IsNull(this.tableHistoriaOcupacional.TrabajadorColumn);
             }
@@ -1900,6 +1931,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFirmaAuditorNull() {
                 this[this.tableHistoriaOcupacional.FirmaAuditorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isb_Logo_ClienteNull() {
+                return this.IsNull(this.tableHistoriaOcupacional.b_Logo_ClienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setb_Logo_ClienteNull() {
+                this[this.tableHistoriaOcupacional.b_Logo_ClienteColumn] = global::System.Convert.DBNull;
             }
         }
         
