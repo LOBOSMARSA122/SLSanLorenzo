@@ -179,7 +179,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Sarampion1 { get; set; }
         public string UsdOtotoxicos { get; set; }
 
-        public string OTALGIA { get; set; }
+        public string Otalgia1 { get; set; }
 
         public string Departamento { get; set; }
         public string Provincia { get; set; }

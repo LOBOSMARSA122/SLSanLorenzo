@@ -98,7 +98,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public string TranstornoConduccion{get;set;}
 
-        public string Conclusiones{get;set;}
+      
 
         public string Hallazgos{get;set;}
 
@@ -125,6 +125,17 @@ namespace Sigesoft.Node.WinClient.BE
 
         public byte[] b_Imagen { get; set; }
         public string NombreUsuarioGraba { get; set; }
-            
+
+
+        public string FrecuenciaCardiaca { get; set; }
+        public string RitmoCardiaco { get; set; }
+        public string CalculoIntervaloPr { get; set; }
+        public string CalculoIntervaloQt { get; set; }
+        public string EjeElectrico { get; set; }
+        public string AlteracionesSegmentoSt { get; set; }
+        public string OtrasAlteracionesElectro { get; set; }  
+        public string Conclusiones { get; set; }
+        public string ConclusionesApendice05 { get; set; }
+        
     }
 }

@@ -75,7 +75,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn69 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_QueueStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentId");
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
@@ -171,6 +171,7 @@
             this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregarExamen = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnAdjuntar = new System.Windows.Forms.Button();
             this.btnEnviarInformes = new System.Windows.Forms.Button();
             this.btnEnviarAsistencia = new System.Windows.Forms.Button();
             this.btnEnviarCertificados = new System.Windows.Forms.Button();
@@ -1114,6 +1115,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnAdjuntar);
             this.splitContainer1.Panel1.Controls.Add(this.btnEnviarInformes);
             this.splitContainer1.Panel1.Controls.Add(this.btnEnviarAsistencia);
             this.splitContainer1.Panel1.Controls.Add(this.btnEnviarCertificados);
@@ -1138,6 +1140,28 @@
             this.splitContainer1.Size = new System.Drawing.Size(1077, 452);
             this.splitContainer1.SplitterDistance = 622;
             this.splitContainer1.TabIndex = 53;
+            // 
+            // btnAdjuntar
+            // 
+            this.btnAdjuntar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdjuntar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAdjuntar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAdjuntar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAdjuntar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAdjuntar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdjuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntar.ForeColor = System.Drawing.Color.Black;
+            this.btnAdjuntar.Image = global::Sigesoft.Node.WinClient.UI.Resources.attach;
+            this.btnAdjuntar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdjuntar.Location = new System.Drawing.Point(471, 418);
+            this.btnAdjuntar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdjuntar.Name = "btnAdjuntar";
+            this.btnAdjuntar.Size = new System.Drawing.Size(139, 24);
+            this.btnAdjuntar.TabIndex = 100;
+            this.btnAdjuntar.Text = "Adjuntar Declaración";
+            this.btnAdjuntar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdjuntar.UseVisualStyleBackColor = false;
+            this.btnAdjuntar.Click += new System.EventHandler(this.btnAdjuntar_Click);
             // 
             // btnEnviarInformes
             // 
@@ -1662,5 +1686,6 @@
         private System.Windows.Forms.Button btnEnviarInformes;
         private Infragistics.Win.UltraWinGrid.UltraGrid ugComponentes;
         private Infragistics.Win.UltraWinDataSource.UltraDataSource ultraDataSource1;
+        private System.Windows.Forms.Button btnAdjuntar;
     }
 }

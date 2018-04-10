@@ -17921,7 +17921,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                  {
                                      EmpresaCliente = D1.v_Name,
                                      IdServicio = A.v_ServiceId,
-                                     IdComponent = B.v_ServiceComponentId,
+                                     ServiceComponentId = B.v_ServiceComponentId,
                                      Fecha = A.d_ServiceDate.Value,
                                      NombreTrabajador = E.v_FirstLastName + " " + E.v_SecondLastName + " " + E.v_FirstName,
                                      FechaNacimineto = E.d_Birthdate,
@@ -17945,7 +17945,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                            {
                                EmpresaCliente = a.EmpresaCliente,
                                IdServicio = a.IdServicio,
-                               IdComponent = a.IdComponent,
+                               ServiceComponentId = a.ServiceComponentId,
                                Fecha_S = a.Fecha.Value.ToString("dd/MM/yyyy"),
                                NombreTrabajador = a.NombreTrabajador,
                                FechaNacimineto_S = a.FechaNacimineto.Value.ToString("dd/MM/yyyy"),
