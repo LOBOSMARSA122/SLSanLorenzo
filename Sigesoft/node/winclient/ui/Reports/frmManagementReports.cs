@@ -2279,7 +2279,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + "_02" + ".pdf";
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL  + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
 
@@ -2294,7 +2294,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();
-                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + "_05" + ".pdf";
+                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL  + ".pdf";
                         _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                         rp.ExportOptions.DestinationOptions = objDiskOpt;
 
@@ -2309,7 +2309,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                             objDiskOpt = new DiskFileDestinationOptions();
-                            objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + "_03" + ".pdf";
+                            objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL  + ".pdf";
                             _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                             rp.ExportOptions.DestinationOptions = objDiskOpt;
 
@@ -2324,7 +2324,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                             objDiskOpt = new DiskFileDestinationOptions();
-                            objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL + "_04" + ".pdf";
+                            objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.INFORME_HISTORIA_OCUPACIONAL  + ".pdf";
                             _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                             rp.ExportOptions.DestinationOptions = objDiskOpt;
 

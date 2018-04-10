@@ -435,6 +435,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnObservacionesGold;
             
+            private global::System.Data.DataColumn columnConclusionesGold;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtEstudioElectrocardiograficoDataTable() {
@@ -1094,6 +1096,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ConclusionesGoldColumn {
+                get {
+                    return this.columnConclusionesGold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1207,7 +1217,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string QtcGold, 
                         string EjeCardicacoGold, 
                         string HallazgoGold, 
-                        string ObservacionesGold) {
+                        string ObservacionesGold, 
+                        string ConclusionesGold) {
                 dtEstudioElectrocardiograficoRow rowdtEstudioElectrocardiograficoRow = ((dtEstudioElectrocardiograficoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NroFicha,
@@ -1287,7 +1298,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         QtcGold,
                         EjeCardicacoGold,
                         HallazgoGold,
-                        ObservacionesGold};
+                        ObservacionesGold,
+                        ConclusionesGold};
                 rowdtEstudioElectrocardiograficoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtEstudioElectrocardiograficoRow);
                 return rowdtEstudioElectrocardiograficoRow;
@@ -1388,6 +1400,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnEjeCardicacoGold = base.Columns["EjeCardicacoGold"];
                 this.columnHallazgoGold = base.Columns["HallazgoGold"];
                 this.columnObservacionesGold = base.Columns["ObservacionesGold"];
+                this.columnConclusionesGold = base.Columns["ConclusionesGold"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1549,6 +1562,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnHallazgoGold);
                 this.columnObservacionesGold = new global::System.Data.DataColumn("ObservacionesGold", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObservacionesGold);
+                this.columnConclusionesGold = new global::System.Data.DataColumn("ConclusionesGold", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnConclusionesGold);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3012,6 +3027,23 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ConclusionesGold {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtEstudioElectrocardiografico.ConclusionesGoldColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ConclusionesGold\' in table \'dtEstudioElectrocardiografico\' " +
+                                "is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.ConclusionesGoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNroFichaNull() {
                 return this.IsNull(this.tabledtEstudioElectrocardiografico.NroFichaColumn);
             }
@@ -3944,6 +3976,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetObservacionesGoldNull() {
                 this[this.tabledtEstudioElectrocardiografico.ObservacionesGoldColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsConclusionesGoldNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.ConclusionesGoldColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetConclusionesGoldNull() {
+                this[this.tabledtEstudioElectrocardiografico.ConclusionesGoldColumn] = global::System.Convert.DBNull;
             }
         }
         

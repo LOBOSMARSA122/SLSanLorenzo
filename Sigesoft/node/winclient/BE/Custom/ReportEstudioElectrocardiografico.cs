@@ -147,6 +147,9 @@ namespace Sigesoft.Node.WinClient.BE
 
         public byte[] HuellaPaciente { get; set; }
         public byte[] FirmaPaciente { get; set; }
+        public string ConclusionesGold { get; set; }
+
+        
         
     }
 }

@@ -59,5 +59,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public byte[] FirmaAuditor { get; set; }
         public byte[] b_Logo_Cliente { get; set; }
+
+        public string TiempoTotalLaboral { get; set; }
     }
 }

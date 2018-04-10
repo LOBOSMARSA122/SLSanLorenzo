@@ -17047,9 +17047,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								 let varDistri = distri.v_Value1 == null ? "" : distri.v_Value1
 								 let del = D.i_IsDeleted == null ? 0 : D.i_IsDeleted
 
-								 where (A.v_ServiceId == pstrserviceId) &&
-									   (del == isDeleted)
-   //rony soy
+								 where (A.v_ServiceId == pstrserviceId) && (del == isDeleted)
 								 select new ReportHistoriaOcupacionalList
 								 {
 									 IdHistory = D.v_HistoryId,
@@ -17076,8 +17074,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									 HuellaTrabajador = B.b_FingerPrintImage,
                                      FirmaAuditor = pr.b_SignatureImage,
                                      b_Logo_Cliente = D1.b_Image
-                                 });
+                                 }).ToList();
 
+                var TiempoTotalLaboral = CalcularTotalTiempoLaboral(objEntity);
 				var MedicalCenter = GetInfoMedicalCenter();
 
 				var sql = (from a in objEntity.ToList()
@@ -17119,7 +17118,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
 							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
                                FirmaAuditor = a.FirmaAuditor,
-                               b_Logo_Cliente = a.b_Logo_Cliente
+                               b_Logo_Cliente = a.b_Logo_Cliente,
+                               TiempoTotalLaboral = TiempoTotalLaboral
 						   }).ToList();
 
 				return sql;
@@ -17130,6 +17130,33 @@ namespace Sigesoft.Node.WinClient.BLL
 				throw;
 			}
 		}
+
+        private string CalcularTotalTiempoLaboral(List<ReportHistoriaOcupacionalList> objEntity)
+        {
+            int monthDiff = 0;
+            foreach (var item in objEntity)
+            {
+                DateTime startDate = item.FechaInicio.Value;
+                DateTime endDate = item.FechaFin.Value;
+                monthDiff += ((endDate.Year * 12) + endDate.Month) - ((startDate.Year * 12) + startDate.Month);
+            }
+
+            int years = (int)Math.Floor((decimal)(monthDiff / 12));
+            int months = monthDiff % 12;
+
+            if (years == 0)
+            {
+                return string.Format("{0} mes ", months);
+            }
+            else if (months == 0)
+            {
+                return string.Format("{0} año ", years);
+            }
+            else
+            {
+                return string.Format("{0} año, {1} mes ", years, months);
+            }
+        }
 
 		public string GetYearsAndMonth(DateTime? EndDate, DateTime? StartDate)
 		{
@@ -18257,6 +18284,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                //OtrasAlteraciones = Valors.Count == 0 || Valors.Find(p => p.v_ComponentFieldId == Constants.APENDICE_OTRAS_ALTERACIONES) == null ? string.Empty : Valors.Find(p => p.v_ComponentFieldId == Constants.APENDICE_OTRAS_ALTERACIONES).v_Value1,
 
 							   Hallazgos = GetDiagnosticByServiceIdAndComponent(a.NroHistoria, Constants.ELECTROCARDIOGRAMA_ID),
+                               ConclusionesGold = GetDiagnosticByServiceIdAndComponent(a.NroHistoria, pstrComponentId),
 							   Recomendaciones = GetRecommendationByServiceIdAndComponent(a.NroHistoria, Constants.ELECTROCARDIOGRAMA_ID),
 							   OndaP = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_ONDA_P_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_ONDA_P_ID).v_Value1Name,
 							   SegmentoST = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_SEGMENTO_ST_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_SEGMENTO_ST_ID).v_Value1Name,

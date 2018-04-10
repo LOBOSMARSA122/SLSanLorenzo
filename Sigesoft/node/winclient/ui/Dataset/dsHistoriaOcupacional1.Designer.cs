@@ -339,7 +339,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnActividadEmpresa;
             
-            private global::System.Data.DataColumn columnTotalMeses;
+            private global::System.Data.DataColumn columnTiempoTotalLaboral;
             
             private global::System.Data.DataColumn columnFirmaAuditor;
             
@@ -620,9 +620,9 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalMesesColumn {
+            public global::System.Data.DataColumn TiempoTotalLaboralColumn {
                 get {
-                    return this.columnTotalMeses;
+                    return this.columnTiempoTotalLaboral;
                 }
             }
             
@@ -710,7 +710,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string EmpresaPropietaria, 
                         string EmpresaPropietariaDireccion, 
                         string ActividadEmpresa, 
-                        string TotalMeses, 
+                        string TiempoTotalLaboral, 
                         byte[] FirmaAuditor, 
                         byte[] b_Logo_Cliente) {
                 HistoriaOcupacionalRow rowHistoriaOcupacionalRow = ((HistoriaOcupacionalRow)(this.NewRow()));
@@ -745,7 +745,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         EmpresaPropietaria,
                         EmpresaPropietariaDireccion,
                         ActividadEmpresa,
-                        TotalMeses,
+                        TiempoTotalLaboral,
                         FirmaAuditor,
                         b_Logo_Cliente};
                 rowHistoriaOcupacionalRow.ItemArray = columnValuesArray;
@@ -800,7 +800,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnEmpresaPropietaria = base.Columns["EmpresaPropietaria"];
                 this.columnEmpresaPropietariaDireccion = base.Columns["EmpresaPropietariaDireccion"];
                 this.columnActividadEmpresa = base.Columns["ActividadEmpresa"];
-                this.columnTotalMeses = base.Columns["TotalMeses"];
+                this.columnTiempoTotalLaboral = base.Columns["TiempoTotalLaboral"];
                 this.columnFirmaAuditor = base.Columns["FirmaAuditor"];
                 this.columnb_Logo_Cliente = base.Columns["b_Logo_Cliente"];
             }
@@ -868,8 +868,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnEmpresaPropietariaDireccion);
                 this.columnActividadEmpresa = new global::System.Data.DataColumn("ActividadEmpresa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnActividadEmpresa);
-                this.columnTotalMeses = new global::System.Data.DataColumn("TotalMeses", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalMeses);
+                this.columnTiempoTotalLaboral = new global::System.Data.DataColumn("TiempoTotalLaboral", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTiempoTotalLaboral);
                 this.columnFirmaAuditor = new global::System.Data.DataColumn("FirmaAuditor", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirmaAuditor);
                 this.columnb_Logo_Cliente = new global::System.Data.DataColumn("b_Logo_Cliente", typeof(byte[]), null, global::System.Data.MappingType.Element);
@@ -1503,17 +1503,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TotalMeses {
+            public string TiempoTotalLaboral {
                 get {
                     try {
-                        return ((string)(this[this.tableHistoriaOcupacional.TotalMesesColumn]));
+                        return ((string)(this[this.tableHistoriaOcupacional.TiempoTotalLaboralColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalMeses\' in table \'HistoriaOcupacional\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'TiempoTotalLaboral\' in table \'HistoriaOcupacional\' is DBNul" +
+                                "l.", e);
                     }
                 }
                 set {
-                    this[this.tableHistoriaOcupacional.TotalMesesColumn] = value;
+                    this[this.tableHistoriaOcupacional.TiempoTotalLaboralColumn] = value;
                 }
             }
             
@@ -1911,14 +1912,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalMesesNull() {
-                return this.IsNull(this.tableHistoriaOcupacional.TotalMesesColumn);
+            public bool IsTiempoTotalLaboralNull() {
+                return this.IsNull(this.tableHistoriaOcupacional.TiempoTotalLaboralColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalMesesNull() {
-                this[this.tableHistoriaOcupacional.TotalMesesColumn] = global::System.Convert.DBNull;
+            public void SetTiempoTotalLaboralNull() {
+                this[this.tableHistoriaOcupacional.TiempoTotalLaboralColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
