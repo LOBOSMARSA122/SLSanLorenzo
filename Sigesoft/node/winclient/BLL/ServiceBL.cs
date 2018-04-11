@@ -24962,32 +24962,239 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-        public List<FichaAntecedentePatologico> GetReportAntecedentePatologico(string pstrServiceId, string pstrComponentId)
+        public List<FichaAntecedentePatologico> GetReportAntecedentePatologico(string pstrPacientId, string pstrServiceId)
         {
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-                var objEntity = (from A in dbContext.personmedicalhistory
-                                 join B in dbContext.diseases on A.v_DiseasesId equals B.v_DiseasesId 
-                                 where A.v_PersonId == pstrServiceId
+                var servicios = (from ser in dbContext.service
+                                 join serCom in dbContext.servicecomponent on ser.v_ServiceId equals serCom.v_ServiceId
+                                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId
+                                 join doc in dbContext.datahierarchy on new { a = per.i_DocTypeId.Value, b = 106 } equals new { a = doc.i_ItemId, b = doc.i_GroupId } into doc_join
+                                 from doc in doc_join.DefaultIfEmpty()
+                                 join prot in dbContext.protocol on ser.v_ProtocolId equals prot.v_ProtocolId
+                                 join empCli in dbContext.organization on prot.v_CustomerOrganizationId equals empCli.v_OrganizationId
+                                 join empTrab in dbContext.organization on prot.v_WorkingOrganizationId equals empTrab.v_OrganizationId
+                                 join empEmp in dbContext.organization on prot.v_EmployerOrganizationId equals empEmp.v_OrganizationId
+                                 join gen in dbContext.systemparameter on new { a = per.i_DocTypeId.Value, b = 100 } equals new { a = gen.i_ParameterId, b = gen.i_GroupId } into gen_join
+                                 from gen in gen_join.DefaultIfEmpty()
+                                 join me in dbContext.systemuser on serCom.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+                                 where ser.v_ServiceId == pstrServiceId
+                                 select new FichaAntecedentePatologico
+                                 {
+                                     ServiceId = ser.v_ServiceId,
+                                     ServiceComponentId = serCom.v_ServiceComponentId,
+                                     FechaServicio = ser.d_ServiceDate.Value,
+                                     Nombres = per.v_FirstName,
+                                     ApellidoPaterno = per.v_FirstLastName,
+                                     ApellidoMaterno = per.v_SecondLastName,
+                                     NombreCompleto = per.v_FirstLastName + " " + per.v_SecondLastName + " " + per.v_FirstName,
+                                     FechaNacimiento = per.d_Birthdate.Value,
+                                     //Edad = "",
+                                     TipoDocumentoId = per.i_DocTypeId.Value,
+                                     TipoDocumento = doc.v_Value1,
+                                     NroDocumento = per.v_DocNumber,
+                                     EmpresaCliente = empCli.v_Name,
+                                     EmpresaTrabajo = empTrab.v_Name,
+                                     EmpresaEmpleadora = empEmp.v_Name,
+                                     Puesto = per.v_CurrentOccupation,
+                                     GeneroId = per.i_SexTypeId.Value,
+                                     Genero = gen.v_Value1,
+                                     FirmaTrabajador = per.b_RubricImage,
+                                     HuellaTrabajador = per.b_FingerPrintImage,
+                                     FirmaUsuarioGraba = pme.b_SignatureImage,
+                                     InicioMestrucion = ser.v_Menarquia,
+                                     InicioVidaSexual ="",
+                                     NumeroParejas = "",
+                                     DamasNumeroHijosVivos = per.i_NumberLiveChildren,
+                                     DamasNumeroHijosFallecidos = per.i_NumberDeadChildren,
+                                     DamasNumeroAborto ="",
+                                     DamasCausaAborto ="",
+                                     VaronesNumeroHijosVivos = per.i_NumberLiveChildren,
+                                     VaromesNumeroHijosFallecidos = per.i_NumberDeadChildren,
+                                     VaromesNumeroAbortoPareja = "",
+                                     VaronesCausaAborto = ""
+                                 }).ToList();
 
+           
+
+                var objEntity = (from A in dbContext.personmedicalhistory
+                                 join B in dbContext.diseases on A.v_DiseasesId equals B.v_DiseasesId
+                                 where A.v_PersonId == pstrPacientId
                                  select new 
                                  {
-                                        Nombre = B.v_Name
+                                        Nombre = B.v_Name,
+                                        Detalle = A.v_DiagnosticDetail,
+                                        Tratamiento = A.v_TreatmentSite,
+                                        FechaAntecedente = A.d_StartDate,
+                                        DiseasseId = A.v_DiseasesId
                                  }).ToList();
 
                 var FichaAntecedentePatologico = new FichaAntecedentePatologico();
                 List<FichaAntecedentePatologico> list = new List<BE.FichaAntecedentePatologico>();
+                
+                FichaAntecedentePatologico.ServiceId = servicios[0].ServiceId;
 
-                FichaAntecedentePatologico.Alergia = objEntity.Find(p => p.Nombre == "Alergia") == null ? " " : "X";
-                FichaAntecedentePatologico.Asma = objEntity.Find(p => p.Nombre == "Asma") == null ? " " : "X";
+                FichaAntecedentePatologico.ServiceComponentId = servicios[0].ServiceComponentId;
+                FichaAntecedentePatologico.FechaServicio = servicios[0].FechaServicio;
+                FichaAntecedentePatologico.Nombres = servicios[0].Nombres;
+                FichaAntecedentePatologico.ApellidoPaterno = servicios[0].ApellidoPaterno;
+                FichaAntecedentePatologico.ApellidoMaterno = servicios[0].ApellidoMaterno;
+                FichaAntecedentePatologico.NombreCompleto = servicios[0].NombreCompleto;
+                FichaAntecedentePatologico.FechaNacimiento = servicios[0].FechaNacimiento;
+                FichaAntecedentePatologico.Edad = servicios[0].Edad;
+                FichaAntecedentePatologico.TipoDocumentoId = servicios[0].TipoDocumentoId;
+                FichaAntecedentePatologico.TipoDocumento = servicios[0].TipoDocumento;
+
+                FichaAntecedentePatologico.Dia = servicios[0].FechaServicio.Value.Day.ToString();
+                FichaAntecedentePatologico.Mes = servicios[0].FechaServicio.Value.Month.ToString();
+                FichaAntecedentePatologico.Anio = servicios[0].FechaServicio.Value.Year.ToString();
+
+                FichaAntecedentePatologico.NroDocumento = servicios[0].NroDocumento;
+                FichaAntecedentePatologico.EmpresaCliente = servicios[0].EmpresaCliente;
+                FichaAntecedentePatologico.EmpresaTrabajo = servicios[0].EmpresaTrabajo;
+                FichaAntecedentePatologico.EmpresaEmpleadora = servicios[0].EmpresaEmpleadora;
+                FichaAntecedentePatologico.Puesto = servicios[0].Puesto;
+                FichaAntecedentePatologico.GeneroId = servicios[0].GeneroId;
+                FichaAntecedentePatologico.Genero = servicios[0].Genero;
+                var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                FichaAntecedentePatologico.FirmaMedicina = FirmaMedicoMedicina.Value5;
+                FichaAntecedentePatologico.FirmaTrabajador = servicios[0].FirmaTrabajador;
+                FichaAntecedentePatologico.HuellaTrabajador = servicios[0].HuellaTrabajador;
+                FichaAntecedentePatologico.FirmaUsuarioGraba = servicios[0].FirmaUsuarioGraba;
+
+                FichaAntecedentePatologico.InicioMestrucion = servicios[0].InicioMestrucion;
+                FichaAntecedentePatologico.InicioVidaSexual = servicios[0].InicioVidaSexual;
+                FichaAntecedentePatologico.NumeroParejas = servicios[0].NumeroParejas;
+                FichaAntecedentePatologico.DamasNumeroHijosVivos = servicios[0].DamasNumeroHijosVivos;
+                FichaAntecedentePatologico.DamasNumeroHijosFallecidos = servicios[0].DamasNumeroHijosFallecidos;
+                FichaAntecedentePatologico.DamasNumeroAborto = servicios[0].DamasNumeroAborto;
+                FichaAntecedentePatologico.DamasCausaAborto = servicios[0].DamasCausaAborto;
+                FichaAntecedentePatologico.VaronesNumeroHijosVivos = servicios[0].VaronesNumeroHijosVivos;
+                FichaAntecedentePatologico.VaromesNumeroHijosFallecidos = servicios[0].VaromesNumeroHijosFallecidos;
+                FichaAntecedentePatologico.VaromesNumeroAbortoPareja = servicios[0].VaromesNumeroAbortoPareja;
+                FichaAntecedentePatologico.VaronesCausaAborto = servicios[0].VaronesCausaAborto;
+
+                //Primer bloque
+                FichaAntecedentePatologico.Alergia = objEntity.Find(p => p.Nombre.Contains("Alergia")) == null ? " " : "X";
+                FichaAntecedentePatologico.AmigdalitisCronica = objEntity.Find(p => p.Nombre.Contains("Amigoalitis Cronica")) == null ? " " : "X";
+                FichaAntecedentePatologico.Asma = objEntity.Find(p => p.Nombre.Contains("Asma")) == null ? " " : "X";
+                FichaAntecedentePatologico.Bocio = objEntity.Find(p => p.Nombre.Contains("Bocio")) == null ? " " : "X";
+                FichaAntecedentePatologico.Bronconeumonia = objEntity.Find(p => p.Nombre.Contains("Bronconeumonia")) == null ? " " : "X";
+                FichaAntecedentePatologico.BronquitisRepeticion = objEntity.Find(p => p.Nombre.Contains("Bronquitis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Colecistitis = objEntity.Find(p => p.Nombre.Contains("Colecistitis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Dermatisis = objEntity.Find(p => p.Nombre.Contains("Dermatisis")) == null ? " " : "X";
                 FichaAntecedentePatologico.Diabetes = objEntity.Find(p => p.Nombre == "Diabetes") == null ? " " : "X";
+                FichaAntecedentePatologico.Disenteria = objEntity.Find(p => p.Nombre == "Disenteria") == null? " ": "X";
+                FichaAntecedentePatologico.ArritmiasCardiacas = objEntity.Find(p => p.Nombre.Contains("Arritmias")) == null ? " " : "X";
+                FichaAntecedentePatologico.EnfCorazon = objEntity.Find(p => p.Nombre.Contains("Corazón")) == null ? " " : "X";
+                FichaAntecedentePatologico.Caries = objEntity.Find(p => p.Nombre.Contains("Caries")) == null ? " " : "X";
+                FichaAntecedentePatologico.EnfOculares = objEntity.Find(p => p.Nombre.Contains("Ocular")) == null ? " " : "X";
+                FichaAntecedentePatologico.Epilepcia = objEntity.Find(p => p.Nombre.Contains("Epilepcia") ) == null ? " " : "X";
+                FichaAntecedentePatologico.FaringitisCronica = objEntity.Find(p => p.Nombre.Contains("Faringitis")) == null ? " " : "X";
+                FichaAntecedentePatologico.FiebreMala = objEntity.Find(p => p.Nombre.Contains("Mala")) == null ? " " : "X";
+                FichaAntecedentePatologico.FiebreTifoidea = objEntity.Find(p => p.Nombre.Contains("Tifoidea")) == null ? " " : "X";
 
+                FichaAntecedentePatologico.FiebreReumatica = objEntity.Find(p => p.Nombre.Contains("Reomatica")) == null ? " " : "X";
+                FichaAntecedentePatologico.Forunculosis = objEntity.Find(p => p.Nombre.Contains("Forunculo")) == null ? " " : "X";
+                FichaAntecedentePatologico.GastritisCronica = objEntity.Find(p => p.Nombre.Contains("Gastritis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Gonorrea = objEntity.Find(p => p.Nombre.Contains("Gonorrea")) == null ? " " : "X";
+                FichaAntecedentePatologico.Hemorroides = objEntity.Find(p => p.Nombre.Contains("Hemorroides")) == null ? " " : "X";
+                FichaAntecedentePatologico.Hepatitis = objEntity.Find(p => p.Nombre.Contains("Hepatitis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Hernias = objEntity.Find(p => p.Nombre.Contains("Hernias")) == null ? " " : "X";
+                FichaAntecedentePatologico.InfUrinaria = objEntity.Find(p => p.Nombre.Contains("Urinaria")) == null ? " " : "X";
+                FichaAntecedentePatologico.Intoxicaciones = objEntity.Find(p => p.Nombre.Contains("Intoxicaciones")) == null ? " " : "X";
+                FichaAntecedentePatologico.LitiasisUrinaria = objEntity.Find(p => p.Nombre.Contains("Litiasis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Meningitis = objEntity.Find(p => p.Nombre.Contains("Meningitis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Neuritis = objEntity.Find(p => p.Nombre.Contains("Neuritis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Otitis = objEntity.Find(p => p.Nombre.Contains("Otitis")) == null ? " " : "X";
+                FichaAntecedentePatologico.PresionAlta = objEntity.Find(p => p.Nombre.Contains("Presion Alta")) == null ? " " : "X";
+                FichaAntecedentePatologico.Paludismo = objEntity.Find(p => p.Nombre.Contains("Paludismo")) == null ? " " : "X";
+                FichaAntecedentePatologico.Parasitosis = objEntity.Find(p => p.Nombre.Contains("Parasitosis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Parodititis = objEntity.Find(p => p.Nombre.Contains("Parodititis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Pleuresia = objEntity.Find(p => p.Nombre.Contains("Pleuresia")) == null ? " " : "X";
+
+                FichaAntecedentePatologico.Plubismo = objEntity.Find(p => p.Nombre.Contains("Plubismo")) == null ? " " : "X";
+                FichaAntecedentePatologico.Poliomelitis = objEntity.Find(p => p.Nombre.Contains("Poliomelitis")) == null ? " " : "X";
+                FichaAntecedentePatologico.ResfrioFrecuente = objEntity.Find(p => p.Nombre.Contains("Resfrio")) == null ? " " : "X";
+                FichaAntecedentePatologico.Reumatismo = objEntity.Find(p => p.Nombre.Contains("Reumatismo")) == null ? " " : "X";
+                FichaAntecedentePatologico.Sarampion = objEntity.Find(p => p.Nombre.Contains("Sarampion")) == null ? " " : "X";
+                FichaAntecedentePatologico.Sifilis = objEntity.Find(p => p.Nombre.Contains("sifilis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Silicosis = objEntity.Find(p => p.Nombre.Contains("Silicosis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Sinusitis = objEntity.Find(p => p.Nombre.Contains("Sinusitis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Traumatismo = objEntity.Find(p => p.Nombre.Contains("Traumatismo")) == null ? " " : "X";
+                FichaAntecedentePatologico.TosConvulsiva = objEntity.Find(p => p.Nombre.Contains("Tos")) == null ? " " : "X";
+                FichaAntecedentePatologico.TrastNervioso = objEntity.Find(p => p.Nombre.Contains("Nervioso")) == null ? " " : "X";
+                FichaAntecedentePatologico.Tuberculosis = objEntity.Find(p => p.Nombre.Contains("Tuberculosis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Tumores = objEntity.Find(p => p.Nombre.Contains("Tumores")) == null ? " " : "X";
+                FichaAntecedentePatologico.Ulcera = objEntity.Find(p => p.Nombre.Contains("Ulcera")) == null ? " " : "X";
+                FichaAntecedentePatologico.Gota = objEntity.Find(p => p.Nombre.Contains("Gota")) == null ? " " : "X";
+                FichaAntecedentePatologico.Varices = objEntity.Find(p => p.Nombre.Contains("Varices")) == null ? " " : "X";
+                FichaAntecedentePatologico.Varicocele = objEntity.Find(p => p.Nombre.Contains("Varicocele")) == null ? " " : "X";
+                FichaAntecedentePatologico.Varicela = objEntity.Find(p => p.Nombre.Contains("Varicela")) == null ? " " : "X";
+
+                //Segundo bloque
+                FichaAntecedentePatologico.PerdidaMemoria = objEntity.Find(p => p.Nombre.Contains("Memoria")) == null ? " " : "X";
+                FichaAntecedentePatologico.Preocupacion = objEntity.Find(p => p.Nombre.Contains("Preocupacion")) == null ? " " : "X";
+                FichaAntecedentePatologico.DoloresArteriales = objEntity.Find(p => p.Nombre.Contains("Arteriales")) == null ? " " : "X";
+                FichaAntecedentePatologico.AumentoDisPeso = objEntity.Find(p => p.Nombre.Contains("Peso")) == null ? " " : "X";
+                FichaAntecedentePatologico.DolorCabeza = objEntity.Find(p => p.Nombre.Contains("Cabeza")) == null ? " " : "X";
+                FichaAntecedentePatologico.Diarrea = objEntity.Find(p => p.Nombre.Contains("Diarrea")) == null ? " " : "X";
+                FichaAntecedentePatologico.AgitacionEjercicios = objEntity.Find(p => p.Nombre.Contains("Ejercicios")) == null ? " " : "X";
+                FichaAntecedentePatologico.DolorOcular = objEntity.Find(p => p.Nombre.Contains("Ocular")) == null ? " " : "X";
+                FichaAntecedentePatologico.DolorOpresivo = objEntity.Find(p => p.Nombre.Contains("Opresivo")) == null ? " " : "X";
+                FichaAntecedentePatologico.HinchazonPiesManos = objEntity.Find(p => p.Nombre.Contains("Hinchazon")) == null ? " " : "X";
+
+                FichaAntecedentePatologico.Estrenimiento = objEntity.Find(p => p.Nombre.Contains("Estrenimiento")) == null ? " " : "X";
+                FichaAntecedentePatologico.VomitosConSangre = objEntity.Find(p => p.Nombre.Contains("Vomitos")) == null ? " " : "X";
+                FichaAntecedentePatologico.SangreOrina = objEntity.Find(p => p.Nombre.Contains("SangreOrina")) == null ? " " : "X";
+                FichaAntecedentePatologico.TosConSangre = objEntity.Find(p => p.Nombre.Contains("Tos con Sangre")) == null ? " " : "X";
+                FichaAntecedentePatologico.ColoracionAmarilla = objEntity.Find(p => p.Nombre.Contains("Coloracion")) == null ? " " : "X";
+                FichaAntecedentePatologico.IndigestionFrecuente = objEntity.Find(p => p.Nombre.Contains("Indigestion")) == null ? " " : "X";
+                FichaAntecedentePatologico.Insomnio = objEntity.Find(p => p.Nombre.Contains("Insomnio")) == null ? " " : "X";
+                FichaAntecedentePatologico.Lumbalgias = objEntity.Find(p => p.Nombre.Contains("Lumbalgia")) == null ? " " : "X";
+                FichaAntecedentePatologico.MareosDesmayo = objEntity.Find(p => p.Nombre.Contains("Mareos")) == null ? " " : "X";
+                FichaAntecedentePatologico.HecesNegras = objEntity.Find(p => p.Nombre.Contains("Heces")) == null ? " " : "X";
+
+                FichaAntecedentePatologico.OrinaDolor = objEntity.Find(p => p.Nombre.Contains("Orina con Dolor")) == null ? " " : "X";
+                FichaAntecedentePatologico.OrinaInvoluntaria = objEntity.Find(p => p.Nombre.Contains("Orina Involuntaria")) == null ? " " : "X";
+                FichaAntecedentePatologico.DolorOido = objEntity.Find(p => p.Nombre.Contains("Dolor Oido")) == null ? " " : "X";
+                FichaAntecedentePatologico.SecrecionOido = objEntity.Find(p => p.Nombre.Contains("Secrecion Oido")) == null ? " " : "X";
+                FichaAntecedentePatologico.Palpitcion = objEntity.Find(p => p.Nombre.Contains("Palpitcion")) == null ? " " : "X";
+                FichaAntecedentePatologico.Adormecimiento = objEntity.Find(p => p.Nombre.Contains("Adormecimiento")) == null ? " " : "X";
+                FichaAntecedentePatologico.PesadillaFrecuente = objEntity.Find(p => p.Nombre.Contains("Pesadilla Frecuente")) == null ? " " : "X";
+                FichaAntecedentePatologico.DolorMuscular = objEntity.Find(p => p.Nombre.Contains("Dolor Muscular")) == null ? " " : "X";
+                FichaAntecedentePatologico.TosCronico = objEntity.Find(p => p.Nombre.Contains("Tos Cronico")) == null ? " " : "X";
+                FichaAntecedentePatologico.SangradoEncias = objEntity.Find(p => p.Nombre.Contains("Sangrado Encias")) == null ? " " : "X";
+
+                var habitos = (from A in dbContext.noxioushabits
+                                 where A.v_PersonId == pstrPacientId
+                                 select new
+                                 {
+                                     TypeHabitId = A.i_TypeHabitsId,
+                                     Frequency = A.v_Frequency,
+                                     Comment =A.v_Comment
+                                 }).ToList();
+
+                FichaAntecedentePatologico.Fumar = habitos.Find(p => p.TypeHabitId == 1).Frequency;
+                FichaAntecedentePatologico.NumeroCigarrillo = habitos.Find(p => p.TypeHabitId == 1).Comment;
+
+                FichaAntecedentePatologico.Licor = habitos.Find(p => p.TypeHabitId == 2).Frequency;
+                FichaAntecedentePatologico.TipoMasFrecuente = habitos.Find(p => p.TypeHabitId == 2).Comment;
+
+                FichaAntecedentePatologico.Drogas = habitos.Find(p => p.TypeHabitId == 3).Frequency;
+                FichaAntecedentePatologico.TipoProbado = habitos.Find(p => p.TypeHabitId == 3).Comment;
+
+                FichaAntecedentePatologico.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").FechaAntecedente.ToString();
+                FichaAntecedentePatologico.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Detalle;
+                FichaAntecedentePatologico.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Tratamiento;
+                
                 list.Add(FichaAntecedentePatologico);
-
                 return list;
-
             }
             catch (Exception ex)
             {

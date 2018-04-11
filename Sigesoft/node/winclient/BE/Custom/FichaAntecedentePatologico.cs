@@ -7,6 +7,33 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class FichaAntecedentePatologico
     {
+        //Datos Generales del Servicio
+        public string ServiceId { get; set; }
+        public string ServiceComponentId { get; set; }
+        public DateTime? FechaServicio { get; set; }
+        public string Nombres { get; set; }
+        public string ApellidoPaterno { get; set; }
+        public string ApellidoMaterno { get; set; }
+        public string NombreCompleto { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
+        public int Edad { get; set; }
+        public int TipoDocumentoId { get; set; }
+        public string TipoDocumento { get; set; }
+        public string NroDocumento { get; set; }
+        public string EmpresaCliente { get; set; }
+        public string EmpresaTrabajo { get; set; }
+        public string EmpresaEmpleadora { get; set; }
+        public string Puesto { get; set; }
+        public int GeneroId { get; set; }
+        public string Genero { get; set; }
+        public string LugarNacimiento { get; set; }
+        public string LugarProcedencia { get; set; }
+        public byte[] FirmaTrabajador { get; set; }
+        public byte[] HuellaTrabajador { get; set; }
+        public byte[] FirmaUsuarioGraba { get; set; }
+        public byte[] FirmaMedicina { get; set; }
+        
+
         public string Alergia { get; set; }
         public string AmigdalitisCronica { get; set; }
         public string Asma { get; set; }
@@ -25,6 +52,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string FaringitisCronica { get; set; }
         public string FiebreMala { get; set; }
         public string FiebreTifoidea { get; set; }
+
         public string FiebreReumatica { get; set; }
         public string Forunculosis { get; set; }
         public string GastritisCronica { get; set; }
@@ -43,6 +71,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Parasitosis { get; set; }
         public string Parodititis { get; set; }
         public string Pleuresia { get; set; }
+
         public string Plubismo { get; set; }
         public string Poliomelitis { get; set; }
         public string ResfrioFrecuente { get; set; }
@@ -61,6 +90,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Varices { get; set; }
         public string Varicocele { get; set; }
         public string Varicela { get; set; }
+        
         public string PerdidaMemoria { get; set; }
         public string Preocupacion { get; set; }
         public string DoloresArteriales { get; set; }
@@ -71,6 +101,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string DolorOcular { get; set; }
         public string DolorOpresivo { get; set; }
         public string HinchazonPiesManos { get; set; }
+
         public string Estrenimiento { get; set; }
         public string VomitosConSangre { get; set; }
         public string SangreOrina { get; set; }
@@ -81,6 +112,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Lumbalgias { get; set; }
         public string MareosDesmayo { get; set; }
         public string HecesNegras { get; set; }
+
         public string OrinaDolor { get; set; }
         public string OrinaInvoluntaria { get; set; }
         public string DolorOido { get; set; }
@@ -91,35 +123,35 @@ namespace Sigesoft.Node.WinClient.BE
         public string DolorMuscular { get; set; }
         public string TosCronico { get; set; }
         public string SangradoEncias { get; set; }
+
         public string Fumar { get; set; }
         public string Licor { get; set; }
         public string Drogas { get; set; }
+
         public string NumeroCigarrillo { get; set; }
         public string TipoMasFrecuente { get; set; }
         public string TipoProbado { get; set; }
-        public byte[] P_logo { get; set; }
-        public byte[] C_logo { get; set; }
-        public byte[] FirmaTrabajador { get; set; }
-        public byte[] HuellaTrabajador { get; set; }
-        public byte[] FirmaMedicina { get; set; }
-        public byte[] FirmaAuditor { get; set; }
+
+        public string FechaAntecedenteQuirurgico { get; set; }
+        public string HospitalAntecedenteQuirurgico { get; set; }
+        public string OperacionAntecedenteQuirurgico { get; set; }
+        public string DiasAntecedenteQuirurgico { get; set; }
+        public string ComplicacionesAntecedenteQuirurgico { get; set; }
+
+        public string InicioMestrucion { get; set; }
+        public string InicioVidaSexual { get; set; }
+        public string NumeroParejas { get; set; }
+        public int? DamasNumeroHijosVivos { get; set; }
+        public int? DamasNumeroHijosFallecidos { get; set; }
+        public string DamasNumeroAborto { get; set; }
+        public string DamasCausaAborto { get; set; }
+        public int? VaronesNumeroHijosVivos { get; set; }
+        public int? VaromesNumeroHijosFallecidos { get; set; }
+        public string VaromesNumeroAbortoPareja { get; set; }
+        public string VaronesCausaAborto { get; set; }
+
+        public string Dia { get; set; }
         public string Mes { get; set; }
         public string Anio { get; set; }
-        public string Dia { get; set; }
-        public string Edad { get; set; }
-        public string Sexo { get; set; }
-        public string NombreCompleto { get; set; }
-        public string LugarNacimiento { get; set; }
-        public string LugarProcedencia { get; set; }
-        public string Profesion { get; set; }
-        public string D_InicioMestrucion { get; set; }
-        public string D_InicioVidaSexual { get; set; }
-        public string D_NumeroParejas { get; set; }
-        public string D_NumeroHijoVivo { get; set; }
-        public string D_NumeroHijoFallecido { get; set; }
-        public string D_NumeroAborto { get; set; }
-        public string V_NumeroHijoVivo { get; set; }
-        public string V_NumeroHijoFallecido { get; set; }
-        public string V_NumeroAbortoPareja { get; set; }
     }
 }

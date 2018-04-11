@@ -322,6 +322,7 @@
     </Compile>
     <Compile Include="Dataset\dsFichaAntecedentePatologico.cs">
       <DependentUpon>dsFichaAntecedentePatologico.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dataset\dsFichaAntecedentePatologico.Designer.cs">
       <AutoGen>True</AutoGen>

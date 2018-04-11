@@ -1991,11 +1991,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
 
                 case Constants.INFORME_ANTECEDENTE_PATOLOGICO:
-                    var INFORME_ANTECEDENTE_PATOLOGICO = new ServiceBL().GetReportAntecedentePatologico(_serviceId, Constants.INFORME_ANTECEDENTE_PATOLOGICO);
+                    var INFORME_ANTECEDENTE_PATOLOGICO = new ServiceBL().GetReportAntecedentePatologico(_pacientId, _serviceId);
 
                     dsGetRepo = new DataSet();
                     DataTable dtANTECEDENTE_PATOLOGICO_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(INFORME_ANTECEDENTE_PATOLOGICO);
-                    dtANTECEDENTE_PATOLOGICO_ID.TableName = "dsFichaAntecedentePatologico";
+                    dtANTECEDENTE_PATOLOGICO_ID.TableName = "dtFichaAntecedentePatologico";
                     dsGetRepo.Tables.Add(dtANTECEDENTE_PATOLOGICO_ID);
 
                     rp = new Reports.crFichaAntecedentePatologico01();
@@ -2010,6 +2010,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Close();
 
                     rp = new Reports.crFichaAntecedentePatologico02();
+                    rp.SetDataSource(dsGetRepo);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
