@@ -12,7 +12,7 @@
   <xs:element name="dsCuestAudio" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCuestAudio" msprop:Generator_UserDSName="dsCuestAudio">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dtCuestAudio" msprop:Generator_TableClassName="dtCuestAudioDataTable" msprop:Generator_TableVarName="tabledtCuestAudio" msprop:Generator_TablePropName="dtCuestAudio" msprop:Generator_RowDeletingName="dtCuestAudioRowDeleting" msprop:Generator_RowChangingName="dtCuestAudioRowChanging" msprop:Generator_RowEvHandlerName="dtCuestAudioRowChangeEventHandler" msprop:Generator_RowDeletedName="dtCuestAudioRowDeleted" msprop:Generator_UserTableName="dtCuestAudio" msprop:Generator_RowChangedName="dtCuestAudioRowChanged" msprop:Generator_RowEvArgName="dtCuestAudioRowChangeEvent" msprop:Generator_RowClassName="dtCuestAudioRow">
+        <xs:element name="dtCuestAudio" msprop:Generator_TableClassName="dtCuestAudioDataTable" msprop:Generator_TableVarName="tabledtCuestAudio" msprop:Generator_RowChangedName="dtCuestAudioRowChanged" msprop:Generator_TablePropName="dtCuestAudio" msprop:Generator_RowDeletingName="dtCuestAudioRowDeleting" msprop:Generator_RowChangingName="dtCuestAudioRowChanging" msprop:Generator_RowEvHandlerName="dtCuestAudioRowChangeEventHandler" msprop:Generator_RowDeletedName="dtCuestAudioRowDeleted" msprop:Generator_RowClassName="dtCuestAudioRow" msprop:Generator_UserTableName="dtCuestAudio" msprop:Generator_RowEvArgName="dtCuestAudioRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="NOMBREPACIENTE" msprop:Generator_ColumnVarNameInTable="columnNOMBREPACIENTE" msprop:Generator_ColumnPropNameInRow="NOMBREPACIENTE" msprop:Generator_ColumnPropNameInTable="NOMBREPACIENTEColumn" msprop:Generator_UserColumnName="NOMBREPACIENTE" type="xs:string" minOccurs="0" />
@@ -78,7 +78,7 @@
               <xs:element name="FIRMAPACIENTE" msprop:Generator_ColumnVarNameInTable="columnFIRMAPACIENTE" msprop:Generator_ColumnPropNameInRow="FIRMAPACIENTE" msprop:Generator_ColumnPropNameInTable="FIRMAPACIENTEColumn" msprop:Generator_UserColumnName="FIRMAPACIENTE" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="FIRMAMEDICO" msprop:Generator_ColumnVarNameInTable="columnFIRMAMEDICO" msprop:Generator_ColumnPropNameInRow="FIRMAMEDICO" msprop:Generator_ColumnPropNameInTable="FIRMAMEDICOColumn" msprop:Generator_UserColumnName="FIRMAMEDICO" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="HUELLAPACIENTE" msprop:Generator_ColumnVarNameInTable="columnHUELLAPACIENTE" msprop:Generator_ColumnPropNameInRow="HUELLAPACIENTE" msprop:Generator_ColumnPropNameInTable="HUELLAPACIENTEColumn" msprop:Generator_UserColumnName="HUELLAPACIENTE" type="xs:base64Binary" minOccurs="0" />
-              <xs:element name="LOGOCLINICA" msprop:Generator_ColumnVarNameInTable="columnLOGOCLINICA" msprop:Generator_ColumnPropNameInRow="LOGOCLINICA" msprop:Generator_ColumnPropNameInTable="LOGOCLINICAColumn" msprop:Generator_UserColumnName="LOGOCLINICA" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="LOGOCLIENTE" msprop:Generator_ColumnVarNameInTable="columnLOGOCLIENTE" msprop:Generator_ColumnPropNameInRow="LOGOCLIENTE" msprop:Generator_ColumnPropNameInTable="LOGOCLIENTEColumn" msprop:Generator_UserColumnName="LOGOCLIENTE" type="xs:base64Binary" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

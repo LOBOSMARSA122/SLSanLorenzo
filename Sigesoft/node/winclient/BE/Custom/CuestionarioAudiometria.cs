@@ -151,6 +151,6 @@ namespace Sigesoft.Node.WinClient.BE
 
         public byte[] HUELLAPACIENTE { get; set; }
 
-        public byte[] LOGOCLINICA { get; set; }
+        public byte[] LOGOCLIENTE { get; set; }
     }
 }

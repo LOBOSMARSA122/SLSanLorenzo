@@ -99,7 +99,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public byte[] FirmaTrabajador { get; set; }
         public byte[] HuellaTrabajador { get; set; }
-
+        public byte[] LOGOCLIENTE { get; set; }
 
         public byte[] FirmaMedicina { get; set; }
 

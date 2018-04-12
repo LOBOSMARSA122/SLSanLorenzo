@@ -143,8 +143,10 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_OwnerName { get; set; }
         public string v_RelationshipName { get; set; }
         public DateTime? d_ServiceDate { get; set; }
-        public string v_OwnerOrganizationName { get; set; }
 
+        public DateTime? d_BirthDate { get; set; }
+        public string v_OwnerOrganizationName { get; set; }
+        public string v_SexType { get; set; }
         public string v_DoctorPhysicalExamName { get; set; }
 
         public byte[] FirmaTrabajador { get; set; }

@@ -12680,9 +12680,14 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                                  equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
 
                                  // Empresa / Sede Trabajo  ********************************************************
-                                 join ow in dbContext.organization on new { a = pro.v_WorkingOrganizationId }
+                                 join ow in dbContext.organization on new { a = pro.v_CustomerOrganizationId }
                                          equals new { a = ow.v_OrganizationId } into ow_join
                                  from ow in ow_join.DefaultIfEmpty()
+
+                                  join o in dbContext.organization on new { a = pro.v_EmployerOrganizationId  }
+                                         equals new { a = o.v_OrganizationId } into o_join
+                                 from o in o_join.DefaultIfEmpty()
+
 
                                  join lw in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
                                       equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
@@ -12714,8 +12719,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                      //
                                      v_EsoTypeName = H.v_Value1,
                                      v_ServiceComponentId = E.v_ServiceComponentId,
-                                     v_WorkingOrganizationName = ow.v_Name,
-                                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                                     v_CustomerOrganizationName = ow.v_Name,
+                                     v_EmployerOrganizationName = o.v_Name, 
                                      FirmaTrabajador = B.b_RubricImage,
                                      HuellaTrabajador = B.b_FingerPrintImage,
                                      NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
@@ -12795,8 +12800,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                //
                                v_EsoTypeName = a.v_EsoTypeName,
                                v_ServiceComponentId = a.v_ServiceComponentId,
-                               v_WorkingOrganizationName = a.v_WorkingOrganizationName,
-                               v_FullWorkingOrganizationName = a.v_FullWorkingOrganizationName,
+                               v_CustomerOrganizationName = a.v_CustomerOrganizationName,
+                               v_EmployerOrganizationName = a.v_EmployerOrganizationName,
                                FirmaTrabajador = a.FirmaTrabajador,
                                HuellaTrabajador = a.HuellaTrabajador,
                                MarcaAudiometria = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA).v_Value1,
@@ -18288,9 +18293,13 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                                  equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
 
                                  // Empresa / Sede Trabajo  ********************************************************
-                                 join ow in dbContext.organization on new { a = pro.v_WorkingOrganizationId }
+                                 join ow in dbContext.organization on new { a = pro.v_CustomerOrganizationId }
                                          equals new { a = ow.v_OrganizationId } into ow_join
                                  from ow in ow_join.DefaultIfEmpty()
+
+                                 join o in dbContext.organization on new { a = pro.v_EmployerOrganizationId }
+                                         equals new { a = o.v_OrganizationId } into o_join
+                                 from o in ow_join.DefaultIfEmpty()
 
                                  join lw in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
                                       equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
@@ -18321,8 +18330,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                      //
                                      v_EsoTypeName = H.v_Value1,
                                      v_ServiceComponentId = E.v_ServiceComponentId,
-                                     v_WorkingOrganizationName = ow.v_Name,
-                                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                                     v_CustomerOrganizationName = ow.v_Name,
+                                     v_EmployerOrganizationName = o.v_Name,
                                      FirmaTrabajador = B.b_RubricImage,
                                      HuellaTrabajador = B.b_FingerPrintImage,
 
@@ -18403,8 +18412,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                //
                                v_EsoTypeName = a.v_EsoTypeName,
                                v_ServiceComponentId = a.v_ServiceComponentId,
-                               v_WorkingOrganizationName = a.v_WorkingOrganizationName,
-                               v_FullWorkingOrganizationName = a.v_FullWorkingOrganizationName,
+                               v_CustomerOrganizationName = a.v_CustomerOrganizationName,
+                               v_EmployerOrganizationName = a.v_EmployerOrganizationName,
                                FirmaTrabajador = a.FirmaTrabajador,
                                HuellaTrabajador = a.HuellaTrabajador,
                                MarcaAudiometria = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA_CI).v_Value1,

@@ -10929,6 +10929,12 @@ namespace Sigesoft.Node.WinClient.BLL
 																   equals new { a = E.v_ServiceId, b = E.v_ComponentId }
 								 join F in dbContext.systemuser on E.i_ApprovedUpdateUserId equals F.i_SystemUserId
 								 join Z in dbContext.person on F.v_PersonId equals Z.v_PersonId
+
+                                 join E1 in dbContext.protocol on A.v_ProtocolId equals E1.v_ProtocolId
+
+                                 join D in dbContext.organization on E1.v_CustomerOrganizationId equals D.v_OrganizationId into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
 								 where A.v_ServiceId == pstrserviceId
 								 select new ReportCuestionarioNordico
 								 {
@@ -10937,7 +10943,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									 Genero = B.i_SexTypeId.Value,
 									 FirmaTrabajador = B.b_RubricImage,
 									 HuellaTrabajador = B.b_FingerPrintImage,
-									 NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName
+									 NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
+                                     LOGOCLIENTE = D.b_Image,
+                                     
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
@@ -10954,6 +10962,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   FechaNacimiento = a.FechaNacimiento,
 							   Genero = a.Genero,
 							   Edad = GetAge(a.FechaNacimiento),
+                               LOGOCLIENTE = a.LOGOCLIENTE,
                                FirmaMedicina = FirmaMedicoMedicina.Value5,
 							   C_N_CABECERA_TIPO_TRABAJO_REALIZA_ID = CuestNordi.Count == 0 || CuestNordi.Find(p => p.v_ComponentFieldId == Constants.C_N_CABECERA_TIPO_TRABAJO_REALIZA_ID) == null ? string.Empty : CuestNordi.Find(p => p.v_ComponentFieldId == Constants.C_N_CABECERA_TIPO_TRABAJO_REALIZA_ID).v_Value1,
 							   C_N_CABECERA_TIEMPO_LABOR_ID = CuestNordi.Count == 0 || CuestNordi.Find(p => p.v_ComponentFieldId == Constants.C_N_CABECERA_HORAS_TRABAJO_SEMANAL_ID) == null ? string.Empty : CuestNordi.Find(p => p.v_ComponentFieldId == Constants.C_N_CABECERA_TIEMPO_LABOR_ID).v_Value1,
@@ -12209,9 +12218,13 @@ namespace Sigesoft.Node.WinClient.BLL
 												 equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
 
 								 // Empresa / Sede Trabajo  ********************************************************
-								 join ow in dbContext.organization on new { a = pro.v_WorkingOrganizationId }
+								 join ow in dbContext.organization on new { a = pro.v_CustomerOrganizationId }
 										 equals new { a = ow.v_OrganizationId } into ow_join
 								 from ow in ow_join.DefaultIfEmpty()
+
+                                 join o in dbContext.organization on new { a = pro.v_EmployerOrganizationId }
+                                         equals new { a = o.v_OrganizationId } into o_join
+                                 from o in o_join.DefaultIfEmpty()
 
 								 join lw in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
 									  equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
@@ -12259,8 +12272,8 @@ namespace Sigesoft.Node.WinClient.BLL
 									 //
 									 v_EsoTypeName = H.v_Value1,
 									 v_ServiceComponentId = E.v_ServiceComponentId,
-									 v_WorkingOrganizationName = ow.v_Name,
-									 v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+									 v_CustomerOrganizationName = ow.v_Name,
+									 v_EmployerOrganizationName = o.v_Name,
 									 FirmaTrabajador = B.b_RubricImage,
 									 HuellaTrabajador = B.b_FingerPrintImage,
 									 NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
@@ -12346,8 +12359,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							   //
 							   v_EsoTypeName = a.v_EsoTypeName,
 							   v_ServiceComponentId = a.v_ServiceComponentId,
-							   v_WorkingOrganizationName = a.v_WorkingOrganizationName,
-							   v_FullWorkingOrganizationName = a.v_FullWorkingOrganizationName,
+                               v_CustomerOrganizationName = a.v_CustomerOrganizationName,
+                               v_EmployerOrganizationName = a.v_EmployerOrganizationName,
 							   FirmaTrabajador = a.FirmaTrabajador,
 							   HuellaTrabajador = a.HuellaTrabajador,
 							   MarcaAudiometria = __sql.Count == 0 || __sql  == null? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA) == null?"":__sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA).v_Value1,
@@ -20740,7 +20753,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join pme in dbContext.professional on F1.v_PersonId equals pme.v_PersonId into pme_join
                                  from pme in pme_join.DefaultIfEmpty()
 
-
+                                
 								 where A.v_ServiceId == pstrserviceId
 								 && (G.i_IsDeleted == 0 || G.i_IsDeleted == null)
 								 select new ReportCuestionarioEspirometria
@@ -20763,7 +20776,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      RazonSocial = D.v_Name,
                                      //ActividadEconomica = SP2.v_Value1,
                                      PuestoTrabajo = E.v_CurrentOccupation,
-                                     LogoCliente = D.b_Image
+                                     LogoCliente = D1.b_Image
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
@@ -27581,7 +27594,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      DNI = B.v_DocNumber,
                                      GENERO = J.v_Value1,
                                      FIRMAPACIENTE = B.b_RubricImage,
-                                     HUELLAPACIENTE = B.b_FingerPrintImage
+                                     HUELLAPACIENTE = B.b_FingerPrintImage,
+                                     LOGOCLIENTE = D1.b_Image
 
                                  });
 
@@ -27612,6 +27626,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                AreaTrabajo = a.AreaTrabajo,
                                LogoPropietaria = MedicalCenter.b_Image,
                                FirmaGraba = a.FirmaGraba,
+                               LOGOCLIENTE = a.LOGOCLIENTE,
                                ANTIGUEDADDELPUESTO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003023") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003023").v_Value1,
 
                                DESCRIPCION = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003024") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003024").v_Value1,

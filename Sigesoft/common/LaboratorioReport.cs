@@ -178,12 +178,21 @@ namespace NetPdf
 
                 cells = new List<PdfPCell>()
                 {
-                    new PdfPCell(new Phrase("PACIENTE:", fontColumnValue)), new PdfPCell(new Phrase(filiationData.v_FirstName + " " + filiationData.v_FirstLastName + " " + filiationData.v_SecondLastName, fontColumnValue)),                   
-                    new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)), new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue)),     
-                    new PdfPCell(new Phrase("PUESTO:", fontColumnValue)), new PdfPCell(new Phrase(filiationData.v_CurrentOccupation, fontColumnValue)),     
-                    new PdfPCell(new Phrase("FECHA ATENCIÓN:", fontColumnValue)), new PdfPCell(new Phrase(filiationData.d_ServiceDate.Value.ToShortDateString(), fontColumnValue)),                
-                    new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)),
-                    new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue ) ){ Colspan = 3 }
+                    new PdfPCell(new Phrase("PACIENTE:", fontColumnValue)),
+                    new PdfPCell(new Phrase(filiationData.v_FirstName + " " + filiationData.v_FirstLastName + " " + filiationData.v_SecondLastName, fontColumnValue)),                   
+                    new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue)), 
+    
+                    new PdfPCell(new Phrase("PUESTO:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(filiationData.v_CurrentOccupation, fontColumnValue)),     
+                    new PdfPCell(new Phrase("FECHA ATENCIÓN:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(filiationData.d_ServiceDate.Value.ToShortDateString(), fontColumnValue)), 
+
+                    new PdfPCell(new Phrase("EDAD:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(DataService.i_Edad.ToString() + " Años", fontColumnValue)),
+                    new PdfPCell(new Phrase("SEXO:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(filiationData.v_SexType, fontColumnValue)), 
+                    
 
                          //cells.Add(new PdfPCell(new Phrase("FORMULA LEUCOCITARIA", fontColumnValueNegrita)) { Colspan = 4 });
                 };
