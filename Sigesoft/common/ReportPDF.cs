@@ -7824,7 +7824,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("MOV. REPET.", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(MovRepet){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
                     //new PdfPCell(new Phrase("", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
-                    new PdfPCell(new Phrase("Puesto al que postula"+ (DataService.i_EsoTypeId != 1 ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
+                    new PdfPCell(new Phrase("Puesto al que postula: "+ (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //fila
                     new PdfPCell(new Phrase("VIB SEGMENTARIA", fontColumnValue)){Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                       
@@ -7835,8 +7835,9 @@ namespace NetPdf
                     new PdfPCell(Posturas){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
                     new PdfPCell(new Phrase("PVD", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
                     new PdfPCell(PVD){Border = PdfPCell.RIGHT_BORDER ,HorizontalAlignment = PdfPCell.NO_BORDER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
-                    new PdfPCell(new Phrase("Puesto actual: "+ (DataService.i_EsoTypeId != 1 ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                   new PdfPCell(new Phrase("Puesto actual: "+ (DataService.i_EsoTypeId != (int)Sigesoft.Common.TypeESO.PreOcupacional ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
+ 
                     //fila
                     new PdfPCell(new Phrase("VIB TOTAL", fontColumnValue)){Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                      
                     new PdfPCell(VidTotal){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
@@ -9127,15 +9128,23 @@ namespace NetPdf
 
                 var ValorRX_NEUMOCONIOSIS_CHECK = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_NEUMOCONIOSIS_CHECK);
 
-                var x = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.BK_DIRECTO_MICROBIOLOGICO_RESULTADOS);
+                //var x = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.BK_DIRECTO_MICROBIOLOGICO_RESULTADOS);
+                var ValorNeu = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_NEUMOCONIOSIS_CHECK);
 
-                if (x != null)
+                if (ValorNeu == null)
                 {
-                    Sin_Neumoconiosis = x.v_Value1;
+                    Sin_Neumoconiosis = "";
+                    Con_Neumoconiosis = "";
                 }
-                else
+                else if (ValorNeu.v_Value1 == "1")
                 {
-                    Sin_Neumoconiosis = "NO REALIZADO";
+                    Sin_Neumoconiosis = "X";
+                    Con_Neumoconiosis = "";
+                }
+                else if (ValorNeu.v_Value1 == "0")
+                {
+                    Sin_Neumoconiosis = "";
+                    Con_Neumoconiosis = "X";
                 }
 
 
@@ -10758,7 +10767,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("MOV. REPET.", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(MovRepet){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
                     //new PdfPCell(new Phrase("", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
-                    new PdfPCell(new Phrase("Puesto al que postula"+ (DataService.i_EsoTypeId != 1 ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Puesto al que postula: "+ (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
  
 
                     //fila
@@ -10770,7 +10779,7 @@ namespace NetPdf
                     new PdfPCell(Posturas){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
                     new PdfPCell(new Phrase("PVD", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
                     new PdfPCell(PVD){Border = PdfPCell.RIGHT_BORDER ,HorizontalAlignment = PdfPCell.NO_BORDER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
-                    new PdfPCell(new Phrase("Puesto actual: "+ (DataService.i_EsoTypeId != 1 ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Puesto actual: "+ (DataService.i_EsoTypeId != (int)Sigesoft.Common.TypeESO.PreOcupacional ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
 
                     //fila
@@ -12089,16 +12098,22 @@ namespace NetPdf
             if (findOIT != null)
             {
                 var ValorNeu = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_NEUMOCONIOSIS_CHECK);
-
-                if (ValorNeu != null)
+                
+                if (ValorNeu == null)
                 {
-                    Con_Neumoconiosis = ValorNeu.v_Value1;
+                    Sin_Neumoconiosis = "";
+                    Con_Neumoconiosis = "";
                 }
-                else
+                else if (ValorNeu.v_Value1 == "1")
                 {
-                    Sin_Neumoconiosis = "NORMAL";
+                    Sin_Neumoconiosis = "X";
+                    Con_Neumoconiosis = "";
                 }
-
+                else if (ValorNeu.v_Value1 == "0")
+                {
+                    Sin_Neumoconiosis = "";
+                    Con_Neumoconiosis = "X";
+                }
                  var Valor_Hallazgos = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_EXPOSICION_POLVO_ID);
                  
                 if (Valor_Hallazgos != null)
@@ -13628,7 +13643,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("MOV. REPET.", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(MovRepet){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
                     //new PdfPCell(new Phrase("", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
-                    new PdfPCell(new Phrase("Puesto al que postula"+ (DataService.i_EsoTypeId != 1 ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
+                   new PdfPCell(new Phrase("Puesto al que postula: "+ (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //fila
                     new PdfPCell(new Phrase("VIB SEGMENTARIA", fontColumnValue)){Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                       
@@ -13639,8 +13654,9 @@ namespace NetPdf
                     new PdfPCell(Posturas){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
                     new PdfPCell(new Phrase("PVD", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
                     new PdfPCell(PVD){Border = PdfPCell.RIGHT_BORDER ,HorizontalAlignment = PdfPCell.NO_BORDER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
-                    new PdfPCell(new Phrase("Puesto actual: "+ (DataService.i_EsoTypeId != 1 ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase("Puesto actual: "+ (DataService.i_EsoTypeId != (int)Sigesoft.Common.TypeESO.PreOcupacional ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
+ 
                     //fila
                     new PdfPCell(new Phrase("VIB TOTAL", fontColumnValue)){Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                      
                     new PdfPCell(VidTotal){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
@@ -15001,15 +15017,22 @@ namespace NetPdf
             {
                 var CONCLUSIONES_OIT_DESCRIPCION_ID = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID);
 
-                var x = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.BK_DIRECTO_MICROBIOLOGICO_RESULTADOS);
+                var ValorNeu = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_NEUMOCONIOSIS_CHECK);
 
-                if (x != null)
+                if (ValorNeu == null)
                 {
-                    Con_Neumoconiosis = x.v_Value1;
+                    Sin_Neumoconiosis = "";
+                    Con_Neumoconiosis = "";
                 }
-                else
+                else if (ValorNeu.v_Value1 == "1")
                 {
-                    Sin_Neumoconiosis = "NORMAL";
+                    Sin_Neumoconiosis = "X";
+                    Con_Neumoconiosis = "";
+                }
+                else if (ValorNeu.v_Value1 == "0")
+                {
+                    Sin_Neumoconiosis = "";
+                    Con_Neumoconiosis = "X";
                 }
 
                 var Vertices = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VERTICES);
@@ -16646,7 +16669,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("MOV. REPET.", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(MovRepet){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
                     //new PdfPCell(new Phrase("", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
-                    new PdfPCell(new Phrase("Puesto al que postula"+ (DataService.i_EsoTypeId != 1 ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
+                    new PdfPCell(new Phrase("Puesto al que postula: "+ (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //fila
                     new PdfPCell(new Phrase("VIB SEGMENTARIA", fontColumnValue)){Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                       
@@ -16657,7 +16680,7 @@ namespace NetPdf
                     new PdfPCell(Posturas){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
                     new PdfPCell(new Phrase("PVD", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},   
                     new PdfPCell(PVD){Border = PdfPCell.RIGHT_BORDER ,HorizontalAlignment = PdfPCell.NO_BORDER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM }, 
-                    new PdfPCell(new Phrase("Puesto actual: "+ (DataService.i_EsoTypeId != 1 ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase("Puesto actual: "+ (DataService.i_EsoTypeId != (int)Sigesoft.Common.TypeESO.PreOcupacional ? DataService.v_CurrentOccupation : "").ToString(), fontColumnValue)){ Colspan = 2, Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //fila
                     new PdfPCell(new Phrase("VIB TOTAL", fontColumnValue)){Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                      
@@ -17971,15 +17994,22 @@ namespace NetPdf
             {
                 var CONCLUSIONES_OIT_DESCRIPCION_ID = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_CONCLUSIONES_OIT_DESCRIPCION_ID);
 
-                var x = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.BK_DIRECTO_MICROBIOLOGICO_RESULTADOS);
+                var ValorNeu = findOIT.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_NEUMOCONIOSIS_CHECK);
 
-                if (x != null)
+                if (ValorNeu == null)
                 {
-                    Sin_Neumoconiosis = x.v_Value1;
+                    Sin_Neumoconiosis = "";
+                    Con_Neumoconiosis = "";
                 }
-                else
+                else if (ValorNeu.v_Value1 == "1")
                 {
-                    Sin_Neumoconiosis = "NO REALIZADO";
+                    Sin_Neumoconiosis = "X";
+                    Con_Neumoconiosis = "";
+                }
+                else if (ValorNeu.v_Value1 == "0")
+                {
+                    Sin_Neumoconiosis = "";
+                    Con_Neumoconiosis = "X";
                 }
 
 

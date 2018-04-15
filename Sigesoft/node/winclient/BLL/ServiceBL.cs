@@ -16036,14 +16036,16 @@ namespace Sigesoft.Node.WinClient.BLL
 				string[] componentId = null;
 				ServiceBL oServiceBL = new ServiceBL();
 				List<ServiceComponentFieldValuesList> oServiceComponentFieldValuesList = new List<ServiceComponentFieldValuesList>();
-
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var result = (from A in dbContext.servicecomponent where A.v_ServiceId == pstrServiceId && A.v_ComponentId == pstrComponentId && A.i_IsRequiredId == 1 select A).ToList();
+                if (result.Count == 0) return "NO APLICA";
 				oServiceComponentFieldValuesList = oServiceBL.ValoresComponenteOdontograma1(pstrServiceId, pstrComponentId);
 				var xx = oServiceComponentFieldValuesList.Count() == 0 || ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)) == null ? string.Empty : ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)).v_Value1;
-
+             
 				componentId = xx.Split(';');
 				if (componentId[0] == "")
 				{
-					Retornar = "NO APLICA";
+					Retornar = "0";
 				}
 				else
 				{
@@ -16890,14 +16892,19 @@ namespace Sigesoft.Node.WinClient.BLL
 				ServiceBL oServiceBL = new ServiceBL();
 				List<ServiceComponentFieldValuesList> oServiceComponentFieldValuesList = new List<ServiceComponentFieldValuesList>();
 
+                //Verificar si el componente está en el servicio
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var result = (from A in dbContext.servicecomponent where A.v_ServiceId == pstrServiceId && A.v_ComponentId == pstrComponentId && A.i_IsRequiredId == 1 select A).ToList();
+                if (result.Count == 0) return "NO APLICA";
+
 				oServiceComponentFieldValuesList = oServiceBL.ValoresComponenteOdontograma1(pstrServiceId, pstrComponentId);
 				var xx = oServiceComponentFieldValuesList.Count() == 0 || ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)) == null ? string.Empty : ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)).v_Value1;
-
+         
 				componentId = xx.Split(';');
 
 				if (componentId[0] == "")
 				{
-					retornar = "NO APLICA";
+					retornar = "0";
 				}
 				else
 				{
@@ -25202,8 +25209,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.TipoProbado = habitos.Find(p => p.TypeHabitId == 3).Comment;
 
                 FichaAntecedentePatologico.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").FechaAntecedente.ToString();
-                FichaAntecedentePatologico.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Detalle;
-                FichaAntecedentePatologico.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Tratamiento;
+                FichaAntecedentePatologico.OperacionAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Detalle;
+                FichaAntecedentePatologico.DiasAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Tratamiento;
                 
                 list.Add(FichaAntecedentePatologico);
                 return list;
