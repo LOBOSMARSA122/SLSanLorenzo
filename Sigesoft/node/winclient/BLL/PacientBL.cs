@@ -2205,8 +2205,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
                                  from B in B_join.DefaultIfEmpty()
 
-                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 join C in dbContext.organization on B.v_EmployerOrganizationId equals C.v_OrganizationId into C_join
                                  from C in C_join.DefaultIfEmpty()
+                                 //gaaa
+                                 join C1 in dbContext.organization on B.v_CustomerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
                       
                                  join P1 in dbContext.person on new { a = A.v_PersonId }
                                          equals new { a = P1.v_PersonId } into P1_join
@@ -2240,6 +2243,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      NroDocumento = P1.v_DocNumber,
                                      Ocupacion = P1.v_CurrentOccupation,
                                      Empresa = C.v_Name,
+                                     Contratista = C1.v_Name,
                                      FirmaTrabajador = P1.b_RubricImage,
                                      HuellaTrabajador = P1.b_FingerPrintImage,
                                      LugarProcedencia = varDistri + "-" + varProv + "-" + varDpto, // Santa Anita - Lima - Lima
@@ -2261,9 +2265,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                NroDocumento = a.NroDocumento,
                                Ocupacion = a.Ocupacion,
                                Empresa = a.Empresa,
+                               Contratista = a.Contratista,
                                FirmaTrabajador = a.FirmaTrabajador,
                                HuellaTrabajador = a.HuellaTrabajador,
-
                                b_Logo = MedicalCenter.b_Image,
                                EmpresaPropietaria = MedicalCenter.v_Name,
                                EmpresaPropietariaDireccion = MedicalCenter.v_Address,

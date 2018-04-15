@@ -15,7 +15,6 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime Fecha { get; set; }
         public string Puesto { get; set; }
         public string Ficha { get; set; }
-
         public string Tabaco { get; set; }
         public string Diabetes { get; set; }
         public string OtrosAntecedentes { get; set; }

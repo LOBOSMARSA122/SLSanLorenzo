@@ -153,5 +153,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string Dia { get; set; }
         public string Mes { get; set; }
         public string Anio { get; set; }
+
+         public byte[] b_Logo { get; set; }
+         public byte[] b_Logo_Cliente { get; set; }
     }
 }

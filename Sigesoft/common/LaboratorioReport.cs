@@ -189,9 +189,9 @@ namespace NetPdf
                     new PdfPCell(new Phrase(filiationData.d_ServiceDate.Value.ToShortDateString(), fontColumnValue)), 
 
                     new PdfPCell(new Phrase("EDAD:", fontColumnValue)), 
-                    new PdfPCell(new Phrase(DataService.i_Edad.ToString() + " Años", fontColumnValue)),
+                    new PdfPCell(new Phrase(" ", fontColumnValue)),
                     new PdfPCell(new Phrase("SEXO:", fontColumnValue)), 
-                    new PdfPCell(new Phrase(filiationData.v_SexType, fontColumnValue)), 
+                    new PdfPCell(new Phrase(" ", fontColumnValue)), 
                     
 
                          //cells.Add(new PdfPCell(new Phrase("FORMULA LEUCOCITARIA", fontColumnValueNegrita)) { Colspan = 4 });

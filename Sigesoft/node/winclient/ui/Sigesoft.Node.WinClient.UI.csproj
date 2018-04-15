@@ -322,7 +322,6 @@
     </Compile>
     <Compile Include="Dataset\dsEstudioElectrocardiografico.cs">
       <DependentUpon>dsEstudioElectrocardiografico.xsd</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dataset\dsFichaAntecedentePatologico.cs">
       <DependentUpon>dsFichaAntecedentePatologico.xsd</DependentUpon>
@@ -6291,7 +6290,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

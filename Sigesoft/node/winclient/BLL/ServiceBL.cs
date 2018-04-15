@@ -15401,7 +15401,6 @@ namespace Sigesoft.Node.WinClient.BLL
 									 FirmaMedico = pme.b_SignatureImage,
 									 Empresa = J.v_Name,
 									 NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
-
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
@@ -25007,7 +25006,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                      ApellidoMaterno = per.v_SecondLastName,
                                      NombreCompleto = per.v_FirstLastName + " " + per.v_SecondLastName + " " + per.v_FirstName,
                                      FechaNacimiento = per.d_Birthdate.Value,
-                                     //Edad = "",
                                      TipoDocumentoId = per.i_DocTypeId.Value,
                                      TipoDocumento = doc.v_Value1,
                                      NroDocumento = per.v_DocNumber,
@@ -25030,11 +25028,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                      VaronesNumeroHijosVivos = per.i_NumberLiveChildren,
                                      VaromesNumeroHijosFallecidos = per.i_NumberDeadChildren,
                                      VaromesNumeroAbortoPareja = "",
-                                     VaronesCausaAborto = ""
+                                     VaronesCausaAborto = "",
+                                     b_Logo_Cliente = empCli.b_Image
+
                                  }).ToList();
-
-           
-
+                var MedicalCenter = GetInfoMedicalCenter();
                 var objEntity = (from A in dbContext.personmedicalhistory
                                  join B in dbContext.diseases on A.v_DiseasesId equals B.v_DiseasesId
                                  where A.v_PersonId == pstrPacientId
@@ -25044,14 +25042,15 @@ namespace Sigesoft.Node.WinClient.BLL
                                         Detalle = A.v_DiagnosticDetail,
                                         Tratamiento = A.v_TreatmentSite,
                                         FechaAntecedente = A.d_StartDate,
-                                        DiseasseId = A.v_DiseasesId
+                                        DiseasseId = A.v_DiseasesId,
+                                        
                                  }).ToList();
 
                 var FichaAntecedentePatologico = new FichaAntecedentePatologico();
                 List<FichaAntecedentePatologico> list = new List<BE.FichaAntecedentePatologico>();
                 
                 FichaAntecedentePatologico.ServiceId = servicios[0].ServiceId;
-
+                FichaAntecedentePatologico.b_Logo = MedicalCenter.b_Image;
                 FichaAntecedentePatologico.ServiceComponentId = servicios[0].ServiceComponentId;
                 FichaAntecedentePatologico.FechaServicio = servicios[0].FechaServicio;
                 FichaAntecedentePatologico.Nombres = servicios[0].Nombres;
@@ -25062,7 +25061,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.Edad = servicios[0].Edad;
                 FichaAntecedentePatologico.TipoDocumentoId = servicios[0].TipoDocumentoId;
                 FichaAntecedentePatologico.TipoDocumento = servicios[0].TipoDocumento;
-
+                FichaAntecedentePatologico.b_Logo_Cliente = servicios[0].b_Logo_Cliente;
                 FichaAntecedentePatologico.Dia = servicios[0].FechaServicio.Value.Day.ToString();
                 FichaAntecedentePatologico.Mes = servicios[0].FechaServicio.Value.Month.ToString();
                 FichaAntecedentePatologico.Anio = servicios[0].FechaServicio.Value.Year.ToString();

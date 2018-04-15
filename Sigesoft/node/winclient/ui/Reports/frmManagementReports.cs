@@ -2350,7 +2350,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     dtINFORME_HISTORIA_OCUPACIONAL.TableName = "HistoriaOcupacional";
                     dsGetRepo.Tables.Add(dtINFORME_HISTORIA_OCUPACIONAL);
 
-                    //rony
+                    
                     if (pintIdCrystal == 37)
                     {
                         rp = new Reports.crApendice01_HistoriaOcupacional();
