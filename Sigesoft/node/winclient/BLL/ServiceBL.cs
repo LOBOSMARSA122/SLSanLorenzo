@@ -17153,6 +17153,8 @@ namespace Sigesoft.Node.WinClient.BLL
         private string CalcularTotalTiempoLaboral(List<ReportHistoriaOcupacionalList> objEntity)
         {
             int monthDiff = 0;
+            if (objEntity[0].FechaInicio == null) return "0 año, 0 meses";
+          
             foreach (var item in objEntity)
             {
                 DateTime startDate = item.FechaInicio.Value;
