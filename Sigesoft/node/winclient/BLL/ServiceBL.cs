@@ -27607,7 +27607,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var serviceBL = new ServiceBL();
                 var MedicalCenter = serviceBL.GetInfoMedicalCenter();
-                var valores = ValoresComponente(pstrServiceId, "N002-ME000000005");
+                var valores = ValoresComponente(pstrServiceId, "N009-ME000000337");
 
                 var sql = (from a in objEntity.ToList()
                            select new CuestionarioAudiometria
