@@ -27607,7 +27607,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var serviceBL = new ServiceBL();
                 var MedicalCenter = serviceBL.GetInfoMedicalCenter();
-                var valores = ValoresComponente(pstrServiceId, "N009-ME000000337");
+                var valores = ValoresComponente(pstrServiceId, "N002-ME000000005");
 
                 var sql = (from a in objEntity.ToList()
                            select new CuestionarioAudiometria
@@ -27631,7 +27631,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                IdServicio = a.IdServicio,
                                AreaTrabajo = a.AreaTrabajo,
                                LogoPropietaria = MedicalCenter.b_Image,
-                               FirmaGraba = a.FirmaGraba,
+                               FIRMAMEDICO = a.FIRMAMEDICO,
                                LOGOCLIENTE = a.LOGOCLIENTE,
                                ANTIGUEDADDELPUESTO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003023") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003023").v_Value1,
 
@@ -27707,41 +27707,48 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                OTROSEXPDETALLAR = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003059") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003059").v_Value1,
 
-                               //TRAUMATISMOSCRANEALES = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002985") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002985").v_Value1,
+                               TRAUMATISMOSCRANEALES = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002985") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002985").v_Value1,
 
-                               //SARAMPION = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002986") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002986").v_Value1,
+                               SARAMPION = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002986") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002986").v_Value1,
 
-                               //PAPERAS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002987") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002987").v_Value1,
+                               PAPERAS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002987") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002987").v_Value1,
 
-                               //RUBEOLA = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002988") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002988").v_Value1,
+                               RUBEOLA = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002988") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002988").v_Value1,
 
-                               //FIABRETIFOIDEA = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002989") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002989").v_Value1,
+                               FIABRETIFOIDEA = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002989") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002989").v_Value1,
 
-                               //ACUFENOS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002990") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002990").v_Value1,
+                               ACUFENOS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002990") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002990").v_Value1,
 
-                               //VERTIGO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002991") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002991").v_Value1,
+                               VERTIGO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002991") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002991").v_Value1,
 
-                               //DOLORDEOIDOS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002992") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002992").v_Value1,
+                               DOLORDEOIDOS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002992") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002992").v_Value1,
 
-                               //SECRECOIDOS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002993") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002993").v_Value1,
+                               SECRECOIDOS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002993") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002993").v_Value1,
 
-                               //OTROSSINTOMASDETALLAR = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002994") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002994").v_Value1,
+                               OTROSSINTOMASDETALLAR = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002994") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002994").v_Value1,
 
-                               //_1OYEBIEN = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002995") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002995").v_Value1,
+                               _1OYEBIEN = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002995") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002995").v_Value1,
 
-                               //_2NODESDECUANDO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002996") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002996").v_Value1,
+                               _2NODESDECUANDO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002996") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002996").v_Value1,
 
-                               //_3ENCONVERSACIONES = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002997") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002997").v_Value1,
+                               _3ENCONVERSACIONES = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002997") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002997").v_Value1,
 
-                               //_4NECESITAAUMENTAR = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002998") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002998").v_Value1,
+                               _4NECESITAAUMENTAR = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002998") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002998").v_Value1,
 
-                               //_5OYEMEJORCUANDO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002999") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002999").v_Value1,
+                               _5OYEMEJORCUANDO = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000002999") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000002999").v_Value1,
 
-                               //_6LEMOLESTANLOSRUIDOS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003000") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003000").v_Value1,
-
-
+                               _6LEMOLESTANLOSRUIDOS = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003000") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003000").v_Value1,
 
 
+                               NroEmbarazos = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003172") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003172").v_Value1,
+                               NroAbortos = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003173") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003173").v_Value1,
+                               OtrosTipos = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003174") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003174").v_Value1,
+                               UitlizaMedProtec = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003034") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003034").v_Value1,
+                               SiMedProtecDetalle = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003035") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003035").v_Value1,
+                               TipoDeProtec = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003036") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003036").v_Value1,
+
+                               SIFAMPROBDETALLAR1 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003038") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003038").v_Value1,
+                               OTROSTRATANTIB1 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003051") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003051").v_Value1,
 
 
                            }).ToList();
