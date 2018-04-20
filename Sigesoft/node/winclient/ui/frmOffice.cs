@@ -120,26 +120,26 @@ namespace Sigesoft.Node.WinClient.UI
             //    return;
             //}
 
+            // este código sirve para obtener imc 
+          //Boolean Resultado1 = oMedicalExamBL.VerificarComponentePorCategoria(_categoriaId, Constants.ELECTROCARDIOGRAMA_ID);
 
-          Boolean Resultado1 = oMedicalExamBL.VerificarComponentePorCategoria(_categoriaId, Constants.ELECTROCARDIOGRAMA_ID);
+          //if (Resultado1)
+          //{
 
-          if (Resultado1)
-          {
+          //  List<ServiceComponentFieldValuesList> Valores=  objServiceBL.ValoresComponente(_serviceId, Constants.ANTROPOMETRIA_ID);
+          //  if (Valores.Count !=0)
+          //  {
+          //      decimal ValorIMCServicio = decimal.Parse(Valores.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_IMC_ID).v_Value1.ToString());
+          //      decimal ValorIMCProtocolo = decimal.Parse(oProtocolBL.GetProtocolComponentByProtocol(ref objOperationResult, _ProtocolId, Constants.ELECTROCARDIOGRAMA_ID).r_Imc.ToString());
 
-            List<ServiceComponentFieldValuesList> Valores=  objServiceBL.ValoresComponente(_serviceId, Constants.ANTROPOMETRIA_ID);
-            if (Valores.Count !=0)
-            {
-                decimal ValorIMCServicio = decimal.Parse(Valores.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_IMC_ID).v_Value1.ToString());
-                decimal ValorIMCProtocolo = decimal.Parse(oProtocolBL.GetProtocolComponentByProtocol(ref objOperationResult, _ProtocolId, Constants.ELECTROCARDIOGRAMA_ID).r_Imc.ToString());
-
-                if (ValorIMCServicio < ValorIMCProtocolo)
-                {
-                    MessageBox.Show("El I.M.C. del paciente tiene valores normales, no aplica para este examen", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+          //      if (ValorIMCServicio < ValorIMCProtocolo)
+          //      {
+          //          MessageBox.Show("El I.M.C. del paciente tiene valores normales, no aplica para este examen", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                    
-                    return;
-                }
-            }        
-          }
+          //          return;
+          //      }
+          //  }        
+          //}
             
             //Validación de Piso
             if (_Piso != "-1")
