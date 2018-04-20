@@ -7855,13 +7855,53 @@ namespace NetPdf
             
             #region Antecedentes Personales
             cells = new List<PdfPCell>();
+            
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000637") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000637";
+                oPersonMedicalHistoryList.v_DiseasesName = "CIRUGÍAS";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000633") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000633";
+                oPersonMedicalHistoryList.v_DiseasesName = "ALERGIAS";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000642") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000642";
+                oPersonMedicalHistoryList.v_DiseasesName = "DIABETES";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000436") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000436";
+                oPersonMedicalHistoryList.v_DiseasesName = "HTA";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
 
             if (listaPersonMedicalHistory != null && listaPersonMedicalHistory.Count > 0)
             {
                 foreach (var item in listaPersonMedicalHistory)
                 {
                     //Columna Fecha Inicio
-                    cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString() == "1/01/2000" ?  "00/00/0000" : item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
 
                     //Columna Diagnóstico
@@ -8289,7 +8329,24 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorConclusionABS, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("ICC", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                     new PdfPCell(new Phrase(ValorICC, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    
+                    //Linea
+                    new PdfPCell(new Phrase("Frecuencia Cardíaca:", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Presión Arterial Sistémica", fontColumnValue)){Colspan=5 ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
+                    //Linea
+                    new PdfPCell(new Phrase("Frecuencia Respiratoria:", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Sistólica", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorPAS,fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+                    //Linea
+                    new PdfPCell(new Phrase("Sat. O2:", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Diastólica", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorPAD , fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                  
                  };
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 20f, 8f, 8f };
 
