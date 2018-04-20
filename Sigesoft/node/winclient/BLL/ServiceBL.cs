@@ -27961,7 +27961,6 @@ namespace Sigesoft.Node.WinClient.BLL
             return Comision;
 
         }
-
    
         #region Clonar
         public void ClonarServicio(string psrtServiceOldId, string pProtocolId, string pEmpresaCliente, DateTime pFechaServicio)
