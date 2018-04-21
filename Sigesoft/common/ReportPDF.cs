@@ -7783,7 +7783,8 @@ namespace NetPdf
                     ValorBoca = Boca.v_Value1;
                 }
 
-                var Reflejos = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
+                ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME00000028");
+                var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
                     ValorReflejosPupilares = Reflejos.v_Value1;
