@@ -5723,7 +5723,7 @@ namespace NetPdf
                         {
                             LuesPositivo = cellConCheck;
                         }
-                        else if (ValorLues.v_Value1 == "0")
+                        else if (ValorLues.v_Value1 == "2")
                         {
                             LuesNegativo = cellConCheck;
                         }
@@ -5893,7 +5893,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("3/2, 3/3, 3+", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("A,B,C", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("NEGATIVO", fontColumnValue)),
-                    new PdfPCell(LuesPositivo){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(LuesNegativo){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
 
                     //Linea
@@ -5904,7 +5904,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("TRES", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CUATRO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("POSITIVO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(LuesNegativo){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(LuesPositivo){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                    
                     //Linea        
                     new PdfPCell(Cero){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE }, 
@@ -7583,7 +7583,7 @@ namespace NetPdf
                     ValorMiembrosSuperiores = MiembrosSuperiores.v_Value1;
                 }
 
-                var AparatoCardiovascular = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_SUPERIORES_DESCRIPCION);
+                var AparatoCardiovascular = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
                 if (AparatoCardiovascular != null)
                 {
                     valorAparatoCardioVascular = AparatoCardiovascular.v_Value1;
@@ -9637,7 +9637,7 @@ namespace NetPdf
                         {
                             LuesPositivo = cellConCheck;
                         }
-                        else if (ValorLues.v_Value1 == "0")
+                        else if (ValorLues.v_Value1 == "2")
                         {
                             LuesNegativo = cellConCheck;
                         }
@@ -12595,14 +12595,14 @@ namespace NetPdf
                         VDRLValor = "NO REALIZADO";
                     }
 
-                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VDRL_ID_REALIZADO);
+                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
                     if (ValorLues != null)
                     {
                         if (ValorLues.v_Value1 == "1")
                         {
                             LuesPositivo = cellConCheck;
                         }
-                        else if (ValorLues.v_Value1 == "0")
+                        else if (ValorLues.v_Value1 == "2")
                         {
                             LuesNegativo = cellConCheck;
                         }
@@ -12748,13 +12748,13 @@ namespace NetPdf
                     new PdfPCell(Tres){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE }, 
                     new PdfPCell(ABC){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },  
                      new PdfPCell(new Phrase("NEGATIVO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(LuesPositivo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(LuesNegativo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
                     new PdfPCell(new Phrase("SIN NEUMOCONIOSIS", fontColumnValue)){ Colspan=2,Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("IMAGEN RADIOGRÁFICA DE EXPOSICIÓN A POLVO", fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CON NEUMOCONIOSIS", fontColumnValue)){Colspan=3, Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("POSITIVO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(LuesNegativo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(LuesPositivo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
                     //Linea
                     new PdfPCell(new Phrase(Sin_Neumoconiosis, fontColumnValue)){Colspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },  
@@ -15519,7 +15519,7 @@ namespace NetPdf
                         {
                             LuesPositivo = cellConCheck;
                         }
-                        else if (ValorLues.v_Value1 == "0")
+                        else if (ValorLues.v_Value1 == "2")
                         {
                             LuesNegativo = cellConCheck;
                         }
@@ -15696,13 +15696,13 @@ namespace NetPdf
                     new PdfPCell(Tres){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE }, 
                     new PdfPCell(ABC){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },  
                      new PdfPCell(new Phrase("NEGATIVO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(LuesPositivo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(LuesNegativo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
                     new PdfPCell(new Phrase("SIN NEUMOCONIOSIS", fontColumnValue)){ Colspan=2,Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("IMAGEN RADIOGRÁFICA DE EXPOSICIÓN A POLVO", fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CON NEUMOCONIOSIS", fontColumnValue)){Colspan=3, Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("POSITIVO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(LuesNegativo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(LuesPositivo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
                     //Linea
                     new PdfPCell(new Phrase(Sin_Neumoconiosis, fontColumnValue)){Colspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },  
@@ -18513,7 +18513,7 @@ namespace NetPdf
                         {
                             LuesPositivo = cellConCheck;
                         }
-                        else if (ValorLues.v_Value1 == "0")
+                        else if (ValorLues.v_Value1 == "2")
                         {
                             LuesNegativo = cellConCheck;
                         }
@@ -18660,13 +18660,13 @@ namespace NetPdf
                     new PdfPCell(Tres){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE }, 
                     new PdfPCell(ABC){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },  
                      new PdfPCell(new Phrase("NEGATIVO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(LuesPositivo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(LuesNegativo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
                     new PdfPCell(new Phrase("SIN NEUMOCONIOSIS", fontColumnValue)){ Colspan=2,Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("IMAGEN RADIOGRÁFICA DE EXPOSICIÓN A POLVO", fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CON NEUMOCONIOSIS", fontColumnValue)){Colspan=3, Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("POSITIVO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(LuesNegativo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(LuesPositivo){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
                     //Linea
                     new PdfPCell(new Phrase(Sin_Neumoconiosis, fontColumnValue)){Colspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },  
