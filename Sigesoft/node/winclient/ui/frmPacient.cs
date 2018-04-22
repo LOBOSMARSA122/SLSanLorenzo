@@ -289,6 +289,8 @@ namespace Sigesoft.Node.WinClient.UI
                 ddlBloodGroupId.SelectedValue = objpacientDto.i_BloodGroupId.ToString();
                 ddlBloodFactorId.SelectedValue = objpacientDto.i_BloodFactorId.ToString();
                 txtCurrentOccupation.Text = objpacientDto.v_CurrentOccupation;
+                txtHijosVivos.Text = objpacientDto.i_NumberLiveChildren.ToString();
+                txtHijosFallecidos.Text = objpacientDto.i_NumberDeadChildren.ToString();
                 txtNroPliza.Text = objpacientDto.v_NroPoliza;
                 txtDecucible.Text = objpacientDto.v_Deducible.ToString();
 
@@ -412,6 +414,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_AdressLocation = txtAdressLocation.Text.Trim();
                     objpersonDto.v_Mail = txtMail.Text.Trim();
                     objpersonDto.v_CurrentOccupation = txtCurrentOccupation.Text.Trim();
+                    objpersonDto.i_NumberLiveChildren = int.Parse(txtHijosVivos.Text.Trim());
+                    objpersonDto.i_NumberDeadChildren = int.Parse(txtHijosFallecidos.Text.Trim());
                     objpersonDto.i_BloodGroupId = Convert.ToInt32(ddlBloodGroupId.SelectedValue);
                     objpersonDto.i_BloodFactorId = Convert.ToInt32(ddlBloodFactorId.SelectedValue);
                     objpersonDto.v_NroPoliza = txtNroPliza.Text;
@@ -476,6 +480,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_AdressLocation = txtAdressLocation.Text.Trim();
                     objpersonDto.v_Mail = txtMail.Text.Trim();
                     objpersonDto.v_CurrentOccupation = txtCurrentOccupation.Text.Trim();
+                    objpersonDto.i_NumberLiveChildren =int.Parse( txtHijosVivos.Text.Trim());
+                    objpersonDto.i_NumberDeadChildren = int.Parse(txtHijosFallecidos.Text.Trim());
                     objpersonDto.b_FingerPrintTemplate = FingerPrintTemplate;
                     objpersonDto.b_FingerPrintImage = FingerPrintImage;
                     objpersonDto.b_RubricImage = RubricImage;
@@ -764,6 +770,8 @@ namespace Sigesoft.Node.WinClient.UI
             txtTelephoneNumber.Text = "";
             txtAdressLocation.Text = "";
             txtCurrentOccupation.Text = "";
+            txtHijosVivos.Text = "";
+            txtHijosFallecidos.Text = "";
             txtNombreTitular.Text = "";
 
             ddlBloodGroupId.SelectedIndex = 0;
@@ -807,6 +815,8 @@ namespace Sigesoft.Node.WinClient.UI
             txtTelephoneNumber.ReadOnly = !valor;
             txtAdressLocation.ReadOnly = !valor;
             txtCurrentOccupation.ReadOnly = !valor;
+            txtHijosVivos.ReadOnly = !valor;
+            txtHijosFallecidos.ReadOnly = !valor;
             txtNombreTitular.ReadOnly = !valor;
             //ddlBloodGroupId.Enabled = valor;
             ddlDocTypeId.Enabled = valor;
@@ -974,6 +984,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_AdressLocation = txtAdressLocation.Text.Trim();
                     objpersonDto.v_Mail = txtMail.Text.Trim();
                     objpersonDto.v_CurrentOccupation = txtCurrentOccupation.Text.Trim();
+                    objpersonDto.i_NumberLiveChildren = txtHijosVivos.Text == "" ? 0 : int.Parse(txtHijosVivos.Text.Trim());
+                    objpersonDto.i_NumberDeadChildren = txtHijosFallecidos.Text == "" ? 0 : int.Parse(txtHijosFallecidos.Text.Trim());
                     objpersonDto.i_BloodGroupId = Convert.ToInt32(ddlBloodGroupId.SelectedValue);
                     objpersonDto.i_BloodFactorId = Convert.ToInt32(ddlBloodFactorId.SelectedValue);
 
@@ -1038,6 +1050,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_AdressLocation = txtAdressLocation.Text.Trim();
                     objpersonDto.v_Mail = txtMail.Text.Trim();
                     objpersonDto.v_CurrentOccupation = txtCurrentOccupation.Text.Trim();
+                    objpersonDto.i_NumberLiveChildren = txtHijosVivos.Text == "" ?0 : int.Parse(txtHijosVivos.Text.Trim());
+                    objpersonDto.i_NumberDeadChildren = txtHijosFallecidos.Text == "" ?0 : int.Parse(txtHijosFallecidos.Text.Trim());
                     objpersonDto.b_FingerPrintTemplate = FingerPrintTemplate;
                     objpersonDto.b_FingerPrintImage = FingerPrintImage;
                     objpersonDto.b_RubricImage = RubricImage;

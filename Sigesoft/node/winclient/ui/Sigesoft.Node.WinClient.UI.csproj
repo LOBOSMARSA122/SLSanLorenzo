@@ -1325,6 +1325,12 @@
     <Compile Include="Operations\Popups\frmSelectSignature.Designer.cs">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
     </Compile>
+    <Compile Include="ReporteDeclaracionDrogas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteDeclaracionDrogas.Designer.cs">
+      <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\crApendice03_Audio.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -3408,6 +3414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmSelectSignature.resx">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
+      <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crApendice03_Audio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -6290,7 +6299,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

@@ -797,7 +797,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                     v_OwnerName = B.v_OwnerName,
                                      v_NroPoliza = B.v_NroPoliza,
                                      v_Deducible = B.v_Deducible.Value,
-                                     i_NroHermanos = B.i_NroHermanos.Value
+                                     i_NroHermanos = B.i_NroHermanos.Value,
+                                     i_NumberLiveChildren = B.i_NumberLiveChildren,
+                                     i_NumberDeadChildren = B.i_NumberDeadChildren
                                  }).FirstOrDefault();
 
                 pobjOperationResult.Success = 1;
@@ -1851,15 +1853,14 @@ namespace Sigesoft.Node.WinClient.BLL
                 var serviceBL = new ServiceBL();
                 var MedicalCenter = serviceBL.GetInfoMedicalCenter();
 
-               
-                var sql = (from a in objEntity.ToList()
+                var oftalmo = serviceBL.ValoresComponente(pstrserviceId, Constants.OFTALMOLOGIA_ID);
+                var FondoOjo = serviceBL.ValoresComponente(pstrserviceId, Constants.FONDO_OJO_ID);
+                var TestColores = serviceBL.ValoresComponente(pstrserviceId, Constants.TEST_ISHIHARA_ID);
+                var TestEsterepsis = serviceBL.ValoresComponente(pstrserviceId, Constants.TEST_ESTEREOPSIS_ID);
+                var Campimetria = serviceBL.ValoresComponente(pstrserviceId, Constants.CAMPIMETRIA_ID);
+                var Tonometria = serviceBL.ValoresComponente(pstrserviceId, Constants.TONOMETRIA_ID);
 
-                            let oftalmo = serviceBL.ValoresComponente(pstrserviceId, Constants.OFTALMOLOGIA_ID)
-                            let FondoOjo = serviceBL.ValoresComponente(pstrserviceId, Constants.FONDO_OJO_ID)
-                            let TestColores = serviceBL.ValoresComponente(pstrserviceId, Constants.TEST_ISHIHARA_ID)
-                            let TestEsterepsis = serviceBL.ValoresComponente(pstrserviceId, Constants.TEST_ESTEREOPSIS_ID)
-                            let Campimetria = serviceBL.ValoresComponente(pstrserviceId, Constants.CAMPIMETRIA_ID)
-                            let Tonometria = serviceBL.ValoresComponente(pstrserviceId, Constants.TONOMETRIA_ID)
+                var sql = (from a in objEntity.ToList()
 
                             select new ReportOftalmologia
                             {
@@ -1870,6 +1871,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 FechaNacimiento = a.FechaNacimiento,
                                 Edad = GetAge(a.FechaNacimiento),
                                 PuestoTrabajo = a.PuestoTrabajo,
+                                TipoEso = a.TipoEso,
                                 USO_DE_CORRECTORES = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000172") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000172").v_Value1,
 
                                 HuellaPaciente = a.HuellaPaciente,
@@ -5161,6 +5163,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                  i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
                                  i_NumberLivingChildren = B.i_NumberLivingChildren,
                                  i_NumberDependentChildren = B.i_NumberDependentChildren,
+                                 i_NumberLiveChildren = B.i_NumberLiveChildren,
+                                 i_NumberDeadChildren = B.i_NumberDeadChildren,
                                  v_DocNumber = B.v_DocNumber
 
                              }).Concat
@@ -5195,6 +5199,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                  i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
                                  i_NumberLivingChildren = B.i_NumberLivingChildren,
                                  i_NumberDependentChildren = B.i_NumberDependentChildren,
+                                 i_NumberLiveChildren = B.i_NumberLiveChildren,
+                                 i_NumberDeadChildren = B.i_NumberDeadChildren,
                                  v_DocNumber = B.v_DocNumber
                              }).OrderBy("v_FirstLastName").Take(pintResultsPerPage);
 

@@ -17,7 +17,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 {
     public partial class frmRadiologico : Form
     {
-        private string _serviceId;
+        private readonly string _serviceId;
 
         public frmRadiologico(string serviceId)
         {

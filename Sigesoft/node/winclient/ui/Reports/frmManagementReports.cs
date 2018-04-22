@@ -2160,8 +2160,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     DataSet dsOsteomuscularNuevo = new DataSet();
                     var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
                     var UC_OSTEO_ID = new ServiceBL().ReporteOsteomuscular(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
-                    DataTable dt_UC_OSTEO_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(UC_OSTEO_ID);
-                    DataTable dtOSTEO_MUSCULAR_ID_1 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(OSTEO_MUSCULAR_ID_1);
+                    DataTable dt_UC_OSTEO_ID = BLL.Utils.ConvertToDatatable(UC_OSTEO_ID);
+                    DataTable dtOSTEO_MUSCULAR_ID_1 = BLL.Utils.ConvertToDatatable(OSTEO_MUSCULAR_ID_1);
 
                     dtOSTEO_MUSCULAR_ID_1.TableName = "dtOsteomuscularNuevo";
                     dt_UC_OSTEO_ID.TableName = "dtOsteoMus";
@@ -2172,11 +2172,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     rp = new Reports.crMuscoloEsqueletico();
                     rp.SetDataSource(dsOsteomuscularNuevo);
-
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.OSTEO_MUSCULAR_ID_1 + ".pdf";
                     objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_1 + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
@@ -2186,11 +2184,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     rp = new Reports.crMuscoloEsqueletico2();
                     rp.SetDataSource(dsOsteomuscularNuevo);
-
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                     rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                     objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.OSTEO_MUSCULAR_ID_1 + ".pdf";
                     objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.OSTEO_MUSCULAR_ID_2 + ".pdf";
                     _filesNameToMerge.Add(objDiskOpt.DiskFileName);
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
