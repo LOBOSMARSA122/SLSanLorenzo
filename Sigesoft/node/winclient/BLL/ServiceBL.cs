@@ -24222,6 +24222,16 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 				//Parchado
 				var ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, Constants.EXAMEN_FISICO_ID).ToList();
+                if (ValorUSer.Count ==0)
+			    {
+                    ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, Constants.EXAMEN_FISICO_7C_ID).ToList();
+
+			        if (ValorUSer.Count == 0)
+			        {
+                        ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, Constants.OSTEO_MUSCULAR_ID_1).ToList();
+			        }
+			    }
+
 				var MedicalCenter = GetInfoMedicalCenter();
 				var sql = (from a in objEntity.ToList()
 						   select new UcOsteo
@@ -25034,12 +25044,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                      HuellaTrabajador = per.b_FingerPrintImage,
                                      FirmaUsuarioGraba = pme.b_SignatureImage,
                                      InicioMestrucion = ser.v_Menarquia,
-                                     InicioVidaSexual = A.v_InicioVidaSexaul,
-                                     NumeroParejas = A.v_NroParejasActuales,
+                                     InicioVidaSexual = ser.v_InicioVidaSexaul,
+                                     NumeroParejas = ser.v_NroParejasActuales,
                                      DamasNumeroHijosVivos = per.i_NumberLiveChildren,
                                      DamasNumeroHijosFallecidos = per.i_NumberDeadChildren,
-                                     DamasNumeroAborto = A.v_NroAbortos,
-                                     DamasCausaAborto = A.v_PrecisarCausas,
+                                     DamasNumeroAborto = ser.v_NroAbortos,
+                                     DamasCausaAborto = ser.v_PrecisarCausas,
                                      VaronesNumeroHijosVivos = per.i_NumberLiveChildren,
                                      VaromesNumeroHijosFallecidos = per.i_NumberDeadChildren,
                                      VaromesNumeroAbortoPareja = "",
@@ -25513,11 +25523,9 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
 				var MedicalCenter = GetInfoMedicalCenter();
-
+			    var TOXICOLOGICO_COCAINA_MARIHUANA = ValoresComponente(pstrServiceId, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
+			    var LogoEmpresa = GetLogoMedicalCenter();
 				var sql = (from a in objEntity.ToList()
-						   let TOXICOLOGICO_COCAINA_MARIHUANA = ValoresComponente(pstrServiceId, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID)
-
-						   let LogoEmpresa = GetLogoMedicalCenter()
 						   select new ReportToxicologico
 						   {
 							   LogoEmpresa = LogoEmpresa,

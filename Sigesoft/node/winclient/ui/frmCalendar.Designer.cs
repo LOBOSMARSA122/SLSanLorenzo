@@ -190,6 +190,8 @@
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmDeclaracionDrogas = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -732,9 +734,11 @@
             this.mnuListaNegra,
             this.mnuAreaTrabajo,
             this.nmuPesoTalla,
-            this.mnuMarcarSalida});
+            this.mnuMarcarSalida,
+            this.toolStripMenuItem2,
+            this.tsmDeclaracionDrogas});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 270);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 320);
             // 
             // mnuReagendarCita
             // 
@@ -1566,6 +1570,18 @@
             ultraDataColumn21,
             ultraDataColumn22});
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(256, 6);
+            // 
+            // tsmDeclaracionDrogas
+            // 
+            this.tsmDeclaracionDrogas.Name = "tsmDeclaracionDrogas";
+            this.tsmDeclaracionDrogas.Size = new System.Drawing.Size(259, 22);
+            this.tsmDeclaracionDrogas.Text = "Declaración Drogas y Alcohol";
+            this.tsmDeclaracionDrogas.Click += new System.EventHandler(this.tsmDeclaracionDrogas_Click);
+            // 
             // frmCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1687,5 +1703,7 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid ugComponentes;
         private Infragistics.Win.UltraWinDataSource.UltraDataSource ultraDataSource1;
         private System.Windows.Forms.Button btnAdjuntar;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tsmDeclaracionDrogas;
     }
 }

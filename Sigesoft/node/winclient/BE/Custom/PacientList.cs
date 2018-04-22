@@ -232,5 +232,6 @@ namespace Sigesoft.Node.WinClient.BE
 
         public string GradoInstruccion { get; set; }
         public string EstadoCivil { get; set; }
+
     }
 }

@@ -7468,7 +7468,7 @@ namespace NetPdf
             string ValorPulmonDescripcion = "", ValorTactoRectalDescripcion = "";
 
             string ValorMiembrosInferiores = "", ValorMiembrosSuperiores = "", ValorReflejosOsteoTendinosos = "", ValorMarcha = "", ValorColumna = "", ValorAbdomen = "",
-                    ValorAnilloInguinales = "", ValorHernias = "", ValorVarice = "", ValorGenitales = "", ValorGangleos = "", ValorCardio = "";
+                    ValorAnilloInguinales = "", ValorHernias = "", ValorVarice = "", ValorGenitales = "", ValorGangleos = "", ValorCardio = "", valorAparatoCardioVascular ="";
 
 
             if (find7C != null)
@@ -7582,6 +7582,13 @@ namespace NetPdf
                 {
                     ValorMiembrosSuperiores = MiembrosSuperiores.v_Value1;
                 }
+
+                var AparatoCardiovascular = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_SUPERIORES_DESCRIPCION);
+                if (AparatoCardiovascular != null)
+                {
+                    valorAparatoCardioVascular = AparatoCardiovascular.v_Value1;
+                }
+
 
                 var ReflejosOsteoTendinosos = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_OSTEO_TENDINOSOS_DESCRIPCION);
                 if (ReflejosOsteoTendinosos != null)
@@ -9028,7 +9035,11 @@ namespace NetPdf
               
                     new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPulmonDescripcion, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
-
+                    
+                    //Linea
+                    new PdfPCell(new Phrase("APARATO CARDIOVASCULAR", fontColumnValueBold)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT}  ,
+                    new PdfPCell(new Phrase(ValorMiembrosSuperiores, fontColumnValue)){Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT}    , 
+                    
                     //Linea
                     new PdfPCell(new Phrase("MIEMBROS SUPERIORES", fontColumnValueBold)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT}  ,
                     new PdfPCell(new Phrase(ValorMiembrosSuperiores, fontColumnValue)){Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT}    , 
