@@ -12582,7 +12582,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 v_GenderName = a.v_GenderName,
 							 v_DiseasesName = a.v_DiseasesName == "RECOMENDACIONES" ? "" : a.v_DiseasesName,
                              v_Cie10 = a.v_Cie10,
-                             v_DiseasesNameCie10 = string.Format("{0}   {1}", a.v_DiseasesName, a.v_Cie10),
+                             v_DiseasesNameCie10 = string.Format("{0}   {1}", a.v_Cie10, a.v_DiseasesName),
 							 v_RecomendationsName = ConcatenateRecommendationByService(pstrServiceId),
 							 v_RestrictionsName = ConcatenateRestrictionConcatecDx(a.v_DiagnosticRepositoryId),
 							 //v_RecomendacionesConcatenadasDx = ConcatenateRecommendationByService(a.v_DiagnosticRepositoryId),
