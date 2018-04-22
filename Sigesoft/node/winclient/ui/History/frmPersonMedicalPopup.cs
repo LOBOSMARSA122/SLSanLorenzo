@@ -20,8 +20,11 @@ namespace Sigesoft.Node.WinClient.UI.History
         public string _DiagnosticDetail;
         public DateTime _Date;
         public string _TreatmentSite;
+        public string _Hospital;
+        public string _Complicaciones;
 
-        public frmPersonMedicalPopup(string DiagnosticName, int TypeDiagnosticId, DateTime StartDate, string DiagnosticDetail, DateTime? Date, string TreatmentSite)
+
+        public frmPersonMedicalPopup(string DiagnosticName, int TypeDiagnosticId, DateTime StartDate, string DiagnosticDetail, DateTime? Date, string TreatmentSite, string Hospital, string Complicaciones)
         {
             InitializeComponent();
 
@@ -33,6 +36,8 @@ namespace Sigesoft.Node.WinClient.UI.History
             dtpDateTimeStar.Value = StartDate;
             txtDxDetail.Text = DiagnosticDetail;
             txtTreatmentSite.Text = TreatmentSite;
+            txtHospital.Text = Hospital;
+            txtComplicaciones.Text = Complicaciones;
         }
         private void SearchControlAndSetEvents(Control ctrlContainer)
         {
@@ -79,6 +84,9 @@ namespace Sigesoft.Node.WinClient.UI.History
                 _DiagnosticDetail = txtDxDetail.Text;
                 _TreatmentSite = txtTreatmentSite.Text;
 
+                _Hospital = txtHospital.Text;
+                _Complicaciones = txtComplicaciones.Text;
+
                 DialogResult = System.Windows.Forms.DialogResult.OK;
             }
 
@@ -90,6 +98,11 @@ namespace Sigesoft.Node.WinClient.UI.History
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtComplicaciones_Click(object sender, EventArgs e)
         {
 
         }

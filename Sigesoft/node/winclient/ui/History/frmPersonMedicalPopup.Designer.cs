@@ -40,6 +40,10 @@
             this.btnOk = new System.Windows.Forms.Button();
             this.ddlTypeDiagnosticId = new System.Windows.Forms.ComboBox();
             this.uvPersonMedicalPopup = new Infragistics.Win.Misc.UltraValidator(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtHospital = new System.Windows.Forms.TextBox();
+            this.lfdj = new System.Windows.Forms.Label();
+            this.txtComplicaciones = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.uvPersonMedicalPopup)).BeginInit();
             this.SuspendLayout();
             // 
@@ -72,7 +76,7 @@
             this.txtTreatmentSite.MaxLength = 250;
             this.txtTreatmentSite.Multiline = true;
             this.txtTreatmentSite.Name = "txtTreatmentSite";
-            this.txtTreatmentSite.Size = new System.Drawing.Size(623, 64);
+            this.txtTreatmentSite.Size = new System.Drawing.Size(209, 64);
             this.txtTreatmentSite.TabIndex = 9;
             // 
             // label3
@@ -102,7 +106,7 @@
             this.txtDxDetail.MaxLength = 250;
             this.txtDxDetail.Multiline = true;
             this.txtDxDetail.Name = "txtDxDetail";
-            this.txtDxDetail.Size = new System.Drawing.Size(623, 68);
+            this.txtDxDetail.Size = new System.Drawing.Size(209, 68);
             this.txtDxDetail.TabIndex = 11;
             // 
             // label5
@@ -157,12 +161,57 @@
             this.uvPersonMedicalPopup.GetValidationSettings(this.ddlTypeDiagnosticId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
             this.uvPersonMedicalPopup.GetValidationSettings(this.ddlTypeDiagnosticId).IsRequired = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(406, 66);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 13);
+            this.label2.TabIndex = 40;
+            this.label2.Text = "Nombre Hospital";
+            // 
+            // txtHospital
+            // 
+            this.txtHospital.Location = new System.Drawing.Point(526, 63);
+            this.txtHospital.Margin = new System.Windows.Forms.Padding(2);
+            this.txtHospital.MaxLength = 250;
+            this.txtHospital.Multiline = true;
+            this.txtHospital.Name = "txtHospital";
+            this.txtHospital.Size = new System.Drawing.Size(233, 68);
+            this.txtHospital.TabIndex = 39;
+            // 
+            // lfdj
+            // 
+            this.lfdj.AutoSize = true;
+            this.lfdj.Location = new System.Drawing.Point(406, 135);
+            this.lfdj.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lfdj.Name = "lfdj";
+            this.lfdj.Size = new System.Drawing.Size(81, 13);
+            this.lfdj.TabIndex = 38;
+            this.lfdj.Text = "Complicaciones";
+            this.lfdj.Click += new System.EventHandler(this.txtComplicaciones_Click);
+            // 
+            // txtComplicaciones
+            // 
+            this.txtComplicaciones.Location = new System.Drawing.Point(526, 135);
+            this.txtComplicaciones.Margin = new System.Windows.Forms.Padding(2);
+            this.txtComplicaciones.MaxLength = 250;
+            this.txtComplicaciones.Multiline = true;
+            this.txtComplicaciones.Name = "txtComplicaciones";
+            this.txtComplicaciones.Size = new System.Drawing.Size(233, 64);
+            this.txtComplicaciones.TabIndex = 37;
+            // 
             // frmPersonMedicalPopup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(783, 251);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtHospital);
+            this.Controls.Add(this.lfdj);
+            this.Controls.Add(this.txtComplicaciones);
             this.Controls.Add(this.ddlTypeDiagnosticId);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOk);
@@ -201,5 +250,9 @@
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.ComboBox ddlTypeDiagnosticId;
         private Infragistics.Win.Misc.UltraValidator uvPersonMedicalPopup;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtHospital;
+        private System.Windows.Forms.Label lfdj;
+        private System.Windows.Forms.TextBox txtComplicaciones;
     }
 }

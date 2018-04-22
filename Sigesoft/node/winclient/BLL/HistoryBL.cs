@@ -1092,7 +1092,9 @@ namespace Sigesoft.Node.WinClient.BLL
                               v_UpdateUser = J2.v_UserName,
                               d_CreationDate = A.d_InsertDate,
                               d_UpdateDate = A.d_UpdateDate,
-                              i_Answer = A.i_AnswerId.Value
+                              i_Answer = A.i_AnswerId.Value,
+                              NombreHospital = A.NombreHospital,
+                              v_Complicaciones = A.v_Complicaciones
                           };
 
               if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -1149,6 +1151,8 @@ namespace Sigesoft.Node.WinClient.BLL
                   objEntity1.d_StartDate = item.d_StartDate;
                   objEntity1.v_DiagnosticDetail = item.v_DiagnosticDetail;
                   objEntity1.v_TreatmentSite = item.v_TreatmentSite;
+                  objEntity1.NombreHospital = item.NombreHospital;
+                  objEntity1.v_Complicaciones = item.v_Complicaciones;
                   objEntity1.i_AnswerId = item.i_AnswerId;
                   dbContext.AddTopersonmedicalhistory(objEntity1);
               }
@@ -1173,6 +1177,8 @@ namespace Sigesoft.Node.WinClient.BLL
                       objEntitySource1.d_StartDate = item.d_StartDate;
                       objEntitySource1.v_DiagnosticDetail = item.v_DiagnosticDetail;
                       objEntitySource1.v_TreatmentSite = item.v_TreatmentSite;
+                      objEntitySource1.NombreHospital = item.NombreHospital;
+                      objEntitySource1.v_Complicaciones = item.v_Complicaciones;
                       objEntitySource1.i_IsDeleted = 0;
 
                       objEntitySource1.d_UpdateDate = DateTime.Now;

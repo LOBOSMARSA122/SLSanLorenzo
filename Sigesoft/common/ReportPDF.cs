@@ -3719,11 +3719,13 @@ namespace NetPdf
                     ValorBoca = Boca.v_Value1;
                 }
 
-                var Reflejos = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
+                ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000028");
+                var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
                     ValorReflejosPupilares = Reflejos.v_Value1;
                 }
+
             #endregion
 
 
@@ -3951,7 +3953,7 @@ namespace NetPdf
                 var Temperatura = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID);
                 if (Temperatura != null)
                 {
-                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1;
+                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1 + " °C";
                 }
 
                 var FRespiratoria = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID);
@@ -4052,7 +4054,7 @@ namespace NetPdf
                 var Temperatura = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID);
                 if (Temperatura != null)
                 {
-                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1;
+                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1 + " °C";
                 }
             }
 
@@ -4172,7 +4174,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorPeso + " Kg", fontColumnValue)){ Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("FVC", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorCVF, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase(ValorTemperatura == "0.00" || ValorTemperatura == "0,00" || string.IsNullOrEmpty(ValorTemperatura) ? "Afebril" : double.Parse(ValorTemperatura).ToString("#.#"), fontColumnValue))
+                    new PdfPCell(new Phrase(ValorTemperatura == "0.00" || ValorTemperatura == "0,00" || string.IsNullOrEmpty(ValorTemperatura) ? "Afebril" : ValorTemperatura, fontColumnValue))
                                                         { Rowspan=2, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
@@ -5817,7 +5819,8 @@ namespace NetPdf
                     }
                     else
                     {
-                        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        var dx = string.Format("{0} ({1})", item.v_DiseasesName, item.v_Dx_CIE10);
+                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
                     }
 
@@ -7783,7 +7786,7 @@ namespace NetPdf
                     ValorBoca = Boca.v_Value1;
                 }
 
-                ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME00000028");
+                ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000028");
                 var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
@@ -9719,7 +9722,8 @@ namespace NetPdf
                     }
                     else
                     {
-                        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        var dx = string.Format("{0} ({1})", item.v_DiseasesName, item.v_Dx_CIE10);
+                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
                     }
 
@@ -9968,9 +9972,11 @@ namespace NetPdf
                     new PdfPCell(new Phrase("NO APTO", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(NoApto){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("APTO CON RESTRICCIONES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoConRestricciones){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("OBSERVADO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoObs){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //line
@@ -10800,7 +10806,8 @@ namespace NetPdf
                     ValorBoca = Boca.v_Value1;
                 }
 
-                var Reflejos = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
+                ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000028");
+                var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
                     ValorReflejosPupilares = Reflejos.v_Value1;
@@ -11056,7 +11063,7 @@ namespace NetPdf
                 var Temperatura = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID);
                 if (Temperatura != null)
                 {
-                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1;
+                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1 + " °C";
                 }
 
                 var FRespiratoria = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID);
@@ -11157,7 +11164,7 @@ namespace NetPdf
                 var Temperatura = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID);
                 if (Temperatura != null)
                 {
-                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1;
+                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1 + " °C";
                 }
             }
 
@@ -11277,7 +11284,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorPeso + " Kg", fontColumnValue)){ Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("FVC", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorCVF, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase(ValorTemperatura == "0.00"  || ValorTemperatura == "0,00"  || string.IsNullOrEmpty(ValorTemperatura) ? "Afebril" : double.Parse(ValorTemperatura).ToString("#.#"), fontColumnValue))
+                    new PdfPCell(new Phrase(ValorTemperatura == "0.00"  || ValorTemperatura == "0,00"  || string.IsNullOrEmpty(ValorTemperatura) ? "Afebril" : ValorTemperatura, fontColumnValue))
                                                         { Rowspan=2, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
@@ -12679,7 +12686,8 @@ namespace NetPdf
                     }
                     else
                     {
-                        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        var dx = string.Format("{0} ({1})", item.v_DiseasesName, item.v_Dx_CIE10);
+                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
                     }
 
@@ -12843,10 +12851,12 @@ namespace NetPdf
                     //Linea
                     new PdfPCell(new Phrase("NO APTO", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(NoApto){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
-                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                      //Linea
+                    new PdfPCell(new Phrase("APTO CON RESTRICCIONES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoConRestricciones){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("OBSERVADO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoObs){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //line
@@ -13676,11 +13686,13 @@ namespace NetPdf
                     ValorBoca = Boca.v_Value1;
                 }
 
-                var Reflejos = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
+                ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000028");
+                var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
                     ValorReflejosPupilares = Reflejos.v_Value1;
                 }
+
             #endregion
 
 
@@ -13930,7 +13942,7 @@ namespace NetPdf
                 var Temperatura = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID);
                 if (Temperatura != null)
                 {
-                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1;
+                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1 + " °C";
                 }
 
                 var FRespiratoria = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID);
@@ -14031,7 +14043,7 @@ namespace NetPdf
                 var Temperatura = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID);
                 if (Temperatura != null)
                 {
-                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1;
+                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1 + " °C";
                 }
             }
 
@@ -14151,7 +14163,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorPeso + " Kg", fontColumnValue)){ Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("FVC", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorCVF, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase(ValorTemperatura == "0.00" || ValorTemperatura == "0,00" || string.IsNullOrEmpty(ValorTemperatura) ? "Afebril" : double.Parse(ValorTemperatura).ToString("#.#"), fontColumnValue))
+                    new PdfPCell(new Phrase(ValorTemperatura == "0.00" || ValorTemperatura == "0,00" || string.IsNullOrEmpty(ValorTemperatura) ? "Afebril" : ValorTemperatura, fontColumnValue))
                                                         { Rowspan=2, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
@@ -15592,7 +15604,8 @@ namespace NetPdf
                     }
                     else
                     {
-                        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        var dx = string.Format("{0} ({1})", item.v_DiseasesName, item.v_Dx_CIE10);
+                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
                     }
 
@@ -15782,10 +15795,12 @@ namespace NetPdf
                     //Linea
                     new PdfPCell(new Phrase("NO APTO", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(NoApto){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
-                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                      //Linea
+                    new PdfPCell(new Phrase("APTO CON RESTRICCIONES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoConRestricciones){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("OBSERVADO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoObs){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
@@ -16702,11 +16717,14 @@ namespace NetPdf
                     ValorBoca = Boca.v_Value1;
                 }
 
-                var Reflejos = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
+                ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000028");
+                if (oftalmologia == null) return;
+                var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
                     ValorReflejosPupilares = Reflejos.v_Value1;
                 }
+
             #endregion
 
 
@@ -16955,7 +16973,7 @@ namespace NetPdf
                 var Temperatura = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID);
                 if (Temperatura != null)
                 {
-                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1;
+                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1 + " °C";
                 }
 
                 var FRespiratoria = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID);
@@ -17056,7 +17074,7 @@ namespace NetPdf
                 var Temperatura = findFuncionesVitales.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_TEMPERATURA_ID);
                 if (Temperatura != null)
                 {
-                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1;
+                    if (Temperatura.v_Value1 != null) ValorTemperatura = Temperatura.v_Value1 + " °C";
                 }
             }
 
@@ -17176,7 +17194,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorPeso + " Kg", fontColumnValue)){ Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("FVC", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorCVF, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase(ValorTemperatura == "0.00" || ValorTemperatura == "0,00" || string.IsNullOrEmpty(ValorTemperatura) ? "Afebril" : double.Parse(ValorTemperatura).ToString("#.#"), fontColumnValue))
+                    new PdfPCell(new Phrase(ValorTemperatura == "0.00" || ValorTemperatura == "0,00" || string.IsNullOrEmpty(ValorTemperatura) ? "Afebril" : ValorTemperatura, fontColumnValue))
                                                         { Rowspan=2, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
@@ -18580,7 +18598,8 @@ namespace NetPdf
                     }
                     else
                     {
-                        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        var dx = string.Format("{0} ({1})", item.v_DiseasesName, item.v_Dx_CIE10);
+                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
                     }
 
@@ -18743,10 +18762,12 @@ namespace NetPdf
                     //Linea
                     new PdfPCell(new Phrase("NO APTO", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(NoApto){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
-                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                     //Linea
+                    new PdfPCell(new Phrase("APTO CON RESTRICCIONES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoConRestricciones){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("OBSERVADO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoObs){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //line
@@ -19279,10 +19300,12 @@ namespace NetPdf
                     //Linea
                     new PdfPCell(new Phrase("NO APTO", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(NoApto){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
-                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                      //Linea
+                    new PdfPCell(new Phrase("APTO CON RESTRICCIONES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoConRestricciones){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                    //Linea
-                    new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("OBSERVADO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(AptoObs){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     

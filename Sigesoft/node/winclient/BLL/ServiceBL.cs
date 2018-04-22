@@ -1251,7 +1251,11 @@ namespace Sigesoft.Node.WinClient.BLL
 								v_ResultadosPAP = A.v_ResultadosPAP,
 								v_FechaUltimaMamo = A.v_FechaUltimaMamo,
 								v_ResultadoMamo = A.v_ResultadoMamo,
-								v_DocNumber = D.v_DocNumber
+								v_DocNumber = D.v_DocNumber,
+                                v_InicioVidaSexaul = A.v_InicioVidaSexaul,
+                                v_NroParejasActuales = A.v_NroParejasActuales,
+                                v_NroAbortos = A.v_NroAbortos,
+                                v_PrecisarCausas = A.v_PrecisarCausas,
 							};
 
 				ServiceList objData = query.FirstOrDefault();
@@ -12549,7 +12553,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_ObsStatusService = sss.v_ObsStatusService,
 								 b_Photo = D.b_PersonImage,
 								 GrupoFactorSanguineo = H1.v_Value1 + " - " + H2.v_Value1,
-								 d_FechaExpiracionServicio = sss.d_GlobalExpirationDate
+								 d_FechaExpiracionServicio = sss.d_GlobalExpirationDate,
+                                 v_Cie10 =  ddd.v_CIE10Id
 
 							 });
 
@@ -12576,6 +12581,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							 i_Age = a.d_BirthDate == null ? (int?)null : DateTime.Today.AddTicks(-a.d_BirthDate.Value.Ticks).Year - 1,
 							 v_GenderName = a.v_GenderName,
 							 v_DiseasesName = a.v_DiseasesName == "RECOMENDACIONES" ? "" : a.v_DiseasesName,
+                             v_Cie10 = a.v_Cie10,
+                             v_DiseasesNameCie10 = string.Format("{0}   {1}", a.v_DiseasesName, a.v_Cie10),
 							 v_RecomendationsName = ConcatenateRecommendationByService(pstrServiceId),
 							 v_RestrictionsName = ConcatenateRestrictionConcatecDx(a.v_DiagnosticRepositoryId),
 							 //v_RecomendacionesConcatenadasDx = ConcatenateRecommendationByService(a.v_DiagnosticRepositoryId),
@@ -18245,9 +18252,9 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-
+			    var Valores = ValoresComponente(pstrserviceId, pstrComponentId);
 				var sql = (from a in objEntity.ToList()
-                           let Valores = ValoresComponente(pstrserviceId, pstrComponentId)
+                           
 						   select new ReportEstudioElectrocardiografico
 						   {
 							   b_Imagen = a.b_Imagen,
@@ -20788,14 +20795,13 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-                //var ActividadEconomica = GetActividadEconomicaEmpPropietaria();
+			    var Espirometria = ValoresComponente(pstrserviceId, Constants.ESPIROMETRIA_ID);
+			    var FuncionesVitales = ValoresComponente(pstrserviceId, Constants.FUNCIONES_VITALES_ID);
+			    var Antropometria = ValoresComponente(pstrserviceId, Constants.ANTROPOMETRIA_ID);
+			    var LogoEmpresa = GetLogoMedicalCenter();
 				var sql = (from a in objEntity.ToList()
 
-						   let Espirometria = ValoresComponente(pstrserviceId, Constants.ESPIROMETRIA_ID)
-                           let FuncionesVitales = ValoresComponente(pstrserviceId, Constants.FUNCIONES_VITALES_ID)
-                           let Antropometria = ValoresComponente(pstrserviceId, Constants.ANTROPOMETRIA_ID)
-						   let age = GetAge(a.FechaNacimineto.Value)
-						   let LogoEmpresa = GetLogoMedicalCenter()
+						
 						   select new ReportCuestionarioEspirometria
 						   {
 							   EmpresaCliente = a.EmpresaCliente,
@@ -20812,7 +20818,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                PuestoTrabajo = a.PuestoTrabajo,
                                LogoCliente = a.LogoCliente,
                                TiempoTrabajo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_TIEMPO_TRABAJO_ID).v_Value1,
-							   Edad = age,
+							   Edad = GetAge(a.FechaNacimineto.Value),
 							   Logo = LogoEmpresa,
 							   b_File = a.b_File,
 							   Dni = a.Dni,
@@ -25028,12 +25034,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                      HuellaTrabajador = per.b_FingerPrintImage,
                                      FirmaUsuarioGraba = pme.b_SignatureImage,
                                      InicioMestrucion = ser.v_Menarquia,
-                                     InicioVidaSexual ="",
-                                     NumeroParejas = "",
+                                     InicioVidaSexual = A.v_InicioVidaSexaul,
+                                     NumeroParejas = A.v_NroParejasActuales,
                                      DamasNumeroHijosVivos = per.i_NumberLiveChildren,
                                      DamasNumeroHijosFallecidos = per.i_NumberDeadChildren,
-                                     DamasNumeroAborto ="",
-                                     DamasCausaAborto ="",
+                                     DamasNumeroAborto = A.v_NroAbortos,
+                                     DamasCausaAborto = A.v_PrecisarCausas,
                                      VaronesNumeroHijosVivos = per.i_NumberLiveChildren,
                                      VaromesNumeroHijosFallecidos = per.i_NumberDeadChildren,
                                      VaromesNumeroAbortoPareja = "",
@@ -25052,6 +25058,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                         Tratamiento = A.v_TreatmentSite,
                                         FechaAntecedente = A.d_StartDate,
                                         DiseasseId = A.v_DiseasesId,
+                                        Hospital = A.NombreHospital,
+                                        CausaAborto = A.v_Complicaciones
                                         
                                  }).ToList();
 
@@ -25213,6 +25221,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").FechaAntecedente.ToString();
                 FichaAntecedentePatologico.OperacionAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Detalle;
                 FichaAntecedentePatologico.DiasAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Tratamiento;
+                FichaAntecedentePatologico.HospitalAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Hospital;
+                FichaAntecedentePatologico.DamasCausaAborto = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").CausaAborto;
                 
                 list.Add(FichaAntecedentePatologico);
                 return list;
@@ -25223,6 +25233,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
 
         }
+
 		public List<ReportToxicologico> GetReportToxicologico(string pstrServiceId, string pstrComponentId)
 		{
 			//mon.IsActive = true;
@@ -25322,8 +25333,6 @@ namespace Sigesoft.Node.WinClient.BLL
 				return null;
 			}
 		}
-
-       
 
         public List<OstioCoimolache> GetReportOsteoCoimalache(string pstrServiceId, string pstrComponentId)
         {

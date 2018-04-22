@@ -161,5 +161,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_RecomendacionesConcatenadasDx { get; set; }
         
         public List<recetaDto> RecipeDetail { get; set; }
+
+        public string v_DiseasesNameCie10 { get; set; }
     }
 }

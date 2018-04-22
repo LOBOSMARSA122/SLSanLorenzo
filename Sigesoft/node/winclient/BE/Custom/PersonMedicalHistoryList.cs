@@ -62,6 +62,9 @@ namespace Sigesoft.Node.WinClient.BE
 
         public String v_Name { get; set; }
 
+        public string NombreHospital { get; set; }
+        public string v_Complicaciones { get; set; }
+
         // Betoo
     }
 }

@@ -1582,8 +1582,8 @@ namespace Sigesoft.Common
         public const string ESPIROMETRIA_FUNCION_RESPIRATORIA_DESCRIPCION_MVV = "N009-MF000000586";
 
         public const string ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_Normal = "N009-MF000002131";
-        public const string ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_SindromeRestrictivo = "N002-MF000002155";
-        public const string ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_SindromeObtructivo = "N002-MF000002154";
+        public const string ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_SindromeRestrictivo = "N009-MF000002155";
+        public const string ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_SindromeObtructivo = "N009-MF000002154";
         public const string ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_Observacion = "N009-MF000003135";
         #endregion Apendice
         public const string APENDICE_ID = "N009-ME000000413";

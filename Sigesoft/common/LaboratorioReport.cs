@@ -2977,7 +2977,7 @@ namespace NetPdf
 
                         // 1era fila
                         cells.Add(new PdfPCell(new Phrase("RESULTADO ", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(LABORATORIO_VDRL_ID == null ? string.Empty : LABORATORIO_VDRL_ID.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(LABORATORIO_VDRL_ID == null ? string.Empty : LABORATORIO_VDRL_ID.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("V D R L DESEABLE", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(VDRL_REACTIVOS_VDRL_DESEABLE == null ? string.Empty : VDRL_REACTIVOS_VDRL_DESEABLE.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 

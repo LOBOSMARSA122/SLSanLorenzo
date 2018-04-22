@@ -66,9 +66,19 @@
             this.txtRegimenCatamenial = new System.Windows.Forms.TextBox();
             this.btnGuardarAnamnesis = new System.Windows.Forms.Button();
             this.uvAnamnesis = new Infragistics.Win.Misc.UltraValidator(this.components);
+            this.txtVidaSexual = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtNroParejasActuales = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtNroAbortos = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtNroCausa = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gbSintomasySignos.SuspendLayout();
             this.gbAntGinecologicos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // gbSintomasySignos
@@ -484,7 +494,7 @@
             this.btnGuardarAnamnesis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarAnamnesis.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnGuardarAnamnesis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarAnamnesis.Location = new System.Drawing.Point(1140, 184);
+            this.btnGuardarAnamnesis.Location = new System.Drawing.Point(1140, 218);
             this.btnGuardarAnamnesis.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarAnamnesis.Name = "btnGuardarAnamnesis";
             this.btnGuardarAnamnesis.Size = new System.Drawing.Size(130, 24);
@@ -493,11 +503,115 @@
             this.btnGuardarAnamnesis.UseVisualStyleBackColor = false;
             this.btnGuardarAnamnesis.Click += new System.EventHandler(this.btnGuardarAnamnesis_Click);
             // 
+            // txtVidaSexual
+            // 
+            this.txtVidaSexual.Enabled = false;
+            this.txtVidaSexual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVidaSexual.Location = new System.Drawing.Point(135, 28);
+            this.txtVidaSexual.MaxLength = 100;
+            this.txtVidaSexual.Name = "txtVidaSexual";
+            this.txtVidaSexual.Size = new System.Drawing.Size(88, 20);
+            this.txtVidaSexual.TabIndex = 62;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(19, 31);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(106, 13);
+            this.label8.TabIndex = 61;
+            this.label8.Text = "Inicio de Vida Sexual";
+            // 
+            // txtNroParejasActuales
+            // 
+            this.txtNroParejasActuales.Enabled = false;
+            this.txtNroParejasActuales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroParejasActuales.Location = new System.Drawing.Point(364, 28);
+            this.txtNroParejasActuales.MaxLength = 100;
+            this.txtNroParejasActuales.Name = "txtNroParejasActuales";
+            this.txtNroParejasActuales.Size = new System.Drawing.Size(88, 20);
+            this.txtNroParejasActuales.TabIndex = 65;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(248, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 13);
+            this.label9.TabIndex = 64;
+            this.label9.Text = "Nro. Parejas Actuales";
+            // 
+            // txtNroAbortos
+            // 
+            this.txtNroAbortos.Enabled = false;
+            this.txtNroAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroAbortos.Location = new System.Drawing.Point(563, 28);
+            this.txtNroAbortos.MaxLength = 100;
+            this.txtNroAbortos.Name = "txtNroAbortos";
+            this.txtNroAbortos.Size = new System.Drawing.Size(88, 20);
+            this.txtNroAbortos.TabIndex = 67;
+            this.txtNroAbortos.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(476, 31);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(81, 13);
+            this.label14.TabIndex = 66;
+            this.label14.Text = "Nro. de Abortos";
+            this.label14.Click += new System.EventHandler(this.label14_Click);
+            // 
+            // txtNroCausa
+            // 
+            this.txtNroCausa.Enabled = false;
+            this.txtNroCausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroCausa.Location = new System.Drawing.Point(823, 28);
+            this.txtNroCausa.MaxLength = 100;
+            this.txtNroCausa.Name = "txtNroCausa";
+            this.txtNroCausa.Size = new System.Drawing.Size(290, 20);
+            this.txtNroCausa.TabIndex = 69;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.Black;
+            this.label15.Location = new System.Drawing.Point(734, 31);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(83, 13);
+            this.label15.TabIndex = 68;
+            this.label15.Text = "Precisar Causas";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtVidaSexual);
+            this.groupBox1.Controls.Add(this.txtNroCausa);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.txtNroAbortos);
+            this.groupBox1.Controls.Add(this.txtNroParejasActuales);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Location = new System.Drawing.Point(16, 177);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1119, 69);
+            this.groupBox1.TabIndex = 70;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Antecedentes de Reproducción";
+            // 
             // frmPopupAnamnesis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1281, 219);
+            this.ClientSize = new System.Drawing.Size(1281, 253);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnGuardarAnamnesis);
             this.Controls.Add(this.gbAntGinecologicos);
             this.Controls.Add(this.gbSintomasySignos);
@@ -514,6 +628,8 @@
             this.gbAntGinecologicos.ResumeLayout(false);
             this.gbAntGinecologicos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -557,5 +673,14 @@
         private System.Windows.Forms.TextBox txtFechaUltimoPAP;
         private System.Windows.Forms.Button btnGuardarAnamnesis;
         private Infragistics.Win.Misc.UltraValidator uvAnamnesis;
+        private System.Windows.Forms.TextBox txtVidaSexual;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtNroParejasActuales;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtNroAbortos;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox txtNroCausa;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

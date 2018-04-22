@@ -2490,7 +2490,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     dsGetRepo = new DataSet();
 
-                    DataTable dtAPENDICE_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(APENDICE_ID);
+                    DataTable dtAPENDICE_ID = BLL.Utils.ConvertToDatatable(APENDICE_ID);
                     dtAPENDICE_ID.TableName = "dtEstudioElectrocardiografico";
                     dsGetRepo.Tables.Add(dtAPENDICE_ID);
                     if (pintIdCrystal == 43)
