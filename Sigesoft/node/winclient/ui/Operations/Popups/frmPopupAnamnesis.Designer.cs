@@ -505,7 +505,6 @@
             // 
             // txtVidaSexual
             // 
-            this.txtVidaSexual.Enabled = false;
             this.txtVidaSexual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVidaSexual.Location = new System.Drawing.Point(135, 28);
             this.txtVidaSexual.MaxLength = 100;
@@ -526,7 +525,6 @@
             // 
             // txtNroParejasActuales
             // 
-            this.txtNroParejasActuales.Enabled = false;
             this.txtNroParejasActuales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNroParejasActuales.Location = new System.Drawing.Point(364, 28);
             this.txtNroParejasActuales.MaxLength = 100;
@@ -547,7 +545,6 @@
             // 
             // txtNroAbortos
             // 
-            this.txtNroAbortos.Enabled = false;
             this.txtNroAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNroAbortos.Location = new System.Drawing.Point(563, 28);
             this.txtNroAbortos.MaxLength = 100;
@@ -570,7 +567,6 @@
             // 
             // txtNroCausa
             // 
-            this.txtNroCausa.Enabled = false;
             this.txtNroCausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNroCausa.Location = new System.Drawing.Point(823, 28);
             this.txtNroCausa.MaxLength = 100;
