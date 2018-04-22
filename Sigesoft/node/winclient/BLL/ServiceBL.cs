@@ -18329,8 +18329,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							   //Descripcion = GetServiceComponentFielValue(a.IdServicio, pstrComponentId, Constants.OSTEO_MUSCULAR_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
 							   //Recomendacion = GetRecommendationByServiceId(a.IdServicio),
 
-                               FrecuenciaCardiaca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003119") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003119").v_Value1,
-                               RitmoCardiaco = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003120") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003120").v_Value1,
+                               FrecuenciaCardiaca = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003128") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003128").v_Value1,
+                               RitmoCardiaco = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003129") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003129").v_Value1,
 
                                PrGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003121") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003121").v_Value1,
                                QrsGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003122") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003122").v_Value1,
