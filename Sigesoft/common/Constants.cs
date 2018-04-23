@@ -3769,6 +3769,8 @@ namespace Sigesoft.Common
 
         public const string TOXICOLOGICO_ID = "N009-ME000000303";
 
+        public const string AUDIO_COIMOLACHE = "N009-ME000000415";
+
         public const string AutoevaTrabEquipo_ID = "N009-ME000000309";
         public const string Cuestionariogradodeafectividad_ID = "N009-ME000000304";
         public const string Fobiasocial01_ID = "N009-ME000000305";

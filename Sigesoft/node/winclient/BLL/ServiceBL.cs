@@ -28534,5 +28534,121 @@ namespace Sigesoft.Node.WinClient.BLL
             return finalQuery;
 
 	    }
+
+        public List<ReporteAudioCoimolache> GetAudiometriaCoimolache(string pstrServiceId, string pstrComponentId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+
+
+                                 join J in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
+                                                    equals new { a = J.i_ParameterId, b = J.i_GroupId } into J_join // GENERO
+                                 from J in J_join.DefaultIfEmpty()
+
+
+                                 join M in dbContext.systemparameter on new { a = B.i_MaritalStatusId.Value, b = 101 }
+                                              equals new { a = M.i_ParameterId, b = M.i_GroupId } into M_join
+                                 from M in M_join.DefaultIfEmpty()
+                                 join N in dbContext.datahierarchy on new { a = B.i_LevelOfId.Value, b = 108 }
+                                                equals new { a = N.i_ItemId, b = N.i_GroupId } into N_join
+                                 from N in N_join.DefaultIfEmpty()
+
+                                 join E1 in dbContext.protocol on A.v_ProtocolId equals E1.v_ProtocolId
+
+                                 join D1 in dbContext.organization on E1.v_CustomerOrganizationId equals D1.v_OrganizationId into D1_join
+                                 from D1 in D1_join.DefaultIfEmpty()
+
+                                 join D2 in dbContext.organization on E1.v_EmployerOrganizationId equals D2.v_OrganizationId into D2_join
+                                 from D2 in D2_join.DefaultIfEmpty()
+
+                                 join et in dbContext.systemparameter on new { a = E1.i_EsoTypeId.Value, b = 118 }
+                                            equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
+                                 from et in et_join.DefaultIfEmpty()
+
+                                 join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
+                                                                     equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+                                 
+                                 // Usuario Tecnologo *************************************
+                                 join tec in dbContext.systemuser on E.i_UpdateUserTechnicalDataRegisterId equals tec.i_SystemUserId into tec_join
+                                 from tec in tec_join.DefaultIfEmpty()
+
+                                 join ptec in dbContext.professional on tec.v_PersonId equals ptec.v_PersonId into ptec_join
+                                 from ptec in ptec_join.DefaultIfEmpty()
+                                 // *******************************************************  
+
+
+                                 where A.v_ServiceId == pstrServiceId
+
+                                 select new ReporteAudioCoimolache
+                                 {
+                                     FECHA = A.d_ServiceDate.Value,
+                                     EMP_CLIENTE = D1.v_Name,
+                                     EMP_CONTRATISTA =  D2.v_Name,
+                                     NOMBRE_PACIENTE = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                     GENERO = J.v_Value1,
+                                     PUESTO = B.v_CurrentOccupation,
+                                     FECHA_NACIMIENTO = B.d_Birthdate.Value,
+                                     FIRMA_TECNICO = ptec.b_SignatureImage,
+                                     FIRMA_MEDICO = pme.b_SignatureImage,
+                                     FIRMA_PACIENTE = B.b_RubricImage,
+                                     HUELLA_PACIENTE = B.b_FingerPrintImage
+                                 });
+
+                var serviceBL = new ServiceBL();
+                var MedicalCenter = serviceBL.GetInfoMedicalCenter();
+                var valores = ValoresComponente(pstrServiceId, "N009-ME000000415");
+
+                var sql = (from a in objEntity.ToList()
+                           select new ReporteAudioCoimolache
+                           {
+                               
+                                FECHA = a.FECHA,
+                                HORA = a.HORA,
+                                EMP_CLIENTE = a.EMP_CLIENTE,
+                                EMP_CONTRATISTA =  a.EMP_CONTRATISTA,
+                                NOMBRE_PACIENTE = a.NOMBRE_PACIENTE,
+                                GENERO = a.GENERO,
+                                PUESTO = a.PUESTO,
+                                FECHA_NACIMIENTO = a.FECHA_NACIMIENTO,
+                                EDAD = GetAge(a.FECHA_NACIMIENTO.Value),
+                                FIRMA_TECNICO = a.FIRMA_TECNICO,
+                                FIRMA_MEDICO = a.FIRMA_MEDICO,
+                                FIRMA_PACIENTE =a.FIRMA_PACIENTE,
+                                HUELLA_PACIENTE = a.HUELLA_PACIENTE,
+
+                                PREGUNTA_01 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003172") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003172").v_Value1,
+                                PREGUNTA_02 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003173") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003173").v_Value1,
+                                PREGUNTA_03 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003174") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003174").v_Value1,
+                                PREGUNTA_04 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003175") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003175").v_Value1,
+                                PREGUNTA_05 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003176") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003176").v_Value1,
+                                PREGUNTA_06 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003177") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003177").v_Value1,
+                                PREGUNTA_07 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003178") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003178").v_Value1,
+                                PREGUNTA_08 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003179") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003179").v_Value1,
+                                PREGUNTA_09 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003180") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003180").v_Value1,
+                                PREGUNTA_10 = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003181") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003181").v_Value1,
+                                CONDICION = valores.Count == 0 || valores.Find(p => p.v_ComponentFieldId == "N009-MF000003182") == null ? string.Empty : valores.Find(p => p.v_ComponentFieldId == "N009-MF000003182").v_Value1,
+                           }).ToList();
+
+                return sql;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
 	}
 }

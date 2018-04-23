@@ -2075,6 +2075,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Export();
                     rp.Close();
                     break;
+              
                 case Constants.INFORME_DECLARACION_CI:
                     var DECLARACION_CI_INFORMADO = new PacientBL().GetReportConsentimiento(_serviceId);
 
@@ -4155,6 +4156,24 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         rp.Close();
                     }
 
+                    break;
+
+                case Constants.AUDIO_COIMOLACHE:
+                    var AUDIO_COIMOLACHE_ID = new ServiceBL().GetAudiometriaCoimolache(_serviceId, Constants.AUDIO_COIMOLACHE);
+                    dsGetRepo = new DataSet();
+                    DataTable dtAUDIO_COIMOLACHE_ID = BLL.Utils.ConvertToDatatable(AUDIO_COIMOLACHE_ID);
+                    dtAUDIO_COIMOLACHE_ID.TableName = "dtAudioCoimo";
+                    dsGetRepo.Tables.Add(dtAUDIO_COIMOLACHE_ID);
+                    rp = new Reports.crCuestionarioAudioCoimolache();
+                    rp.SetDataSource(dsGetRepo);
+                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    objDiskOpt = new DiskFileDestinationOptions();
+                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.AUDIO_COIMOLACHE + ".pdf";
+                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                    rp.Export();
+                    rp.Close();
                     break;
 
                 case "N009-ME000000337":
