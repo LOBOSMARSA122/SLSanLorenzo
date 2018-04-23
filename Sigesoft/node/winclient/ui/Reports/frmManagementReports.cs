@@ -1751,8 +1751,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 }
 
                 string rutaDeclaracionJurada = Common.Utils.GetApplicationConfigValue("DeclaracionJurada");
-
                 List<string> filesConsentimientos = Directory.GetFiles(rutaDeclaracionJurada, "*.pdf").ToList();
+
 
                 var resultadoConsentimiento = filesConsentimientos.Find(p => p == rutaDeclaracionJurada + serviceId + "-DJ.pdf");
                 if (resultadoConsentimiento != null)

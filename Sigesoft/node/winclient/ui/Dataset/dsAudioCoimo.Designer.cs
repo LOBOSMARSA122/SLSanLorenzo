@@ -599,10 +599,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string EDAD, 
                         string GENERO, 
                         string PUESTO, 
-                        string FIRMA_TECNICO, 
-                        string FIRMA_MEDICO, 
-                        string FIRMA_PACIENTE, 
-                        string HUELLA_PACIENTE) {
+                        byte[] FIRMA_TECNICO, 
+                        byte[] FIRMA_MEDICO, 
+                        byte[] FIRMA_PACIENTE, 
+                        byte[] HUELLA_PACIENTE) {
                 dtAudioCoimoRow rowdtAudioCoimoRow = ((dtAudioCoimoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PREGUNTA_01,
@@ -716,13 +716,13 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnGENERO);
                 this.columnPUESTO = new global::System.Data.DataColumn("PUESTO", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPUESTO);
-                this.columnFIRMA_TECNICO = new global::System.Data.DataColumn("FIRMA_TECNICO", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFIRMA_TECNICO = new global::System.Data.DataColumn("FIRMA_TECNICO", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFIRMA_TECNICO);
-                this.columnFIRMA_MEDICO = new global::System.Data.DataColumn("FIRMA_MEDICO", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFIRMA_MEDICO = new global::System.Data.DataColumn("FIRMA_MEDICO", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFIRMA_MEDICO);
-                this.columnFIRMA_PACIENTE = new global::System.Data.DataColumn("FIRMA_PACIENTE", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnFIRMA_PACIENTE = new global::System.Data.DataColumn("FIRMA_PACIENTE", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFIRMA_PACIENTE);
-                this.columnHUELLA_PACIENTE = new global::System.Data.DataColumn("HUELLA_PACIENTE", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnHUELLA_PACIENTE = new global::System.Data.DataColumn("HUELLA_PACIENTE", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHUELLA_PACIENTE);
             }
             
@@ -1170,10 +1170,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FIRMA_TECNICO {
+            public byte[] FIRMA_TECNICO {
                 get {
                     try {
-                        return ((string)(this[this.tabledtAudioCoimo.FIRMA_TECNICOColumn]));
+                        return ((byte[])(this[this.tabledtAudioCoimo.FIRMA_TECNICOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'FIRMA_TECNICO\' in table \'dtAudioCoimo\' is DBNull.", e);
@@ -1186,10 +1186,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FIRMA_MEDICO {
+            public byte[] FIRMA_MEDICO {
                 get {
                     try {
-                        return ((string)(this[this.tabledtAudioCoimo.FIRMA_MEDICOColumn]));
+                        return ((byte[])(this[this.tabledtAudioCoimo.FIRMA_MEDICOColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'FIRMA_MEDICO\' in table \'dtAudioCoimo\' is DBNull.", e);
@@ -1202,10 +1202,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FIRMA_PACIENTE {
+            public byte[] FIRMA_PACIENTE {
                 get {
                     try {
-                        return ((string)(this[this.tabledtAudioCoimo.FIRMA_PACIENTEColumn]));
+                        return ((byte[])(this[this.tabledtAudioCoimo.FIRMA_PACIENTEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'FIRMA_PACIENTE\' in table \'dtAudioCoimo\' is DBNull.", e);
@@ -1218,10 +1218,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string HUELLA_PACIENTE {
+            public byte[] HUELLA_PACIENTE {
                 get {
                     try {
-                        return ((string)(this[this.tabledtAudioCoimo.HUELLA_PACIENTEColumn]));
+                        return ((byte[])(this[this.tabledtAudioCoimo.HUELLA_PACIENTEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'HUELLA_PACIENTE\' in table \'dtAudioCoimo\' is DBNull.", e);

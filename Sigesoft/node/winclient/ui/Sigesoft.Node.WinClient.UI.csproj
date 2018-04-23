@@ -1340,12 +1340,6 @@
     <Compile Include="ReporteDeclaracionDrogas.Designer.cs">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\crCuestionarioAudioCoimolache.cs">
-      <DependentUpon>crCuestionarioAudioCoimolache.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Reports\crApendice03_Audio.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1374,6 +1368,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>crConsentimiento_YanaGold.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\crCuestionarioAudioCoimolache.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crCuestionarioAudioCoimolache.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\crDeclaracion_YanaGold.cs">
@@ -3433,10 +3433,6 @@
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\crCuestionarioAudioCoimolache.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crCuestionarioAudioCoimolache.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crApendice03_Audio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crApendice03_Audio.cs</LastGenOutput>
@@ -3456,6 +3452,10 @@
     <EmbeddedResource Include="Reports\crConsentimiento_YanaGold.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crConsentimiento_YanaGold.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crCuestionarioAudioCoimolache.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crCuestionarioAudioCoimolache.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crDeclaracion_YanaGold.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
