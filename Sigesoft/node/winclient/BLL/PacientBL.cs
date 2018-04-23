@@ -1116,7 +1116,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      FirmaDoctorAuditor = pr2.b_SignatureImage,
                                      GESO = F.v_Name,
                                      i_AptitudeStatusId = s.i_AptitudeStatusId,
-                                     EstadoCivil = H.v_Value1
+                                     EstadoCivil = H.v_Value1,
+                                     EmpresaClienteId = ow.v_OrganizationId
                                      
                                  });
 
@@ -1175,7 +1176,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_OrganitationName = a.v_OrganitationName,
                                 i_AptitudeStatusId = a.i_AptitudeStatusId,
                                 v_ObsStatusService = a.v_ObsStatusService,
-                                EstadoCivil = a.EstadoCivil
+                                EstadoCivil = a.EstadoCivil,
+                                EmpresaClienteId = a.EmpresaClienteId
                             }).FirstOrDefault();
 
                 return sql;

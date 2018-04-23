@@ -832,6 +832,7 @@ namespace Sigesoft.Node.WinClient.BLL
 									 DistritoEmpresaTrabajo = G.v_Value1,
 									 v_CurrentOccupation = H.v_CurrentOccupation,
                                      b_Logo = C2.b_Image,
+                                     EmpresaClienteId = C.v_OrganizationId,
 									 //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
 									 i_DocTypeId = H.i_DocTypeId.Value,
 									 v_Pacient = H.v_FirstLastName + " " + H.v_SecondLastName + " " + H.v_FirstName,
@@ -916,6 +917,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   DistritoEmpresaTrabajo = a.DistritoEmpresaTrabajo,
 							   v_CurrentOccupation = a.v_CurrentOccupation,
                                b_Logo = a.b_Logo,
+                               EmpresaClienteId = a.EmpresaClienteId,
 							   //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
 							   i_DocTypeId = a.i_DocTypeId,
 							   v_Pacient = a.v_Pacient,
@@ -18356,9 +18358,7 @@ namespace Sigesoft.Node.WinClient.BLL
 				throw;
 			}
 		}
-
-
-
+        
 		public List<ReportInformeRadiografico> ReportInformeRadiografico(string pstrserviceId, string pstrComponentId)
 		{
 			try

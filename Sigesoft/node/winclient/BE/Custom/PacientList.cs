@@ -118,6 +118,8 @@ namespace Sigesoft.Node.WinClient.BE
 
         public String v_OrganitationName { get; set; }
 
+        public string EmpresaClienteId { get; set; }
+
         public string v_MaritalStatus { get; set; }
 
         public string v_DepartamentName { get; set; }
