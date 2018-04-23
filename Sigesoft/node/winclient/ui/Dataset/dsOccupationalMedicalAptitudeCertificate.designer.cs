@@ -460,6 +460,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnv_RecomendacionesConcatenadasDx;
             
+            private global::System.Data.DataColumn columnv_DiseasesNameCie10;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public AptitudeCertificateDataTable() {
@@ -799,6 +801,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn v_DiseasesNameCie10Column {
+                get {
+                    return this.columnv_DiseasesNameCie10;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -872,7 +882,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         byte[] b_Photo, 
                         string GrupoFactor, 
                         string d_FechaExpiracionServicio, 
-                        string v_RecomendacionesConcatenadasDx) {
+                        string v_RecomendacionesConcatenadasDx, 
+                        string v_DiseasesNameCie10) {
                 AptitudeCertificateRow rowAptitudeCertificateRow = ((AptitudeCertificateRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         v_EsoTypeName,
@@ -912,7 +923,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         b_Photo,
                         GrupoFactor,
                         d_FechaExpiracionServicio,
-                        v_RecomendacionesConcatenadasDx};
+                        v_RecomendacionesConcatenadasDx,
+                        v_DiseasesNameCie10};
                 rowAptitudeCertificateRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowAptitudeCertificateRow);
                 return rowAptitudeCertificateRow;
@@ -973,6 +985,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnGrupoFactor = base.Columns["GrupoFactor"];
                 this.columnd_FechaExpiracionServicio = base.Columns["d_FechaExpiracionServicio"];
                 this.columnv_RecomendacionesConcatenadasDx = base.Columns["v_RecomendacionesConcatenadasDx"];
+                this.columnv_DiseasesNameCie10 = base.Columns["v_DiseasesNameCie10"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1054,6 +1067,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnd_FechaExpiracionServicio);
                 this.columnv_RecomendacionesConcatenadasDx = new global::System.Data.DataColumn("v_RecomendacionesConcatenadasDx", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnv_RecomendacionesConcatenadasDx);
+                this.columnv_DiseasesNameCie10 = new global::System.Data.DataColumn("v_DiseasesNameCie10", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnv_DiseasesNameCie10);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3118,6 +3133,23 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string v_DiseasesNameCie10 {
+                get {
+                    try {
+                        return ((string)(this[this.tableAptitudeCertificate.v_DiseasesNameCie10Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'v_DiseasesNameCie10\' in table \'AptitudeCertificate\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tableAptitudeCertificate.v_DiseasesNameCie10Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool Isv_EsoTypeNameNull() {
                 return this.IsNull(this.tableAptitudeCertificate.v_EsoTypeNameColumn);
             }
@@ -3570,6 +3602,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setv_RecomendacionesConcatenadasDxNull() {
                 this[this.tableAptitudeCertificate.v_RecomendacionesConcatenadasDxColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Isv_DiseasesNameCie10Null() {
+                return this.IsNull(this.tableAptitudeCertificate.v_DiseasesNameCie10Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Setv_DiseasesNameCie10Null() {
+                this[this.tableAptitudeCertificate.v_DiseasesNameCie10Column] = global::System.Convert.DBNull;
             }
         }
         

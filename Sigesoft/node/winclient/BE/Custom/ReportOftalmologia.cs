@@ -197,6 +197,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string Dx { get; set; }
         public string Recomendaciones { get; set; }
 
-
+        public int TipoEso { get; set; }
+        public byte[] HuellaPaciente { get; set; }
+        public byte[] FirmaPaciente { get; set; }
     }
 }

@@ -166,6 +166,7 @@
     <None Include="DMnodepostgreSQL.edps">
       <DependentUpon>DMnodepostgreSQL.edmx</DependentUpon>
     </None>
+    <None Include="Properties\DataSources\SigesoftEntitiesModel.datasource" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

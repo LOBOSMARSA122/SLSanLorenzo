@@ -109,7 +109,7 @@ namespace NetPdf
             var Calibri6 = FontFactory.GetFont("Calibri", 9, FontColour);
 
             //create new instance of Paragraph for 2nd cell text
-            Paragraph para = new Paragraph(Dato, Calibri6);
+            Paragraph para = new Paragraph("", Calibri6);
 
             //create new instance of cell to hold the text
             PdfPCell cell = new PdfPCell(para);

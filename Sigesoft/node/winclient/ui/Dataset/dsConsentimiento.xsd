@@ -12,7 +12,7 @@
   <xs:element name="dsConsentimiento" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsConsentimiento" msprop:Generator_UserDSName="dsConsentimiento">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="dtConsentimiento" msprop:Generator_TableClassName="dtConsentimientoDataTable" msprop:Generator_TableVarName="tabledtConsentimiento" msprop:Generator_RowChangedName="dtConsentimientoRowChanged" msprop:Generator_TablePropName="dtConsentimiento" msprop:Generator_RowDeletingName="dtConsentimientoRowDeleting" msprop:Generator_RowChangingName="dtConsentimientoRowChanging" msprop:Generator_RowEvHandlerName="dtConsentimientoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtConsentimientoRowDeleted" msprop:Generator_RowClassName="dtConsentimientoRow" msprop:Generator_UserTableName="dtConsentimiento" msprop:Generator_RowEvArgName="dtConsentimientoRowChangeEvent">
+        <xs:element name="dtConsentimiento" msprop:Generator_TableClassName="dtConsentimientoDataTable" msprop:Generator_TableVarName="tabledtConsentimiento" msprop:Generator_TablePropName="dtConsentimiento" msprop:Generator_RowDeletingName="dtConsentimientoRowDeleting" msprop:Generator_RowChangingName="dtConsentimientoRowChanging" msprop:Generator_RowEvHandlerName="dtConsentimientoRowChangeEventHandler" msprop:Generator_RowDeletedName="dtConsentimientoRowDeleted" msprop:Generator_UserTableName="dtConsentimiento" msprop:Generator_RowChangedName="dtConsentimientoRowChanged" msprop:Generator_RowEvArgName="dtConsentimientoRowChangeEvent" msprop:Generator_RowClassName="dtConsentimientoRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
@@ -33,6 +33,7 @@
               <xs:element name="v_ServiceDate" msprop:Generator_ColumnVarNameInTable="columnv_ServiceDate" msprop:Generator_ColumnPropNameInRow="v_ServiceDate" msprop:Generator_ColumnPropNameInTable="v_ServiceDateColumn" msprop:Generator_UserColumnName="v_ServiceDate" type="xs:string" minOccurs="0" />
               <xs:element name="Componentes" msprop:Generator_ColumnVarNameInTable="columnComponentes" msprop:Generator_ColumnPropNameInRow="Componentes" msprop:Generator_ColumnPropNameInTable="ComponentesColumn" msprop:Generator_UserColumnName="Componentes" type="xs:string" minOccurs="0" />
               <xs:element name="ComponentesLaboratorio" msprop:Generator_ColumnVarNameInTable="columnComponentesLaboratorio" msprop:Generator_ColumnPropNameInRow="ComponentesLaboratorio" msprop:Generator_ColumnPropNameInTable="ComponentesLaboratorioColumn" msprop:Generator_UserColumnName="ComponentesLaboratorio" type="xs:string" minOccurs="0" />
+              <xs:element name="Contratista" msprop:Generator_ColumnVarNameInTable="columnContratista" msprop:Generator_ColumnPropNameInRow="Contratista" msprop:Generator_ColumnPropNameInTable="ContratistaColumn" msprop:Generator_UserColumnName="Contratista" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

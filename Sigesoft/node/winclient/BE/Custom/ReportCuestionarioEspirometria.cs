@@ -8,7 +8,7 @@ namespace Sigesoft.Node.WinClient.BE
     public class ReportCuestionarioEspirometria
     {
         public string IdServicio { get; set; }
-        public string IdComponent { get; set; }
+        public string ServiceComponentId { get; set; }
         public DateTime? Fecha { get; set; }
         public string Fecha_S { get; set; }
         public string NombreTrabajador { get; set; }
@@ -98,5 +98,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string SindromeRestrictivo { get; set; }
         public string SindromeObtructivo  { get; set; }
         public string Observacion { get; set; }
+        public byte[] LogoCliente { get; set; }
     }    
 }

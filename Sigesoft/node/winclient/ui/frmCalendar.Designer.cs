@@ -75,7 +75,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn69 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_QueueStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentId");
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
@@ -171,6 +171,7 @@
             this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregarExamen = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnAdjuntar = new System.Windows.Forms.Button();
             this.btnEnviarInformes = new System.Windows.Forms.Button();
             this.btnEnviarAsistencia = new System.Windows.Forms.Button();
             this.btnEnviarCertificados = new System.Windows.Forms.Button();
@@ -189,6 +190,8 @@
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmDeclaracionDrogas = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -731,9 +734,11 @@
             this.mnuListaNegra,
             this.mnuAreaTrabajo,
             this.nmuPesoTalla,
-            this.mnuMarcarSalida});
+            this.mnuMarcarSalida,
+            this.toolStripMenuItem2,
+            this.tsmDeclaracionDrogas});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 270);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 320);
             // 
             // mnuReagendarCita
             // 
@@ -1114,6 +1119,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnAdjuntar);
             this.splitContainer1.Panel1.Controls.Add(this.btnEnviarInformes);
             this.splitContainer1.Panel1.Controls.Add(this.btnEnviarAsistencia);
             this.splitContainer1.Panel1.Controls.Add(this.btnEnviarCertificados);
@@ -1138,6 +1144,28 @@
             this.splitContainer1.Size = new System.Drawing.Size(1077, 452);
             this.splitContainer1.SplitterDistance = 622;
             this.splitContainer1.TabIndex = 53;
+            // 
+            // btnAdjuntar
+            // 
+            this.btnAdjuntar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdjuntar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAdjuntar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAdjuntar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAdjuntar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAdjuntar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdjuntar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdjuntar.ForeColor = System.Drawing.Color.Black;
+            this.btnAdjuntar.Image = global::Sigesoft.Node.WinClient.UI.Resources.attach;
+            this.btnAdjuntar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdjuntar.Location = new System.Drawing.Point(471, 418);
+            this.btnAdjuntar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAdjuntar.Name = "btnAdjuntar";
+            this.btnAdjuntar.Size = new System.Drawing.Size(139, 24);
+            this.btnAdjuntar.TabIndex = 100;
+            this.btnAdjuntar.Text = "Adjuntar Declaración";
+            this.btnAdjuntar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAdjuntar.UseVisualStyleBackColor = false;
+            this.btnAdjuntar.Click += new System.EventHandler(this.btnAdjuntar_Click);
             // 
             // btnEnviarInformes
             // 
@@ -1542,6 +1570,18 @@
             ultraDataColumn21,
             ultraDataColumn22});
             // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(256, 6);
+            // 
+            // tsmDeclaracionDrogas
+            // 
+            this.tsmDeclaracionDrogas.Name = "tsmDeclaracionDrogas";
+            this.tsmDeclaracionDrogas.Size = new System.Drawing.Size(259, 22);
+            this.tsmDeclaracionDrogas.Text = "Declaración Drogas y Alcohol";
+            this.tsmDeclaracionDrogas.Click += new System.EventHandler(this.tsmDeclaracionDrogas_Click);
+            // 
             // frmCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1662,5 +1702,8 @@
         private System.Windows.Forms.Button btnEnviarInformes;
         private Infragistics.Win.UltraWinGrid.UltraGrid ugComponentes;
         private Infragistics.Win.UltraWinDataSource.UltraDataSource ultraDataSource1;
+        private System.Windows.Forms.Button btnAdjuntar;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem tsmDeclaracionDrogas;
     }
 }

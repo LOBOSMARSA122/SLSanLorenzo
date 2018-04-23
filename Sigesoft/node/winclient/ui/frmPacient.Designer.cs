@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacient));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PersonId", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
@@ -42,14 +43,12 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_CreationDate");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_UpdateUser");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_UpdateDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Column 0");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacient));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuGridNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGridModificar = new System.Windows.Forms.ToolStripMenuItem();
@@ -145,6 +144,10 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnAntecedentes = new System.Windows.Forms.Button();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtHijosVivos = new System.Windows.Forms.TextBox();
+            this.txtHijosFallecidos = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -176,7 +179,7 @@
             // 
             // mnuGridModificar
             // 
-            this.mnuGridModificar.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridModificar.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridModificar.Image")));
             this.mnuGridModificar.Name = "mnuGridModificar";
             this.mnuGridModificar.Size = new System.Drawing.Size(146, 22);
             this.mnuGridModificar.Text = "Modificar";
@@ -247,7 +250,6 @@
             ultraGridColumn13.Header.Caption = "Fecha Act.";
             ultraGridColumn13.Header.VisiblePosition = 10;
             ultraGridColumn13.Width = 150;
-            ultraGridColumn17.Header.VisiblePosition = 11;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn2,
             ultraGridColumn9,
@@ -259,8 +261,7 @@
             ultraGridColumn4,
             ultraGridColumn5,
             ultraGridColumn12,
-            ultraGridColumn13,
-            ultraGridColumn17});
+            ultraGridColumn13});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.InterBandSpacing = 10;
             this.grdData.DisplayLayout.MaxColScrollRegions = 1;
@@ -337,10 +338,14 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox3.Controls.Add(this.label50);
             this.groupBox3.Controls.Add(this.groupBox6);
+            this.groupBox3.Controls.Add(this.txtDecucible);
+            this.groupBox3.Controls.Add(this.txtNroPliza);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.groupBox1);
+            this.groupBox3.Controls.Add(this.label49);
             this.groupBox3.Controls.Add(this.btnClear);
             this.groupBox3.Controls.Add(this.btnCapturedFingerPrintAndRubric);
             this.groupBox3.Controls.Add(this.txtFileName);
@@ -360,12 +365,12 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.label50);
-            this.groupBox6.Controls.Add(this.txtDecucible);
-            this.groupBox6.Controls.Add(this.txtNroPliza);
+            this.groupBox6.Controls.Add(this.txtHijosFallecidos);
+            this.groupBox6.Controls.Add(this.txtHijosVivos);
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Controls.Add(this.txtName);
-            this.groupBox6.Controls.Add(this.label49);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.txtFirstLastName);
             this.groupBox6.Controls.Add(this.txtResidenceTimeInWorkplace);
@@ -418,31 +423,34 @@
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label50.ForeColor = System.Drawing.Color.Black;
-            this.label50.Location = new System.Drawing.Point(625, 196);
+            this.label50.Location = new System.Drawing.Point(5, 336);
             this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(55, 13);
             this.label50.TabIndex = 147;
             this.label50.Text = "Deducible";
+            this.label50.Visible = false;
             // 
             // txtDecucible
             // 
-            this.txtDecucible.Location = new System.Drawing.Point(684, 191);
+            this.txtDecucible.Location = new System.Drawing.Point(64, 325);
             this.txtDecucible.Margin = new System.Windows.Forms.Padding(2);
             this.txtDecucible.MaxLength = 15;
             this.txtDecucible.Name = "txtDecucible";
             this.txtDecucible.Size = new System.Drawing.Size(126, 20);
             this.txtDecucible.TabIndex = 146;
             this.txtDecucible.Text = "0.00";
+            this.txtDecucible.Visible = false;
             // 
             // txtNroPliza
             // 
-            this.txtNroPliza.Location = new System.Drawing.Point(468, 193);
+            this.txtNroPliza.Location = new System.Drawing.Point(64, 349);
             this.txtNroPliza.Margin = new System.Windows.Forms.Padding(2);
             this.txtNroPliza.MaxLength = 15;
             this.txtNroPliza.Name = "txtNroPliza";
             this.txtNroPliza.Size = new System.Drawing.Size(122, 20);
             this.txtNroPliza.TabIndex = 145;
+            this.txtNroPliza.Visible = false;
             // 
             // label18
             // 
@@ -472,12 +480,13 @@
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label49.ForeColor = System.Drawing.Color.Black;
-            this.label49.Location = new System.Drawing.Point(406, 198);
+            this.label49.Location = new System.Drawing.Point(2, 354);
             this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(58, 13);
             this.label49.TabIndex = 144;
             this.label49.Text = "Nro. Póliza";
+            this.label49.Visible = false;
             // 
             // label2
             // 
@@ -1176,7 +1185,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Image = global::Sigesoft.Node.WinClient.UI.Resources.delete;
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(294, 220);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(37, 31);
@@ -1411,7 +1420,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
-            this.btnEditar.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditar.Location = new System.Drawing.Point(1186, 242);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
@@ -1464,6 +1473,52 @@
             this.btnAntecedentes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAntecedentes.UseVisualStyleBackColor = false;
             this.btnAntecedentes.Click += new System.EventHandler(this.btnAntecedentes_Click);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(394, 198);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(59, 13);
+            this.label24.TabIndex = 116;
+            this.label24.Text = "Hijos Vivos";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(569, 198);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(80, 13);
+            this.label25.TabIndex = 117;
+            this.label25.Text = "Hijos Fallecidos";
+            // 
+            // txtHijosVivos
+            // 
+            this.txtHijosVivos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtHijosVivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHijosVivos.Location = new System.Drawing.Point(457, 194);
+            this.txtHijosVivos.Margin = new System.Windows.Forms.Padding(2);
+            this.txtHijosVivos.MaxLength = 250;
+            this.txtHijosVivos.Name = "txtHijosVivos";
+            this.txtHijosVivos.Size = new System.Drawing.Size(92, 20);
+            this.txtHijosVivos.TabIndex = 118;
+            // 
+            // txtHijosFallecidos
+            // 
+            this.txtHijosFallecidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtHijosFallecidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHijosFallecidos.Location = new System.Drawing.Point(654, 194);
+            this.txtHijosFallecidos.Margin = new System.Windows.Forms.Padding(2);
+            this.txtHijosFallecidos.MaxLength = 250;
+            this.txtHijosFallecidos.Name = "txtHijosFallecidos";
+            this.txtHijosFallecidos.Size = new System.Drawing.Size(92, 20);
+            this.txtHijosFallecidos.TabIndex = 119;
             // 
             // frmPacient
             // 
@@ -1610,6 +1665,10 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.TextBox txtDecucible;
+        private System.Windows.Forms.TextBox txtHijosFallecidos;
+        private System.Windows.Forms.TextBox txtHijosVivos;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
     }
 }
 

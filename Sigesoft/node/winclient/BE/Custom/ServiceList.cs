@@ -450,6 +450,11 @@ namespace Sigesoft.Node.WinClient.BE
        public string v_Motive { get; set; }
 
        public string v_GroupOccupationId { get; set; }
+
+       public string v_InicioVidaSexaul { get; set; }
+       public string v_NroParejasActuales { get; set; }
+       public string v_NroAbortos { get; set; }
+       public string v_PrecisarCausas { get; set; }
        
    }
 

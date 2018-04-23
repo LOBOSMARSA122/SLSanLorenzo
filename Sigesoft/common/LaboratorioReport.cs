@@ -178,12 +178,21 @@ namespace NetPdf
 
                 cells = new List<PdfPCell>()
                 {
-                    new PdfPCell(new Phrase("PACIENTE:", fontColumnValue)), new PdfPCell(new Phrase(filiationData.v_FirstName + " " + filiationData.v_FirstLastName + " " + filiationData.v_SecondLastName, fontColumnValue)),                   
-                    new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)), new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue)),     
-                    new PdfPCell(new Phrase("PUESTO:", fontColumnValue)), new PdfPCell(new Phrase(filiationData.v_CurrentOccupation, fontColumnValue)),     
-                    new PdfPCell(new Phrase("FECHA ATENCIÓN:", fontColumnValue)), new PdfPCell(new Phrase(filiationData.d_ServiceDate.Value.ToShortDateString(), fontColumnValue)),                
-                    new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)),
-                    new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue ) ){ Colspan = 3 }
+                    new PdfPCell(new Phrase("PACIENTE:", fontColumnValue)),
+                    new PdfPCell(new Phrase(filiationData.v_FirstName + " " + filiationData.v_FirstLastName + " " + filiationData.v_SecondLastName, fontColumnValue)),                   
+                    new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue)), 
+    
+                    new PdfPCell(new Phrase("PUESTO:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(filiationData.v_CurrentOccupation, fontColumnValue)),     
+                    new PdfPCell(new Phrase("FECHA ATENCIÓN:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(filiationData.d_ServiceDate.Value.ToShortDateString(), fontColumnValue)), 
+
+                    new PdfPCell(new Phrase("EDAD:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(" ", fontColumnValue)),
+                    new PdfPCell(new Phrase("SEXO:", fontColumnValue)), 
+                    new PdfPCell(new Phrase(" ", fontColumnValue)), 
+                    
 
                          //cells.Add(new PdfPCell(new Phrase("FORMULA LEUCOCITARIA", fontColumnValueNegrita)) { Colspan = 4 });
                 };
@@ -2968,7 +2977,7 @@ namespace NetPdf
 
                         // 1era fila
                         cells.Add(new PdfPCell(new Phrase("RESULTADO ", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(LABORATORIO_VDRL_ID == null ? string.Empty : LABORATORIO_VDRL_ID.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(LABORATORIO_VDRL_ID == null ? string.Empty : LABORATORIO_VDRL_ID.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("V D R L DESEABLE", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(VDRL_REACTIVOS_VDRL_DESEABLE == null ? string.Empty : VDRL_REACTIVOS_VDRL_DESEABLE.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 

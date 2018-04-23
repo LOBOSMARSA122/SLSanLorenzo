@@ -281,8 +281,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnIdServicio;
             
-            private global::System.Data.DataColumn columnIdComponent;
-            
             private global::System.Data.DataColumn columnFecha;
             
             private global::System.Data.DataColumn columnNombreTrabajador;
@@ -437,6 +435,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnObservacion;
             
+            private global::System.Data.DataColumn columnServiceComponentId;
+            
+            private global::System.Data.DataColumn columnLogoCliente;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtCuestionarioEspirometriaDataTable() {
@@ -475,14 +477,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             public global::System.Data.DataColumn IdServicioColumn {
                 get {
                     return this.columnIdServicio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdComponentColumn {
-                get {
-                    return this.columnIdComponent;
                 }
             }
             
@@ -1104,6 +1098,22 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ServiceComponentIdColumn {
+                get {
+                    return this.columnServiceComponentId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LogoClienteColumn {
+                get {
+                    return this.columnLogoCliente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1141,7 +1151,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtCuestionarioEspirometriaRow AdddtCuestionarioEspirometriaRow(
                         string IdServicio, 
-                        string IdComponent, 
                         string Fecha, 
                         string NombreTrabajador, 
                         string FechaNacimineto, 
@@ -1218,11 +1227,12 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string Normal, 
                         string SindromeRestrictivo_, 
                         string SindromeObtructivo_, 
-                        string Observacion) {
+                        string Observacion, 
+                        string ServiceComponentId, 
+                        byte[] LogoCliente) {
                 dtCuestionarioEspirometriaRow rowdtCuestionarioEspirometriaRow = ((dtCuestionarioEspirometriaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdServicio,
-                        IdComponent,
                         Fecha,
                         NombreTrabajador,
                         FechaNacimineto,
@@ -1299,7 +1309,9 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         Normal,
                         SindromeRestrictivo_,
                         SindromeObtructivo_,
-                        Observacion};
+                        Observacion,
+                        ServiceComponentId,
+                        LogoCliente};
                 rowdtCuestionarioEspirometriaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtCuestionarioEspirometriaRow);
                 return rowdtCuestionarioEspirometriaRow;
@@ -1323,7 +1335,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
                 this.columnIdServicio = base.Columns["IdServicio"];
-                this.columnIdComponent = base.Columns["IdComponent"];
                 this.columnFecha = base.Columns["Fecha"];
                 this.columnNombreTrabajador = base.Columns["NombreTrabajador"];
                 this.columnFechaNacimineto = base.Columns["FechaNacimineto"];
@@ -1401,6 +1412,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnSindromeRestrictivo_ = base.Columns["SindromeRestrictivo "];
                 this.columnSindromeObtructivo_ = base.Columns["SindromeObtructivo "];
                 this.columnObservacion = base.Columns["Observacion"];
+                this.columnServiceComponentId = base.Columns["ServiceComponentId"];
+                this.columnLogoCliente = base.Columns["LogoCliente"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1408,8 +1421,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             private void InitClass() {
                 this.columnIdServicio = new global::System.Data.DataColumn("IdServicio", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdServicio);
-                this.columnIdComponent = new global::System.Data.DataColumn("IdComponent", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIdComponent);
                 this.columnFecha = new global::System.Data.DataColumn("Fecha", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFecha);
                 this.columnNombreTrabajador = new global::System.Data.DataColumn("NombreTrabajador", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1564,6 +1575,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnSindromeObtructivo_);
                 this.columnObservacion = new global::System.Data.DataColumn("Observacion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnObservacion);
+                this.columnServiceComponentId = new global::System.Data.DataColumn("ServiceComponentId", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServiceComponentId);
+                this.columnLogoCliente = new global::System.Data.DataColumn("LogoCliente", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLogoCliente);
                 this.columnFVCDes.Caption = "FVC";
                 this.columnVEF1Des.Caption = "VEF1";
                 this.columnPEFDes.Caption = "PEF";
@@ -1727,23 +1742,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 }
                 set {
                     this[this.tabledtCuestionarioEspirometria.IdServicioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string IdComponent {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtCuestionarioEspirometria.IdComponentColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'IdComponent\' de la tabla \'dtCuestionarioEspirometria\' es " +
-                                "DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtCuestionarioEspirometria.IdComponentColumn] = value;
                 }
             }
             
@@ -3049,6 +3047,40 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ServiceComponentId {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestionarioEspirometria.ServiceComponentIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ServiceComponentId\' de la tabla \'dtCuestionarioEspirometr" +
+                                "ia\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestionarioEspirometria.ServiceComponentIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] LogoCliente {
+                get {
+                    try {
+                        return ((byte[])(this[this.tabledtCuestionarioEspirometria.LogoClienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LogoCliente\' de la tabla \'dtCuestionarioEspirometria\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestionarioEspirometria.LogoClienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsIdServicioNull() {
                 return this.IsNull(this.tabledtCuestionarioEspirometria.IdServicioColumn);
             }
@@ -3057,18 +3089,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIdServicioNull() {
                 this[this.tabledtCuestionarioEspirometria.IdServicioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsIdComponentNull() {
-                return this.IsNull(this.tabledtCuestionarioEspirometria.IdComponentColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetIdComponentNull() {
-                this[this.tabledtCuestionarioEspirometria.IdComponentColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3993,6 +4013,30 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetObservacionNull() {
                 this[this.tabledtCuestionarioEspirometria.ObservacionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsServiceComponentIdNull() {
+                return this.IsNull(this.tabledtCuestionarioEspirometria.ServiceComponentIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetServiceComponentIdNull() {
+                this[this.tabledtCuestionarioEspirometria.ServiceComponentIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLogoClienteNull() {
+                return this.IsNull(this.tabledtCuestionarioEspirometria.LogoClienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLogoClienteNull() {
+                this[this.tabledtCuestionarioEspirometria.LogoClienteColumn] = global::System.Convert.DBNull;
             }
         }
         

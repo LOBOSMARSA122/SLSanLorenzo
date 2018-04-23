@@ -280,6 +280,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCartaCotizacion.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsCuestAudio.cs">
+      <DependentUpon>dsCuestAudio.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Dataset\dsCuestAudio.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -316,8 +320,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCuestionario_Istas.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsEstudioElectrocardiografico.cs">
+      <DependentUpon>dsEstudioElectrocardiografico.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\dsFichaAntecedentePatologico.cs">
       <DependentUpon>dsFichaAntecedentePatologico.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dataset\dsFichaAntecedentePatologico.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -351,6 +359,10 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMaslachestres.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Dataset\dsOstioCoimolache.cs">
+      <DependentUpon>dsOstioCoimolache.xsd</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Dataset\dsOstioCoimolache.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -415,6 +427,12 @@
     </Compile>
     <Compile Include="FrmAddPlain.Designer.cs">
       <DependentUpon>FrmAddPlain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAdjuntarDeclaracionJurada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAdjuntarDeclaracionJurada.Designer.cs">
+      <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
     </Compile>
     <Compile Include="frmCargoFactura.cs">
       <SubType>Form</SubType>
@@ -1306,6 +1324,12 @@
     </Compile>
     <Compile Include="Operations\Popups\frmSelectSignature.Designer.cs">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReporteDeclaracionDrogas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReporteDeclaracionDrogas.Designer.cs">
+      <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\crApendice03_Audio.cs">
       <AutoGen>True</AutoGen>
@@ -3156,6 +3180,9 @@
     <EmbeddedResource Include="FrmAddPlain.resx">
       <DependentUpon>FrmAddPlain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAdjuntarDeclaracionJurada.resx">
+      <DependentUpon>frmAdjuntarDeclaracionJurada.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmCargoFactura.resx">
       <DependentUpon>frmCargoFactura.cs</DependentUpon>
     </EmbeddedResource>
@@ -3387,6 +3414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmSelectSignature.resx">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
+      <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crApendice03_Audio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

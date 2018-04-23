@@ -16,7 +16,6 @@
           <xs:complexType>
             <xs:sequence>
               <xs:element name="IdServicio" msprop:Generator_ColumnVarNameInTable="columnIdServicio" msprop:Generator_ColumnPropNameInRow="IdServicio" msprop:Generator_ColumnPropNameInTable="IdServicioColumn" msprop:Generator_UserColumnName="IdServicio" type="xs:string" minOccurs="0" />
-              <xs:element name="IdComponent" msprop:Generator_ColumnVarNameInTable="columnIdComponent" msprop:Generator_ColumnPropNameInRow="IdComponent" msprop:Generator_ColumnPropNameInTable="IdComponentColumn" msprop:Generator_UserColumnName="IdComponent" type="xs:string" minOccurs="0" />
               <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:string" minOccurs="0" />
               <xs:element name="NombreTrabajador" msprop:Generator_ColumnVarNameInTable="columnNombreTrabajador" msprop:Generator_ColumnPropNameInRow="NombreTrabajador" msprop:Generator_ColumnPropNameInTable="NombreTrabajadorColumn" msprop:Generator_UserColumnName="NombreTrabajador" type="xs:string" minOccurs="0" />
               <xs:element name="FechaNacimineto" msprop:Generator_ColumnVarNameInTable="columnFechaNacimineto" msprop:Generator_ColumnPropNameInRow="FechaNacimineto" msprop:Generator_ColumnPropNameInTable="FechaNaciminetoColumn" msprop:Generator_UserColumnName="FechaNacimineto" type="xs:string" minOccurs="0" />
@@ -94,6 +93,8 @@
               <xs:element name="SindromeRestrictivo_x0020_" msprop:Generator_ColumnVarNameInTable="columnSindromeRestrictivo_" msprop:Generator_ColumnPropNameInRow="SindromeRestrictivo_" msprop:Generator_ColumnPropNameInTable="SindromeRestrictivo_Column" msprop:Generator_UserColumnName="SindromeRestrictivo " type="xs:string" minOccurs="0" />
               <xs:element name="SindromeObtructivo_x0020_" msprop:Generator_ColumnVarNameInTable="columnSindromeObtructivo_" msprop:Generator_ColumnPropNameInRow="SindromeObtructivo_" msprop:Generator_ColumnPropNameInTable="SindromeObtructivo_Column" msprop:Generator_UserColumnName="SindromeObtructivo " type="xs:string" minOccurs="0" />
               <xs:element name="Observacion" msprop:Generator_ColumnVarNameInTable="columnObservacion" msprop:Generator_ColumnPropNameInRow="Observacion" msprop:Generator_ColumnPropNameInTable="ObservacionColumn" msprop:Generator_UserColumnName="Observacion" type="xs:string" minOccurs="0" />
+              <xs:element name="ServiceComponentId" msprop:Generator_ColumnVarNameInTable="columnServiceComponentId" msprop:Generator_ColumnPropNameInRow="ServiceComponentId" msprop:Generator_ColumnPropNameInTable="ServiceComponentIdColumn" msprop:Generator_UserColumnName="ServiceComponentId" type="xs:string" minOccurs="0" />
+              <xs:element name="LogoCliente" msprop:Generator_ColumnVarNameInTable="columnLogoCliente" msprop:Generator_ColumnPropNameInRow="LogoCliente" msprop:Generator_ColumnPropNameInTable="LogoClienteColumn" msprop:Generator_UserColumnName="LogoCliente" type="xs:base64Binary" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

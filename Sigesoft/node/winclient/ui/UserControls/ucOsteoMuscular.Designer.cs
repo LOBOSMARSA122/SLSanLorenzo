@@ -29,45 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.rbAbdomenLateralPobre = new System.Windows.Forms.RadioButton();
-            this.rbAbdomenLateralRegular = new System.Windows.Forms.RadioButton();
-            this.rbAbdomenLateralPromedio = new System.Windows.Forms.RadioButton();
-            this.rbAbdomenLateralExcelente = new System.Windows.Forms.RadioButton();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.rbMusloPobre = new System.Windows.Forms.RadioButton();
-            this.rbMusloRegular = new System.Windows.Forms.RadioButton();
-            this.rbMusloPromedio = new System.Windows.Forms.RadioButton();
-            this.rbMusloExcelente = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.rbCaderaPobre = new System.Windows.Forms.RadioButton();
-            this.rbCaderaRegular = new System.Windows.Forms.RadioButton();
-            this.rbCaderaPromedio = new System.Windows.Forms.RadioButton();
-            this.rbCaderaExcelente = new System.Windows.Forms.RadioButton();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.rbAbdomenPobre = new System.Windows.Forms.RadioButton();
-            this.rbAbdomenRegular = new System.Windows.Forms.RadioButton();
-            this.rbAbdomenPromedio = new System.Windows.Forms.RadioButton();
-            this.rbAbdomenExcelente = new System.Windows.Forms.RadioButton();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label26 = new System.Windows.Forms.Label();
             this.txtTotalAptitudEspalda = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.panel12 = new System.Windows.Forms.Panel();
-            this.rbRotacionExtIntMuyLimitado = new System.Windows.Forms.RadioButton();
-            this.rbRotacionExtIntLimitado = new System.Windows.Forms.RadioButton();
-            this.rbRotacionExtIntOptimo = new System.Windows.Forms.RadioButton();
-            this.panel10 = new System.Windows.Forms.Panel();
-            this.rbRotacion090MuyLimitado = new System.Windows.Forms.RadioButton();
-            this.rbRotacion090Limitado = new System.Windows.Forms.RadioButton();
-            this.rbRotacion090Optimo = new System.Windows.Forms.RadioButton();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.rbAbduccion60MuyLimitado = new System.Windows.Forms.RadioButton();
-            this.rbAbduccion60Limitado = new System.Windows.Forms.RadioButton();
-            this.rbAbduccion60Optimo = new System.Windows.Forms.RadioButton();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.rbAbduccion180MuyLimitado = new System.Windows.Forms.RadioButton();
-            this.rbAbduccion180Limitado = new System.Windows.Forms.RadioButton();
-            this.rbAbduccion180Optimo = new System.Windows.Forms.RadioButton();
             this.panel7 = new System.Windows.Forms.Panel();
             this.rbAbduccion180DolorNO = new System.Windows.Forms.RadioButton();
             this.rbAbduccion180DolorSI = new System.Windows.Forms.RadioButton();
@@ -79,17 +44,29 @@
             this.rbRotacionExtIntDolorNO = new System.Windows.Forms.RadioButton();
             this.rbRotacionExtIntDolorSI = new System.Windows.Forms.RadioButton();
             this.label24 = new System.Windows.Forms.Label();
+            this.pictureBox26 = new System.Windows.Forms.PictureBox();
+            this.pictureBox28 = new System.Windows.Forms.PictureBox();
             this.txtRotacionExtIntPuntos = new System.Windows.Forms.TextBox();
+            this.pictureBox27 = new System.Windows.Forms.PictureBox();
             this.panel11 = new System.Windows.Forms.Panel();
             this.rbRotacion090DolorNO = new System.Windows.Forms.RadioButton();
             this.rbRotacion090DolorSI = new System.Windows.Forms.RadioButton();
             this.label23 = new System.Windows.Forms.Label();
+            this.pictureBox23 = new System.Windows.Forms.PictureBox();
+            this.pictureBox25 = new System.Windows.Forms.PictureBox();
             this.txtRotacion090Puntos = new System.Windows.Forms.TextBox();
+            this.pictureBox24 = new System.Windows.Forms.PictureBox();
             this.panel9 = new System.Windows.Forms.Panel();
             this.rbAbduccion60DolorNO = new System.Windows.Forms.RadioButton();
             this.rbAbduccion60DolorSI = new System.Windows.Forms.RadioButton();
             this.label21 = new System.Windows.Forms.Label();
+            this.pictureBox22 = new System.Windows.Forms.PictureBox();
             this.txtAbduccion60Puntos = new System.Windows.Forms.TextBox();
+            this.pictureBox21 = new System.Windows.Forms.PictureBox();
+            this.pictureBox20 = new System.Windows.Forms.PictureBox();
+            this.pictureBox17 = new System.Windows.Forms.PictureBox();
+            this.pictureBox18 = new System.Windows.Forms.PictureBox();
+            this.pictureBox19 = new System.Windows.Forms.PictureBox();
             this.txtAbduccion180Puntos = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
@@ -113,15 +90,44 @@
             this.lineShape16 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape15 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape14 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.rbAbduccion180MuyLimitado = new System.Windows.Forms.RadioButton();
+            this.rbAbduccion180Limitado = new System.Windows.Forms.RadioButton();
+            this.rbAbduccion180Optimo = new System.Windows.Forms.RadioButton();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.rbAbduccion60MuyLimitado = new System.Windows.Forms.RadioButton();
+            this.rbAbduccion60Limitado = new System.Windows.Forms.RadioButton();
+            this.rbAbduccion60Optimo = new System.Windows.Forms.RadioButton();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.rbRotacion090MuyLimitado = new System.Windows.Forms.RadioButton();
+            this.rbRotacion090Limitado = new System.Windows.Forms.RadioButton();
+            this.rbRotacion090Optimo = new System.Windows.Forms.RadioButton();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.rbRotacionExtIntMuyLimitado = new System.Windows.Forms.RadioButton();
+            this.rbRotacionExtIntLimitado = new System.Windows.Forms.RadioButton();
+            this.rbRotacionExtIntOptimo = new System.Windows.Forms.RadioButton();
             this.label7 = new System.Windows.Forms.Label();
             this.txtAbdomenLateralObservaciones = new System.Windows.Forms.TextBox();
             this.txtAbdomenLateralPuntos = new System.Windows.Forms.TextBox();
+            this.pictureBox13 = new System.Windows.Forms.PictureBox();
+            this.pictureBox14 = new System.Windows.Forms.PictureBox();
+            this.pictureBox15 = new System.Windows.Forms.PictureBox();
+            this.pictureBox16 = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtMusloObservaciones = new System.Windows.Forms.TextBox();
             this.txtMusloPuntos = new System.Windows.Forms.TextBox();
+            this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pictureBox11 = new System.Windows.Forms.PictureBox();
+            this.pictureBox12 = new System.Windows.Forms.PictureBox();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtCaderaOnservaciones = new System.Windows.Forms.TextBox();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.txtCaderaPuntos = new System.Windows.Forms.TextBox();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.txtAbdomenPuntos = new System.Windows.Forms.TextBox();
             this.txtAbdomenObservaciones = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -148,61 +154,51 @@
             this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.lineShape7 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox26 = new System.Windows.Forms.PictureBox();
-            this.pictureBox28 = new System.Windows.Forms.PictureBox();
-            this.pictureBox27 = new System.Windows.Forms.PictureBox();
-            this.pictureBox23 = new System.Windows.Forms.PictureBox();
-            this.pictureBox25 = new System.Windows.Forms.PictureBox();
-            this.pictureBox24 = new System.Windows.Forms.PictureBox();
-            this.pictureBox22 = new System.Windows.Forms.PictureBox();
-            this.pictureBox21 = new System.Windows.Forms.PictureBox();
-            this.pictureBox20 = new System.Windows.Forms.PictureBox();
-            this.pictureBox17 = new System.Windows.Forms.PictureBox();
-            this.pictureBox18 = new System.Windows.Forms.PictureBox();
-            this.pictureBox19 = new System.Windows.Forms.PictureBox();
-            this.pictureBox13 = new System.Windows.Forms.PictureBox();
-            this.pictureBox14 = new System.Windows.Forms.PictureBox();
-            this.pictureBox15 = new System.Windows.Forms.PictureBox();
-            this.pictureBox16 = new System.Windows.Forms.PictureBox();
-            this.pictureBox10 = new System.Windows.Forms.PictureBox();
-            this.pictureBox11 = new System.Windows.Forms.PictureBox();
-            this.pictureBox12 = new System.Windows.Forms.PictureBox();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.rbAbdomenPobre = new System.Windows.Forms.RadioButton();
+            this.rbAbdomenRegular = new System.Windows.Forms.RadioButton();
+            this.rbAbdomenPromedio = new System.Windows.Forms.RadioButton();
+            this.rbAbdomenExcelente = new System.Windows.Forms.RadioButton();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.rbCaderaPobre = new System.Windows.Forms.RadioButton();
+            this.rbCaderaRegular = new System.Windows.Forms.RadioButton();
+            this.rbCaderaPromedio = new System.Windows.Forms.RadioButton();
+            this.rbCaderaExcelente = new System.Windows.Forms.RadioButton();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.rbMusloPobre = new System.Windows.Forms.RadioButton();
+            this.rbMusloRegular = new System.Windows.Forms.RadioButton();
+            this.rbMusloPromedio = new System.Windows.Forms.RadioButton();
+            this.rbMusloExcelente = new System.Windows.Forms.RadioButton();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.rbAbdomenLateralPobre = new System.Windows.Forms.RadioButton();
+            this.rbAbdomenLateralRegular = new System.Windows.Forms.RadioButton();
+            this.rbAbdomenLateralPromedio = new System.Windows.Forms.RadioButton();
+            this.rbAbdomenLateralExcelente = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel5.SuspendLayout();
-            this.panel12.SuspendLayout();
-            this.panel10.SuspendLayout();
-            this.panel8.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel13.SuspendLayout();
-            this.panel11.SuspendLayout();
-            this.panel9.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).BeginInit();
+            this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).BeginInit();
+            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).BeginInit();
@@ -218,6 +214,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
+            this.panel16.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -274,217 +274,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "EVALUACION MUSCULOESQUELÉTICA";
             // 
-            // panel3
+            // pictureBox1
             // 
-            this.panel3.Controls.Add(this.rbAbdomenLateralPobre);
-            this.panel3.Controls.Add(this.rbAbdomenLateralRegular);
-            this.panel3.Controls.Add(this.rbAbdomenLateralPromedio);
-            this.panel3.Controls.Add(this.rbAbdomenLateralExcelente);
-            this.panel3.Location = new System.Drawing.Point(206, 378);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(582, 22);
-            this.panel3.TabIndex = 107;
-            // 
-            // rbAbdomenLateralPobre
-            // 
-            this.rbAbdomenLateralPobre.AutoSize = true;
-            this.rbAbdomenLateralPobre.Location = new System.Drawing.Point(508, 4);
-            this.rbAbdomenLateralPobre.Name = "rbAbdomenLateralPobre";
-            this.rbAbdomenLateralPobre.Size = new System.Drawing.Size(14, 13);
-            this.rbAbdomenLateralPobre.TabIndex = 37;
-            this.rbAbdomenLateralPobre.UseVisualStyleBackColor = true;
-            this.rbAbdomenLateralPobre.CheckedChanged += new System.EventHandler(this.rbAbdomenLateralPobre_CheckedChanged);
-            // 
-            // rbAbdomenLateralRegular
-            // 
-            this.rbAbdomenLateralRegular.AutoSize = true;
-            this.rbAbdomenLateralRegular.Location = new System.Drawing.Point(350, 4);
-            this.rbAbdomenLateralRegular.Name = "rbAbdomenLateralRegular";
-            this.rbAbdomenLateralRegular.Size = new System.Drawing.Size(14, 13);
-            this.rbAbdomenLateralRegular.TabIndex = 37;
-            this.rbAbdomenLateralRegular.UseVisualStyleBackColor = true;
-            this.rbAbdomenLateralRegular.CheckedChanged += new System.EventHandler(this.rbAbdomenLateralRegular_CheckedChanged);
-            // 
-            // rbAbdomenLateralPromedio
-            // 
-            this.rbAbdomenLateralPromedio.AutoSize = true;
-            this.rbAbdomenLateralPromedio.Location = new System.Drawing.Point(202, 4);
-            this.rbAbdomenLateralPromedio.Name = "rbAbdomenLateralPromedio";
-            this.rbAbdomenLateralPromedio.Size = new System.Drawing.Size(14, 13);
-            this.rbAbdomenLateralPromedio.TabIndex = 37;
-            this.rbAbdomenLateralPromedio.UseVisualStyleBackColor = true;
-            this.rbAbdomenLateralPromedio.CheckedChanged += new System.EventHandler(this.rbAbdomenLateralPromedio_CheckedChanged);
-            // 
-            // rbAbdomenLateralExcelente
-            // 
-            this.rbAbdomenLateralExcelente.AutoSize = true;
-            this.rbAbdomenLateralExcelente.Checked = true;
-            this.rbAbdomenLateralExcelente.Location = new System.Drawing.Point(51, 4);
-            this.rbAbdomenLateralExcelente.Name = "rbAbdomenLateralExcelente";
-            this.rbAbdomenLateralExcelente.Size = new System.Drawing.Size(14, 13);
-            this.rbAbdomenLateralExcelente.TabIndex = 36;
-            this.rbAbdomenLateralExcelente.TabStop = true;
-            this.rbAbdomenLateralExcelente.UseVisualStyleBackColor = true;
-            this.rbAbdomenLateralExcelente.CheckedChanged += new System.EventHandler(this.rbAbdomenLateralExcelente_CheckedChanged);
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.rbMusloPobre);
-            this.panel2.Controls.Add(this.rbMusloRegular);
-            this.panel2.Controls.Add(this.rbMusloPromedio);
-            this.panel2.Controls.Add(this.rbMusloExcelente);
-            this.panel2.Location = new System.Drawing.Point(206, 278);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(582, 22);
-            this.panel2.TabIndex = 107;
-            // 
-            // rbMusloPobre
-            // 
-            this.rbMusloPobre.AutoSize = true;
-            this.rbMusloPobre.Location = new System.Drawing.Point(508, 4);
-            this.rbMusloPobre.Name = "rbMusloPobre";
-            this.rbMusloPobre.Size = new System.Drawing.Size(14, 13);
-            this.rbMusloPobre.TabIndex = 37;
-            this.rbMusloPobre.UseVisualStyleBackColor = true;
-            this.rbMusloPobre.CheckedChanged += new System.EventHandler(this.rbMusloPobre_CheckedChanged);
-            // 
-            // rbMusloRegular
-            // 
-            this.rbMusloRegular.AutoSize = true;
-            this.rbMusloRegular.Location = new System.Drawing.Point(350, 4);
-            this.rbMusloRegular.Name = "rbMusloRegular";
-            this.rbMusloRegular.Size = new System.Drawing.Size(14, 13);
-            this.rbMusloRegular.TabIndex = 37;
-            this.rbMusloRegular.UseVisualStyleBackColor = true;
-            this.rbMusloRegular.CheckedChanged += new System.EventHandler(this.rbMusloRegular_CheckedChanged);
-            // 
-            // rbMusloPromedio
-            // 
-            this.rbMusloPromedio.AutoSize = true;
-            this.rbMusloPromedio.Location = new System.Drawing.Point(202, 4);
-            this.rbMusloPromedio.Name = "rbMusloPromedio";
-            this.rbMusloPromedio.Size = new System.Drawing.Size(14, 13);
-            this.rbMusloPromedio.TabIndex = 37;
-            this.rbMusloPromedio.UseVisualStyleBackColor = true;
-            this.rbMusloPromedio.CheckedChanged += new System.EventHandler(this.rbMusloPromedio_CheckedChanged);
-            // 
-            // rbMusloExcelente
-            // 
-            this.rbMusloExcelente.AutoSize = true;
-            this.rbMusloExcelente.Checked = true;
-            this.rbMusloExcelente.Location = new System.Drawing.Point(51, 4);
-            this.rbMusloExcelente.Name = "rbMusloExcelente";
-            this.rbMusloExcelente.Size = new System.Drawing.Size(14, 13);
-            this.rbMusloExcelente.TabIndex = 36;
-            this.rbMusloExcelente.TabStop = true;
-            this.rbMusloExcelente.UseVisualStyleBackColor = true;
-            this.rbMusloExcelente.CheckedChanged += new System.EventHandler(this.rbMusloExcelente_CheckedChanged);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.rbCaderaPobre);
-            this.panel1.Controls.Add(this.rbCaderaRegular);
-            this.panel1.Controls.Add(this.rbCaderaPromedio);
-            this.panel1.Controls.Add(this.rbCaderaExcelente);
-            this.panel1.Location = new System.Drawing.Point(206, 178);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(582, 22);
-            this.panel1.TabIndex = 107;
-            // 
-            // rbCaderaPobre
-            // 
-            this.rbCaderaPobre.AutoSize = true;
-            this.rbCaderaPobre.Location = new System.Drawing.Point(508, 4);
-            this.rbCaderaPobre.Name = "rbCaderaPobre";
-            this.rbCaderaPobre.Size = new System.Drawing.Size(14, 13);
-            this.rbCaderaPobre.TabIndex = 37;
-            this.rbCaderaPobre.UseVisualStyleBackColor = true;
-            this.rbCaderaPobre.CheckedChanged += new System.EventHandler(this.rbCaderaPobre_CheckedChanged);
-            // 
-            // rbCaderaRegular
-            // 
-            this.rbCaderaRegular.AutoSize = true;
-            this.rbCaderaRegular.Location = new System.Drawing.Point(350, 4);
-            this.rbCaderaRegular.Name = "rbCaderaRegular";
-            this.rbCaderaRegular.Size = new System.Drawing.Size(14, 13);
-            this.rbCaderaRegular.TabIndex = 37;
-            this.rbCaderaRegular.UseVisualStyleBackColor = true;
-            this.rbCaderaRegular.CheckedChanged += new System.EventHandler(this.rbCaderaRegular_CheckedChanged);
-            // 
-            // rbCaderaPromedio
-            // 
-            this.rbCaderaPromedio.AutoSize = true;
-            this.rbCaderaPromedio.Location = new System.Drawing.Point(202, 4);
-            this.rbCaderaPromedio.Name = "rbCaderaPromedio";
-            this.rbCaderaPromedio.Size = new System.Drawing.Size(14, 13);
-            this.rbCaderaPromedio.TabIndex = 37;
-            this.rbCaderaPromedio.UseVisualStyleBackColor = true;
-            this.rbCaderaPromedio.CheckedChanged += new System.EventHandler(this.rbCaderaPromedio_CheckedChanged);
-            // 
-            // rbCaderaExcelente
-            // 
-            this.rbCaderaExcelente.AutoSize = true;
-            this.rbCaderaExcelente.Checked = true;
-            this.rbCaderaExcelente.Location = new System.Drawing.Point(51, 4);
-            this.rbCaderaExcelente.Name = "rbCaderaExcelente";
-            this.rbCaderaExcelente.Size = new System.Drawing.Size(14, 13);
-            this.rbCaderaExcelente.TabIndex = 36;
-            this.rbCaderaExcelente.TabStop = true;
-            this.rbCaderaExcelente.UseVisualStyleBackColor = true;
-            this.rbCaderaExcelente.CheckedChanged += new System.EventHandler(this.rbCaderaExcelente_CheckedChanged);
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.rbAbdomenPobre);
-            this.panel16.Controls.Add(this.rbAbdomenRegular);
-            this.panel16.Controls.Add(this.rbAbdomenPromedio);
-            this.panel16.Controls.Add(this.rbAbdomenExcelente);
-            this.panel16.Location = new System.Drawing.Point(206, 82);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(582, 22);
-            this.panel16.TabIndex = 107;
-            // 
-            // rbAbdomenPobre
-            // 
-            this.rbAbdomenPobre.AutoSize = true;
-            this.rbAbdomenPobre.Location = new System.Drawing.Point(508, 4);
-            this.rbAbdomenPobre.Name = "rbAbdomenPobre";
-            this.rbAbdomenPobre.Size = new System.Drawing.Size(14, 13);
-            this.rbAbdomenPobre.TabIndex = 37;
-            this.rbAbdomenPobre.UseVisualStyleBackColor = true;
-            this.rbAbdomenPobre.CheckedChanged += new System.EventHandler(this.rbAbdomenPobre_CheckedChanged);
-            // 
-            // rbAbdomenRegular
-            // 
-            this.rbAbdomenRegular.AutoSize = true;
-            this.rbAbdomenRegular.Location = new System.Drawing.Point(350, 4);
-            this.rbAbdomenRegular.Name = "rbAbdomenRegular";
-            this.rbAbdomenRegular.Size = new System.Drawing.Size(14, 13);
-            this.rbAbdomenRegular.TabIndex = 37;
-            this.rbAbdomenRegular.UseVisualStyleBackColor = true;
-            this.rbAbdomenRegular.CheckedChanged += new System.EventHandler(this.rbAbdomenRegular_CheckedChanged);
-            // 
-            // rbAbdomenPromedio
-            // 
-            this.rbAbdomenPromedio.AutoSize = true;
-            this.rbAbdomenPromedio.Location = new System.Drawing.Point(202, 4);
-            this.rbAbdomenPromedio.Name = "rbAbdomenPromedio";
-            this.rbAbdomenPromedio.Size = new System.Drawing.Size(14, 13);
-            this.rbAbdomenPromedio.TabIndex = 37;
-            this.rbAbdomenPromedio.UseVisualStyleBackColor = true;
-            this.rbAbdomenPromedio.CheckedChanged += new System.EventHandler(this.rbAbdomenPromedio_CheckedChanged);
-            // 
-            // rbAbdomenExcelente
-            // 
-            this.rbAbdomenExcelente.AutoSize = true;
-            this.rbAbdomenExcelente.Checked = true;
-            this.rbAbdomenExcelente.Location = new System.Drawing.Point(51, 4);
-            this.rbAbdomenExcelente.Name = "rbAbdomenExcelente";
-            this.rbAbdomenExcelente.Size = new System.Drawing.Size(14, 13);
-            this.rbAbdomenExcelente.TabIndex = 36;
-            this.rbAbdomenExcelente.TabStop = true;
-            this.rbAbdomenExcelente.UseVisualStyleBackColor = true;
-            this.rbAbdomenExcelente.CheckedChanged += new System.EventHandler(this.rbAbdomenExcelente_CheckedChanged);
+            this.pictureBox1.Image = global::Sigesoft.Node.WinClient.UI.Resources._01;
+            this.pictureBox1.Location = new System.Drawing.Point(218, 105);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 109;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label26
             // 
@@ -556,179 +355,11 @@
             this.panel5.Size = new System.Drawing.Size(1062, 549);
             this.panel5.TabIndex = 112;
             // 
-            // panel12
-            // 
-            this.panel12.Controls.Add(this.rbRotacionExtIntMuyLimitado);
-            this.panel12.Controls.Add(this.rbRotacionExtIntLimitado);
-            this.panel12.Controls.Add(this.rbRotacionExtIntOptimo);
-            this.panel12.Location = new System.Drawing.Point(250, 347);
-            this.panel12.Name = "panel12";
-            this.panel12.Size = new System.Drawing.Size(471, 22);
-            this.panel12.TabIndex = 118;
-            // 
-            // rbRotacionExtIntMuyLimitado
-            // 
-            this.rbRotacionExtIntMuyLimitado.AutoSize = true;
-            this.rbRotacionExtIntMuyLimitado.Location = new System.Drawing.Point(386, 4);
-            this.rbRotacionExtIntMuyLimitado.Name = "rbRotacionExtIntMuyLimitado";
-            this.rbRotacionExtIntMuyLimitado.Size = new System.Drawing.Size(14, 13);
-            this.rbRotacionExtIntMuyLimitado.TabIndex = 37;
-            this.rbRotacionExtIntMuyLimitado.UseVisualStyleBackColor = true;
-            this.rbRotacionExtIntMuyLimitado.CheckedChanged += new System.EventHandler(this.rbRotacionExtIntMuyLimitado_CheckedChanged);
-            // 
-            // rbRotacionExtIntLimitado
-            // 
-            this.rbRotacionExtIntLimitado.AutoSize = true;
-            this.rbRotacionExtIntLimitado.Location = new System.Drawing.Point(222, 4);
-            this.rbRotacionExtIntLimitado.Name = "rbRotacionExtIntLimitado";
-            this.rbRotacionExtIntLimitado.Size = new System.Drawing.Size(14, 13);
-            this.rbRotacionExtIntLimitado.TabIndex = 37;
-            this.rbRotacionExtIntLimitado.UseVisualStyleBackColor = true;
-            this.rbRotacionExtIntLimitado.CheckedChanged += new System.EventHandler(this.rbRotacionExtIntLimitado_CheckedChanged);
-            // 
-            // rbRotacionExtIntOptimo
-            // 
-            this.rbRotacionExtIntOptimo.AutoSize = true;
-            this.rbRotacionExtIntOptimo.Checked = true;
-            this.rbRotacionExtIntOptimo.Location = new System.Drawing.Point(61, 4);
-            this.rbRotacionExtIntOptimo.Name = "rbRotacionExtIntOptimo";
-            this.rbRotacionExtIntOptimo.Size = new System.Drawing.Size(14, 13);
-            this.rbRotacionExtIntOptimo.TabIndex = 36;
-            this.rbRotacionExtIntOptimo.TabStop = true;
-            this.rbRotacionExtIntOptimo.UseVisualStyleBackColor = true;
-            this.rbRotacionExtIntOptimo.CheckedChanged += new System.EventHandler(this.rbRotacionExtIntOptimo_CheckedChanged);
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.rbRotacion090MuyLimitado);
-            this.panel10.Controls.Add(this.rbRotacion090Limitado);
-            this.panel10.Controls.Add(this.rbRotacion090Optimo);
-            this.panel10.Location = new System.Drawing.Point(250, 253);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(471, 22);
-            this.panel10.TabIndex = 118;
-            // 
-            // rbRotacion090MuyLimitado
-            // 
-            this.rbRotacion090MuyLimitado.AutoSize = true;
-            this.rbRotacion090MuyLimitado.Location = new System.Drawing.Point(384, 4);
-            this.rbRotacion090MuyLimitado.Name = "rbRotacion090MuyLimitado";
-            this.rbRotacion090MuyLimitado.Size = new System.Drawing.Size(14, 13);
-            this.rbRotacion090MuyLimitado.TabIndex = 37;
-            this.rbRotacion090MuyLimitado.UseVisualStyleBackColor = true;
-            this.rbRotacion090MuyLimitado.CheckedChanged += new System.EventHandler(this.rbRotacion090MuyLimitado_CheckedChanged);
-            // 
-            // rbRotacion090Limitado
-            // 
-            this.rbRotacion090Limitado.AutoSize = true;
-            this.rbRotacion090Limitado.Location = new System.Drawing.Point(222, 4);
-            this.rbRotacion090Limitado.Name = "rbRotacion090Limitado";
-            this.rbRotacion090Limitado.Size = new System.Drawing.Size(14, 13);
-            this.rbRotacion090Limitado.TabIndex = 37;
-            this.rbRotacion090Limitado.UseVisualStyleBackColor = true;
-            this.rbRotacion090Limitado.CheckedChanged += new System.EventHandler(this.rbRotacion090Limitado_CheckedChanged);
-            // 
-            // rbRotacion090Optimo
-            // 
-            this.rbRotacion090Optimo.AutoSize = true;
-            this.rbRotacion090Optimo.Checked = true;
-            this.rbRotacion090Optimo.Location = new System.Drawing.Point(62, 4);
-            this.rbRotacion090Optimo.Name = "rbRotacion090Optimo";
-            this.rbRotacion090Optimo.Size = new System.Drawing.Size(14, 13);
-            this.rbRotacion090Optimo.TabIndex = 36;
-            this.rbRotacion090Optimo.TabStop = true;
-            this.rbRotacion090Optimo.UseVisualStyleBackColor = true;
-            this.rbRotacion090Optimo.CheckedChanged += new System.EventHandler(this.rbRotacion090Optimo_CheckedChanged);
-            // 
-            // panel8
-            // 
-            this.panel8.Controls.Add(this.rbAbduccion60MuyLimitado);
-            this.panel8.Controls.Add(this.rbAbduccion60Limitado);
-            this.panel8.Controls.Add(this.rbAbduccion60Optimo);
-            this.panel8.Location = new System.Drawing.Point(250, 160);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(471, 22);
-            this.panel8.TabIndex = 118;
-            // 
-            // rbAbduccion60MuyLimitado
-            // 
-            this.rbAbduccion60MuyLimitado.AutoSize = true;
-            this.rbAbduccion60MuyLimitado.Location = new System.Drawing.Point(387, 4);
-            this.rbAbduccion60MuyLimitado.Name = "rbAbduccion60MuyLimitado";
-            this.rbAbduccion60MuyLimitado.Size = new System.Drawing.Size(14, 13);
-            this.rbAbduccion60MuyLimitado.TabIndex = 37;
-            this.rbAbduccion60MuyLimitado.UseVisualStyleBackColor = true;
-            this.rbAbduccion60MuyLimitado.CheckedChanged += new System.EventHandler(this.rbAbduccion60MuyLimitado_CheckedChanged);
-            // 
-            // rbAbduccion60Limitado
-            // 
-            this.rbAbduccion60Limitado.AutoSize = true;
-            this.rbAbduccion60Limitado.Location = new System.Drawing.Point(224, 4);
-            this.rbAbduccion60Limitado.Name = "rbAbduccion60Limitado";
-            this.rbAbduccion60Limitado.Size = new System.Drawing.Size(14, 13);
-            this.rbAbduccion60Limitado.TabIndex = 37;
-            this.rbAbduccion60Limitado.UseVisualStyleBackColor = true;
-            this.rbAbduccion60Limitado.CheckedChanged += new System.EventHandler(this.rbAbduccion60Limitado_CheckedChanged);
-            // 
-            // rbAbduccion60Optimo
-            // 
-            this.rbAbduccion60Optimo.AutoSize = true;
-            this.rbAbduccion60Optimo.Checked = true;
-            this.rbAbduccion60Optimo.Location = new System.Drawing.Point(63, 4);
-            this.rbAbduccion60Optimo.Name = "rbAbduccion60Optimo";
-            this.rbAbduccion60Optimo.Size = new System.Drawing.Size(14, 13);
-            this.rbAbduccion60Optimo.TabIndex = 36;
-            this.rbAbduccion60Optimo.TabStop = true;
-            this.rbAbduccion60Optimo.UseVisualStyleBackColor = true;
-            this.rbAbduccion60Optimo.CheckedChanged += new System.EventHandler(this.rbAbduccion60Optimo_CheckedChanged);
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.rbAbduccion180MuyLimitado);
-            this.panel6.Controls.Add(this.rbAbduccion180Limitado);
-            this.panel6.Controls.Add(this.rbAbduccion180Optimo);
-            this.panel6.Location = new System.Drawing.Point(250, 68);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(471, 22);
-            this.panel6.TabIndex = 118;
-            // 
-            // rbAbduccion180MuyLimitado
-            // 
-            this.rbAbduccion180MuyLimitado.AutoSize = true;
-            this.rbAbduccion180MuyLimitado.Location = new System.Drawing.Point(389, 4);
-            this.rbAbduccion180MuyLimitado.Name = "rbAbduccion180MuyLimitado";
-            this.rbAbduccion180MuyLimitado.Size = new System.Drawing.Size(14, 13);
-            this.rbAbduccion180MuyLimitado.TabIndex = 37;
-            this.rbAbduccion180MuyLimitado.UseVisualStyleBackColor = true;
-            this.rbAbduccion180MuyLimitado.CheckedChanged += new System.EventHandler(this.rbAbduccion180MuyLimitado_CheckedChanged);
-            // 
-            // rbAbduccion180Limitado
-            // 
-            this.rbAbduccion180Limitado.AutoSize = true;
-            this.rbAbduccion180Limitado.Location = new System.Drawing.Point(225, 4);
-            this.rbAbduccion180Limitado.Name = "rbAbduccion180Limitado";
-            this.rbAbduccion180Limitado.Size = new System.Drawing.Size(14, 13);
-            this.rbAbduccion180Limitado.TabIndex = 37;
-            this.rbAbduccion180Limitado.UseVisualStyleBackColor = true;
-            this.rbAbduccion180Limitado.CheckedChanged += new System.EventHandler(this.rbAbduccion180Limitado_CheckedChanged);
-            // 
-            // rbAbduccion180Optimo
-            // 
-            this.rbAbduccion180Optimo.AutoSize = true;
-            this.rbAbduccion180Optimo.Checked = true;
-            this.rbAbduccion180Optimo.Location = new System.Drawing.Point(63, 4);
-            this.rbAbduccion180Optimo.Name = "rbAbduccion180Optimo";
-            this.rbAbduccion180Optimo.Size = new System.Drawing.Size(14, 13);
-            this.rbAbduccion180Optimo.TabIndex = 36;
-            this.rbAbduccion180Optimo.TabStop = true;
-            this.rbAbduccion180Optimo.UseVisualStyleBackColor = true;
-            this.rbAbduccion180Optimo.CheckedChanged += new System.EventHandler(this.rbAbduccion180Optimo_CheckedChanged);
-            // 
             // panel7
             // 
             this.panel7.Controls.Add(this.rbAbduccion180DolorNO);
             this.panel7.Controls.Add(this.rbAbduccion180DolorSI);
-            this.panel7.Location = new System.Drawing.Point(899, 109);
+            this.panel7.Location = new System.Drawing.Point(910, 106);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(107, 26);
             this.panel7.TabIndex = 171;
@@ -848,6 +479,26 @@
             this.label24.Text = "Rotación externa de hombro\r\n(interna)";
             this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox26
+            // 
+            this.pictureBox26.Image = global::Sigesoft.Node.WinClient.UI.Resources.rotet02;
+            this.pictureBox26.Location = new System.Drawing.Point(429, 370);
+            this.pictureBox26.Name = "pictureBox26";
+            this.pictureBox26.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox26.TabIndex = 122;
+            this.pictureBox26.TabStop = false;
+            // 
+            // pictureBox28
+            // 
+            this.pictureBox28.Image = global::Sigesoft.Node.WinClient.UI.Resources.rotet01;
+            this.pictureBox28.Location = new System.Drawing.Point(273, 370);
+            this.pictureBox28.Name = "pictureBox28";
+            this.pictureBox28.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox28.TabIndex = 123;
+            this.pictureBox28.TabStop = false;
+            // 
             // txtRotacionExtIntPuntos
             // 
             this.txtRotacionExtIntPuntos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -859,6 +510,16 @@
             this.txtRotacionExtIntPuntos.TabIndex = 119;
             this.txtRotacionExtIntPuntos.Text = "1";
             this.txtRotacionExtIntPuntos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox27
+            // 
+            this.pictureBox27.Image = global::Sigesoft.Node.WinClient.UI.Resources.rotet03;
+            this.pictureBox27.Location = new System.Drawing.Point(600, 370);
+            this.pictureBox27.Name = "pictureBox27";
+            this.pictureBox27.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox27.TabIndex = 121;
+            this.pictureBox27.TabStop = false;
             // 
             // panel11
             // 
@@ -906,6 +567,26 @@
             this.label23.Text = "Rotación externa\r\n(0° - 90°)";
             this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox23
+            // 
+            this.pictureBox23.Image = global::Sigesoft.Node.WinClient.UI.Resources.rot9001;
+            this.pictureBox23.Location = new System.Drawing.Point(273, 278);
+            this.pictureBox23.Name = "pictureBox23";
+            this.pictureBox23.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox23.TabIndex = 123;
+            this.pictureBox23.TabStop = false;
+            // 
+            // pictureBox25
+            // 
+            this.pictureBox25.Image = global::Sigesoft.Node.WinClient.UI.Resources.rot9003;
+            this.pictureBox25.Location = new System.Drawing.Point(600, 278);
+            this.pictureBox25.Name = "pictureBox25";
+            this.pictureBox25.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox25.TabIndex = 121;
+            this.pictureBox25.TabStop = false;
+            // 
             // txtRotacion090Puntos
             // 
             this.txtRotacion090Puntos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -917,6 +598,16 @@
             this.txtRotacion090Puntos.TabIndex = 119;
             this.txtRotacion090Puntos.Text = "1";
             this.txtRotacion090Puntos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox24
+            // 
+            this.pictureBox24.Image = global::Sigesoft.Node.WinClient.UI.Resources.rot9002;
+            this.pictureBox24.Location = new System.Drawing.Point(429, 278);
+            this.pictureBox24.Name = "pictureBox24";
+            this.pictureBox24.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox24.TabIndex = 122;
+            this.pictureBox24.TabStop = false;
             // 
             // panel9
             // 
@@ -964,6 +655,16 @@
             this.label21.Text = "Abducción de hombro\r\n(Normal 0° - 60°)";
             this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // pictureBox22
+            // 
+            this.pictureBox22.Image = global::Sigesoft.Node.WinClient.UI.Resources.ad03;
+            this.pictureBox22.Location = new System.Drawing.Point(600, 185);
+            this.pictureBox22.Name = "pictureBox22";
+            this.pictureBox22.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox22.TabIndex = 121;
+            this.pictureBox22.TabStop = false;
+            // 
             // txtAbduccion60Puntos
             // 
             this.txtAbduccion60Puntos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
@@ -975,6 +676,56 @@
             this.txtAbduccion60Puntos.TabIndex = 119;
             this.txtAbduccion60Puntos.Text = "1";
             this.txtAbduccion60Puntos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox21
+            // 
+            this.pictureBox21.Image = global::Sigesoft.Node.WinClient.UI.Resources.ad02;
+            this.pictureBox21.Location = new System.Drawing.Point(429, 185);
+            this.pictureBox21.Name = "pictureBox21";
+            this.pictureBox21.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox21.TabIndex = 122;
+            this.pictureBox21.TabStop = false;
+            // 
+            // pictureBox20
+            // 
+            this.pictureBox20.Image = global::Sigesoft.Node.WinClient.UI.Resources.ad01;
+            this.pictureBox20.Location = new System.Drawing.Point(273, 185);
+            this.pictureBox20.Name = "pictureBox20";
+            this.pictureBox20.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox20.TabIndex = 123;
+            this.pictureBox20.TabStop = false;
+            // 
+            // pictureBox17
+            // 
+            this.pictureBox17.Image = global::Sigesoft.Node.WinClient.UI.Resources.ab03;
+            this.pictureBox17.Location = new System.Drawing.Point(600, 91);
+            this.pictureBox17.Name = "pictureBox17";
+            this.pictureBox17.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox17.TabIndex = 121;
+            this.pictureBox17.TabStop = false;
+            // 
+            // pictureBox18
+            // 
+            this.pictureBox18.Image = global::Sigesoft.Node.WinClient.UI.Resources.ab02;
+            this.pictureBox18.Location = new System.Drawing.Point(429, 91);
+            this.pictureBox18.Name = "pictureBox18";
+            this.pictureBox18.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox18.TabIndex = 122;
+            this.pictureBox18.TabStop = false;
+            // 
+            // pictureBox19
+            // 
+            this.pictureBox19.Image = global::Sigesoft.Node.WinClient.UI.Resources.ab01;
+            this.pictureBox19.Location = new System.Drawing.Point(273, 91);
+            this.pictureBox19.Name = "pictureBox19";
+            this.pictureBox19.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox19.TabIndex = 123;
+            this.pictureBox19.TabStop = false;
             // 
             // txtAbduccion180Puntos
             // 
@@ -1213,6 +964,174 @@
             this.lineShape14.Y1 = 31;
             this.lineShape14.Y2 = 31;
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.rbAbduccion180MuyLimitado);
+            this.panel6.Controls.Add(this.rbAbduccion180Limitado);
+            this.panel6.Controls.Add(this.rbAbduccion180Optimo);
+            this.panel6.Location = new System.Drawing.Point(250, 68);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(471, 22);
+            this.panel6.TabIndex = 118;
+            // 
+            // rbAbduccion180MuyLimitado
+            // 
+            this.rbAbduccion180MuyLimitado.AutoSize = true;
+            this.rbAbduccion180MuyLimitado.Location = new System.Drawing.Point(389, 4);
+            this.rbAbduccion180MuyLimitado.Name = "rbAbduccion180MuyLimitado";
+            this.rbAbduccion180MuyLimitado.Size = new System.Drawing.Size(14, 13);
+            this.rbAbduccion180MuyLimitado.TabIndex = 37;
+            this.rbAbduccion180MuyLimitado.UseVisualStyleBackColor = true;
+            this.rbAbduccion180MuyLimitado.CheckedChanged += new System.EventHandler(this.rbAbduccion180MuyLimitado_CheckedChanged);
+            // 
+            // rbAbduccion180Limitado
+            // 
+            this.rbAbduccion180Limitado.AutoSize = true;
+            this.rbAbduccion180Limitado.Location = new System.Drawing.Point(225, 4);
+            this.rbAbduccion180Limitado.Name = "rbAbduccion180Limitado";
+            this.rbAbduccion180Limitado.Size = new System.Drawing.Size(14, 13);
+            this.rbAbduccion180Limitado.TabIndex = 37;
+            this.rbAbduccion180Limitado.UseVisualStyleBackColor = true;
+            this.rbAbduccion180Limitado.CheckedChanged += new System.EventHandler(this.rbAbduccion180Limitado_CheckedChanged);
+            // 
+            // rbAbduccion180Optimo
+            // 
+            this.rbAbduccion180Optimo.AutoSize = true;
+            this.rbAbduccion180Optimo.Checked = true;
+            this.rbAbduccion180Optimo.Location = new System.Drawing.Point(63, 4);
+            this.rbAbduccion180Optimo.Name = "rbAbduccion180Optimo";
+            this.rbAbduccion180Optimo.Size = new System.Drawing.Size(14, 13);
+            this.rbAbduccion180Optimo.TabIndex = 36;
+            this.rbAbduccion180Optimo.TabStop = true;
+            this.rbAbduccion180Optimo.UseVisualStyleBackColor = true;
+            this.rbAbduccion180Optimo.CheckedChanged += new System.EventHandler(this.rbAbduccion180Optimo_CheckedChanged);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.rbAbduccion60MuyLimitado);
+            this.panel8.Controls.Add(this.rbAbduccion60Limitado);
+            this.panel8.Controls.Add(this.rbAbduccion60Optimo);
+            this.panel8.Location = new System.Drawing.Point(250, 160);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(471, 22);
+            this.panel8.TabIndex = 118;
+            // 
+            // rbAbduccion60MuyLimitado
+            // 
+            this.rbAbduccion60MuyLimitado.AutoSize = true;
+            this.rbAbduccion60MuyLimitado.Location = new System.Drawing.Point(387, 4);
+            this.rbAbduccion60MuyLimitado.Name = "rbAbduccion60MuyLimitado";
+            this.rbAbduccion60MuyLimitado.Size = new System.Drawing.Size(14, 13);
+            this.rbAbduccion60MuyLimitado.TabIndex = 37;
+            this.rbAbduccion60MuyLimitado.UseVisualStyleBackColor = true;
+            this.rbAbduccion60MuyLimitado.CheckedChanged += new System.EventHandler(this.rbAbduccion60MuyLimitado_CheckedChanged);
+            // 
+            // rbAbduccion60Limitado
+            // 
+            this.rbAbduccion60Limitado.AutoSize = true;
+            this.rbAbduccion60Limitado.Location = new System.Drawing.Point(224, 4);
+            this.rbAbduccion60Limitado.Name = "rbAbduccion60Limitado";
+            this.rbAbduccion60Limitado.Size = new System.Drawing.Size(14, 13);
+            this.rbAbduccion60Limitado.TabIndex = 37;
+            this.rbAbduccion60Limitado.UseVisualStyleBackColor = true;
+            this.rbAbduccion60Limitado.CheckedChanged += new System.EventHandler(this.rbAbduccion60Limitado_CheckedChanged);
+            // 
+            // rbAbduccion60Optimo
+            // 
+            this.rbAbduccion60Optimo.AutoSize = true;
+            this.rbAbduccion60Optimo.Checked = true;
+            this.rbAbduccion60Optimo.Location = new System.Drawing.Point(63, 4);
+            this.rbAbduccion60Optimo.Name = "rbAbduccion60Optimo";
+            this.rbAbduccion60Optimo.Size = new System.Drawing.Size(14, 13);
+            this.rbAbduccion60Optimo.TabIndex = 36;
+            this.rbAbduccion60Optimo.TabStop = true;
+            this.rbAbduccion60Optimo.UseVisualStyleBackColor = true;
+            this.rbAbduccion60Optimo.CheckedChanged += new System.EventHandler(this.rbAbduccion60Optimo_CheckedChanged);
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.rbRotacion090MuyLimitado);
+            this.panel10.Controls.Add(this.rbRotacion090Limitado);
+            this.panel10.Controls.Add(this.rbRotacion090Optimo);
+            this.panel10.Location = new System.Drawing.Point(250, 253);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(471, 22);
+            this.panel10.TabIndex = 118;
+            // 
+            // rbRotacion090MuyLimitado
+            // 
+            this.rbRotacion090MuyLimitado.AutoSize = true;
+            this.rbRotacion090MuyLimitado.Location = new System.Drawing.Point(384, 4);
+            this.rbRotacion090MuyLimitado.Name = "rbRotacion090MuyLimitado";
+            this.rbRotacion090MuyLimitado.Size = new System.Drawing.Size(14, 13);
+            this.rbRotacion090MuyLimitado.TabIndex = 37;
+            this.rbRotacion090MuyLimitado.UseVisualStyleBackColor = true;
+            this.rbRotacion090MuyLimitado.CheckedChanged += new System.EventHandler(this.rbRotacion090MuyLimitado_CheckedChanged);
+            // 
+            // rbRotacion090Limitado
+            // 
+            this.rbRotacion090Limitado.AutoSize = true;
+            this.rbRotacion090Limitado.Location = new System.Drawing.Point(222, 4);
+            this.rbRotacion090Limitado.Name = "rbRotacion090Limitado";
+            this.rbRotacion090Limitado.Size = new System.Drawing.Size(14, 13);
+            this.rbRotacion090Limitado.TabIndex = 37;
+            this.rbRotacion090Limitado.UseVisualStyleBackColor = true;
+            this.rbRotacion090Limitado.CheckedChanged += new System.EventHandler(this.rbRotacion090Limitado_CheckedChanged);
+            // 
+            // rbRotacion090Optimo
+            // 
+            this.rbRotacion090Optimo.AutoSize = true;
+            this.rbRotacion090Optimo.Checked = true;
+            this.rbRotacion090Optimo.Location = new System.Drawing.Point(62, 4);
+            this.rbRotacion090Optimo.Name = "rbRotacion090Optimo";
+            this.rbRotacion090Optimo.Size = new System.Drawing.Size(14, 13);
+            this.rbRotacion090Optimo.TabIndex = 36;
+            this.rbRotacion090Optimo.TabStop = true;
+            this.rbRotacion090Optimo.UseVisualStyleBackColor = true;
+            this.rbRotacion090Optimo.CheckedChanged += new System.EventHandler(this.rbRotacion090Optimo_CheckedChanged);
+            // 
+            // panel12
+            // 
+            this.panel12.Controls.Add(this.rbRotacionExtIntMuyLimitado);
+            this.panel12.Controls.Add(this.rbRotacionExtIntLimitado);
+            this.panel12.Controls.Add(this.rbRotacionExtIntOptimo);
+            this.panel12.Location = new System.Drawing.Point(250, 347);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(471, 22);
+            this.panel12.TabIndex = 118;
+            // 
+            // rbRotacionExtIntMuyLimitado
+            // 
+            this.rbRotacionExtIntMuyLimitado.AutoSize = true;
+            this.rbRotacionExtIntMuyLimitado.Location = new System.Drawing.Point(386, 4);
+            this.rbRotacionExtIntMuyLimitado.Name = "rbRotacionExtIntMuyLimitado";
+            this.rbRotacionExtIntMuyLimitado.Size = new System.Drawing.Size(14, 13);
+            this.rbRotacionExtIntMuyLimitado.TabIndex = 37;
+            this.rbRotacionExtIntMuyLimitado.UseVisualStyleBackColor = true;
+            this.rbRotacionExtIntMuyLimitado.CheckedChanged += new System.EventHandler(this.rbRotacionExtIntMuyLimitado_CheckedChanged);
+            // 
+            // rbRotacionExtIntLimitado
+            // 
+            this.rbRotacionExtIntLimitado.AutoSize = true;
+            this.rbRotacionExtIntLimitado.Location = new System.Drawing.Point(222, 4);
+            this.rbRotacionExtIntLimitado.Name = "rbRotacionExtIntLimitado";
+            this.rbRotacionExtIntLimitado.Size = new System.Drawing.Size(14, 13);
+            this.rbRotacionExtIntLimitado.TabIndex = 37;
+            this.rbRotacionExtIntLimitado.UseVisualStyleBackColor = true;
+            this.rbRotacionExtIntLimitado.CheckedChanged += new System.EventHandler(this.rbRotacionExtIntLimitado_CheckedChanged);
+            // 
+            // rbRotacionExtIntOptimo
+            // 
+            this.rbRotacionExtIntOptimo.AutoSize = true;
+            this.rbRotacionExtIntOptimo.Checked = true;
+            this.rbRotacionExtIntOptimo.Location = new System.Drawing.Point(61, 4);
+            this.rbRotacionExtIntOptimo.Name = "rbRotacionExtIntOptimo";
+            this.rbRotacionExtIntOptimo.Size = new System.Drawing.Size(14, 13);
+            this.rbRotacionExtIntOptimo.TabIndex = 36;
+            this.rbRotacionExtIntOptimo.TabStop = true;
+            this.rbRotacionExtIntOptimo.UseVisualStyleBackColor = true;
+            this.rbRotacionExtIntOptimo.CheckedChanged += new System.EventHandler(this.rbRotacionExtIntOptimo_CheckedChanged);
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -1247,6 +1166,46 @@
             this.txtAbdomenLateralPuntos.TabIndex = 108;
             this.txtAbdomenLateralPuntos.Text = "1";
             this.txtAbdomenLateralPuntos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox13
+            // 
+            this.pictureBox13.Image = global::Sigesoft.Node.WinClient.UI.Resources.abd01;
+            this.pictureBox13.Location = new System.Drawing.Point(218, 403);
+            this.pictureBox13.Name = "pictureBox13";
+            this.pictureBox13.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox13.TabIndex = 109;
+            this.pictureBox13.TabStop = false;
+            // 
+            // pictureBox14
+            // 
+            this.pictureBox14.Image = global::Sigesoft.Node.WinClient.UI.Resources.abd02;
+            this.pictureBox14.Location = new System.Drawing.Point(368, 403);
+            this.pictureBox14.Name = "pictureBox14";
+            this.pictureBox14.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox14.TabIndex = 109;
+            this.pictureBox14.TabStop = false;
+            // 
+            // pictureBox15
+            // 
+            this.pictureBox15.Image = global::Sigesoft.Node.WinClient.UI.Resources.abd03;
+            this.pictureBox15.Location = new System.Drawing.Point(517, 403);
+            this.pictureBox15.Name = "pictureBox15";
+            this.pictureBox15.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox15.TabIndex = 109;
+            this.pictureBox15.TabStop = false;
+            // 
+            // pictureBox16
+            // 
+            this.pictureBox16.Image = global::Sigesoft.Node.WinClient.UI.Resources.abd04;
+            this.pictureBox16.Location = new System.Drawing.Point(673, 403);
+            this.pictureBox16.Name = "pictureBox16";
+            this.pictureBox16.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox16.TabIndex = 109;
+            this.pictureBox16.TabStop = false;
             // 
             // label6
             // 
@@ -1283,6 +1242,46 @@
             this.txtMusloPuntos.Text = "1";
             this.txtMusloPuntos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // pictureBox10
+            // 
+            this.pictureBox10.Image = global::Sigesoft.Node.WinClient.UI.Resources.muslo02;
+            this.pictureBox10.Location = new System.Drawing.Point(368, 303);
+            this.pictureBox10.Name = "pictureBox10";
+            this.pictureBox10.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox10.TabIndex = 109;
+            this.pictureBox10.TabStop = false;
+            // 
+            // pictureBox11
+            // 
+            this.pictureBox11.Image = global::Sigesoft.Node.WinClient.UI.Resources.muslo03;
+            this.pictureBox11.Location = new System.Drawing.Point(517, 303);
+            this.pictureBox11.Name = "pictureBox11";
+            this.pictureBox11.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox11.TabIndex = 109;
+            this.pictureBox11.TabStop = false;
+            // 
+            // pictureBox12
+            // 
+            this.pictureBox12.Image = global::Sigesoft.Node.WinClient.UI.Resources.muslo04;
+            this.pictureBox12.Location = new System.Drawing.Point(673, 303);
+            this.pictureBox12.Name = "pictureBox12";
+            this.pictureBox12.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox12.TabIndex = 109;
+            this.pictureBox12.TabStop = false;
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Image = global::Sigesoft.Node.WinClient.UI.Resources.cad04;
+            this.pictureBox8.Location = new System.Drawing.Point(673, 203);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 109;
+            this.pictureBox8.TabStop = false;
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -1306,6 +1305,16 @@
             this.txtCaderaOnservaciones.Text = "NINGUNA";
             this.txtCaderaOnservaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::Sigesoft.Node.WinClient.UI.Resources.cad02;
+            this.pictureBox6.Location = new System.Drawing.Point(368, 203);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 109;
+            this.pictureBox6.TabStop = false;
+            // 
             // txtCaderaPuntos
             // 
             this.txtCaderaPuntos.BackColor = System.Drawing.Color.PaleTurquoise;
@@ -1317,6 +1326,46 @@
             this.txtCaderaPuntos.TabIndex = 108;
             this.txtCaderaPuntos.Text = "1";
             this.txtCaderaPuntos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::Sigesoft.Node.WinClient.UI.Resources.cad01;
+            this.pictureBox5.Location = new System.Drawing.Point(218, 203);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 109;
+            this.pictureBox5.TabStop = false;
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Image = global::Sigesoft.Node.WinClient.UI.Resources._33;
+            this.pictureBox4.Location = new System.Drawing.Point(673, 105);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox4.TabIndex = 109;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Sigesoft.Node.WinClient.UI.Resources._22;
+            this.pictureBox3.Location = new System.Drawing.Point(517, 105);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 109;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Sigesoft.Node.WinClient.UI.Resources._011;
+            this.pictureBox2.Location = new System.Drawing.Point(368, 105);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(98, 62);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 109;
+            this.pictureBox2.TabStop = false;
             // 
             // txtAbdomenPuntos
             // 
@@ -1591,267 +1640,6 @@
             this.lineShape7.Y1 = 22;
             this.lineShape7.Y2 = 22;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Sigesoft.Node.WinClient.UI.Resources._01;
-            this.pictureBox1.Location = new System.Drawing.Point(218, 105);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 109;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-            // 
-            // pictureBox26
-            // 
-            this.pictureBox26.Image = global::Sigesoft.Node.WinClient.UI.Resources.rotet02;
-            this.pictureBox26.Location = new System.Drawing.Point(429, 370);
-            this.pictureBox26.Name = "pictureBox26";
-            this.pictureBox26.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox26.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox26.TabIndex = 122;
-            this.pictureBox26.TabStop = false;
-            // 
-            // pictureBox28
-            // 
-            this.pictureBox28.Image = global::Sigesoft.Node.WinClient.UI.Resources.rotet01;
-            this.pictureBox28.Location = new System.Drawing.Point(273, 370);
-            this.pictureBox28.Name = "pictureBox28";
-            this.pictureBox28.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox28.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox28.TabIndex = 123;
-            this.pictureBox28.TabStop = false;
-            // 
-            // pictureBox27
-            // 
-            this.pictureBox27.Image = global::Sigesoft.Node.WinClient.UI.Resources.rotet03;
-            this.pictureBox27.Location = new System.Drawing.Point(600, 370);
-            this.pictureBox27.Name = "pictureBox27";
-            this.pictureBox27.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox27.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox27.TabIndex = 121;
-            this.pictureBox27.TabStop = false;
-            // 
-            // pictureBox23
-            // 
-            this.pictureBox23.Image = global::Sigesoft.Node.WinClient.UI.Resources.rot9001;
-            this.pictureBox23.Location = new System.Drawing.Point(273, 278);
-            this.pictureBox23.Name = "pictureBox23";
-            this.pictureBox23.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox23.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox23.TabIndex = 123;
-            this.pictureBox23.TabStop = false;
-            // 
-            // pictureBox25
-            // 
-            this.pictureBox25.Image = global::Sigesoft.Node.WinClient.UI.Resources.rot9003;
-            this.pictureBox25.Location = new System.Drawing.Point(600, 278);
-            this.pictureBox25.Name = "pictureBox25";
-            this.pictureBox25.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox25.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox25.TabIndex = 121;
-            this.pictureBox25.TabStop = false;
-            // 
-            // pictureBox24
-            // 
-            this.pictureBox24.Image = global::Sigesoft.Node.WinClient.UI.Resources.rot9002;
-            this.pictureBox24.Location = new System.Drawing.Point(429, 278);
-            this.pictureBox24.Name = "pictureBox24";
-            this.pictureBox24.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox24.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox24.TabIndex = 122;
-            this.pictureBox24.TabStop = false;
-            // 
-            // pictureBox22
-            // 
-            this.pictureBox22.Image = global::Sigesoft.Node.WinClient.UI.Resources.ad03;
-            this.pictureBox22.Location = new System.Drawing.Point(600, 185);
-            this.pictureBox22.Name = "pictureBox22";
-            this.pictureBox22.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox22.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox22.TabIndex = 121;
-            this.pictureBox22.TabStop = false;
-            // 
-            // pictureBox21
-            // 
-            this.pictureBox21.Image = global::Sigesoft.Node.WinClient.UI.Resources.ad02;
-            this.pictureBox21.Location = new System.Drawing.Point(429, 185);
-            this.pictureBox21.Name = "pictureBox21";
-            this.pictureBox21.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox21.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox21.TabIndex = 122;
-            this.pictureBox21.TabStop = false;
-            // 
-            // pictureBox20
-            // 
-            this.pictureBox20.Image = global::Sigesoft.Node.WinClient.UI.Resources.ad01;
-            this.pictureBox20.Location = new System.Drawing.Point(273, 185);
-            this.pictureBox20.Name = "pictureBox20";
-            this.pictureBox20.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox20.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox20.TabIndex = 123;
-            this.pictureBox20.TabStop = false;
-            // 
-            // pictureBox17
-            // 
-            this.pictureBox17.Image = global::Sigesoft.Node.WinClient.UI.Resources.ab03;
-            this.pictureBox17.Location = new System.Drawing.Point(600, 91);
-            this.pictureBox17.Name = "pictureBox17";
-            this.pictureBox17.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox17.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox17.TabIndex = 121;
-            this.pictureBox17.TabStop = false;
-            // 
-            // pictureBox18
-            // 
-            this.pictureBox18.Image = global::Sigesoft.Node.WinClient.UI.Resources.ab02;
-            this.pictureBox18.Location = new System.Drawing.Point(429, 91);
-            this.pictureBox18.Name = "pictureBox18";
-            this.pictureBox18.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox18.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox18.TabIndex = 122;
-            this.pictureBox18.TabStop = false;
-            // 
-            // pictureBox19
-            // 
-            this.pictureBox19.Image = global::Sigesoft.Node.WinClient.UI.Resources.ab01;
-            this.pictureBox19.Location = new System.Drawing.Point(273, 91);
-            this.pictureBox19.Name = "pictureBox19";
-            this.pictureBox19.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox19.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox19.TabIndex = 123;
-            this.pictureBox19.TabStop = false;
-            // 
-            // pictureBox13
-            // 
-            this.pictureBox13.Image = global::Sigesoft.Node.WinClient.UI.Resources.abd01;
-            this.pictureBox13.Location = new System.Drawing.Point(218, 403);
-            this.pictureBox13.Name = "pictureBox13";
-            this.pictureBox13.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox13.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox13.TabIndex = 109;
-            this.pictureBox13.TabStop = false;
-            // 
-            // pictureBox14
-            // 
-            this.pictureBox14.Image = global::Sigesoft.Node.WinClient.UI.Resources.abd02;
-            this.pictureBox14.Location = new System.Drawing.Point(368, 403);
-            this.pictureBox14.Name = "pictureBox14";
-            this.pictureBox14.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox14.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox14.TabIndex = 109;
-            this.pictureBox14.TabStop = false;
-            // 
-            // pictureBox15
-            // 
-            this.pictureBox15.Image = global::Sigesoft.Node.WinClient.UI.Resources.abd03;
-            this.pictureBox15.Location = new System.Drawing.Point(517, 403);
-            this.pictureBox15.Name = "pictureBox15";
-            this.pictureBox15.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox15.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox15.TabIndex = 109;
-            this.pictureBox15.TabStop = false;
-            // 
-            // pictureBox16
-            // 
-            this.pictureBox16.Image = global::Sigesoft.Node.WinClient.UI.Resources.abd04;
-            this.pictureBox16.Location = new System.Drawing.Point(673, 403);
-            this.pictureBox16.Name = "pictureBox16";
-            this.pictureBox16.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox16.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox16.TabIndex = 109;
-            this.pictureBox16.TabStop = false;
-            // 
-            // pictureBox10
-            // 
-            this.pictureBox10.Image = global::Sigesoft.Node.WinClient.UI.Resources.muslo02;
-            this.pictureBox10.Location = new System.Drawing.Point(368, 303);
-            this.pictureBox10.Name = "pictureBox10";
-            this.pictureBox10.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox10.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox10.TabIndex = 109;
-            this.pictureBox10.TabStop = false;
-            // 
-            // pictureBox11
-            // 
-            this.pictureBox11.Image = global::Sigesoft.Node.WinClient.UI.Resources.muslo03;
-            this.pictureBox11.Location = new System.Drawing.Point(517, 303);
-            this.pictureBox11.Name = "pictureBox11";
-            this.pictureBox11.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox11.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox11.TabIndex = 109;
-            this.pictureBox11.TabStop = false;
-            // 
-            // pictureBox12
-            // 
-            this.pictureBox12.Image = global::Sigesoft.Node.WinClient.UI.Resources.muslo04;
-            this.pictureBox12.Location = new System.Drawing.Point(673, 303);
-            this.pictureBox12.Name = "pictureBox12";
-            this.pictureBox12.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox12.TabIndex = 109;
-            this.pictureBox12.TabStop = false;
-            // 
-            // pictureBox8
-            // 
-            this.pictureBox8.Image = global::Sigesoft.Node.WinClient.UI.Resources.cad04;
-            this.pictureBox8.Location = new System.Drawing.Point(673, 203);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox8.TabIndex = 109;
-            this.pictureBox8.TabStop = false;
-            // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Image = global::Sigesoft.Node.WinClient.UI.Resources.cad02;
-            this.pictureBox6.Location = new System.Drawing.Point(368, 203);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox6.TabIndex = 109;
-            this.pictureBox6.TabStop = false;
-            // 
-            // pictureBox5
-            // 
-            this.pictureBox5.Image = global::Sigesoft.Node.WinClient.UI.Resources.cad01;
-            this.pictureBox5.Location = new System.Drawing.Point(218, 203);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox5.TabIndex = 109;
-            this.pictureBox5.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Image = global::Sigesoft.Node.WinClient.UI.Resources._33;
-            this.pictureBox4.Location = new System.Drawing.Point(673, 105);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 109;
-            this.pictureBox4.TabStop = false;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Sigesoft.Node.WinClient.UI.Resources._22;
-            this.pictureBox3.Location = new System.Drawing.Point(517, 105);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 109;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Sigesoft.Node.WinClient.UI.Resources._011;
-            this.pictureBox2.Location = new System.Drawing.Point(368, 105);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(98, 62);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 109;
-            this.pictureBox2.TabStop = false;
-            // 
             // pictureBox7
             // 
             this.pictureBox7.Image = global::Sigesoft.Node.WinClient.UI.Resources.cad03;
@@ -1872,6 +1660,218 @@
             this.pictureBox9.TabIndex = 109;
             this.pictureBox9.TabStop = false;
             // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.rbAbdomenPobre);
+            this.panel16.Controls.Add(this.rbAbdomenRegular);
+            this.panel16.Controls.Add(this.rbAbdomenPromedio);
+            this.panel16.Controls.Add(this.rbAbdomenExcelente);
+            this.panel16.Location = new System.Drawing.Point(206, 82);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(582, 22);
+            this.panel16.TabIndex = 107;
+            // 
+            // rbAbdomenPobre
+            // 
+            this.rbAbdomenPobre.AutoSize = true;
+            this.rbAbdomenPobre.Location = new System.Drawing.Point(508, 4);
+            this.rbAbdomenPobre.Name = "rbAbdomenPobre";
+            this.rbAbdomenPobre.Size = new System.Drawing.Size(14, 13);
+            this.rbAbdomenPobre.TabIndex = 37;
+            this.rbAbdomenPobre.UseVisualStyleBackColor = true;
+            this.rbAbdomenPobre.CheckedChanged += new System.EventHandler(this.rbAbdomenPobre_CheckedChanged);
+            // 
+            // rbAbdomenRegular
+            // 
+            this.rbAbdomenRegular.AutoSize = true;
+            this.rbAbdomenRegular.Location = new System.Drawing.Point(350, 4);
+            this.rbAbdomenRegular.Name = "rbAbdomenRegular";
+            this.rbAbdomenRegular.Size = new System.Drawing.Size(14, 13);
+            this.rbAbdomenRegular.TabIndex = 37;
+            this.rbAbdomenRegular.UseVisualStyleBackColor = true;
+            this.rbAbdomenRegular.CheckedChanged += new System.EventHandler(this.rbAbdomenRegular_CheckedChanged);
+            // 
+            // rbAbdomenPromedio
+            // 
+            this.rbAbdomenPromedio.AutoSize = true;
+            this.rbAbdomenPromedio.Location = new System.Drawing.Point(202, 4);
+            this.rbAbdomenPromedio.Name = "rbAbdomenPromedio";
+            this.rbAbdomenPromedio.Size = new System.Drawing.Size(14, 13);
+            this.rbAbdomenPromedio.TabIndex = 37;
+            this.rbAbdomenPromedio.UseVisualStyleBackColor = true;
+            this.rbAbdomenPromedio.CheckedChanged += new System.EventHandler(this.rbAbdomenPromedio_CheckedChanged);
+            // 
+            // rbAbdomenExcelente
+            // 
+            this.rbAbdomenExcelente.AutoSize = true;
+            this.rbAbdomenExcelente.Checked = true;
+            this.rbAbdomenExcelente.Location = new System.Drawing.Point(51, 4);
+            this.rbAbdomenExcelente.Name = "rbAbdomenExcelente";
+            this.rbAbdomenExcelente.Size = new System.Drawing.Size(14, 13);
+            this.rbAbdomenExcelente.TabIndex = 36;
+            this.rbAbdomenExcelente.TabStop = true;
+            this.rbAbdomenExcelente.UseVisualStyleBackColor = true;
+            this.rbAbdomenExcelente.CheckedChanged += new System.EventHandler(this.rbAbdomenExcelente_CheckedChanged);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.rbCaderaPobre);
+            this.panel1.Controls.Add(this.rbCaderaRegular);
+            this.panel1.Controls.Add(this.rbCaderaPromedio);
+            this.panel1.Controls.Add(this.rbCaderaExcelente);
+            this.panel1.Location = new System.Drawing.Point(206, 178);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(582, 22);
+            this.panel1.TabIndex = 107;
+            // 
+            // rbCaderaPobre
+            // 
+            this.rbCaderaPobre.AutoSize = true;
+            this.rbCaderaPobre.Location = new System.Drawing.Point(508, 4);
+            this.rbCaderaPobre.Name = "rbCaderaPobre";
+            this.rbCaderaPobre.Size = new System.Drawing.Size(14, 13);
+            this.rbCaderaPobre.TabIndex = 37;
+            this.rbCaderaPobre.UseVisualStyleBackColor = true;
+            this.rbCaderaPobre.CheckedChanged += new System.EventHandler(this.rbCaderaPobre_CheckedChanged);
+            // 
+            // rbCaderaRegular
+            // 
+            this.rbCaderaRegular.AutoSize = true;
+            this.rbCaderaRegular.Location = new System.Drawing.Point(350, 4);
+            this.rbCaderaRegular.Name = "rbCaderaRegular";
+            this.rbCaderaRegular.Size = new System.Drawing.Size(14, 13);
+            this.rbCaderaRegular.TabIndex = 37;
+            this.rbCaderaRegular.UseVisualStyleBackColor = true;
+            this.rbCaderaRegular.CheckedChanged += new System.EventHandler(this.rbCaderaRegular_CheckedChanged);
+            // 
+            // rbCaderaPromedio
+            // 
+            this.rbCaderaPromedio.AutoSize = true;
+            this.rbCaderaPromedio.Location = new System.Drawing.Point(202, 4);
+            this.rbCaderaPromedio.Name = "rbCaderaPromedio";
+            this.rbCaderaPromedio.Size = new System.Drawing.Size(14, 13);
+            this.rbCaderaPromedio.TabIndex = 37;
+            this.rbCaderaPromedio.UseVisualStyleBackColor = true;
+            this.rbCaderaPromedio.CheckedChanged += new System.EventHandler(this.rbCaderaPromedio_CheckedChanged);
+            // 
+            // rbCaderaExcelente
+            // 
+            this.rbCaderaExcelente.AutoSize = true;
+            this.rbCaderaExcelente.Checked = true;
+            this.rbCaderaExcelente.Location = new System.Drawing.Point(51, 4);
+            this.rbCaderaExcelente.Name = "rbCaderaExcelente";
+            this.rbCaderaExcelente.Size = new System.Drawing.Size(14, 13);
+            this.rbCaderaExcelente.TabIndex = 36;
+            this.rbCaderaExcelente.TabStop = true;
+            this.rbCaderaExcelente.UseVisualStyleBackColor = true;
+            this.rbCaderaExcelente.CheckedChanged += new System.EventHandler(this.rbCaderaExcelente_CheckedChanged);
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.rbMusloPobre);
+            this.panel2.Controls.Add(this.rbMusloRegular);
+            this.panel2.Controls.Add(this.rbMusloPromedio);
+            this.panel2.Controls.Add(this.rbMusloExcelente);
+            this.panel2.Location = new System.Drawing.Point(206, 278);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(582, 22);
+            this.panel2.TabIndex = 107;
+            // 
+            // rbMusloPobre
+            // 
+            this.rbMusloPobre.AutoSize = true;
+            this.rbMusloPobre.Location = new System.Drawing.Point(508, 4);
+            this.rbMusloPobre.Name = "rbMusloPobre";
+            this.rbMusloPobre.Size = new System.Drawing.Size(14, 13);
+            this.rbMusloPobre.TabIndex = 37;
+            this.rbMusloPobre.UseVisualStyleBackColor = true;
+            this.rbMusloPobre.CheckedChanged += new System.EventHandler(this.rbMusloPobre_CheckedChanged);
+            // 
+            // rbMusloRegular
+            // 
+            this.rbMusloRegular.AutoSize = true;
+            this.rbMusloRegular.Location = new System.Drawing.Point(350, 4);
+            this.rbMusloRegular.Name = "rbMusloRegular";
+            this.rbMusloRegular.Size = new System.Drawing.Size(14, 13);
+            this.rbMusloRegular.TabIndex = 37;
+            this.rbMusloRegular.UseVisualStyleBackColor = true;
+            this.rbMusloRegular.CheckedChanged += new System.EventHandler(this.rbMusloRegular_CheckedChanged);
+            // 
+            // rbMusloPromedio
+            // 
+            this.rbMusloPromedio.AutoSize = true;
+            this.rbMusloPromedio.Location = new System.Drawing.Point(202, 4);
+            this.rbMusloPromedio.Name = "rbMusloPromedio";
+            this.rbMusloPromedio.Size = new System.Drawing.Size(14, 13);
+            this.rbMusloPromedio.TabIndex = 37;
+            this.rbMusloPromedio.UseVisualStyleBackColor = true;
+            this.rbMusloPromedio.CheckedChanged += new System.EventHandler(this.rbMusloPromedio_CheckedChanged);
+            // 
+            // rbMusloExcelente
+            // 
+            this.rbMusloExcelente.AutoSize = true;
+            this.rbMusloExcelente.Checked = true;
+            this.rbMusloExcelente.Location = new System.Drawing.Point(51, 4);
+            this.rbMusloExcelente.Name = "rbMusloExcelente";
+            this.rbMusloExcelente.Size = new System.Drawing.Size(14, 13);
+            this.rbMusloExcelente.TabIndex = 36;
+            this.rbMusloExcelente.TabStop = true;
+            this.rbMusloExcelente.UseVisualStyleBackColor = true;
+            this.rbMusloExcelente.CheckedChanged += new System.EventHandler(this.rbMusloExcelente_CheckedChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.rbAbdomenLateralPobre);
+            this.panel3.Controls.Add(this.rbAbdomenLateralRegular);
+            this.panel3.Controls.Add(this.rbAbdomenLateralPromedio);
+            this.panel3.Controls.Add(this.rbAbdomenLateralExcelente);
+            this.panel3.Location = new System.Drawing.Point(206, 378);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(582, 22);
+            this.panel3.TabIndex = 107;
+            // 
+            // rbAbdomenLateralPobre
+            // 
+            this.rbAbdomenLateralPobre.AutoSize = true;
+            this.rbAbdomenLateralPobre.Location = new System.Drawing.Point(508, 4);
+            this.rbAbdomenLateralPobre.Name = "rbAbdomenLateralPobre";
+            this.rbAbdomenLateralPobre.Size = new System.Drawing.Size(14, 13);
+            this.rbAbdomenLateralPobre.TabIndex = 37;
+            this.rbAbdomenLateralPobre.UseVisualStyleBackColor = true;
+            this.rbAbdomenLateralPobre.CheckedChanged += new System.EventHandler(this.rbAbdomenLateralPobre_CheckedChanged);
+            // 
+            // rbAbdomenLateralRegular
+            // 
+            this.rbAbdomenLateralRegular.AutoSize = true;
+            this.rbAbdomenLateralRegular.Location = new System.Drawing.Point(350, 4);
+            this.rbAbdomenLateralRegular.Name = "rbAbdomenLateralRegular";
+            this.rbAbdomenLateralRegular.Size = new System.Drawing.Size(14, 13);
+            this.rbAbdomenLateralRegular.TabIndex = 37;
+            this.rbAbdomenLateralRegular.UseVisualStyleBackColor = true;
+            this.rbAbdomenLateralRegular.CheckedChanged += new System.EventHandler(this.rbAbdomenLateralRegular_CheckedChanged);
+            // 
+            // rbAbdomenLateralPromedio
+            // 
+            this.rbAbdomenLateralPromedio.AutoSize = true;
+            this.rbAbdomenLateralPromedio.Location = new System.Drawing.Point(202, 4);
+            this.rbAbdomenLateralPromedio.Name = "rbAbdomenLateralPromedio";
+            this.rbAbdomenLateralPromedio.Size = new System.Drawing.Size(14, 13);
+            this.rbAbdomenLateralPromedio.TabIndex = 37;
+            this.rbAbdomenLateralPromedio.UseVisualStyleBackColor = true;
+            this.rbAbdomenLateralPromedio.CheckedChanged += new System.EventHandler(this.rbAbdomenLateralPromedio_CheckedChanged);
+            // 
+            // rbAbdomenLateralExcelente
+            // 
+            this.rbAbdomenLateralExcelente.AutoSize = true;
+            this.rbAbdomenLateralExcelente.Checked = true;
+            this.rbAbdomenLateralExcelente.Location = new System.Drawing.Point(51, 4);
+            this.rbAbdomenLateralExcelente.Name = "rbAbdomenLateralExcelente";
+            this.rbAbdomenLateralExcelente.Size = new System.Drawing.Size(14, 13);
+            this.rbAbdomenLateralExcelente.TabIndex = 36;
+            this.rbAbdomenLateralExcelente.TabStop = true;
+            this.rbAbdomenLateralExcelente.UseVisualStyleBackColor = true;
+            this.rbAbdomenLateralExcelente.CheckedChanged += new System.EventHandler(this.rbAbdomenLateralExcelente_CheckedChanged);
+            // 
             // ucOsteoMuscular
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1882,45 +1882,37 @@
             this.Load += new System.EventHandler(this.ucOsteoMuscular_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel12.ResumeLayout(false);
-            this.panel12.PerformLayout();
-            this.panel10.ResumeLayout(false);
-            this.panel10.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox26)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox28)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox27)).EndInit();
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox23)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox25)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox24)).EndInit();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox21)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox18)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox19)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox15)).EndInit();
@@ -1936,6 +1928,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
 
         }

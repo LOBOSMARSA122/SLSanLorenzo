@@ -12,6 +12,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string NroDocumento { get; set; }
         public string Ocupacion { get; set; }
         public string Empresa { get; set; }
+        public string Contratista { get; set; }
         public byte[] FirmaTrabajador { get; set; }
         public byte[] HuellaTrabajador { get; set; }
         public byte[] Logo { get; set; }

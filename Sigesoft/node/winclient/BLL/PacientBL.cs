@@ -797,7 +797,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                     v_OwnerName = B.v_OwnerName,
                                      v_NroPoliza = B.v_NroPoliza,
                                      v_Deducible = B.v_Deducible.Value,
-                                     i_NroHermanos = B.i_NroHermanos.Value
+                                     i_NroHermanos = B.i_NroHermanos.Value,
+                                     i_NumberLiveChildren = B.i_NumberLiveChildren,
+                                     i_NumberDeadChildren = B.i_NumberDeadChildren
                                  }).FirstOrDefault();
 
                 pobjOperationResult.Success = 1;
@@ -1842,221 +1844,222 @@ namespace Sigesoft.Node.WinClient.BLL
                                      FirmaDoctor = pme.b_SignatureImage,
                                      FirmaTecnologo = prtec.b_SignatureImage,
                                      NombreTecnologo = petec.v_FirstLastName + " " + petec.v_SecondLastName + " " + petec.v_FirstName,
+                                     TipoEso = C.i_EsoTypeId.Value,
+                                     HuellaPaciente = B.b_FingerPrintImage,
+                                     FirmaPaciente = B.b_RubricImage
                                      //v_ServiceComponentId = E.v_ServiceComponentId
                                  });
 
                 var serviceBL = new ServiceBL();
                 var MedicalCenter = serviceBL.GetInfoMedicalCenter();
 
-               
-                              var sql = (from a in objEntity.ToList()
+                var oftalmo = serviceBL.ValoresComponente(pstrserviceId, Constants.OFTALMOLOGIA_ID);
+                var FondoOjo = serviceBL.ValoresComponente(pstrserviceId, Constants.FONDO_OJO_ID);
+                var TestColores = serviceBL.ValoresComponente(pstrserviceId, Constants.TEST_ISHIHARA_ID);
+                var TestEsterepsis = serviceBL.ValoresComponente(pstrserviceId, Constants.TEST_ESTEREOPSIS_ID);
+                var Campimetria = serviceBL.ValoresComponente(pstrserviceId, Constants.CAMPIMETRIA_ID);
+                var Tonometria = serviceBL.ValoresComponente(pstrserviceId, Constants.TONOMETRIA_ID);
 
-                                         let oftalmo = serviceBL.ValoresComponente(pstrserviceId, Constants.OFTALMOLOGIA_ID)
-                                         let FondoOjo = serviceBL.ValoresComponente(pstrserviceId, Constants.FONDO_OJO_ID)
-                                         let TestColores = serviceBL.ValoresComponente(pstrserviceId, Constants.TEST_ISHIHARA_ID)
-                                         let TestEsterepsis = serviceBL.ValoresComponente(pstrserviceId, Constants.TEST_ESTEREOPSIS_ID)
-                                         let Campimetria = serviceBL.ValoresComponente(pstrserviceId, Constants.CAMPIMETRIA_ID)
-                                         let Tonometria = serviceBL.ValoresComponente(pstrserviceId, Constants.TONOMETRIA_ID)
+                var sql = (from a in objEntity.ToList()
 
+                            select new ReportOftalmologia
+                            {
+                                v_ServiceId = a.v_ServiceId,
+                                NombrePaciente = a.NombrePaciente,
+                                EmprresaTrabajadora = a.EmprresaTrabajadora,
+                                FechaServicio = a.FechaServicio,
+                                FechaNacimiento = a.FechaNacimiento,
+                                Edad = GetAge(a.FechaNacimiento),
+                                PuestoTrabajo = a.PuestoTrabajo,
+                                TipoEso = a.TipoEso,
+                                USO_DE_CORRECTORES = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000172") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000172").v_Value1,
 
+                                HuellaPaciente = a.HuellaPaciente,
+                                FirmaPaciente = a.FirmaPaciente,
+                                SI  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000224") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000224").v_Value1,
 
-                                         select new ReportOftalmologia
-                                         {
-                                             v_ServiceId = a.v_ServiceId,
-                                             NombrePaciente = a.NombrePaciente,
-                                             EmprresaTrabajadora = a.EmprresaTrabajadora,
-                                             FechaServicio = a.FechaServicio,
-                                             FechaNacimiento = a.FechaNacimiento,
-                                             Edad = GetAge(a.FechaNacimiento),
-                                             PuestoTrabajo = a.PuestoTrabajo,
-                                             USO_DE_CORRECTORES = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000172") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000172").v_Value1,
+                                NO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000719") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000719").v_Value1,
 
-                                             
-                                             SI  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000224") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000224").v_Value1,
+                                ULTIMAREFRACCION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000225") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000225").v_Value1,
 
-                                             NO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000719") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000719").v_Value1,
+                                DIABETES  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000176") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000176").v_Value1,
 
-                                             ULTIMAREFRACCION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000225") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000225").v_Value1,
+                                HIPERTENSION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000175") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000175").v_Value1,
 
-                                             DIABETES  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000176") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000176").v_Value1,
+                                SUSTQUIMICAS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000180") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000180").v_Value1,
 
-                                             HIPERTENSION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000175") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000175").v_Value1,
+                                EXPRADIACION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000182") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000182").v_Value1,
 
-                                             SUSTQUIMICAS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000180") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000180").v_Value1,
+                                MIOPIA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000709") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000709").v_Value1,
 
-                                             EXPRADIACION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000182") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000182").v_Value1,
+                                CIRUGIAOCULAR  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000181") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000181").v_Value1,
 
-                                             MIOPIA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000709") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000709").v_Value1,
+                                TRAUMAOCULAR  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000178") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000178").v_Value1,
 
-                                             CIRUGIAOCULAR  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000181") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000181").v_Value1,
+                                GLAUCOMA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000177") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000177").v_Value1,
 
-                                             TRAUMAOCULAR  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000178") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000178").v_Value1,
+                                ASTIGMATISMO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000179") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000179").v_Value1,
 
-                                             GLAUCOMA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000177") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000177").v_Value1,
+                                OTROSESPECIFICAR  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000710") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000710").v_Value1,
 
-                                             ASTIGMATISMO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000179") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000179").v_Value1,
+                                SINPATOLOGIAS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002092") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002092").v_Value1,
 
-                                             OTROSESPECIFICAR  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000710") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000710").v_Value1,
+                                OTRASPATOLOGIA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002091") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002091").v_Value1,
 
-                                             SINPATOLOGIAS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002092") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002092").v_Value1,
+                                PTOSISPALPEBRAL  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002084") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002084").v_Value1,
 
-                                             OTRASPATOLOGIA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002091") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002091").v_Value1,
+                                CONJUNTIVITIS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002085") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002085").v_Value1,
 
-                                             PTOSISPALPEBRAL  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002084") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002084").v_Value1,
+                                PTERIGIUM  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002086") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002086").v_Value1,
 
-                                             CONJUNTIVITIS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002085") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002085").v_Value1,
+                                ESTRABISMO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002087") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002087").v_Value1,
 
-                                             PTERIGIUM  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002086") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002086").v_Value1,
+                                TRANSCORNEA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002088") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002088").v_Value1,
 
-                                             ESTRABISMO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002087") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002087").v_Value1,
+                                CATARATAS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002089") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002089").v_Value1,
 
-                                             TRANSCORNEA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002088") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002088").v_Value1,
+                                CHALAZION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002090") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002090").v_Value1,
 
-                                             CATARATAS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002089") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002089").v_Value1,
+                                ODSCLEJOS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000637") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000637").v_Value1,
 
-                                             CHALAZION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002090") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002090").v_Value1,
+                                OI_SC_LEJOS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000638") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000638").v_Value1,
 
-                                             ODSCLEJOS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000637") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000637").v_Value1,
+                                OD_CC_LEJOS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000639") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000639").v_Value1,
 
-                                             OI_SC_LEJOS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000638") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000638").v_Value1,
+                                OI_CC_LEJOS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000647") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000647").v_Value1,
 
-                                             OD_CC_LEJOS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000639") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000639").v_Value1,
+                                OD_AE_LEJOS2  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002078") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002078").v_Value1,
 
-                                             OI_CC_LEJOS  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000647") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000647").v_Value1,
+                                OI_AE_LEJOS2  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002079") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002079").v_Value1,
 
-                                             OD_AE_LEJOS2  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002078") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002078").v_Value1,
+                                SC_LEJOSOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000234") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000234").v_Value1,
 
-                                             OI_AE_LEJOS2  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002079") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002079").v_Value1,
+                                SCLEJOSOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000230") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000230").v_Value1,
 
-                                             SC_LEJOSOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000234") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000234").v_Value1,
+                                CCLEJOSOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000231") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000231").v_Value1,
 
-                                             SCLEJOSOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000230") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000230").v_Value1,
+                                CCLEJOSOJ_IZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000236") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000236").v_Value1,
 
-                                             CCLEJOSOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000231") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000231").v_Value1,
+                                AELEJOSOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002080") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002080").v_Value1,
 
-                                             CCLEJOSOJ_IZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000236") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000236").v_Value1,
+                                AELEJOSOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002081") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002081").v_Value1,
 
-                                             AELEJOSOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002080") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002080").v_Value1,
+                                SCCERCAOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000233") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000233").v_Value1,
 
-                                             AELEJOSOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002081") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002081").v_Value1,
+                                S_CCERCAOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000227") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000227").v_Value1,
 
-                                             SCCERCAOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000233") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000233").v_Value1,
+                                CCCERCAOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000235") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000235").v_Value1,
 
-                                             S_CCERCAOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000227") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000227").v_Value1,
+                                CCCERCAOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000646") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000646").v_Value1,
 
-                                             CCCERCAOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000235") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000235").v_Value1,
+                                AECERCAOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002082") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002082").v_Value1,
 
-                                             CCCERCAOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000646") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000646").v_Value1,
+                                AECERCAOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002083") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002083").v_Value1,
 
-                                             AECERCAOJODERECHO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002082") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002082").v_Value1,
+                                NORMAL  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000711") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000711").v_Value1,
 
-                                             AECERCAOJOIZQUIERDO  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002083") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002083").v_Value1,
+                                ANORMAL  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712").v_Value1,
 
-                                             NORMAL  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000711") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000711").v_Value1,
+                                DESCRIPCION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000226") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000226").v_Value1,
 
-                                             ANORMAL  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712").v_Value1,
+                                EMETROPE  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002071") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002071").v_Value1,
 
-                                             DESCRIPCION  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1,
+                                PRESBICIACORREGIDA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002073") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002073").v_Value1,
 
-                                             EMETROPE  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002071") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002071").v_Value1,
+                                AMETROPIACORREGIDA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002072") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002072").v_Value1,
 
-                                             PRESBICIACORREGIDA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002073") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002073").v_Value1,
+                                PRESBICIANOCORREGIDA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002074") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002074").v_Value1,
 
-                                             AMETROPIACORREGIDA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002072") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002072").v_Value1,
+                                AMETROPIANOCORREGIA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002075") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002075").v_Value1,
 
-                                             PRESBICIANOCORREGIDA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002074") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002074").v_Value1,
+                                AMBLIOPIA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002076") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002076").v_Value1,
 
-                                             AMETROPIANOCORREGIA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002075") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002075").v_Value1,
+                                AMETROPIACORREGIDAPARCIAL = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002077") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002077").v_Value1,
 
-                                             AMBLIOPIA  = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002076") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002076").v_Value1,
+                                DISMINUCIONDELA_VISIONUNOJO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002152") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002152").v_Value1,
 
-                                            AMETROPIACORREGIDAPARCIAL = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002077") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002077").v_Value1,
+                                DISMINUCIONDELAVISIONBILATERAL = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002153") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002153").v_Value1,
 
-                                            DISMINUCIONDELA_VISIONUNOJO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002152") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002152").v_Value1,
 
-                                            DISMINUCIONDELAVISIONBILATERAL = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002153") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002153").v_Value1,
+                                PARPADOOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000251") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000251").v_Value1,
 
+                                PARPADOOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000252") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000252").v_Value1,
 
-                                            PARPADOOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000251") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000251").v_Value1,
+                                CONJUNTIVAOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000254") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000254").v_Value1,
 
-                                            PARPADOOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000252") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000252").v_Value1,
+                                CONJUNTIVAOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000255") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000255").v_Value1,
 
-                                            CONJUNTIVAOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000254") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000254").v_Value1,
+                                CORNEAOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000524") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000524").v_Value1,
 
-                                            CONJUNTIVAOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000255") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N002-MF000000255").v_Value1,
+                                CORNEAOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000525") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000525").v_Value1,
 
-                                            CORNEAOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000524") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000524").v_Value1,
+                                IRISOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000530") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000530").v_Value1,
 
-                                            CORNEAOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000525") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000525").v_Value1,
+                                IRISOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000531") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000531").v_Value1,
 
-                                            IRISOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000530") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000530").v_Value1,
+                                MOVOCULARESOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000533") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000533").v_Value1,
 
-                                            IRISOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000531") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000531").v_Value1,
+                                MOVOCULARESOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000534") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000534").v_Value1,
 
-                                            MOVOCULARESOJODERECHO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000533") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000533").v_Value1,
 
-                                            MOVOCULARESOJOIZQUIERDO = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000534") == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == "N009-MF000000534").v_Value1,
 
+                                NORMAL2 = oftalmo.Count == 0 || TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000711") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000711").v_Value1,
 
+                                ANORMAL2 = oftalmo.Count == 0 || TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000712") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712").v_Value1,
 
-                                            NORMAL2 = TestColores.Count == 0 || TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000717") == null ? string.Empty : TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000717").v_Value1,
+                                DESCRIPCION2 = oftalmo.Count == 0 || TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000522") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000522").v_Value1Name,
 
-                                            ANORMAL2 = TestColores.Count == 0 || TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000718") == null ? string.Empty : TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000718").v_Value1,
 
-                                            DESCRIPCION2 = TestColores.Count == 0 || TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000522") == null ? string.Empty : TestColores.Find(p => p.v_ComponentFieldId == "N009-MF000000522").v_Value1Name,
 
 
+                                NORMAL3 = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000343") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000343").v_Value1,
 
+                                ANORMAL3 = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000342") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000342").v_Value1,
 
-                                            NORMAL3 = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000343") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000343").v_Value1,
+                                ENCANDILAMIENTO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000226") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000226").v_Value1,
 
-                                            ANORMAL3 = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000342") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000342").v_Value1,
+                                TIEMPO = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000258") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000258").v_Value1,
 
-                                            ENCANDILAMIENTO = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000226") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000226").v_Value1,
+                                RECUPERACION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002093") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002093").v_Value1,
 
-                                            TIEMPO = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000258") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000258").v_Value1,
 
-                                            RECUPERACION = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N009-MF000002093") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N009-MF000002093").v_Value1,
 
 
+                                CAMPIMETRIAOD = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002094") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002094").v_Value1,
 
+                                CAMPIMETRIAOI = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002095") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002095").v_Value1,
 
-                                            CAMPIMETRIAOD = Campimetria.Count == 0 || Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002094") == null ? string.Empty : Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002094").v_Value1,
 
-                                            CAMPIMETRIAOI = Campimetria.Count == 0 || Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002095") == null ? string.Empty : Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002095").v_Value1,
+                                TONOMETRIAOD = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002096") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002096").v_Value1,
 
+                                TONOMETRIAOI = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002097") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002097").v_Value1,
 
-                                            TONOMETRIAOD = Tonometria.Count == 0 || Tonometria.Find(p => p.v_ComponentFieldId == "N009-MF000002096") == null ? string.Empty : Tonometria.Find(p => p.v_ComponentFieldId == "N009-MF000002096").v_Value1,
+                                OFTALMOLOGIA_CRISTALINO_OJO_DERECHO_ID = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == Constants.OFTALMOLOGIA_CRISTALINO_OJO_DERECHO_ID) == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == Constants.OFTALMOLOGIA_CRISTALINO_OJO_DERECHO_ID).v_Value1,
 
-                                            TONOMETRIAOI = Tonometria.Count == 0 || Tonometria.Find(p => p.v_ComponentFieldId == "N009-MF000002097") == null ? string.Empty : Tonometria.Find(p => p.v_ComponentFieldId == "N009-MF000002097").v_Value1,
+                                OFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == Constants.OFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID) == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == Constants.OFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID).v_Value1,
 
-                                             OFTALMOLOGIA_CRISTALINO_OJO_DERECHO_ID = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == Constants.OFTALMOLOGIA_CRISTALINO_OJO_DERECHO_ID) == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == Constants.OFTALMOLOGIA_CRISTALINO_OJO_DERECHO_ID).v_Value1,
 
-                                             OFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID = FondoOjo.Count == 0 || FondoOjo.Find(p => p.v_ComponentFieldId == Constants.OFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID) == null ? string.Empty : FondoOjo.Find(p => p.v_ComponentFieldId == Constants.OFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID).v_Value1,
+                                FirmaDoctor = a.FirmaDoctor,
+                                FirmaTecnologo = a.FirmaTecnologo,
+                                NombreTecnologo = a.NombreTecnologo,
 
+                                b_Logo = MedicalCenter.b_Image,
+                                EmpresaPropietaria = MedicalCenter.v_Name,
+                                EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                                EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                                EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+                                Dx = new ServiceBL().GetDiagnosticByServiceIdAndCategoryId(pstrserviceId, 14),
+                                Recomendaciones = new ServiceBL().ConcatenateRecomendacionesByCategoria(14,pstrserviceId)
 
-                                            FirmaDoctor = a.FirmaDoctor,
-                                            FirmaTecnologo = a.FirmaTecnologo,
-                                            NombreTecnologo = a.NombreTecnologo,
-
-                                            b_Logo = MedicalCenter.b_Image,
-                                            EmpresaPropietaria = MedicalCenter.v_Name,
-                                            EmpresaPropietariaDireccion = MedicalCenter.v_Address,
-                                            EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-                                            EmpresaPropietariaEmail = MedicalCenter.v_Mail,
-                                             Dx = new ServiceBL().GetDiagnosticByServiceIdAndCategoryId(pstrserviceId, 14),
-                                             Recomendaciones = new ServiceBL().ConcatenateRecomendacionesByCategoria(14,pstrserviceId)
-
-                                        }).ToList();
-
-                                                    return sql;
+                            }).ToList();
+                        return sql;
                 
-                                                }
-                                                catch (Exception)
-                                                {
+            }
+            catch (Exception)
+            {
 
-                                                    throw;
-                                                }
+                throw;
+            }
         }
 
         public string GetDisgnosticsByServiceIdAndComponentConcatec(string pstrServiceId, string pstrComponentId)
@@ -2204,8 +2207,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
                                  from B in B_join.DefaultIfEmpty()
 
-                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 join C in dbContext.organization on B.v_EmployerOrganizationId equals C.v_OrganizationId into C_join
                                  from C in C_join.DefaultIfEmpty()
+                                 //gaaa
+                                 join C1 in dbContext.organization on B.v_CustomerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
                       
                                  join P1 in dbContext.person on new { a = A.v_PersonId }
                                          equals new { a = P1.v_PersonId } into P1_join
@@ -2239,6 +2245,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      NroDocumento = P1.v_DocNumber,
                                      Ocupacion = P1.v_CurrentOccupation,
                                      Empresa = C.v_Name,
+                                     Contratista = C1.v_Name,
                                      FirmaTrabajador = P1.b_RubricImage,
                                      HuellaTrabajador = P1.b_FingerPrintImage,
                                      LugarProcedencia = varDistri + "-" + varProv + "-" + varDpto, // Santa Anita - Lima - Lima
@@ -2260,9 +2267,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                NroDocumento = a.NroDocumento,
                                Ocupacion = a.Ocupacion,
                                Empresa = a.Empresa,
+                               Contratista = a.Contratista,
                                FirmaTrabajador = a.FirmaTrabajador,
                                HuellaTrabajador = a.HuellaTrabajador,
-
                                b_Logo = MedicalCenter.b_Image,
                                EmpresaPropietaria = MedicalCenter.v_Name,
                                EmpresaPropietariaDireccion = MedicalCenter.v_Address,
@@ -5156,6 +5163,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                  i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
                                  i_NumberLivingChildren = B.i_NumberLivingChildren,
                                  i_NumberDependentChildren = B.i_NumberDependentChildren,
+                                 i_NumberLiveChildren = B.i_NumberLiveChildren,
+                                 i_NumberDeadChildren = B.i_NumberDeadChildren,
                                  v_DocNumber = B.v_DocNumber
 
                              }).Concat
@@ -5190,6 +5199,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                  i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
                                  i_NumberLivingChildren = B.i_NumberLivingChildren,
                                  i_NumberDependentChildren = B.i_NumberDependentChildren,
+                                 i_NumberLiveChildren = B.i_NumberLiveChildren,
+                                 i_NumberDeadChildren = B.i_NumberDeadChildren,
                                  v_DocNumber = B.v_DocNumber
                              }).OrderBy("v_FirstLastName").Take(pintResultsPerPage);
 

@@ -405,7 +405,23 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnHUELLAPACIENTE;
             
-            private global::System.Data.DataColumn columnLOGOCLINICA;
+            private global::System.Data.DataColumn columnLOGOCLIENTE;
+            
+            private global::System.Data.DataColumn columnNroEmbarazos;
+            
+            private global::System.Data.DataColumn columnNroAbortos;
+            
+            private global::System.Data.DataColumn columnOtrosTipos;
+            
+            private global::System.Data.DataColumn columnUitlizaMedProtec;
+            
+            private global::System.Data.DataColumn columnSiMedProtecDetalle;
+            
+            private global::System.Data.DataColumn columnTipoDeProtec;
+            
+            private global::System.Data.DataColumn columnSIFAMPROBDETALLAR1;
+            
+            private global::System.Data.DataColumn columnOTROSTRATANTIB1;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -946,9 +962,73 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn LOGOCLINICAColumn {
+            public global::System.Data.DataColumn LOGOCLIENTEColumn {
                 get {
-                    return this.columnLOGOCLINICA;
+                    return this.columnLOGOCLIENTE;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NroEmbarazosColumn {
+                get {
+                    return this.columnNroEmbarazos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NroAbortosColumn {
+                get {
+                    return this.columnNroAbortos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OtrosTiposColumn {
+                get {
+                    return this.columnOtrosTipos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UitlizaMedProtecColumn {
+                get {
+                    return this.columnUitlizaMedProtec;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SiMedProtecDetalleColumn {
+                get {
+                    return this.columnSiMedProtecDetalle;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TipoDeProtecColumn {
+                get {
+                    return this.columnTipoDeProtec;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SIFAMPROBDETALLAR1Column {
+                get {
+                    return this.columnSIFAMPROBDETALLAR1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OTROSTRATANTIB1Column {
+                get {
+                    return this.columnOTROSTRATANTIB1;
                 }
             }
             
@@ -1053,7 +1133,15 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         byte[] FIRMAPACIENTE, 
                         byte[] FIRMAMEDICO, 
                         byte[] HUELLAPACIENTE, 
-                        byte[] LOGOCLINICA) {
+                        byte[] LOGOCLIENTE, 
+                        string NroEmbarazos, 
+                        string NroAbortos, 
+                        string OtrosTipos, 
+                        string UitlizaMedProtec, 
+                        string SiMedProtecDetalle, 
+                        string TipoDeProtec, 
+                        string SIFAMPROBDETALLAR1, 
+                        string OTROSTRATANTIB1) {
                 dtCuestAudioRow rowdtCuestAudioRow = ((dtCuestAudioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NOMBREPACIENTE,
@@ -1119,7 +1207,15 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         FIRMAPACIENTE,
                         FIRMAMEDICO,
                         HUELLAPACIENTE,
-                        LOGOCLINICA};
+                        LOGOCLIENTE,
+                        NroEmbarazos,
+                        NroAbortos,
+                        OtrosTipos,
+                        UitlizaMedProtec,
+                        SiMedProtecDetalle,
+                        TipoDeProtec,
+                        SIFAMPROBDETALLAR1,
+                        OTROSTRATANTIB1};
                 rowdtCuestAudioRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtCuestAudioRow);
                 return rowdtCuestAudioRow;
@@ -1205,7 +1301,15 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnFIRMAPACIENTE = base.Columns["FIRMAPACIENTE"];
                 this.columnFIRMAMEDICO = base.Columns["FIRMAMEDICO"];
                 this.columnHUELLAPACIENTE = base.Columns["HUELLAPACIENTE"];
-                this.columnLOGOCLINICA = base.Columns["LOGOCLINICA"];
+                this.columnLOGOCLIENTE = base.Columns["LOGOCLIENTE"];
+                this.columnNroEmbarazos = base.Columns["NroEmbarazos"];
+                this.columnNroAbortos = base.Columns["NroAbortos"];
+                this.columnOtrosTipos = base.Columns["OtrosTipos"];
+                this.columnUitlizaMedProtec = base.Columns["UitlizaMedProtec"];
+                this.columnSiMedProtecDetalle = base.Columns["SiMedProtecDetalle"];
+                this.columnTipoDeProtec = base.Columns["TipoDeProtec"];
+                this.columnSIFAMPROBDETALLAR1 = base.Columns["SIFAMPROBDETALLAR1"];
+                this.columnOTROSTRATANTIB1 = base.Columns["OTROSTRATANTIB1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1337,8 +1441,24 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnFIRMAMEDICO);
                 this.columnHUELLAPACIENTE = new global::System.Data.DataColumn("HUELLAPACIENTE", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHUELLAPACIENTE);
-                this.columnLOGOCLINICA = new global::System.Data.DataColumn("LOGOCLINICA", typeof(byte[]), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnLOGOCLINICA);
+                this.columnLOGOCLIENTE = new global::System.Data.DataColumn("LOGOCLIENTE", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLOGOCLIENTE);
+                this.columnNroEmbarazos = new global::System.Data.DataColumn("NroEmbarazos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNroEmbarazos);
+                this.columnNroAbortos = new global::System.Data.DataColumn("NroAbortos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNroAbortos);
+                this.columnOtrosTipos = new global::System.Data.DataColumn("OtrosTipos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOtrosTipos);
+                this.columnUitlizaMedProtec = new global::System.Data.DataColumn("UitlizaMedProtec", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUitlizaMedProtec);
+                this.columnSiMedProtecDetalle = new global::System.Data.DataColumn("SiMedProtecDetalle", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSiMedProtecDetalle);
+                this.columnTipoDeProtec = new global::System.Data.DataColumn("TipoDeProtec", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTipoDeProtec);
+                this.columnSIFAMPROBDETALLAR1 = new global::System.Data.DataColumn("SIFAMPROBDETALLAR1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSIFAMPROBDETALLAR1);
+                this.columnOTROSTRATANTIB1 = new global::System.Data.DataColumn("OTROSTRATANTIB1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOTROSTRATANTIB1);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2490,17 +2610,145 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public byte[] LOGOCLINICA {
+            public byte[] LOGOCLIENTE {
                 get {
                     try {
-                        return ((byte[])(this[this.tabledtCuestAudio.LOGOCLINICAColumn]));
+                        return ((byte[])(this[this.tabledtCuestAudio.LOGOCLIENTEColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'LOGOCLINICA\' in table \'dtCuestAudio\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'LOGOCLIENTE\' in table \'dtCuestAudio\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tabledtCuestAudio.LOGOCLINICAColumn] = value;
+                    this[this.tabledtCuestAudio.LOGOCLIENTEColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NroEmbarazos {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestAudio.NroEmbarazosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NroEmbarazos\' in table \'dtCuestAudio\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestAudio.NroEmbarazosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NroAbortos {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestAudio.NroAbortosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'NroAbortos\' in table \'dtCuestAudio\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestAudio.NroAbortosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OtrosTipos {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestAudio.OtrosTiposColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OtrosTipos\' in table \'dtCuestAudio\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestAudio.OtrosTiposColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UitlizaMedProtec {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestAudio.UitlizaMedProtecColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UitlizaMedProtec\' in table \'dtCuestAudio\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestAudio.UitlizaMedProtecColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SiMedProtecDetalle {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestAudio.SiMedProtecDetalleColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SiMedProtecDetalle\' in table \'dtCuestAudio\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestAudio.SiMedProtecDetalleColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string TipoDeProtec {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestAudio.TipoDeProtecColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'TipoDeProtec\' in table \'dtCuestAudio\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestAudio.TipoDeProtecColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string SIFAMPROBDETALLAR1 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestAudio.SIFAMPROBDETALLAR1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'SIFAMPROBDETALLAR1\' in table \'dtCuestAudio\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestAudio.SIFAMPROBDETALLAR1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string OTROSTRATANTIB1 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestAudio.OTROSTRATANTIB1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OTROSTRATANTIB1\' in table \'dtCuestAudio\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestAudio.OTROSTRATANTIB1Column] = value;
                 }
             }
             
@@ -3262,14 +3510,110 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsLOGOCLINICANull() {
-                return this.IsNull(this.tabledtCuestAudio.LOGOCLINICAColumn);
+            public bool IsLOGOCLIENTENull() {
+                return this.IsNull(this.tabledtCuestAudio.LOGOCLIENTEColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetLOGOCLINICANull() {
-                this[this.tabledtCuestAudio.LOGOCLINICAColumn] = global::System.Convert.DBNull;
+            public void SetLOGOCLIENTENull() {
+                this[this.tabledtCuestAudio.LOGOCLIENTEColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNroEmbarazosNull() {
+                return this.IsNull(this.tabledtCuestAudio.NroEmbarazosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNroEmbarazosNull() {
+                this[this.tabledtCuestAudio.NroEmbarazosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNroAbortosNull() {
+                return this.IsNull(this.tabledtCuestAudio.NroAbortosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNroAbortosNull() {
+                this[this.tabledtCuestAudio.NroAbortosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOtrosTiposNull() {
+                return this.IsNull(this.tabledtCuestAudio.OtrosTiposColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOtrosTiposNull() {
+                this[this.tabledtCuestAudio.OtrosTiposColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUitlizaMedProtecNull() {
+                return this.IsNull(this.tabledtCuestAudio.UitlizaMedProtecColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUitlizaMedProtecNull() {
+                this[this.tabledtCuestAudio.UitlizaMedProtecColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSiMedProtecDetalleNull() {
+                return this.IsNull(this.tabledtCuestAudio.SiMedProtecDetalleColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSiMedProtecDetalleNull() {
+                this[this.tabledtCuestAudio.SiMedProtecDetalleColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsTipoDeProtecNull() {
+                return this.IsNull(this.tabledtCuestAudio.TipoDeProtecColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetTipoDeProtecNull() {
+                this[this.tabledtCuestAudio.TipoDeProtecColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSIFAMPROBDETALLAR1Null() {
+                return this.IsNull(this.tabledtCuestAudio.SIFAMPROBDETALLAR1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSIFAMPROBDETALLAR1Null() {
+                this[this.tabledtCuestAudio.SIFAMPROBDETALLAR1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOTROSTRATANTIB1Null() {
+                return this.IsNull(this.tabledtCuestAudio.OTROSTRATANTIB1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOTROSTRATANTIB1Null() {
+                this[this.tabledtCuestAudio.OTROSTRATANTIB1Column] = global::System.Convert.DBNull;
             }
         }
         

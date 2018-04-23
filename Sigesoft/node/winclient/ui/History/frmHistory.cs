@@ -41,6 +41,8 @@ namespace Sigesoft.Node.WinClient.UI
         string _DiagnosticDetail;
         DateTime? _Date =null;
         string _TreatmentSite;
+        string _Hospital;
+        string _Complicaciones;
         string _PacientId;
         string _GroupPopupFamilyMedical;
         byte[] _personImage;
@@ -569,139 +571,9 @@ namespace Sigesoft.Node.WinClient.UI
             return _objData;
         }
         
-        //private void LoadTreePersonMedical(int pintItemId)
-        //{
-        //    OperationResult objOperationResult = new OperationResult();
-        //    SystemParameterBL objSystemParameterBL = new SystemParameterBL();
-        //    List<SystemParameterList> objSystemParameterList = new List<SystemParameterList>();
-
-        //    //treeViewPersonMedical.Nodes.Clear();
-        //    TreeNode nodePrimary = null;
-
-        //    objSystemParameterList = objSystemParameterBL.GetSystemParametersPagedAndFiltered(ref objOperationResult, 0, null, "", "i_GroupId==" + pintItemId, 0);
-
-
-            
-
-        //    foreach (var item in objSystemParameterList)
-        //    {
-        //        switch (item.i_ParentParameterId.ToString())
-        //        {
-        //            #region Add Main Nodes
-        //            case "-1": // 1. Add Main nodes:
-        //                nodePrimary = new TreeNode();
-        //                nodePrimary.Text = item.v_Value1;
-        //                nodePrimary.Name = item.i_ParameterId.ToString();
-        //                //treeViewPersonMedical.Nodes.Add(nodePrimary);
-        //                break;
-        //            #endregion
-        //            default: // 2. Add Option nodes:
-        //                foreach (TreeNode tnitem in treeViewPersonMedical.Nodes)
-        //                {
-        //                    TreeNode tnOption = SelectChildrenRecursive(tnitem, item.i_ParentParameterId.ToString());
-
-        //                    if (tnOption != null)
-        //                    {
-        //                        TreeNode childNode = new TreeNode();
-        //                        childNode.Text = item.v_DiseasesName;
-        //                        childNode.Name = item.v_Value1.ToString();
-        //                        tnOption.Nodes.Add(childNode);
-        //                        break;
-        //                    }
-        //                }
-        //                break;
-        //        }
-        //    }
-        //    treeViewPersonMedical.ExpandAll();
-        //}        
-        
-        //private void btnMovePersonMedical_Click(object sender, EventArgs e)
-        //{
-        //    OperationResult objOperationResult = new OperationResult();
-        //    SystemParameterBL objSystemParameterBL = new SystemParameterBL();
-        //    SystemParameterList objSystemParameterList = new SystemParameterList();
-
-        //    PersonMedicalHistoryList objPersonMedicalHistory = new PersonMedicalHistoryList();
-
-        //    //Si no se selecciona nada sale
-        //    if (treeViewPersonMedical.SelectedNode == null) return;
-        //    //Si la lista temporal es null se la setea con una lista vacia
-        //    if (_TempPersonMedicalHistoryList == null)
-        //    {
-        //        _TempPersonMedicalHistoryList = new List<PersonMedicalHistoryList>();
-        //    }
-            
-        //    string value1 = treeViewPersonMedical.SelectedNode.Name.ToString();
-        //    objSystemParameterList = objSystemParameterBL.GetParentNameSystemParameter(ref objOperationResult, value1, 147);
-
-        //    if (objSystemParameterList == null) return;
-            
-        //    History.frmPersonMedicalPopup frm = new History.frmPersonMedicalPopup(treeViewPersonMedical.SelectedNode.Text, -1, DateTime.Now.Date, null, DateTime.Now.Date, null);
-        //    frm.ShowDialog();
-        //    if (frm.DialogResult != System.Windows.Forms.DialogResult.OK) return;
-        //    string DiseasesId = treeViewPersonMedical.SelectedNode.Name.ToString();
-        //    //Busco en la lista temporal si ya se agrego el item seleccionado
-        //    var findResult = _TempPersonMedicalHistoryList.Find(p => p.v_DiseasesId == DiseasesId && p.d_StartDate == frm._StartDate);
-        //    if (findResult == null)
-        //    {
-        //        objPersonMedicalHistory.v_PersonMedicalHistoryId = Guid.NewGuid().ToString();
-        //        objPersonMedicalHistory.v_PersonId = _PacientId;
-        //        objPersonMedicalHistory.v_DiseasesId = DiseasesId;
-        //        objPersonMedicalHistory.v_GroupName = objSystemParameterList.v_Value1;
-        //        objPersonMedicalHistory.i_TypeDiagnosticId = frm._TypeDiagnosticId;
-        //        objPersonMedicalHistory.v_DiseasesName = treeViewPersonMedical.SelectedNode.Text.ToString();
-        //        objPersonMedicalHistory.v_TypeDiagnosticName = frm._TypeDiagnosticName;
-        //        objPersonMedicalHistory.d_StartDate = frm._StartDate;
-        //        objPersonMedicalHistory.v_DiagnosticDetail = frm._DiagnosticDetail;
-        //        objPersonMedicalHistory.d_Date = frm._Date;
-        //        objPersonMedicalHistory.v_TreatmentSite = frm._TreatmentSite;
-        //        objPersonMedicalHistory.i_RecordStatus = (int)RecordStatus.Agregado;
-        //        objPersonMedicalHistory.i_RecordType = (int)RecordType.Temporal;
-        //        //objPersonMedicalHistory.i_Answer = 
-        //        _TempPersonMedicalHistoryList.Add(objPersonMedicalHistory);
-        //    }
-        //    else
-        //    {
-        //        if (findResult.i_RecordStatus == (int)RecordStatus.EliminadoLogico)
-        //        {
-        //            if (findResult.i_RecordType == (int)RecordType.NoTemporal)// El registro Tiene in ID de BD
-        //            {
-        //                findResult.i_TypeDiagnosticId = frm._TypeDiagnosticId;
-        //                findResult.d_StartDate = frm._StartDate;
-        //                findResult.v_DiagnosticDetail = frm._DiagnosticDetail;
-        //                findResult.d_Date = frm._Date;
-        //                findResult.v_TreatmentSite = frm._TreatmentSite;
-        //                findResult.i_RecordStatus = (int)RecordStatus.Grabado;
-        //            }
-        //            else if (findResult.i_RecordType == (int)RecordType.Temporal) // El registro tiene un ID temporal [GUID]
-        //            {
-        //                findResult.i_TypeDiagnosticId = frm._TypeDiagnosticId;
-        //                findResult.d_StartDate = frm._StartDate;
-        //                findResult.v_DiagnosticDetail = frm._DiagnosticDetail;
-        //                findResult.d_Date = frm._Date;
-        //                findResult.v_TreatmentSite = frm._TreatmentSite;
-        //                findResult.i_RecordStatus = (int)RecordStatus.Agregado;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Por favor seleccione otro item. ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        //            return;
-        //        }
-        //    }
-        //    var dataList = _TempPersonMedicalHistoryList.FindAll(p => p.i_RecordStatus != (int)RecordStatus.EliminadoLogico);
-
-        //    // Cargar grilla
-        //    grdDataPersonMedical.DataSource = new PersonMedicalHistoryList();
-        //    grdDataPersonMedical.DataSource = dataList;
-        //    grdDataPersonMedical.Refresh();
-
-
-        //}
-
         private void ToolStripMenuEditPersonMedical_Click(object sender, EventArgs e)
         {
-            History.frmPersonMedicalPopup frm = new History.frmPersonMedicalPopup(_DiagnosticName, _TypeDiagnosticId, _StartDate, _DiagnosticDetail, _Date, _TreatmentSite);
+            History.frmPersonMedicalPopup frm = new History.frmPersonMedicalPopup(_DiagnosticName, _TypeDiagnosticId, _StartDate, _DiagnosticDetail, _Date, _TreatmentSite, _Hospital, _Complicaciones);
             frm.ShowDialog();
 
             if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
@@ -721,7 +593,8 @@ namespace Sigesoft.Node.WinClient.UI
                 _objPersonMedicalHistoryamc.d_StartDate = frm._StartDate;
                 _objPersonMedicalHistoryamc.v_DiagnosticDetail = frm._DiagnosticDetail;
                 _objPersonMedicalHistoryamc.v_TreatmentSite = frm._TreatmentSite;
-
+                _objPersonMedicalHistoryamc.NombreHospital = frm._Hospital;
+                _objPersonMedicalHistoryamc.v_Complicaciones = frm._Complicaciones;
                 _TempPersonMedicalHistoryList[_IndexPersonMedicalHistoryList] = _objPersonMedicalHistoryamc;
 
                 // Cargar grilla
@@ -775,6 +648,8 @@ namespace Sigesoft.Node.WinClient.UI
                     _StartDate = DateTime.Parse(grdDataPersonMedical.Rows[row.Index].Cells["d_StartDate"].Value.ToString());
                     _DiagnosticDetail = grdDataPersonMedical.Rows[row.Index].Cells["v_DiagnosticDetail"].Value.ToString();
                     _TreatmentSite = grdDataPersonMedical.Rows[row.Index].Cells["v_TreatmentSite"].Value.ToString();
+                    _Hospital = grdDataPersonMedical.Rows[row.Index].Cells["NombreHospital"].Value.ToString();
+                    _Complicaciones = grdDataPersonMedical.Rows[row.Index].Cells["v_Complicaciones"].Value.ToString();
                     _PersonMedicalHistoryId = grdDataPersonMedical.Rows[row.Index].Cells["v_PersonMedicalHistoryId"].Value.ToString();
                     _objPersonMedicalHistoryamc = _TempPersonMedicalHistoryList.FindAll(p => p.v_PersonMedicalHistoryId == _PersonMedicalHistoryId).FirstOrDefault();
                     _IndexPersonMedicalHistoryList = _TempPersonMedicalHistoryList.FindIndex(p => p.v_PersonMedicalHistoryId == _PersonMedicalHistoryId);
@@ -831,6 +706,8 @@ namespace Sigesoft.Node.WinClient.UI
                     personmedicalhistoryDtoDto.d_StartDate = item.d_StartDate;
                     personmedicalhistoryDtoDto.v_DiagnosticDetail = item.v_DiagnosticDetail;
                     personmedicalhistoryDtoDto.v_TreatmentSite = item.v_TreatmentSite;
+                    personmedicalhistoryDtoDto.NombreHospital = item.NombreHospital;
+                    personmedicalhistoryDtoDto.v_Complicaciones = item.v_Complicaciones;
                     personmedicalhistoryDtoDto.i_AnswerId = item.i_Answer;
 
                     _personmedicalhistoryDto.Add(personmedicalhistoryDtoDto);
@@ -848,6 +725,8 @@ namespace Sigesoft.Node.WinClient.UI
                     personmedicalhistoryDtoDto.d_StartDate = item.d_StartDate;
                     personmedicalhistoryDtoDto.v_DiagnosticDetail = item.v_DiagnosticDetail;
                     personmedicalhistoryDtoDto.v_TreatmentSite = item.v_TreatmentSite;
+                    personmedicalhistoryDtoDto.NombreHospital = item.NombreHospital;
+                    personmedicalhistoryDtoDto.v_Complicaciones = item.v_Complicaciones;
                     personmedicalhistoryDtoDto.i_AnswerId = item.i_Answer;
                     _personmedicalhistoryUpdate.Add(personmedicalhistoryDtoDto);
                 }
@@ -875,6 +754,8 @@ namespace Sigesoft.Node.WinClient.UI
                     personmedicalhistoryDtoDto.d_StartDate = null;
                     personmedicalhistoryDtoDto.v_DiagnosticDetail = String.Empty;
                     personmedicalhistoryDtoDto.v_TreatmentSite = String.Empty;
+                    personmedicalhistoryDtoDto.NombreHospital = string.Empty;
+                    personmedicalhistoryDtoDto.v_Complicaciones = String.Empty;
                     personmedicalhistoryDtoDto.i_AnswerId = item.i_Answer;
 
                     _personmedicalhistoryDto.Add(personmedicalhistoryDtoDto);
@@ -919,7 +800,7 @@ namespace Sigesoft.Node.WinClient.UI
             if (frm.DialogResult == System.Windows.Forms.DialogResult.Cancel) return;
             objDiseasesList = frm._objDiseasesList;
 
-            History.frmPersonMedicalPopup frmPersonMedicalPopup = new History.frmPersonMedicalPopup(objDiseasesList.v_Name, -1, DateTime.Now, "", DateTime.Now, "");
+            History.frmPersonMedicalPopup frmPersonMedicalPopup = new History.frmPersonMedicalPopup(objDiseasesList.v_Name, -1, DateTime.Now, "", DateTime.Now, "","","");
             frmPersonMedicalPopup.ShowDialog();
 
             if (frmPersonMedicalPopup.DialogResult != DialogResult.OK) return;
@@ -938,6 +819,8 @@ namespace Sigesoft.Node.WinClient.UI
                 objPersonMedicalHistory.v_DiagnosticDetail = frmPersonMedicalPopup._DiagnosticDetail;
                 objPersonMedicalHistory.d_Date = frmPersonMedicalPopup._Date;
                 objPersonMedicalHistory.v_TreatmentSite = frmPersonMedicalPopup._TreatmentSite;
+                objPersonMedicalHistory.NombreHospital = frmPersonMedicalPopup._Hospital;
+                objPersonMedicalHistory.v_Complicaciones = frmPersonMedicalPopup._Complicaciones;
                 objPersonMedicalHistory.i_RecordStatus = (int)RecordStatus.Agregado;
                 objPersonMedicalHistory.i_RecordType = (int)RecordType.Temporal;
                 objPersonMedicalHistory.i_Answer = 1; // SI
@@ -954,6 +837,8 @@ namespace Sigesoft.Node.WinClient.UI
                         findResult.v_DiagnosticDetail = frmPersonMedicalPopup._DiagnosticDetail;
                         findResult.d_Date = frmPersonMedicalPopup._Date;
                         findResult.v_TreatmentSite = frmPersonMedicalPopup._TreatmentSite;
+                        findResult.NombreHospital = frmPersonMedicalPopup._Hospital;
+                        findResult.v_Complicaciones = frmPersonMedicalPopup._Complicaciones;
                         findResult.i_RecordStatus = (int)RecordStatus.Grabado;
                     }
                     else if (findResult.i_RecordType == (int)RecordType.Temporal) // El registro tiene un ID temporal [GUID]
@@ -963,6 +848,8 @@ namespace Sigesoft.Node.WinClient.UI
                         findResult.v_DiagnosticDetail = frmPersonMedicalPopup._DiagnosticDetail;
                         findResult.d_Date = frmPersonMedicalPopup._Date;
                         findResult.v_TreatmentSite = frmPersonMedicalPopup._TreatmentSite;
+                        findResult.NombreHospital = frmPersonMedicalPopup._Hospital;
+                        findResult.v_Complicaciones = frmPersonMedicalPopup._Complicaciones;
                         findResult.i_RecordStatus = (int)RecordStatus.Agregado;
                     }
                 }
@@ -2264,7 +2151,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 if (objSystemParameterList == null) return;
 
-                History.frmPersonMedicalPopup frm = new History.frmPersonMedicalPopup(Value2, -1, DateTime.Now.Date, null, DateTime.Now.Date, null);
+                History.frmPersonMedicalPopup frm = new History.frmPersonMedicalPopup(Value2, -1, DateTime.Now.Date, null, DateTime.Now.Date, null,null,null);
                 frm.ShowDialog();
                 if (frm.DialogResult != System.Windows.Forms.DialogResult.OK)
                 {
@@ -2336,6 +2223,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objPersonMedicalHistory.v_DiagnosticDetail = frm._DiagnosticDetail;
                     objPersonMedicalHistory.d_Date = frm._Date;
                     objPersonMedicalHistory.v_TreatmentSite = frm._TreatmentSite;
+                    objPersonMedicalHistory.NombreHospital = frm._Hospital;
+                    objPersonMedicalHistory.v_Complicaciones = frm._Complicaciones;
                     objPersonMedicalHistory.i_RecordStatus = (int)RecordStatus.Agregado;
                     objPersonMedicalHistory.i_RecordType = (int)RecordType.Temporal;
                     objPersonMedicalHistory.i_Answer = 1; // SI
@@ -2352,6 +2241,8 @@ namespace Sigesoft.Node.WinClient.UI
                             findResult.v_DiagnosticDetail = frm._DiagnosticDetail;
                             findResult.d_Date = frm._Date;
                             findResult.v_TreatmentSite = frm._TreatmentSite;
+                            findResult.NombreHospital = frm._Hospital;
+                            findResult.v_Complicaciones = frm._Complicaciones;
                             findResult.i_RecordStatus = (int)RecordStatus.Grabado;
                         }
                         else if (findResult.i_RecordType == (int)RecordType.Temporal) // El registro tiene un ID temporal [GUID]
@@ -2361,6 +2252,8 @@ namespace Sigesoft.Node.WinClient.UI
                             findResult.v_DiagnosticDetail = frm._DiagnosticDetail;
                             findResult.d_Date = frm._Date;
                             findResult.v_TreatmentSite = frm._TreatmentSite;
+                            findResult.NombreHospital = frm._Hospital;
+                            findResult.v_Complicaciones = frm._Complicaciones;
                             findResult.i_RecordStatus = (int)RecordStatus.Agregado;
                         }
                     }

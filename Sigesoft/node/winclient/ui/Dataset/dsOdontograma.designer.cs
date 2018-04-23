@@ -12,7 +12,6 @@
 
 namespace Sigesoft.Node.WinClient.UI.Dataset {
     
-    
     /// <summary>
     ///Represents a strongly typed in-memory cache of data.
     ///</summary>

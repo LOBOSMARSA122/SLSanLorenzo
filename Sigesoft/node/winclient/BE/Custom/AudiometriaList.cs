@@ -80,8 +80,8 @@ namespace Sigesoft.Node.WinClient.BE
 
         public string v_ServiceComponentId { get; set; }
         public string v_EsoTypeName { get; set; }
-        public string v_WorkingOrganizationName { get; set; }
-        public string v_FullWorkingOrganizationName { get; set; }
+        public string v_CustomerOrganizationName { get; set; }
+        public string v_EmployerOrganizationName { get; set; }
 
         public string MarcaAudiometria { get; set; }
         public string ModeloAudiometria { get; set; }
@@ -179,7 +179,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Sarampion1 { get; set; }
         public string UsdOtotoxicos { get; set; }
 
-        public string OTALGIA { get; set; }
+        public string Otalgia1 { get; set; }
 
         public string Departamento { get; set; }
         public string Provincia { get; set; }

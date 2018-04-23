@@ -69,6 +69,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                     serviceDTO.v_FechaUltimaMamo = txtFechaUltimaMamo.Text;
                     serviceDTO.v_ResultadoMamo = txtResultadoPAP.Text;
 
+                    serviceDTO.v_InicioVidaSexaul = txtVidaSexual.Text;
+                    serviceDTO.v_NroParejasActuales = txtNroParejasActuales.Text;
+                    serviceDTO.v_NroAbortos = txtNroAbortos.Text;
+                    serviceDTO.v_PrecisarCausas = txtNroCausa.Text;
+
                     // datos de cabecera del Servicio
                     serviceDTO.i_AptitudeStatusId = _AptitupESOId;
 
@@ -124,6 +129,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
             txtFechaUltimaMamo.Text = string.IsNullOrEmpty(personData.v_FechaUltimaMamo) ? "" : personData.v_FechaUltimaMamo;
             txtResultadoPAP.Text = string.IsNullOrEmpty(personData.v_ResultadosPAP) ? "" : personData.v_ResultadosPAP;
             txtResultadoMamo.Text = string.IsNullOrEmpty(personData.v_ResultadoMamo) ? "" : personData.v_ResultadoMamo;
+
+            txtVidaSexual.Text = string.IsNullOrEmpty(personData.v_InicioVidaSexaul) ? "" : personData.v_InicioVidaSexaul;
+            txtNroParejasActuales.Text = string.IsNullOrEmpty(personData.v_NroParejasActuales) ? "" : personData.v_NroParejasActuales;
+            txtNroAbortos.Text = string.IsNullOrEmpty(personData.v_NroAbortos) ? "" : personData.v_NroAbortos;
+            txtNroCausa.Text = string.IsNullOrEmpty(personData.v_PrecisarCausas) ? "" : personData.v_PrecisarCausas;
 
             if (personData.d_Fur != null)
             {
@@ -208,6 +218,16 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                 uvAnamnesis.GetValidationSettings(cbCalendario).Condition = new OperatorCondition(ConditionOperator.NotEquals, "", false, typeof(string));
                 uvAnamnesis.GetValidationSettings(cbCalendario).IsRequired = false;
             }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

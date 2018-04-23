@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistory));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HistoryId");
@@ -73,34 +74,36 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TreatmentSite");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_GroupName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NombreHospital");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Complicaciones");
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Frequency");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Comment");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TypeHabitsName");
-            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Comment");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TypeFamilyName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseaseName");
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHistory));
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnDelete = new System.Windows.Forms.Button();
@@ -247,7 +250,7 @@
             this.btnDelete.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Image = global::Sigesoft.Node.WinClient.UI.Resources.delete;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnDelete.Location = new System.Drawing.Point(856, 97);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
@@ -268,7 +271,7 @@
             this.btnEdit.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnEdit.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEdit.Location = new System.Drawing.Point(856, 69);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
@@ -648,13 +651,17 @@
             ultraGridColumn30.Header.Caption = "Grupo";
             ultraGridColumn30.Header.VisiblePosition = 0;
             ultraGridColumn30.Width = 202;
+            ultraGridColumn11.Header.VisiblePosition = 6;
+            ultraGridColumn14.Header.VisiblePosition = 7;
             ultraGridBand3.Columns.AddRange(new object[] {
             ultraGridColumn20,
             ultraGridColumn21,
             ultraGridColumn23,
             ultraGridColumn24,
             ultraGridColumn25,
-            ultraGridColumn30});
+            ultraGridColumn30,
+            ultraGridColumn11,
+            ultraGridColumn14});
             this.grdDataPersonMedical.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
             this.grdDataPersonMedical.DisplayLayout.InterBandSpacing = 10;
             this.grdDataPersonMedical.DisplayLayout.MaxColScrollRegions = 1;
@@ -682,18 +689,26 @@
             appearance12.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
             this.grdDataPersonMedical.DisplayLayout.Override.HeaderAppearance = appearance12;
             this.grdDataPersonMedical.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            this.grdDataPersonMedical.DisplayLayout.Override.RowAlternateAppearance = appearance12;
-            appearance13.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdDataPersonMedical.DisplayLayout.Override.RowSelectorAppearance = appearance13;
+            appearance13.AlphaLevel = ((short)(187));
+            appearance13.BackColor = System.Drawing.Color.Gainsboro;
+            appearance13.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance13.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance13.ForeColor = System.Drawing.Color.Black;
+            appearance13.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance13.ImageAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance13.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdDataPersonMedical.DisplayLayout.Override.RowAlternateAppearance = appearance13;
+            appearance14.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdDataPersonMedical.DisplayLayout.Override.RowSelectorAppearance = appearance14;
             this.grdDataPersonMedical.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance14.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance14.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance14.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance14.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance14.FontData.BoldAsString = "False";
-            appearance14.ForeColor = System.Drawing.Color.Black;
-            this.grdDataPersonMedical.DisplayLayout.Override.SelectedRowAppearance = appearance14;
+            appearance15.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance15.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance15.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance15.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance15.FontData.BoldAsString = "False";
+            appearance15.ForeColor = System.Drawing.Color.Black;
+            this.grdDataPersonMedical.DisplayLayout.Override.SelectedRowAppearance = appearance15;
             this.grdDataPersonMedical.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.grdDataPersonMedical.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grdDataPersonMedical.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
@@ -719,7 +734,7 @@
             // 
             // ToolStripMenuEditPersonMedical
             // 
-            this.ToolStripMenuEditPersonMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.ToolStripMenuEditPersonMedical.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuEditPersonMedical.Image")));
             this.ToolStripMenuEditPersonMedical.Name = "ToolStripMenuEditPersonMedical";
             this.ToolStripMenuEditPersonMedical.Size = new System.Drawing.Size(104, 22);
             this.ToolStripMenuEditPersonMedical.Text = "Editar";
@@ -801,10 +816,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDataNoxiousHabits.CausesValidation = false;
             this.grdDataNoxiousHabits.ContextMenuStrip = this.contextMenuNoxiousHabits;
-            appearance15.BackColor = System.Drawing.SystemColors.ControlLight;
-            appearance15.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdDataNoxiousHabits.DisplayLayout.Appearance = appearance15;
+            appearance16.BackColor = System.Drawing.SystemColors.ControlLight;
+            appearance16.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.grdDataNoxiousHabits.DisplayLayout.Appearance = appearance16;
             ultraGridColumn6.Header.Caption = "Frecuencia";
             ultraGridColumn6.Header.VisiblePosition = 1;
             ultraGridColumn6.Width = 283;
@@ -828,31 +843,31 @@
             this.grdDataNoxiousHabits.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
             this.grdDataNoxiousHabits.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.grdDataNoxiousHabits.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            appearance16.BackColor = System.Drawing.Color.Transparent;
-            this.grdDataNoxiousHabits.DisplayLayout.Override.CardAreaAppearance = appearance16;
-            appearance17.BackColor = System.Drawing.SystemColors.Control;
-            appearance17.BackColor2 = System.Drawing.SystemColors.ControlLightLight;
-            appearance17.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdDataNoxiousHabits.DisplayLayout.Override.CellAppearance = appearance17;
-            this.grdDataNoxiousHabits.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance17.BackColor = System.Drawing.Color.Transparent;
+            this.grdDataNoxiousHabits.DisplayLayout.Override.CardAreaAppearance = appearance17;
             appearance18.BackColor = System.Drawing.SystemColors.Control;
-            appearance18.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance18.BackColor2 = System.Drawing.SystemColors.ControlLightLight;
             appearance18.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance18.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdDataNoxiousHabits.DisplayLayout.Override.HeaderAppearance = appearance18;
+            this.grdDataNoxiousHabits.DisplayLayout.Override.CellAppearance = appearance18;
+            this.grdDataNoxiousHabits.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance19.BackColor = System.Drawing.SystemColors.Control;
+            appearance19.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance19.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance19.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdDataNoxiousHabits.DisplayLayout.Override.HeaderAppearance = appearance19;
             this.grdDataNoxiousHabits.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance19.AlphaLevel = ((short)(187));
-            appearance19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            appearance19.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grdDataNoxiousHabits.DisplayLayout.Override.RowAlternateAppearance = appearance19;
-            appearance20.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdDataNoxiousHabits.DisplayLayout.Override.RowSelectorAppearance = appearance20;
+            appearance20.AlphaLevel = ((short)(187));
+            appearance20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            appearance20.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdDataNoxiousHabits.DisplayLayout.Override.RowAlternateAppearance = appearance20;
+            appearance21.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdDataNoxiousHabits.DisplayLayout.Override.RowSelectorAppearance = appearance21;
             this.grdDataNoxiousHabits.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance21.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance21.BackColor2 = System.Drawing.SystemColors.ActiveCaption;
-            appearance21.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance21.FontData.BoldAsString = "True";
-            this.grdDataNoxiousHabits.DisplayLayout.Override.SelectedRowAppearance = appearance21;
+            appearance22.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance22.BackColor2 = System.Drawing.SystemColors.ActiveCaption;
+            appearance22.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance22.FontData.BoldAsString = "True";
+            this.grdDataNoxiousHabits.DisplayLayout.Override.SelectedRowAppearance = appearance22;
             this.grdDataNoxiousHabits.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.grdDataNoxiousHabits.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grdDataNoxiousHabits.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
@@ -877,7 +892,7 @@
             // 
             // ToolStripMenuEditNoxiousHabits
             // 
-            this.ToolStripMenuEditNoxiousHabits.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.ToolStripMenuEditNoxiousHabits.Image = ((System.Drawing.Image)(resources.GetObject("ToolStripMenuEditNoxiousHabits.Image")));
             this.ToolStripMenuEditNoxiousHabits.Name = "ToolStripMenuEditNoxiousHabits";
             this.ToolStripMenuEditNoxiousHabits.Size = new System.Drawing.Size(104, 22);
             this.ToolStripMenuEditNoxiousHabits.Text = "Editar";
@@ -1014,10 +1029,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDataFamilyMedical.CausesValidation = false;
             this.grdDataFamilyMedical.ContextMenuStrip = this.contextMenuFamilyMedic;
-            appearance22.BackColor = System.Drawing.SystemColors.ControlLight;
-            appearance22.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance22.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdDataFamilyMedical.DisplayLayout.Appearance = appearance22;
+            appearance23.BackColor = System.Drawing.SystemColors.ControlLight;
+            appearance23.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance23.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.grdDataFamilyMedical.DisplayLayout.Appearance = appearance23;
             ultraGridColumn3.Header.Caption = "Comentario";
             ultraGridColumn3.Header.VisiblePosition = 2;
             ultraGridColumn3.Width = 531;
@@ -1040,31 +1055,31 @@
             this.grdDataFamilyMedical.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
             this.grdDataFamilyMedical.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.grdDataFamilyMedical.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            appearance23.BackColor = System.Drawing.Color.Transparent;
-            this.grdDataFamilyMedical.DisplayLayout.Override.CardAreaAppearance = appearance23;
-            appearance24.BackColor = System.Drawing.SystemColors.Control;
-            appearance24.BackColor2 = System.Drawing.SystemColors.ControlLightLight;
-            appearance24.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdDataFamilyMedical.DisplayLayout.Override.CellAppearance = appearance24;
-            this.grdDataFamilyMedical.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance24.BackColor = System.Drawing.Color.Transparent;
+            this.grdDataFamilyMedical.DisplayLayout.Override.CardAreaAppearance = appearance24;
             appearance25.BackColor = System.Drawing.SystemColors.Control;
-            appearance25.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance25.BackColor2 = System.Drawing.SystemColors.ControlLightLight;
             appearance25.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance25.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdDataFamilyMedical.DisplayLayout.Override.HeaderAppearance = appearance25;
+            this.grdDataFamilyMedical.DisplayLayout.Override.CellAppearance = appearance25;
+            this.grdDataFamilyMedical.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance26.BackColor = System.Drawing.SystemColors.Control;
+            appearance26.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance26.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdDataFamilyMedical.DisplayLayout.Override.HeaderAppearance = appearance26;
             this.grdDataFamilyMedical.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance26.AlphaLevel = ((short)(187));
-            appearance26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            appearance26.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.grdDataFamilyMedical.DisplayLayout.Override.RowAlternateAppearance = appearance26;
-            appearance27.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdDataFamilyMedical.DisplayLayout.Override.RowSelectorAppearance = appearance27;
+            appearance27.AlphaLevel = ((short)(187));
+            appearance27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            appearance27.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.grdDataFamilyMedical.DisplayLayout.Override.RowAlternateAppearance = appearance27;
+            appearance28.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdDataFamilyMedical.DisplayLayout.Override.RowSelectorAppearance = appearance28;
             this.grdDataFamilyMedical.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance28.BackColor = System.Drawing.SystemColors.Highlight;
-            appearance28.BackColor2 = System.Drawing.SystemColors.ActiveCaption;
-            appearance28.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance28.FontData.BoldAsString = "True";
-            this.grdDataFamilyMedical.DisplayLayout.Override.SelectedRowAppearance = appearance28;
+            appearance29.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance29.BackColor2 = System.Drawing.SystemColors.ActiveCaption;
+            appearance29.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance29.FontData.BoldAsString = "True";
+            this.grdDataFamilyMedical.DisplayLayout.Override.SelectedRowAppearance = appearance29;
             this.grdDataFamilyMedical.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.grdDataFamilyMedical.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grdDataFamilyMedical.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
@@ -1090,7 +1105,7 @@
             // 
             // toolStripMenuFamilyMedic
             // 
-            this.toolStripMenuFamilyMedic.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.toolStripMenuFamilyMedic.Image = ((System.Drawing.Image)(resources.GetObject("toolStripMenuFamilyMedic.Image")));
             this.toolStripMenuFamilyMedic.Name = "toolStripMenuFamilyMedic";
             this.toolStripMenuFamilyMedic.Size = new System.Drawing.Size(104, 22);
             this.toolStripMenuFamilyMedic.Text = "Editar";
@@ -1162,7 +1177,7 @@
             // 
             // mnuEditOccupational
             // 
-            this.mnuEditOccupational.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuEditOccupational.Image = ((System.Drawing.Image)(resources.GetObject("mnuEditOccupational.Image")));
             this.mnuEditOccupational.Name = "mnuEditOccupational";
             this.mnuEditOccupational.Size = new System.Drawing.Size(125, 22);
             this.mnuEditOccupational.Text = "Modificar";
@@ -1170,7 +1185,7 @@
             // 
             // mnuDeleteOccupational
             // 
-            this.mnuDeleteOccupational.Image = global::Sigesoft.Node.WinClient.UI.Resources.delete;
+            this.mnuDeleteOccupational.Image = ((System.Drawing.Image)(resources.GetObject("mnuDeleteOccupational.Image")));
             this.mnuDeleteOccupational.Name = "mnuDeleteOccupational";
             this.mnuDeleteOccupational.Size = new System.Drawing.Size(125, 22);
             this.mnuDeleteOccupational.Text = "Eliminar";

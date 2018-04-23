@@ -21,6 +21,7 @@ namespace Sigesoft.Node.WinClient.UI
     {
         string strFilterExpression;
         string _PacientId;
+        private string _ProtocolId;
         List<string> _ListaCalendar;
         string _v_OrganizationLocationProtocol;
 
@@ -450,7 +451,7 @@ namespace Sigesoft.Node.WinClient.UI
                     int LineStatusId = int.Parse(grdDataCalendar.Selected.Rows[0].Cells["i_LineStatusId"].Value.ToString());
                     int ServiceStatusId = int.Parse(grdDataCalendar.Selected.Rows[0].Cells["i_ServiceStatusId"].Value.ToString());
                     _PacientId = grdDataCalendar.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
-
+                    _ProtocolId = grdDataCalendar.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
                     if (CalendarStatusId == (int)Common.CalendarStatus.Agendado)
                     {
                         contextMenuStrip1.Items["mnuCancelCalendar"].Enabled = true;
@@ -610,7 +611,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdDataCalendar_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
         {
-            btnConsentimiento.Enabled = btnExportExcel.Enabled = btnExportPdf.Enabled = (grdDataCalendar.Selected.Rows.Count > 0);
+            btnConsentimiento.Enabled = btnExportExcel.Enabled = btnExportPdf.Enabled = btnAdjuntar.Enabled = (grdDataCalendar.Selected.Rows.Count > 0);
             btnSendEmail.Enabled = (grdDataCalendar.Selected.Rows.Count > 0 && _sendEmailEnabled);
             
 
@@ -1333,6 +1334,27 @@ namespace Sigesoft.Node.WinClient.UI
             //// destroy the tooltip
             //_customizedToolTip.DestroyToolTip(this);
         }
-    
+
+        private void btnAdjuntar_Click(object sender, EventArgs e)
+        {
+            frmAdjuntarDeclaracionJurada frm = new frmAdjuntarDeclaracionJurada(_serviceId);
+            frm.Show();
+        }
+
+        private void tsmDeclaracionDrogas_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var result = new ProtocolBL().GetProtocolComponentByProtocol(ref objOperationResult, _ProtocolId,Constants.TOXICOLOGICO_ID);
+            if (result == null)
+            {
+                MessageBox.Show("Este servicio no lleva el examen Toxicológico de Drogas", "Información");
+                return;
+            }
+           
+            var frm = new ReporteDeclaracionDrogas(_serviceId);
+            frm.ShowDialog();
+        }
+
+       
     }
 }
