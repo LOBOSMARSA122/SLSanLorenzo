@@ -15914,9 +15914,7 @@ namespace NetPdf
 
             document.Add(filiationWorker);
 
-
             #endregion
-
 
             document.Close();
         }
