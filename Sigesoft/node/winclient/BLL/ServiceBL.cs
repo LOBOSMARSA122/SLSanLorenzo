@@ -3029,6 +3029,12 @@ namespace Sigesoft.Node.WinClient.BLL
 				objEntitySource.i_CursoEnf = pobjDtoEntity.i_CursoEnf;
 				objEntitySource.i_InicioEnf = pobjDtoEntity.i_InicioEnf;
 
+                objEntitySource.v_InicioVidaSexaul = pobjDtoEntity.v_InicioVidaSexaul;
+                objEntitySource.v_NroParejasActuales = pobjDtoEntity.v_NroParejasActuales;
+                objEntitySource.v_NroAbortos = pobjDtoEntity.v_NroAbortos;
+                objEntitySource.v_PrecisarCausas = pobjDtoEntity.v_PrecisarCausas;
+
+
 				objEntitySource.d_UpdateDate = DateTime.Now;
 				objEntitySource.i_UpdateUserId = Int32.Parse(ClientSession[2]);
 
@@ -25069,7 +25075,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                         FechaAntecedente = A.d_StartDate,
                                         DiseasseId = A.v_DiseasesId,
                                         Hospital = A.NombreHospital,
-                                        CausaAborto = A.v_Complicaciones
+                                        Complicaciones = A.v_Complicaciones
                                         
                                  }).ToList();
 
@@ -25232,7 +25238,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.OperacionAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Detalle;
                 FichaAntecedentePatologico.DiasAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Tratamiento;
                 FichaAntecedentePatologico.HospitalAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Hospital;
-                FichaAntecedentePatologico.DamasCausaAborto = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").CausaAborto;
+                FichaAntecedentePatologico.ComplicacionesAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Complicaciones;
                 
                 list.Add(FichaAntecedentePatologico);
                 return list;
@@ -25427,9 +25433,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                 EscoliosisComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003139") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003139").v_Value1,
                                 CifosisComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003140") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003140").v_Value1,
                                 LordosisComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003141") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003141").v_Value1,
-                                FlexionAdelante = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003141") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003141").v_Value1,
-                                Hiperextesion = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003142") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003142").v_Value1,
-                                FlexionIzquierdo = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003144") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003144").v_Value1,
+                                FlexionAdelante = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003142") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003142").v_Value1,
+                                Hiperextesion = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003144") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003144").v_Value1,
+                                FlexionIzquierdo = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003146") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003146").v_Value1,
                                 FlexionDerecho = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003148") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003148").v_Value1,
 
                                 RotacionIzquierdo = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003150") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003150").v_Value1,
@@ -25456,12 +25462,12 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 Abdomen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003166") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003166").v_Value1,
                                 Cadera = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003168") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003168").v_Value1,
-                                Muslo = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003170") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003170").v_Value1,
-                                Lateral = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003172") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003172").v_Value1,
-                                AbdomenComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003167") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003167").v_Value1,
-                                CaderaComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003169") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003169").v_Value1,
-                                MusloComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003171") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003171").v_Value1,
-                                LateralComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003173") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003173").v_Value1,
+                                Muslo = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003167") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003167").v_Value1,
+                                Lateral = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003169") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003169").v_Value1,
+                                AbdomenComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003175") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003175").v_Value1,
+                                CaderaComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003176") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003176").v_Value1,
+                                MusloComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003178") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003178").v_Value1,
+                                LateralComen = Valores.Count == 0 ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003177") == null ? "" : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003177").v_Value1,
                             
                              }).ToList();
 

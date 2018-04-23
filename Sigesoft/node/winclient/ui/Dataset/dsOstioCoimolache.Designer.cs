@@ -1477,6 +1477,12 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnFirmaTrabajador;
             
+            private global::System.Data.DataColumn columnUC_OSTEO_ABD_90;
+            
+            private global::System.Data.DataColumn columnUC_OSTEO_ABD_90_PTJ;
+            
+            private global::System.Data.DataColumn columnUC_OSTEO_ABD_60_SINO;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtUCOsteoMusDataTable() {
@@ -1752,6 +1758,30 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UC_OSTEO_ABD_90Column {
+                get {
+                    return this.columnUC_OSTEO_ABD_90;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UC_OSTEO_ABD_90_PTJColumn {
+                get {
+                    return this.columnUC_OSTEO_ABD_90_PTJ;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn UC_OSTEO_ABD_60_SINOColumn {
+                get {
+                    return this.columnUC_OSTEO_ABD_60_SINO;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1817,7 +1847,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string FechaEvaluacion, 
                         byte[] FirmaUsuarioGraba, 
                         byte[] HuellaTrabajador, 
-                        byte[] FirmaTrabajador) {
+                        byte[] FirmaTrabajador, 
+                        string UC_OSTEO_ABD_90, 
+                        string UC_OSTEO_ABD_90_PTJ, 
+                        string UC_OSTEO_ABD_60_SINO) {
                 dtUCOsteoMusRow rowdtUCOsteoMusRow = ((dtUCOsteoMusRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         UC_OSTEO_FLEXIBILIDAD,
@@ -1849,7 +1882,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         FechaEvaluacion,
                         FirmaUsuarioGraba,
                         HuellaTrabajador,
-                        FirmaTrabajador};
+                        FirmaTrabajador,
+                        UC_OSTEO_ABD_90,
+                        UC_OSTEO_ABD_90_PTJ,
+                        UC_OSTEO_ABD_60_SINO};
                 rowdtUCOsteoMusRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtUCOsteoMusRow);
                 return rowdtUCOsteoMusRow;
@@ -1902,6 +1938,9 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnFirmaUsuarioGraba = base.Columns["FirmaUsuarioGraba"];
                 this.columnHuellaTrabajador = base.Columns["HuellaTrabajador"];
                 this.columnFirmaTrabajador = base.Columns["FirmaTrabajador"];
+                this.columnUC_OSTEO_ABD_90 = base.Columns["UC_OSTEO_ABD_90"];
+                this.columnUC_OSTEO_ABD_90_PTJ = base.Columns["UC_OSTEO_ABD_90_PTJ"];
+                this.columnUC_OSTEO_ABD_60_SINO = base.Columns["UC_OSTEO_ABD_60_SINO"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1967,6 +2006,12 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnHuellaTrabajador);
                 this.columnFirmaTrabajador = new global::System.Data.DataColumn("FirmaTrabajador", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFirmaTrabajador);
+                this.columnUC_OSTEO_ABD_90 = new global::System.Data.DataColumn("UC_OSTEO_ABD_90", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUC_OSTEO_ABD_90);
+                this.columnUC_OSTEO_ABD_90_PTJ = new global::System.Data.DataColumn("UC_OSTEO_ABD_90_PTJ", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUC_OSTEO_ABD_90_PTJ);
+                this.columnUC_OSTEO_ABD_60_SINO = new global::System.Data.DataColumn("UC_OSTEO_ABD_60_SINO", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnUC_OSTEO_ABD_60_SINO);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4235,6 +4280,54 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UC_OSTEO_ABD_90 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_90Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UC_OSTEO_ABD_90\' in table \'dtUCOsteoMus\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_90Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UC_OSTEO_ABD_90_PTJ {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_90_PTJColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UC_OSTEO_ABD_90_PTJ\' in table \'dtUCOsteoMus\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_90_PTJColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string UC_OSTEO_ABD_60_SINO {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_60_SINOColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'UC_OSTEO_ABD_60_SINO\' in table \'dtUCOsteoMus\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_60_SINOColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsUC_OSTEO_FLEXIBILIDADNull() {
                 return this.IsNull(this.tabledtUCOsteoMus.UC_OSTEO_FLEXIBILIDADColumn);
             }
@@ -4591,6 +4684,42 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetFirmaTrabajadorNull() {
                 this[this.tabledtUCOsteoMus.FirmaTrabajadorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUC_OSTEO_ABD_90Null() {
+                return this.IsNull(this.tabledtUCOsteoMus.UC_OSTEO_ABD_90Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUC_OSTEO_ABD_90Null() {
+                this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_90Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUC_OSTEO_ABD_90_PTJNull() {
+                return this.IsNull(this.tabledtUCOsteoMus.UC_OSTEO_ABD_90_PTJColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUC_OSTEO_ABD_90_PTJNull() {
+                this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_90_PTJColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsUC_OSTEO_ABD_60_SINONull() {
+                return this.IsNull(this.tabledtUCOsteoMus.UC_OSTEO_ABD_60_SINOColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetUC_OSTEO_ABD_60_SINONull() {
+                this[this.tabledtUCOsteoMus.UC_OSTEO_ABD_60_SINOColumn] = global::System.Convert.DBNull;
             }
         }
         

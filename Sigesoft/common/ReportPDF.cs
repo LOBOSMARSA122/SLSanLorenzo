@@ -3846,7 +3846,8 @@ namespace NetPdf
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
             {
-                foreach (var item in listaPatologicosFamiliares)
+                var result = listaPatologicosFamiliares = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId != 19 || p.i_TypeFamilyId != 67);
+                foreach (var item in result)
                 {
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseaseName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
@@ -10958,7 +10959,8 @@ namespace NetPdf
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
             {
-                foreach (var item in listaPatologicosFamiliares)
+                var result = listaPatologicosFamiliares = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId != 19 || p.i_TypeFamilyId != 67);
+                foreach (var item in result)
                 {
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseaseName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
@@ -13841,7 +13843,8 @@ namespace NetPdf
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
             {
-                foreach (var item in listaPatologicosFamiliares)
+                var result = listaPatologicosFamiliares = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId != 19 || p.i_TypeFamilyId != 67);
+                foreach (var item in result)
                 {
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseaseName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
@@ -16876,7 +16879,8 @@ namespace NetPdf
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
             {
-                foreach (var item in listaPatologicosFamiliares)
+                var result = listaPatologicosFamiliares = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId != 19 || p.i_TypeFamilyId != 67);
+                foreach (var item in result)
                 {
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseaseName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };

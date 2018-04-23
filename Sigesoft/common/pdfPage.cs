@@ -100,49 +100,49 @@ namespace NetPdf
 
             if (EmpresaId == "N009-OO000000582")
             {
-                PdfPTable filiationWorker = new PdfPTable(8);
-                PdfPCell cellHuellaTrabajador = null;
-                PdfPCell cellFirmaTrabajador = null;
-                List<PdfPCell> cells = null;
-                float[] columnWidths = null;
-                var fontColour = new BaseColor(35, 31, 32);
-                var calibri6 = FontFactory.GetFont("Calibri", 7, fontColour);
-                #region Firma Trabajador
-                cellFirmaTrabajador = FirmaTrabajador != null ? new PdfPCell(HandlingItextSharp.GetImage(FirmaTrabajador, null, null, 120, 45)) : new PdfPCell(new Phrase(" ", calibri6));
-                cellFirmaTrabajador.Colspan = 2;
-                cellFirmaTrabajador.Rowspan = 8;
-                cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
-                cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
-                #endregion
+                //PdfPTable filiationWorker = new PdfPTable(8);
+                //PdfPCell cellHuellaTrabajador = null;
+                //PdfPCell cellFirmaTrabajador = null;
+                //List<PdfPCell> cells = null;
+                //float[] columnWidths = null;
+                //var fontColour = new BaseColor(35, 31, 32);
+                //var calibri6 = FontFactory.GetFont("Calibri", 7, fontColour);
+                //#region Firma Trabajador
+                //cellFirmaTrabajador = FirmaTrabajador != null ? new PdfPCell(HandlingItextSharp.GetImage(FirmaTrabajador, null, null, 120, 45)) : new PdfPCell(new Phrase(" ", calibri6));
+                //cellFirmaTrabajador.Colspan = 2;
+                //cellFirmaTrabajador.Rowspan = 8;
+                //cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                //cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                //#endregion
 
-                #region  Huella Trabajador
-                cellHuellaTrabajador = HuellaTrabajador != null ? new PdfPCell(HandlingItextSharp.GetImage(HuellaTrabajador, null, null, 20, 40)) : new PdfPCell(new Phrase(" ", calibri6));
-                cellHuellaTrabajador.Colspan = 2;
-                cellHuellaTrabajador.Rowspan = 4;
-                cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
-                cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                //#region  Huella Trabajador
+                //cellHuellaTrabajador = HuellaTrabajador != null ? new PdfPCell(HandlingItextSharp.GetImage(HuellaTrabajador, null, null, 20, 40)) : new PdfPCell(new Phrase(" ", calibri6));
+                //cellHuellaTrabajador.Colspan = 2;
+                //cellHuellaTrabajador.Rowspan = 4;
+                //cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                //cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-                #endregion
-                cells = new List<PdfPCell>()
-                 {
+                //#endregion
+                //cells = new List<PdfPCell>()
+                // {
                    
-                   //Linea
-                    new PdfPCell(new Phrase("Declaro que las respuestas son ciertas según mi leal saber y entender."
-                        +" En caso de ser requeridos, los resultados del examen médico ocupacional podrán ser"
-                        +" revelados conforme al an¿rtículo 25 de la ley Genral de Salud  N°26842. ", calibri6)){Rowspan = 5, Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(cellFirmaTrabajador), 
-                    new PdfPCell(cellHuellaTrabajador){ FixedHeight = 55F}, 
-                    // //Linea
-                    new PdfPCell(new Phrase("FIRMA DEL TRABAJADOR", calibri6)){ Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("HUELLA DIGITAL ÍNDICE DERECHO", calibri6)){ Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                //   //Linea
+                //    new PdfPCell(new Phrase("Declaro que las respuestas son ciertas según mi leal saber y entender."
+                //        +" En caso de ser requeridos, los resultados del examen médico ocupacional podrán ser"
+                //        +" revelados conforme al an¿rtículo 25 de la ley Genral de Salud  N°26842. ", calibri6)){Rowspan = 5, Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                //    new PdfPCell(cellFirmaTrabajador), 
+                //    new PdfPCell(cellHuellaTrabajador){ FixedHeight = 55F}, 
+                //    // //Linea
+                //    new PdfPCell(new Phrase("FIRMA DEL TRABAJADOR", calibri6)){ Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                //    new PdfPCell(new Phrase("HUELLA DIGITAL ÍNDICE DERECHO", calibri6)){ Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                    
 
-                 };
-                columnWidths = new float[] { 50f,30f,20f };
+                // };
+                //columnWidths = new float[] { 50f,30f,20f };
 
-                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", calibri6);
+                //filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", calibri6);
 
-                filiationWorker.WriteSelectedRows(0, -1, 0, (doc.BottomMargin + 10), writer.DirectContent);
+                //filiationWorker.WriteSelectedRows(0, -1, 0, (doc.BottomMargin + 10), writer.DirectContent);
             }
             else
             {
