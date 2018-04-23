@@ -285,6 +285,7 @@ namespace Sigesoft.Node.WinClient.BE
         //public string DireccionDoctor { get; set; }
         //public string EmpresaEmpleadora { get; set; }
 
+       public string EmpresaClienteId  { get; set; }
 
         //Reportes
         public int i_AgePacient { get; set; }

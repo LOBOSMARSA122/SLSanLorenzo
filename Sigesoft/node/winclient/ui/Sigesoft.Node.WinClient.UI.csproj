@@ -224,6 +224,15 @@
     <Compile Include="Configuration\frmProtocolPlanAseguradora.Designer.cs">
       <DependentUpon>frmProtocolPlanAseguradora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsAudioCoimo.cs">
+      <DependentUpon>dsAudioCoimo.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dataset\dsAudioCoimo.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAudioCoimo.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\dsAudiometria.cs">
       <DependentUpon>dsAudiometria.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -1330,6 +1339,12 @@
     </Compile>
     <Compile Include="ReporteDeclaracionDrogas.Designer.cs">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\crCuestionarioAudioCoimolache.cs">
+      <DependentUpon>crCuestionarioAudioCoimolache.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Reports\crApendice03_Audio.cs">
       <AutoGen>True</AutoGen>
@@ -3418,6 +3433,10 @@
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crCuestionarioAudioCoimolache.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crCuestionarioAudioCoimolache.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crApendice03_Audio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crApendice03_Audio.cs</LastGenOutput>
@@ -4522,6 +4541,17 @@
     </None>
     <None Include="Dataset\Anexo7D.xss">
       <DependentUpon>Anexo7D.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsAudioCoimo.xsc">
+      <DependentUpon>dsAudioCoimo.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsAudioCoimo.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAudioCoimo.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsAudioCoimo.xss">
+      <DependentUpon>dsAudioCoimo.xsd</DependentUpon>
     </None>
     <None Include="Dataset\DsAudiometriaAudiomax.xsc">
       <DependentUpon>DsAudiometriaAudiomax.xsd</DependentUpon>

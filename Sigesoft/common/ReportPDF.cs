@@ -2881,6 +2881,10 @@ namespace NetPdf
 
             //create an instance of your PDFpage class. This is the class we generated above.
             pdfPage page = new pdfPage();
+            page.FirmaTrabajador = DataService.FirmaTrabajador;
+            page.HuellaTrabajador = DataService.HuellaTrabajador;
+            page.Dni = DataService.v_DocNumber;
+            page.EmpresaId = DataService.EmpresaClienteId;
             //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
             writer.PageEvent = page;
 
@@ -3842,7 +3846,8 @@ namespace NetPdf
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
             {
-                foreach (var item in listaPatologicosFamiliares)
+                var result = listaPatologicosFamiliares = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId != 19 || p.i_TypeFamilyId != 67);
+                foreach (var item in result)
                 {
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseaseName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
@@ -6044,6 +6049,10 @@ namespace NetPdf
 
                 //create an instance of your PDFpage class. This is the class we generated above.
                 pdfPage page = new pdfPage();
+                page.FirmaTrabajador = filiationData.FirmaTrabajador;
+                page.HuellaTrabajador = filiationData.HuellaTrabajador;
+                page.Dni = filiationData.v_DocNumber;
+                page.EmpresaId = filiationData.EmpresaClienteId;
                 page.Dato = "IC/" + filiationData.v_FirstName + " " + filiationData.v_FirstLastName + " " + filiationData.v_SecondLastName;
                 //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
                 writer.PageEvent = page;
@@ -7015,6 +7024,10 @@ namespace NetPdf
 
             //create an instance of your PDFpage class. This is the class we generated above.
             pdfPage page = new pdfPage();
+            page.FirmaTrabajador = DataService.FirmaTrabajador;
+            page.HuellaTrabajador = DataService.HuellaTrabajador;
+            page.Dni = DataService.v_DocNumber;
+            page.EmpresaId = DataService.EmpresaClienteId;
             //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
             writer.PageEvent = page;
 
@@ -10045,6 +10058,10 @@ namespace NetPdf
 
             //create an instance of your PDFpage class. This is the class we generated above.
             pdfPage page = new pdfPage();
+            page.FirmaTrabajador = DataService.FirmaTrabajador;
+            page.HuellaTrabajador = DataService.HuellaTrabajador;
+            page.Dni = DataService.v_DocNumber;
+            page.EmpresaId = DataService.EmpresaClienteId;
             //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
             writer.PageEvent = page;
 
@@ -10942,7 +10959,8 @@ namespace NetPdf
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
             {
-                foreach (var item in listaPatologicosFamiliares)
+                var result = listaPatologicosFamiliares = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId != 19 || p.i_TypeFamilyId != 67);
+                foreach (var item in result)
                 {
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseaseName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
@@ -11106,6 +11124,8 @@ namespace NetPdf
                 {
                     if (PAD.v_Value1 != null) ValorPAD = PAD.v_Value1;
                 }
+
+
             }
             #endregion
 
@@ -12718,6 +12738,7 @@ namespace NetPdf
 
             #endregion
 
+
             cells = new List<PdfPCell>()
                  {
                      //Linea
@@ -12787,6 +12808,8 @@ namespace NetPdf
                     //Linea
                     new PdfPCell(new Phrase("Hematocrito  " + ValorHematocrito1 , fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
+            
+
                    };
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, };
 
@@ -12889,6 +12912,8 @@ namespace NetPdf
 
             document.Close();
 
+            //RunFile(filePDF);
+
         }
 
         #endregion
@@ -12919,6 +12944,10 @@ namespace NetPdf
 
             //create an instance of your PDFpage class. This is the class we generated above.
             pdfPage page = new pdfPage();
+            page.FirmaTrabajador = DataService.FirmaTrabajador;
+            page.HuellaTrabajador = DataService.HuellaTrabajador;
+            page.Dni = DataService.v_DocNumber;
+            page.EmpresaId = DataService.EmpresaClienteId;
             //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
             writer.PageEvent = page;
 
@@ -13814,7 +13843,8 @@ namespace NetPdf
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
             {
-                foreach (var item in listaPatologicosFamiliares)
+                var result = listaPatologicosFamiliares = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId != 19 || p.i_TypeFamilyId != 67);
+                foreach (var item in result)
                 {
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseaseName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
@@ -15914,7 +15944,9 @@ namespace NetPdf
 
             document.Add(filiationWorker);
 
+
             #endregion
+
 
             document.Close();
         }
@@ -15947,6 +15979,10 @@ namespace NetPdf
 
             //create an instance of your PDFpage class. This is the class we generated above.
             pdfPage page = new pdfPage();
+            page.FirmaTrabajador = DataService.FirmaTrabajador;
+            page.HuellaTrabajador = DataService.HuellaTrabajador;
+            page.Dni = DataService.v_DocNumber;
+            page.EmpresaId = DataService.EmpresaClienteId;
             //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
             writer.PageEvent = page;
 
@@ -16843,7 +16879,8 @@ namespace NetPdf
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
             {
-                foreach (var item in listaPatologicosFamiliares)
+                var result = listaPatologicosFamiliares = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId != 19 || p.i_TypeFamilyId != 67);
+                foreach (var item in result)
                 {
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseaseName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
@@ -18828,6 +18865,10 @@ namespace NetPdf
 
             //create an instance of your PDFpage class. This is the class we generated above.
             pdfPage page = new pdfPage();
+            page.FirmaTrabajador = DataService.FirmaTrabajador;
+            page.HuellaTrabajador = DataService.HuellaTrabajador;
+            page.Dni = DataService.v_DocNumber;
+            page.EmpresaId = DataService.EmpresaClienteId;
             //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
             writer.PageEvent = page;
 
@@ -19328,6 +19369,5 @@ namespace NetPdf
         }
 
         #endregion
-
     }
 }
