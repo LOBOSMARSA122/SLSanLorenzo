@@ -9,11 +9,11 @@ using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using Sigesoft.Node.WinClient.BE;
 
-
 namespace NetPdf
 {
     public class LaboratorioReport
     {
+
         #region Report de Laboratorio
 
         public static void CreateLaboratorioReport(PacientList filiationData, List<ServiceComponentList> serviceComponent, organizationDto infoEmpresaPropietaria, string filePDF)
@@ -3357,5 +3357,6 @@ namespace NetPdf
         }
 
         #endregion   
+
     }
 }
