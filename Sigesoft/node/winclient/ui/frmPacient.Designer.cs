@@ -57,13 +57,10 @@
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnCancel = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label50 = new System.Windows.Forms.Label();
-            this.txtDecucible = new System.Windows.Forms.TextBox();
-            this.txtNroPliza = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.label18 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.label49 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtFirstLastName = new System.Windows.Forms.TextBox();
             this.txtResidenceTimeInWorkplace = new System.Windows.Forms.TextBox();
@@ -104,6 +101,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.dtpBirthdate = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
+            this.txtDecucible = new System.Windows.Forms.TextBox();
+            this.txtNroPliza = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -123,6 +122,7 @@
             this.ddlDistricId = new System.Windows.Forms.ComboBox();
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnCapturedFingerPrintAndRubric = new System.Windows.Forms.Button();
             this.txtFileName = new System.Windows.Forms.TextBox();
@@ -144,10 +144,6 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnAntecedentes = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtHijosVivos = new System.Windows.Forms.TextBox();
-            this.txtHijosFallecidos = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -363,12 +359,21 @@
             this.groupBox3.TabIndex = 0;
             this.groupBox3.TabStop = false;
             // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label50.ForeColor = System.Drawing.Color.Black;
+            this.label50.Location = new System.Drawing.Point(5, 336);
+            this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(55, 13);
+            this.label50.TabIndex = 147;
+            this.label50.Text = "Deducible";
+            this.label50.Visible = false;
+            // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.txtHijosFallecidos);
-            this.groupBox6.Controls.Add(this.txtHijosVivos);
-            this.groupBox6.Controls.Add(this.label25);
-            this.groupBox6.Controls.Add(this.label24);
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Controls.Add(this.txtName);
             this.groupBox6.Controls.Add(this.label2);
@@ -418,40 +423,6 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Datos Generales";
             // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label50.ForeColor = System.Drawing.Color.Black;
-            this.label50.Location = new System.Drawing.Point(5, 336);
-            this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(55, 13);
-            this.label50.TabIndex = 147;
-            this.label50.Text = "Deducible";
-            this.label50.Visible = false;
-            // 
-            // txtDecucible
-            // 
-            this.txtDecucible.Location = new System.Drawing.Point(64, 325);
-            this.txtDecucible.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDecucible.MaxLength = 15;
-            this.txtDecucible.Name = "txtDecucible";
-            this.txtDecucible.Size = new System.Drawing.Size(126, 20);
-            this.txtDecucible.TabIndex = 146;
-            this.txtDecucible.Text = "0.00";
-            this.txtDecucible.Visible = false;
-            // 
-            // txtNroPliza
-            // 
-            this.txtNroPliza.Location = new System.Drawing.Point(64, 349);
-            this.txtNroPliza.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNroPliza.MaxLength = 15;
-            this.txtNroPliza.Name = "txtNroPliza";
-            this.txtNroPliza.Size = new System.Drawing.Size(122, 20);
-            this.txtNroPliza.TabIndex = 145;
-            this.txtNroPliza.Visible = false;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -474,19 +445,6 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(158, 20);
             this.txtName.TabIndex = 1;
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label49.ForeColor = System.Drawing.Color.Black;
-            this.label49.Location = new System.Drawing.Point(2, 354);
-            this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(58, 13);
-            this.label49.TabIndex = 144;
-            this.label49.Text = "Nro. Póliza";
-            this.label49.Visible = false;
             // 
             // label2
             // 
@@ -952,6 +910,27 @@
             this.label16.Text = "Grupo Sanguineo";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // txtDecucible
+            // 
+            this.txtDecucible.Location = new System.Drawing.Point(64, 325);
+            this.txtDecucible.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDecucible.MaxLength = 15;
+            this.txtDecucible.Name = "txtDecucible";
+            this.txtDecucible.Size = new System.Drawing.Size(126, 20);
+            this.txtDecucible.TabIndex = 146;
+            this.txtDecucible.Text = "0.00";
+            this.txtDecucible.Visible = false;
+            // 
+            // txtNroPliza
+            // 
+            this.txtNroPliza.Location = new System.Drawing.Point(64, 349);
+            this.txtNroPliza.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNroPliza.MaxLength = 15;
+            this.txtNroPliza.Name = "txtNroPliza";
+            this.txtNroPliza.Size = new System.Drawing.Size(122, 20);
+            this.txtNroPliza.TabIndex = 145;
+            this.txtNroPliza.Visible = false;
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label5);
@@ -1182,6 +1161,19 @@
             this.label42.Size = new System.Drawing.Size(39, 13);
             this.label42.TabIndex = 106;
             this.label42.Text = "Distrito";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label49.ForeColor = System.Drawing.Color.Black;
+            this.label49.Location = new System.Drawing.Point(2, 354);
+            this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(58, 13);
+            this.label49.TabIndex = 144;
+            this.label49.Text = "Nro. Póliza";
+            this.label49.Visible = false;
             // 
             // btnClear
             // 
@@ -1474,52 +1466,6 @@
             this.btnAntecedentes.UseVisualStyleBackColor = false;
             this.btnAntecedentes.Click += new System.EventHandler(this.btnAntecedentes_Click);
             // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(394, 198);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(59, 13);
-            this.label24.TabIndex = 116;
-            this.label24.Text = "Hijos Vivos";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(569, 198);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(80, 13);
-            this.label25.TabIndex = 117;
-            this.label25.Text = "Hijos Fallecidos";
-            // 
-            // txtHijosVivos
-            // 
-            this.txtHijosVivos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtHijosVivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHijosVivos.Location = new System.Drawing.Point(457, 194);
-            this.txtHijosVivos.Margin = new System.Windows.Forms.Padding(2);
-            this.txtHijosVivos.MaxLength = 250;
-            this.txtHijosVivos.Name = "txtHijosVivos";
-            this.txtHijosVivos.Size = new System.Drawing.Size(92, 20);
-            this.txtHijosVivos.TabIndex = 118;
-            // 
-            // txtHijosFallecidos
-            // 
-            this.txtHijosFallecidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtHijosFallecidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHijosFallecidos.Location = new System.Drawing.Point(654, 194);
-            this.txtHijosFallecidos.Margin = new System.Windows.Forms.Padding(2);
-            this.txtHijosFallecidos.MaxLength = 250;
-            this.txtHijosFallecidos.Name = "txtHijosFallecidos";
-            this.txtHijosFallecidos.Size = new System.Drawing.Size(92, 20);
-            this.txtHijosFallecidos.TabIndex = 119;
-            // 
             // frmPacient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1665,10 +1611,6 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.TextBox txtDecucible;
-        private System.Windows.Forms.TextBox txtHijosFallecidos;
-        private System.Windows.Forms.TextBox txtHijosVivos;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
     }
 }
 

@@ -3884,7 +3884,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("VIVOS", fontColumnValue)),
                     new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)),
                     new PdfPCell(new Phrase("FALLECIDOS", fontColumnValue)),
-                    new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)),
+                    new PdfPCell(new Phrase(DataService.HijosMuertos.ToString(), fontColumnValue)),
                     new PdfPCell(new Phrase("", fontColumnValue)),
                  };
             columnWidths = new float[] { 15f, 5f, 15f, 5f, 60f };
