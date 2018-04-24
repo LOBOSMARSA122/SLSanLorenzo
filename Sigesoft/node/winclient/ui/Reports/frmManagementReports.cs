@@ -4268,20 +4268,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.INFORME_ANEXO_16_COIMOLACHE:
-                    GenerateAnexo16Coimolache(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, Constants.INFORME_ANEXO_16_COIMOLACHE)));
-                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, componentId)));
+                    GenerateAnexo16Coimolache(string.Format("{0}.pdf", Path.Combine(ruta, Constants.INFORME_ANEXO_16_COIMOLACHE)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, componentId)));
                     break;
                 case Constants.INFORME_ANEXO_16_YANACOCHA:
-                    GenerateAnexo16Yanacocha(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, Constants.INFORME_ANEXO_16_YANACOCHA)));
-                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, componentId)));
+                    GenerateAnexo16Yanacocha(string.Format("{0}.pdf", Path.Combine(ruta, Constants.INFORME_ANEXO_16_YANACOCHA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, componentId)));
                     break;
                 case Constants.INFORME_ANEXO_16_SHAHUINDO:
-                    GenerateAnexo16Shahuindo(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, Constants.INFORME_ANEXO_16_SHAHUINDO)));
-                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, componentId)));
+                    GenerateAnexo16Shahuindo(string.Format("{0}.pdf", Path.Combine(ruta, Constants.INFORME_ANEXO_16_SHAHUINDO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, componentId)));
                     break;
                 case Constants.INFORME_ANEXO_16_GOLD_FIELD:
-                    GenerateAnexo16GoldField(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, Constants.INFORME_ANEXO_16_GOLD_FIELD)));
-                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(_tempSourcePath, componentId)));
+                    GenerateAnexo16GoldField(string.Format("{0}.pdf", Path.Combine(ruta, Constants.INFORME_ANEXO_16_GOLD_FIELD)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, componentId)));
                     break;
 
                 case Constants.INFORME_CLINICO:
