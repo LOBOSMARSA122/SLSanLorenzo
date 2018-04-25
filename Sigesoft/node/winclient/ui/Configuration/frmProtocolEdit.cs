@@ -204,12 +204,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 var id1 = cbOrganizationInvoice.SelectedValue.ToString().Split('|');         
                 var id2 = cbIntermediaryOrganization.SelectedValue.ToString().Split('|');
 
-                if (id1 != null)
-                {
-                    id = id1;
-                    id2 = id1;
-                }
-
                 if (_protocolDTO == null)
                 {
                     _protocolDTO = new protocolDto();
