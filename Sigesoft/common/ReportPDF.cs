@@ -15979,10 +15979,14 @@ namespace NetPdf
 
             //create an instance of your PDFpage class. This is the class we generated above.
             pdfPage page = new pdfPage();
-            page.FirmaTrabajador = DataService.FirmaTrabajador;
-            page.HuellaTrabajador = DataService.HuellaTrabajador;
-            page.Dni = DataService.v_DocNumber;
-            page.EmpresaId = DataService.EmpresaClienteId;
+            if (DataService != null)
+            {
+                page.FirmaTrabajador = DataService.FirmaTrabajador;
+                page.HuellaTrabajador = DataService.HuellaTrabajador;
+                page.Dni = DataService.v_DocNumber;
+                page.EmpresaId = DataService.EmpresaClienteId;
+            }
+           
             //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
             writer.PageEvent = page;
 
@@ -16756,12 +16760,20 @@ namespace NetPdf
                 }
 
                 ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000028");
-                if (oftalmologia == null) return;
-                var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
-                if (Reflejos != null)
+                if (oftalmologia != null)
                 {
-                    ValorReflejosPupilares = Reflejos.v_Value1;
+                    var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
+                    if (Reflejos != null)
+                    {
+                        ValorReflejosPupilares = Reflejos.v_Value1;
+                    }
                 }
+                else
+                {
+                    ValorReflejosPupilares = "";
+                }
+                
+               
 
             #endregion
 
