@@ -824,71 +824,19 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var query = (from A in dbContext.pacient
-                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-                             join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
-                                                                   equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
-                             from J1 in J1_join.DefaultIfEmpty()
-
-                             join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
-                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
-                             from J2 in J2_join.DefaultIfEmpty()
-                             where (B.v_FirstName.Contains(pstrFirstLastNameorDocNumber) || B.v_FirstLastName.Contains(pstrFirstLastNameorDocNumber)
-                                    || B.v_SecondLastName.Contains(pstrFirstLastNameorDocNumber)) && B.i_IsDeleted == 0
-                             select new PacientList
-                             {
-                                 v_PersonId = A.v_PersonId,
-                                 v_FirstName = B.v_FirstName,
-                                 v_FirstLastName = B.v_FirstLastName,
-                                 v_SecondLastName = B.v_SecondLastName,
-                                 v_AdressLocation = B.v_AdressLocation,
-                                 v_TelephoneNumber = B.v_TelephoneNumber,
-                                 v_Mail = B.v_Mail,
-                                 v_CreationUser = J1.v_UserName,
-                                 v_UpdateUser = J2.v_UserName,
-                                 d_CreationDate = A.d_InsertDate,
-                                 d_UpdateDate = A.d_UpdateDate,
-                                 i_DepartmentId = B.i_DepartmentId,
-                                 i_ProvinceId = B.i_ProvinceId,
-                                 i_DistrictId = B.i_DistrictId,
-                                 i_ResidenceInWorkplaceId = B.i_ResidenceInWorkplaceId,
-                                 v_ResidenceTimeInWorkplace = B.v_ResidenceTimeInWorkplace,
-                                 i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
-                                 i_NumberLivingChildren = B.i_NumberLivingChildren,
-                                 i_NumberDependentChildren = B.i_NumberDependentChildren
-                
-                             }).Concat
-                            (from A in dbContext.pacient
-                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-                             join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
-                                                                   equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
-                             from J1 in J1_join.DefaultIfEmpty()
-
-                             join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
-                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
-                             from J2 in J2_join.DefaultIfEmpty()
-                             where B.v_DocNumber == Id && B.i_IsDeleted == 0
-                             select new PacientList
-                             {
-                                 v_PersonId = A.v_PersonId,
-                                 v_FirstName = B.v_FirstName,
-                                 v_FirstLastName = B.v_FirstLastName,
-                                 v_SecondLastName = B.v_SecondLastName,
-                                 v_AdressLocation = B.v_AdressLocation,
-                                 v_TelephoneNumber = B.v_TelephoneNumber,
-                                 v_Mail = B.v_Mail,
-                                 v_CreationUser = J1.v_UserName,
-                                 v_UpdateUser = J2.v_UserName,
-                                 d_CreationDate = A.d_InsertDate,
-                                 d_UpdateDate = A.d_UpdateDate,
-                                 i_DepartmentId = B.i_DepartmentId,
-                                 i_ProvinceId = B.i_ProvinceId,
-                                 i_DistrictId = B.i_DistrictId,
-                                 i_ResidenceInWorkplaceId = B.i_ResidenceInWorkplaceId,
-                                 v_ResidenceTimeInWorkplace = B.v_ResidenceTimeInWorkplace,
-                                 i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
-                                 i_NumberLivingChildren = B.i_NumberLivingChildren,
-                                 i_NumberDependentChildren = B.i_NumberDependentChildren
-                             }).OrderBy("v_FirstLastName").Take(pintResultsPerPage);
+                            join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                             where B.v_PersonId == "N009-PP000004226"
+                              
+                            select new PacientList
+                            {
+                                v_PersonId = A.v_PersonId,
+                                v_FirstName = B.v_FirstName,
+                                v_FirstLastName = B.v_FirstLastName,
+                                v_SecondLastName = B.v_SecondLastName,
+                                v_AdressLocation = B.v_AdressLocation,
+                                v_TelephoneNumber = B.v_TelephoneNumber,
+                                v_Mail = B.v_Mail
+                            });
 
                 List<PacientList> objData = query.ToList();
                 pobjOperationResult.Success = 1;
@@ -4893,18 +4841,19 @@ namespace Sigesoft.Node.WinClient.BLL
                                 HuellaTrabajadr = a.HuellaTrabajadr,
                                 i_SEXO = a.i_SEXO,
                                SEXO = a.i_SEXO.ToString(),
+                               MANIPULACION_LEVANTAR_CARGAS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS).v_Value1,
+                               MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION).v_Value1,
+                               
+                               OSTEO_MUSCULAR_TAREAS_CARGA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OSTEO_MUSCULAR_TAREAS_CARGA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OSTEO_MUSCULAR_TAREAS_CARGA).v_Value1,
+                               MANIPULACION_EMPUJAR_CARGA_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_EMPUJAR_CARGA_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_EMPUJAR_CARGA_DESCRIPCION).v_Value1,
+                             
+                               MANIPULACION_JALAR_CARGAS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_JALAR_CARGAS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_JALAR_CARGAS).v_Value1,
+                               PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION).v_Value1,
 
                                LEVANTAMIENTO_ENCIMA_DEL_HOMBRO = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LEVANTAMIENTO_ENCIMA_DEL_HOMBRO) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LEVANTAMIENTO_ENCIMA_DEL_HOMBRO).v_Value1,
                                POSTURA_SEDENTARIA_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_SEDENTARIA_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.POSTURA_SEDENTARIA_DESCRIPCION).v_Value1,
-                               MANIPULACION_JALAR_CARGAS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_JALAR_CARGAS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_JALAR_CARGAS).v_Value1,
-                               MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS_DESCRIPCION).v_Value1,
-                               MANIPULACION_EMPUJAR_CARGA_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_EMPUJAR_CARGA_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_EMPUJAR_CARGA_DESCRIPCION).v_Value1,
                                PESOS_SUPERIORES_A_25KGDESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PESOS_SUPERIORES_A_25KGDESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PESOS_SUPERIORES_A_25KGDESCRIPCION).v_Value1,
-                               PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PMANIPULACIÓN_JALAR_CARGAS_DESCRIPCION).v_Value1,
                                PESOS_SUPERIORES_A_25KG = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PESOS_SUPERIORES_A_25KG) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.PESOS_SUPERIORES_A_25KG).v_Value1,
-                               MANIPULACION_LEVANTAR_CARGAS = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_LEVANTAR_CARGAS).v_Value1,
-                               OSTEO_MUSCULAR_TAREAS_CARGA = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OSTEO_MUSCULAR_TAREAS_CARGA) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.OSTEO_MUSCULAR_TAREAS_CARGA).v_Value1,
-
                                LEVANTAMIENTO_POR_ENCIMA_DELHOMBRODESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LEVANTAMIENTO_POR_ENCIMA_DELHOMBRODESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.LEVANTAMIENTO_POR_ENCIMA_DELHOMBRODESCRIPCION).v_Value1,
                                MANIPULACION_DE_VALVULAS_ = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_DE_VALVULAS_) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_DE_VALVULAS_).v_Value1,
                                MANIPULACION_DE_VALVULAS_DESCRIPCION = OsteoMuscular.Count == 0 || OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_DE_VALVULAS_DESCRIPCION) == null ? string.Empty : OsteoMuscular.Find(p => p.v_ComponentFieldId == Constants.MANIPULACION_DE_VALVULAS_DESCRIPCION).v_Value1,

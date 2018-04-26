@@ -437,6 +437,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnConclusionesGold;
             
+            private global::System.Data.DataColumn columnEkGNormalGold;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtEstudioElectrocardiograficoDataTable() {
@@ -1104,6 +1106,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EkGNormalGoldColumn {
+                get {
+                    return this.columnEkGNormalGold;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1218,7 +1228,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string EjeCardicacoGold, 
                         string HallazgoGold, 
                         string ObservacionesGold, 
-                        string ConclusionesGold) {
+                        string ConclusionesGold, 
+                        string EkGNormalGold) {
                 dtEstudioElectrocardiograficoRow rowdtEstudioElectrocardiograficoRow = ((dtEstudioElectrocardiograficoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NroFicha,
@@ -1299,7 +1310,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         EjeCardicacoGold,
                         HallazgoGold,
                         ObservacionesGold,
-                        ConclusionesGold};
+                        ConclusionesGold,
+                        EkGNormalGold};
                 rowdtEstudioElectrocardiograficoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtEstudioElectrocardiograficoRow);
                 return rowdtEstudioElectrocardiograficoRow;
@@ -1401,6 +1413,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnHallazgoGold = base.Columns["HallazgoGold"];
                 this.columnObservacionesGold = base.Columns["ObservacionesGold"];
                 this.columnConclusionesGold = base.Columns["ConclusionesGold"];
+                this.columnEkGNormalGold = base.Columns["EkGNormalGold"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1564,6 +1577,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnObservacionesGold);
                 this.columnConclusionesGold = new global::System.Data.DataColumn("ConclusionesGold", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnConclusionesGold);
+                this.columnEkGNormalGold = new global::System.Data.DataColumn("EkGNormalGold", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEkGNormalGold);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3044,6 +3059,23 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EkGNormalGold {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtEstudioElectrocardiografico.EkGNormalGoldColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EkGNormalGold\' in table \'dtEstudioElectrocardiografico\' is " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtEstudioElectrocardiografico.EkGNormalGoldColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsNroFichaNull() {
                 return this.IsNull(this.tabledtEstudioElectrocardiografico.NroFichaColumn);
             }
@@ -3988,6 +4020,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetConclusionesGoldNull() {
                 this[this.tabledtEstudioElectrocardiografico.ConclusionesGoldColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEkGNormalGoldNull() {
+                return this.IsNull(this.tabledtEstudioElectrocardiografico.EkGNormalGoldColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEkGNormalGoldNull() {
+                this[this.tabledtEstudioElectrocardiografico.EkGNormalGoldColumn] = global::System.Convert.DBNull;
             }
         }
         

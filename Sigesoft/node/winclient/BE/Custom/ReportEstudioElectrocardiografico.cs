@@ -149,7 +149,7 @@ namespace Sigesoft.Node.WinClient.BE
         public byte[] FirmaPaciente { get; set; }
         public string ConclusionesGold { get; set; }
 
-        
-        
+
+        public string EkGNormalGold { get; set; }
     }
 }

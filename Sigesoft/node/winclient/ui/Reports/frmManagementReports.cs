@@ -2507,9 +2507,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.ELECTRO_GOLD:
 
-                    var ELECTRO_GOLD = new ServiceBL().GetReportEstudioElectrocardiografico(_serviceId, Constants.ELECTRO_GOLD);
+                    var electroGold = new ServiceBL().GetReportElectroGold(_serviceId, Constants.ELECTRO_GOLD);
                     dsGetRepo = new DataSet();
-                    DataTable dt_ELECTRO_GOLD = BLL.Utils.ConvertToDatatable(ELECTRO_GOLD);
+                    DataTable dt_ELECTRO_GOLD = BLL.Utils.ConvertToDatatable(electroGold);
                     dt_ELECTRO_GOLD.TableName = "dtEstudioElectrocardiografico";
                     dsGetRepo.Tables.Add(dt_ELECTRO_GOLD);
 

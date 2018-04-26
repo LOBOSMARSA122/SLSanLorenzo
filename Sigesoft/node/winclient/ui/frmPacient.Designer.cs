@@ -34,15 +34,6 @@
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PersonId", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_FirstName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_FirstLastName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_SecondLastName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_AdressLocation");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TelephoneNumber");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Mail");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CreationUser");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_CreationDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_UpdateUser");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_UpdateDate");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -216,48 +207,11 @@
             ultraGridColumn2.Header.VisiblePosition = 0;
             ultraGridColumn2.Width = 145;
             ultraGridColumn9.Header.Caption = "Nombre";
-            ultraGridColumn9.Header.VisiblePosition = 3;
+            ultraGridColumn9.Header.VisiblePosition = 1;
             ultraGridColumn9.Width = 221;
-            ultraGridColumn10.Header.Caption = "Apellido Paterno";
-            ultraGridColumn10.Header.VisiblePosition = 1;
-            ultraGridColumn10.Width = 210;
-            ultraGridColumn11.Header.Caption = "Apellido Materno";
-            ultraGridColumn11.Header.VisiblePosition = 2;
-            ultraGridColumn11.Width = 215;
-            ultraGridColumn14.Header.Caption = "Dirección";
-            ultraGridColumn14.Header.VisiblePosition = 4;
-            ultraGridColumn14.Width = 346;
-            ultraGridColumn15.Header.Caption = "Teléfono";
-            ultraGridColumn15.Header.VisiblePosition = 5;
-            ultraGridColumn16.Header.Caption = "Email";
-            ultraGridColumn16.Header.VisiblePosition = 6;
-            ultraGridColumn16.Width = 191;
-            ultraGridColumn4.Header.Caption = "Usuario Crea.";
-            ultraGridColumn4.Header.VisiblePosition = 7;
-            ultraGridColumn4.Width = 125;
-            ultraGridColumn5.Format = "dd/MM/yyyy hh:mm tt";
-            ultraGridColumn5.Header.Caption = "Fecha Crea.";
-            ultraGridColumn5.Header.VisiblePosition = 8;
-            ultraGridColumn5.Width = 150;
-            ultraGridColumn12.Header.Caption = "Usuario Act.";
-            ultraGridColumn12.Header.VisiblePosition = 9;
-            ultraGridColumn12.Width = 125;
-            ultraGridColumn13.Format = "dd/MM/yyyy hh:mm tt";
-            ultraGridColumn13.Header.Caption = "Fecha Act.";
-            ultraGridColumn13.Header.VisiblePosition = 10;
-            ultraGridColumn13.Width = 150;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn2,
-            ultraGridColumn9,
-            ultraGridColumn10,
-            ultraGridColumn11,
-            ultraGridColumn14,
-            ultraGridColumn15,
-            ultraGridColumn16,
-            ultraGridColumn4,
-            ultraGridColumn5,
-            ultraGridColumn12,
-            ultraGridColumn13});
+            ultraGridColumn9});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.InterBandSpacing = 10;
             this.grdData.DisplayLayout.MaxColScrollRegions = 1;
