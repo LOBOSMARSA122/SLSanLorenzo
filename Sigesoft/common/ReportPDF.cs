@@ -7922,6 +7922,8 @@ namespace NetPdf
 
             if (listaPersonMedicalHistory != null && listaPersonMedicalHistory.Count > 0)
             {
+                cell = new PdfPCell(new Phrase("ANTECEDENTES PERSONALES", fontColumnValue)) { Rowspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_TOP };
+                cells.Add(cell);
                 foreach (var item in listaPersonMedicalHistory)
                 {
                     //Columna Fecha Inicio
@@ -7936,23 +7938,83 @@ namespace NetPdf
                     cell = new PdfPCell(new Phrase(item.v_DiagnosticDetail, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
                 }
-                columnWidths = new float[] { 50f, 20f, 30f };
+                columnWidths = new float[] { 30f, 20f, 20f, 30f };
             }
             else
             {
-                cells.Add(new PdfPCell(new Phrase("NO REFIERE ANTECEDENTES.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
-                columnWidths = new float[] { 50f, 20f, 30f };
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                columnWidths = new float[] {30f, 20f, 20f, 30f };
 
             }
-            columnHeaders = new string[] { "FECHA DE INICIO", "DIAGNÓSTICO", "DETALLE" };
-
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "III. ANTECEDENTES PERSONALES", fontTitleTable, columnHeaders);
+          
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths,"", fontTitleTable, columnHeaders);
 
             document.Add(table);
 
             #endregion
 
-            #region Antecedentes Familiares
+            //#region Antecedentes Familiares
+            //cells = new List<PdfPCell>();
+
+            //cells.Add(new PdfPCell(new Phrase("ANTECEDENTES FAMILIARES", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("INMUNIZACIONES", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("NÚMERO DE HIJOS", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
+            //cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("Descripción", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("Nro. Dosis", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+
+            //cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+
+
+            //cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+
+
+            //cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+
+
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("FIEBRE AMARILLA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+
+            //columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f };
+            //table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
+
+            //document.Add(table);
+
+            //#endregion
+
+            #region Antecedentes Familiares No Va
             cells = new List<PdfPCell>();
 
             if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
@@ -7990,9 +8052,7 @@ namespace NetPdf
 
             #region Examen Inmunizaciones
 
-            //var ListaInmunizaciones = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000069" || p.v_ComponentId == "N009-ME000000065" || p.v_ComponentId == "N009-ME000000063");
             var ListaInmunizaciones = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000407");
-
             var ListaInmunizacionesConcatenada = string.Join(", ", ListaInmunizaciones.Select(p => p.v_DiseasesName));
 
             cells = new List<PdfPCell>();
@@ -8011,19 +8071,19 @@ namespace NetPdf
 
             #region NÚMERO DE HIJOS
 
-            cells = new List<PdfPCell>()
-                 {
-                    new PdfPCell(new Phrase("VIVOS", fontColumnValue)),
-                    new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)),
-                    new PdfPCell(new Phrase("FALLECIDOS", fontColumnValue)),
-                    new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)),
-                    new PdfPCell(new Phrase("", fontColumnValue)),
-                 };
-            columnWidths = new float[] { 15f, 5f, 15f, 5f, 60f };
+            //cells = new List<PdfPCell>()
+            //     {
+            //        new PdfPCell(new Phrase("VIVOS", fontColumnValue)),
+            //        new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)),
+            //        new PdfPCell(new Phrase("FALLECIDOS", fontColumnValue)),
+            //        new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)),
+            //        new PdfPCell(new Phrase("", fontColumnValue)),
+            //     };
+            //columnWidths = new float[] { 15f, 5f, 15f, 5f, 60f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "NÚMERO DE HIJOS", fontTitleTable);
+            //filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "NÚMERO DE HIJOS", fontTitleTable);
 
-            document.Add(filiationWorker);
+            //document.Add(filiationWorker);
 
 
             #endregion
@@ -10919,36 +10979,116 @@ namespace NetPdf
             document.Add(filiationWorker);
             #endregion
 
+            //#region Antecedentes Personales
+            //cells = new List<PdfPCell>();
+
+            //if (listaPersonMedicalHistory != null && listaPersonMedicalHistory.Count > 0)
+            //{
+            //    foreach (var item in listaPersonMedicalHistory)
+            //    {
+            //        //Columna Diagnóstico
+            //        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+
+            //        //Columna Fecha Inicio
+            //        cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+
+            //        //Columna Tipo Dx
+            //        cell = new PdfPCell(new Phrase(item.v_TypeDiagnosticName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+            //    }
+            //    columnWidths = new float[] { 50f, 20f, 30f };
+            //}
+            //else
+            //{
+            //    cells.Add(new PdfPCell(new Phrase("NO REFIERE ANTECEDENTES.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+            //    columnWidths = new float[] { 50f, 20f, 30f };
+
+            //}
+            //columnHeaders = new string[] { "DIAGNÓSTICO", "FECHA DE INICIO", "TIPO DIAGNÓSTICO" };
+
+            //table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "III. ANTECEDENTES PERSONALES", fontTitleTable, columnHeaders);
+
+            //document.Add(table);
+
+            //#endregion
+
+
             #region Antecedentes Personales
             cells = new List<PdfPCell>();
 
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000637") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000637";
+                oPersonMedicalHistoryList.v_DiseasesName = "CIRUGÍAS";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000633") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000633";
+                oPersonMedicalHistoryList.v_DiseasesName = "ALERGIAS";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000642") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000642";
+                oPersonMedicalHistoryList.v_DiseasesName = "DIABETES";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000436") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000436";
+                oPersonMedicalHistoryList.v_DiseasesName = "HTA";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
             if (listaPersonMedicalHistory != null && listaPersonMedicalHistory.Count > 0)
             {
+                cell = new PdfPCell(new Phrase("ANTECEDENTES PERSONALES", fontColumnValue)) { Rowspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_TOP };
+                cells.Add(cell);
                 foreach (var item in listaPersonMedicalHistory)
                 {
+                    //Columna Fecha Inicio
+                    cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString() == "1/01/2000" ? "00/00/0000" : item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
+
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
 
-                    //Columna Fecha Inicio
-                    cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
-                    cells.Add(cell);
-
                     //Columna Tipo Dx
-                    cell = new PdfPCell(new Phrase(item.v_TypeDiagnosticName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.v_DiagnosticDetail, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
                 }
-                columnWidths = new float[] { 50f, 20f, 30f };
+                columnWidths = new float[] { 30f, 20f, 20f, 30f };
             }
             else
             {
-                cells.Add(new PdfPCell(new Phrase("NO REFIERE ANTECEDENTES.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
-                columnWidths = new float[] { 50f, 20f, 30f };
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                columnWidths = new float[] { 30f, 20f, 20f, 30f };
 
             }
-            columnHeaders = new string[] { "DIAGNÓSTICO", "FECHA DE INICIO", "TIPO DIAGNÓSTICO" };
 
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "III. ANTECEDENTES PERSONALES", fontTitleTable, columnHeaders);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
 
             document.Add(table);
 
@@ -13803,36 +13943,115 @@ namespace NetPdf
             document.Add(filiationWorker);
             #endregion
 
+            //#region Antecedentes Personales
+            //cells = new List<PdfPCell>();
+
+            //if (listaPersonMedicalHistory != null && listaPersonMedicalHistory.Count > 0)
+            //{
+            //    foreach (var item in listaPersonMedicalHistory)
+            //    {
+            //        //Columna Diagnóstico
+            //        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+
+            //        //Columna Fecha Inicio
+            //        cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+
+            //        //Columna Tipo Dx
+            //        cell = new PdfPCell(new Phrase(item.v_TypeDiagnosticName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+            //    }
+            //    columnWidths = new float[] { 50f, 20f, 30f };
+            //}
+            //else
+            //{
+            //    cells.Add(new PdfPCell(new Phrase("NO REFIERE ANTECEDENTES.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+            //    columnWidths = new float[] { 50f, 20f, 30f };
+
+            //}
+            //columnHeaders = new string[] { "DIAGNÓSTICO", "FECHA DE INICIO", "TIPO DIAGNÓSTICO" };
+
+            //table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "III. ANTECEDENTES PERSONALES", fontTitleTable, columnHeaders);
+
+            //document.Add(table);
+
+            //#endregion
+
             #region Antecedentes Personales
             cells = new List<PdfPCell>();
 
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000637") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000637";
+                oPersonMedicalHistoryList.v_DiseasesName = "CIRUGÍAS";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000633") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000633";
+                oPersonMedicalHistoryList.v_DiseasesName = "ALERGIAS";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000642") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000642";
+                oPersonMedicalHistoryList.v_DiseasesName = "DIABETES";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000436") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000436";
+                oPersonMedicalHistoryList.v_DiseasesName = "HTA";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
             if (listaPersonMedicalHistory != null && listaPersonMedicalHistory.Count > 0)
             {
+                cell = new PdfPCell(new Phrase("ANTECEDENTES PERSONALES", fontColumnValue)) { Rowspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_TOP };
+                cells.Add(cell);
                 foreach (var item in listaPersonMedicalHistory)
                 {
+                    //Columna Fecha Inicio
+                    cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString() == "1/01/2000" ? "00/00/0000" : item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
+
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
 
-                    //Columna Fecha Inicio
-                    cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
-                    cells.Add(cell);
-
                     //Columna Tipo Dx
-                    cell = new PdfPCell(new Phrase(item.v_TypeDiagnosticName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.v_DiagnosticDetail, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
                 }
-                columnWidths = new float[] { 50f, 20f, 30f };
+                columnWidths = new float[] { 30f, 20f, 20f, 30f };
             }
             else
             {
-                cells.Add(new PdfPCell(new Phrase("NO REFIERE ANTECEDENTES.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
-                columnWidths = new float[] { 50f, 20f, 30f };
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                columnWidths = new float[] { 30f, 20f, 20f, 30f };
 
             }
-            columnHeaders = new string[] { "DIAGNÓSTICO", "FECHA DE INICIO", "TIPO DIAGNÓSTICO" };
 
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "III. ANTECEDENTES PERSONALES", fontTitleTable, columnHeaders);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
 
             document.Add(table);
 
@@ -16851,36 +17070,115 @@ namespace NetPdf
             document.Add(filiationWorker);
             #endregion
 
+            //#region Antecedentes Personales
+            //cells = new List<PdfPCell>();
+
+            //if (listaPersonMedicalHistory != null && listaPersonMedicalHistory.Count > 0)
+            //{
+            //    foreach (var item in listaPersonMedicalHistory)
+            //    {
+            //        //Columna Diagnóstico
+            //        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+
+            //        //Columna Fecha Inicio
+            //        cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+
+            //        //Columna Tipo Dx
+            //        cell = new PdfPCell(new Phrase(item.v_TypeDiagnosticName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+            //        cells.Add(cell);
+            //    }
+            //    columnWidths = new float[] { 50f, 20f, 30f };
+            //}
+            //else
+            //{
+            //    cells.Add(new PdfPCell(new Phrase("NO REFIERE ANTECEDENTES.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+            //    columnWidths = new float[] { 50f, 20f, 30f };
+
+            //}
+            //columnHeaders = new string[] { "DIAGNÓSTICO", "FECHA DE INICIO", "TIPO DIAGNÓSTICO" };
+
+            //table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "III. ANTECEDENTES PERSONALES", fontTitleTable, columnHeaders);
+
+            //document.Add(table);
+
+            //#endregion
+
             #region Antecedentes Personales
             cells = new List<PdfPCell>();
 
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000637") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000637";
+                oPersonMedicalHistoryList.v_DiseasesName = "CIRUGÍAS";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000633") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000633";
+                oPersonMedicalHistoryList.v_DiseasesName = "ALERGIAS";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000642") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000642";
+                oPersonMedicalHistoryList.v_DiseasesName = "DIABETES";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
+            if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000436") == null)
+            {
+                PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000436";
+                oPersonMedicalHistoryList.v_DiseasesName = "HTA";
+                oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
+                listaPersonMedicalHistory.Add(oPersonMedicalHistoryList);
+            }
+
             if (listaPersonMedicalHistory != null && listaPersonMedicalHistory.Count > 0)
             {
+                cell = new PdfPCell(new Phrase("ANTECEDENTES PERSONALES", fontColumnValue)) { Rowspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_TOP };
+                cells.Add(cell);
                 foreach (var item in listaPersonMedicalHistory)
                 {
+                    //Columna Fecha Inicio
+                    cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString() == "1/01/2000" ? "00/00/0000" : item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
+
                     //Columna Diagnóstico
                     cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
 
-                    //Columna Fecha Inicio
-                    cell = new PdfPCell(new Phrase(item.d_StartDate.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
-                    cells.Add(cell);
-
                     //Columna Tipo Dx
-                    cell = new PdfPCell(new Phrase(item.v_TypeDiagnosticName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.v_DiagnosticDetail, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
                 }
-                columnWidths = new float[] { 50f, 20f, 30f };
+                columnWidths = new float[] { 30f, 20f, 20f, 30f };
             }
             else
             {
-                cells.Add(new PdfPCell(new Phrase("NO REFIERE ANTECEDENTES.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
-                columnWidths = new float[] { 50f, 20f, 30f };
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                columnWidths = new float[] { 30f, 20f, 20f, 30f };
 
             }
-            columnHeaders = new string[] { "DIAGNÓSTICO", "FECHA DE INICIO", "TIPO DIAGNÓSTICO" };
 
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "III. ANTECEDENTES PERSONALES", fontTitleTable, columnHeaders);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
 
             document.Add(table);
 
