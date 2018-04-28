@@ -3886,6 +3886,22 @@ namespace NetPdf
             #endregion
 
             #region Antecedentes Familiares
+
+            var dxPadre = "";
+            var dxMadre = "";
+            var dxHermanos = "";
+            var ComentPadre = "";
+            var ComentMadre = "";
+            var ComentHermanos = "";
+
+            dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
+            dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
+            dxHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_DiseaseName;
+
+
+            ComentPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE")[0].v_Comment;
+            ComentMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_Comment;
+            ComentHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_Comment;
             cells = new List<PdfPCell>();
 
             cells.Add(new PdfPCell(new Phrase("ANTECEDENTES FAMILIARES", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
@@ -3893,41 +3909,41 @@ namespace NetPdf
             cells.Add(new PdfPCell(new Phrase("NÚMERO DE HIJOS", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
-            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("DIAGNÓSTICO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
+            cells.Add(new PdfPCell(new Phrase("COMENTARIO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Descripción", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Nro. Dosis", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -8059,6 +8075,22 @@ namespace NetPdf
             #endregion
 
             #region Antecedentes Familiares
+
+            var dxPadre = "";
+            var dxMadre = "";
+            var dxHermanos = "";
+            var ComentPadre = "";
+            var ComentMadre = "";
+            var ComentHermanos = "";
+
+            dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
+            dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
+            dxHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_DiseaseName;
+
+
+            ComentPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE")[0].v_Comment;
+            ComentMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_Comment;
+            ComentHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_Comment;
             cells = new List<PdfPCell>();
 
             cells.Add(new PdfPCell(new Phrase("ANTECEDENTES FAMILIARES", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
@@ -8066,41 +8098,41 @@ namespace NetPdf
             cells.Add(new PdfPCell(new Phrase("NÚMERO DE HIJOS", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
-            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("DIAGNÓSTICO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
+            cells.Add(new PdfPCell(new Phrase("COMENTARIO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Descripción", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Nro. Dosis", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -11352,6 +11384,22 @@ namespace NetPdf
             #endregion
 
             #region Antecedentes Familiares
+
+            var dxPadre = "";
+            var dxMadre = "";
+            var dxHermanos = "";
+            var ComentPadre = "";
+            var ComentMadre = "";
+            var ComentHermanos = "";
+
+            dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
+            dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
+            dxHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_DiseaseName;
+
+
+            ComentPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE")[0].v_Comment;
+            ComentMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_Comment;
+            ComentHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_Comment;
             cells = new List<PdfPCell>();
 
             cells.Add(new PdfPCell(new Phrase("ANTECEDENTES FAMILIARES", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
@@ -11359,41 +11407,41 @@ namespace NetPdf
             cells.Add(new PdfPCell(new Phrase("NÚMERO DE HIJOS", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
-            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("DIAGNÓSTICO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
+            cells.Add(new PdfPCell(new Phrase("COMENTARIO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Descripción", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Nro. Dosis", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -14294,9 +14342,24 @@ namespace NetPdf
             document.Add(table);
 
             #endregion
-
-
+            
             #region Antecedentes Familiares
+
+            var dxPadre = "";
+            var dxMadre = "";
+            var dxHermanos = "";
+            var ComentPadre = "";
+            var ComentMadre = "";
+            var ComentHermanos = "";
+
+            dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
+            dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
+            dxHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_DiseaseName;
+
+
+            ComentPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE")[0].v_Comment;
+            ComentMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_Comment;
+            ComentHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_Comment;
             cells = new List<PdfPCell>();
 
             cells.Add(new PdfPCell(new Phrase("ANTECEDENTES FAMILIARES", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
@@ -14304,41 +14367,41 @@ namespace NetPdf
             cells.Add(new PdfPCell(new Phrase("NÚMERO DE HIJOS", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
-            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("DIAGNÓSTICO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
+            cells.Add(new PdfPCell(new Phrase("COMENTARIO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Descripción", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Nro. Dosis", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -14353,6 +14416,7 @@ namespace NetPdf
             document.Add(table);
 
             #endregion
+
             #region Antecedentes Familiares
             //cells = new List<PdfPCell>();
 
@@ -17502,6 +17566,22 @@ namespace NetPdf
             #endregion
 
             #region Antecedentes Familiares
+
+            var dxPadre = "";
+            var dxMadre = "";
+            var dxHermanos = "";
+            var ComentPadre = "";
+            var ComentMadre = "";
+            var ComentHermanos = "";
+
+            dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
+            dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
+            dxHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_DiseaseName;
+
+
+            ComentPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE")[0].v_Comment;
+            ComentMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_Comment;
+            ComentHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_Comment;
             cells = new List<PdfPCell>();
 
             cells.Add(new PdfPCell(new Phrase("ANTECEDENTES FAMILIARES", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
@@ -17509,41 +17589,41 @@ namespace NetPdf
             cells.Add(new PdfPCell(new Phrase("NÚMERO DE HIJOS", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
-            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("DIAGNÓSTICO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE, });
+            cells.Add(new PdfPCell(new Phrase("COMENTARIO", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Descripción", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Nro. Dosis", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("PADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentPadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("MADRE", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentMadre, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
-            cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("HERMANOS", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(dxHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ComentHermanos, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
