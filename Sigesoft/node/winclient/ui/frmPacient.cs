@@ -139,7 +139,6 @@ namespace Sigesoft.Node.WinClient.UI
                 else
                 {
                     var objData = GetData(0, null, txtFirstLastNameDocNumber.Text.Trim());
-
                     grdData.DataSource = objData;
 
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
@@ -1116,7 +1115,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             }
         }
-
+  
         private void ddlDepartamentId_SelectedIndexChanged(object sender, EventArgs e)
         {
             //if (ddlDepartamentId.SelectedValue.ToString() == "-1")
@@ -1156,7 +1155,7 @@ namespace Sigesoft.Node.WinClient.UI
             if (grdData.Selected.Rows.Count == 0)
                 return;
 
-            string strPacientId = grdData.Selected.Rows[0].Cells[0].Value.ToString();
+            string strPacientId = grdData.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
             loadData(strPacientId, "Edit");
             ActivarControles(false);
             btnEditar.Enabled = true;

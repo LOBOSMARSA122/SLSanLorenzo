@@ -813,7 +813,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<PacientList> GetPacientsPagedAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int pintResultsPerPage, string pstrFirstLastNameorDocNumber)
+        public List<PacientList> GetPacientsPagedAndFiltered_(ref OperationResult pobjOperationResult, int? pintPageIndex, int pintResultsPerPage, string pstrFirstLastNameorDocNumber)
         {
             //mon.IsActive = true;
             try
@@ -837,6 +837,98 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_TelephoneNumber = B.v_TelephoneNumber,
                                 v_Mail = B.v_Mail
                             });
+
+                List<PacientList> objData = query.ToList();
+                pobjOperationResult.Success = 1;
+                return objData;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+
+        public List<PacientList> GetPacientsPagedAndFiltered(ref OperationResult pobjOperationResult, int pintPageIndex, int pintResultsPerPage, string pstrFirstLastNameorDocNumber)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                int intId = -1;
+                bool FindById = int.TryParse(pstrFirstLastNameorDocNumber, out intId);
+                var Id = intId.ToString();
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from A in dbContext.pacient
+                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+                                                                   equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+
+                             join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+                             from J2 in J2_join.DefaultIfEmpty()
+                             where (B.v_FirstName.Contains(pstrFirstLastNameorDocNumber) || B.v_FirstLastName.Contains(pstrFirstLastNameorDocNumber)
+                                    || B.v_SecondLastName.Contains(pstrFirstLastNameorDocNumber)) && B.i_IsDeleted == 0
+                             select new PacientList
+                             {
+                                 v_PersonId = A.v_PersonId,
+                                 v_FirstName = B.v_FirstName,
+                                 v_FirstLastName = B.v_FirstLastName,
+                                 v_SecondLastName = B.v_SecondLastName,
+                                 v_AdressLocation = B.v_AdressLocation,
+                                 v_TelephoneNumber = B.v_TelephoneNumber,
+                                 v_Mail = B.v_Mail,
+                                 v_CreationUser = J1.v_UserName,
+                                 v_UpdateUser = J2.v_UserName,
+                                 d_CreationDate = A.d_InsertDate,
+                                 d_UpdateDate = A.d_UpdateDate,
+                                 i_DepartmentId = B.i_DepartmentId,
+                                 i_ProvinceId = B.i_ProvinceId,
+                                 i_DistrictId = B.i_DistrictId,
+                                 i_ResidenceInWorkplaceId = B.i_ResidenceInWorkplaceId,
+                                 v_ResidenceTimeInWorkplace = B.v_ResidenceTimeInWorkplace,
+                                 i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
+                                 i_NumberLivingChildren = B.i_NumberLivingChildren,
+                                 i_NumberDependentChildren = B.i_NumberDependentChildren
+
+                             }).Concat
+                            (from A in dbContext.pacient
+                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                           
+                             join J1 in dbContext.systemuser on new { i_InsertUserId = A.i_InsertUserId.Value }
+                                                                   equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+
+                             join J2 in dbContext.systemuser on new { i_UpdateUserId = A.i_UpdateUserId.Value }
+                                                             equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+                             from J2 in J2_join.DefaultIfEmpty()
+                             where B.v_DocNumber == Id && B.i_IsDeleted == 0
+                             select new PacientList
+                             {
+                                 v_PersonId = A.v_PersonId,
+                                 v_FirstName = B.v_FirstName,
+                                 v_FirstLastName = B.v_FirstLastName,
+                                 v_SecondLastName = B.v_SecondLastName,
+                                 v_AdressLocation = B.v_AdressLocation,
+                                 v_TelephoneNumber = B.v_TelephoneNumber,
+                                 v_Mail = B.v_Mail,
+                                 v_CreationUser = J1.v_UserName,
+                                 v_UpdateUser = J2.v_UserName,
+                                 d_CreationDate = A.d_InsertDate,
+                                 d_UpdateDate = A.d_UpdateDate,
+                                 i_DepartmentId = B.i_DepartmentId,
+                                 i_ProvinceId = B.i_ProvinceId,
+                                 i_DistrictId = B.i_DistrictId,
+                                 i_ResidenceInWorkplaceId = B.i_ResidenceInWorkplaceId,
+                                 v_ResidenceTimeInWorkplace = B.v_ResidenceTimeInWorkplace,
+                                 i_TypeOfInsuranceId = B.i_TypeOfInsuranceId,
+                                 i_NumberLivingChildren = B.i_NumberLivingChildren,
+                                 i_NumberDependentChildren = B.i_NumberDependentChildren
+                             }).OrderBy("v_FirstLastName").Take(pintResultsPerPage);
 
                 List<PacientList> objData = query.ToList();
                 pobjOperationResult.Success = 1;
@@ -1064,8 +1156,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      FirmaDoctorAuditor = pr2.b_SignatureImage,
                                      GESO = F.v_Name,
                                      i_AptitudeStatusId = s.i_AptitudeStatusId,
-                                     EstadoCivil = H.v_Value1,
-                                     EmpresaClienteId = ow.v_OrganizationId
+                                     v_MaritalStatus = H.v_Value1,
+                                     //EmpresaClienteId = ow.v_OrganizationId
                                      
                                  });
 
@@ -1124,8 +1216,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_OrganitationName = a.v_OrganitationName,
                                 i_AptitudeStatusId = a.i_AptitudeStatusId,
                                 v_ObsStatusService = a.v_ObsStatusService,
-                                EstadoCivil = a.EstadoCivil,
-                                EmpresaClienteId = a.EmpresaClienteId
+                                v_MaritalStatus = a.v_MaritalStatus,
+                                //EmpresaClienteId = a.EmpresaClienteId
                             }).FirstOrDefault();
 
                 return sql;

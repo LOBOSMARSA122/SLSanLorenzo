@@ -6170,7 +6170,7 @@ namespace NetPdf
                 page.FirmaTrabajador = filiationData.FirmaTrabajador;
                 page.HuellaTrabajador = filiationData.HuellaTrabajador;
                 page.Dni = filiationData.v_DocNumber;
-                page.EmpresaId = filiationData.EmpresaClienteId;
+                //page.EmpresaId = filiationData.EmpresaClienteId;
                 page.Dato = "IC/" + filiationData.v_FirstName + " " + filiationData.v_FirstLastName + " " + filiationData.v_SecondLastName;
                 //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
                 writer.PageEvent = page;

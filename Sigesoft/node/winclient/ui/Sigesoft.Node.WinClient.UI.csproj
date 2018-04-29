@@ -98,8 +98,9 @@
     <Reference Include="Infragistics4.Documents.Reports.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Infragistics4.Shared.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
-      <Private>True</Private>
+    <Reference Include="Infragistics4.Shared.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\SLSanjoaquin\Sigesoft\node\winclient\ui\bin\Debug\Infragistics4.Shared.v13.1.dll</HintPath>
     </Reference>
     <Reference Include="Infragistics4.Win.AppStylistSupport.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.Misc.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
@@ -679,11 +680,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsHemogramaCompleto.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Dataset\dsHistoriaClinicaPsicologica.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsHistoriaClinicaPsicologica.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Dataset\dsHistoriaOcupacional1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1177,6 +1173,12 @@
     </Compile>
     <Compile Include="frmOrdenReportes.Designer.cs">
       <DependentUpon>frmOrdenReportes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPacient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPacient.Designer.cs">
+      <DependentUpon>frmPacient.cs</DependentUpon>
     </Compile>
     <Compile Include="frmPopupArea.cs">
       <SubType>Form</SubType>
@@ -2540,12 +2542,6 @@
     <Compile Include="frmOffice_.Designer.cs">
       <DependentUpon>frmOffice_.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPacient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frmPacient.Designer.cs">
-      <DependentUpon>frmPacient.cs</DependentUpon>
-    </Compile>
     <Compile Include="frmMedicalExamFieldValueEdicion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3351,6 +3347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmOrdenReportes.resx">
       <DependentUpon>frmOrdenReportes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPacient.resx">
+      <DependentUpon>frmPacient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPopupArea.resx">
       <DependentUpon>frmPopupArea.cs</DependentUpon>
@@ -4178,9 +4177,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmOffice_.resx">
       <DependentUpon>frmOffice_.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmPacient.resx">
-      <DependentUpon>frmPacient.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMedicalExamFieldValueEdicion.resx">
       <DependentUpon>frmMedicalExamFieldValueEdicion.cs</DependentUpon>
@@ -5109,7 +5105,6 @@
     <None Include="Dataset\dsHistoriaClinicaPsicologica.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsHistoriaClinicaPsicologica.Designer.cs</LastGenOutput>
     </None>
     <None Include="Dataset\dsHistoriaClinicaPsicologica.xss">
       <DependentUpon>dsHistoriaClinicaPsicologica.xsd</DependentUpon>
