@@ -301,7 +301,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 txtCurrentOccupation.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
                 txtCurrentOccupation.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
-                this.txtCurrentOccupation.DropDownWidth = 550;
+                this.txtCurrentOccupation.DropDownWidth = 350;
                 txtCurrentOccupation.DisplayLayout.Bands[0].Columns[0].Width = 10;
                 txtCurrentOccupation.DisplayLayout.Bands[0].Columns[1].Width = 350;
 
