@@ -260,6 +260,10 @@ namespace Sigesoft.Node.WinClient.UI
                 // Additional logic here.
                 dtpBirthdate.Checked = false;
 
+                ddlDepartamentId.SelectedValue = "609";
+                ddlProvinceId.SelectedValue = "610";
+                ddlDistricId.SelectedValue = "611";
+
             }
             else if (Mode == "Edit")
             {
@@ -793,9 +797,13 @@ namespace Sigesoft.Node.WinClient.UI
             dtpBirthdate.Value = DateTime.Now;
             ddlBloodFactorId.SelectedIndex = 0;
 
-            ddlDepartamentId.SelectedValue = "-1";
-            ddlProvinceId.SelectedValue = "-1";
-            ddlDistricId.SelectedValue = "-1";
+            //ddlDepartamentId.SelectedValue = "-1";
+            //ddlProvinceId.SelectedValue = "-1";
+            //ddlDistricId.SelectedValue = "-1";
+            ddlDepartamentId.SelectedValue = "609";
+            ddlProvinceId.SelectedValue = "610";
+            ddlDistricId.SelectedValue = "611";
+
             ddlResidenceInWorkplaceId.SelectedValue = "-1";
             txtResidenceTimeInWorkplace.Text = "";
             ddlTypeOfInsuranceId.SelectedValue = "-1";
