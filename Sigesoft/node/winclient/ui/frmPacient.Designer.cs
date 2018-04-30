@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacient));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PersonId", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
@@ -49,7 +50,18 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPacient));
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuGridNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGridModificar = new System.Windows.Forms.ToolStripMenuItem();
@@ -88,7 +100,6 @@
             this.ddlResidenceInWorkplaceId = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtCurrentOccupation = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -145,6 +156,7 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnAntecedentes = new System.Windows.Forms.Button();
+            this.txtCurrentOccupation = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -155,6 +167,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPacient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentOccupation)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -176,7 +189,7 @@
             // 
             // mnuGridModificar
             // 
-            this.mnuGridModificar.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridModificar.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridModificar.Image")));
             this.mnuGridModificar.Name = "mnuGridModificar";
             this.mnuGridModificar.Size = new System.Drawing.Size(146, 22);
             this.mnuGridModificar.Text = "Modificar";
@@ -389,7 +402,6 @@
             this.groupBox6.Controls.Add(this.ddlResidenceInWorkplaceId);
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Controls.Add(this.label12);
-            this.groupBox6.Controls.Add(this.txtCurrentOccupation);
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.label9);
@@ -744,16 +756,6 @@
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 14;
             this.label12.Text = "Nro Documento";
-            // 
-            // txtCurrentOccupation
-            // 
-            this.txtCurrentOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentOccupation.Location = new System.Drawing.Point(391, 169);
-            this.txtCurrentOccupation.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCurrentOccupation.MaxLength = 250;
-            this.txtCurrentOccupation.Name = "txtCurrentOccupation";
-            this.txtCurrentOccupation.Size = new System.Drawing.Size(421, 20);
-            this.txtCurrentOccupation.TabIndex = 19;
             // 
             // label11
             // 
@@ -1176,7 +1178,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Image = global::Sigesoft.Node.WinClient.UI.Resources.delete;
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(294, 220);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(37, 31);
@@ -1411,7 +1413,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
-            this.btnEditar.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditar.Location = new System.Drawing.Point(1186, 242);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
@@ -1465,12 +1467,69 @@
             this.btnAntecedentes.UseVisualStyleBackColor = false;
             this.btnAntecedentes.Click += new System.EventHandler(this.btnAntecedentes_Click);
             // 
+            // txtCurrentOccupation
+            // 
+            appearance8.BackColor = System.Drawing.SystemColors.Window;
+            appearance8.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtCurrentOccupation.DisplayLayout.Appearance = appearance8;
+            this.txtCurrentOccupation.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.txtCurrentOccupation.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance9.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance9.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.Appearance = appearance9;
+            appearance10.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.BandLabelAppearance = appearance10;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance11.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance11.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance11.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.PromptAppearance = appearance11;
+            appearance12.BackColor = System.Drawing.SystemColors.Window;
+            appearance12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCurrentOccupation.DisplayLayout.Override.ActiveCellAppearance = appearance12;
+            appearance13.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance13.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.txtCurrentOccupation.DisplayLayout.Override.ActiveRowAppearance = appearance13;
+            this.txtCurrentOccupation.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
+            this.txtCurrentOccupation.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.txtCurrentOccupation.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance14.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.Override.CardAreaAppearance = appearance14;
+            appearance15.BorderColor = System.Drawing.Color.Silver;
+            appearance15.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.txtCurrentOccupation.DisplayLayout.Override.CellAppearance = appearance15;
+            this.txtCurrentOccupation.DisplayLayout.Override.CellPadding = 0;
+            this.txtCurrentOccupation.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
+            appearance16.BackColor = System.Drawing.SystemColors.Control;
+            appearance16.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance16.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance16.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.Override.GroupByRowAppearance = appearance16;
+            appearance17.TextHAlignAsString = "Left";
+            this.txtCurrentOccupation.DisplayLayout.Override.HeaderAppearance = appearance17;
+            this.txtCurrentOccupation.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance18.BackColor = System.Drawing.SystemColors.Window;
+            appearance18.BorderColor = System.Drawing.Color.Silver;
+            this.txtCurrentOccupation.DisplayLayout.Override.RowAppearance = appearance18;
+            appearance19.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtCurrentOccupation.DisplayLayout.Override.TemplateAddRowAppearance = appearance19;
+            this.txtCurrentOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentOccupation.Location = new System.Drawing.Point(754, 363);
+            this.txtCurrentOccupation.Name = "txtCurrentOccupation";
+            this.txtCurrentOccupation.Size = new System.Drawing.Size(420, 22);
+            this.txtCurrentOccupation.TabIndex = 148;
+            // 
             // frmPacient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1302, 600);
+            this.Controls.Add(this.txtCurrentOccupation);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnAntecedentes);
             this.Controls.Add(this.btnExit);
@@ -1509,7 +1568,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPacient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentOccupation)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1523,7 +1584,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuGridAntecedent;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtCurrentOccupation;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox ddlBloodFactorId;
         private System.Windows.Forms.ComboBox ddlBloodGroupId;
@@ -1610,6 +1670,7 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.TextBox txtDecucible;
+        private Infragistics.Win.UltraWinGrid.UltraCombo txtCurrentOccupation;
     }
 }
 

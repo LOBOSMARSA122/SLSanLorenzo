@@ -152,6 +152,7 @@
     <Compile Include="Custom\ProtocolList.cs" />
     <Compile Include="Custom\ProtocoloCorto.cs" />
     <Compile Include="Custom\ProtocolSystemUSerExternalList.cs" />
+    <Compile Include="Custom\PuestoList.cs" />
     <Compile Include="Custom\recetadespachoDto.cs" />
     <Compile Include="Custom\recetaDto.cs" />
     <Compile Include="Custom\RecomendationList.cs" />

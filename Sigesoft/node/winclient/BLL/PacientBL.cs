@@ -5489,7 +5489,31 @@ namespace Sigesoft.Node.WinClient.BLL
             return q4;
         }
 
-      
+        public List<PuestoList> GetAllPuestos()
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from A in dbContext.person
+                             where  A.i_IsDeleted == 0
+                             select new PuestoList
+                             {
+                                 PuestoId = A.v_CurrentOccupation,
+                                 Puesto = A.v_CurrentOccupation
+                             }).ToList();
+
+
+                var objData = query.AsEnumerable().
+                            GroupBy(g => g.Puesto)
+                                        .Select(s => s.First());
+
+                List<PuestoList> x = objData.ToList().FindAll(p => p.Puesto != "" || p.Puesto != null );
+                return x;
+            }
+            catch (Exception ex)
+            { return null;
+            }
+        }
 
     }
 }
