@@ -290,7 +290,19 @@ namespace Sigesoft.Node.WinClient.UI
                     txtNumberLivingChildren.Text = objpacientDto.i_NumberLivingChildren.ToString();
                     txtNumberDependentChildren.Text = objpacientDto.i_NumberDependentChildren.ToString();
                     txtNroHermanos.Text = objpacientDto.i_NroHermanos.ToString();
-                    txtPuesto.Text = objpacientDto.v_CurrentOccupation;
+                    
+                    var lista = _objPacientBL.GetAllPuestos();
+                    txtPuesto.DataSource = lista;
+                    txtPuesto.DisplayMember = "Puesto";
+                    txtPuesto.ValueMember = "Puesto";
+
+                    txtPuesto.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+                    txtPuesto.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+                    this.txtPuesto.DropDownWidth = 250;
+                    txtPuesto.DisplayLayout.Bands[0].Columns[0].Width = 10;
+                    txtPuesto.DisplayLayout.Bands[0].Columns[1].Width = 250;
+                    
+                  //  txtPuesto.Text = objpacientDto.v_CurrentOccupation;
                     ddlRelationshipId.SelectedValue = objpacientDto.i_Relationship == 0 ? "-1" : objpacientDto.i_Relationship.ToString();
                     ddlAltitudeWorkId.SelectedValue = objpacientDto.i_AltitudeWorkId == 0 ? "-1" : objpacientDto.i_AltitudeWorkId.ToString();
                     ddlPlaceWorkId.SelectedValue = objpacientDto.i_PlaceWorkId == 0 ? "-1" : objpacientDto.i_PlaceWorkId.ToString();

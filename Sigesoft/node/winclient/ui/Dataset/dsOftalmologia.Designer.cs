@@ -1414,7 +1414,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string Recomendaciones, 
                         string OFTALMOLOGIA_CRISTALINO_OJO_DERECHO_ID, 
                         string OFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID, 
-                        string TipoEso, 
+                        int TipoEso, 
                         byte[] HuellaPaciente, 
                         byte[] FirmaPaciente) {
                 dtOftalmologiaRow rowdtOftalmologiaRow = ((dtOftalmologiaRow)(this.NewRow()));
@@ -1830,7 +1830,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnOFTALMOLOGIA_CRISTALINO_OJO_DERECHO_ID);
                 this.columnOFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID = new global::System.Data.DataColumn("OFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOFTALMOLOGIA_CRISTALINO_OJO_IZQUIERDO_ID);
-                this.columnTipoEso = new global::System.Data.DataColumn("TipoEso", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTipoEso = new global::System.Data.DataColumn("TipoEso", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTipoEso);
                 this.columnHuellaPaciente = new global::System.Data.DataColumn("HuellaPaciente", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnHuellaPaciente);
@@ -3493,10 +3493,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string TipoEso {
+            public int TipoEso {
                 get {
                     try {
-                        return ((string)(this[this.tabledtOftalmologia.TipoEsoColumn]));
+                        return ((int)(this[this.tabledtOftalmologia.TipoEsoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'TipoEso\' in table \'dtOftalmologia\' is DBNull.", e);

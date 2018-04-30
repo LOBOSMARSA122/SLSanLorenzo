@@ -450,7 +450,7 @@ namespace NetPdf
             cells.Add(new PdfPCell(new Phrase("Ocupación", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_CENTER });
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_CENTER });
 
-            cells.Add(new PdfPCell(new Phrase(filiationData.EstadoCivil, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+            cells.Add(new PdfPCell(new Phrase(filiationData.v_MaritalStatus, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
             cells.Add(new PdfPCell(new Phrase(filiationData.v_CurrentOccupation, fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_CENTER });
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_CENTER });
 

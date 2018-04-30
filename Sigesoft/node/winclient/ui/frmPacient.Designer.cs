@@ -43,12 +43,25 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_CreationDate");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_UpdateUser");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_UpdateDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Column 0");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuGridNuevo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGridModificar = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +100,6 @@
             this.ddlResidenceInWorkplaceId = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.txtCurrentOccupation = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -144,10 +156,7 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnAntecedentes = new System.Windows.Forms.Button();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.txtHijosVivos = new System.Windows.Forms.TextBox();
-            this.txtHijosFallecidos = new System.Windows.Forms.TextBox();
+            this.txtCurrentOccupation = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -158,6 +167,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbPersonImage)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPacient)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentOccupation)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -250,6 +260,7 @@
             ultraGridColumn13.Header.Caption = "Fecha Act.";
             ultraGridColumn13.Header.VisiblePosition = 10;
             ultraGridColumn13.Width = 150;
+            ultraGridColumn17.Header.VisiblePosition = 11;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn2,
             ultraGridColumn9,
@@ -261,7 +272,8 @@
             ultraGridColumn4,
             ultraGridColumn5,
             ultraGridColumn12,
-            ultraGridColumn13});
+            ultraGridColumn13,
+            ultraGridColumn17});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.InterBandSpacing = 10;
             this.grdData.DisplayLayout.MaxColScrollRegions = 1;
@@ -338,14 +350,10 @@
             // groupBox3
             // 
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.groupBox3.Controls.Add(this.label50);
             this.groupBox3.Controls.Add(this.groupBox6);
-            this.groupBox3.Controls.Add(this.txtDecucible);
-            this.groupBox3.Controls.Add(this.txtNroPliza);
             this.groupBox3.Controls.Add(this.groupBox5);
             this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Controls.Add(this.groupBox1);
-            this.groupBox3.Controls.Add(this.label49);
             this.groupBox3.Controls.Add(this.btnClear);
             this.groupBox3.Controls.Add(this.btnCapturedFingerPrintAndRubric);
             this.groupBox3.Controls.Add(this.txtFileName);
@@ -365,12 +373,12 @@
             // 
             // groupBox6
             // 
-            this.groupBox6.Controls.Add(this.txtHijosFallecidos);
-            this.groupBox6.Controls.Add(this.txtHijosVivos);
-            this.groupBox6.Controls.Add(this.label25);
-            this.groupBox6.Controls.Add(this.label24);
+            this.groupBox6.Controls.Add(this.label50);
+            this.groupBox6.Controls.Add(this.txtDecucible);
+            this.groupBox6.Controls.Add(this.txtNroPliza);
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Controls.Add(this.txtName);
+            this.groupBox6.Controls.Add(this.label49);
             this.groupBox6.Controls.Add(this.label2);
             this.groupBox6.Controls.Add(this.txtFirstLastName);
             this.groupBox6.Controls.Add(this.txtResidenceTimeInWorkplace);
@@ -394,7 +402,6 @@
             this.groupBox6.Controls.Add(this.ddlResidenceInWorkplaceId);
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Controls.Add(this.label12);
-            this.groupBox6.Controls.Add(this.txtCurrentOccupation);
             this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.label10);
             this.groupBox6.Controls.Add(this.label9);
@@ -423,34 +430,31 @@
             this.label50.AutoSize = true;
             this.label50.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label50.ForeColor = System.Drawing.Color.Black;
-            this.label50.Location = new System.Drawing.Point(5, 336);
+            this.label50.Location = new System.Drawing.Point(625, 196);
             this.label50.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label50.Name = "label50";
             this.label50.Size = new System.Drawing.Size(55, 13);
             this.label50.TabIndex = 147;
             this.label50.Text = "Deducible";
-            this.label50.Visible = false;
             // 
             // txtDecucible
             // 
-            this.txtDecucible.Location = new System.Drawing.Point(64, 325);
+            this.txtDecucible.Location = new System.Drawing.Point(684, 191);
             this.txtDecucible.Margin = new System.Windows.Forms.Padding(2);
             this.txtDecucible.MaxLength = 15;
             this.txtDecucible.Name = "txtDecucible";
             this.txtDecucible.Size = new System.Drawing.Size(126, 20);
             this.txtDecucible.TabIndex = 146;
             this.txtDecucible.Text = "0.00";
-            this.txtDecucible.Visible = false;
             // 
             // txtNroPliza
             // 
-            this.txtNroPliza.Location = new System.Drawing.Point(64, 349);
+            this.txtNroPliza.Location = new System.Drawing.Point(468, 193);
             this.txtNroPliza.Margin = new System.Windows.Forms.Padding(2);
             this.txtNroPliza.MaxLength = 15;
             this.txtNroPliza.Name = "txtNroPliza";
             this.txtNroPliza.Size = new System.Drawing.Size(122, 20);
             this.txtNroPliza.TabIndex = 145;
-            this.txtNroPliza.Visible = false;
             // 
             // label18
             // 
@@ -480,13 +484,12 @@
             this.label49.AutoSize = true;
             this.label49.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label49.ForeColor = System.Drawing.Color.Black;
-            this.label49.Location = new System.Drawing.Point(2, 354);
+            this.label49.Location = new System.Drawing.Point(406, 198);
             this.label49.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label49.Name = "label49";
             this.label49.Size = new System.Drawing.Size(58, 13);
             this.label49.TabIndex = 144;
             this.label49.Text = "Nro. Póliza";
-            this.label49.Visible = false;
             // 
             // label2
             // 
@@ -753,16 +756,6 @@
             this.label12.Size = new System.Drawing.Size(82, 13);
             this.label12.TabIndex = 14;
             this.label12.Text = "Nro Documento";
-            // 
-            // txtCurrentOccupation
-            // 
-            this.txtCurrentOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCurrentOccupation.Location = new System.Drawing.Point(391, 169);
-            this.txtCurrentOccupation.Margin = new System.Windows.Forms.Padding(2);
-            this.txtCurrentOccupation.MaxLength = 250;
-            this.txtCurrentOccupation.Name = "txtCurrentOccupation";
-            this.txtCurrentOccupation.Size = new System.Drawing.Size(421, 20);
-            this.txtCurrentOccupation.TabIndex = 19;
             // 
             // label11
             // 
@@ -1474,51 +1467,61 @@
             this.btnAntecedentes.UseVisualStyleBackColor = false;
             this.btnAntecedentes.Click += new System.EventHandler(this.btnAntecedentes_Click);
             // 
-            // label24
+            // txtCurrentOccupation
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.ForeColor = System.Drawing.Color.Black;
-            this.label24.Location = new System.Drawing.Point(394, 198);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(59, 13);
-            this.label24.TabIndex = 116;
-            this.label24.Text = "Hijos Vivos";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(569, 198);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(80, 13);
-            this.label25.TabIndex = 117;
-            this.label25.Text = "Hijos Fallecidos";
-            // 
-            // txtHijosVivos
-            // 
-            this.txtHijosVivos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtHijosVivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHijosVivos.Location = new System.Drawing.Point(457, 194);
-            this.txtHijosVivos.Margin = new System.Windows.Forms.Padding(2);
-            this.txtHijosVivos.MaxLength = 250;
-            this.txtHijosVivos.Name = "txtHijosVivos";
-            this.txtHijosVivos.Size = new System.Drawing.Size(92, 20);
-            this.txtHijosVivos.TabIndex = 118;
-            // 
-            // txtHijosFallecidos
-            // 
-            this.txtHijosFallecidos.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtHijosFallecidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHijosFallecidos.Location = new System.Drawing.Point(654, 194);
-            this.txtHijosFallecidos.Margin = new System.Windows.Forms.Padding(2);
-            this.txtHijosFallecidos.MaxLength = 250;
-            this.txtHijosFallecidos.Name = "txtHijosFallecidos";
-            this.txtHijosFallecidos.Size = new System.Drawing.Size(92, 20);
-            this.txtHijosFallecidos.TabIndex = 119;
+            appearance8.BackColor = System.Drawing.SystemColors.Window;
+            appearance8.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtCurrentOccupation.DisplayLayout.Appearance = appearance8;
+            this.txtCurrentOccupation.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.txtCurrentOccupation.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance9.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance9.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.Appearance = appearance9;
+            appearance10.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.BandLabelAppearance = appearance10;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance11.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance11.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance11.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtCurrentOccupation.DisplayLayout.GroupByBox.PromptAppearance = appearance11;
+            appearance12.BackColor = System.Drawing.SystemColors.Window;
+            appearance12.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCurrentOccupation.DisplayLayout.Override.ActiveCellAppearance = appearance12;
+            appearance13.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance13.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.txtCurrentOccupation.DisplayLayout.Override.ActiveRowAppearance = appearance13;
+            this.txtCurrentOccupation.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
+            this.txtCurrentOccupation.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.txtCurrentOccupation.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance14.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.Override.CardAreaAppearance = appearance14;
+            appearance15.BorderColor = System.Drawing.Color.Silver;
+            appearance15.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.txtCurrentOccupation.DisplayLayout.Override.CellAppearance = appearance15;
+            this.txtCurrentOccupation.DisplayLayout.Override.CellPadding = 0;
+            this.txtCurrentOccupation.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
+            appearance16.BackColor = System.Drawing.SystemColors.Control;
+            appearance16.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance16.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance16.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtCurrentOccupation.DisplayLayout.Override.GroupByRowAppearance = appearance16;
+            appearance17.TextHAlignAsString = "Left";
+            this.txtCurrentOccupation.DisplayLayout.Override.HeaderAppearance = appearance17;
+            this.txtCurrentOccupation.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance18.BackColor = System.Drawing.SystemColors.Window;
+            appearance18.BorderColor = System.Drawing.Color.Silver;
+            this.txtCurrentOccupation.DisplayLayout.Override.RowAppearance = appearance18;
+            appearance19.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtCurrentOccupation.DisplayLayout.Override.TemplateAddRowAppearance = appearance19;
+            this.txtCurrentOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCurrentOccupation.Location = new System.Drawing.Point(754, 363);
+            this.txtCurrentOccupation.Name = "txtCurrentOccupation";
+            this.txtCurrentOccupation.Size = new System.Drawing.Size(420, 22);
+            this.txtCurrentOccupation.TabIndex = 148;
             // 
             // frmPacient
             // 
@@ -1526,6 +1529,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1302, 600);
+            this.Controls.Add(this.txtCurrentOccupation);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnAntecedentes);
             this.Controls.Add(this.btnExit);
@@ -1564,7 +1568,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPacient)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCurrentOccupation)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1578,7 +1584,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuGridAntecedent;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox txtCurrentOccupation;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.ComboBox ddlBloodFactorId;
         private System.Windows.Forms.ComboBox ddlBloodGroupId;
@@ -1665,10 +1670,7 @@
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.TextBox txtDecucible;
-        private System.Windows.Forms.TextBox txtHijosFallecidos;
-        private System.Windows.Forms.TextBox txtHijosVivos;
-        private System.Windows.Forms.Label label25;
-        private System.Windows.Forms.Label label24;
+        private Infragistics.Win.UltraWinGrid.UltraCombo txtCurrentOccupation;
     }
 }
 

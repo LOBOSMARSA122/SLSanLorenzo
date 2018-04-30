@@ -18,13 +18,13 @@ namespace Sigesoft.Node.WinClient.UI
     public partial class frmPacient : Form
     {
         #region Delarations
-        
-       
+
+
         PacientBL _objBL = new PacientBL();
 
         //------------------------------------------------------------------------------------
         PacientBL _objPacientBL = new PacientBL();
-        personDto objpersonDto;        
+        personDto objpersonDto;
 
         private string _fileName;
         private string _filePath;
@@ -63,20 +63,20 @@ namespace Sigesoft.Node.WinClient.UI
         }
 
         private void frmAdministracion_Load(object sender, EventArgs e)
-        {          
+        {
 
             OperationResult objOperationResult = new OperationResult();
 
-            List<KeyValueDTO> _formActions = Sigesoft.Node.WinClient.BLL.Utils.SetFormActionsInSession("frmPacient", 
-                                                                                        Globals.ClientSession.i_CurrentExecutionNodeId, 
-                                                                                        Globals.ClientSession.i_RoleId.Value, 
+            List<KeyValueDTO> _formActions = Sigesoft.Node.WinClient.BLL.Utils.SetFormActionsInSession("frmPacient",
+                                                                                        Globals.ClientSession.i_CurrentExecutionNodeId,
+                                                                                        Globals.ClientSession.i_RoleId.Value,
                                                                                         Globals.ClientSession.i_SystemUserId);
-                  
+
             //Llenado de combos
             Utils.LoadDropDownList(ddlRelationshipId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 207, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlAltitudeWorkId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 208, "i_ParameterId"), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlPlaceWorkId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 204, null), DropDownListAction.Select);
-            
+
             Utils.LoadDropDownList(ddlMaritalStatusId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlDocTypeId, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 106, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSexTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 100, null), DropDownListAction.Select);
@@ -87,22 +87,22 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDepartamento(ref objOperationResult, 113, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito(ref objOperationResult, 113, null), DropDownListAction.Select);
-     
+
             Utils.LoadDropDownList(ddlResidenceInWorkplaceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlTypeOfInsuranceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 188, null), DropDownListAction.Select);
 
-            contextMenuStrip1.Items["mnuGridNuevo"].Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmPacient_ADD",_formActions);
+            contextMenuStrip1.Items["mnuGridNuevo"].Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmPacient_ADD", _formActions);
             contextMenuStrip1.Items["mnuGridModificar"].Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmPacient_EDIT", _formActions);
             contextMenuStrip1.Items["mnuGridAntecedent"].Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmPacient_VIEW", _formActions);
- 
+
             btnFilter_Click(sender, e);
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-           
+
             this.BindGrid();
-         
+
 
             // Utilitario para obtener los tamaños de las columnas de la grilla
             //Clipboard.SetText(Utils.GetGridColumnsDetail(grdData));
@@ -110,52 +110,52 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void BindGrid()
         {
-           
 
-          
-                if (_personId != null)
+
+
+            if (_personId != null)
+            {
+                //var findIndex = grdData.Rows.All.OfType<UltraGridRow>()
+                //                .FirstOrDefault(p => p.Cells["v_PersonId"].Value.ToString() == _personId)                                 
+                //                .Index;
+
+                //if (findIndex != -1)
+                //{
+                //    grdData.Rows[findIndex].Selected = true;
+                //}
+
+                //_personId = null;
+                OperationResult objOperationResult = new OperationResult();
+
+                var Lista = _objBL.GetPacientsPagedAndFilteredByPErsonId(ref objOperationResult, 0, 99999, _personId);
+                grdData.DataSource = Lista;
+                if (grdData.Rows.Count > 0)
                 {
-                    //var findIndex = grdData.Rows.All.OfType<UltraGridRow>()
-                    //                .FirstOrDefault(p => p.Cells["v_PersonId"].Value.ToString() == _personId)                                 
-                    //                .Index;
-
-                    //if (findIndex != -1)
-                    //{
-                    //    grdData.Rows[findIndex].Selected = true;
-                    //}
-
-                    //_personId = null;
-                    OperationResult objOperationResult = new OperationResult();
-
-                    var Lista = _objBL.GetPacientsPagedAndFilteredByPErsonId(ref objOperationResult, 0, 99999, _personId);
-                    grdData.DataSource = Lista;
-                    if (grdData.Rows.Count > 0)
-                    {
-                        txtFirstLastNameDocNumber.Text = Lista[0].v_DocNumber;// +" " + Lista[0].v_SecondLastName + " " + Lista[0].v_FirstName;
-                        grdData.Rows[0].Selected = true;
-                    }
-                    _personId = null;
-                }              
-                else
-                {
-                    var objData = GetData(0, null, txtFirstLastNameDocNumber.Text.Trim());
-
-                    grdData.DataSource = objData;
-
-                    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
-                    if (grdData.Rows.Count > 0)
-                    {
-                        grdData.Rows[0].Selected = true;
-                    }
+                    txtFirstLastNameDocNumber.Text = Lista[0].v_DocNumber;// +" " + Lista[0].v_SecondLastName + " " + Lista[0].v_FirstName;
+                    grdData.Rows[0].Selected = true;
                 }
-               
+                _personId = null;
+            }
+            else
+            {
+                var objData = GetData(0, null, txtFirstLastNameDocNumber.Text.Trim());
+
+                grdData.DataSource = objData;
+
+                lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                if (grdData.Rows.Count > 0)
+                {
+                    grdData.Rows[0].Selected = true;
+                }
+            }
+
         }
 
         private List<PacientList> GetData(int pintPageIndex, int? pintPageSize, string pstrFilterExpression)
         {
             OperationResult objOperationResult = new OperationResult();
             var pacients = _objBL.GetPacientsPagedAndFiltered(ref objOperationResult, pintPageIndex, 99999, pstrFilterExpression);
-            
+
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -163,7 +163,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             return pacients;
         }
-        
+
         private void mnuGridNuevo_Click(object sender, EventArgs e)
         {
             frmPacientEdicion frm = new frmPacientEdicion("0", "New");
@@ -202,7 +202,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             if (Result == System.Windows.Forms.DialogResult.Yes)
             {
-                string pstrPacientId = grdData.Selected.Rows[0].Cells[0].Value.ToString();
+                string pstrPacientId = grdData.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
                 _objBL.DeletePacient(ref objOperationResult, pstrPacientId, Globals.ClientSession.GetAsList());
                 btnFilter_Click(sender, e);
             }
@@ -226,7 +226,7 @@ namespace Sigesoft.Node.WinClient.UI
                     contextMenuStrip1.Items["mnuGridNuevo"].Enabled = true;
                     contextMenuStrip1.Items["mnuGridModificar"].Enabled = true;
                     contextMenuStrip1.Items["mnuGridAntecedent"].Enabled = true;
-                    
+
                 }
                 else
                 {
@@ -235,14 +235,14 @@ namespace Sigesoft.Node.WinClient.UI
                     contextMenuStrip1.Items["mnuGridAntecedent"].Enabled = false;
                 }
 
-            } 
+            }
         }
 
         private void mnuGridAntecedent_Click(object sender, EventArgs e)
         {
-             string pstrPacientId = grdData.Selected.Rows[0].Cells[0].Value.ToString();
-             frmHistory frm = new frmHistory(pstrPacientId);
-             frm.ShowDialog();
+            string pstrPacientId = grdData.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
+            frmHistory frm = new frmHistory(pstrPacientId);
+            frm.ShowDialog();
         }
 
         private void loadData(string strPacientId, string pstrMode)
@@ -254,7 +254,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             OperationResult objOperationResult = new OperationResult();
             dtpBirthdate.CustomFormat = "dd/MM/yyyy";
-            
+
             if (Mode == "New")
             {
                 // Additional logic here.
@@ -288,9 +288,20 @@ namespace Sigesoft.Node.WinClient.UI
                 txtMail.Text = objpacientDto.v_Mail;
                 ddlBloodGroupId.SelectedValue = objpacientDto.i_BloodGroupId.ToString();
                 ddlBloodFactorId.SelectedValue = objpacientDto.i_BloodFactorId.ToString();
-                txtCurrentOccupation.Text = objpacientDto.v_CurrentOccupation;
-                txtHijosVivos.Text = objpacientDto.i_NumberLiveChildren.ToString();
-                txtHijosFallecidos.Text = objpacientDto.i_NumberDeadChildren.ToString();
+
+                var lista = _objPacientBL.GetAllPuestos();
+                txtCurrentOccupation.DataSource = lista;
+                txtCurrentOccupation.DisplayMember = "Puesto";
+                txtCurrentOccupation.ValueMember = "Puesto";
+
+                txtCurrentOccupation.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+                txtCurrentOccupation.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+                this.txtCurrentOccupation.DropDownWidth = 550;
+                txtCurrentOccupation.DisplayLayout.Bands[0].Columns[0].Width = 10;
+                txtCurrentOccupation.DisplayLayout.Bands[0].Columns[1].Width = 350;
+
+
+                //txtCurrentOccupation.Text = objpacientDto.v_CurrentOccupation;
                 txtNroPliza.Text = objpacientDto.v_NroPoliza;
                 txtDecucible.Text = objpacientDto.v_Deducible.ToString();
 
@@ -315,7 +326,7 @@ namespace Sigesoft.Node.WinClient.UI
                 txtNombreTitular.Text = objpacientDto.v_OwnerName;
 
             }
-        
+
         }
 
         private void button8_Click(object sender, EventArgs e)
@@ -414,8 +425,6 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_AdressLocation = txtAdressLocation.Text.Trim();
                     objpersonDto.v_Mail = txtMail.Text.Trim();
                     objpersonDto.v_CurrentOccupation = txtCurrentOccupation.Text.Trim();
-                    objpersonDto.i_NumberLiveChildren = int.Parse(txtHijosVivos.Text.Trim());
-                    objpersonDto.i_NumberDeadChildren = int.Parse(txtHijosFallecidos.Text.Trim());
                     objpersonDto.i_BloodGroupId = Convert.ToInt32(ddlBloodGroupId.SelectedValue);
                     objpersonDto.i_BloodFactorId = Convert.ToInt32(ddlBloodFactorId.SelectedValue);
                     objpersonDto.v_NroPoliza = txtNroPliza.Text;
@@ -480,8 +489,6 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_AdressLocation = txtAdressLocation.Text.Trim();
                     objpersonDto.v_Mail = txtMail.Text.Trim();
                     objpersonDto.v_CurrentOccupation = txtCurrentOccupation.Text.Trim();
-                    objpersonDto.i_NumberLiveChildren =int.Parse( txtHijosVivos.Text.Trim());
-                    objpersonDto.i_NumberDeadChildren = int.Parse(txtHijosFallecidos.Text.Trim());
                     objpersonDto.b_FingerPrintTemplate = FingerPrintTemplate;
                     objpersonDto.b_FingerPrintImage = FingerPrintImage;
                     objpersonDto.b_RubricImage = RubricImage;
@@ -759,7 +766,7 @@ namespace Sigesoft.Node.WinClient.UI
             ddlMaritalStatusId.SelectedIndex = 0;
 
             txtDecucible.Text = "0";
-            txtNroPliza.Text="";
+            txtNroPliza.Text = "";
 
             ddlRelationshipId.SelectedIndex = 0;
             ddlAltitudeWorkId.SelectedIndex = 0;
@@ -770,8 +777,6 @@ namespace Sigesoft.Node.WinClient.UI
             txtTelephoneNumber.Text = "";
             txtAdressLocation.Text = "";
             txtCurrentOccupation.Text = "";
-            txtHijosVivos.Text = "";
-            txtHijosFallecidos.Text = "";
             txtNombreTitular.Text = "";
 
             ddlBloodGroupId.SelectedIndex = 0;
@@ -792,8 +797,8 @@ namespace Sigesoft.Node.WinClient.UI
             txtNumberLivingChildren.Text = "";
             txtNumberDependentChildren.Text = "";
 
-           
-        }    
+
+        }
 
         private void ActivarControles(Boolean valor)
         {
@@ -815,8 +820,6 @@ namespace Sigesoft.Node.WinClient.UI
             txtTelephoneNumber.ReadOnly = !valor;
             txtAdressLocation.ReadOnly = !valor;
             txtCurrentOccupation.ReadOnly = !valor;
-            txtHijosVivos.ReadOnly = !valor;
-            txtHijosFallecidos.ReadOnly = !valor;
             txtNombreTitular.ReadOnly = !valor;
             //ddlBloodGroupId.Enabled = valor;
             ddlDocTypeId.Enabled = valor;
@@ -826,7 +829,7 @@ namespace Sigesoft.Node.WinClient.UI
             txtBirthPlace.ReadOnly = !valor;
             dtpBirthdate.Enabled = valor;
             //ddlBloodFactorId.Enabled = valor;
-            
+
             btnWebCam.Enabled = valor;
             btnCapturedFingerPrintAndRubric.Enabled = valor;
             btnArchivo1.Enabled = valor;
@@ -840,7 +843,7 @@ namespace Sigesoft.Node.WinClient.UI
             ddlTypeOfInsuranceId.Enabled = valor;
             txtNumberLivingChildren.ReadOnly = !valor;
             txtNumberDependentChildren.ReadOnly = !valor;
-  
+
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -860,7 +863,7 @@ namespace Sigesoft.Node.WinClient.UI
         private void label22_Click(object sender, EventArgs e)
         {
 
-        }    
+        }
 
         private void btnAntecedentes_Click(object sender, EventArgs e)
         {
@@ -890,7 +893,7 @@ namespace Sigesoft.Node.WinClient.UI
             {
 
                 #region Validaciones
-                              
+
                 if (txtName.Text.Trim() == "")
                 {
                     MessageBox.Show("Por favor ingrese un nombre apropiado para Nombres.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -984,8 +987,6 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_AdressLocation = txtAdressLocation.Text.Trim();
                     objpersonDto.v_Mail = txtMail.Text.Trim();
                     objpersonDto.v_CurrentOccupation = txtCurrentOccupation.Text.Trim();
-                    objpersonDto.i_NumberLiveChildren = txtHijosVivos.Text == "" ? 0 : int.Parse(txtHijosVivos.Text.Trim());
-                    objpersonDto.i_NumberDeadChildren = txtHijosFallecidos.Text == "" ? 0 : int.Parse(txtHijosFallecidos.Text.Trim());
                     objpersonDto.i_BloodGroupId = Convert.ToInt32(ddlBloodGroupId.SelectedValue);
                     objpersonDto.i_BloodFactorId = Convert.ToInt32(ddlBloodFactorId.SelectedValue);
 
@@ -997,20 +998,20 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.b_RubricImage = RubricImage;
                     objpersonDto.t_RubricImageText = RubricImageText;
 
-                   objpersonDto.i_DepartmentId =   Convert.ToInt32(ddlDepartamentId.SelectedValue);
-                   objpersonDto.i_ProvinceId = Convert.ToInt32(ddlProvinceId.SelectedValue);
-                   objpersonDto.i_DistrictId = Convert.ToInt32(ddlDistricId.SelectedValue);
-                   objpersonDto.i_ResidenceInWorkplaceId = Convert.ToInt32(ddlResidenceInWorkplaceId.SelectedValue);
-                   objpersonDto.v_ResidenceTimeInWorkplace = txtResidenceTimeInWorkplace.Text.Trim();
-                   objpersonDto.i_TypeOfInsuranceId = Convert.ToInt32(ddlTypeOfInsuranceId.SelectedValue);
-                   objpersonDto.i_NumberLivingChildren = txtNumberLivingChildren.Text == string.Empty ? (int?)null : int.Parse(txtNumberLivingChildren.Text);
-                   objpersonDto.i_NumberDependentChildren = txtNumberDependentChildren.Text == string.Empty ? (int?)null : int.Parse(txtNumberDependentChildren.Text);
+                    objpersonDto.i_DepartmentId = Convert.ToInt32(ddlDepartamentId.SelectedValue);
+                    objpersonDto.i_ProvinceId = Convert.ToInt32(ddlProvinceId.SelectedValue);
+                    objpersonDto.i_DistrictId = Convert.ToInt32(ddlDistricId.SelectedValue);
+                    objpersonDto.i_ResidenceInWorkplaceId = Convert.ToInt32(ddlResidenceInWorkplaceId.SelectedValue);
+                    objpersonDto.v_ResidenceTimeInWorkplace = txtResidenceTimeInWorkplace.Text.Trim();
+                    objpersonDto.i_TypeOfInsuranceId = Convert.ToInt32(ddlTypeOfInsuranceId.SelectedValue);
+                    objpersonDto.i_NumberLivingChildren = txtNumberLivingChildren.Text == string.Empty ? (int?)null : int.Parse(txtNumberLivingChildren.Text);
+                    objpersonDto.i_NumberDependentChildren = txtNumberDependentChildren.Text == string.Empty ? (int?)null : int.Parse(txtNumberDependentChildren.Text);
 
-                   objpersonDto.i_Relationship = Convert.ToInt32(ddlRelationshipId.SelectedValue);
-                   objpersonDto.i_AltitudeWorkId = Convert.ToInt32(ddlAltitudeWorkId.SelectedValue);
-                   objpersonDto.i_PlaceWorkId = Convert.ToInt32(ddlPlaceWorkId.SelectedValue);
-                   objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
-                   objpersonDto.v_OwnerName = txtNombreTitular.Text;
+                    objpersonDto.i_Relationship = Convert.ToInt32(ddlRelationshipId.SelectedValue);
+                    objpersonDto.i_AltitudeWorkId = Convert.ToInt32(ddlAltitudeWorkId.SelectedValue);
+                    objpersonDto.i_PlaceWorkId = Convert.ToInt32(ddlPlaceWorkId.SelectedValue);
+                    objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
+                    objpersonDto.v_OwnerName = txtNombreTitular.Text;
 
                     if (pbPersonImage.Image != null)
                     {
@@ -1018,7 +1019,7 @@ namespace Sigesoft.Node.WinClient.UI
                         Bitmap bm = new Bitmap(pbPersonImage.Image);
                         bm.Save(ms, ImageFormat.Jpeg);
                         objpersonDto.b_PersonImage = Common.Utils.ResizeUploadedImage(ms);
-                        pbPersonImage.Image.Dispose();      
+                        pbPersonImage.Image.Dispose();
                     }
                     else
                     {
@@ -1050,8 +1051,6 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_AdressLocation = txtAdressLocation.Text.Trim();
                     objpersonDto.v_Mail = txtMail.Text.Trim();
                     objpersonDto.v_CurrentOccupation = txtCurrentOccupation.Text.Trim();
-                    objpersonDto.i_NumberLiveChildren = txtHijosVivos.Text == "" ?0 : int.Parse(txtHijosVivos.Text.Trim());
-                    objpersonDto.i_NumberDeadChildren = txtHijosFallecidos.Text == "" ?0 : int.Parse(txtHijosFallecidos.Text.Trim());
                     objpersonDto.b_FingerPrintTemplate = FingerPrintTemplate;
                     objpersonDto.b_FingerPrintImage = FingerPrintImage;
                     objpersonDto.b_RubricImage = RubricImage;
@@ -1078,12 +1077,12 @@ namespace Sigesoft.Node.WinClient.UI
                     if (pbPersonImage.Image != null)
                     {
                         MemoryStream ms = new MemoryStream();
-                     
+
                         Bitmap bm = new Bitmap(pbPersonImage.Image);
                         bm.Save(ms, ImageFormat.Jpeg);
                         objpersonDto.b_PersonImage = Common.Utils.ResizeUploadedImage(ms);
                         pbPersonImage.Image.Dispose();
-                      
+
                     }
                     else
                     {
@@ -1161,8 +1160,8 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito(ref objOperationResult, 113, int.Parse(ddlProvinceId.SelectedValue.ToString())), DropDownListAction.Select);
             }
-            
-           
+
+
         }
 
         private void grdData_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
@@ -1170,7 +1169,7 @@ namespace Sigesoft.Node.WinClient.UI
             if (grdData.Selected.Rows.Count == 0)
                 return;
 
-            string strPacientId = grdData.Selected.Rows[0].Cells[0].Value.ToString();
+            string strPacientId = grdData.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
             loadData(strPacientId, "Edit");
             ActivarControles(false);
             btnEditar.Enabled = true;
@@ -1183,7 +1182,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                  this.BindGrid();
+                this.BindGrid();
             }
         }
 
@@ -1203,8 +1202,8 @@ namespace Sigesoft.Node.WinClient.UI
                     return;
                 }
             }
-           
+
         }
-    
+
     }
 }
