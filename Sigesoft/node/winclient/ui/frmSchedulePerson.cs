@@ -301,7 +301,10 @@ namespace Sigesoft.Node.WinClient.UI
                     this.txtPuesto.DropDownWidth = 250;
                     txtPuesto.DisplayLayout.Bands[0].Columns[0].Width = 10;
                     txtPuesto.DisplayLayout.Bands[0].Columns[1].Width = 250;
-                    
+                    if (!string.IsNullOrEmpty(objpacientDto.v_CurrentOccupation))
+                    {
+                        txtPuesto.Value = objpacientDto.v_CurrentOccupation;
+                    }
                   //  txtPuesto.Text = objpacientDto.v_CurrentOccupation;
                     ddlRelationshipId.SelectedValue = objpacientDto.i_Relationship == 0 ? "-1" : objpacientDto.i_Relationship.ToString();
                     ddlAltitudeWorkId.SelectedValue = objpacientDto.i_AltitudeWorkId == 0 ? "-1" : objpacientDto.i_AltitudeWorkId.ToString();

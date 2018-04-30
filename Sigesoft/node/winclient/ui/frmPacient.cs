@@ -289,6 +289,7 @@ namespace Sigesoft.Node.WinClient.UI
                 ddlBloodGroupId.SelectedValue = objpacientDto.i_BloodGroupId.ToString();
                 ddlBloodFactorId.SelectedValue = objpacientDto.i_BloodFactorId.ToString();
 
+             
                 var lista = _objPacientBL.GetAllPuestos();
                 txtCurrentOccupation.DataSource = lista;
                 txtCurrentOccupation.DisplayMember = "Puesto";
@@ -300,6 +301,10 @@ namespace Sigesoft.Node.WinClient.UI
                 txtCurrentOccupation.DisplayLayout.Bands[0].Columns[0].Width = 10;
                 txtCurrentOccupation.DisplayLayout.Bands[0].Columns[1].Width = 350;
 
+                if (!string.IsNullOrEmpty(objpacientDto.v_CurrentOccupation))
+                {
+                    txtCurrentOccupation.Value = objpacientDto.v_CurrentOccupation;
+                }
 
                 //txtCurrentOccupation.Text = objpacientDto.v_CurrentOccupation;
                 txtNroPliza.Text = objpacientDto.v_NroPoliza;
