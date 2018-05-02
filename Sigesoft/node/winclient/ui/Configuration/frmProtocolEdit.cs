@@ -102,7 +102,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 // cabecera del protocolo
                 txtProtocolName.Text = _protocolDTO.v_Name;
                 cbEsoType.SelectedValue = _protocolDTO.i_EsoTypeId.ToString();
-                cbOrganization.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_EmployerOrganizationId, _protocolDTO.v_EmployerLocationId);
                 // Almacenar temporalmente
                 _protocolName = txtProtocolName.Text;
 
@@ -113,6 +112,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
                 cbIntermediaryOrganization.SelectedValue = idOrgInter;
                 cbOrganizationInvoice.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_CustomerOrganizationId, _protocolDTO.v_CustomerLocationId);
+                cbOrganization.SelectedValue = string.Format("{0}|{1}", _protocolDTO.v_EmployerOrganizationId, _protocolDTO.v_EmployerLocationId);
                 cbGeso.SelectedValue = _protocolDTO.v_GroupOccupationId;
                 cbServiceType.SelectedValue = _protocolDTO.i_MasterServiceTypeId.ToString();
                 cbService.SelectedValue = _protocolDTO.i_MasterServiceId.ToString();
@@ -203,6 +203,12 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 var id = cbOrganization.SelectedValue.ToString().Split('|');
                 var id1 = cbOrganizationInvoice.SelectedValue.ToString().Split('|');         
                 var id2 = cbIntermediaryOrganization.SelectedValue.ToString().Split('|');
+
+                if (id1 != null)
+                {
+                    id = id1;
+                    id2 = id1;
+                }
 
                 if (_protocolDTO == null)
                 {
@@ -827,6 +833,14 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void cbOrganizationInvoice_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbOrganizationInvoice.SelectedValue == "-1") return;
+            if (cbOrganizationInvoice.SelectedValue != null)
+            {
+                var id1 = cbOrganizationInvoice.SelectedValue.ToString();
+
+                cbOrganization.SelectedValue = id1;
+                cbIntermediaryOrganization.SelectedValue = id1;
+            }
 
         }
 
