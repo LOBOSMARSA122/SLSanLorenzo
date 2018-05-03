@@ -212,43 +212,7 @@ namespace NetPdf
 
         #endregion
 
-        public static Image GetImage(byte[] imgb, float? scalePercent, int? alignment, int? width, int? height)
-        {
-            Image gif = null;
-
-            if (imgb == null)
-                return null;
-
-            //Insertar Imagen
-            gif = Image.GetInstance(imgb);
-
-            if (alignment != null)
-                gif.Alignment = alignment.Value;
-            else
-                gif.Alignment = Image.ALIGN_LEFT;
-
-            // downsize the image by specified percentage  
-
-            if (scalePercent != null)
-            {
-                gif.ScalePercent(scalePercent.Value);
-            }
-            else
-            {
-                if (width == null)
-                    width = 10;
-
-                if (height == null)
-                    height = 10;
-
-                gif.ScaleAbsolute(width.Value, height.Value);
-            }
-
-            return gif;
-
-        }
-       
-        
+ 
         public override void OnEndPage(PdfWriter writer, Document doc)
         {
             var rutaImg = Sigesoft.Common.Utils.GetApplicationConfigValue("imgFooter2");
