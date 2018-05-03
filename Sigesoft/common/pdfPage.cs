@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-using iTextSharp.text.pdf;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
+
 
 namespace NetPdf
 {
@@ -208,20 +212,54 @@ namespace NetPdf
 
         #endregion
 
+        public static Image GetImage(byte[] imgb, float? scalePercent, int? alignment, int? width, int? height)
+        {
+            Image gif = null;
+
+            if (imgb == null)
+                return null;
+
+            //Insertar Imagen
+            gif = Image.GetInstance(imgb);
+
+            if (alignment != null)
+                gif.Alignment = alignment.Value;
+            else
+                gif.Alignment = Image.ALIGN_LEFT;
+
+            // downsize the image by specified percentage  
+
+            if (scalePercent != null)
+            {
+                gif.ScalePercent(scalePercent.Value);
+            }
+            else
+            {
+                if (width == null)
+                    width = 10;
+
+                if (height == null)
+                    height = 10;
+
+                gif.ScaleAbsolute(width.Value, height.Value);
+            }
+
+            return gif;
+
+        }
+       
+        
         public override void OnEndPage(PdfWriter writer, Document doc)
         {
-            var rutaImg = Sigesoft.Common.Utils.GetApplicationConfigValue("imgFooter");
+            var rutaImg = Sigesoft.Common.Utils.GetApplicationConfigValue("imgFooter2");
             var footerTbl = new PdfPTable(1);
             footerTbl.TotalWidth = doc.PageSize.Width;
-            var widths = new[] { 100f };
-            footerTbl.SetWidths(widths);
-            footerTbl.HorizontalAlignment = Element.ALIGN_LEFT;
 
-            Image jpg = Image.GetInstance(rutaImg);
-            var imageCell = new PdfPCell(jpg);
-
+            var imageCell = new PdfPCell(HandlingItextSharp.GetImage(rutaImg, null, null, 520, 41)){Border = PdfPCell.NO_BORDER};
+            
             footerTbl.AddCell(imageCell);
-            footerTbl.WriteSelectedRows(0, -1, 0, (doc.BottomMargin + 10), writer.DirectContent);
+            footerTbl.WriteSelectedRows(0, -1, doc.LeftMargin, (doc.BottomMargin + 10), writer.DirectContent);
+          
         }
 
        
