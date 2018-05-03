@@ -225,7 +225,6 @@ namespace NetPdf
             footerTbl.WriteSelectedRows(0, -1, doc.LeftMargin, (doc.BottomMargin + 10), writer.DirectContent);
           
         }
-
        
         public override void OnCloseDocument(PdfWriter writer, Document document)
         {
