@@ -777,7 +777,9 @@ namespace NetPdf
     
                 // step 5: we close the document
                 document.Close();
+
                 writer.Close();
+
                 writer.Dispose();
                 //RunFile(filePDF);
 

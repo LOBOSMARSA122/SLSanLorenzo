@@ -9,7 +9,6 @@ using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using Sigesoft.Node.WinClient.BE;
 
-
 namespace NetPdf
 {
     public class ReportPDF

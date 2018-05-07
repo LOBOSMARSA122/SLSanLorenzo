@@ -290,7 +290,7 @@ namespace Sigesoft.Node.WinClient.UI
                     txtNumberLivingChildren.Text = objpacientDto.i_NumberLivingChildren.ToString();
                     txtNumberDependentChildren.Text = objpacientDto.i_NumberDependentChildren.ToString();
                     txtNroHermanos.Text = objpacientDto.i_NroHermanos.ToString();
-                    
+
                     var lista = _objPacientBL.GetAllPuestos();
                     txtPuesto.DataSource = lista;
                     txtPuesto.DisplayMember = "Puesto";
@@ -301,7 +301,10 @@ namespace Sigesoft.Node.WinClient.UI
                     this.txtPuesto.DropDownWidth = 250;
                     txtPuesto.DisplayLayout.Bands[0].Columns[0].Width = 10;
                     txtPuesto.DisplayLayout.Bands[0].Columns[1].Width = 250;
-                    
+                    if (!string.IsNullOrEmpty(objpacientDto.v_CurrentOccupation))
+                    {
+                        txtPuesto.Value = objpacientDto.v_CurrentOccupation;
+                    }
                   //  txtPuesto.Text = objpacientDto.v_CurrentOccupation;
                     ddlRelationshipId.SelectedValue = objpacientDto.i_Relationship == 0 ? "-1" : objpacientDto.i_Relationship.ToString();
                     ddlAltitudeWorkId.SelectedValue = objpacientDto.i_AltitudeWorkId == 0 ? "-1" : objpacientDto.i_AltitudeWorkId.ToString();
@@ -356,9 +359,9 @@ namespace Sigesoft.Node.WinClient.UI
                     txtNroPliza.Text = "";
                     txtDecucible.Text = "";
 
-                    ddlDepartamentId.SelectedValue = "-1";
-                    ddlProvinceId.SelectedValue = "-1";
-                    ddlDistricId.SelectedValue = "-1";
+                    ddlDepartamentId.SelectedValue = "609";
+                    ddlProvinceId.SelectedValue = "610";
+                    ddlDistricId.SelectedValue = "611";
                     ddlResidenceInWorkplaceId.SelectedValue = "-1";
                     txtResidenceTimeInWorkplace.Text = "";
                     ddlTypeOfInsuranceId.SelectedValue ="";
@@ -366,6 +369,18 @@ namespace Sigesoft.Node.WinClient.UI
                     txtNumberDependentChildren.Text = "";
                     txtNroHermanos.Text = "";
                     txtPuesto.Text = "";
+
+                    var lista = _objPacientBL.GetAllPuestos();
+
+                    txtPuesto.DataSource = lista;
+                    txtPuesto.DisplayMember = "Puesto";
+                    txtPuesto.ValueMember = "Puesto";
+
+                    txtPuesto.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+                    txtPuesto.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+                    this.txtPuesto.DropDownWidth = 250;
+                    txtPuesto.DisplayLayout.Bands[0].Columns[0].Width = 10;
+                    txtPuesto.DisplayLayout.Bands[0].Columns[1].Width = 250;
 
                     //var DialogResult = MessageBox.Show("El paciente no se encuentra registrado en el sistema. Puede registrar al paciente en Datos Generales del Paciente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     ObtenerDatosDNI(txtSearchNroDocument.Text.Trim());
@@ -529,7 +544,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_NumberLivingChildren = txtNumberLivingChildren.Text == String.Empty ? (int?)null : int.Parse(txtNumberLivingChildren.Text);
                     objpersonDto.i_NumberDependentChildren = txtNumberDependentChildren.Text == String.Empty ? (int?)null : int.Parse(txtNumberDependentChildren.Text);
                     objpacientDto.i_NroHermanos = txtNroHermanos.Text == string.Empty ? (int?)null : int.Parse(txtNroHermanos.Text.ToString());
-                    objpersonDto.v_CurrentOccupation = txtPuesto.Text;
+                    objpersonDto.v_CurrentOccupation = txtPuesto.Text.Trim();
 
                     objpersonDto.i_BloodGroupId = Convert.ToInt32(ddlBloodGroupId.SelectedValue);
                     objpersonDto.i_BloodFactorId = Convert.ToInt32(ddlBloodFactorId.SelectedValue);
@@ -597,8 +612,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_NumberLivingChildren = txtNumberLivingChildren.Text == string.Empty ? (int?)null : int.Parse(txtNumberLivingChildren.Text);
                     objpersonDto.i_NumberDependentChildren = txtNumberDependentChildren.Text == string.Empty ? (int?)null : int.Parse(txtNumberDependentChildren.Text);
                     objpersonDto.i_NroHermanos = txtNroHermanos.Text == string.Empty ? (int?)null : int.Parse(txtNroHermanos.Text.ToString());
-                   
-                    objpersonDto.v_CurrentOccupation = txtPuesto.Text;
+
+                    objpersonDto.v_CurrentOccupation = txtPuesto.Text.Trim();
 
                     objpersonDto.i_BloodGroupId = Convert.ToInt32(ddlBloodGroupId.SelectedValue);
                     objpersonDto.i_BloodFactorId = Convert.ToInt32(ddlBloodFactorId.SelectedValue);
