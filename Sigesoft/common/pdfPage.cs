@@ -210,18 +210,14 @@ namespace NetPdf
 
         public override void OnEndPage(PdfWriter writer, Document doc)
         {
-            var rutaImg = Sigesoft.Common.Utils.GetApplicationConfigValue("imgFooter");
+            var rutaImg = Sigesoft.Common.Utils.GetApplicationConfigValue("imgFooter2");
             var footerTbl = new PdfPTable(1);
             footerTbl.TotalWidth = doc.PageSize.Width;
-            var widths = new[] { 100f };
-            footerTbl.SetWidths(widths);
-            footerTbl.HorizontalAlignment = Element.ALIGN_LEFT;
 
-            Image jpg = Image.GetInstance(rutaImg);
-            var imageCell = new PdfPCell(jpg);
+            var imageCell = new PdfPCell(HandlingItextSharp.GetImage(rutaImg, null, null, 520, 41)) { Border = PdfPCell.NO_BORDER };
 
             footerTbl.AddCell(imageCell);
-            footerTbl.WriteSelectedRows(0, -1, 0, (doc.BottomMargin + 10), writer.DirectContent);
+            footerTbl.WriteSelectedRows(0, -1, doc.LeftMargin, (doc.BottomMargin + 10), writer.DirectContent);
         }
 
        
