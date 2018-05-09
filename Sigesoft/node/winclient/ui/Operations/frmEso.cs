@@ -495,6 +495,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             {
                                 #region Crear control GroupBox para agrupar los campos (controles)
 
+                                
                                 // Crear y configurar GroupBox por cada grupo
                                 gb = new GroupBox();
                                 gb.Text = g.v_Group;
@@ -502,6 +503,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 gb.BackColor = Color.Azure;
                                 gb.AutoSize = true;
                                 gb.Dock = DockStyle.Top;
+
+                                if (g.v_ComponentFieldId == "N009-MF000000728")
+                                {
+                                    gb.Enabled = false;
+                                }
 
                                 fieldsByGroupBoxCount++;
 
@@ -814,6 +820,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                                 ctl.Enabled = false;
                                             }
 
+                                            break;
+                                        case ControlType.Radiobutton:
+                                            ctl = new RadioButton()
+                                            {
+                                                Width = f.i_ControlWidth,
+                                                Height = f.i_HeightControl,
+                                                Name = f.v_ComponentFieldId
+                                            };
+                                            ctl.Enter += new EventHandler(Capture_Value);
+                                            ctl.Leave += new EventHandler(txt_Leave);
+                                            if (_action == "View")
+                                            {
+                                                ctl.Enabled = false;
+                                            }
                                             break;
                                         case ControlType.SiNoCombo:
                                             ctl = new ComboBox()
@@ -1306,6 +1326,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             ctl.Enabled = false;
                                         }
 
+                                        break;
+
+                                    case ControlType.Radiobutton:
+                                        ctl = new RadioButton()
+                                        {
+                                            Width = f.i_ControlWidth,
+                                            Height = f.i_HeightControl,
+                                            Name = f.v_ComponentFieldId
+                                        };
+                                        ctl.Enter += new EventHandler(Capture_Value);
+                                        ctl.Leave += new EventHandler(txt_Leave);
+                                        if (_action == "View")
+                                        {
+                                            ctl.Enabled = false;
+                                        }
                                         break;
                                     case ControlType.SiNoCombo:
                                         ctl = new ComboBox()
@@ -3158,6 +3193,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     rbSiNo.Enabled = false;
                                 }
                                 break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)ctrl__[0];
+                                rb.CreateControl();
+                                rb.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    rb.Enabled = false;
+                                }
+                                break;
                             case ControlType.SiNoCombo:
                                 ComboBox cbSiNo = (ComboBox)ctrl__[0];
                                 cbSiNo.CreateControl();
@@ -3292,6 +3336,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 if (_action == "View")
                                 {
                                     rbSiNo.Enabled = false;
+                                }
+                                break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)ctrl__[0];
+                                rb.CreateControl();
+                                rb.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    rb.Enabled = false;
                                 }
                                 break;
                             case ControlType.SiNoCombo:
@@ -3601,6 +3654,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 case ControlType.SiNoRadioButton:
                     ctrlToCast = (RadioButton)ctrl;
                     break;
+                case ControlType.Radiobutton:
+                    ctrlToCast = (RadioButton)ctrl;
+                    break;
                 case ControlType.SiNoCombo:
                     ctrlToCast = (ComboBox)ctrl;
                     break;
@@ -3630,6 +3686,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     dataType = "int";
                     break;
                 case ControlType.SiNoRadioButton:
+                    break;
+                case ControlType.Radiobutton:
                     break;
                 case ControlType.SiNoCombo:
                     dataType = "int";
@@ -3670,6 +3728,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString();
                     break;
                 case ControlType.SiNoRadioButton:
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
+                    break;
+                case ControlType.Radiobutton:
                     value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
                     break;
                 case ControlType.SiNoCombo:
@@ -3793,6 +3854,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         ((RadioButton)ctrl).Checked = Convert.ToBoolean(int.Parse(Value1));
                     }
                     break;
+                case ControlType.Radiobutton:
+                    if (ComponentFieldsId == Tag_ComponentFieldsId)
+                    {
+                        ((RadioButton)ctrl).Checked = Convert.ToBoolean(int.Parse(Value1));
+                    }
+                    break;
                 case ControlType.SiNoCombo:
                     if (ComponentFieldsId == Tag_ComponentFieldsId)
                     {
@@ -3835,6 +3902,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     ((CheckBox)ctrl).Checked = false;
                     break;
                 case ControlType.SiNoRadioButton:
+                    ((RadioButton)ctrl).Checked = false;
+                    break;
+                case ControlType.Radiobutton:
                     ((RadioButton)ctrl).Checked = false;
                     break;
                 case ControlType.SiNoCombo:
@@ -3967,6 +4037,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     break;
                 case ControlType.SiNoRadioButton:
                     break;
+                case ControlType.Radiobutton:
+                    break;
                 case ControlType.SiNoCombo:
                     uv.GetValidationSettings(ctrl).Condition = new OperatorCondition(ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
                     uv.GetValidationSettings(ctrl).EmptyValueCriteria = EmptyValueCriteria.NullOrEmptyString;
@@ -4098,6 +4170,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     rbSiNo.CreateControl();
                                     rbSiNo.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
                                     break;
+                                case ControlType.Radiobutton:
+                                    RadioButton rb = (RadioButton)ctrl__[0];
+                                    rb.CreateControl();
+                                    rb.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
+                                    break;
                                 case ControlType.SiNoCombo:
                                     ComboBox cbSiNo = (ComboBox)ctrl__[0];
                                     cbSiNo.CreateControl();
@@ -4224,6 +4301,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 RadioButton rbSiNo = (RadioButton)field[0];
                                 rbSiNo.CreateControl();
                                 rbSiNo.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
+                                break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)field[0];
+                                rb.CreateControl();
+                                rb.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
                                 break;
                             case ControlType.SiNoCombo:
                                 ComboBox cbSiNo = (ComboBox)field[0];
@@ -5955,6 +6037,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var tagCtrl = (KeyTagControl)senderCtrl.Tag;
             // Capturar valor inicial
             _oldValue = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
+
+            GroupBox gb = null;
+            gb = (GroupBox)FindControlInCurrentTab("gb_C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")[0];
+
+            if (tagCtrl.v_ComponentFieldsId == "N002-MF000000222")
+            {
+                 gb.Enabled = false;
+            }
+            else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720" || tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" || tagCtrl.v_ComponentFieldsId == "N009-MF000000222" || tagCtrl.v_ComponentFieldsId == "N009-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000224" || _oldValue == "N009-MF000000227" || tagCtrl.v_ComponentFieldsId == "N009-MF000000225" || tagCtrl.v_ComponentFieldsId == "N009-MF000000226")
+            {
+                gb.Enabled = true;
+            }
 
         }
 

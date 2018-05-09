@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
-using iTextSharp.text.pdf;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
 using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
+
 
 namespace NetPdf
 {
@@ -208,18 +212,17 @@ namespace NetPdf
 
         #endregion
 
+ 
         public override void OnEndPage(PdfWriter writer, Document doc)
         {
             var rutaImg = Sigesoft.Common.Utils.GetApplicationConfigValue("imgFooter2");
             var footerTbl = new PdfPTable(1);
             footerTbl.TotalWidth = doc.PageSize.Width;
-
-            var imageCell = new PdfPCell(HandlingItextSharp.GetImage(rutaImg, null, null, 520, 41)) { Border = PdfPCell.NO_BORDER };
-
+            var imageCell = new PdfPCell(HandlingItextSharp.GetImage(rutaImg, null, null, 520, 41)) {Border = PdfPCell.NO_BORDER };
+            
             footerTbl.AddCell(imageCell);
             footerTbl.WriteSelectedRows(0, -1, doc.LeftMargin, (doc.BottomMargin + 10), writer.DirectContent);
         }
-
        
         public override void OnCloseDocument(PdfWriter writer, Document document)
         {

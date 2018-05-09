@@ -277,6 +277,22 @@ namespace Sigesoft.Node.WinClient.UI
                         //    rb2.Checked = true;
                         //}
                     }
+                    else if (int.Parse(ddlGroupId.SelectedValue.ToString()) == 30) // Radio Button
+                    {
+                        unGroupId.Enabled = false;
+                        unItemId.Enabled = false;
+                        unMaxLenght.Text = "1";
+                        unMaxLenght.Enabled = false;
+
+                        if (_DefaultText == "1")
+                        {
+                            chk.Checked = true;
+                        }
+                        else
+                        {
+                            chk.Checked = false;
+                        }
+                    }
                     else if (int.Parse(ddlGroupId.SelectedValue.ToString()) == 7) // Sino Combo
                     {
                         Utils.LoadDropDownList(combo, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
@@ -510,6 +526,17 @@ namespace Sigesoft.Node.WinClient.UI
                             _objmedicalexamfieldDto.v_DefaultText = "0"; // NO
                         }
                     }
+                    else if (int.Parse(ddlGroupId.SelectedValue.ToString()) == 30) //Radio Button
+                    {
+                        if (chk.Checked)
+                        {
+                            _objmedicalexamfieldDto.v_DefaultText = "1"; // SI
+                        }
+                        else
+                        {
+                            _objmedicalexamfieldDto.v_DefaultText = "0"; // NO
+                        }
+                    }
                     else if (int.Parse(ddlGroupId.SelectedValue.ToString()) == 7) // Sino Combo
                     {
                         _objmedicalexamfieldDto.v_DefaultText = combo.SelectedValue.ToString();
@@ -652,6 +679,17 @@ namespace Sigesoft.Node.WinClient.UI
                     else if (int.Parse(ddlGroupId.SelectedValue.ToString()) == 6) //Sino Radio Button
                     {
                         if (rb1.Checked)
+                        {
+                            _objmedicalexamfieldDto.v_DefaultText = "1"; // SI
+                        }
+                        else
+                        {
+                            _objmedicalexamfieldDto.v_DefaultText = "0"; // NO
+                        }
+                    }
+                    else if (int.Parse(ddlGroupId.SelectedValue.ToString()) == 30) //Radio Button
+                    {
+                        if (chk.Checked)
                         {
                             _objmedicalexamfieldDto.v_DefaultText = "1"; // SI
                         }
@@ -1032,6 +1070,26 @@ namespace Sigesoft.Node.WinClient.UI
 
                 flowLayoutPanel1.Controls.Add(rb1);
                 flowLayoutPanel1.Controls.Add(rb2);
+
+                unGroupId.Enabled = false;
+                unItemId.Enabled = false;
+                unMaxLenght.Text = "1";
+                unMaxLenght.Enabled = false;
+                cboNroDecimales.Enabled = false;
+                chkEnabled.Enabled = false;
+                chkReadOnly.Enabled = false;
+                chkReadOnly.Checked = false;
+                chkEnabled.Checked = false;
+                cboNroDecimales.Text = "1";
+                unGroupId.Text = "0";
+
+            }
+            else if (int.Parse(ddlGroupId.SelectedValue.ToString()) == ((int)ControlType.Radiobutton)) // Radio Button
+            {
+                chk = new CheckBox();
+                chk.Checked = false;
+                chk.Text = "Si";
+                flowLayoutPanel1.Controls.Add(chk);
 
                 unGroupId.Enabled = false;
                 unItemId.Enabled = false;
