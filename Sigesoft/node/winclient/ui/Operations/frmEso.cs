@@ -504,7 +504,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 gb.AutoSize = true;
                                 gb.Dock = DockStyle.Top;
 
-                                if (g.v_ComponentFieldId == "N009-MF000000728")
+                                if (g.v_ComponentFieldId == "N009-MF000000728" || g.v_Group == "C 4.1 Placa Pleurales" || g.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura" || g.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
                                 {
                                     gb.Enabled = false;
                                 }
@@ -6037,18 +6037,51 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var tagCtrl = (KeyTagControl)senderCtrl.Tag;
             // Capturar valor inicial
             _oldValue = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
-
-            GroupBox gb = null;
-            gb = (GroupBox)FindControlInCurrentTab("gb_C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")[0];
-
-            if (tagCtrl.v_ComponentFieldsId == "N002-MF000000222")
+            if (tagCtrl.v_ComponentName == "RAYOS X")
             {
-                 gb.Enabled = false;
-            }
-            else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720" || tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" || tagCtrl.v_ComponentFieldsId == "N009-MF000000222" || tagCtrl.v_ComponentFieldsId == "N009-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000224" || _oldValue == "N009-MF000000227" || tagCtrl.v_ComponentFieldsId == "N009-MF000000225" || tagCtrl.v_ComponentFieldsId == "N009-MF000000226")
-            {
-                gb.Enabled = true;
-            }
+                GroupBox gb = null;
+                gb = (GroupBox)FindControlInCurrentTab("gb_C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")[0];
+
+                if (tagCtrl.v_ComponentFieldsId == "N002-MF000000222")
+                {
+                    gb.Enabled = false;
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720" || tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" || tagCtrl.v_ComponentFieldsId == "N009-MF000000222" || tagCtrl.v_ComponentFieldsId == "N009-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000224" || _oldValue == "N009-MF000000227" || tagCtrl.v_ComponentFieldsId == "N009-MF000000225" || tagCtrl.v_ComponentFieldsId == "N009-MF000000226")
+                {
+                    gb.Enabled = true;
+                }
+
+                GroupBox gb41 = null;
+                GroupBox gb42 = null;
+                gb41 = (GroupBox)FindControlInCurrentTab("gb_C 4.1 Placa Pleurales")[0];
+                gb42 = (GroupBox)FindControlInCurrentTab("gb_C 4.2 Engrosamiento Difuso de la Pleura")[0];
+                if (tagCtrl.v_ComponentFieldsId == "N009-MF000003194")
+                {
+                    gb41.Enabled = true;
+                    gb42.Enabled = true;
+
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N009-MF000000761")
+                {
+                    gb41.Enabled = false;
+                    gb42.Enabled = false;
+                }
+
+                GroupBox gb6 = null;
+                gb6 = (GroupBox)FindControlInCurrentTab("gb_C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")[0];
+
+                if (tagCtrl.v_ComponentFieldsId == "N009-MF000003195")
+                {
+                    gb6.Enabled = true;
+                    gb6.Enabled = true;
+
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N009-MF000000760")
+                {
+                    gb6.Enabled = false;
+                    gb6.Enabled = false;
+                }
+            }           
 
         }
 

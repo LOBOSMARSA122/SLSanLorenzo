@@ -18586,7 +18586,14 @@ namespace Sigesoft.Node.WinClient.BLL
 							   SENOS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.SENOS) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.SENOS).v_Value1,
 							   SILUETA_CARDIOVASCULAR = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.SILUETA_CARDIOVASCULAR) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.SILUETA_CARDIOVASCULAR).v_Value1,
 							   VERTICES = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.VERTICES) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.VERTICES).v_Value1,
-
+                               ARTEFACTOS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003202") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003202").v_Value1,
+                               BAJA_INSPRACION = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003199") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003199").v_Value1,
+                               ESCAPULAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003200") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003200").v_Value1,
+                               NINGUNA = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003196") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003196").v_Value1,
+                               OTROS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003203") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003203").v_Value1,
+                               POSICION_CENTRADO = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003201") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003201").v_Value1,
+                               SOBRE_EXPOSICION = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003197") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003197").v_Value1,
+                               SUB_EXPOSICION = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003198") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003198").v_Value1,
 
 							   Nombre = a.Nombre,
 							   DNI = a.DNI,
