@@ -300,7 +300,8 @@ namespace Sigesoft.Common
         UcBoton = 21,
         UcFototipo = 22,
         UcHistorialTriaje = 23,
-        UcHistorialGrupoSanguineo = 24
+        UcHistorialGrupoSanguineo = 24,
+        Radiobutton = 30
     }
 
     public enum ComponentType
