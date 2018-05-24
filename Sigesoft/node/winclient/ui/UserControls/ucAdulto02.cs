@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace Sigesoft.Node.WinClient.UI.UserControls
 {
-    public partial class ucdultoMayor02 : UserControl
+    public partial class ucAdulto02 : UserControl
     {
-        public ucdultoMayor02()
+        public ucAdulto02()
         {
             InitializeComponent();
         }

@@ -3076,6 +3076,18 @@
     <Compile Include="UserControls\ucAcumetria.Designer.cs">
       <DependentUpon>ucAcumetria.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucAdulto01.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAdulto01.Designer.cs">
+      <DependentUpon>ucAdulto01.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAdulto02.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAdulto02.Designer.cs">
+      <DependentUpon>ucAdulto02.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucAdultoMayor01.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -3094,11 +3106,11 @@
     <Compile Include="UserControls\ucBoton.Designer.cs">
       <DependentUpon>ucBoton.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucdultoMayor02.cs">
+    <Compile Include="UserControls\ucAdultoMayor02.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ucdultoMayor02.Designer.cs">
-      <DependentUpon>ucdultoMayor02.cs</DependentUpon>
+    <Compile Include="UserControls\ucAdultoMayor02.Designer.cs">
+      <DependentUpon>ucAdultoMayor02.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucEvaluacionErgonomica.cs">
       <SubType>UserControl</SubType>
@@ -4500,6 +4512,12 @@
     <EmbeddedResource Include="UserControls\ucAcumetria.resx">
       <DependentUpon>ucAcumetria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucAdulto01.resx">
+      <DependentUpon>ucAdulto01.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucAdulto02.resx">
+      <DependentUpon>ucAdulto02.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucAdultoMayor01.resx">
       <DependentUpon>ucAdultoMayor01.cs</DependentUpon>
     </EmbeddedResource>
@@ -4509,8 +4527,8 @@
     <EmbeddedResource Include="UserControls\ucBoton.resx">
       <DependentUpon>ucBoton.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucdultoMayor02.resx">
-      <DependentUpon>ucdultoMayor02.cs</DependentUpon>
+    <EmbeddedResource Include="UserControls\ucAdultoMayor02.resx">
+      <DependentUpon>ucAdultoMayor02.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucEvaluacionErgonomica.resx">
       <DependentUpon>ucEvaluacionErgonomica.cs</DependentUpon>
