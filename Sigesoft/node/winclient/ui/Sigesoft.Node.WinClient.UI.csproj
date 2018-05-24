@@ -3076,6 +3076,12 @@
     <Compile Include="UserControls\ucAcumetria.Designer.cs">
       <DependentUpon>ucAcumetria.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucAdultoMayor01.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAdultoMayor01.Designer.cs">
+      <DependentUpon>ucAdultoMayor01.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucAudiometria.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -3087,6 +3093,12 @@
     </Compile>
     <Compile Include="UserControls\ucBoton.Designer.cs">
       <DependentUpon>ucBoton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucdultoMayor02.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucdultoMayor02.Designer.cs">
+      <DependentUpon>ucdultoMayor02.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucEvaluacionErgonomica.cs">
       <SubType>UserControl</SubType>
@@ -4488,11 +4500,17 @@
     <EmbeddedResource Include="UserControls\ucAcumetria.resx">
       <DependentUpon>ucAcumetria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucAdultoMayor01.resx">
+      <DependentUpon>ucAdultoMayor01.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucAudiometria.resx">
       <DependentUpon>ucAudiometria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucBoton.resx">
       <DependentUpon>ucBoton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucdultoMayor02.resx">
+      <DependentUpon>ucdultoMayor02.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucEvaluacionErgonomica.resx">
       <DependentUpon>ucEvaluacionErgonomica.cs</DependentUpon>
@@ -6376,7 +6394,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

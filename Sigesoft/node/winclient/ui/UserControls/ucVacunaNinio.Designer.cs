@@ -194,8 +194,10 @@
             this.textBox282 = new System.Windows.Forms.TextBox();
             this.textBox283 = new System.Windows.Forms.TextBox();
             this.textBox284 = new System.Windows.Forms.TextBox();
+            this.ultraDateTimeEditor1 = new Infragistics.Win.UltraWinEditors.UltraDateTimeEditor();
             this.groupBox3.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditor1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -819,6 +821,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.ultraDateTimeEditor1);
             this.groupBox5.Controls.Add(this.label136);
             this.groupBox5.Controls.Add(this.textBox298);
             this.groupBox5.Controls.Add(this.label134);
@@ -1352,7 +1355,7 @@
             // 
             this.textBox255.Location = new System.Drawing.Point(215, 449);
             this.textBox255.Name = "textBox255";
-            this.textBox255.Size = new System.Drawing.Size(69, 22);
+            this.textBox255.Size = new System.Drawing.Size(92, 22);
             this.textBox255.TabIndex = 69;
             // 
             // label116
@@ -1748,6 +1751,13 @@
             this.textBox284.Size = new System.Drawing.Size(30, 22);
             this.textBox284.TabIndex = 40;
             // 
+            // ultraDateTimeEditor1
+            // 
+            this.ultraDateTimeEditor1.Location = new System.Drawing.Point(215, 478);
+            this.ultraDateTimeEditor1.Name = "ultraDateTimeEditor1";
+            this.ultraDateTimeEditor1.Size = new System.Drawing.Size(92, 24);
+            this.ultraDateTimeEditor1.TabIndex = 122;
+            // 
             // ucVacunaNinio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1760,6 +1770,7 @@
             this.groupBox3.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDateTimeEditor1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1932,5 +1943,6 @@
         private System.Windows.Forms.TextBox textBox282;
         private System.Windows.Forms.TextBox textBox283;
         private System.Windows.Forms.TextBox textBox284;
+        private Infragistics.Win.UltraWinEditors.UltraDateTimeEditor ultraDateTimeEditor1;
     }
 }
