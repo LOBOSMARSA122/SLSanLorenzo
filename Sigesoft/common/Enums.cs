@@ -599,7 +599,13 @@ namespace Sigesoft.Common
         PPR = 6,
         ProtesisTotal = 7,
         Implante = 8,
-        AparatoOrtodontico = 9
+        AparatoOrtodontico = 9,
+        RemanenteRedicular = 10,
+        CoronaTemporal = 11,
+        CoronaDefinitiva = 12,
+        ProtesisFijaBueno = 13,
+        ProtesisFijaMalo = 14,
+        ProtesisRemovible = 15
     }
 
     public enum ResultKlockloff

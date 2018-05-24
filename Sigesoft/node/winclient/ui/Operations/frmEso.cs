@@ -2073,13 +2073,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             }
 
-            if (tcExamList.SelectedTab.TabPage.Tab.Text == "MEDICINA")
-            {
-                string pstrPersonId = _personId;
+            //if (tcExamList.SelectedTab.TabPage.Tab.Text == "MEDICINA")
+            //{
+            //    string pstrPersonId = _personId;
 
-                Popups.frmPopupAntecedentes frm = new Popups.frmPopupAntecedentes(pstrPersonId);
-                frm.ShowDialog();
-            }
+            //    Popups.frmPopupAntecedentes frm = new Popups.frmPopupAntecedentes(pstrPersonId);
+            //    frm.ShowDialog();
+            //}
 
         }
 

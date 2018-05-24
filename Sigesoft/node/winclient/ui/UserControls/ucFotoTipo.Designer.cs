@@ -42,6 +42,7 @@
             this.txtMultimediaFileId = new System.Windows.Forms.TextBox();
             this.txtServiceComponentMultimediaId = new System.Windows.Forms.TextBox();
             this.btnDibujar = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -123,6 +124,7 @@
             this.panel1.Size = new System.Drawing.Size(414, 416);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
             // 
             // groupBox4
             // 
@@ -165,11 +167,22 @@
             this.btnDibujar.UseVisualStyleBackColor = true;
             this.btnDibujar.Click += new System.EventHandler(this.btnDibujar_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(509, 72);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 30;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ucFotoTipo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.btnDibujar);
             this.Controls.Add(this.txtMultimediaFileId);
             this.Controls.Add(this.txtServiceComponentMultimediaId);
@@ -200,5 +213,6 @@
         private System.Windows.Forms.TextBox txtMultimediaFileId;
         private System.Windows.Forms.TextBox txtServiceComponentMultimediaId;
         private System.Windows.Forms.Button btnDibujar;
+        private System.Windows.Forms.Button button1;
     }
 }

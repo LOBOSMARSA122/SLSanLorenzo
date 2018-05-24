@@ -17292,8 +17292,7 @@ namespace Sigesoft.Node.WinClient.BLL
 																						   && (B.v_ComponentId == pstrComponentId)
 																						   && (B.i_IsDeleted == 0)
 																						   && (C.i_IsDeleted == 0)
-																					 let range = (D.v_Value1 == "1" ? pstrPath + "\\Resources\\ausent.png" :
-																								 string.Empty
+                                                                                     let range = (D.v_Value1 == "1" ? pstrPath + "\\Resources\\R_dienteausente.png" : D.v_Value1 == "7" ? pstrPath + "\\Resources\\R_ProtesisTotal.png" : D.v_Value1 == "10" ? pstrPath + "\\Resources\\R_RemanenteRedicular.png" : D.v_Value1 == "11" ? pstrPath + "\\Resources\\R_CoronaTemporal.png" : D.v_Value1 == "12" ? pstrPath + "\\Resources\\R_CoronaDefinitiva.png" : D.v_Value1 == "13" ? pstrPath + "\\Resources\\R_ProtesisFijaBueno.png" : D.v_Value1 == "14" ? pstrPath + "\\Resources\\R_ProtesisFijaMalo.png" : D.v_Value1 == "15" ? pstrPath + "\\Resources\\R_ProtesisRemovible.png" : string.Empty
 																								 )
 																					 select new ServiceComponentFieldValuesList
 																					 {
