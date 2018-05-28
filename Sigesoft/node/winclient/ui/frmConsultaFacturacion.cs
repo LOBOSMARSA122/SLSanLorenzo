@@ -358,14 +358,14 @@ namespace Sigesoft.Node.WinClient.UI
                    if (UserId==11)
 	                {
                         this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "Service");
+                        frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
                         frm.ShowDialog();
                         this.Enabled = true;
 	                }
                    else
                    {
                         this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "View");
+                        frm = new Operations.frmEso(_serviceId, null, "View", (int)MasterService.Eso);
                         frm.ShowDialog();
                         this.Enabled = true;                   
                    }
@@ -374,7 +374,7 @@ namespace Sigesoft.Node.WinClient.UI
                else 
                {
                    this.Enabled = false;
-                   frm = new Operations.frmEso(_serviceId, null, "Service");
+                   frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
                    frm.ShowDialog();
                    this.Enabled = true;
                }

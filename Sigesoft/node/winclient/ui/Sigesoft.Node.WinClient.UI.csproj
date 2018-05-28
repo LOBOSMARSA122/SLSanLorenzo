@@ -1324,6 +1324,12 @@
     <Compile Include="Operations\Popups\frmPopupAntecedentes.Designer.cs">
       <DependentUpon>frmPopupAntecedentes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Popups\frmPopupAtencionIntegral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\Popups\frmPopupAtencionIntegral.Designer.cs">
+      <DependentUpon>frmPopupAtencionIntegral.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Popups\frmPopupServiciosAnteriores.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3452,6 +3458,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmPopupAntecedentes.resx">
       <DependentUpon>frmPopupAntecedentes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations\Popups\frmPopupAtencionIntegral.resx">
+      <DependentUpon>frmPopupAtencionIntegral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmPopupServiciosAnteriores.resx">
       <DependentUpon>frmPopupServiciosAnteriores.cs</DependentUpon>

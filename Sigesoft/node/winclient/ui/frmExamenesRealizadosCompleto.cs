@@ -1914,7 +1914,7 @@ namespace Sigesoft.Node.WinClient.UI
             string TserviceId = grdDataService.Selected.Rows[0].Cells["ServiceId"].Value.ToString();
         
             this.Enabled = false;
-            frm = new Operations.frmEso(TserviceId, null, "View");
+            frm = new Operations.frmEso(TserviceId, null, "View", (int)MasterService.Eso);
             frm.ShowDialog();
             this.Enabled = true;
         }

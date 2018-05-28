@@ -17,6 +17,12 @@ namespace Sigesoft.Common
         SinDx = 2
     }
 
+    public enum TipoProblema
+    {
+        Cronico = 1,
+        Agudo = 2
+    }
+
     public enum TypePrinter
     {
         Image = 1,

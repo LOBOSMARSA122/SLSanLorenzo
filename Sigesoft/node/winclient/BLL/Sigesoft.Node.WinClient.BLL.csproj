@@ -70,6 +70,8 @@
     <Compile Include="OccupationBL.cs" />
     <Compile Include="OrganizationBL.cs" />
     <Compile Include="PacientBL.cs" />
+    <Compile Include="PlanIntegralBL.cs" />
+    <Compile Include="ProblemaBL.cs" />
     <Compile Include="ProductBL.cs" />
     <Compile Include="ProfessionalBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

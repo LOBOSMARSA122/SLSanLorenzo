@@ -45,10 +45,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DMnodepostgreSQL1.Designer.cs">
+    <Compile Include="DMnodeSQLServer1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DMnodepostgreSQL.edmx</DependentUpon>
+      <DependentUpon>DMnodeSQLServer.edmx</DependentUpon>
     </Compile>
     <Compile Include="GeneratedAssemblers\applicationhierarchyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\areaAssembler.cs" />
@@ -113,6 +113,8 @@
     <Compile Include="GeneratedAssemblers\productsformigrationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\productAssembler.cs" />
     <Compile Include="GeneratedAssemblers\procedurebyserviceAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\problemaAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\planintegralAssembler.cs" />
     <Compile Include="GeneratedAssemblers\planAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personmedicalhistoryAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personAssembler.cs" />
@@ -156,15 +158,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DMnodepostgreSQL.Diagram1.view">
-      <DependentUpon>DMnodepostgreSQL.edmx</DependentUpon>
+    <None Include="DMnodeSQLServer.Diagram1.view">
+      <DependentUpon>DMnodeSQLServer.edmx</DependentUpon>
     </None>
-    <DevartEntityDeploy Include="DMnodepostgreSQL.edmx">
+    <DevartEntityDeploy Include="DMnodeSQLServer.edmx">
       <Generator>DevartEfGenerator</Generator>
-      <LastGenOutput>DMnodepostgreSQL1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DMnodeSQLServer1.Designer.cs</LastGenOutput>
     </DevartEntityDeploy>
-    <None Include="DMnodepostgreSQL.edps">
-      <DependentUpon>DMnodepostgreSQL.edmx</DependentUpon>
+    <None Include="DMnodeSQLServer.edps">
+      <DependentUpon>DMnodeSQLServer.edmx</DependentUpon>
     </None>
     <None Include="Properties\DataSources\SigesoftEntitiesModel.datasource" />
   </ItemGroup>

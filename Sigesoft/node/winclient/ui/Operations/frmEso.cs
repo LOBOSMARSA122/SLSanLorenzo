@@ -127,6 +127,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private string _personId;
         private string _serviceIdByWiewServiceHistory;
         private string _action;
+        private int _tipo;
         private string _pharmacyWarehouseId;
         private int _masterServiceId;
         private List<KeyValueDTO> _formActions = null;
@@ -152,12 +153,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         public int _profesionId;
         #endregion
 
-        public frmEso(string serviceId, string componentIdByDefault, string action)
+        public frmEso(string serviceId, string componentIdByDefault, string action, int tipo)
         {
             InitializeComponent();
             _serviceId = serviceId;
             _componentIdByDefault = componentIdByDefault;
             _action = action;
+            _tipo = tipo;
         }
 
         private void frmEso_Load(object sender, EventArgs e)
@@ -165,10 +167,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             //obenter la profesión del usuario
             _profesionId = int.Parse(Globals.ClientSession.i_ProfesionId.ToString());
 
-            tcSubMain.TabPages.Remove(tpAntecedentes);
-            tcSubMain.TabPages.Remove(General);
-
-            var serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
+             var serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
 
             var vbtn312 = serviceComponents.Find(p => p.v_ComponentId == Constants.EXAMEN_FISICO_ID);
             if (vbtn312 != null)
@@ -308,7 +307,22 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 #endregion
 
                 // PESTAÑA Antecedentes X DEFECTO
-                tcSubMain.SelectedIndex = 0;
+                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                {
+                    tcSubMain.TabPages.Remove(tpAntecedentes);
+                    tcSubMain.TabPages.Remove(General);
+                    tcSubMain.TabPages.Remove(tpConclusion);
+                }
+                else
+                {
+                    tcSubMain.TabPages.Remove(tpAntecedentes);
+                    tcSubMain.TabPages.Remove(General);
+                    tcSubMain.TabPages.Remove(tpFormatoAtencionIntegral);
+                    tcSubMain.TabPages.Remove(tpDatosAntecedentes);
+                    tcSubMain.TabPages.Remove(tpCuidadosPreventivos);
+                    tcSubMain.SelectedIndex = 0;
+                }
+               
                 // Setear por default un examen componente desde consusltorio
 
                 #region Set Tab x default
@@ -1735,6 +1749,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 #endregion
 
 
+                #region Cargar Atención Integral
+
+                CargarGrillaProblemas(_personId);
+                CargarGrillaPlanAtencionIntegral(_personId);
+                #endregion
+
                 // Analizar el resultado de la operación
                 if (objOperationResult.Success != 1)
                 {
@@ -1744,7 +1764,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
 
         }
-
         private void LoadComboBox()
         {
             // Llenado de combos
@@ -6610,7 +6629,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void mnuVerServicio_Click(object sender, EventArgs e)
         {
-            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View");
+            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View", (int)MasterService.Eso);
             frm.ShowDialog();
         }
 
@@ -6648,7 +6667,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnVerServicioAnterior_Click(object sender, EventArgs e)
         {
-            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View");
+            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View", (int)MasterService.Eso);
             frm.ShowDialog();
             /////
         }
@@ -7287,54 +7306,107 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             frm.ShowDialog();
         }
 
-        private void grdTotalDiagnosticos_InitializeLayout(object sender, InitializeLayoutEventArgs e)
-        {
-
-        }
-
-        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
         private void btnPerson_Click(object sender, EventArgs e)
         {
             var frm = new frmPacient(_personId);
             frm.ShowDialog();
             
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGuardarIntegral_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label91_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGrabarNinio_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGrabarAdulto_Click(object sender, EventArgs e)
-        {
-
-        }
+        }      
 
         private void btnSubirInterconsulta_Click(object sender, EventArgs e)
         {
             frmSubirInterconsulta frm = new frmSubirInterconsulta(_serviceId, _personName);
             frm.ShowDialog();
         }
+
+        private void btnNuevoCronico_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Cronico","New",_personId);
+            frm.ShowDialog();
+
+            CargarGrillaProblemas(_personId);
+        }
+
+        private void btnEditarCronico_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Cronico", "Edit", _personId);
+            frm.ShowDialog();
+            CargarGrillaProblemas(_personId);
+        }
+
+        private void btnEliminarCronico_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                CargarGrillaProblemas(_personId);
+            }
+        }
+
+        private void btnNuevoAgudo_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Agudo", "New", _personId);
+            frm.ShowDialog();
+            CargarGrillaProblemas(_personId);
+        }
+
+        private void btnEditarAgudo_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Agudo", "Edit", _personId);
+            frm.ShowDialog();
+            CargarGrillaProblemas(_personId);
+        }
+
+        private void btnEliminarAgudo_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                CargarGrillaProblemas(_personId);
+            }
+        }
+
+        private void btnNuevoPlan_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Plan", "New", _personId);
+            frm.ShowDialog();
+            CargarGrillaPlanAtencionIntegral(_personId);
+        }
+
+        private void btnEditarPlan_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Plan", "Edit", _personId);
+            frm.ShowDialog();
+            CargarGrillaPlanAtencionIntegral(_personId);
+        }
+
+        private void btnEliminarPlan_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                CargarGrillaPlanAtencionIntegral(_personId);
+            }
+        }
+
+        private void CargarGrillaPlanAtencionIntegral(string personId)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var objData = new PlanIntegralBL().GetPlanIntegralAndFiltered(ref objOperationResult, 0, null, "", "", personId);
+            grdPlanIntegral.DataSource = objData;
+        }
+
+        private void CargarGrillaProblemas(string personId)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var objData = new ProblemaBL().GetProblemaPagedAndFiltered(ref objOperationResult, 0, null, "", "", personId);
+            grdCronicos.DataSource = objData.FindAll(p => p.i_Tipo == (int)TipoProblema.Cronico);
+            grdAgudos.DataSource = objData.FindAll(p => p.i_Tipo == (int)TipoProblema.Agudo);
+        }
+
 
 
     }

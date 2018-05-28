@@ -362,7 +362,7 @@ namespace Sigesoft.Node.WinClient.UI
            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
            if (TserviceId == (int)MasterService.AtxMedicaParticular)
            {
-               frm = new Operations.frmEso(_serviceId, null, null);
+               frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
                frm.ShowDialog();
            }
            else
@@ -377,14 +377,14 @@ namespace Sigesoft.Node.WinClient.UI
                    if (UserId==11)
 	                {
                         this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "Service");
+                        frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
                         frm.ShowDialog();
                         this.Enabled = true;
 	                }
                    else
                    {
                         this.Enabled = false;
-                        frm = new Operations.frmEso(_serviceId, null, "View");
+                        frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
                         frm.ShowDialog();
                         this.Enabled = true;                   
                    }
@@ -393,7 +393,7 @@ namespace Sigesoft.Node.WinClient.UI
                else 
                {
                    this.Enabled = false;
-                   frm = new Operations.frmEso(_serviceId, null, "Service");
+                   frm = new Operations.frmEso(_serviceId, null, "Service",(int)MasterService.Eso);
                    frm.ShowDialog();
                    this.Enabled = true;
                }
