@@ -19,16 +19,20 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.planintegral
+                            join B in dbContext.systemparameter on new { a = A.i_TipoId.Value, b = 257 }  // CATEGORIA DEL EXAMEN
+                                                      equals new { a = B.i_ParameterId, b = B.i_GroupId } into B_join
+                            from B in B_join.DefaultIfEmpty()
                             where A.i_IsDeleted == 0 && A.v_PersonId == pstrPersonId
 
                             select new PlanIntegralList
                             {
                                 v_PlanIntegral = A.v_PlanIntegral,
                                 v_PersonId = A.v_PersonId,
-                                i_TipoId = A.i_TipoId.Value,
+                                i_TipoId = A.i_TipoId.Value, 
                                 v_Descripcion = A.v_Descripcion,
                                 d_Fecha = A.d_Fecha.Value,
-                                v_Lugar = A.v_Lugar                                
+                                v_Lugar = A.v_Lugar,
+                                v_Tipo =B.v_Value1
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -62,7 +66,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public planintegralDto GetPlanIntegral(ref OperationResult pobjOperationResult, string pstrProblemaId)
+        public planintegralDto GetPlanIntegral(ref OperationResult pobjOperationResult, string pstrPlanId)
         {
             //mon.IsActive = true;
 
@@ -72,7 +76,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 planintegralDto objDtoEntity = null;
 
                 var objEntity = (from a in dbContext.planintegral
-                                 where a.v_PlanIntegral == pstrProblemaId
+                                 where a.v_PlanIntegral == pstrPlanId
                                  select a).FirstOrDefault();
 
                 if (objEntity != null)
@@ -155,7 +159,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public void DeletePlanIntegral(ref OperationResult pobjOperationResult, string pstrProblemaId, List<string> ClientSession)
+        public void DeletePlanIntegral(ref OperationResult pobjOperationResult, string pstrPlanId, List<string> ClientSession)
         {
             //mon.IsActive = true;
 
@@ -165,7 +169,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 // Obtener la entidad fuente
                 var objEntitySource = (from a in dbContext.planintegral
-                                       where a.v_PlanIntegral == pstrProblemaId
+                                       where a.v_PlanIntegral == pstrPlanId
                                        select a).FirstOrDefault();
 
                 // Crear la entidad con los datos actualizados

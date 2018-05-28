@@ -13,6 +13,7 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime d_Fecha { get; set; }
         public string v_Descripcion { get; set; }
         public int? i_EsControlado { get; set; }
+        public string v_EsControlado { get; set; }
         public string v_Observacion{ get; set; }
 
         public string i_IsDeleted { get; set; }

@@ -7321,7 +7321,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnNuevoCronico_Click(object sender, EventArgs e)
         {
-            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Cronico","New",_personId);
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Cronico","New",_personId, "");
             frm.ShowDialog();
 
             CargarGrillaProblemas(_personId);
@@ -7329,7 +7329,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnEditarCronico_Click(object sender, EventArgs e)
         {
-            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Cronico", "Edit", _personId);
+            string id = grdCronicos.Selected.Rows[0].Cells["v_ProblemaId"].Value.ToString();
+
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Cronico", "Edit", _personId,id);
             frm.ShowDialog();
             CargarGrillaProblemas(_personId);
         }
@@ -7340,20 +7342,23 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (Result == System.Windows.Forms.DialogResult.Yes)
             {
+                string id = grdCronicos.Selected.Rows[0].Cells["v_ProblemaId"].Value.ToString();
+                new ProblemaBL().DeleteProblema(ref objOperationResult, id, Globals.ClientSession.GetAsList());                
                 CargarGrillaProblemas(_personId);
             }
         }
 
         private void btnNuevoAgudo_Click(object sender, EventArgs e)
         {
-            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Agudo", "New", _personId);
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Agudo", "New", _personId,"");
             frm.ShowDialog();
             CargarGrillaProblemas(_personId);
         }
 
         private void btnEditarAgudo_Click(object sender, EventArgs e)
         {
-            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Agudo", "Edit", _personId);
+            string id = grdAgudos.Selected.Rows[0].Cells["v_ProblemaId"].Value.ToString();
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Agudo", "Edit", _personId, id);
             frm.ShowDialog();
             CargarGrillaProblemas(_personId);
         }
@@ -7364,20 +7369,23 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (Result == System.Windows.Forms.DialogResult.Yes)
             {
+                string id = grdAgudos.Selected.Rows[0].Cells["v_ProblemaId"].Value.ToString();
+                new ProblemaBL().DeleteProblema(ref objOperationResult, id, Globals.ClientSession.GetAsList());
                 CargarGrillaProblemas(_personId);
             }
         }
 
         private void btnNuevoPlan_Click(object sender, EventArgs e)
         {
-            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Plan", "New", _personId);
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Plan", "New", _personId,"");
             frm.ShowDialog();
             CargarGrillaPlanAtencionIntegral(_personId);
         }
 
         private void btnEditarPlan_Click(object sender, EventArgs e)
         {
-            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Plan", "Edit", _personId);
+            string id = grdPlanIntegral.Selected.Rows[0].Cells["v_PlanIntegral"].Value.ToString();
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Plan", "Edit", _personId,id);
             frm.ShowDialog();
             CargarGrillaPlanAtencionIntegral(_personId);
         }
@@ -7388,6 +7396,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (Result == System.Windows.Forms.DialogResult.Yes)
             {
+                string id = grdPlanIntegral.Selected.Rows[0].Cells["v_PlanIntegral"].Value.ToString();
+                new PlanIntegralBL().DeletePlanIntegral(ref objOperationResult, id, Globals.ClientSession.GetAsList());
                 CargarGrillaPlanAtencionIntegral(_personId);
             }
         }

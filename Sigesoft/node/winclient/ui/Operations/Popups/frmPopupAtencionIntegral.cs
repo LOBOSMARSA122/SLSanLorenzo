@@ -17,14 +17,16 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
         string _fromulario;
         string _modo;
         string _personId;
+        string _id;
         planintegralDto obj;
         problemaDto objProblema;
-        public frmPopupAtencionIntegral(string formulario, string modo, string personId)
+        public frmPopupAtencionIntegral(string formulario, string modo, string personId, string id)
         {
             InitializeComponent();
             _fromulario = formulario;
             _modo = modo;
             _personId = personId;
+            _id = id;
         }
 
         private void frmPopupAtencionIntegral_Load(object sender, EventArgs e)
@@ -34,16 +36,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
             {
                 Utils.LoadDropDownList(cboEsControlado, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
                 cboTipoAtencionIntegral.Enabled = false;
+                txtLugar.Visible = false;
+                label6.Visible = false;
             }
             else if (_fromulario == "Agudo")
             {
                 cboTipoAtencionIntegral.Enabled = false;
                 cboEsControlado.Enabled = false;
+                txtLugar.Visible = false;
+                label6.Visible = false;
             }
             else if (_fromulario == "Plan")
             {
                 Utils.LoadDropDownList(cboTipoAtencionIntegral, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 257, null), DropDownListAction.Select);
                 cboEsControlado.Enabled = false;
+                txtProblema.Enabled = false;
                 label4.Text = "Descripción";
             }
 
@@ -56,27 +63,31 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                 if (_fromulario == "Cronico")
                 {
                     objProblema = new problemaDto();
-                    objProblema = new ProblemaBL().GetProblema(ref objOperationResult, _personId);                   
+                    objProblema = new ProblemaBL().GetProblema(ref objOperationResult, _id);                   
                     dtpFecha.Value = objProblema.d_Fecha.Value;
-                    txtObservacion.Text = objProblema.v_Descripcion;
+                    txtProblema.Text = objProblema.v_Descripcion;
+                    cboEsControlado.SelectedValue = objProblema.i_EsControlado.ToString(); 
+                    txtObservacion.Text = objProblema.v_Observacion;
                 }
                 else if (_fromulario == "Agudo")
                 {
 
                     objProblema = new problemaDto();
-                    objProblema = new ProblemaBL().GetProblema(ref objOperationResult, _personId);
+                    objProblema = new ProblemaBL().GetProblema(ref objOperationResult, _id);
                     dtpFecha.Value = objProblema.d_Fecha.Value;
-                    txtObservacion.Text = objProblema.v_Descripcion;
+                    txtProblema.Text = objProblema.v_Descripcion;
+                    txtObservacion.Text = objProblema.v_Observacion;
                 }
                 else if (_fromulario == "Plan")
                 {
 
                     obj = new planintegralDto();
-                    obj = new PlanIntegralBL().GetPlanIntegral(ref objOperationResult, _personId);
+                    obj = new PlanIntegralBL().GetPlanIntegral(ref objOperationResult, _id);
                     cboTipoAtencionIntegral.SelectedValue = obj.i_TipoId;
                     dtpFecha.Value = obj.d_Fecha.Value;
                     txtObservacion.Text = obj.v_Descripcion;
                     txtLugar.Text = obj.v_Lugar;
+                    cboTipoAtencionIntegral.SelectedValue = obj.i_TipoId.ToString();
                 }
 
             }
@@ -115,6 +126,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                 }
                 else if (_modo == "Edit")
                 {
+                    obj.v_PlanIntegral = _id;
                     obj.i_TipoId = int.Parse(cboTipoAtencionIntegral.SelectedValue.ToString());
                     obj.v_Descripcion = txtObservacion.Text;
                     obj.d_Fecha = dtpFecha.Value;
@@ -128,17 +140,23 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                 {
                     objProblema = new problemaDto();
                     objProblema.v_PersonId = _personId;
-                    objProblema.v_Descripcion = txtObservacion.Text;
-                    objProblema.d_Fecha = dtpFecha.Value;
                     objProblema.i_Tipo = (int)TipoProblema.Cronico;
+                    objProblema.d_Fecha = dtpFecha.Value;
+                    objProblema.v_Descripcion = txtProblema.Text;
+                    objProblema.i_EsControlado = int.Parse(cboEsControlado.SelectedValue.ToString());
+                    objProblema.v_Observacion = txtObservacion.Text;
+                    
                     new ProblemaBL().AddProblema(ref objOperationResult, objProblema, Globals.ClientSession.GetAsList());
                 }
                 else if (_modo == "Edit")
                 {
+                    objProblema.v_ProblemaId = _id;
                     objProblema.i_Tipo = (int)TipoProblema.Cronico;
-                    objProblema.v_Descripcion = txtObservacion.Text;
                     objProblema.d_Fecha = dtpFecha.Value;
-                    new ProblemaBL().AddProblema(ref objOperationResult, objProblema, Globals.ClientSession.GetAsList());
+                    objProblema.v_Descripcion = txtProblema.Text;
+                    objProblema.i_EsControlado = int.Parse(cboEsControlado.SelectedValue.ToString());
+                    objProblema.v_Observacion = txtObservacion.Text;
+                    new ProblemaBL().UpdateProblema(ref objOperationResult, objProblema, Globals.ClientSession.GetAsList());
                 }
             }
             else if (_fromulario == "Agudo")
@@ -147,16 +165,19 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                 {
                     objProblema = new problemaDto();
                     objProblema.v_PersonId = _personId;
-                    objProblema.v_Descripcion = txtObservacion.Text;
+                    objProblema.v_Descripcion = txtProblema.Text;
                     objProblema.d_Fecha = dtpFecha.Value;
+                    objProblema.v_Observacion = txtObservacion.Text;
                     objProblema.i_Tipo = (int)TipoProblema.Agudo;
                     new ProblemaBL().AddProblema(ref objOperationResult, objProblema, Globals.ClientSession.GetAsList());
                 }
                 else if (_modo == "Edit")
                 {
+                    objProblema.v_ProblemaId = _id;
                     objProblema.i_Tipo = (int)TipoProblema.Agudo;
-                    objProblema.v_Descripcion = txtObservacion.Text;
+                    objProblema.v_Descripcion = txtProblema.Text;
                     objProblema.d_Fecha = dtpFecha.Value;
+                    objProblema.v_Observacion = txtObservacion.Text;
                     new ProblemaBL().UpdateProblema(ref objOperationResult, objProblema, Globals.ClientSession.GetAsList());
                 }
             }

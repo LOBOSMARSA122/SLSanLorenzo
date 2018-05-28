@@ -183,7 +183,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn47 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn79 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_EsControlado");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn46 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_EsControlado");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn80 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Observacion");
             Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
@@ -195,7 +195,7 @@
             Infragistics.Win.Appearance appearance73 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance74 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand11 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn111 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_TipoId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Tipo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn112 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn113 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn114 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Lugar");
@@ -3530,6 +3530,7 @@
             // grdCronicos
             // 
             this.grdCronicos.CausesValidation = false;
+            this.grdCronicos.DataMember = null;
             appearance65.BackColor2 = System.Drawing.Color.White;
             appearance65.BorderColor = System.Drawing.Color.DarkGray;
             appearance65.ForeColor = System.Drawing.Color.Black;
@@ -3540,15 +3541,15 @@
             ultraGridColumn48.Header.Caption = "Problema Crónico";
             ultraGridColumn48.Header.VisiblePosition = 1;
             ultraGridColumn48.Width = 212;
-            ultraGridColumn79.Header.Caption = "¿Es Controlado?";
-            ultraGridColumn79.Header.VisiblePosition = 2;
+            ultraGridColumn46.Header.Caption = "¿Es controlado?";
+            ultraGridColumn46.Header.VisiblePosition = 2;
             ultraGridColumn80.Header.Caption = "Observación";
             ultraGridColumn80.Header.VisiblePosition = 3;
             ultraGridColumn80.Width = 151;
             ultraGridBand10.Columns.AddRange(new object[] {
             ultraGridColumn47,
             ultraGridColumn48,
-            ultraGridColumn79,
+            ultraGridColumn46,
             ultraGridColumn80});
             appearance66.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             appearance66.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
@@ -3700,9 +3701,8 @@
             appearance74.BorderColor = System.Drawing.Color.DarkGray;
             appearance74.ForeColor = System.Drawing.Color.Black;
             this.grdPlanIntegral.DisplayLayout.Appearance = appearance74;
-            ultraGridColumn111.Header.Caption = "Tipo";
-            ultraGridColumn111.Header.VisiblePosition = 0;
-            ultraGridColumn111.Width = 354;
+            ultraGridColumn49.Header.Caption = "Tipo";
+            ultraGridColumn49.Header.VisiblePosition = 0;
             ultraGridColumn112.Header.Caption = "Fecha";
             ultraGridColumn112.Header.VisiblePosition = 1;
             ultraGridColumn113.Header.Caption = "Descripción";
@@ -3712,7 +3712,7 @@
             ultraGridColumn114.Header.VisiblePosition = 3;
             ultraGridColumn114.Width = 326;
             ultraGridBand11.Columns.AddRange(new object[] {
-            ultraGridColumn111,
+            ultraGridColumn49,
             ultraGridColumn112,
             ultraGridColumn113,
             ultraGridColumn114});

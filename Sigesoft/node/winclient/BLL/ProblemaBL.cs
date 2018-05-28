@@ -19,6 +19,9 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.problema
+                            join B in dbContext.systemparameter on new { a = A.i_EsControlado.Value, b = 111 }  // CATEGORIA DEL EXAMEN
+                                                        equals new { a = B.i_ParameterId, b = B.i_GroupId } into B_join
+                            from B in B_join.DefaultIfEmpty()
                             where A.i_IsDeleted == 0 && A.v_PersonId == pstrPersonId
 
                             select new ProblemaList
@@ -29,7 +32,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 d_Fecha = A.d_Fecha.Value,
                                 v_Descripcion = A.v_Descripcion,
                                 i_EsControlado = A.i_EsControlado,
-                                v_Observacion = A.v_Observacion
+                                v_Observacion = A.v_Observacion,
+                                v_EsControlado = B.v_Value1
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
