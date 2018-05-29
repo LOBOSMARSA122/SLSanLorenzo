@@ -873,6 +873,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             ucSomnolencia.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
                                             ctl = ucSomnolencia;
                                             break;
+                                        case ControlType.UcAdulto:
+                                            var ucAdulto = new Sigesoft.Node.WinClient.UI.UserControls.ucAdulto();
+                                            ucAdulto.Name = f.v_ComponentFieldId;
+                                            // Establecer evento
+                                            //ucAdulto.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
+                                            //ctl = ucAdulto;
+                                            break;
 
                                         case ControlType.UcBoton:
                                             var ucBoton = new Sigesoft.Node.WinClient.UI.UserControls.ucBoton();
@@ -1364,6 +1371,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         // Establecer evento
                                         ucSomnolencia.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
                                         ctl = ucSomnolencia;
+                                        break;
+                                    case ControlType.UcAdulto:
+                                        var ucAdulto = new Sigesoft.Node.WinClient.UI.UserControls.ucAdulto();
+                                        ucAdulto.Name = f.v_ComponentFieldId;
+                                        // Establecer evento
+                                        //ucAdulto.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
+                                        //ctl = ucAdulto;
                                         break;
 
                                     case ControlType.UcBoton:

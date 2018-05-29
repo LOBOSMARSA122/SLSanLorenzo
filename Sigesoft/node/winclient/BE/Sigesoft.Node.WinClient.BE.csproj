@@ -255,6 +255,7 @@
     <Compile Include="Custom\TrabajadoresConcatenados.cs" />
     <Compile Include="Custom\TypeOfEEPList.cs" />
     <Compile Include="Custom\UcAcumetria.cs" />
+    <Compile Include="Custom\UcAdulto.cs" />
     <Compile Include="Custom\UcErgonomica.cs" />
     <Compile Include="Custom\UcOsteo.cs" />
     <Compile Include="Custom\UcOtoscopiacs.cs" />

@@ -14981,6 +14981,35 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 throw;
             }
         }
+        public List<Sigesoft.Node.WinClient.BE.UcAdulto> ReporteAdulto(string pstrserviceId, string pstrComponentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                  where A.v_ServiceId == pstrserviceId
+                                 select new Sigesoft.Node.WinClient.BE.UcAdulto
+                                 {
+                                     FechaNacimiento = B.d_Birthdate,
+                                  });
+             var sql = (from a in objEntity.ToList()
+                        select new Sigesoft.Node.WinClient.BE.UcAdulto
+                           {
+                                Edad = GetAge(a.FechaNacimiento.Value),
+                           }).ToList();
+
+
+                return sql;
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
         public List<Sigesoft.Node.WinClient.BE.UcSomnolencia> ReporteSomnolencia(string pstrserviceId, string pstrComponentId)
         {

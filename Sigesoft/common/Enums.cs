@@ -275,8 +275,11 @@ namespace Sigesoft.Common
 
 
 
-    public enum ControlType
+    public enum ControlType 
     {
+        /// <summary>
+        /// select * from systemparameter where i_GroupId = 112
+        /// </summary>
         CadenaTextual = 1,
         CadenaMultilinea = 2,
         NumeroEntero = 3,
@@ -300,7 +303,12 @@ namespace Sigesoft.Common
         UcBoton = 21,
         UcFototipo = 22,
         UcHistorialTriaje = 23,
-        UcHistorialGrupoSanguineo = 24
+        UcHistorialGrupoSanguineo = 24,
+        UcAdulto = 25,
+        UcAdultoMayor = 26,
+        UcAdolecente = 27,
+        UcNino = 28
+
     }
 
     public enum ComponentType

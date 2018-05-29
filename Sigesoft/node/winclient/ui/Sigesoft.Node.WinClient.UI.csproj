@@ -3070,6 +3070,24 @@
     <Compile Include="UserControls\ucAcumetria.Designer.cs">
       <DependentUpon>ucAcumetria.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucAdolecente.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAdolecente.Designer.cs">
+      <DependentUpon>ucAdolecente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAdulto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAdulto.Designer.cs">
+      <DependentUpon>ucAdulto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucAdultoMayor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucAdultoMayor.Designer.cs">
+      <DependentUpon>ucAdultoMayor.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\ucAudiometria.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -3105,6 +3123,12 @@
     </Compile>
     <Compile Include="UserControls\ucHisorialTriaje.Designer.cs">
       <DependentUpon>ucHisorialTriaje.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucNino.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucNino.Designer.cs">
+      <DependentUpon>ucNino.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\ucOdontograma.cs">
       <SubType>UserControl</SubType>
@@ -4478,6 +4502,15 @@
     <EmbeddedResource Include="UserControls\ucAcumetria.resx">
       <DependentUpon>ucAcumetria.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucAdolecente.resx">
+      <DependentUpon>ucAdolecente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucAdulto.resx">
+      <DependentUpon>ucAdulto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucAdultoMayor.resx">
+      <DependentUpon>ucAdultoMayor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucAudiometria.resx">
       <DependentUpon>ucAudiometria.cs</DependentUpon>
     </EmbeddedResource>
@@ -4495,6 +4528,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucHisorialTriaje.resx">
       <DependentUpon>ucHisorialTriaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucNino.resx">
+      <DependentUpon>ucNino.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucOdontograma.resx">
       <DependentUpon>ucOdontograma.cs</DependentUpon>
@@ -6324,7 +6360,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
