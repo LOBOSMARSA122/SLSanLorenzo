@@ -3530,7 +3530,6 @@
             // grdCronicos
             // 
             this.grdCronicos.CausesValidation = false;
-            this.grdCronicos.DataMember = null;
             appearance65.BackColor2 = System.Drawing.Color.White;
             appearance65.BorderColor = System.Drawing.Color.DarkGray;
             appearance65.ForeColor = System.Drawing.Color.Black;

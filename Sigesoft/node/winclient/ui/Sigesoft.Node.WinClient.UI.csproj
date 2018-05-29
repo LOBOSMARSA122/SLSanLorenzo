@@ -1162,6 +1162,12 @@
     <Compile Include="frmMasterRecommendationRestricctionEdicion.Designer.cs">
       <DependentUpon>frmMasterRecommendationRestricctionEdicion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmMatrizSeguimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMatrizSeguimiento.Designer.cs">
+      <DependentUpon>frmMatrizSeguimiento.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmOffice.cs">
       <SubType>Form</SubType>
     </Compile>
