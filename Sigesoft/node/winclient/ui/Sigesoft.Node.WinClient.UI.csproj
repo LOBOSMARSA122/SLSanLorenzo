@@ -3384,6 +3384,9 @@
     <EmbeddedResource Include="frmMasterRecommendationRestricctionEdicion.resx">
       <DependentUpon>frmMasterRecommendationRestricctionEdicion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmMatrizSeguimiento.resx">
+      <DependentUpon>frmMatrizSeguimiento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmOffice.resx">
       <DependentUpon>frmOffice.cs</DependentUpon>
     </EmbeddedResource>

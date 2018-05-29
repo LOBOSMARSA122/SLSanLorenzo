@@ -4065,6 +4065,719 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+        public List<MatrizSeguimiento> ReporteMatrizSeguimientoSanJoaquin(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        {
+            try
+            {
+                using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+                {
+                    List<string> ServicioIds = new List<string>();
+                    List<string> PersonIds = new List<string>();
+
+                    var objEntity = from A in dbContext.service
+                                    join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+
+                                    join E1 in dbContext.datahierarchy on new { a = B.i_DepartmentId.Value, b = 113 }
+                                                      equals new { a = E1.i_ItemId, b = E1.i_GroupId } into E1_join
+                                    from E1 in E1_join.DefaultIfEmpty()
+
+                                    join F1 in dbContext.datahierarchy on new { a = B.i_ProvinceId.Value, b = 113 }
+                                                          equals new { a = F1.i_ItemId, b = F1.i_GroupId } into F1_join
+                                    from F1 in F1_join.DefaultIfEmpty()
+
+                                    join G1 in dbContext.datahierarchy on new { a = B.i_DistrictId.Value, b = 113 }
+                                                          equals new { a = G1.i_ItemId, b = G1.i_GroupId } into G1_join
+                                    from G1 in G1_join.DefaultIfEmpty()
+
+
+
+                                    join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId into C_join
+                                    from C in C_join.DefaultIfEmpty()
+
+                                    join D in dbContext.organization on C.v_CustomerOrganizationId equals D.v_OrganizationId into D_join
+                                    from D in D_join.DefaultIfEmpty()
+
+                                    join E in dbContext.location on new { a = C.v_CustomerOrganizationId, b = C.v_CustomerLocationId }
+                                                                      equals new { a = E.v_OrganizationId, b = E.v_LocationId } into E_join
+                                    from E in E_join.DefaultIfEmpty()
+
+                                    join F in dbContext.systemparameter on new { a = B.i_MaritalStatusId.Value, b = 101 }
+                                          equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                                    from F in F_join.DefaultIfEmpty()
+
+                                    join G in dbContext.datahierarchy on new { a = B.i_LevelOfId.Value, b = 108 }
+                                                equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
+                                    from G in G_join.DefaultIfEmpty()
+
+                                    join H in dbContext.protocol on A.v_ProtocolId equals H.v_ProtocolId into H_join
+                                    from H in H_join.DefaultIfEmpty()
+
+                                    join I in dbContext.systemparameter on new { a = H.i_EsoTypeId.Value, b = 118 }
+                                                    equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
+                                    from I in I_join.DefaultIfEmpty()
+
+                                    join J in dbContext.groupoccupation on H.v_GroupOccupationId equals J.v_GroupOccupationId
+
+                                    join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
+                                    from K in K_join.DefaultIfEmpty()
+
+                                    join J1 in dbContext.systemparameter on new { a = B.i_Relationship.Value, b = 207 }
+                                              equals new { a = J1.i_ParameterId, b = J1.i_GroupId } into J1_join
+                                    from J1 in J1_join.DefaultIfEmpty()
+
+                                    join J2 in dbContext.systemparameter on new { a = A.i_ServiceTypeOfInsurance.Value, b = 225 }
+                                           equals new { a = J2.i_ParameterId, b = J2.i_GroupId } into J2_join
+                                    from J2 in J2_join.DefaultIfEmpty()
+
+                                    join J3 in dbContext.systemparameter on new { a = A.i_ModalityOfInsurance.Value, b = 226 }
+                                       equals new { a = J3.i_ParameterId, b = J3.i_GroupId } into J3_join
+                                    from J3 in J3_join.DefaultIfEmpty()
+
+                                    join J4 in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 }
+                                       equals new { a = J4.i_ParameterId, b = J4.i_GroupId } into J4_join
+                                    from J4 in J4_join.DefaultIfEmpty()
+
+                                    join J5 in dbContext.systemparameter on new { a = A.i_MacId.Value, b = 134 }
+                                       equals new { a = J5.i_ParameterId, b = J5.i_GroupId } into J5_join
+                                    from J5 in J5_join.DefaultIfEmpty()
+
+                                    join J6 in dbContext.datahierarchy on new { a = B.i_DocTypeId.Value, b = 106 }
+                                        equals new { a = J6.i_ItemId, b = J6.i_GroupId } into J6_join
+                                    from J6 in J6_join.DefaultIfEmpty()
+
+                                    join J7 in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
+                                        equals new { a = J7.i_ParameterId, b = J7.i_GroupId } into J7_join
+                                    from J7 in J7_join.DefaultIfEmpty()
+
+                                    join J8 in dbContext.systemparameter on new { a = B.i_PlaceWorkId.Value, b = 204 }
+                                        equals new { a = J8.i_ParameterId, b = J8.i_GroupId } into J8_join
+                                    from J8 in J8_join.DefaultIfEmpty()
+
+                                    // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                    join me in dbContext.systemuser on A.i_UpdateUserOccupationalMedicaltId equals me.i_SystemUserId into me_join
+                                    from me in me_join.DefaultIfEmpty()
+
+                                    join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                    from pme in pme_join.DefaultIfEmpty()
+
+                                    join pe in dbContext.person on me.v_PersonId equals pe.v_PersonId into pe_join
+                                    from pe in pe_join.DefaultIfEmpty()
+
+                                    where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin && A.i_ServiceStatusId == (int)ServiceStatus.Culminado
+                                    select new
+                                    {
+                                        Tipo_Documento = J6 == null ? "N/D" : J6.v_Value1,
+                                        Tipo_Documento_ID = B.i_DocTypeId.HasValue ? B.i_DocTypeId.Value : 0,
+                                        Nro_Documento = B.v_DocNumber,
+                                        Nombres = B.v_FirstName,
+                                        AP_Paterno = B.v_FirstLastName,
+                                        AP_Materno = B.v_SecondLastName,
+                                        Fecha_Nac = B.d_Birthdate.HasValue ? B.d_Birthdate.Value : DateTime.Now,
+                                        Genero = J7 == null ? "N/D" : J7.v_Value1,
+                                        Genero_ID = B.i_SexTypeId.HasValue ? B.i_SexTypeId.Value : 0,
+                                        Grado_Inst = G == null ? "N/D" : G.v_Value1,
+                                        Grado_Inst_ID = B.i_LevelOfId.HasValue ? B.i_LevelOfId.Value : 0,
+                                        Puesto_Laboral = B.v_CurrentOccupation,
+                                        Area = K == null ? "" : K.v_Name,
+                                        Zona = J8 == null ? "N/D" : J8.v_Value1,
+                                        Zona_ID = B.i_PlaceWorkId.HasValue ? B.i_PlaceWorkId.Value : 0,
+                                        Lugar_de_Trabajo = G1 == null ? "N/D" : G1.v_Value1,
+                                        Discapacitado = "???????????????",
+                                        Discapacitado_ID = 0000000000000000,
+                                        Proveedor_Clinica = D == null ? "" : D.v_Name,
+                                        RUC = D == null ? "" : D.v_IdentificationNumber,
+                                        Fecha_Examen = A.d_ServiceDate.HasValue ? A.d_ServiceDate.Value : DateTime.Now,
+                                        Tipo_Examen = I == null ? "N/D" : I.v_Value1,
+                                        Tipo_Examen_ID = H.i_EsoTypeId.HasValue ? H.i_EsoTypeId.Value : 0,
+                                        Aptitud = J4 == null ? "N/D" : J4.v_Value1,
+                                        Aptitud_ID = A.i_AptitudeStatusId.HasValue ? A.i_AptitudeStatusId.Value : 0,
+
+                                        IdServicio = A.v_ServiceId,
+                                        IdTrabajador = B.v_PersonId
+                                        //v_CustomerOrganizationId = H.v_CustomerOrganizationId,
+                                        //IdProtocolId = H.v_ProtocolId,
+                                        //v_CustomerLocationId = H.v_CustomerLocationId,
+                                        //NombreCompleto = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                        //Dni = B.v_DocNumber,
+                                        //LugarNacimiento = B.v_BirthPlace,
+                                        //FechaNacimiento = B.d_Birthdate.Value,
+                                        ////Edad 
+                                        ////RangoEdad
+                                        //Sexo = B.i_SexTypeId == 1 ? "M" : "F",
+                                        //Domicilio = B.v_AdressLocation,
+                                        //Ubigueo = E1.v_Value1 + " - " + F1.v_Value1 + " - " + G1.v_Value1,
+                                        //EstadoCivil = F.v_Value1,
+                                        //NroHijos = B.i_NumberLivingChildren == null ? 0 : B.i_NumberLivingChildren.Value,
+                                        //NivelEstudio = G.v_Value1,
+                                        //Telefono = B.v_TelephoneNumber,
+                                        //EmpresaSede = D.v_Name + " " + E.v_Name,
+                                        //TipoExamen = I.v_Value1,
+                                        //Grupo = J.v_Name,
+                                        //PuestoPostula = B.v_CurrentOccupation,
+                                        //Area = K.v_Name,
+                                        ////Proveedor = "",
+                                        //FechaExamen = A.d_ServiceDate.Value,
+
+                                        //v_Menarquia = A.v_Menarquia,
+                                        //d_Fur = A.d_Fur.Value,
+                                        //v_CatemenialRegime = A.v_CatemenialRegime,
+                                        //d_PAP = A.d_PAP.Value,
+                                        //v_FechaUltimaMamo = A.v_FechaUltimaMamo,
+                                        //v_Gestapara = A.v_Gestapara,
+                                        ////i_MacId = A.i_MacId.Value,
+                                        //v_Mac = J5.v_Value1,
+                                        //v_CiruGine = A.v_CiruGine,
+                                        //v_ResultadosPAP = A.v_ResultadosPAP,
+                                        //v_ResultadoMamo = A.v_ResultadoMamo,
+                                        //Sintomatologia = A.v_Story,
+                                        //AptitudId = A.i_AptitudeStatusId,
+                                        //AptitudMedica = J4.v_Value1,
+                                        //MotivoAptitud = A.v_ObsStatusService,
+                                        //ComentarioAptitud = A.v_ObsStatusService,
+                                        //Evaluador = pe.v_FirstLastName + " " + pe.v_SecondLastName + " " + pe.v_FirstName,
+                                        //CMP = pme.v_ProfessionalCode
+                                    };
+
+
+                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    {
+                        objEntity = objEntity.Where(pstrFilterExpression);
+                    }
+
+
+                    //Llenar los Servicios en una Lista de strings
+
+                    foreach (var item in objEntity)
+                    {
+                        PersonIds.Add(item.IdTrabajador);
+                        ServicioIds.Add(item.IdServicio);
+                    }
+                    var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
+                    var MedicalCenter = GetInfoMedicalCenter();
+                    var varDx = DevolverJerarquiaDxMejoradoSinDescartados(ServicioIds);
+                    //var Dx_Rec = varDx.SelectMany(p => p.DetalleDxRecomendaciones).ToList();
+
+
+                    string[] CamposIndiceNeumoconiosis = new string[] 
+                    {
+                        Constants.RX_0_NADA_ID,
+                        Constants.RX_0_0_ID,
+                        Constants.RX_0_1_ID,
+                        Constants.RX_1_0_ID,
+                        Constants.RX_1_1_ID,
+                        Constants.RX_1_2_ID,
+                        Constants.RX_2_1_ID,
+                        Constants.RX_2_2_ID,
+                        Constants.RX_2_3_ID,
+                        Constants.RX_3_2_ID,
+                        Constants.RX_3_3_ID,
+                        Constants.RX_3_MAS_ID,
+                    };
+
+                    int Contador = 0;
+                    var sql = (from a in objEntity.ToList()
+                               let ValorPAS = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_PAS_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_PAS_ID).Valor
+                               let ValorPAD = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_PAD_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_PAD_ID).Valor
+
+                               let NutrcionDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdCampo == Constants.ANTROPOMETRIA_IMC_ID)
+                               let Nutrcion = NutrcionDx != null ? string.Join("/ ", NutrcionDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let ExaMedGeneralDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.EXAMEN_FISICO_ID)
+                               let ExaMedGeneral = ExaMedGeneralDx != null ? string.Join("/ ", ExaMedGeneralDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let ExaMusculoEsqueleticoDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.OSTEO_MUSCULAR_ID_1 || o.IdComponente == Constants.EVA_OSTEO_ID)
+                               let ExaMusculoEsqueletico = ExaMusculoEsqueleticoDx != null ? string.Join("/ ", ExaMusculoEsqueleticoDx.Select(p => p.Descripcion)) : "Normal"
+
+
+                               let EvaAlturaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.ALTURA_ESTRUCTURAL_ID)
+                               let EvaAltura = EvaAlturaDx != null ? string.Join("/ ", EvaAlturaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let Exa7DDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.ALTURA_7D_ID)
+                               let Exa7D = Exa7DDx != null ? string.Join("/ ", Exa7DDx.Select(p => p.Descripcion)) : "Normal"
+
+
+                               let EvaNeurologicaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.EVA_NEUROLOGICA_ID)
+                               let EvaNeurologica = EvaNeurologicaDx != null ? string.Join("/ ", EvaNeurologicaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let TamizajeDerDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.TAMIZAJE_DERMATOLOGIO_ID)
+                               let TamizajeDer = TamizajeDerDx != null ? string.Join("/ ", TamizajeDerDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let RadioToraxDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.RX_TORAX_ID)
+                               let RadioTorax = RadioToraxDx != null ? string.Join("/ ", RadioToraxDx.Select(p => p.Descripcion)) : "Radiografía de Torax Normal"
+
+                               let RadioOITDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.OIT_ID)
+                               let RadioOIT = RadioOITDx != null ? string.Join("/ ", RadioOITDx.Select(p => p.Descripcion)) : "Radiografía de Torax Normal"
+
+                               let X = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.FindAll(o => o.IdComponente == Constants.OIT_ID)
+                               let Y = X.Count == 0 ? "" : X.Find(p => CamposIndiceNeumoconiosis.Contains(p.IdCampo) && p.Valor == "1").NombreCampo
+
+                               let AudiometriaValores = ValoresComponenteOdontogramaValue1(a.IdServicio, Constants.AUDIOMETRIA_ID)
+
+                               let AudiometriaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.AUDIOMETRIA_ID)
+                               let AudiometriaDxs = AudiometriaDx != null ? string.Join("/ ", AudiometriaDx.Select(p => p.Descripcion)) : "Audición Normal"
+
+                               let EspirometriaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.ESPIROMETRIA_ID)
+                               let Espirometria = EspirometriaDx != null ? string.Join("/ ", EspirometriaDx.Select(p => p.Descripcion)) : "Función Ventilatoria"
+
+
+                               //Oftalmología--------------------------------
+                               let UsaLentesNO = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N009-MF000000719").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N009-MF000000719").Valor == "1" ? "NO" : ""
+                               let UsaLentesSI = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000224").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000224").Valor == "1" ? "SI" : ""
+
+                               let IshiharaNormal = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ISHIHARA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ISHIHARA_ID && o.IdCampo == "N009-MF000000717") == null ? "id no conincinde" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ISHIHARA_ID && o.IdCampo == "N009-MF000000717").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ISHIHARA_ID && o.IdCampo == "N009-MF000000717").Valor == "1" ? "Normal" : ""
+                               let IshiharaAnormal = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ISHIHARA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ISHIHARA_ID && o.IdCampo == "N009-MF000000718") == null ? "id no conincinde" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ISHIHARA_ID && o.IdCampo == "N009-MF000000718").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ISHIHARA_ID && o.IdCampo == "N009-MF000000718").Valor == "1" ? "Anormal" : ""
+
+                               let EstereopsisNormal = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ESTEREOPSIS_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ESTEREOPSIS_ID && o.IdCampo == "N002-MF000000343") == null ? "id no conincinde" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ESTEREOPSIS_ID && o.IdCampo == "N002-MF000000343").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ESTEREOPSIS_ID && o.IdCampo == "N002-MF000000343").Valor == "1" ? "Normal" : ""
+                               let EstereopsisAnormal = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ESTEREOPSIS_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ESTEREOPSIS_ID && o.IdCampo == "N002-MF000000342") == null ? "id no conincinde" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ESTEREOPSIS_ID && o.IdCampo == "N002-MF000000342").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TEST_ESTEREOPSIS_ID && o.IdCampo == "N002-MF000000342").Valor == "1" ? "Anormal" : ""
+
+                               let OftalmologiaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.OFTALMOLOGIA_ID)
+                               let Oftalmologia = OftalmologiaDx != null ? string.Join("/ ", OftalmologiaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               //------------------------------------------------------------------------------
+
+                               let OdontogramaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.ODONTOGRAMA_ID)
+                               let Odontograma = OdontogramaDx != null ? string.Join("/ ", OdontogramaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let ElectrocardiogramaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.ELECTROCARDIOGRAMA_ID || o.IdComponente == Constants.EVA_CARDIOLOGICA_ID)
+                               let Electrocardiograma = ElectrocardiogramaDx != null ? string.Join("/ ", ElectrocardiogramaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let PbaEsfuerzoDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.PRUEBA_ESFUERZO_ID)
+                               let PbaEsfuerzo = PbaEsfuerzoDx != null ? string.Join("/ ", PbaEsfuerzoDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let PsicologiaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.PSICOLOGIA_ID)
+                               let Psicologia = PsicologiaDx != null ? string.Join("/ ", PsicologiaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let Grupo = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID && o.IdCampo == Constants.GRUPO_SANGUINEO_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID && o.IdCampo == Constants.GRUPO_SANGUINEO_ID).ValorName
+                               let Factor = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID && o.IdCampo == Constants.FACTOR_SANGUINEO_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID && o.IdCampo == Constants.FACTOR_SANGUINEO_ID).ValorName
+
+                               let LeucocitosDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_LEUCOCITOS)
+                               let DxLeucocitos = LeucocitosDx != null ? string.Join("/ ", LeucocitosDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let HemoglobinaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA)
+                               let DxHemoglobina = HemoglobinaDx != null ? string.Join("/ ", HemoglobinaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let HemogramaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID)
+                               let DxHemograma = HemogramaDx != null ? string.Join("/ ", HemogramaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let GlucosaDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.GLUCOSA_ID && o.IdCampo == Constants.OFTALMOLOGIA_DESCRIPCION)
+                               let DxGlucosa = GlucosaDx != null ? string.Join("/ ", GlucosaDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let Colesterol1 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_ID) == null ? "  " : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_ID && o.IdCampo == Constants.COLESTEROL_COLESTEROL_TOTAL_ID).Valor == "" ? " " : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_ID && o.IdCampo == Constants.COLESTEROL_COLESTEROL_TOTAL_ID).Valor
+                               let Colesterol2 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_LIPIDICO) == null ? " " : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_LIPIDICO && o.IdCampo == Constants.COLESTEROL_TOTAL).Valor == "" ? " " : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_LIPIDICO && o.IdCampo == Constants.COLESTEROL_TOTAL).Valor
+
+                               let ColesterolDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdCampo == Constants.COLESTEROL_TOTAL_DESEABLE && o.IdCampo == Constants.COLESTEROL_COLESTEROL_TOTAL_ID)
+                               let DxColesterol = ColesterolDx != null ? string.Join("/ ", ColesterolDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let HDLDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.COLESTEROL_HDL_ID && o.IdCampo == Constants.COLESTEROL_HDL_BIOQUIMICA_COLESTEROL_HDL)
+                               let DxHDL = HDLDx != null ? string.Join("/ ", HDLDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let LDLDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.COLESTEROL_LDL_ID && o.IdCampo == Constants.COLESTEROL_LDL_BIOQUIMICA_COLESTEROL_LDL)
+                               let DxLDL = LDLDx != null ? string.Join("/ ", LDLDx.Select(p => p.Descripcion)) : "Normal"
+
+                               let VLDLx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdComponente == Constants.COLESTEROL_VLDL_ID && o.IdCampo == Constants.COLESTEROL_VLDL_BIOQUIMICA_COLESTEROL_VLDL)
+                               let DxVLDL = VLDLx != null ? string.Join("/ ", VLDLx.Select(p => p.Descripcion)) : "Normal"
+
+                               let Trigli1 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TRIGLICERIDOS_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TRIGLICERIDOS_ID && o.IdCampo == Constants.TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TRIGLICERIDOS_ID && o.IdCampo == Constants.TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS).Valor
+
+                               let TGCDx = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones.FindAll(o => o.IdCampo == Constants.COLESTEROL_HDL_DESEABLE && o.IdCampo == Constants.TRIGLICERIDOS)
+                               let DxTGC = TGCDx != null ? string.Join("/ ", TGCDx.Select(p => p.Descripcion)) : "Normal"
+
+
+                               let TGO1 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TGO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TGO_ID && o.IdCampo == Constants.TGO_BIOQUIMICA_TGO).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TGO_ID && o.IdCampo == Constants.TGO_BIOQUIMICA_TGO).Valor
+                               let TGO2 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_HEPATICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_HEPATICO_ID && o.IdCampo == Constants.PERFIL_HEPATICO_TGO_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_HEPATICO_ID && o.IdCampo == Constants.PERFIL_HEPATICO_TGO_ID).Valor
+
+                               let TGP1 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TGP_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TGP_ID && o.IdCampo == Constants.TGP_BIOQUIMICA_TGP).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TGP_ID && o.IdCampo == Constants.TGP_BIOQUIMICA_TGP).Valor
+                               let TGP2 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_HEPATICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_HEPATICO_ID && o.IdCampo == Constants.PERFIL_HEPATICO_TGP_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_HEPATICO_ID && o.IdCampo == Constants.PERFIL_HEPATICO_TGP_ID).Valor
+
+                               select new MatrizSeguimiento
+                               {
+                                   Nro = Contador++,
+                                   //////////// DATOS PERSONA ////////////
+
+                                   Tipo_Documento = a.Tipo_Documento,
+                                   Tipo_Documento_ID = a.Tipo_Documento_ID,
+                                   Nro_Documento = a.Nro_Documento,
+                                   Nombres = a.Nombres,
+                                   AP_Paterno = a.AP_Paterno,
+                                   AP_Materno = a.AP_Materno,
+                                   Fecha_Nac = a.Fecha_Nac,
+                                   Edad = GetAge(a.Fecha_Nac),
+                                   Genero = a.Genero,
+                                   Genero_ID = a.Genero_ID,
+                                   Grado_Inst = a.Grado_Inst,
+                                   Grado_Inst_ID = a.Grado_Inst_ID,
+                                   Puesto_Laboral = a.Puesto_Laboral,
+                                   Zona = a.Zona,
+                                   Zona_ID = a.Zona_ID,
+                                   Lugar_de_Trabajo = a.Lugar_de_Trabajo,
+                                   Discapacitado = a.Discapacitado,
+                                   Discapacitado_ID = a.Discapacitado_ID,
+                                   Proveedor_Clinica = a.Proveedor_Clinica,
+                                   RUC = a.RUC,
+                                   Fecha_Examen = a.Fecha_Examen,
+                                   Tipo_Examen = a.Tipo_Examen,
+                                   Tipo_Examen_ID = a.Tipo_Examen_ID,
+                                   Aptitud = a.Aptitud,
+                                   Aptitud_ID = a.Aptitud_ID,
+
+                                   //////////////// HABITOS NOSCIVOS ////////////////////
+                                   Fumar = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == 1) == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == 1).v_Frequency,
+
+                                   Licor = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == 2) == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == 2).v_Frequency,
+
+                                   Drogas = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == 3) == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == 3).v_Frequency
+
+                                   /////////////////// TRIAJE //////////////////////////
+                                   /////////////////// OFTALMO //////////////////////////
+                                   ///////////////// AUDIOMETRIA ////////////////////////
+                                   ///////////////// LABORATORIO //////////////////////////
+                                   /////////////////// ESPIRO /////////////////////////////
+                                   //////////////// MEDICINA ////////////////////////////
+                                   /////////////////// ODONTO /////////////////////////
+                                   /////////////////////// EKG ////////////////////////////
+                                   ///////////////////// RAYOS X /////////////////////////
+                                   ///////////////////// PSICOLOGIA //////////////////////
+                                   //IdServicio = a.IdServicio,
+                                   //IdTrabajador = a.IdTrabajador,
+
+                                   //NombreCompleto = a.NombreCompleto,
+                                   //Dni = a.Dni,
+                                   //LugarNacimiento = a.LugarNacimiento,
+                                   //FechaNacimiento = a.FechaNacimiento,
+                                   //Edad = GetAge(a.FechaNacimiento.Value),
+                                   //RangoEdad = GetGrupoEtario(GetAge(a.FechaNacimiento.Value)),
+                                   //Sexo = a.Sexo,
+                                   //Domicilio = a.Domicilio,
+                                   //Ubigueo = a.Ubigueo,
+                                   //EstadoCivil = a.EstadoCivil,
+                                   //NroHijos = a.NroHijos,
+                                   //NivelEstudio = a.NivelEstudio,
+                                   //Telefono = a.Telefono,
+                                   //EmpresaSede = a.EmpresaSede,
+                                   //TipoExamen = a.TipoExamen,
+                                   //Grupo = a.Grupo,
+                                   //PuestoPostula = a.PuestoPostula,
+                                   //Area = a.Area,
+                                   //Proveedor = MedicalCenter.v_Name,
+                                   //FechaExamen = a.FechaExamen,
+
+                                   //v_Menarquia = a.v_Menarquia,
+                                   //d_Fur = a.d_Fur,
+                                   //v_CatemenialRegime = a.v_CatemenialRegime,
+                                   //d_PAP = a.d_PAP,
+                                   //v_FechaUltimaMamo = a.v_FechaUltimaMamo,
+                                   //v_Gestapara = a.v_Gestapara,
+                                   //v_Mac = a.v_Mac,
+                                   //v_CiruGine = a.v_CiruGine,
+                                   //v_ResultadosPAP = a.v_ResultadosPAP,
+                                   //v_ResultadoMamo = a.v_ResultadoMamo,
+                                   //Pa = ValorPAS + " / " + ValorPAD,
+                                   //DxNutricional = Nutrcion,
+                                   //AnteGinecologicos = a.Sexo == "M" ? "No Aplica" : a.v_Menarquia + " / " + a.d_Fur + " / " + a.v_CatemenialRegime + " / " + a.d_PAP + " / " + a.v_FechaUltimaMamo + " / " + a.v_Gestapara + " / " + a.v_Mac + " / " + a.v_CiruGine + " / " + a.v_ResultadosPAP + " / " + a.v_ResultadoMamo,
+                                   //AntePatologicos = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " " : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? " " : AntecedentesPatologicosConcatenados(Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical),
+                                   //AnteFamiliares = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " " : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaAntecedentesFamiliares == null ? " " : AntecedentesFamiliaresConcatenados(Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaAntecedentesFamiliares),
+
+                                   //Alergias = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000633") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000633").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //HipertensionArterial = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000436") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000436").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //AnteQuirurgicos = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000637") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000637").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //Gastritis = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000401") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000401").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //DiabetesMellitus = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? " b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000642") == null ? " NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000642").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //Tuberculosis = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? " b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000540") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000540").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //Cancer = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? " b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000638") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000638").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //Convulsiones = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? " b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000639") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000639").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //AsmaBronquial = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? " b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000599") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000599").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   //Otros = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical == null ? " b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_GroupName == "ENFERMEDADES OTROS") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaPersonalMedical.Find(p => p.v_GroupName == "ENFERMEDADES OTROS").i_Answer.ToString() == "1" ? "SI" : "NO",
+
+
+
+
+
+
+
+
+
+
+
+                                   //DxExaMedicoGeneral = ExaMedGeneral == "" ? "NO APLICA" : ExaMedGeneral,
+                                   //DxMusculoEsqueletico = ExaMusculoEsqueletico == "" ? "NO APLICA" : ExaMusculoEsqueletico,
+
+
+
+                                   //EvAltura180 = EvaAltura == "" ? "NO APLICA" : EvaAltura,// varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ALTURA_ESTRUCTURAL_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ALTURA_ESTRUCTURAL_ID && o.IdCampo == Constants.ALTURA_ESTRUCTURAL_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ALTURA_ESTRUCTURAL_ID && o.IdCampo == Constants.ALTURA_ESTRUCTURAL_DESCRIPCION_ID).Valor,
+                                   //Exa7D = Exa7D == "" ? "NO APLICA" : Exa7D,//eva varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ALTURA_7D_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ALTURA_7D_ID && o.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_APTO_ASCENDER_GRANDES_ALTURAS_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ALTURA_7D_ID && o.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_APTO_ASCENDER_GRANDES_ALTURAS_ID).ValorName,
+                                   //EvaNeurologica = EvaNeurologica == "" ? "NO APLICA" : EvaNeurologica, //varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EVA_NEUROLOGICA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EVA_NEUROLOGICA_ID && o.IdCampo == Constants.EVA_NEUROLOGICA_CONCLUSION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EVA_NEUROLOGICA_ID && o.IdCampo == Constants.EVA_NEUROLOGICA_CONCLUSION_ID).Valor,
+                                   //TamizajeDermatologico = TamizajeDer == "" ? "NO APLICA" : TamizajeDer, //varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TAMIZAJE_DERMATOLOGIO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TAMIZAJE_DERMATOLOGIO_ID && o.IdCampo == Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TAMIZAJE_DERMATOLOGIO_ID && o.IdCampo == Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID).Valor,
+
+
+
+                                   //DxRadiografiaTorax = RadioTorax == "" ? "NO APLICA" : RadioTorax,
+                                   //DxRadiografiaOIT = RadioOIT == "" ? "NO APLICA" : RadioOIT,
+                                   //InidceNeumoconiosis = Y == "" ? "NO APLICA" : Y,
+
+                                   //OD_VA_125 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_125) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_125).v_Value1,
+                                   //OD_VA_250 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_250) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_250).v_Value1,
+                                   //OD_VA_500 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_500) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_500).v_Value1,
+                                   //OD_VA_1000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_1000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_1000).v_Value1,
+                                   //OD_VA_2000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_2000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_2000).v_Value1,
+                                   //OD_VA_3000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_3000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_3000).v_Value1,
+                                   //OD_VA_4000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_4000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_4000).v_Value1,
+                                   //OD_VA_6000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_6000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_6000).v_Value1,
+                                   //OD_VA_8000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_8000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OD_8000).v_Value1,
+
+                                   //OI_VA_125 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_125) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_125).v_Value1,
+                                   //OI_VA_250 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_250) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_250).v_Value1,
+                                   //OI_VA_500 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_500) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_500).v_Value1,
+                                   //OI_VA_1000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_1000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_1000).v_Value1,
+                                   //OI_VA_2000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_2000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_2000).v_Value1,
+                                   //OI_VA_3000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_3000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_3000).v_Value1,
+                                   //OI_VA_4000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_4000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_4000).v_Value1,
+                                   //OI_VA_6000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_6000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_6000).v_Value1,
+                                   //OI_VA_8000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_8000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VA_OI_8000).v_Value1,
+
+
+                                   //OD_VO_125 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_125) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_125).v_Value1,
+                                   //OD_VO_250 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_250) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_250).v_Value1,
+                                   //OD_VO_500 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_500) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_500).v_Value1,
+                                   //OD_VO_1000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_1000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_1000).v_Value1,
+                                   //OD_VO_2000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_2000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_2000).v_Value1,
+                                   //OD_VO_3000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_3000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_3000).v_Value1,
+                                   //OD_VO_4000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_4000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_4000).v_Value1,
+                                   //OD_VO_6000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_6000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_6000).v_Value1,
+                                   //OD_VO_8000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_8000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OD_8000).v_Value1,
+
+
+                                   //OI_VO_125 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_125) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_125).v_Value1,
+                                   //OI_VO_250 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_250) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_250).v_Value1,
+                                   //OI_VO_500 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_500) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_500).v_Value1,
+                                   //OI_VO_1000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_1000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_1000).v_Value1,
+                                   //OI_VO_2000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_2000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_2000).v_Value1,
+                                   //OI_VO_3000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_3000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_3000).v_Value1,
+                                   //OI_VO_4000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_4000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_4000).v_Value1,
+                                   //OI_VO_6000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_6000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_6000).v_Value1,
+                                   //OI_VO_8000 = AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_8000) == null ? "" : AudiometriaValores.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.txt_VO_OI_8000).v_Value1,
+                                   //Dxaudiometria = AudiometriaDxs == "" ? "NO APLICA" : AudiometriaDxs,
+
+
+
+
+
+
+                                   //DxEspirometria = Espirometria == "" ? "NO APLICA" : Espirometria,
+
+                                   ////---Oftalmología
+                                   //UsaLentes = UsaLentesSI + UsaLentesNO,
+                                   //VisionCercaOD = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000234").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000234").Valor,
+                                   //VisionCercaOI = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000230").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID).Valor,
+
+                                   //AgudezaVisualLejosOD = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000233").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000233").Valor,
+                                   //AgudezaVisualLejosOI = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000227").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000227").Valor,
+                                   //VisionCercaCorregidaOD = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000231").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000231").Valor,
+                                   //VisionCercaCorregidaOI = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000236").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000236").Valor,
+                                   //AgudezaVisualLejosCorregidaOD = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000235").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000235").Valor,
+                                   //AgudezaVisualLejosCorregidaOI = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N009-MF000000646").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N009-MF000000646").Valor,
+
+                                   //TestIshihara = IshiharaNormal + IshiharaAnormal,
+                                   //Estereopsis = EstereopsisNormal + EstereopsisAnormal,
+                                   //DxOftalmología = new ServiceBL().GetDiagnosticByServiceIdAndCategoryId(a.IdServicio, 14),
+                                   ////-----------------------
+
+
+                                   //DxOdontologia = Odontograma == "" ? "NO APLICA" : Odontograma,
+                                   //DxElectrocardiograma = Electrocardiograma == "" ? "NO APLICA" : Electrocardiograma,
+                                   //PruebaEsfuerzo = PbaEsfuerzo == "" ? "NO APLICA" : PbaEsfuerzo,
+
+                                   //DxPsicologia = Psicologia == "" ? "NO APLICA" : Psicologia,
+
+                                   //GrupoFactor = Grupo + " - " + Factor,
+                                   //DxLeucocitos = DxLeucocitos == "" ? "NO APLICA" : DxLeucocitos,
+                                   //DxHemoglobina = DxHemoglobina == "" ? "NO APLICA" : DxHemoglobina,
+                                   //DxHemograma = DxHemograma == "" ? "NO APLICA" : DxHemograma,
+                                   //DxGlucosa = DxGlucosa == "" ? "NO APLICA" : DxGlucosa,
+                                   //Colesterol = Colesterol1 + " " + Colesterol2,
+                                   //DxColesterol = DxColesterol == "" ? "NO APLICA" : DxColesterol,
+                                   //DxHdl = DxHDL == "" ? "NO APLICA" : DxHDL,
+                                   //DxLdl = DxLDL == "" ? "NO APLICA" : DxLDL,
+                                   //DxVldl = DxVLDL == "" ? "NO APLICA" : DxVLDL,
+                                   //Trigliceridos = Trigli1 == "" ? "NO APLICA" : Trigli1,
+                                   //DxTgc = DxTGC == "" ? "NO APLICA" : DxTGC,
+
+                                   //Tgo = TGO1 + TGO2,
+                                   //Tgp = TGP1 + TGP2,
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                   //AreaCognitiva = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID && o.IdCampo == Constants.PSICOLOGIA_AREA_COGNITIVA_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID && o.IdCampo == Constants.PSICOLOGIA_AREA_COGNITIVA_ID).Valor,
+                                   //AreaEmocional = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID && o.IdCampo == Constants.EXAMEN_MENTAL_area_emocianal_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID && o.IdCampo == Constants.EXAMEN_MENTAL_area_emocianal_ID).Valor,
+                                   ////AreaPersonal = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID && o.IdCampo == Constants.EXAMEN_MENTAL_area_personal_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID && o.IdCampo == Constants.EXAMEN_MENTAL_area_personal_ID).Valor,
+                                   //AptitudPsicologica = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID && o.IdCampo == Constants.PSICOLOGIA_APTITUD_PSICOLOGICA_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PSICOLOGIA_ID && o.IdCampo == Constants.PSICOLOGIA_APTITUD_PSICOLOGICA_ID).Valor,
+
+                                   //Leucocitos = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_LEUCOCITOS).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_LEUCOCITOS).Valor,
+
+                                   //Hemoglobina = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA).Valor,
+
+                                   //Eosi = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_EOSINOFILOS).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_EOSINOFILOS).Valor,
+                                   //RecuentoPlaquetas = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_PLAQUETAS).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_PLAQUETAS).Valor,
+
+                                   //Glucosa = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GLUCOSA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GLUCOSA_ID && o.IdCampo == Constants.OFTALMOLOGIA_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GLUCOSA_ID && o.IdCampo == Constants.OFTALMOLOGIA_DESCRIPCION).Valor,
+
+                                   //Hdl = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_LIPIDICO) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_LIPIDICO && o.IdCampo == Constants.COLESTEROL_HDL).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.PERFIL_LIPIDICO && o.IdCampo == Constants.COLESTEROL_HDL).Valor,
+
+                                   //Ldl = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_LDL_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_LDL_ID && o.IdCampo == Constants.COLESTEROL_LDL_BIOQUIMICA_COLESTEROL_LDL).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_LDL_ID && o.IdCampo == Constants.COLESTEROL_LDL_BIOQUIMICA_COLESTEROL_LDL).Valor,
+
+                                   //Vldl = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_VLDL_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_VLDL_ID && o.IdCampo == Constants.COLESTEROL_VLDL_BIOQUIMICA_COLESTEROL_VLDL).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.COLESTEROL_VLDL_ID && o.IdCampo == Constants.COLESTEROL_VLDL_BIOQUIMICA_COLESTEROL_VLDL).Valor,
+
+                                   //Urea = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.UREA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.UREA_ID && o.IdCampo == Constants.UREA_BIOQUIMICA_UREA).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.UREA_ID && o.IdCampo == Constants.UREA_BIOQUIMICA_UREA).Valor,
+                                   //Creatina = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.CREATININA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.CREATININA_ID && o.IdCampo == Constants.CREATININA_BIOQUIMICA_CREATININA).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.CREATININA_ID && o.IdCampo == Constants.CREATININA_BIOQUIMICA_CREATININA).Valor,
+
+                                   //NroPiezasCaries = GetCantidadCaries(a.IdServicio, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_CARIES_ID),
+                                   //NroPiezasAusentes = GetCantidadAusentes(a.IdServicio, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_AUSENTES_ID),
+
+                                   //Cabello = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_CABELLO_DESCRIPCION_ID).Valor,
+                                   //Ojos = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_OJOSANEXOS_DESCRIPCION_ID).Valor,
+                                   //Oidos = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_OIDOS_DESCRIPCION_ID).Valor,
+                                   //Nariz = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_NARIZ_DESCRIPCION_ID).Valor,
+
+                                   //Boca = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_BOCA_DESCRIPCION_ID).Valor,
+                                   //Cuello = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_CUELLO_DESCRIPCION_ID).Valor,
+
+                                   //Torax = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_APARATO_RESPIRATORIO_DESCRIPCION_ID).Valor,
+                                   //Cardiovascular = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_CARDIO_VASCULAR_DESCRIPCION_ID).Valor,
+                                   //Abdomen = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_APARATO_DIGESTIVO_DESCRIPCION_ID).Valor,
+
+                                   //ApGenitourinario = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_APARATO_GENITOURINARIO_DESCRIPCION_ID).Valor,
+                                   //Locomotor = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_APARATO_LOCOMOTOR_DESCRIPCION_ID).Valor,
+                                   //Marcha = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_MARCHA_DESCRIPCION_ID).Valor,
+
+                                   //Columna = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_COLUMNA_DESCRIPCION_ID).Valor,
+                                   //ExtremidadesSuperiores = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_EXTREMIDADES_SUPERIORES_DESCRIPCION_ID).Valor,
+                                   //ExtremidadesInferiores = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_EXTREMIDADES_INFERIORES_DESCRIPCION_ID).Valor,
+                                   //SistemaLinfatico = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_LINFATICOS_DESCRIPCION_ID).Valor,
+                                   //Neurologico = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_SISTEMA_NERVIOSO_DESCRIPCION_ID).Valor,
+
+                                   //Cabeza7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_CABEZA_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_CABEZA_DESCRIPCION).Valor,
+                                   //Cuello7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_CUELLO_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_CUELLO_DESCRIPCION).Valor,
+                                   //Nariz7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_NARIZ_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_NARIZ_DESCRIPCION).Valor,
+
+                                   //Boca7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_BOCA_ADMIGDALA_FARINGE_LARINGE_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_BOCA_ADMIGDALA_FARINGE_LARINGE_DESCRIPCION).Valor,
+                                   //ReflejosPupilares7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION).Valor,
+                                   //MiembrosSuperiores7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_SUPERIORES_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_SUPERIORES_DESCRIPCION).Valor,
+                                   //MiembrosInferiores7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_INFERIORES_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_INFERIORES_DESCRIPCION).Valor,
+
+
+                                   //ReflejosOsteotendiosos7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_OSTEO_TENDINOSOS_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_OSTEO_TENDINOSOS_DESCRIPCION).Valor,
+                                   //Marcha7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_MARCHA_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_MARCHA_DESCRIPCION).Valor,
+                                   //Columna7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_COLUMNA_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_COLUMNA_DESCRIPCION).Valor,
+                                   //Abdomen7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMENFISICO_ABDOMEN_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMENFISICO_ABDOMEN_DESCRIPCION).Valor,
+
+                                   //AnillosIInguinales7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMENFISICO_ANILLOS_INGUINALES_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMENFISICO_ANILLOS_INGUINALES_DESCRIPCION).Valor,
+                                   //Hernias7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_HERNIAS_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_HERNIAS_DESCRIPCION).Valor,
+                                   //Varices7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_VARICES_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_VARICES_DESCRIPCION).Valor,
+                                   //Genitales7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_ORGANOS_GENITALES_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_ORGANOS_GENITALES_DESCRIPCION).Valor,
+                                   //Ganclios7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_GANGLIOS_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_GANGLIOS_DESCRIPCION).Valor,
+                                   //Pulmones7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_PULMONES_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_PULMONES_DESCRIPCION).Valor,
+                                   //TactoRectal7C = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_7C_ID && o.IdCampo == Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION).Valor,
+
+                                   //Fr = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID).Valor,
+                                   //Fc = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID).Valor,
+                                   //PerAbdominal = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID).Valor,
+                                   //PerCadera = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID).Valor,
+                                   //Icc = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_INDICE_CINTURA_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_INDICE_CINTURA_ID).Valor,
+                                   //Peso = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_PESO_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_PESO_ID).Valor,
+                                   //Talla = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_TALLA_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_TALLA_ID).Valor,
+                                   //Imc = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_IMC_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_IMC_ID).Valor,
+                                   //Sintomatologia = a.Sintomatologia,
+                                   //PielAnexos = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_FISICO_ID && o.IdCampo == Constants.EXAMEN_FISICO_PIEL_DESCRIPCION_ID).Valor,
+
+                                   //ActividadFisica = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.ActividadFisica) == null ? "" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.ActividadFisica).v_Frequency,
+                                   //ActividadFisicaDetalle = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.ActividadFisica) == null ? "" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.ActividadFisica).v_Comment == "" ? "---" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.ActividadFisica).v_Comment,
+                                   //ConsumoDrogas = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas) == null ? "" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas).v_Frequency,
+                                   //ConsumoDrogasDetalle = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas) == null ? "" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas).v_Comment == "" ? "---" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas).v_Comment,
+                                   //ConsumoAlcohol = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Alcohol) == null ? "" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Alcohol).v_Frequency,
+                                   //ConsumoAlcoholDetalle = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Alcohol) == null ? "" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Alcohol).v_Comment == "" ? "---" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Alcohol).v_Comment,
+                                   //ConsumoTabaco = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Tabaco) == null ? "" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Tabaco).v_Frequency,
+                                   //ConsumoTabacoDetalle = Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Tabaco) == null ? "" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Tabaco).v_Comment == "" ? "---" : Habitos_Personales.Find(p => p.PersonId == a.IdTrabajador).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Tabaco).v_Comment,
+
+
+                                   //Fvc = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_CVF).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_CVF).Valor,
+                                   //Fev1 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_VEF_1).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_VEF_1).Valor,
+                                   //Fev1_Fvc = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_VEF_1_CVF).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_VEF_1_CVF).Valor,
+                                   //Fev25_75 = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_FEF_25_75).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_FEF_25_75).Valor,
+
+                                   //Leuc = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID && o.IdCampo == Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_LEUCOCITOS).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID && o.IdCampo == Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_LEUCOCITOS).Valor,
+                                   //Hemat = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID && o.IdCampo == Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_HEMATIES).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.EXAMEN_COMPLETO_DE_ORINA_ID && o.IdCampo == Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_HEMATIES).Valor,
+
+                                   //Marihuana = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID && o.IdCampo == Constants.COCAINA_MARIHUANA_TOXICOLOGICOS_MARIHUANA).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID && o.IdCampo == Constants.COCAINA_MARIHUANA_TOXICOLOGICOS_MARIHUANA).ValorName,
+                                   //Cocaina = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID && o.IdCampo == Constants.COCAINA_MARIHUANA_TOXICOLOGICOS_COCAINA).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID && o.IdCampo == Constants.COCAINA_MARIHUANA_TOXICOLOGICOS_COCAINA).ValorName,
+
+                                   //Vdrl = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.VDRL_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.VDRL_ID && o.IdCampo == Constants.LABORATORIO_VDRL_ID).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.VDRL_ID && o.IdCampo == Constants.LABORATORIO_VDRL_ID).Valor,
+
+                                   //DxOcu1 = ObtenerDxOcupacionales(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 0),
+                                   //DxOcu2 = ObtenerDxOcupacionales(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 1),
+                                   //DxOcu3 = ObtenerDxOcupacionales(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 2),
+                                   //DxOcu4 = ObtenerDxOcupacionales(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 3),
+                                   //DxOcu5 = ObtenerDxOcupacionales(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 4),
+                                   //DxOcu6 = ObtenerDxOcupacionales(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 5),
+                                   //DxOcu7 = ObtenerDxOcupacionales(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 6),
+                                   //DxOcu8 = ObtenerDxOcupacionales(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 7),
+
+                                   //DxMed1 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 0),
+                                   //DxMed2 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 1),
+                                   //DxMed3 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 2),
+                                   //DxMed4 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 3),
+                                   //DxMed5 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 4),
+                                   //DxMed6 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 5),
+                                   //DxMed7 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 6),
+                                   //DxMed8 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 7),
+                                   //DxMed9 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 8),
+                                   //DxMed10 = ObtenerDxMedicos(varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones, 9),
+
+                                   //Reco1 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[18].Descripcion,
+                                   //Reco2 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[19].Descripcion,
+                                   //Reco3 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[20].Descripcion,
+                                   //Reco4 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[21].Descripcion,
+                                   //Reco5 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[22].Descripcion,
+                                   //Reco6 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[23].Descripcion,
+                                   //Reco7 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[24].Descripcion,
+                                   //Reco8 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[25].Descripcion,
+                                   //Reco9 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[26].Descripcion,
+                                   //Reco10 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[27].Descripcion,
+                                   //Reco11 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[28].Descripcion,
+                                   //Reco12 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[29].Descripcion,
+                                   //Reco13 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[30].Descripcion,
+                                   //Reco14 = varDx.Find(p => p.ServicioId == a.IdServicio).DetalleDxRecomendaciones[31].Descripcion,
+
+                                   //AptitudId = a.AptitudId,
+                                   //AptitudMedica = a.AptitudMedica,
+                                   //MotivoAptitud = a.AptitudId == (int)AptitudeStatus.NoApto ? a.MotivoAptitud : "",
+                                   //ComentarioAptitud = a.AptitudId != (int)AptitudeStatus.NoApto ? a.MotivoAptitud : "",
+                                   //Evaluador = a.Evaluador,
+                                   //CMP = a.CMP,
+                                   //Restricciones = ConcatenateRestrictionByService(a.IdServicio)
+                               }
+
+                               ).ToList();
+                    return sql;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
         private string ConcatenateRestrictionByService(string pstrServiceId)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -4356,7 +5069,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                                 IdDeseases = ddd.v_DiseasesId,
                                                 i_FinalQualiticationId = ccc.i_FinalQualificationId,
                                                 DiseasesName = ddd.v_Name,
-                                                i_DiagnosticTypeId = ccc.i_DiagnosticTypeId
+                                                i_DiagnosticTypeId = ccc.i_DiagnosticTypeId,
+                                                CIE10 = ddd.v_CIE10Id 
                                             }).Union(from ccc in dbContext.recommendation
                                                      join ddd in dbContext.masterrecommendationrestricction on ccc.v_MasterRecommendationId equals ddd.v_MasterRecommendationRestricctionId  // Diagnosticos      
                                                      join eee in dbContext.service on ccc.v_ServiceId equals eee.v_ServiceId
@@ -4373,7 +5087,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                                          IdDeseases = "sin nada",
                                                          i_FinalQualiticationId = 0,
                                                          DiseasesName = "sin nada",
-                                                         i_DiagnosticTypeId = 0
+                                                         i_DiagnosticTypeId = 0,
+                                                         CIE10 = ""
                                                      }).ToList();
 
 

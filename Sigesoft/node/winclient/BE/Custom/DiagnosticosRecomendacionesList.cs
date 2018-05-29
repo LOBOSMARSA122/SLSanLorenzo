@@ -16,5 +16,6 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_FinalQualiticationId { get; set; }
         public string DiseasesName { get; set; }
         public int? i_DiagnosticTypeId { get; set; }
+        public string CIE10 { get; set; }
     }
 }

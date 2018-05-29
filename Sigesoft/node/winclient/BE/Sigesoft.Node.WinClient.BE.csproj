@@ -125,6 +125,7 @@
     <Compile Include="Custom\MatrizList.cs" />
     <Compile Include="Custom\MatrizAbreviada.cs" />
     <Compile Include="Custom\MatrizExcel.cs" />
+    <Compile Include="Custom\MatrizSeguimiento.cs" />
     <Compile Include="Custom\MedicalExamFieldList.cs" />
     <Compile Include="Custom\MedicalExamList.cs" />
     <Compile Include="Custom\Medicamentos.cs" />
