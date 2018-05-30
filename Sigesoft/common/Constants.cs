@@ -647,6 +647,7 @@ namespace Sigesoft.Common
         #region BIOQUIMICA 01
 
         public const string BIOQUIMICA01_ID = "N009-ME000000086";
+        public const string ACIDO_URICO_SL = "N009-ME000000086";
         public const string BIOQUIMICA01_VALOR = "N009-MF000001425";
         public const string BIOQUIMICA01_VALOR_DESEABLE = "N009-MF000001426";
 
@@ -935,11 +936,15 @@ namespace Sigesoft.Common
         public const string COLONOSCOPIA_HALLAZGOS = "N009-MF000000455";
 
         public const string DENSITOMETRIA_OSEA_ID = "N009-ME000000018";
+
+
         public const string DENSITOMETRIA_OSEA_HALLAZGOS = "N009-MF000000440";
 
         public const string ECOGRAFIA_MAMA_ID = "N009-ME000000061";
 
 
+
+        public const string GLUCOSA_SL_ID = "N009-ME000000018";
 
         #region IDs Informes
 
