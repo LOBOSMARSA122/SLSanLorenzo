@@ -43,22 +43,22 @@ namespace Sigesoft.Node.WinClient.BE
         public string Drogas { get; set; }
         public int Drogas_ID { get; set; }
         /////////////////// TRIAJE //////////////////////////
-        public int Peso { get; set; }
+        public decimal Peso { get; set; }
         public decimal Talla { get; set; }
         public decimal IMC { get; set; }
         public string IMC_CIE10 { get; set; }
         public string IMC_Obs { get; set; }
-        public int Cintura { get; set; }
-        public int Cadera { get; set; }
-        public int ICC { get; set; }
-        public string Sistolica { get; set; }
-        public int Sistolica_CIE10 { get; set; }
+        public decimal Cintura { get; set; }
+        public decimal Cadera { get; set; }
+        public decimal ICC { get; set; }
+        public int Sistolica { get; set; }
+        public string Sistolica_CIE10 { get; set; }
         public string Sistolica_Obs { get; set; }
         public int Diastolica { get; set; }
         public string Diastolica_CIE10 { get; set; }
         public string Diastolica_Obs { get; set; }
-        public int FC { get; set; }
-        public int FR { get; set; }
+        public decimal FC { get; set; }
+        public decimal FR { get; set; }
         /////////////////// OFTALMO //////////////////////////
         public string Sin_Corr_Cerca_OD { get; set; }
         public string Sin_Corr_Cerca_OI { get; set; }
@@ -112,16 +112,16 @@ namespace Sigesoft.Node.WinClient.BE
         public int Grupo_Sanguineo_ID { get; set; }
         public string Factor_RH { get; set; }
         public int Factor_RH_ID { get; set; }
-        public int Hemoglobina { get; set; }
+        public decimal Hemoglobina { get; set; }
         public string Hemoglobina_CIE10 { get; set; }
         public string Hemoglobina_Obs { get; set; }
-        public int Colesterol { get; set; }
+        public decimal Colesterol { get; set; }
         public string Colesterol_CIE10 { get; set; }
         public string Colesterol_Obs { get; set; }
-        public int Trigliceridos { get; set; }
+        public decimal Trigliceridos { get; set; }
         public string Trigliceridos_CIE10 { get; set; }
         public string Trigliceridos_Obs { get; set; }
-        public int Glucosa { get; set; }
+        public decimal Glucosa { get; set; }
         public string Glucosa_CIE10 { get; set; }
         public string Glucosa_Obs { get; set; }
         /////////////////// ESPIRO /////////////////////////////

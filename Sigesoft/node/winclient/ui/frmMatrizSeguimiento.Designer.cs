@@ -46,7 +46,7 @@ namespace Sigesoft.Node.WinClient.UI
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn372 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Grado_Inst");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn373 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Grado_Inst_ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn374 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Puesto_Laboral");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Area");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Area", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn261 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Zona");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn375 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Zona_ID");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn376 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Lugar_de_Trabajo");
@@ -162,130 +162,6 @@ namespace Sigesoft.Node.WinClient.UI
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("N°");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Tipo Documento");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Tipo Documento ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Nro Documento");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Nombres");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AP Paterno");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("AP Materno");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fecha Nac");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Edad");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Genero");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Genero ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Grado Inst");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn13 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Grado Inst ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn14 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puesto Laboral");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Area");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Zona");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Zona ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn18 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Lugar de Trabajo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn19 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Discapacitado");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn20 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Discapacitado ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn21 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Proveedor Clinica");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn22 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("RUC");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn23 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fecha Examen");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn24 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Tipo Examen");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn25 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Tipo Examen ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn26 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Aptitud");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn27 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Aptitud ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn28 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fumar");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn29 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Fumar ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn30 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Licor");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn31 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Licor ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn32 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Drogas");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn33 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Drogas ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn34 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Peso");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn35 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Talla");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn36 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("IMC");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn37 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("IMC CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn38 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("IMC Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn39 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cintura");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn40 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cadera");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn41 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("ICC");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn42 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sistolica");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn43 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sistolica CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn44 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sistolica Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn45 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diastolica");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn46 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diastolica CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn47 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diastolica Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn48 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FC");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn49 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FR");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn50 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sin Corr Cerca OD");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn51 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sin Corr Cerca OI");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn52 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sin Corr Lejos OD");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn53 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Sin Corr Lejos OI");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn54 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Corr Cerca OD");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn55 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Corr Cerca OI");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn56 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Corr Lejos OD");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn57 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Corr Lejos OI");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn58 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("OD CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn59 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("OD Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn60 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("OI CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn61 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("OI Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn62 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Discro");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn63 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Discro CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn64 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Discro Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn65 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Otoscopia OD");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn66 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Otoscopia OI");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn67 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 125");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn68 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 250");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn69 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 500");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn70 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 750");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn71 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 1000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn72 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 1500");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn73 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 2000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn74 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 3000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn75 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 4000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn76 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 6000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn77 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Der 8000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn78 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 125");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn79 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 250");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn80 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 500");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn81 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 750");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn82 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 1000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn83 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 1500");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn84 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 2000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn85 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 3000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn86 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 4000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn87 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 6000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn88 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Oido Izq 8000");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn89 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Audiometria D CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn90 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Audiometria D Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn91 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Audiometria I CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn92 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Audiometria I Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn93 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Grupo Sanguineo");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn94 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Grupo Sanguineo ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn95 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Factor RH");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn96 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Factor RH ID");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn97 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Hemoglobina");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn98 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Hemoglobina CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn99 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Hemoglobina Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn100 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Colesterol");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn101 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Colesterol CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn102 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Colesterol Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn103 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Trigliceridos");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn104 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Trigliceridos CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn105 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Trigliceridos Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn106 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Glucosa");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn107 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Glucosa CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn108 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Glucosa Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn109 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FEV1 Teorico");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn110 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("FVC Teorico");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn111 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Espiro CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn112 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Espiro Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn113 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Osteomuscular CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn114 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Osteomuscular Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn115 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Clinico CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn116 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Clinico Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn117 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Odonto CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn118 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Odonto Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn119 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("EKG CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn120 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("EKG Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn121 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Rayos X CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn122 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Rayos X Obs");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn123 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Psico CIE10");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn124 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Psicoo Obs");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -472,67 +348,50 @@ namespace Sigesoft.Node.WinClient.UI
             ultraGridColumn366.Header.VisiblePosition = 2;
             ultraGridColumn367.Header.VisiblePosition = 3;
             ultraGridColumn252.Header.VisiblePosition = 4;
-            ultraGridColumn252.Hidden = true;
             ultraGridColumn368.Header.VisiblePosition = 5;
-            ultraGridColumn369.Header.VisiblePosition = 7;
-            ultraGridColumn370.Header.VisiblePosition = 8;
-            ultraGridColumn5.Header.VisiblePosition = 6;
+            ultraGridColumn369.Header.VisiblePosition = 6;
+            ultraGridColumn370.Header.VisiblePosition = 7;
+            ultraGridColumn5.Header.VisiblePosition = 8;
             ultraGridColumn256.Header.VisiblePosition = 9;
-            ultraGridColumn256.Hidden = true;
             ultraGridColumn371.Header.VisiblePosition = 10;
             ultraGridColumn372.Header.VisiblePosition = 11;
             ultraGridColumn373.Header.VisiblePosition = 12;
             ultraGridColumn374.Header.VisiblePosition = 13;
-            ultraGridColumn18.Header.VisiblePosition = 15;
-            ultraGridColumn261.Header.VisiblePosition = 14;
-            ultraGridColumn261.Hidden = true;
+            ultraGridColumn18.Header.VisiblePosition = 14;
+            ultraGridColumn261.Header.VisiblePosition = 15;
             ultraGridColumn375.Header.VisiblePosition = 16;
             ultraGridColumn376.Header.VisiblePosition = 17;
             ultraGridColumn264.Header.VisiblePosition = 18;
-            ultraGridColumn264.Hidden = true;
             ultraGridColumn377.Header.VisiblePosition = 19;
             ultraGridColumn378.Header.VisiblePosition = 20;
             ultraGridColumn267.Header.VisiblePosition = 21;
-            ultraGridColumn267.Hidden = true;
             ultraGridColumn379.Header.VisiblePosition = 22;
             ultraGridColumn380.Header.VisiblePosition = 23;
             ultraGridColumn381.Header.VisiblePosition = 24;
             ultraGridColumn271.Header.VisiblePosition = 25;
-            ultraGridColumn271.Hidden = true;
             ultraGridColumn382.Header.VisiblePosition = 26;
             ultraGridColumn273.Header.VisiblePosition = 27;
-            ultraGridColumn273.Hidden = true;
             ultraGridColumn383.Header.VisiblePosition = 28;
             ultraGridColumn275.Header.VisiblePosition = 29;
-            ultraGridColumn275.Hidden = true;
             ultraGridColumn384.Header.VisiblePosition = 30;
             ultraGridColumn277.Header.VisiblePosition = 31;
-            ultraGridColumn277.Hidden = true;
             ultraGridColumn385.Header.VisiblePosition = 32;
-            ultraGridColumn48.Header.VisiblePosition = 43;
-            ultraGridColumn49.Header.VisiblePosition = 47;
-            ultraGridColumn279.Header.VisiblePosition = 33;
-            ultraGridColumn279.Hidden = true;
-            ultraGridColumn386.Header.VisiblePosition = 34;
-            ultraGridColumn387.Header.VisiblePosition = 36;
-            ultraGridColumn282.Header.VisiblePosition = 35;
-            ultraGridColumn282.Hidden = true;
-            ultraGridColumn283.Header.VisiblePosition = 37;
-            ultraGridColumn283.Hidden = true;
-            ultraGridColumn284.Header.VisiblePosition = 38;
-            ultraGridColumn284.Hidden = true;
-            ultraGridColumn285.Header.VisiblePosition = 39;
-            ultraGridColumn285.Hidden = true;
-            ultraGridColumn388.Header.VisiblePosition = 40;
-            ultraGridColumn389.Header.VisiblePosition = 42;
-            ultraGridColumn288.Header.VisiblePosition = 41;
-            ultraGridColumn288.Hidden = true;
-            ultraGridColumn390.Header.VisiblePosition = 44;
-            ultraGridColumn391.Header.VisiblePosition = 45;
-            ultraGridColumn291.Header.VisiblePosition = 46;
-            ultraGridColumn291.Hidden = true;
+            ultraGridColumn48.Header.VisiblePosition = 33;
+            ultraGridColumn49.Header.VisiblePosition = 34;
+            ultraGridColumn279.Header.VisiblePosition = 35;
+            ultraGridColumn386.Header.VisiblePosition = 36;
+            ultraGridColumn387.Header.VisiblePosition = 37;
+            ultraGridColumn282.Header.VisiblePosition = 38;
+            ultraGridColumn283.Header.VisiblePosition = 39;
+            ultraGridColumn284.Header.VisiblePosition = 40;
+            ultraGridColumn285.Header.VisiblePosition = 41;
+            ultraGridColumn388.Header.VisiblePosition = 42;
+            ultraGridColumn389.Header.VisiblePosition = 43;
+            ultraGridColumn288.Header.VisiblePosition = 44;
+            ultraGridColumn390.Header.VisiblePosition = 45;
+            ultraGridColumn391.Header.VisiblePosition = 46;
+            ultraGridColumn291.Header.VisiblePosition = 47;
             ultraGridColumn292.Header.VisiblePosition = 48;
-            ultraGridColumn292.Hidden = true;
             ultraGridColumn392.Header.VisiblePosition = 49;
             ultraGridColumn393.Header.VisiblePosition = 50;
             ultraGridColumn394.Header.VisiblePosition = 51;
@@ -546,7 +405,6 @@ namespace Sigesoft.Node.WinClient.UI
             ultraGridColumn402.Header.VisiblePosition = 59;
             ultraGridColumn403.Header.VisiblePosition = 60;
             ultraGridColumn305.Header.VisiblePosition = 61;
-            ultraGridColumn305.Hidden = true;
             ultraGridColumn404.Header.VisiblePosition = 62;
             ultraGridColumn405.Header.VisiblePosition = 63;
             ultraGridColumn406.Header.VisiblePosition = 64;
@@ -581,33 +439,33 @@ namespace Sigesoft.Node.WinClient.UI
             ultraGridColumn435.Header.VisiblePosition = 93;
             ultraGridColumn436.Header.VisiblePosition = 94;
             ultraGridColumn437.Header.VisiblePosition = 95;
-            ultraGridColumn167.Header.VisiblePosition = 116;
-            ultraGridColumn438.Header.VisiblePosition = 96;
-            ultraGridColumn439.Header.VisiblePosition = 97;
-            ultraGridColumn236.Header.VisiblePosition = 120;
-            ultraGridColumn440.Header.VisiblePosition = 98;
-            ultraGridColumn441.Header.VisiblePosition = 99;
-            ultraGridColumn182.Header.VisiblePosition = 122;
-            ultraGridColumn442.Header.VisiblePosition = 100;
-            ultraGridColumn443.Header.VisiblePosition = 101;
-            ultraGridColumn172.Header.VisiblePosition = 118;
-            ultraGridColumn444.Header.VisiblePosition = 102;
-            ultraGridColumn445.Header.VisiblePosition = 103;
-            ultraGridColumn446.Header.VisiblePosition = 104;
-            ultraGridColumn447.Header.VisiblePosition = 105;
-            ultraGridColumn448.Header.VisiblePosition = 106;
-            ultraGridColumn449.Header.VisiblePosition = 107;
-            ultraGridColumn450.Header.VisiblePosition = 108;
-            ultraGridColumn451.Header.VisiblePosition = 109;
-            ultraGridColumn452.Header.VisiblePosition = 110;
-            ultraGridColumn453.Header.VisiblePosition = 111;
-            ultraGridColumn454.Header.VisiblePosition = 112;
-            ultraGridColumn455.Header.VisiblePosition = 113;
-            ultraGridColumn456.Header.VisiblePosition = 114;
-            ultraGridColumn457.Header.VisiblePosition = 115;
-            ultraGridColumn458.Header.VisiblePosition = 117;
-            ultraGridColumn459.Header.VisiblePosition = 119;
-            ultraGridColumn460.Header.VisiblePosition = 121;
+            ultraGridColumn167.Header.VisiblePosition = 96;
+            ultraGridColumn438.Header.VisiblePosition = 97;
+            ultraGridColumn439.Header.VisiblePosition = 98;
+            ultraGridColumn236.Header.VisiblePosition = 99;
+            ultraGridColumn440.Header.VisiblePosition = 100;
+            ultraGridColumn441.Header.VisiblePosition = 101;
+            ultraGridColumn182.Header.VisiblePosition = 102;
+            ultraGridColumn442.Header.VisiblePosition = 103;
+            ultraGridColumn443.Header.VisiblePosition = 104;
+            ultraGridColumn172.Header.VisiblePosition = 105;
+            ultraGridColumn444.Header.VisiblePosition = 106;
+            ultraGridColumn445.Header.VisiblePosition = 107;
+            ultraGridColumn446.Header.VisiblePosition = 108;
+            ultraGridColumn447.Header.VisiblePosition = 109;
+            ultraGridColumn448.Header.VisiblePosition = 110;
+            ultraGridColumn449.Header.VisiblePosition = 111;
+            ultraGridColumn450.Header.VisiblePosition = 112;
+            ultraGridColumn451.Header.VisiblePosition = 113;
+            ultraGridColumn452.Header.VisiblePosition = 114;
+            ultraGridColumn453.Header.VisiblePosition = 115;
+            ultraGridColumn454.Header.VisiblePosition = 116;
+            ultraGridColumn455.Header.VisiblePosition = 117;
+            ultraGridColumn456.Header.VisiblePosition = 118;
+            ultraGridColumn457.Header.VisiblePosition = 119;
+            ultraGridColumn458.Header.VisiblePosition = 120;
+            ultraGridColumn459.Header.VisiblePosition = 121;
+            ultraGridColumn460.Header.VisiblePosition = 122;
             ultraGridColumn461.Header.VisiblePosition = 123;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn364,
@@ -745,6 +603,7 @@ namespace Sigesoft.Node.WinClient.UI
             this.grdData.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.grdData.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
             this.grdData.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdData.DisplayLayout.Override.AllowColMoving = Infragistics.Win.UltraWinGrid.AllowColMoving.NotAllowed;
             appearance2.BackColor = System.Drawing.Color.Transparent;
             this.grdData.DisplayLayout.Override.CardAreaAppearance = appearance2;
             appearance3.BackColor = System.Drawing.Color.White;
@@ -789,163 +648,6 @@ namespace Sigesoft.Node.WinClient.UI
             this.grdData.Name = "grdData";
             this.grdData.Size = new System.Drawing.Size(952, 372);
             this.grdData.TabIndex = 47;
-            // 
-            // ultraDataSource1
-            // 
-            ultraDataColumn3.DataType = typeof(int);
-            ultraDataColumn8.DataType = typeof(System.DateTime);
-            ultraDataColumn11.DataType = typeof(int);
-            ultraDataColumn13.DataType = typeof(int);
-            ultraDataColumn17.DataType = typeof(int);
-            ultraDataColumn20.DataType = typeof(int);
-            ultraDataColumn25.DataType = typeof(int);
-            ultraDataColumn27.DataType = typeof(int);
-            ultraDataColumn29.DataType = typeof(int);
-            ultraDataColumn31.DataType = typeof(int);
-            ultraDataColumn33.DataType = typeof(int);
-            ultraDataColumn34.DataType = typeof(int);
-            ultraDataColumn35.DataType = typeof(decimal);
-            ultraDataColumn36.DataType = typeof(decimal);
-            ultraDataColumn39.DataType = typeof(int);
-            ultraDataColumn40.DataType = typeof(int);
-            ultraDataColumn41.DataType = typeof(decimal);
-            ultraDataColumn42.DataType = typeof(int);
-            ultraDataColumn45.DataType = typeof(int);
-            ultraDataColumn48.DataType = typeof(int);
-            ultraDataColumn49.DataType = typeof(int);
-            ultraDataColumn94.DataType = typeof(int);
-            ultraDataColumn96.DataType = typeof(int);
-            ultraDataColumn97.DataType = typeof(decimal);
-            ultraDataColumn100.DataType = typeof(int);
-            ultraDataColumn103.DataType = typeof(int);
-            ultraDataColumn106.DataType = typeof(int);
-            ultraDataColumn109.DataType = typeof(int);
-            ultraDataColumn110.DataType = typeof(int);
-            this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1,
-            ultraDataColumn2,
-            ultraDataColumn3,
-            ultraDataColumn4,
-            ultraDataColumn5,
-            ultraDataColumn6,
-            ultraDataColumn7,
-            ultraDataColumn8,
-            ultraDataColumn9,
-            ultraDataColumn10,
-            ultraDataColumn11,
-            ultraDataColumn12,
-            ultraDataColumn13,
-            ultraDataColumn14,
-            ultraDataColumn15,
-            ultraDataColumn16,
-            ultraDataColumn17,
-            ultraDataColumn18,
-            ultraDataColumn19,
-            ultraDataColumn20,
-            ultraDataColumn21,
-            ultraDataColumn22,
-            ultraDataColumn23,
-            ultraDataColumn24,
-            ultraDataColumn25,
-            ultraDataColumn26,
-            ultraDataColumn27,
-            ultraDataColumn28,
-            ultraDataColumn29,
-            ultraDataColumn30,
-            ultraDataColumn31,
-            ultraDataColumn32,
-            ultraDataColumn33,
-            ultraDataColumn34,
-            ultraDataColumn35,
-            ultraDataColumn36,
-            ultraDataColumn37,
-            ultraDataColumn38,
-            ultraDataColumn39,
-            ultraDataColumn40,
-            ultraDataColumn41,
-            ultraDataColumn42,
-            ultraDataColumn43,
-            ultraDataColumn44,
-            ultraDataColumn45,
-            ultraDataColumn46,
-            ultraDataColumn47,
-            ultraDataColumn48,
-            ultraDataColumn49,
-            ultraDataColumn50,
-            ultraDataColumn51,
-            ultraDataColumn52,
-            ultraDataColumn53,
-            ultraDataColumn54,
-            ultraDataColumn55,
-            ultraDataColumn56,
-            ultraDataColumn57,
-            ultraDataColumn58,
-            ultraDataColumn59,
-            ultraDataColumn60,
-            ultraDataColumn61,
-            ultraDataColumn62,
-            ultraDataColumn63,
-            ultraDataColumn64,
-            ultraDataColumn65,
-            ultraDataColumn66,
-            ultraDataColumn67,
-            ultraDataColumn68,
-            ultraDataColumn69,
-            ultraDataColumn70,
-            ultraDataColumn71,
-            ultraDataColumn72,
-            ultraDataColumn73,
-            ultraDataColumn74,
-            ultraDataColumn75,
-            ultraDataColumn76,
-            ultraDataColumn77,
-            ultraDataColumn78,
-            ultraDataColumn79,
-            ultraDataColumn80,
-            ultraDataColumn81,
-            ultraDataColumn82,
-            ultraDataColumn83,
-            ultraDataColumn84,
-            ultraDataColumn85,
-            ultraDataColumn86,
-            ultraDataColumn87,
-            ultraDataColumn88,
-            ultraDataColumn89,
-            ultraDataColumn90,
-            ultraDataColumn91,
-            ultraDataColumn92,
-            ultraDataColumn93,
-            ultraDataColumn94,
-            ultraDataColumn95,
-            ultraDataColumn96,
-            ultraDataColumn97,
-            ultraDataColumn98,
-            ultraDataColumn99,
-            ultraDataColumn100,
-            ultraDataColumn101,
-            ultraDataColumn102,
-            ultraDataColumn103,
-            ultraDataColumn104,
-            ultraDataColumn105,
-            ultraDataColumn106,
-            ultraDataColumn107,
-            ultraDataColumn108,
-            ultraDataColumn109,
-            ultraDataColumn110,
-            ultraDataColumn111,
-            ultraDataColumn112,
-            ultraDataColumn113,
-            ultraDataColumn114,
-            ultraDataColumn115,
-            ultraDataColumn116,
-            ultraDataColumn117,
-            ultraDataColumn118,
-            ultraDataColumn119,
-            ultraDataColumn120,
-            ultraDataColumn121,
-            ultraDataColumn122,
-            ultraDataColumn123,
-            ultraDataColumn124});
             // 
             // frmMatrizSeguimiento
             // 
