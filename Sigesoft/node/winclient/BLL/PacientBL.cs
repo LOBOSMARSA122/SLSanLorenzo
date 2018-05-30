@@ -4456,7 +4456,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                    Corr_Cerca_OI = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000236").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000236").Valor,
                                    Corr_Lejos_OD = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000235").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N002-MF000000235").Valor,
                                    Corr_Lejos_OI = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N009-MF000000646").Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.OFTALMOLOGIA_ID && o.IdCampo == "N009-MF000000646").Valor,
-                                   ///////???????????????????
+                                   OD_CIE10 = "????????",
+                                   OD_Obs = "??????????",
+                                   OI_CIE10 = "???????????",
+                                   OI_Obs = "???????????",
+                                   Discro = "??????????",
+
                                    /////////////////// AUDIOMETRIA ////////////////////////
                                    //////////////????????????????
                                    ///////////////// LABORATORIO //////////////////////////
