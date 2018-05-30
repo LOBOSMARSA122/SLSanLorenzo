@@ -4461,47 +4461,79 @@ namespace Sigesoft.Node.WinClient.BLL
                                    OI_CIE10 = "???????????",
                                    OI_Obs = "???????????",
                                    Discro = "??????????",
-
+                                   Discro_CIE10 = "???????",
+                                   Discro_Obs = "????????????",
                                    /////////////////// AUDIOMETRIA ////////////////////////
-                                   //////////////????????????????
+                                   Otoscopia_OD = "?????????????",
+                                   Otoscopia_OI = "?????????????",
+
+                                   Oido_Der_125 = "?????????????",
+                                   Oido_Der_250 = "?????????????",
+                                   Oido_Der_500 = "?????????????",
+                                   Oido_Der_750 = "?????????????",
+                                   Oido_Der_1000 = "?????????????",
+                                   Oido_Der_1500 = "?????????????",
+                                   Oido_Der_2000 = "?????????????",
+                                   Oido_Der_3000 = "?????????????",
+                                   Oido_Der_4000 = "?????????????",
+                                   Oido_Der_6000 = "?????????????",
+                                   Oido_Der_8000 = "?????????????",
+
+                                   Oido_Izq_125 = "?????????????",
+                                   Oido_Izq_250 = "?????????????",
+                                   Oido_Izq_500 = "?????????????",
+                                   Oido_Izq_750 = "?????????????",
+                                   Oido_Izq_1000 = "?????????????",
+                                   Oido_Izq_1500 = "?????????????",
+                                   Oido_Izq_2000 = "?????????????",
+                                   Oido_Izq_3000 = "?????????????",
+                                   Oido_Izq_4000 = "?????????????",
+                                   Oido_Izq_6000 = "?????????????",
+                                   Oido_Izq_8000 = "?????????????",
+
+                                   Audiometria_D_CIE10 = "?????????????",
+                                   Audiometria_D_Obs = "?????????????",
+                                   Audiometria_I_CIE10 = "?????????????",
+                                   Audiometria_I_Obs = "?????????????",
                                    ///////////////// LABORATORIO //////////////////////////
                                    Grupo_Sanguineo = Grupo,
-                                   ////////????????????
+                                   Grupo_Sanguineo_ID = 0000000000,
                                    Factor_RH = Factor,
-                                   /////////????????????
+                                   Factor_RH_ID = 00000000000000,
                                    Hemoglobina = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID) == null ? 0 : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA).Valor == "" ? 0 : decimal.Parse(varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.HEMOGRAMA_COMPLETO_ID && o.IdCampo == Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA).Valor),
                                    Hemoglobina_CIE10 = DxHemoglobina,
-                                   //////??????????
+                                   Hemoglobina_Obs = "?????????????",
                                    Colesterol = decimal.TryParse(Colesterol1, out temporal) ? decimal.Parse(Colesterol1) : 0, /////// Colesterol2 ?
                                    Colesterol_CIE10 = DxColesterol,
-                                   //////????????????
+                                   Colesterol_Obs = "?????????",
                                    Trigliceridos = decimal.TryParse(Trigli1, out temporal) ? decimal.Parse(Trigli1) : 0,
                                    Trigliceridos_CIE10 = DxTGC,
-                                   //////????????????
+                                   Trigliceridos_Obs = "?????????????",
                                    Glucosa = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GLUCOSA_ID) == null ? 0 : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GLUCOSA_ID && o.IdCampo == Constants.OFTALMOLOGIA_DESCRIPCION).Valor == "" ? 0 : decimal.Parse(varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.GLUCOSA_ID && o.IdCampo == Constants.OFTALMOLOGIA_DESCRIPCION).Valor),
                                    Glucosa_CIE10 = DxGlucosa,
-                                   ////?????????????
+                                   Glucosa_Obs = "????????????????",
                                    /////////////////// ESPIRO /////////////////////////////
                                    FEV1_Teorico = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_VEF_1).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_VEF_1).Valor,
                                    FVC_Teorico = varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_CVF).Valor == "" ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.IdServicio).CampoValores.Find(o => o.IdComponente == Constants.ESPIROMETRIA_ID && o.IdCampo == Constants.ESPIROMETRIA_FUNCION_RESPIRATORIA_ABS_CVF).Valor,
                                    Espiro_CIE10 = Espirometria,
-                                   //////////???????????
+                                   Espiro_Obs = "?????????????",
                                    //////////////// MEDICINA ////////////////////////////
                                    Osteomuscular_CIE10 = ExaMusculoEsqueletico,
-                                   ////????????
+                                   Osteomuscular_Obs = "????????????",
                                    Clinico_CIE10 = ExaMedGeneral,
-                                   /////????????
+                                   Clinico_Obs = "??????????",
                                    /////////////////// ODONTO /////////////////////////
                                    Odonto_CIE10 = Odontograma,
-                                   ////??????
+                                   Odonto_Obs = "?????????????",
                                    /////////////////////// EKG ////////////////////////////
                                    EKG_CIE10 = Electrocardiograma,
-                                   ////?????
+                                   EKG_Obs = "??????????????",
                                    ///////////////////// RAYOS X /////////////////////////
-                                   ////////????????
+                                   Rayos_X_CIE10 = "???????????????",
+                                   Rayos_X_Obs = "?????????????",
                                    ///////////////////// PSICOLOGIA //////////////////////
                                    Psico_CIE10 = Psicologia,
-                                   /////??????????
+                                   Psico_Obs = "?????????????",
                                    ////////////////////////////////////////////////////////
 
 
