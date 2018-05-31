@@ -100,6 +100,7 @@
     <Compile Include="Custom\FichaAntecedentePatologico.cs" />
     <Compile Include="Custom\FichaAudiometricaAudiomax.cs" />
     <Compile Include="Custom\Formulate.cs" />
+    <Compile Include="Custom\frmEsoAntecedentes.cs" />
     <Compile Include="Custom\Group.cs" />
     <Compile Include="Custom\GesList.cs" />
     <Compile Include="Custom\groupoccupationMigracionList.cs" />
@@ -125,6 +126,7 @@
     <Compile Include="Custom\MatrizList.cs" />
     <Compile Include="Custom\MatrizAbreviada.cs" />
     <Compile Include="Custom\MatrizExcel.cs" />
+    <Compile Include="Custom\MatrizSeguimiento.cs" />
     <Compile Include="Custom\MedicalExamFieldList.cs" />
     <Compile Include="Custom\MedicalExamList.cs" />
     <Compile Include="Custom\Medicamentos.cs" />
@@ -146,6 +148,8 @@
     <Compile Include="Custom\PersonMedicalHistoryList.cs" />
     <Compile Include="Custom\Piso.cs" />
     <Compile Include="Custom\planDto.cs" />
+    <Compile Include="Custom\PlanIntegralList.cs" />
+    <Compile Include="Custom\ProblemaList.cs" />
     <Compile Include="Custom\ProcedureByServiceList.cs" />
     <Compile Include="Custom\ProduccionProfesional.cs" />
     <Compile Include="Custom\ProtocolComponentList.cs" />
@@ -329,6 +333,8 @@
     <Compile Include="Generated\productsformigrationDto.cs" />
     <Compile Include="Generated\productDto.cs" />
     <Compile Include="Generated\procedurebyserviceDto.cs" />
+    <Compile Include="Generated\problemaDto.cs" />
+    <Compile Include="Generated\planintegralDto.cs" />
     <Compile Include="Generated\planDto.cs" />
     <Compile Include="Generated\personmedicalhistoryDto.cs" />
     <Compile Include="Generated\personDto.cs" />

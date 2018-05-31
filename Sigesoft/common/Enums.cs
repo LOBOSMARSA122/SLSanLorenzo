@@ -17,6 +17,12 @@ namespace Sigesoft.Common
         SinDx = 2
     }
 
+    public enum TipoProblema
+    {
+        Cronico = 1,
+        Agudo = 2
+    }
+
     public enum TypePrinter
     {
         Image = 1,
@@ -304,11 +310,7 @@ namespace Sigesoft.Common
         UcFototipo = 22,
         UcHistorialTriaje = 23,
         UcHistorialGrupoSanguineo = 24,
-        UcAdulto = 25,
-        UcAdultoMayor = 26,
-        UcAdolecente = 27,
-        UcNino = 28
-
+        Radiobutton = 30
     }
 
     public enum ComponentType
@@ -606,7 +608,13 @@ namespace Sigesoft.Common
         PPR = 6,
         ProtesisTotal = 7,
         Implante = 8,
-        AparatoOrtodontico = 9
+        AparatoOrtodontico = 9,
+        RemanenteRedicular = 10,
+        CoronaTemporal = 11,
+        CoronaDefinitiva = 12,
+        ProtesisFijaBueno = 13,
+        ProtesisFijaMalo = 14,
+        ProtesisRemovible = 15
     }
 
     public enum ResultKlockloff

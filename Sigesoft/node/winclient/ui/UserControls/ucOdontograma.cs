@@ -426,6 +426,181 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 
                 DataSource = _ListaOdontograma;
             }
+            else if (Id == (int)Common.LeyendaOdontograma.ProtesisTotal)
+            {
+                // Buscamos el control PictureImage para poder saber que imagen vamos a cambiar
+                PictureBox ControlPictureBox;
+                var ListControlPictureBox = this.Controls.Find(senderCtrl.Tag.ToString(), true);
+                ControlPictureBox = ListControlPictureBox[0] as PictureBox;
+                ControlPictureBox.Image = global::Sigesoft.Node.WinClient.UI.Resources.ProtesisTotal;
+
+                ////Agregar dientes ausentes en el textbox
+                //listaAusentes.Add(senderCtrl.Tag.ToString().Substring(3, 2));
+                //txtPzaAus.Text = CadenaAusente(listaAusentes);
+
+                //Como es un diente ausente tengo que remover el diente de la lista con caries
+                listaCaries.RemoveAll(p => p == senderCtrl.Tag.ToString().Substring(3, 2));
+                txtPzaCar.Text = CadenaCaries(listaCaries);
+
+                oOdontograma = new ServiceComponentFieldValuesList();
+                oOdontograma.v_ServiceComponentFieldValuesId = _v_ServiceComponentFieldValuesId;
+                oOdontograma.v_Value1 = Id.ToString();
+                oOdontograma.v_ComponentFieldId = senderCtrl.Name;
+
+                _ListaOdontograma.Add(oOdontograma);
+
+                BloquearDesbloquearLabels(this, senderCtrl, "BLOQUEAR");
+            }
+            else if (Id == (int)Common.LeyendaOdontograma.RemanenteRedicular)
+            {
+                // Buscamos el control PictureImage para poder saber que imagen vamos a cambiar
+                PictureBox ControlPictureBox;
+                var ListControlPictureBox = this.Controls.Find(senderCtrl.Tag.ToString(), true);
+                ControlPictureBox = ListControlPictureBox[0] as PictureBox;
+                ControlPictureBox.Image = global::Sigesoft.Node.WinClient.UI.Resources.remanenteredicular;
+
+                ////Agregar dientes ausentes en el textbox
+                //listaAusentes.Add(senderCtrl.Tag.ToString().Substring(3, 2));
+                //txtPzaAus.Text = CadenaAusente(listaAusentes);
+
+                //Como es un diente ausente tengo que remover el diente de la lista con caries
+                listaCaries.RemoveAll(p => p == senderCtrl.Tag.ToString().Substring(3, 2));
+                txtPzaCar.Text = CadenaCaries(listaCaries);
+
+                oOdontograma = new ServiceComponentFieldValuesList();
+                oOdontograma.v_ServiceComponentFieldValuesId = _v_ServiceComponentFieldValuesId;
+                oOdontograma.v_Value1 = Id.ToString();
+                oOdontograma.v_ComponentFieldId = senderCtrl.Name;
+
+                _ListaOdontograma.Add(oOdontograma);
+
+                BloquearDesbloquearLabels(this, senderCtrl, "BLOQUEAR");
+            }
+            else if (Id == (int)Common.LeyendaOdontograma.CoronaTemporal)
+            {
+                // Buscamos el control PictureImage para poder saber que imagen vamos a cambiar
+                PictureBox ControlPictureBox;
+                var ListControlPictureBox = this.Controls.Find(senderCtrl.Tag.ToString(), true);
+                ControlPictureBox = ListControlPictureBox[0] as PictureBox;
+                ControlPictureBox.Image = global::Sigesoft.Node.WinClient.UI.Resources.coronatemporal;
+
+                ////Agregar dientes ausentes en el textbox
+                //listaAusentes.Add(senderCtrl.Tag.ToString().Substring(3, 2));
+                //txtPzaAus.Text = CadenaAusente(listaAusentes);
+
+                //Como es un diente ausente tengo que remover el diente de la lista con caries
+                listaCaries.RemoveAll(p => p == senderCtrl.Tag.ToString().Substring(3, 2));
+                txtPzaCar.Text = CadenaCaries(listaCaries);
+
+                oOdontograma = new ServiceComponentFieldValuesList();
+                oOdontograma.v_ServiceComponentFieldValuesId = _v_ServiceComponentFieldValuesId;
+                oOdontograma.v_Value1 = Id.ToString();
+                oOdontograma.v_ComponentFieldId = senderCtrl.Name;
+
+                _ListaOdontograma.Add(oOdontograma);
+
+                BloquearDesbloquearLabels(this, senderCtrl, "BLOQUEAR");
+            }
+            else if (Id == (int)Common.LeyendaOdontograma.CoronaDefinitiva)
+            {
+                // Buscamos el control PictureImage para poder saber que imagen vamos a cambiar
+                PictureBox ControlPictureBox;
+                var ListControlPictureBox = this.Controls.Find(senderCtrl.Tag.ToString(), true);
+                ControlPictureBox = ListControlPictureBox[0] as PictureBox;
+                ControlPictureBox.Image = global::Sigesoft.Node.WinClient.UI.Resources.coronadefinitiva;
+
+                ////Agregar dientes ausentes en el textbox
+                //listaAusentes.Add(senderCtrl.Tag.ToString().Substring(3, 2));
+                //txtPzaAus.Text = CadenaAusente(listaAusentes);
+
+                //Como es un diente ausente tengo que remover el diente de la lista con caries
+                listaCaries.RemoveAll(p => p == senderCtrl.Tag.ToString().Substring(3, 2));
+                txtPzaCar.Text = CadenaCaries(listaCaries);
+
+                oOdontograma = new ServiceComponentFieldValuesList();
+                oOdontograma.v_ServiceComponentFieldValuesId = _v_ServiceComponentFieldValuesId;
+                oOdontograma.v_Value1 = Id.ToString();
+                oOdontograma.v_ComponentFieldId = senderCtrl.Name;
+
+                _ListaOdontograma.Add(oOdontograma);
+
+                BloquearDesbloquearLabels(this, senderCtrl, "BLOQUEAR");
+            }
+            else if (Id == (int)Common.LeyendaOdontograma.ProtesisFijaBueno)
+            {
+                // Buscamos el control PictureImage para poder saber que imagen vamos a cambiar
+                PictureBox ControlPictureBox;
+                var ListControlPictureBox = this.Controls.Find(senderCtrl.Tag.ToString(), true);
+                ControlPictureBox = ListControlPictureBox[0] as PictureBox;
+                ControlPictureBox.Image = global::Sigesoft.Node.WinClient.UI.Resources.protesisfijabueno;
+
+                ////Agregar dientes ausentes en el textbox
+                //listaAusentes.Add(senderCtrl.Tag.ToString().Substring(3, 2));
+                //txtPzaAus.Text = CadenaAusente(listaAusentes);
+
+                //Como es un diente ausente tengo que remover el diente de la lista con caries
+                listaCaries.RemoveAll(p => p == senderCtrl.Tag.ToString().Substring(3, 2));
+                txtPzaCar.Text = CadenaCaries(listaCaries);
+
+                oOdontograma = new ServiceComponentFieldValuesList();
+                oOdontograma.v_ServiceComponentFieldValuesId = _v_ServiceComponentFieldValuesId;
+                oOdontograma.v_Value1 = Id.ToString();
+                oOdontograma.v_ComponentFieldId = senderCtrl.Name;
+
+                _ListaOdontograma.Add(oOdontograma);
+
+                BloquearDesbloquearLabels(this, senderCtrl, "BLOQUEAR");
+            }
+            else if (Id == (int)Common.LeyendaOdontograma.ProtesisFijaMalo)
+            {
+                // Buscamos el control PictureImage para poder saber que imagen vamos a cambiar
+                PictureBox ControlPictureBox;
+                var ListControlPictureBox = this.Controls.Find(senderCtrl.Tag.ToString(), true);
+                ControlPictureBox = ListControlPictureBox[0] as PictureBox;
+                ControlPictureBox.Image = global::Sigesoft.Node.WinClient.UI.Resources.protesisfijamalo;
+
+                ////Agregar dientes ausentes en el textbox
+                //listaAusentes.Add(senderCtrl.Tag.ToString().Substring(3, 2));
+                //txtPzaAus.Text = CadenaAusente(listaAusentes);
+
+                //Como es un diente ausente tengo que remover el diente de la lista con caries
+                listaCaries.RemoveAll(p => p == senderCtrl.Tag.ToString().Substring(3, 2));
+                txtPzaCar.Text = CadenaCaries(listaCaries);
+
+                oOdontograma = new ServiceComponentFieldValuesList();
+                oOdontograma.v_ServiceComponentFieldValuesId = _v_ServiceComponentFieldValuesId;
+                oOdontograma.v_Value1 = Id.ToString();
+                oOdontograma.v_ComponentFieldId = senderCtrl.Name;
+
+                _ListaOdontograma.Add(oOdontograma);
+
+                BloquearDesbloquearLabels(this, senderCtrl, "BLOQUEAR");
+            }
+            else if (Id == (int)Common.LeyendaOdontograma.ProtesisRemovible)
+            {
+                // Buscamos el control PictureImage para poder saber que imagen vamos a cambiar
+                PictureBox ControlPictureBox;
+                var ListControlPictureBox = this.Controls.Find(senderCtrl.Tag.ToString(), true);
+                ControlPictureBox = ListControlPictureBox[0] as PictureBox;
+                ControlPictureBox.Image = global::Sigesoft.Node.WinClient.UI.Resources.protesisremovible;
+
+                ////Agregar dientes ausentes en el textbox
+                //listaAusentes.Add(senderCtrl.Tag.ToString().Substring(3, 2));
+                //txtPzaAus.Text = CadenaAusente(listaAusentes);
+
+                //Como es un diente ausente tengo que remover el diente de la lista con caries
+                listaCaries.RemoveAll(p => p == senderCtrl.Tag.ToString().Substring(3, 2));
+                txtPzaCar.Text = CadenaCaries(listaCaries);
+
+                oOdontograma = new ServiceComponentFieldValuesList();
+                oOdontograma.v_ServiceComponentFieldValuesId = _v_ServiceComponentFieldValuesId;
+                oOdontograma.v_Value1 = Id.ToString();
+                oOdontograma.v_ComponentFieldId = senderCtrl.Name;
+
+                _ListaOdontograma.Add(oOdontograma);
+
+                BloquearDesbloquearLabels(this, senderCtrl, "BLOQUEAR");
+            }
             else if (Id == -1)
             {
                 oOdontograma = new ServiceComponentFieldValuesList();

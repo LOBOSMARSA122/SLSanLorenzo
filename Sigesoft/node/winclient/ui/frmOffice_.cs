@@ -242,7 +242,7 @@ namespace Sigesoft.Node.WinClient.UI
                 else
                 {
                     this.Enabled = false;
-                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null);
+                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
                     frm.ShowDialog();
                     this.Enabled = true;
                     // Aviso automático de que se culminaron todos los examanes, se tendria que proceder

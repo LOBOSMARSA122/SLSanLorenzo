@@ -16,7 +16,8 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 {
     public partial class ucFotoTipo : UserControl
     {
-      
+        private List<Point> _points = new List<Point>();
+        Graphics g;
         FileInfoDto fileInfo = null;
         private MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
         bool _isChangueValueControl = false;
@@ -78,6 +79,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             InitializeComponent();
             txtMultimediaFileId.Name = Constants.txt_MULTIMEDIA_FILE_FOTO_TIPO;
             txtServiceComponentMultimediaId.Name = Constants.txt_SERVICE_COMPONENT_MULTIMEDIA_FOTO_TIPO;
+            g = panel1.CreateGraphics();
         }
 
         private void SaveValueControlForInterfacingEso(string name, string value)
@@ -218,12 +220,12 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 
         private void btnDibujar_Click(object sender, EventArgs e)
         {
-            Graphics lienzo;
-            lienzo = panel1.CreateGraphics();
-            Pen lapiz = new Pen(Color.Black);
+            //Graphics lienzo;
+            //lienzo = panel1.CreateGraphics();
+            //Pen lapiz = new Pen(Color.Black);
 
-            lienzo.DrawLine(lapiz,0,0,100,100);
-            ResizeCanvas();
+            //lienzo.DrawLine(lapiz,0,0,100,100);
+            //ResizeCanvas();
         }
 
         private Bitmap _canvas;
@@ -245,7 +247,32 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
             //base.OnPaint(e);
-            e.Graphics.DrawString("sss", Font, new SolidBrush(ForeColor), ClientRectangle); 
+            //e.Graphics.DrawString("sss", Font, new SolidBrush(ForeColor), ClientRectangle); 
+        }
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            foreach (Point point in _points)
+            {
+                using (Pen Haitham = new Pen(Color.Silver, 2))
+                {
+                    g.FillRectangle(Haitham.Brush, new Rectangle(point.X, point.Y, 50, 50));
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            _points = new List<Point>();
+            Pen Haitham = new Pen(Color.AliceBlue, 2);
+            g.FillRectangle(Haitham.Brush, new Rectangle(0, 0, 260, 209));
+        }
+
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            _points.Add(new Point(e.X, e.Y));
+            Invalidate(); 
         }
     }
 }

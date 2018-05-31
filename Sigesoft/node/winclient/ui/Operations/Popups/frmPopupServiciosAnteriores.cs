@@ -41,7 +41,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
 
         private void btnVerServicioAnterior_Click(object sender, EventArgs e)
         {
-            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View");
+
+            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View", (int)MasterService.Eso);
             frm.ShowDialog();
         }
 

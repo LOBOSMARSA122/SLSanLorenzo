@@ -801,7 +801,7 @@ namespace Sigesoft.Node.WinClient.UI
             //else
             //{
                 this.Enabled = false;
-                frm = new Operations.frmEso(TserviceId, null, "View");
+                frm = new Operations.frmEso(TserviceId, null, "View", (int)MasterService.Eso);
                 frm.ShowDialog();
                 this.Enabled = true;
             //}

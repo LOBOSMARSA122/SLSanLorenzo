@@ -17292,8 +17292,7 @@ namespace Sigesoft.Node.WinClient.BLL
 																						   && (B.v_ComponentId == pstrComponentId)
 																						   && (B.i_IsDeleted == 0)
 																						   && (C.i_IsDeleted == 0)
-																					 let range = (D.v_Value1 == "1" ? pstrPath + "\\Resources\\ausent.png" :
-																								 string.Empty
+                                                                                     let range = (D.v_Value1 == "1" ? pstrPath + "\\Resources\\R_dienteausente.png" : D.v_Value1 == "7" ? pstrPath + "\\Resources\\R_ProtesisTotal.png" : D.v_Value1 == "10" ? pstrPath + "\\Resources\\R_RemanenteRedicular.png" : D.v_Value1 == "11" ? pstrPath + "\\Resources\\R_CoronaTemporal.png" : D.v_Value1 == "12" ? pstrPath + "\\Resources\\R_CoronaDefinitiva.png" : D.v_Value1 == "13" ? pstrPath + "\\Resources\\R_ProtesisFijaBueno.png" : D.v_Value1 == "14" ? pstrPath + "\\Resources\\R_ProtesisFijaMalo.png" : D.v_Value1 == "15" ? pstrPath + "\\Resources\\R_ProtesisRemovible.png" : string.Empty
 																								 )
 																					 select new ServiceComponentFieldValuesList
 																					 {
@@ -18586,7 +18585,14 @@ namespace Sigesoft.Node.WinClient.BLL
 							   SENOS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.SENOS) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.SENOS).v_Value1,
 							   SILUETA_CARDIOVASCULAR = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.SILUETA_CARDIOVASCULAR) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.SILUETA_CARDIOVASCULAR).v_Value1,
 							   VERTICES = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.VERTICES) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.VERTICES).v_Value1,
-
+                               ARTEFACTOS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003202") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003202").v_Value1,
+                               BAJA_INSPRACION = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003199") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003199").v_Value1,
+                               ESCAPULAS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003200") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003200").v_Value1,
+                               NINGUNA = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003196") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003196").v_Value1,
+                               OTROS = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003203") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003203").v_Value1,
+                               POSICION_CENTRADO = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003201") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003201").v_Value1,
+                               SOBRE_EXPOSICION = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003197") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003197").v_Value1,
+                               SUB_EXPOSICION = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003198") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003198").v_Value1,
 
 							   Nombre = a.Nombre,
 							   DNI = a.DNI,
@@ -28766,6 +28772,44 @@ namespace Sigesoft.Node.WinClient.BLL
             catch (Exception ex)
             {
                 return null;
+            }
+        }
+
+        public List<frmEsoAntecedentesPadre> ObtenerEsoAntecedentesPorGrupoId(int Grupo)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+
+                var data = (from a in dbContext.systemparameter
+                            where a.i_IsDeleted == isNotDeleted &&
+                            a.i_GroupId == Grupo
+                            select new frmEsoAntecedentesPadre 
+                            {
+                                GrupoId = a.i_GroupId,
+                                ParametroId = a.i_ParameterId,
+                                Nombre = a.v_Value1
+                            }).ToList();
+
+
+                foreach (var P in data)
+                {
+                    int grupoHijo = int.Parse(P.GrupoId.ToString() + P.ParametroId.ToString());
+                    P.Hijos = (from a in dbContext.systemparameter
+                                 where a.i_IsDeleted == isNotDeleted &&
+                                 a.i_GroupId == grupoHijo
+                                 select new frmEsoAntecedentesHijo
+                                 {
+                                    Nombre = a.v_Value1
+                                 }).ToList();
+                }
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return new List<frmEsoAntecedentesPadre>();
             }
         }
 

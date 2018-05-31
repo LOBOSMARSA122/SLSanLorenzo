@@ -151,5 +151,15 @@ namespace Sigesoft.Node.WinClient.BE
                         public string  SENOS { get; set; }
                         public string SILUETA_CARDIOVASCULAR { get; set; }
                         public string VERTICES { get; set; }
+                        public string ARTEFACTOS { get; set; }
+                        public string BAJA_INSPRACION { get; set; }
+                        public string ESCAPULAS { get; set; }
+                        public string NINGUNA { get; set; }
+                        public string OTROS { get; set; }
+                        public string POSICION_CENTRADO { get; set; }
+                        public string SOBRE_EXPOSICION { get; set; }
+                        public string SUB_EXPOSICION { get; set; }
+
+
     }
 }

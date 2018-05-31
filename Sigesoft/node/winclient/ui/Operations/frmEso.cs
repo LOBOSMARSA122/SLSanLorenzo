@@ -127,6 +127,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private string _personId;
         private string _serviceIdByWiewServiceHistory;
         private string _action;
+        private int _tipo;
         private string _pharmacyWarehouseId;
         private int _masterServiceId;
         private List<KeyValueDTO> _formActions = null;
@@ -152,12 +153,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         public int _profesionId;
         #endregion
 
-        public frmEso(string serviceId, string componentIdByDefault, string action)
+        public frmEso(string serviceId, string componentIdByDefault, string action, int tipo)
         {
             InitializeComponent();
             _serviceId = serviceId;
             _componentIdByDefault = componentIdByDefault;
             _action = action;
+            _tipo = tipo;
         }
 
         private void frmEso_Load(object sender, EventArgs e)
@@ -165,10 +167,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             //obenter la profesión del usuario
             _profesionId = int.Parse(Globals.ClientSession.i_ProfesionId.ToString());
 
-            tcSubMain.TabPages.Remove(tpAntecedentes);
-            tcSubMain.TabPages.Remove(General);
-
-            var serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
+             var serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
 
             var vbtn312 = serviceComponents.Find(p => p.v_ComponentId == Constants.EXAMEN_FISICO_ID);
             if (vbtn312 != null)
@@ -308,7 +307,22 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 #endregion
 
                 // PESTAÑA Antecedentes X DEFECTO
-                tcSubMain.SelectedIndex = 0;
+                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                {
+                    tcSubMain.TabPages.Remove(tpAntecedentes);
+                    tcSubMain.TabPages.Remove(General);
+                    tcSubMain.TabPages.Remove(tpConclusion);
+                }
+                else
+                {
+                    tcSubMain.TabPages.Remove(tpAntecedentes);
+                    tcSubMain.TabPages.Remove(General);
+                    tcSubMain.TabPages.Remove(tpFormatoAtencionIntegral);
+                    tcSubMain.TabPages.Remove(tpDatosAntecedentes);
+                    tcSubMain.TabPages.Remove(tpCuidadosPreventivos);
+                    tcSubMain.SelectedIndex = 0;
+                }
+               
                 // Setear por default un examen componente desde consusltorio
 
                 #region Set Tab x default
@@ -355,7 +369,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 GetConclusionesDiagnosticasForGridView();
                 ConclusionesyTratamiento_LoadAllGrid();
                 gbEdicionDiagnosticoTotal.Enabled = false;
-
+                ConstruirFormularioAntecedentes();
             }
             if (_action == "View")
             {
@@ -370,6 +384,32 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 cbAptitudEso.Enabled = false;
                 btnGuardarExamen.Enabled = false;
             }
+        }
+
+        private void ConstruirFormularioAntecedentes()
+        {
+            //_personId = _personId;
+
+            int GrupoBase = 282; //Antecedentes
+            int GrupoEtario = 1; //Adulto
+            int Grupo = int.Parse(GrupoBase.ToString() + GrupoEtario.ToString());
+
+            List<frmEsoAntecedentesPadre> Parents = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo);
+
+            foreach (var P in Parents) 
+            {
+                ultraGrid2.DataSource = Parents;
+            }
+
+            //Obtener Listado padre
+            //hacer ciclo por cada uno e ir obteniendo sus hijos... 
+            //a su vez preguntar si tiene hijos e ir anidando para hacer jerarquia....
+
+            //ver como carajo crear eso en el grid
+
+            //ver como carajo agregar checks o radio buttons a ese grid
+
+            // hacer logica restante
         }
 
         private void BuildMenu()
@@ -495,6 +535,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             {
                                 #region Crear control GroupBox para agrupar los campos (controles)
 
+                                
                                 // Crear y configurar GroupBox por cada grupo
                                 gb = new GroupBox();
                                 gb.Text = g.v_Group;
@@ -502,6 +543,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 gb.BackColor = Color.Azure;
                                 gb.AutoSize = true;
                                 gb.Dock = DockStyle.Top;
+
+                                if (g.v_ComponentFieldId == "N009-MF000000728" || g.v_Group == "C 4.1 Placa Pleurales" || g.v_Group == "C 4.2 Engrosamiento Difuso de la Pleura" || g.v_Group == "C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")
+                                {
+                                    gb.Enabled = false;
+                                }
 
                                 fieldsByGroupBoxCount++;
 
@@ -815,6 +861,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             }
 
                                             break;
+                                        case ControlType.Radiobutton:
+                                            ctl = new RadioButton()
+                                            {
+                                                Width = f.i_ControlWidth,
+                                                Height = f.i_HeightControl,
+                                                Name = f.v_ComponentFieldId
+                                            };
+                                            ctl.Enter += new EventHandler(Capture_Value);
+                                            ctl.Leave += new EventHandler(txt_Leave);
+                                            if (_action == "View")
+                                            {
+                                                ctl.Enabled = false;
+                                            }
+                                            break;
                                         case ControlType.SiNoCombo:
                                             ctl = new ComboBox()
                                             {
@@ -873,14 +933,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             ucSomnolencia.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
                                             ctl = ucSomnolencia;
                                             break;
-                                        case ControlType.UcAdulto:
-                                            var ucAdulto = new Sigesoft.Node.WinClient.UI.UserControls.ucAdulto();
-                                            ucAdulto.Name = f.v_ComponentFieldId;
-                                            // Establecer evento
-                                            //ucAdulto.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
-                                            //ctl = ucAdulto;
-                                            break;
-
+                                       
                                         case ControlType.UcBoton:
                                             var ucBoton = new Sigesoft.Node.WinClient.UI.UserControls.ucBoton();
                                             ucBoton.Name = f.v_ComponentFieldId;
@@ -1314,6 +1367,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         }
 
                                         break;
+
+                                    case ControlType.Radiobutton:
+                                        ctl = new RadioButton()
+                                        {
+                                            Width = f.i_ControlWidth,
+                                            Height = f.i_HeightControl,
+                                            Name = f.v_ComponentFieldId
+                                        };
+                                        ctl.Enter += new EventHandler(Capture_Value);
+                                        ctl.Leave += new EventHandler(txt_Leave);
+                                        if (_action == "View")
+                                        {
+                                            ctl.Enabled = false;
+                                        }
+                                        break;
                                     case ControlType.SiNoCombo:
                                         ctl = new ComboBox()
                                         {
@@ -1372,14 +1440,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         ucSomnolencia.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
                                         ctl = ucSomnolencia;
                                         break;
-                                    case ControlType.UcAdulto:
-                                        var ucAdulto = new Sigesoft.Node.WinClient.UI.UserControls.ucAdulto();
-                                        ucAdulto.Name = f.v_ComponentFieldId;
-                                        // Establecer evento
-                                        //ucAdulto.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
-                                        //ctl = ucAdulto;
-                                        break;
-
+                                
                                     case ControlType.UcBoton:
                                         var ucBoton = new Sigesoft.Node.WinClient.UI.UserControls.ucBoton();
                                         ucBoton.Name = f.v_ComponentFieldId;
@@ -1714,6 +1775,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 #endregion
 
 
+                #region Cargar Atención Integral
+
+                CargarGrillaProblemas(_personId);
+                CargarGrillaPlanAtencionIntegral(_personId);
+                #endregion
+
                 // Analizar el resultado de la operación
                 if (objOperationResult.Success != 1)
                 {
@@ -1723,7 +1790,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
 
         }
-
         private void LoadComboBox()
         {
             // Llenado de combos
@@ -2052,13 +2118,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             }
 
-            if (tcExamList.SelectedTab.TabPage.Tab.Text == "MEDICINA")
-            {
-                string pstrPersonId = _personId;
+            //if (tcExamList.SelectedTab.TabPage.Tab.Text == "MEDICINA")
+            //{
+            //    string pstrPersonId = _personId;
 
-                Popups.frmPopupAntecedentes frm = new Popups.frmPopupAntecedentes(pstrPersonId);
-                frm.ShowDialog();
-            }
+            //    Popups.frmPopupAntecedentes frm = new Popups.frmPopupAntecedentes(pstrPersonId);
+            //    frm.ShowDialog();
+            //}
 
         }
 
@@ -3172,6 +3238,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     rbSiNo.Enabled = false;
                                 }
                                 break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)ctrl__[0];
+                                rb.CreateControl();
+                                rb.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    rb.Enabled = false;
+                                }
+                                break;
                             case ControlType.SiNoCombo:
                                 ComboBox cbSiNo = (ComboBox)ctrl__[0];
                                 cbSiNo.CreateControl();
@@ -3306,6 +3381,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 if (_action == "View")
                                 {
                                     rbSiNo.Enabled = false;
+                                }
+                                break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)ctrl__[0];
+                                rb.CreateControl();
+                                rb.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    rb.Enabled = false;
                                 }
                                 break;
                             case ControlType.SiNoCombo:
@@ -3615,6 +3699,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 case ControlType.SiNoRadioButton:
                     ctrlToCast = (RadioButton)ctrl;
                     break;
+                case ControlType.Radiobutton:
+                    ctrlToCast = (RadioButton)ctrl;
+                    break;
                 case ControlType.SiNoCombo:
                     ctrlToCast = (ComboBox)ctrl;
                     break;
@@ -3644,6 +3731,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     dataType = "int";
                     break;
                 case ControlType.SiNoRadioButton:
+                    break;
+                case ControlType.Radiobutton:
                     break;
                 case ControlType.SiNoCombo:
                     dataType = "int";
@@ -3684,6 +3773,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     value1 = Convert.ToInt32(((CheckBox)ctrl).Checked).ToString();
                     break;
                 case ControlType.SiNoRadioButton:
+                    value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
+                    break;
+                case ControlType.Radiobutton:
                     value1 = Convert.ToInt32(((RadioButton)ctrl).Checked).ToString();
                     break;
                 case ControlType.SiNoCombo:
@@ -3807,6 +3899,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         ((RadioButton)ctrl).Checked = Convert.ToBoolean(int.Parse(Value1));
                     }
                     break;
+                case ControlType.Radiobutton:
+                    if (ComponentFieldsId == Tag_ComponentFieldsId)
+                    {
+                        ((RadioButton)ctrl).Checked = Convert.ToBoolean(int.Parse(Value1));
+                    }
+                    break;
                 case ControlType.SiNoCombo:
                     if (ComponentFieldsId == Tag_ComponentFieldsId)
                     {
@@ -3849,6 +3947,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     ((CheckBox)ctrl).Checked = false;
                     break;
                 case ControlType.SiNoRadioButton:
+                    ((RadioButton)ctrl).Checked = false;
+                    break;
+                case ControlType.Radiobutton:
                     ((RadioButton)ctrl).Checked = false;
                     break;
                 case ControlType.SiNoCombo:
@@ -3981,6 +4082,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     break;
                 case ControlType.SiNoRadioButton:
                     break;
+                case ControlType.Radiobutton:
+                    break;
                 case ControlType.SiNoCombo:
                     uv.GetValidationSettings(ctrl).Condition = new OperatorCondition(ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
                     uv.GetValidationSettings(ctrl).EmptyValueCriteria = EmptyValueCriteria.NullOrEmptyString;
@@ -4112,6 +4215,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     rbSiNo.CreateControl();
                                     rbSiNo.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
                                     break;
+                                case ControlType.Radiobutton:
+                                    RadioButton rb = (RadioButton)ctrl__[0];
+                                    rb.CreateControl();
+                                    rb.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
+                                    break;
                                 case ControlType.SiNoCombo:
                                     ComboBox cbSiNo = (ComboBox)ctrl__[0];
                                     cbSiNo.CreateControl();
@@ -4238,6 +4346,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 RadioButton rbSiNo = (RadioButton)field[0];
                                 rbSiNo.CreateControl();
                                 rbSiNo.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
+                                break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)field[0];
+                                rb.CreateControl();
+                                rb.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
                                 break;
                             case ControlType.SiNoCombo:
                                 ComboBox cbSiNo = (ComboBox)field[0];
@@ -5585,6 +5698,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         #endregion
 
         #region Custom Events
+        public void AntecedentesCheck(object sender, Infragistics.Win.UltraWinGrid.CellEventArgs e)
+        {
+            if(e.Cell.Column.Key == "SI")
+            {
+                //if (e.Cell.Value)
+                //    e.Cell.Row.Cells[2].Value = false;
+            }
+        }
 
         public void GeneratedAutoDX(string valueToAnalyze, Control senderCtrl, KeyTagControl tagCtrl)
         {
@@ -5969,6 +6090,51 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var tagCtrl = (KeyTagControl)senderCtrl.Tag;
             // Capturar valor inicial
             _oldValue = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
+            if (tagCtrl.v_ComponentName == "RAYOS X")
+            {
+                GroupBox gb = null;
+                gb = (GroupBox)FindControlInCurrentTab("gb_C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")[0];
+
+                if (tagCtrl.v_ComponentFieldsId == "N002-MF000000222")
+                {
+                    gb.Enabled = false;
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720" || tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" || tagCtrl.v_ComponentFieldsId == "N009-MF000000222" || tagCtrl.v_ComponentFieldsId == "N009-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000224" || _oldValue == "N009-MF000000227" || tagCtrl.v_ComponentFieldsId == "N009-MF000000225" || tagCtrl.v_ComponentFieldsId == "N009-MF000000226")
+                {
+                    gb.Enabled = true;
+                }
+
+                GroupBox gb41 = null;
+                GroupBox gb42 = null;
+                gb41 = (GroupBox)FindControlInCurrentTab("gb_C 4.1 Placa Pleurales")[0];
+                gb42 = (GroupBox)FindControlInCurrentTab("gb_C 4.2 Engrosamiento Difuso de la Pleura")[0];
+                if (tagCtrl.v_ComponentFieldsId == "N009-MF000003194")
+                {
+                    gb41.Enabled = true;
+                    gb42.Enabled = true;
+
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N009-MF000000761")
+                {
+                    gb41.Enabled = false;
+                    gb42.Enabled = false;
+                }
+
+                GroupBox gb6 = null;
+                gb6 = (GroupBox)FindControlInCurrentTab("gb_C 6. MARQUE  la respuesta adecuada; si marca \"od\", escriba a continuación un COMENTARIO")[0];
+
+                if (tagCtrl.v_ComponentFieldsId == "N009-MF000003195")
+                {
+                    gb6.Enabled = true;
+                    gb6.Enabled = true;
+
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N009-MF000000760")
+                {
+                    gb6.Enabled = false;
+                    gb6.Enabled = false;
+                }
+            }           
 
         }
 
@@ -6467,7 +6633,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+         
         private void GetServicesConsolidateForService(string personId)
         {
             OperationResult objOperationResult = new OperationResult();
@@ -6497,7 +6663,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void mnuVerServicio_Click(object sender, EventArgs e)
         {
-            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View");
+            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View", (int)MasterService.Eso);
             frm.ShowDialog();
         }
 
@@ -6535,7 +6701,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnVerServicioAnterior_Click(object sender, EventArgs e)
         {
-            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View");
+            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View", (int)MasterService.Eso);
             frm.ShowDialog();
             /////
         }
@@ -7174,54 +7340,117 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             frm.ShowDialog();
         }
 
-        private void grdTotalDiagnosticos_InitializeLayout(object sender, InitializeLayoutEventArgs e)
-        {
-
-        }
-
-        private void splitContainer2_Panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-
         private void btnPerson_Click(object sender, EventArgs e)
         {
             var frm = new frmPacient(_personId);
             frm.ShowDialog();
             
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGuardarIntegral_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label91_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGrabarNinio_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnGrabarAdulto_Click(object sender, EventArgs e)
-        {
-
-        }
+        }      
 
         private void btnSubirInterconsulta_Click(object sender, EventArgs e)
         {
             frmSubirInterconsulta frm = new frmSubirInterconsulta(_serviceId, _personName);
             frm.ShowDialog();
         }
+
+        private void btnNuevoCronico_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Cronico","New",_personId, "");
+            frm.ShowDialog();
+
+            CargarGrillaProblemas(_personId);
+        }
+
+        private void btnEditarCronico_Click(object sender, EventArgs e)
+        {
+            string id = grdCronicos.Selected.Rows[0].Cells["v_ProblemaId"].Value.ToString();
+
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Cronico", "Edit", _personId,id);
+            frm.ShowDialog();
+            CargarGrillaProblemas(_personId);
+        }
+
+        private void btnEliminarCronico_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                string id = grdCronicos.Selected.Rows[0].Cells["v_ProblemaId"].Value.ToString();
+                new ProblemaBL().DeleteProblema(ref objOperationResult, id, Globals.ClientSession.GetAsList());                
+                CargarGrillaProblemas(_personId);
+            }
+        }
+
+        private void btnNuevoAgudo_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Agudo", "New", _personId,"");
+            frm.ShowDialog();
+            CargarGrillaProblemas(_personId);
+        }
+
+        private void btnEditarAgudo_Click(object sender, EventArgs e)
+        {
+            string id = grdAgudos.Selected.Rows[0].Cells["v_ProblemaId"].Value.ToString();
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Agudo", "Edit", _personId, id);
+            frm.ShowDialog();
+            CargarGrillaProblemas(_personId);
+        }
+
+        private void btnEliminarAgudo_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                string id = grdAgudos.Selected.Rows[0].Cells["v_ProblemaId"].Value.ToString();
+                new ProblemaBL().DeleteProblema(ref objOperationResult, id, Globals.ClientSession.GetAsList());
+                CargarGrillaProblemas(_personId);
+            }
+        }
+
+        private void btnNuevoPlan_Click(object sender, EventArgs e)
+        {
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Plan", "New", _personId,"");
+            frm.ShowDialog();
+            CargarGrillaPlanAtencionIntegral(_personId);
+        }
+
+        private void btnEditarPlan_Click(object sender, EventArgs e)
+        {
+            string id = grdPlanIntegral.Selected.Rows[0].Cells["v_PlanIntegral"].Value.ToString();
+            Popups.frmPopupAtencionIntegral frm = new Popups.frmPopupAtencionIntegral("Plan", "Edit", _personId,id);
+            frm.ShowDialog();
+            CargarGrillaPlanAtencionIntegral(_personId);
+        }
+
+        private void btnEliminarPlan_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                string id = grdPlanIntegral.Selected.Rows[0].Cells["v_PlanIntegral"].Value.ToString();
+                new PlanIntegralBL().DeletePlanIntegral(ref objOperationResult, id, Globals.ClientSession.GetAsList());
+                CargarGrillaPlanAtencionIntegral(_personId);
+            }
+        }
+
+        private void CargarGrillaPlanAtencionIntegral(string personId)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var objData = new PlanIntegralBL().GetPlanIntegralAndFiltered(ref objOperationResult, 0, null, "", "", personId);
+            grdPlanIntegral.DataSource = objData;
+        }
+
+        private void CargarGrillaProblemas(string personId)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var objData = new ProblemaBL().GetProblemaPagedAndFiltered(ref objOperationResult, 0, null, "", "", personId);
+            grdCronicos.DataSource = objData.FindAll(p => p.i_Tipo == (int)TipoProblema.Cronico);
+            grdAgudos.DataSource = objData.FindAll(p => p.i_Tipo == (int)TipoProblema.Agudo);
+        }
+
 
 
     }
