@@ -369,7 +369,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 GetConclusionesDiagnosticasForGridView();
                 ConclusionesyTratamiento_LoadAllGrid();
                 gbEdicionDiagnosticoTotal.Enabled = false;
-
+                ConstruirFormularioAntecedentes();
             }
             if (_action == "View")
             {
@@ -384,6 +384,24 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 cbAptitudEso.Enabled = false;
                 btnGuardarExamen.Enabled = false;
             }
+        }
+
+        private void ConstruirFormularioAntecedentes()
+        {
+            //_personId = _personId;
+
+            //Crear Clase que almacenará los datos
+            //Crear servicio de consulta
+
+            //Obtener Listado padre
+            //hacer ciclo por cada uno e ir obteniendo sus hijos... 
+            //a su vez preguntar si tiene hijos e ir anidando para hacer jerarquia....
+
+            //ver como carajo crear eso en el grid
+
+            //ver como carajo agregar checks o radio buttons a ese grid
+
+            // hacer logica restante
         }
 
         private void BuildMenu()
