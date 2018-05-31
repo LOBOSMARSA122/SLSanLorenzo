@@ -226,6 +226,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hijos");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand14 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Hijos", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn79 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
@@ -4039,7 +4041,6 @@
             // 
             this.ultraGrid2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.ultraGrid2.DataMember = null;
             appearance92.BackColor = System.Drawing.SystemColors.ControlLight;
             appearance92.BackColor2 = System.Drawing.SystemColors.ControlDark;
             appearance92.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
@@ -4052,9 +4053,13 @@
             ultraGridColumn26,
             ultraGridColumn59});
             ultraGridColumn79.Header.VisiblePosition = 0;
-            ultraGridColumn79.Hidden = true;
+            ultraGridColumn51.Header.VisiblePosition = 1;
+            ultraGridColumn56.Header.VisiblePosition = 2;
             ultraGridBand14.Columns.AddRange(new object[] {
-            ultraGridColumn79});
+            ultraGridColumn79,
+            ultraGridColumn51,
+            ultraGridColumn56});
+            ultraGridBand14.Expandable = false;
             this.ultraGrid2.DisplayLayout.BandsSerializer.Add(ultraGridBand13);
             this.ultraGrid2.DisplayLayout.BandsSerializer.Add(ultraGridBand14);
             this.ultraGrid2.DisplayLayout.GroupByBox.Hidden = true;
@@ -4067,13 +4072,13 @@
             this.ultraGrid2.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
             this.ultraGrid2.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
             this.ultraGrid2.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.ultraGrid2.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.ultraGrid2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraGrid2.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.ultraGrid2.Location = new System.Drawing.Point(584, 44);
             this.ultraGrid2.Name = "ultraGrid2";
             this.ultraGrid2.Size = new System.Drawing.Size(362, 514);
             this.ultraGrid2.TabIndex = 110;
+            this.ultraGrid2.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.AntecedentesCheck);
             // 
             // label43
             // 
@@ -4611,7 +4616,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 742);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 810);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -4634,7 +4639,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 759);
+            this.ClientSize = new System.Drawing.Size(1350, 827);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;

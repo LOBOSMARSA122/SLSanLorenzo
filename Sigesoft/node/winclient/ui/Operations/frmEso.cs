@@ -394,7 +394,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             int GrupoEtario = 1; //Adulto
             int Grupo = int.Parse(GrupoBase.ToString() + GrupoEtario.ToString());
 
-            List<frmEsoAntecedentes> Parents = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo);
+            List<frmEsoAntecedentesPadre> Parents = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo);
 
             foreach (var P in Parents) 
             {
@@ -5698,6 +5698,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         #endregion
 
         #region Custom Events
+        public void AntecedentesCheck(object sender, Infragistics.Win.UltraWinGrid.CellEventArgs e)
+        {
+            if(e.Cell.Column.Key == "SI")
+            {
+                //if (e.Cell.Value)
+                //    e.Cell.Row.Cells[2].Value = false;
+            }
+        }
 
         public void GeneratedAutoDX(string valueToAnalyze, Control senderCtrl, KeyTagControl tagCtrl)
         {

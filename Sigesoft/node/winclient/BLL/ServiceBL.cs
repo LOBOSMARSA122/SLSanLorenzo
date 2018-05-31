@@ -28775,7 +28775,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<frmEsoAntecedentes> ObtenerEsoAntecedentesPorGrupoId(int Grupo)
+        public List<frmEsoAntecedentesPadre> ObtenerEsoAntecedentesPorGrupoId(int Grupo)
         {
             try
             {
@@ -28785,7 +28785,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var data = (from a in dbContext.systemparameter
                             where a.i_IsDeleted == isNotDeleted &&
                             a.i_GroupId == Grupo
-                            select new frmEsoAntecedentes 
+                            select new frmEsoAntecedentesPadre 
                             {
                                 GrupoId = a.i_GroupId,
                                 ParametroId = a.i_ParameterId,
@@ -28799,10 +28799,8 @@ namespace Sigesoft.Node.WinClient.BLL
                     P.Hijos = (from a in dbContext.systemparameter
                                  where a.i_IsDeleted == isNotDeleted &&
                                  a.i_GroupId == grupoHijo
-                                 select new frmEsoAntecedentes
+                                 select new frmEsoAntecedentesHijo
                                  {
-                                    GrupoId = a.i_GroupId,
-                                    ParametroId = a.i_ParameterId,
                                     Nombre = a.v_Value1
                                  }).ToList();
                 }
@@ -28811,7 +28809,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
             catch (Exception e)
             {
-                return new List<frmEsoAntecedentes>();
+                return new List<frmEsoAntecedentesPadre>();
             }
         }
 
