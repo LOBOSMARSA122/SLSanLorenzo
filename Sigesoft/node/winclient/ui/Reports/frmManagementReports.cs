@@ -600,6 +600,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             {
                 //Historia Clínica
                 fichasMedicas.Add(new ServiceComponentList { v_ComponentName = "Historia Clínica", v_ComponentId = Constants.HISTORIA_CLINICA });
+                fichasMedicas.Add(new ServiceComponentList { v_ComponentName = "Atención Integral", v_ComponentId = Constants.ATENCION_INTEGRAL });
             }
             else
             {

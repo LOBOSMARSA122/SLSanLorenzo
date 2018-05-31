@@ -189,14 +189,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateConsultaMedica(string pathFile)
         {
             HistoryBL _historyBL = new HistoryBL();
-             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-             var personMedicalHistory = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
-             var noxiousHabit = _historyBL.GetNoxiousHabitsReport(_pacientId);
-             var familyMedicalAntecedent = _historyBL.GetFamilyMedicalAntecedentsReport_(_pacientId);
-             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-             ConsultaMedica.CreateConsultaMedica(filiationData, MedicalCenter, personMedicalHistory, familyMedicalAntecedent, noxiousHabit, serviceComponents, diagnosticRepository, pathFile);
+             //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+             //var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+             //var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+             //var personMedicalHistory = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
+             //var noxiousHabit = _historyBL.GetNoxiousHabitsReport(_pacientId);
+             //var familyMedicalAntecedent = _historyBL.GetFamilyMedicalAntecedentsReport_(_pacientId);
+             //var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+             AtencionIntegral.CreateAtencionIntegral(pathFile);
         }
 
     }

@@ -76,6 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AtencionIntegral.cs" />
     <Compile Include="borrar.cs" />
     <Compile Include="CertificadoAptitudCompleto.cs" />
     <Compile Include="ConsultaMedica.cs" />
