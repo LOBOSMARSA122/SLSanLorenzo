@@ -7,7 +7,7 @@ namespace Sigesoft.Common
 {
     public static class Constants
     {
-        public const string Select = "--Seleccionar--"; 
+        public const string Select = "--Seleccionar--";
         public const string SelectValue = "-1";
         public const string All = "--Todos--";
         public const string AllValue = "-1";
@@ -45,7 +45,7 @@ namespace Sigesoft.Common
         public const string EVA_CARDIOLOGICA_PRECORDIAL_1 = "N009-MF000001764";
         public const string EVA_CARDIOLOGICA_DESMAYOS = "N009-MF000001765";
         public const string EVA_CARDIOLOGICA_PALPITACIONES_1 = "N009-MF000001766";
-        public const string EVA_CARDIOLOGICA_DISNEA_PAROXISTICA= "N009-MF000001767";
+        public const string EVA_CARDIOLOGICA_DISNEA_PAROXISTICA = "N009-MF000001767";
         public const string EVA_CARDIOLOGICA_MAREOS_1 = "N009-MF000001768";
         public const string EVA_CARDIOLOGICA_CLAUDICACION = "N009-MF000001769";
         public const string EVA_CARDIOLOGICA_OTROS_1 = "N009-MF000001770";
@@ -282,7 +282,7 @@ namespace Sigesoft.Common
         public const string ECOGRAFIA_ABDOMINAL_PAREDES1 = "N009-MF000001593";
         public const string ECOGRAFIA_ABDOMINAL_PAREDES2 = "N009-MF000001594";
         public const string ECOGRAFIA_ABDOMINAL_CONT_ANECOICO = "N009-MF000001595";
-        public const string ECOGRAFIA_ABDOMINAL_BARRO_BILIAR= "N009-MF000001596";
+        public const string ECOGRAFIA_ABDOMINAL_BARRO_BILIAR = "N009-MF000001596";
         public const string ECOGRAFIA_ABDOMINAL_CALCULOS_INTERIOR = "N009-MF000001597";
         public const string ECOGRAFIA_ABDOMINAL_CALCULOS_TAMAÑO = "N009-MF000001598";
         public const string ECOGRAFIA_ABDOMINAL_DIAMETRO_TRANSVERSO = "N009-MF000001599";
@@ -293,9 +293,9 @@ namespace Sigesoft.Common
         public const string ECOGRAFIA_ABDOMINAL_CABEZA = "N009-MF000001605";
         public const string ECOGRAFIA_ABDOMINAL_CUELLO = "N009-MF000001606";
         public const string ECOGRAFIA_ABDOMINAL_CUERNO = "N009-MF000001607";
-        public const string ECOGRAFIA_ABDOMINAL_COLA = "N009-MF000001608";        
+        public const string ECOGRAFIA_ABDOMINAL_COLA = "N009-MF000001608";
         public const string ECOGRAFIA_ABDOMINAL_MEDIDAD_NO_EVALUABLES = "N009-MF000001609";
-        public const string ECOGRAFIA_ABDOMINAL_ANORMAL = "N009-MF000001611";        
+        public const string ECOGRAFIA_ABDOMINAL_ANORMAL = "N009-MF000001611";
         public const string ECOGRAFIA_ABDOMINAL_DIAMETRO_ANTOPOSTERIOR = "N009-MF000001612";
         public const string ECOGRAFIA_ABDOMINAL_LONGUITUD = "N009-MF000001613";
         public const string ECOGRAFIA_ABDOMINAL_CALIBRES_VASOS = "N009-MF000001614";
@@ -303,7 +303,7 @@ namespace Sigesoft.Common
         public const string ECOGRAFIA_ABDOMINAL_LIQUIDO_LIBRE_ANDOMINAL = "N009-MF000001616";
         public const string ECOGRAFIA_ABDOMINAL_NINGUNA = "N009-MF000001617";
         public const string ECOGRAFIA_ABDOMINAL_OBSERVACIONES = "N009-MF000001618";
-        public const string ECOGRAFIA_ABDOMINAL_CONCLUSIONES= "N009-MF000001619";
+        public const string ECOGRAFIA_ABDOMINAL_CONCLUSIONES = "N009-MF000001619";
         public const string ECOGRAFIA_ABDOMINAL_PAREMQUIMA_DESCRIPCION = "N009-MF000001620";
         public const string ECOGRAFIA_ABDOMINAL_LIQUIDO_LIBRE_ANDOMINAL_DESCRIPCION = "N009-MF000001621";
         #endregion
@@ -448,7 +448,7 @@ namespace Sigesoft.Common
         public const string C_N_PROBLEMA_CUELLO_PROBLEMAS_CUELLO_DURANTE_7_DIAS_ID = "N009-MF000001515";
         public const string C_N_PROBLEMA_CUELLO_ACTIVIDAD_TRABAJO_3_ID = "N009-MF000001516";
         public const string C_N_PROBLEMA_CUELLO_ACTIVIDAD_RECREATIVA_3_ID = "N009-MF000001517";
-       
+
 
 
 
@@ -476,8 +476,8 @@ namespace Sigesoft.Common
         public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_BASOFILOS = "N009-MF000000432";
         public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_MONOCITOS = "N009-MF000000434";
         public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_LINFOCITOS = "N009-MF000000436";
-        public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_OBSERVACIONES = "N009-MF000000516";	
-        
+        public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_OBSERVACIONES = "N009-MF000000516";
+
         // Valores deseables
         public const string HEMOGRAMA_COMPLETO_HEMATOCRITO_DESEABLE = "N009-MF000001281";
         public const string HEMOGRAMA_COMPLETO_HEMOGLOBINA_DESEABLE = "N009-MF000001283";
@@ -489,19 +489,19 @@ namespace Sigesoft.Common
         public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_EOSINOFILOS_DESEABLE = "N009-MF000000431";
         public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_BASOFILOS_DESEABLE = "N009-MF000000433";
         public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_MONOCITOS_DESEABLE = "N009-MF000000435";
-        public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_LINFOCITOS_DESEABLE = "N009-MF000000437";	
+        public const string HEMOGRAMA_COMPLETO_FORMULA_LEUCOCITARIA_LINFOCITOS_DESEABLE = "N009-MF000000437";
 
-        
+
         #endregion
 
         #region HEMOGRAMA
 
-        public const string HEMATOCRITO_HEMOGRAMA_HEMATOCRITO = "N009-MF000000266";	
-        public const string HEMOGLOBINA_HEMOGRAMA_HEMOGLOBINA = "N009-MF000000265";	
+        public const string HEMATOCRITO_HEMOGRAMA_HEMATOCRITO = "N009-MF000000266";
+        public const string HEMOGLOBINA_HEMOGRAMA_HEMOGLOBINA = "N009-MF000000265";
 
         //
         public const string HEMATOCRITO_HEMOGRAMA_HEMATOCRITO_DESEABLE = "N009-MF000000421";
-        public const string HEMOGLOBINA_HEMOGRAMA_HEMOGLOBINA_DESEABLE = "N009-MF000000420";	
+        public const string HEMOGLOBINA_HEMOGRAMA_HEMOGLOBINA_DESEABLE = "N009-MF000000420";
 
 
         #endregion
@@ -512,7 +512,9 @@ namespace Sigesoft.Common
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_COLOR = "N009-MF000000444";
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_ASPECTO = "N009-MF000001041";
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_DENSIDAD = "N009-MF000001043";
+        public const string EXAMEN_COMP_ORINA_MACROSCOPICO_DENSIDAD_DESEABLE = "N009-MF000003224";
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_PH = "N009-MF000001045";
+        public const string EXAMEN_COMP_ORINA_MACROSCOPICO_PH_DESEABLE = "N009-MF000003225";
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CELULAS_EPITELIALES = "N009-MF000001059";
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_LEUCOCITOS = "N009-MF000001061";
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_HEMATIES = "N009-MF000001063";
@@ -529,6 +531,9 @@ namespace Sigesoft.Common
         public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_SANGRE = "N009-MF000001047";
         public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_HEMOGLOBINA = "N009-MF000001315";
         public const string EXAMEN_COMPLETO_DE_ORINA_CONCLUSIONES_ID = "N009-MF000001154";
+        public const string EXAMEN_COMPLETO_DE_ORINA_ALBUMINA_ORINA_ID = "N009-MF000003209";
+        public const string EXAMEN_COMPLETO_DE_ORINA_RESULTADO_ID = "N009-MF000003211";
+        public const string EXAMEN_COMPLETO_DE_ORINA_RESULTADOS_ID = "N009-MF000003210";
 
         // Valor deseable
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_COLOR_DESEABLE = "N009-MF000001040";
@@ -549,7 +554,7 @@ namespace Sigesoft.Common
         public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_UROBILINOGENO_DESEABLE = "N009-MF000001050";
         public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_BILIRRUBINA_DESEABLE = "N009-MF000001052";
         public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_SANGRE_DESEABLE = "N009-MF000001048";
-        public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_HEMOGLOBINA_DESEABLE = "N009-MF000001316";	
+        public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_HEMOGLOBINA_DESEABLE = "N009-MF000001316";
 
 
         #endregion
@@ -559,13 +564,13 @@ namespace Sigesoft.Common
         public const string GRUPO_Y_FACTOR_SANGUINEO_ID = "N009-ME000000000";
         public const string GRUPO_SANGUINEO_ID = "N009-MF000000262";
         public const string FACTOR_SANGUINEO_ID = "N009-MF000000263";
-      
+
         #endregion
 
         #region GLUCOSA
 
-       
-        
+
+
         public const string GLUCOSA_GLUCOSA_VALOR_DESEABLE_ID = "N009-MF000000418";
 
         #endregion
@@ -582,7 +587,7 @@ namespace Sigesoft.Common
 
         public const string TRIGLICERIDOS_ID = "N009-ME000000017";
         public const string TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS = "N009-MF000001296";
-        public const string TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS_DESEABLE = "N009-MF000001297";	
+        public const string TRIGLICERIDOS_BIOQUIMICA_TRIGLICERIDOS_DESEABLE = "N009-MF000001297";
 
         #endregion
 
@@ -593,7 +598,7 @@ namespace Sigesoft.Common
         public const string COLESTEROL_HDL_BIOQUIMICA_COLESTEROL_TOTAL_HDL = "N009-MF000001077";
 
         public const string COLESTEROL_HDL_BIOQUIMICA_COLESTEROL_HDL_DESEABLE = "N009-MF000000414";
-        public const string COLESTEROL_HDL_BIOQUIMICA_COLESTEROL_TOTAL_HDL_DESEABLE = "N009-MF000001078";	
+        public const string COLESTEROL_HDL_BIOQUIMICA_COLESTEROL_TOTAL_HDL_DESEABLE = "N009-MF000001078";
 
         #endregion
 
@@ -604,7 +609,7 @@ namespace Sigesoft.Common
         public const string COLESTEROL_LDL_BIOQUIMICA_COLESTEROL_LDL_HDL = "N009-MF000001079";
 
         public const string COLESTEROL_LDL_BIOQUIMICA_COLESTEROL_LDL_DESEABLE = "N009-MF000001074";
-        public const string COLESTEROL_LDL_BIOQUIMICA_COLESTEROL_LDL_HDL_DESEABLE = "N009-MF000001080";	
+        public const string COLESTEROL_LDL_BIOQUIMICA_COLESTEROL_LDL_HDL_DESEABLE = "N009-MF000001080";
 
         #endregion
 
@@ -613,7 +618,7 @@ namespace Sigesoft.Common
         public const string COLESTEROL_VLDL_ID = "N009-ME000000076";
         public const string COLESTEROL_VLDL_BIOQUIMICA_COLESTEROL_VLDL = "N009-MF000001075";
 
-        public const string COLESTEROL_VLDL_BIOQUIMICA_COLESTEROL_VLDL_DESEABLE = "N009-MF000001076";	
+        public const string COLESTEROL_VLDL_BIOQUIMICA_COLESTEROL_VLDL_DESEABLE = "N009-MF000001076";
 
         #endregion
 
@@ -622,16 +627,16 @@ namespace Sigesoft.Common
         public const string CREATININA_ID = "N009-ME000000028";
         public const string CREATININA_BIOQUIMICA_CREATININA = "N009-MF000000518";
 
-        public const string CREATININA_BIOQUIMICA_CREATININA_DESEABLE = "N009-MF000000519";	
+        public const string CREATININA_BIOQUIMICA_CREATININA_DESEABLE = "N009-MF000000519";
 
         #endregion
 
         #region ACIDO_URICO
 
-        
+
         public const string ACIDO_URICO_BIOQUIMICA_ACIDO_URICO = "N009-MF000000251";
 
-        public const string ACIDO_URICO_BIOQUIMICA_ACIDO_URICO_DESEABLE = "N009-MF000000416";	
+        public const string ACIDO_URICO_BIOQUIMICA_ACIDO_URICO_DESEABLE = "N009-MF000000416";
 
         #endregion
 
@@ -647,6 +652,7 @@ namespace Sigesoft.Common
         #region BIOQUIMICA 01
 
         public const string BIOQUIMICA01_ID = "N009-ME000000086";
+        public const string ACIDO_URICO_SL = "N009-ME000000086";
         public const string BIOQUIMICA01_VALOR = "N009-MF000001425";
         public const string BIOQUIMICA01_VALOR_DESEABLE = "N009-MF000001426";
 
@@ -669,13 +675,23 @@ namespace Sigesoft.Common
         #endregion
 
 
-        #region PLOMO_SANGRE
+        #region METALES PESADOS
 
         public const string PLOMO_SANGRE_ID = "N009-ME000000060";
         public const string PLOMO_SANGRE_BIOQUIMICA_PLOMO_SANGRE = "N009-MF000001158";
+        public const string PLOMO_SANGRE_BIOQUIMICA_PLOMO_SANGRE_DESEABLE = "N009-MF000001291";
 
-        public const string PLOMO_SANGRE_BIOQUIMICA_PLOMO_SANGRE_DESEABLE = "N009-MF000001291";	
+        public const string CADMIO_ID = "N009-ME000000429";
+        public const string CADMIO_RESULTADO = "N009-MF000003228";
+        public const string CADMIO_DESEABLE = "N009-MF000003229";
 
+        public const string PLOMO_SANGRE_MAGNESIO_ID = "N009-ME000000430";
+        public const string PLOMO_SANGRE_MAGNESIO_RESULTADO_ID = "N009-MF000003230";
+        public const string PLOMO_SANGRE_MAGNESIO_DESEABLE_ID = "N009-MF000003231";
+
+        public const string COBRE_ID = "N009-ME000000426";
+        public const string COBRE_RESULTADO_ID = "N009-MF000003222";
+        public const string COBRE_DESEABLE_ID = "N009-MF000003223";
         #endregion
 
         #region TGO
@@ -683,7 +699,7 @@ namespace Sigesoft.Common
         public const string TGO_ID = "N009-ME000000054";
         public const string TGO_BIOQUIMICA_TGO = "N009-MF000000706";
 
-        public const string TGO_BIOQUIMICA_TGO_DESEABLE = "N009-MF000001292";	
+        public const string TGO_BIOQUIMICA_TGO_DESEABLE = "N009-MF000001292";
 
         #endregion
 
@@ -692,7 +708,7 @@ namespace Sigesoft.Common
         public const string TGP_ID = "N009-ME000000055";
         public const string TGP_BIOQUIMICA_TGP = "N009-MF000000707";
 
-        public const string TGP_BIOQUIMICA_TGP_DESEABLE = "N009-MF000001293";	
+        public const string TGP_BIOQUIMICA_TGP_DESEABLE = "N009-MF000001293";
 
         #endregion
 
@@ -701,8 +717,8 @@ namespace Sigesoft.Common
         public const string UREA_ID = "N009-ME000000073";
 
         public const string UREA_BIOQUIMICA_UREA = "N009-MF000000253";
-        public const string UREA_BIOQUIMICA_UREA_DESEABLE = "N009-MF000000256";	
-        
+        public const string UREA_BIOQUIMICA_UREA_DESEABLE = "N009-MF000000256";
+
         #endregion
 
         #region AGLUTINACIONES_LAMINA
@@ -717,11 +733,11 @@ namespace Sigesoft.Common
         public const string AGLUTINACIONES_LAMINA_REACTIVOS_PARATIFICO_A = "N009-MF000000445";
         public const string AGLUTINACIONES_LAMINA_REACTIVOS_PARATIFICO_A_DESEABLE = "N009-MF000001322";
 
-        public const string AGLUTINACIONES_LAMINA_REACTIVOS_PARATIFICO_B = "N009-MF000001323";	
+        public const string AGLUTINACIONES_LAMINA_REACTIVOS_PARATIFICO_B = "N009-MF000001323";
         public const string AGLUTINACIONES_LAMINA_REACTIVOS_PARATIFICO_B_DESEABLE = "N009-MF000001324";
 
         public const string AGLUTINACIONES_LAMINA_REACTIVOS_BRUCELLA = "N009-MF000001431";
-        public const string AGLUTINACIONES_LAMINA_REACTIVOS_BRUCELLA_DESEABLE = "N009-MF000001432";	
+        public const string AGLUTINACIONES_LAMINA_REACTIVOS_BRUCELLA_DESEABLE = "N009-MF000001432";
 
 
         #endregion
@@ -733,32 +749,32 @@ namespace Sigesoft.Common
         public const string SUB_UNIDAD_BETA_CUALITATIVO_OBSERVACION = "N009-MF000001437";
 
 
-        #endregion  
+        #endregion
 
         #region  EXAMEN_ELISA
 
-  
 
-        
-        public const string EXAMEN_ELISA__REACTIVOS_EXAMEN_ELISA_OBSERVACION = "N009-MF000001433";	
+
+
+        public const string EXAMEN_ELISA__REACTIVOS_EXAMEN_ELISA_OBSERVACION = "N009-MF000001433";
         #endregion
 
         #region HEPATITIS A
 
         public const string HEPATITIS_A_ID = "N009-ME000000004";
         public const string HEPATITIS_A_REACTIVOS_HEPATITIS_A = "N009-MF000000264";
-    
+
         public const string HEPATITIS_A_REACTIVOS_HEPATITIS_A_DESEABLE = "N009-MF000001289";
         public const string HEPATITIS_A_REACTIVOS_HEPATITIS_A_OBSERVACION = "N009-MF000001434";
-     
+
 
         #endregion
 
         #region HEPATITIS C
 
-        public const string HEPATITIS_C_ID = "N009-ME000000005";     
+        public const string HEPATITIS_C_ID = "N009-ME000000005";
         public const string HEPATITIS_C_REACTIVOS_HEPATITIS_C = "N009-MF000000267";
-     
+
         public const string HEPATITIS_C_REACTIVOS_HEPATITIS_C_DESEABLE = "N009-MF000001290";
         public const string HEPATITIS_C_REACTIVOS_HEPATITIS_C_OBSERVACION = "N009-MF000001435";
 
@@ -773,7 +789,7 @@ namespace Sigesoft.Common
         public const string LABORATORIO_VDRL_ID = "N009-MF000000269";
 
         public const string VDRL_REACTIVOS_VDRL_DESEABLE = "N009-MF000001290";
-        public const string VDRL_REACTIVOS_VDRL_OBSERVACION = "N009-MF000001290";	
+        public const string VDRL_REACTIVOS_VDRL_OBSERVACION = "N009-MF000001290";
         #endregion
 
         #region PARASITOLOGICO_SIMPLE
@@ -789,7 +805,7 @@ namespace Sigesoft.Common
         public const string PARASITOLOGICO_SIMPLE_EXAMEN_HECES_TROFOZOITOS = "N009-MF000001335";
         public const string PARASITOLOGICO_SIMPLE_EXAMEN_HECES_HEMATIES = "N009-MF000001336";
         public const string PARASITOLOGICO_SIMPLE_EXAMEN_HECES_LEUCOCITOS = "N009-MF000001337";
-        public const string PARASITOLOGICO_SIMPLE_EXAMEN_HECES_RESULTADOS = "N009-MF000001339";	
+        public const string PARASITOLOGICO_SIMPLE_EXAMEN_HECES_RESULTADOS = "N009-MF000001339";
 
 
         #endregion
@@ -830,7 +846,7 @@ namespace Sigesoft.Common
         public const string PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_TROFOZOITOS = "N009-MF000001366";
         public const string PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_HEMATIES = "N009-MF000001367";
         public const string PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_LEUCOCITOS = "N009-MF000001368";
-        public const string PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_RESULTADOS = "N009-MF000001370";	
+        public const string PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_RESULTADOS = "N009-MF000001370";
 
         #endregion
 
@@ -840,15 +856,56 @@ namespace Sigesoft.Common
 
         public const string BK_DIRECTO_MICROBIOLOGICO_MUESTRA = "N009-MF000001371";
         public const string BK_DIRECTO_MICROBIOLOGICO_COLORACION = "N009-MF000001372";
-        public const string BK_DIRECTO_MICROBIOLOGICO_RESULTADOS = "N009-MF000001373";	
+        public const string BK_DIRECTO_MICROBIOLOGICO_RESULTADOS = "N009-MF000001373";
 
 
         #endregion
 
+        #region TOXICOLOGIA
+
+        public const string COPROCULTIVO_ID = "N009-ME000000427";
+
+        public const string PLOMO_ID = "N009-ME000000408";
+        public const string PLOMO_RESULTADO = "N009-MF000003104";
+        public const string PLOMO_DESEABLE = "N009-MF000003105";
+
+        public const string CADMIO_EN_ORINA_ID = "N009-ME000000409";
+        public const string CADMIO_EN_ORINA_RESULTADO_ID = "N009-MF000003106";
+        public const string CADMIO_EN_ORINA_DESEABLE_ID = "N009-MF000003107";
+
+        public const string MAGNESIO_ID = "N009-ME000000410";
+        public const string MAGNESIO_RESULTADO_ID = "N009-MF000003108";
+        public const string MAGNESIO_DESEABLE_ID = "N009-MF000003109";
+
+        public const string BARBITURICOS_ID = "N009-ME000000417";
+        public const string BARBITURICOS_RESULTADO_ID = "N009-MF000003213";
+
+        public const string METANFETAMINAS_ID = "N009-ME000000338";
+        public const string METANFETAMINAS_RESULTADO_ID = "N009-MF000003215";
+
+        public const string MORFINA_ID = "N009-ME000000420";
+        public const string MORFINA_RESULTADO_ID = "N009-MF000003215";
+
+        public const string OPIACEOS_ID = "N009-ME000000421";
+        public const string OPIACEOS_RESULTADO_ID = "N009-MF000003217";
+
+        public const string METADONA_ID = "N009-ME000000418";
+        public const string METADONA_RESULTADO_ID = "N009-MF000003214";
+
+        public const string FENCICLIDINA_ID = "N009-ME000000423";
+        public const string FENCICLIDINA_RESULTADO_ID = "N009-MF000003219";
+
+        public const string ALCOHOL_EN_SALIVA_ID = "N009-ME000000416";
+        public const string ALCOHOL_EN_SALIVA_RESULTADO_ID = "N009-MF000003212";
+
+        public const string EXTASIS_ID = "N009-ME000000422";
+        public const string EXTASIS_RESULTADO_ID = "N009-MF000003218";
+        #endregion
 
         #region TOXICOLOGICO_COCAINA_MARIHUANA
 
         public const string TOXICOLOGICO_COCAINA_MARIHUANA_ID = "N009-ME000000053";
+
 
         public const string COCAINA_MARIHUANA_TOXICOLOGICOS_MUESTRA = "N009-MF000001374";
         public const string COCAINA_MARIHUANA_TOXICOLOGICOS_METODO = "N009-MF000001375";
@@ -867,7 +924,7 @@ namespace Sigesoft.Common
         public const string COCAINA_MARIHUANA_TOXICOLOGICOS_SUFRE_ENFER = "N009-MF000001407";
         public const string COCAINA_MARIHUANA_TOXICOLOGICOS_SUFRE_ENFER_CUAL = "N009-MF000001408";
         public const string COCAINA_MARIHUANA_TOXICOLOGICOS_CUANTAS_VECES_SEMANA2 = "N009-MF000001409";
-       
+
 
         #endregion
 
@@ -877,7 +934,7 @@ namespace Sigesoft.Common
 
         public const string LABORATORIO_HEMATOCRITO_ID = "N009-ME000000001";
         public const string HEMATOCRITO_ID = "N009-MF000000266";
-     
+
 
         public const string PERFIL_HIPIDICO_ID = "N009-ME000000007";
         public const string PERFIL_HIPIDICO_COLESTEROL_HDL_ID = "N009-MF000000254";
@@ -885,8 +942,8 @@ namespace Sigesoft.Common
         public const string PERFIL_HIPIDICO_TRIGLICERIDO_ID = "N009-MF000000268";
         public const string PERFIL_HIPIDICO_TRIGLICERIDO_DESEABLE_ID = "N009-MF000000419";
 
-      
-        
+
+
         public const string EXAMEN_D_HECES_ID = "N009-ME000000049";
         public const string EXAMEN_D_HECES_THENEVON_EXAMEN_DE_HECES_ID = "N009-MF000000515";
 
@@ -905,8 +962,8 @@ namespace Sigesoft.Common
         public const string TESTOJOSECO_SENSACION_CUERPO_EXTRANO = "N009-MF000001387";
         public const string TESTOJOSECO_ARDOR = "N009-MF000001388";
         public const string TESTOJOSECO_PICOR = "N009-MF000001389";
-        public const string TESTOJOSECO_MALESTAR_OJO= "N009-MF000001390";
-        public const string TESTOJOSECO_DOLO_AGUDO= "N009-MF000001391";
+        public const string TESTOJOSECO_MALESTAR_OJO = "N009-MF000001390";
+        public const string TESTOJOSECO_DOLO_AGUDO = "N009-MF000001391";
         public const string TESTOJOSECO_LAGRIMEO = "N009-MF000001392";
         public const string TESTOJOSECO_OJOS_LLOROSOS = "N009-MF000001393";
         public const string TESTOJOSECO_SENSIBILIDAD_LUZ = "N009-MF000001394";
@@ -935,15 +992,28 @@ namespace Sigesoft.Common
         public const string COLONOSCOPIA_HALLAZGOS = "N009-MF000000455";
 
         public const string DENSITOMETRIA_OSEA_ID = "N009-ME000000018";
+
+
         public const string DENSITOMETRIA_OSEA_HALLAZGOS = "N009-MF000000440";
 
         public const string ECOGRAFIA_MAMA_ID = "N009-ME000000061";
 
 
+        public const string R_P_R_ID = "N009-ME000000425";
+        public const string INMUNOLOGIA_R_P_R_ID = "N009-MF000003221";
+
+        public const string HBSAG_ID = "N009-ME000000301";
+
+        public const string GGTP_ID = "N009-ME000000424";
+        public const string GGTP_REACTIVOS = "N009-MF000003220";
+
+
+
+        public const string GLUCOSA_SL_ID = "N009-ME000000018";
 
         #region IDs Informes
 
-        
+
         public const string INFORME_ANEXO_312 = "312";
         public const string INFORME_ANEXO_7C = "7C";
         public const string INFORME_FICHA_MEDICA_TRABAJADOR = "FMT";
@@ -952,17 +1022,17 @@ namespace Sigesoft.Common
         public const string INFORME_HISTORIA_OCUPACIONAL = "HOC";
         public const string INFORME_RADIOGRAFICO_OIT = "ROIT";
         public const string INFORME_CLINICO = "IC";
-        public const string INFORME_MEDICO_RESUMEN= "IMR";
+        public const string INFORME_MEDICO_RESUMEN = "IMR";
         public const string INFORME_LABORATORIO_CLINICO = "ILAB_CLINICO";
         public const string INFORME_EXAMENES_ESPECIALES = "EXAM_ESP";
 
         public const string INFORME_CERTIFICADO_APTITUD = "CAP";
         public const string INFORME_CERTIFICADO_APTITUD_EMPRESARIAL = "CAPE";
-        public const string INFORME_CERTIFICADO_APTITUD_SM= "CAPSM";
+        public const string INFORME_CERTIFICADO_APTITUD_SM = "CAPSM";
         public const string INFORME_CERTIFICADO_APTITUD_COMPLETO = "CAPC";
         public const string INFORME_CERTIFICADO_APTITUD_SIN_DX = "CAPSD";
         public const string CONSENTIMIENTO_INFORMADO = "CI";
-        
+
         public const string INFORME_FICHA_MEDICA_TRABAJADOR_CI = "FMT_CI";
         public const string HISTORIA_CLINICA = "HIST_CLI";
         public const string FORMATO_ATENCION = "FA";
@@ -978,11 +1048,11 @@ namespace Sigesoft.Common
         public const string APTITUD_YANACOCHA = "APT_YANA";
         #endregion
 
-    
+
 
         #region EXAMEN_FISICO
-        
-       
+
+
         public const string EXAMEN_FISICO_ID = "N002-ME000000022";
         public const string EXAMEN_FISICO_HALLAZGOS_ID = "N002-MF000000138";
         public const string EXAMEN_FISICO_OIDOS_ID = "N002-MF000000121";
@@ -1030,11 +1100,11 @@ namespace Sigesoft.Common
         public const string EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID = "N009-MF000000625";
         public const string EXAMEN_FISICO_DESCRIPCION_ID = "N009-MF000000439";
 
-       
+
         #endregion
 
         #region RX
-         
+
         public const string RX_TORAX_ID = "N002-ME000000032";
         public const string RX_HALLAZGOS = "N002-MF000000166";
         public const string RX_CONCLUSIONES_RADIOGRAFICAS_ID = "N009-MF000000224";
@@ -1079,7 +1149,7 @@ namespace Sigesoft.Common
 
 
 
-        
+
         //MARQUE LA RESPUESTA ADECUADA
         public const string RX_AA_ID = "N009-MF000000762";
         public const string RX_AT_ID = "N009-MF000000763";
@@ -1146,7 +1216,7 @@ namespace Sigesoft.Common
         public const string RX_3_2_ID = "N009-MF000000725";
         public const string RX_3_3_ID = "N009-MF000000726";
         public const string RX_3_MAS_ID = "N009-MF000000727";
-    
+
         //Placa Radiografica
         public const string RX_CALIDAD_ID = "N002-MF000000184";
         public const string RX_CAUSAS_ID = "N002-MF000000210";
@@ -1175,12 +1245,12 @@ namespace Sigesoft.Common
         #endregion
 
         public const string INFORME_LABORATORIO_ID = "N009-ME000000002";
-       
-        
+
+
         public const string LABORATORIO_HALLAZGO_PATOLOGICO_LABORATORIO_ID = "N009-MF000000272";
 
         #region OFTALMOLOGIA
-        
+
         public const string OFTALMOLOGIA_CORRECTORES_OCULARES_SI_ID = "N002-MF000000224";
         public const string OFTALMOLOGIA_CORRECTORES_OCULARES_NO_ID = "N009-MF000000719";
         public const string OFTALMOLOGIA_CORRECTORES_OCULARES_ULTIMA_REFRACCION_ID = "N002-MF000000225";
@@ -1212,7 +1282,7 @@ namespace Sigesoft.Common
         public const string OFTALMOLOGIA_NERVIO_OPTICO_DERECHO_ID = "N002-MF000000246";
         public const string OFTALMOLOGIA_NERVIO_OPTICO_IZQUIERDO_ID = "N002-MF000000247";
         public const string OFTALMOLOGIA_PARPADO_OJO_DERECHO_ID = "N002-MF000000251";
-        public const string OFTALMOLOGIA_PARPADO_OJO_IZQUIERDO_ID = "N002-MF000000252";      
+        public const string OFTALMOLOGIA_PARPADO_OJO_IZQUIERDO_ID = "N002-MF000000252";
         public const string OFTALMOLOGIA_CONJUNTIVA_OJO_DERECHO_ID = "N002-MF000000254";
         public const string OFTALMOLOGIA_CONJUNTIVA_OJO_IZQUIERDO_ID = "N002-MF000000255";
         public const string OFTALMOLOGIA_CORNEA_OJO_DERECHO_ID = "N009-MF000000524";
@@ -1223,11 +1293,11 @@ namespace Sigesoft.Common
         public const string OFTALMOLOGIA_IRIS_OJO_IZQUIERDO_ID = "N009-MF000000531";
         public const string OFTALMOLOGIA_MOV_OCULARES_OJO_DERECHO_ID = "N009-MF000000533";
         public const string OFTALMOLOGIA_MOV_OCULARES_OJO_IZQUIERDO_ID = "N009-MF000000534";
-       
-        
+
+
         public const string OFTALMOLOGIA_CONFRONTACION_CAMPO_COMPLETO_OJO_IZQUIERDO_ID = "N009-MF000000713";
         public const string OFTALMOLOGIA_CONFRONTACION_CAMPO_RESTRINGIDO_OJO_IZQUIERDO_ID = "N009-MF000000714";
-        
+
         public const string OFTALMOLOGIA_DICROMATOPSIA_ID = "N009-MF000000522";
         public const string OFTALMOLOGIA_TEST_ESTEREOPSIS_TIEMPO_ID = "N002-MF000000258";
         public const string OFTALMOLOGIA_TEST_ESTEREOPSIS_NORMAL_ID = "N002-MF000000343";
@@ -1286,13 +1356,13 @@ namespace Sigesoft.Common
 
         public const string FONDO_OJO_OD = "N002-MF000000243";
         public const string FONDO_OJO_OI = "N002-MF000000244";
-        public const string FONDO_OJO_ANORMAL_1  = "N002-MF000000248";
+        public const string FONDO_OJO_ANORMAL_1 = "N002-MF000000248";
         public const string FONDO_OJO_ANORMAL_2 = "N002-MF000000249";
         public const string FONDO_OJO_MACULOPATIA = "N002-MF000000250";
         public const string FONDO_OJO_PARPADO_OD = "N002-MF000000251";
-        public const string FONDO_OJO_PARPADO_OI = "N002-MF000000252";  
-        public const string  FONDO_OJO_NEURITIS= "N002-MF000000253";
-        public const string  FONDO_OJO_CONJ_OD= "N002-MF000000254";
+        public const string FONDO_OJO_PARPADO_OI = "N002-MF000000252";
+        public const string FONDO_OJO_NEURITIS = "N002-MF000000253";
+        public const string FONDO_OJO_CONJ_OD = "N002-MF000000254";
         public const string FONDO_OJO_CONJ_OI = "N002-MF000000255";
 
         public const string FONDO_OJO_RETINOPATIA = "N009-MF000000523";
@@ -1330,27 +1400,27 @@ namespace Sigesoft.Common
         public const string TEST_ESTEREOPSIS_TIEMPO = "N002-MF000000258";
         public const string TEST_ESTEREOPSIS_ANORMAL = "N002-MF000000342";
         public const string TEST_ESTEREOPSIS_NORMAL = "N002-MF000000343";
-        public const string TEST_ESTEREOPSIS_RECUPERACION= "N009-MF000002093";
+        public const string TEST_ESTEREOPSIS_RECUPERACION = "N009-MF000002093";
 
-        #endregion  
+        #endregion
 
         #region Campimetria
         public const string CAMPIMETRIA_ID = "N009-ME000000133";
 
         public const string CAMPIMETRIA_OD = "N009-MF000002094";
         public const string CAMPIMETRIA_OI = "N009-MF000002095";
-        #endregion  
+        #endregion
 
         #region Tonometria
         public const string TONOMETRIA_ID = "N009-ME000000134";
 
         public const string TONOMETRIA_OD = "N009-MF000002096";
         public const string TONOMETRIA_OI = "N009-MF000002097";
-        #endregion 
+        #endregion
 
         #region ALTURA_ESTRUCTURAL
 
-        public const string ALTURA_ESTRUCTURAL_ID = "N009-ME000000015";      
+        public const string ALTURA_ESTRUCTURAL_ID = "N009-ME000000015";
         public const string ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_SI_ID = "N009-MF000000781";
         public const string ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_NO_ID = "N009-MF000000782";
         public const string ALTURA_ESTRUCTURAL_ANTECEDENTE_TEC_OBS_ID = "N009-MF000000783";
@@ -1398,13 +1468,13 @@ namespace Sigesoft.Common
         public const string EVAL_NEUROLOGICA_DESCRIPCION_ID = "N009-MF000000354";
 
         public const string OWNER_ORGNIZATION_ID = "N009-OO000000052";
-        
+
         public const string GenericErrorMessage = "Se generó un error al procesar los datos. Por favor verificar el LOG y comunicarse con el administrador del sistema.";
         public const string GOOGLE_IP_ADDRESS = "74.125.229.247";
         public const string IMAGE_PREVIEW_DIRECTORY = @"Images\Preview\";
 
         #region ANTROPOMETRIA
-              
+
         public const string ANTROPOMETRIA_ID = "N002-ME000000002";
         public const string ANTROPOMETRIA_TALLA_ID = "N002-MF000000007";
         public const string ANTROPOMETRIA_PESO_ID = "N002-MF000000008";
@@ -1413,14 +1483,14 @@ namespace Sigesoft.Common
         public const string ANTROPOMETRIA_PERIMETRO_CADERA_ID = "N002-MF000000011";
         public const string ANTROPOMETRIA_INDICE_CINTURA_ID = "N002-MF000000012";
         public const string ANTROPOMETRIA_PORCENTAJE_GRASA_CORPORAL_ID = "N002-MF000000013";
-        
-      
-        
+
+
+
         #endregion
 
-      
+
         #region FUNCIONES_VITALES
-               
+
         public const string FUNCIONES_VITALES_ID = "N002-ME000000001";
         public const string FUNCIONES_VITALES_PAS_ID = "N002-MF000000001";
         public const string FUNCIONES_VITALES_PAD_ID = "N002-MF000000002";
@@ -1482,17 +1552,17 @@ namespace Sigesoft.Common
         public const string TAMIZAJE_DERMATOLOGIO_DERMATOPIA_ID = "N009-MF000001015";
         public const string TAMIZAJE_DERMATOLOGIO_NIKOLSKY_ID = "N009-MF000001016";
         #endregion
-      
+
 
         public const string EXAMEN_MAMA_ID = "N009-ME000000012";
         public const string EXAMEN_MAMA_HALLAZGOS_ID = "N009-MF000000511";
-        
+
         public const string AUDIOMETRIA_OTOSCOPIA_OD = "N002-MF000000178";
         public const string AUDIOMETRIA_OTOSCOPIA_OI = "N002-MF000000179";
         public const string AUDIOMETRIA_ID = "N002-ME000000005";
 
         #region Espirometria
-              
+
         public const string AUDIOMETRIA_CONCLUSIONES_ID = "N009-MF000000226";
 
         public const string ESPIROMETRIA_ID = "N002-ME000000031";
@@ -1512,7 +1582,7 @@ namespace Sigesoft.Common
         public const string ESPIROMETRIA_VEF_CVF_ID = "N009-ME000000580";
         //public const string ESPIROMETRIA_VEF_CVF_ID = "N002-ME000000171";
         public const string ESPIROMETRIA_ORIGEN_ETNICO = "N009-MF000000622";
-        public const string ESPIROMETRIA_TABAQUISMO = "N009-MF000000623"; 
+        public const string ESPIROMETRIA_TABAQUISMO = "N009-MF000000623";
 
         public const string ESPIROMETRIA_RESULTADO_ID = "N009-MF000000205";
         public const string ESPIROMETRIA_OBSERVACION_ID = "N009-MF000000228";
@@ -1611,7 +1681,7 @@ namespace Sigesoft.Common
         public const string ELECTROCARDIOGRAMA_SOPLO_CARDIACO_ID = "N009-MF000000122";
         public const string ELECTROCARDIOGRAMA_TABAQUISMO_ID = "N009-MF000000131";
         //
-        
+
         //SINTOMAS
         public const string ELECTROCARDIOGRAMA_CLAUDICAC_INTERMITENTE_ID = "N009-MF000000142";
         public const string ELECTROCARDIOGRAMA_DESMAYOS_ID = "N009-MF000000138";
@@ -1644,19 +1714,19 @@ namespace Sigesoft.Common
         #endregion
 
         #region PRUEBA ESFUERZO
-        
-     
+
+
         public const string PRUEBA_ESFUERZO_ID = "N002-ME000000029";
         public const string PRUEBA_ESFUERZO_DESCRIPCION_ID = "N002-MF000000370";
-    //Antecedentes
+        //Antecedentes
         public const string PRUEBA_ESFUERZO_FUMADOR_ID = "N002-MF000000344";
         public const string PRUEBA_ESFUERZO_DIABETICO_ID = "N002-MF000000345";
         public const string PRUEBA_ESFUERZO_INFARTO_ID = "N002-MF000000346";
         public const string PRUEBA_ESFUERZO_ANTECEDENTE_FAMILIAR_ID = "N002-MF000000347";
         public const string PRUEBA_ESFUERZO_PRIOR_ID = "N002-MF000000348";
         public const string PRUEBA_ESFUERZO_ANGINA_ID = "N002-MF000000349";
-       
-        
+
+
         //RESUMEN
         public const string PRUEBA_ESFUERZO_CPVS_ID = "N002-MF000000363";
         public const string PRUEBA_ESFUERZO_TIEMPO_EJERCICIO_ID = "N002-MF000000364";
@@ -1728,7 +1798,7 @@ namespace Sigesoft.Common
         public const string PRUEBA_ESFUERZO_C_ESFUERZO_PAS_ID = "N009-MF000000953";
         public const string PRUEBA_ESFUERZO_C_ESFUERZO_PRODUCTO_ID = "N009-MF000000954";
         public const string PRUEBA_ESFUERZO_C_ESFUERZO_COMENTARIO_ID = "N009-MF000000955";
-        
+
         public const string PRUEBA_ESFUERZO_P_RECUPERACION_INICIO_ID = "N009-MF000000906";
         public const string PRUEBA_ESFUERZO_P_RECUPERACION_DURACION_ID = "N009-MF000000907";
         public const string PRUEBA_ESFUERZO_P_RECUPERACION_VELOCIDAD_ID = "N009-MF000000908";
@@ -1738,7 +1808,7 @@ namespace Sigesoft.Common
         public const string PRUEBA_ESFUERZO_P_RECUPERACION_PAS_ID = "N009-MF000000959";
         public const string PRUEBA_ESFUERZO_P_RECUPERACION_PRODUCTO_ID = "N009-MF000000960";
         public const string PRUEBA_ESFUERZO_P_RECUPERACION_COMENTARIO_ID = "N009-MF000000961";
-        
+
         public const string PRUEBA_ESFUERZO_S_RECUPERACION_INICIO_ID = "N009-MF000000911";
         public const string PRUEBA_ESFUERZO_S_RECUPERACION_DURACION_ID = "N009-MF000000912";
         public const string PRUEBA_ESFUERZO_S_RECUPERACION_VELOCIDAD_ID = "N009-MF000000913";
@@ -1763,7 +1833,7 @@ namespace Sigesoft.Common
         public const string PRUEBA_ESFUERZO_ELEVACION_ST_ID = "N009-MF000000980";
         public const string PRUEBA_ESFUERZO_ELEVACION_ST_EN_ID = "N009-MF000000981";
         public const string PRUEBA_ESFUERZO_ELEVACION_ST_ALOS_ID = "N009-MF000000982";
-        
+
         public const string PRUEBA_ESFUERZO_DEPRESION_ST_ID = "N009-MF000000983";
         public const string PRUEBA_ESFUERZO_DEPRESION_ST_EN_ID = "N009-MF000000984";
         public const string PRUEBA_ESFUERZO_DEPRESION_ST_ALOS_ID = "N009-MF000000985";
@@ -1832,7 +1902,7 @@ namespace Sigesoft.Common
 
         public const string ODONTOGRAMA_ID = "N002-ME000000027";
         public const string ODONTOGRAMA_TABACO_ID = "N009-MF000000040";
-        public const string ODONTOGRAMA_DIABETES_ID = "N009-MF000000210";        
+        public const string ODONTOGRAMA_DIABETES_ID = "N009-MF000000210";
         public const string ODONTOGRAMA_TBC_ID = "N009-MF000000208";
         public const string ODONTOGRAMA_ETS_ID = "N009-MF000000211";
         public const string ODONTOGRAMA_HEMATOPATIAS_ID = "N009-MF000000209";
@@ -1858,8 +1928,8 @@ namespace Sigesoft.Common
         public const string ALTURA_GEOGRAFICA_DESCRIPCION_ID = "N009-MF000000230";
 
         #region EXAMEN FISICO 7C
-        
-      
+
+
         public const string EXAMEN_FISICO_7C_ID = "N009-ME000000052";
         public const string EXAMEN_FISICO_7C_RUIDO_ID = "N009-MF000000667";
         public const string EXAMEN_FISICO_7C_CANCERIGENOS_ID = "N009-MF000000668";
@@ -1880,50 +1950,50 @@ namespace Sigesoft.Common
         public const string EXAMEN_FISICO_7C_OTROS_ID = "N009-MF000000685";
         public const string EXAMEN_FISICO_7C_DESCRIBIR_ID = "N009-MF000000686";
 
-        public const string EXAMEN_FISICO_7C_EXAMENFISICO_ABDOMEN_DESCRIPCION = "N009-MF000000697" ;
-         public const string EXAMEN_FISICO_7C_EXAMENFISICO_ANILLOS_INGUINALES_DESCRIPCION = "N009-MF000000698";
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_BOCA_ADMIGDALA_FARINGE_LARINGE_DESCRIPCION = "N009-MF000000690"; 
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_CABEZA_DESCRIPCION = "N009-MF000000687";
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_COLUMNA_DESCRIPCION = "N009-MF000000696" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_CUELLO_DESCRIPCION = "N009-MF000000688" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_GANGLIOS_DESCRIPCION = "N009-MF000000702" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_HERNIAS_DESCRIPCION = "N009-MF000000699" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_MARCHA_DESCRIPCION = "N009-MF000000695" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_INFERIORES_DESCRIPCION = "N009-MF000000693" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_SUPERIORES_DESCRIPCION = "N009-MF000000692" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_NARIZ_DESCRIPCION = "N009-MF000000689" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_ORGANOS_GENITALES_DESCRIPCION = "N009-MF000000701" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_OSTEO_TENDINOSOS_DESCRIPCION = "N009-MF000000694" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION = "N009-MF000000691" ;
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_VARICES_DESCRIPCION = "N009-MF000000700";
+        public const string EXAMEN_FISICO_7C_EXAMENFISICO_ABDOMEN_DESCRIPCION = "N009-MF000000697";
+        public const string EXAMEN_FISICO_7C_EXAMENFISICO_ANILLOS_INGUINALES_DESCRIPCION = "N009-MF000000698";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_BOCA_ADMIGDALA_FARINGE_LARINGE_DESCRIPCION = "N009-MF000000690";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_CABEZA_DESCRIPCION = "N009-MF000000687";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_COLUMNA_DESCRIPCION = "N009-MF000000696";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_CUELLO_DESCRIPCION = "N009-MF000000688";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_GANGLIOS_DESCRIPCION = "N009-MF000000702";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_HERNIAS_DESCRIPCION = "N009-MF000000699";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_MARCHA_DESCRIPCION = "N009-MF000000695";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_INFERIORES_DESCRIPCION = "N009-MF000000693";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_MIEMBROS_SUPERIORES_DESCRIPCION = "N009-MF000000692";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_NARIZ_DESCRIPCION = "N009-MF000000689";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_ORGANOS_GENITALES_DESCRIPCION = "N009-MF000000701";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_OSTEO_TENDINOSOS_DESCRIPCION = "N009-MF000000694";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION = "N009-MF000000691";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_VARICES_DESCRIPCION = "N009-MF000000700";
 
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_PULMONES_NORMAL = "N009-MF000000660";
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_PULMONES_ANORMAL = "N009-MF000000661";
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_PULMONES_DESCRIPCION = "N009-MF000000662";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_PULMONES_NORMAL = "N009-MF000000660";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_PULMONES_ANORMAL = "N009-MF000000661";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_PULMONES_DESCRIPCION = "N009-MF000000662";
 
 
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_NORMAL = "N009-MF000000663";
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_ANORMAL = "N009-MF000000664";
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION = "N009-MF000000665";
-         public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_NO_RELIZADO = "N009-MF000000666";
-        
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_NORMAL = "N009-MF000000663";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_ANORMAL = "N009-MF000000664";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION = "N009-MF000000665";
+        public const string EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_NO_RELIZADO = "N009-MF000000666";
+
         // COMBOS ***
         public const string EXAMEN_FISICO_7C_CABEZA_ID = "N009-MF000000626";
         public const string EXAMEN_FISICO_7C_CUELLO_ID = "N009-MF000000627";
         public const string EXAMEN_FISICO_7C_NARIZ_ID = "N009-MF000000628";
         public const string EXAMEN_FISICO_7C_BOCA_ID = "N009-MF000000629";
-        public const string EXAMEN_FISICO_7C_REFLEJOS_PUPILARES_ID = "N009-MF000000648";    
+        public const string EXAMEN_FISICO_7C_REFLEJOS_PUPILARES_ID = "N009-MF000000648";
         public const string EXAMEN_FISICO_7C_MIEMBROS_SUPERIORES = "N009-MF000000649";
         public const string EXAMEN_FISICO_7C_MIEMBROS_INFERIORES = "N009-MF000000650";
         public const string EXAMEN_FISICO_7C_REFLEJOS_OSTEO = "N009-MF000000651";
         public const string EXAMEN_FISICO_7C_MARCHA = "N009-MF000000652";
-        public const string	EXAMEN_FISICO_7C_COLUMNA = "N009-MF000000653";
-        public const string	EXAMEN_FISICO_7C_ABDOMEN = "N009-MF000000654";
-        public const string	EXAMEN_FISICO_7C_ANILLOS_IMGUINALES = "N009-MF000000655";
-        public const string	EXAMEN_FISICO_7C_HERNIAS = "N009-MF000000656";
+        public const string EXAMEN_FISICO_7C_COLUMNA = "N009-MF000000653";
+        public const string EXAMEN_FISICO_7C_ABDOMEN = "N009-MF000000654";
+        public const string EXAMEN_FISICO_7C_ANILLOS_IMGUINALES = "N009-MF000000655";
+        public const string EXAMEN_FISICO_7C_HERNIAS = "N009-MF000000656";
         public const string EXAMEN_FISICO_7C_VARICES = "N009-MF000000657";
-        public const string	EXAMEN_FISICO_7C_ORGANOS_GENITALES = "N009-MF000000658";
-        public const string	EXAMEN_FISICO_7C_GANGLIOS = "N009-MF000000659";
+        public const string EXAMEN_FISICO_7C_ORGANOS_GENITALES = "N009-MF000000658";
+        public const string EXAMEN_FISICO_7C_GANGLIOS = "N009-MF000000659";
         //***
 
         public const string EXAMEN_FISICO_7C_HALLAZGOS_ID = "N009-MF000000703";
@@ -1933,7 +2003,7 @@ namespace Sigesoft.Common
         public const string EXAMEN_FISICO_7C_RIESGO_QUIMICO = "N009-MF000001829";
         public const string EXAMEN_FISICO_7C_RIESGO_BIOLOGICO = "N009-MF000001830";
         public const string EXAMEN_FISICO_7C_RIESGO_ERGONOMICO = "N009-MF000001831";
-        public const string EXAMEN_FISICO_7C_RIESGO_PSICOLABORAL= "N009-MF000001832";
+        public const string EXAMEN_FISICO_7C_RIESGO_PSICOLABORAL = "N009-MF000001832";
         #endregion
 
         public const string MAMOGRAFIA_ID = "N009-ME000000014";
@@ -1941,7 +2011,7 @@ namespace Sigesoft.Common
         public const string MAMOGRAFIA_IZQUIERDA_ID = "N009-MF000000024";
 
         #region Papanicolao
-        
+
         public const string PAPANICOLAU_ID = "N009-ME000000013";
         public const string PAPANICOLAU_HALLAZGOS = "N009-MF000000446";
         public const string PAPANICOLAU_RADIOGRAFIA_HALLAZGOS = "N009-MF000001139";
@@ -1951,236 +2021,236 @@ namespace Sigesoft.Common
         #region MyRegion
 
         // Cuadrante 1
-        public const string  D11_1 = "N002-ODO00000001";
-        public const string  D11_2 = "N002-ODO00000002";
-        public const string  D11_3 = "N002-ODO00000003";
-        public const string  D11_4 = "N002-ODO00000004";
-        public const string  D11_5 = "N002-ODO00000005";
-        public const string  D11_6 = "N002-ODO00000006";
+        public const string D11_1 = "N002-ODO00000001";
+        public const string D11_2 = "N002-ODO00000002";
+        public const string D11_3 = "N002-ODO00000003";
+        public const string D11_4 = "N002-ODO00000004";
+        public const string D11_5 = "N002-ODO00000005";
+        public const string D11_6 = "N002-ODO00000006";
 
-        public const string  D12_1 = "N002-ODO00000007";
-        public const string  D12_2 = "N002-ODO00000008";
-        public const string  D12_3 = "N002-ODO00000009";
-        public const string  D12_4 = "N002-ODO00000010";
-        public const string  D12_5 = "N002-ODO00000011";
-        public const string  D12_6 = "N002-ODO00000012";
+        public const string D12_1 = "N002-ODO00000007";
+        public const string D12_2 = "N002-ODO00000008";
+        public const string D12_3 = "N002-ODO00000009";
+        public const string D12_4 = "N002-ODO00000010";
+        public const string D12_5 = "N002-ODO00000011";
+        public const string D12_6 = "N002-ODO00000012";
 
-        public const string  D13_1 = "N002-ODO00000013";
-        public const string  D13_2 = "N002-ODO00000014";
-        public const string  D13_3 = "N002-ODO00000015";
-        public const string  D13_4 = "N002-ODO00000016";
-        public const string  D13_5 = "N002-ODO00000017";
-        public const string  D13_6 = "N002-ODO00000018";
+        public const string D13_1 = "N002-ODO00000013";
+        public const string D13_2 = "N002-ODO00000014";
+        public const string D13_3 = "N002-ODO00000015";
+        public const string D13_4 = "N002-ODO00000016";
+        public const string D13_5 = "N002-ODO00000017";
+        public const string D13_6 = "N002-ODO00000018";
 
-        public const string  D14_1 = "N002-ODO00000019";
-        public const string  D14_2 = "N002-ODO00000020";
-        public const string  D14_3 = "N002-ODO00000021";
-        public const string  D14_4 = "N002-ODO00000022";
-        public const string  D14_5 = "N002-ODO00000023";
-        public const string  D14_6 = "N002-ODO00000024";
+        public const string D14_1 = "N002-ODO00000019";
+        public const string D14_2 = "N002-ODO00000020";
+        public const string D14_3 = "N002-ODO00000021";
+        public const string D14_4 = "N002-ODO00000022";
+        public const string D14_5 = "N002-ODO00000023";
+        public const string D14_6 = "N002-ODO00000024";
 
-        public const string  D15_1 = "N002-ODO00000025";
-        public const string  D15_2 = "N002-ODO00000026";
-        public const string  D15_3 = "N002-ODO00000027";
-        public const string  D15_4 = "N002-ODO00000028";
-        public const string  D15_5 = "N002-ODO00000029";
-        public const string  D15_6 = "N002-ODO00000030";
+        public const string D15_1 = "N002-ODO00000025";
+        public const string D15_2 = "N002-ODO00000026";
+        public const string D15_3 = "N002-ODO00000027";
+        public const string D15_4 = "N002-ODO00000028";
+        public const string D15_5 = "N002-ODO00000029";
+        public const string D15_6 = "N002-ODO00000030";
 
-        public const string  D16_1 = "N002-ODO00000031";
-        public const string  D16_2 = "N002-ODO00000032";
-        public const string  D16_3 = "N002-ODO00000033";
-        public const string  D16_4 = "N002-ODO00000034";
-        public const string  D16_5 = "N002-ODO00000035";
-        public const string  D16_6 = "N002-ODO00000036";
+        public const string D16_1 = "N002-ODO00000031";
+        public const string D16_2 = "N002-ODO00000032";
+        public const string D16_3 = "N002-ODO00000033";
+        public const string D16_4 = "N002-ODO00000034";
+        public const string D16_5 = "N002-ODO00000035";
+        public const string D16_6 = "N002-ODO00000036";
 
-        public const string  D17_1 = "N002-ODO00000037";
-        public const string  D17_2 = "N002-ODO00000038";
-        public const string  D17_3 = "N002-ODO00000039";
-        public const string  D17_4 = "N002-ODO00000040";
-        public const string  D17_5 = "N002-ODO00000041";
-        public const string  D17_6 = "N002-ODO00000042";
+        public const string D17_1 = "N002-ODO00000037";
+        public const string D17_2 = "N002-ODO00000038";
+        public const string D17_3 = "N002-ODO00000039";
+        public const string D17_4 = "N002-ODO00000040";
+        public const string D17_5 = "N002-ODO00000041";
+        public const string D17_6 = "N002-ODO00000042";
 
-        public const string  D18_1 = "N002-ODO00000043";
-        public const string  D18_2 = "N002-ODO00000044";
-        public const string  D18_3 = "N002-ODO00000045";
-        public const string  D18_4 = "N002-ODO00000046";
-        public const string  D18_5 = "N002-ODO00000047";
-        public const string  D18_6 = "N002-ODO00000048";
+        public const string D18_1 = "N002-ODO00000043";
+        public const string D18_2 = "N002-ODO00000044";
+        public const string D18_3 = "N002-ODO00000045";
+        public const string D18_4 = "N002-ODO00000046";
+        public const string D18_5 = "N002-ODO00000047";
+        public const string D18_6 = "N002-ODO00000048";
 
 
         // Cuandrante 2
 
-        public const string  D21_1 = "N002-ODO00000049";
-        public const string  D21_2 = "N002-ODO00000050";
-        public const string  D21_3 = "N002-ODO00000051";
-        public const string  D21_4 = "N002-ODO00000052";
-        public const string  D21_5 = "N002-ODO00000053";
-        public const string  D21_6 = "N002-ODO00000054";
+        public const string D21_1 = "N002-ODO00000049";
+        public const string D21_2 = "N002-ODO00000050";
+        public const string D21_3 = "N002-ODO00000051";
+        public const string D21_4 = "N002-ODO00000052";
+        public const string D21_5 = "N002-ODO00000053";
+        public const string D21_6 = "N002-ODO00000054";
 
-        public const string  D22_1 = "N002-ODO00000055";
-        public const string  D22_2 = "N002-ODO00000056";
-        public const string  D22_3 = "N002-ODO00000057";
-        public const string  D22_4 = "N002-ODO00000058";
-        public const string  D22_5 = "N002-ODO00000059";
-        public const string  D22_6 = "N002-ODO00000060";
+        public const string D22_1 = "N002-ODO00000055";
+        public const string D22_2 = "N002-ODO00000056";
+        public const string D22_3 = "N002-ODO00000057";
+        public const string D22_4 = "N002-ODO00000058";
+        public const string D22_5 = "N002-ODO00000059";
+        public const string D22_6 = "N002-ODO00000060";
 
-        public const string  D23_1 = "N002-ODO00000061";
-        public const string  D23_2 = "N002-ODO00000062";
-        public const string  D23_3 = "N002-ODO00000063";
-        public const string  D23_4 = "N002-ODO00000064";
-        public const string  D23_5 = "N002-ODO00000065";
-        public const string  D23_6 = "N002-ODO00000066";
+        public const string D23_1 = "N002-ODO00000061";
+        public const string D23_2 = "N002-ODO00000062";
+        public const string D23_3 = "N002-ODO00000063";
+        public const string D23_4 = "N002-ODO00000064";
+        public const string D23_5 = "N002-ODO00000065";
+        public const string D23_6 = "N002-ODO00000066";
 
-        public const string  D24_1 = "N002-ODO00000067";
-        public const string  D24_2 = "N002-ODO00000068";
-        public const string  D24_3 = "N002-ODO00000069";
-        public const string  D24_4 = "N002-ODO00000070";
-        public const string  D24_5 = "N002-ODO00000071";
-        public const string  D24_6 = "N002-ODO00000072";
+        public const string D24_1 = "N002-ODO00000067";
+        public const string D24_2 = "N002-ODO00000068";
+        public const string D24_3 = "N002-ODO00000069";
+        public const string D24_4 = "N002-ODO00000070";
+        public const string D24_5 = "N002-ODO00000071";
+        public const string D24_6 = "N002-ODO00000072";
 
-        public const string  D25_1 = "N002-ODO00000073";
-        public const string  D25_2 = "N002-ODO00000074";
-        public const string  D25_3 = "N002-ODO00000075";
-        public const string  D25_4 = "N002-ODO00000076";
-        public const string  D25_5 = "N002-ODO00000077";
-        public const string  D25_6 = "N002-ODO00000078";
+        public const string D25_1 = "N002-ODO00000073";
+        public const string D25_2 = "N002-ODO00000074";
+        public const string D25_3 = "N002-ODO00000075";
+        public const string D25_4 = "N002-ODO00000076";
+        public const string D25_5 = "N002-ODO00000077";
+        public const string D25_6 = "N002-ODO00000078";
 
-        public const string  D26_1 = "N002-ODO00000079";
-        public const string  D26_2 = "N002-ODO00000080";
-        public const string  D26_3 = "N002-ODO00000081";
-        public const string  D26_4 = "N002-ODO00000082";
-        public const string  D26_5 = "N002-ODO00000083";
-        public const string  D26_6 = "N002-ODO00000084";
+        public const string D26_1 = "N002-ODO00000079";
+        public const string D26_2 = "N002-ODO00000080";
+        public const string D26_3 = "N002-ODO00000081";
+        public const string D26_4 = "N002-ODO00000082";
+        public const string D26_5 = "N002-ODO00000083";
+        public const string D26_6 = "N002-ODO00000084";
 
-        public const string  D27_1 = "N002-ODO00000085";
-        public const string  D27_2 = "N002-ODO00000086";
-        public const string  D27_3 = "N002-ODO00000087";
-        public const string  D27_4 = "N002-ODO00000088";
-        public const string  D27_5 = "N002-ODO00000089";
-        public const string  D27_6 = "N002-ODO00000090";
+        public const string D27_1 = "N002-ODO00000085";
+        public const string D27_2 = "N002-ODO00000086";
+        public const string D27_3 = "N002-ODO00000087";
+        public const string D27_4 = "N002-ODO00000088";
+        public const string D27_5 = "N002-ODO00000089";
+        public const string D27_6 = "N002-ODO00000090";
 
-        public const string  D28_1 = "N002-ODO00000091";
-        public const string  D28_2 = "N002-ODO00000092";
-        public const string  D28_3 = "N002-ODO00000093";
-        public const string  D28_4 = "N002-ODO00000094";
-        public const string  D28_5 = "N002-ODO00000095";
-        public const string  D28_6 = "N002-ODO00000096";
+        public const string D28_1 = "N002-ODO00000091";
+        public const string D28_2 = "N002-ODO00000092";
+        public const string D28_3 = "N002-ODO00000093";
+        public const string D28_4 = "N002-ODO00000094";
+        public const string D28_5 = "N002-ODO00000095";
+        public const string D28_6 = "N002-ODO00000096";
 
         // Cuandrante 3
 
-        public const string  D31_1 = "N002-ODO00000097";
-        public const string  D31_2 = "N002-ODO00000098";
-        public const string  D31_3 = "N002-ODO00000099";
-        public const string  D31_4 = "N002-ODO00000100";
-        public const string  D31_5 = "N002-ODO00000101";
-        public const string  D31_6 = "N002-ODO00000102";
+        public const string D31_1 = "N002-ODO00000097";
+        public const string D31_2 = "N002-ODO00000098";
+        public const string D31_3 = "N002-ODO00000099";
+        public const string D31_4 = "N002-ODO00000100";
+        public const string D31_5 = "N002-ODO00000101";
+        public const string D31_6 = "N002-ODO00000102";
 
-        public const string  D32_1 = "N002-ODO00000103";
-        public const string  D32_2 = "N002-ODO00000104";
-        public const string  D32_3 = "N002-ODO00000105";
-        public const string  D32_4 = "N002-ODO00000106";
-        public const string  D32_5 = "N002-ODO00000107";
-        public const string  D32_6 = "N002-ODO00000108";
+        public const string D32_1 = "N002-ODO00000103";
+        public const string D32_2 = "N002-ODO00000104";
+        public const string D32_3 = "N002-ODO00000105";
+        public const string D32_4 = "N002-ODO00000106";
+        public const string D32_5 = "N002-ODO00000107";
+        public const string D32_6 = "N002-ODO00000108";
 
-        public const string  D33_1 = "N002-ODO00000109";
-        public const string  D33_2 = "N002-ODO00000110";
-        public const string  D33_3 = "N002-ODO00000111";
-        public const string  D33_4 = "N002-ODO00000112";
-        public const string  D33_5 = "N002-ODO00000113";
-        public const string  D33_6 = "N002-ODO00000114";
+        public const string D33_1 = "N002-ODO00000109";
+        public const string D33_2 = "N002-ODO00000110";
+        public const string D33_3 = "N002-ODO00000111";
+        public const string D33_4 = "N002-ODO00000112";
+        public const string D33_5 = "N002-ODO00000113";
+        public const string D33_6 = "N002-ODO00000114";
 
-        public const string  D34_1 = "N002-ODO00000115";
-        public const string  D34_2 = "N002-ODO00000116";
-        public const string  D34_3 = "N002-ODO00000117";
-        public const string  D34_4 = "N002-ODO00000118";
-        public const string  D34_5 = "N002-ODO00000119";
-        public const string  D34_6 = "N002-ODO00000120";
+        public const string D34_1 = "N002-ODO00000115";
+        public const string D34_2 = "N002-ODO00000116";
+        public const string D34_3 = "N002-ODO00000117";
+        public const string D34_4 = "N002-ODO00000118";
+        public const string D34_5 = "N002-ODO00000119";
+        public const string D34_6 = "N002-ODO00000120";
 
-        public const string  D35_1 = "N002-ODO00000121";
-        public const string  D35_2 = "N002-ODO00000122";
-        public const string  D35_3 = "N002-ODO00000123";
-        public const string  D35_4 = "N002-ODO00000124";
-        public const string  D35_5 = "N002-ODO00000125";
-        public const string  D35_6 = "N002-ODO00000126";
+        public const string D35_1 = "N002-ODO00000121";
+        public const string D35_2 = "N002-ODO00000122";
+        public const string D35_3 = "N002-ODO00000123";
+        public const string D35_4 = "N002-ODO00000124";
+        public const string D35_5 = "N002-ODO00000125";
+        public const string D35_6 = "N002-ODO00000126";
 
-        public const string  D36_1 = "N002-ODO00000127";
-        public const string  D36_2 = "N002-ODO00000128";
-        public const string  D36_3 = "N002-ODO00000129";
-        public const string  D36_4 = "N002-ODO00000130";
-        public const string  D36_5 = "N002-ODO00000131";
-        public const string  D36_6 = "N002-ODO00000132";
+        public const string D36_1 = "N002-ODO00000127";
+        public const string D36_2 = "N002-ODO00000128";
+        public const string D36_3 = "N002-ODO00000129";
+        public const string D36_4 = "N002-ODO00000130";
+        public const string D36_5 = "N002-ODO00000131";
+        public const string D36_6 = "N002-ODO00000132";
 
-        public const string  D37_1 = "N002-ODO00000133";
-        public const string  D37_2 = "N002-ODO00000134";
-        public const string  D37_3 = "N002-ODO00000135";
-        public const string  D37_4 = "N002-ODO00000136";
-        public const string  D37_5 = "N002-ODO00000137";
-        public const string  D37_6 = "N002-ODO00000138";
+        public const string D37_1 = "N002-ODO00000133";
+        public const string D37_2 = "N002-ODO00000134";
+        public const string D37_3 = "N002-ODO00000135";
+        public const string D37_4 = "N002-ODO00000136";
+        public const string D37_5 = "N002-ODO00000137";
+        public const string D37_6 = "N002-ODO00000138";
 
-        public const string  D38_1 = "N002-ODO00000139";
-        public const string  D38_2 = "N002-ODO00000140";
-        public const string  D38_3 = "N002-ODO00000141";
-        public const string  D38_4 = "N002-ODO00000142";
-        public const string  D38_5 = "N002-ODO00000143";
-        public const string  D38_6 = "N002-ODO00000144";
+        public const string D38_1 = "N002-ODO00000139";
+        public const string D38_2 = "N002-ODO00000140";
+        public const string D38_3 = "N002-ODO00000141";
+        public const string D38_4 = "N002-ODO00000142";
+        public const string D38_5 = "N002-ODO00000143";
+        public const string D38_6 = "N002-ODO00000144";
 
         // Cuandrante 4
 
-        public const string  D41_1 = "N002-ODO00000145";
-        public const string  D41_2 = "N002-ODO00000146";
-        public const string  D41_3 = "N002-ODO00000147";
-        public const string  D41_4 = "N002-ODO00000148";
-        public const string  D41_5 = "N002-ODO00000149";
-        public const string  D41_6 = "N002-ODO00000150";
+        public const string D41_1 = "N002-ODO00000145";
+        public const string D41_2 = "N002-ODO00000146";
+        public const string D41_3 = "N002-ODO00000147";
+        public const string D41_4 = "N002-ODO00000148";
+        public const string D41_5 = "N002-ODO00000149";
+        public const string D41_6 = "N002-ODO00000150";
 
-        public const string  D42_1 = "N002-ODO00000151";
-        public const string  D42_2 = "N002-ODO00000152";
-        public const string  D42_3 = "N002-ODO00000153";
-        public const string  D42_4 = "N002-ODO00000154";
-        public const string  D42_5 = "N002-ODO00000155";
-        public const string  D42_6 = "N002-ODO00000156";
+        public const string D42_1 = "N002-ODO00000151";
+        public const string D42_2 = "N002-ODO00000152";
+        public const string D42_3 = "N002-ODO00000153";
+        public const string D42_4 = "N002-ODO00000154";
+        public const string D42_5 = "N002-ODO00000155";
+        public const string D42_6 = "N002-ODO00000156";
 
-        public const string  D43_1 = "N002-ODO00000157";
-        public const string  D43_2 = "N002-ODO00000158";
-        public const string  D43_3 = "N002-ODO00000159";
-        public const string  D43_4 = "N002-ODO00000160";
-        public const string  D43_5 = "N002-ODO00000161";
-        public const string  D43_6 = "N002-ODO00000162";
+        public const string D43_1 = "N002-ODO00000157";
+        public const string D43_2 = "N002-ODO00000158";
+        public const string D43_3 = "N002-ODO00000159";
+        public const string D43_4 = "N002-ODO00000160";
+        public const string D43_5 = "N002-ODO00000161";
+        public const string D43_6 = "N002-ODO00000162";
 
-        public const string  D44_1 = "N002-ODO00000163";
-        public const string  D44_2 = "N002-ODO00000164";
-        public const string  D44_3 = "N002-ODO00000165";
-        public const string  D44_4 = "N002-ODO00000166";
-        public const string  D44_5 = "N002-ODO00000167";
-        public const string  D44_6 = "N002-ODO00000168";
+        public const string D44_1 = "N002-ODO00000163";
+        public const string D44_2 = "N002-ODO00000164";
+        public const string D44_3 = "N002-ODO00000165";
+        public const string D44_4 = "N002-ODO00000166";
+        public const string D44_5 = "N002-ODO00000167";
+        public const string D44_6 = "N002-ODO00000168";
 
-        public const string  D45_1 = "N002-ODO00000169";
-        public const string  D45_2 = "N002-ODO00000170";
-        public const string  D45_3 = "N002-ODO00000171";
-        public const string  D45_4 = "N002-ODO00000172";
-        public const string  D45_5 = "N002-ODO00000173";
-        public const string  D45_6 = "N002-ODO00000174";
+        public const string D45_1 = "N002-ODO00000169";
+        public const string D45_2 = "N002-ODO00000170";
+        public const string D45_3 = "N002-ODO00000171";
+        public const string D45_4 = "N002-ODO00000172";
+        public const string D45_5 = "N002-ODO00000173";
+        public const string D45_6 = "N002-ODO00000174";
 
-        public const string  D46_1 = "N002-ODO00000175";
-        public const string  D46_2 = "N002-ODO00000176";
-        public const string  D46_3 = "N002-ODO00000177";
-        public const string  D46_4 = "N002-ODO00000178";
-        public const string  D46_5 = "N002-ODO00000179";
-        public const string  D46_6 = "N002-ODO00000180";
+        public const string D46_1 = "N002-ODO00000175";
+        public const string D46_2 = "N002-ODO00000176";
+        public const string D46_3 = "N002-ODO00000177";
+        public const string D46_4 = "N002-ODO00000178";
+        public const string D46_5 = "N002-ODO00000179";
+        public const string D46_6 = "N002-ODO00000180";
 
-        public const string  D47_1 = "N002-ODO00000181";
-        public const string  D47_2 = "N002-ODO00000182";
-        public const string  D47_3 = "N002-ODO00000183";
-        public const string  D47_4 = "N002-ODO00000184";
-        public const string  D47_5 = "N002-ODO00000185";
-        public const string  D47_6 = "N002-ODO00000186";
+        public const string D47_1 = "N002-ODO00000181";
+        public const string D47_2 = "N002-ODO00000182";
+        public const string D47_3 = "N002-ODO00000183";
+        public const string D47_4 = "N002-ODO00000184";
+        public const string D47_5 = "N002-ODO00000185";
+        public const string D47_6 = "N002-ODO00000186";
 
-        public const string  D48_1 = "N002-ODO00000187";
-        public const string  D48_2 = "N002-ODO00000188";
-        public const string  D48_3 = "N002-ODO00000189";
-        public const string  D48_4 = "N002-ODO00000190";
-        public const string  D48_5 = "N002-ODO00000191";
-        public const string  D48_6 = "N002-ODO00000192";
+        public const string D48_1 = "N002-ODO00000187";
+        public const string D48_2 = "N002-ODO00000188";
+        public const string D48_3 = "N002-ODO00000189";
+        public const string D48_4 = "N002-ODO00000190";
+        public const string D48_5 = "N002-ODO00000191";
+        public const string D48_6 = "N002-ODO00000192";
 
 
         public const string PiezaCaries = "N002-ODO00000193";
@@ -2190,7 +2260,7 @@ namespace Sigesoft.Common
         public const string chkRadiculares = "N002-ODO00000197";
         public const string Aptitud = "N002-ODO00000198";
 
-      
+
         #endregion
 
         public const string CONSULTAMEDICA = "N009-PR000000044";
@@ -2216,7 +2286,7 @@ namespace Sigesoft.Common
         public const string ISTAS_21_ABREVIADA = "N009-ME000000059";
         public const string GINECOLOGIA_HALLAZGOS_HALLAZGOS = "N009-MF000000492";
         public const string GINECOLOGIA_EX_MAMA_HALLAZGOS_HALLAZGOS = "N009-MF000000511";
-      
+
         public const string ANTECEDENTES_PERSONALES_FECHA_ULTIMA_MAMOGRAFIA = "N009-MF000001156";
         public const string GINECOLOGIA_ANTECEDENTES_FAMILIARES = "N009-MF000001159";
         public const string GINECOLOGIA_ANTECEDENTES_PERSONALES_FECHA_ULTIMO_PAP = "N009-MF000001155";
@@ -2233,7 +2303,7 @@ namespace Sigesoft.Common
 
         public const string RESULTADOS_MAMOGRAFIA_ID = "N009-ME000000056";
 
-	    #endregion
+        #endregion
 
         #region CAMPOS UC AUDIOMETRIA
 
@@ -2389,7 +2459,7 @@ namespace Sigesoft.Common
         public const string AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO = "N009-MF000000083";
         public const string AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION = "N009-MF000000084";
 
-       
+
 
         #endregion
 
@@ -2427,10 +2497,10 @@ namespace Sigesoft.Common
         public const string DISEASES_RECOMENDACIONES = "N009-DD000000029";
         #region Audiometria
 
-       
+
 
         #region OÍDO DERECHO
-   
+
         public const string TRAUMA_ACUSTICO_LEVE_OD = "N009-DD000000370";
         public const string TRAUMA_ACUSTICO_AVANZADO_OD = "N009-DD000000371";
         public const string HIPOACUSIA_INDUCIDA_POR_RUIDO_LEVE_OD = "N009-DD000000372";
@@ -2507,8 +2577,8 @@ namespace Sigesoft.Common
 
         #endregion
 
-        #endregion   
-        
+        #endregion
+
         #endregion
 
         #region OIT
@@ -2527,7 +2597,7 @@ namespace Sigesoft.Common
         public const string ANCHURA_DER_ENGROSAMIENTO = "N009-MF000002126";
         public const string ANCHURA_IZQ_ENGROSAMIENTO = "N009-MF000002127";
 
-        
+
 
 
         public const string DE_PERFIL = "N009-MF000002102";
@@ -2680,7 +2750,7 @@ namespace Sigesoft.Common
         #endregion
 
         #region Osteo
-   
+
         #endregion
 
 
@@ -2753,7 +2823,7 @@ namespace Sigesoft.Common
         public const string HISTORIA_CLINICA_PSICOLOGICA_sup_2_ID = "N009-MF000001859";
         public const string HISTORIA_CLINICA_PSICOLOGICA_sub_2_ID = "N009-MF000001860";
 
-        
+
         public const string HISTORIA_CLINICA_PSICOLOGICA_fecha_3_ID = "N009-MF000001862";
         public const string HISTORIA_CLINICA_PSICOLOGICA_nombre_3_ID = "N009-MF000001863";
         public const string HISTORIA_CLINICA_PSICOLOGICA_actividad_3_ID = "N009-MF000001864";
@@ -2827,7 +2897,7 @@ namespace Sigesoft.Common
         public const string EXAMEN_MENTAL_conclusiones_ID = "N002-MF000000338";
         public const string EXAMEN_MENTAL_recomendaciones_ID = "N009-MF000000080";
         public const string EXAMEN_MENTAL_restriccion_ID = "N009-MF000000081";
-        #endregion  
+        #endregion
 
 
         public const string ADJUNTOS_PSICOLOGIA = "N009-ME000000082";
@@ -2883,6 +2953,12 @@ namespace Sigesoft.Common
         public const string PERFIL_HEPATICO_BILIRRUBINA_INDIRECTA_DESEABLE_ID = "N009-MF000001811";
         #endregion
 
+        #region VSG
+        public const string VSG_ID = "N009-ME000000137";
+        public const string VSG_RESUL = "N009-MF000002162";
+        public const string VSG_DESEABLE = "N009-MF000002163";
+        #endregion
+
         #region HEMOGRAMA
         public const string HEMOGRAMA = "N009-ME000000113";
 
@@ -2906,6 +2982,12 @@ namespace Sigesoft.Common
 
         public const string PLAQUETAS = "N009-MF000001886";
         public const string PLAQUETAS_DESEABLE = "N009-MF000001887";
+
+        public const string JUVENILES = "N009-MF000003205";
+        public const string JUVENILES_DESEABLE = "N009-MF000003206";
+
+        public const string ABASTONADOS = "N009-MF000003207";
+        public const string ABASTONADOS_DESEABLE = "N009-MF000003208";
 
         public const string VOL_PLAQUETARIO_MEDIO = "N009-MF000001888";
         public const string VOL_PLAQUETARIO_MEDIO_DESEABLE = "N009-MF000001889";
@@ -2936,15 +3018,6 @@ namespace Sigesoft.Common
 
         public const string OSTEO_MUSCULAR_ID_1 = "N002-ME000000046";
         public const string OSTEO_MUSCULAR_ID_2 = "N009-ME000000084";
-        
-        
-        
-        
-        
-       
-        
-        
-        
 
 
 
@@ -2957,33 +3030,42 @@ namespace Sigesoft.Common
 
 
 
-        
-        
-       
-       
-        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public const string OSTEO_MUSCULAR_ADUCCION_HOMBRO_NORMAL_LIMITADO_ID = "N009-MF000000168";
-        
 
-      
+
+
         public const string OSTEO_MUSCULAR_ADUCCION_HOMBRO_OPTIMO_ID = "N009-MF000000173";
-        
+
         public const string OSTEO_MUSCULAR_ADUCCION_HOMBRO_MUY_LIMITADO_ID = "N009-MF000000831";
-        
-       
-      
-        
+
+
+
+
         public const string OSTEO_MUSCULAR_ROTACION_EXTERNA_MUY_LIMITADO_ID = "N009-MF000000837";
-        
+
         public const string OSTEO_MUSCULAR_ROTACION_EXTERNA_DOLOR_ID = "N009-MF000000839";
-     
-        
-        
-       
-        
-       
-       
-    
+
+
+
+
+
+
+
+
         public const string OSTEO_MUSCULAR_2_APTITUD_ID = "N009-MF000001411";
         // GRUPBOX ANTECEDENTES MUSCULOESQUELÉTICOS
         public const string OSTEO_MUSCULAR_PRESENTA_ANTECEDENTES = "N009-MF000000520";
@@ -3090,19 +3172,19 @@ namespace Sigesoft.Common
         public const string OSTEO_MUSCULAR_PIE_IZQUIERDO_CAVO = "N009-MF000000568";
         public const string OSTEO_MUSCULAR_PIE_IZQUIERDO_PLANO = "N009-MF000000569";
         //C. Extremidades Inferiores - Relfejos
-        
- 
-        
-        
+
+
+
+
         //C. Extremidades Test y Signos
-        
-        
-        
-        
-        
-        
-        
-    
+
+
+
+
+
+
+
+
         //D. Aptitud de Espalda: Flexibilidad / Fuerza
 
 
@@ -3121,7 +3203,7 @@ namespace Sigesoft.Common
 
 
         #endregion
-        
+
         #region NUEVO OSTEOMUSCULAR
         public const string LEVANTAMIENTO_ENCIMA_DEL_HOMBRO = "N009-MF000000048";
         public const string POSTURA_SEDENTARIA_DESCRIPCION = "N009-MF000000540";
@@ -3364,6 +3446,8 @@ namespace Sigesoft.Common
 
         #endregion
 
+        public const string EXAMEN_SEREADO_EN_HECES_ID = "N009-ME000000428";
+        public const string EXAMEN_SEREADO_EN_HECES_REACTIVOS = "N009-MF000003227";
 
         public const string MICROALBUMINURIA_ID = "N009-ME000000117";
         public const string CAMPO_MICROALBUMINURIA = "N009-MF000002027";
@@ -3377,26 +3461,26 @@ namespace Sigesoft.Common
         public const string HBsAg_ID = "N009-ME000000121";
         public const string CAMPO_HBsAg = "N009-MF000002055";
         public const string CAMPO_HBsAg_DESEABLE = "N009-MF000002056";
-        
+
 
         public const string HCV_ID = "N009-ME000000120";
         public const string CAMPO_HCV = "N009-MF000002053";
         public const string CAMPO_HCV_DESEABLE = "N009-MF000002054";
-        
+
 
 
 
         public const string GLUCOSA_ID = "N009-ME000000008";
         public const string GLUCOSA_POST_PANDRIAL = "N009-MF000002059";
         public const string GLUCOSA_POST_DESEABLE = "N009-MF000002060";
-        
+
 
         public const string INSULINA_BASAL_ID = "N009-ME000000125";
         public const string CAMPO_INSULINA_BASAL = "N009-MF000002067";
         public const string CAMPO_INSULINA_BASAL_DESEABLE = "N009-MF000002068";
 
-        
-       
+
+
 
 
 
@@ -3461,7 +3545,7 @@ namespace Sigesoft.Common
 
 
         #region MyRegion
-        
+
         #endregion
 
         #region CAMPOS UC OFTALMOLOGIA
@@ -3540,7 +3624,7 @@ namespace Sigesoft.Common
 
         public const string txt_MULTIMEDIA_FILE_FOTO_TIPO = "N009-FOT00000005";
         public const string txt_SERVICE_COMPONENT_MULTIMEDIA_FOTO_TIPO = "N009-FOT00000006";
-        
+
 
         #endregion
 
@@ -3568,7 +3652,7 @@ namespace Sigesoft.Common
         public const string EVA_ERGONOMICA_MANOS_BRAZOS_2 = "N009-EVA00000015";
 
         public const string EVA_ERGONOMICA_CONCLUSIONES = "N009-EVA00000016";
-        
+
         #endregion
 
         #region Otoscopia
@@ -3621,7 +3705,7 @@ namespace Sigesoft.Common
         public const string SINTOMATICO_BK_2 = "N009-RES00000011";
         public const string SINTOMATICO_RX = "N009-RES00000012";
 
-        #endregion  
+        #endregion
 
         #region LumboSacra
         public const string LUMBOSACRA_ID = "N009-ME000000130";
@@ -3637,7 +3721,7 @@ namespace Sigesoft.Common
         #endregion
 
         #region uc osteo
-     
+
 
         public const string UC_OSTEO_FLEXIBILIDAD = "N009-OTS00000001";
         public const string UC_OSTEO_FLEXIBILIDAD_PTJ = "N009-OTS00000002";
@@ -3655,7 +3739,7 @@ namespace Sigesoft.Common
         public const string UC_OSTEO_ABDOMEN_PTJ = "N009-OTS00000011";
         public const string UC_OSTEO_ABDOMEN_OBS = "N009-OTS00000012";
 
-        public const string UC_OSTEO_ABD_180= "N009-OTS00000013";
+        public const string UC_OSTEO_ABD_180 = "N009-OTS00000013";
         public const string UC_OSTEO_ABD_180_PTJ = "N009-OTS00000014";
         public const string UC_OSTEO_ABD_180_SINO = "N009-OTS00000015";
 
@@ -3671,7 +3755,7 @@ namespace Sigesoft.Common
         public const string UC_OSTEO_ROTACION_PTJ = "N009-OTS00000023";
         public const string UC_OSTEO_ROTACION_SINO = "N009-OTS00000024";
 
-        public const string UC_OSTEO_OBS= "N009-OTS00000025";
+        public const string UC_OSTEO_OBS = "N009-OTS00000025";
 
         public const string UC_OSTEO_TOTAL1 = "N009-OTS00000026";
         public const string UC_OSTEO_TOTAL2 = "N009-OTS00000027";
@@ -3830,9 +3914,9 @@ namespace Sigesoft.Common
         #endregion
         #region Audiometria
 
-       
+
         // Campos dinamicos (Manager componentes)     
- 
+
         // Requisitos para la audiometria
         public const string AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD_CI = "N005-MF000001299";
         public const string AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO_CI = "N005-MF000001300";
@@ -4184,5 +4268,5 @@ namespace Sigesoft.Common
 
     }
 
-  
+
 }
