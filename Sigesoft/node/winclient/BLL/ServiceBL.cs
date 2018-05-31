@@ -28775,5 +28775,45 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<frmEsoAntecedentes> ObtenerEsoAntecedentesPorGrupoId(int Grupo)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+
+                var data = (from a in dbContext.systemparameter
+                            where a.i_IsDeleted == isNotDeleted &&
+                            a.i_GroupId == Grupo
+                            select new frmEsoAntecedentes 
+                            {
+                                GrupoId = a.i_GroupId,
+                                ParametroId = a.i_ParameterId,
+                                Nombre = a.v_Value1
+                            }).ToList();
+
+
+                foreach (var P in data)
+                {
+                    int grupoHijo = int.Parse(P.GrupoId.ToString() + P.ParametroId.ToString());
+                    P.Hijos = (from a in dbContext.systemparameter
+                                 where a.i_IsDeleted == isNotDeleted &&
+                                 a.i_GroupId == grupoHijo
+                                 select new frmEsoAntecedentes
+                                 {
+                                    GrupoId = a.i_GroupId,
+                                    ParametroId = a.i_ParameterId,
+                                    Nombre = a.v_Value1
+                                 }).ToList();
+                }
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return new List<frmEsoAntecedentes>();
+            }
+        }
+
 	}
 }

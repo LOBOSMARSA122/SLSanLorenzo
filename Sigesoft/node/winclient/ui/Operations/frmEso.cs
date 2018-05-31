@@ -390,8 +390,16 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         {
             //_personId = _personId;
 
-            //Crear Clase que almacenará los datos
-            //Crear servicio de consulta
+            int GrupoBase = 282; //Antecedentes
+            int GrupoEtario = 1; //Adulto
+            int Grupo = int.Parse(GrupoBase.ToString() + GrupoEtario.ToString());
+
+            List<frmEsoAntecedentes> Parents = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo);
+
+            foreach (var P in Parents) 
+            {
+                ultraGrid2.DataSource = Parents;
+            }
 
             //Obtener Listado padre
             //hacer ciclo por cada uno e ir obteniendo sus hijos... 
@@ -6617,7 +6625,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+         
         private void GetServicesConsolidateForService(string personId)
         {
             OperationResult objOperationResult = new OperationResult();

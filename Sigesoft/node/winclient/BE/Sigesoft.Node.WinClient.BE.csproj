@@ -100,6 +100,7 @@
     <Compile Include="Custom\FichaAntecedentePatologico.cs" />
     <Compile Include="Custom\FichaAudiometricaAudiomax.cs" />
     <Compile Include="Custom\Formulate.cs" />
+    <Compile Include="Custom\frmEsoAntecedentes.cs" />
     <Compile Include="Custom\Group.cs" />
     <Compile Include="Custom\GesList.cs" />
     <Compile Include="Custom\groupoccupationMigracionList.cs" />

@@ -222,21 +222,10 @@
             Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand13 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseaseName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ND");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HistoryId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn37 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_StartDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_EndDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Organization ");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TypeActivity");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_GeografixcaHeight");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn32 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_workstation");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CreationUser");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_CreationDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn35 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_UpdateUser");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn36 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_UpdateDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hijos");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand14 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Hijos", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn79 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
@@ -4050,6 +4039,7 @@
             // 
             this.ultraGrid2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.ultraGrid2.DataMember = null;
             appearance92.BackColor = System.Drawing.SystemColors.ControlLight;
             appearance92.BackColor2 = System.Drawing.SystemColors.ControlDark;
             appearance92.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
@@ -4057,73 +4047,16 @@
             ultraGridColumn26.Header.Caption = "Enfermedades";
             ultraGridColumn26.Header.VisiblePosition = 0;
             ultraGridColumn26.Width = 256;
-            ultraGridColumn2.Header.VisiblePosition = 2;
-            ultraGridColumn2.Width = 31;
-            ultraGridColumn19.Header.VisiblePosition = 4;
-            ultraGridColumn19.Width = 29;
-            ultraGridColumn27.Header.VisiblePosition = 6;
-            ultraGridColumn27.Hidden = true;
-            ultraGridColumn27.Width = 29;
-            ultraGridColumn1.Header.Caption = "ID Historia";
-            ultraGridColumn1.Header.VisiblePosition = 1;
-            ultraGridColumn1.Hidden = true;
-            ultraGridColumn1.Width = 154;
-            ultraGridColumn37.Header.Caption = "Fecha Inicio";
-            ultraGridColumn37.Header.VisiblePosition = 3;
-            ultraGridColumn37.Hidden = true;
-            ultraGridColumn38.Header.Caption = "Fecha Fin";
-            ultraGridColumn38.Header.VisiblePosition = 5;
-            ultraGridColumn38.Hidden = true;
-            ultraGridColumn28.Header.Caption = "Empresa";
-            ultraGridColumn28.Header.VisiblePosition = 7;
-            ultraGridColumn28.Hidden = true;
-            ultraGridColumn28.Width = 289;
-            ultraGridColumn29.Header.Caption = "Tipo de Actividad";
-            ultraGridColumn29.Header.VisiblePosition = 8;
-            ultraGridColumn29.Hidden = true;
-            ultraGridColumn29.Width = 148;
-            ultraGridColumn31.Header.Caption = "Altura Geográfica";
-            ultraGridColumn31.Header.VisiblePosition = 10;
-            ultraGridColumn31.Hidden = true;
-            ultraGridColumn32.Header.Caption = "Puesto";
-            ultraGridColumn32.Header.VisiblePosition = 9;
-            ultraGridColumn32.Hidden = true;
-            ultraGridColumn32.Width = 159;
-            ultraGridColumn33.Header.Caption = "Usuario Crea.";
-            ultraGridColumn33.Header.VisiblePosition = 11;
-            ultraGridColumn33.Hidden = true;
-            ultraGridColumn33.Width = 125;
-            ultraGridColumn34.Format = "dd/MM/yyyy hh:mm tt";
-            ultraGridColumn34.Header.Caption = "Fecha Crea.";
-            ultraGridColumn34.Header.VisiblePosition = 12;
-            ultraGridColumn34.Hidden = true;
-            ultraGridColumn34.Width = 150;
-            ultraGridColumn35.Header.Caption = "Usuario Act.";
-            ultraGridColumn35.Header.VisiblePosition = 13;
-            ultraGridColumn35.Hidden = true;
-            ultraGridColumn35.Width = 125;
-            ultraGridColumn36.Format = "dd/MM/yyyy hh:mm tt";
-            ultraGridColumn36.Header.Caption = "Fecha Act.";
-            ultraGridColumn36.Header.VisiblePosition = 14;
-            ultraGridColumn36.Hidden = true;
-            ultraGridColumn36.Width = 150;
+            ultraGridColumn59.Header.VisiblePosition = 1;
             ultraGridBand13.Columns.AddRange(new object[] {
             ultraGridColumn26,
-            ultraGridColumn2,
-            ultraGridColumn19,
-            ultraGridColumn27,
-            ultraGridColumn1,
-            ultraGridColumn37,
-            ultraGridColumn38,
-            ultraGridColumn28,
-            ultraGridColumn29,
-            ultraGridColumn31,
-            ultraGridColumn32,
-            ultraGridColumn33,
-            ultraGridColumn34,
-            ultraGridColumn35,
-            ultraGridColumn36});
+            ultraGridColumn59});
+            ultraGridColumn79.Header.VisiblePosition = 0;
+            ultraGridColumn79.Hidden = true;
+            ultraGridBand14.Columns.AddRange(new object[] {
+            ultraGridColumn79});
             this.ultraGrid2.DisplayLayout.BandsSerializer.Add(ultraGridBand13);
+            this.ultraGrid2.DisplayLayout.BandsSerializer.Add(ultraGridBand14);
             this.ultraGrid2.DisplayLayout.GroupByBox.Hidden = true;
             this.ultraGrid2.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
             this.ultraGrid2.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
