@@ -48,7 +48,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
             }
             else if (_fromulario == "Plan")
             {
-                Utils.LoadDropDownList(cboTipoAtencionIntegral, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 257, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(cboTipoAtencionIntegral, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 281, null), DropDownListAction.Select);
                 cboEsControlado.Enabled = false;
                 txtProblema.Enabled = false;
                 label4.Text = "Descripción";
@@ -106,11 +106,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                 return;
             }
 
-            if (txtProblema.Text == "")
-            {
-                MessageBox.Show("Por favor ingrese un Tipo de Plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            //if (txtProblema.Text == "")
+            //{
+            //    MessageBox.Show("Por favor ingrese un Tipo de Plan.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    return;
+            //}
 
             if (_fromulario == "Plan")
             {
