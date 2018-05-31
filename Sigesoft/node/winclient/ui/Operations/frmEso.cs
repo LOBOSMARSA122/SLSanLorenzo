@@ -933,7 +933,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             ucSomnolencia.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
                                             ctl = ucSomnolencia;
                                             break;
-                                       
+
                                         case ControlType.UcBoton:
                                             var ucBoton = new Sigesoft.Node.WinClient.UI.UserControls.ucBoton();
                                             ucBoton.Name = f.v_ComponentFieldId;
@@ -1440,7 +1440,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                         ucSomnolencia.AfterValueChange += new EventHandler<AudiometriaAfterValueChangeEventArgs>(ucSomnolencia_AfterValueChange);
                                         ctl = ucSomnolencia;
                                         break;
-                                
+
                                     case ControlType.UcBoton:
                                         var ucBoton = new Sigesoft.Node.WinClient.UI.UserControls.ucBoton();
                                         ucBoton.Name = f.v_ComponentFieldId;
