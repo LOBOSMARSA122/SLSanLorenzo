@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DMnodeSQLServer.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GeneratedAssemblers\antecedenteasistencialAssembler.cs" />
     <Compile Include="GeneratedAssemblers\applicationhierarchyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\areaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\attentioninareaAssembler.cs" />

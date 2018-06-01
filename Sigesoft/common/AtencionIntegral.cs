@@ -210,6 +210,11 @@ namespace NetPdf
 
             #endregion
 
+            document.NewPage();
+
+
+
+
             document.Close();
             writer.Close();
             writer.Dispose();

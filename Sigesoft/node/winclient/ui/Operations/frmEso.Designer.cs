@@ -228,7 +228,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn79 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance94 = new Infragistics.Win.Appearance();
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -463,6 +463,7 @@
             this.dsInformeEcograficoRenal1 = new Sigesoft.Node.WinClient.UI.Dataset.dsInformeEcograficoRenal();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnGuardarAntecedentes = new System.Windows.Forms.Button();
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -3995,6 +3996,7 @@
             // 
             // tpDatosAntecedentes
             // 
+            this.tpDatosAntecedentes.Controls.Add(this.btnGuardarAntecedentes);
             this.tpDatosAntecedentes.Controls.Add(this.ultraGrid2);
             this.tpDatosAntecedentes.Controls.Add(this.label43);
             this.tpDatosAntecedentes.Controls.Add(this.label44);
@@ -4595,14 +4597,14 @@
             // 
             // uvExamen
             // 
-            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance15.BackColor2 = System.Drawing.Color.Transparent;
-            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance15.BorderColor = System.Drawing.Color.Red;
-            appearance15.BorderColor2 = System.Drawing.Color.Red;
-            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance15;
+            appearance94.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance94.BackColor2 = System.Drawing.Color.Transparent;
+            appearance94.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance94.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance94.BorderColor = System.Drawing.Color.Red;
+            appearance94.BorderColor2 = System.Drawing.Color.Red;
+            appearance94.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance94;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -4616,7 +4618,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 732);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 810);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -4634,12 +4636,26 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // btnGuardarAntecedentes
+            // 
+            this.btnGuardarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarAntecedentes.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardarAntecedentes.Location = new System.Drawing.Point(1175, 577);
+            this.btnGuardarAntecedentes.Name = "btnGuardarAntecedentes";
+            this.btnGuardarAntecedentes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnGuardarAntecedentes.Size = new System.Drawing.Size(92, 38);
+            this.btnGuardarAntecedentes.TabIndex = 111;
+            this.btnGuardarAntecedentes.Text = "   Guardar";
+            this.btnGuardarAntecedentes.UseVisualStyleBackColor = true;
+            this.btnGuardarAntecedentes.Click += new System.EventHandler(this.btnGuardarAntecedentes_Click);
+            // 
             // frmEso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 749);
+            this.ClientSize = new System.Drawing.Size(1350, 827);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;
@@ -4959,5 +4975,6 @@
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private Infragistics.Win.UltraWinGrid.UltraGrid ultraGrid2;
         private System.Windows.Forms.TabPage tpCuidadosPreventivos;
+        private System.Windows.Forms.Button btnGuardarAntecedentes;
     }
 }

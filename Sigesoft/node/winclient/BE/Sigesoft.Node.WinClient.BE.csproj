@@ -272,6 +272,7 @@
     <Compile Include="Custom\ValorComponenteList.cs" />
     <Compile Include="Custom\JerarquiaServicioCamposValores.cs" />
     <Compile Include="Custom\WorkstationDangersList.cs" />
+    <Compile Include="Generated\antecedenteasistencialDto.cs" />
     <Compile Include="Generated\applicationhierarchyDto.cs" />
     <Compile Include="Generated\areaDto.cs" />
     <Compile Include="Generated\attentioninareaDto.cs" />
