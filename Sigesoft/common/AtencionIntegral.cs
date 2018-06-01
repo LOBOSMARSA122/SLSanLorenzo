@@ -35,7 +35,7 @@ namespace NetPdf
             document.Open();
 
             #region Declaration Tables
-            var subTitleBackGroundColor = new BaseColor(System.Drawing.Color.White);
+            var subTitleBackGroundColor = new BaseColor(System.Drawing.Color.Gray);
             string include = string.Empty;
             List<PdfPCell> cells = null;
             float[] columnWidths = null;
@@ -165,13 +165,31 @@ namespace NetPdf
             #endregion            
 
             #region PLAN DE ATENCIÓN INTEGRAL
+            
+            cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("PLAN DE ATENCIÓN INTEGRAL", fontTitleTable)){Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, BackgroundColor= BaseColor.GRAY  },    
+                    
+                    new PdfPCell(new Phrase("ÍTEM", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER },    
+                    new PdfPCell(new Phrase("", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER },
+                    new PdfPCell(new Phrase("DESCRIPCIÓN", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER }, 
+                    new PdfPCell(new Phrase("FECHA", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER }, 
+                    new PdfPCell(new Phrase("LUGAR", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER }, 
+                };
+
+            columnWidths = new float[] { 5f, 25f, 30f, 20f, 20f };
+
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+
+            document.Add(filiationWorker);
+
 
             cells = new List<PdfPCell>();
             int nro = 1;
             foreach (var plan in planIntegralList)
             {
                 columnWidths = new float[] { 30f, 20f, 20f };
-                include = "v_Descripcion,d_Fecha,v_Lugar";
+                include = "v_Descripcion,v_Fecha,v_Lugar";
 
                 cell = new PdfPCell(new Phrase(nro.ToString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                 cells.Add(cell);
@@ -187,13 +205,14 @@ namespace NetPdf
             }
             columnWidths = new float[] { 5f, 25f, 70f};
              
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "PLAN DE ATENCIÓN INTEGRAL", fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
 
             #endregion
 
             document.Close();
-            RunFile(filePDF);
+            writer.Close();
+            writer.Dispose();
         }
 
     }

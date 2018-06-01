@@ -78,13 +78,13 @@ namespace Sigesoft.Node.WinClient.BLL
                    tipoAtencionList.Id = atencion.Id;
                    tipoAtencionList.Value = atencion.Value;
                    var detalles = planes.FindAll(p => p.i_TipoId == atencion.Id);
-                   List<PlanAtencionIntegral> List = new List<PlanAtencionIntegral>();
-                   PlanAtencionIntegral planAtencionIntegral;
+                   List<PlanIntegralList> List = new List<PlanIntegralList>();
+                   PlanIntegralList planAtencionIntegral;
                    if (detalles.Count == 0)
                    {
-                       planAtencionIntegral = new PlanAtencionIntegral();
+                       planAtencionIntegral = new PlanIntegralList();
                        planAtencionIntegral.v_Descripcion = "";
-                       planAtencionIntegral.d_Fecha = null;
+                       planAtencionIntegral.v_Fecha = "";
                        planAtencionIntegral.v_Lugar = "";
                        List.Add(planAtencionIntegral);
                    }
@@ -92,9 +92,9 @@ namespace Sigesoft.Node.WinClient.BLL
                    {
                        foreach (var detalle in detalles)
                        {
-                           planAtencionIntegral = new PlanAtencionIntegral();
+                           planAtencionIntegral = new PlanIntegralList();
                            planAtencionIntegral.v_Descripcion = detalle.v_Descripcion;
-                           planAtencionIntegral.d_Fecha = detalle.d_Fecha.Value;
+                           planAtencionIntegral.v_Fecha = detalle.d_Fecha.Value.ToShortDateString();
                            planAtencionIntegral.v_Lugar = detalle.v_Lugar;
                            List.Add(planAtencionIntegral);
                        }

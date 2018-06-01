@@ -11,7 +11,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_PersonId { get; set; }
         public int? i_TipoId { get; set; }
         public string v_Descripcion { get; set; }
-        public DateTime? d_Fecha { get; set; }       
+        public DateTime? d_Fecha { get; set; }
+        public string v_Fecha { get; set; } 
         public string v_Lugar { get; set; }
         public string v_Tipo { get; set; }
 
@@ -26,6 +27,6 @@ namespace Sigesoft.Node.WinClient.BE
     {
         public int Id { get; set; }
         public string Value { get; set; }
-        public List<PlanAtencionIntegral> List { get; set; }
+        public List<PlanIntegralList> List { get; set; }
     }
 }
