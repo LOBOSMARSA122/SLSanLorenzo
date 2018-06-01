@@ -47,8 +47,6 @@ namespace NetPdf
                 string include = string.Empty;
                 List<PdfPCell> cells = null;
                 float[] columnWidths = null;
-                string[] columnValues = null;
-                string[] columnHeaders = null;
                 PdfPTable header2 = new PdfPTable(6);
                 header2.HorizontalAlignment = Element.ALIGN_CENTER;
                 header2.WidthPercentage = 100;
@@ -66,9 +64,9 @@ namespace NetPdf
                 #endregion
 
                 #region Title
+
                 PdfPCell CellLogo = null;
                 cells = new List<PdfPCell>();
-                PdfPCell cellPhoto1 = null;
                 if (infoEmpresaPropietaria.b_Image != null)
                 {
                     CellLogo = new PdfPCell(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image, 30F)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
@@ -617,9 +615,9 @@ namespace NetPdf
                         var SanguineoValord = xSanguineo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FACTOR_SANGUINEO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("GRUPO SANGUINEO", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Sanguineo == null ? string.Empty : Sanguineo.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Sanguineo == null ? string.Empty : Sanguineo.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Sanguineo == null ? string.Empty : Sanguineo.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase(SanguineoValord == null ? string.Empty : SanguineoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(SanguineoValord == null ? string.Empty : SanguineoValord.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                     }
 
@@ -664,7 +662,7 @@ namespace NetPdf
                         var rpr = xRPR.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INMUNOLOGIA_R_P_R_ID);
 
                         cells.Add(new PdfPCell(new Phrase("R.P.R.", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(rpr == null ? string.Empty : rpr.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(rpr == null ? string.Empty : rpr.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -688,7 +686,7 @@ namespace NetPdf
                         var HepatitisA = xHepatitisA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITIS_A_REACTIVOS_HEPATITIS_A);
 
                         cells.Add(new PdfPCell(new Phrase("HBSAG (HEPATITS A ANTIGENO DE SUPERFICIE)", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(HepatitisA == null ? string.Empty : HepatitisA.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(HepatitisA == null ? string.Empty : HepatitisA.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(HepatitisA == null ? string.Empty : HepatitisA.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     }
@@ -700,7 +698,7 @@ namespace NetPdf
                         var ReaccSerol = xReaccSerol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
 
                         cells.Add(new PdfPCell(new Phrase("REACCIONES SEROLOGICAS (LUES - VDRL)", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(ReaccSerol == null ? string.Empty : ReaccSerol.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(ReaccSerol == null ? string.Empty : ReaccSerol.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(ReaccSerol == null ? string.Empty : ReaccSerol.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     }
@@ -712,7 +710,7 @@ namespace NetPdf
                         var ggtp = xGGTP.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GGTP_REACTIVOS);
 
                         cells.Add(new PdfPCell(new Phrase("GGTP", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(ggtp == null ? string.Empty : ggtp.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(ggtp == null ? string.Empty : ggtp.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(ggtp == null ? string.Empty : ggtp.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     }
@@ -725,7 +723,7 @@ namespace NetPdf
                         var b_hcgValord = xB_HCG.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.SUB_UNIDAD_BETA_CUALITATIVO_DESEABLE);
 
                         cells.Add(new PdfPCell(new Phrase("B-HCG", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(b_hcg == null ? string.Empty : b_hcg.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(b_hcg == null ? string.Empty : b_hcg.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(b_hcg == null ? string.Empty : b_hcg.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(b_hcgValord == null ? string.Empty : b_hcgValord.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     }
@@ -802,6 +800,7 @@ namespace NetPdf
 
                     if (xExamenCompletoDeOrina != null)
                     {
+                        cells = new List<PdfPCell>();
 
                         cells.Add(new PdfPCell(new Phrase("EXAMEN COMPLETO DE ORINA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -810,14 +809,14 @@ namespace NetPdf
                         var Color = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MACROSCOPICO_COLOR);
 
                         cells.Add(new PdfPCell(new Phrase("COLOR", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Color == null ? string.Empty : Color.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Color == null ? string.Empty : Color.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Color == null ? string.Empty : Color.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Aspecto = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MACROSCOPICO_ASPECTO);
 
                         cells.Add(new PdfPCell(new Phrase("ASPECTO", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Aspecto == null ? string.Empty : Aspecto.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Aspecto == null ? string.Empty : Aspecto.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Aspecto == null ? string.Empty : Aspecto.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -825,7 +824,7 @@ namespace NetPdf
                         var DensidadValord = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMP_ORINA_MACROSCOPICO_DENSIDAD_DESEABLE);
 
                         cells.Add(new PdfPCell(new Phrase("DENSIDAD", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Densidad == null ? string.Empty : Densidad.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Densidad == null ? string.Empty : Densidad.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Densidad == null ? string.Empty : Densidad.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(DensidadValord == null ? string.Empty : DensidadValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -833,35 +832,35 @@ namespace NetPdf
                         var ReaccionPHValord = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMP_ORINA_MACROSCOPICO_PH_DESEABLE);
 
                         cells.Add(new PdfPCell(new Phrase("REACCION PH", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(ReaccionPH == null ? string.Empty : ReaccionPH.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(ReaccionPH == null ? string.Empty : ReaccionPH.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(ReaccionPH == null ? string.Empty : ReaccionPH.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(ReaccionPHValord == null ? string.Empty : ReaccionPHValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var SangreOrina = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_HEMOGLOBINA);
 
                         cells.Add(new PdfPCell(new Phrase("SANGRE EN ORINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(SangreOrina == null ? string.Empty : SangreOrina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(SangreOrina == null ? string.Empty : SangreOrina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(SangreOrina == null ? string.Empty : SangreOrina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var NitritosOrina = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_NITRITOS);
 
                         cells.Add(new PdfPCell(new Phrase("NITRITOS EN ORINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(NitritosOrina == null ? string.Empty : NitritosOrina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(NitritosOrina == null ? string.Empty : NitritosOrina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(NitritosOrina == null ? string.Empty : NitritosOrina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var ProteinasOrina = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_PROTEINAS);
 
                         cells.Add(new PdfPCell(new Phrase("PROTEINAS EN ORINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(ProteinasOrina == null ? string.Empty : ProteinasOrina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(ProteinasOrina == null ? string.Empty : ProteinasOrina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(ProteinasOrina == null ? string.Empty : ProteinasOrina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var GlucosaOrina = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_GLUCOSA);
 
                         cells.Add(new PdfPCell(new Phrase("GLUCOSA EN ORINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(GlucosaOrina == null ? string.Empty : GlucosaOrina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(GlucosaOrina == null ? string.Empty : GlucosaOrina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(GlucosaOrina == null ? string.Empty : GlucosaOrina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -869,35 +868,35 @@ namespace NetPdf
                         var PicmentosBiliares = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_BILIRRUBINA);
 
                         cells.Add(new PdfPCell(new Phrase("PIGMENTOS BILIARES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(PicmentosBiliares == null ? string.Empty : PicmentosBiliares.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(PicmentosBiliares == null ? string.Empty : PicmentosBiliares.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(PicmentosBiliares == null ? string.Empty : PicmentosBiliares.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var AlbuminaOrina = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_ALBUMINA_ORINA_ID);
 
                         cells.Add(new PdfPCell(new Phrase("ALBUMINA EN ORINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(AlbuminaOrina == null ? string.Empty : AlbuminaOrina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(AlbuminaOrina == null ? string.Empty : AlbuminaOrina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(AlbuminaOrina == null ? string.Empty : AlbuminaOrina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var UrobinogenoOrina = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_UROBILINOGENO);
 
                         cells.Add(new PdfPCell(new Phrase("UROBIUNOGENO EN ORINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(UrobinogenoOrina == null ? string.Empty : UrobinogenoOrina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(UrobinogenoOrina == null ? string.Empty : UrobinogenoOrina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(UrobinogenoOrina == null ? string.Empty : UrobinogenoOrina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Cetonas = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_CETONAS);
 
                         cells.Add(new PdfPCell(new Phrase("CETONAS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Cetonas == null ? string.Empty : Cetonas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Cetonas == null ? string.Empty : Cetonas.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Cetonas == null ? string.Empty : Cetonas.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var AcidoAscorbico = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_FILAMENTO_MUCOIDE);
 
                         cells.Add(new PdfPCell(new Phrase("ACIDO ASCORBICO", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(AcidoAscorbico == null ? string.Empty : AcidoAscorbico.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(AcidoAscorbico == null ? string.Empty : AcidoAscorbico.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(AcidoAscorbico == null ? string.Empty : AcidoAscorbico.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -906,49 +905,49 @@ namespace NetPdf
                         var Leucocitos = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_LEUCOCITOS);
 
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS EN ORINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Hematies = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_HEMATIES);
 
                         cells.Add(new PdfPCell(new Phrase("HEMATIES EN ORINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Hematies == null ? string.Empty : Hematies.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Hematies == null ? string.Empty : Hematies.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Hematies == null ? string.Empty : Hematies.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Germenes = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_GERMENES);
 
                         cells.Add(new PdfPCell(new Phrase("GERMENES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Germenes == null ? string.Empty : Germenes.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Germenes == null ? string.Empty : Germenes.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Germenes == null ? string.Empty : Germenes.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Cristales = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CRISTALES);
 
                         cells.Add(new PdfPCell(new Phrase("CRISTALES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Cristales == null ? string.Empty : Cristales.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Cristales == null ? string.Empty : Cristales.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Cristales == null ? string.Empty : Cristales.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Celulas = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CELULAS_EPITELIALES);
 
                         cells.Add(new PdfPCell(new Phrase("CELULAS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Celulas == null ? string.Empty : Celulas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Celulas == null ? string.Empty : Celulas.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Celulas == null ? string.Empty : Celulas.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Cilindos = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CILINDROS);
 
                         cells.Add(new PdfPCell(new Phrase("CILINDROS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Cilindos == null ? string.Empty : Cilindos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Cilindos == null ? string.Empty : Cilindos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Cilindos == null ? string.Empty : Cilindos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Pus = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_SANGRE);
 
                         cells.Add(new PdfPCell(new Phrase("PUS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Pus == null ? string.Empty : Pus.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Pus == null ? string.Empty : Pus.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("S/U", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Pus == null ? string.Empty : Pus.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -956,7 +955,7 @@ namespace NetPdf
                         var resultados = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADOS_ID);
 
                         cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { Colspan = 4, });
-                        cells.Add(new PdfPCell(new Phrase(resultado == null ? string.Empty : resultado.v_Value1 + "/" + resultados == null ? string.Empty : resultados.v_Value1, fontColumnValue)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(resultado == null ? string.Empty : resultado.v_Value1Name + "/" + resultados == null ? string.Empty : resultados.v_Value1Name, fontColumnValue)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
 
                     }
                     var xExamenSereadoEnHeces = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_SEREADO_EN_HECES_ID);
@@ -978,7 +977,7 @@ namespace NetPdf
                         var HisopadoNasof = xHisopadoNasof.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FROTIS_GRAM);
 
                         cells.Add(new PdfPCell(new Phrase("HISOPADO NASOFARINGEO", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(HisopadoNasof == null ? string.Empty : HisopadoNasof.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(HisopadoNasof == null ? string.Empty : HisopadoNasof.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(HisopadoNasof == null ? string.Empty : HisopadoNasof.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1015,14 +1014,17 @@ namespace NetPdf
                  };
 
                 var examenesParasitologia = examenesLab.FindAll(p => groupParasitologia.Contains(p.v_ComponentId));
+
                 if (examenesParasitologia.Count > 0)
                 {
+
+
                     cells = new List<PdfPCell>();
 
-                    cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                    cells.Add(new PdfPCell(new Phrase("EXAMEN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                    cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                    cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                    cells.Add(new PdfPCell(new Phrase("EXAMEN DESEABLES", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                    cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                     var xParasitologiaSimple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_ID);
 
@@ -1039,11 +1041,8 @@ namespace NetPdf
                         var hematies = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_HEMATIES);
                         var leucocitos = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_LEUCOCITOS);
                         var resultado = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_RESULTADOS);
-                        // titulo
-                        cells.Add(new PdfPCell(new Phrase("EXAMEN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("EXAMEN DESEABLES", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
+
+                        cells.Add(new PdfPCell(new Phrase("PARASITOLÓGICO SIMPLE", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 1era fila
                         cells.Add(new PdfPCell(new Phrase("COLOR", fontColumnValue)));
@@ -1051,40 +1050,40 @@ namespace NetPdf
 
                         // 2da fila
                         cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(consistencia == null ? string.Empty : consistencia.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(consistencia == null ? string.Empty : consistencia.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 3era fila
                         cells.Add(new PdfPCell(new Phrase("RESTOS ALIMENTICIOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(restosAlimenticios == null ? string.Empty : restosAlimenticios.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(restosAlimenticios == null ? string.Empty : restosAlimenticios.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 4ta fila
                         cells.Add(new PdfPCell(new Phrase("SANGRE", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(sangre == null ? string.Empty : sangre.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(sangre == null ? string.Empty : sangre.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 5ta fila
                         cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 6xta fila
                         cells.Add(new PdfPCell(new Phrase("QUISTES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(quistes == null ? string.Empty : quistes.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(quistes == null ? string.Empty : quistes.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 7ma fila
                         cells.Add(new PdfPCell(new Phrase("HUEVOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(huevos == null ? string.Empty : huevos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(huevos == null ? string.Empty : huevos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 8tavo fila
                         cells.Add(new PdfPCell(new Phrase("TROFOZOITOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(trofozoitos == null ? string.Empty : trofozoitos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(trofozoitos == null ? string.Empty : trofozoitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 9na fila
                         cells.Add(new PdfPCell(new Phrase("HEMATIES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 10ma fila
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(leucocitos == null ? string.Empty : leucocitos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(leucocitos == null ? string.Empty : leucocitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 11va fila
                         cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValue)));
@@ -1110,11 +1109,7 @@ namespace NetPdf
                         var hematies = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_HEMATIES);
                         var leucocitos = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_LEUCOCITOS);
 
-                        // titulo
-                        cells.Add(new PdfPCell(new Phrase("EXAMEN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("EXAMEN DESEABLES", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase("PARASITOLÓGICO SERIADO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
 
                         cells.Add(new PdfPCell(new Phrase("PRIMERA MUESTRA", fontColumnValueBold)) { Colspan = 4 });
 
@@ -1124,40 +1119,40 @@ namespace NetPdf
 
                         // 2da fila
                         cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(consistencia == null ? string.Empty : consistencia.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(consistencia == null ? string.Empty : consistencia.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 3era fila
                         cells.Add(new PdfPCell(new Phrase("RESTOS ALIMENTICIOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(restosAlimenticios == null ? string.Empty : restosAlimenticios.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(restosAlimenticios == null ? string.Empty : restosAlimenticios.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 4ta fila
                         cells.Add(new PdfPCell(new Phrase("SANGRE", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(sangre == null ? string.Empty : sangre.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(sangre == null ? string.Empty : sangre.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 5ta fila
                         cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 6xta fila
                         cells.Add(new PdfPCell(new Phrase("QUISTES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(quistes == null ? string.Empty : quistes.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(quistes == null ? string.Empty : quistes.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 7ma fila
                         cells.Add(new PdfPCell(new Phrase("HUEVOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(huevos == null ? string.Empty : huevos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(huevos == null ? string.Empty : huevos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 8tavo fila
                         cells.Add(new PdfPCell(new Phrase("TROFOZOITOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(trofozoitos == null ? string.Empty : trofozoitos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(trofozoitos == null ? string.Empty : trofozoitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 9na fila
                         cells.Add(new PdfPCell(new Phrase("HEMATIES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 10ma fila
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(leucocitos == null ? string.Empty : leucocitos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(leucocitos == null ? string.Empty : leucocitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         #endregion
 
@@ -1184,7 +1179,7 @@ namespace NetPdf
 
                         // 2da fila
                         cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(consistenciaSegundaMuestra == null ? string.Empty : consistenciaSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(consistenciaSegundaMuestra == null ? string.Empty : consistenciaSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 3era fila
                         cells.Add(new PdfPCell(new Phrase("RESTOS ALIMENTICIOS", fontColumnValue)));
@@ -1193,37 +1188,37 @@ namespace NetPdf
 
                         // 4ta fila
                         cells.Add(new PdfPCell(new Phrase("SANGRE", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(sangreSegundaMuestra == null ? string.Empty : sangreSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(sangreSegundaMuestra == null ? string.Empty : sangreSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 5ta fila
                         cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(mocoSegundaMuestra == null ? string.Empty : mocoSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(mocoSegundaMuestra == null ? string.Empty : mocoSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
 
                         // 6xta fila
                         cells.Add(new PdfPCell(new Phrase("QUISTES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(quistesSegundaMuestra == null ? string.Empty : quistesSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(quistesSegundaMuestra == null ? string.Empty : quistesSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 7ma fila
                         cells.Add(new PdfPCell(new Phrase("HUEVOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(huevosSegundaMuestra == null ? string.Empty : huevosSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(huevosSegundaMuestra == null ? string.Empty : huevosSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         // 8tavo fila
                         cells.Add(new PdfPCell(new Phrase("TROFOZOITOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(trofozoitosSegundaMuestra == null ? string.Empty : trofozoitosSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(trofozoitosSegundaMuestra == null ? string.Empty : trofozoitosSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 9na fila
                         cells.Add(new PdfPCell(new Phrase("HEMATIES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(hematiesSegundaMuestra == null ? string.Empty : hematiesSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(hematiesSegundaMuestra == null ? string.Empty : hematiesSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 10ma fila
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(leucocitosSegundaMuestra == null ? string.Empty : leucocitosSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(leucocitosSegundaMuestra == null ? string.Empty : leucocitosSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         #endregion
@@ -1252,48 +1247,48 @@ namespace NetPdf
 
                         // 2da fila
                         cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(consistenciaTerceraMuestra == null ? string.Empty : consistenciaTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(consistenciaTerceraMuestra == null ? string.Empty : consistenciaTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 3era fila
                         cells.Add(new PdfPCell(new Phrase("RESTOS ALIMENTICIOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(restosAlimenticiosTerceraMuestra == null ? string.Empty : restosAlimenticiosTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(restosAlimenticiosTerceraMuestra == null ? string.Empty : restosAlimenticiosTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 4ta fila
                         cells.Add(new PdfPCell(new Phrase("SANGRE", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(sangreTerceraMuestra == null ? string.Empty : sangreTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(sangreTerceraMuestra == null ? string.Empty : sangreTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 5ta fila
                         cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(mocoTerceraMuestra == null ? string.Empty : mocoTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(mocoTerceraMuestra == null ? string.Empty : mocoTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
 
                         // 6xta fila
                         cells.Add(new PdfPCell(new Phrase("QUISTES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(quistesTerceraMuestra == null ? string.Empty : quistesTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(quistesTerceraMuestra == null ? string.Empty : quistesTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 7ma fila
                         cells.Add(new PdfPCell(new Phrase("HUEVOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(huevosTerceraMuestra == null ? string.Empty : huevosTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(huevosTerceraMuestra == null ? string.Empty : huevosTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 8tavo fila
                         cells.Add(new PdfPCell(new Phrase("TROFOZOITOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(trofozoitosTerceraMuestra == null ? string.Empty : trofozoitosTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(trofozoitosTerceraMuestra == null ? string.Empty : trofozoitosTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 9na fila
                         cells.Add(new PdfPCell(new Phrase("HEMATIES", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(hematiesTerceraMuestra == null ? string.Empty : hematiesTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(hematiesTerceraMuestra == null ? string.Empty : hematiesTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         // 10ma fila
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(leucocitosTerceraMuestra == null ? string.Empty : leucocitosTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(leucocitosTerceraMuestra == null ? string.Empty : leucocitosTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
 
                         #endregion
@@ -1346,7 +1341,7 @@ namespace NetPdf
                         var DosajeAlcoholValord = xDosajeAlcohol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_ALCOHOLEMIA_DESEABLE);
 
                         cells.Add(new PdfPCell(new Phrase("DOSAJE DE ALCOHOL", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(DosajeAlcohol == null ? string.Empty : DosajeAlcohol.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(DosajeAlcohol == null ? string.Empty : DosajeAlcohol.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(DosajeAlcohol == null ? string.Empty : DosajeAlcohol.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(DosajeAlcoholValord == null ? string.Empty : DosajeAlcoholValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1359,7 +1354,7 @@ namespace NetPdf
                         var Cocaina = xCocaina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COCAINA_MARIHUANA_TOXICOLOGICOS_COCAINA);
 
                         cells.Add(new PdfPCell(new Phrase("COCAINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Cocaina == null ? string.Empty : Cocaina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Cocaina == null ? string.Empty : Cocaina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Cocaina == null ? string.Empty : Cocaina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1371,7 +1366,7 @@ namespace NetPdf
                         var Marihuana = xMarihuana.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COCAINA_MARIHUANA_TOXICOLOGICOS_MARIHUANA);
 
                         cells.Add(new PdfPCell(new Phrase("MARIHUANA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Marihuana == null ? string.Empty : Marihuana.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Marihuana == null ? string.Empty : Marihuana.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Marihuana == null ? string.Empty : Marihuana.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1395,8 +1390,8 @@ namespace NetPdf
 
                     if (xCadmio != null)
                     {
-                        var Cadmio = xCadmio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_ALCOHOLEMIA_RESULTADO);
-                        var CadmioValord = xCadmio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_ALCOHOLEMIA_DESEABLE);
+                        var Cadmio = xCadmio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CADMIO_EN_ORINA_RESULTADO_ID);
+                        var CadmioValord = xCadmio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CADMIO_EN_ORINA_DESEABLE_ID);
 
                         cells.Add(new PdfPCell(new Phrase("CADMIO EN ORINA", fontColumnValue)));
                         cells.Add(new PdfPCell(new Phrase(Cadmio == null ? string.Empty : Cadmio.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
@@ -1426,7 +1421,7 @@ namespace NetPdf
                         var AnfetaminasValord = xAnfetaminas.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_ANFETAMINAS_DESEABLE);
 
                         cells.Add(new PdfPCell(new Phrase("ANFETAMINAS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Anfetaminas == null ? string.Empty : Anfetaminas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Anfetaminas == null ? string.Empty : Anfetaminas.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Anfetaminas == null ? string.Empty : Anfetaminas.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(AnfetaminasValord == null ? string.Empty : AnfetaminasValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1438,7 +1433,7 @@ namespace NetPdf
                         var Barbituricos = xBarbituricos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.BARBITURICOS_RESULTADO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("BARBITURICOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Barbituricos == null ? string.Empty : Barbituricos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Barbituricos == null ? string.Empty : Barbituricos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Barbituricos == null ? string.Empty : Barbituricos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1451,7 +1446,7 @@ namespace NetPdf
                         var BenzodiazepinasValord = xBenzodiazepinas.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_BENZODIAZEPINAS_DESEABLE);
 
                         cells.Add(new PdfPCell(new Phrase("BENZODIAZEPINAS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Benzodiazepinas == null ? string.Empty : Benzodiazepinas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Benzodiazepinas == null ? string.Empty : Benzodiazepinas.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Benzodiazepinas == null ? string.Empty : Benzodiazepinas.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(BenzodiazepinasValord == null ? string.Empty : BenzodiazepinasValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1463,7 +1458,7 @@ namespace NetPdf
                         var Metanfetaminas = xMetanfetaminas.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.METANFETAMINAS_RESULTADO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("METANFETAMINAS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Metanfetaminas == null ? string.Empty : Metanfetaminas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Metanfetaminas == null ? string.Empty : Metanfetaminas.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Metanfetaminas == null ? string.Empty : Metanfetaminas.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1475,7 +1470,7 @@ namespace NetPdf
                         var Morfina = xMorfina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MORFINA_RESULTADO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("MORFINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Morfina == null ? string.Empty : Morfina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Morfina == null ? string.Empty : Morfina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Morfina == null ? string.Empty : Morfina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1487,7 +1482,7 @@ namespace NetPdf
                         var Opiaceos = xOpiaceos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OPIACEOS_RESULTADO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("OPIACEOS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Opiaceos == null ? string.Empty : Opiaceos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Opiaceos == null ? string.Empty : Opiaceos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Opiaceos == null ? string.Empty : Opiaceos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1499,7 +1494,7 @@ namespace NetPdf
                         var Metadona = xMetadona.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.METADONA_RESULTADO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("METADONA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Metadona == null ? string.Empty : Metadona.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Metadona == null ? string.Empty : Metadona.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Metadona == null ? string.Empty : Metadona.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1511,7 +1506,7 @@ namespace NetPdf
                         var Fenciclidina = xFenciclidina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FENCICLIDINA_RESULTADO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("FENCICLIDINA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Fenciclidina == null ? string.Empty : Fenciclidina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Fenciclidina == null ? string.Empty : Fenciclidina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Fenciclidina == null ? string.Empty : Fenciclidina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1523,7 +1518,7 @@ namespace NetPdf
                         var AlcoholSaliva = xAlcoholSaliva.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ALCOHOL_EN_SALIVA_RESULTADO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("ALCOHOL EN SALIVA", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(AlcoholSaliva == null ? string.Empty : AlcoholSaliva.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(AlcoholSaliva == null ? string.Empty : AlcoholSaliva.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(AlcoholSaliva == null ? string.Empty : AlcoholSaliva.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
@@ -1535,7 +1530,7 @@ namespace NetPdf
                         var Extasis = xExtasis.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXTASIS_RESULTADO_ID);
 
                         cells.Add(new PdfPCell(new Phrase("EXTASIS", fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(Extasis == null ? string.Empty : Extasis.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(Extasis == null ? string.Empty : Extasis.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Extasis == null ? string.Empty : Extasis.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 

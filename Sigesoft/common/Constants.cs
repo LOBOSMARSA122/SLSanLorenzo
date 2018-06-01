@@ -884,7 +884,7 @@ namespace Sigesoft.Common
         public const string METANFETAMINAS_RESULTADO_ID = "N009-MF000003215";
 
         public const string MORFINA_ID = "N009-ME000000420";
-        public const string MORFINA_RESULTADO_ID = "N009-MF000003215";
+        public const string MORFINA_RESULTADO_ID = "N009-MF000003216";
 
         public const string OPIACEOS_ID = "N009-ME000000421";
         public const string OPIACEOS_RESULTADO_ID = "N009-MF000003217";
