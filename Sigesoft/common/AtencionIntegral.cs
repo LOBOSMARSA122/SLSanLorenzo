@@ -606,7 +606,7 @@ namespace NetPdf
 
             document.NewPage();
 
-            #region Preventivos Adolescente
+            #region Preventivos Adulto
             
             #endregion
             document.Add(new Paragraph("\r\n"));
