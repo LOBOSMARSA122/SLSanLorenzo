@@ -4195,48 +4195,6 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                         IdServicio = A.v_ServiceId,
                                         IdTrabajador = B.v_PersonId
-                                        //v_CustomerOrganizationId = H.v_CustomerOrganizationId,
-                                        //IdProtocolId = H.v_ProtocolId,
-                                        //v_CustomerLocationId = H.v_CustomerLocationId,
-                                        //NombreCompleto = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
-                                        //Dni = B.v_DocNumber,
-                                        //LugarNacimiento = B.v_BirthPlace,
-                                        //FechaNacimiento = B.d_Birthdate.Value,
-                                        ////Edad 
-                                        ////RangoEdad
-                                        //Sexo = B.i_SexTypeId == 1 ? "M" : "F",
-                                        //Domicilio = B.v_AdressLocation,
-                                        //Ubigueo = E1.v_Value1 + " - " + F1.v_Value1 + " - " + G1.v_Value1,
-                                        //EstadoCivil = F.v_Value1,
-                                        //NroHijos = B.i_NumberLivingChildren == null ? 0 : B.i_NumberLivingChildren.Value,
-                                        //NivelEstudio = G.v_Value1,
-                                        //Telefono = B.v_TelephoneNumber,
-                                        //EmpresaSede = D.v_Name + " " + E.v_Name,
-                                        //TipoExamen = I.v_Value1,
-                                        //Grupo = J.v_Name,
-                                        //PuestoPostula = B.v_CurrentOccupation,
-                                        //Area = K.v_Name,
-                                        ////Proveedor = "",
-                                        //FechaExamen = A.d_ServiceDate.Value,
-
-                                        //v_Menarquia = A.v_Menarquia,
-                                        //d_Fur = A.d_Fur.Value,
-                                        //v_CatemenialRegime = A.v_CatemenialRegime,
-                                        //d_PAP = A.d_PAP.Value,
-                                        //v_FechaUltimaMamo = A.v_FechaUltimaMamo,
-                                        //v_Gestapara = A.v_Gestapara,
-                                        ////i_MacId = A.i_MacId.Value,
-                                        //v_Mac = J5.v_Value1,
-                                        //v_CiruGine = A.v_CiruGine,
-                                        //v_ResultadosPAP = A.v_ResultadosPAP,
-                                        //v_ResultadoMamo = A.v_ResultadoMamo,
-                                        //Sintomatologia = A.v_Story,
-                                        //AptitudId = A.i_AptitudeStatusId,
-                                        //AptitudMedica = J4.v_Value1,
-                                        //MotivoAptitud = A.v_ObsStatusService,
-                                        //ComentarioAptitud = A.v_ObsStatusService,
-                                        //Evaluador = pe.v_FirstLastName + " " + pe.v_SecondLastName + " " + pe.v_FirstName,
-                                        //CMP = pme.v_ProfessionalCode
                                     };
 
 
