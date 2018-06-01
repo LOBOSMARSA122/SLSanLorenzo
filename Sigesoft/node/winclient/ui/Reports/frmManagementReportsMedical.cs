@@ -30,7 +30,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private string _customerOrganizationName;
         private string _personFullName;
         string ruta;
-        string personId;
 
         public frmManagementReportsMedical(string serviceId, string pacientId, string customerOrganizationName, string personFullName, string pstrEmpresaCliente)
         {
@@ -194,16 +193,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateConsultaMedica(string pathFile)
         {
             HistoryBL _historyBL = new HistoryBL();
+            var ListaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
+            var ListPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
 
-             //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-             //var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-             //var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-             //var personMedicalHistory = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
-             //var noxiousHabit = _historyBL.GetNoxiousHabitsReport(_pacientId);
-             //var familyMedicalAntecedent = _historyBL.GetFamilyMedicalAntecedentsReport_(_pacientId);
-             //var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            var ListaProblema = atencionIntegralBL.GetAtencionIntegral(personId);
-            AtencionIntegral.CreateAtencionIntegral(pathFile, problemasList);
+            AtencionIntegral.CreateAtencionIntegral(pathFile, ListaProblema, ListPlanIntegral);
         }
 
 

@@ -23,7 +23,7 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateAtencionIntegral(string filePDF, List<ProblemasList> problemasList)
+        public static void CreateAtencionIntegral(string filePDF, List<ProblemasList> problemasList, List<TipoAtencionList> planIntegralList)
         {
             Document document = new Document();
 
@@ -84,194 +84,116 @@ namespace NetPdf
             document.Add(table);
             #endregion
 
-            #region PROBLEMA CRONICOS
+            #region PROBLEMA CRÓNICOS
 
             var problemasCronicos = problemasList.FindAll(p => p.i_Tipo ==  (int)Sigesoft.Common.TipoProblema.Cronico);
 
+            cells = new List<PdfPCell>();
 
-            //var fecha = problemasCronicos.Find(p => p.d_Fecha );
+            if (problemasCronicos != null && problemasCronicos.Count > 0)
+            {
+                var count = 1;
+                foreach (var item in problemasCronicos)
+                {
+                    cell = new PdfPCell(new Phrase(count.ToString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
 
-                cells = new List<PdfPCell>();
+                    cell = new PdfPCell(new Phrase(item.d_Fecha.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
 
-                cells.Add(new PdfPCell(new Phrase("N°", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                cells.Add(new PdfPCell(new Phrase("PROBLEMA CRONICOS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                cells.Add(new PdfPCell(new Phrase("INACTIVO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                   
-              // cells.Add(new PdfPCell(new Phrase(TrigliceridoValord == null ? string.Empty : TrigliceridoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-              
-               // cells.Add(new PdfPCell(new Phrase(problemasCronicos, fontColumnValueBold)) {Colspan = 5, HorizontalAlignment = Element.ALIGN_CENTER });
+                    cell = new PdfPCell(new Phrase(item.v_Descripcion, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
 
-                //cells.Add(new PdfPCell(new Phrase(TrigliceridoValord == null ? string.Empty : TrigliceridoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-              
+                    cell = new PdfPCell(new Phrase(item.v_EsControlao, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
+
+                    cell = new PdfPCell(new Phrase(item.v_Observacion, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
+
+                    count += 1;
+                }
+                columnWidths = new float[] { 5F, 20f, 30f, 20f, 25f };
+            }
+            else
+            {
+                cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                columnWidths = new float[] { 50f, 20f, 30f };
+            }
+            columnHeaders = new string[] { "N°", "FECHA", "PROBLEMA CRÓNICOS", "INACTIVO", "OBSERVACIÓN" };
+
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "LISTA DE PROBLEMAS CRÓNICOS", fontTitleTable, columnHeaders);
+            document.Add(table);
+            #endregion
+
+            #region PROBLEMA AGUDOS
+
+            var problemasAgudos = problemasList.FindAll(p => p.i_Tipo == (int)Sigesoft.Common.TipoProblema.Agudo);
+
+            cells = new List<PdfPCell>();
+
+            if (problemasAgudos != null && problemasAgudos.Count > 0)
+            {
+                var count = 1;
+                foreach (var item in problemasAgudos)
+                {
+                    cell = new PdfPCell(new Phrase(count.ToString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
+
+                    cell = new PdfPCell(new Phrase(item.v_Descripcion, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
+
+                    cell = new PdfPCell(new Phrase(item.d_Fecha.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);       
+
+                    cell = new PdfPCell(new Phrase(item.v_Observacion, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cells.Add(cell);
+
+                    count += 1;
+                }
+                columnWidths = new float[] { 5f, 45f, 20f, 30f };
+            }
+            else
+            {
+                cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                columnWidths = new float[] {100f };
+            }
+            columnHeaders = new string[] { "N°", "PROBLEMAS AGUDOS", "FECHA", "OBSERVACIÓN" };
+
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "LISTA DE PROBLEMAS AGUDOS", fontTitleTable, columnHeaders);
+            document.Add(table);
+            
+            #endregion            
+
+            #region PLAN DE ATENCIÓN INTEGRAL
+
+            cells = new List<PdfPCell>();
+            int nro = 1;
+            foreach (var plan in planIntegralList)
+            {
+                columnWidths = new float[] { 30f, 20f, 20f };
+                include = "v_Descripcion,d_Fecha,v_Lugar";
+
+                cell = new PdfPCell(new Phrase(nro.ToString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cells.Add(cell);
+
+                cell = new PdfPCell(new Phrase(plan.Value, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cells.Add(cell);
+
+                table = HandlingItextSharp.GenerateTableFromList(plan.List, columnWidths, include, fontColumnValue);
+                cell = new PdfPCell(table);
+                cells.Add(cell);
+
+                nro += 1;
+            }
+            columnWidths = new float[] { 5f, 25f, 70f};
              
-                
-            
-                
-
-
-            columnWidths = new float[] { 5F, 20f, 30f, 20f, 25f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
-            document.Add(table);
-            
-            #endregion
-
-            #region PROBLEMAS AGUDOS
-            var problemasAgudo = problemasList.FindAll(p => p.i_Tipo == (int)Sigesoft.Common.TipoProblema.Agudo);
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("N°", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("PROBLEMA AGUDOS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("OBSERVACIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-            columnWidths = new float[] { 15F, 40f, 20f, 25f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
-            document.Add(table);
-            #endregion
-
-            #region SubTitle 
-
-            cells = new List<PdfPCell>()
-                { 
-                     new PdfPCell(new Phrase("PLAN DE ATENCIÓN INTEGRAL", fontTitle1)) { HorizontalAlignment = PdfPCell.LEFT_BORDER },             
-                };
-
-            columnWidths = new float[] { 100f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "PLAN DE ATENCIÓN INTEGRAL", fontTitleTable);
             document.Add(table);
 
             #endregion
-            
-            #region Evaluacion General
 
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "EVALUACIÓN GENERAL, CRECIMIENTO Y DESARROLLO ", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Inmunizaciones
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "INMUNIZACIONES ", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Evaluacion Bucal
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "EVALUACIÓN BUCAL ", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Integracion Preventivas
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "INTEGRACIÓN PREVENTIVAS ", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Administracion de micronutrientes
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "ADMINISTRACIÓN DE MICRONUTRIENTES", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Consejeria Integral
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "CONSEJERIA INTEGRAL", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Vista Domiciliara
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Vista Domiciliaria", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Temas Educativos
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "TEMAS EDUCATIVOS", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Propiedad Sanitaria
-
-            cells = new List<PdfPCell>();
-
-            cells.Add(new PdfPCell(new Phrase("DESCRIPCIÓN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-            cells.Add(new PdfPCell(new Phrase("LUGAR", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-            columnWidths = new float[] { 50f, 25f, 25f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "ATENCIÓN DE PRIORIDADES SANITARIAS", fontTitleTable);
-            document.Add(filiationWorker);
-
-            #endregion
-
+            document.Close();
+            RunFile(filePDF);
         }
 
     }

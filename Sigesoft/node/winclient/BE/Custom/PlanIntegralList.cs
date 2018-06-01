@@ -21,4 +21,11 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? d_CreationDate { get; set; }
         public DateTime? d_UpdateDate { get; set; }
     }
+
+    public class TipoAtencionList
+    {
+        public int Id { get; set; }
+        public string Value { get; set; }
+        public List<PlanAtencionIntegral> List { get; set; }
+    }
 }
