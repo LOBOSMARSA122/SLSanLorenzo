@@ -388,28 +388,16 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void ConstruirFormularioAntecedentes()
         {
-            //_personId = _personId;
-
             int GrupoBase = 282; //Antecedentes
-            int GrupoEtario = 1; //Adulto
+            int GrupoEtario = _serviceBL.ObtenerIdGrupoEtarioDePaciente(_personId);
             int Grupo = int.Parse(GrupoBase.ToString() + GrupoEtario.ToString());
 
             List<frmEsoAntecedentesPadre> Parents = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo);
 
-            foreach (var P in Parents) 
-            {
+            if (Parents.Count == 0)
+                btnGuardarAntecedentes.Visible = false;
+            else
                 ultraGrid2.DataSource = Parents;
-            }
-
-            //Obtener Listado padre
-            //hacer ciclo por cada uno e ir obteniendo sus hijos... 
-            //a su vez preguntar si tiene hijos e ir anidando para hacer jerarquia....
-
-            //ver como carajo crear eso en el grid
-
-            //ver como carajo agregar checks o radio buttons a ese grid
-
-            // hacer logica restante
         }
 
         private void BuildMenu()
@@ -5700,10 +5688,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         #region Custom Events
         public void AntecedentesCheck(object sender, Infragistics.Win.UltraWinGrid.CellEventArgs e)
         {
+            int ParentRow = e.Cell.Row.ParentRow.Index;
+            int ChildRow = e.Cell.Row.Index;
             if(e.Cell.Column.Key == "SI")
             {
-                //if (e.Cell.Value)
-                //    e.Cell.Row.Cells[2].Value = false;
+                if (bool.Parse(e.Cell.Text))
+                    ultraGrid2.DisplayLayout.Rows[ParentRow].ChildBands[0].Rows[ChildRow].Cells[2].Value = false;
+            }
+
+            if (e.Cell.Column.Key == "NO")
+            {
+                if (bool.Parse(e.Cell.Text))
+                    ultraGrid2.DisplayLayout.Rows[ParentRow].ChildBands[0].Rows[ChildRow].Cells[1].Value = false;
             }
         }
 
@@ -7449,6 +7445,46 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var objData = new ProblemaBL().GetProblemaPagedAndFiltered(ref objOperationResult, 0, null, "", "", personId);
             grdCronicos.DataSource = objData.FindAll(p => p.i_Tipo == (int)TipoProblema.Cronico);
             grdAgudos.DataSource = objData.FindAll(p => p.i_Tipo == (int)TipoProblema.Agudo);
+        }
+
+        private void btnGuardarAntecedentes_Click(object sender, EventArgs e)
+        {
+            List<frmEsoAntecedentesPadre> Listado = new List<frmEsoAntecedentesPadre>();
+
+            foreach (var G in ultraGrid2.Rows)
+            {
+                List<frmEsoAntecedentesHijo> ListadoHijos = new List<frmEsoAntecedentesHijo>();
+                foreach (var H in G.ChildBands[0].Rows)
+                {
+                    frmEsoAntecedentesHijo Hijo = new frmEsoAntecedentesHijo()
+                    {
+                        Nombre = H.Cells["Nombre"].Text,
+                        SI = bool.Parse(H.Cells[1].Text),
+                        NO = bool.Parse(H.Cells[2].Text)
+                    };
+
+                    ListadoHijos.Add(Hijo);
+                }
+
+                frmEsoAntecedentesPadre Padre = new frmEsoAntecedentesPadre()
+                {
+                    GrupoId = int.Parse(G.Cells["GrupoId"].Text),
+                    Nombre = G.Cells["Nombre"].Text,
+                    ParametroId = int.Parse(G.Cells["ParametroId"].Text),
+                    Hijos = ListadoHijos
+                };
+
+                Listado.Add(Padre);
+            }
+
+            if (_serviceBL.GuardarAntecedenteAsistencial(Listado))
+            {
+                
+            }
+            else
+            {
+
+            }
         }
 
 
