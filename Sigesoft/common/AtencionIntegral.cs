@@ -72,16 +72,18 @@ namespace NetPdf
 
             #region Title
             cells = new List<PdfPCell>();
-           
+
             var cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER },           
-                    new PdfPCell(new Phrase("LISTA DE PROBLEMAS", fontTitle1)) { HorizontalAlignment = PdfPCell.LEFT_BORDER },             
+                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT,BackgroundColor= BaseColor.GRAY },           
+                    new PdfPCell(new Phrase("LISTA DE PROBLEMAS", fontTitle2)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },             
                 };
             
             columnWidths = new float[] { 100f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths,  null, fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
             document.Add(table);
+
+            document.Add(new Paragraph("\r\n"));
             #endregion
 
             #region PROBLEMA CRÓNICOS
@@ -117,7 +119,7 @@ namespace NetPdf
             else
             {
                 cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
-                columnWidths = new float[] { 50f, 20f, 30f };
+                columnWidths = new float[] {100f };
             }
             columnHeaders = new string[] { "N°", "FECHA", "PROBLEMA CRÓNICOS", "INACTIVO", "OBSERVACIÓN" };
 
