@@ -16,6 +16,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 {
     public partial class frmManagementReportsMedical : Form
     {
+
+        public List<ProblemasList> problemasList { get; set; }
+
+        AtencionIntegralBL atencionIntegralBL = new AtencionIntegralBL();
         ServiceBL _serviceBL = new ServiceBL();
         PacientBL _pacientBL = new PacientBL();
         private MergeExPDF _mergeExPDF = new MergeExPDF();
@@ -26,6 +30,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private string _customerOrganizationName;
         private string _personFullName;
         string ruta;
+        string personId;
 
         public frmManagementReportsMedical(string serviceId, string pacientId, string customerOrganizationName, string personFullName, string pstrEmpresaCliente)
         {
@@ -189,6 +194,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateConsultaMedica(string pathFile)
         {
             HistoryBL _historyBL = new HistoryBL();
+
              //var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
              //var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
              //var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -196,8 +202,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
              //var noxiousHabit = _historyBL.GetNoxiousHabitsReport(_pacientId);
              //var familyMedicalAntecedent = _historyBL.GetFamilyMedicalAntecedentsReport_(_pacientId);
              //var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-             AtencionIntegral.CreateAtencionIntegral(pathFile);
+            var ListaProblema = atencionIntegralBL.GetAtencionIntegral(personId);
+            AtencionIntegral.CreateAtencionIntegral(pathFile, problemasList);
         }
 
+
+        
     }
 }
