@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AreaBL.cs" />
+    <Compile Include="AtencionIntegralBL.cs" />
     <Compile Include="AuthorizedPersonBL.cs" />
     <Compile Include="BlackListBL.cs" />
     <Compile Include="CalendarBL.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="OccupationBL.cs" />
     <Compile Include="OrganizationBL.cs" />
     <Compile Include="PacientBL.cs" />
+    <Compile Include="PlanAtencionIntegralBL.cs" />
     <Compile Include="PlanIntegralBL.cs" />
     <Compile Include="ProblemaBL.cs" />
     <Compile Include="ProductBL.cs" />
