@@ -598,10 +598,10 @@ namespace NetPdf
                  };
                 var examenesVSG = examenesLab.FindAll(p => groupVSG.Contains(p.v_ComponentId));
                 var xVSG = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.VSG_ID);
+                cells = new List<PdfPCell>();
 
                 if (xVSG != null)
                 {
-                    cells = new List<PdfPCell>();
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
@@ -633,9 +633,10 @@ namespace NetPdf
                  };
 
                 var examenesSanguineo = examenesLab.FindAll(p => groupSanguineo.Contains(p.v_ComponentId));
+                cells = new List<PdfPCell>();
+
                 if (examenesSanguineo.Count > 0)
                 {
-                    cells = new List<PdfPCell>();
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     cells.Add(new PdfPCell(new Phrase("GRUPO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
