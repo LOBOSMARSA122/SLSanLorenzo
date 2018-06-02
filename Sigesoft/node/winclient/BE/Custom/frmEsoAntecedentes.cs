@@ -18,5 +18,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Nombre { get; set; }
         public bool SI { get; set; }
         public bool NO { get; set; }
+        public int GrupoId { get; set; }
+        public int ParametroId { get; set; }
     }
 }

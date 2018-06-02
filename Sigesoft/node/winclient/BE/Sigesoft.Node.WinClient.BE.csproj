@@ -47,6 +47,7 @@
   <ItemGroup>
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
+    <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
     <Compile Include="Custom\ProblemasList.cs" />
     <Compile Include="Custom\AudiometriaList.cs" />
     <Compile Include="Custom\AudiometriaUserControlList.cs" />

@@ -28775,7 +28775,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<frmEsoAntecedentesPadre> ObtenerEsoAntecedentesPorGrupoId(int Grupo)
+        public List<frmEsoAntecedentesPadre> ObtenerEsoAntecedentesPorGrupoId(int GrupoId, int GrupoEtario, string PersonaId)
         {
             try
             {
@@ -28784,7 +28784,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var data = (from a in dbContext.systemparameter
                             where a.i_IsDeleted == isNotDeleted &&
-                            a.i_GroupId == Grupo
+                            a.i_GroupId == GrupoId
                             select new frmEsoAntecedentesPadre 
                             {
                                 GrupoId = a.i_GroupId,
@@ -28797,12 +28797,18 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     int grupoHijo = int.Parse(P.GrupoId.ToString() + P.ParametroId.ToString());
                     P.Hijos = (from a in dbContext.systemparameter
-                                 where a.i_IsDeleted == isNotDeleted &&
-                                 a.i_GroupId == grupoHijo
-                                 select new frmEsoAntecedentesHijo
-                                 {
-                                    Nombre = a.v_Value1
-                                 }).ToList();
+                               join b in dbContext.antecedenteasistencial on new { a = a.i_ParameterId, b = GrupoEtario, c = PersonaId, d = P.ParametroId } equals new { a = b.i_ParametroId, b = b.i_GrupoEtario, c = b.v_personId, d = b.i_GrupoData } into temp
+                               from b in temp.DefaultIfEmpty()
+                               where a.i_IsDeleted == isNotDeleted &&
+                               a.i_GroupId == grupoHijo
+                               select new frmEsoAntecedentesHijo
+                               {
+                                   Nombre = a.v_Value1,
+                                   GrupoId = a.i_GroupId,
+                                   ParametroId = a.i_ParameterId,
+                                   SI = b == null ? false : b.i_Valor.HasValue ? b.i_Valor.Value == (int)SiNo.SI : false,
+                                   NO = b == null ? false : b.i_Valor.HasValue ? b.i_Valor.Value == (int)SiNo.NO : false
+                               }).ToList();
                 }
 
                 return data;
@@ -28848,21 +28854,120 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
-        public bool GuardarAntecedenteAsistencial(List<frmEsoAntecedentesPadre> Listado)
+        public bool GuardarAntecedenteAsistencial(List<frmEsoAntecedentesPadre> Listado, int SesionUserId, string PacienteId,int GrupoEtario, int intNodeId)
         {
             try
             {
-                foreach (var P in Listado)
+                int IsNotDeleted = (int)SiNo.NO;
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                antecedenteasistencial AA = new antecedenteasistencial();
+                int row = 0;
+
+                bool YaEstaRegistrado = (from a in dbContext.antecedenteasistencial where a.i_IsDeleted == IsNotDeleted && a.v_personId == PacienteId && a.i_GrupoEtario == GrupoEtario select a).Count() > 0;
+
+                if (YaEstaRegistrado)
                 {
-                    foreach (var H in P.Hijos)
+                    foreach (var P in Listado)
                     {
+                        foreach (var H in P.Hijos)
+                        {
+                            int grupoData = int.Parse(H.GrupoId.ToString().ToCharArray()[4].ToString());
+                            var data = (from a in dbContext.antecedenteasistencial where a.i_IsDeleted == IsNotDeleted && a.v_personId == PacienteId && a.i_GrupoEtario == GrupoEtario && a.i_GrupoData == grupoData && a.i_ParametroId == H.ParametroId select a).FirstOrDefault();
+
+                            if (data == null)
+                            {
+                                AA = new antecedenteasistencial()
+                                {
+                                    i_InsertUserId = SesionUserId,
+                                    d_InsertDate = DateTime.Now,
+                                    v_personId = PacienteId,
+                                    i_GrupoEtario = GrupoEtario,
+                                    i_GrupoData = grupoData,
+                                    i_ParametroId = H.ParametroId,
+                                    i_Valor = H.SI ? (int?)SiNo.SI : H.NO ? (int?)SiNo.NO : null,
+                                    i_IsDeleted = IsNotDeleted,
+                                    v_AntecendenteAsistencialId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 328), "AT")
+                                };
+                                dbContext.antecedenteasistencial.AddObject(AA);
+                            }
+                            else
+                            {
+                                int? valor = H.SI ? (int?)SiNo.SI : H.NO ? (int?)SiNo.NO : null;
+
+                                if (data.i_Valor != valor)
+                                {
+                                    data.i_UpdateUserId = SesionUserId;
+                                    data.d_UpdateDate = DateTime.Now;
+                                    data.i_Valor = valor;
+                                    row = row + dbContext.SaveChanges();
+                                }
+                            }
+                        }
                     }
                 }
-                return true;
+                else
+                {
+                    foreach (var P in Listado)
+                    {
+                        foreach (var H in P.Hijos)
+                        {
+                            int grupoData = int.Parse(H.GrupoId.ToString().ToCharArray()[4].ToString());
+                            AA = new antecedenteasistencial()
+                            {
+                                i_InsertUserId = SesionUserId,
+                                d_InsertDate = DateTime.Now,
+                                v_personId = PacienteId,
+                                i_GrupoEtario = GrupoEtario,
+                                i_GrupoData = grupoData,
+                                i_ParametroId = H.ParametroId,
+                                i_Valor = H.SI ? (int?)SiNo.SI : H.NO ? (int?)SiNo.NO : null,
+                                i_IsDeleted = IsNotDeleted,
+                                v_AntecendenteAsistencialId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 328), "AT")
+                            };
+                            dbContext.antecedenteasistencial.AddObject(AA);
+                        }
+                    }
+                }
+
+                row = row + dbContext.SaveChanges();
+                return row > 0;
             }
             catch (Exception e) 
             {
                 return false;
+            }
+        }
+
+        public List<frmEsoCuidadosPreventivos> ObtenerListadoCuidadosPreventivos(int GrupoBase)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+
+                var data = (from a in dbContext.systemparameter
+                            where a.i_IsDeleted == isNotDeleted &&
+                            a.i_GroupId == GrupoBase
+                            select new frmEsoCuidadosPreventivos
+                            {
+                                ParameterId = a.i_ParameterId,
+                                Nombre = a.v_Value1
+                            }).ToList();
+
+
+                // ANALIZAR BIEN ESTA VAINA PARA HACER UNA FUNCION RECURSIVA PARA LLENAR 'N' CANTIDAD DE HIJOS
+
+                foreach (var D in data)
+                {
+                    
+                }
+
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return new List<frmEsoCuidadosPreventivos>();
             }
         }
 	}
