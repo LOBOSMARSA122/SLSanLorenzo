@@ -511,10 +511,13 @@ namespace Sigesoft.Common
         public const string EXAMEN_COMPLETO_DE_ORINA_ID = "N009-ME000000046";
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_COLOR = "N009-MF000000444";
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_ASPECTO = "N009-MF000001041";
+
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_DENSIDAD = "N009-MF000001043";
         public const string EXAMEN_COMP_ORINA_MACROSCOPICO_DENSIDAD_DESEABLE = "N009-MF000003224";
+
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_PH = "N009-MF000001045";
         public const string EXAMEN_COMP_ORINA_MACROSCOPICO_PH_DESEABLE = "N009-MF000003225";
+
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CELULAS_EPITELIALES = "N009-MF000001059";
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_LEUCOCITOS = "N009-MF000001061";
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_HEMATIES = "N009-MF000001063";
@@ -570,7 +573,8 @@ namespace Sigesoft.Common
         #region GLUCOSA
 
 
-
+     
+        public const string GLUCOSA_GLUCOSA_VALOR_RESULTADO_ID = "N009-MF000000261";
         public const string GLUCOSA_GLUCOSA_VALOR_DESEABLE_ID = "N009-MF000000418";
 
         #endregion
@@ -632,11 +636,8 @@ namespace Sigesoft.Common
         #endregion
 
         #region ACIDO_URICO
-
-
-        public const string ACIDO_URICO_BIOQUIMICA_ACIDO_URICO = "N009-MF000000251";
-
-        public const string ACIDO_URICO_BIOQUIMICA_ACIDO_URICO_DESEABLE = "N009-MF000000416";
+        public const string ACIDO_URICO_BIOQUIMICA_ACIDO_URICO = "N009-MF000001425";
+        public const string ACIDO_URICO_BIOQUIMICA_ACIDO_URICO_DESEABLE = "N009-MF000001426";
 
         #endregion
 
@@ -652,7 +653,6 @@ namespace Sigesoft.Common
         #region BIOQUIMICA 01
 
         public const string BIOQUIMICA01_ID = "N009-ME000000086";
-        public const string ACIDO_URICO_SL = "N009-ME000000086";
         public const string BIOQUIMICA01_VALOR = "N009-MF000001425";
         public const string BIOQUIMICA01_VALOR_DESEABLE = "N009-MF000001426";
 
@@ -864,6 +864,7 @@ namespace Sigesoft.Common
         #region TOXICOLOGIA
 
         public const string COPROCULTIVO_ID = "N009-ME000000427";
+        public const string COPROCULTIVO_RESULTADO_ID = "N009-MF000003226";
 
         public const string PLOMO_ID = "N009-ME000000408";
         public const string PLOMO_RESULTADO = "N009-MF000003104";
@@ -1009,7 +1010,6 @@ namespace Sigesoft.Common
 
 
 
-        public const string GLUCOSA_SL_ID = "N009-ME000000018";
 
         #region IDs Informes
 
@@ -3496,6 +3496,7 @@ namespace Sigesoft.Common
 
 
         public const string REACCION_INFLAMATORIA_ID = "N009-ME000000119";
+        public const string REACCION_INFLAMATORIA_RESULTADO_ID = "N009-MF000002033";
         public const string REACCION_INFLAMATORIA_COLOR = "N009-MF000002033";
         public const string REACCION_INFLAMATORIA_ph = "N009-MF000002034";
         public const string REACCION_INFLAMATORIA_Consistencia = "N009-MF000002035";

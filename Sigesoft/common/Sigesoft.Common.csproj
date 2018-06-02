@@ -80,6 +80,7 @@
     <Compile Include="borrar.cs" />
     <Compile Include="CertificadoAptitudCompleto.cs" />
     <Compile Include="ConsultaMedica.cs" />
+    <Compile Include="AtencionIntegralAdulto.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomDtos\FileInfoDto.cs" />

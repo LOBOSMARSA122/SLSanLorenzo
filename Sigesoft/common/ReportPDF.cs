@@ -7403,13 +7403,10 @@ namespace NetPdf
                     new PdfPCell(new Phrase(DataService==null ? "" :DataService.v_ExploitedMineral, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                    
                     //fila
-                    new PdfPCell(new Phrase("LUGAR Y FECHA NACIMIENTO", fontColumnValue))
-                                        { HorizontalAlignment = PdfPCell.ALIGN_CENTER},              
+                    new PdfPCell(new Phrase("LUGAR Y FECHA NACIMIENTO", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER},              
                     new PdfPCell(new Phrase("DOMICILIO ACTUAL", fontColumnValue)),  
-                    new PdfPCell(new Phrase("LUGAR DE LABOR", fontColumnValue))
-                                            { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("ALTITUD DE LABOR", fontColumnValue))
-                                    { Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("LUGAR DE LABOR", fontColumnValue)){ Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("ALTITUD DE LABOR", fontColumnValue)) { Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //fila
                     new PdfPCell(new Phrase(DataService.v_BirthPlace + " - " + DataService.d_BirthDate.Value.ToShortDateString(), fontColumnValue))
