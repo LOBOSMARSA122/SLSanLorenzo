@@ -611,6 +611,7 @@ namespace NetPdf
                  };
                 var examenesVSG = examenesLab.FindAll(p => groupVSG.Contains(p.v_ComponentId));
                 var xVSG = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.VSG_ID);
+
                 cells = new List<PdfPCell>();
 
                 if (xVSG != null)
@@ -629,12 +630,12 @@ namespace NetPdf
                     cells.Add(new PdfPCell(new Phrase(vsg == null ? string.Empty : vsg.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     cells.Add(new PdfPCell(new Phrase(vsgValord == null ? string.Empty : vsgValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
-
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "VSG", fontTitleTableNegro, null);
+                    document.Add(table);
                 }
 
-                columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "VSG", fontTitleTableNegro, null);
-                document.Add(table);
+              
 
                 #endregion
 
@@ -669,11 +670,12 @@ namespace NetPdf
 
                     }
 
+                    columnWidths = new float[] { 35f, 30f, 35f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "GRUPO SANGUINEO", fontTitleTableNegro, null);
+                    document.Add(table);
                 }
 
-                columnWidths = new float[] { 35f, 30f, 35f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "GRUPO SANGUINEO", fontTitleTableNegro, null);
-                document.Add(table);
+              
 
                 #endregion
 
@@ -789,11 +791,12 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(AglutinacionesValord == null ? string.Empty : AglutinacionesValord.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                     }
 
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "INMUNOLOGIA", fontTitleTableNegro, null);
+                    document.Add(table);
                 }
 
-                columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "INMUNOLOGIA", fontTitleTableNegro, null);
-                document.Add(table);
+               
 
                 #endregion
 
@@ -1001,10 +1004,14 @@ namespace NetPdf
                         var resultados = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADOS_ID);
 
                         cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { Colspan = 4, });
-                        if (resultados.v_Value1 == "0")
+                        if (resultados == null)
+                        {
+                            cells.Add(new PdfPCell(new Phrase(" ", fontColumnValue)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
+
+                        }
+                        else if (resultados.v_Value1 == "0")
                         {
                             cells.Add(new PdfPCell(new Phrase("No Patológico", fontColumnValue)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
-
                         }
                         else
                         {
@@ -1050,12 +1057,12 @@ namespace NetPdf
 
                     }
 
-
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "MICROBIOLOGIA", fontTitleTableNegro, null);
+                    document.Add(table);
                 }
 
-                columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "MICROBIOLOGIA", fontTitleTableNegro, null);
-                document.Add(table);
+               
 
                 #endregion
 
@@ -1350,11 +1357,12 @@ namespace NetPdf
                         #endregion
 
                     }
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "PARASITOLOGIA", fontTitleTableNegro, null);
+                    document.Add(table);
                 }
 
-                columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "PARASITOLOGIA", fontTitleTableNegro, null);
-                document.Add(table);
+               
 
                 #endregion
 
@@ -1595,11 +1603,12 @@ namespace NetPdf
 
                     }
 
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "TOXICOLOGIA", fontTitleTableNegro, null);
+                    document.Add(table);
                 }
 
-                columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "TOXICOLOGIA", fontTitleTableNegro, null);
-                document.Add(table);
+              
 
                 #endregion
 
@@ -1678,49 +1687,50 @@ namespace NetPdf
 
                     }
 
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "METALES PESADOS", fontTitleTableNegro, null);
+                    document.Add(table);
                 }
 
-                columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "METALES PESADOS", fontTitleTableNegro, null);
-                document.Add(table);
+                
 
                 #endregion
                 
                 #region Firma y sello Médico
-                //    var lab = serviceComponent.Find(p => p.i_CategoryId == (int)Sigesoft.Common.Consultorio.Laboratorio);
-                //table = new PdfPTable(2);
-                //table.HorizontalAlignment = Element.ALIGN_RIGHT;
-                //table.WidthPercentage = 40;
+                var lab = serviceComponent.Find(p => p.i_CategoryId == (int)Sigesoft.Common.Consultorio.Laboratorio);
+                table = new PdfPTable(2);
+                table.HorizontalAlignment = Element.ALIGN_RIGHT;
+                table.WidthPercentage = 40;
 
-                //columnWidths = new float[] { 15f, 25f };
-                //table.SetWidths(columnWidths);
+                columnWidths = new float[] { 15f, 25f };
+                table.SetWidths(columnWidths);
 
-                //PdfPCell cellFirma = null;
+                PdfPCell cellFirma = null;
 
-                //if (lab != null)
-                //{
-                //    if (lab.FirmaMedico != null)
-                //        cellFirma = new PdfPCell(HandlingItextSharp.GetImage(lab.FirmaMedico, null, null, 120, 45));
-                //    else
-                //        cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
-                //}
-                //else
-                //{
-                //    cellFirma = new PdfPCell();
-                //}
+                if (lab != null)
+                {
+                    if (lab.FirmaMedico != null)
+                        cellFirma = new PdfPCell(HandlingItextSharp.GetImage(lab.FirmaMedico, null, null, 120, 45));
+                    else
+                        cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
+                }
+                else
+                {
+                    cellFirma = new PdfPCell();
+                }
 
-                //cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
-                //cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
-                //cellFirma.FixedHeight = 60F;
+                cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
+                cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cellFirma.FixedHeight = 60F;
 
-                //cell = new PdfPCell(new Phrase("FIRMA Y SELLO MÉDICO", fontColumnValue));
-                //cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                //cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+                cell = new PdfPCell(new Phrase("FIRMA Y SELLO MÉDICO", fontColumnValue));
+                cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
 
-                //table.AddCell(cell);
-                //table.AddCell(cellFirma);
+                table.AddCell(cell);
+                table.AddCell(cellFirma);
 
-                //document.Add(table);
+                document.Add(table);
 
                 #endregion
 
