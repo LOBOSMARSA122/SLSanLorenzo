@@ -130,6 +130,7 @@ namespace NetPdf
                     Sigesoft.Common.Constants.BIOQUIMICA01_ID, 
                     Sigesoft.Common.Constants.TIPO_DE_SANGRIA_ID, 
                     Sigesoft.Common.Constants.TIEMPO_COAGULACION_ID, 
+                     Sigesoft.Common.Constants.UREA_ID, 
                  };
 
                 var examenesLab = serviceComponent.FindAll(p => p.i_CategoryId == 1);
@@ -152,6 +153,7 @@ namespace NetPdf
                     var xAcidoUrico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.BIOQUIMICA01_ID);
                     var xTiempoSangria = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TIPO_DE_SANGRIA_ID);
                     var xTiempoCoagulacion = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TIEMPO_COAGULACION_ID);
+                    var xUrea = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.UREA_ID);
 
 
                     if (xTrigliceridos != null)
@@ -198,6 +200,17 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(acidourico == null ? string.Empty : acidourico.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(acidouricoValord == null ? string.Empty : acidouricoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(acidourico == null ? string.Empty : acidourico.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+
+                    }
+                    if (xUrea != null)
+                    {
+                        var urea = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA);
+                        var ureaDeseable = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA_DESEABLE);
+
+                        cells.Add(new PdfPCell(new Phrase("UREA SERICA", fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(ureaDeseable == null ? string.Empty : ureaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                     }
                     if (xTiempoSangria != null)
