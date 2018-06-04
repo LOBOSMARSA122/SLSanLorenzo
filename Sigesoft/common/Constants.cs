@@ -511,13 +511,10 @@ namespace Sigesoft.Common
         public const string EXAMEN_COMPLETO_DE_ORINA_ID = "N009-ME000000046";
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_COLOR = "N009-MF000000444";
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_ASPECTO = "N009-MF000001041";
-
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_DENSIDAD = "N009-MF000001043";
         public const string EXAMEN_COMP_ORINA_MACROSCOPICO_DENSIDAD_DESEABLE = "N009-MF000003224";
-
         public const string EXAMEN_COMPLETO_ORINA_MACROSCOPICO_PH = "N009-MF000001045";
         public const string EXAMEN_COMP_ORINA_MACROSCOPICO_PH_DESEABLE = "N009-MF000003225";
-
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CELULAS_EPITELIALES = "N009-MF000001059";
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_LEUCOCITOS = "N009-MF000001061";
         public const string EXAMEN_COMPLETO_ORINA_MICROSCOPICO_HEMATIES = "N009-MF000001063";
@@ -558,7 +555,12 @@ namespace Sigesoft.Common
         public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_BILIRRUBINA_DESEABLE = "N009-MF000001052";
         public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_SANGRE_DESEABLE = "N009-MF000001048";
         public const string EXAMEN_COMPLETO_ORINA_BIOQUIMICO_HEMOGLOBINA_DESEABLE = "N009-MF000001316";
-
+        public const string EXAMEN_COMPLETO_ORINA_CRISTALES_DEURATOS_AMORFOS = "N009-MF000003242";
+        public const string EXAMEN_COMPLETO_ORINA_CRISTALES_FOSFATOS_AMORFOS = "N009-MF000003243";
+        public const string EXAMEN_COMPLETO_ORINA_CRISTALES_FOSFATOS_TRIPLES = "N009-MF000003244";
+        public const string EXAMEN_COMPLETO_ORINA_CILINDROS_GRANULOSOS = "N009-MF000003245";
+        public const string EXAMEN_COMPLETO_ORINA_CILINDROS_LEUCOCITARIOS = "N009-MF000003246";
+        public const string EXAMEN_COMPLETO_ORINA_CILINDROS_HEMATICOS = "N009-MF000003247";
 
         #endregion
 
@@ -674,6 +676,17 @@ namespace Sigesoft.Common
 
         #endregion
 
+        #region PROTOMBINA
+        public const string PROTOMBINA_ID = "N009-ME000000147";
+        public const string PROTOMBINA_VALOR = "N009-MF000002182";
+        public const string PROTOMBINA_VALOR_DESEABLE = "N009-MF000002183";
+        #endregion
+
+        #region INR
+        public const string INR_ID = "N009-ME000000431";
+        public const string INR_VALOR = "N009-MF000003238";
+        public const string INR_VALOR_DESEABLE = "N009-MF000003239";
+        #endregion
 
         #region METALES PESADOS
 
@@ -757,6 +770,16 @@ namespace Sigesoft.Common
 
 
         public const string EXAMEN_ELISA__REACTIVOS_EXAMEN_ELISA_OBSERVACION = "N009-MF000001433";
+        #endregion
+
+        #region FACTOR REMATOIDEO
+        public const string FACTOR_REMATOIDEO_ID = "N009-ME000000432";
+        public const string FACTOR_REMATOIDEO_VALOR = "N009-MF000003240";
+        #endregion
+
+        #region PROTEINA C REACTIVA
+        public const string PCR_ID = "N009-ME000000433";
+        public const string PCR_VALOR = "N009-MF000003241";
         #endregion
 
         #region HEPATITIS A
@@ -863,8 +886,8 @@ namespace Sigesoft.Common
 
         #region TOXICOLOGIA
 
-        public const string COPROCULTIVO_ID = "N009-ME000000427";
-        public const string COPROCULTIVO_RESULTADO_ID = "N009-MF000003226";
+        public const string SALMONELLA_ID = "N009-ME000000427";
+        public const string SALMONELLA_RESULTADO_ID = "N009-MF000003226";
 
         public const string PLOMO_ID = "N009-ME000000408";
         public const string PLOMO_RESULTADO = "N009-MF000003104";
@@ -3539,9 +3562,16 @@ namespace Sigesoft.Common
         public const string TIEMPO_COAGULACION_DESEABLE = "N009-MF000002066";
 
         public const string FECATEST_ID = "N009-ME000000097";
-        public const string FECATEST_RESULTADO = "N009-MF000001812";
-        public const string FECATEST_DESEABLE = "N009-MF000002069";
-        public const string FECATEST_OBSERVACION = "N009-MF000002070";
+        public const string FECATEST_COLOR = "N009-MF000001812";
+        public const string FECATEST_CONSISTENCIA = "N009-MF000002069";
+        public const string FECATEST_MOCO = "N009-MF000002070";
+        public const string FECATEST_HEMATIES = "N009-MF000003249";
+        public const string FECATEST_LEVADURAS = "N009-MF000003250";
+        public const string FECATEST_GRASAS = "N009-MF000003251";
+        public const string FECATEST_LEUCOCITOS = "N009-MF000003252";
+        public const string FECATEST_POLIMORFO_NUCLEARES = "N009-MF000003253";
+        public const string FECATEST_MONONUCLEARES = "N009-MF000003254";
+        public const string FECATEST_REACCION_INFLAMATORIA = "N009-MF000003255";
 
         public const string CUESTIONARIO_ISTAS = "N009-ME000000311";
 
