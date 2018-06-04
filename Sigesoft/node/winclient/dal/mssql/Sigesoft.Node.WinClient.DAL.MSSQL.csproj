@@ -68,6 +68,7 @@
     <Compile Include="GeneratedAssemblers\componentfieldvaluesAssembler.cs" />
     <Compile Include="GeneratedAssemblers\componentfieldvaluesrecommendationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\componentfieldvaluesrestrictionAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\cuidadopreventivoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\datahierarchyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\deploymentfileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\diagnosticrepositoryAssembler.cs" />
