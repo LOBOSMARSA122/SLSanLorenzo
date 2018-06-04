@@ -13,10 +13,9 @@ namespace Sigesoft.Node.WinClient.BE
     public class frmEsoCuidadosPreventivos
     {
         public string Nombre { get; set; }
-        public bool Check { get; set; }
         public int ParameterId { get; set; }
         public int GrupoId { get; set; }
-        public int PadreId { get; set; }
+        public bool Valor { get; set; }
         public List<frmEsoCuidadosPreventivos> Hijos { get; set; }
     }
 }

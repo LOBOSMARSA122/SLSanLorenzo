@@ -454,26 +454,39 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
             else
             {
+                dataGridView1.Columns.Add("GrupoId", "GrupoId");
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns.Add("ParameterId", "ParameterId");
+                dataGridView1.Columns[1].Visible = false;
                 dataGridView1.Columns.Add("Nombre","Nombre");
-                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-                dataGridView1.Columns[0].ReadOnly = true;
-                int ContadorColumna = 0;
+                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[2].ReadOnly = true;
+                dataGridView1.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+                int ContadorColumna = 2;
                 bool AgregarTitulos = true;
                 foreach (var F in Fechas)
                 {
                     ContadorColumna++;
-                    dataGridView1.Columns.Add("Fecha" + ContadorColumna, F.FechaServicio.ToShortDateString());
+                    dataGridView1.Columns.Add("Fecha" + (ContadorColumna - 2), F.FechaServicio.ToShortDateString());
+                    dataGridView1.Columns[ContadorColumna].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    dataGridView1.Columns[ContadorColumna].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                    if (ContadorColumna != (Fechas.Count + 2))
+                        dataGridView1.Columns[ContadorColumna].ReadOnly = true;
+
                     int ContadorFila = -1;
                     foreach (var L in F.Listado)
                     {
+                        ContadorFila++;
                         if (AgregarTitulos)
                         {
                             dataGridView1.Rows.Add();
-                            ContadorFila++;
-                            dataGridView1.Rows[ContadorFila].Cells[0].Value = L.Nombre;
+                            dataGridView1.Rows[ContadorFila].Cells[0].Value = L.GrupoId;
+                            dataGridView1.Rows[ContadorFila].Cells[1].Value = L.ParameterId;
+                            dataGridView1.Rows[ContadorFila].Cells[2].Value = L.Nombre;
 
                             if(L.Hijos != null)
-                                dataGridView1.Rows[ContadorFila].Cells[0].Style.Font = new Font(FontFamily.GenericSansSerif,10f, FontStyle.Bold);
+                                dataGridView1.Rows[ContadorFila].Cells[2].Style.Font = new Font(FontFamily.GenericSansSerif,10f, FontStyle.Bold);
                         }
 
                         if (L.Hijos != null)
@@ -482,89 +495,33 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         }
                         else
                         {
-                            try
-                            {
-                                DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
-                                cell.Value = false;
-                                dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
-                                if (ContadorColumna != Fechas.Count)
-                                    dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].ReadOnly = true;
-                                //dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].Value = false;
-                            }
-                            catch (Exception e)
-                            {
-                            }
 
-                            
+                            DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
+                            cell.Value = L.Valor;
+                            dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
+                            if (ContadorColumna != Fechas.Count)
+                                dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].ReadOnly = true;
                         }
                     }
                     AgregarTitulos = false;
                 }
-                //List<DataTable> ListaTabla = new List<DataTable>();
-                //ListaTabla.Add(new DataTable());
-                //ListaTabla[0].Columns.Add("CampoID", typeof(int));
-                //ListaTabla[0].Columns.Add("PadreID", typeof(int));
-                //ListaTabla[0].Columns.Add("Nombre", typeof(string));
-                //bool agregarTitulos = true;
-                //int contadorColumna = 2;
-                //foreach (var F in Fechas)
-                //{
-                //    contadorColumna++;
-                //    int ContadorTabla = 0;
-                //    int indexRow = 0;
-                //    ListaTabla[ContadorTabla].Columns.Add(F.FechaServicio.ToShortDateString(), typeof(bool));
-
-                //    foreach (var L in F.Listado)
-                //    {
-                //        if (agregarTitulos)
-                //        {
-                //            ListaTabla[ContadorTabla].Rows.Add();
-                //            ListaTabla[ContadorTabla].Rows[indexRow][0] = L.GrupoId;
-                //            ListaTabla[ContadorTabla].Rows[indexRow][1] = L.PadreId;
-                //            ListaTabla[ContadorTabla].Rows[indexRow][2] = L.Nombre;
-                //            ListaTabla[ContadorTabla].Rows[indexRow][contadorColumna] = false;
-                //        }
-                //        else
-                //        {
-                //            ListaTabla[ContadorTabla].Rows[indexRow][contadorColumna] = false;
-                //        }
-
-                //        if (L.Hijos != null)
-                //        {
-                //            ListaTabla = AgregarHijosDeTablaRecursivo(L, ContadorTabla, agregarTitulos, ListaTabla, F.FechaServicio, contadorColumna);
-                //        }
-
-                //        indexRow++;
-                //    }
-
-                //    agregarTitulos = false;
-                //}
-
-                //foreach (var T in ListaTabla)
-                //{
-                //    DS.Tables.Add(T);
-                //}
-
-                //for (int i = 0; i < (ListaTabla.Count - 1); i++)
-                //{
-                //    DS.Relations.Add(ListaTabla[i].Columns[0], ListaTabla[i + 1].Columns[1]);
-                //}
             }
         }
 
-        //private List<DataTable> AgregarHijosDeTablaRecursivo(frmEsoCuidadosPreventivos Lista, int ContadorTabla, bool agregarTitulos, List<DataTable> ListaTabla, DateTime FechaServicio, int contadorColumna)
         private int AgregarHijosDeTablaRecursivo(frmEsoCuidadosPreventivos Lista, bool AgregarTitulos, DateTime FechaServicio, int ContadorColumna, int ContadorFila)
         {
             foreach (var L in Lista.Hijos)
             {
+                ContadorFila++;
                 if (AgregarTitulos)
                 {
                     dataGridView1.Rows.Add();
-                    ContadorFila++;
-                    dataGridView1.Rows[ContadorFila].Cells[0].Value = L.Nombre;
+                    dataGridView1.Rows[ContadorFila].Cells[0].Value = L.GrupoId;
+                    dataGridView1.Rows[ContadorFila].Cells[1].Value = L.ParameterId;
+                    dataGridView1.Rows[ContadorFila].Cells[2].Value = L.Nombre;
 
                     if(L.Hijos != null)
-                        dataGridView1.Rows[ContadorFila].Cells[0].Style.Font = new Font(FontFamily.GenericSansSerif, 10f, FontStyle.Bold);
+                        dataGridView1.Rows[ContadorFila].Cells[2].Style.Font = new Font(FontFamily.GenericSansSerif, 10f, FontStyle.Bold);
                 }
 
                 if (L.Hijos != null)
@@ -573,54 +530,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 else
                 {
-                    try
-                    {
-                        DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
-                        cell.Value = false;
-                        dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
-                        //dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].Value = false;
-                    }
-                    catch (Exception e)
-                    {
-                    }
 
+                    DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
+                    cell.Value = L.Valor;
+                    dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
                 }
             }
-
-            //ContadorTabla++;
-            //int indexRow = 0;
-            //if (ListaTabla.Count == ContadorTabla)
-            //{
-            //    ListaTabla.Add(new DataTable());
-            //    ListaTabla[ContadorTabla].Columns.Add("CampoID", typeof(int));
-            //    ListaTabla[ContadorTabla].Columns.Add("PadreID", typeof(int));
-            //    ListaTabla[ContadorTabla].Columns.Add("Nombre", typeof(string));
-            //    ListaTabla[ContadorTabla].Columns.Add(FechaServicio.ToShortDateString(), typeof(bool));
-            //}
-
-            //foreach (var L in Lista.Hijos)
-            //{
-            //    if (agregarTitulos)
-            //    {
-            //        ListaTabla[ContadorTabla].Rows.Add();
-            //        ListaTabla[ContadorTabla].Rows[indexRow][0] = L.GrupoId;
-            //        ListaTabla[ContadorTabla].Rows[indexRow][1] = L.PadreId;
-            //        ListaTabla[ContadorTabla].Rows[indexRow][2] = L.Nombre;
-            //        ListaTabla[ContadorTabla].Rows[indexRow][contadorColumna] = false;
-            //    }
-            //    else
-            //    {
-            //        ListaTabla[ContadorTabla].Columns.Add(FechaServicio.ToShortDateString(), typeof(bool));
-            //        ListaTabla[ContadorTabla].Rows[indexRow][contadorColumna] = false;
-            //    }
-
-            //    if (L.Hijos != null)
-            //    {
-            //        AgregarHijosDeTablaRecursivo(L, ContadorTabla, agregarTitulos, ListaTabla, FechaServicio, contadorColumna);
-            //    }
-
-            //    indexRow++;
-            //}
 
             return ContadorFila;
         }
@@ -7728,6 +7643,52 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnGuardarCuidadosPreventivos_Click(object sender, EventArgs e)
+        {
+            frmEsoCuidadosPreventivosFechas data = new frmEsoCuidadosPreventivosFechas();
+            data.FechaServicio = _FechaServico.Value;
+
+            List<frmEsoCuidadosPreventivos> Hijos = new List<frmEsoCuidadosPreventivos>();
+
+            foreach (DataGridViewRow D in dataGridView1.Rows)
+            {
+                int CelIndex = D.Cells.Count - 1;
+
+                DataGridViewCheckBoxCell cell = D.Cells[CelIndex] as DataGridViewCheckBoxCell;
+
+                if (cell != null)
+                {
+                    frmEsoCuidadosPreventivos H = new frmEsoCuidadosPreventivos()
+                    {
+                        GrupoId = int.Parse(D.Cells["GrupoID"].Value.ToString()),
+                        ParameterId = int.Parse(D.Cells["ParameterId"].Value.ToString()),
+                        Valor = bool.Parse(cell.Value.ToString())
+                    };
+
+                    Hijos.Add(H);
+                }
+            }
+
+            data.Listado = Hijos;
+
+            bool response = false;
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                response = _serviceBL.GuardarCuidadosPreventivos(data, _personId, Globals.ClientSession.i_SystemUserId, Globals.ClientSession.i_CurrentExecutionNodeId);
+            }
+
+            if (response)
+            {
+                MessageBox.Show("Registro guardado satisfactoriamente!.", "CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
     }

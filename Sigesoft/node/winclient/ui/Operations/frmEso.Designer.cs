@@ -448,6 +448,7 @@
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.tpCuidadosPreventivos = new System.Windows.Forms.TabPage();
+            this.btnGuardarCuidadosPreventivos = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.gbDatosPaciente = new System.Windows.Forms.GroupBox();
             this.lblPuesto = new System.Windows.Forms.Label();
@@ -4472,6 +4473,7 @@
             // 
             // tpCuidadosPreventivos
             // 
+            this.tpCuidadosPreventivos.Controls.Add(this.btnGuardarCuidadosPreventivos);
             this.tpCuidadosPreventivos.Controls.Add(this.dataGridView1);
             this.tpCuidadosPreventivos.Location = new System.Drawing.Point(4, 22);
             this.tpCuidadosPreventivos.Name = "tpCuidadosPreventivos";
@@ -4481,6 +4483,20 @@
             this.tpCuidadosPreventivos.Text = "CUIDADOS PREVENTIVOS";
             this.tpCuidadosPreventivos.UseVisualStyleBackColor = true;
             // 
+            // btnGuardarCuidadosPreventivos
+            // 
+            this.btnGuardarCuidadosPreventivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarCuidadosPreventivos.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardarCuidadosPreventivos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardarCuidadosPreventivos.Location = new System.Drawing.Point(1192, 578);
+            this.btnGuardarCuidadosPreventivos.Name = "btnGuardarCuidadosPreventivos";
+            this.btnGuardarCuidadosPreventivos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnGuardarCuidadosPreventivos.Size = new System.Drawing.Size(92, 38);
+            this.btnGuardarCuidadosPreventivos.TabIndex = 112;
+            this.btnGuardarCuidadosPreventivos.Text = "   Guardar";
+            this.btnGuardarCuidadosPreventivos.UseVisualStyleBackColor = true;
+            this.btnGuardarCuidadosPreventivos.Click += new System.EventHandler(this.btnGuardarCuidadosPreventivos_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -4488,7 +4504,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(31, 23);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1266, 605);
+            this.dataGridView1.Size = new System.Drawing.Size(1266, 549);
             this.dataGridView1.TabIndex = 0;
             // 
             // gbDatosPaciente
@@ -4714,7 +4730,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 878);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 895);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -4737,7 +4753,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 895);
+            this.ClientSize = new System.Drawing.Size(1350, 912);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;
@@ -5064,5 +5080,6 @@
         private System.Windows.Forms.Label label39;
         private Infragistics.Win.UltraWinGrid.UltraGrid ultraGrid1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnGuardarCuidadosPreventivos;
     }
 }
