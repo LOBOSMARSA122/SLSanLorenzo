@@ -45,6 +45,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             List<ServiceComponentList> serviceComponents = new List<ServiceComponentList>();
             serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "HISTORIA CLÍNICA", v_ComponentId = Constants.FORMATO_ATENCION });
+            serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "HISTORIA CLÍNICA NIÑO", v_ComponentId = Constants.FORMATO_ATENCION_NINIO });
             chklConsolidadoReportes.DataSource = serviceComponents;
             chklConsolidadoReportes.DisplayMember = "v_ComponentName";
             chklConsolidadoReportes.ValueMember = "v_ComponentId";
@@ -187,6 +188,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateConsultaMedica(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
+
+                case Constants.FORMATO_ATENCION_NINIO:
+                    GenerateConsultaMedicaNinio(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION_NINIO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
             }   
         }
 
@@ -199,7 +205,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             AtencionIntegral.CreateAtencionIntegral(pathFile, ListaProblema, ListPlanIntegral);
         }
 
-
+        private void GenerateConsultaMedicaNinio(string pathFile)
+        {
+            HistoryBL _historyBL = new HistoryBL();
+            Ninio.CreateAtencionNinio(pathFile);
+        }
         
     }
 }

@@ -107,6 +107,7 @@
       <DependentUpon>LoadingForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MergeExPDF.cs" />
+    <Compile Include="Ninio.cs" />
     <Compile Include="OrdenServicio.cs" />
     <Compile Include="OrdenServicioPromocion.cs" />
     <Compile Include="pdfPage.cs" />

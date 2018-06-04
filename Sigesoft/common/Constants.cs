@@ -1061,6 +1061,7 @@ namespace Sigesoft.Common
         public const string ATENCION_INTEGRAL = "ATENCION_INTEGRAL";
         
         public const string FORMATO_ATENCION = "FA";
+        public const string FORMATO_ATENCION_NINIO = "FA_NINIO";
         public const string INFORME_ANEXO_16_COIMOLACHE = "7C-COIMOLACHE";
         public const string INFORME_ANEXO_16_YANACOCHA = "7C-YANACOCHA";
         public const string INFORME_ANEXO_16_SHAHUINDO = "7C-SHAHUINDO";
