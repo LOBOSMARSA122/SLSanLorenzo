@@ -28775,7 +28775,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<frmEsoAntecedentesPadre> ObtenerEsoAntecedentesPorGrupoId(int Grupo)
+        public List<frmEsoAntecedentesPadre> ObtenerEsoAntecedentesPorGrupoId(int GrupoId, int GrupoEtario, string PersonaId)
         {
             try
             {
@@ -28784,7 +28784,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var data = (from a in dbContext.systemparameter
                             where a.i_IsDeleted == isNotDeleted &&
-                            a.i_GroupId == Grupo
+                            a.i_GroupId == GrupoId
                             select new frmEsoAntecedentesPadre 
                             {
                                 GrupoId = a.i_GroupId,
@@ -28797,12 +28797,18 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     int grupoHijo = int.Parse(P.GrupoId.ToString() + P.ParametroId.ToString());
                     P.Hijos = (from a in dbContext.systemparameter
-                                 where a.i_IsDeleted == isNotDeleted &&
-                                 a.i_GroupId == grupoHijo
-                                 select new frmEsoAntecedentesHijo
-                                 {
-                                    Nombre = a.v_Value1
-                                 }).ToList();
+                               join b in dbContext.antecedenteasistencial on new { a = a.i_ParameterId, b = GrupoEtario, c = PersonaId, d = P.ParametroId } equals new { a = b.i_ParametroId, b = b.i_GrupoEtario, c = b.v_personId, d = b.i_GrupoData } into temp
+                               from b in temp.DefaultIfEmpty()
+                               where a.i_IsDeleted == isNotDeleted &&
+                               a.i_GroupId == grupoHijo
+                               select new frmEsoAntecedentesHijo
+                               {
+                                   Nombre = a.v_Value1,
+                                   GrupoId = a.i_GroupId,
+                                   ParametroId = a.i_ParameterId,
+                                   SI = b == null ? false : b.i_Valor.HasValue ? b.i_Valor.Value == (int)SiNo.SI : false,
+                                   NO = b == null ? false : b.i_Valor.HasValue ? b.i_Valor.Value == (int)SiNo.NO : false
+                               }).ToList();
                 }
 
                 return data;
@@ -28848,19 +28854,249 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
-        public bool GuardarAntecedenteAsistencial(List<frmEsoAntecedentesPadre> Listado)
+        public bool GuardarAntecedenteAsistencial(List<frmEsoAntecedentesPadre> Listado, int SesionUserId, string PacienteId,int GrupoEtario, int intNodeId)
         {
             try
             {
-                foreach (var P in Listado)
+                int IsNotDeleted = (int)SiNo.NO;
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                antecedenteasistencial AA = new antecedenteasistencial();
+                int row = 0;
+
+                bool YaEstaRegistrado = (from a in dbContext.antecedenteasistencial where a.i_IsDeleted == IsNotDeleted && a.v_personId == PacienteId && a.i_GrupoEtario == GrupoEtario select a).Count() > 0;
+
+                if (YaEstaRegistrado)
                 {
-                    foreach (var H in P.Hijos)
+                    foreach (var P in Listado)
                     {
+                        foreach (var H in P.Hijos)
+                        {
+                            int grupoData = int.Parse(H.GrupoId.ToString().ToCharArray()[4].ToString());
+                            var data = (from a in dbContext.antecedenteasistencial where a.i_IsDeleted == IsNotDeleted && a.v_personId == PacienteId && a.i_GrupoEtario == GrupoEtario && a.i_GrupoData == grupoData && a.i_ParametroId == H.ParametroId select a).FirstOrDefault();
+
+                            if (data == null)
+                            {
+                                AA = new antecedenteasistencial()
+                                {
+                                    i_InsertUserId = SesionUserId,
+                                    d_InsertDate = DateTime.Now,
+                                    v_personId = PacienteId,
+                                    i_GrupoEtario = GrupoEtario,
+                                    i_GrupoData = grupoData,
+                                    i_ParametroId = H.ParametroId,
+                                    i_Valor = H.SI ? (int?)SiNo.SI : H.NO ? (int?)SiNo.NO : null,
+                                    i_IsDeleted = IsNotDeleted,
+                                    v_AntecendenteAsistencialId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 328), "AT")
+                                };
+                                dbContext.antecedenteasistencial.AddObject(AA);
+                            }
+                            else
+                            {
+                                int? valor = H.SI ? (int?)SiNo.SI : H.NO ? (int?)SiNo.NO : null;
+
+                                if (data.i_Valor != valor)
+                                {
+                                    data.i_UpdateUserId = SesionUserId;
+                                    data.d_UpdateDate = DateTime.Now;
+                                    data.i_Valor = valor;
+                                    row = row + dbContext.SaveChanges();
+                                }
+                            }
+                        }
                     }
                 }
-                return true;
+                else
+                {
+                    foreach (var P in Listado)
+                    {
+                        foreach (var H in P.Hijos)
+                        {
+                            int grupoData = int.Parse(H.GrupoId.ToString().ToCharArray()[4].ToString());
+                            AA = new antecedenteasistencial()
+                            {
+                                i_InsertUserId = SesionUserId,
+                                d_InsertDate = DateTime.Now,
+                                v_personId = PacienteId,
+                                i_GrupoEtario = GrupoEtario,
+                                i_GrupoData = grupoData,
+                                i_ParametroId = H.ParametroId,
+                                i_Valor = H.SI ? (int?)SiNo.SI : H.NO ? (int?)SiNo.NO : null,
+                                i_IsDeleted = IsNotDeleted,
+                                v_AntecendenteAsistencialId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 328), "AT")
+                            };
+                            dbContext.antecedenteasistencial.AddObject(AA);
+                        }
+                    }
+                }
+
+                row = row + dbContext.SaveChanges();
+                return row > 0;
             }
             catch (Exception e) 
+            {
+                return false;
+            }
+        }
+
+        public List<frmEsoCuidadosPreventivosFechas> ObtenerFechasCuidadosPreventivos(DateTime FechaServicioActual, int GrupoBase, string PersonId)
+        {
+            try
+            {
+                var data = ObtenerFechasCuidadosPreventivos(PersonId);
+
+                foreach (var F in data)
+                {
+                    F.Listado = ObtenerListadoCuidadosPreventivos(GrupoBase,PersonId,F.FechaServicio);
+                }
+
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return new List<frmEsoCuidadosPreventivosFechas>();
+            }
+        }
+
+        private List<frmEsoCuidadosPreventivosFechas> ObtenerFechasCuidadosPreventivos(string PersonId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+
+                var data = (from a in dbContext.service
+                            where a.i_IsDeleted == isNotDeleted &&
+                            a.v_PersonId == PersonId &&
+                            a.d_ServiceDate != null
+                            select new frmEsoCuidadosPreventivosFechas()
+                            {
+                                FechaServicio = a.d_ServiceDate.Value
+                            }).ToList();
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return new List<frmEsoCuidadosPreventivosFechas>();
+            }
+        }
+
+        public List<frmEsoCuidadosPreventivos> ObtenerListadoCuidadosPreventivos(int GrupoPadre, string PersonId, DateTime FechaServicio)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+
+                var data = (from a in dbContext.systemparameter
+                            join b in dbContext.cuidadopreventivo on new { a = PersonId, b = FechaServicio, c = a.i_GroupId, d = a.i_ParameterId, e = (int?)isNotDeleted } equals new { a = b.v_PersonId, b = b.d_ServiceDate, c = b.i_GrupoId, d = b.i_ParametroId, e = b.i_IsDeleted } into temp
+                            from b in temp.DefaultIfEmpty()
+                            where a.i_IsDeleted == isNotDeleted &&
+                            a.i_GroupId == GrupoPadre
+                            select new frmEsoCuidadosPreventivos
+                            {
+                                ParameterId = a.i_ParameterId,
+                                Nombre = a.v_Value1,
+                                GrupoId = a.i_GroupId,
+                                Valor = b == null ? false : b.i_Valor == (int)SiNo.SI ? true : false
+                            }).ToList();
+
+                if (data.Count == 0)
+                    return null;
+
+                foreach (var D in data)
+                {
+                    int nuevoGrupo = int.Parse(GrupoPadre.ToString() + D.ParameterId.ToString());
+                    D.Hijos = ObtenerListadoCuidadosPreventivos(nuevoGrupo,PersonId,FechaServicio);
+                }
+
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+        }
+
+        public bool GuardarCuidadosPreventivos(frmEsoCuidadosPreventivosFechas data, string PersonaId, int SystemUserId, int NodeId)
+        {
+            try
+            {
+                int IsNotDeleted = (int)SiNo.NO;
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int row = 0;
+
+                bool YaEstaRegistrado = (from a in dbContext.cuidadopreventivo where a.i_IsDeleted == IsNotDeleted && a.v_PersonId == PersonaId && a.d_ServiceDate == data.FechaServicio select a).Count() > 0;
+
+                if (YaEstaRegistrado)
+                {
+                    foreach (var D in data.Listado)
+                    {
+                        var temp = (from a in dbContext.cuidadopreventivo where a.i_IsDeleted == IsNotDeleted && a.v_PersonId == PersonaId && a.d_ServiceDate == data.FechaServicio && a.i_GrupoId == D.GrupoId && a.i_ParametroId == D.ParameterId select a).FirstOrDefault();
+
+                        if (temp == null)
+                        {
+                            cuidadopreventivo CP = new cuidadopreventivo()
+                            {
+                                d_InsertDate = DateTime.Now,
+                                d_ServiceDate = data.FechaServicio,
+                                i_GrupoId = D.GrupoId,
+                                i_IsDeleted = IsNotDeleted,
+                                i_InsertUserId = SystemUserId,
+                                i_ParametroId = D.ParameterId,
+                                i_Valor = D.Valor ? (int)SiNo.SI : (int)SiNo.NO,
+                                v_PersonId = PersonaId,
+                                v_CuidadoPreventivoId = Common.Utils.GetNewId(NodeId, Utils.GetNextSecuentialId(NodeId, 329), "CP")
+                            };
+
+                            dbContext.cuidadopreventivo.AddObject(CP);
+                        }
+                        else
+                        {
+                            if (temp.i_Valor != (D.Valor ? (int)SiNo.SI : (int)SiNo.NO))
+                            {
+                                temp.d_UpdateDate = DateTime.Now;
+                                temp.i_UpdateUserId = SystemUserId;
+                                temp.i_Valor = D.Valor ? (int)SiNo.SI : (int)SiNo.NO;
+
+                                row =+ dbContext.SaveChanges();
+                            }
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    foreach (var D in data.Listado)
+                    {
+                        cuidadopreventivo CP = new cuidadopreventivo()
+                        {
+                            d_InsertDate = DateTime.Now,
+                            d_ServiceDate = data.FechaServicio,
+                            i_GrupoId = D.GrupoId,
+                            i_IsDeleted = IsNotDeleted,
+                            i_InsertUserId = SystemUserId,
+                            i_ParametroId = D.ParameterId,
+                            i_Valor = D.Valor ? (int)SiNo.SI : (int)SiNo.NO,
+                            v_PersonId = PersonaId,
+                            v_CuidadoPreventivoId = Common.Utils.GetNewId(NodeId, Utils.GetNextSecuentialId(NodeId, 329), "CP")
+                        };
+
+                        dbContext.cuidadopreventivo.AddObject(CP);
+                    }
+                }
+
+                foreach (var D in data.Listado)
+                {
+
+                }
+
+                row = row + dbContext.SaveChanges();
+                return row > 0;
+            }
+            catch (Exception e)
             {
                 return false;
             }

@@ -52,6 +52,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private int _AMCGenero;
         private string _Dni;
         string _PacientId;
+        int GrupoEtario;
         private int _Categoria;
         private DateTime? _FechaServico;
         private List<BE.ComponentList> _tmpServiceComponentsForBuildMenuList = null;
@@ -370,6 +371,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 ConclusionesyTratamiento_LoadAllGrid();
                 gbEdicionDiagnosticoTotal.Enabled = false;
                 ConstruirFormularioAntecedentes();
+                ConstruirFormularioCuidadosPreventivos();
             }
             if (_action == "View")
             {
@@ -389,15 +391,153 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void ConstruirFormularioAntecedentes()
         {
             int GrupoBase = 282; //Antecedentes
-            int GrupoEtario = _serviceBL.ObtenerIdGrupoEtarioDePaciente(_personId);
+            GrupoEtario = _serviceBL.ObtenerIdGrupoEtarioDePaciente(_personId);
             int Grupo = int.Parse(GrupoBase.ToString() + GrupoEtario.ToString());
 
-            List<frmEsoAntecedentesPadre> Parents = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo);
+            List<frmEsoAntecedentesPadre> AntecedentesActuales = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo,GrupoEtario,_personId);
 
-            if (Parents.Count == 0)
+            if (AntecedentesActuales.Count == 0)
+            {
                 btnGuardarAntecedentes.Visible = false;
+                label58.Visible = false;
+                ultraGrid2.Visible = false;
+            }
             else
-                ultraGrid2.DataSource = Parents;
+            {
+                ultraGrid2.DataSource = AntecedentesActuales;
+                ultraGrid2.DisplayLayout.Bands[0].Columns[0].CellActivation = Infragistics.Win.UltraWinGrid.Activation.Disabled;
+            }
+                
+            int GrupoEtarioAnterior = 0;
+
+            switch (GrupoEtario)
+            {
+                case 1:
+                    {
+                        GrupoEtarioAnterior = 2;
+                        break;
+                    }
+                default:
+                    {
+                        GrupoEtarioAnterior = 0;
+                        break;
+                    }
+            }
+            Grupo = int.Parse(GrupoBase.ToString() + GrupoEtarioAnterior.ToString());
+            List<frmEsoAntecedentesPadre> AntecedentesAnteriores = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtarioAnterior, _personId);
+
+            if (AntecedentesAnteriores.Count == 0)
+            {
+                label39.Visible = false;
+                ultraGrid1.Visible = false;
+            }
+            else
+            {
+                ultraGrid1.DataSource = AntecedentesAnteriores;
+            }
+        }
+
+        private void ConstruirFormularioCuidadosPreventivos()
+        {
+            if (!_FechaServico.HasValue)
+            {
+                dataGridView1.Visible = false;
+                return;
+            }
+
+            int GrupoBase = 283;
+            List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(_FechaServico.Value,GrupoBase,_personId);
+
+            if (Fechas.Count == 0)
+            {
+                dataGridView1.Visible = false;
+            }
+            else
+            {
+                dataGridView1.Columns.Add("GrupoId", "GrupoId");
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns.Add("ParameterId", "ParameterId");
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns.Add("Nombre","Nombre");
+                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[2].ReadOnly = true;
+                dataGridView1.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+                int ContadorColumna = 2;
+                bool AgregarTitulos = true;
+                foreach (var F in Fechas)
+                {
+                    ContadorColumna++;
+                    dataGridView1.Columns.Add("Fecha" + (ContadorColumna - 2), F.FechaServicio.ToShortDateString());
+                    dataGridView1.Columns[ContadorColumna].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    dataGridView1.Columns[ContadorColumna].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                    if (ContadorColumna != (Fechas.Count + 2))
+                        dataGridView1.Columns[ContadorColumna].ReadOnly = true;
+
+                    int ContadorFila = -1;
+                    foreach (var L in F.Listado)
+                    {
+                        ContadorFila++;
+                        if (AgregarTitulos)
+                        {
+                            dataGridView1.Rows.Add();
+                            dataGridView1.Rows[ContadorFila].Cells[0].Value = L.GrupoId;
+                            dataGridView1.Rows[ContadorFila].Cells[1].Value = L.ParameterId;
+                            dataGridView1.Rows[ContadorFila].Cells[2].Value = L.Nombre;
+
+                            if(L.Hijos != null)
+                                dataGridView1.Rows[ContadorFila].Cells[2].Style.Font = new Font(FontFamily.GenericSansSerif,10f, FontStyle.Bold);
+                        }
+
+                        if (L.Hijos != null)
+                        {
+                            ContadorFila = AgregarHijosDeTablaRecursivo(L, AgregarTitulos, F.FechaServicio, ContadorColumna, ContadorFila);
+                        }
+                        else
+                        {
+
+                            DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
+                            cell.Value = L.Valor;
+                            dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
+                            if (ContadorColumna != Fechas.Count)
+                                dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].ReadOnly = true;
+                        }
+                    }
+                    AgregarTitulos = false;
+                }
+            }
+        }
+
+        private int AgregarHijosDeTablaRecursivo(frmEsoCuidadosPreventivos Lista, bool AgregarTitulos, DateTime FechaServicio, int ContadorColumna, int ContadorFila)
+        {
+            foreach (var L in Lista.Hijos)
+            {
+                ContadorFila++;
+                if (AgregarTitulos)
+                {
+                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows[ContadorFila].Cells[0].Value = L.GrupoId;
+                    dataGridView1.Rows[ContadorFila].Cells[1].Value = L.ParameterId;
+                    dataGridView1.Rows[ContadorFila].Cells[2].Value = L.Nombre;
+
+                    if(L.Hijos != null)
+                        dataGridView1.Rows[ContadorFila].Cells[2].Style.Font = new Font(FontFamily.GenericSansSerif, 10f, FontStyle.Bold);
+                }
+
+                if (L.Hijos != null)
+                {
+                    ContadorFila = AgregarHijosDeTablaRecursivo(L, AgregarTitulos, FechaServicio, ContadorColumna, ContadorFila);
+                }
+                else
+                {
+
+                    DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
+                    cell.Value = L.Valor;
+                    dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
+                }
+            }
+
+            return ContadorFila;
         }
 
         private void BuildMenu()
@@ -5764,6 +5904,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
         }
 
+        private void ultraGrid2_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+            e.Layout.Bands[0].Columns[2].CellActivation = Activation.ActivateOnly;
+            if (e.Layout.Bands[1] != null)
+            {
+                e.Layout.Bands[1].Columns[0].CellActivation = Activation.ActivateOnly;
+            }
+        }
+
 
         public List<DiagnosticRepositoryList> GeneratedAutoDXExcel(string valueToAnalyze, string pcomponentFieldsId)
         {
@@ -7460,7 +7609,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     {
                         Nombre = H.Cells["Nombre"].Text,
                         SI = bool.Parse(H.Cells[1].Text),
-                        NO = bool.Parse(H.Cells[2].Text)
+                        NO = bool.Parse(H.Cells[2].Text),
+                        GrupoId = int.Parse(H.Cells["GrupoId"].Text),
+                        ParametroId = int.Parse(H.Cells["ParametroId"].Text)
                     };
 
                     ListadoHijos.Add(Hijo);
@@ -7477,17 +7628,68 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 Listado.Add(Padre);
             }
 
-            if (_serviceBL.GuardarAntecedenteAsistencial(Listado))
+            bool response = false;
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
-                
+                response = _serviceBL.GuardarAntecedenteAsistencial(Listado, Globals.ClientSession.i_SystemUserId,_personId,GrupoEtario,Globals.ClientSession.i_CurrentExecutionNodeId);
+            }
+
+            if (response)
+            {
+                MessageBox.Show("Registro guardado satisfactoriamente!.", "CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {
-
+                MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        private void btnGuardarCuidadosPreventivos_Click(object sender, EventArgs e)
+        {
+            frmEsoCuidadosPreventivosFechas data = new frmEsoCuidadosPreventivosFechas();
+            data.FechaServicio = _FechaServico.Value;
 
+            List<frmEsoCuidadosPreventivos> Hijos = new List<frmEsoCuidadosPreventivos>();
+
+            foreach (DataGridViewRow D in dataGridView1.Rows)
+            {
+                int CelIndex = D.Cells.Count - 1;
+
+                DataGridViewCheckBoxCell cell = D.Cells[CelIndex] as DataGridViewCheckBoxCell;
+
+                if (cell != null)
+                {
+                    frmEsoCuidadosPreventivos H = new frmEsoCuidadosPreventivos()
+                    {
+                        GrupoId = int.Parse(D.Cells["GrupoID"].Value.ToString()),
+                        ParameterId = int.Parse(D.Cells["ParameterId"].Value.ToString()),
+                        Valor = bool.Parse(cell.Value.ToString())
+                    };
+
+                    Hijos.Add(H);
+                }
+            }
+
+            data.Listado = Hijos;
+
+            bool response = false;
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                response = _serviceBL.GuardarCuidadosPreventivos(data, _personId, Globals.ClientSession.i_SystemUserId, Globals.ClientSession.i_CurrentExecutionNodeId);
+            }
+
+            if (response)
+            {
+                MessageBox.Show("Registro guardado satisfactoriamente!.", "CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
 
     }
 
