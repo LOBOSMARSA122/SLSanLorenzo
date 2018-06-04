@@ -505,6 +505,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     }
                     AgregarTitulos = false;
                 }
+
+                ContadorColumna++;
+                dataGridView1.Columns.Add("Comentarios","Comentarios");
+                dataGridView1.Columns[ContadorColumna].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+                //int ContadorFila = -1;
+                //foreach (var C in Fechas) 
+                //{
+                //    ContadorFila++;
+                //    dataGridView1.Rows[ContadorFila].Cells[0].Value = L.GrupoId;
+                //}
             }
         }
 
