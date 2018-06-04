@@ -28938,7 +28938,53 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<frmEsoCuidadosPreventivos> ObtenerListadoCuidadosPreventivos(int GrupoBase)
+        public List<frmEsoCuidadosPreventivosFechas> ObtenerFechasCuidadosPreventivos(DateTime FechaServicioActual, int GrupoBase, string PersonId)
+        {
+            try
+            {
+                var data = ObtenerFechasCuidadosPreventivos(PersonId);
+
+                data.Add(new frmEsoCuidadosPreventivosFechas() { FechaServicio = FechaServicioActual });
+
+                foreach (var F in data)
+                {
+                    F.Listado = ObtenerListadoCuidadosPreventivos(GrupoBase);
+                }
+
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return new List<frmEsoCuidadosPreventivosFechas>();
+            }
+        }
+
+        public List<frmEsoCuidadosPreventivosFechas> ObtenerFechasCuidadosPreventivos(string PersonId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+
+                var data = (from a in dbContext.service
+                            where a.i_IsDeleted == isNotDeleted &&
+                            a.v_PersonId == PersonId &&
+                            a.d_ServiceDate != null
+                            select new frmEsoCuidadosPreventivosFechas()
+                            {
+                                FechaServicio = a.d_ServiceDate.Value
+                            }).ToList();
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return new List<frmEsoCuidadosPreventivosFechas>();
+            }
+        }
+
+        public List<frmEsoCuidadosPreventivos> ObtenerListadoCuidadosPreventivos(int GrupoPadre)
         {
             try
             {
@@ -28947,19 +28993,22 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var data = (from a in dbContext.systemparameter
                             where a.i_IsDeleted == isNotDeleted &&
-                            a.i_GroupId == GrupoBase
+                            a.i_GroupId == GrupoPadre
                             select new frmEsoCuidadosPreventivos
                             {
                                 ParameterId = a.i_ParameterId,
-                                Nombre = a.v_Value1
+                                Nombre = a.v_Value1,
+                                GrupoId = a.i_ParentParameterId.Value,
+                                PadreId = a.i_GroupId
                             }).ToList();
 
-
-                // ANALIZAR BIEN ESTA VAINA PARA HACER UNA FUNCION RECURSIVA PARA LLENAR 'N' CANTIDAD DE HIJOS
+                if (data.Count == 0)
+                    return null;
 
                 foreach (var D in data)
                 {
-                    
+                    int nuevoGrupo = int.Parse(GrupoPadre.ToString() + D.ParameterId.ToString());
+                    D.Hijos = ObtenerListadoCuidadosPreventivos(nuevoGrupo);
                 }
 
 
@@ -28967,7 +29016,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
             catch (Exception e)
             {
-                return new List<frmEsoCuidadosPreventivos>();
+                return null;
             }
         }
 	}

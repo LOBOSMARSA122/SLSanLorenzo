@@ -439,17 +439,190 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void ConstruirFormularioCuidadosPreventivos()
         {
-            int GrupoBase = 283;
-            List<frmEsoCuidadosPreventivos> Listado = _serviceBL.ObtenerListadoCuidadosPreventivos(GrupoBase);
-
-            if (Listado.Count == 0)
+            if (!_FechaServico.HasValue)
             {
-                ultraGrid3.Visible = false;
+                dataGridView1.Visible = false;
+                return;
+            }
+
+            int GrupoBase = 283;
+            List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(_FechaServico.Value,GrupoBase,_personId);
+
+            if (Fechas.Count == 0)
+            {
+                dataGridView1.Visible = false;
             }
             else
             {
-                ultraGrid3.DataSource = Listado;
+                dataGridView1.Columns.Add("Nombre","Nombre");
+                dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[0].ReadOnly = true;
+                int ContadorColumna = 0;
+                bool AgregarTitulos = true;
+                foreach (var F in Fechas)
+                {
+                    ContadorColumna++;
+                    dataGridView1.Columns.Add("Fecha" + ContadorColumna, F.FechaServicio.ToShortDateString());
+                    int ContadorFila = -1;
+                    foreach (var L in F.Listado)
+                    {
+                        if (AgregarTitulos)
+                        {
+                            dataGridView1.Rows.Add();
+                            ContadorFila++;
+                            dataGridView1.Rows[ContadorFila].Cells[0].Value = L.Nombre;
+
+                            if(L.Hijos != null)
+                                dataGridView1.Rows[ContadorFila].Cells[0].Style.Font = new Font(FontFamily.GenericSansSerif,10f, FontStyle.Bold);
+                        }
+
+                        if (L.Hijos != null)
+                        {
+                            ContadorFila = AgregarHijosDeTablaRecursivo(L, AgregarTitulos, F.FechaServicio, ContadorColumna, ContadorFila);
+                        }
+                        else
+                        {
+                            try
+                            {
+                                DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
+                                cell.Value = false;
+                                dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
+                                if (ContadorColumna != Fechas.Count)
+                                    dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].ReadOnly = true;
+                                //dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].Value = false;
+                            }
+                            catch (Exception e)
+                            {
+                            }
+
+                            
+                        }
+                    }
+                    AgregarTitulos = false;
+                }
+                //List<DataTable> ListaTabla = new List<DataTable>();
+                //ListaTabla.Add(new DataTable());
+                //ListaTabla[0].Columns.Add("CampoID", typeof(int));
+                //ListaTabla[0].Columns.Add("PadreID", typeof(int));
+                //ListaTabla[0].Columns.Add("Nombre", typeof(string));
+                //bool agregarTitulos = true;
+                //int contadorColumna = 2;
+                //foreach (var F in Fechas)
+                //{
+                //    contadorColumna++;
+                //    int ContadorTabla = 0;
+                //    int indexRow = 0;
+                //    ListaTabla[ContadorTabla].Columns.Add(F.FechaServicio.ToShortDateString(), typeof(bool));
+
+                //    foreach (var L in F.Listado)
+                //    {
+                //        if (agregarTitulos)
+                //        {
+                //            ListaTabla[ContadorTabla].Rows.Add();
+                //            ListaTabla[ContadorTabla].Rows[indexRow][0] = L.GrupoId;
+                //            ListaTabla[ContadorTabla].Rows[indexRow][1] = L.PadreId;
+                //            ListaTabla[ContadorTabla].Rows[indexRow][2] = L.Nombre;
+                //            ListaTabla[ContadorTabla].Rows[indexRow][contadorColumna] = false;
+                //        }
+                //        else
+                //        {
+                //            ListaTabla[ContadorTabla].Rows[indexRow][contadorColumna] = false;
+                //        }
+
+                //        if (L.Hijos != null)
+                //        {
+                //            ListaTabla = AgregarHijosDeTablaRecursivo(L, ContadorTabla, agregarTitulos, ListaTabla, F.FechaServicio, contadorColumna);
+                //        }
+
+                //        indexRow++;
+                //    }
+
+                //    agregarTitulos = false;
+                //}
+
+                //foreach (var T in ListaTabla)
+                //{
+                //    DS.Tables.Add(T);
+                //}
+
+                //for (int i = 0; i < (ListaTabla.Count - 1); i++)
+                //{
+                //    DS.Relations.Add(ListaTabla[i].Columns[0], ListaTabla[i + 1].Columns[1]);
+                //}
             }
+        }
+
+        //private List<DataTable> AgregarHijosDeTablaRecursivo(frmEsoCuidadosPreventivos Lista, int ContadorTabla, bool agregarTitulos, List<DataTable> ListaTabla, DateTime FechaServicio, int contadorColumna)
+        private int AgregarHijosDeTablaRecursivo(frmEsoCuidadosPreventivos Lista, bool AgregarTitulos, DateTime FechaServicio, int ContadorColumna, int ContadorFila)
+        {
+            foreach (var L in Lista.Hijos)
+            {
+                if (AgregarTitulos)
+                {
+                    dataGridView1.Rows.Add();
+                    ContadorFila++;
+                    dataGridView1.Rows[ContadorFila].Cells[0].Value = L.Nombre;
+
+                    if(L.Hijos != null)
+                        dataGridView1.Rows[ContadorFila].Cells[0].Style.Font = new Font(FontFamily.GenericSansSerif, 10f, FontStyle.Bold);
+                }
+
+                if (L.Hijos != null)
+                {
+                    ContadorFila = AgregarHijosDeTablaRecursivo(L, AgregarTitulos, FechaServicio, ContadorColumna, ContadorFila);
+                }
+                else
+                {
+                    try
+                    {
+                        DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
+                        cell.Value = false;
+                        dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
+                        //dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].Value = false;
+                    }
+                    catch (Exception e)
+                    {
+                    }
+
+                }
+            }
+
+            //ContadorTabla++;
+            //int indexRow = 0;
+            //if (ListaTabla.Count == ContadorTabla)
+            //{
+            //    ListaTabla.Add(new DataTable());
+            //    ListaTabla[ContadorTabla].Columns.Add("CampoID", typeof(int));
+            //    ListaTabla[ContadorTabla].Columns.Add("PadreID", typeof(int));
+            //    ListaTabla[ContadorTabla].Columns.Add("Nombre", typeof(string));
+            //    ListaTabla[ContadorTabla].Columns.Add(FechaServicio.ToShortDateString(), typeof(bool));
+            //}
+
+            //foreach (var L in Lista.Hijos)
+            //{
+            //    if (agregarTitulos)
+            //    {
+            //        ListaTabla[ContadorTabla].Rows.Add();
+            //        ListaTabla[ContadorTabla].Rows[indexRow][0] = L.GrupoId;
+            //        ListaTabla[ContadorTabla].Rows[indexRow][1] = L.PadreId;
+            //        ListaTabla[ContadorTabla].Rows[indexRow][2] = L.Nombre;
+            //        ListaTabla[ContadorTabla].Rows[indexRow][contadorColumna] = false;
+            //    }
+            //    else
+            //    {
+            //        ListaTabla[ContadorTabla].Columns.Add(FechaServicio.ToShortDateString(), typeof(bool));
+            //        ListaTabla[ContadorTabla].Rows[indexRow][contadorColumna] = false;
+            //    }
+
+            //    if (L.Hijos != null)
+            //    {
+            //        AgregarHijosDeTablaRecursivo(L, ContadorTabla, agregarTitulos, ListaTabla, FechaServicio, contadorColumna);
+            //    }
+
+            //    indexRow++;
+            //}
+
+            return ContadorFila;
         }
 
         private void BuildMenu()
