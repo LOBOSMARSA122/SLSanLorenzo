@@ -28982,6 +28982,31 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<frmEsoCuidadosPreventivosComentarios> ObtenerComentariosCuidadosPreventivos(string PersonaId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+
+                var data = (from a in dbContext.cuidadopreventivocomentario
+                            where a.v_PersonId == PersonaId &&
+                            a.i_IsDeleted == isNotDeleted
+                            select new frmEsoCuidadosPreventivosComentarios()
+                            {
+                                GrupoId = a.i_GrupoId,
+                                ParametroId = a.i_ParametroId,
+                                Comentario = a.v_Comentario
+                            }).ToList();
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return new List<frmEsoCuidadosPreventivosComentarios>();
+            }
+        }
+
         public List<frmEsoCuidadosPreventivos> ObtenerListadoCuidadosPreventivos(int GrupoPadre, string PersonId, DateTime FechaServicio)
         {
             try
@@ -29020,7 +29045,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public bool GuardarCuidadosPreventivos(frmEsoCuidadosPreventivosFechas data, string PersonaId, int SystemUserId, int NodeId)
+        public bool GuardarCuidadosPreventivos(frmEsoCuidadosPreventivosFechas data, string PersonaId, int SystemUserId, int NodeId, List<frmEsoCuidadosPreventivosComentarios> Comentarios)
         {
             try
             {
@@ -29088,9 +29113,45 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
                 }
 
-                foreach (var D in data.Listado)
-                {
+                row = row + dbContext.SaveChanges();
 
+                foreach (var C in Comentarios)
+                {
+                    var temporal = (from a in dbContext.cuidadopreventivocomentario
+                                    where
+                                        a.i_IsDeleted == IsNotDeleted &&
+                                        a.v_PersonId == PersonaId &&
+                                        a.i_ParametroId == C.ParametroId &&
+                                        a.i_GrupoId == C.GrupoId
+                                    select a).FirstOrDefault();
+
+                    if (temporal != null)
+                    {
+                        if (temporal.v_Comentario != C.Comentario)
+                        {
+                            temporal.i_UpdateUserId = SystemUserId;
+                            temporal.d_UpdateDate = DateTime.Now;
+                            temporal.v_Comentario = C.Comentario;
+                            row = row + dbContext.SaveChanges();
+                        }
+                    }
+                    else
+                    {
+                        cuidadopreventivocomentario CPC = new cuidadopreventivocomentario()
+                        {
+                            d_InsertDate = DateTime.Now,
+                            i_GrupoId = C.GrupoId,
+                            i_InsertUserId = SystemUserId,
+                            i_IsDeleted = IsNotDeleted,
+                            i_ParametroId = C.ParametroId,
+                            v_Comentario = C.Comentario,
+                            v_PersonId = PersonaId,
+                            v_CuidadoPreventivoComentarioId = Common.Utils.GetNewId(NodeId, Utils.GetNextSecuentialId(NodeId, 330), "CC")
+                        };
+
+                        dbContext.cuidadopreventivocomentario.AddObject(CPC);
+                        row = row + dbContext.SaveChanges();
+                    }
                 }
 
                 row = row + dbContext.SaveChanges();

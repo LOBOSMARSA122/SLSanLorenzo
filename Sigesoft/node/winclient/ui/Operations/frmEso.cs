@@ -447,6 +447,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             int GrupoBase = 283;
             List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(_FechaServico.Value,GrupoBase,_personId);
+            List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_personId);
 
             if (Fechas.Count == 0)
             {
@@ -510,12 +511,22 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 dataGridView1.Columns.Add("Comentarios","Comentarios");
                 dataGridView1.Columns[ContadorColumna].SortMode = DataGridViewColumnSortMode.NotSortable;
 
-                //int ContadorFila = -1;
-                //foreach (var C in Fechas) 
-                //{
-                //    ContadorFila++;
-                //    dataGridView1.Rows[ContadorFila].Cells[0].Value = L.GrupoId;
-                //}
+
+                foreach (DataGridViewRow D in dataGridView1.Rows)
+                {
+                    int CelIndex = D.Cells.Count - 2;
+
+                    DataGridViewCheckBoxCell cell = D.Cells[CelIndex] as DataGridViewCheckBoxCell;
+
+                    if (cell != null)
+                    {
+                        D.Cells["Comentarios"].Value = Comentarios.Where(x => x.GrupoId == int.Parse(D.Cells["GrupoId"].Value.ToString()) && x.ParametroId == int.Parse(D.Cells["ParameterId"].Value.ToString())).FirstOrDefault() == null ? "" : Comentarios.Where(x => x.GrupoId == int.Parse(D.Cells["GrupoId"].Value.ToString()) && x.ParametroId == int.Parse(D.Cells["ParameterId"].Value.ToString())).FirstOrDefault().Comentario;
+                    }
+                    else
+                    {
+                        D.Cells["Comentarios"].ReadOnly = true;
+                    }
+                }
             }
         }
 
@@ -7662,10 +7673,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             data.FechaServicio = _FechaServico.Value;
 
             List<frmEsoCuidadosPreventivos> Hijos = new List<frmEsoCuidadosPreventivos>();
+            List<frmEsoCuidadosPreventivosComentarios> Comentarios = new List<frmEsoCuidadosPreventivosComentarios>();
 
             foreach (DataGridViewRow D in dataGridView1.Rows)
             {
-                int CelIndex = D.Cells.Count - 1;
+                int CelIndex = D.Cells.Count - 2;
 
                 DataGridViewCheckBoxCell cell = D.Cells[CelIndex] as DataGridViewCheckBoxCell;
 
@@ -7679,6 +7691,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     };
 
                     Hijos.Add(H);
+
+                    frmEsoCuidadosPreventivosComentarios C = new frmEsoCuidadosPreventivosComentarios()
+                    {
+                        GrupoId = int.Parse(D.Cells["GrupoID"].Value.ToString()),
+                        ParametroId = int.Parse(D.Cells["ParameterId"].Value.ToString()),
+                        Comentario = D.Cells["Comentarios"].Value.ToString()
+                    };
+
+                    Comentarios.Add(C);
                 }
             }
 
@@ -7688,7 +7709,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
-                response = _serviceBL.GuardarCuidadosPreventivos(data, _personId, Globals.ClientSession.i_SystemUserId, Globals.ClientSession.i_CurrentExecutionNodeId);
+                response = _serviceBL.GuardarCuidadosPreventivos(data, _personId, Globals.ClientSession.i_SystemUserId, Globals.ClientSession.i_CurrentExecutionNodeId, Comentarios);
             }
 
             if (response)
