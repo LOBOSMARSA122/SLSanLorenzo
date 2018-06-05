@@ -1059,8 +1059,10 @@ namespace Sigesoft.Common
         public const string INFORME_FICHA_MEDICA_TRABAJADOR_CI = "FMT_CI";
         public const string HISTORIA_CLINICA = "HIST_CLI";
         public const string ATENCION_INTEGRAL = "ATENCION_INTEGRAL";
-        
-        public const string FORMATO_ATENCION = "FA";
+
+        public const string FORMATO_ATENCION_INTEGRAL_ADULTO_MAYOR = "ATE_ADULT_MAYOR";
+        public const string FORMATO_ATENCION_INTEGRAL_ADULTO = "ATE_ADULTO";
+        public const string FORMATO_ATENCION_INTEGRAL_ADOLESCENTE = "ATE_ADOLE";
         public const string FORMATO_ATENCION_NINIO = "FA_NINIO";
         public const string INFORME_ANEXO_16_COIMOLACHE = "7C-COIMOLACHE";
         public const string INFORME_ANEXO_16_YANACOCHA = "7C-YANACOCHA";
