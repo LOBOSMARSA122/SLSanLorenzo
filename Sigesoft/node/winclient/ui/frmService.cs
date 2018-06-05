@@ -867,7 +867,8 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else
             {
-                var frm = new Reports.frmManagementReportsMedical(_serviceId, _pacientId, _customerOrganizationName, _personFullName, _EmpresaClienteId);
+                var edad = int.Parse(grdDataService.Selected.Rows[0].Cells["i_age"].Value.ToString());
+                var frm = new Reports.frmManagementReportsMedical(_serviceId, _pacientId, _customerOrganizationName, _personFullName, _EmpresaClienteId, edad);
                 frm.ShowDialog();
             }     
 

@@ -30,8 +30,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private string _customerOrganizationName;
         private string _personFullName;
         string ruta;
+        private readonly int _edad;
 
-        public frmManagementReportsMedical(string serviceId, string pacientId, string customerOrganizationName, string personFullName, string pstrEmpresaCliente)
+        public frmManagementReportsMedical(string serviceId, string pacientId, string customerOrganizationName, string personFullName, string pstrEmpresaCliente, int edad)
         {
             InitializeComponent();
             _serviceId = serviceId;
@@ -39,13 +40,30 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             _customerOrganizationName = customerOrganizationName;
             _personFullName = personFullName;           
             _EmpresaClienteId = pstrEmpresaCliente;
+            _edad = edad;
         }
 
         private void frmManagementReportsMedical_Load(object sender, EventArgs e)
         {
             List<ServiceComponentList> serviceComponents = new List<ServiceComponentList>();
-            serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "HISTORIA CLÍNICA", v_ComponentId = Constants.FORMATO_ATENCION });
-            serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "HISTORIA CLÍNICA NIÑO", v_ComponentId = Constants.FORMATO_ATENCION_NINIO });
+
+            if (_edad <= 12)
+            {
+                serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "HISTORIA CLÍNICA NIÑO", v_ComponentId = Constants.FORMATO_ATENCION_NINIO });
+            }
+            else if (13 <= _edad && _edad  <= 17)
+            {
+                serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "ADOLESCENTE", v_ComponentId = Constants.FORMATO_ATENCION_INTEGRAL_ADOLESCENTE });
+            }
+            else if (18 <= _edad && _edad <= 64)
+            {
+                serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "ADULTO", v_ComponentId = Constants.FORMATO_ATENCION_INTEGRAL_ADULTO });
+            }
+            else
+            {
+                serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "ADULTO MAYOR", v_ComponentId = Constants.FORMATO_ATENCION_INTEGRAL_ADULTO_MAYOR });
+            }
+
             chklConsolidadoReportes.DataSource = serviceComponents;
             chklConsolidadoReportes.DisplayMember = "v_ComponentName";
             chklConsolidadoReportes.ValueMember = "v_ComponentId";
@@ -184,8 +202,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             switch (componentId)
             {
-                case Constants.FORMATO_ATENCION:
-                    GenerateConsultaMedica(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION)));
+                case Constants.FORMATO_ATENCION_INTEGRAL_ADULTO_MAYOR:
+                    GenerateAtencionIntegralAdultoMayor(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION_INTEGRAL_ADULTO_MAYOR)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+
+                case Constants.FORMATO_ATENCION_INTEGRAL_ADULTO:
+                    GenerateAtencionIntegralAdulto(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION_INTEGRAL_ADULTO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+
+                case Constants.FORMATO_ATENCION_INTEGRAL_ADOLESCENTE:
+                    GenerateAtencionIntegralAdolescente(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION_INTEGRAL_ADOLESCENTE)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
 
@@ -196,18 +224,32 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             }   
         }
 
-        private void GenerateConsultaMedica(string pathFile)
+        private void GenerateAtencionIntegralAdultoMayor(string pathFile)
         {
-            HistoryBL _historyBL = new HistoryBL();
-            var ListaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
-            var ListPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
+            var listaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
+            var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
 
-            AtencionIntegral.CreateAtencionIntegral(pathFile, ListaProblema, ListPlanIntegral);
+            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral);
+        }
+
+        private void GenerateAtencionIntegralAdulto(string pathFile)
+        {
+            var listaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
+            var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
+
+            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral);
+        }
+
+        private void GenerateAtencionIntegralAdolescente(string pathFile)
+        {
+            var listaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
+            var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
+
+            AtencionIntegralAdolescente.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral);
         }
 
         private void GenerateConsultaMedicaNinio(string pathFile)
         {
-            HistoryBL _historyBL = new HistoryBL();
             Ninio.CreateAtencionNinio(pathFile);
         }
         

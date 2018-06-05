@@ -76,7 +76,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AtencionIntegral.cs" />
+    <Compile Include="AtencionIntegralAdolescente.cs" />
+    <Compile Include="AtencionIntegralAdulto.cs" />
+    <Compile Include="AtencionIntegralAdultoMayor.cs" />
     <Compile Include="CertificadoAptitudCompleto.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />

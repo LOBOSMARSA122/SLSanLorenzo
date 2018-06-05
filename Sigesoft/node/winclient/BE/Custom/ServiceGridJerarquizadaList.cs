@@ -58,5 +58,8 @@ namespace Sigesoft.Node.WinClient.BE
 
         public int? i_IsDeletedRecomendaciones { get; set; }
         public int? i_IsDeletedRestricciones { get; set; }
+
+        public int i_age { get; set; }
+        public DateTime? d_BirthDate { get; set; }
     }
 }

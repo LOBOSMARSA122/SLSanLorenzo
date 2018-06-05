@@ -9,12 +9,9 @@ using iTextSharp.text.pdf;
 using iTextSharp.text.pdf.draw;
 using Sigesoft.Node.WinClient.BE;
 
-
-
-
 namespace NetPdf
 {
-    public class AtencionIntegral
+    public class AtencionIntegralAdulto
     {
         private static void RunFile(string filePDF)
         {
@@ -86,9 +83,10 @@ namespace NetPdf
             document.Add(new Paragraph("\r\n"));
             #endregion
 
+            #region PRIMERA PÁGINA
             #region PROBLEMA CRÓNICOS
 
-            var problemasCronicos = problemasList.FindAll(p => p.i_Tipo ==  (int)Sigesoft.Common.TipoProblema.Cronico);
+            var problemasCronicos = problemasList.FindAll(p => p.i_Tipo == (int)Sigesoft.Common.TipoProblema.Cronico);
 
             cells = new List<PdfPCell>();
 
@@ -119,7 +117,7 @@ namespace NetPdf
             else
             {
                 cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
-                columnWidths = new float[] {100f };
+                columnWidths = new float[] { 100f };
             }
             columnHeaders = new string[] { "N°", "FECHA", "PROBLEMA CRÓNICOS", "INACTIVO", "OBSERVACIÓN" };
             columnWidths = new float[] { 5F, 20f, 30f, 20f, 25f };
@@ -145,7 +143,7 @@ namespace NetPdf
                     cells.Add(cell);
 
                     cell = new PdfPCell(new Phrase(item.d_Fecha.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
-                    cells.Add(cell);       
+                    cells.Add(cell);
 
                     cell = new PdfPCell(new Phrase(item.v_Observacion, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
                     cells.Add(cell);
@@ -157,17 +155,17 @@ namespace NetPdf
             else
             {
                 cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
-                columnWidths = new float[] {100f };
+                columnWidths = new float[] { 100f };
             }
             columnHeaders = new string[] { "N°", "PROBLEMAS AGUDOS", "FECHA", "OBSERVACIÓN" };
             columnWidths = new float[] { 5f, 45f, 20f, 30f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "LISTA DE PROBLEMAS AGUDOS", fontTitleTable, columnHeaders);
             document.Add(table);
-            
-            #endregion            
+
+            #endregion
 
             #region PLAN DE ATENCIÓN INTEGRAL
-            
+
             cells = new List<PdfPCell>()
                 {
                     new PdfPCell(new Phrase("PLAN DE ATENCIÓN INTEGRAL", fontTitleTable)){Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, BackgroundColor= BaseColor.GRAY  },    
@@ -205,17 +203,20 @@ namespace NetPdf
 
                 nro += 1;
             }
-            columnWidths = new float[] { 5f, 25f, 70f};
-             
+            columnWidths = new float[] { 5f, 25f, 70f };
+
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
 
             #endregion
+            #endregion
 
             document.NewPage();
 
+            #region SEGUNDA PÁGINA
+
             #region TÍTULO
-            
+
             cellsTit = new List<PdfPCell>()
                 { 
                     new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL DEL ADULTO", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT,BackgroundColor= BaseColor.GRAY },  
@@ -603,15 +604,18 @@ namespace NetPdf
 
 
             #endregion
+            #endregion
 
             document.NewPage();
 
+            #region TERCERA PÁGINA
+
             #region Preventivos Adulto
-            
+
             #endregion
             document.Add(new Paragraph("\r\n"));
 
-
+            #endregion
 
             document.Close();
             writer.Close();
