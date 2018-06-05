@@ -28834,7 +28834,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 DateTime FechaActual = DateTime.Now;
 
                 if (FechaActual.AddYears(-12) < FechaNacimiento.Value)
-                    return 0;
+                    return 4;
 
                 if (FechaActual.AddYears(-17) < FechaNacimiento.Value)
                     return 2;
@@ -28843,7 +28843,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     return 1;
 
                 if (FechaActual.AddYears(-999) < FechaNacimiento.Value)
-                    return 0;
+                    return 3;
 
                 return 0;
             }

@@ -442,10 +442,58 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (!_FechaServico.HasValue)
             {
                 dataGridView1.Visible = false;
+                btnGuardarCuidadosPreventivos.Visible = false;
                 return;
             }
 
-            int GrupoBase = 283;
+            int GrupoBase = 0;
+            switch (GrupoEtario)
+            {
+                case 1:
+                    {
+                        switch(_AMCGenero){
+                            case 1:
+                                {
+                                    GrupoBase = 284;
+                                    break;
+                                }
+                            case 2:
+                                {
+                                    GrupoBase = 283;
+                                    break;
+                                }
+                            default:
+                                {
+                                    GrupoBase = 0;
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        GrupoBase = 285;
+                        break;
+                    }
+                case 3:
+                    {
+                        GrupoBase = 286;
+                        break;
+                    }
+                default:
+                    {
+                        GrupoBase = 0;
+                        break;
+                    }
+            }
+
+            if (GrupoBase == 0)
+            {
+                dataGridView1.Visible = false;
+                btnGuardarCuidadosPreventivos.Visible = false;
+                return;
+            }
+
             List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(_FechaServico.Value,GrupoBase,_personId);
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_personId);
 
@@ -492,6 +540,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                         if (L.Hijos != null)
                         {
+                            dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].ReadOnly = true;
                             ContadorFila = AgregarHijosDeTablaRecursivo(L, AgregarTitulos, F.FechaServicio, ContadorColumna, ContadorFila);
                         }
                         else
