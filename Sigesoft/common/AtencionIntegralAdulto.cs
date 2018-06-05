@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateAtencionIntegral(string filePDF, List<ProblemasList> problemasList, List<TipoAtencionList> planIntegralList)
+        public static void CreateAtencionIntegral(string filePDF, List<ProblemasList> problemasList, List<TipoAtencionList> planIntegralList,DatosAtencion datosAtencion)
         {
             Document document = new Document();
 
@@ -611,8 +611,532 @@ namespace NetPdf
             #region TERCERA PÁGINA
 
             #region Preventivos Adulto
+            #region TÍTULO
 
+
+            cellsTit = new List<PdfPCell>()
+                { 
+                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL DEL ADULTO", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER,BackgroundColor= BaseColor.GRAY },  
+                    new PdfPCell(new Phrase("CUIDADOS PREVENTIVOS - SEGUIMIENTO DE RIESGO - " +  datosAtencion.Genero.ToUpper() , fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER },  
+              
+                };
+
+            columnWidths = new float[] { 100f };
+            table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
+            document.Add(table);
             #endregion
+
+            #region CADA CONSULTA
+
+            if (datosAtencion.Genero.ToUpper() == "MUJER")
+            {   
+                cells = new List<PdfPCell>() 
+             { 
+                    new PdfPCell(new Phrase("CADA CONSULTA", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("FECHA", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("COMENTARIOS", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Fiebre en los últimos 15 días", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Tos más de 15 días", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Secreción o lesión en genitales", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Fecha de última regla", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+
+                    new PdfPCell(new Phrase("PERIODICAMENTE ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("FECHA", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("COMENTARIOS", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Físico:", fontColumnValue)) {Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("Indice de masa corporal", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Presión arterial", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+
+                    new PdfPCell(new Phrase("Vacunas:", fontColumnValue)) {Rowspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("antitetánica ( 3 dosis)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("antiamarilica (zona de riesgo)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("contra la hepatitis B ( 3 dosis)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Examen bucal:", fontColumnValue)) {Rowspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("Encias", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Caries dental", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Edentulismo parcial o total", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+ 
+                    new PdfPCell(new Phrase("Portador de prótesis dental", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Estado de higiene dental", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Urgencia de tratamiento", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+
+                     new PdfPCell(new Phrase("Examen:", fontColumnValue)) {Rowspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("visual ( > 40 años)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("de colesterol ( > 45 años)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("de glucosa", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+ 
+                    new PdfPCell(new Phrase("de mamas", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("pélvico y PAP (C/año, C/3 a)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("mamografia (> 50 años, c/ 2 a)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+
+                     new PdfPCell(new Phrase("Psicosocial:", fontColumnValue)) {Rowspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("Ansiedad -depresi", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Violencia familiar", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Violencia política", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Habitos:", fontColumnValue)) {Rowspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("Actividad física", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Uso de alcohol", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Uso de tabaco", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+ 
+                    new PdfPCell(new Phrase("Uso de otras drogas", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Sexualidad:", fontColumnValue)) {Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("Actividad sexual", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Planificación familiar", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+             };
+
+                columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 20f };
+                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+                document.Add(table);
+            }
+            else
+            {
+                cells = new List<PdfPCell>()
+            {
+                    new PdfPCell(new Phrase("CADA CONSULTA", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("FECHA", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("COMENTARIOS", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Fiebre en los últimos 15 días", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Tos más de 15 días", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Secreción o lesión en genitales", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+
+                    new PdfPCell(new Phrase("PERIODICAMENTE ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("FECHA", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("COMENTARIOS", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Físico:", fontColumnValue)) {Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("Indice de masa corporal", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Presión arterial", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+
+                    new PdfPCell(new Phrase("Vacunas:", fontColumnValue)) {Rowspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("antitetánica ( zonas de riesgo)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("antiamarilica (zona de riesgo)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("contra la hepatitis B ( 3 dosis)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Examen bucal:", fontColumnValue)) {Rowspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("Encias", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Caries dental", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("Edentulismo parcial o total", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+ 
+                    new PdfPCell(new Phrase("Portador de prótesis dental", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Estado de higiene dental", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("Urgencia de tratamiento", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+
+                     new PdfPCell(new Phrase("Examen:", fontColumnValue)) {Rowspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                    new PdfPCell(new Phrase("visual ( > 40 años)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                    new PdfPCell(new Phrase("de colesterol ( > 35 años)", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+
+                     new PdfPCell(new Phrase("de glucosa", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+ 
+                    new PdfPCell(new Phrase("prostata (> de 50 años) ", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+            };
+                columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 20f };
+                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+                document.Add(table);
+            }
+            
+            #endregion
+            #endregion
+
             document.Add(new Paragraph("\r\n"));
 
             #endregion

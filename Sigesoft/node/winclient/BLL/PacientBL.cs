@@ -1229,6 +1229,33 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public DatosAtencion GetDatosPersonalesAtencion(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from s in dbContext.service
+                                join pe in dbContext.person on s.v_PersonId equals pe.v_PersonId
+                                 join C in dbContext.systemparameter on new { a = pe.i_SexTypeId.Value, b = 100 } 
+                                                              equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                 from C in C_join.DefaultIfEmpty()
+                                where s.v_ServiceId == serviceId
+                                select new DatosAtencion
+                                {
+                                  Paciente = pe.v_FirstLastName,
+                                  Genero = C.v_Value1
+                                }).FirstOrDefault();
+
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
         public PacientList GetPacientReportEPSFirmaMedicoOcupacional(string serviceId)
         {
             //mon.IsActive = true;

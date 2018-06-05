@@ -236,8 +236,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             var listaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
             var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
+            var datosPersonales = _pacientBL.GetDatosPersonalesAtencion(_serviceId);
 
-            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral);
+            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales);
         }
 
         private void GenerateAtencionIntegralAdolescente(string pathFile)
