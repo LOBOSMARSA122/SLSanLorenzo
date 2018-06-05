@@ -439,13 +439,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void ConstruirFormularioCuidadosPreventivos()
         {
-            if (!_FechaServico.HasValue)
-            {
-                dataGridView1.Visible = false;
-                btnGuardarCuidadosPreventivos.Visible = false;
-                return;
-            }
-
             int GrupoBase = 0;
             switch (GrupoEtario)
             {
@@ -494,7 +487,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 return;
             }
 
-            List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(_FechaServico.Value,GrupoBase,_personId);
+            List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(GrupoBase,_personId);
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_personId);
 
             if (Fechas.Count == 0)

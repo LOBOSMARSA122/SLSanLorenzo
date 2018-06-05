@@ -28939,7 +28939,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<frmEsoCuidadosPreventivosFechas> ObtenerFechasCuidadosPreventivos(DateTime FechaServicioActual, int GrupoBase, string PersonId)
+        public List<frmEsoCuidadosPreventivosFechas> ObtenerFechasCuidadosPreventivos(int GrupoBase, string PersonId)
         {
             try
             {
