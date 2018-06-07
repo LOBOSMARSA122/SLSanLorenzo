@@ -75,9 +75,9 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn69 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_QueueStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentStatusName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentId");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentId");
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
@@ -148,6 +148,8 @@
             this.mnuAreaTrabajo = new System.Windows.Forms.ToolStripMenuItem();
             this.nmuPesoTalla = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuMarcarSalida = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmDeclaracionDrogas = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecordCountCalendar = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -190,8 +192,6 @@
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmDeclaracionDrogas = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -738,7 +738,7 @@
             this.toolStripMenuItem2,
             this.tsmDeclaracionDrogas});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 320);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 298);
             // 
             // mnuReagendarCita
             // 
@@ -837,6 +837,18 @@
             this.mnuMarcarSalida.Size = new System.Drawing.Size(259, 22);
             this.mnuMarcarSalida.Text = "Marcar Hora de Salida";
             this.mnuMarcarSalida.Click += new System.EventHandler(this.mnuMarcarSalida_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(256, 6);
+            // 
+            // tsmDeclaracionDrogas
+            // 
+            this.tsmDeclaracionDrogas.Name = "tsmDeclaracionDrogas";
+            this.tsmDeclaracionDrogas.Size = new System.Drawing.Size(259, 22);
+            this.tsmDeclaracionDrogas.Text = "Declaración Drogas y Alcohol";
+            this.tsmDeclaracionDrogas.Click += new System.EventHandler(this.tsmDeclaracionDrogas_Click);
             // 
             // lblRecordCountCalendar
             // 
@@ -1406,11 +1418,11 @@
             ultraGridColumn69,
             ultraGridColumn70,
             ultraGridColumn4});
-            ultraGridColumn2.Header.VisiblePosition = 0;
-            ultraGridColumn1.Header.VisiblePosition = 1;
+            ultraGridColumn3.Header.VisiblePosition = 0;
+            ultraGridColumn5.Header.VisiblePosition = 1;
             ultraGridBand3.Columns.AddRange(new object[] {
-            ultraGridColumn2,
-            ultraGridColumn1});
+            ultraGridColumn3,
+            ultraGridColumn5});
             this.ugComponentes.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.ugComponentes.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
             this.ugComponentes.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
@@ -1569,18 +1581,6 @@
             ultraDataColumn20,
             ultraDataColumn21,
             ultraDataColumn22});
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(256, 6);
-            // 
-            // tsmDeclaracionDrogas
-            // 
-            this.tsmDeclaracionDrogas.Name = "tsmDeclaracionDrogas";
-            this.tsmDeclaracionDrogas.Size = new System.Drawing.Size(259, 22);
-            this.tsmDeclaracionDrogas.Text = "Declaración Drogas y Alcohol";
-            this.tsmDeclaracionDrogas.Click += new System.EventHandler(this.tsmDeclaracionDrogas_Click);
             // 
             // frmCalendar
             // 
