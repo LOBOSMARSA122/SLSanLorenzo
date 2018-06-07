@@ -1224,7 +1224,6 @@
             // 
             // ddlDistricId
             // 
-            this.ddlDistricId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlDistricId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDistricId.FormattingEnabled = true;
             this.ddlDistricId.Location = new System.Drawing.Point(110, 127);
@@ -1236,7 +1235,6 @@
             // 
             // ddlProvinceId
             // 
-            this.ddlProvinceId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlProvinceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProvinceId.FormattingEnabled = true;
             this.ddlProvinceId.Location = new System.Drawing.Point(110, 105);
@@ -1248,7 +1246,8 @@
             // 
             // ddlDepartamentId
             // 
-            this.ddlDepartamentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlDepartamentId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlDepartamentId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlDepartamentId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDepartamentId.FormattingEnabled = true;
             this.ddlDepartamentId.Location = new System.Drawing.Point(110, 83);
@@ -1257,6 +1256,7 @@
             this.ddlDepartamentId.Size = new System.Drawing.Size(122, 21);
             this.ddlDepartamentId.TabIndex = 6;
             this.ddlDepartamentId.SelectedIndexChanged += new System.EventHandler(this.ddlDepartamentId_SelectedIndexChanged);
+            this.ddlDepartamentId.Leave += new System.EventHandler(this.ddlDepartamentId_Leave);
             // 
             // label35
             // 

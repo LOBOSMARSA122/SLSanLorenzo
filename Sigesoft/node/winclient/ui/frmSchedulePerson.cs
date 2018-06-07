@@ -64,8 +64,6 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
         }
-
-
         private void frmSchedulePerson_Load(object sender, EventArgs e)
         {
             #region Mayusculas - Normal
@@ -108,7 +106,7 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(ddlBloodGroupId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 154, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlBloodFactorId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 155, null), DropDownListAction.Select);
 
-            Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDepartamento(ref objOperationResult, 113,null), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDepartamento(ref objOperationResult, 113, null), DropDownListAction.Select);
 
             Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, null), DropDownListAction.Select);
 
@@ -1134,6 +1132,11 @@ namespace Sigesoft.Node.WinClient.UI
             else
             {
                 Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, int.Parse(ddlDepartamentId.SelectedValue.ToString())), DropDownListAction.Select);
+                if (ddlProvinceId.Text != "")
+                {
+                    ddlProvinceId.Text = ddlDepartamentId.Text;
+                }
+            
             }
         }
 
@@ -1148,6 +1151,10 @@ namespace Sigesoft.Node.WinClient.UI
             else
             {
                 Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito(ref objOperationResult, 113, int.Parse(ddlProvinceId.SelectedValue.ToString())), DropDownListAction.Select);
+                if (ddlDistricId.Text != "")
+                {
+                    ddlDistricId.Text = ddlDepartamentId.Text;
+                }
             }
         }
 
@@ -1311,7 +1318,11 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
-     
+        private void ddlDepartamentId_Leave(object sender, EventArgs e)
+        {
+            ddlProvinceId.Text = ddlDepartamentId.Text;
+            ddlDistricId.Text = ddlDepartamentId.Text;
+        }
     
     }
 }
