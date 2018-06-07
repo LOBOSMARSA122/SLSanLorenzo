@@ -229,7 +229,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var listaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
             var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
 
-            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral);
+            int GrupoEtario = 3;
+            int Grupo = 2823;
+            var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
+
+
+            int GrupoBase = 286;
+
+            List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(GrupoBase, _pacientId);
+            if (Fechas.Count > 6)
+                Fechas = Fechas.Skip((Fechas.Count - 6)).ToList();
+
+            List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
+
+            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, listAntecedentes, Fechas, Comentarios);
         }
 
         private void GenerateAtencionIntegralAdulto(string pathFile)
