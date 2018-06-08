@@ -7,6 +7,10 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class MatrizSeguimiento
     {
+        public string IdServicio { get; set; }
+        public string IdTrabajador { get; set; }
+        public string v_CustomerOrganizationId { get; set; }
+        public string v_CustomerLocationId { get; set; }
         /////////// DATOS PERSONA /////////////////
         public int Nro { get; set; }
         public string Tipo_Documento { get; set; }

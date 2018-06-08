@@ -64,6 +64,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "ADULTO MAYOR", v_ComponentId = Constants.FORMATO_ATENCION_INTEGRAL_ADULTO_MAYOR });
             }
 
+            serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "ATENCIÓN INTEGRAL", v_ComponentId = Constants.ATENCION_INTEGRAL });
+
             chklConsolidadoReportes.DataSource = serviceComponents;
             chklConsolidadoReportes.DisplayMember = "v_ComponentName";
             chklConsolidadoReportes.ValueMember = "v_ComponentId";
@@ -221,7 +223,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateConsultaMedicaNinio(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION_NINIO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
+                case Constants.ATENCION_INTEGRAL:
+                    GenerateAtencionIntegral(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ATENCION_INTEGRAL)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
             }   
+        }
+
+        private void GenerateAtencionIntegral(string pathFile)
+        {
+            AtencionIntegral.CreateAtencionIntegral(pathFile);
         }
 
         private void GenerateAtencionIntegralAdultoMayor(string pathFile)
