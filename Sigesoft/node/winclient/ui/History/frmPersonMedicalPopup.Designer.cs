@@ -151,7 +151,8 @@
             // 
             // ddlTypeDiagnosticId
             // 
-            this.ddlTypeDiagnosticId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlTypeDiagnosticId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlTypeDiagnosticId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlTypeDiagnosticId.FormattingEnabled = true;
             this.ddlTypeDiagnosticId.Location = new System.Drawing.Point(403, 22);
             this.ddlTypeDiagnosticId.Margin = new System.Windows.Forms.Padding(2);

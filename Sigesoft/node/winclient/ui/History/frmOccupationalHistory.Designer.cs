@@ -51,6 +51,8 @@
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmOccupationalHistory));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtActividad = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.chkPuestoActual = new System.Windows.Forms.CheckBox();
             this.ddlTypeOperationId = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -82,8 +84,6 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.ultraValidator1 = new Infragistics.Win.Misc.UltraValidator(this.components);
-            this.txtActividad = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataDangers)).BeginInit();
@@ -124,6 +124,27 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos Generales";
             // 
+            // txtActividad
+            // 
+            this.txtActividad.Location = new System.Drawing.Point(81, 71);
+            this.txtActividad.Margin = new System.Windows.Forms.Padding(2);
+            this.txtActividad.MaxLength = 250;
+            this.txtActividad.Name = "txtActividad";
+            this.txtActividad.Size = new System.Drawing.Size(281, 20);
+            this.txtActividad.TabIndex = 20;
+            this.ultraValidator1.GetValidationSettings(this.txtActividad).DataType = typeof(string);
+            this.ultraValidator1.GetValidationSettings(this.txtActividad).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.ultraValidator1.GetValidationSettings(this.txtActividad).IsRequired = true;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(15, 72);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(98, 19);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "Actividad";
+            // 
             // chkPuestoActual
             // 
             this.chkPuestoActual.AutoSize = true;
@@ -136,7 +157,8 @@
             // 
             // ddlTypeOperationId
             // 
-            this.ddlTypeOperationId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlTypeOperationId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlTypeOperationId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlTypeOperationId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlTypeOperationId.FormattingEnabled = true;
             this.ddlTypeOperationId.Location = new System.Drawing.Point(808, 46);
@@ -582,27 +604,6 @@
             this.btnSave.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
-            // 
-            // txtActividad
-            // 
-            this.txtActividad.Location = new System.Drawing.Point(81, 71);
-            this.txtActividad.Margin = new System.Windows.Forms.Padding(2);
-            this.txtActividad.MaxLength = 250;
-            this.txtActividad.Name = "txtActividad";
-            this.txtActividad.Size = new System.Drawing.Size(281, 20);
-            this.txtActividad.TabIndex = 20;
-            this.ultraValidator1.GetValidationSettings(this.txtActividad).DataType = typeof(string);
-            this.ultraValidator1.GetValidationSettings(this.txtActividad).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.ultraValidator1.GetValidationSettings(this.txtActividad).IsRequired = true;
-            // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(15, 72);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(98, 19);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "Actividad";
             // 
             // frmOccupationalHistory
             // 

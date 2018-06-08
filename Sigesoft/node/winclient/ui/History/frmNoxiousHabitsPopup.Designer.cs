@@ -101,7 +101,8 @@
             // 
             // ddlFrecuencyId
             // 
-            this.ddlFrecuencyId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlFrecuencyId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlFrecuencyId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlFrecuencyId.FormattingEnabled = true;
             this.ddlFrecuencyId.Location = new System.Drawing.Point(84, 22);
             this.ddlFrecuencyId.Name = "ddlFrecuencyId";
