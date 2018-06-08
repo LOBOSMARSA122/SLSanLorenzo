@@ -55,6 +55,7 @@
     <Reference Include="PdfViewer">
       <HintPath>..\..\..\..\Compartida\Debug\PdfViewer.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="SigPlusNET">
       <HintPath>..\..\..\..\Compartida\Debug\SigPlusNET.dll</HintPath>
     </Reference>
