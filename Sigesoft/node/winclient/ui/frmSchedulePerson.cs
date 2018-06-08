@@ -368,15 +368,15 @@ namespace Sigesoft.Node.WinClient.UI
                     txtNroPliza.Text = "";
                     txtDecucible.Text = "";
 
-                    ddlDepartamentId.SelectedValue = "609";
-                    ddlProvinceId.SelectedValue = "610";
-                    ddlDistricId.SelectedValue = "611";
+                    ddlDepartamentId.SelectedValue = "-1";
+                    ddlProvinceId.SelectedValue = "-1";
+                    ddlDistricId.SelectedValue = "-1";
                     ddlResidenceInWorkplaceId.SelectedValue = "-1";
-                    txtResidenceTimeInWorkplace.Text = "";
+                    txtResidenceTimeInWorkplace.Text = "- - -";
                     ddlTypeOfInsuranceId.SelectedValue ="";
-                    txtNumberLivingChildren.Text = "";
-                    txtNumberDependentChildren.Text = "";
-                    txtNroHermanos.Text = "";
+                    txtNumberLivingChildren.Text = "0";
+                    txtNumberDependentChildren.Text = "0";
+                    txtNroHermanos.Text = "0";
                     txtPuesto.Text = "";
 
                     var lista = _objPacientBL.GetAllPuestos();
@@ -436,6 +436,7 @@ namespace Sigesoft.Node.WinClient.UI
                                 txtName.Text = datos.Nombre;
                                 txtFirstLastName.Text = datos.ApellidoPaterno;
                                 txtSecondLastName.Text = datos.ApellidoMaterno;
+                                dtpBirthdate.Value = datos.FechaNacimiento;
                             }
                         }
                         break;
