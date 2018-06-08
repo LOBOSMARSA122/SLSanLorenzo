@@ -71,11 +71,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sigesoft.Node.WinQueueVisor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sigesoft.Node.Contasol.Integration", "Sigesoft.Node.Contasol.Integration\Sigesoft.Node.Contasol.Integration.csproj", "{02CD938D-A8D0-4540-B50A-FEC346261CE4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{AC3257BC-3984-4B48-B674-145A1D8AD00A}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
-	GlobalSection(SubversionScc) = preSolution
-		Svn-Managed = True
-		Manager = AnkhSVN - Subversion Support for Visual Studio
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -178,5 +181,9 @@ Global
 		{0F883C9E-D04E-42C8-AE44-AB6285F01C9B} = {85044A2D-4482-4C1A-945A-7A079E24568E}
 		{83B4875B-6B20-49F1-891D-B1F379760899} = {6A8FBBFB-4BFE-4B3F-A3EA-EABC9CA38F5C}
 		{C3CABD0C-0656-413F-8AFD-F268FB4FEACA} = {6B8E52FE-FE6F-4327-A6FD-1E8ECA5B5653}
+	EndGlobalSection
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
 	EndGlobalSection
 EndGlobal
