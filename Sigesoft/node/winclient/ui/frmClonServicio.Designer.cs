@@ -42,7 +42,8 @@
             // 
             // ddlCustomerOrganization
             // 
-            this.ddlCustomerOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlCustomerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlCustomerOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlCustomerOrganization.DropDownWidth = 400;
             this.ddlCustomerOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlCustomerOrganization.FormattingEnabled = true;
@@ -59,7 +60,8 @@
             // 
             // ddlProtocolId
             // 
-            this.ddlProtocolId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlProtocolId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlProtocolId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlProtocolId.Enabled = false;
             this.ddlProtocolId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProtocolId.FormattingEnabled = true;

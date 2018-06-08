@@ -655,7 +655,8 @@
             // 
             // ddlTypeOfInsuranceId
             // 
-            this.ddlTypeOfInsuranceId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlTypeOfInsuranceId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlTypeOfInsuranceId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlTypeOfInsuranceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlTypeOfInsuranceId.FormattingEnabled = true;
             this.ddlTypeOfInsuranceId.Location = new System.Drawing.Point(119, 119);
@@ -723,7 +724,8 @@
             // 
             // ddlResidenceInWorkplaceId
             // 
-            this.ddlResidenceInWorkplaceId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlResidenceInWorkplaceId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlResidenceInWorkplaceId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlResidenceInWorkplaceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlResidenceInWorkplaceId.FormattingEnabled = true;
             this.ddlResidenceInWorkplaceId.Location = new System.Drawing.Point(391, 119);
@@ -808,7 +810,7 @@
             // 
             // ddlMaritalStatusId
             // 
-            this.ddlMaritalStatusId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMaritalStatusId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ddlMaritalStatusId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlMaritalStatusId.FormattingEnabled = true;
             this.ddlMaritalStatusId.Location = new System.Drawing.Point(654, 64);
@@ -831,7 +833,8 @@
             // 
             // ddlDocTypeId
             // 
-            this.ddlDocTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlDocTypeId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlDocTypeId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlDocTypeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDocTypeId.FormattingEnabled = true;
             this.ddlDocTypeId.Location = new System.Drawing.Point(120, 40);
@@ -867,7 +870,8 @@
             // 
             // ddlSexTypeId
             // 
-            this.ddlSexTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlSexTypeId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlSexTypeId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlSexTypeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlSexTypeId.FormattingEnabled = true;
             this.ddlSexTypeId.Location = new System.Drawing.Point(654, 40);
@@ -891,7 +895,8 @@
             // 
             // ddlLevelOfId
             // 
-            this.ddlLevelOfId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlLevelOfId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlLevelOfId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlLevelOfId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlLevelOfId.FormattingEnabled = true;
             this.ddlLevelOfId.Location = new System.Drawing.Point(653, 91);
@@ -1107,7 +1112,8 @@
             // 
             // ddlProvinceId
             // 
-            this.ddlProvinceId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlProvinceId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlProvinceId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlProvinceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProvinceId.FormattingEnabled = true;
             this.ddlProvinceId.Location = new System.Drawing.Point(392, 18);
@@ -1131,7 +1137,8 @@
             // 
             // ddlDepartamentId
             // 
-            this.ddlDepartamentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlDepartamentId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlDepartamentId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlDepartamentId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDepartamentId.FormattingEnabled = true;
             this.ddlDepartamentId.Location = new System.Drawing.Point(120, 18);
@@ -1143,7 +1150,8 @@
             // 
             // ddlDistricId
             // 
-            this.ddlDistricId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlDistricId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlDistricId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlDistricId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDistricId.FormattingEnabled = true;
             this.ddlDistricId.Location = new System.Drawing.Point(653, 18);

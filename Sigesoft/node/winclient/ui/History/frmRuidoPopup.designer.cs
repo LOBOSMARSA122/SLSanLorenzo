@@ -40,7 +40,8 @@
             // 
             // cbTiempoExposicionRuido
             // 
-            this.cbTiempoExposicionRuido.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTiempoExposicionRuido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbTiempoExposicionRuido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbTiempoExposicionRuido.FormattingEnabled = true;
             this.cbTiempoExposicionRuido.Location = new System.Drawing.Point(122, 10);
             this.cbTiempoExposicionRuido.Name = "cbTiempoExposicionRuido";
@@ -49,7 +50,8 @@
             // 
             // cbNivelRuido
             // 
-            this.cbNivelRuido.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbNivelRuido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbNivelRuido.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbNivelRuido.FormattingEnabled = true;
             this.cbNivelRuido.Location = new System.Drawing.Point(122, 69);
             this.cbNivelRuido.Name = "cbNivelRuido";

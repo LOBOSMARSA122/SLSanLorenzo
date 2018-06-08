@@ -205,7 +205,7 @@ namespace Sigesoft.Node.WinClient.UI
         
         private void btnPerson_Click(object sender, EventArgs e)
         {
-            frmSchedulePerson frm = new frmSchedulePerson("","","");
+            frmSchedulePerson frm = new frmSchedulePerson("","New","");
             frm.ShowDialog();
             if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
             {

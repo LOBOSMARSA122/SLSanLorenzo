@@ -84,28 +84,28 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_DateTimeCalendar");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_DocNumber");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LineStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_SalidaCM");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_NewContinuationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_EsoTypeName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CalendarStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn13 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn14 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_IsVipName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CreationUser");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn18 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn19 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationLocationProtocol");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn20 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationLocationService");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn21 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_EntryTimeCM");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn22 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("b_Seleccionar");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn133 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_DateTimeCalendar");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn134 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn135 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_DocNumber");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn136 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LineStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn137 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn138 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_SalidaCM");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn139 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn140 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn141 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn142 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_NewContinuationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn143 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_EsoTypeName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn144 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CalendarStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn145 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn146 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_IsVipName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn147 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_CreationUser");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn148 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn149 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn150 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn151 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationLocationProtocol");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn152 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationLocationService");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn153 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_EntryTimeCM");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn154 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("b_Seleccionar");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkServiciosTerminados = new System.Windows.Forms.CheckBox();
             this.cbCustomerOrganization = new System.Windows.Forms.ComboBox();
@@ -260,7 +260,8 @@
             // 
             // cbCustomerOrganization
             // 
-            this.cbCustomerOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCustomerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbCustomerOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbCustomerOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCustomerOrganization.FormattingEnabled = true;
             this.cbCustomerOrganization.Location = new System.Drawing.Point(111, 88);
@@ -303,7 +304,8 @@
             // 
             // ddlLineStatusId
             // 
-            this.ddlLineStatusId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlLineStatusId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlLineStatusId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlLineStatusId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlLineStatusId.FormattingEnabled = true;
             this.ddlLineStatusId.Location = new System.Drawing.Point(594, 10);
@@ -326,7 +328,8 @@
             // 
             // ddlNewContinuationId
             // 
-            this.ddlNewContinuationId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlNewContinuationId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlNewContinuationId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlNewContinuationId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlNewContinuationId.FormattingEnabled = true;
             this.ddlNewContinuationId.Location = new System.Drawing.Point(339, 60);
@@ -349,7 +352,8 @@
             // 
             // ddlCalendarStatusId
             // 
-            this.ddlCalendarStatusId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlCalendarStatusId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlCalendarStatusId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlCalendarStatusId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlCalendarStatusId.FormattingEnabled = true;
             this.ddlCalendarStatusId.Location = new System.Drawing.Point(594, 60);
@@ -372,7 +376,8 @@
             // 
             // ddlVipId
             // 
-            this.ddlVipId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlVipId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlVipId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlVipId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlVipId.FormattingEnabled = true;
             this.ddlVipId.Location = new System.Drawing.Point(594, 35);
@@ -440,7 +445,8 @@
             // 
             // ddlMasterServiceId
             // 
-            this.ddlMasterServiceId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMasterServiceId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlMasterServiceId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlMasterServiceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlMasterServiceId.FormattingEnabled = true;
             this.ddlMasterServiceId.Location = new System.Drawing.Point(339, 35);
@@ -463,7 +469,8 @@
             // 
             // ddlServiceTypeId
             // 
-            this.ddlServiceTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlServiceTypeId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlServiceTypeId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlServiceTypeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlServiceTypeId.FormattingEnabled = true;
             this.ddlServiceTypeId.Location = new System.Drawing.Point(339, 10);
@@ -1559,28 +1566,28 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1,
-            ultraDataColumn2,
-            ultraDataColumn3,
-            ultraDataColumn4,
-            ultraDataColumn5,
-            ultraDataColumn6,
-            ultraDataColumn7,
-            ultraDataColumn8,
-            ultraDataColumn9,
-            ultraDataColumn10,
-            ultraDataColumn11,
-            ultraDataColumn12,
-            ultraDataColumn13,
-            ultraDataColumn14,
-            ultraDataColumn15,
-            ultraDataColumn16,
-            ultraDataColumn17,
-            ultraDataColumn18,
-            ultraDataColumn19,
-            ultraDataColumn20,
-            ultraDataColumn21,
-            ultraDataColumn22});
+            ultraDataColumn133,
+            ultraDataColumn134,
+            ultraDataColumn135,
+            ultraDataColumn136,
+            ultraDataColumn137,
+            ultraDataColumn138,
+            ultraDataColumn139,
+            ultraDataColumn140,
+            ultraDataColumn141,
+            ultraDataColumn142,
+            ultraDataColumn143,
+            ultraDataColumn144,
+            ultraDataColumn145,
+            ultraDataColumn146,
+            ultraDataColumn147,
+            ultraDataColumn148,
+            ultraDataColumn149,
+            ultraDataColumn150,
+            ultraDataColumn151,
+            ultraDataColumn152,
+            ultraDataColumn153,
+            ultraDataColumn154});
             // 
             // frmCalendar
             // 

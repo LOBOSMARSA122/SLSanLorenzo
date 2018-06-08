@@ -64,6 +64,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "ADULTO MAYOR", v_ComponentId = Constants.FORMATO_ATENCION_INTEGRAL_ADULTO_MAYOR });
             }
 
+            serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "ATENCIÓN INTEGRAL", v_ComponentId = Constants.ATENCION_INTEGRAL });
+
             chklConsolidadoReportes.DataSource = serviceComponents;
             chklConsolidadoReportes.DisplayMember = "v_ComponentName";
             chklConsolidadoReportes.ValueMember = "v_ComponentId";
@@ -221,7 +223,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateConsultaMedicaNinio(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION_NINIO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
+                case Constants.ATENCION_INTEGRAL:
+                    GenerateAtencionIntegral(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ATENCION_INTEGRAL)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
             }   
+        }
+
+        private void GenerateAtencionIntegral(string pathFile)
+        {
+            AtencionIntegral.CreateAtencionIntegral(pathFile);
         }
 
         private void GenerateAtencionIntegralAdultoMayor(string pathFile)
@@ -229,7 +240,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var listaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
             var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
 
-            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral);
+            int GrupoEtario = 3;
+            int Grupo = 2823;
+            var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
+
+
+            int GrupoBase = 286;
+
+            List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(GrupoBase, _pacientId);
+            if (Fechas.Count > 6)
+                Fechas = Fechas.Skip((Fechas.Count - 6)).ToList();
+
+            List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
+
+            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, listAntecedentes, Fechas, Comentarios);
         }
 
         private void GenerateAtencionIntegralAdulto(string pathFile)

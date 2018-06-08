@@ -208,7 +208,8 @@
             // 
             // cboHistoriaGenerada
             // 
-            this.cboHistoriaGenerada.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboHistoriaGenerada.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboHistoriaGenerada.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboHistoriaGenerada.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboHistoriaGenerada.FormattingEnabled = true;
             this.cboHistoriaGenerada.Location = new System.Drawing.Point(930, 91);
@@ -274,7 +275,8 @@
             // 
             // ddlMasterServiceId
             // 
-            this.ddlMasterServiceId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMasterServiceId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlMasterServiceId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlMasterServiceId.Enabled = false;
             this.ddlMasterServiceId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlMasterServiceId.FormattingEnabled = true;
@@ -309,7 +311,8 @@
             // 
             // ddlConsultorio
             // 
-            this.ddlConsultorio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlConsultorio.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlConsultorio.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlConsultorio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlConsultorio.FormattingEnabled = true;
             this.ddlConsultorio.Location = new System.Drawing.Point(930, 67);
@@ -355,7 +358,8 @@
             // 
             // ddlStatusAptitudId
             // 
-            this.ddlStatusAptitudId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlStatusAptitudId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlStatusAptitudId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlStatusAptitudId.Enabled = false;
             this.ddlStatusAptitudId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlStatusAptitudId.FormattingEnabled = true;
@@ -379,7 +383,8 @@
             // 
             // ddlCustomerOrganization
             // 
-            this.ddlCustomerOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlCustomerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlCustomerOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlCustomerOrganization.DropDownWidth = 400;
             this.ddlCustomerOrganization.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlCustomerOrganization.FormattingEnabled = true;
@@ -392,7 +397,8 @@
             // 
             // ddlProtocolId
             // 
-            this.ddlProtocolId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlProtocolId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlProtocolId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlProtocolId.Enabled = false;
             this.ddlProtocolId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProtocolId.FormattingEnabled = true;
@@ -439,7 +445,8 @@
             // 
             // ddlServiceTypeId
             // 
-            this.ddlServiceTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlServiceTypeId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlServiceTypeId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlServiceTypeId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlServiceTypeId.FormattingEnabled = true;
             this.ddlServiceTypeId.Location = new System.Drawing.Point(386, 18);
@@ -463,7 +470,8 @@
             // 
             // ddServiceStatusId
             // 
-            this.ddServiceStatusId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddServiceStatusId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddServiceStatusId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddServiceStatusId.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddServiceStatusId.FormattingEnabled = true;
             this.ddServiceStatusId.Location = new System.Drawing.Point(96, 67);
@@ -519,7 +527,8 @@
             // 
             // ddlEsoType
             // 
-            this.ddlEsoType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlEsoType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlEsoType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlEsoType.Enabled = false;
             this.ddlEsoType.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlEsoType.FormattingEnabled = true;
@@ -1407,6 +1416,7 @@
             this.btnBotonOculto.Text = "botón Oculto";
             this.btnBotonOculto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnBotonOculto.UseVisualStyleBackColor = false;
+            this.btnBotonOculto.Visible = false;
             this.btnBotonOculto.Click += new System.EventHandler(this.btnBotonOculto_Click);
             // 
             // btnInforme312

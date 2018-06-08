@@ -47,7 +47,8 @@
             // 
             // ddlComponentId
             // 
-            this.ddlComponentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlComponentId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlComponentId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlComponentId.FormattingEnabled = true;
             this.ddlComponentId.Location = new System.Drawing.Point(26, 38);
             this.ddlComponentId.Margin = new System.Windows.Forms.Padding(2);

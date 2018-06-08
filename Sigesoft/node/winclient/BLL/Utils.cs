@@ -1587,7 +1587,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var query = from a in dbContext.datahierarchy
-                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 && a.v_Value1.Contains(text)
+                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 && a.v_Value1 == text
                             select a;
 
 
