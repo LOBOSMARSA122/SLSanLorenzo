@@ -370,8 +370,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 GetConclusionesDiagnosticasForGridView();
                 ConclusionesyTratamiento_LoadAllGrid();
                 gbEdicionDiagnosticoTotal.Enabled = false;
-                ConstruirFormularioAntecedentes();
-                ConstruirFormularioCuidadosPreventivos();
+                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                {
+                    ConstruirFormularioAntecedentes();
+                    ConstruirFormularioCuidadosPreventivos();
+                }
+           
             }
             if (_action == "View")
             {
