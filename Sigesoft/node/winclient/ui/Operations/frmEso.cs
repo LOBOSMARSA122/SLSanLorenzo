@@ -6334,7 +6334,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     gb.Enabled = false;
                 }
-                else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720" || tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" || tagCtrl.v_ComponentFieldsId == "N009-MF000000222" || tagCtrl.v_ComponentFieldsId == "N009-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000224" || _oldValue == "N009-MF000000227" || tagCtrl.v_ComponentFieldsId == "N009-MF000000225" || tagCtrl.v_ComponentFieldsId == "N009-MF000000226")
+                else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720" || tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" 
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000222" || tagCtrl.v_ComponentFieldsId == "N009-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000224" || _oldValue == "N009-MF000000227" 
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000225" || tagCtrl.v_ComponentFieldsId == "N009-MF000000226"
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000722" || tagCtrl.v_ComponentFieldsId == "N009-MF000000723" || tagCtrl.v_ComponentFieldsId == "N009-MF000000724" || tagCtrl.v_ComponentFieldsId == "N009-MF000000727"
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000725" || tagCtrl.v_ComponentFieldsId == "N009-MF000000726")
                 {
                     gb.Enabled = true;
                 }
