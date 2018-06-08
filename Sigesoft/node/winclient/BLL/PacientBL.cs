@@ -4192,7 +4192,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                     from pe in pe_join.DefaultIfEmpty()
 
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin && A.i_ServiceStatusId == (int)ServiceStatus.Culminado
-                                    select new
+                                    select new MatrizSeguimiento
                                     {
                                         Tipo_Documento = J6 == null ? "N/D" : J6.v_Value1,
                                         Tipo_Documento_ID = B.i_DocTypeId.HasValue ? B.i_DocTypeId.Value : 0,
@@ -4219,7 +4219,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                         Tipo_Examen_ID = H.i_EsoTypeId.HasValue ? H.i_EsoTypeId.Value : 0,
                                         Aptitud = J4 == null ? "N/D" : J4.v_Value1,
                                         Aptitud_ID = A.i_AptitudeStatusId.HasValue ? A.i_AptitudeStatusId.Value : 0,
-
+                                        v_CustomerOrganizationId = D == null ? "" : D.v_OrganizationId,
+                                        v_CustomerLocationId = E == null ? "" : E.v_LocationId,
                                         IdServicio = A.v_ServiceId,
                                         IdTrabajador = B.v_PersonId
                                     };

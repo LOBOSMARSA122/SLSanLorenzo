@@ -76,6 +76,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AtencionIntegral.cs" />
     <Compile Include="AtencionIntegralAdolescente.cs" />
     <Compile Include="AtencionIntegralAdulto.cs" />
     <Compile Include="AtencionIntegralAdultoMayor.cs" />
