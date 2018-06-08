@@ -425,7 +425,7 @@
             this.txtNombres = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
-            this.textBox53 = new System.Windows.Forms.TextBox();
+            this.txtDescripcionAntecedentes = new System.Windows.Forms.TextBox();
             this.cboGenero = new System.Windows.Forms.ComboBox();
             this.label48 = new System.Windows.Forms.Label();
             this.txtEdad = new System.Windows.Forms.TextBox();
@@ -4030,7 +4030,7 @@
             this.tpDatosAntecedentes.Controls.Add(this.txtNombres);
             this.tpDatosAntecedentes.Controls.Add(this.label60);
             this.tpDatosAntecedentes.Controls.Add(this.label47);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox53);
+            this.tpDatosAntecedentes.Controls.Add(this.txtDescripcionAntecedentes);
             this.tpDatosAntecedentes.Controls.Add(this.cboGenero);
             this.tpDatosAntecedentes.Controls.Add(this.label48);
             this.tpDatosAntecedentes.Controls.Add(this.txtEdad);
@@ -4289,13 +4289,13 @@
             this.label47.TabIndex = 63;
             this.label47.Text = "Género";
             // 
-            // textBox53
+            // txtDescripcionAntecedentes
             // 
-            this.textBox53.Location = new System.Drawing.Point(581, 577);
-            this.textBox53.Multiline = true;
-            this.textBox53.Name = "textBox53";
-            this.textBox53.Size = new System.Drawing.Size(365, 52);
-            this.textBox53.TabIndex = 108;
+            this.txtDescripcionAntecedentes.Location = new System.Drawing.Point(581, 577);
+            this.txtDescripcionAntecedentes.Multiline = true;
+            this.txtDescripcionAntecedentes.Name = "txtDescripcionAntecedentes";
+            this.txtDescripcionAntecedentes.Size = new System.Drawing.Size(365, 52);
+            this.txtDescripcionAntecedentes.TabIndex = 108;
             // 
             // cboGenero
             // 
@@ -5078,7 +5078,7 @@
         private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label47;
-        private System.Windows.Forms.TextBox textBox53;
+        private System.Windows.Forms.TextBox txtDescripcionAntecedentes;
         private System.Windows.Forms.ComboBox cboGenero;
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.TextBox txtEdad;
