@@ -92,6 +92,10 @@
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
       <Private>True</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.6.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\ExternalLibraries\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="Infragistics4.Documents.Excel.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
       <Private>True</Private>
     </Reference>
@@ -155,7 +159,7 @@
     <Reference Include="PresentationFramework" />
     <Reference Include="ScrapperReniecSunat, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\common\libs\ScrapperReniecSunat.dll</HintPath>
+      <HintPath>..\..\..\..\ExternalLibraries\ScrapperReniecSunat.dll</HintPath>
     </Reference>
     <Reference Include="SigPlusNET">
       <HintPath>..\..\..\..\ExternalLibraries\SigPlusNET.dll</HintPath>
@@ -4597,9 +4601,7 @@
     <EmbeddedResource Include="UserControls\ucHistorialGrupoFactor.resx">
       <DependentUpon>ucHistorialGrupoFactor.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="app.config" />
     <None Include="Dataset\Anexo7D.xsc">
       <DependentUpon>Anexo7D.xsd</DependentUpon>
     </None>

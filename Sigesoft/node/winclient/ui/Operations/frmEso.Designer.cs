@@ -408,43 +408,45 @@
             this.btnNuevoAgudo = new System.Windows.Forms.Button();
             this.grdAgudos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tpDatosAntecedentes = new System.Windows.Forms.TabPage();
+            this.ddlBloodFactorId = new System.Windows.Forms.ComboBox();
+            this.ddlBloodGroupId = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.txtFamiliarCuidadorResponsable = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.ultraGrid1 = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnGuardarAntecedentes = new System.Windows.Forms.Button();
             this.ultraGrid2 = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.label43 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtApellidoPaterno = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtApellidoMaterno = new System.Windows.Forms.TextBox();
             this.label46 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtNombres = new System.Windows.Forms.TextBox();
             this.label60 = new System.Windows.Forms.Label();
             this.label47 = new System.Windows.Forms.Label();
             this.textBox53 = new System.Windows.Forms.TextBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.cboGenero = new System.Windows.Forms.ComboBox();
             this.label48 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtEdad = new System.Windows.Forms.TextBox();
+            this.dtpFechaNacimiento = new System.Windows.Forms.DateTimePicker();
             this.label49 = new System.Windows.Forms.Label();
             this.label50 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.txtLugarNacimiento = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
+            this.txtProcedencia = new System.Windows.Forms.TextBox();
             this.label52 = new System.Windows.Forms.Label();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.label53 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cboGradoInstruccion = new System.Windows.Forms.ComboBox();
             this.label54 = new System.Windows.Forms.Label();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
+            this.cboEstadoCivil = new System.Windows.Forms.ComboBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.txtOcupacion = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.txtDomicilio = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
             this.label56 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.txtTelefono = new System.Windows.Forms.TextBox();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.tpCuidadosPreventivos = new System.Windows.Forms.TabPage();
@@ -4011,43 +4013,45 @@
             // 
             // tpDatosAntecedentes
             // 
+            this.tpDatosAntecedentes.Controls.Add(this.ddlBloodFactorId);
+            this.tpDatosAntecedentes.Controls.Add(this.ddlBloodGroupId);
+            this.tpDatosAntecedentes.Controls.Add(this.label40);
+            this.tpDatosAntecedentes.Controls.Add(this.txtFamiliarCuidadorResponsable);
             this.tpDatosAntecedentes.Controls.Add(this.label39);
             this.tpDatosAntecedentes.Controls.Add(this.ultraGrid1);
             this.tpDatosAntecedentes.Controls.Add(this.btnGuardarAntecedentes);
             this.tpDatosAntecedentes.Controls.Add(this.ultraGrid2);
             this.tpDatosAntecedentes.Controls.Add(this.label43);
             this.tpDatosAntecedentes.Controls.Add(this.label44);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox2);
+            this.tpDatosAntecedentes.Controls.Add(this.txtApellidoPaterno);
             this.tpDatosAntecedentes.Controls.Add(this.label45);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox3);
+            this.tpDatosAntecedentes.Controls.Add(this.txtApellidoMaterno);
             this.tpDatosAntecedentes.Controls.Add(this.label46);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox4);
+            this.tpDatosAntecedentes.Controls.Add(this.txtNombres);
             this.tpDatosAntecedentes.Controls.Add(this.label60);
             this.tpDatosAntecedentes.Controls.Add(this.label47);
             this.tpDatosAntecedentes.Controls.Add(this.textBox53);
-            this.tpDatosAntecedentes.Controls.Add(this.comboBox2);
+            this.tpDatosAntecedentes.Controls.Add(this.cboGenero);
             this.tpDatosAntecedentes.Controls.Add(this.label48);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox5);
-            this.tpDatosAntecedentes.Controls.Add(this.dateTimePicker1);
+            this.tpDatosAntecedentes.Controls.Add(this.txtEdad);
+            this.tpDatosAntecedentes.Controls.Add(this.dtpFechaNacimiento);
             this.tpDatosAntecedentes.Controls.Add(this.label49);
             this.tpDatosAntecedentes.Controls.Add(this.label50);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox6);
+            this.tpDatosAntecedentes.Controls.Add(this.txtLugarNacimiento);
             this.tpDatosAntecedentes.Controls.Add(this.label51);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox7);
+            this.tpDatosAntecedentes.Controls.Add(this.txtProcedencia);
             this.tpDatosAntecedentes.Controls.Add(this.label52);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox8);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox9);
             this.tpDatosAntecedentes.Controls.Add(this.label53);
-            this.tpDatosAntecedentes.Controls.Add(this.comboBox3);
+            this.tpDatosAntecedentes.Controls.Add(this.cboGradoInstruccion);
             this.tpDatosAntecedentes.Controls.Add(this.label54);
-            this.tpDatosAntecedentes.Controls.Add(this.comboBox4);
+            this.tpDatosAntecedentes.Controls.Add(this.cboEstadoCivil);
             this.tpDatosAntecedentes.Controls.Add(this.label55);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox10);
+            this.tpDatosAntecedentes.Controls.Add(this.txtOcupacion);
             this.tpDatosAntecedentes.Controls.Add(this.label57);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox12);
+            this.tpDatosAntecedentes.Controls.Add(this.txtDomicilio);
             this.tpDatosAntecedentes.Controls.Add(this.label58);
             this.tpDatosAntecedentes.Controls.Add(this.label56);
-            this.tpDatosAntecedentes.Controls.Add(this.textBox11);
+            this.tpDatosAntecedentes.Controls.Add(this.txtTelefono);
             this.tpDatosAntecedentes.Controls.Add(this.shapeContainer1);
             this.tpDatosAntecedentes.Location = new System.Drawing.Point(4, 22);
             this.tpDatosAntecedentes.Name = "tpDatosAntecedentes";
@@ -4055,6 +4059,46 @@
             this.tpDatosAntecedentes.TabIndex = 7;
             this.tpDatosAntecedentes.Text = "DATOS GENERALES Y ANTECEDENTES";
             this.tpDatosAntecedentes.UseVisualStyleBackColor = true;
+            // 
+            // ddlBloodFactorId
+            // 
+            this.ddlBloodFactorId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlBloodFactorId.Enabled = false;
+            this.ddlBloodFactorId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlBloodFactorId.FormattingEnabled = true;
+            this.ddlBloodFactorId.Location = new System.Drawing.Point(490, 106);
+            this.ddlBloodFactorId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlBloodFactorId.Name = "ddlBloodFactorId";
+            this.ddlBloodFactorId.Size = new System.Drawing.Size(39, 21);
+            this.ddlBloodFactorId.TabIndex = 115;
+            // 
+            // ddlBloodGroupId
+            // 
+            this.ddlBloodGroupId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlBloodGroupId.Enabled = false;
+            this.ddlBloodGroupId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlBloodGroupId.FormattingEnabled = true;
+            this.ddlBloodGroupId.Location = new System.Drawing.Point(407, 108);
+            this.ddlBloodGroupId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlBloodGroupId.Name = "ddlBloodGroupId";
+            this.ddlBloodGroupId.Size = new System.Drawing.Size(77, 21);
+            this.ddlBloodGroupId.TabIndex = 114;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(104, 193);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(159, 13);
+            this.label40.TabIndex = 112;
+            this.label40.Text = "Familiar o cuidador responsable";
+            // 
+            // txtFamiliarCuidadorResponsable
+            // 
+            this.txtFamiliarCuidadorResponsable.Location = new System.Drawing.Point(104, 209);
+            this.txtFamiliarCuidadorResponsable.Name = "txtFamiliarCuidadorResponsable";
+            this.txtFamiliarCuidadorResponsable.Size = new System.Drawing.Size(425, 21);
+            this.txtFamiliarCuidadorResponsable.TabIndex = 113;
             // 
             // label39
             // 
@@ -4187,12 +4231,12 @@
             this.label44.TabIndex = 57;
             this.label44.Text = "Ape. Paterno";
             // 
-            // textBox2
+            // txtApellidoPaterno
             // 
-            this.textBox2.Location = new System.Drawing.Point(10, 61);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(86, 21);
-            this.textBox2.TabIndex = 58;
+            this.txtApellidoPaterno.Location = new System.Drawing.Point(10, 61);
+            this.txtApellidoPaterno.Name = "txtApellidoPaterno";
+            this.txtApellidoPaterno.Size = new System.Drawing.Size(86, 21);
+            this.txtApellidoPaterno.TabIndex = 58;
             // 
             // label45
             // 
@@ -4203,12 +4247,12 @@
             this.label45.TabIndex = 59;
             this.label45.Text = "Ape. Materno";
             // 
-            // textBox3
+            // txtApellidoMaterno
             // 
-            this.textBox3.Location = new System.Drawing.Point(104, 61);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 60;
+            this.txtApellidoMaterno.Location = new System.Drawing.Point(104, 61);
+            this.txtApellidoMaterno.Name = "txtApellidoMaterno";
+            this.txtApellidoMaterno.Size = new System.Drawing.Size(100, 21);
+            this.txtApellidoMaterno.TabIndex = 60;
             // 
             // label46
             // 
@@ -4219,12 +4263,12 @@
             this.label46.TabIndex = 61;
             this.label46.Text = "Nombres";
             // 
-            // textBox4
+            // txtNombres
             // 
-            this.textBox4.Location = new System.Drawing.Point(210, 61);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(185, 21);
-            this.textBox4.TabIndex = 62;
+            this.txtNombres.Location = new System.Drawing.Point(210, 61);
+            this.txtNombres.Name = "txtNombres";
+            this.txtNombres.Size = new System.Drawing.Size(185, 21);
+            this.txtNombres.TabIndex = 62;
             // 
             // label60
             // 
@@ -4253,16 +4297,16 @@
             this.textBox53.Size = new System.Drawing.Size(365, 52);
             this.textBox53.TabIndex = 108;
             // 
-            // comboBox2
+            // cboGenero
             // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Enabled = false;
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(398, 61);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(86, 21);
-            this.comboBox2.TabIndex = 64;
+            this.cboGenero.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGenero.Enabled = false;
+            this.cboGenero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboGenero.FormattingEnabled = true;
+            this.cboGenero.Location = new System.Drawing.Point(398, 61);
+            this.cboGenero.Name = "cboGenero";
+            this.cboGenero.Size = new System.Drawing.Size(86, 21);
+            this.cboGenero.TabIndex = 64;
             // 
             // label48
             // 
@@ -4273,22 +4317,22 @@
             this.label48.TabIndex = 65;
             this.label48.Text = "Edad";
             // 
-            // textBox5
+            // txtEdad
             // 
-            this.textBox5.Location = new System.Drawing.Point(490, 62);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(39, 21);
-            this.textBox5.TabIndex = 66;
+            this.txtEdad.Location = new System.Drawing.Point(490, 62);
+            this.txtEdad.Name = "txtEdad";
+            this.txtEdad.Size = new System.Drawing.Size(39, 21);
+            this.txtEdad.TabIndex = 66;
             // 
-            // dateTimePicker1
+            // dtpFechaNacimiento
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(10, 108);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(2);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(86, 21);
-            this.dateTimePicker1.TabIndex = 68;
+            this.dtpFechaNacimiento.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaNacimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaNacimiento.Location = new System.Drawing.Point(10, 108);
+            this.dtpFechaNacimiento.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpFechaNacimiento.Name = "dtpFechaNacimiento";
+            this.dtpFechaNacimiento.Size = new System.Drawing.Size(86, 21);
+            this.dtpFechaNacimiento.TabIndex = 68;
             // 
             // label49
             // 
@@ -4308,12 +4352,12 @@
             this.label50.TabIndex = 69;
             this.label50.Text = "Lugar de Nacimiento";
             // 
-            // textBox6
+            // txtLugarNacimiento
             // 
-            this.textBox6.Location = new System.Drawing.Point(104, 108);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 21);
-            this.textBox6.TabIndex = 70;
+            this.txtLugarNacimiento.Location = new System.Drawing.Point(104, 108);
+            this.txtLugarNacimiento.Name = "txtLugarNacimiento";
+            this.txtLugarNacimiento.Size = new System.Drawing.Size(100, 21);
+            this.txtLugarNacimiento.TabIndex = 70;
             // 
             // label51
             // 
@@ -4324,12 +4368,12 @@
             this.label51.TabIndex = 71;
             this.label51.Text = "Procedencia";
             // 
-            // textBox7
+            // txtProcedencia
             // 
-            this.textBox7.Location = new System.Drawing.Point(210, 108);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(185, 21);
-            this.textBox7.TabIndex = 72;
+            this.txtProcedencia.Location = new System.Drawing.Point(210, 108);
+            this.txtProcedencia.Name = "txtProcedencia";
+            this.txtProcedencia.Size = new System.Drawing.Size(185, 21);
+            this.txtProcedencia.TabIndex = 72;
             // 
             // label52
             // 
@@ -4340,20 +4384,6 @@
             this.label52.TabIndex = 73;
             this.label52.Text = "Grupo Sanguineo";
             // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(398, 108);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(84, 21);
-            this.textBox8.TabIndex = 74;
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(490, 109);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(39, 21);
-            this.textBox9.TabIndex = 75;
-            // 
             // label53
             // 
             this.label53.AutoSize = true;
@@ -4363,16 +4393,16 @@
             this.label53.TabIndex = 76;
             this.label53.Text = "Grado Instrucción";
             // 
-            // comboBox3
+            // cboGradoInstruccion
             // 
-            this.comboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox3.Enabled = false;
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(10, 157);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(86, 21);
-            this.comboBox3.TabIndex = 77;
+            this.cboGradoInstruccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboGradoInstruccion.Enabled = false;
+            this.cboGradoInstruccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboGradoInstruccion.FormattingEnabled = true;
+            this.cboGradoInstruccion.Location = new System.Drawing.Point(10, 157);
+            this.cboGradoInstruccion.Name = "cboGradoInstruccion";
+            this.cboGradoInstruccion.Size = new System.Drawing.Size(86, 21);
+            this.cboGradoInstruccion.TabIndex = 77;
             // 
             // label54
             // 
@@ -4383,16 +4413,16 @@
             this.label54.TabIndex = 78;
             this.label54.Text = "Estado Civil";
             // 
-            // comboBox4
+            // cboEstadoCivil
             // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.Enabled = false;
-            this.comboBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(104, 157);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(100, 21);
-            this.comboBox4.TabIndex = 79;
+            this.cboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstadoCivil.Enabled = false;
+            this.cboEstadoCivil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEstadoCivil.FormattingEnabled = true;
+            this.cboEstadoCivil.Location = new System.Drawing.Point(104, 157);
+            this.cboEstadoCivil.Name = "cboEstadoCivil";
+            this.cboEstadoCivil.Size = new System.Drawing.Size(100, 21);
+            this.cboEstadoCivil.TabIndex = 79;
             // 
             // label55
             // 
@@ -4403,12 +4433,12 @@
             this.label55.TabIndex = 80;
             this.label55.Text = "Ocupación";
             // 
-            // textBox10
+            // txtOcupacion
             // 
-            this.textBox10.Location = new System.Drawing.Point(210, 157);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(185, 21);
-            this.textBox10.TabIndex = 81;
+            this.txtOcupacion.Location = new System.Drawing.Point(210, 157);
+            this.txtOcupacion.Name = "txtOcupacion";
+            this.txtOcupacion.Size = new System.Drawing.Size(185, 21);
+            this.txtOcupacion.TabIndex = 81;
             // 
             // label57
             // 
@@ -4419,12 +4449,12 @@
             this.label57.TabIndex = 82;
             this.label57.Text = "Domicilio";
             // 
-            // textBox12
+            // txtDomicilio
             // 
-            this.textBox12.Location = new System.Drawing.Point(398, 157);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(131, 21);
-            this.textBox12.TabIndex = 83;
+            this.txtDomicilio.Location = new System.Drawing.Point(398, 157);
+            this.txtDomicilio.Name = "txtDomicilio";
+            this.txtDomicilio.Size = new System.Drawing.Size(131, 21);
+            this.txtDomicilio.TabIndex = 83;
             // 
             // label58
             // 
@@ -4445,12 +4475,12 @@
             this.label56.TabIndex = 84;
             this.label56.Text = "Teléfono";
             // 
-            // textBox11
+            // txtTelefono
             // 
-            this.textBox11.Location = new System.Drawing.Point(10, 209);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(86, 21);
-            this.textBox11.TabIndex = 85;
+            this.txtTelefono.Location = new System.Drawing.Point(10, 209);
+            this.txtTelefono.Name = "txtTelefono";
+            this.txtTelefono.Size = new System.Drawing.Size(86, 21);
+            this.txtTelefono.TabIndex = 85;
             // 
             // shapeContainer1
             // 
@@ -4730,7 +4760,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 895);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 719);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -4753,7 +4783,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 912);
+            this.ClientSize = new System.Drawing.Size(1350, 736);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;
@@ -5041,37 +5071,35 @@
         private System.Windows.Forms.TabPage tpDatosAntecedentes;
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.Label label44;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtApellidoPaterno;
         private System.Windows.Forms.Label label45;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtApellidoMaterno;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtNombres;
         private System.Windows.Forms.Label label60;
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.TextBox textBox53;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cboGenero;
         private System.Windows.Forms.Label label48;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtEdad;
+        private System.Windows.Forms.DateTimePicker dtpFechaNacimiento;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.Label label50;
-        private System.Windows.Forms.TextBox textBox6;
+        private System.Windows.Forms.TextBox txtLugarNacimiento;
         private System.Windows.Forms.Label label51;
-        private System.Windows.Forms.TextBox textBox7;
+        private System.Windows.Forms.TextBox txtProcedencia;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.Label label53;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cboGradoInstruccion;
         private System.Windows.Forms.Label label54;
-        private System.Windows.Forms.ComboBox comboBox4;
+        private System.Windows.Forms.ComboBox cboEstadoCivil;
         private System.Windows.Forms.Label label55;
-        private System.Windows.Forms.TextBox textBox10;
+        private System.Windows.Forms.TextBox txtOcupacion;
         private System.Windows.Forms.Label label57;
-        private System.Windows.Forms.TextBox textBox12;
+        private System.Windows.Forms.TextBox txtDomicilio;
         private System.Windows.Forms.Label label58;
         private System.Windows.Forms.Label label56;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtTelefono;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
         private Infragistics.Win.UltraWinGrid.UltraGrid ultraGrid2;
@@ -5081,5 +5109,9 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid ultraGrid1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnGuardarCuidadosPreventivos;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.TextBox txtFamiliarCuidadorResponsable;
+        private System.Windows.Forms.ComboBox ddlBloodFactorId;
+        private System.Windows.Forms.ComboBox ddlBloodGroupId;
     }
 }

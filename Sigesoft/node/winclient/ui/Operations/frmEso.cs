@@ -370,8 +370,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 GetConclusionesDiagnosticasForGridView();
                 ConclusionesyTratamiento_LoadAllGrid();
                 gbEdicionDiagnosticoTotal.Enabled = false;
-                ConstruirFormularioAntecedentes();
-                ConstruirFormularioCuidadosPreventivos();
+                if (_tipo == (int)MasterService.AtxMedicaParticular)
+                {
+                    ConstruirFormularioAntecedentes();
+                    ConstruirFormularioCuidadosPreventivos();
+                }
+           
             }
             if (_action == "View")
             {
@@ -1966,7 +1970,29 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 #endregion
 
+                #region Datos Personales
 
+                Utils.LoadDropDownList(cboGenero, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 100, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(cboEstadoCivil, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(cboGradoInstruccion, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
+
+
+
+                txtApellidoPaterno.Text = personData.v_FirstLastName;
+                txtApellidoMaterno.Text = personData.v_SecondLastName;
+                txtNombres.Text = personData.v_FirstName;
+                cboGenero.SelectedValue = personData.i_SexTypeId.ToString();
+                txtEdad.Text = _age.ToString();
+                dtpFechaNacimiento.Value = personData.d_BirthDate.Value;
+                txtLugarNacimiento.Text = personData.v_AdressLocation;
+                //txtProcedencia.Text = personData.v_Procedencia;
+                //ddlBloodFactorId.SelectedValue = personData.i_BloodFactorId.ToString();
+                //ddlBloodGroupId.SelectedValue = personData.i_BloodGroupId.ToString();
+                cboGradoInstruccion.SelectedValue = personData.i_LevelOfId.ToString();
+                cboEstadoCivil.SelectedValue = personData.i_MaritalStatusId.ToString();
+                txtOcupacion.Text = personData.v_CurrentOccupation;
+
+                #endregion
                 #region Cargar Atención Integral
 
                 CargarGrillaProblemas(_personId);
