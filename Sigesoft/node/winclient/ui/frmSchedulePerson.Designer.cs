@@ -1533,7 +1533,8 @@
             // 
             // ddlDocTypeId
             // 
-            this.ddlDocTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlDocTypeId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlDocTypeId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlDocTypeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDocTypeId.FormattingEnabled = true;
             this.ddlDocTypeId.Location = new System.Drawing.Point(349, 16);
