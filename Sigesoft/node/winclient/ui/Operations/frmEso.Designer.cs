@@ -236,7 +236,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance94 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -408,6 +408,10 @@
             this.btnNuevoAgudo = new System.Windows.Forms.Button();
             this.grdAgudos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tpDatosAntecedentes = new System.Windows.Forms.TabPage();
+            this.ddlBloodFactorId = new System.Windows.Forms.ComboBox();
+            this.ddlBloodGroupId = new System.Windows.Forms.ComboBox();
+            this.label40 = new System.Windows.Forms.Label();
+            this.txtFamiliarCuidadorResponsable = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
             this.ultraGrid1 = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnGuardarAntecedentes = new System.Windows.Forms.Button();
@@ -474,10 +478,6 @@
             this.dsInformeEcograficoRenal1 = new Sigesoft.Node.WinClient.UI.Dataset.dsInformeEcograficoRenal();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.label40 = new System.Windows.Forms.Label();
-            this.txtFamiliarCuidadorResponsable = new System.Windows.Forms.TextBox();
-            this.ddlBloodFactorId = new System.Windows.Forms.ComboBox();
-            this.ddlBloodGroupId = new System.Windows.Forms.ComboBox();
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -4060,6 +4060,46 @@
             this.tpDatosAntecedentes.Text = "DATOS GENERALES Y ANTECEDENTES";
             this.tpDatosAntecedentes.UseVisualStyleBackColor = true;
             // 
+            // ddlBloodFactorId
+            // 
+            this.ddlBloodFactorId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlBloodFactorId.Enabled = false;
+            this.ddlBloodFactorId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlBloodFactorId.FormattingEnabled = true;
+            this.ddlBloodFactorId.Location = new System.Drawing.Point(490, 106);
+            this.ddlBloodFactorId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlBloodFactorId.Name = "ddlBloodFactorId";
+            this.ddlBloodFactorId.Size = new System.Drawing.Size(39, 21);
+            this.ddlBloodFactorId.TabIndex = 115;
+            // 
+            // ddlBloodGroupId
+            // 
+            this.ddlBloodGroupId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlBloodGroupId.Enabled = false;
+            this.ddlBloodGroupId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlBloodGroupId.FormattingEnabled = true;
+            this.ddlBloodGroupId.Location = new System.Drawing.Point(407, 108);
+            this.ddlBloodGroupId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlBloodGroupId.Name = "ddlBloodGroupId";
+            this.ddlBloodGroupId.Size = new System.Drawing.Size(77, 21);
+            this.ddlBloodGroupId.TabIndex = 114;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(104, 193);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(159, 13);
+            this.label40.TabIndex = 112;
+            this.label40.Text = "Familiar o cuidador responsable";
+            // 
+            // txtFamiliarCuidadorResponsable
+            // 
+            this.txtFamiliarCuidadorResponsable.Location = new System.Drawing.Point(104, 209);
+            this.txtFamiliarCuidadorResponsable.Name = "txtFamiliarCuidadorResponsable";
+            this.txtFamiliarCuidadorResponsable.Size = new System.Drawing.Size(425, 21);
+            this.txtFamiliarCuidadorResponsable.TabIndex = 113;
+            // 
             // label39
             // 
             this.label39.AutoSize = true;
@@ -4699,14 +4739,14 @@
             // 
             // uvExamen
             // 
-            appearance94.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance94.BackColor2 = System.Drawing.Color.Transparent;
-            appearance94.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance94.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance94.BorderColor = System.Drawing.Color.Red;
-            appearance94.BorderColor2 = System.Drawing.Color.Red;
-            appearance94.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance94;
+            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance15.BackColor2 = System.Drawing.Color.Transparent;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance15.BorderColor = System.Drawing.Color.Red;
+            appearance15.BorderColor2 = System.Drawing.Color.Red;
+            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance15;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -4737,46 +4777,6 @@
             // 
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(104, 193);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(159, 13);
-            this.label40.TabIndex = 112;
-            this.label40.Text = "Familiar o cuidador responsable";
-            // 
-            // txtFamiliarCuidadorResponsable
-            // 
-            this.txtFamiliarCuidadorResponsable.Location = new System.Drawing.Point(104, 209);
-            this.txtFamiliarCuidadorResponsable.Name = "txtFamiliarCuidadorResponsable";
-            this.txtFamiliarCuidadorResponsable.Size = new System.Drawing.Size(425, 21);
-            this.txtFamiliarCuidadorResponsable.TabIndex = 113;
-            // 
-            // ddlBloodFactorId
-            // 
-            this.ddlBloodFactorId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlBloodFactorId.Enabled = false;
-            this.ddlBloodFactorId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlBloodFactorId.FormattingEnabled = true;
-            this.ddlBloodFactorId.Location = new System.Drawing.Point(490, 106);
-            this.ddlBloodFactorId.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlBloodFactorId.Name = "ddlBloodFactorId";
-            this.ddlBloodFactorId.Size = new System.Drawing.Size(39, 21);
-            this.ddlBloodFactorId.TabIndex = 115;
-            // 
-            // ddlBloodGroupId
-            // 
-            this.ddlBloodGroupId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlBloodGroupId.Enabled = false;
-            this.ddlBloodGroupId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlBloodGroupId.FormattingEnabled = true;
-            this.ddlBloodGroupId.Location = new System.Drawing.Point(407, 108);
-            this.ddlBloodGroupId.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlBloodGroupId.Name = "ddlBloodGroupId";
-            this.ddlBloodGroupId.Size = new System.Drawing.Size(77, 21);
-            this.ddlBloodGroupId.TabIndex = 114;
             // 
             // frmEso
             // 

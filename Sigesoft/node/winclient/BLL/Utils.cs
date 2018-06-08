@@ -1433,6 +1433,187 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<KeyValueDTO> ObtenerProvincia(ref OperationResult pobjOperationResult, int pintGroupId, int? pintParentItemId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.datahierarchy
+                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 && a.i_ItemId == pintParentItemId
+                            select a;
+
+
+                query = query.OrderBy("v_Value1");
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.i_ItemId.ToString(),
+                                Value1 = x.v_Value1,
+                                Value2 = x.v_Value2,
+                                Value4 = x.i_ParentItemId.Value
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public static List<KeyValueDTO> ObtenerTodasProvincia(ref OperationResult pobjOperationResult, int pintGroupId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.datahierarchy
+                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 
+                            select a;
+
+
+                query = query.OrderBy("v_Value1");
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.i_ItemId.ToString(),
+                                Value1 = x.v_Value1,
+                                Value2 = x.v_Value2,
+                                Value4 = x.i_ParentItemId.Value
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public static List<KeyValueDTO> ObtenerTodasDepartamentos(ref OperationResult pobjOperationResult, int pintGroupId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.datahierarchy
+                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 && a.i_ParentItemId == -1
+                            select a;
+
+
+                query = query.OrderBy("v_Value1");
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.i_ItemId.ToString(),
+                                Value1 = x.v_Value1,
+                                Value2 = x.v_Value2,
+                                Value4 = x.i_ParentItemId.Value
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+
+        public static List<KeyValueDTO> ObtenerDepartamento(ref OperationResult pobjOperationResult, int pintGroupId, int? pintParentItemId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.datahierarchy
+                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 && a.i_ItemId == pintParentItemId
+                            select a;
+
+
+                query = query.OrderBy("v_Value1");
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.i_ItemId.ToString(),
+                                Value1 = x.v_Value1,
+                                Value2 = x.v_Value2,
+                                Value4 = x.i_ParentItemId.Value
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+        public static List<KeyValueDTO> BuscarCoincidenciaDistritos(ref OperationResult pobjOperationResult, int pintGroupId, string text)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.datahierarchy
+                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 && a.v_Value1.Contains(text)
+                            select a;
+
+
+                query = query.OrderBy("i_ParentItemId");
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.i_ItemId.ToString(),
+                                Value1 = x.v_Value1,
+                                Value2 = x.v_Value2,
+                                Value4 =  x.i_ParentItemId.Value
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
         public static List<KeyValueDTO> GetDataHierarchyForComboDistrito(ref OperationResult pobjOperationResult, int pintGroupId, int? pintParentItemId)
         {
             //mon.IsActive = true;
@@ -1468,6 +1649,40 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<KeyValueDTO> GetDataHierarchyForComboDistrito_(ref OperationResult pobjOperationResult, int pintGroupId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.datahierarchy
+                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 && a.i_ParentItemId != -1
+                            select a;
+
+
+                query = query.OrderBy("v_Value1");
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.i_ItemId.ToString(),
+                                Value1 = x.v_Value1,
+                                Value2 = x.v_Value2
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
         public static List<KeyValueDTO> GetProfessional(ref OperationResult pobjOperationResult, string pstrSortExpression)
         {
             //mon.IsActive = true;

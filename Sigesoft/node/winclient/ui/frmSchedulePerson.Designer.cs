@@ -135,16 +135,16 @@
             this.txtResidenceTimeInWorkplace = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
             this.txtNumberDependentChildren = new System.Windows.Forms.TextBox();
+            this.label42 = new System.Windows.Forms.Label();
+            this.ddlDistricId = new System.Windows.Forms.ComboBox();
             this.label46 = new System.Windows.Forms.Label();
             this.txtNumberLivingChildren = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
             this.ddlTypeOfInsuranceId = new System.Windows.Forms.ComboBox();
             this.label44 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.label42 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
             this.ddlResidenceInWorkplaceId = new System.Windows.Forms.ComboBox();
-            this.ddlDistricId = new System.Windows.Forms.ComboBox();
             this.ddlProvinceId = new System.Windows.Forms.ComboBox();
             this.ddlDepartamentId = new System.Windows.Forms.ComboBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -277,7 +277,7 @@
             this.btnSearchProtocol.Margin = new System.Windows.Forms.Padding(2);
             this.btnSearchProtocol.Name = "btnSearchProtocol";
             this.btnSearchProtocol.Size = new System.Drawing.Size(32, 24);
-            this.btnSearchProtocol.TabIndex = 138;
+            this.btnSearchProtocol.TabIndex = 5;
             this.btnSearchProtocol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSearchProtocol.UseVisualStyleBackColor = false;
             this.btnSearchProtocol.Click += new System.EventHandler(this.btnSearchProtocol_Click);
@@ -832,16 +832,16 @@
             this.gbDatosGenerales.Controls.Add(this.txtResidenceTimeInWorkplace);
             this.gbDatosGenerales.Controls.Add(this.label47);
             this.gbDatosGenerales.Controls.Add(this.txtNumberDependentChildren);
+            this.gbDatosGenerales.Controls.Add(this.label42);
+            this.gbDatosGenerales.Controls.Add(this.ddlDistricId);
             this.gbDatosGenerales.Controls.Add(this.label46);
             this.gbDatosGenerales.Controls.Add(this.txtNumberLivingChildren);
             this.gbDatosGenerales.Controls.Add(this.label45);
             this.gbDatosGenerales.Controls.Add(this.ddlTypeOfInsuranceId);
             this.gbDatosGenerales.Controls.Add(this.label44);
             this.gbDatosGenerales.Controls.Add(this.label43);
-            this.gbDatosGenerales.Controls.Add(this.label42);
             this.gbDatosGenerales.Controls.Add(this.label41);
             this.gbDatosGenerales.Controls.Add(this.ddlResidenceInWorkplaceId);
-            this.gbDatosGenerales.Controls.Add(this.ddlDistricId);
             this.gbDatosGenerales.Controls.Add(this.ddlProvinceId);
             this.gbDatosGenerales.Controls.Add(this.ddlDepartamentId);
             this.gbDatosGenerales.Controls.Add(this.label35);
@@ -928,7 +928,7 @@
             this.txtPuesto.Location = new System.Drawing.Point(110, 218);
             this.txtPuesto.Name = "txtPuesto";
             this.txtPuesto.Size = new System.Drawing.Size(122, 22);
-            this.txtPuesto.TabIndex = 149;
+            this.txtPuesto.TabIndex = 14;
             // 
             // txtNroHermanos
             // 
@@ -939,7 +939,8 @@
             this.txtNroHermanos.MaxLength = 250;
             this.txtNroHermanos.Name = "txtNroHermanos";
             this.txtNroHermanos.Size = new System.Drawing.Size(121, 20);
-            this.txtNroHermanos.TabIndex = 142;
+            this.txtNroHermanos.TabIndex = 24;
+            this.txtNroHermanos.Text = "0";
             this.txtNroHermanos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNroHermanos_KeyPress);
             // 
             // label51
@@ -964,7 +965,7 @@
             this.txtExploitedMineral.MaxLength = 50;
             this.txtExploitedMineral.Name = "txtExploitedMineral";
             this.txtExploitedMineral.Size = new System.Drawing.Size(126, 20);
-            this.txtExploitedMineral.TabIndex = 21;
+            this.txtExploitedMineral.TabIndex = 16;
             // 
             // label48
             // 
@@ -987,7 +988,7 @@
             this.ddlPlaceWorkId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlPlaceWorkId.Name = "ddlPlaceWorkId";
             this.ddlPlaceWorkId.Size = new System.Drawing.Size(123, 21);
-            this.ddlPlaceWorkId.TabIndex = 20;
+            this.ddlPlaceWorkId.TabIndex = 27;
             // 
             // label40
             // 
@@ -1011,7 +1012,7 @@
             this.ddlAltitudeWorkId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlAltitudeWorkId.Name = "ddlAltitudeWorkId";
             this.ddlAltitudeWorkId.Size = new System.Drawing.Size(122, 21);
-            this.ddlAltitudeWorkId.TabIndex = 19;
+            this.ddlAltitudeWorkId.TabIndex = 15;
             // 
             // label39
             // 
@@ -1035,7 +1036,7 @@
             this.ddlRelationshipId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlRelationshipId.Name = "ddlRelationshipId";
             this.ddlRelationshipId.Size = new System.Drawing.Size(122, 21);
-            this.ddlRelationshipId.TabIndex = 18;
+            this.ddlRelationshipId.TabIndex = 26;
             // 
             // Parentesco
             // 
@@ -1065,7 +1066,7 @@
             this.btnSavePacient.Margin = new System.Windows.Forms.Padding(2);
             this.btnSavePacient.Name = "btnSavePacient";
             this.btnSavePacient.Size = new System.Drawing.Size(156, 21);
-            this.btnSavePacient.TabIndex = 22;
+            this.btnSavePacient.TabIndex = 28;
             this.btnSavePacient.Text = "Guardar Nuevo Paciente";
             this.btnSavePacient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSavePacient.UseVisualStyleBackColor = false;
@@ -1091,7 +1092,8 @@
             this.txtResidenceTimeInWorkplace.MaxLength = 250;
             this.txtResidenceTimeInWorkplace.Name = "txtResidenceTimeInWorkplace";
             this.txtResidenceTimeInWorkplace.Size = new System.Drawing.Size(121, 20);
-            this.txtResidenceTimeInWorkplace.TabIndex = 7;
+            this.txtResidenceTimeInWorkplace.TabIndex = 20;
+            this.txtResidenceTimeInWorkplace.Text = " - - -";
             // 
             // label47
             // 
@@ -1114,8 +1116,35 @@
             this.txtNumberDependentChildren.MaxLength = 250;
             this.txtNumberDependentChildren.Name = "txtNumberDependentChildren";
             this.txtNumberDependentChildren.Size = new System.Drawing.Size(26, 20);
-            this.txtNumberDependentChildren.TabIndex = 13;
+            this.txtNumberDependentChildren.TabIndex = 23;
+            this.txtNumberDependentChildren.Text = "0";
             this.txtNumberDependentChildren.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumberDependentChildren_KeyPress);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label42.ForeColor = System.Drawing.Color.Black;
+            this.label42.Location = new System.Drawing.Point(5, 87);
+            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(39, 13);
+            this.label42.TabIndex = 122;
+            this.label42.Text = "Distrito";
+            // 
+            // ddlDistricId
+            // 
+            this.ddlDistricId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlDistricId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ddlDistricId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlDistricId.FormattingEnabled = true;
+            this.ddlDistricId.Location = new System.Drawing.Point(110, 83);
+            this.ddlDistricId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlDistricId.Name = "ddlDistricId";
+            this.ddlDistricId.Size = new System.Drawing.Size(122, 21);
+            this.ddlDistricId.TabIndex = 10;
+            this.ddlDistricId.SelectedIndexChanged += new System.EventHandler(this.ddlDistricId_SelectedIndexChanged);
+            this.ddlDistricId.Leave += new System.EventHandler(this.ddlDistricId_Leave);
             // 
             // label46
             // 
@@ -1138,7 +1167,8 @@
             this.txtNumberLivingChildren.MaxLength = 250;
             this.txtNumberLivingChildren.Name = "txtNumberLivingChildren";
             this.txtNumberLivingChildren.Size = new System.Drawing.Size(32, 20);
-            this.txtNumberLivingChildren.TabIndex = 11;
+            this.txtNumberLivingChildren.TabIndex = 22;
+            this.txtNumberLivingChildren.Text = "0";
             this.txtNumberLivingChildren.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNumberLivingChildren_KeyPress);
             // 
             // label45
@@ -1162,7 +1192,7 @@
             this.ddlTypeOfInsuranceId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlTypeOfInsuranceId.Name = "ddlTypeOfInsuranceId";
             this.ddlTypeOfInsuranceId.Size = new System.Drawing.Size(121, 21);
-            this.ddlTypeOfInsuranceId.TabIndex = 9;
+            this.ddlTypeOfInsuranceId.TabIndex = 21;
             // 
             // label44
             // 
@@ -1187,24 +1217,12 @@
             this.label43.TabIndex = 123;
             this.label43.Text = "Reside en lugar de trabajo?";
             // 
-            // label42
-            // 
-            this.label42.AutoSize = true;
-            this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label42.ForeColor = System.Drawing.Color.Black;
-            this.label42.Location = new System.Drawing.Point(5, 125);
-            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(39, 13);
-            this.label42.TabIndex = 122;
-            this.label42.Text = "Distrito";
-            // 
             // label41
             // 
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.ForeColor = System.Drawing.Color.Black;
-            this.label41.Location = new System.Drawing.Point(5, 109);
+            this.label41.Location = new System.Drawing.Point(5, 108);
             this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(51, 13);
@@ -1220,41 +1238,32 @@
             this.ddlResidenceInWorkplaceId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlResidenceInWorkplaceId.Name = "ddlResidenceInWorkplaceId";
             this.ddlResidenceInWorkplaceId.Size = new System.Drawing.Size(122, 21);
-            this.ddlResidenceInWorkplaceId.TabIndex = 12;
-            // 
-            // ddlDistricId
-            // 
-            this.ddlDistricId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlDistricId.FormattingEnabled = true;
-            this.ddlDistricId.Location = new System.Drawing.Point(110, 127);
-            this.ddlDistricId.Margin = new System.Windows.Forms.Padding(2);
-            this.ddlDistricId.Name = "ddlDistricId";
-            this.ddlDistricId.Size = new System.Drawing.Size(122, 21);
-            this.ddlDistricId.TabIndex = 10;
-            this.ddlDistricId.SelectedIndexChanged += new System.EventHandler(this.ddlDistricId_SelectedIndexChanged);
+            this.ddlResidenceInWorkplaceId.TabIndex = 11;
             // 
             // ddlProvinceId
             // 
+            this.ddlProvinceId.Enabled = false;
             this.ddlProvinceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProvinceId.FormattingEnabled = true;
             this.ddlProvinceId.Location = new System.Drawing.Point(110, 105);
             this.ddlProvinceId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlProvinceId.Name = "ddlProvinceId";
             this.ddlProvinceId.Size = new System.Drawing.Size(122, 21);
-            this.ddlProvinceId.TabIndex = 8;
+            this.ddlProvinceId.TabIndex = 99;
             this.ddlProvinceId.SelectedIndexChanged += new System.EventHandler(this.ddlProvinceId_SelectedIndexChanged);
             // 
             // ddlDepartamentId
             // 
             this.ddlDepartamentId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ddlDepartamentId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ddlDepartamentId.Enabled = false;
             this.ddlDepartamentId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDepartamentId.FormattingEnabled = true;
-            this.ddlDepartamentId.Location = new System.Drawing.Point(110, 83);
+            this.ddlDepartamentId.Location = new System.Drawing.Point(110, 128);
             this.ddlDepartamentId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlDepartamentId.Name = "ddlDepartamentId";
             this.ddlDepartamentId.Size = new System.Drawing.Size(122, 21);
-            this.ddlDepartamentId.TabIndex = 6;
+            this.ddlDepartamentId.TabIndex = 99;
             this.ddlDepartamentId.SelectedIndexChanged += new System.EventHandler(this.ddlDepartamentId_SelectedIndexChanged);
             this.ddlDepartamentId.Leave += new System.EventHandler(this.ddlDepartamentId_Leave);
             // 
@@ -1263,7 +1272,7 @@
             this.label35.AutoSize = true;
             this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label35.ForeColor = System.Drawing.Color.Black;
-            this.label35.Location = new System.Drawing.Point(5, 86);
+            this.label35.Location = new System.Drawing.Point(5, 128);
             this.label35.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(74, 13);
@@ -1280,7 +1289,7 @@
             this.ddlBloodFactorId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlBloodFactorId.Name = "ddlBloodFactorId";
             this.ddlBloodFactorId.Size = new System.Drawing.Size(122, 21);
-            this.ddlBloodFactorId.TabIndex = 5;
+            this.ddlBloodFactorId.TabIndex = 19;
             // 
             // txtBirthPlace
             // 
@@ -1290,7 +1299,7 @@
             this.txtBirthPlace.MaxLength = 100;
             this.txtBirthPlace.Name = "txtBirthPlace";
             this.txtBirthPlace.Size = new System.Drawing.Size(122, 20);
-            this.txtBirthPlace.TabIndex = 2;
+            this.txtBirthPlace.TabIndex = 8;
             // 
             // ddlBloodGroupId
             // 
@@ -1302,7 +1311,7 @@
             this.ddlBloodGroupId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlBloodGroupId.Name = "ddlBloodGroupId";
             this.ddlBloodGroupId.Size = new System.Drawing.Size(122, 21);
-            this.ddlBloodGroupId.TabIndex = 3;
+            this.ddlBloodGroupId.TabIndex = 18;
             // 
             // label26
             // 
@@ -1324,7 +1333,7 @@
             this.dtpBirthdate.Name = "dtpBirthdate";
             this.dtpBirthdate.ShowCheckBox = true;
             this.dtpBirthdate.Size = new System.Drawing.Size(122, 20);
-            this.dtpBirthdate.TabIndex = 4;
+            this.dtpBirthdate.TabIndex = 9;
             // 
             // ddlLevelOfId
             // 
@@ -1335,7 +1344,7 @@
             this.ddlLevelOfId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlLevelOfId.Name = "ddlLevelOfId";
             this.ddlLevelOfId.Size = new System.Drawing.Size(122, 21);
-            this.ddlLevelOfId.TabIndex = 1;
+            this.ddlLevelOfId.TabIndex = 17;
             // 
             // label34
             // 
@@ -1357,7 +1366,7 @@
             this.ddlMaritalStatusId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlMaritalStatusId.Name = "ddlMaritalStatusId";
             this.ddlMaritalStatusId.Size = new System.Drawing.Size(122, 21);
-            this.ddlMaritalStatusId.TabIndex = 0;
+            this.ddlMaritalStatusId.TabIndex = 7;
             // 
             // label8
             // 
@@ -1402,7 +1411,7 @@
             this.txtAdressLocation.MaxLength = 250;
             this.txtAdressLocation.Name = "txtAdressLocation";
             this.txtAdressLocation.Size = new System.Drawing.Size(364, 20);
-            this.txtAdressLocation.TabIndex = 16;
+            this.txtAdressLocation.TabIndex = 13;
             // 
             // label5
             // 
@@ -1423,7 +1432,7 @@
             this.txtTelephoneNumber.MaxLength = 15;
             this.txtTelephoneNumber.Name = "txtTelephoneNumber";
             this.txtTelephoneNumber.Size = new System.Drawing.Size(122, 20);
-            this.txtTelephoneNumber.TabIndex = 15;
+            this.txtTelephoneNumber.TabIndex = 25;
             // 
             // label6
             // 
@@ -1444,7 +1453,7 @@
             this.txtMail.MaxLength = 100;
             this.txtMail.Name = "txtMail";
             this.txtMail.Size = new System.Drawing.Size(122, 20);
-            this.txtMail.TabIndex = 14;
+            this.txtMail.TabIndex = 12;
             // 
             // label7
             // 
@@ -1524,7 +1533,8 @@
             // 
             // ddlDocTypeId
             // 
-            this.ddlDocTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlDocTypeId.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.ddlDocTypeId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlDocTypeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDocTypeId.FormattingEnabled = true;
             this.ddlDocTypeId.Location = new System.Drawing.Point(349, 16);
@@ -1711,6 +1721,7 @@
             this.label50.Size = new System.Drawing.Size(55, 13);
             this.label50.TabIndex = 149;
             this.label50.Text = "Deducible";
+            this.label50.Visible = false;
             // 
             // txtDecucible
             // 
@@ -1721,6 +1732,7 @@
             this.txtDecucible.Size = new System.Drawing.Size(122, 20);
             this.txtDecucible.TabIndex = 148;
             this.txtDecucible.Text = "0.00";
+            this.txtDecucible.Visible = false;
             // 
             // txtNroPliza
             // 
@@ -1730,6 +1742,7 @@
             this.txtNroPliza.Name = "txtNroPliza";
             this.txtNroPliza.Size = new System.Drawing.Size(122, 20);
             this.txtNroPliza.TabIndex = 147;
+            this.txtNroPliza.Visible = false;
             // 
             // label49
             // 
@@ -1742,6 +1755,7 @@
             this.label49.Size = new System.Drawing.Size(58, 13);
             this.label49.TabIndex = 146;
             this.label49.Text = "Nro. Póliza";
+            this.label49.Visible = false;
             // 
             // grdDataService
             // 
@@ -2023,7 +2037,7 @@
             this.btnschedule.Margin = new System.Windows.Forms.Padding(2);
             this.btnschedule.Name = "btnschedule";
             this.btnschedule.Size = new System.Drawing.Size(75, 24);
-            this.btnschedule.TabIndex = 2;
+            this.btnschedule.TabIndex = 99;
             this.btnschedule.Text = " Agendar";
             this.btnschedule.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnschedule.UseVisualStyleBackColor = false;
@@ -2044,7 +2058,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 24);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 99;
             this.btnCancel.Text = "   Salir";
             this.btnCancel.UseVisualStyleBackColor = false;
             // 

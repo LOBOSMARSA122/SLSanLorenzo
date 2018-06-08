@@ -1327,12 +1327,11 @@ namespace NetPdf
 
                 #endregion
 
-                #region PARASITOLOGIA
+                #region PARASITOLOGIA SIMPLE
 
                 string[] groupParasitologia = new string[]
                  {
                     Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_ID, 
-                    Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_ID,
                  };
 
                 var examenesParasitologia = examenesLab.FindAll(p => groupParasitologia.Contains(p.v_ComponentId));
@@ -1341,12 +1340,6 @@ namespace NetPdf
 
                 if (examenesParasitologia.Count > 0)
                 {
-
-                    cells.Add(new PdfPCell(new Phrase("EXAMEN", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                    cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                    cells.Add(new PdfPCell(new Phrase("EXAMEN DESEABLES", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                    cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
                     var xParasitologiaSimple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_ID);
 
                     if (xParasitologiaSimple != null)
@@ -1355,66 +1348,73 @@ namespace NetPdf
                         var color = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_COLOR);
                         var consistencia = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_CONSISTENCIA);
                         var restosAlimenticios = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_RESTOS_ALIMENTICIOS);
-                        var sangre = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_SANGRE);
                         var moco = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_MOCO);
-                        var quistes = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_QUISTES);
-                        var huevos = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_HUEVOS);
-                        var trofozoitos = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_TROFOZOITOS);
                         var hematies = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_HEMATIES);
                         var leucocitos = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_LEUCOCITOS);
+                        var levaduras = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_LEVADURAS);
+                        var grasas = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_GRASAS);
+                        var resultado_Sedim = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_RESULTADOS_SEDIM);
                         var resultado = xParasitologiaSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SIMPLE_EXAMEN_HECES_RESULTADOS);
 
-                        cells.Add(new PdfPCell(new Phrase("PARASITOLÓGICO SIMPLE", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
-
+                        cells.Add(new PdfPCell(new Phrase("EXAMEN MACROSCÓPICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
                         // 1era fila
                         cells.Add(new PdfPCell(new Phrase("COLOR", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(color == null ? string.Empty : color.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
                         // 2da fila
                         cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(consistencia == null ? string.Empty : consistencia.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
                         // 3era fila
+                        cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        // 4ta fila
                         cells.Add(new PdfPCell(new Phrase("RESTOS ALIMENTICIOS", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(restosAlimenticios == null ? string.Empty : restosAlimenticios.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
-                        // 4ta fila
-                        cells.Add(new PdfPCell(new Phrase("SANGRE", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(sangre == null ? string.Empty : sangre.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
+                        cells.Add(new PdfPCell(new Phrase("EXAMEN MICROSCÓPICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
                         // 5ta fila
-                        cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 6xta fila
-                        cells.Add(new PdfPCell(new Phrase("QUISTES", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(quistes == null ? string.Empty : quistes.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 7ma fila
-                        cells.Add(new PdfPCell(new Phrase("HUEVOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(huevos == null ? string.Empty : huevos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 8tavo fila
-                        cells.Add(new PdfPCell(new Phrase("TROFOZOITOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(trofozoitos == null ? string.Empty : trofozoitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 9na fila
                         cells.Add(new PdfPCell(new Phrase("HEMATIES", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 10ma fila
+                        // 6xta fila
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(leucocitos == null ? string.Empty : leucocitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        // 7ma fila
+                        cells.Add(new PdfPCell(new Phrase("LEVADURAS", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(levaduras == null ? string.Empty : levaduras.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        // 8tavo fila
+                        cells.Add(new PdfPCell(new Phrase("GRASAS", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(grasas == null ? string.Empty : grasas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
-                        // 11va fila
-                        cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(resultado == null ? string.Empty : resultado.v_Value1, fontColumnValue)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
-
+                        cells.Add(new PdfPCell(new Phrase("RESULTADOS", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
+                        // 9na fila
+                        cells.Add(new PdfPCell(new Phrase("METODO DIRECTO /(SOLUC.SALINA/LUGOL)", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(resultado == null ? string.Empty : resultado.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        // 10ma fila
+                        cells.Add(new PdfPCell(new Phrase("METODO DE SEDIMENTACION", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(resultado_Sedim == null ? string.Empty : resultado_Sedim.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         #endregion
-                        
                     }
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "PARASITOLÓGICO SIMPLE", fontTitleTableNegro, null);
+                    document.Add(table);
+                }
 
+
+
+                #endregion
+
+                #region PARASITOLOGIA SERIADO
+
+                string[] groupParasitologiaSeriado = new string[]
+                 {
+                   Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_ID,
+                 };
+
+                var examenesParasitologiaSeriado = examenesLab.FindAll(p => groupParasitologiaSeriado.Contains(p.v_ComponentId));
+
+                cells = new List<PdfPCell>();
+
+                if (examenesParasitologia.Count > 0)
+                {
                     var xParasitologiaSeriado = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_ID);
 
                     if (xParasitologiaSeriado != null)
@@ -1425,205 +1425,58 @@ namespace NetPdf
                         var color = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_COLOR);
                         var consistencia = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_CONSISTENCIA);
                         var restosAlimenticios = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_RESTOS_ALIMENTICIOS);
-                        var sangre = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_SANGRE);
-                        var moco = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_MOCO);
-                        var quistes = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_QUISTES);
-                        var huevos = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_HUEVOS);
-                        var trofozoitos = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_TROFOZOITOS);
                         var hematies = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_HEMATIES);
                         var leucocitos = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_LEUCOCITOS);
+                        var moco = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_MOCO);
+                        var levaduras = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_LEVADURAS);
+                        var directo = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_DIRECTO);
+                        var grasas = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_GRASAS);
+                        var sedimentacion = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_PRIMERA_SEDIMENTACION);
 
-                        cells.Add(new PdfPCell(new Phrase("PARASITOLÓGICO SERIADO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        cells.Add(new PdfPCell(new Phrase("PRIMERA MUESTRA", fontColumnValueBold)) { Colspan = 4 });
-
+                        cells.Add(new PdfPCell(new Phrase("EXAMEN MACROSCÓPICO", fontColumnValueBold)) { Colspan = 4 });
                         // 1era fila
                         cells.Add(new PdfPCell(new Phrase("COLOR", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(color == null ? string.Empty : color.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
                         // 2da fila
                         cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(consistencia == null ? string.Empty : consistencia.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
                         // 3era fila
+                        cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        // 4ta fila
                         cells.Add(new PdfPCell(new Phrase("RESTOS ALIMENTICIOS", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(restosAlimenticios == null ? string.Empty : restosAlimenticios.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
-                        // 4ta fila
-                        cells.Add(new PdfPCell(new Phrase("SANGRE", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(sangre == null ? string.Empty : sangre.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
+                        cells.Add(new PdfPCell(new Phrase("EXAMEN MICROSCÓPICO", fontColumnValueBold)) { Colspan = 4 });
                         // 5ta fila
-                        cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 6xta fila
-                        cells.Add(new PdfPCell(new Phrase("QUISTES", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(quistes == null ? string.Empty : quistes.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 7ma fila
-                        cells.Add(new PdfPCell(new Phrase("HUEVOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(huevos == null ? string.Empty : huevos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 8tavo fila
-                        cells.Add(new PdfPCell(new Phrase("TROFOZOITOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(trofozoitos == null ? string.Empty : trofozoitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 9na fila
                         cells.Add(new PdfPCell(new Phrase("HEMATIES", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 10ma fila
+                        // 6xta fila
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(leucocitos == null ? string.Empty : leucocitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        #endregion
-
-                        #region SEGUNDA MUESTRA
-
-                        // SEGUNDA MUESTRA                    
-                        var colorSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_COLOR);
-                        var consistenciaSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_CONSISTENCIA);
-                        var restosAlimenticiosSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_RESTOS_ALIMENTICIOS);
-                        var sangreSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_SANGRE);
-                        var mocoSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_MOCO);
-                        var quistesSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_QUISTES);
-                        var huevosSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_HUEVOS);
-                        var trofozoitosSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_TROFOZOITOS);
-                        var hematiesSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_HEMATIES);
-                        var leucocitosSegundaMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_SEGUNDA_LEUCOCITOS);
-
-                        cells.Add(new PdfPCell(new Phrase("SEGUNDA MUESTRA", fontColumnValueBold)) { Colspan = 4 });
-
-                        // 1era fila
-                        cells.Add(new PdfPCell(new Phrase("COLOR", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(colorSegundaMuestra == null ? string.Empty : colorSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 2da fila
-                        cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(consistenciaSegundaMuestra == null ? string.Empty : consistenciaSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-                        // 3era fila
-                        cells.Add(new PdfPCell(new Phrase("RESTOS ALIMENTICIOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(restosAlimenticiosSegundaMuestra == null ? string.Empty : restosAlimenticiosSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 4ta fila
-                        cells.Add(new PdfPCell(new Phrase("SANGRE", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(sangreSegundaMuestra == null ? string.Empty : sangreSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 5ta fila
-                        cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(mocoSegundaMuestra == null ? string.Empty : mocoSegundaMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-
-                        // 6xta fila
-                        cells.Add(new PdfPCell(new Phrase("QUISTES", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(quistesSegundaMuestra == null ? string.Empty : quistesSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
                         // 7ma fila
-                        cells.Add(new PdfPCell(new Phrase("HUEVOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(huevosSegundaMuestra == null ? string.Empty : huevosSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
+                        cells.Add(new PdfPCell(new Phrase("LEVADURAS", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(levaduras == null ? string.Empty : levaduras.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         // 8tavo fila
-                        cells.Add(new PdfPCell(new Phrase("TROFOZOITOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(trofozoitosSegundaMuestra == null ? string.Empty : trofozoitosSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase("GRASAS", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(grasas == null ? string.Empty : grasas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
-
+                        cells.Add(new PdfPCell(new Phrase("RESULTADOS", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
                         // 9na fila
-                        cells.Add(new PdfPCell(new Phrase("HEMATIES", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(hematiesSegundaMuestra == null ? string.Empty : hematiesSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
+                        cells.Add(new PdfPCell(new Phrase("METODO DIRECTO /(SOLUC.SALINA/LUGOL)", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(directo == null ? string.Empty : directo.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         // 10ma fila
-                        cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(leucocitosSegundaMuestra == null ? string.Empty : leucocitosSegundaMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        #endregion
-
-                        #region TERCERA MUESTRA
-
-
-                        // TERCERA MUESTRA                    
-                        var colorTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_COLOR);
-                        var consistenciaTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_CONSISTENCIA);
-                        var restosAlimenticiosTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_RESTOS_ALIMENTICIOS);
-                        var sangreTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_SANGRE);
-                        var mocoTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_MOCO);
-                        var quistesTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_QUISTES);
-                        var huevosTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_HUEVOS);
-                        var trofozoitosTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_TROFOZOITOS);
-                        var hematiesTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_HEMATIES);
-                        var leucocitosTerceraMuestra = xParasitologiaSeriado.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_EXAMEN_HECES_TERCERA_LEUCOCITOS);
-
-                        cells.Add(new PdfPCell(new Phrase("TERCERA MUESTRA", fontColumnValueBold)) { Colspan = 4 });
-
-                        // 1era fila
-                        cells.Add(new PdfPCell(new Phrase("COLOR", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(colorTerceraMuestra == null ? string.Empty : colorTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 2da fila
-                        cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(consistenciaTerceraMuestra == null ? string.Empty : consistenciaTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 3era fila
-                        cells.Add(new PdfPCell(new Phrase("RESTOS ALIMENTICIOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(restosAlimenticiosTerceraMuestra == null ? string.Empty : restosAlimenticiosTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 4ta fila
-                        cells.Add(new PdfPCell(new Phrase("SANGRE", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(sangreTerceraMuestra == null ? string.Empty : sangreTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 5ta fila
-                        cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(mocoTerceraMuestra == null ? string.Empty : mocoTerceraMuestra.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-
-                        // 6xta fila
-                        cells.Add(new PdfPCell(new Phrase("QUISTES", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(quistesTerceraMuestra == null ? string.Empty : quistesTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 7ma fila
-                        cells.Add(new PdfPCell(new Phrase("HUEVOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(huevosTerceraMuestra == null ? string.Empty : huevosTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 8tavo fila
-                        cells.Add(new PdfPCell(new Phrase("TROFOZOITOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(trofozoitosTerceraMuestra == null ? string.Empty : trofozoitosTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 9na fila
-                        cells.Add(new PdfPCell(new Phrase("HEMATIES", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(hematiesTerceraMuestra == null ? string.Empty : hematiesTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
-                        // 10ma fila
-                        cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValueBold)));
-                        cells.Add(new PdfPCell(new Phrase(leucocitosTerceraMuestra == null ? string.Empty : leucocitosTerceraMuestra.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-
-
+                        cells.Add(new PdfPCell(new Phrase("METODO DE SEDIMENTACION", fontColumnValueBold)));
+                        cells.Add(new PdfPCell(new Phrase(sedimentacion == null ? string.Empty : sedimentacion.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         #endregion
 
                     }
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "PARASITOLOGIA", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "PARASITOLÓGICO SERIADO", fontTitleTableNegro, null);
                     document.Add(table);
                 }
 
-               
+
 
                 #endregion
 

@@ -266,7 +266,7 @@
             this.cbCustomerOrganization.Location = new System.Drawing.Point(111, 88);
             this.cbCustomerOrganization.Name = "cbCustomerOrganization";
             this.cbCustomerOrganization.Size = new System.Drawing.Size(479, 21);
-            this.cbCustomerOrganization.TabIndex = 108;
+            this.cbCustomerOrganization.TabIndex = 4;
             // 
             // label18
             // 
@@ -295,7 +295,7 @@
             this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
             this.btnFilter.Name = "btnFilter";
             this.btnFilter.Size = new System.Drawing.Size(75, 24);
-            this.btnFilter.TabIndex = 106;
+            this.btnFilter.TabIndex = 12;
             this.btnFilter.Text = "Filtrar";
             this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFilter.UseVisualStyleBackColor = false;
@@ -310,7 +310,7 @@
             this.ddlLineStatusId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlLineStatusId.Name = "ddlLineStatusId";
             this.ddlLineStatusId.Size = new System.Drawing.Size(125, 21);
-            this.ddlLineStatusId.TabIndex = 19;
+            this.ddlLineStatusId.TabIndex = 8;
             // 
             // label10
             // 
@@ -333,7 +333,7 @@
             this.ddlNewContinuationId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlNewContinuationId.Name = "ddlNewContinuationId";
             this.ddlNewContinuationId.Size = new System.Drawing.Size(126, 21);
-            this.ddlNewContinuationId.TabIndex = 17;
+            this.ddlNewContinuationId.TabIndex = 7;
             // 
             // label9
             // 
@@ -356,7 +356,7 @@
             this.ddlCalendarStatusId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlCalendarStatusId.Name = "ddlCalendarStatusId";
             this.ddlCalendarStatusId.Size = new System.Drawing.Size(125, 21);
-            this.ddlCalendarStatusId.TabIndex = 15;
+            this.ddlCalendarStatusId.TabIndex = 10;
             // 
             // label8
             // 
@@ -379,7 +379,7 @@
             this.ddlVipId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlVipId.Name = "ddlVipId";
             this.ddlVipId.Size = new System.Drawing.Size(125, 21);
-            this.ddlVipId.TabIndex = 13;
+            this.ddlVipId.TabIndex = 9;
             // 
             // label7
             // 
@@ -400,7 +400,7 @@
             this.txtNroDocument.MaxLength = 20;
             this.txtNroDocument.Name = "txtNroDocument";
             this.txtNroDocument.Size = new System.Drawing.Size(102, 20);
-            this.txtNroDocument.TabIndex = 11;
+            this.txtNroDocument.TabIndex = 3;
             this.txtNroDocument.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNroDocument_KeyPress);
             // 
             // label6
@@ -423,7 +423,7 @@
             this.txtPacient.MaxLength = 200;
             this.txtPacient.Name = "txtPacient";
             this.txtPacient.Size = new System.Drawing.Size(193, 20);
-            this.txtPacient.TabIndex = 9;
+            this.txtPacient.TabIndex = 11;
             this.txtPacient.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPacient_KeyPress);
             // 
             // label5
@@ -447,7 +447,7 @@
             this.ddlMasterServiceId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlMasterServiceId.Name = "ddlMasterServiceId";
             this.ddlMasterServiceId.Size = new System.Drawing.Size(126, 21);
-            this.ddlMasterServiceId.TabIndex = 7;
+            this.ddlMasterServiceId.TabIndex = 6;
             // 
             // label4
             // 
@@ -493,7 +493,7 @@
             this.dptDateTimeEnd.Margin = new System.Windows.Forms.Padding(2);
             this.dptDateTimeEnd.Name = "dptDateTimeEnd";
             this.dptDateTimeEnd.Size = new System.Drawing.Size(102, 20);
-            this.dptDateTimeEnd.TabIndex = 3;
+            this.dptDateTimeEnd.TabIndex = 2;
             // 
             // dtpDateTimeStar
             // 
@@ -503,7 +503,7 @@
             this.dtpDateTimeStar.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateTimeStar.Name = "dtpDateTimeStar";
             this.dtpDateTimeStar.Size = new System.Drawing.Size(102, 20);
-            this.dtpDateTimeStar.TabIndex = 2;
+            this.dtpDateTimeStar.TabIndex = 1;
             // 
             // label2
             // 
@@ -1173,7 +1173,7 @@
             this.btnAdjuntar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdjuntar.Name = "btnAdjuntar";
             this.btnAdjuntar.Size = new System.Drawing.Size(139, 24);
-            this.btnAdjuntar.TabIndex = 100;
+            this.btnAdjuntar.TabIndex = 24;
             this.btnAdjuntar.Text = "Adjuntar Declaración";
             this.btnAdjuntar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAdjuntar.UseVisualStyleBackColor = false;
@@ -1195,7 +1195,7 @@
             this.btnEnviarInformes.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnviarInformes.Name = "btnEnviarInformes";
             this.btnEnviarInformes.Size = new System.Drawing.Size(122, 24);
-            this.btnEnviarInformes.TabIndex = 99;
+            this.btnEnviarInformes.TabIndex = 20;
             this.btnEnviarInformes.Text = "Enviar Informes";
             this.btnEnviarInformes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEnviarInformes.UseVisualStyleBackColor = false;
@@ -1217,7 +1217,7 @@
             this.btnEnviarAsistencia.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnviarAsistencia.Name = "btnEnviarAsistencia";
             this.btnEnviarAsistencia.Size = new System.Drawing.Size(122, 24);
-            this.btnEnviarAsistencia.TabIndex = 98;
+            this.btnEnviarAsistencia.TabIndex = 21;
             this.btnEnviarAsistencia.Text = "Enviar Asistencia";
             this.btnEnviarAsistencia.UseVisualStyleBackColor = false;
             this.btnEnviarAsistencia.Click += new System.EventHandler(this.btnEnviarAsistencia_Click);
@@ -1238,7 +1238,7 @@
             this.btnEnviarCertificados.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnviarCertificados.Name = "btnEnviarCertificados";
             this.btnEnviarCertificados.Size = new System.Drawing.Size(139, 24);
-            this.btnEnviarCertificados.TabIndex = 97;
+            this.btnEnviarCertificados.TabIndex = 19;
             this.btnEnviarCertificados.Text = "Enviar Certificados";
             this.btnEnviarCertificados.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEnviarCertificados.UseVisualStyleBackColor = false;
@@ -1260,7 +1260,7 @@
             this.btnIniciarCircuitoMasivo.Margin = new System.Windows.Forms.Padding(2);
             this.btnIniciarCircuitoMasivo.Name = "btnIniciarCircuitoMasivo";
             this.btnIniciarCircuitoMasivo.Size = new System.Drawing.Size(139, 24);
-            this.btnIniciarCircuitoMasivo.TabIndex = 96;
+            this.btnIniciarCircuitoMasivo.TabIndex = 17;
             this.btnIniciarCircuitoMasivo.Text = "Iniciar Circuito Masivo";
             this.btnIniciarCircuitoMasivo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIniciarCircuitoMasivo.UseVisualStyleBackColor = false;
@@ -1307,7 +1307,7 @@
             this.btnExportExcel.Margin = new System.Windows.Forms.Padding(2);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Size = new System.Drawing.Size(99, 24);
-            this.btnExportExcel.TabIndex = 94;
+            this.btnExportExcel.TabIndex = 22;
             this.btnExportExcel.Text = "     Exportar ";
             this.btnExportExcel.UseVisualStyleBackColor = false;
             this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
@@ -1328,7 +1328,7 @@
             this.btnPerson.Margin = new System.Windows.Forms.Padding(2);
             this.btnPerson.Name = "btnPerson";
             this.btnPerson.Size = new System.Drawing.Size(139, 24);
-            this.btnPerson.TabIndex = 93;
+            this.btnPerson.TabIndex = 16;
             this.btnPerson.Text = "Agendar Cita Personal";
             this.btnPerson.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnPerson.UseVisualStyleBackColor = false;
@@ -1351,7 +1351,7 @@
             this.btnExportPdf.Margin = new System.Windows.Forms.Padding(2);
             this.btnExportPdf.Name = "btnExportPdf";
             this.btnExportPdf.Size = new System.Drawing.Size(86, 24);
-            this.btnExportPdf.TabIndex = 92;
+            this.btnExportPdf.TabIndex = 23;
             this.btnExportPdf.Text = "   Exportar";
             this.btnExportPdf.UseVisualStyleBackColor = false;
             this.btnExportPdf.Visible = false;
@@ -1373,7 +1373,7 @@
             this.btnMassive.Margin = new System.Windows.Forms.Padding(2);
             this.btnMassive.Name = "btnMassive";
             this.btnMassive.Size = new System.Drawing.Size(139, 24);
-            this.btnMassive.TabIndex = 91;
+            this.btnMassive.TabIndex = 18;
             this.btnMassive.Text = "Agendar Cita Masiva";
             this.btnMassive.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnMassive.UseVisualStyleBackColor = false;
@@ -1500,7 +1500,7 @@
             this.btnDetallado.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetallado.Name = "btnDetallado";
             this.btnDetallado.Size = new System.Drawing.Size(83, 24);
-            this.btnDetallado.TabIndex = 97;
+            this.btnDetallado.TabIndex = 13;
             this.btnDetallado.Text = "Detallado";
             this.btnDetallado.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDetallado.UseVisualStyleBackColor = false;
@@ -1523,7 +1523,7 @@
             this.btnConsentimiento.Margin = new System.Windows.Forms.Padding(2);
             this.btnConsentimiento.Name = "btnConsentimiento";
             this.btnConsentimiento.Size = new System.Drawing.Size(157, 24);
-            this.btnConsentimiento.TabIndex = 96;
+            this.btnConsentimiento.TabIndex = 14;
             this.btnConsentimiento.Text = "Consentimiento Informado";
             this.btnConsentimiento.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnConsentimiento.UseVisualStyleBackColor = false;
@@ -1546,7 +1546,7 @@
             this.btnImprimirHojaRuta.Margin = new System.Windows.Forms.Padding(2);
             this.btnImprimirHojaRuta.Name = "btnImprimirHojaRuta";
             this.btnImprimirHojaRuta.Size = new System.Drawing.Size(138, 24);
-            this.btnImprimirHojaRuta.TabIndex = 95;
+            this.btnImprimirHojaRuta.TabIndex = 15;
             this.btnImprimirHojaRuta.Text = "Imprimir Hoja de Ruta";
             this.btnImprimirHojaRuta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnImprimirHojaRuta.UseVisualStyleBackColor = false;
