@@ -1721,7 +1721,6 @@
             this.label50.Size = new System.Drawing.Size(55, 13);
             this.label50.TabIndex = 149;
             this.label50.Text = "Deducible";
-            this.label50.Visible = false;
             // 
             // txtDecucible
             // 
@@ -1732,7 +1731,6 @@
             this.txtDecucible.Size = new System.Drawing.Size(122, 20);
             this.txtDecucible.TabIndex = 148;
             this.txtDecucible.Text = "0.00";
-            this.txtDecucible.Visible = false;
             // 
             // txtNroPliza
             // 
@@ -1742,7 +1740,6 @@
             this.txtNroPliza.Name = "txtNroPliza";
             this.txtNroPliza.Size = new System.Drawing.Size(122, 20);
             this.txtNroPliza.TabIndex = 147;
-            this.txtNroPliza.Visible = false;
             // 
             // label49
             // 
@@ -1755,7 +1752,6 @@
             this.label49.Size = new System.Drawing.Size(58, 13);
             this.label49.TabIndex = 146;
             this.label49.Text = "Nro. Póliza";
-            this.label49.Visible = false;
             // 
             // grdDataService
             // 
