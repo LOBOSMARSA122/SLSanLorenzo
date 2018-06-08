@@ -20,6 +20,7 @@ using Sigesoft.Node.WinClient.UI.UserControls;
 using NetPdf;
 using System.Diagnostics;
 using Sigesoft.Node.Contasol.Integration;
+using AutoCompleteMode = System.Windows.Forms.AutoCompleteMode;
 
 namespace Sigesoft.Node.WinClient.UI.Operations
 {
@@ -1215,8 +1216,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             {
                                                 Width = f.i_ControlWidth,
                                                 Height = f.i_HeightControl,
-                                                DropDownStyle = ComboBoxStyle.DropDownList,
-                                                Name = f.v_ComponentFieldId
+                                                DropDownStyle = ComboBoxStyle.DropDown,
+                                                Name = f.v_ComponentFieldId,
+                                                AutoCompleteMode = AutoCompleteMode.SuggestAppend,
+                                                AutoCompleteSource = AutoCompleteSource.ListItems
                                             };
 
                                             //Utils.LoadDropDownList((ComboBox)ctl, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboAndItemId(ref objOperationResult, f.i_GroupId, f.i_ItemId, null), DropDownListAction.Select);
@@ -4000,7 +4003,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     value1 = ((ComboBox)ctrl).SelectedValue.ToString();
                     break;
                 case ControlType.Lista:
-                    value1 = ((ComboBox)ctrl).SelectedValue.ToString();
+                    value1 = ((ComboBox)ctrl).SelectedValue == null ? null : ((ComboBox)ctrl).SelectedValue.ToString();
                     break;
                 case ControlType.UcOdontograma:
                     _tmpListValuesOdontograma = ((UserControls.ucOdontograma)ctrl).DataSource;
