@@ -252,7 +252,7 @@ label:hover ~ input[type=password] {
 </script>
 <a  href="https://ssl.comodo.com" id="comodoTL">Comodo SSL</a>
     <form id="form1" runat="server">
-<img src="images/Logo/logo_sanjoaquin.png" width="300" height="370" />
+<img src="images/Logo/logo_sanjoaquin.png" width="00" height="00" />
      
   <div class="inset">
   <p>

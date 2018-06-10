@@ -110,28 +110,31 @@
             </x:GroupPanel>
             <x:Grid ID="grdData" ShowBorder="true" ShowHeader="false" runat="server" 
              EnableRowNumber="True" EnableRowNumberPaging="true" AutoHeight="true" RowNumberWidth="40" AjaxLoadingType="Default"
-            EnableMouseOverColor="true" ShowGridHeader="true"   DataKeyNames="v_ServiceId,v_IdTrabajador,EmpresaCliente,v_Trabajador,Dni" 
+            EnableMouseOverColor="true" ShowGridHeader="true"   DataKeyNames="v_ServiceId,v_IdTrabajador,EmpresaCliente,v_Trabajador,Dni,i_SendToTracking,Apellidos" 
             EnableTextSelection="true" EnableAlternateRowColor="true" EnableCheckBoxSelect="true" BoxFlex="2" BoxMargin="5" 
             OnRowCommand="grdData_RowCommand"  OnRowClick="grdData_RowClick" EnableRowClick="true">
                 <Toolbars>
                     <x:Toolbar ID="Toolbar1" runat="server">
                         <Items>
                             <x:Button ID="btnNewCertificado" Text="Certificado" Icon="PageWhiteText" runat="server" Enabled="false"></x:Button>
+                             <x:Button ID="btnExAltura" Text="Test de Altura" Icon="PageWhiteText" runat="server" Enabled="false"></x:Button>
                             <x:Button ID="btnNewFichaOcupacional" Text="Ficha Ocupacional" Icon="clipboard" runat="server" Enabled="false" ></x:Button>
                             <x:Button ID="btnNewExamenes" Text="Examenes" Icon="PageWhiteStack" runat="server" Enabled="false" Visible="false"></x:Button>
+                            <x:Button ID="btnFMT1" Text="Informe Médico" Icon="FilmAdd" runat="server" Enabled="false" ></x:Button>
+                            <x:Button ID="btnInterConsulta" Text="Interconsulta" Icon="FilmEject" runat="server" Enabled="false" ></x:Button>
                         </Items>
                     </x:Toolbar>
                 </Toolbars>
                 <Columns>
                     <x:WindowField ColumnID="myWindowField" Width="25px" WindowID="Window1" HeaderText=""
                         Icon="attach" ToolTip="Archivos Adjuntos" DataTextFormatString="{0}" 
-                        DataIFrameUrlFields="Dni" DataIFrameUrlFormatString="FRM031I.aspx?Dni={0}" 
+                        DataIFrameUrlFields="Dni,Apellidos" DataIFrameUrlFormatString="FRM031I.aspx?Dni={0}&&Apellidos={1}" 
                         DataWindowTitleField="v_Value1" DataWindowTitleFormatString="Archivos Adjuntos" />
                     <x:boundfield Width="140px" DataField="v_ServiceId" DataFormatString="{0}" HeaderText="Id Atencion" />
                     <x:boundfield Width="270px" DataField="v_Trabajador" DataFormatString="{0}" HeaderText="Trabajador" />
                     <x:boundfield Width="150px" DataField="d_ServiceDate" DataFormatString="{0:d}" HeaderText="Fecha" />
                     <x:boundfield Width="200px" DataField="v_AptitudeStatusName" DataFormatString="{0}" HeaderText="Aptitud" />
-                    <x:boundfield Width="400px" DataField="v_Restricction" DataFormatString="{0}" HeaderText="Restricciones" />
+                    <%--<x:boundfield Width="400px" DataField="v_Restricction" DataFormatString="{0}" HeaderText="Restricciones" />--%>
                     <x:boundfield Width="250px" DataField="v_ProtocolName" DataFormatString="{0}" HeaderText="Protocolo" />                   
                 </Columns>
             </x:Grid>
@@ -148,6 +151,11 @@
     <x:Window ID="winEdit2" Title="Ficha Ocupacional" Popup="false" EnableIFrame="true" runat="server" IconUrl="~/images/16/11.png" 
        CloseAction="HideRefresh" EnableConfirmOnClose="true"  IFrameUrl="about:blank" EnableMaximize="true" EnableResize="true"
        Target="Top" OnClose="winEdit2_Close"  IsModal="true"  Height="245px" Width="245px" >
+    </x:Window>
+
+    <x:Window ID="Window2" Title="Informe Médico" Popup="false" EnableIFrame="true" runat="server" IconUrl="~/images/16/11.png" 
+       CloseAction="HidePostBack" EnableConfirmOnClose="true"  IFrameUrl="about:blank" EnableMaximize="true" EnableResize="true"
+       Target="Top" OnClose="Window2_Close"  IsModal="true"  Height="630px" Width="700px" >
     </x:Window>
 
     <x:Window ID="winEdit3" IconUrl="~/images/16/11.png" runat="server" Popup="false"

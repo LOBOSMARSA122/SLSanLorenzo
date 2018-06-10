@@ -22,55 +22,107 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             {
                 if (Request.QueryString["Dni"] != null)
                     Session["Dni"] = Request.QueryString["Dni"].ToString();
+                if (Request.QueryString["Apellidos"] != null)
+                    Session["Apellidos"] = Request.QueryString["Apellidos"].ToString();
+
+               
             }
 
-            FileInfo[] files = null;
-            if (Session["CategoriaId"] == null || Session["CategoriaId"].ToString() == "-1")
+            if (!(bool)Session["ArchivosAdjuntos"])
             {
-                 DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgUSUEXTE"]);
-                files = rutaOrigen.GetFiles();
-            }
-            else if (Session["CategoriaId"].ToString() =="6")//RX
-            {
-                DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgRxOrigen"]);
-                 files = rutaOrigen.GetFiles();
-            }
-            else if (Session["CategoriaId"].ToString() =="16")//ESPIRO
-            {
-                DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgESPIROOrigen"]);
-                 files = rutaOrigen.GetFiles();
-            }
-            else if (Session["CategoriaId"].ToString() == "5")//EKG
-            {
-                DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgEKGOrigen"]);
-                 files = rutaOrigen.GetFiles();
-            }
-            else if (Session["CategoriaId"].ToString() == "1")//LAB
-            {
-                DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgLABOrigen"]);
-                files = rutaOrigen.GetFiles();
+                //FineUI.PageContext.RegisterStartupScript(FineUI.ActiveWindow.GetHidePostBackReference()); 
+                Label lbl1 = new Label();
+                lbl1.Text = "No tiene permiso para descargar Adjuntos";
+                lbl1.ID = "lb1";
+                DivControls.Controls.Add(lbl1);
             }
             else
             {
-                DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgUSUEXTE"]);
-                files = rutaOrigen.GetFiles();
-            }
-
-            foreach (var item in files)
-            {
-                if (item.ToString().Substring(0, 8) == Session["Dni"].ToString())
+                FileInfo[] files = null;
+                if (Session["CategoriaId"] == null || Session["CategoriaId"].ToString() == "-1")
                 {
-                    LinkButton objLinkButton = new LinkButton();
+                    DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgUSUEXTE"]);
+                    files = rutaOrigen.GetFiles();
+                }
+                else if (Session["CategoriaId"].ToString() == "6")//RX
+                {
+                    DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgRxOrigen"]);
+                    files = rutaOrigen.GetFiles();
+                }
+                else if (Session["CategoriaId"].ToString() == "16")//ESPIRO
+                {
+                    DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgESPIROOrigen"]);
+                    files = rutaOrigen.GetFiles();
+                }
+                else if (Session["CategoriaId"].ToString() == "5")//EKG
+                {
+                    DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgEKGOrigen"]);
+                    files = rutaOrigen.GetFiles();
+                }
+                else if (Session["CategoriaId"].ToString() == "1")//LAB
+                {
+                    DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgLABOrigen"]);
+                    files = rutaOrigen.GetFiles();
+                }
+                else
+                {
+                    DirectoryInfo rutaOrigen = new DirectoryInfo(WebConfigurationManager.AppSettings["ImgUSUEXTE"]);
+                    files = rutaOrigen.GetFiles();
+                }
 
-                    objLinkButton.ID = item.Name;
-                    objLinkButton.Text = item.Name;
+                foreach (var item in files)
+                {
+                    if (item.ToString().Substring(0, 8) == Session["Dni"].ToString())
+                    {
+                        LinkButton objLinkButton = new LinkButton();
 
-                    objLinkButton.Click += new EventHandler(link_Click);
+                        objLinkButton.ID = item.Name;
+                        objLinkButton.Text = item.Name;
 
-                    DivControls.Controls.Add(objLinkButton);
-                    DivControls.Controls.Add(new LiteralControl("<br>"));
+                        objLinkButton.Click += new EventHandler(link_Click);
+
+                        DivControls.Controls.Add(objLinkButton);
+                        DivControls.Controls.Add(new LiteralControl("<br>"));
+                    }
+                    if (item.ToString().ToUpper() == Session["Apellidos"].ToString() + "-3.PDF")
+                    {
+                        LinkButton objLinkButton = new LinkButton();
+
+                        objLinkButton.ID = item.Name;
+                        objLinkButton.Text = item.Name;
+
+                        objLinkButton.Click += new EventHandler(link_Click);
+
+                        DivControls.Controls.Add(objLinkButton);
+                        DivControls.Controls.Add(new LiteralControl("<br>"));
+                    }
+                    if (item.ToString().ToUpper() == Session["Apellidos"].ToString() + "-1.PDF")
+                    {
+                        LinkButton objLinkButton = new LinkButton();
+
+                        objLinkButton.ID = item.Name;
+                        objLinkButton.Text = item.Name;
+
+                        objLinkButton.Click += new EventHandler(link_Click);
+
+                        DivControls.Controls.Add(objLinkButton);
+                        DivControls.Controls.Add(new LiteralControl("<br>"));
+                    }
+                    if (item.ToString().ToUpper() == Session["Apellidos"].ToString() + "-2.PDF")
+                    {
+                        LinkButton objLinkButton = new LinkButton();
+
+                        objLinkButton.ID = item.Name;
+                        objLinkButton.Text = item.Name;
+
+                        objLinkButton.Click += new EventHandler(link_Click);
+
+                        DivControls.Controls.Add(objLinkButton);
+                        DivControls.Controls.Add(new LiteralControl("<br>"));
+                    }
                 }
             }
+            
         }
 
         private void link_Click(object sender, System.EventArgs e)

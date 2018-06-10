@@ -301,6 +301,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         protected global::FineUI.Button btnNewCertificado;
         
         /// <summary>
+        /// btnExAltura control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnExAltura;
+        
+        /// <summary>
         /// btnNewFichaOcupacional control.
         /// </summary>
         /// <remarks>
@@ -317,6 +326,24 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Button btnNewExamenes;
+        
+        /// <summary>
+        /// btnFMT1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnFMT1;
+        
+        /// <summary>
+        /// btnInterConsulta control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnInterConsulta;
         
         /// <summary>
         /// hfRefresh control.
@@ -344,6 +371,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Window winEdit2;
+        
+        /// <summary>
+        /// Window2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Window Window2;
         
         /// <summary>
         /// winEdit3 control.

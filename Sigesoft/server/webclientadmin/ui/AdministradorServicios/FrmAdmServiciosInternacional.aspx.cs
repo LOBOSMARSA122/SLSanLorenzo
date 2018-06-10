@@ -1252,6 +1252,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Administrador_Servicios
        
 
         }
+        
 
         private void GenerateInformeExamenClinico(string pathFile, string ServicioId, string PacienteId, string EmpresaCliente)
         {

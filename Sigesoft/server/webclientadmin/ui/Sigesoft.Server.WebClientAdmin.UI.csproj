@@ -44,10 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Bytescout.Spreadsheet">
-      <HintPath>..\..\..\..\ExternalLibraries\Bytescout.Spreadsheet.dll</HintPath>
-    </Reference>
-    <Reference Include="Controls">
-      <HintPath>..\..\..\..\..\HoloSaludAntiguo\Sigesoft\common\bin\Debug\Controls.dll</HintPath>
+      <HintPath>..\..\..\..\..\SLCajamarca Versión 01\ExternalLibraries\Bytescout.Spreadsheet.dll</HintPath>
     </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine">
       <HintPath>c:\program files\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
@@ -61,22 +58,19 @@
     <Reference Include="CrystalDecisions.Web">
       <HintPath>c:\program files\sap businessobjects\crystal reports for .net framework 4.0\common\sap businessobjects enterprise xi 4.0\win32_x86\dotnet\CrystalDecisions.Web.dll</HintPath>
     </Reference>
-    <Reference Include="FineUI, Version=3.2.6.0, Culture=neutral, PublicKeyToken=0ff1835d01c384a9, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="FineUI">
       <HintPath>..\..\..\..\ExternalLibraries\FineUI.dll</HintPath>
     </Reference>
     <Reference Include="itextsharp">
-      <HintPath>..\..\..\..\..\HoloSaludAntiguo\Sigesoft\common\bin\Debug\itextsharp.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\SLSigesoftClinicaInternacional\ExternalLibraries\itextsharp.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp">
       <Private>True</Private>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\..\..\ExternalLibraries\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PdfViewer, Version=1.0.5485.17827, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="PdfViewer">
       <HintPath>..\..\..\..\ExternalLibraries\PdfViewer.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.DataVisualization" />
@@ -1355,6 +1349,7 @@
     <Content Include="Common\FRM005G.aspx" />
     <Content Include="Common\FRM005H.aspx" />
     <Content Include="Estadisticas\DXGRUPOETARIO.aspx" />
+    <Content Include="ExternalUser\FRM031K.aspx" />
     <Content Include="ExternalUser\FRM031E_.aspx" />
     <Content Include="ExternalUser\FRM031.aspx" />
     <Content Include="ExternalUser\FRM031A.aspx" />
@@ -1376,7 +1371,9 @@
     <Content Include="ExternalUser\FRM101.aspx" />
     <Content Include="ExternalUser\FRMAgenda.aspx" />
     <Content Include="ExternalUser\FRMCancelarAgenda.aspx" />
+    <Content Include="ExternalUser\FRMFMT1.aspx" />
     <Content Include="ExternalUser\FRMHojaRuta.aspx" />
+    <Content Include="ExternalUser\FRMINTERC.aspx" />
     <Content Include="ExternalUser\FRMReagenda.aspx" />
     <Content Include="frmLogin.aspx" />
     <Content Include="frmLogin_.aspx" />
@@ -4100,6 +4097,13 @@
     <Compile Include="Estadisticas\DXGRUPOETARIO.aspx.designer.cs">
       <DependentUpon>DXGRUPOETARIO.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ExternalUser\FRM031K.aspx.cs">
+      <DependentUpon>FRM031K.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExternalUser\FRM031K.aspx.designer.cs">
+      <DependentUpon>FRM031K.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ExternalUser\crOccupationalMedicalAptitudeCertificateSinDx.cs">
       <DependentUpon>crOccupationalMedicalAptitudeCertificateSinDx.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -4739,12 +4743,26 @@
     <Compile Include="ExternalUser\FRMCancelarAgenda.aspx.designer.cs">
       <DependentUpon>FRMCancelarAgenda.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ExternalUser\FRMFMT1.aspx.cs">
+      <DependentUpon>FRMFMT1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExternalUser\FRMFMT1.aspx.designer.cs">
+      <DependentUpon>FRMFMT1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ExternalUser\FRMHojaRuta.aspx.cs">
       <DependentUpon>FRMHojaRuta.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ExternalUser\FRMHojaRuta.aspx.designer.cs">
       <DependentUpon>FRMHojaRuta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalUser\FRMINTERC.aspx.cs">
+      <DependentUpon>FRMINTERC.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExternalUser\FRMINTERC.aspx.designer.cs">
+      <DependentUpon>FRMINTERC.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExternalUser\FRMReagenda.aspx.cs">
       <DependentUpon>FRMReagenda.aspx</DependentUpon>

@@ -38,7 +38,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             if (!IsPostBack)
             {
-                btnNewDiagnosticos.OnClientClick = WindowAddDX.GetSaveStateReference(hfRefresh.ClientID) + WindowAddDX.GetShowReference("../Auditar/FRM033C.aspx?Mode=New");
+               
+;                btnNewDiagnosticos.OnClientClick = WindowAddDX.GetSaveStateReference(hfRefresh.ClientID) + WindowAddDX.GetShowReference("../Auditar/FRM033C.aspx?Mode=New");
                 btnNewDiagnosticosFrecuente.OnClientClick = WindowAddDXFrecuente.GetSaveStateReference(hfRefresh.ClientID) + WindowAddDXFrecuente.GetShowReference("../Auditar/FRM033G.aspx?Mode=New");
 
                 btnDescargarRX.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("DescargarAdjunto.aspx?Consultorio=RX");
@@ -162,17 +163,20 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 SystemParameterBL oSystemParameterBL = new SystemParameterBL();
                 Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
 
-                if (ProfesionId != (int)TipoProfesional.Auditor)
-                {
-                    btnGrabarAptitud.Enabled = false;
-                    ddlUsuarioGrabar.Enabled = false;
-                    ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
-                }
-                else
-                {
-                    ddlUsuarioGrabar.Enabled = true;
-                    ddlUsuarioGrabar.SelectedValue = "-1";
-                }
+                //if (ProfesionId != (int)TipoProfesional.Auditor)
+                //{
+                //    btnGrabarAptitud.Enabled = false;
+                //    ddlUsuarioGrabar.Enabled = false;
+                //    ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                //}
+                //else
+                //{
+                //    ddlUsuarioGrabar.Enabled = true;
+                //    ddlUsuarioGrabar.SelectedValue = "-1";
+                //}
+
+                ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                ddlUsuarioGrabar.Enabled = false;
             }
         }
 
@@ -233,6 +237,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             TabRayosX.Hidden = true;
             TabOIT.Hidden = true;
+
+            grdRecomendaciones.DataSource = new List<Sigesoft.Node.WinClient.BE.RecomendationList>();
+            grdRecomendaciones.DataBind();
+
+            grdRestricciones.DataSource = new List<Sigesoft.Node.WinClient.BE.RestrictionList>();
+            grdRestricciones.DataBind();
+
 
             int index = e.RowIndex;
             var dataKeys = grdData.DataKeys[index];
@@ -1010,7 +1021,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
       
             Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
-          
+            ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+            ddlUsuarioGrabar.Enabled = false;
         }
 
         private void ObtenerDatosRX(string pServiceId, string pPersonId)
@@ -1413,7 +1425,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
 
             OperationResult objOperationResult = new OperationResult();
-            var ListaDx = _serviceBL.GetServiceComponentDisgnosticsByServiceId(ref objOperationResult, ServiceId);
+            var ListaDx = _serviceBL.GetServiceComponentDisgnosticsByServiceId(ref objOperationResult, ServiceId).FindAll(p => p.v_ComponentName =="RAYOS X");
             Session["GrillaDx"] = ListaDx;
             var ListaComponentes = (List<string>)Session["ComponentesPermisoLectura"];
             highlightRows.Text = "";
@@ -1570,6 +1582,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             fileDocRX.SaveAs(Ruta + Dni + "-" + Fecha + "-" + Consultorio + "." + Ext);
             Alert.ShowInTop("El archivo subió correctamente", MessageBoxIcon.Information);
         }
+
+        protected void FileInforme_FileSelected(object sender, EventArgs e)
+        {
+            string Ruta = WebConfigurationManager.AppSettings["ImgRxInforme"];
+            string Dni = Session["DniTrabajador"].ToString();
+            string Fecha = Session["FechaServicio"].ToString();
+            string Consultorio = "ConsultorioRX";
+            string Ext = FileInforme.FileName.Substring(FileInforme.FileName.Length - 3, 3);
+            FileInforme.SaveAs(Ruta + Dni + "-" + Fecha + "-" + Consultorio + "." + Ext);
+            Alert.ShowInTop("El archivo subió correctamente", MessageBoxIcon.Information);
+        }
+        
 
         protected void fileDocOIT_FileSelected(object sender, EventArgs e)
         {

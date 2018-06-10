@@ -390,7 +390,11 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                      equals new { ItemId = J4.i_ParameterId, groupId = J4.i_GroupId } into J4_join
                            from J4 in J4_join.DefaultIfEmpty()
 
-                           where F.i_IsDeleted == 0 
+                           join et in dbContext.systemparameter on new { a = D.i_EsoTypeId.Value, b = 118 }
+                                             equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
+                           from et in et_join.DefaultIfEmpty()
+
+                           where F.i_IsDeleted == 0  && F.i_StatusLiquidation ==2
                            //&& F.i_ServiceStatusId == (int)Common.ServiceStatus.Culminado
                           
                            select new ServiceList
@@ -404,11 +408,12 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                v_ProtocolId = F.v_ProtocolId,
                                v_HCL = F.v_ServiceId,
                                v_AptitudeStatusName = J4.v_Value1,
-                               v_ProtocolName = D.v_Name,
+                               v_ProtocolName = et.v_Value1,
                                EmpresaCliente = E.v_Name,
                                v_CustomerOrganizationId = E.v_OrganizationId,
-                               Dni = H.v_DocNumber
-                              
+                               Dni = H.v_DocNumber,
+                               i_SendToTracking = F.i_SendToTracking.Value,
+                                Apellidos = H.v_FirstLastName + " " + H.v_SecondLastName
                            };
 
              
@@ -443,7 +448,9 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                  EmpresaCliente = A.EmpresaCliente,
                                  v_CustomerOrganizationId = A.v_CustomerOrganizationId,
                                  //v_Restricction = x,
-                                 Dni = A.Dni
+                                 Dni = A.Dni,
+                                 i_SendToTracking = A.i_SendToTracking,
+                                 Apellidos = A.Apellidos
                              }).ToList();
 
 
@@ -4255,7 +4262,14 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                 if (psrtConsultorioId != "-1")
                 {
-                    sql = sql.FindAll(p => p.ExamenDxId == psrtConsultorioId);
+                    if (psrtConsultorioId == "N002-ME000000005" || psrtConsultorioId == "N009-ME000000325")
+                    {
+                        sql = sql.FindAll(p => p.ExamenDxId == "N002-ME000000005" || p.ExamenDxId == "N009-ME000000325");
+                    }
+                    else
+                    {
+                        sql = sql.FindAll(p => p.ExamenDxId == psrtConsultorioId);
+                    }
                 }
 
                 if (pstrGrupoEtario != "-1")
@@ -4394,7 +4408,14 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                 if (psrtConsultorioId != "-1")
                 {
-                    sql = sql.FindAll(p => p.ExamenDxId == psrtConsultorioId);
+                    if (psrtConsultorioId == "N002-ME000000005" || psrtConsultorioId == "N009-ME000000325")
+                    {
+                        sql = sql.FindAll(p => p.ExamenDxId == "N002-ME000000005" || p.ExamenDxId == "N009-ME000000325");
+                    }
+                    else
+                    {
+                        sql = sql.FindAll(p => p.ExamenDxId == psrtConsultorioId);
+                    }
                 }
 
                 if (pstrGrupoEtario != "-1")
@@ -12651,170 +12672,165 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
         {
             try
             {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-                var objEntity = (from A in dbContext.service
-                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-                                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
-                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+                //var objEntity = (from A in dbContext.service
+                //                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                //                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
+                //                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
 
-                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
-                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
-                                 from me in me_join.DefaultIfEmpty()
+                //                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                //                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                //                 from me in me_join.DefaultIfEmpty()
 
-                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
-                                 from pme in pme_join.DefaultIfEmpty()
-
-
-                                 // Usuario Tecnologo *************************************
-                                 join tec in dbContext.systemuser on E.i_UpdateUserTechnicalDataRegisterId equals tec.i_SystemUserId into tec_join
-                                 from tec in tec_join.DefaultIfEmpty()
-
-                                 join ptec in dbContext.professional on tec.v_PersonId equals ptec.v_PersonId into ptec_join
-                                 from ptec in ptec_join.DefaultIfEmpty()
-                                 // *******************************************************  
-
-                                 join pro in dbContext.protocol on A.v_ProtocolId equals pro.v_ProtocolId
-
-                                 join H in dbContext.systemparameter on new { a = pro.i_EsoTypeId.Value, b = 118 }
-                                                 equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
-
-                                 // Empresa / Sede Trabajo  ********************************************************
-                                 join ow in dbContext.organization on new { a = pro.v_CustomerOrganizationId }
-                                         equals new { a = ow.v_OrganizationId } into ow_join
-                                 from ow in ow_join.DefaultIfEmpty()
-
-                                  join o in dbContext.organization on new { a = pro.v_EmployerOrganizationId  }
-                                         equals new { a = o.v_OrganizationId } into o_join
-                                 from o in o_join.DefaultIfEmpty()
+                //                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                //                 from pme in pme_join.DefaultIfEmpty()
 
 
-                                 join lw in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
-                                      equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
-                                 from lw in lw_join.DefaultIfEmpty()
+                //                 // Usuario Tecnologo *************************************
+                //                 join tec in dbContext.systemuser on E.i_UpdateUserTechnicalDataRegisterId equals tec.i_SystemUserId into tec_join
+                //                 from tec in tec_join.DefaultIfEmpty()
 
-                                 //************************************************************************************
-                                 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId
+                //                 join ptec in dbContext.professional on tec.v_PersonId equals ptec.v_PersonId into ptec_join
+                //                 from ptec in ptec_join.DefaultIfEmpty()
+                //                 // *******************************************************  
 
+                //                 join pro in dbContext.protocol on A.v_ProtocolId equals pro.v_ProtocolId
 
-                                 where A.v_ServiceId == pstrserviceId
+                //                 join H in dbContext.systemparameter on new { a = pro.i_EsoTypeId.Value, b = 118 }
+                //                                 equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
 
-                                 select new Sigesoft.Node.WinClient.BE.AudiometriaList
-                                 {
-                                     v_PersonId = A.v_PersonId,
+                //                 // Empresa / Sede Trabajo  ********************************************************
+                //                 join ow in dbContext.organization on new { a = pro.v_WorkingOrganizationId }
+                //                         equals new { a = ow.v_OrganizationId } into ow_join
+                //                 from ow in ow_join.DefaultIfEmpty()
 
-                                     v_FullPersonName = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                //                 join lw in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
+                //                      equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                //                 from lw in lw_join.DefaultIfEmpty()
 
-                                     d_BirthDate = B.d_Birthdate,
-                                     d_ServiceDate = A.d_ServiceDate,
-
-                                     v_DocNumber = B.v_DocNumber,
-                                     i_SexTypeId = B.i_SexTypeId.Value,
-
-                                     FirmaTecnologo = ptec.b_SignatureImage,
-                                     FirmaMedico = pme.b_SignatureImage,
-
-                                     Puesto = B.v_CurrentOccupation,
-                                     v_SexType = B.i_SexTypeId == (int)Gender.MASCULINO ? "M" : "F",
-                                     //
-                                     v_EsoTypeName = H.v_Value1,
-                                     v_ServiceComponentId = E.v_ServiceComponentId,
-                                     v_CustomerOrganizationName = ow.v_Name,
-                                     v_EmployerOrganizationName = o.v_Name, 
-                                     FirmaTrabajador = B.b_RubricImage,
-                                     HuellaTrabajador = B.b_FingerPrintImage,
-                                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
-
-                                 });
-
-                var MedicalCenter = GetInfoMedicalCenter();
-
-                var __sql = ValoresComponente(pstrserviceId, pstrComponentId);
+                //                 //************************************************************************************
+                //                 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId
 
 
-                var sql = (from a in objEntity.ToList()
+                //                 where A.v_ServiceId == pstrserviceId
 
-                           select new Sigesoft.Node.WinClient.BE.AudiometriaList
-                           {
+                //                 select new Sigesoft.Node.WinClient.BE.AudiometriaList
+                //                 {
+                //                     v_PersonId = A.v_PersonId,
 
-                               v_PersonId = a.v_PersonId,
-                               v_FullPersonName = a.v_FullPersonName,
+                //                     v_FullPersonName = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
 
-                               d_BirthDate = a.d_BirthDate,
-                               i_AgePacient = GetAge(a.d_BirthDate.Value),
-                               d_ServiceDate = a.d_ServiceDate,
-                               v_DocNumber = a.v_DocNumber,
-                               i_SexTypeId = a.i_SexTypeId,
-                               FirmaMedico = a.FirmaMedico,
-                               FirmaTecnologo = a.FirmaTecnologo,
-                               Puesto = a.Puesto,
-                               v_SexType = a.v_SexType,
+                //                     d_BirthDate = B.d_Birthdate,
+                //                     d_ServiceDate = A.d_ServiceDate,
 
-                               // Requisitos para la Audiometria                         
-                               CambiosAltitud = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD).v_Value1,
-                               ExpuestoRuido = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO).v_Value1,
-                               ProcesoInfeccioso = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_PROCESO_INFECCIOSO).v_Value1,
-                               DurmioNochePrevia = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_DURMIO_NOCHE_PREVIA).v_Value1,
-                               ConsumioAlcoholDiaPrevio = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CONSUMIO_ALCOHOL_DIA_PREVIO).v_Value1,
+                //                     v_DocNumber = B.v_DocNumber,
+                //                     i_SexTypeId = B.i_SexTypeId.Value,
 
-                               //// Antecedentes Medicos de importancia
+                //                     FirmaTecnologo = ptec.b_SignatureImage,
+                //                     FirmaMedico = pme.b_SignatureImage,
 
-                               RinitisSinusitis = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_RINITIS_SINUSITIS).v_Value1,
-                               UsoMedicamentos = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_USO_MEDICAMENTOS).v_Value1,
-                               Sarampion = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SARAMPION).v_Value1,
-                               Tec = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_TEC).v_Value1,
-                               OtitisMediaCronica = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_OTITIS_MEDIA_CRONICA).v_Value1,
-                               DiabetesMellitus = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DIABETES_MELLITUS).v_Value1,
-                               SorderaAntecedente = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA).v_Value1,
-                               SorderaFamiliar = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_FAMILIAR).v_Value1,
-                               Meningitis = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_MENINGITIS).v_Value1,
-                               Dislipidemia = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DISLIPIDEMIA).v_Value1,
-                               EnfTiroidea = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_ENF_TIROIDEA).v_Value1,
-                               SustQuimicas = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SUST_QUIMICAS).v_Value1,
+                //                     Puesto = B.v_CurrentOccupation,
+                //                     v_SexType = B.i_SexTypeId == (int)Gender.MASCULINO ? "M" : "F",
+                //                     //
+                //                     v_EsoTypeName = H.v_Value1,
+                //                     v_ServiceComponentId = E.v_ServiceComponentId,
+                //                     v_WorkingOrganizationName = ow.v_Name,
+                //                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                //                     FirmaTrabajador = B.b_RubricImage,
+                //                     HuellaTrabajador = B.b_FingerPrintImage,
+                //                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
 
-                               //// Hobbies
+                //                 });
 
-                               UsoMP3 = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_USO_MP3).v_Value1,
-                               PracticaTiro = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_PRACTICA_TIRO).v_Value1,
-                               Otros = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_OTROS).v_Value1,
+                //var MedicalCenter = GetInfoMedicalCenter();
 
-                               //// Sintomas actuales
+                //var __sql = ValoresComponente(pstrserviceId, pstrComponentId);
 
-                               Sordera = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SORDERA).v_Value1,
-                               Otalgia = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_OTALGIA).v_Value1,
-                               Acufenos = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_ACUFENOS).v_Value1,
-                               SecrecionOtica = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SECRECION_OTICA).v_Value1,
-                               Vertigos = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_VERTIGOS).v_Value1,
 
-                               //// Otoscopia
+                //var sql = (from a in objEntity.ToList()
 
-                               OidoIzquierdo = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_IZQUIERDO).v_Value1,
-                               OidoDerecho = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO).v_Value1,
+                //           select new Sigesoft.Node.WinClient.BE.AudiometriaList
+                //           {
 
-                               b_Logo = MedicalCenter.b_Image,
-                               EmpresaPropietaria = MedicalCenter.v_Name,
-                               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
-                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+                //               v_PersonId = a.v_PersonId,
+                //               v_FullPersonName = a.v_FullPersonName,
 
-                               //
-                               v_EsoTypeName = a.v_EsoTypeName,
-                               v_ServiceComponentId = a.v_ServiceComponentId,
-                               v_CustomerOrganizationName = a.v_CustomerOrganizationName,
-                               v_EmployerOrganizationName = a.v_EmployerOrganizationName,
-                               FirmaTrabajador = a.FirmaTrabajador,
-                               HuellaTrabajador = a.HuellaTrabajador,
-                               MarcaAudiometria = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA).v_Value1,
-                               ModeloAudiometria = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO).v_Value1,
-                               CalibracionAudiometria = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION).v_Value1,
-                               TiempoTrabajo = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_TIEMPO_DE_TRABAJO).v_Value1,
-                               NombreUsuarioGraba = a.NombreUsuarioGraba,
-                               Dx = GetDiagnosticByServiceIdAndCategoryId(pstrserviceId, 15),
-                               Recomendaciones = ConcatenateRecomendacionesByCategoria(15, pstrserviceId)
+                //               d_BirthDate = a.d_BirthDate,
+                //               i_AgePacient = GetAge(a.d_BirthDate.Value),
+                //               d_ServiceDate = a.d_ServiceDate,
+                //               v_DocNumber = a.v_DocNumber,
+                //               i_SexTypeId = a.i_SexTypeId,
+                //               FirmaMedico = a.FirmaMedico,
+                //               FirmaTecnologo = a.FirmaTecnologo,
+                //               Puesto = a.Puesto,
+                //               v_SexType = a.v_SexType,
 
-                           }).ToList();
+                //               // Requisitos para la Audiometria                         
+                //               CambiosAltitud = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD).v_Value1,
+                //               ExpuestoRuido = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO).v_Value1,
+                //               ProcesoInfeccioso = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_PROCESO_INFECCIOSO).v_Value1,
+                //               DurmioNochePrevia = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_DURMIO_NOCHE_PREVIA).v_Value1,
+                //               ConsumioAlcoholDiaPrevio = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CONSUMIO_ALCOHOL_DIA_PREVIO).v_Value1,
 
-                return sql;
+                //               //// Antecedentes Medicos de importancia
+
+                //               RinitisSinusitis = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_RINITIS_SINUSITIS).v_Value1,
+                //               UsoMedicamentos = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_USO_MEDICAMENTOS).v_Value1,
+                //               Sarampion = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SARAMPION).v_Value1,
+                //               Tec = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_TEC).v_Value1,
+                //               OtitisMediaCronica = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_OTITIS_MEDIA_CRONICA).v_Value1,
+                //               DiabetesMellitus = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DIABETES_MELLITUS).v_Value1,
+                //               SorderaAntecedente = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA).v_Value1,
+                //               SorderaFamiliar = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_FAMILIAR).v_Value1,
+                //               Meningitis = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_MENINGITIS).v_Value1,
+                //               Dislipidemia = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DISLIPIDEMIA).v_Value1,
+                //               EnfTiroidea = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_ENF_TIROIDEA).v_Value1,
+                //               SustQuimicas = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SUST_QUIMICAS).v_Value1,
+
+                //               //// Hobbies
+
+                //               UsoMP3 = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_USO_MP3).v_Value1,
+                //               PracticaTiro = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_PRACTICA_TIRO).v_Value1,
+                //               Otros = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_OTROS).v_Value1,
+
+                //               //// Sintomas actuales
+
+                //               Sordera = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SORDERA).v_Value1,
+                //               Otalgia = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_OTALGIA).v_Value1,
+                //               Acufenos = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_ACUFENOS).v_Value1,
+                //               SecrecionOtica = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SECRECION_OTICA).v_Value1,
+                //               Vertigos = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_VERTIGOS).v_Value1,
+
+                //               //// Otoscopia
+
+                //               OidoIzquierdo = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_IZQUIERDO).v_Value1,
+                //               OidoDerecho = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO).v_Value1,
+
+                //               b_Logo = MedicalCenter.b_Image,
+                //               EmpresaPropietaria = MedicalCenter.v_Name,
+                //               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                //               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                //               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+
+                //               //
+                //               v_EsoTypeName = a.v_EsoTypeName,
+                //               v_ServiceComponentId = a.v_ServiceComponentId,
+                //               v_WorkingOrganizationName = a.v_WorkingOrganizationName,
+                //               v_FullWorkingOrganizationName = a.v_FullWorkingOrganizationName,
+                //               FirmaTrabajador = a.FirmaTrabajador,
+                //               HuellaTrabajador = a.HuellaTrabajador,
+                //               MarcaAudiometria = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA).v_Value1,
+                //               ModeloAudiometria = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO).v_Value1,
+                //               CalibracionAudiometria = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION).v_Value1,
+                //               TiempoTrabajo = __sql.Count == 0 ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_TIEMPO_DE_TRABAJO).v_Value1,
+                //               NombreUsuarioGraba = a.NombreUsuarioGraba,
+                //               Dx = GetDiagnosticByServiceIdAndCategoryId(pstrserviceId, 15),
+                //               Recomendaciones = ConcatenateRecomendacionesByCategoria(15, pstrserviceId)
+
+                //           }).ToList();
+
+                return null;
             }
             catch (Exception)
             {
@@ -13260,25 +13276,25 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                                PATOLOGIA_OTRAS = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002091") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002091").v_Value1,
 
-                               S_C_LEJOS_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000234") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000234").v_Value1Name,
+                               S_C_LEJOS_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000234") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000234").v_Value1,
 
-                               S_C_LEJOS_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000230") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000230").v_Value1Name,
+                               S_C_LEJOS_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000230") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000230").v_Value1,
 
-                               C_C_LEJOS_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000231") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000231").v_Value1Name,
+                               C_C_LEJOS_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000231") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000231").v_Value1,
 
-                               C_C_LEJOS_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000236") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000236").v_Value1Name,
+                               C_C_LEJOS_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000236") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000236").v_Value1,
 
                                A_E_LEJOS_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002080") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002080").v_Value1,
 
                                A_E_LEJOS_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002081") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002081").v_Value1,
 
-                               S_C_CERCA_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000233") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000233").v_Value1Name,
+                               S_C_CERCA_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000233") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000233").v_Value1,
 
-                               S_C_CERCA_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000227") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000227").v_Value1Name,
+                               S_C_CERCA_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000227") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000227").v_Value1,
 
-                               C_C_CERCA_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000235") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000235").v_Value1Name,
+                               C_C_CERCA_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000235") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000235").v_Value1,
 
-                               C_C_CERCA_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000000646") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000000646").v_Value1Name,
+                               C_C_CERCA_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000000646") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000000646").v_Value1,
 
                                A_E_CERCA_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002082") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002082").v_Value1,
 
@@ -13322,7 +13338,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                                TEST_ESTEREOPSIS_RECUPERACION = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002093") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002093").v_Value1,
 
-                               CAMPIMETRIA_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002094") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002094").v_Value1Name,
+                               CAMPIMETRIA_O_D = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002094") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002094").v_Value1,
 
                                CAMPIMETRIA_O_I = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002095") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000002095").v_Value1,
 
@@ -13334,7 +13350,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                                REFLEJOS_PUPILARES_ANORMAL = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000000712") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000000712").v_Value1,
 
-                               REFLEJOS_PUPILARES_DESCRIPCION = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1Name,
+                               REFLEJOS_PUPILARES_DESCRIPCION = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1,
 
                                LogoEmpresa = MedicalCenter.b_Image,
                                Dx = GetDiagnosticByServiceIdAndCategoryId(pstrserviceId, 14),
@@ -13479,35 +13495,35 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                                CHALAZION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002090") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002090").v_Value1,
 
-                               ODSCLEJOS = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000637") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000637").v_Value1Name,
+                               ODSCLEJOS = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000637") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000637").v_Value1,
 
-                               OI_SC_LEJOS = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000638") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000638").v_Value1Name,
+                               OI_SC_LEJOS = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000638") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000638").v_Value1,
 
-                               OD_CC_LEJOS = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000639") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000639").v_Value1Name,
+                               OD_CC_LEJOS = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000639") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000639").v_Value1,
 
-                               OI_CC_LEJOS = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000647") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000647").v_Value1Name,
+                               OI_CC_LEJOS = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000647") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000647").v_Value1,
 
-                               OD_AE_LEJOS2 = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002078") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002078").v_Value1Name,
+                               OD_AE_LEJOS2 = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002078") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002078").v_Value1,
 
-                               OI_AE_LEJOS2 = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002079") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002079").v_Value1Name,
+                               OI_AE_LEJOS2 = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002079") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002079").v_Value1,
 
-                               SC_LEJOSOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000234") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000234").v_Value1Name,
+                               SC_LEJOSOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000234") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000234").v_Value1,
 
-                               SCLEJOSOJOIZQUIERDO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000230") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000230").v_Value1Name,
+                               SCLEJOSOJOIZQUIERDO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000230") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000230").v_Value1,
 
-                               CCLEJOSOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000231") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000231").v_Value1Name,
+                               CCLEJOSOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000231") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000231").v_Value1,
 
-                               CCLEJOSOJ_IZQUIERDO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000236") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000236").v_Value1Name,
+                               CCLEJOSOJ_IZQUIERDO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000236") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000236").v_Value1,
 
                                AELEJOSOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002080") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002080").v_Value1,
 
                                AELEJOSOJOIZQUIERDO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002081") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002081").v_Value1,
 
-                               SCCERCAOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000233") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000233").v_Value1Name,
+                               SCCERCAOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000233") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000233").v_Value1,
 
-                               S_CCERCAOJOIZQUIERDO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000227") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000227").v_Value1Name,
+                               S_CCERCAOJOIZQUIERDO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000227") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000227").v_Value1,
 
-                               CCCERCAOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000235") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000235").v_Value1Name,
+                               CCCERCAOJODERECHO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000235") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000235").v_Value1,
 
                                CCCERCAOJOIZQUIERDO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000646") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000646").v_Value1,
 
@@ -13519,7 +13535,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                                ANORMAL = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712").v_Value1,
 
-                               DESCRIPCION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1Name,
+                               DESCRIPCION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1,
 
                                EMETROPE = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002071") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002071").v_Value1,
 
@@ -13584,7 +13600,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
 
 
-                               CAMPIMETRIAOD = Campimetria.Count == 0 || Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002094") == null ? string.Empty : Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002094").v_Value1Name,
+                               CAMPIMETRIAOD = Campimetria.Count == 0 || Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002094") == null ? string.Empty : Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002094").v_Value1,
 
                                CAMPIMETRIAOI = Campimetria.Count == 0 || Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002095") == null ? string.Empty : Campimetria.Find(p => p.v_ComponentFieldId == "N009-MF000002095").v_Value1,
 
@@ -14974,35 +14990,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                            }).ToList();
 
                 return sql;
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public List<Sigesoft.Node.WinClient.BE.UcAdulto> ReporteAdulto(string pstrserviceId, string pstrComponentId)
-        {
-            try
-            {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-
-                var objEntity = (from A in dbContext.service
-                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-                                  where A.v_ServiceId == pstrserviceId
-                                 select new Sigesoft.Node.WinClient.BE.UcAdulto
-                                 {
-                                     FechaNacimiento = B.d_Birthdate,
-                                  });
-             var sql = (from a in objEntity.ToList()
-                        select new Sigesoft.Node.WinClient.BE.UcAdulto
-                           {
-                                Edad = GetAge(a.FechaNacimiento.Value),
-                           }).ToList();
-
-
-                return sql;
-
             }
             catch (Exception)
             {
@@ -17906,127 +17893,127 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
         {
             try
             {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-                var objEntity = (from A in dbContext.service
+                //var objEntity = (from A in dbContext.service
 
-                                 join B in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
-                                                                     equals new { a = B.v_ServiceId, b = B.v_ComponentId } into B_join
-                                 from B in B_join.DefaultIfEmpty()
-
-
-                                 join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId into C_join
-                                 from C in C_join.DefaultIfEmpty()
-
-                                 join I in dbContext.systemparameter on new { a = C.i_EsoTypeId.Value, b = 118 }
-                                                    equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
-                                 from I in I_join.DefaultIfEmpty()
+                //                 join B in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
+                //                                                     equals new { a = B.v_ServiceId, b = B.v_ComponentId } into B_join
+                //                 from B in B_join.DefaultIfEmpty()
 
 
-                                 join D in dbContext.organization on C.v_EmployerOrganizationId equals D.v_OrganizationId into D_join
-                                 from D in D_join.DefaultIfEmpty()
+                //                 join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId into C_join
+                //                 from C in C_join.DefaultIfEmpty()
 
-                                 join E in dbContext.person on A.v_PersonId equals E.v_PersonId into E_join
-                                 from E in E_join.DefaultIfEmpty()
+                //                 join I in dbContext.systemparameter on new { a = C.i_EsoTypeId.Value, b = 118 }
+                //                                    equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
+                //                 from I in I_join.DefaultIfEmpty()
 
-                                 join SP1 in dbContext.systemparameter on new { a = D.i_SectorTypeId.Value, b = 104 }
-                                        equals new { a = SP1.i_ParameterId, b = SP1.i_GroupId } into SP1_join
-                                 from SP1 in SP1_join.DefaultIfEmpty()
 
-                                 join F in dbContext.servicecomponentmultimedia on B.v_ServiceComponentId equals F.v_ServiceComponentId into F_join
-                                 from F in F_join.DefaultIfEmpty()
+                //                 join D in dbContext.organization on C.v_EmployerOrganizationId equals D.v_OrganizationId into D_join
+                //                 from D in D_join.DefaultIfEmpty()
 
-                                 join G in dbContext.multimediafile on F.v_MultimediaFileId equals G.v_MultimediaFileId into G_join
-                                 from G in G_join.DefaultIfEmpty()
+                //                 join E in dbContext.person on A.v_PersonId equals E.v_PersonId into E_join
+                //                 from E in E_join.DefaultIfEmpty()
 
-                                 join F1 in dbContext.systemuser on B.i_ApprovedUpdateUserId equals F1.i_SystemUserId into F1_join
-                                 from F1 in F1_join.DefaultIfEmpty()
+                //                 join SP1 in dbContext.systemparameter on new { a = D.i_SectorTypeId.Value, b = 104 }
+                //                        equals new { a = SP1.i_ParameterId, b = SP1.i_GroupId } into SP1_join
+                //                 from SP1 in SP1_join.DefaultIfEmpty()
 
-                                 join Z in dbContext.person on F1.v_PersonId equals Z.v_PersonId into Z_join
-                                 from Z in Z_join.DefaultIfEmpty()
+                //                 join F in dbContext.servicecomponentmultimedia on B.v_ServiceComponentId equals F.v_ServiceComponentId into F_join
+                //                 from F in F_join.DefaultIfEmpty()
 
-                                 join D1 in dbContext.organization on C.v_CustomerOrganizationId equals D1.v_OrganizationId into D1_join
-                                 from D1 in D1_join.DefaultIfEmpty()
+                //                 join G in dbContext.multimediafile on F.v_MultimediaFileId equals G.v_MultimediaFileId into G_join
+                //                 from G in G_join.DefaultIfEmpty()
 
-                                 where A.v_ServiceId == pstrserviceId
-                                     //&& F.i_IsDeleted == 0 
-                                 && (G.i_IsDeleted == 0 || G.i_IsDeleted == null)
-                                 select new Sigesoft.Node.WinClient.BE.ReportCuestionarioEspirometria
-                                 {
-                                     EmpresaCliente = D1.v_Name,
-                                     IdServicio = A.v_ServiceId,
-                                     ServiceComponentId = B.v_ServiceComponentId,
-                                     Fecha = A.d_ServiceDate.Value,
-                                     NombreTrabajador = E.v_FirstLastName + " " + E.v_SecondLastName + " " + E.v_FirstName,
-                                     FechaNacimineto = E.d_Birthdate,
-                                     Genero = E.i_SexTypeId.Value,
-                                     FirmaTrabajador = E.b_RubricImage,
-                                     HuellaTrabajador = E.b_FingerPrintImage,
-                                     b_File = G.b_File,
-                                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
-                                     Dni = E.v_DocNumber,
-                                     TipoExamen = I.v_Value1
-                                 });
+                //                 join F1 in dbContext.systemuser on B.i_ApprovedUpdateUserId equals F1.i_SystemUserId into F1_join
+                //                 from F1 in F1_join.DefaultIfEmpty()
 
-                var MedicalCenter = GetInfoMedicalCenter();
+                //                 join Z in dbContext.person on F1.v_PersonId equals Z.v_PersonId into Z_join
+                //                 from Z in Z_join.DefaultIfEmpty()
 
-                var sql = (from a in objEntity.ToList()
+                //                 join D1 in dbContext.organization on C.v_CustomerOrganizationId equals D1.v_OrganizationId into D1_join
+                //                 from D1 in D1_join.DefaultIfEmpty()
 
-                           let Espirometria = ValoresComponente(pstrserviceId, Constants.ESPIROMETRIA_ID)
-                           let age = GetAge(a.FechaNacimineto.Value)
-                           let LogoEmpresa = GetLogoMedicalCenter()
-                           select new Sigesoft.Node.WinClient.BE.ReportCuestionarioEspirometria
-                           {
-                               EmpresaCliente = a.EmpresaCliente,
-                               IdServicio = a.IdServicio,
-                               ServiceComponentId = a.ServiceComponentId,
-                               Fecha_S = a.Fecha.Value.ToString("dd/MM/yyyy"),
-                               NombreTrabajador = a.NombreTrabajador,
-                               FechaNacimineto_S = a.FechaNacimineto.Value.ToString("dd/MM/yyyy"),
-                               Edad = age,
-                               Logo = LogoEmpresa,
-                               b_File = a.b_File,
-                               Dni = a.Dni,
-                               Pregunta1ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_1) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_1).v_Value1,
-                               Pregunta2ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_2) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_2).v_Value1,
-                               Pregunta3ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_3) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_3).v_Value1,
-                               Pregunta4ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_4) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_4).v_Value1,
-                               Pregunta5ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_5) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_5).v_Value1,
+                //                 where A.v_ServiceId == pstrserviceId
+                //                     //&& F.i_IsDeleted == 0 
+                //                 && (G.i_IsDeleted == 0 || G.i_IsDeleted == null)
+                //                 select new Sigesoft.Node.WinClient.BE.ReportCuestionarioEspirometria
+                //                 {
+                //                     EmpresaCliente = D1.v_Name,
+                //                     IdServicio = A.v_ServiceId,
+                //                     IdComponent = B.v_ServiceComponentId,
+                //                     Fecha = A.d_ServiceDate.Value,
+                //                     NombreTrabajador = E.v_FirstLastName + " " + E.v_SecondLastName + " " + E.v_FirstName,
+                //                     FechaNacimineto = E.d_Birthdate,
+                //                     Genero = E.i_SexTypeId.Value,
+                //                     FirmaTrabajador = E.b_RubricImage,
+                //                     HuellaTrabajador = E.b_FingerPrintImage,
+                //                     b_File = G.b_File,
+                //                     NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
+                //                     Dni = E.v_DocNumber,
+                //                     TipoExamen = I.v_Value1
+                //                 });
 
-                               HemoptisisSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.PIROMETRIA_ANTECEDENTES_HEMOSTISIS) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.PIROMETRIA_ANTECEDENTES_HEMOSTISIS).v_Value1,
-                               PseumotoraxSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_PNEUMOTORAX) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_PNEUMOTORAX).v_Value1,
-                               TraqueostomiaSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_TRAQUEOSTOMIA) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_TRAQUEOSTOMIA).v_Value1,
-                               SondaPleuralSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_SONDA_PLEURAL) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_SONDA_PLEURAL).v_Value1,
-                               AneurismaSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_ANEURISMA_CEREBRAL) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_ANEURISMA_CEREBRAL).v_Value1,
-                               EmboliaSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBOLIA_PULMONAR) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBOLIA_PULMONAR).v_Value1,
-                               InfartoSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INFARTO_RECIENTE) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INFARTO_RECIENTE).v_Value1,
-                               InestabilidadSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INESTABILIDAD_CV) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INESTABILIDAD_CV).v_Value1,
-                               FiebreSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_FIEBRE_NAUSEAS) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_FIEBRE_NAUSEAS).v_Value1,
-                               EmbarazoAvanzadoSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_AVANZADO) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_AVANZADO).v_Value1,
-                               EmbarazoComplicadoSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_COMPLICADO) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_COMPLICADO).v_Value1,
+                //var MedicalCenter = GetInfoMedicalCenter();
 
-                               Pregunta1BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESESPIROMETRIA_CUESTIONARIO_PARA_1) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESESPIROMETRIA_CUESTIONARIO_PARA_1).v_Value1,
-                               Pregunta2BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_2) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_2).v_Value1,
-                               Pregunta3BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_3) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_3).v_Value1,
-                               Pregunta4BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_4) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_4).v_Value1,
-                               Pregunta5BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_5) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_5).v_Value1,
-                               Pregunta6BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_6) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_6).v_Value1,
-                               Pregunta7BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_7) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_7).v_Value1,
+                //var sql = (from a in objEntity.ToList()
 
-                               Genero = a.Genero,
-                               FirmaTrabajador = a.FirmaTrabajador,
-                               HuellaTrabajador = a.HuellaTrabajador,
+                //           let Espirometria = ValoresComponente(pstrserviceId, Constants.ESPIROMETRIA_ID)
+                //           let age = GetAge(a.FechaNacimineto.Value)
+                //           let LogoEmpresa = GetLogoMedicalCenter()
+                //           select new Sigesoft.Node.WinClient.BE.ReportCuestionarioEspirometria
+                //           {
+                //               EmpresaCliente = a.EmpresaCliente,
+                //               IdServicio = a.IdServicio,
+                //               IdComponent = a.IdComponent,
+                //               Fecha_S = a.Fecha.Value.ToString("dd/MM/yyyy"),
+                //               NombreTrabajador = a.NombreTrabajador,
+                //               FechaNacimineto_S = a.FechaNacimineto.Value.ToString("dd/MM/yyyy"),
+                //               Edad = age,
+                //               Logo = LogoEmpresa,
+                //               b_File = a.b_File,
+                //               Dni = a.Dni,
+                //               Pregunta1ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_1) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_1).v_Value1,
+                //               Pregunta2ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_2) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_2).v_Value1,
+                //               Pregunta3ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_3) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_3).v_Value1,
+                //               Pregunta4ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_4) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_4).v_Value1,
+                //               Pregunta5ASiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_5) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_DE_EXCLUSION_5).v_Value1,
 
-                               b_Logo = MedicalCenter.b_Image,
-                               EmpresaPropietaria = MedicalCenter.v_Name,
-                               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
-                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
-                               NombreUsuarioGraba = a.NombreUsuarioGraba,
-                               TipoExamen = a.TipoExamen
-                           }).ToList();
+                //               HemoptisisSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.PIROMETRIA_ANTECEDENTES_HEMOSTISIS) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.PIROMETRIA_ANTECEDENTES_HEMOSTISIS).v_Value1,
+                //               PseumotoraxSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_PNEUMOTORAX) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_PNEUMOTORAX).v_Value1,
+                //               TraqueostomiaSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_TRAQUEOSTOMIA) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_TRAQUEOSTOMIA).v_Value1,
+                //               SondaPleuralSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_SONDA_PLEURAL) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_SONDA_PLEURAL).v_Value1,
+                //               AneurismaSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_ANEURISMA_CEREBRAL) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_ANEURISMA_CEREBRAL).v_Value1,
+                //               EmboliaSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBOLIA_PULMONAR) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBOLIA_PULMONAR).v_Value1,
+                //               InfartoSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INFARTO_RECIENTE) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INFARTO_RECIENTE).v_Value1,
+                //               InestabilidadSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INESTABILIDAD_CV) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_INESTABILIDAD_CV).v_Value1,
+                //               FiebreSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_FIEBRE_NAUSEAS) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_FIEBRE_NAUSEAS).v_Value1,
+                //               EmbarazoAvanzadoSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_AVANZADO) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_AVANZADO).v_Value1,
+                //               EmbarazoComplicadoSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_COMPLICADO) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_ANTECEDENTES_EMBARAZO_COMPLICADO).v_Value1,
 
-                return sql;
+                //               Pregunta1BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESESPIROMETRIA_CUESTIONARIO_PARA_1) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESESPIROMETRIA_CUESTIONARIO_PARA_1).v_Value1,
+                //               Pregunta2BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_2) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_2).v_Value1,
+                //               Pregunta3BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_3) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_3).v_Value1,
+                //               Pregunta4BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_4) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_4).v_Value1,
+                //               Pregunta5BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_5) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_5).v_Value1,
+                //               Pregunta6BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_6) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_6).v_Value1,
+                //               Pregunta7BSiNo = Espirometria.Count == 0 || Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_7) == null ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_CUESTIONARIO_PARA_7).v_Value1,
+
+                //               Genero = a.Genero,
+                //               FirmaTrabajador = a.FirmaTrabajador,
+                //               HuellaTrabajador = a.HuellaTrabajador,
+
+                //               b_Logo = MedicalCenter.b_Image,
+                //               EmpresaPropietaria = MedicalCenter.v_Name,
+                //               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                //               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                //               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+                //               NombreUsuarioGraba = a.NombreUsuarioGraba,
+                //               TipoExamen = a.TipoExamen
+                //           }).ToList();
+
+                return null;
             }
             catch (Exception)
             {
@@ -18294,228 +18281,224 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
         {
             try
             {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-                var objEntity = (from A in dbContext.service
-                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-                                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
-                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+                //var objEntity = (from A in dbContext.service
+                //                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                //                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
+                //                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
 
-                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
-                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
-                                 from me in me_join.DefaultIfEmpty()
+                //                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                //                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                //                 from me in me_join.DefaultIfEmpty()
 
-                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
-                                 from pme in pme_join.DefaultIfEmpty()
+                //                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                //                 from pme in pme_join.DefaultIfEmpty()
 
-                                 // Usuario Tecnologo *************************************
-                                 join tec in dbContext.systemuser on E.i_UpdateUserTechnicalDataRegisterId equals tec.i_SystemUserId into tec_join
-                                 from tec in tec_join.DefaultIfEmpty()
+                //                 // Usuario Tecnologo *************************************
+                //                 join tec in dbContext.systemuser on E.i_UpdateUserTechnicalDataRegisterId equals tec.i_SystemUserId into tec_join
+                //                 from tec in tec_join.DefaultIfEmpty()
 
-                                 join ptec in dbContext.professional on tec.v_PersonId equals ptec.v_PersonId into ptec_join
-                                 from ptec in ptec_join.DefaultIfEmpty()
-                                 // *******************************************************  
+                //                 join ptec in dbContext.professional on tec.v_PersonId equals ptec.v_PersonId into ptec_join
+                //                 from ptec in ptec_join.DefaultIfEmpty()
+                //                 // *******************************************************  
 
-                                 join pro in dbContext.protocol on A.v_ProtocolId equals pro.v_ProtocolId
+                //                 join pro in dbContext.protocol on A.v_ProtocolId equals pro.v_ProtocolId
 
-                                 join H in dbContext.systemparameter on new { a = pro.i_EsoTypeId.Value, b = 118 }
-                                                 equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
+                //                 join H in dbContext.systemparameter on new { a = pro.i_EsoTypeId.Value, b = 118 }
+                //                                 equals new { a = H.i_ParameterId, b = H.i_GroupId }  // TIPO ESO [ESOA,ESOR,ETC]
 
-                                 // Empresa / Sede Trabajo  ********************************************************
-                                 join ow in dbContext.organization on new { a = pro.v_CustomerOrganizationId }
-                                         equals new { a = ow.v_OrganizationId } into ow_join
-                                 from ow in ow_join.DefaultIfEmpty()
+                //                 // Empresa / Sede Trabajo  ********************************************************
+                //                 join ow in dbContext.organization on new { a = pro.v_WorkingOrganizationId }
+                //                         equals new { a = ow.v_OrganizationId } into ow_join
+                //                 from ow in ow_join.DefaultIfEmpty()
 
-                                 join o in dbContext.organization on new { a = pro.v_EmployerOrganizationId }
-                                         equals new { a = o.v_OrganizationId } into o_join
-                                 from o in ow_join.DefaultIfEmpty()
+                //                 join lw in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
+                //                      equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
+                //                 from lw in lw_join.DefaultIfEmpty()
 
-                                 join lw in dbContext.location on new { a = pro.v_WorkingOrganizationId, b = pro.v_WorkingLocationId }
-                                      equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
-                                 from lw in lw_join.DefaultIfEmpty()
-
-                                 //************************************************************************************
+                //                 //************************************************************************************
 
 
-                                 where A.v_ServiceId == pstrserviceId
+                //                 where A.v_ServiceId == pstrserviceId
 
-                                 select new Sigesoft.Node.WinClient.BE.AudiometriaList
-                                 {
-                                     v_PersonId = A.v_PersonId,
+                //                 select new Sigesoft.Node.WinClient.BE.AudiometriaList
+                //                 {
+                //                     v_PersonId = A.v_PersonId,
 
-                                     v_FullPersonName = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                //                     v_FullPersonName = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
 
-                                     d_BirthDate = B.d_Birthdate,
-                                     d_ServiceDate = A.d_ServiceDate,
+                //                     d_BirthDate = B.d_Birthdate,
+                //                     d_ServiceDate = A.d_ServiceDate,
 
-                                     v_DocNumber = B.v_DocNumber,
-                                     i_SexTypeId = B.i_SexTypeId.Value,
+                //                     v_DocNumber = B.v_DocNumber,
+                //                     i_SexTypeId = B.i_SexTypeId.Value,
 
-                                     FirmaTecnologo = ptec.b_SignatureImage,
-                                     FirmaMedico = pme.b_SignatureImage,
+                //                     FirmaTecnologo = ptec.b_SignatureImage,
+                //                     FirmaMedico = pme.b_SignatureImage,
 
-                                     Puesto = B.v_CurrentOccupation,
-                                     v_SexType = B.i_SexTypeId == (int)Gender.MASCULINO ? "M" : "F",
-                                     //
-                                     v_EsoTypeName = H.v_Value1,
-                                     v_ServiceComponentId = E.v_ServiceComponentId,
-                                     v_CustomerOrganizationName = ow.v_Name,
-                                     v_EmployerOrganizationName = o.v_Name,
-                                     FirmaTrabajador = B.b_RubricImage,
-                                     HuellaTrabajador = B.b_FingerPrintImage,
+                //                     Puesto = B.v_CurrentOccupation,
+                //                     v_SexType = B.i_SexTypeId == (int)Gender.MASCULINO ? "M" : "F",
+                //                     //
+                //                     v_EsoTypeName = H.v_Value1,
+                //                     v_ServiceComponentId = E.v_ServiceComponentId,
+                //                     v_WorkingOrganizationName = ow.v_Name,
+                //                     v_FullWorkingOrganizationName = ow.v_Name + " / " + lw.v_Name,
+                //                     FirmaTrabajador = B.b_RubricImage,
+                //                     HuellaTrabajador = B.b_FingerPrintImage,
 
 
-                                 });
+                //                 });
 
-                var MedicalCenter = GetInfoMedicalCenter();
+                //var MedicalCenter = GetInfoMedicalCenter();
 
-                var __sql = ValoresComponente(pstrserviceId, pstrComponentId);
+                //var __sql = ValoresComponente(pstrserviceId, pstrComponentId);
 
 
 
-                var sql = (from a in objEntity.ToList()
+                //var sql = (from a in objEntity.ToList()
 
-                           select new Sigesoft.Node.WinClient.BE.AudiometriaList
-                           {
+                //           select new Sigesoft.Node.WinClient.BE.AudiometriaList
+                //           {
 
-                               v_PersonId = a.v_PersonId,
-                               v_FullPersonName = a.v_FullPersonName,
+                //               v_PersonId = a.v_PersonId,
+                //               v_FullPersonName = a.v_FullPersonName,
 
-                               d_BirthDate = a.d_BirthDate,
-                               i_AgePacient = GetAge(a.d_BirthDate.Value),
-                               d_ServiceDate = a.d_ServiceDate,
-                               v_DocNumber = a.v_DocNumber,
-                               i_SexTypeId = a.i_SexTypeId,
-                               FirmaMedico = a.FirmaMedico,
-                               FirmaTecnologo = a.FirmaTecnologo,
-                               Puesto = a.Puesto,
-                               v_SexType = a.v_SexType,
+                //               d_BirthDate = a.d_BirthDate,
+                //               i_AgePacient = GetAge(a.d_BirthDate.Value),
+                //               d_ServiceDate = a.d_ServiceDate,
+                //               v_DocNumber = a.v_DocNumber,
+                //               i_SexTypeId = a.i_SexTypeId,
+                //               FirmaMedico = a.FirmaMedico,
+                //               FirmaTecnologo = a.FirmaTecnologo,
+                //               Puesto = a.Puesto,
+                //               v_SexType = a.v_SexType,
 
-                               // Requisitos para la Audiometria                         
-                               CambiosAltitud = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD_CI).v_Value1,
-                               ExpuestoRuido = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO_CI).v_Value1,
-                               ProcesoInfeccioso = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_PROCESO_INFECCIOSO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_PROCESO_INFECCIOSO_CI).v_Value1,
-                               DurmioNochePrevia = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_DURMIO_NOCHE_PREVIA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_DURMIO_NOCHE_PREVIA_CI).v_Value1,
-                               ConsumioAlcoholDiaPrevio = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CONSUMIO_ALCOHOL_DIA_PREVIO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CONSUMIO_ALCOHOL_DIA_PREVIO_CI).v_Value1,
+                //               // Requisitos para la Audiometria                         
+                //               CambiosAltitud = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CAMBIOS_ALTITUD_CI).v_Value1,
+                //               ExpuestoRuido = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_EXPUESTO_RUIDO_CI).v_Value1,
+                //               ProcesoInfeccioso = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_PROCESO_INFECCIOSO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_PROCESO_INFECCIOSO_CI).v_Value1,
+                //               DurmioNochePrevia = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_DURMIO_NOCHE_PREVIA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_DURMIO_NOCHE_PREVIA_CI).v_Value1,
+                //               ConsumioAlcoholDiaPrevio = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CONSUMIO_ALCOHOL_DIA_PREVIO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_CONSUMIO_ALCOHOL_DIA_PREVIO_CI).v_Value1,
 
-                               //// Antecedentes Medicos de importancias
+                //               //// Antecedentes Medicos de importancias
 
-                               RinitisSinusitis = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_RINITIS_SINUSITIS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_RINITIS_SINUSITIS_CI).v_Value1,
-                               UsoMedicamentos = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_USO_MEDICAMENTOS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_USO_MEDICAMENTOS_CI).v_Value1,
-                               Sarampion = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SARAMPION_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SARAMPION_CI).v_Value1,
-                               Tec = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_TEC_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_TEC_CI).v_Value1,
-                               OtitisMediaCronica = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_OTITIS_MEDIA_CRONICA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_OTITIS_MEDIA_CRONICA_CI).v_Value1,
-                               DiabetesMellitus = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DIABETES_MELLITUS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DIABETES_MELLITUS_CI).v_Value1,
-                               SorderaAntecedente = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_CI).v_Value1,
-                               SorderaFamiliar = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_FAMILIAR_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_FAMILIAR_CI).v_Value1,
-                               Meningitis = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_MENINGITIS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_MENINGITIS_CI).v_Value1,
-                               Dislipidemia = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DISLIPIDEMIA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DISLIPIDEMIA_CI).v_Value1,
-                               EnfTiroidea = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_ENF_TIROIDEA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_ENF_TIROIDEA_CI).v_Value1,
-                               SustQuimicas = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SUST_QUIMICAS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SUST_QUIMICAS_CI).v_Value1,
+                //               RinitisSinusitis = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_RINITIS_SINUSITIS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_RINITIS_SINUSITIS_CI).v_Value1,
+                //               UsoMedicamentos = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_USO_MEDICAMENTOS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_USO_MEDICAMENTOS_CI).v_Value1,
+                //               Sarampion = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SARAMPION_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SARAMPION_CI).v_Value1,
+                //               Tec = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_TEC_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_TEC_CI).v_Value1,
+                //               OtitisMediaCronica = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_OTITIS_MEDIA_CRONICA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_OTITIS_MEDIA_CRONICA_CI).v_Value1,
+                //               DiabetesMellitus = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DIABETES_MELLITUS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DIABETES_MELLITUS_CI).v_Value1,
+                //               SorderaAntecedente = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_CI).v_Value1,
+                //               SorderaFamiliar = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_FAMILIAR_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SORDERA_FAMILIAR_CI).v_Value1,
+                //               Meningitis = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_MENINGITIS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_MENINGITIS_CI).v_Value1,
+                //               Dislipidemia = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DISLIPIDEMIA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_DISLIPIDEMIA_CI).v_Value1,
+                //               EnfTiroidea = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_ENF_TIROIDEA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_ENF_TIROIDEA_CI).v_Value1,
+                //               SustQuimicas = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SUST_QUIMICAS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_ANTECEDENTES_SUST_QUIMICAS_CI).v_Value1,
 
-                               //// Hobbies
+                //               //// Hobbies
 
-                               UsoMP3 = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_USO_MP3_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_USO_MP3_CI).v_Value1,
-                               PracticaTiro = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_PRACTICA_TIRO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_PRACTICA_TIRO_CI).v_Value1,
-                               Telefono = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_OTROS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_OTROS_CI).v_Value1,
+                //               UsoMP3 = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_USO_MP3_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_USO_MP3_CI).v_Value1,
+                //               PracticaTiro = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_PRACTICA_TIRO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_PRACTICA_TIRO_CI).v_Value1,
+                //               Telefono = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_OTROS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_HOBBIES_OTROS_CI).v_Value1,
 
-                               //// Sintomas actuales
+                //               //// Sintomas actuales
 
-                               Sordera = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SORDERA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SORDERA_CI).v_Value1,
-                               Otalgia = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_OTALGIA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_OTALGIA_CI).v_Value1,
-                               Acufenos = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_ACUFENOS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_ACUFENOS_CI).v_Value1,
-                               SecrecionOtica = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SECRECION_OTICA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SECRECION_OTICA_CI).v_Value1,
-                               Vertigos = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_VERTIGOS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_VERTIGOS_CI).v_Value1,
+                //               Sordera = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SORDERA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SORDERA_CI).v_Value1,
+                //               Otalgia = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_OTALGIA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_OTALGIA_CI).v_Value1,
+                //               Acufenos = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_ACUFENOS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_ACUFENOS_CI).v_Value1,
+                //               SecrecionOtica = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SECRECION_OTICA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_SECRECION_OTICA_CI).v_Value1,
+                //               Vertigos = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_VERTIGOS_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_SINTOMAS_ACTUALES_VERTIGOS_CI).v_Value1,
 
-                               //// Otoscopia
+                //               //// Otoscopia
 
-                               OidoIzquierdo = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_IZQUIERDO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_IZQUIERDO_CI).v_Value1,
-                               OidoDerecho = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO_CI).v_Value1,
+                //               OidoIzquierdo = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_IZQUIERDO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_IZQUIERDO_CI).v_Value1,
+                //               OidoDerecho = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO_CI).v_Value1,
 
-                               b_Logo = MedicalCenter.b_Image,
-                               EmpresaPropietaria = MedicalCenter.v_Name,
-                               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
-                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+                //               b_Logo = MedicalCenter.b_Image,
+                //               EmpresaPropietaria = MedicalCenter.v_Name,
+                //               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                //               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                //               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
 
-                               //
-                               v_EsoTypeName = a.v_EsoTypeName,
-                               v_ServiceComponentId = a.v_ServiceComponentId,
-                               v_CustomerOrganizationName = a.v_CustomerOrganizationName,
-                               v_EmployerOrganizationName = a.v_EmployerOrganizationName,
-                               FirmaTrabajador = a.FirmaTrabajador,
-                               HuellaTrabajador = a.HuellaTrabajador,
-                               MarcaAudiometria = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA_CI).v_Value1,
-                               ModeloAudiometria = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO_CI).v_Value1,
-                               CalibracionAudiometria = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION_CI).v_Value1,
-                               TiempoTrabajo = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_TIEMPO_DE_TRABAJO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_TIEMPO_DE_TRABAJO_CI).v_Value1,
+                //               //
+                //               v_EsoTypeName = a.v_EsoTypeName,
+                //               v_ServiceComponentId = a.v_ServiceComponentId,
+                //               v_WorkingOrganizationName = a.v_WorkingOrganizationName,
+                //               v_FullWorkingOrganizationName = a.v_FullWorkingOrganizationName,
+                //               FirmaTrabajador = a.FirmaTrabajador,
+                //               HuellaTrabajador = a.HuellaTrabajador,
+                //               MarcaAudiometria = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MARCA_CI).v_Value1,
+                //               ModeloAudiometria = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_MODELO_CI).v_Value1,
+                //               CalibracionAudiometria = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_DATOS_DEL_AUDIOMETRO_CALIBRACION_CI).v_Value1,
+                //               TiempoTrabajo = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_TIEMPO_DE_TRABAJO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_REQUISITOS_TIEMPO_DE_TRABAJO_CI).v_Value1,
 
-                               AUDIO_NIVEL_AMB_RUIDO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_NIVEL_AMB_RUIDO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_NIVEL_AMB_RUIDO_ID_CI).v_Value1,
-                               AUDIO_RUIDO_EXTRA_LABO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RUIDO_EXTRA_LABO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RUIDO_EXTRA_LABO_ID_CI).v_Value1,
-                               AUDIO_ANIOS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_ID_CI).v_Value1,
-                                AUDIO_ANIOS_SERVICIO_MILITAR_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_SERVICIO_MILITAR_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_SERVICIO_MILITAR_ID_CI).v_Value1,
-                                AUDIO_FREC_SERC_MILI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FREC_SERC_MILI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FREC_SERC_MILI_ID_CI).v_Value1,
-                               AUDIO_ANIOS_DEP_AERO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_DEP_AERO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_DEP_AERO_ID_CI).v_Value1,
-                               AUDIO_FREC_DEP_AEREO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FREC_DEP_AEREO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FREC_DEP_AEREO_ID_CI).v_Value1,
-                               AUDIO_ANIOS_DEP_SUB_MARINOS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_DEP_SUB_MARINOS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_DEP_SUB_MARINOS_ID_CI).v_Value1,
-                               AUDIO_FRE_DEP_SUB_MARINOS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_DEP_SUB_MARINOS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_DEP_SUB_MARINOS_ID_CI).v_Value1,
-                               AUDIO_ANIOS_MANI_ARMAS_FUE_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_MANI_ARMAS_FUE_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_MANI_ARMAS_FUE_ID_CI).v_Value1,
-                               AUDIO_FRE_MANI_ARMAS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MANI_ARMAS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MANI_ARMAS_ID_CI).v_Value1,
+                //               AUDIO_NIVEL_AMB_RUIDO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_NIVEL_AMB_RUIDO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_NIVEL_AMB_RUIDO_ID_CI).v_Value1,
+                //               AUDIO_RUIDO_EXTRA_LABO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RUIDO_EXTRA_LABO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RUIDO_EXTRA_LABO_ID_CI).v_Value1,
+                //               AUDIO_ANIOS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_ID_CI).v_Value1,
+                //                AUDIO_ANIOS_SERVICIO_MILITAR_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_SERVICIO_MILITAR_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_SERVICIO_MILITAR_ID_CI).v_Value1,
+                //                AUDIO_FREC_SERC_MILI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FREC_SERC_MILI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FREC_SERC_MILI_ID_CI).v_Value1,
+                //               AUDIO_ANIOS_DEP_AERO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_DEP_AERO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_DEP_AERO_ID_CI).v_Value1,
+                //               AUDIO_FREC_DEP_AEREO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FREC_DEP_AEREO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FREC_DEP_AEREO_ID_CI).v_Value1,
+                //               AUDIO_ANIOS_DEP_SUB_MARINOS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_DEP_SUB_MARINOS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_DEP_SUB_MARINOS_ID_CI).v_Value1,
+                //               AUDIO_FRE_DEP_SUB_MARINOS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_DEP_SUB_MARINOS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_DEP_SUB_MARINOS_ID_CI).v_Value1,
+                //               AUDIO_ANIOS_MANI_ARMAS_FUE_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_MANI_ARMAS_FUE_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_MANI_ARMAS_FUE_ID_CI).v_Value1,
+                //               AUDIO_FRE_MANI_ARMAS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MANI_ARMAS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MANI_ARMAS_ID_CI).v_Value1,
 
-                               AUDIO_ANIOS_EXPO_MUSICA_ALTA_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_EXPO_MUSICA_ALTA_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_EXPO_MUSICA_ALTA_ID_CI).v_Value1,
-                               AUDIO_FRE_MUSICA_ALTA_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MUSICA_ALTA_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MUSICA_ALTA_ID_CI).v_Value1,
-                               AUDIO_ANIOS_USO_AUDIF_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_USO_AUDIF_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_USO_AUDIF_ID_CI).v_Value1,
-                               AUDIO_FRE_USO_AUDIF_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_USO_AUDIF_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_USO_AUDIF_ID_CI).v_Value1,
-                               AUDIO_ANIOS_MOTO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_MOTO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_MOTO_ID_CI).v_Value1,
-                               AUDIO_FRE_MOTO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MOTO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MOTO_ID_CI).v_Value1,
-                               AUDIO_ANIOS_OTRO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_OTRO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_OTRO_ID_CI).v_Value1,
-                               AUDIO_FRE_OTROS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_OTROS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_OTROS_ID_CI).v_Value1,
-                               AUDIO_HORAS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_HORAS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_HORAS_ID_CI).v_Value1,
-                               AUDIO_AMBOS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_AMBOS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_AMBOS_ID_CI).v_Value1,
+                //               AUDIO_ANIOS_EXPO_MUSICA_ALTA_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_EXPO_MUSICA_ALTA_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_EXPO_MUSICA_ALTA_ID_CI).v_Value1,
+                //               AUDIO_FRE_MUSICA_ALTA_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MUSICA_ALTA_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MUSICA_ALTA_ID_CI).v_Value1,
+                //               AUDIO_ANIOS_USO_AUDIF_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_USO_AUDIF_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_USO_AUDIF_ID_CI).v_Value1,
+                //               AUDIO_FRE_USO_AUDIF_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_USO_AUDIF_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_USO_AUDIF_ID_CI).v_Value1,
+                //               AUDIO_ANIOS_MOTO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_MOTO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_MOTO_ID_CI).v_Value1,
+                //               AUDIO_FRE_MOTO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MOTO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_MOTO_ID_CI).v_Value1,
+                //               AUDIO_ANIOS_OTRO_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_OTRO_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ANIOS_OTRO_ID_CI).v_Value1,
+                //               AUDIO_FRE_OTROS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_OTROS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_FRE_OTROS_ID_CI).v_Value1,
+                //               AUDIO_HORAS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_HORAS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_HORAS_ID_CI).v_Value1,
+                //               AUDIO_AMBOS_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_AMBOS_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_AMBOS_ID_CI).v_Value1,
 
-                               AUDIO_UMBRAL_DETEC_PALABRA_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_DETEC_PALABRA_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_DETEC_PALABRA_ID_CI).v_Value1,
-                               AUDIO_UMBRAL_DETEC_O_I_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_DETEC_O_I_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_DETEC_O_I_ID_CI).v_Value1,
-                               AUDIO_UMBRAL_RECO_PALABRA_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_RECO_PALABRA_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_RECO_PALABRA_ID_CI).v_Value1,
-                               AUDIO_UMBRAL_RECO_O_I_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_RECO_O_I_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_RECO_O_I_ID_CI).v_Value1,
-                               AUDIO_UMBRAL_MAX_DISC_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_MAX_DISC_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_MAX_DISC_ID_CI).v_Value1,
-                               AUDIO_UMBRAL_MAX_O_I_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_MAX_O_I_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_MAX_O_I_ID_CI).v_Value1,
-                               AUDIO_PORCENTAJE_DISC_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_PORCENTAJE_DISC_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_PORCENTAJE_DISC_ID_CI).v_Value1,
-                               AUDIO_PORCENTAJE_DISC_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_PORCENTAJE_DISC_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_PORCENTAJE_DISC_OI_ID_CI).v_Value1,
-                               AUDIO_DIAPASONES_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_ID_CI).v_Value1,
-                               AUDIO_DIAPASONES_2_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_2_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_2_ID_CI).v_Value1,
-
-
-                               AUDIO_DIAPASONES_3_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_3_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_3_ID_CI).v_Value1,
-                               AUDIO_DIAPASONES_4_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_4_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_4_ID_CI).v_Value1,
-                               AUDIO_RINNER_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_ID_CI).v_Value1,
-                               AUDIO_RINNER_2_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_2_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_2_ID_CI).v_Value1,
-                               AUDIO_RINNER_3_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_3_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_3_ID_CI).v_Value1,
-                               AUDIO_RINNER_4_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_4_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_4_ID_CI).v_Value1,
-                               AUDIO_RINNER_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_OD_ID_CI).v_Value1,
-                               AUDIO_RINNER_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_OI_ID_CI).v_Value1,
-                               AUDIO_WEBER_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_ID_CI).v_Value1,
-                               AUDIO_WEBER_2_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_2_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_2_ID_CI).v_Value1,
-
-                               AUDIO_WEBER_3_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_3_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_3_ID_CI).v_Value1,
-                               AUDIO_WEBER_4_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_4_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_4_ID_CI).v_Value1,
-                               AUDIO_WEBER_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_OD_ID_CI).v_Value1,
-                               AUDIO_WEBER_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_OI_ID_CI).v_Value1,
-                               AUDIO_BASE_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_ID_CI).v_Value1,
-                               AUDIO_BASE_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_OD_ID_CI).v_Value1,
-                               AUDIO_BASE_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_OI_ID_CI).v_Value1,
-                               AUDIO_REFERENCIAL_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_ID_CI).v_Value1,
-                               AUDIO_REFERENCIAL_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_OD_ID_CI).v_Value1,
-                               AUDIO_REFERENCIAL_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_OI_ID_CI).v_Value1,
+                //               AUDIO_UMBRAL_DETEC_PALABRA_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_DETEC_PALABRA_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_DETEC_PALABRA_ID_CI).v_Value1,
+                //               AUDIO_UMBRAL_DETEC_O_I_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_DETEC_O_I_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_DETEC_O_I_ID_CI).v_Value1,
+                //               AUDIO_UMBRAL_RECO_PALABRA_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_RECO_PALABRA_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_RECO_PALABRA_ID_CI).v_Value1,
+                //               AUDIO_UMBRAL_RECO_O_I_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_RECO_O_I_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_RECO_O_I_ID_CI).v_Value1,
+                //               AUDIO_UMBRAL_MAX_DISC_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_MAX_DISC_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_MAX_DISC_ID_CI).v_Value1,
+                //               AUDIO_UMBRAL_MAX_O_I_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_MAX_O_I_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_UMBRAL_MAX_O_I_ID_CI).v_Value1,
+                //               AUDIO_PORCENTAJE_DISC_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_PORCENTAJE_DISC_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_PORCENTAJE_DISC_ID_CI).v_Value1,
+                //               AUDIO_PORCENTAJE_DISC_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_PORCENTAJE_DISC_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_PORCENTAJE_DISC_OI_ID_CI).v_Value1,
+                //               AUDIO_DIAPASONES_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_ID_CI).v_Value1,
+                //               AUDIO_DIAPASONES_2_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_2_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_2_ID_CI).v_Value1,
 
 
-                               AUDIO_ACTUAL_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_ID_CI).v_Value1,
-                               AUDIO_ACTUAL_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_OD_ID_CI).v_Value1,
-                               AUDIO_ACTUAL_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_OI_ID_CI).v_Value1,
-                               MENOSCABO_AUDITIVO = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.MENOSCABO_AUDITIVO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.MENOSCABO_AUDITIVO_CI).v_Value1,
+                //               AUDIO_DIAPASONES_3_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_3_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_3_ID_CI).v_Value1,
+                //               AUDIO_DIAPASONES_4_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_4_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_DIAPASONES_4_ID_CI).v_Value1,
+                //               AUDIO_RINNER_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_ID_CI).v_Value1,
+                //               AUDIO_RINNER_2_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_2_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_2_ID_CI).v_Value1,
+                //               AUDIO_RINNER_3_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_3_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_3_ID_CI).v_Value1,
+                //               AUDIO_RINNER_4_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_4_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_4_ID_CI).v_Value1,
+                //               AUDIO_RINNER_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_OD_ID_CI).v_Value1,
+                //               AUDIO_RINNER_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_RINNER_OI_ID_CI).v_Value1,
+                //               AUDIO_WEBER_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_ID_CI).v_Value1,
+                //               AUDIO_WEBER_2_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_2_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_2_ID_CI).v_Value1,
 
-                           }).ToList();
+                //               AUDIO_WEBER_3_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_3_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_3_ID_CI).v_Value1,
+                //               AUDIO_WEBER_4_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_4_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_4_ID_CI).v_Value1,
+                //               AUDIO_WEBER_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_OD_ID_CI).v_Value1,
+                //               AUDIO_WEBER_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_WEBER_OI_ID_CI).v_Value1,
+                //               AUDIO_BASE_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_ID_CI).v_Value1,
+                //               AUDIO_BASE_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_OD_ID_CI).v_Value1,
+                //               AUDIO_BASE_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_BASE_OI_ID_CI).v_Value1,
+                //               AUDIO_REFERENCIAL_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_ID_CI).v_Value1,
+                //               AUDIO_REFERENCIAL_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_OD_ID_CI).v_Value1,
+                //               AUDIO_REFERENCIAL_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_REFERENCIAL_OI_ID_CI).v_Value1,
 
-                return sql;
+
+                //               AUDIO_ACTUAL_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_ID_CI).v_Value1,
+                //               AUDIO_ACTUAL_OD_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_OD_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_OD_ID_CI).v_Value1,
+                //               AUDIO_ACTUAL_OI_ID = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_OI_ID_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIO_ACTUAL_OI_ID_CI).v_Value1,
+                //               MENOSCABO_AUDITIVO = __sql.Count == 0 || __sql.Find(p => p.v_ComponentFieldId == Constants.MENOSCABO_AUDITIVO_CI) == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.MENOSCABO_AUDITIVO_CI).v_Value1,
+
+                //           }).ToList();
+
+                return null;
             }
             catch (Exception)
             {

@@ -30,7 +30,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
                 dpFechaFin.SelectedDate = DateTime.Now;// DateTime.Parse("25/07/2014");
                 LoadComboBox();
                 btnNewCertificado.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("../ExternalUser/FRM031J.aspx");
+                btnExAltura.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("../ExternalUser/FRM031K.aspx");
                 btnNewFichaOcupacional.OnClientClick = winEdit2.GetSaveStateReference(hfRefresh.ClientID) + winEdit2.GetShowReference("../ExternalUser/FRM031H.aspx");
+                btnFMT1.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("../ExternalUser/FRMFMT1.aspx");
+                btnInterConsulta.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("../ExternalUser/FRMINTERC.aspx");
                 //btnNewExamenes.OnClientClick = winEdit3.GetSaveStateReference(hfRefresh.ClientID) + winEdit3.GetShowReference("../ExternalUser/FRM031E.aspx");
 
                 ////Session["CertificadoAptitud"] = false;
@@ -84,6 +87,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
         protected void btnFilter_Click(object sender, EventArgs e)
         {
 
+            if (ddlProtocolo.SelectedValue == "-1")
+            {
+                //Alert.ShowInTop("Por favor seleccionar un protocolo");
+                //return;
+            }
+
             // Get the filters from the UI
             List<string> Filters = new List<string>();
             if (ddlTipoESO.SelectedValue.ToString() != "-1") Filters.Add("i_TypeEsoId==" + ddlTipoESO.SelectedValue);
@@ -121,15 +130,27 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             {
                 btnNewCertificado.Enabled = (bool)Session["CertificadoAptitud"];
                 btnNewFichaOcupacional.Enabled = (bool)Session["FichaOcupacional"];
+
+                btnExAltura.Enabled = (bool)Session["ExamenAltura"];
+                btnFMT1.Enabled = (bool)Session["FMT1"];
+                btnInterConsulta.Enabled = (bool)Session["Interconsultas"];
+                //btnFMT1.Enabled = (bool)Session["CertificadoAptitud"];
                 if (selectedCount > 1)
                 {
                     btnNewFichaOcupacional.Enabled = false;
                     btnNewCertificado.Enabled = false;
+                    btnFMT1.Enabled = false;
+                    btnInterConsulta.Enabled = false;
+                    btnExAltura.Enabled = false;
                 }
                 else
                 {
                     btnNewFichaOcupacional.Enabled = (bool)Session["FichaOcupacional"];
                     btnNewCertificado.Enabled = (bool)Session["CertificadoAptitud"];
+                    
+                    btnExAltura.Enabled = (bool)Session["ExamenAltura"];
+                    btnFMT1.Enabled = (bool)Session["FMT1"];
+                    btnInterConsulta.Enabled = (bool)Session["Interconsultas"];
                     //Session["CertificadoAptitud"] = true;
                     //Session["FichaOcupacional"] = true;
                 }
@@ -138,8 +159,31 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             else
             {
                 btnNewCertificado.Enabled = false;
+                btnFMT1.Enabled = false;
                 btnNewFichaOcupacional.Enabled = false;
+                btnInterConsulta.Enabled = false;
+                btnExAltura.Enabled = false;
+
             }
+
+            if (grdData.SelectedRowIndexArray.Length == 0)
+            {
+                List<MyListWeb> lista1 = new List<MyListWeb>();
+                return lista1;
+            }
+            int rowIndex_ = grdData.SelectedRowIndexArray[0];
+
+            var dataKeys_ = grdData.DataKeys[rowIndex_];
+
+            if (dataKeys_[5] == null || dataKeys_[5].ToString() == "0")
+            {
+                btnInterConsulta.Enabled = false;
+            }
+            else
+            {
+                btnInterConsulta.Enabled = true;
+            }
+        
 
             for (int i = 0; i < selectedCount; i++)
             {
@@ -244,5 +288,16 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
         {
 
         }
+
+        protected void Window2_Close(object sender, EventArgs e)
+        {
+            if (Session["EliminarArchivo"] != null)
+            {
+                File.Delete(Session["EliminarArchivo"].ToString());
+            }
+            
+        }
+
+        
       }
 }

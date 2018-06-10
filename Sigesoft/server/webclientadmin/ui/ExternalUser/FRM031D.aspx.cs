@@ -186,6 +186,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
 
         }
 
+
         private void GeneratePDF(string componentId, string RutaTemporal, string ServicioId, string PacienteId, string EmpresaCliente)
         {
             switch (componentId)

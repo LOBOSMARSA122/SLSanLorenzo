@@ -25,7 +25,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
 
             LinkButton objLinkButton = new LinkButton();
             objLinkButton.ID = ListaServicios[0].IdServicio;
-            objLinkButton.Text = ListaServicios[0].Paciente;
+            objLinkButton.Text = ListaServicios[0].Paciente + " Certificado";
             //objLinkButton.Text = Session["IdServicio"].ToString() + ".pdf";
             objLinkButton.Click += new EventHandler(link_Click);
 
@@ -33,6 +33,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             DivControls.Controls.Add(new LiteralControl("<br>"));
 
         }
+
         private void link_Click(object sender, System.EventArgs e)
         {
             string rutaReportes = WebConfigurationManager.AppSettings["rutaReportes"];

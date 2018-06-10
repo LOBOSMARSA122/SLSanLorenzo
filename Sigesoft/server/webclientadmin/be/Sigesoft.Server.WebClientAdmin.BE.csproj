@@ -100,6 +100,7 @@
     <Compile Include="Custom\SystemUserList.cs" />
     <Compile Include="Custom\WarehouseList.cs" />
     <Compile Include="Custom\OrganizationShortList.cs" />
+    <Compile Include="Generated\consolidadoexamenesResultDto.cs" />
     <Compile Include="Generated\applicationhierarchyDto.cs" />
     <Compile Include="Generated\areaDto.cs" />
     <Compile Include="Generated\attentioninareaDto.cs" />
@@ -153,8 +154,6 @@
     <Compile Include="Generated\restrictionDto.cs" />
     <Compile Include="Generated\restrictedwarehouseprofileDto.cs" />
     <Compile Include="Generated\recommendationDto.cs" />
-    <Compile Include="Generated\recetadespachoDto.cs" />
-    <Compile Include="Generated\recetaDto.cs" />
     <Compile Include="Generated\protocolsystemuserDto.cs" />
     <Compile Include="Generated\protocolcomponentDto.cs" />
     <Compile Include="Generated\protocolDto.cs" />
@@ -163,7 +162,6 @@
     <Compile Include="Generated\productsformigrationDto.cs" />
     <Compile Include="Generated\productDto.cs" />
     <Compile Include="Generated\procedurebyserviceDto.cs" />
-    <Compile Include="Generated\planDto.cs" />
     <Compile Include="Generated\personmedicalhistoryDto.cs" />
     <Compile Include="Generated\personDto.cs" />
     <Compile Include="Generated\pacientmultimediadataDto.cs" />
@@ -183,6 +181,7 @@
     <Compile Include="Generated\movementdetailDto.cs" />
     <Compile Include="Generated\movementDto.cs" />
     <Compile Include="Generated\medicationDto.cs" />
+    <Compile Include="Generated\matrizDto.cs" />
     <Compile Include="Generated\masterrecommendationrestricctionDto.cs" />
     <Compile Include="Generated\logDto.cs" />
     <Compile Include="Generated\locationDto.cs" />

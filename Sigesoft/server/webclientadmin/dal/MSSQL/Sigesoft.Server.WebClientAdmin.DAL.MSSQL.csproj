@@ -50,6 +50,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DMSQLServer.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GeneratedAssemblers\consolidadoexamenesResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\applicationhierarchyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\areaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\attentioninareaAssembler.cs" />
@@ -103,8 +104,6 @@
     <Compile Include="GeneratedAssemblers\restrictionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\restrictedwarehouseprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\recommendationAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\recetadespachoAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\recetaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\protocolsystemuserAssembler.cs" />
     <Compile Include="GeneratedAssemblers\protocolcomponentAssembler.cs" />
     <Compile Include="GeneratedAssemblers\protocolAssembler.cs" />
@@ -113,7 +112,6 @@
     <Compile Include="GeneratedAssemblers\productsformigrationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\productAssembler.cs" />
     <Compile Include="GeneratedAssemblers\procedurebyserviceAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\planAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personmedicalhistoryAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personAssembler.cs" />
     <Compile Include="GeneratedAssemblers\pacientmultimediadataAssembler.cs" />
@@ -133,6 +131,7 @@
     <Compile Include="GeneratedAssemblers\movementdetailAssembler.cs" />
     <Compile Include="GeneratedAssemblers\movementAssembler.cs" />
     <Compile Include="GeneratedAssemblers\medicationAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\matrizAssembler.cs" />
     <Compile Include="GeneratedAssemblers\masterrecommendationrestricctionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />

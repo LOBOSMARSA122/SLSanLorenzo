@@ -284,21 +284,27 @@
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar4" runat="server">
                                     <Items>
-                                        <x:Button ID="btnGrabarRayosX" Text="Grabar Rayos X" Icon="SystemSave" runat="server" OnClick="btnGrabarRayosX_Click" AjaxLoadingType="Mask"></x:Button>                                   
+                                        <x:Button ID="btnGrabarRayosX" Text="Grabar Rayos X" Icon="SystemSave" runat="server" OnClick="btnGrabarRayosX_Click" AjaxLoadingType="Mask" Visible="true"></x:Button>                                   
                                         <x:FileUpload runat="server" ID="fileDocRX" EmptyText="Por favor seleccione un archivo" Width="300" Height="25"
-                                        Label="Seleccionar Excel" ButtonIcon="SystemSearch" OnFileSelected="fileDocRX_FileSelected" AutoPostBack="true" ButtonText="Subir Adjunto" Readonly="False">
+                                        Label="Seleccionar Archivo" ButtonIcon="SystemSearch" OnFileSelected="fileDocRX_FileSelected" AutoPostBack="true" ButtonText="Subir Placa" Readonly="False">
                                         </x:FileUpload>
-                                         <x:Button ID="btnDescargarRX" runat="server" Text="Descargar Adjuntos" Icon="ArrowDown"></x:Button>
-                                        <x:Label ID="Label746" runat="server" Text="....." ShowLabel="false"></x:Label>
-                                        <x:Label ID="llll" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
-                                        <x:DropDownList ID="ddlUsuarioGrabar" runat="server"></x:DropDownList>
-                                        <x:Button ID="btnReporteRX" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
+                                        
+                                         <x:FileUpload runat="server" ID="FileInforme" EmptyText="Por favor seleccione un archivo" Width="300" Height="25"
+                                        Label="Seleccionar Archivo" ButtonIcon="SystemSearch" OnFileSelected="FileInforme_FileSelected" AutoPostBack="true" ButtonText="Subir Informe" Readonly="False">
+                                        </x:FileUpload>
+                                        
+
+                                         <x:Button ID="btnDescargarRX" runat="server" Text="Descargar Adjuntos" Icon="ArrowDown" Visible="False"></x:Button>
+                                        <x:Label ID="Label746" runat="server" Text="....." ShowLabel="false" Visible="False"></x:Label>
+                                        <x:Label ID="llll" runat="server" Text="Firma Usuario" ShowLabel="false" Visible="False"></x:Label>
+                                        <x:DropDownList ID="ddlUsuarioGrabar" runat="server" Visible="true"></x:DropDownList>
+                                        <x:Button ID="btnReporteRX" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" Visible="False"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
                             <Items>
                             <x:Panel ID="Panel29" Title="DATOS DE LA PLACA: " EnableBackgroundColor="true" Height="40px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                 <Items>
                                     <x:Form ID="Form90" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
@@ -315,7 +321,7 @@
                                     </Items>
                             </x:Panel>
                             <x:Panel ID="Panel28" Title="LA RADIOGRAFÍA DE TÓRAX EN PROYECCIÓN FRONTAL EN INCIDENCIA POSTERO - ANTERIOR; MUESTRA: " EnableBackgroundColor="true" Height="250px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                 <Items>
                                     <x:Form ID="Form89" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
@@ -379,7 +385,7 @@
                                 </Items>
                               </x:Panel>
                             <x:Panel ID="Panel1" Title="DESCRIPCIÓN" EnableBackgroundColor="true" Height="40px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="true">
                                 <Items>
                                     <x:Form ID="Form2" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
@@ -396,7 +402,7 @@
                                     </Items>
                             </x:Panel>
                             <x:Panel ID="Panel64" Title="AUDITORÍA" EnableBackgroundColor="true" Height="90px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                     <Items>
                                         <x:Form ID="Form210" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
                                             <Rows>
@@ -429,7 +435,7 @@
                                 </x:Panel>
                             </Items>
                         </x:Tab>
-                        <x:Tab ID="TabOIT" BodyPadding="5px" Title="OIT" runat="server">
+                        <x:Tab ID="TabOIT" BodyPadding="5px" Title="OIT" runat="server" Enabled="False">
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar1" runat="server">
                                     <Items>
@@ -447,7 +453,7 @@
                             </Toolbars>
                             <Items>
                                 <x:Panel ID="Panel35" Title="DATOS DE LA PLACA: " EnableBackgroundColor="true" Height="100px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                     <Items>
                                                <x:Form ID="Form101" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
@@ -492,7 +498,7 @@
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel36" Title="II.  ANORMALIDADES PARENQUIMATOSAS" EnableBackgroundColor="true" Height="160px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="4" Layout="Table" >
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="4" Layout="Table" Visible="False">
                                     <Items>
                                                     <x:GroupPanel runat="server" Title="2.1. Zonas  Afectadas " ID="GroupPanel38" BoxFlex="1" Height="125"  Width="280">   
                                         <Items>
@@ -699,7 +705,7 @@
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel37" Title="III. ANORMALIDADES PLEURALES " EnableBackgroundColor="true" Height="35px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                     <Items>
                                         <x:Form ID="Form106" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                             <Rows>
@@ -715,7 +721,7 @@
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel38" Title="3.1. Placas Pleurales (0=Ninguna, D=Hemitórax derecho; I= Hemitórax izquierdo) " EnableBackgroundColor="true" Height="140px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="4" Layout="Table" >
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="4" Layout="Table" Visible="False">
                                     <Items>
                                     <x:GroupPanel runat="server" Title="-" ID="GroupPanel36" BoxFlex="1" Height="115"  Width="280">   
                                         <Items>
@@ -832,7 +838,7 @@
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel39" Title="" EnableBackgroundColor="true" Height="225px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="false" TableConfigColumns="4" Layout="Table" >
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="false" TableConfigColumns="4" Layout="Table" Visible="False">
                                     <Items>
                                          <x:GroupPanel runat="server" Title="-" ID="GroupPanel43" BoxFlex="1" Height="195"  Width="280">   
                                         <Items>
@@ -1115,7 +1121,7 @@
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel40" Title="3.2. Engrosamiento Difuso de la Pleura (0=Ninguna, D=Hemitórax derecho; I= Hemitórax izquierdo) " EnableBackgroundColor="true" Height="70px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="4" Layout="Table" >
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="4" Layout="Table" Visible="False">
                                     <Items>
                                           <x:GroupPanel runat="server" Title="-" ID="GroupPanel47" BoxFlex="1" Height="40"  Width="240">   
                                         <Items>
@@ -1173,7 +1179,7 @@
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel41" Title="" EnableBackgroundColor="true" Height="130px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="false" TableConfigColumns="4" Layout="Table" >
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="false" TableConfigColumns="4" Layout="Table" Visible="False">
                                     <Items>
                                          <x:GroupPanel runat="server" Title="-" ID="GroupPanel51" BoxFlex="1" Height="100"  Width="240">   
                                         <Items>
@@ -1339,7 +1345,7 @@
                                    </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel42" Title="IV. SIMBOLOS * " EnableBackgroundColor="true" Height="35px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                     <Items>
                                         <x:Form ID="Form123" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
@@ -1355,7 +1361,7 @@
                                     </Items>
                                 </x:Panel>
                                  <x:Panel ID="Panel43" Title="(Marque la respuesta adecuada; si marcaa od, escriba a continuación un COMENTARIO) " EnableBackgroundColor="true" Height="105px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="2" Layout="Table" >
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="2" Layout="Table" Visible="False">
                                     <Items>
                                         <x:GroupPanel runat="server" Title="-" ID="GroupPanel55" BoxFlex="1" Height="75"  Width="900">   
                                         <Items>
@@ -1451,7 +1457,7 @@
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel44" Title="COMENTARIOS " EnableBackgroundColor="true" Height="35px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                 <Items>
                                     <x:Form ID="Form127" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
@@ -1467,7 +1473,7 @@
                                     </Items>
                                 </x:Panel>
                                   <x:Panel ID="Panel83" Title="HALLAZGOS" EnableBackgroundColor="true" Height="40px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                     <Items>
                                          <x:Form ID="Form4" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="180px" LabelAlign="Left">
                                             <Rows>
@@ -1481,7 +1487,7 @@
                                     </Items>
                                 </x:Panel>  
                                 <x:Panel ID="Panel65" Title="AUDITORÍA" EnableBackgroundColor="true" Height="60px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
                                     <Items>
                                         <x:Form ID="Form211" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
                                             <Rows>
