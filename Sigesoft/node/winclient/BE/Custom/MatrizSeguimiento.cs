@@ -55,10 +55,10 @@ namespace Sigesoft.Node.WinClient.BE
         public decimal Cintura { get; set; }
         public decimal Cadera { get; set; }
         public decimal ICC { get; set; }
-        public int Sistolica { get; set; }
+        public string Sistolica { get; set; }
         public string Sistolica_CIE10 { get; set; }
         public string Sistolica_Obs { get; set; }
-        public int Diastolica { get; set; }
+        public string Diastolica { get; set; }
         public string Diastolica_CIE10 { get; set; }
         public string Diastolica_Obs { get; set; }
         public decimal FC { get; set; }
