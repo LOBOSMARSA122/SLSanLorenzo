@@ -1371,8 +1371,8 @@ namespace Sigesoft.Common
         #endregion
 
         public const string OFTALMOLOGIA_ID = "N002-ME000000028";
-        public const string OFTALMOLOGIA_NORMAL = "N009-MF000000711";
-        public const string OFTALMOLOGIA_ANORMAL = "N009-MF000000712";
+        public const string OFTALMOLOGIA_NORMAL = "N009-MF000000717";
+        public const string OFTALMOLOGIA_ANORMAL = "N009-MF000000718";
         public const string OFTALMOLOGIA_DESCRIPCION = "N009-MF000000261";
         public const string OFTALMOLOGIA_EMETROPE = "N009-MF000002071";
         public const string OFTALMOLOGIA_PRESBICIA_CORREGIDA = "N009-MF000002073";
@@ -1422,8 +1422,8 @@ namespace Sigesoft.Common
         public const string TEST_ISHIHARA_TEST = "N002-MF000000256";
         public const string TEST_ISHIHARA_DESC = "N009-MF000000522";
 
-        public const string TEST_ISHIHARA_NORMAL = "N009-MF000000717";
-        public const string TEST_ISHIHARA_ANORMAL = "N009-MF000000718";
+        public const string TEST_ISHIHARA_NORMAL = "N009-MF000000711";
+        public const string TEST_ISHIHARA_ANORMAL = "N009-MF000000712";
         #endregion
 
         #region Test Estereopsis
@@ -2038,6 +2038,7 @@ namespace Sigesoft.Common
         public const string EXAMEN_FISICO_7C_RIESGO_BIOLOGICO = "N009-MF000001830";
         public const string EXAMEN_FISICO_7C_RIESGO_ERGONOMICO = "N009-MF000001831";
         public const string EXAMEN_FISICO_7C_RIESGO_PSICOLABORAL = "N009-MF000001832";
+        public const string EXAMEN_FISICO_7C_PSICOLOGIA = "N009-MF000003264";
         #endregion
 
         public const string MAMOGRAFIA_ID = "N009-ME000000014";
@@ -3908,6 +3909,13 @@ namespace Sigesoft.Common
         public const string Testdeansiedad_ID = "N002-ME000000039";
         public const string Testdedepresion_ID = "N002-ME000000037";
         public const string CuestionarioAutoeva_ID = "N009-ME000000310";
+
+        #region INMUNIZACIONES ANEXO16
+        public const string TETANO_ANEXO16_ID = "N009-MF000003190";
+        public const string INFLUENZA_ANEXO16_ID = "N009-MF000003191";
+        public const string HEPATITISB_ANEXO16_ID = "N009-MF000003192";
+        public const string FIEBAMARILLA_ANEXO16_ID = "N009-MF000003193";
+        #endregion
 
         #region Internacional IDS
 

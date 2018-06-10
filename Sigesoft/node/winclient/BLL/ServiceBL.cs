@@ -25036,7 +25036,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							   REFLEJOS_PUPILARES_ANORMAL = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000000712") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N009-MF000000712").v_Value1,
 
-							   REFLEJOS_PUPILARES_DESCRIPCION = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1,
+                               REFLEJOS_PUPILARES_DESCRIPCION = EvaEnu.Count == 0 || EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : EvaEnu.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1Name,
 
 							   LogoEmpresa = MedicalCenter.b_Image,
 							   Dx = GetDiagnosticByServiceIdAndCategoryId(pstrserviceId, 14),

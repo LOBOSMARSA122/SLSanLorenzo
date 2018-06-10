@@ -3507,7 +3507,7 @@ namespace NetPdf
                     ValorMiembrosInferiores = MiembrosInferiores.v_Value1;
                 }
 
-                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION);
+                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
                 if (Cardio != null)
                 {
                     ValorCardio = Cardio.v_Value1;
@@ -3726,7 +3726,7 @@ namespace NetPdf
                 var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
-                    ValorReflejosPupilares = Reflejos.v_Value1;
+                    ValorReflejosPupilares = Reflejos.v_Value1Name;
                 }
 
             #endregion
@@ -3892,7 +3892,30 @@ namespace NetPdf
             var ComentPadre = "";
             var ComentMadre = "";
             var ComentHermanos = "";
-
+               #region Inmunizaciones
+            ServiceComponentList findInmunizaciones = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+            string ValorTetano = "", ValorInfluenza = "", ValorHepB = "", ValorFiebAm = "";
+            var tetano = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TETANO_ANEXO16_ID);
+            if (tetano != null)
+                {
+                    if (tetano.v_Value1 != null) ValorTetano = tetano.v_Value1;
+                }
+            var influenza = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFLUENZA_ANEXO16_ID);
+            if (influenza != null)
+                {
+                    if (influenza.v_Value1 != null) ValorInfluenza = influenza.v_Value1;
+                }
+            var HepB = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITISB_ANEXO16_ID);
+            if (HepB != null)
+            {
+                if (HepB.v_Value1 != null) ValorHepB = HepB.v_Value1;
+            }
+            var FiebAm = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FIEBAMARILLA_ANEXO16_ID);
+            if (FiebAm != null)
+            {
+                if (FiebAm.v_Value1 != null) ValorFiebAm = FiebAm.v_Value1;
+            }
+            #endregion
             dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
             dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
             dxHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_DiseaseName;
@@ -3922,7 +3945,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorTetano, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -3933,7 +3956,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorInfluenza, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -3944,12 +3967,12 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorHepB, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("FIEBRE AMARILLA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorFiebAm, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
@@ -4326,7 +4349,7 @@ namespace NetPdf
                     new PdfPCell(DrogasExcesivo){Rowspan=0,Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },              
                     new PdfPCell(new Phrase(ValorIMC, fontColumnValue)){Rowspan=0,Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase("FEF 25-75%", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorFEF25_75, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorFEF25_75 +" %", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CADERA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                     new PdfPCell(new Phrase(ValorCadera, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                  
@@ -4405,7 +4428,7 @@ namespace NetPdf
 
 
             ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_ISHIHARA_ID);
+            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
             string ValorDxOftalmologia = "";
@@ -4425,43 +4448,43 @@ namespace NetPdf
                 var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
                 if (OI_VC_SC != null)
                 {
-                    if (OI_VC_SC.v_Value1 != null) ValorOI_VC_SC = OI_VC_SC.v_Value1;
+                    if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
                 }
 
                 var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
                 if (OD_VC_CC != null)
                 {
-                    if (OD_VC_CC.v_Value1 != null) ValorOD_VC_CC = OD_VC_CC.v_Value1;
+                    if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
                 }
 
                 var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
                 if (OI_VC_CC != null)
                 {
-                    if (OI_VC_CC.v_Value1 != null) ValorOI_VC_CC = OI_VC_CC.v_Value1;
+                    if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
                 }
 
                 var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_SC != null)
                 {
-                    if (OD_VL_SC.v_Value1 != null) ValorOD_VL_SC = OD_VL_SC.v_Value1;
+                    if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
                 }
 
                 var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_SC != null)
                 {
-                    if (OI_VL_SC.v_Value1 != null) ValorOI_VL_SC = OI_VL_SC.v_Value1;
+                    if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
                 }
 
                 var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_CC != null)
                 {
-                    if (OD_VL_CC.v_Value1 != null) ValorOD_VL_CC = OD_VL_CC.v_Value1;
+                    if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
                 }
 
                 var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_CC != null)
                 {
-                    if (OI_VL_CC.v_Value1 != null) ValorOI_VL_CC = OI_VL_CC.v_Value1;
+                    if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
                 }
 
                 if (DxCateodiaOftalmologia != null)
@@ -4494,17 +4517,17 @@ namespace NetPdf
                 {
                     string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
                     string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
-                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
 
 
                     if (TestIshiharaNormal == "1")
                     {
-                        ValorDiscromatopsia = "NORMAL";
+                        ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                     else if (TestIshiharaAnormal == "1")
                     {
 
-                        ValorDiscromatopsia = " ANORMAL" + " DISCROMATOPSIA: " + Dicromatopsia;
+                        ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                 }
                 else
@@ -4532,14 +4555,14 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorDxOftalmologia, fontColumnValue)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
@@ -5178,7 +5201,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOD, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -5189,7 +5212,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOI, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -5206,7 +5229,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("Sat. O2", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("%", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("DIASTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPAD + "mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -5303,40 +5326,24 @@ namespace NetPdf
             #region Anillos
 
             #region Psicologia
-            string ValorAreaCognitiva = "", ValorAreaEmocional = "", ValorConclusionPsicologia = "";
+            string ValorAreaCognitiva = "";
             string ConcatenadoPsicologia = "";
 
-            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
             if (findPsicologia != null)
             {
-                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID);
+                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_PSICOLOGIA);
                 if (AreaCognitiva != null)
                 {
-                    ValorAreaCognitiva = AreaCognitiva.v_Value1Name + ", ";
+                    ValorAreaCognitiva = AreaCognitiva.v_Value1;
                 }
 
-                var AreaEmocional = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID);
-                if (AreaEmocional != null)
-                {
-                    ValorAreaEmocional = AreaEmocional.v_Value1Name + ", ";
-                }
-
-                var ConclusionPsicologia = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_CONCLUSIONES_ID);
-                if (ConclusionPsicologia != null)
-                {
-                    ValorConclusionPsicologia = ConclusionPsicologia.v_Value1 + ", ";
-                }
-
-
-                ConcatenadoPsicologia = ValorAreaCognitiva + ValorAreaEmocional + ValorConclusionPsicologia;
+                ConcatenadoPsicologia = ValorAreaCognitiva;
                 if (ConcatenadoPsicologia != string.Empty)
                 {
                     ConcatenadoPsicologia.Substring(0, ConcatenadoPsicologia.Length - 3);
                 }
             }
-
-
-
             #endregion
             cells = new List<PdfPCell>()
                  {
@@ -7698,7 +7705,7 @@ namespace NetPdf
                     ValorMiembrosInferiores = MiembrosInferiores.v_Value1;
                 }
 
-                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION);
+                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
                 if (Cardio != null)
                 {
                     ValorCardio = Cardio.v_Value1;
@@ -7924,7 +7931,7 @@ namespace NetPdf
                 var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
-                    ValorReflejosPupilares = Reflejos.v_Value1;
+                    ValorReflejosPupilares = Reflejos.v_Value1Name;
                 }
             #endregion
 
@@ -8078,7 +8085,30 @@ namespace NetPdf
             var ComentPadre = "";
             var ComentMadre = "";
             var ComentHermanos = "";
-
+            #region Inmunizaciones
+            ServiceComponentList findInmunizaciones = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+            string ValorTetano = "", ValorInfluenza = "", ValorHepB = "", ValorFiebAm = "";
+            var tetano = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TETANO_ANEXO16_ID);
+            if (tetano != null)
+                {
+                    if (tetano.v_Value1 != null) ValorTetano = tetano.v_Value1;
+                }
+            var influenza = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFLUENZA_ANEXO16_ID);
+            if (influenza != null)
+                {
+                    if (influenza.v_Value1 != null) ValorInfluenza = influenza.v_Value1;
+                }
+            var HepB = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITISB_ANEXO16_ID);
+            if (HepB != null)
+            {
+                if (HepB.v_Value1 != null) ValorHepB = HepB.v_Value1;
+            }
+            var FiebAm = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FIEBAMARILLA_ANEXO16_ID);
+            if (FiebAm != null)
+            {
+                if (FiebAm.v_Value1 != null) ValorFiebAm = FiebAm.v_Value1;
+            }
+            #endregion
             dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
             dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
             dxHermanos = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "HERMANOS")[0].v_DiseaseName;
@@ -8108,7 +8138,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorTetano, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -8119,7 +8149,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorInfluenza, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -8130,12 +8160,12 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorHepB, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("FIEBRE AMARILLA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorFiebAm, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
@@ -8531,7 +8561,7 @@ namespace NetPdf
                     new PdfPCell(DrogasExcesivo){Rowspan=0,Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },              
                     new PdfPCell(new Phrase(ValorIMC, fontColumnValue)){Rowspan=0,Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase("FEF 25-75%", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorFEF25_75, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorFEF25_75 +" %", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CADERA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                     new PdfPCell(new Phrase(ValorCadera + " cm.", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                  
@@ -8546,20 +8576,20 @@ namespace NetPdf
                     
                     //Linea
                     new PdfPCell(new Phrase("Frecuencia Cardíaca:", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase("Presión Arterial Sistémica", fontColumnValue)){Colspan=5 ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
                     new PdfPCell(new Phrase("Frecuencia Respiratoria:", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase("Sistólica", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorPAS,fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorPAS + " mmHg",fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //Linea
                     new PdfPCell(new Phrase("Sat. O2:", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase("Diastólica", fontColumnValue)){Colspan=2 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorPAD , fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorPAD + "mmHg" , fontColumnValue)){Colspan=3 ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                   
                  };
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 20f, 8f, 8f };
@@ -8623,7 +8653,7 @@ namespace NetPdf
 
 
             ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_ISHIHARA_ID);
+            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
             var Oftalmo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
             
 
@@ -8639,49 +8669,49 @@ namespace NetPdf
                 var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
                 if (OD_VC_SC != null)
                 {
-                    if (OD_VC_SC.v_Value1 != null) ValorOD_VC_SC = OD_VC_SC.v_Value1;
+                    if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
                 }
 
                 var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
                 if (OI_VC_SC != null)
                 {
-                    if (OI_VC_SC.v_Value1 != null) ValorOI_VC_SC = OI_VC_SC.v_Value1;
+                    if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
                 }
 
                 var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
                 if (OD_VC_CC != null)
                 {
-                    if (OD_VC_CC.v_Value1 != null) ValorOD_VC_CC = OD_VC_CC.v_Value1;
+                    if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
                 }
 
                 var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
                 if (OI_VC_CC != null)
                 {
-                    if (OI_VC_CC.v_Value1 != null) ValorOI_VC_CC = OI_VC_CC.v_Value1;
+                    if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
                 }
 
                 var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_SC != null)
                 {
-                    if (OD_VL_SC.v_Value1 != null) ValorOD_VL_SC = OD_VL_SC.v_Value1;
+                    if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
                 }
 
                 var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_SC != null)
                 {
-                    if (OI_VL_SC.v_Value1 != null) ValorOI_VL_SC = OI_VL_SC.v_Value1;
+                    if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
                 }
 
                 var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_CC != null)
                 {
-                    if (OD_VL_CC.v_Value1 != null) ValorOD_VL_CC = OD_VL_CC.v_Value1;
+                    if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
                 }
 
                 var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_CC != null)
                 {
-                    if (OI_VL_CC.v_Value1 != null) ValorOI_VL_CC = OI_VL_CC.v_Value1;
+                    if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
                 }
 
                 if (DxCateodiaOftalmologia != null)
@@ -8714,17 +8744,17 @@ namespace NetPdf
                 {
                     string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
                     string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
-                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
                    
 
                     if (TestIshiharaNormal == "1")
                     {
-                        ValorDiscromatopsia = "NORMAL";
+                        ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                     else if (TestIshiharaAnormal == "1")
                     {
 
-                        ValorDiscromatopsia = " ANORMAL" + " DISCROMATOPSIA: " + Dicromatopsia;
+                        ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                 }
                 else
@@ -8754,7 +8784,7 @@ namespace NetPdf
                                 ? ""
                                 : Oftalmo.ServiceComponentFields.Find(
                                     p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I).v_Value1;
-                         ValorTonometria = "OD " + od + " / OI " + oi;    
+                  ValorTonometria = "OD: " + od + " / OI: " + oi + " (mmHg)";    
                         }
 
                    
@@ -8783,7 +8813,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorReflejosPupilares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
@@ -8791,7 +8821,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorFondoDeOjo, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
@@ -9241,7 +9271,7 @@ namespace NetPdf
                     
                     //Linea
                     new PdfPCell(new Phrase("APARATO CARDIOVASCULAR", fontColumnValueBold)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT}  ,
-                    new PdfPCell(new Phrase(ValorMiembrosSuperiores, fontColumnValue)){Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT}    , 
+                    new PdfPCell(new Phrase(ValorCardio, fontColumnValue)){Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT}    , 
                     
                     //Linea
                     new PdfPCell(new Phrase("MIEMBROS SUPERIORES", fontColumnValueBold)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT}  ,
@@ -9306,40 +9336,24 @@ namespace NetPdf
             #region Anillos
 
             #region Psicologia
-            string ValorAreaCognitiva = "", ValorAreaEmocional = "", ValorConclusionPsicologia = "";
+            string ValorAreaCognitiva = "";
             string ConcatenadoPsicologia = "";
 
-            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
             if (findPsicologia != null)
             {
-                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID);
+                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_PSICOLOGIA);
                 if (AreaCognitiva != null)
                 {
-                    ValorAreaCognitiva = AreaCognitiva.v_Value1Name + ", ";
+                    ValorAreaCognitiva = AreaCognitiva.v_Value1;
                 }
 
-                var AreaEmocional = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID);
-                if (AreaEmocional != null)
-                {
-                    ValorAreaEmocional = AreaEmocional.v_Value1Name + ", ";
-                }
-
-                var ConclusionPsicologia = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_CONCLUSIONES_ID);
-                if (ConclusionPsicologia != null)
-                {
-                    ValorConclusionPsicologia = ConclusionPsicologia.v_Value1 + ", ";
-                }
-
-
-                ConcatenadoPsicologia = ValorAreaCognitiva + ValorAreaEmocional + ValorConclusionPsicologia;
+                ConcatenadoPsicologia = ValorAreaCognitiva;
                 if (ConcatenadoPsicologia != string.Empty)
                 {
                     ConcatenadoPsicologia.Substring(0, ConcatenadoPsicologia.Length - 3);
                 }
             }
-
-
-
             #endregion
             cells = new List<PdfPCell>()
                  {
@@ -10809,7 +10823,7 @@ namespace NetPdf
                     ValorMiembrosInferiores = MiembrosInferiores.v_Value1;
                 }
 
-                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION);
+                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
                 if (Cardio != null)
                 {
                     ValorCardio = Cardio.v_Value1;
@@ -11028,7 +11042,7 @@ namespace NetPdf
                 var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
-                    ValorReflejosPupilares = Reflejos.v_Value1;
+                    ValorReflejosPupilares = Reflejos.v_Value1Name;
                 }
             #endregion
 
@@ -11387,6 +11401,30 @@ namespace NetPdf
             var ComentPadre = "";
             var ComentMadre = "";
             var ComentHermanos = "";
+            #region Inmunizaciones
+            ServiceComponentList findInmunizaciones = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+            string ValorTetano = "", ValorInfluenza = "", ValorHepB = "", ValorFiebAm = "";
+            var tetano = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TETANO_ANEXO16_ID);
+            if (tetano != null)
+            {
+                if (tetano.v_Value1 != null) ValorTetano = tetano.v_Value1;
+            }
+            var influenza = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFLUENZA_ANEXO16_ID);
+            if (influenza != null)
+            {
+                if (influenza.v_Value1 != null) ValorInfluenza = influenza.v_Value1;
+            }
+            var HepB = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITISB_ANEXO16_ID);
+            if (HepB != null)
+            {
+                if (HepB.v_Value1 != null) ValorHepB = HepB.v_Value1;
+            }
+            var FiebAm = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FIEBAMARILLA_ANEXO16_ID);
+            if (FiebAm != null)
+            {
+                if (FiebAm.v_Value1 != null) ValorFiebAm = FiebAm.v_Value1;
+            }
+            #endregion
 
             dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
             dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
@@ -11417,7 +11455,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorTetano, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -11428,7 +11466,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorInfluenza, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -11439,12 +11477,12 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorHepB, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("FIEBRE AMARILLA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorFiebAm, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
@@ -11847,7 +11885,7 @@ namespace NetPdf
 
 
             ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_ISHIHARA_ID);
+            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
             string ValorDxOftalmologia = "";
@@ -11861,49 +11899,49 @@ namespace NetPdf
                 var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
                 if (OD_VC_SC != null)
                 {
-                    if (OD_VC_SC.v_Value1 != null) ValorOD_VC_SC = OD_VC_SC.v_Value1;
+                    if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
                 }
 
                 var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
                 if (OI_VC_SC != null)
                 {
-                    if (OI_VC_SC.v_Value1 != null) ValorOI_VC_SC = OI_VC_SC.v_Value1;
+                    if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
                 }
 
                 var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
                 if (OD_VC_CC != null)
                 {
-                    if (OD_VC_CC.v_Value1 != null) ValorOD_VC_CC = OD_VC_CC.v_Value1;
+                    if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
                 }
 
                 var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
                 if (OI_VC_CC != null)
                 {
-                    if (OI_VC_CC.v_Value1 != null) ValorOI_VC_CC = OI_VC_CC.v_Value1;
+                    if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
                 }
 
                 var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_SC != null)
                 {
-                    if (OD_VL_SC.v_Value1 != null) ValorOD_VL_SC = OD_VL_SC.v_Value1;
+                    if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
                 }
 
                 var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_SC != null)
                 {
-                    if (OI_VL_SC.v_Value1 != null) ValorOI_VL_SC = OI_VL_SC.v_Value1;
+                    if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
                 }
 
                 var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_CC != null)
                 {
-                    if (OD_VL_CC.v_Value1 != null) ValorOD_VL_CC = OD_VL_CC.v_Value1;
+                    if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
                 }
 
                 var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_CC != null)
                 {
-                    if (OI_VL_CC.v_Value1 != null) ValorOI_VL_CC = OI_VL_CC.v_Value1;
+                    if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
                 }
 
                 if (DxCateodiaOftalmologia != null)
@@ -11936,17 +11974,17 @@ namespace NetPdf
                 {
                     string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
                     string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
-                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
 
 
                     if (TestIshiharaNormal == "1")
                     {
-                        ValorDiscromatopsia = "NORMAL";
+                        ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                     else if (TestIshiharaAnormal == "1")
                     {
 
-                        ValorDiscromatopsia = " ANORMAL" + " DISCROMATOPSIA: " + Dicromatopsia;
+                        ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                 }
                 else
@@ -11974,14 +12012,14 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorDxOftalmologia, fontColumnValue)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
@@ -12382,7 +12420,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOD, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -12393,7 +12431,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOI, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -12410,7 +12448,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("Sat. O2", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("%", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("DIASTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPAD + "mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -12518,40 +12556,24 @@ namespace NetPdf
             #region Anillos
 
             #region Psicologia
-            string ValorAreaCognitiva = "", ValorAreaEmocional = "", ValorConclusionPsicologia = "";
+            string ValorAreaCognitiva = "";
             string ConcatenadoPsicologia = "";
 
-            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
             if (findPsicologia != null)
             {
-                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID);
+                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_PSICOLOGIA);
                 if (AreaCognitiva != null)
                 {
-                    ValorAreaCognitiva = AreaCognitiva.v_Value1Name + ", ";
+                    ValorAreaCognitiva = AreaCognitiva.v_Value1;
                 }
 
-                var AreaEmocional = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID);
-                if (AreaEmocional != null)
-                {
-                    ValorAreaEmocional = AreaEmocional.v_Value1Name + ", ";
-                }
-
-                var ConclusionPsicologia = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_CONCLUSIONES_ID);
-                if (ConclusionPsicologia != null)
-                {
-                    ValorConclusionPsicologia = ConclusionPsicologia.v_Value1 + ", ";
-                }
-
-
-                ConcatenadoPsicologia = ValorAreaCognitiva + ValorAreaEmocional + ValorConclusionPsicologia;
+                ConcatenadoPsicologia = ValorAreaCognitiva;
                 if (ConcatenadoPsicologia != string.Empty)
                 {
                     ConcatenadoPsicologia.Substring(0, ConcatenadoPsicologia.Length - 3);
                 }
             }
-
-
-
             #endregion
             cells = new List<PdfPCell>()
                  {
@@ -13926,7 +13948,7 @@ namespace NetPdf
                     ValorMiembrosInferiores = MiembrosInferiores.v_Value1;
                 }
 
-                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION);
+                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
                 if (Cardio != null)
                 {
                     ValorCardio = Cardio.v_Value1;
@@ -14145,7 +14167,7 @@ namespace NetPdf
                 var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                 if (Reflejos != null)
                 {
-                    ValorReflejosPupilares = Reflejos.v_Value1;
+                    ValorReflejosPupilares = Reflejos.v_Value1Name;
                 }
 
             #endregion
@@ -14347,6 +14369,31 @@ namespace NetPdf
             var ComentPadre = "";
             var ComentMadre = "";
             var ComentHermanos = "";
+               #region Inmunizaciones
+            ServiceComponentList findInmunizaciones = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+            string ValorTetano = "", ValorInfluenza = "", ValorHepB = "", ValorFiebAm = "";
+            var tetano = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TETANO_ANEXO16_ID);
+            if (tetano != null)
+                {
+                    if (tetano.v_Value1 != null) ValorTetano = tetano.v_Value1;
+                }
+            var influenza = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFLUENZA_ANEXO16_ID);
+            if (influenza != null)
+                {
+                    if (influenza.v_Value1 != null) ValorInfluenza = influenza.v_Value1;
+                }
+            var HepB = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITISB_ANEXO16_ID);
+            if (HepB != null)
+            {
+                if (HepB.v_Value1 != null) ValorHepB = HepB.v_Value1;
+            }
+            var FiebAm = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FIEBAMARILLA_ANEXO16_ID);
+            if (FiebAm != null)
+            {
+                if (FiebAm.v_Value1 != null) ValorFiebAm = FiebAm.v_Value1;
+            }
+            #endregion
+
 
             dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
             dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
@@ -14377,7 +14424,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorTetano, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -14388,7 +14435,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorInfluenza, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -14399,12 +14446,12 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorHepB, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("FIEBRE AMARILLA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorFiebAm, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
@@ -14802,7 +14849,7 @@ namespace NetPdf
                     new PdfPCell(DrogasExcesivo){Rowspan=0,Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },              
                     new PdfPCell(new Phrase(ValorIMC, fontColumnValue)){Rowspan=0,Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase("FEF 25-75%", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorFEF25_75, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorFEF25_75 +" %", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CADERA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                     new PdfPCell(new Phrase(ValorCadera, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                  
@@ -14881,7 +14928,7 @@ namespace NetPdf
 
 
             ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_ISHIHARA_ID);
+            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
             string ValorDxOftalmologia = "";
@@ -14895,49 +14942,49 @@ namespace NetPdf
                 var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
                 if (OD_VC_SC != null)
                 {
-                    if (OD_VC_SC.v_Value1 != null) ValorOD_VC_SC = OD_VC_SC.v_Value1;
+                    if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
                 }
 
                 var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
                 if (OI_VC_SC != null)
                 {
-                    if (OI_VC_SC.v_Value1 != null) ValorOI_VC_SC = OI_VC_SC.v_Value1;
+                    if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
                 }
 
                 var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
                 if (OD_VC_CC != null)
                 {
-                    if (OD_VC_CC.v_Value1 != null) ValorOD_VC_CC = OD_VC_CC.v_Value1;
+                    if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
                 }
 
                 var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
                 if (OI_VC_CC != null)
                 {
-                    if (OI_VC_CC.v_Value1 != null) ValorOI_VC_CC = OI_VC_CC.v_Value1;
+                    if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
                 }
 
                 var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_SC != null)
                 {
-                    if (OD_VL_SC.v_Value1 != null) ValorOD_VL_SC = OD_VL_SC.v_Value1;
+                    if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
                 }
 
                 var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_SC != null)
                 {
-                    if (OI_VL_SC.v_Value1 != null) ValorOI_VL_SC = OI_VL_SC.v_Value1;
+                    if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
                 }
 
                 var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_CC != null)
                 {
-                    if (OD_VL_CC.v_Value1 != null) ValorOD_VL_CC = OD_VL_CC.v_Value1;
+                    if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
                 }
 
                 var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_CC != null)
                 {
-                    if (OI_VL_CC.v_Value1 != null) ValorOI_VL_CC = OI_VL_CC.v_Value1;
+                    if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
                 }
 
                 if (DxCateodiaOftalmologia != null)
@@ -14970,17 +15017,17 @@ namespace NetPdf
                 {
                     string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
                     string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
-                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
 
 
                     if (TestIshiharaNormal == "1")
                     {
-                        ValorDiscromatopsia = "NORMAL";
+                        ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                     else if (TestIshiharaAnormal == "1")
                     {
 
-                        ValorDiscromatopsia = " ANORMAL" + " DISCROMATOPSIA: " + Dicromatopsia;
+                        ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                 }
                 else
@@ -15007,7 +15054,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorReflejosPupilares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
@@ -15015,7 +15062,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("VISIÓN DE PROFUNDIDAD", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorFondoDeOjo, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
@@ -15459,7 +15506,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOD, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -15470,7 +15517,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOI, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -15487,7 +15534,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("Sat. O2", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("%", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("DIASTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPAD + "mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -15619,40 +15666,24 @@ namespace NetPdf
             #region Anillos
 
             #region Psicologia
-            string ValorAreaCognitiva = "", ValorAreaEmocional = "", ValorConclusionPsicologia = "";
+            string ValorAreaCognitiva = "";
             string ConcatenadoPsicologia = "";
 
-            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
             if (findPsicologia != null)
             {
-                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID);
+                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_PSICOLOGIA);
                 if (AreaCognitiva != null)
                 {
-                    ValorAreaCognitiva = AreaCognitiva.v_Value1Name + ", ";
+                    ValorAreaCognitiva = AreaCognitiva.v_Value1;
                 }
 
-                var AreaEmocional = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID);
-                if (AreaEmocional != null)
-                {
-                    ValorAreaEmocional = AreaEmocional.v_Value1Name + ", ";
-                }
-
-                var ConclusionPsicologia = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_CONCLUSIONES_ID);
-                if (ConclusionPsicologia != null)
-                {
-                    ValorConclusionPsicologia = ConclusionPsicologia.v_Value1 + ", ";
-                }
-
-
-                ConcatenadoPsicologia = ValorAreaCognitiva + ValorAreaEmocional + ValorConclusionPsicologia;
+                ConcatenadoPsicologia = ValorAreaCognitiva;
                 if (ConcatenadoPsicologia != string.Empty)
                 {
                     ConcatenadoPsicologia.Substring(0, ConcatenadoPsicologia.Length - 3);
                 }
             }
-
-
-
             #endregion
             cells = new List<PdfPCell>()
                  {
@@ -17140,7 +17171,7 @@ namespace NetPdf
                     ValorMiembrosInferiores = MiembrosInferiores.v_Value1;
                 }
 
-                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_TACTO_RECTAL_DESCRIPCION);
+                var Cardio = find7C.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_EXAMEN_FISICO_REFLEJOS_PUPILARES_DESCRIPCION);
                 if (Cardio != null)
                 {
                     ValorCardio = Cardio.v_Value1;
@@ -17361,7 +17392,7 @@ namespace NetPdf
                     var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
                     if (Reflejos != null)
                     {
-                        ValorReflejosPupilares = Reflejos.v_Value1;
+                        ValorReflejosPupilares = Reflejos.v_Value1Name;
                     }
                 }
                 else
@@ -17569,6 +17600,30 @@ namespace NetPdf
             var ComentPadre = "";
             var ComentMadre = "";
             var ComentHermanos = "";
+                #region Inmunizaciones
+            ServiceComponentList findInmunizaciones = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+            string ValorTetano = "", ValorInfluenza = "", ValorHepB = "", ValorFiebAm = "";
+            var tetano = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TETANO_ANEXO16_ID);
+            if (tetano != null)
+                {
+                    if (tetano.v_Value1 != null) ValorTetano = tetano.v_Value1;
+                }
+            var influenza = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFLUENZA_ANEXO16_ID);
+            if (influenza != null)
+                {
+                    if (influenza.v_Value1 != null) ValorInfluenza = influenza.v_Value1;
+                }
+            var HepB = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITISB_ANEXO16_ID);
+            if (HepB != null)
+            {
+                if (HepB.v_Value1 != null) ValorHepB = HepB.v_Value1;
+            }
+            var FiebAm = findInmunizaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FIEBAMARILLA_ANEXO16_ID);
+            if (FiebAm != null)
+            {
+                if (FiebAm.v_Value1 != null) ValorFiebAm = FiebAm.v_Value1;
+            }
+            #endregion
 
             dxPadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "PADRE").Count == 0 ? "" : listaPatologicosFamiliares.Find(p => p.v_TypeFamilyName == "PADRE").v_DiseaseName;
             dxMadre = listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE").Count == 0 ? "" : listaPatologicosFamiliares.FindAll(p => p.v_TypeFamilyName == "MADRE")[0].v_DiseaseName;
@@ -17599,7 +17654,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("TETANO", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("3", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorTetano, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Vivos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("Muertos", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -17610,7 +17665,7 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("INFLUENZA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("1", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorInfluenza, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosVivos.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase(DataService.HijosDependientes.ToString(), fontColumnValue)) { Colspan = 1, Rowspan = 3, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
@@ -17621,12 +17676,12 @@ namespace NetPdf
             //cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             //cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorHepB, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
 
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("FIEBRE AMARILLA", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-            cells.Add(new PdfPCell(new Phrase("0", fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase(ValorFiebAm, fontColumnValue)) { Colspan = 1, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable, columnHeaders);
@@ -17988,7 +18043,7 @@ namespace NetPdf
                     new PdfPCell(DrogasExcesivo){Rowspan=0,Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },              
                     new PdfPCell(new Phrase(ValorIMC, fontColumnValue)){Rowspan=0,Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase("FEF 25-75%", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase(ValorFEF25_75, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorFEF25_75 +" %", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CADERA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                     new PdfPCell(new Phrase(ValorCadera, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                  
@@ -18063,7 +18118,7 @@ namespace NetPdf
 
 
             ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_ISHIHARA_ID);
+            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
             string ValorDxOftalmologia = "";
@@ -18077,49 +18132,49 @@ namespace NetPdf
                 var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
                 if (OD_VC_SC != null)
                 {
-                    if (OD_VC_SC.v_Value1 != null) ValorOD_VC_SC = OD_VC_SC.v_Value1;
+                    if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
                 }
 
                 var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
                 if (OI_VC_SC != null)
                 {
-                    if (OI_VC_SC.v_Value1 != null) ValorOI_VC_SC = OI_VC_SC.v_Value1;
+                    if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
                 }
 
                 var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
                 if (OD_VC_CC != null)
                 {
-                    if (OD_VC_CC.v_Value1 != null) ValorOD_VC_CC = OD_VC_CC.v_Value1;
+                    if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
                 }
 
                 var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
                 if (OI_VC_CC != null)
                 {
-                    if (OI_VC_CC.v_Value1 != null) ValorOI_VC_CC = OI_VC_CC.v_Value1;
+                    if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
                 }
 
                 var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_SC != null)
                 {
-                    if (OD_VL_SC.v_Value1 != null) ValorOD_VL_SC = OD_VL_SC.v_Value1;
+                    if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
                 }
 
                 var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_SC != null)
                 {
-                    if (OI_VL_SC.v_Value1 != null) ValorOI_VL_SC = OI_VL_SC.v_Value1;
+                    if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
                 }
 
                 var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
                 if (OD_VL_CC != null)
                 {
-                    if (OD_VL_CC.v_Value1 != null) ValorOD_VL_CC = OD_VL_CC.v_Value1;
+                    if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
                 }
 
                 var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
                 if (OI_VL_CC != null)
                 {
-                    if (OI_VL_CC.v_Value1 != null) ValorOI_VL_CC = OI_VL_CC.v_Value1;
+                    if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
                 }
 
                 if (DxCateodiaOftalmologia != null)
@@ -18152,17 +18207,17 @@ namespace NetPdf
                 {
                     string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
                     string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
-                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
 
                     //zamora
                     if (TestIshiharaNormal == "1")
                     {
-                        ValorDiscromatopsia = "NORMAL";
+                        ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                     else if (TestIshiharaAnormal == "1")
                     {
 
-                        ValorDiscromatopsia = " ANORMAL" + " DISCROMATOPSIA: " + Dicromatopsia;
+                        ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
                     }
                 }
                 else
@@ -18190,14 +18245,14 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorDxOftalmologia, fontColumnValue)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
@@ -18598,7 +18653,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOD, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -18609,7 +18664,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOI, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -18626,7 +18681,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("Sat. O2", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("%", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("DIASTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPAD + "mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -18731,40 +18786,24 @@ namespace NetPdf
             #region Anillos
 
             #region Psicologia
-            string ValorAreaCognitiva = "", ValorAreaEmocional = "", ValorConclusionPsicologia = "";
+            string ValorAreaCognitiva = "";
             string ConcatenadoPsicologia = "";
 
-            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            ServiceComponentList findPsicologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
             if (findPsicologia != null)
             {
-                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_COGNITIVA_ID);
+                var AreaCognitiva = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_PSICOLOGIA);
                 if (AreaCognitiva != null)
                 {
-                    ValorAreaCognitiva = AreaCognitiva.v_Value1Name + ", ";
+                    ValorAreaCognitiva = AreaCognitiva.v_Value1;
                 }
 
-                var AreaEmocional = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_EMOCIONAL_ID);
-                if (AreaEmocional != null)
-                {
-                    ValorAreaEmocional = AreaEmocional.v_Value1Name + ", ";
-                }
-
-                var ConclusionPsicologia = findPsicologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.PSICOLOGIA_AREA_CONCLUSIONES_ID);
-                if (ConclusionPsicologia != null)
-                {
-                    ValorConclusionPsicologia = ConclusionPsicologia.v_Value1 + ", ";
-                }
-
-
-                ConcatenadoPsicologia = ValorAreaCognitiva + ValorAreaEmocional + ValorConclusionPsicologia;
+                ConcatenadoPsicologia = ValorAreaCognitiva;
                 if (ConcatenadoPsicologia != string.Empty)
                 {
                     ConcatenadoPsicologia.Substring(0, ConcatenadoPsicologia.Length - 3);
                 }
             }
-
-
-
             #endregion
             cells = new List<PdfPCell>()
                  {

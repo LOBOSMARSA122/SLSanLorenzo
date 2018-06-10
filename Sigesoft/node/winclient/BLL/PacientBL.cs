@@ -2122,7 +2122,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 ANORMAL3 = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000342") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000342").v_Value1,
 
                                 ENCANDILAMIENTO = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000226") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000226").v_Value1,
-                                DESCRIPCION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1,
+                                DESCRIPCION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1Name,
 
                                 TIEMPO = TestEsterepsis.Count == 0 || TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000258") == null ? string.Empty : TestEsterepsis.Find(p => p.v_ComponentFieldId == "N002-MF000000258").v_Value1,
 

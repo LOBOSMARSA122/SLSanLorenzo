@@ -939,7 +939,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                                ANORMAL = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000000712").v_Value1,
 
-                               DESCRIPCION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1,
+                               DESCRIPCION = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N002-MF000000261").v_Value1Name,
 
                                EMETROPE = oftalmo.Count == 0 || oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002071") == null ? string.Empty : oftalmo.Find(p => p.v_ComponentFieldId == "N009-MF000002071").v_Value1,
 
