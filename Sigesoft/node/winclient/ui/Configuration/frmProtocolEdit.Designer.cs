@@ -33,19 +33,20 @@
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ProtocolComponentId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("r_Price");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Operator");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Age");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Gender");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_IsConditional");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentTypeName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentTypeName");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProtocolEdit));
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_SystemUserId");
@@ -60,9 +61,11 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmProtocolEdit));
             this.grdProtocolComponent = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.cmProtocol = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.New = new System.Windows.Forms.ToolStripMenuItem();
+            this.Edit = new System.Windows.Forms.ToolStripMenuItem();
+            this.delete = new System.Windows.Forms.ToolStripMenuItem();
             this.lblRecordCount2 = new System.Windows.Forms.Label();
             this.uvProtocol = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.cbOrganizationInvoice = new System.Windows.Forms.ComboBox();
@@ -78,6 +81,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cboVendedor = new System.Windows.Forms.ComboBox();
+            this.btnAgregarEmpresaContrata = new System.Windows.Forms.Button();
             this.chkIsActive = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtValidDays = new System.Windows.Forms.TextBox();
@@ -94,26 +98,22 @@
             this.label12 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpExamenes = new System.Windows.Forms.TabPage();
-            this.tpUsuariosExternos = new System.Windows.Forms.TabPage();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.grdExternalUser = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.lblRecordCountExternalUSer = new System.Windows.Forms.Label();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
-            this.New = new System.Windows.Forms.ToolStripMenuItem();
-            this.Edit = new System.Windows.Forms.ToolStripMenuItem();
-            this.delete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tpUsuariosExternos = new System.Windows.Forms.TabPage();
             this.btnAddUserExternal = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.BtnNew = new System.Windows.Forms.Button();
             this.btnFilter = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.grdExternalUser = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.lblRecordCountExternalUSer = new System.Windows.Forms.Label();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.btnAgregarEmpresaContrata = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdProtocolComponent)).BeginInit();
             this.cmProtocol.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvProtocol)).BeginInit();
@@ -141,7 +141,7 @@
             ultraGridColumn2.Hidden = true;
             ultraGridColumn3.Header.Caption = "Componente";
             ultraGridColumn3.Header.VisiblePosition = 2;
-            ultraGridColumn3.Width = 307;
+            ultraGridColumn3.Width = 305;
             ultraGridColumn4.Header.Caption = "Precio";
             ultraGridColumn4.Header.VisiblePosition = 3;
             ultraGridColumn5.Header.Caption = "Operador";
@@ -220,7 +220,7 @@
             this.grdProtocolComponent.Location = new System.Drawing.Point(17, 28);
             this.grdProtocolComponent.Margin = new System.Windows.Forms.Padding(2);
             this.grdProtocolComponent.Name = "grdProtocolComponent";
-            this.grdProtocolComponent.Size = new System.Drawing.Size(817, 158);
+            this.grdProtocolComponent.Size = new System.Drawing.Size(821, 383);
             this.grdProtocolComponent.TabIndex = 46;
             this.grdProtocolComponent.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdProtocolComponent_AfterSelectChange);
             this.grdProtocolComponent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdProtocolComponent_MouseDown);
@@ -234,12 +234,36 @@
             this.cmProtocol.Name = "contextMenuStrip1";
             this.cmProtocol.Size = new System.Drawing.Size(126, 70);
             // 
+            // New
+            // 
+            this.New.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
+            this.New.Name = "New";
+            this.New.Size = new System.Drawing.Size(125, 22);
+            this.New.Text = "Nuevo";
+            this.New.Click += new System.EventHandler(this.New_Click);
+            // 
+            // Edit
+            // 
+            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
+            this.Edit.Name = "Edit";
+            this.Edit.Size = new System.Drawing.Size(125, 22);
+            this.Edit.Text = "Modificar";
+            this.Edit.Click += new System.EventHandler(this.Edit_Click);
+            // 
+            // delete
+            // 
+            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
+            this.delete.Name = "delete";
+            this.delete.Size = new System.Drawing.Size(125, 22);
+            this.delete.Text = "Eliminar";
+            this.delete.Click += new System.EventHandler(this.delete_Click);
+            // 
             // lblRecordCount2
             // 
             this.lblRecordCount2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount2.Location = new System.Drawing.Point(574, 8);
+            this.lblRecordCount2.Location = new System.Drawing.Point(578, 8);
             this.lblRecordCount2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount2.Name = "lblRecordCount2";
             this.lblRecordCount2.Size = new System.Drawing.Size(259, 18);
@@ -250,7 +274,8 @@
             // 
             // cbOrganizationInvoice
             // 
-            this.cbOrganizationInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOrganizationInvoice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbOrganizationInvoice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbOrganizationInvoice.DropDownWidth = 500;
             this.cbOrganizationInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOrganizationInvoice.FormattingEnabled = true;
@@ -266,7 +291,8 @@
             // 
             // cbGeso
             // 
-            this.cbGeso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGeso.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbGeso.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbGeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGeso.FormattingEnabled = true;
             this.cbGeso.Location = new System.Drawing.Point(686, 24);
@@ -281,7 +307,8 @@
             // 
             // cbEsoType
             // 
-            this.cbEsoType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEsoType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbEsoType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbEsoType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEsoType.FormattingEnabled = true;
             this.cbEsoType.Location = new System.Drawing.Point(112, 132);
@@ -296,7 +323,8 @@
             // 
             // cbOrganization
             // 
-            this.cbOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbOrganization.DropDownWidth = 500;
             this.cbOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOrganization.FormattingEnabled = true;
@@ -312,7 +340,8 @@
             // 
             // cbServiceType
             // 
-            this.cbServiceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbServiceType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbServiceType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbServiceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbServiceType.FormattingEnabled = true;
             this.cbServiceType.Location = new System.Drawing.Point(686, 51);
@@ -328,7 +357,8 @@
             // 
             // cbService
             // 
-            this.cbService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbService.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbService.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbService.FormattingEnabled = true;
             this.cbService.Location = new System.Drawing.Point(686, 78);
@@ -356,7 +386,8 @@
             // 
             // cbIntermediaryOrganization
             // 
-            this.cbIntermediaryOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIntermediaryOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbIntermediaryOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbIntermediaryOrganization.DropDownWidth = 500;
             this.cbIntermediaryOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIntermediaryOrganization.FormattingEnabled = true;
@@ -448,6 +479,26 @@
             this.cboVendedor.Name = "cboVendedor";
             this.cboVendedor.Size = new System.Drawing.Size(250, 21);
             this.cboVendedor.TabIndex = 62;
+            // 
+            // btnAgregarEmpresaContrata
+            // 
+            this.btnAgregarEmpresaContrata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarEmpresaContrata.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarEmpresaContrata.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarEmpresaContrata.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarEmpresaContrata.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarEmpresaContrata.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarEmpresaContrata.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarEmpresaContrata.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarEmpresaContrata.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarEmpresaContrata.Image")));
+            this.btnAgregarEmpresaContrata.Location = new System.Drawing.Point(553, 91);
+            this.btnAgregarEmpresaContrata.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarEmpresaContrata.Name = "btnAgregarEmpresaContrata";
+            this.btnAgregarEmpresaContrata.Size = new System.Drawing.Size(27, 21);
+            this.btnAgregarEmpresaContrata.TabIndex = 61;
+            this.toolTip1.SetToolTip(this.btnAgregarEmpresaContrata, "Agregar Empresa Contratista");
+            this.btnAgregarEmpresaContrata.UseVisualStyleBackColor = false;
+            this.btnAgregarEmpresaContrata.Click += new System.EventHandler(this.btnAgregarEmpresaContrata_Click);
             // 
             // chkIsActive
             // 
@@ -630,7 +681,7 @@
             this.tabControl1.Location = new System.Drawing.Point(17, 198);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(942, 217);
+            this.tabControl1.Size = new System.Drawing.Size(946, 442);
             this.tabControl1.TabIndex = 47;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
@@ -644,10 +695,75 @@
             this.tpExamenes.Location = new System.Drawing.Point(4, 22);
             this.tpExamenes.Name = "tpExamenes";
             this.tpExamenes.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExamenes.Size = new System.Drawing.Size(934, 191);
+            this.tpExamenes.Size = new System.Drawing.Size(938, 416);
             this.tpExamenes.TabIndex = 0;
             this.tpExamenes.Text = "Examenes";
             this.tpExamenes.UseVisualStyleBackColor = true;
+            // 
+            // btnRemover
+            // 
+            this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemover.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemover.Enabled = false;
+            this.btnRemover.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemover.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemover.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemover.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemover.ForeColor = System.Drawing.Color.Black;
+            this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
+            this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemover.Location = new System.Drawing.Point(850, 86);
+            this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(75, 24);
+            this.btnRemover.TabIndex = 94;
+            this.btnRemover.Text = "     Eliminar";
+            this.btnRemover.UseVisualStyleBackColor = false;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditar.Enabled = false;
+            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.Black;
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(850, 58);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(75, 24);
+            this.btnEditar.TabIndex = 61;
+            this.btnEditar.Text = "      Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNuevo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.Black;
+            this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
+            this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNuevo.Location = new System.Drawing.Point(850, 30);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(75, 24);
+            this.btnNuevo.TabIndex = 60;
+            this.btnNuevo.Text = "     Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
             // tpUsuariosExternos
             // 
@@ -669,6 +785,82 @@
             this.tpUsuariosExternos.TabIndex = 1;
             this.tpUsuariosExternos.Text = "Usuarios Externos";
             this.tpUsuariosExternos.UseVisualStyleBackColor = true;
+            // 
+            // btnAddUserExternal
+            // 
+            this.btnAddUserExternal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAddUserExternal.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_add;
+            this.btnAddUserExternal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAddUserExternal.Location = new System.Drawing.Point(661, 199);
+            this.btnAddUserExternal.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAddUserExternal.Name = "btnAddUserExternal";
+            this.btnAddUserExternal.Size = new System.Drawing.Size(167, 26);
+            this.btnAddUserExternal.TabIndex = 57;
+            this.btnAddUserExternal.Text = "Agregar Usuarios Externos";
+            this.btnAddUserExternal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAddUserExternal.UseVisualStyleBackColor = true;
+            this.btnAddUserExternal.Click += new System.EventHandler(this.btnAddUserExternal_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
+            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDelete.Location = new System.Drawing.Point(832, 29);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(88, 24);
+            this.btnDelete.TabIndex = 56;
+            this.btnDelete.Text = "    Eliminar";
+            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEdit.Location = new System.Drawing.Point(832, 1);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(88, 24);
+            this.btnEdit.TabIndex = 55;
+            this.btnEdit.Text = "Modificar";
+            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // BtnNew
+            // 
+            this.BtnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnNew.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
+            this.BtnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BtnNew.Location = new System.Drawing.Point(832, -27);
+            this.BtnNew.Margin = new System.Windows.Forms.Padding(2);
+            this.BtnNew.Name = "BtnNew";
+            this.BtnNew.Size = new System.Drawing.Size(88, 24);
+            this.BtnNew.TabIndex = 54;
+            this.BtnNew.Text = "    Nuevo";
+            this.BtnNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BtnNew.UseVisualStyleBackColor = true;
+            this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
+            // 
+            // btnFilter
+            // 
+            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(705, 20);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 24);
+            this.btnFilter.TabIndex = 53;
+            this.btnFilter.Text = "  Filtrar";
+            this.btnFilter.UseVisualStyleBackColor = true;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label6
             // 
@@ -789,178 +981,13 @@
             this.lblRecordCountExternalUSer.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountExternalUSer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // btnRemover
-            // 
-            this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRemover.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemover.Enabled = false;
-            this.btnRemover.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemover.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemover.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemover.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemover.ForeColor = System.Drawing.Color.Black;
-            this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
-            this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemover.Location = new System.Drawing.Point(846, 86);
-            this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(75, 24);
-            this.btnRemover.TabIndex = 94;
-            this.btnRemover.Text = "     Eliminar";
-            this.btnRemover.UseVisualStyleBackColor = false;
-            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
-            // 
-            // btnEditar
-            // 
-            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEditar.Enabled = false;
-            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.ForeColor = System.Drawing.Color.Black;
-            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
-            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(846, 58);
-            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(75, 24);
-            this.btnEditar.TabIndex = 61;
-            this.btnEditar.Text = "      Editar";
-            this.btnEditar.UseVisualStyleBackColor = false;
-            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
-            // 
-            // btnNuevo
-            // 
-            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnNuevo.BackColor = System.Drawing.SystemColors.Control;
-            this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.ForeColor = System.Drawing.Color.Black;
-            this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
-            this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(846, 30);
-            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(75, 24);
-            this.btnNuevo.TabIndex = 60;
-            this.btnNuevo.Text = "     Nuevo";
-            this.btnNuevo.UseVisualStyleBackColor = false;
-            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
-            // 
-            // New
-            // 
-            this.New.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
-            this.New.Name = "New";
-            this.New.Size = new System.Drawing.Size(125, 22);
-            this.New.Text = "Nuevo";
-            this.New.Click += new System.EventHandler(this.New_Click);
-            // 
-            // Edit
-            // 
-            this.Edit.Image = ((System.Drawing.Image)(resources.GetObject("Edit.Image")));
-            this.Edit.Name = "Edit";
-            this.Edit.Size = new System.Drawing.Size(125, 22);
-            this.Edit.Text = "Modificar";
-            this.Edit.Click += new System.EventHandler(this.Edit_Click);
-            // 
-            // delete
-            // 
-            this.delete.Image = ((System.Drawing.Image)(resources.GetObject("delete.Image")));
-            this.delete.Name = "delete";
-            this.delete.Size = new System.Drawing.Size(125, 22);
-            this.delete.Text = "Eliminar";
-            this.delete.Click += new System.EventHandler(this.delete_Click);
-            // 
-            // btnAddUserExternal
-            // 
-            this.btnAddUserExternal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAddUserExternal.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_add;
-            this.btnAddUserExternal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddUserExternal.Location = new System.Drawing.Point(661, 199);
-            this.btnAddUserExternal.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAddUserExternal.Name = "btnAddUserExternal";
-            this.btnAddUserExternal.Size = new System.Drawing.Size(167, 26);
-            this.btnAddUserExternal.TabIndex = 57;
-            this.btnAddUserExternal.Text = "Agregar Usuarios Externos";
-            this.btnAddUserExternal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAddUserExternal.UseVisualStyleBackColor = true;
-            this.btnAddUserExternal.Click += new System.EventHandler(this.btnAddUserExternal_Click);
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnDelete.Enabled = false;
-            this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
-            this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(832, 29);
-            this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(88, 24);
-            this.btnDelete.TabIndex = 56;
-            this.btnDelete.Text = "    Eliminar";
-            this.btnDelete.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEdit.Enabled = false;
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(832, 1);
-            this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(88, 24);
-            this.btnEdit.TabIndex = 55;
-            this.btnEdit.Text = "Modificar";
-            this.btnEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEdit.UseVisualStyleBackColor = true;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
-            // 
-            // BtnNew
-            // 
-            this.BtnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNew.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
-            this.BtnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnNew.Location = new System.Drawing.Point(832, -27);
-            this.BtnNew.Margin = new System.Windows.Forms.Padding(2);
-            this.BtnNew.Name = "BtnNew";
-            this.BtnNew.Size = new System.Drawing.Size(88, 24);
-            this.BtnNew.TabIndex = 54;
-            this.BtnNew.Text = "    Nuevo";
-            this.BtnNew.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BtnNew.UseVisualStyleBackColor = true;
-            this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
-            // 
-            // btnFilter
-            // 
-            this.btnFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(705, 20);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 24);
-            this.btnFilter.TabIndex = 53;
-            this.btnFilter.Text = "  Filtrar";
-            this.btnFilter.UseVisualStyleBackColor = true;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(880, 429);
+            this.btnCancel.Location = new System.Drawing.Point(881, 642);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 24);
@@ -973,7 +1000,7 @@
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnOK.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOK.Location = new System.Drawing.Point(801, 429);
+            this.btnOK.Location = new System.Drawing.Point(802, 642);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 24);
@@ -983,32 +1010,12 @@
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // btnAgregarEmpresaContrata
-            // 
-            this.btnAgregarEmpresaContrata.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregarEmpresaContrata.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarEmpresaContrata.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarEmpresaContrata.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarEmpresaContrata.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarEmpresaContrata.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarEmpresaContrata.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarEmpresaContrata.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarEmpresaContrata.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarEmpresaContrata.Image")));
-            this.btnAgregarEmpresaContrata.Location = new System.Drawing.Point(553, 91);
-            this.btnAgregarEmpresaContrata.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarEmpresaContrata.Name = "btnAgregarEmpresaContrata";
-            this.btnAgregarEmpresaContrata.Size = new System.Drawing.Size(27, 21);
-            this.btnAgregarEmpresaContrata.TabIndex = 61;
-            this.toolTip1.SetToolTip(this.btnAgregarEmpresaContrata, "Agregar Empresa Contratista");
-            this.btnAgregarEmpresaContrata.UseVisualStyleBackColor = false;
-            this.btnAgregarEmpresaContrata.Click += new System.EventHandler(this.btnAgregarEmpresaContrata_Click);
-            // 
             // frmProtocolEdit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(975, 464);
+            this.ClientSize = new System.Drawing.Size(976, 677);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);

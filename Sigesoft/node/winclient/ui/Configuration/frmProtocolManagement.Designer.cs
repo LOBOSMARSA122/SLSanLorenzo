@@ -120,7 +120,7 @@
             this.lblRecordCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount.Location = new System.Drawing.Point(364, 134);
+            this.lblRecordCount.Location = new System.Drawing.Point(498, 134);
             this.lblRecordCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount.Name = "lblRecordCount";
             this.lblRecordCount.Size = new System.Drawing.Size(231, 19);
@@ -248,7 +248,7 @@
             this.grd.Location = new System.Drawing.Point(15, 155);
             this.grd.Margin = new System.Windows.Forms.Padding(2);
             this.grd.Name = "grd";
-            this.grd.Size = new System.Drawing.Size(580, 334);
+            this.grd.Size = new System.Drawing.Size(714, 455);
             this.grd.TabIndex = 44;
             this.grd.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grd_InitializeLayout);
             this.grd.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grd_AfterSelectChange);
@@ -314,7 +314,7 @@
             this.gbProtocolComponents.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbProtocolComponents.Location = new System.Drawing.Point(15, 7);
             this.gbProtocolComponents.Name = "gbProtocolComponents";
-            this.gbProtocolComponents.Size = new System.Drawing.Size(1026, 110);
+            this.gbProtocolComponents.Size = new System.Drawing.Size(1126, 110);
             this.gbProtocolComponents.TabIndex = 4;
             this.gbProtocolComponents.TabStop = false;
             this.gbProtocolComponents.Text = "Busqueda / Filtro";
@@ -358,7 +358,8 @@
             // 
             // cbService
             // 
-            this.cbService.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbService.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbService.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbService.FormattingEnabled = true;
             this.cbService.Location = new System.Drawing.Point(414, 47);
@@ -371,7 +372,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(338, 24);
+            this.label8.Location = new System.Drawing.Point(340, 24);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(69, 13);
@@ -381,7 +382,8 @@
             // 
             // cbServiceType
             // 
-            this.cbServiceType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbServiceType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbServiceType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbServiceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbServiceType.FormattingEnabled = true;
             this.cbServiceType.Location = new System.Drawing.Point(414, 20);
@@ -394,7 +396,7 @@
             // 
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(338, 47);
+            this.label7.Location = new System.Drawing.Point(350, 47);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(50, 19);
@@ -404,7 +406,8 @@
             // 
             // cbOrganizationInvoice
             // 
-            this.cbOrganizationInvoice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOrganizationInvoice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbOrganizationInvoice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbOrganizationInvoice.DropDownWidth = 400;
             this.cbOrganizationInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOrganizationInvoice.FormattingEnabled = true;
@@ -415,13 +418,14 @@
             // 
             // cbOrganization
             // 
-            this.cbOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbOrganization.DropDownWidth = 400;
             this.cbOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbOrganization.FormattingEnabled = true;
-            this.cbOrganization.Location = new System.Drawing.Point(140, 47);
+            this.cbOrganization.Location = new System.Drawing.Point(102, 47);
             this.cbOrganization.Name = "cbOrganization";
-            this.cbOrganization.Size = new System.Drawing.Size(174, 21);
+            this.cbOrganization.Size = new System.Drawing.Size(231, 21);
             this.cbOrganization.TabIndex = 14;
             this.cbOrganization.SelectedIndexChanged += new System.EventHandler(this.cbOrganization_SelectedIndexChanged);
             // 
@@ -429,7 +433,7 @@
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(41, 46);
+            this.label1.Location = new System.Drawing.Point(5, 44);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 26);
@@ -452,7 +456,8 @@
             // 
             // cbIntermediaryOrganization
             // 
-            this.cbIntermediaryOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbIntermediaryOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbIntermediaryOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbIntermediaryOrganization.DropDownWidth = 400;
             this.cbIntermediaryOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbIntermediaryOrganization.FormattingEnabled = true;
@@ -478,7 +483,7 @@
             // 
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(338, 74);
+            this.label2.Location = new System.Drawing.Point(350, 74);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(59, 23);
@@ -488,19 +493,20 @@
             // 
             // cbGeso
             // 
-            this.cbGeso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGeso.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbGeso.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbGeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbGeso.FormattingEnabled = true;
-            this.cbGeso.Location = new System.Drawing.Point(140, 75);
+            this.cbGeso.Location = new System.Drawing.Point(102, 75);
             this.cbGeso.Name = "cbGeso";
-            this.cbGeso.Size = new System.Drawing.Size(174, 21);
+            this.cbGeso.Size = new System.Drawing.Size(231, 21);
             this.cbGeso.TabIndex = 18;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(41, 78);
+            this.label3.Location = new System.Drawing.Point(5, 76);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 19);
@@ -510,7 +516,8 @@
             // 
             // cbEsoType
             // 
-            this.cbEsoType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEsoType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbEsoType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cbEsoType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEsoType.FormattingEnabled = true;
             this.cbEsoType.Location = new System.Drawing.Point(414, 75);
@@ -521,10 +528,10 @@
             // txtProtocolName
             // 
             this.txtProtocolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtProtocolName.Location = new System.Drawing.Point(140, 21);
+            this.txtProtocolName.Location = new System.Drawing.Point(102, 21);
             this.txtProtocolName.MaxLength = 250;
             this.txtProtocolName.Name = "txtProtocolName";
-            this.txtProtocolName.Size = new System.Drawing.Size(174, 20);
+            this.txtProtocolName.Size = new System.Drawing.Size(231, 20);
             this.txtProtocolName.TabIndex = 11;
             this.txtProtocolName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtProtocolName_KeyPress);
             // 
@@ -533,7 +540,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(41, 25);
+            this.label5.Location = new System.Drawing.Point(5, 23);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
@@ -667,10 +674,10 @@
             this.grdProtocolComponent.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdProtocolComponent.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdProtocolComponent.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdProtocolComponent.Location = new System.Drawing.Point(609, 155);
+            this.grdProtocolComponent.Location = new System.Drawing.Point(743, 155);
             this.grdProtocolComponent.Margin = new System.Windows.Forms.Padding(2);
             this.grdProtocolComponent.Name = "grdProtocolComponent";
-            this.grdProtocolComponent.Size = new System.Drawing.Size(340, 301);
+            this.grdProtocolComponent.Size = new System.Drawing.Size(340, 422);
             this.grdProtocolComponent.TabIndex = 47;
             // 
             // lblRecordCountProtocolComponents
@@ -678,7 +685,7 @@
             this.lblRecordCountProtocolComponents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCountProtocolComponents.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCountProtocolComponents.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountProtocolComponents.Location = new System.Drawing.Point(715, 134);
+            this.lblRecordCountProtocolComponents.Location = new System.Drawing.Point(849, 134);
             this.lblRecordCountProtocolComponents.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountProtocolComponents.Name = "lblRecordCountProtocolComponents";
             this.lblRecordCountProtocolComponents.Size = new System.Drawing.Size(231, 19);
@@ -691,7 +698,7 @@
             this.btnClon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClon.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
             this.btnClon.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClon.Location = new System.Drawing.Point(962, 223);
+            this.btnClon.Location = new System.Drawing.Point(1096, 223);
             this.btnClon.Margin = new System.Windows.Forms.Padding(2);
             this.btnClon.Name = "btnClon";
             this.btnClon.Size = new System.Drawing.Size(75, 24);
@@ -709,7 +716,7 @@
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(962, 195);
+            this.btnEditar.Location = new System.Drawing.Point(1096, 195);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(75, 24);
@@ -727,7 +734,7 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(962, 167);
+            this.btnNuevo.Location = new System.Drawing.Point(1096, 167);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(75, 24);
@@ -742,7 +749,7 @@
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(962, 251);
+            this.btnCancel.Location = new System.Drawing.Point(1096, 251);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 24);
@@ -760,7 +767,7 @@
             this.btnGenerarOS.ForeColor = System.Drawing.Color.Black;
             this.btnGenerarOS.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
             this.btnGenerarOS.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarOS.Location = new System.Drawing.Point(962, 279);
+            this.btnGenerarOS.Location = new System.Drawing.Point(1096, 279);
             this.btnGenerarOS.Margin = new System.Windows.Forms.Padding(2);
             this.btnGenerarOS.Name = "btnGenerarOS";
             this.btnGenerarOS.Size = new System.Drawing.Size(75, 53);
@@ -775,7 +782,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(661, 458);
+            this.label9.Location = new System.Drawing.Point(795, 579);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(196, 23);
@@ -789,7 +796,7 @@
             this.lblCostoTotal.BackColor = System.Drawing.SystemColors.Info;
             this.lblCostoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoTotal.ForeColor = System.Drawing.Color.Black;
-            this.lblCostoTotal.Location = new System.Drawing.Point(861, 458);
+            this.lblCostoTotal.Location = new System.Drawing.Point(995, 579);
             this.lblCostoTotal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCostoTotal.Name = "lblCostoTotal";
             this.lblCostoTotal.Size = new System.Drawing.Size(88, 23);
@@ -805,7 +812,7 @@
             this.btnUsuariosExternos.ForeColor = System.Drawing.Color.Black;
             this.btnUsuariosExternos.Image = global::Sigesoft.Node.WinClient.UI.Resources.group;
             this.btnUsuariosExternos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuariosExternos.Location = new System.Drawing.Point(962, 336);
+            this.btnUsuariosExternos.Location = new System.Drawing.Point(1096, 336);
             this.btnUsuariosExternos.Margin = new System.Windows.Forms.Padding(2);
             this.btnUsuariosExternos.Name = "btnUsuariosExternos";
             this.btnUsuariosExternos.Size = new System.Drawing.Size(75, 29);
@@ -824,7 +831,7 @@
             this.btnPlanes.ForeColor = System.Drawing.Color.Black;
             this.btnPlanes.Image = ((System.Drawing.Image)(resources.GetObject("btnPlanes.Image")));
             this.btnPlanes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPlanes.Location = new System.Drawing.Point(962, 369);
+            this.btnPlanes.Location = new System.Drawing.Point(1096, 369);
             this.btnPlanes.Margin = new System.Windows.Forms.Padding(2);
             this.btnPlanes.Name = "btnPlanes";
             this.btnPlanes.Size = new System.Drawing.Size(75, 24);
@@ -840,7 +847,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1050, 500);
+            this.ClientSize = new System.Drawing.Size(1184, 621);
             this.Controls.Add(this.btnPlanes);
             this.Controls.Add(this.btnUsuariosExternos);
             this.Controls.Add(this.lblCostoTotal);

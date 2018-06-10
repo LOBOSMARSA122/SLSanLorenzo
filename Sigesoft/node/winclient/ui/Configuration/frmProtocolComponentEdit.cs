@@ -377,8 +377,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 findResult.i_RecordStatus = (int)RecordStatus.Modificado;
 
             }
-
-            this.Close();
+            //this.Close();
+            MessageBox.Show("Se grabo correctamente.", "INFORMACION!", MessageBoxButtons.OK, MessageBoxIcon.Information);                       
         }
 
         private void grdComponent_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
