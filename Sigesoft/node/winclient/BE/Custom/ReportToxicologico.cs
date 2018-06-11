@@ -14,6 +14,7 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? FechaNacimiento { get; set; }
         public string EmpresaTrabajador { get; set; }
         public byte[] FirmaMedico { get; set; }
+        public byte[] FirmaMedicina { get; set; }
         public byte[] FirmaTrabajador { get; set; }
         public byte[] HuellaTrabajador { get; set; }
         public string Puesto { get; set; }

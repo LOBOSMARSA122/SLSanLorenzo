@@ -383,6 +383,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnBarbituricos;
             
+            private global::System.Data.DataColumn columnFirmaMedicina;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtAutorizacionDosajeDrogasDataTable() {
@@ -834,6 +836,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FirmaMedicinaColumn {
+                get {
+                    return this.columnFirmaMedicina;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -921,7 +931,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string Metanfetamina, 
                         string Marihuana1, 
                         string Benzodiacepinas, 
-                        string Barbituricos) {
+                        string Barbituricos, 
+                        byte[] FirmaMedicina) {
                 dtAutorizacionDosajeDrogasRow rowdtAutorizacionDosajeDrogasRow = ((dtAutorizacionDosajeDrogasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Fecha,
@@ -975,7 +986,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         Metanfetamina,
                         Marihuana1,
                         Benzodiacepinas,
-                        Barbituricos};
+                        Barbituricos,
+                        FirmaMedicina};
                 rowdtAutorizacionDosajeDrogasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtAutorizacionDosajeDrogasRow);
                 return rowdtAutorizacionDosajeDrogasRow;
@@ -1050,6 +1062,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnMarihuana = base.Columns["Marihuana"];
                 this.columnBenzodiacepinas = base.Columns["Benzodiacepinas"];
                 this.columnBarbituricos = base.Columns["Barbituricos"];
+                this.columnFirmaMedicina = base.Columns["FirmaMedicina"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1159,6 +1172,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnBenzodiacepinas);
                 this.columnBarbituricos = new global::System.Data.DataColumn("Barbituricos", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBarbituricos);
+                this.columnFirmaMedicina = new global::System.Data.DataColumn("FirmaMedicina", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFirmaMedicina);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2169,6 +2184,23 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] FirmaMedicina {
+                get {
+                    try {
+                        return ((byte[])(this[this.tabledtAutorizacionDosajeDrogas.FirmaMedicinaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FirmaMedicina\' in table \'dtAutorizacionDosajeDrogas\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.FirmaMedicinaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFechaNull() {
                 return this.IsNull(this.tabledtAutorizacionDosajeDrogas.FechaColumn);
             }
@@ -2789,6 +2821,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetBarbituricosNull() {
                 this[this.tabledtAutorizacionDosajeDrogas.BarbituricosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFirmaMedicinaNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.FirmaMedicinaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFirmaMedicinaNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.FirmaMedicinaColumn] = global::System.Convert.DBNull;
             }
         }
         

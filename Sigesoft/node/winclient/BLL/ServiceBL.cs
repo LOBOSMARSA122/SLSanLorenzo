@@ -25656,8 +25656,23 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
 				var MedicalCenter = GetInfoMedicalCenter();
-			    var TOXICOLOGICO_COCAINA_MARIHUANA = ValoresComponente(pstrServiceId, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
+                var TOXICOLOGICO_COCAINA_MARIHUANA = ValoresComponente(pstrServiceId, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
+                var Saliva = ValoresComponente(pstrServiceId, "N009-ME000000416");
+
+                var Anfe = ValoresComponente(pstrServiceId, "N009-ME000000043");
+                var Barbi = ValoresComponente(pstrServiceId, "N009-ME000000417");
+                var Benzo = ValoresComponente(pstrServiceId, "N009-ME000000040");
+                var Coca = ValoresComponente(pstrServiceId, "N009-ME000000053");
+                var Extasis = ValoresComponente(pstrServiceId, "N009-ME000000422");
+                var Fenci = ValoresComponente(pstrServiceId, "N009-ME000000423");
+                var Metadona = ValoresComponente(pstrServiceId, "N009-ME000000418");
+                var Metafe = ValoresComponente(pstrServiceId, "N009-ME000000419");
+                var Morfina = ValoresComponente(pstrServiceId, "N009-ME000000420");
+                var Opia = ValoresComponente(pstrServiceId, "N009-ME000000421");
+                
 			    var LogoEmpresa = GetLogoMedicalCenter();
+                var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
 				var sql = (from a in objEntity.ToList()
 						   select new ReportToxicologico
 						   {
@@ -25698,17 +25713,17 @@ namespace Sigesoft.Node.WinClient.BLL
                                Motivo_Prueba = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001376") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001376").v_Value1Name,
 							   Lote_marihuana = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002814") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002814").v_Value1,
 
-                               Aliento = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003212") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003212").v_Value1,
-                               Extasis = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003218") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003218").v_Value1,
-                               Opiaceos = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003217") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003217").v_Value1,
-                               Oxicodona = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003219") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003219").v_Value1,
-                               Metadano = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003214") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003214").v_Value1,
-                               Cocaina = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000705") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000705").v_Value1,
-                               Antetaminas = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000391") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000391").v_Value1,
-                               Metanfetamina = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003215") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003215").v_Value1,
-                               Marihuana = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001294") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001294").v_Value1,
-                               Benzodiacepinas = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000395") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000395").v_Value1,
-                               Barbituricos = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003213") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003213").v_Value1,
+                               Aliento = Saliva.Count == 0 ? string.Empty : Saliva.Find(p => p.v_ComponentFieldId == "N009-MF000003212") == null ? "" : Saliva.Find(p => p.v_ComponentFieldId == "N009-MF000003212").v_Value1Name,
+                               Extasis = Extasis.Count == 0 ? string.Empty : Extasis.Find(p => p.v_ComponentFieldId == "N009-MF000003218") == null ? "" : Extasis.Find(p => p.v_ComponentFieldId == "N009-MF000003218").v_Value1Name,
+                               Opiaceos = Opia.Count == 0 ? string.Empty : Opia.Find(p => p.v_ComponentFieldId == "N009-MF000003217") == null ? "" : Opia.Find(p => p.v_ComponentFieldId == "N009-MF000003217").v_Value1Name,
+                               Oxicodona = Fenci.Count == 0 ? string.Empty : Fenci.Find(p => p.v_ComponentFieldId == "N009-MF000003219") == null ? "" : Fenci.Find(p => p.v_ComponentFieldId == "N009-MF000003219").v_Value1Name,
+                               Metadano = Metadona.Count == 0 ? string.Empty : Metadona.Find(p => p.v_ComponentFieldId == "N009-MF000003214") == null ? "" : Metadona.Find(p => p.v_ComponentFieldId == "N009-MF000003214").v_Value1Name,
+                               Cocaina = Coca.Count == 0 ? string.Empty : Coca.Find(p => p.v_ComponentFieldId == "N009-MF000000705") == null ? "" : Coca.Find(p => p.v_ComponentFieldId == "N009-MF000000705").v_Value1Name,
+                               Antetaminas = Anfe.Count == 0 ? string.Empty : Anfe.Find(p => p.v_ComponentFieldId == "N009-MF000000391") == null ? "" : Anfe.Find(p => p.v_ComponentFieldId == "N009-MF000000391").v_Value1Name,
+                               Metanfetamina = Metafe.Count == 0 ? string.Empty : Metafe.Find(p => p.v_ComponentFieldId == "N009-MF000003215") == null ? "" : Metafe.Find(p => p.v_ComponentFieldId == "N009-MF000003215").v_Value1Name,
+                               Marihuana = Coca.Count == 0 ? string.Empty : Coca.Find(p => p.v_ComponentFieldId == "N009-MF000001294") == null ? "" : Coca.Find(p => p.v_ComponentFieldId == "N009-MF000001294").v_Value1Name,
+                               Benzodiacepinas = Benzo.Count == 0 ? string.Empty : Benzo.Find(p => p.v_ComponentFieldId == "N009-MF000000395") == null ? "" : Benzo.Find(p => p.v_ComponentFieldId == "N009-MF000000395").v_Value1Name,
+                               Barbituricos = Barbi.Count == 0 ? string.Empty : Barbi.Find(p => p.v_ComponentFieldId == "N009-MF000003213") == null ? "" : Barbi.Find(p => p.v_ComponentFieldId == "N009-MF000003213").v_Value1Name,
                            }).ToList();
 
 				return sql;
