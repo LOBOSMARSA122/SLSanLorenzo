@@ -223,7 +223,7 @@ namespace NetPdf
 
             cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL DEL ADOLESCENTE", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT,BackgroundColor= BaseColor.GRAY },  
+                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL DEL ADOLESCENTE", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT,BackgroundColor= BaseColor.ORANGE },  
                 };
 
             columnWidths = new float[] { 100f };
@@ -257,7 +257,7 @@ namespace NetPdf
             #region DATOS GENERALES
             cells = new List<PdfPCell>()
             {          
-                new PdfPCell(new Phrase("DATOS GENEREALES", fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = PdfPCell.ALIGN_CENTER },       
+                new PdfPCell(new Phrase("DATOS GENEREALES", fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = PdfPCell.ALIGN_CENTER, BackgroundColor = BaseColor.ORANGE},       
 
                 new PdfPCell(new Phrase("Apellidos", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
                 new PdfPCell(new Phrase("Nombres", fontColumnValue)) { Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
@@ -320,10 +320,10 @@ namespace NetPdf
 
             cells = new List<PdfPCell>()
             {   
-                new PdfPCell(new Phrase("ANTECEDENTES", fontColumnValueBold)) { Colspan = 23, HorizontalAlignment = PdfPCell.ALIGN_CENTER },   
+                new PdfPCell(new Phrase("ANTECEDENTES", fontColumnValueBold)) { Colspan = 23, HorizontalAlignment = PdfPCell.ALIGN_CENTER, BackgroundColor = BaseColor.ORANGE},   
     
-                new PdfPCell(new Phrase("Personales", fontColumnValueBold)) { Colspan = 12,HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                new PdfPCell(new Phrase("Familiares", fontColumnValueBold)) { Colspan = 11,HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                new PdfPCell(new Phrase("Personales", fontColumnValueBold)) { Colspan = 12,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},   
+                new PdfPCell(new Phrase("Familiares", fontColumnValueBold)) { Colspan = 11,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},  
                 
                 new PdfPCell(new Phrase("NORMALES", fontColumnValueBold)) {Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("Criterio", fontColumnValue)) { Colspan = 3,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -544,12 +544,12 @@ namespace NetPdf
             #region ANTECEDENTES PSICOSOCIALES
             cells = new List<PdfPCell>()
             {   
-                new PdfPCell(new Phrase("ANTECEDENTES PSICOSOCIALES", fontColumnValueBold)) { Colspan = 27, HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
+                new PdfPCell(new Phrase("ANTECEDENTES PSICOSOCIALES", fontColumnValueBold)) { Colspan = 27, HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},   
     
-                new PdfPCell(new Phrase("EDUCATIVOS", fontColumnValueBold)) { Colspan = 9,HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                new PdfPCell(new Phrase("LABORALES", fontColumnValueBold)) { Colspan = 6,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("VIDA SOCIAL", fontColumnValueBold)) { Colspan = 6,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("HABITOS", fontColumnValueBold)) { Colspan = 6,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("EDUCATIVOS", fontColumnValueBold)) { Colspan = 9,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},   
+                new PdfPCell(new Phrase("LABORALES", fontColumnValueBold)) { Colspan = 6,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},
+                new PdfPCell(new Phrase("VIDA SOCIAL", fontColumnValueBold)) { Colspan = 6,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},
+                new PdfPCell(new Phrase("HABITOS", fontColumnValueBold)) { Colspan = 6,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},
                 
                 new PdfPCell(new Phrase("PREGUNTAS", fontColumnValueBold)) {Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("SI", fontColumnValueBold)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -667,21 +667,19 @@ namespace NetPdf
             #region SALUD SEXUAL Y REPRODUCTIVA / SALUD BUCAL
             cells = new List<PdfPCell>()
             {   
-                new PdfPCell(new Phrase("ANTECEDENTES PSICOSOCIALES", fontColumnValueBold)) { Colspan = 21, HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-    
-                new PdfPCell(new Phrase("SALUD SEXUAL Y REPRODUCTIVA", fontColumnValueBold)) { Colspan = 11,HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                new PdfPCell(new Phrase("SALUD BUCAL", fontColumnValueBold)) { Colspan = 10,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("SALUD SEXUAL Y REPRODUCTIVA", fontColumnValueBold)) { Colspan = 11,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},   
+                new PdfPCell(new Phrase("SALUD BUCAL", fontColumnValueBold)) { Colspan = 10,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor = BaseColor.ORANGE},
                 
                 new PdfPCell(new Phrase("-----------------------------------------", fontColumnValueBold)) {Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_CENTER },
                 new PdfPCell(new Phrase("AÑOS", fontColumnValueBold)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("-----------------------------------------", fontColumnValueBold)) {Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
+                new PdfPCell(new Phrase("---------------------------------------------------------", fontColumnValueBold)) {Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                 new PdfPCell(new Phrase("Labios", fontColumnValue)) {Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("Sano", fontColumnValue)) { Colspan = 3,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("Enfermo", fontColumnValue)) {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("MENARQUIA / ESPERMARQUIA", fontColumnValue)) {Colspan = 4, Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                new PdfPCell(new Phrase("MENARQUIA / ESPERMARQUIA", fontColumnValue)) {Colspan = 4, Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("ABUSO SEXUAL", fontColumnValue)) {Colspan = 3,Rowspan = 2, HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                new PdfPCell(new Phrase("ABUSO SEXUAL", fontColumnValue)) {Colspan = 3,Rowspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("Si", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("No", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -693,7 +691,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("Sano", fontColumnValue)) { Colspan = 3,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("Enfermo", fontColumnValue)) {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("EMBARAZOS", fontColumnValue)) {Colspan = 3,Rowspan = 2, HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
+                new PdfPCell(new Phrase("EMBARAZOS", fontColumnValue)) {Colspan = 3,Rowspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE }, 
                 new PdfPCell(new Phrase("Si", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("No", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -705,9 +703,9 @@ namespace NetPdf
                 new PdfPCell(new Phrase("Sano", fontColumnValue)) { Colspan = 3,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("Enfermo", fontColumnValue)) {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("EDAD INICIO RELACION SEXUAL", fontColumnValue)) {Colspan = 4, Rowspan = 3,HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                new PdfPCell(new Phrase("EDAD INICIO RELACION SEXUAL", fontColumnValue)) {Colspan = 4, Rowspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,Rowspan = 3,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("HIJOS", fontColumnValue)) {Colspan = 3,Rowspan = 2, HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                new PdfPCell(new Phrase("HIJOS", fontColumnValue)) {Colspan = 3,Rowspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("Si", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("No", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,Rowspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -729,13 +727,8 @@ namespace NetPdf
                 new PdfPCell(new Phrase("Si", fontColumnValue)) { Colspan = 3,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("No", fontColumnValue)) {Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("OBSERVACIONES" +
-                                        "_____________________________________________________________________________________________" +
-                                        "_____________________________________________________________________________________________" +
-                                        "_____________________________________________________________________________________________" +
-                                        "_____________________________________________________________________________________________" +
-                                        "_____________________________________________________________________________________________" +
-                                        "", fontColumnValue)) {Colspan = 21, Rowspan = 8,HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                new PdfPCell(new Phrase("OBSERVACIONES", fontColumnValue)) {Colspan = 4, Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                new PdfPCell(new Phrase("-", fontColumnValue)) {Colspan = 17, Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_CENTER },
 
             };
 
@@ -754,7 +747,7 @@ namespace NetPdf
 
             cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL ADOLESCENTE", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER,BackgroundColor= BaseColor.GRAY },  
+                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL ADOLESCENTE", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER,BackgroundColor= BaseColor.ORANGE },  
                     new PdfPCell(new Phrase("CUIDADOS PREVENTIVOS - SEGUIMIENTO DE RIESGO - ADOLESCENTES", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER },  
               
                 };
@@ -824,6 +817,8 @@ namespace NetPdf
             #region PERIODOS
             cells = new List<PdfPCell>()
             {   
+                new PdfPCell(new Phrase("LISTA DE PERIODOS", fontTitle1)) { Colspan = 18, HorizontalAlignment = PdfPCell.ALIGN_CENTER, BackgroundColor = BaseColor.ORANGE},  
+
                 new PdfPCell(new Phrase("PERIODICAMENTE", fontColumnValueBold)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
                 new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -834,7 +829,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("COMENTARIO", fontColumnValueBold)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("ASPECTOS FÍSICOS Y NUTRICIONALES", fontColumnValue)) {Colspan = 3,Rowspan = 8,VerticalAlignment = PdfPCell.ALIGN_CENTER},
+                new PdfPCell(new Phrase("ASPECTOS FÍSICOS Y NUTRICIONALES", fontColumnValue)) {Colspan = 3,Rowspan = 8,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                 new PdfPCell(new Phrase("Indice de masa corporal", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -844,7 +839,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Desarrollo sexual", fontColumnValue)) {Colspan = 2,Rowspan = 3,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Desarrollo sexual", fontColumnValue)) {Colspan = 2,Rowspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("Mamas", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -872,7 +867,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Vacuna", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Vacuna", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("antitetánica", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -909,8 +904,8 @@ namespace NetPdf
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                
-                new PdfPCell(new Phrase("ASPECTOS PSICOSOCIALES", fontColumnValue)) {Colspan = 3,Rowspan = 13,VerticalAlignment = PdfPCell.WRITABLE_DIRECT },
-                new PdfPCell(new Phrase("Habilidades para la vida", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("ASPECTOS PSICOSOCIALES", fontColumnValue)) {Colspan = 3,Rowspan = 13,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase("Habilidades para la vida", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("Autoestima", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -992,7 +987,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Habitos", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Habitos", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("Actividad fìsica", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -1029,7 +1024,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("ASPECTOS DE SEXUALIDAD", fontColumnValue)) {Colspan = 3,Rowspan = 6,VerticalAlignment = PdfPCell.WRITABLE_DIRECT },
+                new PdfPCell(new Phrase("ASPECTOS DE SEXUALIDAD", fontColumnValue)) {Colspan = 3,Rowspan = 6,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
                 new PdfPCell(new Phrase("Uso de método anticonceptivo", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -1087,7 +1082,7 @@ namespace NetPdf
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "LISTA DE PERIODOS", fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
 
