@@ -4129,7 +4129,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     if (pintIdCrystal == 48)
                     {
                         rp = new Reports.crApendice09_Drogas();
-                        // rp.SetDataSource(dsGetRepo);
+                        rp.SetDataSource(dsGetRepo);
                         rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
                         rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
                         objDiskOpt = new DiskFileDestinationOptions();

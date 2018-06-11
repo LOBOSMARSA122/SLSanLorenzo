@@ -102,6 +102,8 @@
               <xs:element name="LogoPropietaria" msprop:Generator_ColumnVarNameInTable="columnLogoPropietaria" msprop:Generator_ColumnPropNameInRow="LogoPropietaria" msprop:Generator_ColumnPropNameInTable="LogoPropietariaColumn" msprop:Generator_UserColumnName="LogoPropietaria" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="FirmaGraba" msprop:Generator_ColumnVarNameInTable="columnFirmaGraba" msprop:Generator_ColumnPropNameInRow="FirmaGraba" msprop:Generator_ColumnPropNameInTable="FirmaGrabaColumn" msprop:Generator_UserColumnName="FirmaGraba" type="xs:base64Binary" minOccurs="0" />
               <xs:element name="AreaCognitiva" msprop:Generator_ColumnVarNameInTable="columnAreaCognitiva" msprop:Generator_ColumnPropNameInRow="AreaCognitiva" msprop:Generator_ColumnPropNameInTable="AreaCognitivaColumn" msprop:Generator_UserColumnName="AreaCognitiva" type="xs:string" minOccurs="0" />
+              <xs:element name="EXAMEN_MENTAL_fobias_ID" msprop:Generator_ColumnVarNameInTable="columnEXAMEN_MENTAL_fobias_ID" msprop:Generator_ColumnPropNameInRow="EXAMEN_MENTAL_fobias_ID" msprop:Generator_ColumnPropNameInTable="EXAMEN_MENTAL_fobias_IDColumn" msprop:Generator_UserColumnName="EXAMEN_MENTAL_fobias_ID" type="xs:string" minOccurs="0" />
+              <xs:element name="EXAMEN_MENTAL_RAVEN" msprop:Generator_ColumnVarNameInTable="columnEXAMEN_MENTAL_RAVEN" msprop:Generator_ColumnPropNameInRow="EXAMEN_MENTAL_RAVEN" msprop:Generator_ColumnPropNameInTable="EXAMEN_MENTAL_RAVENColumn" msprop:Generator_UserColumnName="EXAMEN_MENTAL_RAVEN" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

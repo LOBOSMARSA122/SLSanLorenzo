@@ -9683,8 +9683,9 @@ namespace Sigesoft.Node.WinClient.BLL
 							   EXAMEN_MENTAL_afectividad_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_afectividad_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_afectividad_ID).v_Value1Name,
 
 							   EXAMEN_MENTAL_apetito_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_apetito_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_apetito_ID).v_Value1,
-							   EXAMEN_MENTAL_conducta_sexual_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conducta_sexual_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conducta_sexual_ID).v_Value1Name,
-							   EXAMEN_MENTAL_inteligencia_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID).v_Value1Name,
+							   EXAMEN_MENTAL_conducta_sexual_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conducta_sexual_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conducta_sexual_ID).v_Value1,
+                               EXAMEN_MENTAL_inteligencia_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID).v_Value1,
+                               EXAMEN_MENTAL_fobias_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_fobias_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_fobias_ID).v_Value1,
 
 
 							   EXAMEN_MENTAL_memoria_corto_plazo_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_memoria_corto_plazo_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_memoria_corto_plazo_ID).v_Value1Name,
@@ -9726,7 +9727,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   EXAMEN_MENTAL_area_personal_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_area_personal_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_area_personal_ID).v_Value1,
 							   EXAMEN_MENTAL_conclusiones_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conclusiones_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conclusiones_ID).v_Value1,
 							   EXAMEN_MENTAL_recomendaciones_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_restriccion_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_restriccion_ID).v_Value1,
-
+                               EXAMEN_MENTAL_RAVEN = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_RAVEN_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_RAVEN_ID).v_Value1,
 							   AreaCognitiva = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_area_psicolo_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_area_psicolo_ID).v_Value1,//  GetServiceComponentFielValue(a.v_ServiceId, "N002-ME000000033", "N002-MF000000336", "NOCOMBO", 0, "NO"),
 						   }).ToList();
 
@@ -25696,7 +25697,19 @@ namespace Sigesoft.Node.WinClient.BLL
 							   NOMBRE_EMPRESA_CLIENTE = a.NOMBRE_EMPRESA_CLIENTE,
                                Motivo_Prueba = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001376") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001376").v_Value1Name,
 							   Lote_marihuana = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002814") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002814").v_Value1,
-						   }).ToList();
+
+                               Aliento = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003212") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003212").v_Value1,
+                               Extasis = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003218") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003218").v_Value1,
+                               Opiaceos = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003217") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003217").v_Value1,
+                               Oxicodona = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003219") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003219").v_Value1,
+                               Metadano = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003214") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003214").v_Value1,
+                               Cocaina = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000705") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000705").v_Value1,
+                               Antetaminas = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000391") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000391").v_Value1,
+                               Metanfetamina = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003215") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003215").v_Value1,
+                               Marihuana = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001294") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001294").v_Value1,
+                               Benzodiacepinas = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000395") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000395").v_Value1,
+                               Barbituricos = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? string.Empty : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003213") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000003213").v_Value1,
+                           }).ToList();
 
 				return sql;
 			}

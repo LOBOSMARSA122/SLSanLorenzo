@@ -54,6 +54,22 @@ namespace Sigesoft.Node.WinClient.BE
         public string Lote { get; set; }
         public string Lote_marihuana { get; set; }
         public string Motivo_Prueba { get; set; }
+
+        public string Aliento { get; set; }
+
+        public string Extasis { get; set; }
+        public string Opiaceos { get; set; }
+        public string Oxicodona { get; set; }
+        public string Metadano { get; set; }
+        public string Cocaina { get; set; }
+
+        public string Antetaminas { get; set; }
+        public string Metanfetamina { get; set; }
+        public string Marihuana { get; set; }
+        public string Benzodiacepinas { get; set; }
+        public string Barbituricos { get; set; }
+
+
     }
 
 }

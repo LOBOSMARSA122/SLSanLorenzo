@@ -14551,8 +14551,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                      IdServicio = A.v_ServiceId,
                                      AreaTrabajo = E2.v_Name,
                                      FirmaGraba = pme.b_SignatureImage,
-
-
+                                     
                                  });
 
                 var MedicalCenter = GetInfoMedicalCenter();
@@ -14636,7 +14635,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                                EXAMEN_MENTAL_apetito_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_apetito_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_apetito_ID).v_Value1,
                                EXAMEN_MENTAL_conducta_sexual_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conducta_sexual_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conducta_sexual_ID).v_Value1Name,
-                               EXAMEN_MENTAL_inteligencia_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID).v_Value1Name,
+                               EXAMEN_MENTAL_inteligencia_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.PSICOLOGIA_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.PSICOLOGIA_ID).v_Value1,
 
 
                                EXAMEN_MENTAL_memoria_corto_plazo_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_memoria_corto_plazo_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_memoria_corto_plazo_ID).v_Value1Name,
