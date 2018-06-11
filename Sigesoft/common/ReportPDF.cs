@@ -10068,8 +10068,23 @@ namespace NetPdf
             {
                 new PdfPCell(new Phrase("Antecedentes Ocupacional(Descritos en el APÉNDICE N° 1)",
                     fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
-                     new PdfPCell(new Phrase("Evaluación Oftamológica(Descritos en el APÉNDICE N° 3)",
+                    new PdfPCell(new Phrase("Evaluación Oftamológica(Descritos en el APÉNDICE N° 2)",
+                    fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Evaluación Audiométrica(Descritos en el APÉNDICE N° 3)",
+                    fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Evaluacion Psicológica Ocupacional(Descritos en el APÉNDICE N° 4)",
+                    fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Lectura e Interpretación de EKG(Descritos en el APÉNDICE N° 5)",
+                    fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Radiografía de Torax Pósteroanteriior(Descritos en el APÉNDICE N° 6)",
+                    fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Examen de Laboratorio(Descrita en el APÉNDICE N° 7)",
+                    fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Esperiometría(Descrita en el APÉNDICE N° 8)",
+                    fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Dosaje de 10 Drogas en orina(Descrita en el APÉNDICE N° 9)",
+                    fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("Certificado de Aptitud(Descrito en el APÉNDICE N° 10)",
                     fontColumnValueApendice)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT},
             };
 
@@ -10077,107 +10092,7 @@ namespace NetPdf
 
             filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-            document.Add(filiationWorker);
-         
-
-
-            #region Evaluación Audiometria
-
-
-            cells = new List<PdfPCell>();
-
-
-
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Evaluación Audiométrica(Descritos en el APÉNDICE N° 3)", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Evaluacion Psicologica
-
-
-            cells = new List<PdfPCell>();
-
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Evaluacion Psicológica Ocupacional(Descritos en el APÉNDICE N° 4)", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Lectura e Interpretacion
-
-
-            cells = new List<PdfPCell>();
-
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Lectura e Interpretación de EKG(Descritos en el APÉNDICE N° 5)", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Radiografia de torax
-
-
-            cells = new List<PdfPCell>();
-
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Radiograf'ia de Torax Pósteroanteriior(Descritos en el APÉNDICE N° 6)", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Examen de laboratorio
-
-
-            cells = new List<PdfPCell>();
-
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Examen de Laboratorio(Descrita en el APÉNDICE N° 7)", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Esperiometria
-
-
-            cells = new List<PdfPCell>();
-
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Esperiometría(Descrita en el APÉNDICE N° 8)", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Dosaje 10
-
-
-            cells = new List<PdfPCell>();
-
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Dosaje de 10 Drogas en orina(Descrita en el APÉNDICE N° 9)", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
-
-            #region Certificado de Aptitud
-
-
-            cells = new List<PdfPCell>();
-
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "Certificado de Aptitud(Descrito en el APÉNDICE N° 10)", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
+            document.Add(filiationWorker);  
 
             #region Apto
             cells = new List<PdfPCell>()
