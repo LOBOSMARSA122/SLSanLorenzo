@@ -455,6 +455,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnEXAMEN_MENTAL_fobias_ID;
             
+            private global::System.Data.DataColumn columnEXAMEN_MENTAL_RAVEN;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtHistoriaClinicaPsicologicaDataTable() {
@@ -1194,6 +1196,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EXAMEN_MENTAL_RAVENColumn {
+                get {
+                    return this.columnEXAMEN_MENTAL_RAVEN;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1317,7 +1327,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         byte[] LogoPropietaria, 
                         byte[] FirmaGraba, 
                         string AreaCognitiva, 
-                        string EXAMEN_MENTAL_fobias_ID) {
+                        string EXAMEN_MENTAL_fobias_ID, 
+                        string EXAMEN_MENTAL_RAVEN) {
                 dtHistoriaClinicaPsicologicaRow rowdtHistoriaClinicaPsicologicaRow = ((dtHistoriaClinicaPsicologicaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         ApellidosNombres,
@@ -1407,7 +1418,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         LogoPropietaria,
                         FirmaGraba,
                         AreaCognitiva,
-                        EXAMEN_MENTAL_fobias_ID};
+                        EXAMEN_MENTAL_fobias_ID,
+                        EXAMEN_MENTAL_RAVEN};
                 rowdtHistoriaClinicaPsicologicaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtHistoriaClinicaPsicologicaRow);
                 return rowdtHistoriaClinicaPsicologicaRow;
@@ -1518,6 +1530,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnFirmaGraba = base.Columns["FirmaGraba"];
                 this.columnAreaCognitiva = base.Columns["AreaCognitiva"];
                 this.columnEXAMEN_MENTAL_fobias_ID = base.Columns["EXAMEN_MENTAL_fobias_ID"];
+                this.columnEXAMEN_MENTAL_RAVEN = base.Columns["EXAMEN_MENTAL_RAVEN"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1699,6 +1712,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnAreaCognitiva);
                 this.columnEXAMEN_MENTAL_fobias_ID = new global::System.Data.DataColumn("EXAMEN_MENTAL_fobias_ID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEXAMEN_MENTAL_fobias_ID);
+                this.columnEXAMEN_MENTAL_RAVEN = new global::System.Data.DataColumn("EXAMEN_MENTAL_RAVEN", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEXAMEN_MENTAL_RAVEN);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3336,6 +3351,23 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EXAMEN_MENTAL_RAVEN {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtHistoriaClinicaPsicologica.EXAMEN_MENTAL_RAVENColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'EXAMEN_MENTAL_RAVEN\' in table \'dtHistoriaClinicaPsicologica" +
+                                "\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtHistoriaClinicaPsicologica.EXAMEN_MENTAL_RAVENColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsApellidosNombresNull() {
                 return this.IsNull(this.tabledtHistoriaClinicaPsicologica.ApellidosNombresColumn);
             }
@@ -4388,6 +4420,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetEXAMEN_MENTAL_fobias_IDNull() {
                 this[this.tabledtHistoriaClinicaPsicologica.EXAMEN_MENTAL_fobias_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEXAMEN_MENTAL_RAVENNull() {
+                return this.IsNull(this.tabledtHistoriaClinicaPsicologica.EXAMEN_MENTAL_RAVENColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEXAMEN_MENTAL_RAVENNull() {
+                this[this.tabledtHistoriaClinicaPsicologica.EXAMEN_MENTAL_RAVENColumn] = global::System.Convert.DBNull;
             }
         }
         

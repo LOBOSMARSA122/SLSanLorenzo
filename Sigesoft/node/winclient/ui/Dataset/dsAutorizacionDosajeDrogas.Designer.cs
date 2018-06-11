@@ -361,6 +361,28 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnMotivo_Prueba;
             
+            private global::System.Data.DataColumn columnAliento;
+            
+            private global::System.Data.DataColumn columnExtasis;
+            
+            private global::System.Data.DataColumn columnOpiaceos;
+            
+            private global::System.Data.DataColumn columnOxicodona;
+            
+            private global::System.Data.DataColumn columnMetadano;
+            
+            private global::System.Data.DataColumn columnCocaina;
+            
+            private global::System.Data.DataColumn columnAntetaminas;
+            
+            private global::System.Data.DataColumn columnMetanfetamina;
+            
+            private global::System.Data.DataColumn columnMarihuana;
+            
+            private global::System.Data.DataColumn columnBenzodiacepinas;
+            
+            private global::System.Data.DataColumn columnBarbituricos;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtAutorizacionDosajeDrogasDataTable() {
@@ -724,6 +746,94 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AlientoColumn {
+                get {
+                    return this.columnAliento;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ExtasisColumn {
+                get {
+                    return this.columnExtasis;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OpiaceosColumn {
+                get {
+                    return this.columnOpiaceos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OxicodonaColumn {
+                get {
+                    return this.columnOxicodona;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MetadanoColumn {
+                get {
+                    return this.columnMetadano;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CocainaColumn {
+                get {
+                    return this.columnCocaina;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AntetaminasColumn {
+                get {
+                    return this.columnAntetaminas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MetanfetaminaColumn {
+                get {
+                    return this.columnMetanfetamina;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn MarihuanaColumn {
+                get {
+                    return this.columnMarihuana;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BenzodiacepinasColumn {
+                get {
+                    return this.columnBenzodiacepinas;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn BarbituricosColumn {
+                get {
+                    return this.columnBarbituricos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -800,7 +910,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string NOMBRE_EMPRESA_CLIENTE, 
                         string Lote, 
                         string Lote_marihuana, 
-                        string Motivo_Prueba) {
+                        string Motivo_Prueba, 
+                        string Aliento, 
+                        string Extasis, 
+                        string Opiaceos, 
+                        string Oxicodona, 
+                        string Metadano, 
+                        string Cocaina1, 
+                        string Antetaminas, 
+                        string Metanfetamina, 
+                        string Marihuana1, 
+                        string Benzodiacepinas, 
+                        string Barbituricos) {
                 dtAutorizacionDosajeDrogasRow rowdtAutorizacionDosajeDrogasRow = ((dtAutorizacionDosajeDrogasRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Fecha,
@@ -843,7 +964,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         NOMBRE_EMPRESA_CLIENTE,
                         Lote,
                         Lote_marihuana,
-                        Motivo_Prueba};
+                        Motivo_Prueba,
+                        Aliento,
+                        Extasis,
+                        Opiaceos,
+                        Oxicodona,
+                        Metadano,
+                        Cocaina1,
+                        Antetaminas,
+                        Metanfetamina,
+                        Marihuana1,
+                        Benzodiacepinas,
+                        Barbituricos};
                 rowdtAutorizacionDosajeDrogasRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtAutorizacionDosajeDrogasRow);
                 return rowdtAutorizacionDosajeDrogasRow;
@@ -907,6 +1039,17 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnLote = base.Columns["Lote"];
                 this.columnLote_marihuana = base.Columns["Lote_marihuana"];
                 this.columnMotivo_Prueba = base.Columns["Motivo_Prueba"];
+                this.columnAliento = base.Columns["Aliento"];
+                this.columnExtasis = base.Columns["Extasis"];
+                this.columnOpiaceos = base.Columns["Opiaceos"];
+                this.columnOxicodona = base.Columns["Oxicodona"];
+                this.columnMetadano = base.Columns["Metadano"];
+                this.columnCocaina = base.Columns["Cocaina"];
+                this.columnAntetaminas = base.Columns["Antetaminas"];
+                this.columnMetanfetamina = base.Columns["Metanfetamina"];
+                this.columnMarihuana = base.Columns["Marihuana"];
+                this.columnBenzodiacepinas = base.Columns["Benzodiacepinas"];
+                this.columnBarbituricos = base.Columns["Barbituricos"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -994,6 +1137,28 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnLote_marihuana);
                 this.columnMotivo_Prueba = new global::System.Data.DataColumn("Motivo_Prueba", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMotivo_Prueba);
+                this.columnAliento = new global::System.Data.DataColumn("Aliento", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAliento);
+                this.columnExtasis = new global::System.Data.DataColumn("Extasis", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExtasis);
+                this.columnOpiaceos = new global::System.Data.DataColumn("Opiaceos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOpiaceos);
+                this.columnOxicodona = new global::System.Data.DataColumn("Oxicodona", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOxicodona);
+                this.columnMetadano = new global::System.Data.DataColumn("Metadano", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMetadano);
+                this.columnCocaina = new global::System.Data.DataColumn("Cocaina", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCocaina);
+                this.columnAntetaminas = new global::System.Data.DataColumn("Antetaminas", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAntetaminas);
+                this.columnMetanfetamina = new global::System.Data.DataColumn("Metanfetamina", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMetanfetamina);
+                this.columnMarihuana = new global::System.Data.DataColumn("Marihuana", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMarihuana);
+                this.columnBenzodiacepinas = new global::System.Data.DataColumn("Benzodiacepinas", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBenzodiacepinas);
+                this.columnBarbituricos = new global::System.Data.DataColumn("Barbituricos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnBarbituricos);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1822,6 +1987,188 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Aliento {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.AlientoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Aliento\' in table \'dtAutorizacionDosajeDrogas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.AlientoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Extasis {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.ExtasisColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Extasis\' in table \'dtAutorizacionDosajeDrogas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.ExtasisColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Opiaceos {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.OpiaceosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Opiaceos\' in table \'dtAutorizacionDosajeDrogas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.OpiaceosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Oxicodona {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.OxicodonaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Oxicodona\' in table \'dtAutorizacionDosajeDrogas\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.OxicodonaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Metadano {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.MetadanoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Metadano\' in table \'dtAutorizacionDosajeDrogas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.MetadanoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Cocaina {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.CocainaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cocaina\' in table \'dtAutorizacionDosajeDrogas\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.CocainaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Antetaminas {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.AntetaminasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Antetaminas\' in table \'dtAutorizacionDosajeDrogas\' is DBNul" +
+                                "l.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.AntetaminasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Metanfetamina {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.MetanfetaminaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Metanfetamina\' in table \'dtAutorizacionDosajeDrogas\' is DBN" +
+                                "ull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.MetanfetaminaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Marihuana {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.MarihuanaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Marihuana\' in table \'dtAutorizacionDosajeDrogas\' is DBNull." +
+                                "", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.MarihuanaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Benzodiacepinas {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.BenzodiacepinasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Benzodiacepinas\' in table \'dtAutorizacionDosajeDrogas\' is D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.BenzodiacepinasColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Barbituricos {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAutorizacionDosajeDrogas.BarbituricosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Barbituricos\' in table \'dtAutorizacionDosajeDrogas\' is DBNu" +
+                                "ll.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAutorizacionDosajeDrogas.BarbituricosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsFechaNull() {
                 return this.IsNull(this.tabledtAutorizacionDosajeDrogas.FechaColumn);
             }
@@ -2310,6 +2657,138 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetMotivo_PruebaNull() {
                 this[this.tabledtAutorizacionDosajeDrogas.Motivo_PruebaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAlientoNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.AlientoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAlientoNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.AlientoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsExtasisNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.ExtasisColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetExtasisNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.ExtasisColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOpiaceosNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.OpiaceosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOpiaceosNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.OpiaceosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOxicodonaNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.OxicodonaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOxicodonaNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.OxicodonaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMetadanoNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.MetadanoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMetadanoNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.MetadanoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCocainaNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.CocainaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCocainaNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.CocainaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAntetaminasNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.AntetaminasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAntetaminasNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.AntetaminasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMetanfetaminaNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.MetanfetaminaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMetanfetaminaNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.MetanfetaminaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMarihuanaNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.MarihuanaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetMarihuanaNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.MarihuanaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBenzodiacepinasNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.BenzodiacepinasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBenzodiacepinasNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.BenzodiacepinasColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsBarbituricosNull() {
+                return this.IsNull(this.tabledtAutorizacionDosajeDrogas.BarbituricosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetBarbituricosNull() {
+                this[this.tabledtAutorizacionDosajeDrogas.BarbituricosColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -27,6 +27,7 @@ namespace Sigesoft.Node.WinClient.BE
         public byte[] LogoPropietaria { get; set; }
 
         public string EXAMEN_MENTAL_fobias_ID { get; set; }
+        public string EXAMEN_MENTAL_RAVEN { get; set; }
         public string HISTORIA_CLINICA_PSICOLOGICA_motivo_evaluacion_ID { get; set; }
         public string HISTORIA_CLINICA_PSICOLOGICA_superficie_ID { get; set; }
         public string HISTORIA_CLINICA_PSICOLOGICA_subsuelo_ID { get; set; }
