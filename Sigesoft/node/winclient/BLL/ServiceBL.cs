@@ -29063,7 +29063,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     int nuevoGrupo = int.Parse(GrupoPadre.ToString() + D.ParameterId.ToString());
                     D.Hijos = ObtenerListadoCuidadosPreventivos(nuevoGrupo,PersonId,FechaServicio);
-                }
+                     }
 
 
                 return data;
