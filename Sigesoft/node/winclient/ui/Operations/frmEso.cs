@@ -6337,11 +6337,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     gb.Enabled = false;
                 }
-                else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720" || tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" 
-                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000222" || tagCtrl.v_ComponentFieldsId == "N009-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000224" || _oldValue == "N009-MF000000227" 
-                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000225" || tagCtrl.v_ComponentFieldsId == "N009-MF000000226"
-                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000722" || tagCtrl.v_ComponentFieldsId == "N009-MF000000723" || tagCtrl.v_ComponentFieldsId == "N009-MF000000724" || tagCtrl.v_ComponentFieldsId == "N009-MF000000727"
-                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000725" || tagCtrl.v_ComponentFieldsId == "N009-MF000000726")
+                else if (tagCtrl.v_ComponentFieldsId == "N002-MF000000220" || tagCtrl.v_ComponentFieldsId == "N002-MF000000221" || tagCtrl.v_ComponentFieldsId == "N002-MF000000223" || tagCtrl.v_ComponentFieldsId == "N009-MF000000720"
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000721" || tagCtrl.v_ComponentFieldsId == "N009-MF000000722" || tagCtrl.v_ComponentFieldsId == "N009-MF000000723" ||tagCtrl.v_ComponentFieldsId == "N009-MF000000724"
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000725" || tagCtrl.v_ComponentFieldsId == "N009-MF000000726"
+                    || tagCtrl.v_ComponentFieldsId == "N009-MF000000727" )
                 {
                     gb.Enabled = true;
                 }
@@ -7250,16 +7249,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             else // todos los examenes están con el estado evaluado
             {
 
-                if (cbAptitudEso.SelectedValue.ToString() == ((int)AptitudeStatus.SinAptitud).ToString())
-                {
-                    MessageBox.Show("Todos los Examenes se encuentran concluidos.\nEl estado de la Atención es: En espera de Aptitud .", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    serviceDto objserviceDto = new serviceDto();
-                    objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
-                    objserviceDto.i_ServiceStatusId = (int)ServiceStatus.EsperandoAptitud;
-                    objserviceDto.v_Motive = "Esperando Aptitud";
-                    objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
-                }
-                else
+                if (_tipo == (int)MasterService.AtxMedicaParticular)
                 {
                     MessageBox.Show("El servicio ha concluido correctamente.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     serviceDto objserviceDto = new serviceDto();
@@ -7268,9 +7258,28 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     objserviceDto.v_Motive = "Culminado";
                     objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
                 }
+                else if (_tipo == (int)MasterService.Eso)
+                {
+                    if (cbAptitudEso.SelectedValue.ToString() == ((int)AptitudeStatus.SinAptitud).ToString())
+                    {
+                        MessageBox.Show("Todos los Examenes se encuentran concluidos.\nEl estado de la Atención es: En espera de Aptitud .", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        serviceDto objserviceDto = new serviceDto();
+                        objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
+                        objserviceDto.i_ServiceStatusId = (int)ServiceStatus.EsperandoAptitud;
+                        objserviceDto.v_Motive = "Esperando Aptitud";
+                        objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                    }
+                    else
+                    {
+                        MessageBox.Show("El servicio ha concluido correctamente.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        serviceDto objserviceDto = new serviceDto();
+                        objserviceDto = objServiceBL.GetService(ref objOperationResult, _serviceId);
+                        objserviceDto.i_ServiceStatusId = (int)ServiceStatus.Culminado;
+                        objserviceDto.v_Motive = "Culminado";
+                        objServiceBL.UpdateService(ref objOperationResult, objserviceDto, Globals.ClientSession.GetAsList());
+                    }
 
-
-
+                }
 
             }
 
