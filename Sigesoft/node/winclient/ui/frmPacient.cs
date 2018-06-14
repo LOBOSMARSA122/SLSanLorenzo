@@ -86,7 +86,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDepartamento(ref objOperationResult, 113, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, null), DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito(ref objOperationResult, 113, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito_(ref objOperationResult, 113), DropDownListAction.Select);
 
             Utils.LoadDropDownList(ddlResidenceInWorkplaceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlTypeOfInsuranceId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 188, null), DropDownListAction.Select);
@@ -1145,34 +1145,31 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void ddlDepartamentId_SelectedIndexChanged(object sender, EventArgs e)
         {
+           
+            //OperationResult objOperationResult = new OperationResult();
+            //if (ddlDepartamentId.SelectedValue == null) return;
             //if (ddlDepartamentId.SelectedValue.ToString() == "-1")
-            //    return;
-
-            OperationResult objOperationResult = new OperationResult();
-            if (ddlDepartamentId.SelectedValue == null) return;
-            if (ddlDepartamentId.SelectedValue.ToString() == "-1")
-            {
-                Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, null), DropDownListAction.Select);
-            }
-            else
-            {
-                Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, int.Parse(ddlDepartamentId.SelectedValue.ToString())), DropDownListAction.Select);
-            }
-            //Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, int.Parse(ddlDepartamentId.SelectedValue.ToString())), DropDownListAction.Select);
+            //{
+            //    Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, null), DropDownListAction.Select);
+            //}
+            //else
+            //{
+            //    Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboProvincia(ref objOperationResult, 113, int.Parse(ddlDepartamentId.SelectedValue.ToString())), DropDownListAction.Select);
+            //}
         }
 
         private void ddlProvinceId_SelectedIndexChanged(object sender, EventArgs e)
         {
-            OperationResult objOperationResult = new OperationResult();
-            if (ddlProvinceId.SelectedValue == null) return;
-            if (ddlDepartamentId.SelectedValue.ToString() == "-1")
-            {
-                Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito(ref objOperationResult, 113, null), DropDownListAction.Select);
-            }
-            else
-            {
-                Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito(ref objOperationResult, 113, int.Parse(ddlProvinceId.SelectedValue.ToString())), DropDownListAction.Select);
-            }
+            //OperationResult objOperationResult = new OperationResult();
+            //if (ddlProvinceId.SelectedValue == null) return;
+            //if (ddlDepartamentId.SelectedValue.ToString() == "-1")
+            //{
+            //    Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito(ref objOperationResult, 113, null), DropDownListAction.Select);
+            //}
+            //else
+            //{
+            //    Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito(ref objOperationResult, 113, int.Parse(ddlProvinceId.SelectedValue.ToString())), DropDownListAction.Select);
+            //}
 
 
         }
@@ -1216,6 +1213,30 @@ namespace Sigesoft.Node.WinClient.UI
                 }
             }
 
+        }
+
+        private void ddlDistricId_Leave(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+
+            var distritos = BLL.Utils.BuscarCoincidenciaDistritos(ref objOperationResult, 113, ddlDistricId.Text).OrderByDescending(p => p.Value4).ToList();
+            var idDistrito = distritos[0].Value4.ToString();
+
+            var provincia = BLL.Utils.ObtenerProvincia(ref objOperationResult, 113, int.Parse(idDistrito));
+            Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", provincia, DropDownListAction.Select);
+            if (provincia.Count > 1)
+            {
+                ddlProvinceId.SelectedValue = provincia[1].Id;
+            }
+            var idDepartamento = provincia[1].Value4.ToString();
+            var departamento = BLL.Utils.ObtenerProvincia(ref objOperationResult, 113, int.Parse(idDepartamento));
+
+            Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", departamento, DropDownListAction.Select);
+
+            if (departamento.Count > 1)
+            {
+                ddlDepartamentId.SelectedValue = departamento[1].Id;
+            }
         }
 
     }
