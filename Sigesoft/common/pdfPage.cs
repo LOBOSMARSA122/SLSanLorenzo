@@ -221,7 +221,7 @@ namespace NetPdf
             var imageCell = new PdfPCell(HandlingItextSharp.GetImage(rutaImg, null, null, 520, 41)) {Border = PdfPCell.NO_BORDER };
             
             footerTbl.AddCell(imageCell);
-            footerTbl.WriteSelectedRows(0, -1, doc.LeftMargin, (doc.BottomMargin + 10), writer.DirectContent);
+            footerTbl.WriteSelectedRows(0, -1, doc.LeftMargin, (doc.BottomMargin + 0), writer.DirectContent);
         }
        
         public override void OnCloseDocument(PdfWriter writer, Document document)

@@ -25252,18 +25252,18 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.VaronesCausaAborto = servicios[0].VaronesCausaAborto;
 
                 //Primer bloque
-                FichaAntecedentePatologico.Alergia = objEntity.Find(p => p.Nombre.Contains("Alergia")) == null ? " " : "X";
-                FichaAntecedentePatologico.AmigdalitisCronica = objEntity.Find(p => p.Nombre.Contains("Amigoalitis Cronica")) == null ? " " : "X";
-                FichaAntecedentePatologico.Asma = objEntity.Find(p => p.Nombre.Contains("Asma")) == null ? " " : "X";
-                FichaAntecedentePatologico.Bocio = objEntity.Find(p => p.Nombre.Contains("Bocio")) == null ? " " : "X";
-                FichaAntecedentePatologico.Bronconeumonia = objEntity.Find(p => p.Nombre.Contains("Bronconeumonia")) == null ? " " : "X";
-                FichaAntecedentePatologico.BronquitisRepeticion = objEntity.Find(p => p.Nombre.Contains("Bronquitis")) == null ? " " : "X";
-                FichaAntecedentePatologico.Colecistitis = objEntity.Find(p => p.Nombre.Contains("Colecistitis")) == null ? " " : "X";
-                FichaAntecedentePatologico.Dermatisis = objEntity.Find(p => p.Nombre.Contains("Dermatisis")) == null ? " " : "X";
-                FichaAntecedentePatologico.Diabetes = objEntity.Find(p => p.Nombre == "Diabetes") == null ? " " : "X";
-                FichaAntecedentePatologico.Disenteria = objEntity.Find(p => p.Nombre == "Disenteria") == null? " ": "X";
-                FichaAntecedentePatologico.ArritmiasCardiacas = objEntity.Find(p => p.Nombre.Contains("Arritmias")) == null ? " " : "X";
-                FichaAntecedentePatologico.EnfCorazon = objEntity.Find(p => p.Nombre.Contains("Corazón")) == null ? " " : "X";
+                FichaAntecedentePatologico.Alergia = objEntity.Find(p => p.Nombre.Contains("ALERGIAS")) == null ? " " : "1";
+                FichaAntecedentePatologico.AmigdalitisCronica = objEntity.Find(p => p.Nombre.Contains("AMIGDALITIS CRÓNICA")) == null ? " " : "1";
+                FichaAntecedentePatologico.Asma = objEntity.Find(p => p.Nombre.Contains("ASMA BRONQUIAL ")) == null ? " " : "1";
+                FichaAntecedentePatologico.Bocio = objEntity.Find(p => p.Nombre.Contains("BOCIO")) == null ? " " : "X";
+                FichaAntecedentePatologico.Bronconeumonia = objEntity.Find(p => p.Nombre.Contains("BRONCONEUMONIA")) == null ? " " : "1";
+                FichaAntecedentePatologico.BronquitisRepeticion = objEntity.Find(p => p.Nombre.Contains("BRONQUITIS CRÓNICA")) == null ? " " : "1";
+                FichaAntecedentePatologico.Colecistitis = objEntity.Find(p => p.Nombre.Contains("COLECISTITIS")) == null ? " " : "1";
+                FichaAntecedentePatologico.Dermatisis = objEntity.Find(p => p.Nombre.Contains("DERMATITIS DE CONTACTO")) == null ? " " : "1";
+                FichaAntecedentePatologico.Diabetes = objEntity.Find(p => p.Nombre == "DIABETES MELLITUS") == null ? " " : "1";
+                FichaAntecedentePatologico.Disenteria = objEntity.Find(p => p.Nombre == "DISENTERIA") == null ? " " : "1";
+                FichaAntecedentePatologico.ArritmiasCardiacas = objEntity.Find(p => p.Nombre.Contains("ARRITMIA CARDIACA")) == null ? " " : "1";
+                FichaAntecedentePatologico.EnfCorazon = objEntity.Find(p => p.Nombre.Contains("ENFERMEDADES DEL CORAZON")) == null ? " " : "X";
                 FichaAntecedentePatologico.Caries = objEntity.Find(p => p.Nombre.Contains("Caries")) == null ? " " : "X";
                 FichaAntecedentePatologico.EnfOculares = objEntity.Find(p => p.Nombre.Contains("Ocular")) == null ? " " : "X";
                 FichaAntecedentePatologico.Epilepcia = objEntity.Find(p => p.Nombre.Contains("Epilepcia") ) == null ? " " : "X";
@@ -25295,7 +25295,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.ResfrioFrecuente = objEntity.Find(p => p.Nombre.Contains("Resfrio")) == null ? " " : "X";
                 FichaAntecedentePatologico.Reumatismo = objEntity.Find(p => p.Nombre.Contains("Reumatismo")) == null ? " " : "X";
                 FichaAntecedentePatologico.Sarampion = objEntity.Find(p => p.Nombre.Contains("Sarampion")) == null ? " " : "X";
-                FichaAntecedentePatologico.Sifilis = objEntity.Find(p => p.Nombre.Contains("sifilis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Sifilis = objEntity.Find(p => p.Nombre.Contains("SIFILIS")) == null ? " " : "1";
                 FichaAntecedentePatologico.Silicosis = objEntity.Find(p => p.Nombre.Contains("Silicosis")) == null ? " " : "X";
                 FichaAntecedentePatologico.Sinusitis = objEntity.Find(p => p.Nombre.Contains("Sinusitis")) == null ? " " : "X";
                 FichaAntecedentePatologico.Traumatismo = objEntity.Find(p => p.Nombre.Contains("Traumatismo")) == null ? " " : "X";
