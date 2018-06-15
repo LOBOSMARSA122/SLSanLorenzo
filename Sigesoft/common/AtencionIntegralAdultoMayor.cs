@@ -20,7 +20,12 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateAtencionIntegral(string filePDF, List<ProblemasList> problemasList, List<TipoAtencionList> planIntegralList, List<frmEsoAntecedentesPadre> Antecedentes, List<frmEsoCuidadosPreventivosFechas> FechasCP, List<frmEsoCuidadosPreventivosComentarios> ComentariosCP)
+        public static void CreateAtencionIntegral(string filePDF, 
+            List<ProblemasList> problemasList, 
+            List<TipoAtencionList> planIntegralList, 
+            List<frmEsoAntecedentesPadre> Antecedentes, 
+            List<frmEsoCuidadosPreventivosFechas> FechasCP, 
+            List<frmEsoCuidadosPreventivosComentarios> ComentariosCP)
         {
             Document document = new Document();
 

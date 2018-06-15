@@ -20,7 +20,13 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateAtencionIntegral(string filePDF, List<ProblemasList> problemasList, List<TipoAtencionList> planIntegralList, DatosAtencion datosAtencion, List<frmEsoAntecedentesPadre> Antecedentes, List<frmEsoCuidadosPreventivosFechas> FechasCP, List<frmEsoCuidadosPreventivosComentarios> ComentariosCP)
+        public static void CreateAtencionIntegral(string filePDF, 
+            List<ProblemasList> problemasList, 
+            List<TipoAtencionList> planIntegralList, 
+            DatosAtencion datosAtencion, 
+            List<frmEsoAntecedentesPadre> Antecedentes, 
+            List<frmEsoCuidadosPreventivosFechas> FechasCP, 
+            List<frmEsoCuidadosPreventivosComentarios> ComentariosCP)
         {
             Document document = new Document();
 
@@ -632,24 +638,24 @@ namespace NetPdf
 
             #region CADA CONSULTA
 
-            var a = FechasCP[0].Listado.Where(z => z.Nombre == "EXAMEN");
+            //var a = FechasCP[0].Listado.Where(z => z.Nombre == "EXAMEN");
 
 
-            var xxx =
-                ComentariosCP.Where(
-                    x =>
-                        x.GrupoId ==
-                        FechasCP[0].Listado.Where(z => z.Nombre == "EXAMEN")
-                            .FirstOrDefault()
-                            .Hijos.Where(y => y.Nombre == "DE COLESTEROL (> 35 AÑOS)")
-                            .FirstOrDefault()
-                            .GrupoId &&
-                        x.ParametroId ==
-                        FechasCP[0].Listado.Where(z => z.Nombre == "EXAMEN")
-                            .FirstOrDefault()
-                            .Hijos.Where(y => y.Nombre == "DE COLESTEROL (> 35 AÑOS)")
-                            .FirstOrDefault()
-                            .ParameterId).FirstOrDefault().Comentario;
+            //var xxx =
+            //    ComentariosCP.Where(
+            //        x =>
+            //            x.GrupoId ==
+            //            FechasCP[0].Listado.Where(z => z.Nombre == "EXAMEN")
+            //                .FirstOrDefault()
+            //                .Hijos.Where(y => y.Nombre == "DE COLESTEROL (> 35 AÑOS)")
+            //                .FirstOrDefault()
+            //                .GrupoId &&
+            //            x.ParametroId ==
+            //            FechasCP[0].Listado.Where(z => z.Nombre == "EXAMEN")
+            //                .FirstOrDefault()
+            //                .Hijos.Where(y => y.Nombre == "DE COLESTEROL (> 35 AÑOS)")
+            //                .FirstOrDefault()
+            //                .ParameterId).FirstOrDefault().Comentario;
 
             if (datosAtencion.Genero.ToUpper() == "MUJER")
             {
@@ -953,7 +959,6 @@ namespace NetPdf
                     new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "PLANIFICACIÓN FAMILIAR").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "PLANIFICACIÓN FAMILIAR").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
                     new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "PLANIFICACIÓN FAMILIAR").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "PLANIFICACIÓN FAMILIAR").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
                     new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(y => y.Nombre == "PLANIFICACIÓN FAMILIAR").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(y => y.Nombre == "PLANIFICACIÓN FAMILIAR").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-
              };
 
                 columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 20f };
