@@ -396,7 +396,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void ConstruirFormularioAntecedentes()
         {
             int GrupoBase = 282; //Antecedentes
-            GrupoEtario = _serviceBL.ObtenerIdGrupoEtarioDePaciente(_personId);
+            GrupoEtario = _serviceBL.ObtenerIdGrupoEtarioDePaciente(_age);
             int Grupo = int.Parse(GrupoBase.ToString() + GrupoEtario.ToString());
 
             List<frmEsoAntecedentesPadre> AntecedentesActuales = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo,GrupoEtario,_personId);
@@ -447,33 +447,30 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             int GrupoBase = 0;
             switch (GrupoEtario)
             {
-                case 1:
+                case (int)Sigesoft.Common.GrupoEtario.Ninio:
                     {
-                        switch(_AMCGenero){
-                            case 1:
-                                {
-                                    GrupoBase = 284;
-                                    break;
-                                }
-                            case 2:
-                                {
-                                    GrupoBase = 283;
-                                    break;
-                                }
-                            default:
-                                {
-                                    GrupoBase = 0;
-                                    break;
-                                }
-                        }
+                        GrupoBase = 287;
                         break;
                     }
-                case 2:
+                case (int)Sigesoft.Common.GrupoEtario.Adolecente:
                     {
                         GrupoBase = 285;
                         break;
                     }
-                case 3:
+                case (int)Sigesoft.Common.GrupoEtario.Adulto:
+                    {
+                        if (_AMCGenero == 1)
+                        {
+                            GrupoBase = 284;
+                            break;
+                        }
+                        else
+                        {
+                            GrupoBase = 283;
+                            break;
+                        }
+                    }
+                case (int)Sigesoft.Common.GrupoEtario.AdultoMayor:
                     {
                         GrupoBase = 286;
                         break;

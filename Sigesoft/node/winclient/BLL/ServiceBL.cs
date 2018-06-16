@@ -25252,18 +25252,18 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.VaronesCausaAborto = servicios[0].VaronesCausaAborto;
 
                 //Primer bloque
-                FichaAntecedentePatologico.Alergia = objEntity.Find(p => p.Nombre.Contains("Alergia")) == null ? " " : "X";
-                FichaAntecedentePatologico.AmigdalitisCronica = objEntity.Find(p => p.Nombre.Contains("Amigoalitis Cronica")) == null ? " " : "X";
-                FichaAntecedentePatologico.Asma = objEntity.Find(p => p.Nombre.Contains("Asma")) == null ? " " : "X";
-                FichaAntecedentePatologico.Bocio = objEntity.Find(p => p.Nombre.Contains("Bocio")) == null ? " " : "X";
-                FichaAntecedentePatologico.Bronconeumonia = objEntity.Find(p => p.Nombre.Contains("Bronconeumonia")) == null ? " " : "X";
-                FichaAntecedentePatologico.BronquitisRepeticion = objEntity.Find(p => p.Nombre.Contains("Bronquitis")) == null ? " " : "X";
-                FichaAntecedentePatologico.Colecistitis = objEntity.Find(p => p.Nombre.Contains("Colecistitis")) == null ? " " : "X";
-                FichaAntecedentePatologico.Dermatisis = objEntity.Find(p => p.Nombre.Contains("Dermatisis")) == null ? " " : "X";
-                FichaAntecedentePatologico.Diabetes = objEntity.Find(p => p.Nombre == "Diabetes") == null ? " " : "X";
-                FichaAntecedentePatologico.Disenteria = objEntity.Find(p => p.Nombre == "Disenteria") == null? " ": "X";
-                FichaAntecedentePatologico.ArritmiasCardiacas = objEntity.Find(p => p.Nombre.Contains("Arritmias")) == null ? " " : "X";
-                FichaAntecedentePatologico.EnfCorazon = objEntity.Find(p => p.Nombre.Contains("Corazón")) == null ? " " : "X";
+                FichaAntecedentePatologico.Alergia = objEntity.Find(p => p.Nombre.Contains("ALERGIAS")) == null ? " " : "1";
+                FichaAntecedentePatologico.AmigdalitisCronica = objEntity.Find(p => p.Nombre.Contains("AMIGDALITIS CRÓNICA")) == null ? " " : "1";
+                FichaAntecedentePatologico.Asma = objEntity.Find(p => p.Nombre.Contains("ASMA BRONQUIAL ")) == null ? " " : "1";
+                FichaAntecedentePatologico.Bocio = objEntity.Find(p => p.Nombre.Contains("BOCIO")) == null ? " " : "X";
+                FichaAntecedentePatologico.Bronconeumonia = objEntity.Find(p => p.Nombre.Contains("BRONCONEUMONIA")) == null ? " " : "1";
+                FichaAntecedentePatologico.BronquitisRepeticion = objEntity.Find(p => p.Nombre.Contains("BRONQUITIS CRÓNICA")) == null ? " " : "1";
+                FichaAntecedentePatologico.Colecistitis = objEntity.Find(p => p.Nombre.Contains("COLECISTITIS")) == null ? " " : "1";
+                FichaAntecedentePatologico.Dermatisis = objEntity.Find(p => p.Nombre.Contains("DERMATITIS DE CONTACTO")) == null ? " " : "1";
+                FichaAntecedentePatologico.Diabetes = objEntity.Find(p => p.Nombre == "DIABETES MELLITUS") == null ? " " : "1";
+                FichaAntecedentePatologico.Disenteria = objEntity.Find(p => p.Nombre == "DISENTERIA") == null ? " " : "1";
+                FichaAntecedentePatologico.ArritmiasCardiacas = objEntity.Find(p => p.Nombre.Contains("ARRITMIA CARDIACA")) == null ? " " : "1";
+                FichaAntecedentePatologico.EnfCorazon = objEntity.Find(p => p.Nombre.Contains("ENFERMEDADES DEL CORAZON")) == null ? " " : "X";
                 FichaAntecedentePatologico.Caries = objEntity.Find(p => p.Nombre.Contains("Caries")) == null ? " " : "X";
                 FichaAntecedentePatologico.EnfOculares = objEntity.Find(p => p.Nombre.Contains("Ocular")) == null ? " " : "X";
                 FichaAntecedentePatologico.Epilepcia = objEntity.Find(p => p.Nombre.Contains("Epilepcia") ) == null ? " " : "X";
@@ -25295,7 +25295,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.ResfrioFrecuente = objEntity.Find(p => p.Nombre.Contains("Resfrio")) == null ? " " : "X";
                 FichaAntecedentePatologico.Reumatismo = objEntity.Find(p => p.Nombre.Contains("Reumatismo")) == null ? " " : "X";
                 FichaAntecedentePatologico.Sarampion = objEntity.Find(p => p.Nombre.Contains("Sarampion")) == null ? " " : "X";
-                FichaAntecedentePatologico.Sifilis = objEntity.Find(p => p.Nombre.Contains("sifilis")) == null ? " " : "X";
+                FichaAntecedentePatologico.Sifilis = objEntity.Find(p => p.Nombre.Contains("SIFILIS")) == null ? " " : "1";
                 FichaAntecedentePatologico.Silicosis = objEntity.Find(p => p.Nombre.Contains("Silicosis")) == null ? " " : "X";
                 FichaAntecedentePatologico.Sinusitis = objEntity.Find(p => p.Nombre.Contains("Sinusitis")) == null ? " " : "X";
                 FichaAntecedentePatologico.Traumatismo = objEntity.Find(p => p.Nombre.Contains("Traumatismo")) == null ? " " : "X";
@@ -28848,33 +28848,50 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public int ObtenerIdGrupoEtarioDePaciente(string PacienteId)
+        public int ObtenerIdGrupoEtarioDePaciente(int _edad)
         {
             try
             {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                int isNotDeleted = (int)SiNo.NO;
+                //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //int isNotDeleted = (int)SiNo.NO;
 
-                DateTime? FechaNacimiento = (from a in dbContext.person where a.i_IsDeleted == isNotDeleted && a.v_PersonId == PacienteId select a.d_Birthdate).FirstOrDefault();
+                //DateTime? FechaNacimiento = (from a in dbContext.person where a.i_IsDeleted == isNotDeleted && a.v_PersonId == PacienteId select a.d_Birthdate).FirstOrDefault();
 
-                if (!FechaNacimiento.HasValue)
-                    return 0;
+                //if (!FechaNacimiento.HasValue)
+                //    return 0;
 
-                DateTime FechaActual = DateTime.Now;
+                //DateTime FechaActual = DateTime.Now;
 
-                if (FechaActual.AddYears(-12) < FechaNacimiento.Value)
-                    return 4;
+                //if (FechaActual.AddYears(-12) < FechaNacimiento.Value)
+                //    return 4;
 
-                if (FechaActual.AddYears(-17) < FechaNacimiento.Value)
-                    return 2;
+                //if (FechaActual.AddYears(-17) < FechaNacimiento.Value)
+                //    return 2;
 
-                if (FechaActual.AddYears(-64) < FechaNacimiento.Value)
+                //if (FechaActual.AddYears(-64) < FechaNacimiento.Value)
+                //    return 1;
+
+                //if (FechaActual.AddYears(-999) < FechaNacimiento.Value)
+                //    return 3;
+
+                //return 0;
+
+                if (_edad <= 12)
+                {
                     return 1;
-
-                if (FechaActual.AddYears(-999) < FechaNacimiento.Value)
+                }
+                else if (13 <= _edad && _edad <= 17)
+                {
+                    return 2;
+                }
+                else if (18 <= _edad && _edad <= 64)
+                {
                     return 3;
-
-                return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
             catch (Exception e)
             {

@@ -5866,7 +5866,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_DepartamentName = I.v_Value1,
                                      v_ProvinceName = J.v_Value1,
                                      v_DistrictName = K.v_Value1,
-
+                                     v_AdressLocation = b.v_AdressLocation,
                                      GradoInstruccion = N.v_Value1,
                                      
                                      v_MaritalStatus = M.v_Value1,
@@ -5918,6 +5918,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_MaritalStatus=a.v_MaritalStatus,
                                   v_BloodGroupName = a.v_BloodGroupName,
                                   v_BloodFactorName=a.v_BloodFactorName,
+                                  v_AdressLocation = a.v_AdressLocation,
                                   //
                                   Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,

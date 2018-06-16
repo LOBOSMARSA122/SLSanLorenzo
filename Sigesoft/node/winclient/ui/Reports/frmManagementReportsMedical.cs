@@ -292,8 +292,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
-            int GrupoEtario = 1;
-            int Grupo = 2851;
+            int GrupoEtario = 2;
+            int Grupo = 2822;
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
 
             int GrupoBase = 285;
@@ -311,7 +311,27 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateConsultaMedicaNinio(string pathFile)
         {
-            Ninio.CreateAtencionNinio(pathFile);
+            var listaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
+            var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
+            var datosPaciente = _pacientBL.GetDatosPersonalesAtencion(_serviceId);
+
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            int GrupoEtario = 2;
+            int Grupo = 2822;
+            var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
+
+            int GrupoBase = 285;
+            if (datosPaciente.Genero.ToUpper() == "MUJER")
+                GrupoBase = 283;
+
+            List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(GrupoBase, _pacientId);
+            if (Fechas.Count > 6)
+                Fechas = Fechas.Skip((Fechas.Count - 6)).ToList();
+
+            List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
+
+            Ninio.CreateAtencionNinio(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas, Comentarios);
         }
         
     }

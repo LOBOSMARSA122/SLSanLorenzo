@@ -20,7 +20,7 @@ namespace NetPdf
         {
             //Document document = new Document();
            // document.SetPageSize(iTextSharp.text.PageSize.A4);
-            Document document = new Document(PageSize.A4, 40f, 40f, 0f, 30f);
+            Document document = new Document(PageSize.A4, 30f, 30f, 0f, 41f);
             try
             {
 

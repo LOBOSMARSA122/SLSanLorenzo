@@ -5690,14 +5690,14 @@ namespace NetPdf
             ServiceComponentList findLaboratorioGrupoSanguineo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID);
 
             ServiceComponentList findLaboratorioHemoglobina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
-            ServiceComponentList oHEMOGRAMA_COMPLETO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_ID);
+            ServiceComponentList oHEMOGRAMA = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA);
 
 
             ServiceComponentList oLABORATORIO_HEMOGLOBINA_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
             ServiceComponentList oLABORATORIO_HEMATOCRITO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMATOCRITO_ID);
 
 
-            ServiceComponentList HEMOGRAMA_COMPLETO_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+            ServiceComponentList HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO);
             ServiceComponentList HEMATOCRITO_HEMOGRAMA_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO_HEMOGRAMA_HEMATOCRITO);
 
             ServiceComponentList findBk = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.BK_DIRECTO_ID);
@@ -5714,28 +5714,28 @@ namespace NetPdf
 
             string ValorHemoglobina1 = "", ValorHematocrito1 = "";
             string ValorHemoglobina2 = "", ValorHematocrito2 = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = "";
+            var Resultado_HEMOGLOBINA = "";
+            var Resultado_HEMATOCRITO = "";
 
 
-            if (oHEMOGRAMA_COMPLETO_ID != null)
+            if (oHEMOGRAMA != null)
             {
-                var Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA);
+                var Value_HEMOGLOBINA = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGLOBINA);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA != null)
+                if (Value_HEMOGLOBINA != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMOGLOBINA = Value_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
-                var Value_HEMOGRAMA_COMPLETO_HEMATOCRITO = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+                var Value_HEMATOCRITO = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMATOCRITO != null)
+                if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = Value_HEMOGRAMA_COMPLETO_HEMATOCRITO.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
 
-                ValorHemoglobina1 = Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA + " / " + Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO;
+                ValorHemoglobina1 = Resultado_HEMOGLOBINA + " / HTO:" + Resultado_HEMATOCRITO;
             }
 
 
@@ -5845,7 +5845,7 @@ namespace NetPdf
                         VDRLValor = "NO REALIZADO";
                     }
 
-                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VDRL_ID_REALIZADO);
+                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
                     if (ValorLues != null)
                     {
                         if (ValorLues.v_Value1 == "1")
@@ -6087,7 +6087,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("AB", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (+)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (-)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("Hemoglobina 14 "+ValorHemoglobina1 ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("HB"+ValorHemoglobina1 ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
                     new PdfPCell(SangreO){Rowspan=2, Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },                      
@@ -6099,7 +6099,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorHemoglobina2, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
-                    new PdfPCell(new Phrase("Hematocrito 45"+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(""+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                        
                     //Linea
                     new PdfPCell(new Phrase("APTO PARA TRABAJAR", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
@@ -9692,14 +9692,14 @@ namespace NetPdf
             ServiceComponentList findLaboratorioGrupoSanguineo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID);
 
             ServiceComponentList findLaboratorioHemoglobina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
-            ServiceComponentList oHEMOGRAMA_COMPLETO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_ID);
+            ServiceComponentList oHEMOGRAMA = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA);
 
 
             ServiceComponentList oLABORATORIO_HEMOGLOBINA_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
             ServiceComponentList oLABORATORIO_HEMATOCRITO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMATOCRITO_ID);
 
 
-            ServiceComponentList HEMOGRAMA_COMPLETO_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+            ServiceComponentList HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO);
             ServiceComponentList HEMATOCRITO_HEMOGRAMA_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO_HEMOGRAMA_HEMATOCRITO);
 
             ServiceComponentList findBk = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.BK_DIRECTO_ID);
@@ -9716,28 +9716,28 @@ namespace NetPdf
 
             string ValorHemoglobina1 = "", ValorHematocrito1 = "";
             string ValorHemoglobina2 = "", ValorHematocrito2 = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = "";
+            var Resultado_HEMOGLOBINA = "";
+            var Resultado_HEMATOCRITO = "";
 
 
-            if (oHEMOGRAMA_COMPLETO_ID != null)
+            if (oHEMOGRAMA != null)
             {
-                var Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA);
+                var Value_HEMOGLOBINA = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGLOBINA);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA != null)
+                if (Value_HEMOGLOBINA != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMOGLOBINA = Value_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
-                var Value_HEMOGRAMA_COMPLETO_HEMATOCRITO = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+                var Value_HEMATOCRITO = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMATOCRITO != null)
+                if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = Value_HEMOGRAMA_COMPLETO_HEMATOCRITO.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
 
-                ValorHemoglobina1 = Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA + " / " + Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO;
+                ValorHemoglobina1 = Resultado_HEMOGLOBINA + " / HB:" + Resultado_HEMATOCRITO;
             }
 
 
@@ -9847,7 +9847,7 @@ namespace NetPdf
                         VDRLValor = "NO REALIZADO";
                     }
 
-                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VDRL_ID_REALIZADO);
+                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
                     if (ValorLues != null)
                     {
                         if (ValorLues.v_Value1 == "1")
@@ -12335,8 +12335,8 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOD, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
-                    new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
+                    new PdfPCell(new Phrase(ValorFRespiratoria + " ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(" resp/min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
 
@@ -12346,8 +12346,8 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOI, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
-                    new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(new Phrase(ValorFCardiaca + " ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(" lat/min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -12363,7 +12363,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("Sat. O2", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorSatO2 , fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("%", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("DIASTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPAD + "mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -12818,14 +12818,14 @@ namespace NetPdf
             ServiceComponentList findLaboratorioGrupoSanguineo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID);
 
             ServiceComponentList findLaboratorioHemoglobina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
-            ServiceComponentList oHEMOGRAMA_COMPLETO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_ID);
+            ServiceComponentList oHEMOGRAMA = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA);
 
 
             ServiceComponentList oLABORATORIO_HEMOGLOBINA_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
             ServiceComponentList oLABORATORIO_HEMATOCRITO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMATOCRITO_ID);
 
 
-            ServiceComponentList HEMOGRAMA_COMPLETO_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+            ServiceComponentList HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO);
             ServiceComponentList HEMATOCRITO_HEMOGRAMA_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO_HEMOGRAMA_HEMATOCRITO);
 
             ServiceComponentList findBk = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.BK_DIRECTO_ID);
@@ -12842,29 +12842,29 @@ namespace NetPdf
 
             string ValorHemoglobina1 = "", ValorHematocrito1 = "";
             string ValorHemoglobina2 = "", ValorHematocrito2 = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = "";
+            var Resultado_HEMOGLOBINA = "";
+            var Resultado_HEMATOCRITO = "";
 
 
-            if (oHEMOGRAMA_COMPLETO_ID != null)
+            if (oHEMOGRAMA != null)
             {
-                var Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA);
+                var Value_HEMOGLOBINA = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGLOBINA);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA != null)
+                if (Value_HEMOGLOBINA != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_Value1;
+                    Resultado_HEMOGLOBINA = Value_HEMOGLOBINA.v_Value1;
                 }
-                ValorHemoglobina1 = Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA;
+                ValorHemoglobina1 = Resultado_HEMOGLOBINA;
 
-                var Value_HEMOGRAMA_COMPLETO_HEMATOCRITO = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+                var Value_HEMATOCRITO = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMATOCRITO != null)
+                if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = Value_HEMOGRAMA_COMPLETO_HEMATOCRITO.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMATOCRITO.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMATOCRITO.v_MeasurementUnitName;
                 }
 
 
-                ValorHematocrito1 =  Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO;
+                ValorHematocrito1 =  Resultado_HEMATOCRITO;
             }
 
 
@@ -13298,8 +13298,9 @@ namespace NetPdf
                                         organizationDto infoEmpresaPropietaria,
                                         string filePDF)
         {
-            Document document = new Document();
-            document.SetPageSize(iTextSharp.text.PageSize.A4);
+            //Document document = new Document();
+            //document.SetPageSize(iTextSharp.text.PageSize.A4);
+            Document document = new Document(PageSize.A4, 30f, 35f, 30f, 30f);
 
             // step 2: we create a writer that listens to the document
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
@@ -13328,6 +13329,7 @@ namespace NetPdf
             Font fontSubTitleNegroNegrita = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
 
             Font fontColumnValue = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValue2 = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontColumnValueBold = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
 
             #endregion
@@ -15481,7 +15483,7 @@ namespace NetPdf
                    //Linea
                     new PdfPCell(new Phrase("Declaro que las respuestas son ciertas según mi leal saber y entender."
                         +" En caso de ser requeridos, los resultados del examen médico ocupacional podrán ser"
-                        +" revelados conforme al an¿rtículo 25 de la ley Genral de Salud  N°26842. ", fontColumnValue)){Rowspan = 5, Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                        +" revelados conforme al an¿rtículo 25 de la ley Genral de Salud  N°26842. ", fontColumnValue2)){Rowspan = 5, Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(cellFirmaTrabajador), 
                     new PdfPCell(cellHuellaTrabajador){ FixedHeight = 55F}, 
                     // //Linea
@@ -15924,14 +15926,14 @@ namespace NetPdf
             ServiceComponentList findLaboratorioGrupoSanguineo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID);
 
             ServiceComponentList findLaboratorioHemoglobina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
-            ServiceComponentList oHEMOGRAMA_COMPLETO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_ID);
+            ServiceComponentList oHEMOGRAMA = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA);
 
 
             ServiceComponentList oLABORATORIO_HEMOGLOBINA_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
             ServiceComponentList oLABORATORIO_HEMATOCRITO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMATOCRITO_ID);
 
 
-            ServiceComponentList HEMOGRAMA_COMPLETO_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+            ServiceComponentList HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO);
             ServiceComponentList HEMATOCRITO_HEMOGRAMA_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO_HEMOGRAMA_HEMATOCRITO);
 
             ServiceComponentList findBk = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.BK_DIRECTO_ID);
@@ -15948,28 +15950,28 @@ namespace NetPdf
 
             string ValorHemoglobina1 = "", ValorHematocrito1 = "";
             string ValorHemoglobina2 = "", ValorHematocrito2 = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = "";
+            var Resultado_HEMOGLOBINA = "";
+            var Resultado_HEMATOCRITO = "";
 
 
-            if (oHEMOGRAMA_COMPLETO_ID != null)
+            if (oHEMOGRAMA != null)
             {
-                var Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA);
+                var Value_HEMOGLOBINA = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGLOBINA);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA != null)
+                if (Value_HEMOGLOBINA != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMOGLOBINA = Value_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
-                var Value_HEMOGRAMA_COMPLETO_HEMATOCRITO = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+                var Value_HEMATOCRITO = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMATOCRITO != null)
+                if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = Value_HEMOGRAMA_COMPLETO_HEMATOCRITO.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
 
-                ValorHemoglobina1 = Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA + " / " + Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO;
+                ValorHemoglobina1 = Resultado_HEMOGLOBINA + " / HTO" + Resultado_HEMATOCRITO;
             }
 
 
@@ -16079,7 +16081,7 @@ namespace NetPdf
                         VDRLValor = "NO REALIZADO";
                     }
 
-                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VDRL_ID_REALIZADO);
+                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
                     if (ValorLues != null)
                     {
                         if (ValorLues.v_Value1 == "1")
@@ -16292,7 +16294,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("AB", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (+)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (-)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("Hemoglobina 14 "+ValorHemoglobina1 ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("HB: "+ValorHemoglobina1 ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
                     new PdfPCell(SangreO){Rowspan=2, Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },                      
@@ -16303,7 +16305,7 @@ namespace NetPdf
                     new PdfPCell(rhNegativo){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP }, 
                     new PdfPCell(new Phrase(ValorHemoglobina2, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
-                    new PdfPCell(new Phrase("Hematocrito 45"+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(""+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
                  };
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, };
@@ -17948,7 +17950,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("FEV1/FVC", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorFEV1_FVC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CINTURA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(ValorCintura, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorCintura+" cm", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
 
                     //Linea
@@ -17960,7 +17962,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("FEF 25-75%", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(ValorFEF25_75 +" %", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("CADERA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase(ValorCadera, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorCadera+" cm", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                  
                     //   //Linea
                     // Alejandro                 
@@ -19058,14 +19060,14 @@ namespace NetPdf
             ServiceComponentList findLaboratorioGrupoSanguineo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID);
 
             ServiceComponentList findLaboratorioHemoglobina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
-            ServiceComponentList oHEMOGRAMA_COMPLETO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_ID);
+            ServiceComponentList oHEMOGRAMA = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA);
 
 
             ServiceComponentList oLABORATORIO_HEMOGLOBINA_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
             ServiceComponentList oLABORATORIO_HEMATOCRITO_ID = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMATOCRITO_ID);
 
 
-            ServiceComponentList HEMOGRAMA_COMPLETO_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+            ServiceComponentList HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO);
             ServiceComponentList HEMATOCRITO_HEMOGRAMA_HEMATOCRITO = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMATOCRITO_HEMOGRAMA_HEMATOCRITO);
 
             ServiceComponentList findBk = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.BK_DIRECTO_ID);
@@ -19082,28 +19084,28 @@ namespace NetPdf
 
             string ValorHemoglobina1 = "", ValorHematocrito1 = "";
             string ValorHemoglobina2 = "", ValorHematocrito2 = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = "";
-            var Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = "";
+            var Resultado_HEMOGLOBINA = "";
+            var Resultado_HEMATOCRITO = "";
 
 
-            if (oHEMOGRAMA_COMPLETO_ID != null)
+            if (oHEMOGRAMA != null)
             {
-                var Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMOGLOBINA);
+                var Value_HEMOGLOBINA = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGLOBINA);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA != null)
+                if (Value_HEMOGLOBINA != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA = Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMOGLOBINA = Value_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
-                var Value_HEMOGRAMA_COMPLETO_HEMATOCRITO = oHEMOGRAMA_COMPLETO_ID.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGRAMA_COMPLETO_HEMATOCRITO);
+                var Value_HEMATOCRITO = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO);
 
-                if (Value_HEMOGRAMA_COMPLETO_HEMATOCRITO != null)
+                if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO = Value_HEMOGRAMA_COMPLETO_HEMATOCRITO.v_Value1 + " " + Value_HEMOGRAMA_COMPLETO_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
 
-                ValorHemoglobina1 = Resultado_HEMOGRAMA_COMPLETO_HEMOGLOBINA + " / " + Resultado_HEMOGRAMA_COMPLETO_HEMATOCRITO;
+                ValorHemoglobina1 = Resultado_HEMOGLOBINA + " / HTO:" + Resultado_HEMATOCRITO;
             }
 
 
@@ -19213,7 +19215,7 @@ namespace NetPdf
                         VDRLValor = "NO REALIZADO";
                     }
 
-                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VDRL_ID_REALIZADO);
+                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
                     if (ValorLues != null)
                     {
                         if (ValorLues.v_Value1 == "1")
@@ -19396,7 +19398,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("AB", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (+)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (-)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("Hemoglobina 14 "+ValorHemoglobina1 ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("HB"+ValorHemoglobina1 ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
                     new PdfPCell(SangreO){Rowspan=2, Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },                      
@@ -19407,7 +19409,7 @@ namespace NetPdf
                     new PdfPCell(rhNegativo){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP }, 
                     new PdfPCell(new Phrase(ValorHemoglobina2, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
-                    new PdfPCell(new Phrase("Hematocrito 45"+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(""+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
             
 
