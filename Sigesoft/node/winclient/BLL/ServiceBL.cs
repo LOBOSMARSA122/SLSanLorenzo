@@ -28878,7 +28878,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 if (_edad <= 12)
                 {
-                    return 1;
+                    return 4;
                 }
                 else if (13 <= _edad && _edad <= 17)
                 {
@@ -28886,11 +28886,11 @@ namespace Sigesoft.Node.WinClient.BLL
                 }
                 else if (18 <= _edad && _edad <= 64)
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    return 4;
+                    return 3;
                 }
             }
             catch (Exception e)

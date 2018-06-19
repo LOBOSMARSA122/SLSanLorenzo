@@ -383,10 +383,10 @@ namespace Sigesoft.Common
 
     public enum GrupoEtario
     {
-        Ninio = 1,
+        Ninio = 4,
         Adolecente = 2,
-        Adulto =3,
-        AdultoMayor=4
+        Adulto =1,
+        AdultoMayor=3
     }
 
     public enum ComponenteProcedencia

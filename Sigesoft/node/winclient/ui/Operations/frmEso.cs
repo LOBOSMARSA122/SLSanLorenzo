@@ -419,7 +419,22 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 case 1:
                     {
+                        GrupoEtarioAnterior = 1;
+                        break;
+                    }
+                case 2:
+                    {
                         GrupoEtarioAnterior = 2;
+                        break;
+                    }
+                case 3:
+                    {
+                        GrupoEtarioAnterior = 3;
+                        break;
+                    }
+                case 4:
+                    {
+                        GrupoEtarioAnterior = 4;
                         break;
                     }
                 default:

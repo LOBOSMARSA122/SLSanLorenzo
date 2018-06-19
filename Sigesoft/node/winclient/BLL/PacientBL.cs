@@ -5859,6 +5859,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      Trabajador = b.v_FirstLastName + " " + b.v_SecondLastName + " " + b.v_FirstName,
                                      d_Birthdate = b.d_Birthdate.Value,
                                      //
+                                     v_PersonId = b.v_PersonId,
+                                     
                                      v_FirstLastName = b.v_FirstLastName,
                                      v_SecondLastName=b.v_SecondLastName,
                                      v_FirstName = b.v_FirstName,
@@ -5907,6 +5909,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   Trabajador = a.Trabajador,
                                   d_Birthdate = a.d_Birthdate,
                                   //
+                                  v_PersonId=a.v_PersonId,
                                   v_FirstLastName = a.v_FirstLastName,
                                   v_SecondLastName = a.v_SecondLastName,
                                   v_FirstName = a.v_FirstName,
