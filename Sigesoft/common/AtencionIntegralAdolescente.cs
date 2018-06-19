@@ -24,7 +24,8 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateAtencionIntegral(string filePDF, List<ProblemasList> problemasList,
+        public static void CreateAtencionIntegral(string filePDF, 
+            List<ProblemasList> problemasList,
              List<TipoAtencionList> planIntegralList,
              DatosAtencion datosAtencion,
              PacientList datosPac,
@@ -238,21 +239,20 @@ namespace NetPdf
 
             #region Fecha
             string[] fechaServicio = datosPac.FechaServicio.ToString().Split('/', ' ');
-            
+
             cells = new List<PdfPCell>()
                 {          
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
-                    new PdfPCell(new Phrase("día", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("mes", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("año", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase("FECHA", fontColumnValue)) { Rowspan=2,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("Día", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("Mes", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("Año", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                     new PdfPCell(new Phrase("N° N009-SR00002542", fontColumnValueBold)) { Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment = PdfPCell.ALIGN_MIDDLE }, 
 
-                    new PdfPCell(new Phrase("FECHA", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
                     new PdfPCell(new Phrase(fechaServicio[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
                     new PdfPCell(new Phrase(fechaServicio[1], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
                     new PdfPCell(new Phrase(fechaServicio[2], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                
                     
                 };
 
@@ -263,7 +263,7 @@ namespace NetPdf
 
             #region DATOS GENERALES
             string[] fechaNac = datosPac.d_Birthdate.ToString().Split(' ');
-            string sexM =" ";
+            string sexM = " ";
             string sexF = " ";
             if (datosPac.i_SexTypeId == 1)
             {
@@ -274,7 +274,7 @@ namespace NetPdf
                 sexF = "X";
             }
 
-           
+
             cells = new List<PdfPCell>()
             {          
                 new PdfPCell(new Phrase("DATOS GENEREALES", fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = PdfPCell.ALIGN_CENTER, BackgroundColor = BaseColor.ORANGE},       
@@ -333,15 +333,6 @@ namespace NetPdf
             #endregion
 
             #region ANTECEDENTES PERSONALES Y FAMILIARES
-
-            var antecedentesPersonales = Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "PERSONALES").FirstOrDefault() == null ? null : Antecedentes.Where(x => x.Nombre == "PERSONALES").FirstOrDefault().Hijos;
-            var AntecedentesFamiliares = Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "FAMILIARES").FirstOrDefault() == null ? null : Antecedentes.Where(x => x.Nombre == "FAMILIARES").FirstOrDefault().Hijos;
-            var antecedentesViveCon = Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "VIVE CON").FirstOrDefault() == null ? null : Antecedentes.Where(x => x.Nombre == "VIVE CON").FirstOrDefault().Hijos;
-            var antecedentesGradoInstruccion = Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "GRADO INSTRUCCION").FirstOrDefault() == null ? null : Antecedentes.Where(x => x.Nombre == "GRADO INSTRUCCION").FirstOrDefault().Hijos;
-            var antecedentesPEduc = Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "PSICOSOCIALES EDUCATIVOS").FirstOrDefault() == null ? null : Antecedentes.Where(x => x.Nombre == "PSICOSOCIALES EDUCATIVOS").FirstOrDefault().Hijos;
-            var antecedentesPLab = Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "PSICOSOCIALES LABORALES").FirstOrDefault() == null ? null : Antecedentes.Where(x => x.Nombre == "PSICOSOCIALES LABORALES").FirstOrDefault().Hijos;
-            var antecedentesPVSoc = Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "PSICOSOCIALES VIDA SOCIAL").FirstOrDefault() == null ? null : Antecedentes.Where(x => x.Nombre == "PSICOSOCIALES VIDA SOCIAL").FirstOrDefault().Hijos;
-            var antecedentesPHab = Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "PSICOSOCIALES HABITOS").FirstOrDefault() == null ? null : Antecedentes.Where(x => x.Nombre == "PSICOSOCIALES HABITOS").FirstOrDefault().Hijos;
 
             cells = new List<PdfPCell>()
             {   
