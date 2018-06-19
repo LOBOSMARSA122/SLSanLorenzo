@@ -1181,7 +1181,7 @@ namespace NetPdf
             columnWidths = new float[] { 2f, 2f, 3f, 3f, 3f, 3f, 3f, 5f, 5f, 5f, 5f, 5f, 5f, 3f, 3f, 3f, 3f, 2f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
-            if (datosAtencion.Genero.ToUpper() == "MUJER")
+            if (datosAtencion.Genero.ToUpper() == "FEMENINO")
             {
                 cells = new List<PdfPCell>()
             {   

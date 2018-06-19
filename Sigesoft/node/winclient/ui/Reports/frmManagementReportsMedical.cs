@@ -269,11 +269,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             int Grupo = 2821;
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
 
-            
+
             int GrupoBase = 284;
 
-            if (datosPersonales.Genero.ToUpper() == "MUJER")
+            if (datosPersonales.Genero == "FEMENINO")
+            {
                 GrupoBase = 283;
+                
+            }
+
+
 
             List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(GrupoBase, _pacientId);
             if (Fechas.Count > 6)
