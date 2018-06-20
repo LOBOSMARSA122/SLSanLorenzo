@@ -28848,33 +28848,50 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public int ObtenerIdGrupoEtarioDePaciente(string PacienteId)
+        public int ObtenerIdGrupoEtarioDePaciente(int _edad)
         {
             try
             {
-                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                int isNotDeleted = (int)SiNo.NO;
+                //SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                //int isNotDeleted = (int)SiNo.NO;
 
-                DateTime? FechaNacimiento = (from a in dbContext.person where a.i_IsDeleted == isNotDeleted && a.v_PersonId == PacienteId select a.d_Birthdate).FirstOrDefault();
+                //DateTime? FechaNacimiento = (from a in dbContext.person where a.i_IsDeleted == isNotDeleted && a.v_PersonId == PacienteId select a.d_Birthdate).FirstOrDefault();
 
-                if (!FechaNacimiento.HasValue)
-                    return 0;
+                //if (!FechaNacimiento.HasValue)
+                //    return 0;
 
-                DateTime FechaActual = DateTime.Now;
+                //DateTime FechaActual = DateTime.Now;
 
-                if (FechaActual.AddYears(-12) < FechaNacimiento.Value)
+                //if (FechaActual.AddYears(-12) < FechaNacimiento.Value)
+                //    return 4;
+
+                //if (FechaActual.AddYears(-17) < FechaNacimiento.Value)
+                //    return 2;
+
+                //if (FechaActual.AddYears(-64) < FechaNacimiento.Value)
+                //    return 1;
+
+                //if (FechaActual.AddYears(-999) < FechaNacimiento.Value)
+                //    return 3;
+
+                //return 0;
+
+                if (_edad <= 12)
+                {
                     return 4;
-
-                if (FechaActual.AddYears(-17) < FechaNacimiento.Value)
+                }
+                else if (13 <= _edad && _edad <= 17)
+                {
                     return 2;
-
-                if (FechaActual.AddYears(-64) < FechaNacimiento.Value)
+                }
+                else if (18 <= _edad && _edad <= 64)
+                {
                     return 1;
-
-                if (FechaActual.AddYears(-999) < FechaNacimiento.Value)
+                }
+                else
+                {
                     return 3;
-
-                return 0;
+                }
             }
             catch (Exception e)
             {
