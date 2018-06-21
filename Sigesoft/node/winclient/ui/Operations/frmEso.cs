@@ -464,7 +464,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 case (int)Sigesoft.Common.GrupoEtario.Ninio:
                     {
-                        GrupoBase = 287;
+                        GrupoBase = 292;
                         break;
                     }
                 case (int)Sigesoft.Common.GrupoEtario.Adolecente:
@@ -6012,6 +6012,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void ultraGrid2_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
         {
             e.Layout.Bands[0].Columns[2].CellActivation = Activation.ActivateOnly;
+            //var frm = frm new;
+
             if (e.Layout.Bands[1] != null)
             {
                 e.Layout.Bands[1].Columns[0].CellActivation = Activation.ActivateOnly;
@@ -7816,6 +7818,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private void grdPlanIntegral_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
 
         }
 
