@@ -132,6 +132,8 @@ namespace NetPdf
             //table.TotalWidth = 500;
             //table.LockedWidth = true;    // Esto funciona con TotalWidth           
             table.SetWidths(columnWidths);
+            
+            cell.FixedHeight = 15f;
             //table.DefaultCell.Phrase = new Phrase() { Font = fontColumnValue };
 
             // Agregar Titulo a la tabla

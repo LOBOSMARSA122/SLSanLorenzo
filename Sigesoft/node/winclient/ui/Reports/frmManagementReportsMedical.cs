@@ -240,6 +240,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             var listaProblema = atencionIntegralBL.GetAtencionIntegral(_pacientId);
             var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
+            var datosPersonales = _pacientBL.GetDatosPersonalesAtencion(_serviceId);
+
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
             int GrupoEtario = 3;
             int Grupo = 2823;
@@ -254,7 +257,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
 
-            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, listAntecedentes, Fechas, Comentarios);
+            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral,datosPersonales, datosP, listAntecedentes, Fechas, Comentarios);
         }
 
         private void GenerateAtencionIntegralAdulto(string pathFile)
@@ -328,7 +331,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             int Grupo = 2824;
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
 
-            int GrupoBase = 287;
+            int GrupoBase = 292;
             //if (datosPaciente.Genero.ToUpper() == "MUJER")
             //    GrupoBase = 283;
 

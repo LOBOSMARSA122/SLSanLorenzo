@@ -19,7 +19,7 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.planintegral
-                            join B in dbContext.systemparameter on new { a = A.i_TipoId.Value, b = 257 }  // CATEGORIA DEL EXAMEN
+                            join B in dbContext.systemparameter on new { a = A.i_TipoId.Value, b = 281 }  // CATEGORIA DEL EXAMEN
                                                       equals new { a = B.i_ParameterId, b = B.i_GroupId } into B_join
                             from B in B_join.DefaultIfEmpty()
                             where A.i_IsDeleted == 0 && A.v_PersonId == pstrPersonId

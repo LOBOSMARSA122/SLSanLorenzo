@@ -248,7 +248,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("mes", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
                     new PdfPCell(new Phrase("año", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
                     new PdfPCell(new Phrase("", fontColumnValue)) {Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase("N° N009-SR00002542", fontColumnValueBold)) { Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment = PdfPCell.ALIGN_MIDDLE }, 
+                    new PdfPCell(new Phrase("N° " + datosPac.v_PersonId, fontColumnValueBold)) { Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment = PdfPCell.ALIGN_MIDDLE }, 
 
                     new PdfPCell(new Phrase(fechaServicio[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
                     new PdfPCell(new Phrase(fechaServicio[1], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
@@ -543,17 +543,29 @@ namespace NetPdf
              cells = new List<PdfPCell>()
                 {          
                     new PdfPCell(new Phrase("Reacción Alérgica a Medicamentos", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
-                    new PdfPCell(new Phrase("no", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("si", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase("Si", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault() == null ? null:
+                    Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "REACCIÓN ALÉRGICA").FirstOrDefault() == null ? "" : 
+                    Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "REACCIÓN ALÉRGICA").FirstOrDefault().SI ? "X" : "", fontColumnValue)) 
+                    {HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("No", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault() == null ? null:
+                    Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "REACCIÓN ALÉRGICA").FirstOrDefault() == null ? "" : 
+                    Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "REACCIÓN ALÉRGICA").FirstOrDefault().NO ? "X" : "", fontColumnValue)) 
+                    {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                     new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
                     new PdfPCell(new Phrase("Medicamentos de uso frecuente", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
-                    new PdfPCell(new Phrase("no", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("si", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase("Si", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault() == null ? null:
+                    Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "MEDICAMENTO DE USO FRECUENTE").FirstOrDefault() == null ? "" : 
+                    Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "MEDICAMENTO DE USO FRECUENTE").FirstOrDefault().SI ? "X" : "", fontColumnValue)) 
+                    {HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                    new PdfPCell(new Phrase("No", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault() == null ? null:
+                    Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "MEDICAMENTO DE USO FRECUENTE").FirstOrDefault() == null ? "" : 
+                    Antecedentes.Where(x => x.Nombre == "MEDICAMENTOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "MEDICAMENTO DE USO FRECUENTE").FirstOrDefault().NO ? "X" : "", fontColumnValue)) 
+                    {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                     new PdfPCell(new Phrase("(dosis, tiempo de uso u otra observación)", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                     
                     new PdfPCell(new Phrase(".", fontColumnValue)) {Colspan = 6, Rowspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
@@ -565,7 +577,7 @@ namespace NetPdf
 
              #endregion
 
-            #region MEDICAMENTO
+            #region SEXUALIDAD - 1
 
             cells = new List<PdfPCell>()
             {          
@@ -580,10 +592,15 @@ namespace NetPdf
                 new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
                 new PdfPCell(new Phrase("RS con personas del mismo sexo: ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
                 new PdfPCell(new Phrase("Si", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("no", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().SI ? "X" : "", fontColumnValue)) 
+                {HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                new PdfPCell(new Phrase("No", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().NO ? "X" : "", fontColumnValue)) 
+                {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
             };
 
             columnWidths = new float[] { 10f, 20f, 5f, 30f, 5f, 5f, 5f, 5f};
@@ -592,36 +609,63 @@ namespace NetPdf
 
             #endregion
 
-            #region MENARQUIA
+            #region SEXUALIDAD - 2
 
             cells = new List<PdfPCell>()
             {          
                 new PdfPCell(new Phrase("Menarquia:", fontColumnValueBold)) { Colspan= 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
                 new PdfPCell(new Phrase("", fontColumnValue)) { Colspan= 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                new PdfPCell(new Phrase("FECHA DE ÚLTIMA REGLA", fontColumnValue)) { Colspan= 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                new PdfPCell(new Phrase("FECHA DE ÚLTIMA REGLA", fontColumnValue)) { Colspan= 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan=2,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("R/C", fontColumnValue)) {Colspan= 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan=10,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan=8,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Flujo vaginal patológico:", fontColumnValueBold)) { Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
-                new PdfPCell(new Phrase("No", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                new PdfPCell(new Phrase("Si", fontColumnValue)) {Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Flujo vaginal patológico:", fontColumnValueBold)) { Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
+                new PdfPCell(new Phrase("Si", fontColumnValue)) { Colspan=1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().SI ? "X" : "", fontColumnValue)) 
+                {Colspan=1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                new PdfPCell(new Phrase("No", fontColumnValue)) {Colspan=1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().NO ? "X" : "", fontColumnValue)) 
+                {Colspan=1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+ 
+                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("Dismenorrea", fontColumnValue)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("Si", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("No", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Si", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DISMENORREA").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DISMENORREA").FirstOrDefault().SI ? "X" : "", fontColumnValue)) 
+                {HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
+                new PdfPCell(new Phrase("No", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DISMENORREA").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DISMENORREA").FirstOrDefault().NO ? "X" : "", fontColumnValue)) 
+                {HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Embarazo:", fontColumnValueBold)) { Colspan=4,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
-                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan=2,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                new PdfPCell(new Phrase("Parto:", fontColumnValue)) { Colspan=4,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                new PdfPCell(new Phrase("Embarazo:", fontColumnValue)) { Colspan=3,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "EMBARAZO").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "EMBARAZO").FirstOrDefault().SI ? "X" : "", fontColumnValue))
+                { Colspan=1,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                new PdfPCell(new Phrase("Parto:", fontColumnValue)) { Colspan=3,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "PARTO").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "PARTO").FirstOrDefault().SI ? "X" : "", fontColumnValue))
+                { Colspan=1,  HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
                 new PdfPCell(new Phrase("Prematuro:", fontColumnValue)) { Colspan=3,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("Aborto", fontColumnValue)) { Colspan=3,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "PREMATURO").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "PREMATURO").FirstOrDefault().SI ? "X" : "", fontColumnValue))
+                { Colspan=1,  HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Aborto", fontColumnValue)) { Colspan=2,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(Antecedentes == null ? null : Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault() == null ? null:
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "ABORTO").FirstOrDefault() == null ? "" : 
+                Antecedentes.Where(x => x.Nombre == "SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "ABORTO").FirstOrDefault().SI ? "X" : "", fontColumnValue))
+                { Colspan=1,  HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 
                 new PdfPCell(new Phrase("", fontColumnValueBold)) {  Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },       
                 new PdfPCell(new Phrase("N°", fontColumnValue)) {Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
