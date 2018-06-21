@@ -133,7 +133,7 @@ namespace NetPdf
             //table.LockedWidth = true;    // Esto funciona con TotalWidth           
             table.SetWidths(columnWidths);
             
-            cell.FixedHeight = 15f;
+            
             //table.DefaultCell.Phrase = new Phrase() { Font = fontColumnValue };
 
             // Agregar Titulo a la tabla
@@ -144,7 +144,9 @@ namespace NetPdf
                 cell.Colspan = numColumns;
                 //cell.BackgroundColor = new BaseColor(252, 252, 252);
                 cell.BackgroundColor = new BaseColor(System.Drawing.Color.Gray);
-                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                cell.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
+                cell.VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE;
+                cell.FixedHeight = 15f;
                 table.AddCell(cell);
             }
 

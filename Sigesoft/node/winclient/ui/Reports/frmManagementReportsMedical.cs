@@ -326,6 +326,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosPaciente = _pacientBL.GetDatosPersonalesAtencion(_serviceId);
 
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
             int GrupoEtario = 4;
             int Grupo = 2824;
@@ -341,7 +342,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
 
-            Ninio.CreateAtencionNinio(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas, Comentarios);
+            Ninio.CreateAtencionNinio(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas, MedicalCenter, Comentarios);
         }
         
     }

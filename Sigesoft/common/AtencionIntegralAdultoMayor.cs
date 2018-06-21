@@ -27,9 +27,10 @@ namespace NetPdf
             PacientList datosPac,
             List<frmEsoAntecedentesPadre> Antecedentes,
             List<frmEsoCuidadosPreventivosFechas> FechasCP,
+            
             List<frmEsoCuidadosPreventivosComentarios> ComentariosCP)
         {
-            Document document = new Document();
+            Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
             document.SetPageSize(iTextSharp.text.PageSize.A4);
 
