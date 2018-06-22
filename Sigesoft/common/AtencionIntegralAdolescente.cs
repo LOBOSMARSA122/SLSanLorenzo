@@ -78,7 +78,13 @@ namespace NetPdf
             Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             #endregion
 
-            
+            var estatico_1 = 15f;
+            var alto_Celda_1 = 15f;
+            var alto_Celda_3 = 45f;
+            var alto_Celda_4 = 60f;
+            var alto_Celda_6 = 90f; 
+            var alto_Celda_8 = 120f;
+            var alto_Celda_13 = 195f;
             #region PRIMERA PÁGINA
             #region TÍTULO
 
@@ -107,12 +113,7 @@ namespace NetPdf
             #endregion
 
             #region PROBLEMA CRÓNICOS
-            var estatico_1 = 15f;
-            var estatico_2 = 30f;
-            var alto_Celda_1 = 15f;
-            var alto_Celda_2 = 30f;
-            var alto_Celda_3 = 60f;
-            var alto_Celda_4 = 75f;
+            
             var problemasCronicos = problemasList.FindAll(p => p.i_Tipo == (int)Sigesoft.Common.TipoProblema.Cronico);
 
             cells = new List<PdfPCell>();
@@ -1267,8 +1268,8 @@ namespace NetPdf
 
             cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL ADOLESCENTE", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER,BackgroundColor= BaseColor.ORANGE },  
-                    new PdfPCell(new Phrase("CUIDADOS PREVENTIVOS - SEGUIMIENTO DE RIESGO - ADOLESCENTES", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER },  
+                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL ADOLESCENTE", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER,BackgroundColor= BaseColor.ORANGE, FixedHeight=18f  },  
+                    new PdfPCell(new Phrase("CUIDADOS PREVENTIVOS - SEGUIMIENTO DE RIESGO - ADOLESCENTES", fontColumnValue)) {BackgroundColor=BaseColor.GRAY, HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = 15f },  
               
                 };
 
@@ -1281,43 +1282,43 @@ namespace NetPdf
 
             cells = new List<PdfPCell>()
             {   
-                new PdfPCell(new Phrase("CADA CONSULTA", fontColumnValueBold)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                new PdfPCell(new Phrase("FECHA", fontColumnValue)) {Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
-                    new PdfPCell(new Phrase("COMENTARIOS", fontColumnValue)) {Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("CADA CONSULTA", fontColumnValueBold)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT , FixedHeight = estatico_1 },   
+                new PdfPCell(new Phrase("FECHA", fontColumnValue)) {Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT, FixedHeight = estatico_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER , FixedHeight = estatico_1}, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_CENTER , FixedHeight = estatico_1},               
+                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER , FixedHeight = estatico_1},                
+                    new PdfPCell(new Phrase("COMENTARIOS", fontColumnValue)) {Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 }, 
 
-                new PdfPCell(new Phrase("Fiebre en los últimos 15 días", fontColumnValue)) {Colspan = 7,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Fiebre en los últimos 15 días", fontColumnValue)) {Colspan = 7,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
+                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
+                new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "FIEBRE EN LOS ÚLTIMOS 15 DIAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1}, 
 
     
-                new PdfPCell(new Phrase("Tos más de 15 días", fontColumnValue)) {Colspan = 7,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
-                new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Tos más de 15 días", fontColumnValue)) {Colspan = 7,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
+                new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1}, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },                
+                new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "TOS MÁS DE 15 DIAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Secreción o lesión en genitales", fontColumnValue)) {Colspan = 7,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
-                new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Secreción o lesión en genitales", fontColumnValue)) {Colspan = 7,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
+                new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},               
+                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},                
+                new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(y => y.Nombre == "SECRECIÓN O LESIÓN EN GENITALES").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
           
             };
 
@@ -1328,14 +1329,14 @@ namespace NetPdf
             {
                 cells = new List<PdfPCell>()
             {   
-               new PdfPCell(new Phrase("Fem. Fecha de última regla", fontColumnValue)) {Colspan = 7,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-               new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
-                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+               new PdfPCell(new Phrase("Fem. Fecha de última regla", fontColumnValue)) {Colspan = 7,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},
+               new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1}, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "CADA CONSULTA").FirstOrDefault().Hijos.Where(x => x.Nombre == "FECHA DE ÚLTIMA REGLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },                
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
             };
 
@@ -1348,39 +1349,39 @@ namespace NetPdf
             #region PERIODOS
             cells = new List<PdfPCell>()
             {   
-                new PdfPCell(new Phrase("LISTA DE PERIODOS", fontTitle1)) { Colspan = 18, HorizontalAlignment = PdfPCell.ALIGN_CENTER, BackgroundColor = BaseColor.ORANGE},  
+                new PdfPCell(new Phrase("LISTA DE PERIODOS", fontColumnValue)) { Colspan = 18, HorizontalAlignment = PdfPCell.ALIGN_CENTER, BackgroundColor = BaseColor.GRAY,FixedHeight = estatico_1},  
 
-                new PdfPCell(new Phrase("PERIODICAMENTE", fontColumnValueBold)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },             
-                   new PdfPCell(new Phrase("COMENTARIOS", fontColumnValue)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("PERIODICAMENTE", fontColumnValueBold)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_LEFT, FixedHeight = estatico_1 },   
+                new PdfPCell(new Phrase("FECHA", fontColumnValueBold)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT, FixedHeight = estatico_1 },
+                    new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1},               
+                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].FechaServicio.ToShortDateString(), fontColumnValue)) {HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].FechaServicio.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1},             
+                    new PdfPCell(new Phrase("COMENTARIOS", fontColumnValue)) { Colspan = 5,HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = estatico_1 },
  
-                    new PdfPCell(new Phrase("ASPECTOS FÍSICOS Y NUTRICIONALES", fontColumnValue)) {Colspan = 3,Rowspan = 8,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, Rotation=90},
-                    new PdfPCell(new Phrase("Indice de masa corporal", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1,HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
-                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },                
-                    new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(y => y.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(y => y.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase("ASPECTOS FÍSICOS Y NUTRICIONALES", fontColumnValue)) {Colspan = 3,Rowspan = 8, Rotation=90, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_8},
+                    new PdfPCell(new Phrase("Indice de masa corporal", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
+                    new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},               
+                    new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
+                    new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
+                    new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault() == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) {Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },                
+                    new PdfPCell(new Phrase(ComentariosCP.Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(y => y.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(y => y.Nombre == "INDICE DE MASA CORPORAL").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
                
 
-                new PdfPCell(new Phrase("Desarrollo sexual", fontColumnValue)) {Colspan = 2,Rowspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
-                new PdfPCell(new Phrase("Mamas", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Desarrollo sexual", fontColumnValue)) {Colspan = 2,Rowspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_3 },
+                new PdfPCell(new Phrase("Mamas", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1389,7 +1390,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1406,7 +1407,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1414,7 +1415,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1422,22 +1423,22 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "MAMAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},    
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(y => y.Nombre == "MAMAS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(y => y.Nombre == "MAMAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Vello púbico", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Vello púbico", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : 
@@ -1445,7 +1446,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1}, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1454,7 +1455,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1462,7 +1463,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1470,7 +1471,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1478,24 +1479,24 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "VELLO PÚBICO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(y => y.Nombre == "VELLO PÚBICO").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(y => y.Nombre == "VELLO PÚBICO").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                
 
-                new PdfPCell(new Phrase("Genitales", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Genitales", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : 
@@ -1503,7 +1504,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1}, 
                     
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : 
@@ -1511,7 +1512,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1519,7 +1520,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1527,7 +1528,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1535,25 +1536,25 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(x => x.Nombre == "GENITALES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(y => y.Nombre == "GENITALES").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "DESARROLLO SEXUAL").FirstOrDefault().Hijos.Where(y => y.Nombre == "GENITALES").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
 
-                new PdfPCell(new Phrase("Vacuna", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
-                new PdfPCell(new Phrase("Antitetánica", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Vacuna", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_4 },
+                new PdfPCell(new Phrase("Antitetánica", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1562,7 +1563,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1571,7 +1572,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1579,7 +1580,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1587,7 +1588,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1595,23 +1596,23 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTITETANICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(y => y.Nombre == "ANTITETANICA").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(y => y.Nombre == "ANTITETANICA").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Antiamarilica", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Antiamarilica", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1620,7 +1621,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1629,7 +1630,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1637,7 +1638,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1645,7 +1646,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1653,25 +1654,25 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANTIAMARILICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(y => y.Nombre == "ANTIAMARILICA").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(y => y.Nombre == "ANTIAMARILICA").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
 
 
-                new PdfPCell(new Phrase("Contra la hepatitis B", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Contra la hepatitis B", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1680,7 +1681,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1697,7 +1698,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1705,7 +1706,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1713,24 +1714,24 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(y => y.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(y => y.Nombre == "CONTRA LA HEPATITIS B").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
 
-                new PdfPCell(new Phrase("Contra rubeola", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Contra rubeola", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1739,7 +1740,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1748,7 +1749,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1756,7 +1757,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1764,7 +1765,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1772,25 +1773,25 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(y => y.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS FISICOS Y NUTRICIONALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VACUNA").FirstOrDefault().Hijos.Where(y => y.Nombre == "CONTRA LA RUBEOLA").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("ASPECTOS PSICOSOCIALES", fontColumnValue)) {Colspan = 3,Rowspan = 13,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , Rotation=90},
-                new PdfPCell(new Phrase("Habilidades para la vida", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
-                new PdfPCell(new Phrase("Autoestima", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("ASPECTOS PSICOSOCIALES", fontColumnValue)) {Colspan = 3,Rowspan = 13, Rotation=90, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_13},
+                new PdfPCell(new Phrase("Habilidades para la vida", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
+                new PdfPCell(new Phrase("Autoestima", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1799,7 +1800,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1808,7 +1809,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1816,7 +1817,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1824,7 +1825,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1832,23 +1833,23 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "AUTOESTIMA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(y => y.Nombre == "AUTOESTIMA").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(y => y.Nombre == "AUTOESTIMA").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1}, 
 
-                new PdfPCell(new Phrase("Comunicación", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Comunicación", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1857,7 +1858,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1866,7 +1867,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1874,7 +1875,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1882,7 +1883,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1890,23 +1891,23 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "COMUNICACIÓN").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(y => y.Nombre == "COMUNICACIÓN").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(y => y.Nombre == "COMUNICACIÓN").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Asertividad", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Asertividad", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1915,7 +1916,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1924,7 +1925,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1932,7 +1933,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1940,7 +1941,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -1948,23 +1949,23 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "ASERTIVIDAD").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(y => y.Nombre == "ASERTIVIDAD").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(y => y.Nombre == "ASERTIVIDAD").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                 
-                new PdfPCell(new Phrase("Toma de Decisiones", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Toma de Decisiones", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -1973,7 +1974,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -1982,7 +1983,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -1990,7 +1991,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -1998,7 +1999,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -2006,244 +2007,247 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(x => x.Nombre == "TOMA DE DESICIONES").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(y => y.Nombre == "TOMA DE DESICIONES").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABILIDADES PARA LA VIDA").FirstOrDefault().Hijos.Where(y => y.Nombre == "TOMA DE DESICIONES").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Ansiedad - depresión", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Ansiedad - depresión", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                Where(y => y.Nombre == "ANSIEDAD - DEPRESION").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Violencia familiar", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Violencia familiar", fontColumnValue)) {Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                Where(y => y.Nombre == "VIOLENCIA FAMILIAR").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Violencia política", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Violencia política", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                Where(y => y.Nombre == "VIOLENCIA POLITICA").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) 
+                {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Violencia sexual", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Violencia sexual", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                Where(y => y.Nombre == "VIOLENCIA SEXUAL").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) 
+                {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Pandillas", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Pandillas", fontColumnValue)) {Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "PANDILLAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "PANDILLAS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "PANDILLAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                Where(y => y.Nombre == "PANDILLAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue))
+                {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
-                new PdfPCell(new Phrase("Habitos", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
-                new PdfPCell(new Phrase("Actividad fìsica", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Habitos", fontColumnValue)) {Colspan = 2,Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_4},
+                new PdfPCell(new Phrase("Actividad fìsica", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -2252,7 +2256,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -2261,7 +2265,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -2269,7 +2273,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -2277,7 +2281,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -2285,24 +2289,24 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "ACTIVIDAD FISICA").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(y => y.Nombre == "ACTIVIDAD FISICA").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(y => y.Nombre == "ACTIVIDAD FISICA").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
 
-                new PdfPCell(new Phrase("Uso de alcohol", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Uso de alcohol", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -2311,7 +2315,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -2320,7 +2324,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -2328,7 +2332,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -2336,7 +2340,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -2344,23 +2348,23 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE ALCOHOL").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(y => y.Nombre == "USO DE ALCOHOL").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(y => y.Nombre == "USO DE ALCOHOL").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1}, 
 
-                new PdfPCell(new Phrase("Uso de tabaco", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Uso de tabaco", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -2369,7 +2373,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -2378,7 +2382,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -2386,7 +2390,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -2394,7 +2398,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -2402,23 +2406,23 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE TABACO").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(y => y.Nombre == "USO DE TABACO").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(y => y.Nombre == "USO DE TABACO").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("Uso de drogas", fontColumnValue)) { Colspan = 2,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Uso de drogas", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
@@ -2427,7 +2431,7 @@ namespace NetPdf
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
                     
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
@@ -2436,7 +2440,7 @@ namespace NetPdf
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : 
@@ -2444,7 +2448,7 @@ namespace NetPdf
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : 
@@ -2452,7 +2456,7 @@ namespace NetPdf
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },    
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : 
@@ -2460,280 +2464,286 @@ namespace NetPdf
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.Where(x => x.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE DROGAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue
-                )) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                )) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},    
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(y => y.Nombre == "USO DE DROGAS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS PSICOSOCIALES").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "HABITOS").FirstOrDefault().Hijos.Where(y => y.Nombre == "USO DE DROGAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue
-                )) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                )) {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 }, 
 
-                new PdfPCell(new Phrase("ASPECTOS DE SEXUALIDAD", fontColumnValue)) {Colspan = 3,Rowspan = 6,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, Rotation=90 },
-                new PdfPCell(new Phrase("Uso de método anticonceptivo", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("ASPECTOS DE SEXUALIDAD", fontColumnValue)) {Colspan = 3,Rowspan = 6, Rotation=90, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_6 },
+                new PdfPCell(new Phrase("Uso de método anticonceptivo", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 				new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                Where(y => y.Nombre == "USO DE METODOS ANTICONCEPTIVOS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) 
+                {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
 
-                new PdfPCell(new Phrase("Conducta sexual de riesgo", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-               				new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
+                new PdfPCell(new Phrase("Conducta sexual de riesgo", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
+                new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                Where(y => y.Nombre == "CONDUCTA SEXUAL DE RIESGO").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) 
+                {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
-               new PdfPCell(new Phrase("Dos o más parejas", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+               new PdfPCell(new Phrase("Dos o más parejas", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                				new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                Where(y => y.Nombre == "DOS O MÁS PAREJAS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue))
+                {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
-                new PdfPCell(new Phrase("Sexo sin protección", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Sexo sin protección", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},
                 				new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1},  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                Where(y => y.Nombre == "SEXO SIN PROTECCION").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) 
+                {Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
-                new PdfPCell(new Phrase("RS con personas del mismo sexo", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("RS con personas del mismo sexo", fontColumnValue)) {Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                 				new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                Where(y => y.Nombre == "RS CON PERSONAS DEL MISMO SEXO").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue))
+                {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
-                new PdfPCell(new Phrase("RS con personas de ambos sexos", fontColumnValue)) {Colspan = 4,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("RS con personas de ambos sexos", fontColumnValue)) {Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
                				new PdfPCell(new Phrase(FechasCP.Count < 1 ? "" : 
                 FechasCP[0].Listado == null ? "" : FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault() == null ? "" : 
                 FechasCP[0].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },               
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },               
 
                 new PdfPCell(new Phrase(FechasCP.Count < 2 ? "" : 
                 FechasCP[1].Listado == null ? "" : FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault() == null ? "" : 
                 FechasCP[1].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },  
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },  
 
                 new PdfPCell(new Phrase(FechasCP.Count < 3 ? "" : 
                 FechasCP[2].Listado == null ? "" : FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault() == null ? "" : 
                 FechasCP[2].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 4 ? "" : 
                 FechasCP[3].Listado == null ? "" : FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault() == null ? "" : 
                 FechasCP[3].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 5 ? "" : 
                 FechasCP[4].Listado == null ? "" : FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault() == null ? "" : 
                 FechasCP[4].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(FechasCP.Count < 6 ? "" : 
                 FechasCP[5].Listado == null ? "" : FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault() == null ? "" : 
                 FechasCP[5].Listado.Where(x => x.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.Where(x => x.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().Valor ? "X" : "", fontColumnValue)) 
-                { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
                 new PdfPCell(new Phrase(ComentariosCP.
                 Where(x => x.GrupoId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
                 Where(y => y.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().GrupoId && x.ParametroId == FechasCP[0].Listado.
                 Where(z => z.Nombre == "ASPECTOS DE SEXUALIDAD").FirstOrDefault().Hijos.
-                Where(y => y.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue)) {Colspan =5,HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                Where(y => y.Nombre == "RS CON PERSONAS DE AMBOS SEXOS").FirstOrDefault().ParameterId).FirstOrDefault().Comentario, fontColumnValue))
+                {Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 },
 
             };
 
