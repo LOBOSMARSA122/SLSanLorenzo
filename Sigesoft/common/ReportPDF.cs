@@ -13300,7 +13300,7 @@ namespace NetPdf
         {
             //Document document = new Document();
             //document.SetPageSize(iTextSharp.text.PageSize.A4);
-            Document document = new Document(PageSize.A4, 30f, 35f, 30f, 30f);
+            Document document = new Document(PageSize.A4, 25f, 25f, 0f, 38f);
 
             // step 2: we create a writer that listens to the document
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
@@ -13483,7 +13483,7 @@ namespace NetPdf
                 //Huella 
 
                 if (DataService.HuellaTrabajador != null)
-                    cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.HuellaTrabajador, null, null, 20, 40));
+                    cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.HuellaTrabajador, null, null, 50, 50));
                 else
                     cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
