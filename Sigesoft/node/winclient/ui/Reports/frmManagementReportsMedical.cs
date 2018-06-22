@@ -247,7 +247,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             int GrupoEtario = 3;
             int Grupo = 2823;
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
-
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
             int GrupoBase = 286;
 
@@ -257,7 +257,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
 
-            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral,datosPersonales, datosP, listAntecedentes, Fechas, Comentarios);
+            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP, listAntecedentes, Fechas, MedicalCenter, Comentarios);
         }
 
         private void GenerateAtencionIntegralAdulto(string pathFile)
@@ -281,7 +281,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 
             }
 
-
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
             List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(GrupoBase, _pacientId);
             if (Fechas.Count > 6)
@@ -291,7 +291,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var datosPaciente = _pacientBL.GetPacientReport(_pacientId);
 
-            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP,listAntecedentes, Fechas, Comentarios);
+            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP, listAntecedentes, Fechas, MedicalCenter, Comentarios);
         }
 
         private void GenerateAtencionIntegralAdolescente(string pathFile)
@@ -309,14 +309,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             int GrupoBase = 285;
             if (datosPaciente.Genero.ToUpper() == "MUJER")
                 GrupoBase = 283;
-
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             List<frmEsoCuidadosPreventivosFechas> Fechas = _serviceBL.ObtenerFechasCuidadosPreventivos(GrupoBase, _pacientId);
             if (Fechas.Count > 6)
                 Fechas = Fechas.Skip((Fechas.Count - 6)).ToList();
 
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
 
-            SAtencionIntegralAdolescente.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas, Comentarios);
+            SAtencionIntegralAdolescente.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas,MedicalCenter, Comentarios);
         }
 
         private void GenerateConsultaMedicaNinio(string pathFile)

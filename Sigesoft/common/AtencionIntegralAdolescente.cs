@@ -31,7 +31,7 @@ namespace NetPdf
              PacientList datosPac,
              List<frmEsoAntecedentesPadre> Antecedentes,
              List<frmEsoCuidadosPreventivosFechas> FechasCP,
-             
+             organizationDto infoEmpresaPropietaria,
              List<frmEsoCuidadosPreventivosComentarios> ComentariosCP)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
@@ -84,13 +84,13 @@ namespace NetPdf
 
             cells = new List<PdfPCell>();
 
-            //if (infoEmpresaPropietaria.b_Image != null)
-            //{
-            //    iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image));
-            //    imagenEmpresa.ScalePercent(25);
-            //    imagenEmpresa.SetAbsolutePosition(40, 790);
-            //    document.Add(imagenEmpresa);
-            //}
+            if (infoEmpresaPropietaria.b_Image != null)
+            {
+                iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image));
+                imagenEmpresa.ScalePercent(25);
+                imagenEmpresa.SetAbsolutePosition(40, 790);
+                document.Add(imagenEmpresa);
+            }
             iTextSharp.text.Image imagenMinsa = iTextSharp.text.Image.GetInstance("C:/Banner/Minsa.png");
             imagenMinsa.ScalePercent(10);
             imagenMinsa.SetAbsolutePosition(400, 785);
@@ -99,55 +99,64 @@ namespace NetPdf
             var cellsTit = new List<PdfPCell>()
                 { 
                     new PdfPCell(new Phrase("PLAN DE ATENCIÓN INTEGRAL DE SALUD - ADOLESCENTE", fontTitle1)) { BackgroundColor= BaseColor.ORANGE, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20f},
-                    new PdfPCell(new Phrase("PROBLEMAS", fontTitle1)) { BackgroundColor= BaseColor.GRAY, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f},
+                    new PdfPCell(new Phrase("LISTA DE PROBLEMAS", fontColumnValue)) { BackgroundColor= BaseColor.GRAY, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 15f},
                 };
             columnWidths = new float[] { 100f };
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
             document.Add(table);
+            #endregion
 
+            #region PROBLEMA CRÓNICOS
             var estatico_1 = 15f;
             var estatico_2 = 30f;
             var alto_Celda_1 = 15f;
             var alto_Celda_2 = 30f;
             var alto_Celda_3 = 60f;
             var alto_Celda_4 = 75f;
-            #region PROBLEMA CRÓNICOS
-
             var problemasCronicos = problemasList.FindAll(p => p.i_Tipo == (int)Sigesoft.Common.TipoProblema.Cronico);
 
             cells = new List<PdfPCell>();
-
+            
+            
             if (problemasCronicos != null && problemasCronicos.Count > 0)
             {
                 var count = 1;
                 foreach (var item in problemasCronicos)
                 {
-                    cell = new PdfPCell(new Phrase(count.ToString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
+                    cell = new PdfPCell(new Phrase(count.ToString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                     cells.Add(cell);
 
-                    cell = new PdfPCell(new Phrase(item.d_Fecha.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
+                    cell = new PdfPCell(new Phrase(item.d_Fecha.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                     cells.Add(cell);
 
                     cell = new PdfPCell(new Phrase(item.v_Descripcion, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                     cells.Add(cell);
-
-                    cell = new PdfPCell(new Phrase(item.v_PersonId, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
-                    cells.Add(cell);
+                    if (item.i_EsControlado == 1)
+                    {
+                        cell = new PdfPCell(new Phrase("SI", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
+                        cells.Add(cell);
+                    }
+                    else {
+                        cell = new PdfPCell(new Phrase("NO", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
+                        cells.Add(cell);
+                    }
 
                     cell = new PdfPCell(new Phrase(item.v_Observacion, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                     cells.Add(cell);
 
                     count += 1;
                 }
-                columnWidths = new float[] { 5F, 20f, 30f, 20f, 25f };
+                cell = new PdfPCell(new Phrase(null, fontColumnValue)) {Colspan=5, BackgroundColor=BaseColor.GRAY, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 2 };
+                cells.Add(cell);
+                columnWidths = new float[] { 5F, 8f, 42f, 8f, 37f };
             }
             else
             {
-                cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 });
+                cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 });
                 columnWidths = new float[] { 100f };
             }
             columnHeaders = new string[] { "N°", "FECHA", "PROBLEMA CRÓNICOS", "INACTIVO", "OBSERVACIÓN" };
-            columnWidths = new float[] { 5F, 20f, 30f, 20f, 25f };
+            columnWidths = new float[] { 5F, 8f, 42f, 8f, 37f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable, columnHeaders);
             document.Add(table);
             #endregion
@@ -163,30 +172,30 @@ namespace NetPdf
                 var count = 1;
                 foreach (var item in problemasAgudos)
                 {
-                    cell = new PdfPCell(new Phrase(count.ToString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(count.ToString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                     cells.Add(cell);
 
-                    cell = new PdfPCell(new Phrase(item.v_Descripcion, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.v_Descripcion, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                     cells.Add(cell);
 
-                    cell = new PdfPCell(new Phrase(item.d_Fecha.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.d_Fecha.Value.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                     cells.Add(cell);
 
-                    cell = new PdfPCell(new Phrase(item.v_Observacion, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                    cell = new PdfPCell(new Phrase(item.v_Observacion, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                     cells.Add(cell);
 
                     count += 1;
                 }
-                columnWidths = new float[] { 5f, 45f, 20f, 30f };
+                columnWidths = new float[] { 5f, 45f, 8f, 42f };
             }
             else
             {
-                cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT });
+                cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PROBLEMAS CRÓNICOS.", fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = alto_Celda_1 });
                 columnWidths = new float[] { 100f };
             }
             columnHeaders = new string[] { "N°", "PROBLEMAS AGUDOS", "FECHA", "OBSERVACIÓN" };
-            columnWidths = new float[] { 5f, 45f, 20f, 30f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "LISTA DE PROBLEMAS AGUDOS", fontTitleTable, columnHeaders);
+            columnWidths = new float[] { 5f, 45f, 8f, 42f };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable, columnHeaders);
             document.Add(table);
 
             #endregion
@@ -195,16 +204,16 @@ namespace NetPdf
 
             cells = new List<PdfPCell>()
                 {
-                    new PdfPCell(new Phrase("PLAN DE ATENCIÓN INTEGRAL", fontTitleTable)){Colspan = 5, HorizontalAlignment = Element.ALIGN_LEFT, BackgroundColor= BaseColor.GRAY  },    
+                    new PdfPCell(new Phrase("PLAN DE ATENCIÓN INTEGRAL", fontColumnValue)){Colspan = 5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1, BackgroundColor= BaseColor.GRAY  },    
                     
-                    new PdfPCell(new Phrase("ÍTEM", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER },    
-                    new PdfPCell(new Phrase("TIPO", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER },
-                    new PdfPCell(new Phrase("DESCRIPCIÓN", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER }, 
-                    new PdfPCell(new Phrase("FECHA", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER }, 
-                    new PdfPCell(new Phrase("LUGAR", fontSubTitleNegroNegrita)){HorizontalAlignment = Element.ALIGN_CENTER }, 
+                    new PdfPCell(new Phrase("ÍTEM", fontSubTitleNegroNegrita)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },    
+                    new PdfPCell(new Phrase("TIPO", fontSubTitleNegroNegrita)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },
+                    new PdfPCell(new Phrase("DESCRIPCIÓN", fontSubTitleNegroNegrita)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1}, 
+                    new PdfPCell(new Phrase("FECHA", fontSubTitleNegroNegrita)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 }, 
+                    new PdfPCell(new Phrase("LUGAR", fontSubTitleNegroNegrita)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1}, 
                 };
 
-            columnWidths = new float[] { 5f, 25f, 30f, 20f, 20f };
+            columnWidths = new float[] { 5f, 25f, 30f, 8f, 32f };
 
             filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
 
@@ -215,13 +224,13 @@ namespace NetPdf
             int nro = 1;
             foreach (var plan in planIntegralList)
             {
-                columnWidths = new float[] { 30f, 20f, 20f };
+                columnWidths = new float[] { 30f, 8f, 32f };
                 include = "v_Descripcion,v_Fecha,v_Lugar";
 
-                cell = new PdfPCell(new Phrase(nro.ToString(), fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cell = new PdfPCell(new Phrase(nro.ToString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                 cells.Add(cell);
 
-                cell = new PdfPCell(new Phrase(plan.Value, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cell = new PdfPCell(new Phrase(plan.Value, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = alto_Celda_1 };
                 cells.Add(cell);
 
                 table = HandlingItextSharp.GenerateTableFromList(plan.List, columnWidths, include, fontColumnValue);
@@ -243,10 +252,23 @@ namespace NetPdf
             #region SEGUNDA PÁGINA
 
             #region TÍTULO
+            cells = new List<PdfPCell>();
+
+            if (infoEmpresaPropietaria.b_Image != null)
+            {
+                iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image));
+                imagenEmpresa.ScalePercent(25);
+                imagenEmpresa.SetAbsolutePosition(40, 790);
+                document.Add(imagenEmpresa);
+            }
+            imagenMinsa.ScalePercent(10);
+            imagenMinsa.SetAbsolutePosition(400, 785);
+            document.Add(imagenMinsa);
+            document.Add(new Paragraph("\n"));
 
             cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL DEL ADOLESCENTE", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT,BackgroundColor= BaseColor.ORANGE },  
+                    new PdfPCell(new Phrase("FORMATO DE ATENCIÓN INTEGRAL DEL ADOLESCENTE", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER,BackgroundColor= BaseColor.ORANGE },  
                 };
 
             columnWidths = new float[] { 100f };
@@ -1229,7 +1251,19 @@ namespace NetPdf
             #region TERCERA PÁGINA
 
             #region TÍTULO
+            cells = new List<PdfPCell>();
 
+            if (infoEmpresaPropietaria.b_Image != null)
+            {
+                iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image));
+                imagenEmpresa.ScalePercent(25);
+                imagenEmpresa.SetAbsolutePosition(40, 790);
+                document.Add(imagenEmpresa);
+            }
+            imagenMinsa.ScalePercent(10);
+            imagenMinsa.SetAbsolutePosition(400, 785);
+            document.Add(imagenMinsa);
+            document.Add(new Paragraph("\n"));
 
             cellsTit = new List<PdfPCell>()
                 { 
