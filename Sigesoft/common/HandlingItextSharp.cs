@@ -120,7 +120,7 @@ namespace NetPdf
             return GenerateTableFromCells(cells, columnWidths, borderCell, title, fontTitle, null);
         }
 
-        public static PdfPTable GenerateTableFromCells(List<PdfPCell> cells, float[] columnWidths, int? borderCell, string title, Font fontTitle, string[] columnHeaders)
+        public static PdfPTable GenerateTableFromCells_(List<PdfPCell> cells, float[] columnWidths, int? borderCell, string title, Font fontTitle, string[] columnHeaders)
         {
             PdfPCell cell = null;
 
@@ -174,6 +174,55 @@ namespace NetPdf
             return table;
         }
 
+        public static PdfPTable GenerateTableFromCells(List<PdfPCell> cells, float[] columnWidths, int? borderCell, string title, Font fontTitle, string[] columnHeaders)
+        {
+            PdfPCell cell = null;
+
+            int numColumns = columnWidths.Length;
+
+            PdfPTable table = new PdfPTable(numColumns);
+            table.HorizontalAlignment = Element.ALIGN_CENTER;
+            table.WidthPercentage = 100;
+            //table.TotalWidth = 500;
+            //table.LockedWidth = true;    // Esto funciona con TotalWidth           
+            table.SetWidths(columnWidths);
+            //table.DefaultCell.Phrase = new Phrase() { Font = fontColumnValue };
+
+            // Agregar Titulo a la tabla
+            if (title != null)
+            {
+                cell = new PdfPCell(new Paragraph(title, fontTitle));
+                //cell.Border = PdfPCell.NO_BORDER;
+                cell.Colspan = numColumns;
+                //cell.BackgroundColor = new BaseColor(252, 252, 252);
+                cell.BackgroundColor = new BaseColor(System.Drawing.Color.Gray);
+                cell.HorizontalAlignment = Element.ALIGN_LEFT;
+                table.AddCell(cell);
+            }
+
+            // Establecer Cabecera con nombres personalizados
+
+            if (columnHeaders != null)
+            {
+                foreach (string ch in columnHeaders)
+                {
+                    cell = new PdfPCell(new Paragraph(ch, fontTitle));
+                    //cell.BackgroundColor = new BaseColor(System.Drawing.Color.Gray);
+                    cell.HorizontalAlignment = Element.ALIGN_CENTER;
+                    table.AddCell(cell);
+                }
+            }
+
+            foreach (PdfPCell ce in cells)
+            {
+                if (borderCell != null)
+                    ce.Border = borderCell.Value;
+
+                table.AddCell(ce);
+            }
+
+            return table;
+        }
 
 
 
