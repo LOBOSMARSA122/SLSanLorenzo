@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Sigesoft.Node.WinClient.BE
 {
-    public class Ninio
+    public class AtencionNinio
     {
         public string v_NinioId { get; set; }
         public string v_PersonId { get; set; }

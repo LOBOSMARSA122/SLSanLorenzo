@@ -52,8 +52,9 @@
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
     <Compile Include="Custom\DatosAtencion.cs" />
+    <Compile Include="Custom\Embarazo.cs" />
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
-    <Compile Include="Custom\Ninio.cs" />
+    <Compile Include="Custom\AtencionNinio.cs" />
     <Compile Include="Custom\ProblemasList.cs" />
     <Compile Include="Custom\AudiometriaList.cs" />
     <Compile Include="Custom\AudiometriaUserControlList.cs" />
@@ -65,8 +66,6 @@
     <Compile Include="Custom\Categoria.cs" />
     <Compile Include="Custom\CategoriaResultados.cs" />
     <Compile Include="Custom\CebeceraReporte.cs" />
-    <Compile Include="Custom\Class1.cs" />
-    <Compile Include="Custom\Class2.cs" />
     <Compile Include="Custom\CodigoEmpresaList.cs" />
     <Compile Include="Custom\ComisionAuxiliar.cs" />
     <Compile Include="Custom\ComisionVendedorList.cs" />
