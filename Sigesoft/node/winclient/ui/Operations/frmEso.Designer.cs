@@ -584,6 +584,8 @@
             this.label96 = new System.Windows.Forms.Label();
             this.label97 = new System.Windows.Forms.Label();
             this.txtNiNombrePadre = new System.Windows.Forms.TextBox();
+            this.txtAmReaccionAlergica = new System.Windows.Forms.TextBox();
+            this.label98 = new System.Windows.Forms.Label();
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -4475,7 +4477,6 @@
             // cboGradoInstruccion
             // 
             this.cboGradoInstruccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboGradoInstruccion.Enabled = false;
             this.cboGradoInstruccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboGradoInstruccion.FormattingEnabled = true;
             this.cboGradoInstruccion.Location = new System.Drawing.Point(6, 130);
@@ -4495,7 +4496,6 @@
             // cboEstadoCivil
             // 
             this.cboEstadoCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboEstadoCivil.Enabled = false;
             this.cboEstadoCivil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboEstadoCivil.FormattingEnabled = true;
             this.cboEstadoCivil.Location = new System.Drawing.Point(100, 130);
@@ -5296,6 +5296,8 @@
             // 
             // tbpAdultoMayor
             // 
+            this.tbpAdultoMayor.Controls.Add(this.txtAmReaccionAlergica);
+            this.tbpAdultoMayor.Controls.Add(this.label98);
             this.tbpAdultoMayor.Controls.Add(this.label66);
             this.tbpAdultoMayor.Controls.Add(this.panel1);
             this.tbpAdultoMayor.Controls.Add(this.panel3);
@@ -5871,6 +5873,23 @@
             this.txtNiNombrePadre.Size = new System.Drawing.Size(222, 21);
             this.txtNiNombrePadre.TabIndex = 136;
             // 
+            // txtAmReaccionAlergica
+            // 
+            this.txtAmReaccionAlergica.Location = new System.Drawing.Point(345, 70);
+            this.txtAmReaccionAlergica.Multiline = true;
+            this.txtAmReaccionAlergica.Name = "txtAmReaccionAlergica";
+            this.txtAmReaccionAlergica.Size = new System.Drawing.Size(180, 94);
+            this.txtAmReaccionAlergica.TabIndex = 133;
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(345, 54);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(171, 13);
+            this.label98.TabIndex = 132;
+            this.label98.Text = "Reacción Alérgica a Medicamentos";
+            // 
             // frmEso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -6318,5 +6337,7 @@
         private System.Windows.Forms.Label label96;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.TextBox txtNiNombrePadre;
+        private System.Windows.Forms.TextBox txtAmReaccionAlergica;
+        private System.Windows.Forms.Label label98;
     }
 }

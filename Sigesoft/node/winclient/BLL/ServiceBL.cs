@@ -1258,6 +1258,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_NroParejasActuales = A.v_NroParejasActuales,
                                 v_NroAbortos = A.v_NroAbortos,
                                 v_PrecisarCausas = A.v_PrecisarCausas,
+                                i_BloodFactorId =  D.i_BloodGroupId,
+                                i_BloodGroupId =  D.i_BloodFactorId,
+                                v_Procedencia = D.v_Procedencia,
+                                v_CentroEducativo = D.v_CentroEducativo,
+                                i_LevelOfId = D.i_LevelOfId.Value,
+                                i_MaritalStatusId = D.i_MaritalStatusId.Value
 							};
 
 				ServiceList objData = query.FirstOrDefault();
