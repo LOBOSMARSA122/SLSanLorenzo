@@ -53,6 +53,7 @@
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
     <Compile Include="Custom\DatosAtencion.cs" />
+    <Compile Include="Custom\DatosPersonales.cs" />
     <Compile Include="Custom\Embarazo.cs" />
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
     <Compile Include="Custom\AtencionNinio.cs" />

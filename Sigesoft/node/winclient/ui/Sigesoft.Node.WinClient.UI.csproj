@@ -1327,6 +1327,12 @@
     <Compile Include="Operations\Popups\frmAtxResultadoExamenAuxiliar.Designer.cs">
       <DependentUpon>frmAtxResultadoExamenAuxiliar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Popups\frmEmbarazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\Popups\frmEmbarazo.Designer.cs">
+      <DependentUpon>frmEmbarazo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Popups\frmPopupAnamnesis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3476,6 +3482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmAtxResultadoExamenAuxiliar.resx">
       <DependentUpon>frmAtxResultadoExamenAuxiliar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations\Popups\frmEmbarazo.resx">
+      <DependentUpon>frmEmbarazo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmPopupAnamnesis.resx">
       <DependentUpon>frmPopupAnamnesis.cs</DependentUpon>
