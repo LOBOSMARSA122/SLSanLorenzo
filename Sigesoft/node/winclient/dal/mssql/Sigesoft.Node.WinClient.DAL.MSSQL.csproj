@@ -51,6 +51,7 @@
       <DependentUpon>DMnodeSQLServer.edmx</DependentUpon>
     </Compile>
     <Compile Include="GeneratedAssemblers\adolescenteAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\adultoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\adultomayorAssembler.cs" />
     <Compile Include="GeneratedAssemblers\antecedenteasistencialAssembler.cs" />
     <Compile Include="GeneratedAssemblers\applicationhierarchyAssembler.cs" />

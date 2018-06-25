@@ -17,33 +17,33 @@ namespace Sigesoft.Node.WinClient.BE
 {
 
     /// <summary>
-    /// Assembler for <see cref="adultomayor"/> and <see cref="adultomayorDto"/>.
+    /// Assembler for <see cref="adulto"/> and <see cref="adultoDto"/>.
     /// </summary>
-    public static partial class adultomayorAssembler
+    public static partial class adultoAssembler
     {
         /// <summary>
         /// Invoked when <see cref="ToDTO"/> operation is about to return.
         /// </summary>
-        /// <param name="dto"><see cref="adultomayorDto"/> converted from <see cref="adultomayor"/>.</param>
-        static partial void OnDTO(this adultomayor entity, adultomayorDto dto);
+        /// <param name="dto"><see cref="adultoDto"/> converted from <see cref="adulto"/>.</param>
+        static partial void OnDTO(this adulto entity, adultoDto dto);
 
         /// <summary>
         /// Invoked when <see cref="ToEntity"/> operation is about to return.
         /// </summary>
-        /// <param name="entity"><see cref="adultomayor"/> converted from <see cref="adultomayorDto"/>.</param>
-        static partial void OnEntity(this adultomayorDto dto, adultomayor entity);
+        /// <param name="entity"><see cref="adulto"/> converted from <see cref="adultoDto"/>.</param>
+        static partial void OnEntity(this adultoDto dto, adulto entity);
 
         /// <summary>
-        /// Converts this instance of <see cref="adultomayorDto"/> to an instance of <see cref="adultomayor"/>.
+        /// Converts this instance of <see cref="adultoDto"/> to an instance of <see cref="adulto"/>.
         /// </summary>
-        /// <param name="dto"><see cref="adultomayorDto"/> to convert.</param>
-        public static adultomayor ToEntity(this adultomayorDto dto)
+        /// <param name="dto"><see cref="adultoDto"/> to convert.</param>
+        public static adulto ToEntity(this adultoDto dto)
         {
             if (dto == null) return null;
 
-            var entity = new adultomayor();
+            var entity = new adulto();
 
-            entity.v_AdultoMayorId = dto.v_AdultoMayorId;
+            entity.v_AdultoId = dto.v_AdultoId;
             entity.v_PersonId = dto.v_PersonId;
             entity.v_NombreCuidador = dto.v_NombreCuidador;
             entity.v_EdadCuidador = dto.v_EdadCuidador;
@@ -69,16 +69,16 @@ namespace Sigesoft.Node.WinClient.BE
         }
 
         /// <summary>
-        /// Converts this instance of <see cref="adultomayor"/> to an instance of <see cref="adultomayorDto"/>.
+        /// Converts this instance of <see cref="adulto"/> to an instance of <see cref="adultoDto"/>.
         /// </summary>
-        /// <param name="entity"><see cref="adultomayor"/> to convert.</param>
-        public static adultomayorDto ToDTO(this adultomayor entity)
+        /// <param name="entity"><see cref="adulto"/> to convert.</param>
+        public static adultoDto ToDTO(this adulto entity)
         {
             if (entity == null) return null;
 
-            var dto = new adultomayorDto();
+            var dto = new adultoDto();
 
-            dto.v_AdultoMayorId = entity.v_AdultoMayorId;
+            dto.v_AdultoId = entity.v_AdultoId;
             dto.v_PersonId = entity.v_PersonId;
             dto.v_NombreCuidador = entity.v_NombreCuidador;
             dto.v_EdadCuidador = entity.v_EdadCuidador;
@@ -104,11 +104,11 @@ namespace Sigesoft.Node.WinClient.BE
         }
 
         /// <summary>
-        /// Converts each instance of <see cref="adultomayorDto"/> to an instance of <see cref="adultomayor"/>.
+        /// Converts each instance of <see cref="adultoDto"/> to an instance of <see cref="adulto"/>.
         /// </summary>
         /// <param name="dtos"></param>
         /// <returns></returns>
-        public static List<adultomayor> ToEntities(this IEnumerable<adultomayorDto> dtos)
+        public static List<adulto> ToEntities(this IEnumerable<adultoDto> dtos)
         {
             if (dtos == null) return null;
 
@@ -116,11 +116,11 @@ namespace Sigesoft.Node.WinClient.BE
         }
 
         /// <summary>
-        /// Converts each instance of <see cref="adultomayor"/> to an instance of <see cref="adultomayorDto"/>.
+        /// Converts each instance of <see cref="adulto"/> to an instance of <see cref="adultoDto"/>.
         /// </summary>
         /// <param name="entities"></param>
         /// <returns></returns>
-        public static List<adultomayorDto> ToDTOs(this IEnumerable<adultomayor> entities)
+        public static List<adultoDto> ToDTOs(this IEnumerable<adulto> entities)
         {
             if (entities == null) return null;
 

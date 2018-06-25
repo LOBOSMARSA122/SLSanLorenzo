@@ -29215,7 +29215,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-	    public bool GuardarDatosAdultoMayor()
+        public bool GuardarDatosAdultoMayor(AdultoMayor oAdultoMayor)
 	    {
 	        try
 	        {
