@@ -50,6 +50,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DMnodeSQLServer.edmx</DependentUpon>
     </Compile>
+    <Compile Include="GeneratedAssemblers\adolescenteAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\adultomayorAssembler.cs" />
     <Compile Include="GeneratedAssemblers\antecedenteasistencialAssembler.cs" />
     <Compile Include="GeneratedAssemblers\applicationhierarchyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\areaAssembler.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="GeneratedAssemblers\dxfrecuenteAssembler.cs" />
     <Compile Include="GeneratedAssemblers\dxfrecuentedetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\emailAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\embarzoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\workstationdangersAssembler.cs" />
     <Compile Include="GeneratedAssemblers\warehouseAssembler.cs" />
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
@@ -134,6 +137,7 @@
     <Compile Include="GeneratedAssemblers\nodeorganizationlocationprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodedatabasestatusAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\ninioAssembler.cs" />
     <Compile Include="GeneratedAssemblers\multimediafileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\movementdetailAssembler.cs" />
     <Compile Include="GeneratedAssemblers\movementAssembler.cs" />

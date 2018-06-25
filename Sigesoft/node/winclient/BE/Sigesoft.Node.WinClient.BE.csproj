@@ -276,6 +276,8 @@
     <Compile Include="Custom\ValorComponenteList.cs" />
     <Compile Include="Custom\JerarquiaServicioCamposValores.cs" />
     <Compile Include="Custom\WorkstationDangersList.cs" />
+    <Compile Include="Generated\adolescenteDto.cs" />
+    <Compile Include="Generated\adultomayorDto.cs" />
     <Compile Include="Generated\antecedenteasistencialDto.cs" />
     <Compile Include="Generated\applicationhierarchyDto.cs" />
     <Compile Include="Generated\areaDto.cs" />
@@ -297,13 +299,13 @@
     <Compile Include="Generated\cuidadopreventivoDto.cs" />
     <Compile Include="Generated\cuidadopreventivocomentarioDto.cs" />
     <Compile Include="Generated\datahierarchyDto.cs" />
-    <Compile Include="Generated\dbconfigDto.cs" />
     <Compile Include="Generated\deploymentfileDto.cs" />
     <Compile Include="Generated\diagnosticrepositoryDto.cs" />
     <Compile Include="Generated\diseasesDto.cs" />
     <Compile Include="Generated\dxfrecuenteDto.cs" />
     <Compile Include="Generated\dxfrecuentedetalleDto.cs" />
     <Compile Include="Generated\emailDto.cs" />
+    <Compile Include="Generated\embarzoDto.cs" />
     <Compile Include="Generated\workstationdangersDto.cs" />
     <Compile Include="Generated\warehouseDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />
@@ -361,6 +363,7 @@
     <Compile Include="Generated\nodeorganizationlocationprofileDto.cs" />
     <Compile Include="Generated\nodedatabasestatusDto.cs" />
     <Compile Include="Generated\nodeDto.cs" />
+    <Compile Include="Generated\ninioDto.cs" />
     <Compile Include="Generated\multimediafileDto.cs" />
     <Compile Include="Generated\movementdetailDto.cs" />
     <Compile Include="Generated\movementDto.cs" />

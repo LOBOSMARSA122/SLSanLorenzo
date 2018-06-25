@@ -2000,14 +2000,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 txtEdad.Text = _age.ToString();
                 dtpFechaNacimiento.Value = personData.d_BirthDate.Value;
                 txtLugarNacimiento.Text = personData.v_AdressLocation;
-                //txtProcedencia.Text = personData.v_Procedencia;
-                //ddlBloodFactorId.SelectedValue = personData.i_BloodFactorId.ToString();
-                //ddlBloodGroupId.SelectedValue = personData.i_BloodGroupId.ToString();
+                txtProcedencia.Text = personData.v_Procedencia;
+                ddlBloodFactorId.SelectedValue = personData.i_BloodFactorId.ToString();
+                ddlBloodGroupId.SelectedValue = personData.i_BloodGroupId.ToString();
                 cboGradoInstruccion.SelectedValue = personData.i_LevelOfId.ToString();
                 cboEstadoCivil.SelectedValue = personData.i_MaritalStatusId.ToString();
                 txtOcupacion.Text = personData.v_CurrentOccupation;
 
                 #endregion
+
                 #region Cargar Atención Integral
 
                 CargarGrillaProblemas(_personId);

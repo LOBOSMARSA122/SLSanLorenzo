@@ -456,6 +456,11 @@ namespace Sigesoft.Node.WinClient.BE
        public string v_NroParejasActuales { get; set; }
        public string v_NroAbortos { get; set; }
        public string v_PrecisarCausas { get; set; }
+
+
+       public int? i_BloodFactorId { get; set; }
+       public int? i_BloodGroupId { get; set; }
+       public string v_Procedencia { get; set; }
        
    }
 
