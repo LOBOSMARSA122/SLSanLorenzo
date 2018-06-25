@@ -5775,6 +5775,87 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public Sigesoft.Node.WinClient.BE.Adolescente DevolverAdolescente(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.adolescente on a.v_PersonId equals b.v_PersonId
+                select new Sigesoft.Node.WinClient.BE.Adolescente
+                                 {
+                                     v_NombreCuidador = b.v_NombreCuidador,
+                                     v_EdadCuidador = b.v_EdadCuidador,
+                                     v_DniCuidador = b.v_DniCuidador,
+                                     v_ViveCon = b.v_ViveCon,
+                                     v_EdadInicioTrabajo = b.v_EdadInicioTrabajo,
+                                     v_TipoTrabajo = b.v_TipoTrabajo,
+                                     v_NroHorasTv = b.v_NroHorasTv,
+                                     v_NroHorasJuegos = b.v_NroHorasJuegos,
+                                     v_MenarquiaEspermarquia = b.v_MenarquiaEspermarquia,
+                                     v_EdadInicioRS = b.v_EdadInicioRS
+                                     
+                                }).ToList();
+      
+                    var result = (from a in objEntity
+                              select new Sigesoft.Node.WinClient.BE.Adolescente
+                              {
+                                  v_NombreCuidador = a.v_NombreCuidador,
+                                  v_EdadCuidador = a.v_EdadCuidador,
+                                  v_DniCuidador = a.v_DniCuidador,
+                                  v_ViveCon = a.v_ViveCon,
+                                  v_EdadInicioTrabajo = a.v_EdadInicioTrabajo,
+                                  v_TipoTrabajo = a.v_TipoTrabajo,
+                                  v_NroHorasTv = a.v_NroHorasTv,
+                                  v_NroHorasJuegos = a.v_NroHorasJuegos,
+                                  v_MenarquiaEspermarquia = a.v_MenarquiaEspermarquia,
+                                  v_EdadInicioRS = a.v_EdadInicioRS
+                              }
+                            ).FirstOrDefault();
+                return result;
+            }
+            catch(Exception)
+            {
+                return null;
+            }
+        
+        }
+
+        public Sigesoft.Node.WinClient.BE.Adulto DevolverAdulto(string pstrServiceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from a in dbContext.service
+                                 join b in dbContext.adulto on a.v_PersonId equals b.v_PersonId
+                                 select new Sigesoft.Node.WinClient.BE.Adulto
+                                 {
+                                     v_NombreCuidador = b.v_NombreCuidador,
+                                     v_EdadCuidador = b.v_EdadCuidador,
+                                     v_DniCuidador = b.v_DniCuidador,
+                                     v_MedicamentoFrecuente = b.v_MedicamentoFrecuente,
+                                     v_ReaccionAlergica = b.v_ReaccionAlergica,
+
+                                 }).ToList();
+
+                var result = (from a in objEntity
+                              select new Sigesoft.Node.WinClient.BE.Adulto
+                              {
+                                  v_NombreCuidador = a.v_NombreCuidador,
+                                  v_EdadCuidador = a.v_EdadCuidador,
+                                  v_DniCuidador = a.v_DniCuidador,
+                                 
+                              }
+                        ).FirstOrDefault();
+                return result;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+        }
+
 
         public Sigesoft.Node.WinClient.BE.PacientList DevolverDatosPaciente(string pstrServiceId)
         {
@@ -5783,8 +5864,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var objEntity = (from a in dbContext.service
                                  join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+
                                  join c in dbContext.systemparameter on new { a = b.i_SexTypeId.Value, b = 100 }
-                                             equals new { a = c.i_ParameterId, b = c.i_GroupId }  // GENERO
+                                    equals new { a = c.i_ParameterId, b = c.i_GroupId }  // GENERO
                                  join d in dbContext.protocol on a.v_ProtocolId equals d.v_ProtocolId
 
 
@@ -5899,6 +5981,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_Story = a.v_Story,
                                      Aptitud = J4.v_Value1,
                                      b_FirmaAuditor = pr.b_SignatureImage
+
+                                     
                                  }
                                 ).ToList();
                 var DatosMedicoMedicinaEvaluador = ObtenerDatosMedicoMedicina(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);

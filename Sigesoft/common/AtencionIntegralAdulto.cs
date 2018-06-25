@@ -27,12 +27,13 @@ namespace NetPdf
 
         public static void CreateAtencionIntegral(string filePDF, 
             List<ProblemasList> problemasList, 
-            List<TipoAtencionList> planIntegralList, 
+            List<TipoAtencionList> planIntegralList,
             DatosAtencion datosAtencion,
             PacientList datosPac,
             List<frmEsoAntecedentesPadre> Antecedentes, 
             List<frmEsoCuidadosPreventivosFechas> FechasCP,
             organizationDto infoEmpresaPropietaria,
+            Adulto datosAdult,
             List<frmEsoCuidadosPreventivosComentarios> ComentariosCP)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);

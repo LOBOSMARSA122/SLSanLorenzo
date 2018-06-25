@@ -268,6 +268,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
+            //datos adicionales adolescente
+            var datosAdul = _pacientBL.DevolverAdulto(_serviceId);
+
             int GrupoEtario = 1;
             int Grupo = 2821;
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
@@ -291,7 +294,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var datosPaciente = _pacientBL.GetPacientReport(_pacientId);
 
-            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP, listAntecedentes, Fechas, MedicalCenter, Comentarios);
+            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP, listAntecedentes, Fechas, MedicalCenter,datosAdul, Comentarios);
         }
 
         private void GenerateAtencionIntegralAdolescente(string pathFile)
@@ -301,6 +304,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosPaciente = _pacientBL.GetDatosPersonalesAtencion(_serviceId);
 
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            //datos adicionales adolescente
+            var datosAdol = _pacientBL.DevolverAdolescente(_serviceId);
 
             int GrupoEtario = 2;
             int Grupo = 2822;
@@ -316,7 +322,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
 
-            SAtencionIntegralAdolescente.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas,MedicalCenter, Comentarios);
+            SAtencionIntegralAdolescente.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas,MedicalCenter,datosAdol, Comentarios);
         }
 
         private void GenerateConsultaMedicaNinio(string pathFile)
