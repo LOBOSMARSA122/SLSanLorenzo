@@ -2011,6 +2011,39 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 txtCentroEducativo.Text = personData.v_CentroEducativo;
                 txtHijosVivos.Text = personData.TotalHijos.ToString();
 
+
+                if (_age <= 12)
+                {
+                    tbcDatos.TabPages.Remove(tbpAdultoMayor);
+                    tbcDatos.TabPages.Remove(tbpAdolescente);
+                }
+                else if (13 <= _age && _age <= 17)
+                {
+                    tbcDatos.TabPages.Remove(tbpNinio);
+                    tbcDatos.TabPages.Remove(tbpAdultoMayor);
+                }
+                else if (18 <= _age && _age <= 64)
+                {
+                    tbcDatos.TabPages.Remove(tbpNinio);
+                    tbcDatos.TabPages.Remove(tbpAdolescente);
+
+                    if (personData.i_SexTypeId == (int) Gender.MASCULINO)
+                    {
+                        pnlMenarquia.Enabled = false;
+                        pnlEmbarazo.Enabled = false;
+                    }
+                    else
+                    {
+                        pnlMenarquia.Enabled = true;
+                        pnlEmbarazo.Enabled = true;
+                    }
+                }
+                else
+                {
+                    tbcDatos.TabPages.Remove(tbpNinio);
+                    tbcDatos.TabPages.Remove(tbpAdolescente);
+                }
+
                 #endregion
 
                 #region Cargar Atención Integral
@@ -7757,6 +7790,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
+
+
                 response = _serviceBL.GuardarAntecedenteAsistencial(Listado, Globals.ClientSession.i_SystemUserId,_personId,GrupoEtario,Globals.ClientSession.i_CurrentExecutionNodeId);
             }
 

@@ -29214,5 +29214,19 @@ namespace Sigesoft.Node.WinClient.BLL
                 return false;
             }
         }
+
+	    public bool GuardarDatosAdultoMayor()
+	    {
+	        try
+	        {
+
+	        }
+	        catch (Exception ex)
+	        {
+	            Console.WriteLine(ex);
+	            throw;
+	        }
+	    }
+
 	}
 }

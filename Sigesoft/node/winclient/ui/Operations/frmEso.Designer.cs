@@ -504,16 +504,16 @@
             this.label59 = new System.Windows.Forms.Label();
             this.txtHijosVivos = new System.Windows.Forms.TextBox();
             this.label61 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlSexualidad = new System.Windows.Forms.Panel();
             this.label62 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.pnlMenarquia = new System.Windows.Forms.Panel();
             this.label64 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
             this.txtAmRC = new System.Windows.Forms.TextBox();
             this.txtAmFechaUR = new System.Windows.Forms.TextBox();
             this.label66 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.pnlEmbarazo = new System.Windows.Forms.Panel();
             this.label67 = new System.Windows.Forms.Label();
             this.txtAmNroParto = new System.Windows.Forms.TextBox();
             this.txtAmPrematuro = new System.Windows.Forms.TextBox();
@@ -646,9 +646,9 @@
             this.pnlLeftPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).BeginInit();
             this.groupBox3.SuspendLayout();
-            this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.pnlSexualidad.SuspendLayout();
+            this.pnlMenarquia.SuspendLayout();
+            this.pnlEmbarazo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEmbarzo)).BeginInit();
             this.tbcDatos.SuspendLayout();
             this.tbpAdultoMayor.SuspendLayout();
@@ -4978,17 +4978,17 @@
             this.label61.TabIndex = 124;
             this.label61.Text = "Hijos Vivos";
             // 
-            // panel1
+            // pnlSexualidad
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.label56);
-            this.panel1.Controls.Add(this.txtAmInicioRs);
-            this.panel1.Controls.Add(this.label59);
-            this.panel1.Controls.Add(this.txtAmNroPs);
-            this.panel1.Location = new System.Drawing.Point(6, 109);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(162, 55);
-            this.panel1.TabIndex = 126;
+            this.pnlSexualidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlSexualidad.Controls.Add(this.label56);
+            this.pnlSexualidad.Controls.Add(this.txtAmInicioRs);
+            this.pnlSexualidad.Controls.Add(this.label59);
+            this.pnlSexualidad.Controls.Add(this.txtAmNroPs);
+            this.pnlSexualidad.Location = new System.Drawing.Point(6, 109);
+            this.pnlSexualidad.Name = "pnlSexualidad";
+            this.pnlSexualidad.Size = new System.Drawing.Size(162, 55);
+            this.pnlSexualidad.TabIndex = 126;
             // 
             // label62
             // 
@@ -5011,17 +5011,17 @@
             this.label63.Text = "Menarquia";
             this.label63.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel2
+            // pnlMenarquia
             // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label64);
-            this.panel2.Controls.Add(this.txtAmFechaUR);
-            this.panel2.Controls.Add(this.label65);
-            this.panel2.Controls.Add(this.txtAmRC);
-            this.panel2.Location = new System.Drawing.Point(177, 109);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(162, 55);
-            this.panel2.TabIndex = 128;
+            this.pnlMenarquia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMenarquia.Controls.Add(this.label64);
+            this.pnlMenarquia.Controls.Add(this.txtAmFechaUR);
+            this.pnlMenarquia.Controls.Add(this.label65);
+            this.pnlMenarquia.Controls.Add(this.txtAmRC);
+            this.pnlMenarquia.Location = new System.Drawing.Point(177, 109);
+            this.pnlMenarquia.Name = "pnlMenarquia";
+            this.pnlMenarquia.Size = new System.Drawing.Size(162, 55);
+            this.pnlMenarquia.TabIndex = 128;
             // 
             // label64
             // 
@@ -5066,23 +5066,23 @@
             this.label66.Text = "Embarazo";
             this.label66.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panel3
+            // pnlEmbarazo
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.grdEmbarzo);
-            this.panel3.Controls.Add(this.btnNuevoEmbarazo);
-            this.panel3.Controls.Add(this.btnEditarEmbarazo);
-            this.panel3.Controls.Add(this.btnEliminarEmbarazo);
-            this.panel3.Controls.Add(this.txtAmAborto);
-            this.panel3.Controls.Add(this.label69);
-            this.panel3.Controls.Add(this.txtAmPrematuro);
-            this.panel3.Controls.Add(this.label68);
-            this.panel3.Controls.Add(this.txtAmNroParto);
-            this.panel3.Controls.Add(this.label67);
-            this.panel3.Location = new System.Drawing.Point(6, 183);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(531, 195);
-            this.panel3.TabIndex = 130;
+            this.pnlEmbarazo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEmbarazo.Controls.Add(this.grdEmbarzo);
+            this.pnlEmbarazo.Controls.Add(this.btnNuevoEmbarazo);
+            this.pnlEmbarazo.Controls.Add(this.btnEditarEmbarazo);
+            this.pnlEmbarazo.Controls.Add(this.btnEliminarEmbarazo);
+            this.pnlEmbarazo.Controls.Add(this.txtAmAborto);
+            this.pnlEmbarazo.Controls.Add(this.label69);
+            this.pnlEmbarazo.Controls.Add(this.txtAmPrematuro);
+            this.pnlEmbarazo.Controls.Add(this.label68);
+            this.pnlEmbarazo.Controls.Add(this.txtAmNroParto);
+            this.pnlEmbarazo.Controls.Add(this.label67);
+            this.pnlEmbarazo.Location = new System.Drawing.Point(6, 183);
+            this.pnlEmbarazo.Name = "pnlEmbarazo";
+            this.pnlEmbarazo.Size = new System.Drawing.Size(531, 195);
+            this.pnlEmbarazo.TabIndex = 130;
             // 
             // label67
             // 
@@ -5299,14 +5299,14 @@
             this.tbpAdultoMayor.Controls.Add(this.txtAmReaccionAlergica);
             this.tbpAdultoMayor.Controls.Add(this.label98);
             this.tbpAdultoMayor.Controls.Add(this.label66);
-            this.tbpAdultoMayor.Controls.Add(this.panel1);
-            this.tbpAdultoMayor.Controls.Add(this.panel3);
+            this.tbpAdultoMayor.Controls.Add(this.pnlSexualidad);
+            this.tbpAdultoMayor.Controls.Add(this.pnlEmbarazo);
             this.tbpAdultoMayor.Controls.Add(this.txtAmCuidador);
             this.tbpAdultoMayor.Controls.Add(this.label63);
             this.tbpAdultoMayor.Controls.Add(this.label40);
             this.tbpAdultoMayor.Controls.Add(this.label62);
             this.tbpAdultoMayor.Controls.Add(this.label41);
-            this.tbpAdultoMayor.Controls.Add(this.panel2);
+            this.tbpAdultoMayor.Controls.Add(this.pnlMenarquia);
             this.tbpAdultoMayor.Controls.Add(this.txtAmCuidadorEdad);
             this.tbpAdultoMayor.Controls.Add(this.label42);
             this.tbpAdultoMayor.Controls.Add(this.txtAmCuidadorDni);
@@ -5980,12 +5980,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
+            this.pnlSexualidad.ResumeLayout(false);
+            this.pnlSexualidad.PerformLayout();
+            this.pnlMenarquia.ResumeLayout(false);
+            this.pnlMenarquia.PerformLayout();
+            this.pnlEmbarazo.ResumeLayout(false);
+            this.pnlEmbarazo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEmbarzo)).EndInit();
             this.tbcDatos.ResumeLayout(false);
             this.tbpAdultoMayor.ResumeLayout(false);
@@ -6250,7 +6250,7 @@
         private System.Windows.Forms.TextBox txtAmCuidadorEdad;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label62;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlSexualidad;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.TextBox txtAmInicioRs;
         private System.Windows.Forms.Label label59;
@@ -6260,13 +6260,13 @@
         private System.Windows.Forms.Label label43;
         private System.Windows.Forms.TextBox txtAmMedicamentoDosis;
         private System.Windows.Forms.Label label63;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel pnlMenarquia;
         private System.Windows.Forms.Label label64;
         private System.Windows.Forms.Label label65;
         private System.Windows.Forms.TextBox txtAmRC;
         private System.Windows.Forms.TextBox txtAmFechaUR;
         private System.Windows.Forms.Label label66;
-        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel pnlEmbarazo;
         private System.Windows.Forms.Label label67;
         private System.Windows.Forms.TextBox txtAmAborto;
         private System.Windows.Forms.Label label69;

@@ -47,10 +47,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Custom\Adolescente.cs" />
+    <Compile Include="Custom\AdultoMayor.cs" />
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
     <Compile Include="Custom\DatosAtencion.cs" />
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
+    <Compile Include="Custom\Ninio.cs" />
     <Compile Include="Custom\ProblemasList.cs" />
     <Compile Include="Custom\AudiometriaList.cs" />
     <Compile Include="Custom\AudiometriaUserControlList.cs" />
