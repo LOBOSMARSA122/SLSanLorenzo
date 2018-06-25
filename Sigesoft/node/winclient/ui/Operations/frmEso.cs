@@ -2005,6 +2005,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 cboEstadoCivil.SelectedValue = personData.i_MaritalStatusId.ToString();
                 txtOcupacion.Text = personData.v_CurrentOccupation;
                 txtDomicilio.Text = personData.v_AdressLocation;
+                //txtCentroEducativo.Text = personData.v_Ce
                 #endregion
 
                 #region Cargar Atención Integral
