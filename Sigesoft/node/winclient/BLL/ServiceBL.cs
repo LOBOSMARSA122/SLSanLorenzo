@@ -29215,17 +29215,31 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public bool GuardarDatosAdultoMayor(AdultoMayor oAdultoMayor)
+        public bool GuardarDatosAdultoMayor(adultomayorDto pobjDtoEntity, List<string> ClientSession)
 	    {
-	        try
-	        {
-	            return false;
-	        }
-	        catch (Exception ex)
-	        {
-	            Console.WriteLine(ex);
-	            throw;
-	        }
+            string NewId = "(No generado)";
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                adultomayor objEntity = adultomayorAssembler.ToEntity(pobjDtoEntity);
+
+                objEntity.d_InsertDate = DateTime.Now;
+                objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
+                objEntity.i_IsDeleted = 0;
+                // Autogeneramos el Pk de la tabla                 
+                int intNodeId = int.Parse(ClientSession[0]);
+                NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 340), "AM"); ;
+                objEntity.v_AdultoMayorId = NewId;
+
+                dbContext.AddToadultomayor(objEntity);
+                dbContext.SaveChanges();
+               
+               return true;
+            }
+            catch (Exception ex)
+            {
+                  return false;
+            }
 	    }
 
 	}

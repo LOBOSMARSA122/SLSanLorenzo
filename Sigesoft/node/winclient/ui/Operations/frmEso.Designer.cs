@@ -236,7 +236,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance105 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand13 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Anio");
@@ -522,7 +522,6 @@
             this.label69 = new System.Windows.Forms.Label();
             this.grdEmbarzo = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnNuevoEmbarazo = new System.Windows.Forms.Button();
-            this.btnEditarEmbarazo = new System.Windows.Forms.Button();
             this.btnEliminarEmbarazo = new System.Windows.Forms.Button();
             this.tbcDatos = new System.Windows.Forms.TabControl();
             this.tbpAdultoMayor = new System.Windows.Forms.TabPage();
@@ -4802,14 +4801,14 @@
             // 
             // uvExamen
             // 
-            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance15.BackColor2 = System.Drawing.Color.Transparent;
-            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance15.BorderColor = System.Drawing.Color.Red;
-            appearance15.BorderColor2 = System.Drawing.Color.Red;
-            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance15;
+            appearance105.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance105.BackColor2 = System.Drawing.Color.Transparent;
+            appearance105.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance105.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance105.BorderColor = System.Drawing.Color.Red;
+            appearance105.BorderColor2 = System.Drawing.Color.Red;
+            appearance105.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance105;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -5071,7 +5070,6 @@
             this.pnlEmbarazo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlEmbarazo.Controls.Add(this.grdEmbarzo);
             this.pnlEmbarazo.Controls.Add(this.btnNuevoEmbarazo);
-            this.pnlEmbarazo.Controls.Add(this.btnEditarEmbarazo);
             this.pnlEmbarazo.Controls.Add(this.btnEliminarEmbarazo);
             this.pnlEmbarazo.Controls.Add(this.txtAmAborto);
             this.pnlEmbarazo.Controls.Add(this.label69);
@@ -5236,32 +5234,14 @@
             this.btnNuevoEmbarazo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevoEmbarazo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
             this.btnNuevoEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevoEmbarazo.Location = new System.Drawing.Point(294, 166);
+            this.btnNuevoEmbarazo.Location = new System.Drawing.Point(373, 167);
             this.btnNuevoEmbarazo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoEmbarazo.Name = "btnNuevoEmbarazo";
             this.btnNuevoEmbarazo.Size = new System.Drawing.Size(75, 24);
             this.btnNuevoEmbarazo.TabIndex = 130;
             this.btnNuevoEmbarazo.Text = "     Nuevo";
             this.btnNuevoEmbarazo.UseVisualStyleBackColor = false;
-            // 
-            // btnEditarEmbarazo
-            // 
-            this.btnEditarEmbarazo.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEditarEmbarazo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEditarEmbarazo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEditarEmbarazo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEditarEmbarazo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarEmbarazo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarEmbarazo.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarEmbarazo.Image")));
-            this.btnEditarEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarEmbarazo.Location = new System.Drawing.Point(373, 166);
-            this.btnEditarEmbarazo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditarEmbarazo.Name = "btnEditarEmbarazo";
-            this.btnEditarEmbarazo.Size = new System.Drawing.Size(75, 24);
-            this.btnEditarEmbarazo.TabIndex = 131;
-            this.btnEditarEmbarazo.Text = "   Editar";
-            this.btnEditarEmbarazo.UseVisualStyleBackColor = false;
+            this.btnNuevoEmbarazo.Click += new System.EventHandler(this.btnNuevoEmbarazo_Click);
             // 
             // btnEliminarEmbarazo
             // 
@@ -6275,7 +6255,6 @@
         private System.Windows.Forms.TextBox txtAmNroParto;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdEmbarzo;
         private System.Windows.Forms.Button btnNuevoEmbarazo;
-        private System.Windows.Forms.Button btnEditarEmbarazo;
         private System.Windows.Forms.Button btnEliminarEmbarazo;
         private System.Windows.Forms.TabControl tbcDatos;
         private System.Windows.Forms.TabPage tbpAdultoMayor;

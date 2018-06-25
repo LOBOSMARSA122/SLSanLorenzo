@@ -7790,7 +7790,40 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
+                OperationResult objOperationResult = new OperationResult();
+                personDto oDatosPersonales = new personDto();
+                oDatosPersonales.v_FirstLastName = txtApellidoPaterno.Text;
+                oDatosPersonales.v_SecondLastName = txtApellidoMaterno.Text;
+                oDatosPersonales.v_FirstName = txtNombres.Text;
+                oDatosPersonales.i_SexTypeId = int.Parse(cboGenero.SelectedValue.ToString());
+                //oDatosPersonales.Edad = int.Parse(txtEdad.Text());
+                oDatosPersonales.v_BirthPlace = txtLugarNacimiento.Text;
+                oDatosPersonales.v_Procedencia = txtProcedencia.Text;
+                oDatosPersonales.i_LevelOfId = int.Parse(cboGradoInstruccion.SelectedValue.ToString());
+                oDatosPersonales.i_MaritalStatusId = int.Parse(cboEstadoCivil.SelectedValue.ToString());
+                oDatosPersonales.v_CurrentOccupation = txtOcupacion.Text;
+                oDatosPersonales.v_AdressLocation = txtDomicilio.Text;
+                oDatosPersonales.v_CentroEducativo = txtCentroEducativo.Text;
+                oDatosPersonales.i_NumberLivingChildren = int.Parse(txtHijosVivos.Text);
 
+                var resultDatosPersonales = new PacientBL().UpdatePacient(ref objOperationResult, oDatosPersonales, Globals.ClientSession.GetAsList(), _Dni, _Dni);
+
+                adultomayorDto oAdultoMayor = new adultomayorDto();
+
+                oAdultoMayor.v_NombreCuidador = txtAmCuidador.Text;
+                oAdultoMayor.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                oAdultoMayor.v_DniCuidador = txtAmCuidadorDni.Text;
+                oAdultoMayor.v_MedicamentoFrecuente = txtAmMedicamentoDosis.Text;
+                oAdultoMayor.v_InicioRS = txtAmInicioRs.Text;
+                oAdultoMayor.v_NroPs = txtAmNroPs.Text;
+                oAdultoMayor.v_FechaUR = txtAmFechaUR.Text;
+                oAdultoMayor.v_RC = txtAmRC.Text;
+                oAdultoMayor.v_ReaccionAlergica = txtAmReaccionAlergica.Text;
+                oAdultoMayor.v_Parto = txtAmNroParto.Text;
+                oAdultoMayor.v_Prematuro = txtAmPrematuro.Text;
+                oAdultoMayor.v_Aborto = txtAmAborto.Text;
+
+                var resultAdultoMayor = new ServiceBL().GuardarDatosAdultoMayor(oAdultoMayor, Globals.ClientSession.GetAsList());
 
                 response = _serviceBL.GuardarAntecedenteAsistencial(Listado, Globals.ClientSession.i_SystemUserId,_personId,GrupoEtario,Globals.ClientSession.i_CurrentExecutionNodeId);
             }
@@ -7862,6 +7895,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         }
 
         private void grdPlanIntegral_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+
+        }
+
+        private void btnNuevoEmbarazo_Click(object sender, EventArgs e)
         {
 
         }
