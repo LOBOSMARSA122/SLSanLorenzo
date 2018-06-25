@@ -78,7 +78,7 @@ namespace NetPdf
             Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             #endregion
 
-            var estatico_1 = 15f;
+            var estatico_1 = 15f; 
             var alto_Celda_1 = 15f;
             var alto_Celda_3 = 45f;
             var alto_Celda_4 = 60f;

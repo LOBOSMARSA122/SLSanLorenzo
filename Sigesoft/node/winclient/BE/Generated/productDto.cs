@@ -15,31 +15,245 @@ namespace Sigesoft.Node.WinClient.BE
 {
     [DataContract()]
     public partial class productDto
-    {
+    {   
+        ///SAMBHS
         [DataMember()]
         public String v_ProductId { get; set; }
+        //public string v_IdProducto { get; set; }
 
         [DataMember()]
-        public Nullable<Int32> i_CategoryId { get; set; }
+        public string v_IdLinea { get; set; }
+        
+        [DataMember()]
+        public String v_Brand { get; set; }
+
+        [DataMember()]
+        public string v_IdMarca { get; set; }
+
+        [DataMember()]
+        public string v_IdModelo { get; set; }
+
+        [DataMember()]
+        public string v_CodInterno { get; set; }
 
         [DataMember()]
         public String v_Name { get; set; }
+        //[DataMember()]
+        //public string v_Descripcion { get; set; }
 
+        [DataMember()]
+        public decimal? d_Empaque { get; set; }
+
+        [DataMember()]
+        public int? i_IdUnidadMedida { get; set; }
+
+        [DataMember()]
+        public decimal? d_Peso { get; set; }
+
+        [DataMember()]
+        public string v_Ubicacion { get; set; }
+
+        [DataMember()]
+        public string v_Caracteristica { get; set; }
+
+        [DataMember()]
+        public string v_CodProveedor { get; set; }
+
+        //[DataMember()]
+        //public string v_Descripcion2 { get; set; }
         [DataMember()]
         public String v_GenericName { get; set; }
 
+        [DataMember()]
+        public int? i_IdTipoProducto { get; set; }
+
+        [DataMember()]
+        public string v_RutaFoto { get; set; }
+
+        [DataMember()]
+        public int? i_EsAfectoPercepcion { get; set; }
+
+        [DataMember()]
+        public int? i_EsAfectoDetraccion { get; set; }
+
+        [DataMember()]
+        public int? i_EsServicio { get; set; }
+
+        [DataMember()]
+        public int? i_EsActivoFijo { get; set; }
+
+        [DataMember()]
+        public int? i_NombreEditable { get; set; }
+
+        [DataMember()]
+        public int? i_PrecioEditable { get; set; }
+
+        [DataMember()]
+        public int? i_EsActivo { get; set; }
+
+        [DataMember()]
+        public int? i_EsLote { get; set; }
+
+        [DataMember()]
+        public int? i_ValidarStock { get; set; }
+
+        [DataMember()]
+        public decimal? d_PrecioVenta { get; set; }
+
+        [DataMember()]
+        public decimal? d_PrecioCosto { get; set; }
+
+        [DataMember()]
+        public decimal? d_StockMinimo { get; set; }
+
+        [DataMember()]
+        public decimal? d_StockMaximo { get; set; }
+
+        [DataMember()]
+        public int? i_IdProveedor { get; set; }
+
+        [DataMember()]
+        public int? i_IdTipo { get; set; }
+
+        [DataMember()]
+        public int? i_IdUsuario { get; set; }
+
+        [DataMember()]
+        public int? i_IdTela { get; set; }
+
+        [DataMember()]
+        public int? i_IdEtiqueta { get; set; }
+
+        [DataMember()]
+        public int? i_IdCuello { get; set; }
+
+        [DataMember()]
+        public int? i_IdAplicacion { get; set; }
+
+        [DataMember()]
+        public int? i_IdArte { get; set; }
+
+        [DataMember()]
+        public int? i_IdColeccion { get; set; }
+
+        [DataMember()]
+        public int? i_IdTemporada { get; set; }
+
+        [DataMember()]
+        public int? i_Anio { get; set; }
+        
+        [DataMember()]
+        public Nullable<Int32> i_IsDeleted { get; set; }
+        //[DataMember()]
+        //public int? i_Eliminado { get; set; }
+
+        [DataMember()]
+        public Nullable<Int32> i_InsertUserId { get; set; }
+        //[DataMember()]
+        //public int? i_InsertaIdUsuario { get; set; }
+
+        [DataMember()]
+        public Nullable<DateTime> d_InsertDate { get; set; }
+        //[DataMember()]
+        //public DateTime? t_InsertaFecha { get; set; }
+
+        [DataMember()]
+        public Nullable<Int32> i_UpdateUserId { get; set; }
+        //[DataMember()]
+        //public int? i_ActualizaIdUsuario { get; set; }
+
+        [DataMember()]
+        public Nullable<DateTime> d_UpdateDate { get; set; }
+        //[DataMember()]
+        //public DateTime? t_ActualizaFecha { get; set; }
+
+        [DataMember()]
+        public string v_IdColor { get; set; }
+
+        [DataMember()]
+        public string v_IdTalla { get; set; }
+
+        [DataMember()]
+        public Byte[] b_Image { get; set; }
+        //[DataMember()]
+        //public byte[] b_Foto { get; set; }
+        
+        [DataMember()]
+        public String v_Model { get; set; }
+        //[DataMember()]
+        //public string v_Modelo { get; set; }
+
+        [DataMember()]
+        public short? i_EsAfectoIsc { get; set; }
+
+        [DataMember()]
+        public int? i_CantidadFabricacionMensual { get; set; }
+
+        [DataMember()]
+        public string v_NroPartidaArancelaria { get; set; }
+
+        [DataMember()]
+        public int? i_IndicaFormaParteOtrosTributos { get; set; }
+
+        [DataMember()]
+        public string v_NroParte { get; set; }
+
+        [DataMember()]
+        public string v_NroOrdenProduccion { get; set; }
+
+        [DataMember()]
+        public int? i_IdTipoTributo { get; set; }
+
+        [DataMember()]
+        public decimal? d_Utilidad { get; set; }
+
+        [DataMember()]
+        public decimal? d_PrecioMayorista { get; set; }
+
+        [DataMember()]
+        public int? i_IdPerfilDetraccion { get; set; }
+
+        [DataMember()]
+        public int? i_SolicitarNroSerieIngreso { get; set; }
+
+        [DataMember()]
+        public int? i_SolicitarNroLoteIngreso { get; set; }
+
+        [DataMember()]
+        public int? i_SolicitaOrdenProduccionIngreso { get; set; }
+
+        [DataMember()]
+        public int? i_SolicitarNroSerieSalida { get; set; }
+
+        [DataMember()]
+        public int? i_SolicitarNroLoteSalida { get; set; }
+
+        [DataMember()]
+        public int? i_SolicitaOrdenProduccionSalida { get; set; }
+
+        [DataMember()]
+        public string v_AccionFarmaco { get; set; }
+
+        [DataMember()]
+        public string v_Presentacion { get; set; }
+
+        [DataMember()]
+        public string v_Concentracion { get; set; }
+
+        [DataMember()]
+        public string v_PrincipioActivo { get; set; }
+        ///
+        
+
+        [DataMember()]
+        public Nullable<Int32> i_CategoryId { get; set; }
+        
         [DataMember()]
         public String v_BarCode { get; set; }
 
         [DataMember()]
         public String v_ProductCode { get; set; }
-
-        [DataMember()]
-        public String v_Brand { get; set; }
-
-        [DataMember()]
-        public String v_Model { get; set; }
-
+    
         [DataMember()]
         public String v_SerialNumber { get; set; }
 
@@ -60,25 +274,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         [DataMember()]
         public String v_AdditionalInformation { get; set; }
-
-        [DataMember()]
-        public Byte[] b_Image { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> i_IsDeleted { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> i_InsertUserId { get; set; }
-
-        [DataMember()]
-        public Nullable<DateTime> d_InsertDate { get; set; }
-
-        [DataMember()]
-        public Nullable<Int32> i_UpdateUserId { get; set; }
-
-        [DataMember()]
-        public Nullable<DateTime> d_UpdateDate { get; set; }
-
+        
         [DataMember()]
         public List<movementdetailDto> movementdetail { get; set; }
 

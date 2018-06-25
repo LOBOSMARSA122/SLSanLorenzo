@@ -146,7 +146,6 @@ namespace NetPdf
                 cell.BackgroundColor = new BaseColor(System.Drawing.Color.Gray);
                 cell.HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER;
                 cell.VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE;
-                cell.FixedHeight = 15f;
                 table.AddCell(cell);
             }
 

@@ -15,6 +15,8 @@
     <SccLocalPath>Svn</SccLocalPath>
     <SccAuxPath>Svn</SccAuxPath>
     <SccProvider>SubversionScc</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -295,6 +297,7 @@
     <Compile Include="Generated\cuidadopreventivoDto.cs" />
     <Compile Include="Generated\cuidadopreventivocomentarioDto.cs" />
     <Compile Include="Generated\datahierarchyDto.cs" />
+    <Compile Include="Generated\dbconfigDto.cs" />
     <Compile Include="Generated\deploymentfileDto.cs" />
     <Compile Include="Generated\diagnosticrepositoryDto.cs" />
     <Compile Include="Generated\diseasesDto.cs" />
@@ -381,6 +384,7 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
