@@ -236,7 +236,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance105 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand13 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Anio");
@@ -4801,14 +4801,14 @@
             // 
             // uvExamen
             // 
-            appearance105.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance105.BackColor2 = System.Drawing.Color.Transparent;
-            appearance105.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance105.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance105.BorderColor = System.Drawing.Color.Red;
-            appearance105.BorderColor2 = System.Drawing.Color.Red;
-            appearance105.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance105;
+            appearance106.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance106.BackColor2 = System.Drawing.Color.Transparent;
+            appearance106.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance106.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance106.BorderColor = System.Drawing.Color.Red;
+            appearance106.BorderColor2 = System.Drawing.Color.Red;
+            appearance106.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance106;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -5262,6 +5262,7 @@
             this.btnEliminarEmbarazo.Text = "Eliminar";
             this.btnEliminarEmbarazo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminarEmbarazo.UseVisualStyleBackColor = false;
+            this.btnEliminarEmbarazo.Click += new System.EventHandler(this.btnEliminarEmbarazo_Click);
             // 
             // tbcDatos
             // 

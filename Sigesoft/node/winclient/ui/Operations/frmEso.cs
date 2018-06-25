@@ -20,6 +20,7 @@ using Sigesoft.Node.WinClient.UI.UserControls;
 using NetPdf;
 using System.Diagnostics;
 using Sigesoft.Node.Contasol.Integration;
+using Sigesoft.Node.WinClient.UI.Operations.Popups;
 using AutoCompleteMode = System.Windows.Forms.AutoCompleteMode;
 
 namespace Sigesoft.Node.WinClient.UI.Operations
@@ -7902,6 +7903,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void btnNuevoEmbarazo_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEliminarEmbarazo_Click(object sender, EventArgs e)
+        {
+            frmEmbarazo frm = new frmEmbarazo();
+            frm.ShowDialog();
         }
 
     }
