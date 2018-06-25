@@ -1990,9 +1990,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 Utils.LoadDropDownList(cboGenero, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 100, null), DropDownListAction.Select);
                 Utils.LoadDropDownList(cboEstadoCivil, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
                 Utils.LoadDropDownList(cboGradoInstruccion, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
-
-
-
+                
                 txtApellidoPaterno.Text = personData.v_FirstLastName;
                 txtApellidoMaterno.Text = personData.v_SecondLastName;
                 txtNombres.Text = personData.v_FirstName;
@@ -2006,7 +2004,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 cboGradoInstruccion.SelectedValue = personData.i_LevelOfId.ToString();
                 cboEstadoCivil.SelectedValue = personData.i_MaritalStatusId.ToString();
                 txtOcupacion.Text = personData.v_CurrentOccupation;
-
+                txtDomicilio.Text = personData.v_AdressLocation;
                 #endregion
 
                 #region Cargar Atención Integral
