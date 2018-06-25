@@ -29219,7 +29219,7 @@ namespace Sigesoft.Node.WinClient.BLL
 	    {
 	        try
 	        {
-
+	            return false;
 	        }
 	        catch (Exception ex)
 	        {
