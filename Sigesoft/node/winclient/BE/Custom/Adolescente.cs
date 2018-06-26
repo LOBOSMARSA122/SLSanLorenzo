@@ -19,5 +19,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_MenarquiaEspermarquia { get; set; }
         public string v_ViveCon { get; set; }
         public string v_EdadInicioRS { get; set; }
+        public string v_Observaciones { get; set; }
     }
 }

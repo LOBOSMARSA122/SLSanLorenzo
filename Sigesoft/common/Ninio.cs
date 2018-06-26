@@ -28,6 +28,7 @@ namespace NetPdf
              List<frmEsoAntecedentesPadre> Antecedentes,
              List<frmEsoCuidadosPreventivosFechas> FechasCP,
              organizationDto infoEmpresaPropietaria,
+             Ninioo datosNinio,
              List<frmEsoCuidadosPreventivosComentarios> ComentariosCP)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
@@ -76,7 +77,6 @@ namespace NetPdf
             Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             #endregion
 
-           
             #region Primera Hoja
 
             #region TÍTULO
@@ -135,8 +135,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("Apellidos", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1},    
                 new PdfPCell(new Phrase(datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName, fontColumnValue)) { Colspan = 7, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 }, 
                 new PdfPCell(new Phrase("CUI / DNI:", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1}, 
-                new PdfPCell(new Phrase(datosPac.v_DocNumber, fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1},
-                new PdfPCell(new Phrase(datosPac.v_PersonId, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },
+                new PdfPCell(new Phrase(datosPac.v_DocNumber, fontColumnValue)) { Colspan = 6,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1},
 
                 new PdfPCell(new Phrase("Nombres", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1},    
                 new PdfPCell(new Phrase(datosPac.v_FirstName, fontColumnValue)) { Colspan = 7,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },
@@ -155,9 +154,9 @@ namespace NetPdf
                 new PdfPCell(new Phrase("Edad", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },
                 new PdfPCell(new Phrase("DNI", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1},
 
-                new PdfPCell(new Phrase(datosPac.v_ContactName, fontColumnValue)) { Colspan = 14, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },    
-                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },
+                new PdfPCell(new Phrase(datosNinio.v_NombreCuidador, fontColumnValue)) { Colspan = 14, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },    
+                new PdfPCell(new Phrase(datosNinio.v_EdadCuidador, fontColumnValue)) { Colspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },
+                new PdfPCell(new Phrase(datosNinio.v_DniCuidador, fontColumnValue)) { Colspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = estatico_1 },
 
                 new PdfPCell(new Phrase("Problemas y Necesidades", fontColumnValue)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, BackgroundColor= BaseColor.ORANGE, FixedHeight = estatico_1},    
                 
@@ -732,32 +731,109 @@ namespace NetPdf
             #endregion
             #region DATOS GENERALES
             string[] fechaNac2 = datosPac.d_Birthdate.ToString().Split('/',' ');
+            string gInstr_M = "";
+            string gInstr_P = "";
+            if (datosNinio.i_GradoInstruccionMadre == 1)
+                gInstr_M = "ANALFABETO";
+            else if (datosNinio.i_GradoInstruccionMadre == 2)
+                gInstr_M = "PRIMARIA INCOMPLETA";
+            else if (datosNinio.i_GradoInstruccionMadre == 3)
+                gInstr_M = "PRIMARIA COMPLETA";
+            else if (datosNinio.i_GradoInstruccionMadre == 4)
+                gInstr_M = "SECUNDARIA INCOMPLETA";
+            else if (datosNinio.i_GradoInstruccionMadre == 5)
+                gInstr_M = "SECUNDARIA COMPLETA";
+            else if (datosNinio.i_GradoInstruccionMadre == 6)
+                gInstr_M = "TECNICO";
+            else if (datosNinio.i_GradoInstruccionMadre == 7)
+                gInstr_M = "UNIVERSITARIO";
+            else
+                gInstr_M = "-";
+
+            if (datosNinio.i_GradoInstruccionPadre == 1)
+                gInstr_P = "ANALFABETO";
+            else if (datosNinio.i_GradoInstruccionPadre == 2)
+                gInstr_P = "PRIMARIA INCOMPLETA";
+            else if (datosNinio.i_GradoInstruccionPadre == 3)
+                gInstr_P = "PRIMARIA COMPLETA";
+            else if (datosNinio.i_GradoInstruccionPadre == 4)
+                gInstr_P = "SECUNDARIA INCOMPLETA";
+            else if (datosNinio.i_GradoInstruccionPadre == 5)
+                gInstr_P = "SECUNDARIA COMPLETA";
+            else if (datosNinio.i_GradoInstruccionPadre == 6)
+                gInstr_P = "TECNICO";
+            else if (datosNinio.i_GradoInstruccionPadre == 7)
+                gInstr_P = "UNIVERSITARIO";
+            else
+                gInstr_P = "-";
+
+            string eCivil_M = "";
+            string eCivil_P = "";
+
+            if (datosNinio.i_EstadoCivilIdMadre1 == 1)
+                eCivil_M = "SOLTERA";
+            else if (datosNinio.i_EstadoCivilIdMadre1 == 2)
+                eCivil_M = "CASADA";
+            else if (datosNinio.i_EstadoCivilIdMadre1 == 3)
+                eCivil_M = "VIUDA";
+            else if (datosNinio.i_EstadoCivilIdMadre1 == 4)
+                eCivil_M = "DIVORCIADA";
+            else if (datosNinio.i_EstadoCivilIdMadre1 == 5)
+                eCivil_M = "CONVIVIENTE";
+            else
+                eCivil_M = "-";
+
+            if (datosNinio.i_EstadoCivilIdPadre == 1)
+                eCivil_P = "SOLTERO";
+            else if (datosNinio.i_EstadoCivilIdPadre == 2)
+                eCivil_P = "CASADO";
+            else if (datosNinio.i_EstadoCivilIdPadre == 3)
+                eCivil_P = "VIUDO";
+            else if (datosNinio.i_EstadoCivilIdPadre == 4)
+                eCivil_P = "DIVORCIADO";
+            else if (datosNinio.i_EstadoCivilIdPadre == 5)
+                eCivil_P = "CONVIVIENTE";
+            else
+                eCivil_P = "-";
+
+            string seguro_M1="" , seguro_M2 = "";
+            string seguro_P1 ="", seguro_P2 = "";
+            if (datosNinio.i_TipoAfiliacionMadre == 1)
+                seguro_M1 = "X";
+            else if (datosNinio.i_TipoAfiliacionMadre == 2)
+                seguro_M2 = "X";
+
+            if (datosNinio.i_TipoAfiliacionPadre == 1)
+                seguro_P1 = "X";
+            else if (datosNinio.i_TipoAfiliacionPadre == 2)
+                seguro_P2 = "X";
+
             cells = new List<PdfPCell>()
             {          
                 new PdfPCell(new Phrase("DATOS GENEREALES", fontColumnValueBold)) { Colspan = 21, HorizontalAlignment = PdfPCell.ALIGN_LEFT,BackgroundColor = BaseColor.ORANGE},       
 
-                new PdfPCell(new Phrase("Apellidos", fontColumnValue)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("Nombres", fontColumnValue)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("Sexo:", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("M", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Apellidos", fontColumnValueBold)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase("Nombres", fontColumnValueBold)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Sexo:", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("M", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase(sexM, fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("F", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("F", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase(sexF, fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase("Edad:", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase(datosPac.Edad.ToString(), fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
                 new PdfPCell(new Phrase(datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName, fontColumnValue)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
                 new PdfPCell(new Phrase(datosPac.v_FirstName, fontColumnValue)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("Fecha de Nacimiento:", fontColumnValue)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Fecha de Nacimiento:", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
                 new PdfPCell(new Phrase(fechaNac2[0], fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase(fechaNac2[1], fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase(fechaNac2[2], fontColumnValue)) { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Lugar de Nacimiento", fontColumnValue)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("Domicilio / Referencia", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("CUI / DNI", fontColumnValue)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("G.S.", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("Rh", fontColumnValue)) { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Lugar de Nacimiento", fontColumnValueBold)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase("Domicilio / Referencia", fontColumnValueBold)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("CUI / DNI", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("G.S.", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Rh", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
                 new PdfPCell(new Phrase(datosPac.v_BirthPlace, fontColumnValue)) { Colspan = 7, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
                 new PdfPCell(new Phrase(datosPac.v_AdressLocation, fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
@@ -765,53 +841,61 @@ namespace NetPdf
                 new PdfPCell(new Phrase(datosPac.v_BloodGroupName, fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 new PdfPCell(new Phrase(datosPac.v_BloodFactorName, fontColumnValue)) { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Grado de Instrucción", fontColumnValue)) { Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("Centro Educativo", fontColumnValue)) { Colspan = 10, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("Teléfono Domicilio", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Grado de Instrucción", fontColumnValueBold)) { Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase("Centro Educativo", fontColumnValueBold)) { Colspan = 10, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Teléfono Domicilio", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
                 
                 new PdfPCell(new Phrase(datosPac.GradoInstruccion, fontColumnValue)) { Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 10, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase(datosPac.v_CentroEducativo, fontColumnValue)) { Colspan = 10, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
                 new PdfPCell(new Phrase(datosPac.v_TelephoneNumber, fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Nombres y Apellidos de la Madre o Padre o Tutor", fontColumnValue)) { Colspan = 11, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("Edad", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("Identificación (DNI)", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("Cod. Afiliación: SIS ( ) Otro ( )", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 11, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Nombres y Apellidos de la Madre o Tutora", fontColumnValueBold)) { Colspan = 11, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },    
+                new PdfPCell(new Phrase("Edad", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE }, 
+                new PdfPCell(new Phrase("Identificación (DNI)", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase("Cod. Afiliación:", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase("SIS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase(seguro_M1, fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase("Otro", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase(seguro_M2, fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
 
-                new PdfPCell(new Phrase("Grado de Instrucción", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("Ocupación", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("Estado Civil", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("Religión", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(datosNinio.v_NombreMadre, fontColumnValue)) { Colspan = 11, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase(datosNinio.v_EdadMadre, fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase(datosNinio.v_DniMadre, fontColumnValue)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(datosNinio.v_CodigoAfiliacionMadre, fontColumnValue)) { Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Grado de Instrucción", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase("Ocupación", fontColumnValueBold)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Estado Civil", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Religión", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Nombres y Apellidos de la Madre o Padre o Tutor", fontColumnValue)) { Colspan = 11, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("Edad", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("Identificación (DNI)", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("Cod. Afiliación: SIS ( ) Otro ( )", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 11, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(gInstr_M, fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase(datosNinio.v_OcupacionMadre, fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase(eCivil_M, fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(datosNinio.v_ReligionMadre, fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
-                new PdfPCell(new Phrase("Grado de Instrucción", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("Ocupación", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("Estado Civil", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("Religión", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Nombres y Apellidos del Padre o Tutor", fontColumnValueBold)) { Colspan = 11, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },    
+                new PdfPCell(new Phrase("Edad", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE }, 
+                new PdfPCell(new Phrase("Identificación (DNI)", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase("Cod. Afiliación:", fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase("SIS", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase(seguro_P1, fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase("Otro", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
+                new PdfPCell(new Phrase(seguro_P2, fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE },
 
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(datosNinio.v_NombrePadre, fontColumnValue)) { Colspan = 11, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase(datosNinio.v_EdadPadre, fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase(datosNinio.v_DniPadre, fontColumnValue)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(datosNinio.v_CodigoAfiliacionMadre, fontColumnValue)) { Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+
+                new PdfPCell(new Phrase("Grado de Instrucción", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase("Ocupación", fontColumnValueBold)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase("Estado Civil", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase("Religión", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+
+                new PdfPCell(new Phrase(gInstr_P, fontColumnValue)) { Colspan = 5, HorizontalAlignment = PdfPCell.ALIGN_LEFT },    
+                new PdfPCell(new Phrase(datosNinio.v_OcupacionPadre, fontColumnValue)) { Colspan = 8, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                new PdfPCell(new Phrase(eCivil_P, fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                new PdfPCell(new Phrase(datosNinio.v_ReligionPadre, fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                 
             };
 

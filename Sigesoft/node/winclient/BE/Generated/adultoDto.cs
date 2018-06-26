@@ -59,6 +59,9 @@ namespace Sigesoft.Node.WinClient.BE
         public String v_Aborto { get; set; }
 
         [DataMember()]
+        public String v_DescripcionAntecedentes { get; set; }
+
+        [DataMember()]
         public Nullable<Int32> i_IsDeleted { get; set; }
 
         [DataMember()]
@@ -77,7 +80,7 @@ namespace Sigesoft.Node.WinClient.BE
         {
         }
 
-        public adultoDto(String v_AdultoId, String v_PersonId, String v_NombreCuidador, String v_EdadCuidador, String v_DniCuidador, String v_MedicamentoFrecuente, String v_ReaccionAlergica, String v_InicioRS, String v_NroPs, String v_FechaUR, String v_RC, String v_Parto, String v_Prematuro, String v_Aborto, Nullable<Int32> i_IsDeleted, Nullable<Int32> i_InsertUserId, Nullable<DateTime> d_InsertDate, Nullable<Int32> i_UpdateUserId, Nullable<DateTime> d_UpdateDate)
+        public adultoDto(String v_AdultoId, String v_DescripcionAntecedentes, String v_PersonId, String v_NombreCuidador, String v_EdadCuidador, String v_DniCuidador, String v_MedicamentoFrecuente, String v_ReaccionAlergica, String v_InicioRS, String v_NroPs, String v_FechaUR, String v_RC, String v_Parto, String v_Prematuro, String v_Aborto, Nullable<Int32> i_IsDeleted, Nullable<Int32> i_InsertUserId, Nullable<DateTime> d_InsertDate, Nullable<Int32> i_UpdateUserId, Nullable<DateTime> d_UpdateDate)
         {
 			this.v_AdultoId = v_AdultoId;
 			this.v_PersonId = v_PersonId;
@@ -98,6 +101,8 @@ namespace Sigesoft.Node.WinClient.BE
 			this.d_InsertDate = d_InsertDate;
 			this.i_UpdateUserId = i_UpdateUserId;
 			this.d_UpdateDate = d_UpdateDate;
+
+            this.v_DescripcionAntecedentes= v_DescripcionAntecedentes;
         }
     }
 }

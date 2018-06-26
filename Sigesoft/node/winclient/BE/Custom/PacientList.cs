@@ -12,7 +12,7 @@ namespace Sigesoft.Node.WinClient.BE
         
         public string GradoInstruccion { get; set; }
         //public string EstadoCivil { get; set; }
-
+        public string v_CentroEducativo { get; set; }
         [DataMember]
         public string v_PersonId { get; set; }
         [DataMember]

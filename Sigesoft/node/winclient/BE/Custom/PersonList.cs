@@ -51,7 +51,9 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_UpdateUser { get; set; }
         [DataMember]
         public DateTime? d_CreationDate { get; set; }
-      
+
+        public String v_CentroEducativo { get; set; }
+
         [DataMember]
         public int? i_IsDeleted { get; set; }
 

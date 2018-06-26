@@ -1233,7 +1233,7 @@ namespace NetPdf
                 { Colspan =1, HorizontalAlignment = PdfPCell.ALIGN_CENTER },
 
                 new PdfPCell(new Phrase("OBSERVACIONES", fontColumnValue)) {Colspan = 4, Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_CENTER },
-                new PdfPCell(new Phrase("A", fontColumnValue)) {Colspan = 17, Rowspan = 4,HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                new PdfPCell(new Phrase(datosAdoles.v_Observaciones, fontColumnValue)) {Colspan = 17, Rowspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f },
 
             };
 

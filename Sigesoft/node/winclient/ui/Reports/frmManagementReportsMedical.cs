@@ -242,12 +242,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var listPlanIntegral = atencionIntegralBL.GetPlanIntegral(_pacientId);
             var datosPersonales = _pacientBL.GetDatosPersonalesAtencion(_serviceId);
 
+            var listEmb = _pacientBL.GetEmbarazos(_pacientId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
             int GrupoEtario = 3;
             int Grupo = 2823;
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            
+            //datos adicionales adultomayor
+            var datosAdulMay = _pacientBL.DevolverAdultoMayor(_serviceId);
 
             int GrupoBase = 286;
 
@@ -257,7 +261,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
 
-            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP, listAntecedentes, Fechas, MedicalCenter, Comentarios);
+            AtencionIntegralAdultoMayor.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP, listAntecedentes, Fechas, MedicalCenter,datosAdulMay,listEmb, Comentarios);
         }
 
         private void GenerateAtencionIntegralAdulto(string pathFile)
@@ -268,7 +272,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
-            //datos adicionales adolescente
+            var listEmb = _pacientBL.GetEmbarazos(_pacientId);
+
+            //datos adicionales adulto
             var datosAdul = _pacientBL.DevolverAdulto(_serviceId);
 
             int GrupoEtario = 1;
@@ -294,7 +300,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var datosPaciente = _pacientBL.GetPacientReport(_pacientId);
 
-            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP, listAntecedentes, Fechas, MedicalCenter,datosAdul, Comentarios);
+            AtencionIntegralAdulto.CreateAtencionIntegral(pathFile, listaProblema, listPlanIntegral, datosPersonales, datosP, listAntecedentes, Fechas, MedicalCenter,datosAdul,listEmb, Comentarios);
         }
 
         private void GenerateAtencionIntegralAdolescente(string pathFile)
@@ -338,6 +344,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             int Grupo = 2824;
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
 
+            //datos adicionales adolescente
+            var datosNin = _pacientBL.DevolverNinio(_serviceId);
+
             int GrupoBase = 292;
             //if (datosPaciente.Genero.ToUpper() == "MUJER")
             //    GrupoBase = 283;
@@ -348,7 +357,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             List<frmEsoCuidadosPreventivosComentarios> Comentarios = _serviceBL.ObtenerComentariosCuidadosPreventivos(_pacientId);
 
-            Ninio.CreateAtencionNinio(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas, MedicalCenter, Comentarios);
+            Ninio.CreateAtencionNinio(pathFile, listaProblema, listPlanIntegral, datosPaciente, datosP, listAntecedentes, Fechas, MedicalCenter,datosNin, Comentarios);
         }
         
     }
