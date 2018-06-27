@@ -5824,7 +5824,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_AlergiasMedicamentos=b.v_AlergiasMedicamentos,
                                      v_OtrosAntecedentes=b.v_OtrosAntecedentes,
                                      v_EspecificacionesAgua=b.v_EspecificacionesAgua,
-                                     v_EspecificacionesDesague=b.v_EspecificacionesDesague
+                                     v_EspecificacionesDesague=b.v_EspecificacionesDesague,
+                                     v_TiempoHospitalizacion=b.v_TiempoHospitalizacion
                                  }).ToList();
 
                 var result = (from a in objEntity
@@ -5870,7 +5871,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_AlergiasMedicamentos=a.v_AlergiasMedicamentos,
                                   v_OtrosAntecedentes=a.v_OtrosAntecedentes,
                                   v_EspecificacionesAgua=a.v_EspecificacionesAgua,
-                                  v_EspecificacionesDesague=a.v_EspecificacionesDesague
+                                  v_EspecificacionesDesague=a.v_EspecificacionesDesague,
+                                  v_TiempoHospitalizacion=a.v_TiempoHospitalizacion
                               }
                         ).FirstOrDefault();
                 return result;

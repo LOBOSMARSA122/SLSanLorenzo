@@ -51,6 +51,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_OtrosAntecedentes { get; set; }
         public string v_EspecificacionesAgua { get; set; }
         public string v_EspecificacionesDesague { get; set; }
+        public string v_TiempoHospitalizacion { get; set; }
 
     }
 }

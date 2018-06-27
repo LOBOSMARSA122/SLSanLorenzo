@@ -344,7 +344,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             int Grupo = 2824;
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
 
-            //datos adicionales adolescente
+            //datos adicionales ninio
             var datosNin = _pacientBL.DevolverNinio(_serviceId);
 
             int GrupoBase = 292;
