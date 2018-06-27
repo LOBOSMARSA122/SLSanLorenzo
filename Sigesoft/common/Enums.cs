@@ -474,7 +474,14 @@ namespace Sigesoft.Common
         Divorciado = 4,
         Conviviente = 5
     }
-
+    //public enum Quien
+    //{ 
+    //    P = 1,
+    //    M = 2,
+    //    H = 3,
+    //    A = 4,
+    //    O = 5
+    //}
     public enum NivelEducacion
     {
         Analfabeto = 1,

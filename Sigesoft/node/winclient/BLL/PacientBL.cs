@@ -5804,7 +5804,27 @@ namespace Sigesoft.Node.WinClient.BLL
                                      i_EstadoCivilIdMadre1=b.i_EstadoCivilIdMadre1,
                                      i_EstadoCivilIdPadre=b.i_EstadoCivilIdPadre,
                                      v_ReligionMadre=b.v_ReligionMadre,
-                                     v_ReligionPadre=b.v_ReligionPadre
+                                     v_ReligionPadre=b.v_ReligionPadre,
+                                     v_PatologiasGestacion=b.v_PatologiasGestacion,
+                                     v_nEmbarazos=b.v_nEmbarazos,
+                                     v_nAPN=b.v_nAPN,
+                                     v_LugarAPN=b.v_LugarAPN,
+                                     v_ComplicacionesParto=b.v_ComplicacionesParto,
+                                     v_Atencion=b.v_Atencion,
+                                     v_EdadGestacion=b.v_EdadGestacion,
+                                     v_Peso=b.v_Peso,
+                                     v_Talla=b.v_Talla,
+                                     v_PerimetroCefalico=b.v_PerimetroCefalico,
+                                     v_PerimetroToracico=b.v_PerimetroToracico,
+                                     v_EspecificacionesNac=b.v_EspecificacionesNac,
+                                     v_LME=b.v_LME,
+                                     v_Mixta=b.v_Mixta,
+                                     v_Artificial=b.v_Artificial,
+                                     v_InicioAlimentacionComp=b.v_InicioAlimentacionComp,
+                                     v_AlergiasMedicamentos=b.v_AlergiasMedicamentos,
+                                     v_OtrosAntecedentes=b.v_OtrosAntecedentes,
+                                     v_EspecificacionesAgua=b.v_EspecificacionesAgua,
+                                     v_EspecificacionesDesague=b.v_EspecificacionesDesague
                                  }).ToList();
 
                 var result = (from a in objEntity
@@ -5830,7 +5850,27 @@ namespace Sigesoft.Node.WinClient.BLL
                                   i_EstadoCivilIdMadre1=a.i_EstadoCivilIdMadre1,
                                   i_EstadoCivilIdPadre=a.i_EstadoCivilIdPadre,
                                   v_ReligionMadre=a.v_ReligionMadre,
-                                  v_ReligionPadre=a.v_ReligionPadre
+                                  v_ReligionPadre=a.v_ReligionPadre,
+                                  v_PatologiasGestacion=a.v_PatologiasGestacion,
+                                  v_nEmbarazos=a.v_nEmbarazos,
+                                  v_nAPN=a.v_nAPN,
+                                  v_LugarAPN=a.v_LugarAPN,
+                                  v_ComplicacionesParto=a.v_ComplicacionesParto,
+                                  v_Atencion=a.v_Atencion,
+                                  v_EdadGestacion=a.v_EdadGestacion,
+                                  v_Peso=a.v_Peso,
+                                  v_Talla=a.v_Talla,
+                                  v_PerimetroCefalico=a.v_PerimetroCefalico,
+                                  v_PerimetroToracico=a.v_PerimetroToracico,
+                                  v_EspecificacionesNac=a.v_EspecificacionesNac,
+                                  v_LME=a.v_LME,
+                                  v_Mixta=a.v_Mixta,
+                                  v_Artificial=a.v_Artificial,
+                                  v_InicioAlimentacionComp=a.v_InicioAlimentacionComp,
+                                  v_AlergiasMedicamentos=a.v_AlergiasMedicamentos,
+                                  v_OtrosAntecedentes=a.v_OtrosAntecedentes,
+                                  v_EspecificacionesAgua=a.v_EspecificacionesAgua,
+                                  v_EspecificacionesDesague=a.v_EspecificacionesDesague
                               }
                         ).FirstOrDefault();
                 return result;
@@ -5847,16 +5887,20 @@ namespace Sigesoft.Node.WinClient.BLL
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-                var query = from a in dbContext.person
-                                 join b in dbContext.embarzo on a.v_PersonId equals b.v_PersonId
+                var query = from a in dbContext.embarzo
+                                 join b in dbContext.person on a.v_PersonId equals b.v_PersonId
+                            where a.v_PersonId == personId && a.i_IsDeleted == 0
                             select new Embarazo
                             {
-                                v_Anio = b.v_Anio,
-                                v_Cpn=b.v_Cpn,
-                                v_Complicacion=b.v_Complicacion,
-                                v_Parto=b.v_Parto,
-                                v_PesoRn=b.v_PesoRn,
-                                v_Puerpio=b.v_Puerpio
+                                v_PersonId=a.v_PersonId,
+                                v_EmbarazoId=a.v_PersonId,
+                                v_Anio = a.v_Anio,
+                                v_Cpn=a.v_Cpn,
+                                v_Complicacion=a.v_Complicacion,
+                                v_Parto=a.v_Parto,
+                                v_PesoRn=a.v_PesoRn,
+                                v_Puerpio=a.v_Puerpio,
+                                v_ObservacionesGestacion=a.v_ObservacionesGestacion
                             };
 
                 List<Embarazo> objData = query.ToList();
@@ -5927,7 +5971,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_NombreCuidador = b.v_NombreCuidador,
                                      v_EdadCuidador = b.v_EdadCuidador,
                                      v_DniCuidador = b.v_DniCuidador,
-                                     
                                      v_MedicamentoFrecuente = b.v_MedicamentoFrecuente,
                                      v_ReaccionAlergica = b.v_ReaccionAlergica,
                                      v_InicioRS = b.v_InicioRS,
@@ -5936,7 +5979,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_RC = b.v_RC,
                                      v_Parto = b.v_Parto,
                                      v_Prematuro = b.v_Prematuro,
-                                     v_Aborto = b.v_Aborto
+                                     v_Aborto = b.v_Aborto,
+                                     v_OtrosAntecedentes=b.v_OtrosAntecedentes,
+                                     v_DescripcionAntecedentes = b.v_DescripcionAntecedentes,
+                                     v_FlujoVaginal = b.v_FlujoVaginal,
+                                     v_ObservacionesEmbarazo = b.v_ObservacionesEmbarazo
+
                                  }).ToList();
 
                 var result = (from a in objEntity
@@ -5953,7 +6001,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_RC=a.v_RC,
                                   v_Parto = a.v_Parto,
                                   v_Prematuro = a.v_Prematuro,
-                                  v_Aborto = a.v_Aborto
+                                  v_Aborto = a.v_Aborto,
+                                  v_OtrosAntecedentes = a.v_OtrosAntecedentes,
+                                  v_DescripcionAntecedentes = a.v_DescripcionAntecedentes,
+                                  v_FlujoVaginal = a.v_FlujoVaginal,
+                                  v_ObservacionesEmbarazo = a.v_ObservacionesEmbarazo
                               }
                         ).FirstOrDefault();
                 return result;
@@ -5986,7 +6038,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_RC = b.v_RC,
                                      v_Parto = b.v_Parto,
                                      v_Prematuro = b.v_Prematuro,
-                                     v_Aborto = b.v_Aborto
+                                     v_Aborto = b.v_Aborto,
+                                     v_DescripciónAntecedentes = b.v_DescripciónAntecedentes,
+                                     v_FlujoVaginal = b.v_FlujoVaginal,
+                                     v_ObservacionesEmbarazo = b.v_ObservacionesEmbarazo
                                  }).ToList();
 
                 var result = (from a in objEntity
@@ -6003,7 +6058,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_RC = a.v_RC,
                                   v_Parto = a.v_Parto,
                                   v_Prematuro = a.v_Prematuro,
-                                  v_Aborto = a.v_Aborto
+                                  v_Aborto = a.v_Aborto,
+                                  v_DescripciónAntecedentes=a.v_DescripciónAntecedentes,
+                                  v_FlujoVaginal=a.v_FlujoVaginal,
+                                  v_ObservacionesEmbarazo=a.v_ObservacionesEmbarazo
                               }
                         ).FirstOrDefault();
                 return result;

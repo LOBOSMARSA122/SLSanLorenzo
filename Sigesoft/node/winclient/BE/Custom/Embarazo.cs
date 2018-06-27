@@ -15,6 +15,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_Parto { get; set; }
         public string v_PesoRn { get; set; }
         public string v_Puerpio { get; set; }
+        public string v_ObservacionesGestacion { get; set; }
 
         public List<Embarazo> embasazosList { get; set; }
 

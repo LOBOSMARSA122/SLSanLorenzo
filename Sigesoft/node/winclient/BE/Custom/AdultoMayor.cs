@@ -21,5 +21,9 @@ namespace Sigesoft.Node.WinClient.BE
        public string v_Parto { get; set; }
        public string v_Prematuro { get; set; }
        public string v_Aborto { get; set; }
+
+       public string v_DescripciónAntecedentes { get; set; }
+       public string v_FlujoVaginal { get; set; }
+       public string v_ObservacionesEmbarazo { get; set; }
     }
 }
