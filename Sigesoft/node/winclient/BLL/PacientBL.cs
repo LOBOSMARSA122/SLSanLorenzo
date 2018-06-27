@@ -6201,7 +6201,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_Story = a.v_Story,
                                      Aptitud = J4.v_Value1,
                                      b_FirmaAuditor = pr.b_SignatureImage
-
                                      
                                  }
                                 ).ToList();
