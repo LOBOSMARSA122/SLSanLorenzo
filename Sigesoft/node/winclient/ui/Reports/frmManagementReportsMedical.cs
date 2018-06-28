@@ -230,10 +230,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
             }   
         }
-
+        
         private void GenerateAtencionIntegral(string pathFile)
         {
-            AtencionIntegral.CreateAtencionIntegral(pathFile);
+            // en esta variable va a traer todos los valores de los examenes
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            AtencionIntegral.CreateAtencionIntegral(pathFile,datosP,MedicalCenter, exams);
+
         }
 
         private void GenerateAtencionIntegralAdultoMayor(string pathFile)
