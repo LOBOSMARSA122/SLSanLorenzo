@@ -135,11 +135,11 @@ namespace NetPdf
             string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
             cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("CONSULTA MÉDICA", fontTitle2)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, Colspan = 3, BackgroundColor=BaseColor.ORANGE},  
+                    new PdfPCell(new Phrase("CONSULTA MÉDICA", fontTitle2)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER, Colspan = 3, BackgroundColor=BaseColor.ORANGE, MinimumHeight=15f},  
 
-                    new PdfPCell(new Phrase("Fecha: " + servicio[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase("Hora: " + servicio[1], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase("Edad: " + datosPac.Edad + " años.", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase("Fecha: " + servicio[0], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f},
+                    new PdfPCell(new Phrase("Hora: " + servicio[1], fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Edad: " + datosPac.Edad + " años.", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f },
                 };
 
             columnWidths = new float[] { 40f, 40f, 20f };
@@ -541,6 +541,48 @@ namespace NetPdf
                 string ec_moderado_1 = "";
                 if (ec_moderado == "1") ec_moderado_1 = "X";
 
+                var severo = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_SEVERO) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_SEVERO).v_Value1;
+                string severo_1 = "";
+                if (severo == "1") severo_1 = "X";
+
+                var fecha_hoy = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_FECHA_DE_HOY) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_FECHA_DE_HOY).v_Value1;
+                string fecha_hoy_1 = "";
+                if (fecha_hoy == "1") fecha_hoy_1 = "X";
+
+                var dia_semana = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_DIA_DE_SEMANA) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_DIA_DE_SEMANA).v_Value1;
+                string dia_semana_1 = "";
+                if (dia_semana == "1") dia_semana_1 = "X";
+
+                var lugar_estamos = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_LUGAR_ESTAMOS) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_LUGAR_ESTAMOS).v_Value1;
+                string lugar_estamos_1 = "";
+                if (lugar_estamos == "1") lugar_estamos_1 = "X";
+
+                var numero_telefono_direccion = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR__NUMERO_TELEFONO_DIRECCION) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR__NUMERO_TELEFONO_DIRECCION).v_Value1;
+                string numero_telefono_direccion_1 = "";
+                if (numero_telefono_direccion == "1") numero_telefono_direccion_1 = "X";
+
+                var años_tiene = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_AÑOS_TIENE) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_AÑOS_TIENE).v_Value1;
+                string años_tiene_1 = "";
+                if (años_tiene == "1") años_tiene_1 = "X";
+
+                var donde_nacio = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_DONDE_NACIO) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_DONDE_NACIO).v_Value1;
+                string donde_nacio_1 = "";
+                if (donde_nacio == "1") donde_nacio_1 = "X";
+
+                var nombre_presidente = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_NOMBRE_PRESIDENTE) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_NOMBRE_PRESIDENTE).v_Value1;
+                string nombre_presidente_1 = "";
+                if (nombre_presidente == "1") nombre_presidente_1 = "X";
+
+                var nombre_past_president = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_NOMBRE_ANTERIOR_PRESIDENTE) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_NOMBRE_ANTERIOR_PRESIDENTE).v_Value1;
+                string nombre_past_president_1 = "";
+                if (nombre_past_president == "1") nombre_past_president_1 = "X";
+
+                var primer_apellido_madre = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_PRIMER_APELLIDO_MADRE) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_PRIMER_APELLIDO_MADRE).v_Value1;
+                string primer_apellido_madre_1 = "";
+                if (primer_apellido_madre == "1") primer_apellido_madre_1 = "X";
+
+                var restar_3 = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_RESTAR_3) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_RESTAR_3).v_Value1;
+
                 var ea_sin_md = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_E_A_SIN_MD) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_E_A_SIN_MD).v_Value1;
                 string ea_sin_md_1 = "";
                 if (ea_sin_md == "1") ea_sin_md_1 = "X";
@@ -561,6 +603,27 @@ namespace NetPdf
                 string problema_social_1 = "";
                 if (problema_social == "1") problema_social_1 = "X";
 
+                var vida_satisfecho = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_SATISFECHO_VIDA) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_SATISFECHO_VIDA).v_Value1;
+                string vida_satisfecho_1 = "", vida_satisfecho_2 ="";
+                if (vida_satisfecho == "1") vida_satisfecho_1 = "X";
+                else if (vida_satisfecho == "0") vida_satisfecho_2 = "X";
+
+                var impotente_indefenso = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_IMPOTENTE_INDEFENSO) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_IMPOTENTE_INDEFENSO).v_Value1;
+                string impotente_indefenso_1 = "", impotente_indefenso_2 = "";
+                if (impotente_indefenso == "1") impotente_indefenso_1 = "X";
+                else if (impotente_indefenso == "0") impotente_indefenso_2 = "X";
+
+                var problemas_memoria = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_PROBLEMAS_MEMORIA) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_PROBLEMAS_MEMORIA).v_Value1;
+                string problemas_memoria_1 = "", problemas_memoria_2 = "";
+                if (problemas_memoria == "1") problemas_memoria_1 = "X";
+                else if (problemas_memoria == "0") problemas_memoria_2 = "X";
+
+                var desgano_imposibilitado = adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_DESGANO_IMPOSIBILITADO) == null ? "" : adulto_mayor.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ADULTO_MAYOR_DESGANO_IMPOSIBILITADO).v_Value1;
+                string desgano_imposibilitado_1 = "", desgano_imposibilitado_2 = "";
+                if (desgano_imposibilitado == "1") desgano_imposibilitado_1 = "X";
+                else if (desgano_imposibilitado == "0") desgano_imposibilitado_2 = "X";
+
+
                 cellsTit = new List<PdfPCell>()
                 { 
                     new PdfPCell(new Phrase("(A.M.)ESTADO DE ENFERMEDAD: ", fontTitle2)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan = 20, BackgroundColor = BaseColor.ORANGE, MinimumHeight=15f },
@@ -574,35 +637,89 @@ namespace NetPdf
                     new PdfPCell(new Phrase("GERIATRICO COMPLEJO", fontTitle2)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
                     new PdfPCell(new Phrase(geriatrico_1, fontTitle2)) { Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
 
-                    new PdfPCell(new Phrase("I. FUNCIONAL", fontTitle2)) {Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
-                    new PdfPCell(new Phrase("Independiente", fontTitle2)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_RIGHT , MinimumHeight=15f },
-                    new PdfPCell(new Phrase(independiente_1, fontTitle2)) {Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER, MinimumHeight=15f  },
-                    new PdfPCell(new Phrase("Dependiente", fontTitle2)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_RIGHT , MinimumHeight=15f },
-                    new PdfPCell(new Phrase(dependiente_1, fontTitle2)) {Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
-                    new PdfPCell(new Phrase("Total", fontTitle2)) {Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
-                    new PdfPCell(new Phrase(total, fontTitle2)) {Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
-      
-                    new PdfPCell(new Phrase("II. Mental", fontTitle2)) {Colspan=4,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    new PdfPCell(new Phrase("2.1 Estado Cognitivo", fontTitle2)) {Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT,},
-                    new PdfPCell(new Phrase("Normal", fontTitle2)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f },
-                    new PdfPCell(new Phrase(ec_normal_1, fontTitle2)) {Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
-                    new PdfPCell(new Phrase("DC Leve", fontTitle2)) {Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
-                    new PdfPCell(new Phrase(ec_leve_1, fontTitle2)) {Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
-                    new PdfPCell(new Phrase("DC Moderado", fontTitle2)) {Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT , MinimumHeight=15f },
-                    new PdfPCell(new Phrase(ec_moderado_1, fontTitle2)) {Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER, MinimumHeight=15f  },
- 
-                    new PdfPCell(new Phrase("2.2 Estado Afectivo", fontColumnValue)) {Colspan=8,HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
-                    new PdfPCell(new Phrase("Sin manifestaciones depresivas", fontColumnValue)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f },
-                    new PdfPCell(new Phrase(ea_sin_md_1, fontColumnValue)) {Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
-                    new PdfPCell(new Phrase("Con manifestaciones depresivas", fontTitle2)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f },
-                    new PdfPCell(new Phrase(ea_con_md_1, fontColumnValue)) {Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase("I. FUNCIONAL", fontColumnValueBold)) {Colspan=20, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
 
-                    new PdfPCell(new Phrase("III. SOCIO-FAMILIAR", fontColumnValue)) {Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  }, 
-                    new PdfPCell(new Phrase("Buena", fontColumnValue)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Independiente", fontColumnValue)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_RIGHT , MinimumHeight=15f },
+                    new PdfPCell(new Phrase(independiente_1, fontColumnValue)) {Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase("Dependiente", fontColumnValue)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_RIGHT , MinimumHeight=15f },
+                    new PdfPCell(new Phrase(dependiente_1, fontColumnValue)) {Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Total", fontColumnValue)) {Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase(total, fontColumnValue)) {Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
+      
+                    new PdfPCell(new Phrase("II. Mental", fontColumnValueBold)) {Colspan=20,HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f },
+
+                    new PdfPCell(new Phrase("2.1 Valoración Cognitiva (DC: Deterioro Cognitivo)", fontColumnValue)) {Colspan=5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Normal", fontColumnValue)) {Colspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(ec_normal_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("DC Leve", fontColumnValue)) {Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase(ec_leve_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("DC Moderado", fontColumnValue)) {Colspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(ec_moderado_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase("DC Severo", fontColumnValue)) {Colspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(severo_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  },
+
+                    new PdfPCell(new Phrase("2.2 Estado Cognitivo", fontColumnValue)) {Colspan=5, Rowspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=45f },
+
+                    new PdfPCell(new Phrase("¿Cuál es la fecha de hoy?", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(fecha_hoy_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("¿Qué día de la semana?", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase(dia_semana_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("¿En qué lugar estamos? (cualquier descripción correcta del lugar)", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(lugar_estamos_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    
+                    new PdfPCell(new Phrase("¿Cuál es su número de teléfono? ó ¿Cuál es su dirección completa?", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase(numero_telefono_direccion_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("¿Cuántos años tiene", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(años_tiene_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("¿Dónde nació?", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase(donde_nacio_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+
+                    new PdfPCell(new Phrase("¿Cuál es el nombre del presidente del Perú?", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(nombre_presidente_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("¿Cuál es el nombre del anterior presidente del Perú?", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase(nombre_past_president_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Dígame el primer apellido de su madre", fontColumnValue)) {Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(primer_apellido_madre_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    
+                    new PdfPCell(new Phrase("Restar de 3 en 3 desde 30 (cualquier error hace errónea la respuesta)", fontColumnValue)) {Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase(restar_3, fontColumnValue)) {Colspan=9, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
+                   
+ 
+                    new PdfPCell(new Phrase("2.3 Estado Afectivo", fontColumnValue)) {Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase("Sin manifestaciones depresivas", fontColumnValue)) {Colspan=5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(ea_sin_md_1, fontColumnValue)) {Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Con manifestaciones depresivas", fontTitle2)) {Colspan=6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(ea_con_md_1, fontColumnValue)) {Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  },
+
+                    new PdfPCell(new Phrase("Preguntas", fontColumnValue)) {Colspan=8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Sí", fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("No", fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Preguntas", fontColumnValue)) {Colspan=8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Sí", fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("No", fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+
+
+                    new PdfPCell(new Phrase("¿Está satisfecho con su vida?", fontColumnValue)) {Colspan=8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(vida_satisfecho_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase(vida_satisfecho_2, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("¿Se siente impotente o indefenso?", fontColumnValue)) {Colspan=8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(impotente_indefenso_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase(impotente_indefenso_2, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+
+                    new PdfPCell(new Phrase("¿Tiene problemas de memoria?", fontColumnValue)) {Colspan=8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(problemas_memoria_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase(problemas_memoria_2, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("¿Siente desgano o se siente imposibilitado respecto a actividades e intereses?", fontColumnValue)) {Colspan=8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f },
+                    new PdfPCell(new Phrase(desgano_imposibilitado_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+                    new PdfPCell(new Phrase(desgano_imposibilitado_2, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE , MinimumHeight=15f },
+
+                    new PdfPCell(new Phrase("III. SOCIO-FAMILIAR", fontColumnValueBold)) {Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f  }, 
+                    
+                    new PdfPCell(new Phrase("Buena", fontColumnValue)) {Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f },
                     new PdfPCell(new Phrase(buena_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER },
-                    new PdfPCell(new Phrase("Riesgo social", fontColumnValue)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT , MinimumHeight=15f },
+                    new PdfPCell(new Phrase("Riesgo social", fontColumnValue)) {Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT , MinimumHeight=15f },
                     new PdfPCell(new Phrase(riesgo_social_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER , MinimumHeight=15f },
-                    new PdfPCell(new Phrase("Problema Social", fontTitle2)) {Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
+                    new PdfPCell(new Phrase("Problema Social", fontTitle2)) {Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight=15f  },
                     new PdfPCell(new Phrase(problema_social_1, fontColumnValue)) {Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_CENTER, MinimumHeight=15f  },
                 };
 
