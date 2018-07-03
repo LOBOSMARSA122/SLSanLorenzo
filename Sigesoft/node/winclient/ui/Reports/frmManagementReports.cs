@@ -1203,6 +1203,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             LaboratorioReport.CreateLaboratorioReport(filiationData, serviceComponents, MedicalCenter, pathFile);
         }
 
+        private void GenerateMiExamen(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            //var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+
+            //var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+
+            MiExamen.CreateMiExamen(filiationData, serviceComponents, MedicalCenter,datosP, pathFile);
+        }
         private void GenerateExamenesEspecialesReport(string pathFile)
         {
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -4293,6 +4307,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateLaboratorioReport(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_LABORATORIO_CLINICO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
+                    //// ARNOLD - PRUEBA 
+                case Constants.MI_EXAMEN:
+                    GenerateMiExamen(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.MI_EXAMEN)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+
+
                 case Constants.INFORME_EXAMENES_ESPECIALES:
                     GenerateExamenesEspecialesReport(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_EXAMENES_ESPECIALES)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));

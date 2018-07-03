@@ -1066,6 +1066,15 @@ namespace Sigesoft.Common
         public const string HISTORIA_CLINICA = "HIST_CLI";
         public const string ATENCION_INTEGRAL = "ATENCION_INTEGRAL";
 
+        public const string MI_EXAMEN = "N009-ME000000434";
+        public const string Campo_2 = "N009-MF000003293";
+        public const string Campo_1 = "N009-MF000003294";
+
+
+
+
+        
+
         public const string FORMATO_ATENCION_INTEGRAL_ADULTO_MAYOR = "ATE_ADULT_MAYOR";
         public const string FORMATO_ATENCION_INTEGRAL_ADULTO = "ATE_ADULTO";
         public const string FORMATO_ATENCION_INTEGRAL_ADOLESCENTE = "ATE_ADOLE";
