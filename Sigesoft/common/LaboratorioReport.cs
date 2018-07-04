@@ -16,7 +16,10 @@ namespace NetPdf
     {
         #region Report de Laboratorio
 
-        public static void CreateLaboratorioReport(PacientList filiationData, List<ServiceComponentList> serviceComponent, organizationDto infoEmpresaPropietaria, string filePDF)
+        public static void CreateLaboratorioReport(PacientList filiationData, 
+            List<ServiceComponentList> serviceComponent, 
+            organizationDto infoEmpresaPropietaria, 
+            string filePDF)
         {
             //Document document = new Document();
            // document.SetPageSize(iTextSharp.text.PageSize.A4);

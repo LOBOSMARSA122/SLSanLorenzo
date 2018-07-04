@@ -1070,11 +1070,6 @@ namespace Sigesoft.Common
         public const string Campo_2 = "N009-MF000003293";
         public const string Campo_1 = "N009-MF000003294";
 
-
-
-
-        
-
         public const string FORMATO_ATENCION_INTEGRAL_ADULTO_MAYOR = "ATE_ADULT_MAYOR";
         public const string FORMATO_ATENCION_INTEGRAL_ADULTO = "ATE_ADULTO";
         public const string FORMATO_ATENCION_INTEGRAL_ADOLESCENTE = "ATE_ADOLE";
@@ -1091,6 +1086,58 @@ namespace Sigesoft.Common
         public const string APTITUD_YANACOCHA = "APT_YANA";
         #endregion
 
+        #region FICHA DETECCIÓN S.A.S.
+        public const string FICHA_SAS_ID = "N009-ME000000435";
+
+        public const string FICHA_SAS_TIPO_LICENCIA = "N009-MF000003295";
+        public const string FICHA_SAS_N_LICENCIA = "N009-MF000003296";
+        public const string FICHA_SAS_TRABAJA_NOCHE = "N009-MF000003297";
+        public const string FICHA_SAS_N_DIAS_TRABAJO_DESCANSO = "N009-MF000003298";
+
+        public const string FICHA_SAS_APNEA_SUEÑO_DIAGNOSTICADA = "N009-MF000003299";
+        public const string FICHA_SAS_ULTIMO_CONTROL = "N009-MF000003300";
+        public const string FICHA_SAS_HTA = "N009-MF000003301";
+        public const string FICHA_SAS_RONCA_DORMIR = "N009-MF000003302";
+        public const string FICHA_SAS_ANTECEDENTE_CHOQUE = "N009-MF000003303";
+        public const string FICHA_SAS_CHOQUE_SOMNOLENCIA = "N009-MF000003304";
+        public const string FICHA_SAS_PAUSAS_RESPIRACION_SUEÑO = "N009-MF000003305";
+        public const string FICHA_SAS_FATIGA_DIA = "N009-MF000003306";
+
+        public const string FICHA_SAS_MAYOR_10= "N009-MF000003307";
+        public const string FICHA_SAS_MENOR_10 = "N009-MF000003308";
+        public const string FICHA_SAS_PUNTUACION = "N009-MF000003309";
+
+        public const string FICHA_SAS_CIRCUNFERENCIA_CUELLO= "N009-MF000003310";
+        public const string FICHA_SAS_NORMAL = "N009-MF000003311";
+        public const string FICHA_SAS_SO2 = "N009-MF000003313";
+
+        public const string FICHA_SAS_I = "N009-MF000003314";
+        public const string FICHA_SAS_II = "N009-MF000003315";
+        public const string FICHA_SAS_III = "N009-MF000003316";
+        public const string FICHA_SAS_IV = "N009-MF000003317";
+
+        public const string FICHA_SAS_RIESGO_ALTO = "N009-MF000003318";
+
+        public const string FICHA_SAS_PUNTAJE_EPWORTH_MAY_10 = "N009-MF000003319";
+        public const string FICHA_SAS_ANTECEDENTES_ACCIDENTE_VEHICULAR = "N009-MF000003320";
+        public const string FICHA_SAS_MALLAMPATI_CLSE_III = "N009-MF000003321";
+        public const string FICHA_SAS_ANTECEDENTES_SAS = "N009-MF000003322";
+
+        public const string FICHA_SAS_RIESGO_MEDIO = "N009-MF000003323";
+
+        public const string FICHA_SAS_HISTORIA_HIGIENE_SUEÑO = "N009-MF000003324";
+        public const string FICHA_SAS_OBESIDAD_GRADO_II = "N009-MF000003325";
+        public const string FICHA_SAS_CIRCUNFERENCIA_CUELLO_ANORMAL= "N009-MF000003326";
+        public const string FICHA_SAS_HTA_DIAGNOSTICO_NUEVO = "N009-MF000003327";
+
+        public const string FICHA_SAS_RIESGO_BAJO = "N009-MF000003328";
+
+        public const string FICHA_SAS_APTO = "N009-MF000003329";
+        public const string FICHA_SAS_OBSERVADO = "N009-MF000003331";
+        public const string FICHA_SAS_NO_APTO = "N009-MF000003333";
+        public const string FICHA_SAS_VIGENCIA_DESDE = "N009-MF000003335";
+        public const string FICHA_SAS_VIGENCIA_HASTA = "N009-MF000003336";
+        #endregion
 
 
         #region EXAMEN_FISICO

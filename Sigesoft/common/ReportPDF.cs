@@ -16,7 +16,14 @@ namespace NetPdf
 
         #region Medical Report EPS
 
-        public static void CreateMedicalReportEPS(PacientList filiationData, List<PersonMedicalHistoryList> personMedicalHistory, List<NoxiousHabitsList> noxiousHabit, List<FamilyMedicalAntecedentsList> familyMedicalAntecedent, ServiceList anamnesis, List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> diagnosticRepository, string filePDF)
+        public static void CreateMedicalReportEPS(PacientList filiationData,
+            List<PersonMedicalHistoryList> personMedicalHistory,
+            List<NoxiousHabitsList> noxiousHabit, 
+            List<FamilyMedicalAntecedentsList> familyMedicalAntecedent,
+            ServiceList anamnesis, 
+            List<ServiceComponentList> serviceComponent, 
+            List<DiagnosticRepositoryList> diagnosticRepository,
+            string filePDF)
         {
             // step 1: creation of a document-object
             Document document = new Document();

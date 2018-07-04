@@ -23,7 +23,7 @@ namespace NetPdf
             public static void  CreateMiExamen(PacientList filiationData ,
                 List<ServiceComponentList> serviceComponent,
                 organizationDto  infoEmpresa,
-                 PacientList datosPac,
+                PacientList datosPac,
                 string filePDF)
             {
                 Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
