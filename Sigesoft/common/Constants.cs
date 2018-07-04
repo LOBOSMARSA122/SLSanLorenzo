@@ -1097,11 +1097,15 @@ namespace Sigesoft.Common
         public const string FICHA_SAS_APNEA_SUEÑO_DIAGNOSTICADA = "N009-MF000003299";
         public const string FICHA_SAS_ULTIMO_CONTROL = "N009-MF000003300";
         public const string FICHA_SAS_HTA = "N009-MF000003301";
+        public const string FICHA_SAS_OBSERVACION_HTA = "N009-MF000003337"; //
         public const string FICHA_SAS_RONCA_DORMIR = "N009-MF000003302";
+        public const string FICHA_SAS_OBSERVACION_RONQUIDO = "N009-MF000003338"; //
         public const string FICHA_SAS_ANTECEDENTE_CHOQUE = "N009-MF000003303";
         public const string FICHA_SAS_CHOQUE_SOMNOLENCIA = "N009-MF000003304";
         public const string FICHA_SAS_PAUSAS_RESPIRACION_SUEÑO = "N009-MF000003305";
+        public const string FICHA_SAS_OBSERVACION_RESPIRACION = "N009-MF000003339"; //
         public const string FICHA_SAS_FATIGA_DIA = "N009-MF000003306";
+        public const string FICHA_SAS_OBSERVACION_FATIGA = "N009-MF000003340"; //
 
         public const string FICHA_SAS_MAYOR_10= "N009-MF000003307";
         public const string FICHA_SAS_MENOR_10 = "N009-MF000003308";
@@ -1109,7 +1113,6 @@ namespace Sigesoft.Common
 
         public const string FICHA_SAS_CIRCUNFERENCIA_CUELLO= "N009-MF000003310";
         public const string FICHA_SAS_NORMAL = "N009-MF000003311";
-        public const string FICHA_SAS_SO2 = "N009-MF000003313";
 
         public const string FICHA_SAS_I = "N009-MF000003314";
         public const string FICHA_SAS_II = "N009-MF000003315";
@@ -1139,6 +1142,38 @@ namespace Sigesoft.Common
         public const string FICHA_SAS_VIGENCIA_HASTA = "N009-MF000003336";
         #endregion
 
+        #region SUFICIENCIA MEDICA - TRABAJOS EN ESPACIOS CONFINADOS
+        public const string FICHA_SUFICIENCIA_MEDICA_ID = "N009-ME000000436";
+
+        public const string FICHA_SUFICIENCIA_MEDICA_DESCRIPCION = "N009-MF000003341";
+
+        public const string FICHA_SUFICIENCIA_MEDICA_P_T_INSPIRACION = "N009-MF000003342";
+        public const string FICHA_SUFICIENCIA_MEDICA_P_T_ESPIRACION = "N009-MF000003343";
+
+        public const string FICHA_SUFICIENCIA_MEDICA_EVALUACION_CLINICA_EC = "N009-MF000003345";
+        public const string FICHA_SUFICIENCIA_MEDICA_PRECISAR_ANOMALIA = "N009-MF000003346";
+        public const string FICHA_SUFICIENCIA_MEDICA_EKG_EC = "N009-MF000003347";
+        public const string FICHA_SUFICIENCIA_MEDICA_PRECISAR_ANOMALIA_EKG = "N009-MF000003348";
+
+        public const string FICHA_SUFICIENCIA_MEDICA_EVALUACION_CLINICA_EP = "N009-MF000003349";
+        public const string FICHA_SUFICIENCIA_MEDICA_PRECISAR_ANOMALIA_EC = "N009-MF000003350";
+        public const string FICHA_SUFICIENCIA_MEDICA_ESPIROMETRIA_EP = "N009-MF000003351";
+        public const string FICHA_SUFICIENCIA_MEDICA_PRECISAR_ANOMALIA_E = "N009-MF000003352";
+        public const string FICHA_SUFICIENCIA_MEDICA_RADIOGRAFIA_TORAX_EP = "N009-MF000003353";
+        public const string FICHA_SUFICIENCIA_MEDICA_PRECISAR_ANOMALIA_RT = "N009-MF000003354";
+
+        public const string FICHA_SUFICIENCIA_MEDICA_EVALUACION_CLINICA_EN = "N009-MF000003355";
+        public const string FICHA_SUFICIENCIA_MEDICA_PRECISAR_ANOMALIA_EP = "N009-MF000003356";
+
+        public const string FICHA_SUFICIENCIA_MEDICA_RESULTADO_EVALUACION = "N009-MF000003357";
+
+        public const string FICHA_SUFICIENCIA_MEDICA_DESCRIPCION_C = "N009-MF000003358";
+
+        public const string FICHA_SUFICIENCIA_MEDICA_APTO = "N009-MF000003359";
+        public const string FICHA_SUFICIENCIA_MEDICA_NO_APTO = "N009-MF000003360";
+        public const string FICHA_SUFICIENCIA_MEDICA_DESDE = "N009-MF000003361";
+        public const string FICHA_SUFICIENCIA_MEDICA_HASTA = "N009-MF000003362";
+        #endregion
 
         #region EXAMEN_FISICO
 

@@ -82,6 +82,7 @@
     <Compile Include="AtencionIntegralAdulto.cs" />
     <Compile Include="AtencionIntegralAdultoMayor.cs" />
     <Compile Include="CertificadoAptitudCompleto.cs" />
+    <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />
     <Compile Include="Constants.cs" />
