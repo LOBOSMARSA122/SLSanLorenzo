@@ -1037,7 +1037,7 @@ namespace Sigesoft.Common
         public const string GGTP_ID = "N009-ME000000424";
         public const string GGTP_REACTIVOS = "N009-MF000003220";
 
-
+        
 
 
         #region IDs Informes
@@ -1086,6 +1086,12 @@ namespace Sigesoft.Common
         public const string APTITUD_YANACOCHA = "APT_YANA";
         #endregion
 
+
+        #region COSAPI
+
+        public const string INFORME_MEDICO_OCUPACIONAL_COSAPI = "IMO-COSAPI";
+        public const string CERTIFICADO_APTITUD_MEDICO = "CAM-COSAPI";
+              
         #region FICHA DETECCIÓN S.A.S.
         public const string FICHA_SAS_ID = "N009-ME000000435";
 
@@ -1174,7 +1180,7 @@ namespace Sigesoft.Common
         public const string FICHA_SUFICIENCIA_MEDICA_DESDE = "N009-MF000003361";
         public const string FICHA_SUFICIENCIA_MEDICA_HASTA = "N009-MF000003362";
         #endregion
-
+        #endregion
         #region EXAMEN_FISICO
 
 
