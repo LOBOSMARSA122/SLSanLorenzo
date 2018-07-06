@@ -281,15 +281,12 @@ namespace Sigesoft.Node.WinClient.UI
                     txtDecucible.Text = objpacientDto.v_Deducible.ToString();
 
                    
-                    
                     ddlDistricId.SelectedValue = objpacientDto.i_DistrictId == null ? "-1" : objpacientDto.i_DistrictId.ToString();
                     Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.ObtenerTodasProvincia(ref objOperationResult, 113), DropDownListAction.Select);
                     
                     ddlProvinceId.SelectedValue = objpacientDto.i_ProvinceId == null ? "-1" : objpacientDto.i_ProvinceId.ToString();
                     Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", BLL.Utils.ObtenerTodasDepartamentos(ref objOperationResult, 113), DropDownListAction.Select);
                     ddlDepartamentId.SelectedValue = objpacientDto.i_DepartmentId == null ? "-1" : objpacientDto.i_DepartmentId.ToString();
-
-
 
 
                     ddlResidenceInWorkplaceId.SelectedValue = objpacientDto.i_ResidenceInWorkplaceId == null ? "-1" : objpacientDto.i_ResidenceInWorkplaceId.ToString();

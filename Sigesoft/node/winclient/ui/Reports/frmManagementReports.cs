@@ -1238,10 +1238,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateInformeMedicoOcupacional_Cosapi(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
-
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
-            var serviceComponents = _serviceBL.GetServiceComponentsReport_(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var RecoAudio = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.AUDIOMETRIA_ID);
             var RecoElectro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ELECTROCARDIOGRAMA_ID);
             var RecoEspiro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ESPIROMETRIA_ID);
