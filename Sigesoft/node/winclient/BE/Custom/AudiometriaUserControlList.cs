@@ -73,6 +73,26 @@ namespace Sigesoft.Node.WinClient.BE
         public string EM_OI_6000 { get; set; }
         public string EM_OI_8000 { get; set; }
 
+        public string EM_A_OI_125 { get; set; }
+        public string EM_A_OI_250 { get; set; }
+        public string EM_A_OI_500 { get; set; }
+        public string EM_A_OI_1000 { get; set; }
+        public string EM_A_OI_2000 { get; set; }
+        public string EM_A_OI_3000 { get; set; }
+        public string EM_A_OI_4000 { get; set; }
+        public string EM_A_OI_6000 { get; set; }
+        public string EM_A_OI_8000 { get; set; }
+
+        public string EM_A_OD_125 { get; set; }
+        public string EM_A_OD_250 { get; set; }
+        public string EM_A_OD_500 { get; set; }
+        public string EM_A_OD_1000 { get; set; }
+        public string EM_A_OD_2000 { get; set; }
+        public string EM_A_OD_3000 { get; set; }
+        public string EM_A_OD_4000 { get; set; }
+        public string EM_A_OD_6000 { get; set; }
+        public string EM_A_OD_8000 { get; set; }
+
 
 
 

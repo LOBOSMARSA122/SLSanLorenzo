@@ -12189,7 +12189,80 @@ namespace Sigesoft.Node.WinClient.BLL
 				if (xEM_OI_8000 != null)
 					ent.EM_OI_8000 = xEM_OI_8000.v_Value1;
 
+                // EM-A-OI
+                var xAN_OI_125 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_125);
+                if (xAN_OI_125 != null)
+                    ent.EM_A_OI_125 = xAN_OI_125.v_Value1;
 
+                var xAN_OI_250 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_250);
+                if (xAN_OI_250 != null)
+                    ent.EM_A_OI_250 = xAN_OI_250.v_Value1;
+
+                var xAN_OI_500 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_500);
+                if (xAN_OI_500 != null)
+                    ent.EM_A_OI_500 = xAN_OI_500.v_Value1;
+
+                var xAN_OI_1000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_1000);
+                if (xAN_OI_1000 != null)
+                    ent.EM_A_OI_1000 = xAN_OI_1000.v_Value1;
+
+                var xAN_OI_2000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_2000);
+                if (xAN_OI_2000 != null)
+                    ent.EM_A_OI_2000 = xAN_OI_2000.v_Value1;
+
+                var xAN_OI_3000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_3000);
+                if (xAN_OI_3000 != null)
+                    ent.EM_A_OI_3000 = xAN_OI_3000.v_Value1;
+
+                var xAN_OI_4000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_4000);
+                if (xAN_OI_4000 != null)
+                    ent.EM_A_OI_4000 = xAN_OI_4000.v_Value1;
+
+                var xAN_OI_6000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_6000);
+                if (xAN_OI_6000 != null)
+                    ent.EM_A_OI_6000 = xAN_OI_6000.v_Value1;
+
+                var xAN_OI_8000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OI_8000);
+                if (xAN_OI_8000 != null)
+                    ent.EM_A_OI_8000 = xAN_OI_8000.v_Value1;
+
+
+                // EM-A-OD
+                var xAN_OD_125 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_125);
+                if (xAN_OD_125 != null)
+                    ent.EM_A_OD_125 = xAN_OD_125.v_Value1;
+
+                var xAN_OD_250 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_250);
+                if (xAN_OD_250 != null)
+                    ent.EM_A_OD_250 = xAN_OD_250.v_Value1;
+
+                var xAN_OD_500 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_500);
+                if (xAN_OD_500 != null)
+                    ent.EM_A_OD_500 = xAN_OD_500.v_Value1;
+
+                var xAN_OD_1000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_1000);
+                if (xAN_OD_1000 != null)
+                    ent.EM_A_OD_1000 = xAN_OD_1000.v_Value1;
+
+                var xAN_OD_2000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_2000);
+                if (xAN_OD_2000 != null)
+                    ent.EM_A_OD_2000 = xAN_OD_2000.v_Value1;
+
+                var xAN_OD_3000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_3000);
+                if (xAN_OD_3000 != null)
+                    ent.EM_A_OD_3000 = xAN_OD_3000.v_Value1;
+
+                var xAN_OD_4000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_4000);
+                if (xAN_OD_4000 != null)
+                    ent.EM_A_OD_4000 = xAN_OD_4000.v_Value1;
+
+                var xAN_OD_6000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_6000);
+                if (xAN_OD_6000 != null)
+                    ent.EM_A_OD_6000 = xAN_OD_6000.v_Value1;
+
+                var xAN_OD_8000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_8000);
+                if (xAN_OD_8000 != null)
+                    ent.EM_A_OD_8000 = xAN_OI_8000.v_Value1;
 				ent.b_AudiogramaOD = img_OD;
 				ent.b_AudiogramaOI = img_OI;
 
