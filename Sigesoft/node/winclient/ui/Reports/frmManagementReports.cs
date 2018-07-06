@@ -1238,8 +1238,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateInformeMedicoOcupacional_Cosapi(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            var CuadroVacio = Common.Utils.BitmapToByteArray(Resources.CuadradoVacio);
-            var CuadroCheck = Common.Utils.BitmapToByteArray(Resources.CuadradoCheck);
 
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
@@ -1263,14 +1261,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var RecoRx = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.RX_TORAX_ID);
             var RecoOit = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OIT_ID);
             var RecoOft = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OFTALMOLOGIA_ID);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
 
             var Restricciton = _serviceBL.GetRestrictionByServiceId(_serviceId);
             var Aptitud = _serviceBL.DevolverAptitud(_serviceId);
 
-            InformeMedicoOcupacional_Cosapi.CreateInformeMedicoOcupacional_Cosapi(_DataService, 
-                CuadroVacio, CuadroCheck,
-                filiationData, serviceComponents, MedicalCenter,
+            InformeMedicoOcupacional_Cosapi.CreateInformeMedicoOcupacional_Cosapi(_DataService,
+                filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
                 datosP, 
                 pathFile,
                 RecoAudio,
