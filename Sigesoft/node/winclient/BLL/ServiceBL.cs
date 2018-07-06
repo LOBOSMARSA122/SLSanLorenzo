@@ -12262,7 +12262,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var xAN_OD_8000 = __sql.Find(p => p.v_ComponentFieldId == Constants.txt_AN_OD_8000);
                 if (xAN_OD_8000 != null)
-                    ent.EM_A_OD_8000 = xAN_OI_8000.v_Value1;
+                    ent.EM_A_OD_8000 = xAN_OD_8000.v_Value1;
 				ent.b_AudiogramaOD = img_OD;
 				ent.b_AudiogramaOI = img_OI;
 
