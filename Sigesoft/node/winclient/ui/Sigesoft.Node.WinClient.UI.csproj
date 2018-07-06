@@ -379,6 +379,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsMaslachestres.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsOdontograma1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsOdontograma.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\dsOstioCoimolache.cs">
       <DependentUpon>dsOstioCoimolache.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -767,9 +772,6 @@
     <Compile Include="Dataset\dsOdontograma.cs">
       <DependentUpon>dsOdontograma.xsd</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Dataset\dsOdontograma.designer.cs">
-      <DependentUpon>dsOdontograma.cs</DependentUpon>
     </Compile>
     <Compile Include="Dataset\dsOftalmologia.cs">
       <DependentUpon>dsOftalmologia.xsd</DependentUpon>
@@ -5696,6 +5698,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Backgrounds\FOTO-20.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\cuadradoazul.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\triangulorojo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\R_coronatemporal.png">

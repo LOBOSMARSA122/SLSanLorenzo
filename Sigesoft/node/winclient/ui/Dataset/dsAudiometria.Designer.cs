@@ -2024,6 +2024,42 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnVO_OI_250;
             
+            private global::System.Data.DataColumn columnEM_A_OI_125;
+            
+            private global::System.Data.DataColumn columnEM_A_OI_250;
+            
+            private global::System.Data.DataColumn columnEM_A_OI_500;
+            
+            private global::System.Data.DataColumn columnEM_A_OI_1000;
+            
+            private global::System.Data.DataColumn columnEM_A_OI_2000;
+            
+            private global::System.Data.DataColumn columnEM_A_OI_3000;
+            
+            private global::System.Data.DataColumn columnEM_A_OI_4000;
+            
+            private global::System.Data.DataColumn columnEM_A_OI_6000;
+            
+            private global::System.Data.DataColumn columnEM_A_OI_8000;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_125;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_250;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_500;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_1000;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_2000;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_3000;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_4000;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_6000;
+            
+            private global::System.Data.DataColumn columnEM_A_OD_8000;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtAudiometriaUserControlDataTable() {
@@ -2507,6 +2543,150 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_125Column {
+                get {
+                    return this.columnEM_A_OI_125;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_250Column {
+                get {
+                    return this.columnEM_A_OI_250;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_500Column {
+                get {
+                    return this.columnEM_A_OI_500;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_1000Column {
+                get {
+                    return this.columnEM_A_OI_1000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_2000Column {
+                get {
+                    return this.columnEM_A_OI_2000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_3000Column {
+                get {
+                    return this.columnEM_A_OI_3000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_4000Column {
+                get {
+                    return this.columnEM_A_OI_4000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_6000Column {
+                get {
+                    return this.columnEM_A_OI_6000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OI_8000Column {
+                get {
+                    return this.columnEM_A_OI_8000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_125Column {
+                get {
+                    return this.columnEM_A_OD_125;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_250Column {
+                get {
+                    return this.columnEM_A_OD_250;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_500Column {
+                get {
+                    return this.columnEM_A_OD_500;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_1000Column {
+                get {
+                    return this.columnEM_A_OD_1000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_2000Column {
+                get {
+                    return this.columnEM_A_OD_2000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_3000Column {
+                get {
+                    return this.columnEM_A_OD_3000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_4000Column {
+                get {
+                    return this.columnEM_A_OD_4000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_6000Column {
+                get {
+                    return this.columnEM_A_OD_6000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EM_A_OD_8000Column {
+                get {
+                    return this.columnEM_A_OD_8000;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -2598,7 +2778,25 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string VO_OD_125, 
                         string VO_OD_250, 
                         string VO_OI_125, 
-                        string VO_OI_250) {
+                        string VO_OI_250, 
+                        string EM_A_OI_125, 
+                        string EM_A_OI_250, 
+                        string EM_A_OI_500, 
+                        string EM_A_OI_1000, 
+                        string EM_A_OI_2000, 
+                        string EM_A_OI_3000, 
+                        string EM_A_OI_4000, 
+                        string EM_A_OI_6000, 
+                        string EM_A_OI_8000, 
+                        string EM_A_OD_125, 
+                        string EM_A_OD_250, 
+                        string EM_A_OD_500, 
+                        string EM_A_OD_1000, 
+                        string EM_A_OD_2000, 
+                        string EM_A_OD_3000, 
+                        string EM_A_OD_4000, 
+                        string EM_A_OD_6000, 
+                        string EM_A_OD_8000) {
                 dtAudiometriaUserControlRow rowdtAudiometriaUserControlRow = ((dtAudiometriaUserControlRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         VA_OD_500,
@@ -2656,7 +2854,25 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         VO_OD_125,
                         VO_OD_250,
                         VO_OI_125,
-                        VO_OI_250};
+                        VO_OI_250,
+                        EM_A_OI_125,
+                        EM_A_OI_250,
+                        EM_A_OI_500,
+                        EM_A_OI_1000,
+                        EM_A_OI_2000,
+                        EM_A_OI_3000,
+                        EM_A_OI_4000,
+                        EM_A_OI_6000,
+                        EM_A_OI_8000,
+                        EM_A_OD_125,
+                        EM_A_OD_250,
+                        EM_A_OD_500,
+                        EM_A_OD_1000,
+                        EM_A_OD_2000,
+                        EM_A_OD_3000,
+                        EM_A_OD_4000,
+                        EM_A_OD_6000,
+                        EM_A_OD_8000};
                 rowdtAudiometriaUserControlRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtAudiometriaUserControlRow);
                 return rowdtAudiometriaUserControlRow;
@@ -2735,6 +2951,24 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnVO_OD_250 = base.Columns["VO_OD_250"];
                 this.columnVO_OI_125 = base.Columns["VO_OI_125"];
                 this.columnVO_OI_250 = base.Columns["VO_OI_250"];
+                this.columnEM_A_OI_125 = base.Columns["EM_A_OI_125"];
+                this.columnEM_A_OI_250 = base.Columns["EM_A_OI_250"];
+                this.columnEM_A_OI_500 = base.Columns["EM_A_OI_500"];
+                this.columnEM_A_OI_1000 = base.Columns["EM_A_OI_1000"];
+                this.columnEM_A_OI_2000 = base.Columns["EM_A_OI_2000"];
+                this.columnEM_A_OI_3000 = base.Columns["EM_A_OI_3000"];
+                this.columnEM_A_OI_4000 = base.Columns["EM_A_OI_4000"];
+                this.columnEM_A_OI_6000 = base.Columns["EM_A_OI_6000"];
+                this.columnEM_A_OI_8000 = base.Columns["EM_A_OI_8000"];
+                this.columnEM_A_OD_125 = base.Columns["EM_A_OD_125"];
+                this.columnEM_A_OD_250 = base.Columns["EM_A_OD_250"];
+                this.columnEM_A_OD_500 = base.Columns["EM_A_OD_500"];
+                this.columnEM_A_OD_1000 = base.Columns["EM_A_OD_1000"];
+                this.columnEM_A_OD_2000 = base.Columns["EM_A_OD_2000"];
+                this.columnEM_A_OD_3000 = base.Columns["EM_A_OD_3000"];
+                this.columnEM_A_OD_4000 = base.Columns["EM_A_OD_4000"];
+                this.columnEM_A_OD_6000 = base.Columns["EM_A_OD_6000"];
+                this.columnEM_A_OD_8000 = base.Columns["EM_A_OD_8000"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2852,6 +3086,42 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnVO_OI_125);
                 this.columnVO_OI_250 = new global::System.Data.DataColumn("VO_OI_250", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnVO_OI_250);
+                this.columnEM_A_OI_125 = new global::System.Data.DataColumn("EM_A_OI_125", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_125);
+                this.columnEM_A_OI_250 = new global::System.Data.DataColumn("EM_A_OI_250", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_250);
+                this.columnEM_A_OI_500 = new global::System.Data.DataColumn("EM_A_OI_500", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_500);
+                this.columnEM_A_OI_1000 = new global::System.Data.DataColumn("EM_A_OI_1000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_1000);
+                this.columnEM_A_OI_2000 = new global::System.Data.DataColumn("EM_A_OI_2000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_2000);
+                this.columnEM_A_OI_3000 = new global::System.Data.DataColumn("EM_A_OI_3000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_3000);
+                this.columnEM_A_OI_4000 = new global::System.Data.DataColumn("EM_A_OI_4000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_4000);
+                this.columnEM_A_OI_6000 = new global::System.Data.DataColumn("EM_A_OI_6000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_6000);
+                this.columnEM_A_OI_8000 = new global::System.Data.DataColumn("EM_A_OI_8000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OI_8000);
+                this.columnEM_A_OD_125 = new global::System.Data.DataColumn("EM_A_OD_125", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_125);
+                this.columnEM_A_OD_250 = new global::System.Data.DataColumn("EM_A_OD_250", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_250);
+                this.columnEM_A_OD_500 = new global::System.Data.DataColumn("EM_A_OD_500", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_500);
+                this.columnEM_A_OD_1000 = new global::System.Data.DataColumn("EM_A_OD_1000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_1000);
+                this.columnEM_A_OD_2000 = new global::System.Data.DataColumn("EM_A_OD_2000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_2000);
+                this.columnEM_A_OD_3000 = new global::System.Data.DataColumn("EM_A_OD_3000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_3000);
+                this.columnEM_A_OD_4000 = new global::System.Data.DataColumn("EM_A_OD_4000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_4000);
+                this.columnEM_A_OD_6000 = new global::System.Data.DataColumn("EM_A_OD_6000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_6000);
+                this.columnEM_A_OD_8000 = new global::System.Data.DataColumn("EM_A_OD_8000", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEM_A_OD_8000);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7557,6 +7827,312 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_125 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_125Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_125\' de la tabla \'dtAudiometriaUserControl\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_125Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_250 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_250Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_250\' de la tabla \'dtAudiometriaUserControl\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_250Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_500 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_500Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_500\' de la tabla \'dtAudiometriaUserControl\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_500Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_1000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_1000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_1000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_1000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_2000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_2000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_2000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_2000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_3000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_3000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_3000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_3000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_4000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_4000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_4000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_4000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_6000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_6000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_6000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_6000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OI_8000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OI_8000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OI_8000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OI_8000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_125 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_125Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_125\' de la tabla \'dtAudiometriaUserControl\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_125Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_250 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_250Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_250\' de la tabla \'dtAudiometriaUserControl\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_250Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_500 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_500Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_500\' de la tabla \'dtAudiometriaUserControl\' es DB" +
+                                "Null.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_500Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_1000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_1000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_1000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_1000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_2000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_2000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_2000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_2000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_3000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_3000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_3000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_3000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_4000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_4000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_4000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_4000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_6000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_6000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_6000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_6000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string EM_A_OD_8000 {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtAudiometriaUserControl.EM_A_OD_8000Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'EM_A_OD_8000\' de la tabla \'dtAudiometriaUserControl\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometriaUserControl.EM_A_OD_8000Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsVA_OD_500Null() {
                 return this.IsNull(this.tabledtAudiometriaUserControl.VA_OD_500Column);
             }
@@ -8225,6 +8801,222 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetVO_OI_250Null() {
                 this[this.tabledtAudiometriaUserControl.VO_OI_250Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_125Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_125Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_125Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_125Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_250Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_250Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_250Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_250Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_500Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_500Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_500Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_500Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_1000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_1000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_1000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_1000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_2000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_2000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_2000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_2000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_3000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_3000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_3000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_3000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_4000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_4000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_4000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_4000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_6000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_6000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_6000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_6000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OI_8000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OI_8000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OI_8000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OI_8000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_125Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_125Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_125Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_125Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_250Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_250Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_250Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_250Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_500Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_500Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_500Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_500Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_1000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_1000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_1000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_1000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_2000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_2000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_2000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_2000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_3000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_3000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_3000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_3000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_4000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_4000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_4000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_4000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_6000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_6000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_6000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_6000Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEM_A_OD_8000Null() {
+                return this.IsNull(this.tabledtAudiometriaUserControl.EM_A_OD_8000Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEM_A_OD_8000Null() {
+                this[this.tabledtAudiometriaUserControl.EM_A_OD_8000Column] = global::System.Convert.DBNull;
             }
         }
         

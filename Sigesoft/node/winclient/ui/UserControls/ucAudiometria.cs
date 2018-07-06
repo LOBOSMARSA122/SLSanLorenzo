@@ -890,7 +890,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                         }
                         else if (seriesName == "Anacusia OI")
                         {
-                            chart2.Series[seriesName].Points[colIndex - 1].MarkerImage = Application.StartupPath + @"\Resources\flechaAzul.png";
+                            chart2.Series[seriesName].Points[colIndex - 1].MarkerImage = Application.StartupPath + @"\Resources\cuadradoazul.png";
                             chart2.Series[seriesName].Points[colIndex - 1].Color = Color.Transparent;
                         }
                     }
@@ -1102,7 +1102,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                         }
                         else if (seriesName == "Anacusia OD")
                         {
-                            chart1.Series[seriesName].Points[colIndex - 1].MarkerImage = Application.StartupPath + @"\Resources\flechaRoja.png";
+                            chart1.Series[seriesName].Points[colIndex - 1].MarkerImage = Application.StartupPath + @"\Resources\triangulorojo.png";
                             chart1.Series[seriesName].Points[colIndex - 1].Color = Color.Transparent;
                         }
                     }
