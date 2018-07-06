@@ -1,0 +1,543 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Text;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.draw;
+using Sigesoft.Node.WinClient.BE;
+
+namespace NetPdf
+{
+    public class InformeMedicoOcupacional_Cosapi
+    {
+        private static void RunFile(string filePdf)
+        {
+            Process proceso = Process.Start(filePdf);
+            proceso.WaitForExit();
+            proceso.Close();
+        }
+
+        #region Reporte SAS
+        public static void CreateInformeMedicoOcupacional_Cosapi(ServiceList DataService,
+            PacientList filiationData,
+             List<DiagnosticRepositoryList> Diagnosticos,
+            List<ServiceComponentList> serviceComponent,
+            organizationDto infoEmpresa,
+            PacientList datosPac,
+            string filePDF,
+            string RecoAudio,
+            string RecoElectro,
+            string RecoEspiro,
+            string RecoNeuro,
+            string RecoAltEst,
+            string RecoActFis,
+            string RecoCustNor,
+            string RecoAlt7D,
+            string RecoExaFis,
+            string RecoExaFis7C,
+            string RecoOsteoMus1,
+            string RecoTamDer,
+            string RecoOdon,
+            string RecoPsico,
+            string RecoRx,
+            string RecoOit,
+            string RecoOft,
+            string Restricciton,
+            string Aptitud
+            )
+        {
+            Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
+
+            document.SetPageSize(iTextSharp.text.PageSize.A4);
+
+            PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
+            pdfPage page = new pdfPage();
+            writer.PageEvent = page;
+            document.Open();
+
+            #region Declaration Tables
+            var subTitleBackGroundColor = new BaseColor(System.Drawing.Color.Gray);
+            string include = string.Empty;
+            List<PdfPCell> cells = null;
+            float[] columnWidths = null;
+            string[] columnValues = null;
+            string[] columnHeaders = null;
+            PdfPTable header2 = new PdfPTable(6);
+            header2.HorizontalAlignment = Element.ALIGN_CENTER;
+            header2.WidthPercentage = 100;
+            float[] widths1 = new float[] { 16.6f, 18.6f, 16.6f, 16.6f, 16.6f, 16.6f };
+            header2.SetWidths(widths1);
+            PdfPTable companyData = new PdfPTable(6);
+            companyData.HorizontalAlignment = Element.ALIGN_CENTER;
+            companyData.WidthPercentage = 100;
+            float[] widthscolumnsCompanyData = new float[] { 16.6f, 16.6f, 16.6f, 16.6f, 16.6f, 16.6f };
+            companyData.SetWidths(widthscolumnsCompanyData);
+            PdfPTable filiationWorker = new PdfPTable(4);
+            PdfPTable table = null;
+            PdfPCell cell = null;
+            document.Add(new Paragraph("\r\n"));
+            #endregion
+
+            #region Fonts
+            Font fontTitle1 = FontFactory.GetFont("Calibri", 10, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontTitle2 = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
+            Font fontTitleTable = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontTitleTableNegro = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontSubTitle = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.White));
+            Font fontSubTitleNegroNegrita = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+
+            Font fontColumnValue = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueBold = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            #endregion
+
+            var tamaño_celda = 14f;
+            #region TÍTULO
+
+            cells = new List<PdfPCell>();
+
+            if (infoEmpresa.b_Image != null)
+            {
+                iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresa.b_Image));
+                imagenEmpresa.ScalePercent(25);
+                imagenEmpresa.SetAbsolutePosition(40, 790);
+                document.Add(imagenEmpresa);
+            }
+            //iTextSharp.text.Image imagenMinsa = iTextSharp.text.Image.GetInstance("C:/Banner/Minsa.png");
+            //imagenMinsa.ScalePercent(10);
+            //imagenMinsa.SetAbsolutePosition(400, 785);
+            //document.Add(imagenMinsa);
+
+            var cellsTit = new List<PdfPCell>()
+                { 
+                    new PdfPCell(new Phrase("", fontTitle1)) {Colspan=1, BackgroundColor= BaseColor.GRAY, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f},
+                    new PdfPCell(new Phrase("N° H.C. " + datosPac.v_PersonId, fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f},
+                    new PdfPCell(new Phrase("INFORME MÉDICO OCUPACIONAL", fontTitle1)) { Colspan=2, BackgroundColor= BaseColor.GRAY, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f},
+                };
+            columnWidths = new float[] { 80f, 20f };
+            table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
+            document.Add(table);
+            #endregion
+
+            #region DATOS GENERALES
+
+            string[] fechaServicio = datosPac.FechaServicio.ToString().Split(' ');
+            cells = new List<PdfPCell>()
+            {          
+                new PdfPCell(new Phrase("Apellidos y Nombres", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase(datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue)) { Colspan = 9, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("DNI", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(datosPac.v_DocNumber , fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                
+                new PdfPCell(new Phrase("Empresa", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue)) { Colspan = 9, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("Edad", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda}, 
+                new PdfPCell(new Phrase(datosPac.Edad.ToString() , fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                
+                new PdfPCell(new Phrase("Sede/Proyecto", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase(filiationData.v_NombreProtocolo, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+               
+                new PdfPCell(new Phrase("Puesto de trabajo", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase(datosPac.v_CurrentOccupation, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                
+                new PdfPCell(new Phrase("Antecedentes o Preexistencia", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+            
+                new PdfPCell(new Phrase("Alergias", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+            };
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            document.Add(table);
+
+
+            string PreOcupacional = "", Periodica = "", Retiro = "", Otros = "";
+
+            if (DataService != null)
+            {
+                if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional)
+                {
+                    PreOcupacional = "X";
+                }
+                else if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PeriodicoAnual)
+                {
+                    Periodica = "X";
+                }
+                else if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.Retiro)
+                {
+                    Retiro = "X";
+                }
+                else
+                {
+                    Otros = "X";
+                }
+
+            }
+
+            cells = new List<PdfPCell>()
+                   {      
+                    new PdfPCell(new Phrase("Tipo de examen", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase("Preocupacional", fontColumnValue)) { Colspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(PreOcupacional, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+
+                    new PdfPCell(new Phrase("Periódico", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(Periodica, fontColumnValue)){ Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+
+                    new PdfPCell(new Phrase("Retiro", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(Retiro, fontColumnValue)){ Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                    new PdfPCell(new Phrase("Otro(Especifique)", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(Otros, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+            };
+
+
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            document.Add(table);
+            #endregion
+
+            #region EVALUACIÓN MÉDICA
+
+            //Antropometria
+            ServiceComponentList antro = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ANTROPOMETRIA_ID);
+            var peso = antro.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID) == null ? "" : antro.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
+            var talla = antro.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID) == null ? "" : antro.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_TALLA_ID).v_Value1;
+            var imc = antro.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID) == null ? "" : antro.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_IMC_ID).v_Value1;
+            var per_abdomen = antro.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID) == null ? "" : antro.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ANTROPOMETRIA_PERIMETRO_ABDOMINAL_ID).v_Value1;
+
+            //Funciones Vitales
+            ServiceComponentList funcVit = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FUNCIONES_VITALES_ID);
+            var pres_Sist = funcVit.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID) == null ? "" : funcVit.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAS_ID).v_Value1;
+            var pres_Diast = funcVit.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID) == null ? "" : funcVit.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FUNCIONES_VITALES_PAD_ID).v_Value1;
+
+            // Orina Completo
+            var xOrinaCompleto = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_ID);
+            var Hemo = xOrinaCompleto.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_HEMOGLOBINA);
+            //var HemoValord = xOrinaCompleto.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_HEMOGLOBINA_DESEABLE);
+
+
+            cells = new List<PdfPCell>()
+            {          
+                new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
+                
+                new PdfPCell(new Phrase("Evaluación Médica", fontColumnValue)) { Colspan = 4, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("Hemoglobina \n (Hb)", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("Peso (Kg)", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("Talla (m)", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("IMC (Kg/m2)", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("PA (mmHg)", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("Per. Abd. (cm)", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("Grupo Sanguineo y Factor Rh", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                
+                
+                new PdfPCell(new Phrase(Hemo == null ? string.Empty : Hemo.v_Value1Name, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(peso + " Kg", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(talla + " m.", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(imc + " kg/m2", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(pres_Sist +" / " + pres_Diast + " mmHg" , fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(per_abdomen + " cm", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(datosPac.v_BloodGroupName + "\n" + datosPac.v_BloodFactorName, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            };
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            document.Add(table);
+            #endregion
+
+            #region CLÍNICO OC. / MUSCULOESQUELETICO / PSICOLOGÍA / ODONTOLÓGICO /
+            #region EXAMEN CLÍNICO OCUPACIONAL
+
+            var dxExamenFisico = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+            var dxExamenFisicoConcatenado = string.Join(", ", dxExamenFisico.Select(p => p.v_DiseasesName));
+            if (dxExamenFisicoConcatenado != null)
+            {
+                cells = new List<PdfPCell>()
+                    {
+                     new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
+                     new PdfPCell(new Phrase("Clínico Ocupacional", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                     new PdfPCell(new Phrase(dxExamenFisicoConcatenado, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                     };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            }
+            else 
+            {
+                cells = new List<PdfPCell>()
+                    {
+                        new PdfPCell(new Phrase("Clínico Ocupacional", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                        new PdfPCell(new Phrase("NO TIENE OBSERVACIONES", fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            }
+            #endregion
+
+            #region MUSOESQUELÉTICO
+            var dxArticuOsteo = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_MUSCULAR_ID_1);
+            string ArticuOsteo = string.Join(", ", dxArticuOsteo.Select(p => p.v_DiseasesName));
+                 cells = new List<PdfPCell>()
+                    {
+                        new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
+                        new PdfPCell(new Phrase("Musculoesquelético", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                        new PdfPCell(new Phrase(ArticuOsteo== "" ? "SIN RESULTADOS": ArticuOsteo, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            #endregion
+            #region PSICOLOGÍA
+            var xPsico = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            var ValorDxPsico = string.Join(", ", xPsico.Select(p => p.v_DiseasesName)); ;
+       
+                cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Psicología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(ValorDxPsico == "" ?"SIN RESULTADOS" : ValorDxPsico, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                };
+
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+
+            #endregion
+            #region ODONTOLOGÍA
+            var xOdo = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
+            string ValorDxOdo = string.Join(", ", xOdo.Select(p => p.v_DiseasesName));
+                cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Odontología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(ValorDxOdo == "" ? "SIN RESULTADOS": ValorDxOdo, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            #endregion
+            #endregion
+
+            #region OFTALMOLOGÍA
+            ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+            var av_cerca_sc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID).v_Value1;
+            string av_cerca_sc_od_1 = "", av_cerca_sc_oi_1 = "", av_cerca_cc_od_1 = "", av_cerca_cc_oi_1 = "";
+            if (av_cerca_sc_od == "1") av_cerca_sc_od_1 = "J1 0.50";
+            else if (av_cerca_sc_od == "2") av_cerca_sc_od_1 = "J2 0.75";
+            else if (av_cerca_sc_od == "3") av_cerca_sc_od_1 = "J3 1.00";
+            else if (av_cerca_sc_od == "4") av_cerca_sc_od_1 = "J4 1.25";
+            else if (av_cerca_sc_od == "5") av_cerca_sc_od_1 = "J5 1.50";
+            else if (av_cerca_sc_od == "6") av_cerca_sc_od_1 = "J6 1.75";
+            else if (av_cerca_sc_od == "7") av_cerca_sc_od_1 = "J7 2.00";
+            else if (av_cerca_sc_od == "8") av_cerca_sc_od_1 = "J8 >2.00";
+
+            var av_cerca_sc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_IZQUIERDO_ID).v_Value1;
+
+            if (av_cerca_sc_oi == "1") av_cerca_sc_oi_1 = "J1 0.50";
+            else if (av_cerca_sc_oi == "2") av_cerca_sc_oi_1 = "J2 0.75";
+            else if (av_cerca_sc_oi == "3") av_cerca_sc_oi_1 = "J3 1.00";
+            else if (av_cerca_sc_oi == "4") av_cerca_sc_oi_1 = "J4 1.25";
+            else if (av_cerca_sc_oi == "5") av_cerca_sc_oi_1 = "J5 1.50";
+            else if (av_cerca_sc_oi == "6") av_cerca_sc_oi_1 = "J6 1.75";
+            else if (av_cerca_sc_oi == "7") av_cerca_sc_oi_1 = "J7 2.00";
+            else if (av_cerca_sc_oi == "8") av_cerca_sc_oi_1 = "J8 >2.00";
+
+            var av_cerca_cc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_DERECHO_ID).v_Value1;
+
+            if (av_cerca_cc_od == "1") av_cerca_cc_od_1 = "J1 0.50";
+            else if (av_cerca_cc_od == "2") av_cerca_cc_od_1 = "J2 0.75";
+            else if (av_cerca_cc_od == "3") av_cerca_cc_od_1 = "J3 1.00";
+            else if (av_cerca_cc_od == "4") av_cerca_cc_od_1 = "J4 1.25";
+            else if (av_cerca_cc_od == "5") av_cerca_cc_od_1 = "J5 1.50";
+            else if (av_cerca_cc_od == "6") av_cerca_cc_od_1 = "J6 1.75";
+            else if (av_cerca_cc_od == "7") av_cerca_cc_od_1 = "J7 2.00";
+            else if (av_cerca_cc_od == "8") av_cerca_cc_od_1 = "J8 >2.00";
+
+            var av_cerca_cc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID).v_Value1;
+
+            if (av_cerca_cc_oi == "1") av_cerca_cc_oi_1 = "J1 0.50";
+            else if (av_cerca_cc_oi == "2") av_cerca_cc_oi_1 = "J2 0.75";
+            else if (av_cerca_cc_oi == "3") av_cerca_cc_oi_1 = "J3 1.00";
+            else if (av_cerca_cc_oi == "4") av_cerca_cc_oi_1 = "J4 1.25";
+            else if (av_cerca_cc_oi == "5") av_cerca_cc_oi_1 = "J5 1.50";
+            else if (av_cerca_cc_oi == "6") av_cerca_cc_oi_1 = "J6 1.75";
+            else if (av_cerca_cc_oi == "7") av_cerca_cc_oi_1 = "J7 2.00";
+            else if (av_cerca_cc_oi == "8") av_cerca_cc_oi_1 = "J8 >2.00";
+
+            var av_lejos_sc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID).v_Value1;
+            string av_lejos_sc_od_1 = "", av_lejos_sc_oi_1 = "", av_lejos_cc_od_1 = "", av_lejos_cc_oi_1 = "";
+            if (av_lejos_sc_od == "1") av_lejos_sc_od_1 = "20/10";
+            else if (av_lejos_sc_od == "2") av_lejos_sc_od_1 = "20/100";
+            else if (av_lejos_sc_od == "3") av_lejos_sc_od_1 = "20/13";
+            else if (av_lejos_sc_od == "4") av_lejos_sc_od_1 = "20/15";
+            else if (av_lejos_sc_od == "5") av_lejos_sc_od_1 = "20/20";
+            else if (av_lejos_sc_od == "6") av_lejos_sc_od_1 = "20/200";
+            else if (av_lejos_sc_od == "7") av_lejos_sc_od_1 = "20/25";
+            else if (av_lejos_sc_od == "8") av_lejos_sc_od_1 = "20/30";
+            else if (av_lejos_sc_od == "9") av_lejos_sc_od_1 = "20/40";
+            else if (av_lejos_sc_od == "10") av_lejos_sc_od_1 = "20/50";
+            else if (av_lejos_sc_od == "11") av_lejos_sc_od_1 = "20/70";
+            else if (av_lejos_sc_od == "12") av_lejos_sc_od_1 = "NO APLICA";
+
+            var av_lejos_sc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID).v_Value1;
+
+            if (av_lejos_sc_oi == "1") av_lejos_sc_oi_1 = "20/10";
+            else if (av_lejos_sc_oi == "2") av_lejos_sc_oi_1 = "20/100";
+            else if (av_lejos_sc_oi == "3") av_lejos_sc_oi_1 = "20/13";
+            else if (av_lejos_sc_oi == "4") av_lejos_sc_oi_1 = "20/15";
+            else if (av_lejos_sc_oi == "5") av_lejos_sc_oi_1 = "20/20";
+            else if (av_lejos_sc_oi == "6") av_lejos_sc_oi_1 = "20/200";
+            else if (av_lejos_sc_oi == "7") av_lejos_sc_oi_1 = "20/25";
+            else if (av_lejos_sc_oi == "8") av_lejos_sc_oi_1 = "20/30";
+            else if (av_lejos_sc_oi == "9") av_lejos_sc_oi_1 = "20/40";
+            else if (av_lejos_sc_oi == "10") av_lejos_sc_oi_1 = "20/50";
+            else if (av_lejos_sc_oi == "11") av_lejos_sc_oi_1 = "20/70";
+            else if (av_lejos_sc_oi == "12") av_lejos_sc_oi_1 = "NO APLICA";
+
+            var av_lejos_cc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID).v_Value1;
+
+            if (av_lejos_cc_od == "1") av_lejos_cc_od_1 = "20/10";
+            else if (av_lejos_cc_od == "2") av_lejos_cc_od_1 = "20/100";
+            else if (av_lejos_cc_od == "3") av_lejos_cc_od_1 = "20/13";
+            else if (av_lejos_cc_od == "4") av_lejos_cc_od_1 = "20/15";
+            else if (av_lejos_cc_od == "5") av_lejos_cc_od_1 = "20/20";
+            else if (av_lejos_cc_od == "6") av_lejos_cc_od_1 = "20/200";
+            else if (av_lejos_cc_od == "7") av_lejos_cc_od_1 = "20/25";
+            else if (av_lejos_cc_od == "8") av_lejos_cc_od_1 = "20/30";
+            else if (av_lejos_cc_od == "9") av_lejos_cc_od_1 = "20/40";
+            else if (av_lejos_cc_od == "10") av_lejos_cc_od_1 = "20/50";
+            else if (av_lejos_cc_od == "11") av_lejos_cc_od_1 = "20/70";
+            else if (av_lejos_cc_od == "12") av_lejos_cc_od_1 = "NO APLICA";
+
+            var av_lejos_cc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID).v_Value1;
+
+            if (av_lejos_cc_oi == "1") av_lejos_cc_oi_1 = "20/10";
+            else if (av_lejos_cc_oi == "2") av_lejos_cc_oi_1 = "20/100";
+            else if (av_lejos_cc_oi == "3") av_lejos_cc_oi_1 = "20/13";
+            else if (av_lejos_cc_oi == "4") av_lejos_cc_oi_1 = "20/15";
+            else if (av_lejos_cc_oi == "5") av_lejos_cc_oi_1 = "20/20";
+            else if (av_lejos_cc_oi == "6") av_lejos_cc_oi_1 = "20/200";
+            else if (av_lejos_cc_oi == "7") av_lejos_cc_oi_1 = "20/25";
+            else if (av_lejos_cc_oi == "8") av_lejos_cc_oi_1 = "20/30";
+            else if (av_lejos_cc_oi == "9") av_lejos_cc_oi_1 = "20/40";
+            else if (av_lejos_cc_oi == "10") av_lejos_cc_oi_1 = "20/50";
+            else if (av_lejos_cc_oi == "11") av_lejos_cc_oi_1 = "20/70";
+            else if (av_lejos_cc_oi == "12") av_lejos_cc_oi_1 = "NO APLICA";
+
+            var estereopsis = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_A) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_A).v_Value1;
+            var TestIshiharaNormal = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;
+            var TestIshiharaAnormal = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;
+            //var Dicromatopsia = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID).v_Value1;
+            string VisonColores = "";
+            if (TestIshiharaNormal == "1")
+            {
+                VisonColores = "Normal";
+            }
+            else if (TestIshiharaAnormal == "1")
+            {
+                VisonColores = " Anormal";
+            }
+
+            cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
+
+                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 2, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase("Agudeza Visual", fontColumnValue)) { Colspan = 2, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("V. de cerca", fontColumnValue)) { Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("OD S/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(av_cerca_sc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("OD C/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(av_cerca_cc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("OI S/C", fontColumnValue)) { Colspan = 1,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(av_cerca_sc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("OI C/C", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(av_cerca_cc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("Esteropsis", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(estereopsis, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+
+                    new PdfPCell(new Phrase("V. de lejos", fontColumnValue)) { Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("OD S/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(av_lejos_sc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("OD C/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(av_lejos_cc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("OI S/C", fontColumnValue)) { Colspan = 1,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(av_lejos_sc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("OI C/C", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(av_lejos_cc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("Ishihara", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase(VisonColores, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                };
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+            document.Add(filiationWorker);
+            #endregion
+
+            #region ESPIROMETRÍA
+            var xEspiro = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
+            string ValorDxEspiro = string.Join(", ", xEspiro.Select(p => p.v_DiseasesName));
+            cells = new List<PdfPCell>()
+                {
+                   new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
+
+                   new PdfPCell(new Phrase("Espirometría", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                   new PdfPCell(new Phrase(ValorDxEspiro== "" ? "SIN RESULTADOS": ValorDxEspiro , fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            #endregion 
+
+            #region RX TÓRAX / SEGÚN OIT
+            var xRx = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.RX_TORAX_ID);
+            string ValorDxRx = string.Join(", ", xRx.Select(p => p.v_DiseasesName));
+
+            var xRxOIT = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.OIT_ID);
+            string ValorDxRxOIT = string.Join(", ", xRxOIT.Select(p => p.v_DiseasesName));
+              cells = new List<PdfPCell>()
+                { 
+                    new PdfPCell(new Phrase("Rx Tórax", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(ValorDxRx== "" ? "SIN RESULTADOS": ValorDxRx, fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("Según OIT", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(ValorDxRxOIT== "" ? "SIN RESULTADOS": ValorDxRxOIT, fontColumnValue)) { Colspan = 5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                };
+
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            #endregion 
+            #region AUDIOMETRÍA
+            var dxAudiometria = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID);
+            var dxAudio = string.Join(", ", dxAudiometria.Select(p => p.v_DiseasesName));
+         
+                cells = new List<PdfPCell>()
+                    {
+                     new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
+
+                     new PdfPCell(new Phrase("Audiometría", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                     new PdfPCell(new Phrase(dxAudio== "" ? "SIN RESULTADOS" :dxAudio, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                     };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+            #endregion
+
+            #region ELECTROCARDIOGRAMA
+            var xElectroCardiograma = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_ID);
+            string ValorDxElectroCardiograma = string.Join(", ", xElectroCardiograma.Select(p => p.v_DiseasesName));
+
+                cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Electrocardiograma", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(ValorDxElectroCardiograma== "" ? "SIN RESULTADOS": ValorDxElectroCardiograma, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            #endregion
+
+            document.Close();
+            writer.Close();
+            writer.Dispose();
+        }
+        #endregion
+    }
+}

@@ -82,6 +82,8 @@
     <Compile Include="AtencionIntegralAdulto.cs" />
     <Compile Include="AtencionIntegralAdultoMayor.cs" />
     <Compile Include="CertificadoAptitudCompleto.cs" />
+    <Compile Include="CertificadoAptitudMedico_Cosapi.cs" />
+    <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />
     <Compile Include="Constants.cs" />
@@ -100,9 +102,11 @@
     <Compile Include="HistoriaClinica.cs" />
     <Compile Include="HojaCotizacion.cs" />
     <Compile Include="InformeMedicoOcupacional.cs" />
+    <Compile Include="InformeMedicoOcupacional_Cosapi.cs" />
     <Compile Include="InformeMedicoTrabajadorInternacional.cs" />
     <Compile Include="InformeTrabajador.cs" />
     <Compile Include="InformeTrabajador3.cs" />
+    <Compile Include="INFORME_SAS_REPORT.cs" />
     <Compile Include="LaboratorioReport.cs" />
     <Compile Include="LoadingForm.cs">
       <SubType>Form</SubType>
