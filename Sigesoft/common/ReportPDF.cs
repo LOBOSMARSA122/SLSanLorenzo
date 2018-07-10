@@ -10107,7 +10107,7 @@ namespace NetPdf
                     //Linea
                     new PdfPCell(new Phrase("APTO PARA TRABAJAR", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("MÉDICO: " + DataService.NombreDoctor + " COLEGIATURA N° " + DataService.CMP, fontColumnValue)){ Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                   new PdfPCell(cellFirmaTrabajador){Rowspan = 8, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},   
+                    new PdfPCell(cellFirmaTrabajador){Rowspan = 8, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},   
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(cellFirmaDoctor){Rowspan = 8, Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
