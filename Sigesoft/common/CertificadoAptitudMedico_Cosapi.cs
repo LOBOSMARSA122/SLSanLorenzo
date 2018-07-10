@@ -182,9 +182,10 @@ namespace NetPdf
             #region Hallazgos y recomendaciones
             cells = new List<PdfPCell>()
                 {
-                    new PdfPCell(new Phrase("RESTRICCIONES", fontColumnValueBold)) {Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 13, BackgroundColor = BaseColor.GRAY },               
+                    new PdfPCell(new Phrase("Recomendaciones", fontColumnValueBold)) {Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 13, BackgroundColor = BaseColor.GRAY },       
                 };
-            columnWidths = new float[] { 20.6f, 40.6f }; filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+            columnWidths = new float[] { 20.6f, 40.6f };
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
             document.Add(filiationWorker);
             cells = new List<PdfPCell>();
 
@@ -192,69 +193,71 @@ namespace NetPdf
 
             if (filterDiagnosticRepository != null && filterDiagnosticRepository.Count > 0)
             {
-                columnWidths = new float[] { 0.7f, 23.6f };
-                include = "i_Item,Valor1";
-
+                columnWidths = new float[] { 100f };
+                include = "Valor1";
+               
                 foreach (var item in filterDiagnosticRepository)
                 {
-                    //if (item.v_DiseasesId == "N009-DD000000029")
-                    //{
-                    //    cell = new PdfPCell(new Phrase("")) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
-                    //    cells.Add(cell);
-                    //}
-                    //else
-                    //{
-                    //    cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
-                    //    cells.Add(cell);
-                    //}
-
                     ListaComun oListaComun = null;
                     List<ListaComun> Listacomun = new List<ListaComun>();
+                    
+                        foreach (var Reco in item.Recomendations)
+                        {
+                            oListaComun = new ListaComun();
+                            oListaComun.Valor1 = Reco.v_RecommendationName;
+                            Listacomun.Add(oListaComun);
+                        }
 
-                    if (item.Recomendations.Count > 0)
-                    {
-                        oListaComun = new ListaComun();
-                        oListaComun.Valor1 = "RECOMENDACIONES";
-                        oListaComun.i_Item = "#";
-                        Listacomun.Add(oListaComun);
-                    }
+                        table = HandlingItextSharp.GenerateTableFromList(Listacomun, columnWidths, include, fontColumnValue);
+                        cell = new PdfPCell(table);
 
-                    int Contador = 1;
-                    foreach (var Reco in item.Recomendations)
-                    {
-                        oListaComun = new ListaComun();
-
-                        oListaComun.Valor1 = Reco.v_RecommendationName;
-                        oListaComun.i_Item = Contador.ToString();
-                        Listacomun.Add(oListaComun);
-                        Contador++;
-                    }
-
-                    if (item.Restrictions.Count > 0)
-                    {
-                        oListaComun = new ListaComun();
-                        oListaComun.Valor1 = "RESTRICCIONES";
-                        oListaComun.i_Item = "#";
-                        Listacomun.Add(oListaComun);
-
-                    }
-                    int Contador1 = 1;
-                    foreach (var Rest in item.Restrictions)
-                    {
-                        oListaComun = new ListaComun();
-                        oListaComun.Valor1 = Rest.v_RestrictionName;
-                        oListaComun.i_Item = Contador1.ToString();
-                        Listacomun.Add(oListaComun);
-                        Contador1++;
-                    }
-
-                    // Crear tabla de recomendaciones para insertarla en la celda que corresponde
-                    table = HandlingItextSharp.GenerateTableFromList(Listacomun, columnWidths, include, fontColumnValue);
-                    cell = new PdfPCell(table);
-
-                    cells.Add(cell);
+                        cells.Add(cell);
+                    
                 }
+                columnWidths = new float[] { 100f};
+            }
+            else
+            {
+                cells.Add(new PdfPCell(new Phrase("NO SE HAN REGISTRADO DATOS.", fontColumnValue)));
+                columnWidths = new float[] { 100f };
+            }
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, null);
+            document.Add(table);
+            /////
 
+            cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Restricciones", fontColumnValueBold)) {Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 13, BackgroundColor = BaseColor.GRAY },       
+                };
+            columnWidths = new float[] { 20.6f, 40.6f };
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+            document.Add(filiationWorker);
+            cells = new List<PdfPCell>();
+
+            var filterDiagnosticRepository_1 = Diagnosticos.FindAll(p => p.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado);
+
+            if (filterDiagnosticRepository_1 != null && filterDiagnosticRepository_1.Count > 0)
+            {
+                columnWidths = new float[] { 100f };
+                include = "Valor1";
+
+                //var desc = Diagnosticos.Find(p => p.Restrictions != (int)Sigesoft.Common.FinalQualification.Descartado);
+                foreach (var item_1 in filterDiagnosticRepository_1)
+                {
+                    ListaComun oListaComun = null;
+                    List<ListaComun> Listacomun = new List<ListaComun>();
+                 
+                        foreach (var Rest_1 in item_1.Restrictions)
+                        {
+                            oListaComun = new ListaComun();
+                            oListaComun.Valor1 = Rest_1.v_RestrictionName;
+                            Listacomun.Add(oListaComun);
+                        }
+                        table = HandlingItextSharp.GenerateTableFromList(Listacomun, columnWidths, include, fontColumnValue);
+                        cell = new PdfPCell(table);
+                        cells.Add(cell);
+                   
+                }
                 columnWidths = new float[] { 100f };
             }
             else
@@ -262,7 +265,6 @@ namespace NetPdf
                 cells.Add(new PdfPCell(new Phrase("NO SE HAN REGISTRADO DATOS.", fontColumnValue)));
                 columnWidths = new float[] { 100 };
             }
-
 
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, null);
             document.Add(table);

@@ -686,7 +686,8 @@ namespace NetPdf
                     new PdfPCell(new Phrase("ESPECIFICACIONES", fontColumnValueBold)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 13, BackgroundColor = BaseColor.GRAY },       
 
                 };
-                columnWidths = new float[] { 20.6f, 40.6f }; filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                columnWidths = new float[] { 20.6f, 40.6f }; 
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                 document.Add(filiationWorker);
                 cells = new List<PdfPCell>();
 
