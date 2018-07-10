@@ -6177,7 +6177,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_IdService = a.v_ServiceId,
                                      v_OrganitationName = oc.v_Name,
                                      i_NumberLivingChildren = b.i_NumberLivingChildren,
-                                     
+                                     FechaCaducidad = a.d_GlobalExpirationDate,
                                      //
                                      Genero = c.v_Value1,
                                      i_SexTypeId = b.i_SexTypeId,
@@ -6230,6 +6230,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_OrganitationName = a.v_OrganitationName,
                                   i_NumberLivingChildren = a.i_NumberLivingChildren,
                                   v_CentroEducativo = a.v_CentroEducativo,
+                                  FechaCaducidad = a.FechaCaducidad,
                                   //
                                   Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,
