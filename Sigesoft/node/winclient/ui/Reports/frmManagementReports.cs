@@ -1845,20 +1845,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
                 }
 
-                string rutaDeclaracionJurada = Common.Utils.GetApplicationConfigValue("DeclaracionJurada");
-                List<string> filesConsentimientos = Directory.GetFiles(rutaDeclaracionJurada, "*.pdf").ToList();
+                //string rutaDeclaracionJurada = Common.Utils.GetApplicationConfigValue("DeclaracionJurada");
+                //List<string> filesConsentimientos = Directory.GetFiles(rutaDeclaracionJurada, "*.pdf").ToList();
 
 
-                var resultadoConsentimiento = filesConsentimientos.Find(p => p == rutaDeclaracionJurada + serviceId + "-DJ.pdf");
-                if (resultadoConsentimiento != null)
-                {
-                    _filesNameToMerge.Add(rutaDeclaracionJurada + _serviceId + "-DJ.pdf");
-                }
-                var x = _filesNameToMerge.ToList();
-                _mergeExPDF.FilesName = x;
-                _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf"; ;
-                _mergeExPDF.DestinationFile = ruta + _serviceId + ".pdf"; ;
-                _mergeExPDF.Execute();
+                //var resultadoConsentimiento = filesConsentimientos.Find(p => p == rutaDeclaracionJurada + serviceId + "-DJ.pdf");
+                //if (resultadoConsentimiento != null)
+                //{
+                //    _filesNameToMerge.Add(rutaDeclaracionJurada + _serviceId + "-DJ.pdf");
+                //}
+                //var x = _filesNameToMerge.ToList();
+                //_mergeExPDF.FilesName = x;
+                //_mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf"; ;
+                //_mergeExPDF.DestinationFile = ruta + _serviceId + ".pdf"; ;
+                //_mergeExPDF.Execute();
 
                 #endregion
             }

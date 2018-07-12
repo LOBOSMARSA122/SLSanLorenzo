@@ -781,7 +781,7 @@
             this.tpUsuariosExternos.Location = new System.Drawing.Point(4, 22);
             this.tpUsuariosExternos.Name = "tpUsuariosExternos";
             this.tpUsuariosExternos.Padding = new System.Windows.Forms.Padding(3);
-            this.tpUsuariosExternos.Size = new System.Drawing.Size(934, 191);
+            this.tpUsuariosExternos.Size = new System.Drawing.Size(938, 416);
             this.tpUsuariosExternos.TabIndex = 1;
             this.tpUsuariosExternos.Text = "Usuarios Externos";
             this.tpUsuariosExternos.UseVisualStyleBackColor = true;
@@ -791,7 +791,7 @@
             this.btnAddUserExternal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddUserExternal.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_add;
             this.btnAddUserExternal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddUserExternal.Location = new System.Drawing.Point(661, 199);
+            this.btnAddUserExternal.Location = new System.Drawing.Point(632, 385);
             this.btnAddUserExternal.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddUserExternal.Name = "btnAddUserExternal";
             this.btnAddUserExternal.Size = new System.Drawing.Size(167, 26);
@@ -807,7 +807,7 @@
             this.btnDelete.Enabled = false;
             this.btnDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnDelete.Image")));
             this.btnDelete.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDelete.Location = new System.Drawing.Point(832, 29);
+            this.btnDelete.Location = new System.Drawing.Point(803, 155);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(2);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(88, 24);
@@ -823,7 +823,7 @@
             this.btnEdit.Enabled = false;
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(832, 1);
+            this.btnEdit.Location = new System.Drawing.Point(803, 127);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(2);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(88, 24);
@@ -838,7 +838,7 @@
             this.BtnNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnNew.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
             this.BtnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnNew.Location = new System.Drawing.Point(832, -27);
+            this.BtnNew.Location = new System.Drawing.Point(803, 99);
             this.BtnNew.Margin = new System.Windows.Forms.Padding(2);
             this.BtnNew.Name = "BtnNew";
             this.BtnNew.Size = new System.Drawing.Size(88, 24);
@@ -964,7 +964,7 @@
             this.grdExternalUser.Location = new System.Drawing.Point(17, 77);
             this.grdExternalUser.Margin = new System.Windows.Forms.Padding(2);
             this.grdExternalUser.Name = "grdExternalUser";
-            this.grdExternalUser.Size = new System.Drawing.Size(782, 197);
+            this.grdExternalUser.Size = new System.Drawing.Size(782, 295);
             this.grdExternalUser.TabIndex = 47;
             this.grdExternalUser.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdExternalUser_AfterSelectChange);
             // 
