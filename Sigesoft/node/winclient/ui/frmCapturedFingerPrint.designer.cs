@@ -227,7 +227,7 @@
             // imgInfo
             // 
             this.imgInfo.Image = global::Sigesoft.Node.WinClient.UI.Resources.information;
-            this.imgInfo.Location = new System.Drawing.Point(17, 284);
+            this.imgInfo.Location = new System.Drawing.Point(39, 284);
             this.imgInfo.Name = "imgInfo";
             this.imgInfo.Size = new System.Drawing.Size(17, 16);
             this.imgInfo.TabIndex = 41;
@@ -249,7 +249,7 @@
             // imgNO
             // 
             this.imgNO.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
-            this.imgNO.Location = new System.Drawing.Point(16, 284);
+            this.imgNO.Location = new System.Drawing.Point(28, 295);
             this.imgNO.Name = "imgNO";
             this.imgNO.Size = new System.Drawing.Size(17, 16);
             this.imgNO.TabIndex = 20;
