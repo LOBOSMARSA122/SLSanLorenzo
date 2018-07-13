@@ -501,6 +501,14 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                     {
                         rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgPSICOOrigen").ToString());
                     }
+                    else if (Consultorio == "OFTALMOLOGÍA")
+                    {
+                        rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgOftalmoOrigen").ToString());
+                    }
+                    else if (Consultorio == "MEDICINA")
+                    {
+                        rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgMedicinaOrigen").ToString());
+                    }
                     if (rutaOrigen == null)
                     {
                         MessageBox.Show("No se ha configurado una ruta para subir el archivo.", "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
