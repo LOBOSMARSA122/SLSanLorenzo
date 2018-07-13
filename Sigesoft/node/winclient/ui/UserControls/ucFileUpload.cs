@@ -103,7 +103,7 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
         public ucFileUpload()
         {
             InitializeComponent();          
-        }   
+        }
 
         private void LoadDataGridView()
         {
@@ -333,40 +333,136 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 
         private void btnDescargar_Click(object sender, EventArgs e)
         {
-            OperationResult operationResult = new OperationResult();
-            var multimediaFile = _multimediaFileBL.GetMultimediaFileById(ref operationResult, _multimediaFileId);
+            //OperationResult operationResult = new OperationResult();
+            //var multimediaFile = _multimediaFileBL.GetMultimediaFileById(ref operationResult, _multimediaFileId);
 
-            // Analizar el resultado de la operación
-            if (operationResult.Success != 1)
-            {
-                MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            //// Analizar el resultado de la operación
+            //if (operationResult.Success != 1)
+            //{
+            //    MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
 
-            #region Download file
-            // 
+            //#region Download file
+            //// 
 
-            string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            //string mdoc = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
-            using (SaveFileDialog sfd = new SaveFileDialog())
-            {
+            //using (SaveFileDialog sfd = new SaveFileDialog())
+            //{
 
-                string Fecha = multimediaFile.FechaServicio.Value.Day.ToString().PadLeft(2, '0') + multimediaFile.FechaServicio.Value.Month.ToString().PadLeft(2, '0') + multimediaFile.FechaServicio.Value.Year.ToString();
+            //    string Fecha = multimediaFile.Fecha.Value.Day.ToString().PadLeft(2, '0') + multimediaFile.Fecha.Value.Month.ToString().PadLeft(2, '0') + multimediaFile.Fecha.Value.Year.ToString();
 
-                //Obtener la extensión del archivo
-                string Ext = multimediaFile.FileName.Substring( multimediaFile.FileName.Length -3 ,3);
+            //    //Obtener la extensión del archivo
+            //    string Ext = multimediaFile.FileName.Substring( multimediaFile.FileName.Length -3 ,3);
                           
-                sfd.Title = multimediaFile.dni + "-" + Fecha + "-" + multimediaFile.FileName + "." + Ext;
-                sfd.FileName = mdoc +"\\"+ sfd.Title; 
+            //    sfd.Title = multimediaFile.dni + "-" + Fecha + "-" + multimediaFile.FileName + "." + Ext;
+            //    sfd.FileName = mdoc +"\\"+ sfd.Title; 
                                
-                    string path = sfd.FileName;
-                    File.WriteAllBytes(path, multimediaFile.ByteArrayFile);
+            //        string path = sfd.FileName;
+            //        File.WriteAllBytes(path, multimediaFile.ByteArrayFile);
 
-                    MessageBox.Show("El archivo se grabó correctamente en la carpeta MIS DOCUMENTOS.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //        MessageBox.Show("El archivo se grabó correctamente en la carpeta MIS DOCUMENTOS.", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+            //}
+
+            //#endregion
+
+            DirectoryInfo rutaOrigen = null;
+            string rutaDestino = null;
+            DateTime FechaServicio = DateTime.Parse(Fecha);
+            string Fecha1 = FechaServicio.Day.ToString().PadLeft(2, '0') + FechaServicio.Month.ToString().PadLeft(2, '0') + FechaServicio.Year;
+            
+            if (Consultorio == "RAYOS X")
+            {
+                rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgRxOrigen").ToString());
+                rutaDestino = Common.Utils.GetApplicationConfigValue("ImgRxDestino").ToString() + Dni + "-" + Fecha1;
+
+
+                FileInfo[] files = rutaOrigen.GetFiles();
+                int Contador = 1;
+                foreach (FileInfo file in files)
+                {
+                    if (file.ToString().Count() > 16)
+                    {
+                        if (file.ToString().Substring(0, 17) == Dni + "-" + Fecha1)
+                        {
+                            string ext = Path.GetExtension(file.ToString());
+                            file.CopyTo(rutaDestino + "-" + Contador + ext);
+                            Contador++;
+                        };
+                    }
+                }
+            }
+            else if (Consultorio == "ELECTROCARDIOGRAMA")
+            {
+                rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgEKGOrigen").ToString());
+                rutaDestino = Common.Utils.GetApplicationConfigValue("ImgEKGDestino").ToString() + Dni + "-" + Fecha1;
+
+
+                FileInfo[] files = rutaOrigen.GetFiles();
+                int Contador = 1;
+                foreach (FileInfo file in files)
+                {
+                    if (file.ToString().Count() > 16)
+                    {
+                        if (file.ToString().Substring(0, 17) == Dni + "-" + Fecha1)
+                        {
+                            string ext = Path.GetExtension(file.ToString());
+                            file.CopyTo(rutaDestino + "-" + Contador + ext);
+                            Contador++;
+                        };
+                    }
+                }
+            }
+            else if (Consultorio == "ESPIROMETRÍA")
+            {
+                rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgESPIROOrigen").ToString());
+                rutaDestino = Common.Utils.GetApplicationConfigValue("ImgESPIDestino").ToString() + Dni + "-" + Fecha1;
+
+
+                FileInfo[] files = rutaOrigen.GetFiles();
+                int Contador = 1;
+                foreach (FileInfo file in files)
+                {
+                    if (file.ToString().Count() > 16)
+                    {
+                        if (file.ToString().Substring(0, 17) == Dni + "-" + Fecha1)
+                        {
+                            string ext = Path.GetExtension(file.ToString());
+                            file.CopyTo(rutaDestino + "-" + Contador + ext);
+                            Contador++;
+                        };
+                    }
+                }
             }
 
-            #endregion
+            else if (Consultorio == "LABORATORIO")
+            {
+                rutaOrigen = new DirectoryInfo(Common.Utils.GetApplicationConfigValue("ImgLABOrigen").ToString());
+                rutaDestino = Common.Utils.GetApplicationConfigValue("ImgLABDestino").ToString() + Dni + "-" + Fecha1;
+
+
+                FileInfo[] files = rutaOrigen.GetFiles();
+                int Contador = 1;
+                foreach (FileInfo file in files)
+                {
+                    if (file.ToString().Count() > 16)
+                    {
+                        if (file.ToString().Substring(0, 17) == Dni + "-" + Fecha1)
+                        {
+                            string ext = Path.GetExtension(file.ToString());
+                            file.CopyTo(rutaDestino + "-" + Contador + ext);
+                            Contador++;
+                        };
+                    }
+                }
+            }
+
+
+
+            MessageBox.Show("Los archivos se copiaron correctamente en la siguiente ruta: " + Common.Utils.GetApplicationConfigValue("ImgRxDestino").ToString());
+
 
         }
 
