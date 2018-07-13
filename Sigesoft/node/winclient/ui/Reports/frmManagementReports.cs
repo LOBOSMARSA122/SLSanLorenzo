@@ -112,6 +112,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 51, v_ComponentName = "INFORME ESPIROMETRIA", v_ComponentId = Constants.INFORME_ESPIROMETRIA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 51, v_ComponentName = "APTITUD YANACOCHA", v_ComponentId = Constants.APTITUD_YANACOCHA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 58, v_ComponentName = "INFORME MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.INFORME_MEDICO_OCUPACIONAL_COSAPI });
+                serviceComponents.Add(new ServiceComponentList { Orden = 58, v_ComponentName = "CERTIFICADO DE APTITUD MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.CERTIFICADO_APTITUD_MEDICO });
 
 
                 var ResultadoAnexo312 = serviceComponents.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
@@ -1276,6 +1277,25 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 RecoNeuro, RecoAltEst, RecoActFis, RecoCustNor, RecoAlt7D, RecoExaFis, RecoExaFis7C, RecoOsteoMus1, RecoTamDer, RecoOdon,
                 RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud);
         }
+        private void GenerateCertificadoAptitudMedicoOcupacional_Cosapi(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+         
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+
+            var Restricciton = _serviceBL.GetRestrictionByServiceId(_serviceId);
+
+            CertificadoAptitudMedico_Cosapi.CreateCertificadoMedicoOcupacional_Cosapi(_DataService,
+                filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
+                datosP,
+                pathFile);
+        }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
         {
@@ -1825,20 +1845,20 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
                 }
 
-                string rutaDeclaracionJurada = Common.Utils.GetApplicationConfigValue("DeclaracionJurada");
-                List<string> filesConsentimientos = Directory.GetFiles(rutaDeclaracionJurada, "*.pdf").ToList();
+                //string rutaDeclaracionJurada = Common.Utils.GetApplicationConfigValue("DeclaracionJurada");
+                //List<string> filesConsentimientos = Directory.GetFiles(rutaDeclaracionJurada, "*.pdf").ToList();
 
 
-                var resultadoConsentimiento = filesConsentimientos.Find(p => p == rutaDeclaracionJurada + serviceId + "-DJ.pdf");
-                if (resultadoConsentimiento != null)
-                {
-                    _filesNameToMerge.Add(rutaDeclaracionJurada + _serviceId + "-DJ.pdf");
-                }
-                var x = _filesNameToMerge.ToList();
-                _mergeExPDF.FilesName = x;
-                _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf"; ;
-                _mergeExPDF.DestinationFile = ruta + _serviceId + ".pdf"; ;
-                _mergeExPDF.Execute();
+                //var resultadoConsentimiento = filesConsentimientos.Find(p => p == rutaDeclaracionJurada + serviceId + "-DJ.pdf");
+                //if (resultadoConsentimiento != null)
+                //{
+                //    _filesNameToMerge.Add(rutaDeclaracionJurada + _serviceId + "-DJ.pdf");
+                //}
+                //var x = _filesNameToMerge.ToList();
+                //_mergeExPDF.FilesName = x;
+                //_mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf"; ;
+                //_mergeExPDF.DestinationFile = ruta + _serviceId + ".pdf"; ;
+                //_mergeExPDF.Execute();
 
                 #endregion
             }
@@ -4380,6 +4400,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.INFORME_MEDICO_OCUPACIONAL_COSAPI:
                     GenerateInformeMedicoOcupacional_Cosapi(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_MEDICO_OCUPACIONAL_COSAPI)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.CERTIFICADO_APTITUD_MEDICO:
+                    GenerateCertificadoAptitudMedicoOcupacional_Cosapi(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERTIFICADO_APTITUD_MEDICO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///
