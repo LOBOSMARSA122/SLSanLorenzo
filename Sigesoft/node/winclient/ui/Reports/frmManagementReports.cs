@@ -1226,6 +1226,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             INFORME_SAS_REPORT.CreateReportSAS(filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
         }
 
+        private void GenerateCertificadoPsicosensometricoDatos(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
+
         private void GenerateCertificadoSuficienciaMedicaTC(string pathFile)
         {
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -4403,6 +4413,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.FICHA_SAS_ID:
                     GenerateInformeSAS(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FICHA_SAS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+
+                case Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID:
+                    GenerateCertificadoPsicosensometricoDatos(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
 

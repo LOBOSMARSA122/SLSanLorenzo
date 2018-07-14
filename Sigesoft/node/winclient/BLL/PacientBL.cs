@@ -6178,6 +6178,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_OrganitationName = oc.v_Name,
                                      i_NumberLivingChildren = b.i_NumberLivingChildren,
                                      FechaCaducidad = a.d_GlobalExpirationDate,
+                                     
                                      //
                                      Genero = c.v_Value1,
                                      i_SexTypeId = b.i_SexTypeId,
