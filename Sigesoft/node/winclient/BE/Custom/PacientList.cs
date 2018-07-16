@@ -233,6 +233,8 @@ namespace Sigesoft.Node.WinClient.BE
         public byte[] b_FirmaAuditor { get; set; }
 
         public DateTime? FechaCaducidad { get; set; }
+        public DateTime? FechaActualizacion { get; set; }
+        public string N_Informe { get; set; }
 
     }
 }

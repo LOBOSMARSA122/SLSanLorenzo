@@ -6131,6 +6131,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                                  equals new { a = Q.i_ParameterId, b = Q.i_GroupId } into Q_join
                                  from Q in Q_join.DefaultIfEmpty()
 
+                                 join r in dbContext.servicecomponent on a.v_ServiceId equals r.v_ServiceId
+
                                  // Empresa / Sede Cliente ******************************************************
                                  join oc in dbContext.organization on new { a = d.v_CustomerOrganizationId }
                                          equals new { a = oc.v_OrganizationId } into oc_join
@@ -6178,6 +6180,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_OrganitationName = oc.v_Name,
                                      i_NumberLivingChildren = b.i_NumberLivingChildren,
                                      FechaCaducidad = a.d_GlobalExpirationDate,
+                                     FechaActualizacion = a.d_UpdateDate,
+                                     N_Informe = r.v_ServiceComponentId,
                                      
                                      //
                                      Genero = c.v_Value1,
@@ -6232,6 +6236,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                   i_NumberLivingChildren = a.i_NumberLivingChildren,
                                   v_CentroEducativo = a.v_CentroEducativo,
                                   FechaCaducidad = a.FechaCaducidad,
+                                  FechaActualizacion=a.FechaActualizacion,
+                                  N_Informe = a.N_Informe,
                                   //
                                   Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,

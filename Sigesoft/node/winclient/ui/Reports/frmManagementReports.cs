@@ -1228,12 +1228,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateCertificadoPsicosensometricoDatos(string pathFile)
         {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
-            Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
+            Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(_DataService,filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
         }
 
         private void GenerateCertificadoSuficienciaMedicaTC(string pathFile)
