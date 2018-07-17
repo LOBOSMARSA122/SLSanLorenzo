@@ -787,13 +787,21 @@
             this.cbOficina.FormattingEnabled = true;
             this.cbOficina.Items.AddRange(new object[] {
             "  ",
-            "PRIMER PISO",
-            "SEGUNDO PISO",
-            "TERCER PISO",
-            "CUARTO PISO"});
-            this.cbOficina.Location = new System.Drawing.Point(314, 298);
+            "Oficina 101, Primer Piso",
+            "Oficina 102, Primer Piso",
+            "Oficina 103, Primer Piso",
+            "Oficina 201, Segundo Piso",
+            "Oficina 202, Segundo Piso",
+            "Oficina 203, Segundo Piso",
+            "Oficina 301, Tercer Piso",
+            "Oficina 302, Tercer Piso",
+            "Oficina 303, Tercer Piso",
+            "Oficina 401, Cuarto Piso",
+            "Oficina 402, Cuarto Piso",
+            "Oficina 403, Cuarto Piso"});
+            this.cbOficina.Location = new System.Drawing.Point(247, 298);
             this.cbOficina.Name = "cbOficina";
-            this.cbOficina.Size = new System.Drawing.Size(121, 21);
+            this.cbOficina.Size = new System.Drawing.Size(188, 21);
             this.cbOficina.TabIndex = 94;
             // 
             // label12
@@ -802,11 +810,11 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label12.Location = new System.Drawing.Point(239, 304);
+            this.label12.Location = new System.Drawing.Point(123, 304);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 15);
+            this.label12.Size = new System.Drawing.Size(118, 15);
             this.label12.TabIndex = 93;
-            this.label12.Text = "Consultorio";
+            this.label12.Text = "Nro de Piso / Oficina";
             // 
             // chkVerificarHuellaDigital
             // 
