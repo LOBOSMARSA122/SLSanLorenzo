@@ -1701,17 +1701,36 @@ namespace Sigesoft.Common
 
         #region ATENCIÓN  INTEGRAL
         public const string ATENCION_INTEGRAL_ID = "N009-ME000000405";
+
+        public const string ATENCION_INTEGRAL_SIGNOS_SINTOMAS = "N009-MF000002938";
+        public const string ATENCION_INTEGRAL_ENFERMEDAD_ACTUAL = "N009-MF000003421";
         public const string ATENCION_INTEGRAL_TIEMPO_EMF = "N009-MF000002939";
-        public const string ATENCION_INTEGRAL_SUEÑO = "N009-MF000002942";
-        public const string ATENCION_INTEGRAL_SED = "N009-MF000002941";
-        public const string ATENCION_INTEGRAL_PROX_CITA = "N009-MF000003236";
-        public const string ATENCION_INTEGRAL_ORINA = "N009-MF000002944";
-        public const string ATENCION_INTEGRAL_OBSERVACIONES = "N009-MF000003237";
-        public const string ATENCION_INTEGRAL_MOT_CONSULTA = "N009-MF000002938";
-        public const string ATENCION_INTEGRAL_EXAM_FISICO = "N009-MF000002946";
-        public const string ATENCION_INTEGRAL_EST_ANIMO = "N009-MF000002943";
-        public const string ATENCION_INTEGRAL_DEPOSICIONES = "N009-MF000002945";
+
+        public const string ATENCION_INTEGRAL_RELATO_PATOLOGICO_DESC = "N009-MF000003422";
+
         public const string ATENCION_INTEGRAL_APETITO = "N009-MF000002940";
+        public const string ATENCION_INTEGRAL_SED = "N009-MF000002941";
+        public const string ATENCION_INTEGRAL_SUEÑO = "N009-MF000002942";
+        public const string ATENCION_INTEGRAL_EST_ANIMO = "N009-MF000002943";
+        public const string ATENCION_INTEGRAL_ORINA = "N009-MF000002944";
+        public const string ATENCION_INTEGRAL_DEPOSICIONES = "N009-MF000002945";
+
+        public const string ATENCION_INTEGRAL_PIEL_FANERAS_TEJIDO_SUBCUTANEO = "N009-MF000002946";
+        public const string ATENCION_INTEGRAL_PIEL_APARATO_RESPIRATORIO = "N009-MF000003423";
+        public const string ATENCION_INTEGRAL_PIEL_APARATO_CARDIOVASCULAR = "N009-MF000003424";
+        public const string ATENCION_INTEGRAL_PIEL_ABDOMEN = "N009-MF000003425";
+        public const string ATENCION_INTEGRAL_PIEL_APARATO_GENITOURINARIO = "N009-MF000003426";
+        public const string ATENCION_INTEGRAL_PIEL_SISTEMA_NERVIOSO = "N009-MF000003427";
+        public const string ATENCION_INTEGRAL_PIEL_OSTEMUSCULAR = "N009-MF000003428";
+
+        public const string ATENCION_INTEGRAL_PROX_CITA = "N009-MF000003236";
+        
+        public const string ATENCION_INTEGRAL_OBSERVACIONES = "N009-MF000003237";
+        
+        
+        
+        
+        
         #endregion
         
         #region NIÑO
