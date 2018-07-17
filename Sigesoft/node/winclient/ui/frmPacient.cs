@@ -1004,7 +1004,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_BloodFactorId = Convert.ToInt32(ddlBloodFactorId.SelectedValue);
 
                     objpersonDto.v_NroPoliza = txtNroPliza.Text;
-                    objpersonDto.v_Deducible = Convert.ToDecimal(txtDecucible.Text);
+                    objpersonDto.v_Deducible = txtDecucible.Text == string.Empty ? (decimal?)null : Convert.ToDecimal(txtDecucible.Text);
 
                     objpersonDto.b_FingerPrintTemplate = FingerPrintTemplate;
                     objpersonDto.b_FingerPrintImage = FingerPrintImage;
@@ -1071,7 +1071,7 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_BloodGroupId = Convert.ToInt32(ddlBloodGroupId.SelectedValue);
                     objpersonDto.i_BloodFactorId = Convert.ToInt32(ddlBloodFactorId.SelectedValue);
                     objpersonDto.v_NroPoliza = txtNroPliza.Text;
-                    objpersonDto.v_Deducible = Convert.ToDecimal(txtDecucible.Text);
+                    objpersonDto.v_Deducible = txtDecucible.Text == string.Empty ? (decimal?)null : Convert.ToDecimal(txtDecucible.Text);
                     objpersonDto.i_DepartmentId = Convert.ToInt32(ddlDepartamentId.SelectedValue);
                     objpersonDto.i_ProvinceId = Convert.ToInt32(ddlProvinceId.SelectedValue);
                     objpersonDto.i_DistrictId = Convert.ToInt32(ddlDistricId.SelectedValue);

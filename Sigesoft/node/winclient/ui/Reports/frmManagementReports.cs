@@ -1237,6 +1237,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(_DataService,filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
         }
 
+        private void GenerateExamenSuficienciaMedicaOperadores(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.CreateExamenSuficienciaMedicaOperadores(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
+
         private void GenerateCertificadoSuficienciaMedicaTC(string pathFile)
         {
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -4421,7 +4432,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateCertificadoPsicosensometricoDatos(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
-
+                case Constants.EXAMEN_SUF_MED__OPERADORES_ID:
+                    GenerateExamenSuficienciaMedicaOperadores(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXAMEN_SUF_MED__OPERADORES_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
                 case Constants.INFORME_MEDICO_OCUPACIONAL_COSAPI:
                     GenerateInformeMedicoOcupacional_Cosapi(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_MEDICO_OCUPACIONAL_COSAPI)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));

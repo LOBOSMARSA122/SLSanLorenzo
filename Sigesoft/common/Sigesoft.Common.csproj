@@ -97,6 +97,7 @@
     <Compile Include="CustomDtos\KeyValueDTO.cs" />
     <Compile Include="CustomDtos\OperationResult.cs" />
     <Compile Include="ExamenesEspecialesReport.cs" />
+    <Compile Include="EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.cs" />
     <Compile Include="FichaMedicaOcupacional312.cs" />
     <Compile Include="FichaMedicaOcupacional312_CI.cs" />
     <Compile Include="HandlingItextSharp.cs" />
