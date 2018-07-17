@@ -151,7 +151,8 @@ namespace Sigesoft.Node.WinClient.BLL
                             {
                                 Id = x.i_ParameterId.ToString(),
                                 Value1 = x.v_Value1,
-                                Value2 = x.v_Value2
+                                Value2 = x.v_Value2,
+                                Field = x.v_Field
                             }).ToList();
 
                 pobjOperationResult.Success = 1;
