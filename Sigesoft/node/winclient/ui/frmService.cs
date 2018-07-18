@@ -2748,6 +2748,11 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
         //void ProcesoSErvicio()
         //{
         //    MigracionBL oMigracionBL = new MigracionBL();
