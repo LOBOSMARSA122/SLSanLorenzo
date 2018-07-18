@@ -1299,6 +1299,12 @@
     <Compile Include="History\frmRuidoPopup.designer.cs">
       <DependentUpon>frmRuidoPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hospitalizacion\frmHospitalizados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmHospitalizados.Designer.cs">
+      <DependentUpon>frmHospitalizados.cs</DependentUpon>
+    </Compile>
     <Compile Include="MensajeAlerta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3469,6 +3475,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="History\frmRuidoPopup.resx">
       <DependentUpon>frmRuidoPopup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hospitalizacion\frmHospitalizados.resx">
+      <DependentUpon>frmHospitalizados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MensajeAlerta.resx">
       <DependentUpon>MensajeAlerta.cs</DependentUpon>
@@ -6466,7 +6475,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

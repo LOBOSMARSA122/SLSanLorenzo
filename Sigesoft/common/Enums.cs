@@ -547,6 +547,16 @@ namespace Sigesoft.Common
         Psicologia = 7,
         Triaje = 10,
         ExamenFisico = 11,
+        Inmunizaciones = 113,
+        Oftalmología = 14,
+
+        Audiometria = 15,
+        Espiromertia = 16,
+        RXLumbar = 18,
+
+        RiesgoActividadCritica = 19,
+        Labclinica = 20,
+        Clinica = 21,
     }
 
     public enum PeligrosEnElPuesto

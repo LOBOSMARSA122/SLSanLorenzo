@@ -90,6 +90,44 @@ namespace Sigesoft.Node.WinClient.UI
             // Verificar si un componente está en la categoría
             MedicalExamBL oMedicalExamBL = new MedicalExamBL();
 
+            var ListaCategorias = BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 116, null);
+
+            var examenesprevios = BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 306, null).Find(p => p.Value2 == _categoriaId.ToString());
+
+            if (examenesprevios != null)
+            {
+                var consultorioPrevio = int.Parse(examenesprevios.Field);
+
+                if (consultorioPrevio == -1)
+                {
+                    var examenesNoCulminados = objServiceBL.GetServiceComponentsCulminados(ref objOperationResult, _serviceId);
+                    var exam = examenesNoCulminados.FindAll(p => p.i_CategoryId != _categoriaId);
+                    if (exam.Count != 0)
+                    {
+                        MessageBox.Show(@"Este paciente debe primero CULIMINAR TODOS los examenes anteriores.", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+
+                var listaExamenesProtocolo = objServiceBL.GetServiceComponents(ref objOperationResult, _serviceId).Find(p => p.i_CategoryId == consultorioPrevio);
+
+                if (listaExamenesProtocolo != null)
+                {
+                    var examenesNoCulminados = objServiceBL.GetServiceComponentsCulminados(ref objOperationResult, _serviceId);
+
+                        var result = examenesNoCulminados.Find(p => p.i_CategoryId == consultorioPrevio);
+
+                        if (result != null)
+                        {
+                            MessageBox.Show(@"Este paciente debe primero CULIMINAR  el examen. " + ListaCategorias.Find(p => p.Id == examenesprevios.Field).Value1, "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                }
+
+
+               
+
+            }
 
             //Verificar si el paciente ya ha sido llamado en la BD y no en la temporal
 

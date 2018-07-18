@@ -1838,7 +1838,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_ComponentId = A.v_ComponentId,
 								 v_ComponentName = C.v_Name,
 								 i_ServiceComponentStatusId = A.i_ServiceComponentStatusId.Value,
-								 v_ServiceComponentStatusName = B.v_Value1
+								 v_ServiceComponentStatusName = B.v_Value1,
+                                 i_CategoryId = C.i_CategoryId
 							 }).ToList();
 
 				pobjOperationResult.Success = 1;
@@ -29314,6 +29315,6 @@ namespace Sigesoft.Node.WinClient.BLL
                   return false;
             }
 	    }
-
+        
 	}
 }
