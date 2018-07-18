@@ -103,6 +103,5 @@ namespace Sigesoft.Node.WinClient.BE
        public decimal?  v_Deducible  { get; set; }
        public int? i_NroHermanos { get; set; }
        public String v_Password  { get; set; }
-
     }
 }

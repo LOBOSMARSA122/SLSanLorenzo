@@ -6182,7 +6182,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      FechaCaducidad = a.d_GlobalExpirationDate,
                                      FechaActualizacion = a.d_UpdateDate,
                                      N_Informe = r.v_ServiceComponentId,
-                                     
+                                     v_Religion = b.v_Religion,
                                      //
                                      Genero = c.v_Value1,
                                      i_SexTypeId = b.i_SexTypeId,
@@ -6238,6 +6238,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   FechaCaducidad = a.FechaCaducidad,
                                   FechaActualizacion=a.FechaActualizacion,
                                   N_Informe = a.N_Informe,
+                                  v_Religion=a.v_Religion,
                                   //
                                   Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,

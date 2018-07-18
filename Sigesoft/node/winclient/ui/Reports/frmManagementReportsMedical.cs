@@ -237,7 +237,39 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            AtencionIntegral.CreateAtencionIntegral(pathFile,datosP,MedicalCenter, exams);
+            int GrupoEtario = 0;
+            int Grupo = 0;
+
+            if (_edad <= 12)
+            {
+                GrupoEtario = 4;
+                Grupo = 2824;
+            }
+            else if (13 <= _edad && _edad  <= 17)
+            {
+                GrupoEtario = 2;
+                Grupo = 2822;
+            }
+            else if (18 <= _edad && _edad <= 64)
+            {
+                GrupoEtario = 1;
+                Grupo = 2821;
+            }
+            else
+            {
+                GrupoEtario = 3;
+                Grupo = 2823;
+            }
+            
+            
+            var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
+            var datosNin = _pacientBL.DevolverNinio(_serviceId);
+            var datosAdol = _pacientBL.DevolverAdolescente(_serviceId);
+            var datosAdul = _pacientBL.DevolverAdulto(_serviceId);
+            var listEmb = _pacientBL.GetEmbarazos(_pacientId);
+            var datosAdulMay = _pacientBL.DevolverAdultoMayor(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            AtencionIntegral.CreateAtencionIntegral(pathFile, datosP, listAntecedentes, MedicalCenter, exams, datosNin, datosAdol, datosAdul, listEmb, datosAdulMay, diagnosticRepository);
 
         }
 
