@@ -507,7 +507,7 @@
             this.btnAgregarAdiconal,
             this.btnRemoverEsamen});
             this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(170, 70);
+            this.contextMenuStrip2.Size = new System.Drawing.Size(170, 48);
             this.contextMenuStrip2.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip2_Opening);
             // 
             // btnAgregarAdiconal
@@ -787,8 +787,10 @@
             this.cbOficina.FormattingEnabled = true;
             this.cbOficina.Items.AddRange(new object[] {
             "  ",
-            "CONSULTORIO 1",
-            "CONSULTORIO 2"});
+            "PRIMER PISO",
+            "SEGUNDO PISO",
+            "TERCER PISO",
+            "CUARTO PISO"});
             this.cbOficina.Location = new System.Drawing.Point(314, 298);
             this.cbOficina.Name = "cbOficina";
             this.cbOficina.Size = new System.Drawing.Size(121, 21);
