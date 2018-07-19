@@ -799,9 +799,9 @@
             "Oficina 401, Cuarto Piso",
             "Oficina 402, Cuarto Piso",
             "Oficina 403, Cuarto Piso"});
-            this.cbOficina.Location = new System.Drawing.Point(247, 298);
+            this.cbOficina.Location = new System.Drawing.Point(277, 298);
             this.cbOficina.Name = "cbOficina";
-            this.cbOficina.Size = new System.Drawing.Size(188, 21);
+            this.cbOficina.Size = new System.Drawing.Size(158, 21);
             this.cbOficina.TabIndex = 94;
             // 
             // label12
@@ -810,11 +810,11 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.MediumBlue;
-            this.label12.Location = new System.Drawing.Point(123, 304);
+            this.label12.Location = new System.Drawing.Point(153, 304);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(118, 15);
             this.label12.TabIndex = 93;
-            this.label12.Text = "Nro de Piso / Oficina";
+            this.label12.Text = "Oficina / Nro de Piso";
             // 
             // chkVerificarHuellaDigital
             // 
