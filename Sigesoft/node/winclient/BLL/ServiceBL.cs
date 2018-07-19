@@ -3736,6 +3736,23 @@ namespace Sigesoft.Node.WinClient.BLL
 			return string.Join(", ", qry.Select(p => p.v_RecommendationName));
 		}
 
+        public string ConcatenateRecommendationByServicePalote(string pstrServiceId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var qry = (from a in dbContext.recommendation  // RECOMENDACIONES
+                       join eee in dbContext.masterrecommendationrestricction on a.v_MasterRecommendationId equals eee.v_MasterRecommendationRestricctionId
+                       join b in dbContext.diagnosticrepository on a.v_DiagnosticRepositoryId equals b.v_DiagnosticRepositoryId
+                       where a.v_ServiceId == pstrServiceId &&
+                       a.i_IsDeleted == 0 && eee.i_TypifyingId == (int)Typifying.Recomendaciones && b.i_FinalQualificationId != (int)FinalQualification.Descartado
+                       select new
+                       {
+                           v_RecommendationName = eee.v_Name
+                       }).ToList().Distinct();
+
+            return string.Join("|", qry.Select(p => p.v_RecommendationName));
+        }
+
 		private string ConcatenateRecommendationByServiceDifNormal(string pstrServiceId)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -3811,6 +3828,24 @@ namespace Sigesoft.Node.WinClient.BLL
 			return string.Join(", ", qry.Select(p => p.v_Recomendation));
 		}
 
+        private string ConcatenateRecomendacionesConcatecDx_(string pstrDiagnosticRepositoryId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var qry = (from a in dbContext.diagnosticrepository
+                       join b in dbContext.recommendation on a.v_DiagnosticRepositoryId equals b.v_DiagnosticRepositoryId
+                       join c in dbContext.masterrecommendationrestricction on b.v_MasterRecommendationId equals c.v_MasterRecommendationRestricctionId
+                       //join d in dbContext.diseases on a.v_DiseasesId equals d.v_DiseasesId
+                       where a.v_DiagnosticRepositoryId == pstrDiagnosticRepositoryId &&
+                       a.i_IsDeleted == 0
+                       && c.i_TypifyingId == (int)Typifying.Recomendaciones && b.i_IsDeleted == 0
+                       select new
+                       {
+                           v_Recomendation = c.v_Name
+                       }).ToList();
+
+            return string.Join(", ", qry.Select(p => p.v_Recomendation));
+        }
 
 		public bool AddServiceComponentValues_AMC_REVISAR(ref OperationResult pobjOperationResult, List<ServiceComponentFieldsList> pobjServicecomponentfields, List<string> ClientSession, string pstrPersonId, string pServiceComponentId)
 		{
@@ -12665,7 +12700,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 i_IsDeleted = a.i_IsDeleted,
 							 i_EsoTypeId = a.i_EsoTypeId_Old.ToString(),
 							 v_EsoTypeName = a.v_EsoTypeName,
-							 v_OrganizationName = string.Format("{0} - {1}", a.v_OrganizationPartialName, a.v_LocationName),
+							 v_OrganizationName = string.Format("{0}", a.v_OrganizationPartialName),//loco aca se concatena, solo quita el 1 y el nombre
 							 v_PersonName = string.Format("{0} {1}, {2}", a.v_FirstLastName, a.v_SecondLastName, a.v_FirstName),
 							 v_DocNumber = a.v_DocNumber,
 							 i_Age = a.d_BirthDate == null ? (int?)null : DateTime.Today.AddTicks(-a.d_BirthDate.Value.Ticks).Year - 1,
@@ -12673,7 +12708,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 v_DiseasesName = a.v_DiseasesName == "RECOMENDACIONES" ? "" : a.v_DiseasesName,
                              v_Cie10 = a.v_Cie10,
                              v_DiseasesNameCie10 = string.Format("{0}   {1}", a.v_Cie10, a.v_DiseasesName),
-							 v_RecomendationsName = ConcatenateRecommendationByService(pstrServiceId),
+                             v_RecomendationsName = ConcatenateRecomendacionesConcatecDx_(a.v_DiagnosticRepositoryId),
 							 v_RestrictionsName = ConcatenateRestrictionConcatecDx(a.v_DiagnosticRepositoryId),
 							 //v_RecomendacionesConcatenadasDx = ConcatenateRecommendationByService(a.v_DiagnosticRepositoryId),
 							 v_AptitudeStatusName = a.v_AptitudeStatusName,
