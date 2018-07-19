@@ -237,6 +237,47 @@ namespace Sigesoft.Node.Contasol.Integration
                 return null;
             }
         }
+        
+        List<DiagnosticRepositoryList> dataToIterate;
+
+        public List<recetadespachoDto> GetReceta(string serviceId)
+        {
+             using (var dbContext = new SigesoftEntitiesModel())
+                {
+                    var medicamentos = MedicamentoDao.ObtenerContasolMedicamentos();
+                    var consulta = (from r in dbContext.receta
+                                    join d in dbContext.diagnosticrepository on r.v_DiagnosticRepositoryId equals d.v_DiagnosticRepositoryId into dJoin
+                                    from d in dJoin.DefaultIfEmpty()
+                                    join s in dbContext.service on d.v_ServiceId equals s.v_ServiceId into sJoin
+                                    from s in sJoin.DefaultIfEmpty()
+                                    
+                                    where s.v_ServiceId.Equals(serviceId)
+                                   
+                                    select new recetadespachoDto
+                                    {
+                                        RecetaId = r.i_IdReceta,
+                                        CantidadRecetada = r.d_Cantidad ?? 0,
+                                        FechaFin = r.t_FechaFin ?? DateTime.Now,
+                                        Duracion = r.v_Duracion,
+                                        Dosis = r.v_Posologia,
+                                        
+                                        Despacho = (r.i_Lleva ?? 0) == 1,
+                                        MedicinaId = r.v_IdProductoDetalle
+                                    }).ToList();
+
+                    foreach (var item in consulta)
+                    {
+                        var prod = medicamentos.FirstOrDefault(p => p.IdProductoDetalle.Equals(item.MedicinaId));
+                        if (prod == null) continue;
+                        item.Medicamento = prod.NombreCompleto;
+                        item.Presentacion = prod.Presentacion;
+                        item.Ubicacion = prod.Ubicacion;
+                    }
+
+                    return consulta;
+                }
+           
+        }
 
         public void UpdateDespacho(ref OperationResult pobjOperationResult, List<recetadespachoDto> data)
         {

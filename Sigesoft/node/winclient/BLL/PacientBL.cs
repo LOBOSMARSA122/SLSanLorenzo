@@ -6267,6 +6267,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                   b_FirmaAuditor = a.b_FirmaAuditor
                               }
                             ).FirstOrDefault();
+
+
                 return result;
             }
             catch (Exception)

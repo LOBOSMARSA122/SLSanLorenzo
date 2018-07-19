@@ -25,14 +25,17 @@ namespace Sigesoft.Node.Contasol.Integration
             _objRecetaBl = new RecetaBl();
             _pobjOperationResult = new OperationResult();
             _listDiagnosticRepositoryLists = ListaDX;
+            
         }
 
         private void GetData(List<DiagnosticRepositoryList> ListaDX)
         {
+           
             try
             {
                 ListaDX.ForEach(l => l.RecipeDetail = new List<recetaDto>());
                 var data = _objRecetaBl.GetHierarchycalData(ref _pobjOperationResult, ListaDX);
+                
                 if (data.Any())
                 {
                     var previousIndex = grdTotalDiagnosticos.ActiveRow != null ? grdTotalDiagnosticos.ActiveRow.Index : 0;
@@ -44,6 +47,18 @@ namespace Sigesoft.Node.Contasol.Integration
             catch (Exception e)
             {
                 MessageBox.Show(e.Message, @"GetData()", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void MedicinaReceta(string serviceId) {
+            var data = _objRecetaBl.GetHierarchycalData(ref _pobjOperationResult, _listDiagnosticRepositoryLists);
+
+            if (data.Any())
+            {
+                var previousIndex = grdTotalDiagnosticos.ActiveRow != null ? grdTotalDiagnosticos.ActiveRow.Index : 0;
+                grdTotalDiagnosticos.DataSource = data;
+                grdTotalDiagnosticos.Rows.Refresh(RefreshRow.ReloadData);
+                grdTotalDiagnosticos.Rows[previousIndex].Activate();
             }
         }
 

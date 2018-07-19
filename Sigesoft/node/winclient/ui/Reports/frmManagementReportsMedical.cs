@@ -1,5 +1,6 @@
 ﻿using NetPdf;
 using Sigesoft.Common;
+using Sigesoft.Node.Contasol.Integration;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
 using System;
@@ -10,6 +11,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Sigesoft.Node.WinClient.UI.Reports
@@ -23,6 +25,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         AtencionIntegralBL atencionIntegralBL = new AtencionIntegralBL();
         ServiceBL _serviceBL = new ServiceBL();
         PacientBL _pacientBL = new PacientBL();
+        RecetaBl objRecetaBl = new RecetaBl();
+        OperationResult _objOperationResult = new OperationResult();
+         List<DiagnosticRepositoryList> _listDiagnosticRepositoryLists;
+
         private MergeExPDF _mergeExPDF = new MergeExPDF();
         private List<string> _filesNameToMerge = new List<string>();
         private string _serviceId;
@@ -32,6 +38,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private string _personFullName;
         string ruta;
         private readonly int _edad;
+
+        
 
         public frmManagementReportsMedical(string serviceId, string pacientId, string customerOrganizationName, string personFullName, string pstrEmpresaCliente, int edad)
         {
@@ -269,7 +277,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var listEmb = _pacientBL.GetEmbarazos(_pacientId);
             var datosAdulMay = _pacientBL.DevolverAdultoMayor(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            AtencionIntegral.CreateAtencionIntegral(pathFile, datosP, listAntecedentes, MedicalCenter, exams, datosNin, datosAdol, datosAdul, listEmb, datosAdulMay, diagnosticRepository);
+
+            var medicina = objRecetaBl.GetReceta(_serviceId);
+
+            AtencionIntegral.CreateAtencionIntegral(pathFile, datosP, listAntecedentes, MedicalCenter, exams, datosNin, datosAdol, datosAdul, listEmb, datosAdulMay, diagnosticRepository, medicina);
 
         }
 
