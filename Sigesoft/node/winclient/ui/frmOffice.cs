@@ -267,29 +267,16 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void mnullamar_Click(object sender, EventArgs e)
         {
-            //ServiceBL objServiceBL = new ServiceBL();
 
-            //var Resultado = objServiceBL.VerificarSiPacienteNoPuedeSerLlamado(grdListaLlamando.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString());
-
-            //if (Resultado != null)
-            //{
-
-            //    MessageBox.Show("El Paciente acaba de ser llamado por otro consultorio. Seleccione a otro paciente", "ADVERTENCIA!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            //    //grdListaLlamando.Enabled = false;
-            //    grdLlamandoPaciente.Enabled = true;
-            //    btnRefresh.Enabled = false;
-
-            //    chkHability.Enabled = true;
-
-            //    btnLlamar.Enabled = false;
-
-            //    btnRefresh_Click(sender, e);
-            //}
-            //else
-            //{
+            if (grdLlamandoPaciente.Rows.Count > 1 && _categoriaId != (int)CategoryTypeExam.Psicologia)
+            {
+                MessageBox.Show("Solo puede llamar a un paciente a la vez", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
                 Llamar();
-            //}
+            }
+                
            
         }
 
@@ -858,7 +845,14 @@ namespace Sigesoft.Node.WinClient.UI
             //}
             //else
             //{
+            if (grdLlamandoPaciente.Rows.Count == 1 && _categoriaId != (int)CategoryTypeExam.Psicologia)
+            {
+                MessageBox.Show("Solo puede llamar a un paciente a la vez", "INFORMACIÓN!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
                 Llamar();
+            }
             //}
         }
 
