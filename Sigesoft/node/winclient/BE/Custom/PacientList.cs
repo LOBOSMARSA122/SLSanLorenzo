@@ -235,6 +235,8 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? FechaCaducidad { get; set; }
         public DateTime? FechaActualizacion { get; set; }
         public string N_Informe { get; set; }
+        public String v_Religion { get; set; }
+
 
     }
 }

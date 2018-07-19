@@ -1716,21 +1716,17 @@ namespace Sigesoft.Common
         public const string ATENCION_INTEGRAL_DEPOSICIONES = "N009-MF000002945";
 
         public const string ATENCION_INTEGRAL_PIEL_FANERAS_TEJIDO_SUBCUTANEO = "N009-MF000002946";
-        public const string ATENCION_INTEGRAL_PIEL_APARATO_RESPIRATORIO = "N009-MF000003423";
-        public const string ATENCION_INTEGRAL_PIEL_APARATO_CARDIOVASCULAR = "N009-MF000003424";
-        public const string ATENCION_INTEGRAL_PIEL_ABDOMEN = "N009-MF000003425";
-        public const string ATENCION_INTEGRAL_PIEL_APARATO_GENITOURINARIO = "N009-MF000003426";
-        public const string ATENCION_INTEGRAL_PIEL_SISTEMA_NERVIOSO = "N009-MF000003427";
-        public const string ATENCION_INTEGRAL_PIEL_OSTEMUSCULAR = "N009-MF000003428";
+        public const string ATENCION_INTEGRAL_APARATO_RESPIRATORIO = "N009-MF000003423";
+        public const string ATENCION_INTEGRAL_APARATO_CARDIOVASCULAR = "N009-MF000003424";
+        public const string ATENCION_INTEGRAL_ABDOMEN = "N009-MF000003425";
+        public const string ATENCION_INTEGRAL_APARATO_GENITOURINARIO = "N009-MF000003426";
+        public const string ATENCION_INTEGRAL_SISTEMA_NERVIOSO = "N009-MF000003427";
+        public const string ATENCION_INTEGRAL_OSTEMUSCULAR = "N009-MF000003428";
 
         public const string ATENCION_INTEGRAL_PROX_CITA = "N009-MF000003236";
         
         public const string ATENCION_INTEGRAL_OBSERVACIONES = "N009-MF000003237";
-        
-        
-        
-        
-        
+
         #endregion
         
         #region NIÑO

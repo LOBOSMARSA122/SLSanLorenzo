@@ -23,7 +23,7 @@ namespace NetPdf
         #region Reporte SAS
         public static void CreateInformeMedicoOcupacional_Cosapi(ServiceList DataService,
             PacientList filiationData,
-             List<DiagnosticRepositoryList> Diagnosticos,
+            List<DiagnosticRepositoryList> Diagnosticos,
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
