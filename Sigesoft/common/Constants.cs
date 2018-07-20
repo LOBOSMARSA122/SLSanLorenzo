@@ -1158,6 +1158,7 @@ namespace Sigesoft.Common
 
         public const string INFORME_MEDICO_OCUPACIONAL_COSAPI = "IMO-COSAPI";
         public const string CERTIFICADO_APTITUD_MEDICO = "CAM-COSAPI";
+
               
         #region FICHA DETECCIÓN S.A.S.
         public const string FICHA_SAS_ID = "N009-ME000000435";
@@ -1247,6 +1248,13 @@ namespace Sigesoft.Common
         public const string FICHA_SUFICIENCIA_MEDICA_DESDE = "N009-MF000003361";
         public const string FICHA_SUFICIENCIA_MEDICA_HASTA = "N009-MF000003362";
         #endregion
+
+        #endregion
+
+        #region EXONERACIONES SAN LORENZO
+        public const string EXONERACION_EXAMEN_LABORATORIO = "EXO-LAB-SL";
+        public const string EXONERACION_PLACA_TORAXICA = "EXO-RX-SL";
+        public const string DECLARACION_JURADA_EMBARAZADAS_RX = "DJ-EMB-RX-SL";
         #endregion
         #region EXAMEN_FISICO
 

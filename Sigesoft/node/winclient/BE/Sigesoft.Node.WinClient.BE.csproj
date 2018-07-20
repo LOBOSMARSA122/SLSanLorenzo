@@ -384,7 +384,7 @@
     <Compile Include="Generated\facturaciondetalleDto.cs" />
     <Compile Include="Generated\facturacionDto.cs" />
     <Compile Include="Generated\reporteatencionmedicaResultDto.cs" />
-    <Compile Include="Generated\IRastreable.cs" />
+    <Compile Include="IRastreable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Custom\SystemParameterList.cs" />
     <Compile Include="Custom\WarehouseList.cs" />

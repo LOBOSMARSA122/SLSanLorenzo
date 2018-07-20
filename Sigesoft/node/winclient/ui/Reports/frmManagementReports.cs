@@ -112,8 +112,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 51, v_ComponentName = "INFORME ESPIROMETRIA", v_ComponentId = Constants.INFORME_ESPIROMETRIA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 51, v_ComponentName = "APTITUD YANACOCHA", v_ComponentId = Constants.APTITUD_YANACOCHA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 58, v_ComponentName = "INFORME MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.INFORME_MEDICO_OCUPACIONAL_COSAPI });
-                serviceComponents.Add(new ServiceComponentList { Orden = 58, v_ComponentName = "CERTIFICADO DE APTITUD MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.CERTIFICADO_APTITUD_MEDICO });
-
+                serviceComponents.Add(new ServiceComponentList { Orden = 59, v_ComponentName = "CERTIFICADO DE APTITUD MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.CERTIFICADO_APTITUD_MEDICO });
+                serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "EXONERACIÓN DE EXAMENES DE LABORATORIO", v_ComponentId = Constants.EXONERACION_EXAMEN_LABORATORIO });
+                serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "EXONERACIÓN DE PLACA DE TORAX P-A", v_ComponentId = Constants.EXONERACION_PLACA_TORAXICA });
+                serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
 
                 var ResultadoAnexo312 = serviceComponents.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
                 if (ResultadoAnexo312.Count() != 0)
@@ -1229,6 +1231,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private void GenerateCertificadoPsicosensometricoDatos(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1257,6 +1260,42 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             CERTIFICADO_SUFICIENCIA_MEDICA_TC.CreateCertificadoSuficienciaTC(filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
         }
+        private void GenerateExoneraxionLaboratorio(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            Exoneracion_Laboratorio.CreateExoneracionLaboratorio(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository);
+        }
+
+        private void GenerateExoneraxionPlacaTorax(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            Exoneracion_Placa_Torax_PA.CreateExoneracionPlacaTorax(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository);
+        }
+
+        private void GenerateDeclaracionJuradaRX(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            DeclaracionJuradaRX.CreateDeclaracionJurada(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository);
+        }
+
 
         private void GenerateInformeMedicoOcupacional_Cosapi(string pathFile)
         {
@@ -4442,6 +4481,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.CERTIFICADO_APTITUD_MEDICO:
                     GenerateCertificadoAptitudMedicoOcupacional_Cosapi(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERTIFICADO_APTITUD_MEDICO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.EXONERACION_EXAMEN_LABORATORIO:
+                    GenerateExoneraxionLaboratorio(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXONERACION_EXAMEN_LABORATORIO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.EXONERACION_PLACA_TORAXICA:
+                    GenerateExoneraxionPlacaTorax(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXONERACION_PLACA_TORAXICA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.DECLARACION_JURADA_EMBARAZADAS_RX:
+                    GenerateDeclaracionJuradaRX(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.DECLARACION_JURADA_EMBARAZADAS_RX)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///

@@ -6183,6 +6183,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                      FechaActualizacion = a.d_UpdateDate,
                                      N_Informe = r.v_ServiceComponentId,
                                      v_Religion = b.v_Religion,
+                                     v_Nacionalidad=b.v_Nacionalidad,
+                                     v_ResidenciaAnterior = b.v_ResidenciaAnterior,
+                                     i_DocTypeId = b.i_DocTypeId,
                                      //
                                      Genero = c.v_Value1,
                                      i_SexTypeId = b.i_SexTypeId,
@@ -6239,6 +6242,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                   FechaActualizacion=a.FechaActualizacion,
                                   N_Informe = a.N_Informe,
                                   v_Religion=a.v_Religion,
+                                  v_Nacionalidad=a.v_Nacionalidad,
+                                  v_ResidenciaAnterior=a.v_ResidenciaAnterior,
+                                  i_DocTypeId = a.i_DocTypeId,
                                   //
                                   Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,

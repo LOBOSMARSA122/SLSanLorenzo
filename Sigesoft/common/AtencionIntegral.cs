@@ -20,7 +20,7 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateAtencionIntegral(string filePDF,
+        public static void CreateAtencionIntegral(ServiceList DataService, string filePDF,
             PacientList datosPac,
             List<frmEsoAntecedentesPadre> Antecedentes,
             organizationDto infoEmpresaPropietaria,
@@ -30,7 +30,7 @@ namespace NetPdf
             Adulto datosAdult,
             List<Embarazo> listEmbarazos,
             AdultoMayor datosAdultMay,
-            List<DiagnosticRepositoryList> Diagnosticos, List<recetadespachoDto> medicina)
+            List<DiagnosticRepositoryList> Diagnosticos,  List<recetadespachoDto> medicina)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
@@ -46,6 +46,7 @@ namespace NetPdf
             var subTitleBackGroundColor = new BaseColor(System.Drawing.Color.Gray);
             string include = string.Empty;
             List<PdfPCell> cells = null;
+            List<PdfPCell> cells2 = null;
             float[] columnWidths = null;
             string[] columnValues = null;
             string[] columnHeaders = null;
@@ -62,6 +63,7 @@ namespace NetPdf
             PdfPTable filiationWorker = new PdfPTable(4);
             PdfPTable table = null;
             PdfPCell cell = null;
+            PdfPCell cell2 = null;
             document.Add(new Paragraph("\r\n"));
             #endregion
 
@@ -166,12 +168,12 @@ namespace NetPdf
                     new PdfPCell(new Phrase("N° HIST C:", fontColumnValueBold)) { Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f},
                     new PdfPCell(new Phrase(datosPac.v_DocNumber, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                     new PdfPCell(new Phrase("NACIONALIDAD:", fontColumnValueBold)) { Colspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f},
-                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(datosPac.v_Nacionalidad, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
 
                     new PdfPCell(new Phrase("RESIDENCIA ACTUAL:", fontColumnValueBold)) { Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f},
                     new PdfPCell(new Phrase(datosPac.v_AdressLocation, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                     new PdfPCell(new Phrase("RESIDENCIA ANTERIOR:", fontColumnValueBold)) { Colspan=4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f},
-                    new PdfPCell(new Phrase("-", fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(datosPac.v_ResidenciaAnterior, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
 
                     new PdfPCell(new Phrase("G. DE INSTRUCCIÓN:", fontColumnValueBold)) { Colspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=15f},
                     new PdfPCell(new Phrase(datosPac.GradoInstruccion, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
@@ -2772,44 +2774,44 @@ namespace NetPdf
             columnWidths = new float[] { 100F };
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
             document.Add(table);
-
+            cells2 = new List<PdfPCell>();
             if (medicina != null && medicina.Count > 0)
             {
                 var count = 1;
                 foreach (var item in medicina)
                 {
                     cell = new PdfPCell(new Phrase(count.ToString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda };
-                    cells.Add(cell);
+                    cells2.Add(cell);
 
                     cell = new PdfPCell(new Phrase(item.Medicamento, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda };
-                    cells.Add(cell);
+                    cells2.Add(cell);
 
                     cell = new PdfPCell(new Phrase(item.CantidadRecetada.ToString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda };
-                    cells.Add(cell);
+                    cells2.Add(cell);
 
                     cell = new PdfPCell(new Phrase(item.Dosis, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda };
-                    cells.Add(cell);
+                    cells2.Add(cell);
 
                     cell = new PdfPCell(new Phrase(item.Duracion, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda };
-                    cells.Add(cell);
+                    cells2.Add(cell);
 
                     cell = new PdfPCell(new Phrase(item.FechaFin.ToShortDateString(), fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda };
-                    cells.Add(cell);
+                    cells2.Add(cell);
 
                     count += 1;
                 }
                 cell = new PdfPCell(new Phrase(null, fontColumnValue)) { Colspan = 5, BackgroundColor = BaseColor.GRAY, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 2 };
-                cells.Add(cell);
+                cells2.Add(cell);
                 columnWidths = new float[] { 5F, 25f, 10f, 30f, 20f, 10f };
             }
             else
             {
-                cells.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PLAN TERAPEUTICO", fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda });
+                cells2.Add(new PdfPCell(new Phrase("NO SE HAN  REGISTRADO PLAN TERAPEUTICO", fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda });
                 columnWidths = new float[] { 100f };
             }
             columnHeaders = new string[] { "N°", "MEDICAMENTO", "CANT", "DOSIS Y TIEMPO", "DURACIÓN TTO", "FECHA FIN DEL TTO" };
             columnWidths = new float[] { 5F, 25f, 10f, 30f, 20f, 10f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable, columnHeaders);
+            table = HandlingItextSharp.GenerateTableFromCells(cells2, columnWidths, null, fontTitleTable, columnHeaders);
             document.Add(table);
             #endregion
             #endregion
