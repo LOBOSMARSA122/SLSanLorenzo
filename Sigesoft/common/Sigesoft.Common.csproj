@@ -106,6 +106,7 @@
     <Compile Include="HandlingItextSharp.cs" />
     <Compile Include="HistoriaClinica.cs" />
     <Compile Include="HojaCotizacion.cs" />
+    <Compile Include="HUDBAY\ConsentimientoInformadoAccesoClinica.cs" />
     <Compile Include="InformeMedicoOcupacional.cs" />
     <Compile Include="InformeMedicoOcupacional_Cosapi.cs" />
     <Compile Include="InformeMedicoTrabajadorInternacional.cs" />
@@ -190,6 +191,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

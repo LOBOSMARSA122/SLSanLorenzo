@@ -83,7 +83,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             List<ServiceComponentList> ListaOrdenada = new List<ServiceComponentList>();
             chklFichasMedicas.SelectedValueChanged -= chklFichasMedicas_SelectedValueChanged;
             chkCertificados.SelectedValueChanged -= chkCertificados_SelectedValueChanged;
-
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             if (_flagPantalla == (int)Sigesoft.Common.MasterService.AtxMedica)
             {
                 serviceComponents = _serviceBL.GetServiceComponentsForManagementReportAtxMedica(_serviceId);
@@ -115,8 +115,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 59, v_ComponentName = "CERTIFICADO DE APTITUD MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.CERTIFICADO_APTITUD_MEDICO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "EXONERACIÓN DE EXAMENES DE LABORATORIO", v_ComponentId = Constants.EXONERACION_EXAMEN_LABORATORIO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "EXONERACIÓN DE PLACA DE TORAX P-A", v_ComponentId = Constants.EXONERACION_PLACA_TORAXICA });
-                serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
-
+                
+                if (datosP.Genero.ToUpper() == "FEMENINO")
+                {
+                    serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
+                }
+                #region HUDBAY
+                serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "CONSENTIMIENTO INFORMADO ACCESO HISTORIA CLÍNICA", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO_HUDBAY });
+                #endregion
                 var ResultadoAnexo312 = serviceComponents.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
                 if (ResultadoAnexo312.Count() != 0)
                 {
@@ -1280,8 +1286,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-
-            Exoneracion_Placa_Torax_PA.CreateExoneracionPlacaTorax(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            Exoneracion_Placa_Torax_PA.CreateExoneracionPlacaTorax(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
 
         private void GenerateDeclaracionJuradaRX(string pathFile)
@@ -1292,11 +1298,25 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
-            DeclaracionJuradaRX.CreateDeclaracionJurada(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository);
+            DeclaracionJuradaRX.CreateDeclaracionJurada(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
 
+        #region HUDBAY METODOS
+        private void GenerateConsentimientoInformadoAccesoHistoriaClinica(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+
+            ConsentimientoInformadoAccesoClinica.CreateConsentimientoInformadoAccesoHistoriClinica(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+        }
+        #endregion
         private void GenerateInformeMedicoOcupacional_Cosapi(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -4491,8 +4511,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateExoneraxionPlacaTorax(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXONERACION_PLACA_TORAXICA)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
-                case Constants.DECLARACION_JURADA_EMBARAZADAS_RX:
-                    GenerateDeclaracionJuradaRX(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.DECLARACION_JURADA_EMBARAZADAS_RX)));
+
+                 case Constants.DECLARACION_JURADA_EMBARAZADAS_RX :
+                    var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+                    if (datosP.Genero.ToUpper() == "FEMENINO")
+                    {
+                        GenerateDeclaracionJuradaRX(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.DECLARACION_JURADA_EMBARAZADAS_RX)));
+                        _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    }
+                    break;
+                 case Constants.CONSENTIMIENTO_INFORMADO_HUDBAY:
+                    GenerateConsentimientoInformadoAccesoHistoriaClinica(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO_HUDBAY)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///

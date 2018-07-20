@@ -1251,10 +1251,27 @@ namespace Sigesoft.Common
 
         #endregion
 
+        #region HUDBAY
+        public const string CONSENTIMIENTO_INFORMADO_HUDBAY = "CONSINF-HUDBAY";
+
+        #endregion
         #region EXONERACIONES SAN LORENZO
         public const string EXONERACION_EXAMEN_LABORATORIO = "EXO-LAB-SL";
         public const string EXONERACION_PLACA_TORAXICA = "EXO-RX-SL";
         public const string DECLARACION_JURADA_EMBARAZADAS_RX = "DJ-EMB-RX-SL";
+
+        public const string EXCEPCIONES_RX_ID = "N009-ME000000440";
+        public const string EXCEPCIONES_RX_EXO_SI = "N009-MF000003429";
+        public const string EXCEPCIONES_RX_EXO_NO = "N009-MF000003430";
+        public const string EXCEPCIONES_RX_EXO_MOTIVO = "N009-MF000003431";
+
+        public const string EXCEPCIONES_RX_AUTORIZACION_SI = "N009-MF000003432";
+        public const string EXCEPCIONES_RX_AUTORIZACION_NO = "N009-MF000003433";
+        public const string EXCEPCIONES_RX_FECHA_ULTIMA_REGLA = "N009-MF000003434";
+
+        public const string EXCEPCIONES_LABORATORIO_ID = "N009-ME000000441";
+        public const string EXCEPCIONES_LABORATORIO_EXO_SI = "N009-MF000003435";
+        public const string EXCEPCIONES_LABORATORIO_EXO_NO = "N009-MF000003436";
         #endregion
         #region EXAMEN_FISICO
 
