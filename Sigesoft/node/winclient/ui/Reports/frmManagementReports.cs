@@ -2193,6 +2193,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Export();
                     rp.Close();
 
+
+                    var CIRUGIAS = new ServiceBL().GetCirugias(_pacientId);
+
+                     dsGetRepo = new DataSet();
+                     DataTable dtCirugias = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(CIRUGIAS);
+                     dtCirugias.TableName = "dtCirugias";
+                     dsGetRepo.Tables.Add(dtCirugias);
+
                     rp = new Reports.crFichaAntecedentePatologico02();
                     rp.SetDataSource(dsGetRepo);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;

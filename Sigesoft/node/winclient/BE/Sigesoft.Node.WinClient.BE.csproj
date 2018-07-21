@@ -52,11 +52,14 @@
     <Compile Include="Custom\AdultoMayor.cs" />
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
+    <Compile Include="Custom\CirugiaList.cs" />
     <Compile Include="Custom\DatosAtencion.cs" />
     <Compile Include="Custom\DatosPersonales.cs" />
     <Compile Include="Custom\Embarazo.cs" />
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
     <Compile Include="Custom\AtencionNinio.cs" />
+    <Compile Include="Custom\HospitalizacionList.cs" />
+    <Compile Include="Custom\HospitalizacionServiceList.cs" />
     <Compile Include="Custom\Ninioo.cs" />
     <Compile Include="Custom\ProblemasList.cs" />
     <Compile Include="Custom\AudiometriaList.cs" />
@@ -266,6 +269,8 @@
     <Compile Include="Custom\MovementList.cs" />
     <Compile Include="Custom\DataHierarchyList.cs" />
     <Compile Include="Custom\TargetFieldOfCalculate.cs" />
+    <Compile Include="Custom\TicketDetalleList.cs" />
+    <Compile Include="Custom\TicketList.cs" />
     <Compile Include="Custom\TiempoTrabajador.cs" />
     <Compile Include="Custom\TrabajadoresConcatenados.cs" />
     <Compile Include="Custom\TypeOfEEPList.cs" />
@@ -315,6 +320,8 @@
     <Compile Include="Generated\workstationdangersDto.cs" />
     <Compile Include="Generated\warehouseDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />
+    <Compile Include="Generated\ticketdetalleDto.cs" />
+    <Compile Include="Generated\ticketDto.cs" />
     <Compile Include="Generated\systemuserrolenodeDto.cs" />
     <Compile Include="Generated\systemusergobalprofileDto.cs" />
     <Compile Include="Generated\systemuserDto.cs" />
@@ -377,7 +384,10 @@
     <Compile Include="Generated\masterrecommendationrestricctionDto.cs" />
     <Compile Include="Generated\logDto.cs" />
     <Compile Include="Generated\locationDto.cs" />
+    <Compile Include="Generated\hospitalizacionserviceDto.cs" />
+    <Compile Include="Generated\hospitalizacionDto.cs" />
     <Compile Include="Generated\historyDto.cs" />
+    <Compile Include="Generated\habitacionservicioDto.cs" />
     <Compile Include="Generated\groupoccupationDto.cs" />
     <Compile Include="Generated\gesDto.cs" />
     <Compile Include="Generated\familymedicalantecedentsDto.cs" />
