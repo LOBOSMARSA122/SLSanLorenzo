@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsCirugias" targetNamespace="http://tempuri.org/dsCirugias.xsd" xmlns:mstns="http://tempuri.org/dsCirugias.xsd" xmlns="http://tempuri.org/dsCirugias.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsCirugias" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsCirugias" msprop:Generator_UserDSName="dsCirugias">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtCirugias" msprop:Generator_TableClassName="dtCirugiasDataTable" msprop:Generator_TableVarName="tabledtCirugias" msprop:Generator_TablePropName="dtCirugias" msprop:Generator_RowDeletingName="dtCirugiasRowDeleting" msprop:Generator_RowChangingName="dtCirugiasRowChanging" msprop:Generator_RowEvHandlerName="dtCirugiasRowChangeEventHandler" msprop:Generator_RowDeletedName="dtCirugiasRowDeleted" msprop:Generator_UserTableName="dtCirugias" msprop:Generator_RowChangedName="dtCirugiasRowChanged" msprop:Generator_RowEvArgName="dtCirugiasRowChangeEvent" msprop:Generator_RowClassName="dtCirugiasRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FechaAntecedenteQuirurgico" msprop:Generator_ColumnVarNameInTable="columnFechaAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInRow="FechaAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInTable="FechaAntecedenteQuirurgicoColumn" msprop:Generator_UserColumnName="FechaAntecedenteQuirurgico" type="xs:string" minOccurs="0" />
+              <xs:element name="HospitalAntecedenteQuirurgico" msprop:Generator_ColumnVarNameInTable="columnHospitalAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInRow="HospitalAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInTable="HospitalAntecedenteQuirurgicoColumn" msprop:Generator_UserColumnName="HospitalAntecedenteQuirurgico" type="xs:string" minOccurs="0" />
+              <xs:element name="OperacionAntecedenteQuirurgico" msprop:Generator_ColumnVarNameInTable="columnOperacionAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInRow="OperacionAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInTable="OperacionAntecedenteQuirurgicoColumn" msprop:Generator_UserColumnName="OperacionAntecedenteQuirurgico" type="xs:string" minOccurs="0" />
+              <xs:element name="DiasAntecedenteQuirurgico" msprop:Generator_ColumnVarNameInTable="columnDiasAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInRow="DiasAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInTable="DiasAntecedenteQuirurgicoColumn" msprop:Generator_UserColumnName="DiasAntecedenteQuirurgico" type="xs:string" minOccurs="0" />
+              <xs:element name="ComplicacionesAntecedenteQuirurgico" msprop:Generator_ColumnVarNameInTable="columnComplicacionesAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInRow="ComplicacionesAntecedenteQuirurgico" msprop:Generator_ColumnPropNameInTable="ComplicacionesAntecedenteQuirurgicoColumn" msprop:Generator_UserColumnName="ComplicacionesAntecedenteQuirurgico" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

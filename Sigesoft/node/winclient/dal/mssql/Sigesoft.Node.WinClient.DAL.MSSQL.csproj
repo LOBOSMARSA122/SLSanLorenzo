@@ -84,6 +84,8 @@
     <Compile Include="GeneratedAssemblers\workstationdangersAssembler.cs" />
     <Compile Include="GeneratedAssemblers\warehouseAssembler.cs" />
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\ticketdetalleAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\ticketAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserrolenodeAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemusergobalprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserAssembler.cs" />
@@ -146,7 +148,10 @@
     <Compile Include="GeneratedAssemblers\masterrecommendationrestricctionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\historyAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\habitacionservicioAssembler.cs" />
     <Compile Include="GeneratedAssemblers\groupoccupationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gesAssembler.cs" />
     <Compile Include="GeneratedAssemblers\familymedicalantecedentsAssembler.cs" />

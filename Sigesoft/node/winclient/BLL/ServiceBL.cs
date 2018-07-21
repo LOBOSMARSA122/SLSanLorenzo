@@ -17206,7 +17206,7 @@ namespace Sigesoft.Node.WinClient.BLL
 									 IdServicio = A.v_ServiceId,
 									 FNacimiento = B.d_Birthdate,
 									 Genero = B.i_SexTypeId.Value,
-                                     LugarNacimiento = B.v_AdressLocation,
+                                     LugarNacimiento = B.v_BirthPlace,
 									 LugarProcedencia = varDistri + "-" + varProv + "-" + varDpto, // Santa Anita - Lima - Lima
                                      Puesto = B.v_CurrentOccupation,
 									 FechaInicio = D.d_StartDate,
@@ -17261,13 +17261,13 @@ namespace Sigesoft.Node.WinClient.BLL
 							   FirmaMedico = a.FirmaMedico,
 							   FirmaTrabajador = a.FirmaTrabajador,
 							   HuellaTrabajador = a.HuellaTrabajador,
-							   Peligros = ConcatenateExposiciones(a.IdHistory),
-							   Epp = ConcatenateEpps(a.IdHistory),
-							   b_Logo = MedicalCenter.b_Image,
-							   EmpresaPropietaria = MedicalCenter.v_Name,
-							   EmpresaPropietariaDireccion = MedicalCenter.v_Address,
-							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+                               Peligros = ConcatenateExposiciones(a.IdHistory),
+                               Epp = ConcatenateEpps(a.IdHistory),
+                               b_Logo = MedicalCenter.b_Image,
+                               EmpresaPropietaria = MedicalCenter.v_Name,
+                               EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                               EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
+                               EmpresaPropietariaEmail = MedicalCenter.v_Mail,
                                FirmaAuditor = a.FirmaAuditor,
                                b_Logo_Cliente = a.b_Logo_Cliente,
                                TiempoTotalLaboral = TiempoTotalLaboral
@@ -17360,16 +17360,32 @@ namespace Sigesoft.Node.WinClient.BLL
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-			var qry = (from a in dbContext.typeofeep
-					   join C1 in dbContext.systemparameter on new { a = a.i_TypeofEEPId.Value, b = 146 } equals new { a = C1.i_ParameterId, b = C1.i_GroupId }
-					   where a.v_HistoryId == pstrHistoryId &&
-					   a.i_IsDeleted == 0
-					   select new
-					   {
-						   v_Epps = C1.v_Value1,
-                           Procentaje =  a.r_Percentage.Value
-					   }).ToList();
-            return string.Join(", ", qry.Select(p => p.v_Epps + " (" + p.Procentaje.ToString() + "%)"));
+		    var qry1 = (from a in dbContext.typeofeep
+		        where a.v_HistoryId == pstrHistoryId &&
+		              a.i_IsDeleted == 0
+		        select new
+		        {
+                    id = a.v_HistoryId
+		        }).ToList();
+
+            if (qry1.Count == 0)
+            {
+                return "";
+            }
+            else
+            {
+                var qry = (from a in dbContext.typeofeep
+                           join C1 in dbContext.systemparameter on new { a = a.i_TypeofEEPId.Value, b = 146 } equals new { a = C1.i_ParameterId, b = C1.i_GroupId }
+                           where a.v_HistoryId == pstrHistoryId &&
+                           a.i_IsDeleted == 0
+                           select new
+                           {
+                               v_Epps = C1.v_Value1,
+                               Procentaje = a.r_Percentage == null ? 0 : a.r_Percentage.Value
+                           }).ToList();
+                return string.Join(", ", qry.Select(p => p.v_Epps + " (" + p.Procentaje.ToString() + "%)"));
+            }
+			
 		}
 
 		public string GetValueOdontogramaAusente(string pstrServiceId, string pstrComponentId, string pstrFieldId, string pstrPath)
@@ -25252,7 +25268,7 @@ namespace Sigesoft.Node.WinClient.BLL
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-
+                var groupUbigeo = 113;
                 var servicios = (from ser in dbContext.service
                                  join serCom in dbContext.servicecomponent on ser.v_ServiceId equals serCom.v_ServiceId
                                  join per in dbContext.person on ser.v_PersonId equals per.v_PersonId
@@ -25268,7 +25284,27 @@ namespace Sigesoft.Node.WinClient.BLL
                                  from me in me_join.DefaultIfEmpty()
                                  join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
                                  from pme in pme_join.DefaultIfEmpty()
+
+                                 // Ubigeo de la persona *******************************************************
+                                 join dep in dbContext.datahierarchy on new { a = per.i_DepartmentId.Value, b = groupUbigeo }
+                                                      equals new { a = dep.i_ItemId, b = dep.i_GroupId } into dep_join
+                                 from dep in dep_join.DefaultIfEmpty()
+
+                                 join prov in dbContext.datahierarchy on new { a = per.i_ProvinceId.Value, b = groupUbigeo }
+                                                       equals new { a = prov.i_ItemId, b = prov.i_GroupId } into prov_join
+                                 from prov in prov_join.DefaultIfEmpty()
+
+                                 join distri in dbContext.datahierarchy on new { a = per.i_DistrictId.Value, b = groupUbigeo }
+                                                       equals new { a = distri.i_ItemId, b = distri.i_GroupId } into distri_join
+                                 from distri in distri_join.DefaultIfEmpty()
+                                 //*****
+
                                  where ser.v_ServiceId == pstrServiceId
+
+                                 let varDpto = dep.v_Value1 == null ? "" : dep.v_Value1
+                                 let varProv = prov.v_Value1 == null ? "" : prov.v_Value1
+                                 let varDistri = distri.v_Value1 == null ? "" : distri.v_Value1
+
                                  select new FichaAntecedentePatologico
                                  {
                                      ServiceId = ser.v_ServiceId,
@@ -25302,7 +25338,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                      VaromesNumeroHijosFallecidos = per.i_NumberDeadChildren,
                                      VaromesNumeroAbortoPareja = "",
                                      VaronesCausaAborto = "",
-                                     b_Logo_Cliente = empCli.b_Image
+                                     b_Logo_Cliente = empCli.b_Image,
+                                     LugarNacimiento = per.v_BirthPlace,
+                                     LugarProcedencia = varDistri + "-" + varProv + "-" + varDpto
 
                                  }).ToList();
                 var MedicalCenter = GetInfoMedicalCenter();
@@ -25340,6 +25378,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.Dia = servicios[0].FechaServicio.Value.Day.ToString();
                 FichaAntecedentePatologico.Mes = servicios[0].FechaServicio.Value.Month.ToString();
                 FichaAntecedentePatologico.Anio = servicios[0].FechaServicio.Value.Year.ToString();
+                FichaAntecedentePatologico.LugarNacimiento = servicios[0].LugarNacimiento;
+                FichaAntecedentePatologico.LugarProcedencia = servicios[0].LugarProcedencia;
 
                 FichaAntecedentePatologico.NroDocumento = servicios[0].NroDocumento;
                 FichaAntecedentePatologico.EmpresaCliente = servicios[0].EmpresaCliente;
@@ -25476,12 +25516,24 @@ namespace Sigesoft.Node.WinClient.BLL
                 FichaAntecedentePatologico.Drogas = habitos.Find(p => p.TypeHabitId == 3).Frequency;
                 FichaAntecedentePatologico.TipoProbado = habitos.Find(p => p.TypeHabitId == 3).Comment;
 
-                FichaAntecedentePatologico.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").FechaAntecedente.ToString();
-                FichaAntecedentePatologico.OperacionAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Detalle;
-                FichaAntecedentePatologico.DiasAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Tratamiento;
-                FichaAntecedentePatologico.HospitalAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Hospital;
-                FichaAntecedentePatologico.ComplicacionesAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Complicaciones;
-                
+                //var antecedentesCirugia = objEntity.FindAll(p => p.DiseasseId == "N009-DD000000637").ToList();
+
+
+                //CirugiaList oCirugiaList;
+                //foreach (var item in antecedentesCirugia)
+                //{
+                //    oCirugiaList = new CirugiaList();
+
+                //    oCirugiaList.FechaAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").FechaAntecedente.ToString();
+                //    oCirugiaList.OperacionAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Detalle;
+                //    oCirugiaList.DiasAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Tratamiento;
+                //    oCirugiaList.HospitalAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Hospital;
+                //    oCirugiaList.ComplicacionesAntecedenteQuirurgico = objEntity.Find(p => p.DiseasseId == "N009-DD000000637") == null ? "" : objEntity.Find(p => p.DiseasseId == "N009-DD000000637").Complicaciones;
+                    
+                //    FichaAntecedentePatologico.Cirugias.Add(oCirugiaList);
+                //}
+
+               
                 list.Add(FichaAntecedentePatologico);
                 return list;
             }
@@ -25492,7 +25544,28 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
-		public List<ReportToxicologico> GetReportToxicologico(string pstrServiceId, string pstrComponentId)
+	    public List<CirugiaList> GetCirugias(string pstrPacientId)
+	    {
+	        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+	         var objEntity = (from A in dbContext.personmedicalhistory
+                                 join B in dbContext.diseases on A.v_DiseasesId equals B.v_DiseasesId
+                                 where A.v_PersonId == pstrPacientId && B.v_DiseasesId == "N009-DD000000637" && A.i_IsDeleted == 0
+                                select new CirugiaList
+                                 {
+                                    OperacionAntecedenteQuirurgico = A.v_DiagnosticDetail,
+                                    DiasAntecedenteQuirurgico = A.v_TreatmentSite,
+                                    FechaAntecedenteQuirurgico = A.d_StartDate.Value,
+                                    HospitalAntecedenteQuirurgico = A.NombreHospital,
+                                    ComplicacionesAntecedenteQuirurgico = A.v_Complicaciones
+                                        
+                                 }).ToList();
+
+	        return objEntity;
+	    }
+	
+
+	    public List<ReportToxicologico> GetReportToxicologico(string pstrServiceId, string pstrComponentId)
 		{
 			//mon.IsActive = true;
 			var groupUbigeo = 113;
