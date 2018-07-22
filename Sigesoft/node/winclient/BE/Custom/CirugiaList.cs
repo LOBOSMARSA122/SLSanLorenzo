@@ -53,7 +53,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string dia { get; set; }
         public string mes { get; set; }
         public string anio { get; set; }
-
+        public string v_PersonMedicalHistoryId { get; set; }
 
 
 
