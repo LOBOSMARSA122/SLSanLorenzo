@@ -2194,7 +2194,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Close();
 
 
-                    var CIRUGIAS = new ServiceBL().GetCirugias(_pacientId);
+                    var CIRUGIAS = new ServiceBL().GetCirugias(_pacientId, _serviceId);
 
                      dsGetRepo = new DataSet();
                      DataTable dtCirugias = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(CIRUGIAS);

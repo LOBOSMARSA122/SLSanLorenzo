@@ -25544,12 +25544,21 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
-	    public List<CirugiaList> GetCirugias(string pstrPacientId)
+	    public List<CirugiaList> GetCirugias(string pstrPacientId, string psrtServiceId)
 	    {
-	        SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-	         var objEntity = (from A in dbContext.personmedicalhistory
-                                 join B in dbContext.diseases on A.v_DiseasesId equals B.v_DiseasesId
+                                var objEntity = (from A in dbContext.personmedicalhistory
+                                join B in dbContext.diseases on A.v_DiseasesId equals B.v_DiseasesId
+                                join ser in dbContext.service on psrtServiceId equals ser.v_ServiceId
+                                join per in dbContext.person on ser.v_PersonId equals per.v_PersonId
+                                join serCom in dbContext.servicecomponent on ser.v_ServiceId equals serCom.v_ServiceId
+                                join prot in dbContext.protocol on ser.v_ProtocolId equals prot.v_ProtocolId
+                                join empCli in dbContext.organization on prot.v_CustomerOrganizationId equals empCli.v_OrganizationId
+                                join me in dbContext.systemuser on serCom.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                from me in me_join.DefaultIfEmpty()
+                                join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                from pme in pme_join.DefaultIfEmpty()
                                  where A.v_PersonId == pstrPacientId && B.v_DiseasesId == "N009-DD000000637" && A.i_IsDeleted == 0
                                 select new CirugiaList
                                  {
@@ -25557,8 +25566,43 @@ namespace Sigesoft.Node.WinClient.BLL
                                     DiasAntecedenteQuirurgico = A.v_TreatmentSite,
                                     FechaAntecedenteQuirurgico = A.d_StartDate.Value,
                                     HospitalAntecedenteQuirurgico = A.NombreHospital,
-                                    ComplicacionesAntecedenteQuirurgico = A.v_Complicaciones
-                                        
+                                    ComplicacionesAntecedenteQuirurgico = A.v_Complicaciones,
+                                    ServiceId = ser.v_ServiceId,
+                                    FechaServicio = ser.d_ServiceDate.Value,
+                                    Nombres = per.v_FirstName,
+                                    ApellidoPaterno = per.v_FirstLastName,
+                                    ApellidoMaterno = per.v_SecondLastName,
+                                    NombreCompleto = per.v_FirstLastName + " " + per.v_SecondLastName + " " + per.v_FirstName,
+                                    FechaNacimiento = per.d_Birthdate.Value,
+                                    TipoDocumentoId = per.i_DocTypeId.Value,
+                                  
+                                    NroDocumento = per.v_DocNumber,
+                                    //EmpresaCliente = empCli.v_Name,
+                                    //EmpresaTrabajo = empTrab.v_Name,
+                                    //EmpresaEmpleadora = empEmp.v_Name,
+                                    Puesto = per.v_CurrentOccupation,
+                                    GeneroId = per.i_SexTypeId.Value,
+                                    //Genero = gen.v_Value1,
+                                    FirmaTrabajador = per.b_RubricImage,
+                                    HuellaTrabajador = per.b_FingerPrintImage,
+                                    FirmaUsuarioGraba = pme.b_SignatureImage,
+                                    InicioMestrucion = ser.v_Menarquia,
+                                    InicioVidaSexual = ser.v_InicioVidaSexaul,
+                                    NumeroParejas = ser.v_NroParejasActuales,
+                                    DamasNumeroHijosVivos = per.i_NumberLivingChildren,
+                                    DamasNumeroHijosFallecidos = per.i_NumberDependentChildren,
+                                    DamasNumeroAborto = ser.v_NroAbortos,
+                                    DamasCausaAborto = ser.v_PrecisarCausas,
+                                    VaronesNumeroHijosVivos = per.i_NumberLiveChildren,
+                                    VaromesNumeroHijosFallecidos = per.i_NumberDeadChildren,
+                                    VaromesNumeroAbortoPareja = "",
+                                    VaronesCausaAborto = "",
+                                    b_Logo_Cliente = empCli.b_Image,
+                                    LugarNacimiento = per.v_BirthPlace,
+                                    //LugarProcedencia = varDistri + "-" + varProv + "-" + varDpto
+                                    dia = ser.d_ServiceDate.Value.Day.ToString(),
+                                    mes = ser.d_ServiceDate.Value.Month.ToString(),
+                                    anio = ser.d_ServiceDate.Value.Year.ToString()
                                  }).ToList();
 
 	        return objEntity;
