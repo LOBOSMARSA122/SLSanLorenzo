@@ -121,7 +121,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
                 }
                 #region HUDBAY
-                serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "CONSENTIMIENTO INFORMADO ACCESO HISTORIA CLÍNICA", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO_HUDBAY });
+                serviceComponents.Add(new ServiceComponentList { Orden = 65, v_ComponentName = "CONSENTIMIENTO INFORMADO ACCESO HISTORIA CLÍNICA", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO_HUDBAY });
+                serviceComponents.Add(new ServiceComponentList { Orden = 66, v_ComponentName = "INF MÉD DE APTITUD OCUPACIONAL PARA LA EMPRESA", v_ComponentId = Constants.INFORME_MEDICO_APTITUD_OCUPACIONAL_EMPRESA_HUDBAY });
                 #endregion
                 var ResultadoAnexo312 = serviceComponents.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
                 if (ResultadoAnexo312.Count() != 0)
@@ -1315,6 +1316,19 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
             ConsentimientoInformadoAccesoClinica.CreateConsentimientoInformadoAccesoHistoriClinica(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+        }
+
+        private void GenerateInformeMedicoAptitudOcupacional(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+
+            InformeMedicoDeAptitudOcupacional_Empresa.CreateInformeMedicoAptitudOcupacionalEmpresa(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
         #endregion
         private void GenerateInformeMedicoOcupacional_Cosapi(string pathFile)
@@ -4530,6 +4544,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                  case Constants.CONSENTIMIENTO_INFORMADO_HUDBAY:
                     GenerateConsentimientoInformadoAccesoHistoriaClinica(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CONSENTIMIENTO_INFORMADO_HUDBAY)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                 case Constants.INFORME_MEDICO_APTITUD_OCUPACIONAL_EMPRESA_HUDBAY:
+                    GenerateInformeMedicoAptitudOcupacional(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_MEDICO_APTITUD_OCUPACIONAL_EMPRESA_HUDBAY)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///

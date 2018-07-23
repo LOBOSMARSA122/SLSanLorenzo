@@ -1253,6 +1253,7 @@ namespace Sigesoft.Common
 
         #region HUDBAY
         public const string CONSENTIMIENTO_INFORMADO_HUDBAY = "CONSINF-HUDBAY";
+        public const string INFORME_MEDICO_APTITUD_OCUPACIONAL_EMPRESA_HUDBAY = "INFMEDAPTOC-HUDBAY";
 
         #endregion
         #region EXONERACIONES SAN LORENZO

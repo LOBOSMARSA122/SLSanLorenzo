@@ -30,6 +30,24 @@
         {
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HopitalizacionId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Paciente");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Servicios", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HospitalizacionServiceId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HopitalizacionId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tickets");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Tickets", 1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Productos");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Productos", 2);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketDetalleId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_IdProductoDetalle");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Cantidad");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -110,6 +128,7 @@
             this.btnFilter.Text = "Filtrar";
             this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // txtPacient
             // 
@@ -215,6 +234,45 @@
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdData.DisplayLayout.Appearance = appearance1;
+            ultraGridColumn1.Header.Caption = "Código";
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn3.Header.VisiblePosition = 2;
+            ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn1,
+            ultraGridColumn2,
+            ultraGridColumn3});
+            ultraGridColumn4.Header.VisiblePosition = 0;
+            ultraGridColumn5.Header.VisiblePosition = 1;
+            ultraGridColumn6.Header.VisiblePosition = 2;
+            ultraGridColumn7.Header.VisiblePosition = 3;
+            ultraGridColumn7.Hidden = true;
+            ultraGridBand2.Columns.AddRange(new object[] {
+            ultraGridColumn4,
+            ultraGridColumn5,
+            ultraGridColumn6,
+            ultraGridColumn7});
+            ultraGridColumn8.Header.VisiblePosition = 0;
+            ultraGridColumn9.Header.VisiblePosition = 1;
+            ultraGridColumn10.Header.VisiblePosition = 2;
+            ultraGridColumn10.Hidden = true;
+            ultraGridBand3.Columns.AddRange(new object[] {
+            ultraGridColumn8,
+            ultraGridColumn9,
+            ultraGridColumn10});
+            ultraGridColumn11.Header.VisiblePosition = 0;
+            ultraGridColumn12.Header.VisiblePosition = 1;
+            ultraGridColumn13.Header.VisiblePosition = 2;
+            ultraGridColumn14.Header.VisiblePosition = 3;
+            ultraGridBand4.Columns.AddRange(new object[] {
+            ultraGridColumn11,
+            ultraGridColumn12,
+            ultraGridColumn13,
+            ultraGridColumn14});
+            this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
+            this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
+            this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
+            this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand4);
             this.grdData.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
             this.grdData.DisplayLayout.InterBandSpacing = 10;
             this.grdData.DisplayLayout.MaxColScrollRegions = 1;
