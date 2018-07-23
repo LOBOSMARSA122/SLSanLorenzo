@@ -74,12 +74,12 @@
             this.ultraGroupBox1 = new Infragistics.Win.Misc.UltraGroupBox();
             this.ultraFormManager1 = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this.frmRecetaMedica_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
+            this.ultraButton2 = new Infragistics.Win.Misc.UltraButton();
             this.ultraButton1 = new Infragistics.Win.Misc.UltraButton();
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Top = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Bottom = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
-            this.ultraButton2 = new Infragistics.Win.Misc.UltraButton();
             ((System.ComponentModel.ISupportInitialize)(this.grdTotalDiagnosticos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGroupBox1)).BeginInit();
             this.ultraGroupBox1.SuspendLayout();
@@ -320,7 +320,7 @@
             this.grdTotalDiagnosticos.Location = new System.Drawing.Point(5, 18);
             this.grdTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2);
             this.grdTotalDiagnosticos.Name = "grdTotalDiagnosticos";
-            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1112, 306);
+            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1112, 307);
             this.grdTotalDiagnosticos.TabIndex = 51;
             this.grdTotalDiagnosticos.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdTotalDiagnosticos_InitializeLayout);
             this.grdTotalDiagnosticos.ClickCellButton += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdTotalDiagnosticos_ClickCellButton);
@@ -333,7 +333,7 @@
             this.ultraGroupBox1.Controls.Add(this.grdTotalDiagnosticos);
             this.ultraGroupBox1.Location = new System.Drawing.Point(12, 12);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(1122, 329);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(1122, 330);
             this.ultraGroupBox1.TabIndex = 52;
             this.ultraGroupBox1.Text = "Receta por Diagnóstico";
             // 
@@ -351,10 +351,19 @@
             this.frmRecetaMedica_Fill_Panel.ClientArea.Controls.Add(this.ultraGroupBox1);
             this.frmRecetaMedica_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.frmRecetaMedica_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmRecetaMedica_Fill_Panel.Location = new System.Drawing.Point(4, 28);
+            this.frmRecetaMedica_Fill_Panel.Location = new System.Drawing.Point(4, 27);
             this.frmRecetaMedica_Fill_Panel.Name = "frmRecetaMedica_Fill_Panel";
-            this.frmRecetaMedica_Fill_Panel.Size = new System.Drawing.Size(1148, 384);
+            this.frmRecetaMedica_Fill_Panel.Size = new System.Drawing.Size(1148, 385);
             this.frmRecetaMedica_Fill_Panel.TabIndex = 0;
+            // 
+            // ultraButton2
+            // 
+            this.ultraButton2.Location = new System.Drawing.Point(17, 347);
+            this.ultraButton2.Name = "ultraButton2";
+            this.ultraButton2.Size = new System.Drawing.Size(134, 26);
+            this.ultraButton2.TabIndex = 54;
+            this.ultraButton2.Text = "Confirmar Despacho";
+            this.ultraButton2.Click += new System.EventHandler(this.ultraButton2_Click);
             // 
             // ultraButton1
             // 
@@ -373,9 +382,9 @@
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager1;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 28);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 27);
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Name = "_frmRecetaMedica_UltraFormManager_Dock_Area_Left";
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 384);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 385);
             // 
             // _frmRecetaMedica_UltraFormManager_Dock_Area_Right
             // 
@@ -385,9 +394,9 @@
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager1;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1152, 28);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1152, 27);
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Name = "_frmRecetaMedica_UltraFormManager_Dock_Area_Right";
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 384);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 385);
             // 
             // _frmRecetaMedica_UltraFormManager_Dock_Area_Top
             // 
@@ -398,7 +407,7 @@
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.FormManager = this.ultraFormManager1;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.Name = "_frmRecetaMedica_UltraFormManager_Dock_Area_Top";
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1156, 28);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1156, 27);
             // 
             // _frmRecetaMedica_UltraFormManager_Dock_Area_Bottom
             // 
@@ -411,15 +420,6 @@
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 412);
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Bottom.Name = "_frmRecetaMedica_UltraFormManager_Dock_Area_Bottom";
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Bottom.Size = new System.Drawing.Size(1156, 4);
-            // 
-            // ultraButton2
-            // 
-            this.ultraButton2.Location = new System.Drawing.Point(17, 347);
-            this.ultraButton2.Name = "ultraButton2";
-            this.ultraButton2.Size = new System.Drawing.Size(134, 26);
-            this.ultraButton2.TabIndex = 54;
-            this.ultraButton2.Text = "Confirmar Despacho";
-            this.ultraButton2.Click += new System.EventHandler(this.ultraButton2_Click);
             // 
             // frmRecetaMedica
             // 
