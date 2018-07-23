@@ -13,6 +13,6 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? d_FechaIngreso { get; set; }
         public DateTime? d_FechaAlta { get; set; }
 
-        public List<HospitalizacionServiceList> HospitalizacionServicios{ get; set; }
+        public List<HospitalizacionServiceList> Servicios{ get; set; }
     }
 }

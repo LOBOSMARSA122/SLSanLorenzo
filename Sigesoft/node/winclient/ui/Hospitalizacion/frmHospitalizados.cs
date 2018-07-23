@@ -15,5 +15,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             InitializeComponent();
         }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
