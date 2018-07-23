@@ -459,39 +459,9 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnTipoProbado;
             
-            private global::System.Data.DataColumn columnInicioMestrucion;
-            
-            private global::System.Data.DataColumn columnInicioVidaSexual;
-            
-            private global::System.Data.DataColumn columnNumeroParejas;
-            
-            private global::System.Data.DataColumn columnDamasNumeroHijosVivos;
-            
-            private global::System.Data.DataColumn columnDamasNumeroHijosFallecidos;
-            
-            private global::System.Data.DataColumn columnDamasNumeroAborto;
-            
-            private global::System.Data.DataColumn columnVaronesNumeroHijosVivos;
-            
-            private global::System.Data.DataColumn columnVaromesNumeroHijosFallecidos;
-            
-            private global::System.Data.DataColumn columnVaromesNumeroAbortoPareja;
-            
-            private global::System.Data.DataColumn columnDamasCausaAborto;
-            
-            private global::System.Data.DataColumn columnVaronesCausaAborto;
-            
             private global::System.Data.DataColumn columnServiceId;
             
             private global::System.Data.DataColumn columnServiceComponentId;
-            
-            private global::System.Data.DataColumn columnFechaServicio;
-            
-            private global::System.Data.DataColumn columnNombres;
-            
-            private global::System.Data.DataColumn columnApellidoPaterno;
-            
-            private global::System.Data.DataColumn columnApellidoMaterno;
             
             private global::System.Data.DataColumn columnNombreCompleto;
             
@@ -527,16 +497,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnLugarProcedencia;
             
-            private global::System.Data.DataColumn columnFechaAntecedenteQuirurgico;
-            
-            private global::System.Data.DataColumn columnHospitalAntecedenteQuirurgico;
-            
-            private global::System.Data.DataColumn columnOperacionAntecedenteQuirurgico;
-            
-            private global::System.Data.DataColumn columnDiasAntecedenteQuirurgico;
-            
-            private global::System.Data.DataColumn columnComplicacionesAntecedenteQuirurgico;
-            
             private global::System.Data.DataColumn columnDia;
             
             private global::System.Data.DataColumn columnMes;
@@ -548,6 +508,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             private global::System.Data.DataColumn columnb_Logo_Cliente;
             
             private global::System.Data.DataColumn columnb_Logo;
+            
+            private global::System.Data.DataColumn columnCirugias;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -1304,94 +1266,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn InicioMestrucionColumn {
-                get {
-                    return this.columnInicioMestrucion;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn InicioVidaSexualColumn {
-                get {
-                    return this.columnInicioVidaSexual;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NumeroParejasColumn {
-                get {
-                    return this.columnNumeroParejas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DamasNumeroHijosVivosColumn {
-                get {
-                    return this.columnDamasNumeroHijosVivos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DamasNumeroHijosFallecidosColumn {
-                get {
-                    return this.columnDamasNumeroHijosFallecidos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DamasNumeroAbortoColumn {
-                get {
-                    return this.columnDamasNumeroAborto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VaronesNumeroHijosVivosColumn {
-                get {
-                    return this.columnVaronesNumeroHijosVivos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VaromesNumeroHijosFallecidosColumn {
-                get {
-                    return this.columnVaromesNumeroHijosFallecidos;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VaromesNumeroAbortoParejaColumn {
-                get {
-                    return this.columnVaromesNumeroAbortoPareja;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DamasCausaAbortoColumn {
-                get {
-                    return this.columnDamasCausaAborto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VaronesCausaAbortoColumn {
-                get {
-                    return this.columnVaronesCausaAborto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn ServiceIdColumn {
                 get {
                     return this.columnServiceId;
@@ -1403,38 +1277,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             public global::System.Data.DataColumn ServiceComponentIdColumn {
                 get {
                     return this.columnServiceComponentId;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FechaServicioColumn {
-                get {
-                    return this.columnFechaServicio;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NombresColumn {
-                get {
-                    return this.columnNombres;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ApellidoPaternoColumn {
-                get {
-                    return this.columnApellidoPaterno;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ApellidoMaternoColumn {
-                get {
-                    return this.columnApellidoMaterno;
                 }
             }
             
@@ -1576,46 +1418,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FechaAntecedenteQuirurgicoColumn {
-                get {
-                    return this.columnFechaAntecedenteQuirurgico;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn HospitalAntecedenteQuirurgicoColumn {
-                get {
-                    return this.columnHospitalAntecedenteQuirurgico;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OperacionAntecedenteQuirurgicoColumn {
-                get {
-                    return this.columnOperacionAntecedenteQuirurgico;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DiasAntecedenteQuirurgicoColumn {
-                get {
-                    return this.columnDiasAntecedenteQuirurgico;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn ComplicacionesAntecedenteQuirurgicoColumn {
-                get {
-                    return this.columnComplicacionesAntecedenteQuirurgico;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn DiaColumn {
                 get {
                     return this.columnDia;
@@ -1659,6 +1461,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             public global::System.Data.DataColumn b_LogoColumn {
                 get {
                     return this.columnb_Logo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CirugiasColumn {
+                get {
+                    return this.columnCirugias;
                 }
             }
             
@@ -1790,23 +1600,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string NumeroCigarrillo, 
                         string TipoMasFrecuente, 
                         string TipoProbado, 
-                        string InicioMestrucion, 
-                        string InicioVidaSexual, 
-                        string NumeroParejas, 
-                        string DamasNumeroHijosVivos, 
-                        string DamasNumeroHijosFallecidos, 
-                        string DamasNumeroAborto, 
-                        string VaronesNumeroHijosVivos, 
-                        string VaromesNumeroHijosFallecidos, 
-                        string VaromesNumeroAbortoPareja, 
-                        string DamasCausaAborto, 
-                        string VaronesCausaAborto, 
                         string ServiceId, 
                         string ServiceComponentId, 
-                        string FechaServicio, 
-                        string Nombres, 
-                        string ApellidoPaterno, 
-                        string ApellidoMaterno, 
                         string NombreCompleto, 
                         string FechaNacimiento, 
                         string Edad, 
@@ -1824,17 +1619,13 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         byte[] FirmaUsuarioGraba, 
                         string LugarNacimiento, 
                         string LugarProcedencia, 
-                        string FechaAntecedenteQuirurgico, 
-                        string HospitalAntecedenteQuirurgico, 
-                        string OperacionAntecedenteQuirurgico, 
-                        string DiasAntecedenteQuirurgico, 
-                        string ComplicacionesAntecedenteQuirurgico, 
                         string Dia, 
                         string Mes, 
                         string Anio, 
                         byte[] FirmaMedicina, 
                         byte[] b_Logo_Cliente, 
-                        byte[] b_Logo) {
+                        byte[] b_Logo, 
+                        string Cirugias) {
                 dtFichaAntecedentePatologicoRow rowdtFichaAntecedentePatologicoRow = ((dtFichaAntecedentePatologicoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Alergia,
@@ -1927,23 +1718,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         NumeroCigarrillo,
                         TipoMasFrecuente,
                         TipoProbado,
-                        InicioMestrucion,
-                        InicioVidaSexual,
-                        NumeroParejas,
-                        DamasNumeroHijosVivos,
-                        DamasNumeroHijosFallecidos,
-                        DamasNumeroAborto,
-                        VaronesNumeroHijosVivos,
-                        VaromesNumeroHijosFallecidos,
-                        VaromesNumeroAbortoPareja,
-                        DamasCausaAborto,
-                        VaronesCausaAborto,
                         ServiceId,
                         ServiceComponentId,
-                        FechaServicio,
-                        Nombres,
-                        ApellidoPaterno,
-                        ApellidoMaterno,
                         NombreCompleto,
                         FechaNacimiento,
                         Edad,
@@ -1961,17 +1737,13 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         FirmaUsuarioGraba,
                         LugarNacimiento,
                         LugarProcedencia,
-                        FechaAntecedenteQuirurgico,
-                        HospitalAntecedenteQuirurgico,
-                        OperacionAntecedenteQuirurgico,
-                        DiasAntecedenteQuirurgico,
-                        ComplicacionesAntecedenteQuirurgico,
                         Dia,
                         Mes,
                         Anio,
                         FirmaMedicina,
                         b_Logo_Cliente,
-                        b_Logo};
+                        b_Logo,
+                        Cirugias};
                 rowdtFichaAntecedentePatologicoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtFichaAntecedentePatologicoRow);
                 return rowdtFichaAntecedentePatologicoRow;
@@ -2084,23 +1856,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnNumeroCigarrillo = base.Columns["NumeroCigarrillo"];
                 this.columnTipoMasFrecuente = base.Columns["TipoMasFrecuente"];
                 this.columnTipoProbado = base.Columns["TipoProbado"];
-                this.columnInicioMestrucion = base.Columns["InicioMestrucion"];
-                this.columnInicioVidaSexual = base.Columns["InicioVidaSexual"];
-                this.columnNumeroParejas = base.Columns["NumeroParejas"];
-                this.columnDamasNumeroHijosVivos = base.Columns["DamasNumeroHijosVivos"];
-                this.columnDamasNumeroHijosFallecidos = base.Columns["DamasNumeroHijosFallecidos"];
-                this.columnDamasNumeroAborto = base.Columns["DamasNumeroAborto"];
-                this.columnVaronesNumeroHijosVivos = base.Columns["VaronesNumeroHijosVivos"];
-                this.columnVaromesNumeroHijosFallecidos = base.Columns["VaromesNumeroHijosFallecidos"];
-                this.columnVaromesNumeroAbortoPareja = base.Columns["VaromesNumeroAbortoPareja"];
-                this.columnDamasCausaAborto = base.Columns["DamasCausaAborto"];
-                this.columnVaronesCausaAborto = base.Columns["VaronesCausaAborto"];
                 this.columnServiceId = base.Columns["ServiceId"];
                 this.columnServiceComponentId = base.Columns["ServiceComponentId"];
-                this.columnFechaServicio = base.Columns["FechaServicio"];
-                this.columnNombres = base.Columns["Nombres"];
-                this.columnApellidoPaterno = base.Columns["ApellidoPaterno"];
-                this.columnApellidoMaterno = base.Columns["ApellidoMaterno"];
                 this.columnNombreCompleto = base.Columns["NombreCompleto"];
                 this.columnFechaNacimiento = base.Columns["FechaNacimiento"];
                 this.columnEdad = base.Columns["Edad"];
@@ -2118,17 +1875,13 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnFirmaUsuarioGraba = base.Columns["FirmaUsuarioGraba"];
                 this.columnLugarNacimiento = base.Columns["LugarNacimiento"];
                 this.columnLugarProcedencia = base.Columns["LugarProcedencia"];
-                this.columnFechaAntecedenteQuirurgico = base.Columns["FechaAntecedenteQuirurgico"];
-                this.columnHospitalAntecedenteQuirurgico = base.Columns["HospitalAntecedenteQuirurgico"];
-                this.columnOperacionAntecedenteQuirurgico = base.Columns["OperacionAntecedenteQuirurgico"];
-                this.columnDiasAntecedenteQuirurgico = base.Columns["DiasAntecedenteQuirurgico"];
-                this.columnComplicacionesAntecedenteQuirurgico = base.Columns["ComplicacionesAntecedenteQuirurgico"];
                 this.columnDia = base.Columns["Dia"];
                 this.columnMes = base.Columns["Mes"];
                 this.columnAnio = base.Columns["Anio"];
                 this.columnFirmaMedicina = base.Columns["FirmaMedicina"];
                 this.columnb_Logo_Cliente = base.Columns["b_Logo_Cliente"];
                 this.columnb_Logo = base.Columns["b_Logo"];
+                this.columnCirugias = base.Columns["Cirugias"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2314,40 +2067,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnTipoMasFrecuente);
                 this.columnTipoProbado = new global::System.Data.DataColumn("TipoProbado", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTipoProbado);
-                this.columnInicioMestrucion = new global::System.Data.DataColumn("InicioMestrucion", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInicioMestrucion);
-                this.columnInicioVidaSexual = new global::System.Data.DataColumn("InicioVidaSexual", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnInicioVidaSexual);
-                this.columnNumeroParejas = new global::System.Data.DataColumn("NumeroParejas", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNumeroParejas);
-                this.columnDamasNumeroHijosVivos = new global::System.Data.DataColumn("DamasNumeroHijosVivos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDamasNumeroHijosVivos);
-                this.columnDamasNumeroHijosFallecidos = new global::System.Data.DataColumn("DamasNumeroHijosFallecidos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDamasNumeroHijosFallecidos);
-                this.columnDamasNumeroAborto = new global::System.Data.DataColumn("DamasNumeroAborto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDamasNumeroAborto);
-                this.columnVaronesNumeroHijosVivos = new global::System.Data.DataColumn("VaronesNumeroHijosVivos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVaronesNumeroHijosVivos);
-                this.columnVaromesNumeroHijosFallecidos = new global::System.Data.DataColumn("VaromesNumeroHijosFallecidos", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVaromesNumeroHijosFallecidos);
-                this.columnVaromesNumeroAbortoPareja = new global::System.Data.DataColumn("VaromesNumeroAbortoPareja", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVaromesNumeroAbortoPareja);
-                this.columnDamasCausaAborto = new global::System.Data.DataColumn("DamasCausaAborto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDamasCausaAborto);
-                this.columnVaronesCausaAborto = new global::System.Data.DataColumn("VaronesCausaAborto", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVaronesCausaAborto);
                 this.columnServiceId = new global::System.Data.DataColumn("ServiceId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnServiceId);
                 this.columnServiceComponentId = new global::System.Data.DataColumn("ServiceComponentId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnServiceComponentId);
-                this.columnFechaServicio = new global::System.Data.DataColumn("FechaServicio", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaServicio);
-                this.columnNombres = new global::System.Data.DataColumn("Nombres", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnNombres);
-                this.columnApellidoPaterno = new global::System.Data.DataColumn("ApellidoPaterno", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnApellidoPaterno);
-                this.columnApellidoMaterno = new global::System.Data.DataColumn("ApellidoMaterno", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnApellidoMaterno);
                 this.columnNombreCompleto = new global::System.Data.DataColumn("NombreCompleto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNombreCompleto);
                 this.columnFechaNacimiento = new global::System.Data.DataColumn("FechaNacimiento", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2382,16 +2105,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnLugarNacimiento);
                 this.columnLugarProcedencia = new global::System.Data.DataColumn("LugarProcedencia", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLugarProcedencia);
-                this.columnFechaAntecedenteQuirurgico = new global::System.Data.DataColumn("FechaAntecedenteQuirurgico", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFechaAntecedenteQuirurgico);
-                this.columnHospitalAntecedenteQuirurgico = new global::System.Data.DataColumn("HospitalAntecedenteQuirurgico", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnHospitalAntecedenteQuirurgico);
-                this.columnOperacionAntecedenteQuirurgico = new global::System.Data.DataColumn("OperacionAntecedenteQuirurgico", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOperacionAntecedenteQuirurgico);
-                this.columnDiasAntecedenteQuirurgico = new global::System.Data.DataColumn("DiasAntecedenteQuirurgico", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDiasAntecedenteQuirurgico);
-                this.columnComplicacionesAntecedenteQuirurgico = new global::System.Data.DataColumn("ComplicacionesAntecedenteQuirurgico", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnComplicacionesAntecedenteQuirurgico);
                 this.columnDia = new global::System.Data.DataColumn("Dia", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDia);
                 this.columnMes = new global::System.Data.DataColumn("Mes", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2404,6 +2117,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnb_Logo_Cliente);
                 this.columnb_Logo = new global::System.Data.DataColumn("b_Logo", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnb_Logo);
+                this.columnCirugias = new global::System.Data.DataColumn("Cirugias", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCirugias);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4076,193 +3791,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string InicioMestrucion {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.InicioMestrucionColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'InicioMestrucion\' de la tabla \'dtFichaAntecedentePatologi" +
-                                "co\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.InicioMestrucionColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string InicioVidaSexual {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.InicioVidaSexualColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'InicioVidaSexual\' de la tabla \'dtFichaAntecedentePatologi" +
-                                "co\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.InicioVidaSexualColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string NumeroParejas {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.NumeroParejasColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NumeroParejas\' de la tabla \'dtFichaAntecedentePatologico\'" +
-                                " es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.NumeroParejasColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DamasNumeroHijosVivos {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.DamasNumeroHijosVivosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DamasNumeroHijosVivos\' de la tabla \'dtFichaAntecedentePat" +
-                                "ologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.DamasNumeroHijosVivosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DamasNumeroHijosFallecidos {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.DamasNumeroHijosFallecidosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DamasNumeroHijosFallecidos\' de la tabla \'dtFichaAnteceden" +
-                                "tePatologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.DamasNumeroHijosFallecidosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DamasNumeroAborto {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.DamasNumeroAbortoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DamasNumeroAborto\' de la tabla \'dtFichaAntecedentePatolog" +
-                                "ico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.DamasNumeroAbortoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string VaronesNumeroHijosVivos {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.VaronesNumeroHijosVivosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VaronesNumeroHijosVivos\' de la tabla \'dtFichaAntecedenteP" +
-                                "atologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.VaronesNumeroHijosVivosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string VaromesNumeroHijosFallecidos {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.VaromesNumeroHijosFallecidosColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VaromesNumeroHijosFallecidos\' de la tabla \'dtFichaAnteced" +
-                                "entePatologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.VaromesNumeroHijosFallecidosColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string VaromesNumeroAbortoPareja {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.VaromesNumeroAbortoParejaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VaromesNumeroAbortoPareja\' de la tabla \'dtFichaAntecedent" +
-                                "ePatologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.VaromesNumeroAbortoParejaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DamasCausaAborto {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.DamasCausaAbortoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DamasCausaAborto\' de la tabla \'dtFichaAntecedentePatologi" +
-                                "co\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.DamasCausaAbortoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string VaronesCausaAborto {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.VaronesCausaAbortoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'VaronesCausaAborto\' de la tabla \'dtFichaAntecedentePatolo" +
-                                "gico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.VaronesCausaAbortoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string ServiceId {
                 get {
                     try {
@@ -4292,74 +3820,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 }
                 set {
                     this[this.tabledtFichaAntecedentePatologico.ServiceComponentIdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FechaServicio {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.FechaServicioColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaServicio\' de la tabla \'dtFichaAntecedentePatologico\'" +
-                                " es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.FechaServicioColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nombres {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.NombresColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Nombres\' de la tabla \'dtFichaAntecedentePatologico\' es DB" +
-                                "Null.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.NombresColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ApellidoPaterno {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.ApellidoPaternoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ApellidoPaterno\' de la tabla \'dtFichaAntecedentePatologic" +
-                                "o\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.ApellidoPaternoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ApellidoMaterno {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.ApellidoMaternoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ApellidoMaterno\' de la tabla \'dtFichaAntecedentePatologic" +
-                                "o\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.ApellidoMaternoColumn] = value;
                 }
             }
             
@@ -4654,91 +4114,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FechaAntecedenteQuirurgico {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.FechaAntecedenteQuirurgicoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'FechaAntecedenteQuirurgico\' de la tabla \'dtFichaAnteceden" +
-                                "tePatologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.FechaAntecedenteQuirurgicoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string HospitalAntecedenteQuirurgico {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.HospitalAntecedenteQuirurgicoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'HospitalAntecedenteQuirurgico\' de la tabla \'dtFichaAntece" +
-                                "dentePatologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.HospitalAntecedenteQuirurgicoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string OperacionAntecedenteQuirurgico {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.OperacionAntecedenteQuirurgicoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'OperacionAntecedenteQuirurgico\' de la tabla \'dtFichaAntec" +
-                                "edentePatologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.OperacionAntecedenteQuirurgicoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string DiasAntecedenteQuirurgico {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.DiasAntecedenteQuirurgicoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'DiasAntecedenteQuirurgico\' de la tabla \'dtFichaAntecedent" +
-                                "ePatologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.DiasAntecedenteQuirurgicoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string ComplicacionesAntecedenteQuirurgico {
-                get {
-                    try {
-                        return ((string)(this[this.tabledtFichaAntecedentePatologico.ComplicacionesAntecedenteQuirurgicoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'ComplicacionesAntecedenteQuirurgico\' de la tabla \'dtFicha" +
-                                "AntecedentePatologico\' es DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tabledtFichaAntecedentePatologico.ComplicacionesAntecedenteQuirurgicoColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public string Dia {
                 get {
                     try {
@@ -4836,6 +4211,23 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 }
                 set {
                     this[this.tabledtFichaAntecedentePatologico.b_LogoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Cirugias {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtFichaAntecedentePatologico.CirugiasColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'Cirugias\' de la tabla \'dtFichaAntecedentePatologico\' es D" +
+                                "BNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtFichaAntecedentePatologico.CirugiasColumn] = value;
                 }
             }
             
@@ -5921,138 +5313,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsInicioMestrucionNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.InicioMestrucionColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetInicioMestrucionNull() {
-                this[this.tabledtFichaAntecedentePatologico.InicioMestrucionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsInicioVidaSexualNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.InicioVidaSexualColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetInicioVidaSexualNull() {
-                this[this.tabledtFichaAntecedentePatologico.InicioVidaSexualColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNumeroParejasNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.NumeroParejasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNumeroParejasNull() {
-                this[this.tabledtFichaAntecedentePatologico.NumeroParejasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDamasNumeroHijosVivosNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.DamasNumeroHijosVivosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDamasNumeroHijosVivosNull() {
-                this[this.tabledtFichaAntecedentePatologico.DamasNumeroHijosVivosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDamasNumeroHijosFallecidosNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.DamasNumeroHijosFallecidosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDamasNumeroHijosFallecidosNull() {
-                this[this.tabledtFichaAntecedentePatologico.DamasNumeroHijosFallecidosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDamasNumeroAbortoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.DamasNumeroAbortoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDamasNumeroAbortoNull() {
-                this[this.tabledtFichaAntecedentePatologico.DamasNumeroAbortoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVaronesNumeroHijosVivosNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.VaronesNumeroHijosVivosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVaronesNumeroHijosVivosNull() {
-                this[this.tabledtFichaAntecedentePatologico.VaronesNumeroHijosVivosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVaromesNumeroHijosFallecidosNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.VaromesNumeroHijosFallecidosColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVaromesNumeroHijosFallecidosNull() {
-                this[this.tabledtFichaAntecedentePatologico.VaromesNumeroHijosFallecidosColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVaromesNumeroAbortoParejaNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.VaromesNumeroAbortoParejaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVaromesNumeroAbortoParejaNull() {
-                this[this.tabledtFichaAntecedentePatologico.VaromesNumeroAbortoParejaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDamasCausaAbortoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.DamasCausaAbortoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDamasCausaAbortoNull() {
-                this[this.tabledtFichaAntecedentePatologico.DamasCausaAbortoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVaronesCausaAbortoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.VaronesCausaAbortoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVaronesCausaAbortoNull() {
-                this[this.tabledtFichaAntecedentePatologico.VaronesCausaAbortoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsServiceIdNull() {
                 return this.IsNull(this.tabledtFichaAntecedentePatologico.ServiceIdColumn);
             }
@@ -6073,54 +5333,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetServiceComponentIdNull() {
                 this[this.tabledtFichaAntecedentePatologico.ServiceComponentIdColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFechaServicioNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.FechaServicioColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFechaServicioNull() {
-                this[this.tabledtFichaAntecedentePatologico.FechaServicioColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNombresNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.NombresColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNombresNull() {
-                this[this.tabledtFichaAntecedentePatologico.NombresColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsApellidoPaternoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.ApellidoPaternoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetApellidoPaternoNull() {
-                this[this.tabledtFichaAntecedentePatologico.ApellidoPaternoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsApellidoMaternoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.ApellidoMaternoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetApellidoMaternoNull() {
-                this[this.tabledtFichaAntecedentePatologico.ApellidoMaternoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6329,66 +5541,6 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsFechaAntecedenteQuirurgicoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.FechaAntecedenteQuirurgicoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetFechaAntecedenteQuirurgicoNull() {
-                this[this.tabledtFichaAntecedentePatologico.FechaAntecedenteQuirurgicoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsHospitalAntecedenteQuirurgicoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.HospitalAntecedenteQuirurgicoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetHospitalAntecedenteQuirurgicoNull() {
-                this[this.tabledtFichaAntecedentePatologico.HospitalAntecedenteQuirurgicoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOperacionAntecedenteQuirurgicoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.OperacionAntecedenteQuirurgicoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOperacionAntecedenteQuirurgicoNull() {
-                this[this.tabledtFichaAntecedentePatologico.OperacionAntecedenteQuirurgicoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDiasAntecedenteQuirurgicoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.DiasAntecedenteQuirurgicoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDiasAntecedenteQuirurgicoNull() {
-                this[this.tabledtFichaAntecedentePatologico.DiasAntecedenteQuirurgicoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsComplicacionesAntecedenteQuirurgicoNull() {
-                return this.IsNull(this.tabledtFichaAntecedentePatologico.ComplicacionesAntecedenteQuirurgicoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetComplicacionesAntecedenteQuirurgicoNull() {
-                this[this.tabledtFichaAntecedentePatologico.ComplicacionesAntecedenteQuirurgicoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsDiaNull() {
                 return this.IsNull(this.tabledtFichaAntecedentePatologico.DiaColumn);
             }
@@ -6457,6 +5609,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void Setb_LogoNull() {
                 this[this.tabledtFichaAntecedentePatologico.b_LogoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCirugiasNull() {
+                return this.IsNull(this.tabledtFichaAntecedentePatologico.CirugiasColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCirugiasNull() {
+                this[this.tabledtFichaAntecedentePatologico.CirugiasColumn] = global::System.Convert.DBNull;
             }
         }
         

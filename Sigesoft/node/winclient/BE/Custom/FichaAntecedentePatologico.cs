@@ -156,5 +156,7 @@ namespace Sigesoft.Node.WinClient.BE
 
          public byte[] b_Logo { get; set; }
          public byte[] b_Logo_Cliente { get; set; }
+
+        public List<CirugiaList> Cirugias { get; set; }
     }
 }

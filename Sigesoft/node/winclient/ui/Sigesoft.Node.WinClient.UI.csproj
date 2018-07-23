@@ -294,6 +294,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCartaCotizacion.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsCirugias.cs">
+      <DependentUpon>dsCirugias.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Dataset\dsCirugias.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCirugias.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\dsCuestAudio.cs">
       <DependentUpon>dsCuestAudio.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -4716,6 +4725,17 @@
     </None>
     <None Include="Dataset\dsCartaCotizacion.xss">
       <DependentUpon>dsCartaCotizacion.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsCirugias.xsc">
+      <DependentUpon>dsCirugias.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsCirugias.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCirugias.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsCirugias.xss">
+      <DependentUpon>dsCirugias.xsd</DependentUpon>
     </None>
     <None Include="Dataset\dsCuestAudio.xsc">
       <DependentUpon>dsCuestAudio.xsd</DependentUpon>

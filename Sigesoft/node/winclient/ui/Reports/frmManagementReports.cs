@@ -2207,6 +2207,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Export();
                     rp.Close();
 
+
+                    var CIRUGIAS = new ServiceBL().GetCirugias(_pacientId, _serviceId);
+
+                     dsGetRepo = new DataSet();
+                     DataTable dtCirugias = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(CIRUGIAS);
+                     dtCirugias.TableName = "dtCirugias";
+                     dsGetRepo.Tables.Add(dtCirugias);
+
                     rp = new Reports.crFichaAntecedentePatologico02();
                     rp.SetDataSource(dsGetRepo);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -2967,29 +2975,29 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
 
                     // Historia Ocupacional Audiometria
-                    var dataListForReport_1 = new ServiceBL().ReportHistoriaOcupacionalAudiometria(_serviceId);
+                    //var dataListForReport_1 = new ServiceBL().ReportHistoriaOcupacionalAudiometria(_serviceId);
 
-                    if (dataListForReport_1.Count != 0)
-                    {
-                        dsGetRepo = new DataSet();
-                        DataTable dt_dataListForReport_1 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(dataListForReport_1);
+                    //if (dataListForReport_1.Count != 0)
+                    //{
+                    //    dsGetRepo = new DataSet();
+                    //    DataTable dt_dataListForReport_1 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(dataListForReport_1);
 
-                        dt_dataListForReport_1.TableName = "dtHistoriaOcupacional";
+                    //    dt_dataListForReport_1.TableName = "dtHistoriaOcupacional";
 
-                        dsGetRepo.Tables.Add(dt_dataListForReport_1);
+                    //    dsGetRepo.Tables.Add(dt_dataListForReport_1);
 
-                        rp = new Reports.crHistoriaOcupacionalAudiometria();
-                        rp.SetDataSource(dsGetRepo);
-                        rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                        rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                        objDiskOpt = new DiskFileDestinationOptions();
-                        //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + "AUDIOMETRIA_ID_HISTORIA" + ".pdf";
-                        objDiskOpt.DiskFileName = ruta + serviceId + "-" + "AUDIOMETRIA_ID_HISTORIA" + ".pdf";
-                        _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                        rp.ExportOptions.DestinationOptions = objDiskOpt;
-                        rp.Export();
-                        rp.Close();
-                    }
+                    //    rp = new Reports.crHistoriaOcupacionalAudiometria();
+                    //    rp.SetDataSource(dsGetRepo);
+                    //    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    //    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    //    objDiskOpt = new DiskFileDestinationOptions();
+                    //    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + "AUDIOMETRIA_ID_HISTORIA" + ".pdf";
+                    //    objDiskOpt.DiskFileName = ruta + serviceId + "-" + "AUDIOMETRIA_ID_HISTORIA" + ".pdf";
+                    //    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    //    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                    //    rp.Export();
+                    //    rp.Close();
+                    //}
 
                     break;
 
