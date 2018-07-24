@@ -83,6 +83,7 @@
             this.lblRecordCount = new System.Windows.Forms.Label();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
+            this.btnTicket = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -206,7 +207,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(1227, 490);
+            this.groupBox2.Size = new System.Drawing.Size(1128, 490);
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Hopitalizados";
@@ -216,7 +217,7 @@
             this.lblRecordCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount.Location = new System.Drawing.Point(985, 8);
+            this.lblRecordCount.Location = new System.Drawing.Point(886, 8);
             this.lblRecordCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount.Name = "lblRecordCount";
             this.lblRecordCount.Size = new System.Drawing.Size(231, 19);
@@ -325,7 +326,7 @@
             this.grdData.Location = new System.Drawing.Point(14, 29);
             this.grdData.Margin = new System.Windows.Forms.Padding(2);
             this.grdData.Name = "grdData";
-            this.grdData.Size = new System.Drawing.Size(1202, 447);
+            this.grdData.Size = new System.Drawing.Size(1103, 447);
             this.grdData.TabIndex = 44;
             this.grdData.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdData_InitializeLayout);
             // 
@@ -350,11 +351,34 @@
             ultraDataColumn16,
             ultraDataColumn17});
             // 
+            // btnTicket
+            // 
+            this.btnTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTicket.BackColor = System.Drawing.SystemColors.Control;
+            this.btnTicket.Enabled = false;
+            this.btnTicket.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnTicket.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnTicket.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTicket.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTicket.ForeColor = System.Drawing.Color.Black;
+            this.btnTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_edit;
+            this.btnTicket.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnTicket.Location = new System.Drawing.Point(1142, 88);
+            this.btnTicket.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTicket.Name = "btnTicket";
+            this.btnTicket.Size = new System.Drawing.Size(85, 36);
+            this.btnTicket.TabIndex = 51;
+            this.btnTicket.Text = "Nuevo Ticket";
+            this.btnTicket.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnTicket.UseVisualStyleBackColor = false;
+            // 
             // frmHospitalizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 581);
+            this.Controls.Add(this.btnTicket);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.MaximizeBox = false;
@@ -387,5 +411,6 @@
         private System.Windows.Forms.ComboBox ddlCalendarStatusId;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
         private Infragistics.Win.UltraWinDataSource.UltraDataSource ultraDataSource1;
+        private System.Windows.Forms.Button btnTicket;
     }
 }
