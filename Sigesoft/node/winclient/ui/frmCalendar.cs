@@ -1355,6 +1355,11 @@ namespace Sigesoft.Node.WinClient.UI
             frm.ShowDialog();
         }
 
+        private void ugComponentes_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+
+        }
+
        
     }
 }

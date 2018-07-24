@@ -58,6 +58,7 @@
     <Compile Include="GesBL.cs" />
     <Compile Include="GroupOccupationBL.cs" />
     <Compile Include="HistoryBL.cs" />
+    <Compile Include="HospitalizacionBL.cs" />
     <Compile Include="LocationBL.cs" />
     <Compile Include="LogBL.cs" />
     <Compile Include="MasterRecommendationRestricctionBL.cs" />
