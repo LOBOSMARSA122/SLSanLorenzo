@@ -528,7 +528,10 @@ namespace Sigesoft.Node.WinClient.UI
             ProtocolBL oProtocolBL = new ProtocolBL();
             List<ServiceOrderPdf> Lista = new List<ServiceOrderPdf>();
             ServiceOrderPdf oServiceOrderPdf;
+
+            DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             OperationResult objOperationResult = new OperationResult();
+
             List<ProtocolComponentList> ListaComponentes = new List<ProtocolComponentList>();
             SecurityBL oSecurityBL = new SecurityBL();
 
@@ -543,6 +546,7 @@ namespace Sigesoft.Node.WinClient.UI
        
             //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             //{
+
                 using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
                 {
                     this.Enabled = false;
@@ -583,7 +587,9 @@ namespace Sigesoft.Node.WinClient.UI
                    oSystemUserList= oSecurityBL.GetSystemUserAndProfesional(ref objOperationResult, SystemUserId);
 
                    string ruta = Common.Utils.GetApplicationConfigValue("rutaCotizacion").ToString();
-                 
+
+                    
+
                    if (chkProtocoloEspecial.Checked)
                    {
                        OrdenServicioPromocion.CrearOrdenServicio(rbSi.Checked ? true : false, Lista, MedicalCenter, pEmpresaCliente, DateTime.Parse(txtDateTime.Text).ToString("dd/MMMM/yyyy"), oSystemUserList.Profesion + ". " + oSystemUserList.v_PersonName, ruta + _ServiceOrderId + ".pdf");
