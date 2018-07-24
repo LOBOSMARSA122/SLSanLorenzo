@@ -327,6 +327,7 @@
             this.grdData.Name = "grdData";
             this.grdData.Size = new System.Drawing.Size(1202, 447);
             this.grdData.TabIndex = 44;
+            this.grdData.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdData_InitializeLayout);
             // 
             // ultraDataSource1
             // 
@@ -383,6 +384,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label lblRecordCount;
+        private System.Windows.Forms.ComboBox ddlCalendarStatusId;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
         private Infragistics.Win.UltraWinDataSource.UltraDataSource ultraDataSource1;
     }

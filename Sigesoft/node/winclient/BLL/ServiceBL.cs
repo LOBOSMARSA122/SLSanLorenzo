@@ -28805,7 +28805,7 @@ namespace Sigesoft.Node.WinClient.BLL
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-
+                // Acá traigo toda mi data que nececeito... mas que todo para los padres
                 var query = (from A in dbContext.servicecomponent
                              join B in dbContext.systemparameter on new { a = A.i_ServiceComponentStatusId.Value, b = 127 }
                                       equals new { a = B.i_ParameterId, b = B.i_GroupId }
@@ -28839,10 +28839,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  v_ServiceComponentId = A.v_ServiceComponentId,
                              });
 
-
-
-
-
+                // acá lleno mi entidad padre con la consulta de arriba
                 List<Categoria> xxx = new List<Categoria>();
                 Categoria oCategoria = null;
                 foreach (var item in query)
@@ -28858,6 +28855,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     xxx.Add(oCategoria);
                 }
 
+                //en mi caso hago un groupby porque mi data se repite
                 var objData = xxx.AsEnumerable()
                         .Where(s => s.i_CategoryId != -1)
                         .GroupBy(x => x.i_CategoryId)
@@ -28868,7 +28866,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 Categoria objCategoriaList;
                 List<Categoria> Lista = new List<Categoria>();
 
-                //int CategoriaId_Old = 0;
+                //acá recorreo los padres para poder llenar los hijos
                 for (int i = 0; i < obj.Count(); i++)
                 {
                     objCategoriaList = new Categoria();
@@ -28878,11 +28876,13 @@ namespace Sigesoft.Node.WinClient.BLL
                     objCategoriaList.v_ServiceComponentStatusName = obj[i].v_ServiceComponentStatusName;
                     objCategoriaList.v_QueueStatusName = obj[i].v_QueueStatusName;
                     objCategoriaList.i_ServiceComponentStatusId = obj[i].i_ServiceComponentStatusId;
+                    // en esta variable x obtengo los hijos de un padre (cada bucle me da un padre y con ese id busco sus hijos)
                     var x = query.ToList().FindAll(p => p.i_CategoryId == obj[i].i_CategoryId.Value);
 
                     x.Sort((z, y) => z.v_ComponentName.CompareTo(y.v_ComponentName));
                     ComponentDetailList objComponentDetailList;
                     List<ComponentDetailList> ListaComponentes = new List<ComponentDetailList>();
+                    //recorro los hijos y los agrego dentro del padre
                     foreach (var item in x)
                     {
                         objComponentDetailList = new ComponentDetailList();
@@ -28899,7 +28899,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 }
 
 
-
+                //retorno lista jerarquizada
                 pobjOperationResult.Success = 1;
                 return Lista;
             }
@@ -28910,6 +28910,121 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        public List<Categoria> GetHospitalizaciones(ref OperationResult pobjOperationResult, string pstrString)
+        {
+            int isDeleted = (int)SiNo.NO;
+            int isRequired = (int)SiNo.SI;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                // Acá traigo toda mi data que nececeito... mas que todo para los padres
+                var query = (from A in dbContext.servicecomponent
+                             join B in dbContext.systemparameter on new { a = A.i_ServiceComponentStatusId.Value, b = 127 }
+                                      equals new { a = B.i_ParameterId, b = B.i_GroupId }
+                             join C in dbContext.component on A.v_ComponentId equals C.v_ComponentId
+                             join D in dbContext.systemparameter on new { a = A.i_QueueStatusId.Value, b = 128 }
+                                      equals new { a = D.i_ParameterId, b = D.i_GroupId }
+                             join E in dbContext.service on A.v_ServiceId equals E.v_ServiceId
+                             join F in dbContext.systemparameter on new { a = C.i_CategoryId.Value, b = 116 }
+                                      equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                             from F in F_join.DefaultIfEmpty()
+
+                             where A.v_ServiceId == pstrString &&
+                                   A.i_IsDeleted == isDeleted &&
+                                   A.i_IsRequiredId == isRequired
+
+                             select new ServiceComponentList
+                             {
+                                 v_ComponentId = A.v_ComponentId,
+                                 v_ComponentName = C.v_Name,
+                                 i_ServiceComponentStatusId = A.i_ServiceComponentStatusId.Value,
+                                 v_ServiceComponentStatusName = B.v_Value1,
+                                 d_StartDate = A.d_StartDate.Value,
+                                 d_EndDate = A.d_EndDate.Value,
+                                 i_QueueStatusId = A.i_QueueStatusId.Value,
+                                 v_QueueStatusName = D.v_Value1,
+                                 ServiceStatusId = E.i_ServiceStatusId.Value,
+                                 v_Motive = E.v_Motive,
+                                 i_CategoryId = C.i_CategoryId.Value,
+                                 v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1,
+                                 v_ServiceId = E.v_ServiceId,
+                                 v_ServiceComponentId = A.v_ServiceComponentId,
+                             });
+
+                // acá lleno mi entidad padre con la consulta de arriba
+                List<Categoria> xxx = new List<Categoria>();
+                Categoria oCategoria = null;
+                foreach (var item in query)
+                {
+                    oCategoria = new Categoria();
+                    oCategoria.v_ComponentId = item.v_ComponentId;
+                    oCategoria.v_ComponentName = item.v_ComponentName;
+                    oCategoria.i_CategoryId = item.i_CategoryId;
+                    oCategoria.v_CategoryName = item.v_CategoryName;// item.i_CategoryId.Value == -1 ? item.v_CategoryName : item.v_ServiceComponentStatusName;
+                    oCategoria.v_ServiceComponentStatusName = item.v_ServiceComponentStatusName;
+                    oCategoria.v_QueueStatusName = item.v_QueueStatusName;
+                    oCategoria.i_ServiceComponentStatusId = item.i_ServiceComponentStatusId.Value;
+                    xxx.Add(oCategoria);
+                }
+
+                //en mi caso hago un groupby porque mi data se repite
+                var objData = xxx.AsEnumerable()
+                        .Where(s => s.i_CategoryId != -1)
+                        .GroupBy(x => x.i_CategoryId)
+                        .Select(group => group.First());
+
+                List<Categoria> obj = objData.ToList();
+
+                Categoria objCategoriaList;
+                List<Categoria> Lista = new List<Categoria>();
+
+                //acá recorreo los padres para poder llenar los hijos
+                for (int i = 0; i < obj.Count(); i++)
+                {
+                    objCategoriaList = new Categoria();
+
+                    objCategoriaList.i_CategoryId = obj[i].i_CategoryId.Value;
+                    objCategoriaList.v_CategoryName = obj[i].v_CategoryName;
+                    objCategoriaList.v_ServiceComponentStatusName = obj[i].v_ServiceComponentStatusName;
+                    objCategoriaList.v_QueueStatusName = obj[i].v_QueueStatusName;
+                    objCategoriaList.i_ServiceComponentStatusId = obj[i].i_ServiceComponentStatusId;
+                    // en esta variable x obtengo los hijos de un padre (cada bucle me da un padre y con ese id busco sus hijos)
+                    var x = query.ToList().FindAll(p => p.i_CategoryId == obj[i].i_CategoryId.Value);
+
+                    x.Sort((z, y) => z.v_ComponentName.CompareTo(y.v_ComponentName));
+                    ComponentDetailList objComponentDetailList;
+                    List<ComponentDetailList> ListaComponentes = new List<ComponentDetailList>();
+                    //recorro los hijos y los agrego dentro del padre
+                    foreach (var item in x)
+                    {
+                        objComponentDetailList = new ComponentDetailList();
+
+                        objComponentDetailList.v_ComponentId = item.v_ComponentId;
+                        objComponentDetailList.v_ComponentName = item.v_ComponentName;
+                        objComponentDetailList.v_ServiceComponentId = item.v_ServiceComponentId;
+                        ListaComponentes.Add(objComponentDetailList);
+                    }
+                    objCategoriaList.Componentes = ListaComponentes;
+
+                    Lista.Add(objCategoriaList);
+
+                }
+
+
+                //retorno lista jerarquizada
+                pobjOperationResult.Success = 1;
+                return Lista;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+
 
 	    public byte[] ObtenerImageMultimedia(string multimediaFileId)
 	    {
