@@ -44,12 +44,12 @@
             this.crystalReportViewer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.crystalReportViewer1.Location = new System.Drawing.Point(4, 27);
+            this.crystalReportViewer1.Location = new System.Drawing.Point(4, 28);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
             this.crystalReportViewer1.ShowGroupTreeButton = false;
             this.crystalReportViewer1.ShowParameterPanelButton = false;
             this.crystalReportViewer1.ShowRefreshButton = false;
-            this.crystalReportViewer1.Size = new System.Drawing.Size(762, 386);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(762, 385);
             this.crystalReportViewer1.TabIndex = 0;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             // 
@@ -65,9 +65,9 @@
             this._frmReporteReceta_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmReporteReceta_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager1;
             this._frmReporteReceta_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._frmReporteReceta_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 27);
+            this._frmReporteReceta_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 28);
             this._frmReporteReceta_UltraFormManager_Dock_Area_Left.Name = "_frmReporteReceta_UltraFormManager_Dock_Area_Left";
-            this._frmReporteReceta_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 386);
+            this._frmReporteReceta_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 385);
             // 
             // _frmReporteReceta_UltraFormManager_Dock_Area_Right
             // 
@@ -77,9 +77,9 @@
             this._frmReporteReceta_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmReporteReceta_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager1;
             this._frmReporteReceta_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._frmReporteReceta_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(766, 27);
+            this._frmReporteReceta_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(766, 28);
             this._frmReporteReceta_UltraFormManager_Dock_Area_Right.Name = "_frmReporteReceta_UltraFormManager_Dock_Area_Right";
-            this._frmReporteReceta_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 386);
+            this._frmReporteReceta_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 385);
             // 
             // _frmReporteReceta_UltraFormManager_Dock_Area_Top
             // 
@@ -90,7 +90,7 @@
             this._frmReporteReceta_UltraFormManager_Dock_Area_Top.FormManager = this.ultraFormManager1;
             this._frmReporteReceta_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmReporteReceta_UltraFormManager_Dock_Area_Top.Name = "_frmReporteReceta_UltraFormManager_Dock_Area_Top";
-            this._frmReporteReceta_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(770, 27);
+            this._frmReporteReceta_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(770, 28);
             // 
             // _frmReporteReceta_UltraFormManager_Dock_Area_Bottom
             // 
