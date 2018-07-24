@@ -1486,6 +1486,7 @@
             this.ugComponentes.Name = "ugComponentes";
             this.ugComponentes.Size = new System.Drawing.Size(422, 218);
             this.ugComponentes.TabIndex = 100;
+            this.ugComponentes.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.ugComponentes_InitializeLayout);
             this.ugComponentes.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.ugComponentes_InitializeRow);
             this.ugComponentes.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.ugComponentes_MouseEnterElement);
             this.ugComponentes.MouseLeaveElement += new Infragistics.Win.UIElementEventHandler(this.ugComponentes_MouseLeaveElement);
