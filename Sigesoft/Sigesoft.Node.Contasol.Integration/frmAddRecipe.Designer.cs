@@ -75,9 +75,9 @@
             this.frmAddRecipe_Fill_Panel.ClientArea.Controls.Add(this.gbReceta);
             this.frmAddRecipe_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.frmAddRecipe_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmAddRecipe_Fill_Panel.Location = new System.Drawing.Point(4, 28);
+            this.frmAddRecipe_Fill_Panel.Location = new System.Drawing.Point(4, 27);
             this.frmAddRecipe_Fill_Panel.Name = "frmAddRecipe_Fill_Panel";
-            this.frmAddRecipe_Fill_Panel.Size = new System.Drawing.Size(423, 230);
+            this.frmAddRecipe_Fill_Panel.Size = new System.Drawing.Size(423, 231);
             this.frmAddRecipe_Fill_Panel.TabIndex = 0;
             // 
             // gbReceta
@@ -234,9 +234,9 @@
             this._frmAddRecipe_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager1;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 28);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 27);
             this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Name = "_frmAddRecipe_UltraFormManager_Dock_Area_Left";
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 230);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 231);
             // 
             // _frmAddRecipe_UltraFormManager_Dock_Area_Right
             // 
@@ -246,9 +246,9 @@
             this._frmAddRecipe_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager1;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(427, 28);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(427, 27);
             this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Name = "_frmAddRecipe_UltraFormManager_Dock_Area_Right";
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 230);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 231);
             // 
             // _frmAddRecipe_UltraFormManager_Dock_Area_Top
             // 
@@ -259,7 +259,7 @@
             this._frmAddRecipe_UltraFormManager_Dock_Area_Top.FormManager = this.ultraFormManager1;
             this._frmAddRecipe_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmAddRecipe_UltraFormManager_Dock_Area_Top.Name = "_frmAddRecipe_UltraFormManager_Dock_Area_Top";
-            this._frmAddRecipe_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(431, 28);
+            this._frmAddRecipe_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(431, 27);
             // 
             // _frmAddRecipe_UltraFormManager_Dock_Area_Bottom
             // 

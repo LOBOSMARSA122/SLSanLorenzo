@@ -33,8 +33,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
             InitializeComponent();
             _objMedicamentoBl = new MedicamentoBl();
             _opbjOperationResult = new OperationResult();
-            Width = 740;
-            Height = 326;
+            Width = 940;
+            Height = 626;
         }
 
         private void frmSearchMedicamento_Load(object sender, EventArgs e)
