@@ -166,6 +166,47 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<KeyValueDTO> GetSystemParameterForComboGrupo(ref OperationResult pobjOperationResult, int pintGroupId, string pstrSortExpression)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.systemparameter
+                            where a.i_GroupId == pintGroupId && a.i_IsDeleted == 0 && a.i_ParentParameterId == 9
+                            select a;
+
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                else
+                {
+                    query = query.OrderBy("v_Value1");
+                }
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.i_ParameterId.ToString(),
+                                Value1 = x.v_Value1,
+                                Value2 = x.v_Value2,
+                                Field = x.v_Field
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
         public static List<KeyValueDTO> GetSystemParameterForComboAndParameterId(ref OperationResult pobjOperationResult, int pintGroupId, int pintParameterId, string pstrSortExpression)
         {
             //mon.IsActive = true;

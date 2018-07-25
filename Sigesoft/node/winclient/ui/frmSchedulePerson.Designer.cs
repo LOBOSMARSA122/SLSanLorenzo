@@ -2068,6 +2068,7 @@
             this.btnCancel.TabIndex = 99;
             this.btnCancel.Text = "   Salir";
             this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmSchedulePerson
             // 

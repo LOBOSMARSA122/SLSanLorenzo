@@ -302,5 +302,183 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return ticketdetalle;
         }
+
+        public List<MedicoList> GetMedicosGrid(string pstrFilterExpression)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from A in dbContext.medico
+                            join B in dbContext.systemuser on A.i_SystemUserId equals B.i_SystemUserId
+                            join C in dbContext.person on B.v_PersonId equals C.v_PersonId
+                             join D in dbContext.systemparameter on new { a = A.i_GrupoId.Value, b = 119 } equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                             from D in D_join.DefaultIfEmpty()
+                            where A.i_IsDeleted == 0
+                            select new MedicoList
+                            {
+                                i_SystemUserId = B.i_SystemUserId,
+                                v_MedicoId = A.v_MedicoId,
+                                Medico = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
+                                i_GrupoId = A.i_GrupoId.Value,
+                                Grupo = D.v_Value1,
+                                r_Clinica = A.r_Clinica.Value,
+                                r_Medico = A.r_Medico.Value,
+                                Usuario = B.v_UserName
+                            };
+
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+
+                return query.ToList();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public medicoDto GetMedico(ref OperationResult pobjOperationResult, string v_MedicoId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                medicoDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.medico
+                                 where a.v_MedicoId == v_MedicoId
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = medicoAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public void AddMedico(ref OperationResult pobjOperationResult, medicoDto pobjDtoEntity, List<string> ClientSession)
+        {
+            //mon.IsActive = true;
+            string NewId = "(No generado)";
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                medico objEntity = medicoAssembler.ToEntity(pobjDtoEntity);
+
+                objEntity.d_InsertDate = DateTime.Now;
+                objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
+                objEntity.i_IsDeleted = 0;
+
+                // Autogeneramos el Pk de la tabla                 
+                int intNodeId = int.Parse(ClientSession[0]);
+                NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 341), "MD"); ;
+                objEntity.v_MedicoId = NewId;
+
+                dbContext.AddTomedico(objEntity);
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+                // Llenar entidad Log
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "MEDICO", "v_MedicoId=" + NewId.ToString(), Success.Ok, null);
+                return;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "MEDICO", "v_MedicoId=" + NewId.ToString(), Success.Failed, pobjOperationResult.ExceptionMessage);
+                return;
+            }
+        }
+
+        public void UpdateMedico(ref OperationResult pobjOperationResult, medicoDto pobjDtoEntity, List<string> ClientSession)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.medico
+                                       where a.v_MedicoId == pobjDtoEntity.v_MedicoId
+                                       select a).FirstOrDefault();
+
+                // Crear la entidad con los datos actualizados
+                pobjDtoEntity.d_UpdateDate = DateTime.Now;
+                pobjDtoEntity.i_IsDeleted = 0;
+                pobjDtoEntity.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+
+                medico objEntity = medicoAssembler.ToEntity(pobjDtoEntity);
+
+                // Copiar los valores desde la entidad actualizada a la Entidad Fuente
+                dbContext.medico.ApplyCurrentValues(objEntity);
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+                // Llenar entidad Log
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "MEDICO", "v_MedicoId=" + objEntity.v_MedicoId.ToString(), Success.Ok, null);
+                return;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "MEDICO", "v_MedicoId=" + pobjDtoEntity.v_MedicoId.ToString(), Success.Failed, pobjOperationResult.ExceptionMessage);
+                return;
+            }
+        }
+
+        public void DeleteMedico(ref OperationResult pobjOperationResult, string v_MedicoId, List<string> ClientSession)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.medico
+                                       where a.v_MedicoId == v_MedicoId
+                                       select a).FirstOrDefault();
+
+                // Crear la entidad con los datos actualizados
+                objEntitySource.d_UpdateDate = DateTime.Now;
+                objEntitySource.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                objEntitySource.i_IsDeleted = 1;
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+                // Llenar entidad Log
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ELIMINACION, "MEDICO", "", Success.Ok, null);
+                return;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ELIMINACION, "MEDICO", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+                return;
+            }
+        }
+    
+
+
     }
 }

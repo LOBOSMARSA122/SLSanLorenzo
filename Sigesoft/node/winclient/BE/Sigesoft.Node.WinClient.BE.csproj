@@ -60,6 +60,9 @@
     <Compile Include="Custom\AtencionNinio.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
     <Compile Include="Custom\HospitalizacionServiceList.cs" />
+    <Compile Include="Custom\MedicoGrid.cs" />
+    <Compile Include="Custom\MedicoGridDetalle.cs" />
+    <Compile Include="Custom\MedicoList.cs" />
     <Compile Include="Custom\Ninioo.cs" />
     <Compile Include="Custom\ProblemasList.cs" />
     <Compile Include="Custom\AudiometriaList.cs" />
@@ -380,6 +383,7 @@
     <Compile Include="Generated\multimediafileDto.cs" />
     <Compile Include="Generated\movementdetailDto.cs" />
     <Compile Include="Generated\movementDto.cs" />
+    <Compile Include="Generated\medicoDto.cs" />
     <Compile Include="Generated\medicationDto.cs" />
     <Compile Include="Generated\masterrecommendationrestricctionDto.cs" />
     <Compile Include="Generated\logDto.cs" />
@@ -387,7 +391,6 @@
     <Compile Include="Generated\hospitalizacionserviceDto.cs" />
     <Compile Include="Generated\hospitalizacionDto.cs" />
     <Compile Include="Generated\historyDto.cs" />
-    <Compile Include="Generated\habitacionservicioDto.cs" />
     <Compile Include="Generated\groupoccupationDto.cs" />
     <Compile Include="Generated\gesDto.cs" />
     <Compile Include="Generated\familymedicalantecedentsDto.cs" />
