@@ -80,5 +80,15 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             return _objData;
         }
+
+        private void btnTicket_Click(object sender, EventArgs e)
+        {
+            var TserviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            if (TserviceId != null)
+            {
+                btnTicket.Enabled = true;
+               
+            } MessageBox.Show("Service: " + TserviceId);
+        }
     }
 }
