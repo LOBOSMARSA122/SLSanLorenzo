@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -55,10 +56,11 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.ultraFormManager1 = new Infragistics.Win.UltraWinForm.UltraFormManager(this.components);
             this.frmSearchMedicamento_Fill_Panel = new Infragistics.Win.Misc.UltraPanel();
             this.gbRegistrarMedicamento = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
             this.cboLinea = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.cboUM = new Infragistics.Win.UltraWinEditors.UltraComboEditor();
             this.ultraLabel8 = new Infragistics.Win.Misc.UltraLabel();
@@ -96,13 +98,12 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom = new Infragistics.Win.UltraWinForm.UltraFormDockArea();
             this.uvRegistro = new Infragistics.Win.Misc.UltraValidator(this.components);
-            this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel11 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFormManager1)).BeginInit();
             this.frmSearchMedicamento_Fill_Panel.ClientArea.SuspendLayout();
             this.frmSearchMedicamento_Fill_Panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gbRegistrarMedicamento)).BeginInit();
             this.gbRegistrarMedicamento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboLinea)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUM)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrincipioActivo)).BeginInit();
@@ -119,7 +120,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBuscarNombre)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvRegistro)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             this.SuspendLayout();
             // 
             // ultraFormManager1
@@ -135,9 +135,9 @@
             this.frmSearchMedicamento_Fill_Panel.ClientArea.Controls.Add(this.gbBuscarMedicamento);
             this.frmSearchMedicamento_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.frmSearchMedicamento_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmSearchMedicamento_Fill_Panel.Location = new System.Drawing.Point(4, 28);
+            this.frmSearchMedicamento_Fill_Panel.Location = new System.Drawing.Point(4, 27);
             this.frmSearchMedicamento_Fill_Panel.Name = "frmSearchMedicamento_Fill_Panel";
-            this.frmSearchMedicamento_Fill_Panel.Size = new System.Drawing.Size(1261, 287);
+            this.frmSearchMedicamento_Fill_Panel.Size = new System.Drawing.Size(1277, 326);
             this.frmSearchMedicamento_Fill_Panel.TabIndex = 0;
             // 
             // gbRegistrarMedicamento
@@ -171,6 +171,28 @@
             this.gbRegistrarMedicamento.Size = new System.Drawing.Size(564, 276);
             this.gbRegistrarMedicamento.TabIndex = 1;
             this.gbRegistrarMedicamento.Text = "Registrar Medicamento";
+            // 
+            // txtCodigo
+            // 
+            appearance1.TextHAlignAsString = "Right";
+            this.txtCodigo.Appearance = appearance1;
+            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCodigo.Location = new System.Drawing.Point(119, 125);
+            this.txtCodigo.MaxLength = 20;
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(117, 21);
+            this.txtCodigo.TabIndex = 3;
+            this.uvRegistro.GetValidationSettings(this.txtCodigo).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
+            this.uvRegistro.GetValidationSettings(this.txtCodigo).IsRequired = true;
+            // 
+            // ultraLabel11
+            // 
+            this.ultraLabel11.AutoSize = true;
+            this.ultraLabel11.Location = new System.Drawing.Point(18, 129);
+            this.ultraLabel11.Name = "ultraLabel11";
+            this.ultraLabel11.Size = new System.Drawing.Size(43, 14);
+            this.ultraLabel11.TabIndex = 19;
+            this.ultraLabel11.Text = "Código:";
             // 
             // cboLinea
             // 
@@ -625,9 +647,9 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 28);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 27);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Left";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 287);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 326);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Right
             // 
@@ -637,9 +659,9 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1265, 28);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1281, 27);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Right";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 287);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 326);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Top
             // 
@@ -650,7 +672,7 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Top";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1269, 28);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1285, 27);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom
             // 
@@ -660,31 +682,9 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom.InitialResizeAreaExtent = 4;
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 315);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom.Location = new System.Drawing.Point(0, 353);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom.Size = new System.Drawing.Size(1269, 4);
-            // 
-            // txtCodigo
-            // 
-            appearance1.TextHAlignAsString = "Right";
-            this.txtCodigo.Appearance = appearance1;
-            this.txtCodigo.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtCodigo.Location = new System.Drawing.Point(119, 125);
-            this.txtCodigo.MaxLength = 20;
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(117, 21);
-            this.txtCodigo.TabIndex = 3;
-            this.uvRegistro.GetValidationSettings(this.txtCodigo).EmptyValueCriteria = Infragistics.Win.Misc.EmptyValueCriteria.NullOrEmptyString;
-            this.uvRegistro.GetValidationSettings(this.txtCodigo).IsRequired = true;
-            // 
-            // ultraLabel11
-            // 
-            this.ultraLabel11.AutoSize = true;
-            this.ultraLabel11.Location = new System.Drawing.Point(18, 129);
-            this.ultraLabel11.Name = "ultraLabel11";
-            this.ultraLabel11.Size = new System.Drawing.Size(43, 14);
-            this.ultraLabel11.TabIndex = 19;
-            this.ultraLabel11.Text = "Código:";
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom.Size = new System.Drawing.Size(1285, 4);
             // 
             // frmSearchMedicamento
             // 
@@ -692,7 +692,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCancelar;
-            this.ClientSize = new System.Drawing.Size(1269, 319);
+            this.ClientSize = new System.Drawing.Size(1285, 357);
             this.Controls.Add(this.frmSearchMedicamento_Fill_Panel);
             this.Controls.Add(this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left);
             this.Controls.Add(this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right);
@@ -705,7 +705,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmSearchMedicamento";
+            this.Text = "Agregar Medicamento";
             this.Load += new System.EventHandler(this.frmSearchMedicamento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ultraFormManager1)).EndInit();
             this.frmSearchMedicamento_Fill_Panel.ClientArea.ResumeLayout(false);
@@ -713,6 +713,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbRegistrarMedicamento)).EndInit();
             this.gbRegistrarMedicamento.ResumeLayout(false);
             this.gbRegistrarMedicamento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboLinea)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUM)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPrincipioActivo)).EndInit();
@@ -730,7 +731,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.txtBuscarNombre)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvRegistro)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             this.ResumeLayout(false);
 
         }
