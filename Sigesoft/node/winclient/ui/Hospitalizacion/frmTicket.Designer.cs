@@ -40,16 +40,19 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTicket));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtNTicket = new System.Windows.Forms.TextBox();
             this.txtNServicio = new System.Windows.Forms.TextBox();
-            this.btnNuevoProducto = new System.Windows.Forms.Button();
             this.btnCancelarTicket = new System.Windows.Forms.Button();
             this.btnGuardarTicket = new System.Windows.Forms.Button();
             this.txtFecha = new System.Windows.Forms.TextBox();
             this.grdTicketDetalle = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnRemover = new System.Windows.Forms.Button();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnNuevo = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdTicketDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,16 +97,6 @@
             this.txtNServicio.Name = "txtNServicio";
             this.txtNServicio.Size = new System.Drawing.Size(165, 20);
             this.txtNServicio.TabIndex = 5;
-            // 
-            // btnNuevoProducto
-            // 
-            this.btnNuevoProducto.Location = new System.Drawing.Point(740, 69);
-            this.btnNuevoProducto.Name = "btnNuevoProducto";
-            this.btnNuevoProducto.Size = new System.Drawing.Size(88, 47);
-            this.btnNuevoProducto.TabIndex = 6;
-            this.btnNuevoProducto.Text = "Nuevo Producto";
-            this.btnNuevoProducto.UseVisualStyleBackColor = true;
-            this.btnNuevoProducto.Click += new System.EventHandler(this.btnNuevoProducto_Click);
             // 
             // btnCancelarTicket
             // 
@@ -207,15 +200,80 @@
             this.grdTicketDetalle.Size = new System.Drawing.Size(727, 353);
             this.grdTicketDetalle.TabIndex = 47;
             // 
+            // btnRemover
+            // 
+            this.btnRemover.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRemover.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemover.Enabled = false;
+            this.btnRemover.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemover.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemover.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemover.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemover.ForeColor = System.Drawing.Color.Black;
+            this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
+            this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemover.Location = new System.Drawing.Point(740, 166);
+            this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(88, 24);
+            this.btnRemover.TabIndex = 96;
+            this.btnRemover.Text = "     Eliminar";
+            this.btnRemover.UseVisualStyleBackColor = false;
+            // 
+            // btnEditar
+            // 
+            this.btnEditar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditar.Enabled = false;
+            this.btnEditar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditar.ForeColor = System.Drawing.Color.Black;
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
+            this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditar.Location = new System.Drawing.Point(740, 128);
+            this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(88, 24);
+            this.btnEditar.TabIndex = 95;
+            this.btnEditar.Text = "      Editar";
+            this.btnEditar.UseVisualStyleBackColor = false;
+            // 
+            // btnNuevo
+            // 
+            this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnNuevo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnNuevo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnNuevo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnNuevo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevo.ForeColor = System.Drawing.Color.Black;
+            this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
+            this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNuevo.Location = new System.Drawing.Point(740, 88);
+            this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevo.Name = "btnNuevo";
+            this.btnNuevo.Size = new System.Drawing.Size(88, 24);
+            this.btnNuevo.TabIndex = 97;
+            this.btnNuevo.Text = "     Nuevo";
+            this.btnNuevo.UseVisualStyleBackColor = false;
+            this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
+            // 
             // frmTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 452);
+            this.Controls.Add(this.btnNuevo);
+            this.Controls.Add(this.btnRemover);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.grdTicketDetalle);
             this.Controls.Add(this.btnGuardarTicket);
             this.Controls.Add(this.btnCancelarTicket);
-            this.Controls.Add(this.btnNuevoProducto);
             this.Controls.Add(this.txtNServicio);
             this.Controls.Add(this.txtFecha);
             this.Controls.Add(this.txtNTicket);
@@ -238,10 +296,12 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtNTicket;
         private System.Windows.Forms.TextBox txtNServicio;
-        private System.Windows.Forms.Button btnNuevoProducto;
         private System.Windows.Forms.Button btnCancelarTicket;
         private System.Windows.Forms.Button btnGuardarTicket;
         private System.Windows.Forms.TextBox txtFecha;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdTicketDetalle;
+        private System.Windows.Forms.Button btnRemover;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnNuevo;
     }
 }

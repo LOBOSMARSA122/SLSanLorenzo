@@ -23,7 +23,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private List<TicketDetalleList> _tmpTicketDetalleList = null;
 
-        ticketDto objticketDto;
+        private List<ticketdetalleDto> _ticketdetalleDTO = null;
+
+        ticketDto objticketDto = null;
 
         string ticketId;
         //private readonly List<HospitalizacionList> _listHospitalizacionList;
@@ -50,17 +52,34 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnGuardarTicket_Click(object sender, EventArgs e)
         {
-            objticketDto = new ticketDto();
+            _ticketdetalleDTO = new List<ticketdetalleDto>();
+            if (objticketDto == null)
+            {
+                 objticketDto = new ticketDto();
+            }
+           
+            
             //objticketDto.v_TicketId 
             txtNServicio.Text = _serviceId;
             objticketDto.v_ServiceId = txtNServicio.Text;
             objticketDto.d_Fecha = DateTime.Parse(txtFecha.Text);
 
+            foreach (var item in _tmpTicketDetalleList)
+            {
+                ticketdetalleDto ticketDetalle = new ticketdetalleDto();
+
+                ticketDetalle.v_IdProductoDetalle = item.v_IdProductoDetalle;
+                ticketDetalle.d_Cantidad = item.d_Cantidad;
+                ticketDetalle.i_EsDespachado = item.i_EsDespachado;
+
+                _ticketdetalleDTO.Add(ticketDetalle);
+            }
+
             DialogResult Result = MessageBox.Show("¿Desea Guardar Ticket?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             if (Result == System.Windows.Forms.DialogResult.Yes)
             {
-                ticketId = _objTicketBl.AddTicket(ref _pobjOperationResult, objticketDto, Globals.ClientSession.GetAsList());
+                ticketId = _objTicketBl.AddTicket(ref _pobjOperationResult, objticketDto,_ticketdetalleDTO, Globals.ClientSession.GetAsList());
                 this.Close();
             }
             else
@@ -77,18 +96,20 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
             txtNServicio.Text = _serviceId;
+
+            this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
         }
 
-        private void btnNuevoProducto_Click(object sender, EventArgs e)
+    
+        private void btnNuevo_Click(object sender, EventArgs e)
         {
-            //var TicketId = ticketId;
             var frm = new frmAddProducto();
             if (_tmpTicketDetalleList != null)
             {
                 frm._TempTicketDetalleList = _tmpTicketDetalleList;
             }
             frm.ShowDialog();
-
+            this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
             if (frm._TempTicketDetalleList != null)
             {
                 _tmpTicketDetalleList = frm._TempTicketDetalleList;

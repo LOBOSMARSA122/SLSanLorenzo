@@ -59,18 +59,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 }
 
                 OperationResult objOperationResult = new OperationResult();
-                //string[] componentIdFrom = _TempTicketDetalleList.FindAll(p => p.i_RecordStatus != (int)RecordStatus.EliminadoLogico)
-                //                                                              .Select(p => p.v_TicketId).ToArray();
-
-            // Verificar si el componente actual a agregar tiene campos ya existentes en el mismo protocolo.
-            //bool IsExists = _protocolBL.IsExistscomponentfieldsInCurrentProtocol(ref objOperationResult, componentIdFromProtocol, _componentId);
-
-            //if (IsExists)
-            //{
-            //    var msj = string.Format("El examen ({0}) no se puede agregar porqué tiene un campo que se repite en otro componente del mismo protocolo.", lblExamenSeleccionado.Text);
-            //    MessageBox.Show(msj, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+             
 
                 var findResult = _TempTicketDetalleList.Find(p => p.v_IdProductoDetalle == _ProductoId);
                 _objTicketDetalleList = new TicketDetalleList();
@@ -78,13 +67,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 if (findResult == null)
                 {
 
-                    //_objTicketDetalleList.v_TicketDetalleId = Guid.NewGuid().ToString();
-                    //_objTicketDetalleList.v_TicketId = _ticketId;
-
                     _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                     _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
                     _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
-                    //_objTicketDetalleList.i_EsDespachado = int.Parse()
                     _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
 
                     _TempTicketDetalleList.Add(_objTicketDetalleList);

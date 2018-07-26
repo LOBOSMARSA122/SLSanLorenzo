@@ -273,7 +273,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
                                      join E in dbContext.ticket on D.v_ServiceId equals E.v_ServiceId
                                      join F in dbContext.ticketdetalle on E.v_TicketId equals F.v_TicketId
-
+                                     //join G in dbContext.productsformigration on F.v_IdProductoDetalle equals G.v_ProductId
                                      where E.v_TicketId == v_TicketId
 
                               select new TicketDetalleList
@@ -281,6 +281,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_TicketDetalleId = F.v_TicketDetalleId,
                                   v_TicketId = F.v_TicketId,
                                   d_Cantidad = F.d_Cantidad.Value,
+                                  //v_NombreProducto = G.v_ProductName,
                                   v_IdProductoDetalle = F.v_IdProductoDetalle
                               };
             List<TicketDetalleList> objData = queryticketdetalle.ToList();
@@ -290,15 +291,9 @@ namespace Sigesoft.Node.WinClient.BLL
                               v_TicketId = a.v_TicketId,
                               v_IdProductoDetalle = a.v_IdProductoDetalle,
                               v_TicketDetalleId = a.v_TicketDetalleId,
-                              d_Cantidad = a.d_Cantidad
+                              d_Cantidad = a.d_Cantidad,
+                              v_NombreProducto = a.v_NombreProducto
                           }).ToList();
-
-            //var objtData = ticketdetalle.AsEnumerable()
-            //        .Where(a => a.v_TicketDetalleId != null)
-            //        .GroupBy(b => b.v_TicketId)
-            //        .Select(group => group.First());
-
-            //List<TicketDetalleList> obj = objtData.ToList();
 
             return ticketdetalle;
         }
