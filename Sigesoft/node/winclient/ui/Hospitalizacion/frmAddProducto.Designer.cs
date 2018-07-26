@@ -30,6 +30,7 @@
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.labelmensaje = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtMedicamento = new System.Windows.Forms.TextBox();
             this.btnSalir = new System.Windows.Forms.Button();
@@ -38,7 +39,6 @@
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.lblIdDetalleProd = new System.Windows.Forms.Label();
-            this.labelmensaje = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
@@ -59,6 +59,17 @@
             this.gbReceta.Size = new System.Drawing.Size(407, 173);
             this.gbReceta.TabIndex = 1;
             this.gbReceta.Text = "Buscar Medicina";
+            // 
+            // labelmensaje
+            // 
+            this.labelmensaje.AutoSize = true;
+            this.labelmensaje.Location = new System.Drawing.Point(100, 16);
+            this.labelmensaje.MaximumSize = new System.Drawing.Size(5, 0);
+            this.labelmensaje.MinimumSize = new System.Drawing.Size(1, 0);
+            this.labelmensaje.Name = "labelmensaje";
+            this.labelmensaje.Size = new System.Drawing.Size(5, 13);
+            this.labelmensaje.TabIndex = 10;
+            this.labelmensaje.Text = ".";
             // 
             // btnBuscar
             // 
@@ -112,6 +123,7 @@
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(242, 21);
             this.txtCantidad.TabIndex = 1;
+            this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // ultraLabel2
             // 
@@ -140,17 +152,6 @@
             this.lblIdDetalleProd.TabIndex = 9;
             this.lblIdDetalleProd.Text = ".";
             // 
-            // labelmensaje
-            // 
-            this.labelmensaje.AutoSize = true;
-            this.labelmensaje.Location = new System.Drawing.Point(100, 16);
-            this.labelmensaje.MaximumSize = new System.Drawing.Size(5, 0);
-            this.labelmensaje.MinimumSize = new System.Drawing.Size(1, 0);
-            this.labelmensaje.Name = "labelmensaje";
-            this.labelmensaje.Size = new System.Drawing.Size(5, 13);
-            this.labelmensaje.TabIndex = 10;
-            this.labelmensaje.Text = ".";
-            // 
             // frmAddProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -160,6 +161,7 @@
             this.Controls.Add(this.gbReceta);
             this.Name = "frmAddProducto";
             this.Text = "Medicamento ";
+            this.Load += new System.EventHandler(this.frmAddProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).EndInit();
             this.gbReceta.ResumeLayout(false);
             this.gbReceta.PerformLayout();

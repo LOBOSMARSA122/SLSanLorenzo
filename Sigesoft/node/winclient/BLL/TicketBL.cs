@@ -23,7 +23,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
                 objEntity.i_IsDeleted = 0;
                 // Autogeneramos el Pk de la tabla
-                int intNodeId = int.Parse(ClientSession[11]);
+                int intNodeId = int.Parse(ClientSession[0]);
                 NewId0 = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 345), "TK"); ;
                 objEntity.v_TicketId = NewId0;
 

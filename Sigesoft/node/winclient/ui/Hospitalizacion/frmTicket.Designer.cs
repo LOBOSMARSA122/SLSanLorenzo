@@ -53,6 +53,7 @@
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
+            this.lblRecordCount2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.grdTicketDetalle)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +86,7 @@
             // 
             // txtNTicket
             // 
+            this.txtNTicket.Enabled = false;
             this.txtNTicket.Location = new System.Drawing.Point(70, 16);
             this.txtNTicket.Name = "txtNTicket";
             this.txtNTicket.Size = new System.Drawing.Size(186, 20);
@@ -194,11 +196,12 @@
             this.grdTicketDetalle.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdTicketDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdTicketDetalle.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdTicketDetalle.Location = new System.Drawing.Point(8, 59);
+            this.grdTicketDetalle.Location = new System.Drawing.Point(8, 88);
             this.grdTicketDetalle.Margin = new System.Windows.Forms.Padding(2);
             this.grdTicketDetalle.Name = "grdTicketDetalle";
-            this.grdTicketDetalle.Size = new System.Drawing.Size(727, 353);
+            this.grdTicketDetalle.Size = new System.Drawing.Size(727, 324);
             this.grdTicketDetalle.TabIndex = 47;
+            this.grdTicketDetalle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdproduc_AfterSelectChange);
             // 
             // btnRemover
             // 
@@ -241,6 +244,7 @@
             this.btnEditar.TabIndex = 95;
             this.btnEditar.Text = "      Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
             // 
             // btnNuevo
             // 
@@ -263,11 +267,25 @@
             this.btnNuevo.UseVisualStyleBackColor = false;
             this.btnNuevo.Click += new System.EventHandler(this.btnNuevo_Click);
             // 
+            // lblRecordCount2
+            // 
+            this.lblRecordCount2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRecordCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCount2.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblRecordCount2.Location = new System.Drawing.Point(476, 68);
+            this.lblRecordCount2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCount2.Name = "lblRecordCount2";
+            this.lblRecordCount2.Size = new System.Drawing.Size(259, 18);
+            this.lblRecordCount2.TabIndex = 98;
+            this.lblRecordCount2.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCount2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 452);
+            this.Controls.Add(this.lblRecordCount2);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnEditar);
@@ -303,5 +321,6 @@
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNuevo;
+        private System.Windows.Forms.Label lblRecordCount2;
     }
 }
