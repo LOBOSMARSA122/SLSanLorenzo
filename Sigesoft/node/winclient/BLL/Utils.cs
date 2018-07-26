@@ -1764,6 +1764,48 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<KeyValueDTO> GetProfessionalName(ref OperationResult pobjOperationResult)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.person
+                            join b in dbContext.systemuser on a.v_PersonId equals b.v_PersonId
+                            where a.i_IsDeleted == 0 && b.i_SystemUserTypeId == 1
+                            select new KeyValueDTO
+                            {
+                                IdI = b.i_SystemUserId,
+                                Value1 = a.v_FirstName + " " + a.v_FirstLastName + " " + a.v_SecondLastName
+                            };
+
+                //if (!string.IsNullOrEmpty(pstrSortExpression))
+                //{
+                //    query = query.OrderBy(pstrSortExpression);
+                //}
+                //else
+                //{
+                //    query = query.OrderBy("v_UserName");
+                //}
+
+                var query2 = query.AsEnumerable()
+                            .Select(x => new KeyValueDTO
+                            {
+                                Id = x.IdI.ToString(),
+                                Value1 = x.Value1
+                            }).ToList();
+
+                pobjOperationResult.Success = 1;
+                return query2;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
         public static List<KeyValueDTO> GetUsuariosExternos(ref OperationResult pobjOperationResult, string pstrSortExpression)
         {
             //mon.IsActive = true;

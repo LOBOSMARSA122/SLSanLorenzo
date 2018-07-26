@@ -60,10 +60,13 @@
     <Compile Include="Custom\AtencionNinio.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
     <Compile Include="Custom\HospitalizacionServiceList.cs" />
+    <Compile Include="Custom\LiquidacionMedicoList.cs" />
+    <Compile Include="Custom\LiquidacionServicios.cs" />
     <Compile Include="Custom\MedicoGrid.cs" />
     <Compile Include="Custom\MedicoGridDetalle.cs" />
     <Compile Include="Custom\MedicoList.cs" />
     <Compile Include="Custom\Ninioo.cs" />
+    <Compile Include="Custom\PagosComisiones.cs" />
     <Compile Include="Custom\ProblemasList.cs" />
     <Compile Include="Custom\AudiometriaList.cs" />
     <Compile Include="Custom\AudiometriaUserControlList.cs" />

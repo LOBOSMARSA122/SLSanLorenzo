@@ -471,8 +471,87 @@ namespace Sigesoft.Node.WinClient.BLL
                 return;
             }
         }
-    
 
+        public List<LiquidacionMedicoList> LiquidacionMedicos(string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from A in dbContext.service
+                            join B in dbContext.systemuser on A.i_MedicoTratanteId equals B.i_SystemUserId
+                            join C in dbContext.person on B.v_PersonId equals C.v_PersonId
+                            join D in dbContext.person on A.v_PersonId equals D.v_PersonId
+                            where A.i_IsDeleted == 0 && A.i_MasterServiceId != 2
+
+                            select new LiquidacionMedicoList
+                            {
+                                MedicoTratanteId = B.i_SystemUserId,
+                                MedicoTratante = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
+                                Paciente = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                d_ServiceDate = A.d_ServiceDate,
+                                v_ServiceId = A.v_ServiceId
+                            };
+
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (pdatBeginDate.HasValue && pdatEndDate.HasValue)
+                {
+                    query = query.Where("d_ServiceDate >= @0 && d_ServiceDate <= @1", pdatBeginDate.Value, pdatEndDate.Value);
+                }
+
+                var medicos = query.ToList().GroupBy(g => g.MedicoTratanteId).Select(s => s.First()).ToList();
+                
+                List<LiquidacionMedicoList> listaFinal = new List<LiquidacionMedicoList>();
+                LiquidacionMedicoList oLiquidacionMedicoList;
+                foreach (var medico in medicos)
+                {
+                    oLiquidacionMedicoList = new LiquidacionMedicoList();
+                    oLiquidacionMedicoList.MedicoTratante = medico.MedicoTratante;
+                    
+                    var servicioMedico =
+                        query.ToList().FindAll(p => p.MedicoTratanteId == medico.MedicoTratanteId).ToList();
+                    var listaServicios = new List<LiquidacionServicios>();
+                    foreach (var servicio in servicioMedico)
+                    {
+                        var oLiquidacionServicios = new LiquidacionServicios();
+                        oLiquidacionServicios.Paciente = servicio.Paciente;
+                        oLiquidacionServicios.v_ServiceId = servicio.v_ServiceId;
+                        oLiquidacionServicios.d_ServiceDate = servicio.d_ServiceDate;
+                        //obtener datos de costo y comisiones
+                        var pagos = ObtenerPagos(servicio.v_ServiceId);
+
+                        oLiquidacionServicios.r_costo = pagos.r_costo;
+                        oLiquidacionServicios.r_Comision = pagos.r_Comision;
+                        oLiquidacionServicios.r_Total = pagos.r_Total;
+                        listaServicios.Add(oLiquidacionServicios);
+                    }
+
+                    oLiquidacionMedicoList.Servicios = listaServicios;
+
+                    listaFinal.Add(oLiquidacionMedicoList);
+                }
+
+                return listaFinal;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        private PagosComisiones ObtenerPagos(string p)
+        {
+            PagosComisiones oPagosComisiones = new PagosComisiones();
+            oPagosComisiones.r_costo = 0;
+            oPagosComisiones.r_Comision = 0;
+            oPagosComisiones.r_Total = 0;
+
+            return oPagosComisiones;
+        }
 
     }
 }
