@@ -15,6 +15,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
     {
         public  string _serviceId;
         private OperationResult _pobjOperationResult;
+        private string _mode = null;
+        private string _tickId = string.Empty;
+        private int _rowIndexPc;
+
         private readonly HospitalizacionBL _objHospitalizacionBl;
         private readonly RecetaBl _objRecetaBl;
         private readonly TicketBL _objTicketBl =  new TicketBL();
@@ -27,14 +31,17 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         ticketDto objticketDto = null;
 
-        string ticketId = string.Empty;
+        private string ticketId = string.Empty;
+        private string _ticketdetalletId = string.Empty;
         //private readonly List<HospitalizacionList> _listHospitalizacionList;
         //private readonly List<HospitalizacionServiceList> _listHospitalizacionServiceList;
         private readonly List<TicketList> _listTicketList;
         private readonly List<TicketDetalleList> _listTicketDetalleList;
 
-        public frmTicket(List<TicketList> Lista, string ServiceId)
+        public frmTicket(List<TicketList> Lista, string ServiceId, string id, string mode)
         {
+            _tickId = id;
+            _mode = mode;
             _serviceId = ServiceId;
             InitializeComponent();
             _pobjOperationResult = new OperationResult();
@@ -63,7 +70,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             txtNServicio.Text = _serviceId;
             objticketDto.v_ServiceId = txtNServicio.Text;
             objticketDto.d_Fecha = DateTime.Parse(txtFecha.Text);
-
+            if (_mode == "New")
+            { 
+            
+            }
             foreach (var item in _tmpTicketDetalleList)
             {
                 ticketdetalleDto ticketDetalle = new ticketdetalleDto();
@@ -98,28 +108,63 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             txtNServicio.Text = _serviceId;
 
             this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+
+            if (grdTicketDetalle.Rows.Count != 0)
+                grdTicketDetalle.Rows[0].Selected = true;
+            if (grdTicketDetalle.Rows.Count != 0)
+                grdTicketDetalle.Rows[0].Selected = true;
         }
 
-    
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            var frm = new frmAddProducto();
+            var nuevo = new frmAddProducto(string.Empty, "New");
             if (_tmpTicketDetalleList != null)
             {
-                frm._TempTicketDetalleList = _tmpTicketDetalleList;
+                nuevo._TempTicketDetalleList = _tmpTicketDetalleList;
             }
-            frm.ShowDialog();
+            nuevo.ShowDialog();
             this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
-            if (frm._TempTicketDetalleList != null)
+            if (nuevo._TempTicketDetalleList != null)
             {
-                _tmpTicketDetalleList = frm._TempTicketDetalleList;
+                _tmpTicketDetalleList = nuevo._TempTicketDetalleList;
 
                 var dataList = _tmpTicketDetalleList.FindAll(p => p.i_RecordStatus != (int)RecordStatus.EliminadoLogico);
                 grdTicketDetalle.DataSource = new TicketDetalleList();
                 grdTicketDetalle.DataSource = dataList;
                 grdTicketDetalle.Refresh();
-                //lblRecordCount2.Text = string.Format("Se encontraron {0} registros.", dataList.Count());
+                lblRecordCount2.Text = string.Format("Se encontraron {0} registros.", dataList.Count());
             }   
+        }
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            var editar = new frmAddProducto(_ticketdetalletId, "Edit");
+            if (_tmpTicketDetalleList != null)
+            {
+                editar._TempTicketDetalleList = _tmpTicketDetalleList;
+            }
+            editar.ShowDialog();
+            if (editar._TempTicketDetalleList != null)
+            {
+                _tmpTicketDetalleList = editar._TempTicketDetalleList;
+
+                var dataList = _tmpTicketDetalleList.FindAll(p => p.i_RecordStatus != (int)RecordStatus.EliminadoLogico);
+                grdTicketDetalle.DataSource = new TicketDetalleList();
+                grdTicketDetalle.DataSource = dataList;
+                grdTicketDetalle.Refresh();
+                lblRecordCount2.Text = string.Format("Se encontraron {0} registros.", dataList.Count());
+
+            }
+        }
+
+        private void grdproduc_AfterSelectChange(object sender, MouseEventArgs e)
+        {
+            btnEditar.Enabled = btnRemover.Enabled = (grdTicketDetalle.Selected.Rows.Count > 0);
+            if (grdTicketDetalle.Selected.Rows.Count == 0)
+                return;
+
+            _rowIndexPc = ((Infragistics.Win.UltraWinGrid.UltraGrid)sender).Selected.Rows[0].Index;
+            _ticketdetalletId = grdTicketDetalle.Selected.Rows[0].Cells["v_TicketDetalleId"].Value.ToString();
         }
     }
 }

@@ -96,11 +96,27 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             //MessageBox.Show("Service: " + TserviceId);
-            frmTicket ticket = new frmTicket(_tempTicket, ServiceId);
+            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New");
             ticket.ShowDialog();
         }
 
         private void txtHospitalizados_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
+
+        private void calendar1Hospitalizados_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
+
+        private void calendar2Hospitalizados_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
