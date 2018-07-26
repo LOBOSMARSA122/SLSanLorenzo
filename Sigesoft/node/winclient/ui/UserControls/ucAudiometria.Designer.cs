@@ -32,31 +32,31 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txt_AN_OI_250 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OI_125 = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.txt_AN_OI_1000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OI_500 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OI_2000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OI_3000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OI_4000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OI_6000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OI_8000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OI_250 = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
+            this.txt_AN_OI_125 = new System.Windows.Forms.TextBox();
             this.txt_EM_OI_125 = new System.Windows.Forms.TextBox();
             this.label32 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
             this.txt_VO_OI_125 = new System.Windows.Forms.TextBox();
             this.txt_VO_OI_250 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OI_1000 = new System.Windows.Forms.TextBox();
             this.txt_VA_OI_125 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OI_500 = new System.Windows.Forms.TextBox();
             this.txt_VA_OI_250 = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
+            this.txt_AN_OI_2000 = new System.Windows.Forms.TextBox();
             this.txt_VA_OI_6000 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OI_3000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OI_1000 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.txt_AN_OI_4000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OI_500 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.txt_AN_OI_6000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OI_2000 = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.txt_AN_OI_8000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OI_3000 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txt_EM_OI_4000 = new System.Windows.Forms.TextBox();
@@ -90,31 +90,31 @@
             this.txt_VO_OD_8000 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_AN_OD_250 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OD_125 = new System.Windows.Forms.TextBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.txt_AN_OD_1000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OD_500 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OD_2000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OD_3000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OD_4000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OD_6000 = new System.Windows.Forms.TextBox();
-            this.txt_AN_OD_8000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OD_250 = new System.Windows.Forms.TextBox();
             this.txt_EM_OD_125 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OD_125 = new System.Windows.Forms.TextBox();
             this.txt_VO_OD_250 = new System.Windows.Forms.TextBox();
+            this.label33 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.txt_VA_OD_125 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OD_1000 = new System.Windows.Forms.TextBox();
             this.txt_VO_OD_125 = new System.Windows.Forms.TextBox();
             this.txt_VA_OD_250 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OD_500 = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.txt_AN_OD_2000 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txt_EM_OD_1000 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OD_3000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OD_500 = new System.Windows.Forms.TextBox();
             this.txt_EM_OD_2000 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OD_4000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OD_3000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OD_4000 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OD_6000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OD_6000 = new System.Windows.Forms.TextBox();
             this.txt_EM_OD_8000 = new System.Windows.Forms.TextBox();
+            this.txt_AN_OD_8000 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_VA_OD_500 = new System.Windows.Forms.TextBox();
             this.txt_VA_OD_1000 = new System.Windows.Forms.TextBox();
@@ -213,9 +213,9 @@
             this.groupBox2.Controls.Add(this.txt_VA_OI_500);
             this.groupBox2.Controls.Add(this.txt_VA_OI_2000);
             this.groupBox2.Controls.Add(this.txt_VA_OI_1000);
-            this.groupBox2.Location = new System.Drawing.Point(522, 3);
+            this.groupBox2.Location = new System.Drawing.Point(522, -2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(556, 123);
+            this.groupBox2.Size = new System.Drawing.Size(556, 113);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Oído Izquierdo";
@@ -225,88 +225,15 @@
             this.txt_AN_OI_250.Location = new System.Drawing.Point(151, 48);
             this.txt_AN_OI_250.Name = "txt_AN_OI_250";
             this.txt_AN_OI_250.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_250.TabIndex = 44;
+            this.txt_AN_OI_250.TabIndex = 10;
             this.txt_AN_OI_250.Tag = "OI";
-            // 
-            // txt_AN_OI_125
-            // 
-            this.txt_AN_OI_125.Location = new System.Drawing.Point(100, 48);
-            this.txt_AN_OI_125.Name = "txt_AN_OI_125";
-            this.txt_AN_OI_125.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_125.TabIndex = 43;
-            this.txt_AN_OI_125.Tag = "OI";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(9, 51);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(39, 13);
-            this.label34.TabIndex = 52;
-            this.label34.Text = "EM - A";
-            // 
-            // txt_AN_OI_1000
-            // 
-            this.txt_AN_OI_1000.Location = new System.Drawing.Point(253, 48);
-            this.txt_AN_OI_1000.Name = "txt_AN_OI_1000";
-            this.txt_AN_OI_1000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_1000.TabIndex = 46;
-            this.txt_AN_OI_1000.Tag = "OI";
-            // 
-            // txt_AN_OI_500
-            // 
-            this.txt_AN_OI_500.Location = new System.Drawing.Point(202, 48);
-            this.txt_AN_OI_500.Name = "txt_AN_OI_500";
-            this.txt_AN_OI_500.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_500.TabIndex = 45;
-            this.txt_AN_OI_500.Tag = "OI";
-            // 
-            // txt_AN_OI_2000
-            // 
-            this.txt_AN_OI_2000.Location = new System.Drawing.Point(304, 48);
-            this.txt_AN_OI_2000.Name = "txt_AN_OI_2000";
-            this.txt_AN_OI_2000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_2000.TabIndex = 47;
-            this.txt_AN_OI_2000.Tag = "OI";
-            // 
-            // txt_AN_OI_3000
-            // 
-            this.txt_AN_OI_3000.Location = new System.Drawing.Point(355, 48);
-            this.txt_AN_OI_3000.Name = "txt_AN_OI_3000";
-            this.txt_AN_OI_3000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_3000.TabIndex = 48;
-            this.txt_AN_OI_3000.Tag = "OI";
-            // 
-            // txt_AN_OI_4000
-            // 
-            this.txt_AN_OI_4000.Location = new System.Drawing.Point(406, 48);
-            this.txt_AN_OI_4000.Name = "txt_AN_OI_4000";
-            this.txt_AN_OI_4000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_4000.TabIndex = 49;
-            this.txt_AN_OI_4000.Tag = "OI";
-            // 
-            // txt_AN_OI_6000
-            // 
-            this.txt_AN_OI_6000.Location = new System.Drawing.Point(457, 48);
-            this.txt_AN_OI_6000.Name = "txt_AN_OI_6000";
-            this.txt_AN_OI_6000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_6000.TabIndex = 50;
-            this.txt_AN_OI_6000.Tag = "OI";
-            // 
-            // txt_AN_OI_8000
-            // 
-            this.txt_AN_OI_8000.Location = new System.Drawing.Point(508, 48);
-            this.txt_AN_OI_8000.Name = "txt_AN_OI_8000";
-            this.txt_AN_OI_8000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OI_8000.TabIndex = 51;
-            this.txt_AN_OI_8000.Tag = "OI";
             // 
             // txt_EM_OI_250
             // 
             this.txt_EM_OI_250.Location = new System.Drawing.Point(151, 91);
             this.txt_EM_OI_250.Name = "txt_EM_OI_250";
             this.txt_EM_OI_250.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_250.TabIndex = 19;
+            this.txt_EM_OI_250.TabIndex = 28;
             this.txt_EM_OI_250.Tag = "OI";
             // 
             // label31
@@ -318,12 +245,20 @@
             this.label31.TabIndex = 38;
             this.label31.Text = "125 Hz";
             // 
+            // txt_AN_OI_125
+            // 
+            this.txt_AN_OI_125.Location = new System.Drawing.Point(100, 48);
+            this.txt_AN_OI_125.Name = "txt_AN_OI_125";
+            this.txt_AN_OI_125.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OI_125.TabIndex = 9;
+            this.txt_AN_OI_125.Tag = "OI";
+            // 
             // txt_EM_OI_125
             // 
             this.txt_EM_OI_125.Location = new System.Drawing.Point(100, 91);
             this.txt_EM_OI_125.Name = "txt_EM_OI_125";
             this.txt_EM_OI_125.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_125.TabIndex = 18;
+            this.txt_EM_OI_125.TabIndex = 27;
             this.txt_EM_OI_125.Tag = "OI";
             // 
             // label32
@@ -335,12 +270,21 @@
             this.label32.TabIndex = 42;
             this.label32.Text = "250 Hz";
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(9, 51);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(39, 13);
+            this.label34.TabIndex = 52;
+            this.label34.Text = "EM - A";
+            // 
             // txt_VO_OI_125
             // 
             this.txt_VO_OI_125.Location = new System.Drawing.Point(100, 69);
             this.txt_VO_OI_125.Name = "txt_VO_OI_125";
             this.txt_VO_OI_125.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_125.TabIndex = 9;
+            this.txt_VO_OI_125.TabIndex = 18;
             this.txt_VO_OI_125.Tag = "OI";
             // 
             // txt_VO_OI_250
@@ -348,8 +292,16 @@
             this.txt_VO_OI_250.Location = new System.Drawing.Point(151, 69);
             this.txt_VO_OI_250.Name = "txt_VO_OI_250";
             this.txt_VO_OI_250.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_250.TabIndex = 10;
+            this.txt_VO_OI_250.TabIndex = 19;
             this.txt_VO_OI_250.Tag = "OI";
+            // 
+            // txt_AN_OI_1000
+            // 
+            this.txt_AN_OI_1000.Location = new System.Drawing.Point(253, 48);
+            this.txt_AN_OI_1000.Name = "txt_AN_OI_1000";
+            this.txt_AN_OI_1000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OI_1000.TabIndex = 12;
+            this.txt_AN_OI_1000.Tag = "OI";
             // 
             // txt_VA_OI_125
             // 
@@ -358,6 +310,14 @@
             this.txt_VA_OI_125.Size = new System.Drawing.Size(30, 20);
             this.txt_VA_OI_125.TabIndex = 0;
             this.txt_VA_OI_125.Tag = "OI";
+            // 
+            // txt_AN_OI_500
+            // 
+            this.txt_AN_OI_500.Location = new System.Drawing.Point(202, 48);
+            this.txt_AN_OI_500.Name = "txt_AN_OI_500";
+            this.txt_AN_OI_500.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OI_500.TabIndex = 11;
+            this.txt_AN_OI_500.Tag = "OI";
             // 
             // txt_VA_OI_250
             // 
@@ -372,9 +332,17 @@
             this.label25.AutoSize = true;
             this.label25.Location = new System.Drawing.Point(6, 94);
             this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(91, 13);
+            this.label25.Size = new System.Drawing.Size(40, 13);
             this.label25.TabIndex = 37;
-            this.label25.Text = "Enmascaramiento";
+            this.label25.Text = "EM - O";
+            // 
+            // txt_AN_OI_2000
+            // 
+            this.txt_AN_OI_2000.Location = new System.Drawing.Point(304, 48);
+            this.txt_AN_OI_2000.Name = "txt_AN_OI_2000";
+            this.txt_AN_OI_2000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OI_2000.TabIndex = 13;
+            this.txt_AN_OI_2000.Tag = "OI";
             // 
             // txt_VA_OI_6000
             // 
@@ -384,12 +352,20 @@
             this.txt_VA_OI_6000.TabIndex = 7;
             this.txt_VA_OI_6000.Tag = "OI";
             // 
+            // txt_AN_OI_3000
+            // 
+            this.txt_AN_OI_3000.Location = new System.Drawing.Point(355, 48);
+            this.txt_AN_OI_3000.Name = "txt_AN_OI_3000";
+            this.txt_AN_OI_3000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OI_3000.TabIndex = 14;
+            this.txt_AN_OI_3000.Tag = "OI";
+            // 
             // txt_EM_OI_1000
             // 
             this.txt_EM_OI_1000.Location = new System.Drawing.Point(253, 91);
             this.txt_EM_OI_1000.Name = "txt_EM_OI_1000";
             this.txt_EM_OI_1000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_1000.TabIndex = 21;
+            this.txt_EM_OI_1000.TabIndex = 30;
             this.txt_EM_OI_1000.Tag = "OI";
             // 
             // label11
@@ -401,12 +377,20 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "500 Hz";
             // 
+            // txt_AN_OI_4000
+            // 
+            this.txt_AN_OI_4000.Location = new System.Drawing.Point(406, 48);
+            this.txt_AN_OI_4000.Name = "txt_AN_OI_4000";
+            this.txt_AN_OI_4000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OI_4000.TabIndex = 15;
+            this.txt_AN_OI_4000.Tag = "OI";
+            // 
             // txt_EM_OI_500
             // 
             this.txt_EM_OI_500.Location = new System.Drawing.Point(202, 91);
             this.txt_EM_OI_500.Name = "txt_EM_OI_500";
             this.txt_EM_OI_500.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_500.TabIndex = 20;
+            this.txt_EM_OI_500.TabIndex = 29;
             this.txt_EM_OI_500.Tag = "OI";
             // 
             // label14
@@ -418,12 +402,20 @@
             this.label14.TabIndex = 8;
             this.label14.Text = "1000 Hz";
             // 
+            // txt_AN_OI_6000
+            // 
+            this.txt_AN_OI_6000.Location = new System.Drawing.Point(457, 48);
+            this.txt_AN_OI_6000.Name = "txt_AN_OI_6000";
+            this.txt_AN_OI_6000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OI_6000.TabIndex = 16;
+            this.txt_AN_OI_6000.Tag = "OI";
+            // 
             // txt_EM_OI_2000
             // 
             this.txt_EM_OI_2000.Location = new System.Drawing.Point(304, 91);
             this.txt_EM_OI_2000.Name = "txt_EM_OI_2000";
             this.txt_EM_OI_2000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_2000.TabIndex = 22;
+            this.txt_EM_OI_2000.TabIndex = 31;
             this.txt_EM_OI_2000.Tag = "OI";
             // 
             // label15
@@ -435,12 +427,20 @@
             this.label15.TabIndex = 9;
             this.label15.Text = "2000 Hz";
             // 
+            // txt_AN_OI_8000
+            // 
+            this.txt_AN_OI_8000.Location = new System.Drawing.Point(508, 48);
+            this.txt_AN_OI_8000.Name = "txt_AN_OI_8000";
+            this.txt_AN_OI_8000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OI_8000.TabIndex = 17;
+            this.txt_AN_OI_8000.Tag = "OI";
+            // 
             // txt_EM_OI_3000
             // 
             this.txt_EM_OI_3000.Location = new System.Drawing.Point(355, 91);
             this.txt_EM_OI_3000.Name = "txt_EM_OI_3000";
             this.txt_EM_OI_3000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_3000.TabIndex = 23;
+            this.txt_EM_OI_3000.TabIndex = 32;
             this.txt_EM_OI_3000.Tag = "OI";
             // 
             // label16
@@ -457,7 +457,7 @@
             this.txt_EM_OI_4000.Location = new System.Drawing.Point(406, 91);
             this.txt_EM_OI_4000.Name = "txt_EM_OI_4000";
             this.txt_EM_OI_4000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_4000.TabIndex = 24;
+            this.txt_EM_OI_4000.TabIndex = 33;
             this.txt_EM_OI_4000.Tag = "OI";
             // 
             // label12
@@ -474,7 +474,7 @@
             this.txt_EM_OI_6000.Location = new System.Drawing.Point(457, 91);
             this.txt_EM_OI_6000.Name = "txt_EM_OI_6000";
             this.txt_EM_OI_6000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_6000.TabIndex = 25;
+            this.txt_EM_OI_6000.TabIndex = 34;
             this.txt_EM_OI_6000.Tag = "OI";
             // 
             // txt_EM_OI_8000
@@ -482,7 +482,7 @@
             this.txt_EM_OI_8000.Location = new System.Drawing.Point(508, 91);
             this.txt_EM_OI_8000.Name = "txt_EM_OI_8000";
             this.txt_EM_OI_8000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OI_8000.TabIndex = 26;
+            this.txt_EM_OI_8000.TabIndex = 35;
             this.txt_EM_OI_8000.Tag = "OI";
             // 
             // label17
@@ -499,7 +499,7 @@
             this.txt_VO_OI_2000.Location = new System.Drawing.Point(304, 69);
             this.txt_VO_OI_2000.Name = "txt_VO_OI_2000";
             this.txt_VO_OI_2000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_2000.TabIndex = 13;
+            this.txt_VO_OI_2000.TabIndex = 22;
             this.txt_VO_OI_2000.Tag = "OI";
             // 
             // label9
@@ -516,7 +516,7 @@
             this.txt_VO_OI_8000.Location = new System.Drawing.Point(508, 69);
             this.txt_VO_OI_8000.Name = "txt_VO_OI_8000";
             this.txt_VO_OI_8000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_8000.TabIndex = 17;
+            this.txt_VO_OI_8000.TabIndex = 26;
             this.txt_VO_OI_8000.Tag = "OI";
             // 
             // txt_VO_OI_6000
@@ -524,7 +524,7 @@
             this.txt_VO_OI_6000.Location = new System.Drawing.Point(457, 69);
             this.txt_VO_OI_6000.Name = "txt_VO_OI_6000";
             this.txt_VO_OI_6000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_6000.TabIndex = 16;
+            this.txt_VO_OI_6000.TabIndex = 25;
             this.txt_VO_OI_6000.Tag = "OI";
             // 
             // label18
@@ -541,7 +541,7 @@
             this.txt_VO_OI_4000.Location = new System.Drawing.Point(406, 69);
             this.txt_VO_OI_4000.Name = "txt_VO_OI_4000";
             this.txt_VO_OI_4000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_4000.TabIndex = 15;
+            this.txt_VO_OI_4000.TabIndex = 24;
             this.txt_VO_OI_4000.Tag = "OI";
             // 
             // label19
@@ -558,7 +558,7 @@
             this.txt_VO_OI_3000.Location = new System.Drawing.Point(355, 69);
             this.txt_VO_OI_3000.Name = "txt_VO_OI_3000";
             this.txt_VO_OI_3000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_3000.TabIndex = 14;
+            this.txt_VO_OI_3000.TabIndex = 23;
             this.txt_VO_OI_3000.Tag = "OI";
             // 
             // txt_VA_OI_8000
@@ -574,7 +574,7 @@
             this.txt_VO_OI_500.Location = new System.Drawing.Point(202, 69);
             this.txt_VO_OI_500.Name = "txt_VO_OI_500";
             this.txt_VO_OI_500.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_500.TabIndex = 11;
+            this.txt_VO_OI_500.TabIndex = 20;
             this.txt_VO_OI_500.Tag = "OI";
             // 
             // txt_VA_OI_4000
@@ -590,7 +590,7 @@
             this.txt_VO_OI_1000.Location = new System.Drawing.Point(253, 69);
             this.txt_VO_OI_1000.Name = "txt_VO_OI_1000";
             this.txt_VO_OI_1000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OI_1000.TabIndex = 12;
+            this.txt_VO_OI_1000.TabIndex = 21;
             this.txt_VO_OI_1000.Tag = "OI";
             // 
             // txt_VA_OI_3000
@@ -630,7 +630,7 @@
             this.txt_VO_OD_1000.Location = new System.Drawing.Point(238, 69);
             this.txt_VO_OD_1000.Name = "txt_VO_OD_1000";
             this.txt_VO_OD_1000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_1000.TabIndex = 12;
+            this.txt_VO_OD_1000.TabIndex = 21;
             this.txt_VO_OD_1000.Tag = "OD";
             // 
             // txt_VO_OD_500
@@ -638,7 +638,7 @@
             this.txt_VO_OD_500.Location = new System.Drawing.Point(192, 69);
             this.txt_VO_OD_500.Name = "txt_VO_OD_500";
             this.txt_VO_OD_500.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_500.TabIndex = 11;
+            this.txt_VO_OD_500.TabIndex = 20;
             this.txt_VO_OD_500.Tag = "OD";
             // 
             // txt_VO_OD_2000
@@ -646,7 +646,7 @@
             this.txt_VO_OD_2000.Location = new System.Drawing.Point(284, 69);
             this.txt_VO_OD_2000.Name = "txt_VO_OD_2000";
             this.txt_VO_OD_2000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_2000.TabIndex = 13;
+            this.txt_VO_OD_2000.TabIndex = 22;
             this.txt_VO_OD_2000.Tag = "OD";
             // 
             // txt_VO_OD_3000
@@ -654,7 +654,7 @@
             this.txt_VO_OD_3000.Location = new System.Drawing.Point(330, 69);
             this.txt_VO_OD_3000.Name = "txt_VO_OD_3000";
             this.txt_VO_OD_3000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_3000.TabIndex = 14;
+            this.txt_VO_OD_3000.TabIndex = 23;
             this.txt_VO_OD_3000.Tag = "OD";
             // 
             // txt_VO_OD_4000
@@ -662,7 +662,7 @@
             this.txt_VO_OD_4000.Location = new System.Drawing.Point(376, 69);
             this.txt_VO_OD_4000.Name = "txt_VO_OD_4000";
             this.txt_VO_OD_4000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_4000.TabIndex = 15;
+            this.txt_VO_OD_4000.TabIndex = 24;
             this.txt_VO_OD_4000.Tag = "OD";
             // 
             // label13
@@ -679,7 +679,7 @@
             this.txt_VO_OD_6000.Location = new System.Drawing.Point(422, 69);
             this.txt_VO_OD_6000.Name = "txt_VO_OD_6000";
             this.txt_VO_OD_6000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_6000.TabIndex = 16;
+            this.txt_VO_OD_6000.TabIndex = 25;
             this.txt_VO_OD_6000.Tag = "OD";
             // 
             // txt_VO_OD_8000
@@ -687,7 +687,7 @@
             this.txt_VO_OD_8000.Location = new System.Drawing.Point(468, 69);
             this.txt_VO_OD_8000.Name = "txt_VO_OD_8000";
             this.txt_VO_OD_8000.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_8000.TabIndex = 17;
+            this.txt_VO_OD_8000.TabIndex = 26;
             this.txt_VO_OD_8000.Tag = "OD";
             // 
             // groupBox1
@@ -741,9 +741,9 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Location = new System.Drawing.Point(6, 3);
+            this.groupBox1.Location = new System.Drawing.Point(6, -2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(522, 123);
+            this.groupBox1.Size = new System.Drawing.Size(522, 113);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Oído Derecho";
@@ -753,16 +753,40 @@
             this.txt_AN_OD_250.Location = new System.Drawing.Point(146, 48);
             this.txt_AN_OD_250.Name = "txt_AN_OD_250";
             this.txt_AN_OD_250.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_250.TabIndex = 35;
+            this.txt_AN_OD_250.TabIndex = 10;
             this.txt_AN_OD_250.Tag = "OD";
+            // 
+            // txt_EM_OD_250
+            // 
+            this.txt_EM_OD_250.Location = new System.Drawing.Point(146, 93);
+            this.txt_EM_OD_250.Name = "txt_EM_OD_250";
+            this.txt_EM_OD_250.Size = new System.Drawing.Size(30, 20);
+            this.txt_EM_OD_250.TabIndex = 28;
+            this.txt_EM_OD_250.Tag = "OD";
+            // 
+            // txt_EM_OD_125
+            // 
+            this.txt_EM_OD_125.Location = new System.Drawing.Point(100, 93);
+            this.txt_EM_OD_125.Name = "txt_EM_OD_125";
+            this.txt_EM_OD_125.Size = new System.Drawing.Size(30, 20);
+            this.txt_EM_OD_125.TabIndex = 27;
+            this.txt_EM_OD_125.Tag = "OD";
             // 
             // txt_AN_OD_125
             // 
             this.txt_AN_OD_125.Location = new System.Drawing.Point(100, 48);
             this.txt_AN_OD_125.Name = "txt_AN_OD_125";
             this.txt_AN_OD_125.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_125.TabIndex = 34;
+            this.txt_AN_OD_125.TabIndex = 9;
             this.txt_AN_OD_125.Tag = "OD";
+            // 
+            // txt_VO_OD_250
+            // 
+            this.txt_VO_OD_250.Location = new System.Drawing.Point(146, 69);
+            this.txt_VO_OD_250.Name = "txt_VO_OD_250";
+            this.txt_VO_OD_250.Size = new System.Drawing.Size(30, 20);
+            this.txt_VO_OD_250.TabIndex = 19;
+            this.txt_VO_OD_250.Tag = "OD";
             // 
             // label33
             // 
@@ -772,86 +796,6 @@
             this.label33.Size = new System.Drawing.Size(39, 13);
             this.label33.TabIndex = 43;
             this.label33.Text = "EM - A";
-            // 
-            // txt_AN_OD_1000
-            // 
-            this.txt_AN_OD_1000.Location = new System.Drawing.Point(238, 48);
-            this.txt_AN_OD_1000.Name = "txt_AN_OD_1000";
-            this.txt_AN_OD_1000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_1000.TabIndex = 37;
-            this.txt_AN_OD_1000.Tag = "OD";
-            // 
-            // txt_AN_OD_500
-            // 
-            this.txt_AN_OD_500.Location = new System.Drawing.Point(192, 48);
-            this.txt_AN_OD_500.Name = "txt_AN_OD_500";
-            this.txt_AN_OD_500.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_500.TabIndex = 36;
-            this.txt_AN_OD_500.Tag = "OD";
-            // 
-            // txt_AN_OD_2000
-            // 
-            this.txt_AN_OD_2000.Location = new System.Drawing.Point(284, 48);
-            this.txt_AN_OD_2000.Name = "txt_AN_OD_2000";
-            this.txt_AN_OD_2000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_2000.TabIndex = 38;
-            this.txt_AN_OD_2000.Tag = "OD";
-            // 
-            // txt_AN_OD_3000
-            // 
-            this.txt_AN_OD_3000.Location = new System.Drawing.Point(330, 48);
-            this.txt_AN_OD_3000.Name = "txt_AN_OD_3000";
-            this.txt_AN_OD_3000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_3000.TabIndex = 39;
-            this.txt_AN_OD_3000.Tag = "OD";
-            // 
-            // txt_AN_OD_4000
-            // 
-            this.txt_AN_OD_4000.Location = new System.Drawing.Point(376, 48);
-            this.txt_AN_OD_4000.Name = "txt_AN_OD_4000";
-            this.txt_AN_OD_4000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_4000.TabIndex = 40;
-            this.txt_AN_OD_4000.Tag = "OD";
-            // 
-            // txt_AN_OD_6000
-            // 
-            this.txt_AN_OD_6000.Location = new System.Drawing.Point(422, 48);
-            this.txt_AN_OD_6000.Name = "txt_AN_OD_6000";
-            this.txt_AN_OD_6000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_6000.TabIndex = 41;
-            this.txt_AN_OD_6000.Tag = "OD";
-            // 
-            // txt_AN_OD_8000
-            // 
-            this.txt_AN_OD_8000.Location = new System.Drawing.Point(468, 48);
-            this.txt_AN_OD_8000.Name = "txt_AN_OD_8000";
-            this.txt_AN_OD_8000.Size = new System.Drawing.Size(30, 20);
-            this.txt_AN_OD_8000.TabIndex = 42;
-            this.txt_AN_OD_8000.Tag = "OD";
-            // 
-            // txt_EM_OD_250
-            // 
-            this.txt_EM_OD_250.Location = new System.Drawing.Point(146, 93);
-            this.txt_EM_OD_250.Name = "txt_EM_OD_250";
-            this.txt_EM_OD_250.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_250.TabIndex = 19;
-            this.txt_EM_OD_250.Tag = "OD";
-            // 
-            // txt_EM_OD_125
-            // 
-            this.txt_EM_OD_125.Location = new System.Drawing.Point(100, 93);
-            this.txt_EM_OD_125.Name = "txt_EM_OD_125";
-            this.txt_EM_OD_125.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_125.TabIndex = 18;
-            this.txt_EM_OD_125.Tag = "OD";
-            // 
-            // txt_VO_OD_250
-            // 
-            this.txt_VO_OD_250.Location = new System.Drawing.Point(146, 69);
-            this.txt_VO_OD_250.Name = "txt_VO_OD_250";
-            this.txt_VO_OD_250.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_250.TabIndex = 10;
-            this.txt_VO_OD_250.Tag = "OD";
             // 
             // label29
             // 
@@ -870,12 +814,20 @@
             this.txt_VA_OD_125.TabIndex = 0;
             this.txt_VA_OD_125.Tag = "OD";
             // 
+            // txt_AN_OD_1000
+            // 
+            this.txt_AN_OD_1000.Location = new System.Drawing.Point(238, 48);
+            this.txt_AN_OD_1000.Name = "txt_AN_OD_1000";
+            this.txt_AN_OD_1000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OD_1000.TabIndex = 12;
+            this.txt_AN_OD_1000.Tag = "OD";
+            // 
             // txt_VO_OD_125
             // 
             this.txt_VO_OD_125.Location = new System.Drawing.Point(100, 69);
             this.txt_VO_OD_125.Name = "txt_VO_OD_125";
             this.txt_VO_OD_125.Size = new System.Drawing.Size(30, 20);
-            this.txt_VO_OD_125.TabIndex = 9;
+            this.txt_VO_OD_125.TabIndex = 18;
             this.txt_VO_OD_125.Tag = "OD";
             // 
             // txt_VA_OD_250
@@ -886,6 +838,14 @@
             this.txt_VA_OD_250.TabIndex = 1;
             this.txt_VA_OD_250.Tag = "OD";
             // 
+            // txt_AN_OD_500
+            // 
+            this.txt_AN_OD_500.Location = new System.Drawing.Point(192, 48);
+            this.txt_AN_OD_500.Name = "txt_AN_OD_500";
+            this.txt_AN_OD_500.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OD_500.TabIndex = 11;
+            this.txt_AN_OD_500.Tag = "OD";
+            // 
             // label30
             // 
             this.label30.AutoSize = true;
@@ -895,29 +855,45 @@
             this.label30.TabIndex = 33;
             this.label30.Text = "250 Hz";
             // 
+            // txt_AN_OD_2000
+            // 
+            this.txt_AN_OD_2000.Location = new System.Drawing.Point(284, 48);
+            this.txt_AN_OD_2000.Name = "txt_AN_OD_2000";
+            this.txt_AN_OD_2000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OD_2000.TabIndex = 13;
+            this.txt_AN_OD_2000.Tag = "OD";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(9, 96);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(91, 13);
+            this.label10.Size = new System.Drawing.Size(40, 13);
             this.label10.TabIndex = 29;
-            this.label10.Text = "Enmascaramiento";
+            this.label10.Text = "EM - O";
             // 
             // txt_EM_OD_1000
             // 
             this.txt_EM_OD_1000.Location = new System.Drawing.Point(238, 93);
             this.txt_EM_OD_1000.Name = "txt_EM_OD_1000";
             this.txt_EM_OD_1000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_1000.TabIndex = 21;
+            this.txt_EM_OD_1000.TabIndex = 30;
             this.txt_EM_OD_1000.Tag = "OD";
+            // 
+            // txt_AN_OD_3000
+            // 
+            this.txt_AN_OD_3000.Location = new System.Drawing.Point(330, 48);
+            this.txt_AN_OD_3000.Name = "txt_AN_OD_3000";
+            this.txt_AN_OD_3000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OD_3000.TabIndex = 14;
+            this.txt_AN_OD_3000.Tag = "OD";
             // 
             // txt_EM_OD_500
             // 
             this.txt_EM_OD_500.Location = new System.Drawing.Point(192, 93);
             this.txt_EM_OD_500.Name = "txt_EM_OD_500";
             this.txt_EM_OD_500.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_500.TabIndex = 20;
+            this.txt_EM_OD_500.TabIndex = 29;
             this.txt_EM_OD_500.Tag = "OD";
             // 
             // txt_EM_OD_2000
@@ -925,15 +901,23 @@
             this.txt_EM_OD_2000.Location = new System.Drawing.Point(284, 93);
             this.txt_EM_OD_2000.Name = "txt_EM_OD_2000";
             this.txt_EM_OD_2000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_2000.TabIndex = 22;
+            this.txt_EM_OD_2000.TabIndex = 31;
             this.txt_EM_OD_2000.Tag = "OD";
+            // 
+            // txt_AN_OD_4000
+            // 
+            this.txt_AN_OD_4000.Location = new System.Drawing.Point(376, 48);
+            this.txt_AN_OD_4000.Name = "txt_AN_OD_4000";
+            this.txt_AN_OD_4000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OD_4000.TabIndex = 15;
+            this.txt_AN_OD_4000.Tag = "OD";
             // 
             // txt_EM_OD_3000
             // 
             this.txt_EM_OD_3000.Location = new System.Drawing.Point(330, 93);
             this.txt_EM_OD_3000.Name = "txt_EM_OD_3000";
             this.txt_EM_OD_3000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_3000.TabIndex = 23;
+            this.txt_EM_OD_3000.TabIndex = 32;
             this.txt_EM_OD_3000.Tag = "OD";
             // 
             // txt_EM_OD_4000
@@ -941,15 +925,23 @@
             this.txt_EM_OD_4000.Location = new System.Drawing.Point(376, 93);
             this.txt_EM_OD_4000.Name = "txt_EM_OD_4000";
             this.txt_EM_OD_4000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_4000.TabIndex = 24;
+            this.txt_EM_OD_4000.TabIndex = 33;
             this.txt_EM_OD_4000.Tag = "OD";
+            // 
+            // txt_AN_OD_6000
+            // 
+            this.txt_AN_OD_6000.Location = new System.Drawing.Point(422, 48);
+            this.txt_AN_OD_6000.Name = "txt_AN_OD_6000";
+            this.txt_AN_OD_6000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OD_6000.TabIndex = 16;
+            this.txt_AN_OD_6000.Tag = "OD";
             // 
             // txt_EM_OD_6000
             // 
             this.txt_EM_OD_6000.Location = new System.Drawing.Point(422, 93);
             this.txt_EM_OD_6000.Name = "txt_EM_OD_6000";
             this.txt_EM_OD_6000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_6000.TabIndex = 25;
+            this.txt_EM_OD_6000.TabIndex = 34;
             this.txt_EM_OD_6000.Tag = "OD";
             // 
             // txt_EM_OD_8000
@@ -957,8 +949,16 @@
             this.txt_EM_OD_8000.Location = new System.Drawing.Point(468, 93);
             this.txt_EM_OD_8000.Name = "txt_EM_OD_8000";
             this.txt_EM_OD_8000.Size = new System.Drawing.Size(30, 20);
-            this.txt_EM_OD_8000.TabIndex = 26;
+            this.txt_EM_OD_8000.TabIndex = 35;
             this.txt_EM_OD_8000.Tag = "OD";
+            // 
+            // txt_AN_OD_8000
+            // 
+            this.txt_AN_OD_8000.Location = new System.Drawing.Point(468, 48);
+            this.txt_AN_OD_8000.Name = "txt_AN_OD_8000";
+            this.txt_AN_OD_8000.Size = new System.Drawing.Size(30, 20);
+            this.txt_AN_OD_8000.TabIndex = 17;
+            this.txt_AN_OD_8000.Tag = "OD";
             // 
             // label1
             // 
@@ -1110,7 +1110,7 @@
             chartArea1.AxisY2.IsReversed = true;
             chartArea1.Name = "ChartArea1";
             this.chart1.ChartAreas.Add(chartArea1);
-            this.chart1.Location = new System.Drawing.Point(41, 132);
+            this.chart1.Location = new System.Drawing.Point(41, 114);
             this.chart1.Name = "chart1";
             this.chart1.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart1.Size = new System.Drawing.Size(463, 293);
@@ -1138,7 +1138,7 @@
             chartArea2.AxisY2.IsReversed = true;
             chartArea2.Name = "ChartArea1";
             this.chart2.ChartAreas.Add(chartArea2);
-            this.chart2.Location = new System.Drawing.Point(568, 132);
+            this.chart2.Location = new System.Drawing.Point(568, 114);
             this.chart2.Name = "chart2";
             this.chart2.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             this.chart2.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -1352,7 +1352,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.chart2);
             this.Name = "ucAudiometria";
-            this.Size = new System.Drawing.Size(1088, 431);
+            this.Size = new System.Drawing.Size(1082, 412);
             this.Load += new System.EventHandler(this.ucAudiometria_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
