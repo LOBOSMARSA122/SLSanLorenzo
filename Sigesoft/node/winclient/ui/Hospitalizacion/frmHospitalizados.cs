@@ -99,5 +99,13 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             frmTicket ticket = new frmTicket(_tempTicket, ServiceId);
             ticket.ShowDialog();
         }
+
+        private void txtHospitalizados_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
     }
 }

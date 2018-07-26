@@ -1409,6 +1409,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
         #region Validaciones
 
+        
         public bool IsExistscomponentfieldsInCurrentProtocol(ref OperationResult pobjOperationResult, string[] pobjComponenttIdToComparerList, string pstrComponentIdToFind)
         {
             bool IsExists = false;

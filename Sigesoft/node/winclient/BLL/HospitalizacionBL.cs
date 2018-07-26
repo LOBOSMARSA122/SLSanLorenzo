@@ -292,7 +292,6 @@ namespace Sigesoft.Node.WinClient.BLL
                               v_IdProductoDetalle = a.v_IdProductoDetalle,
                               v_TicketDetalleId = a.v_TicketDetalleId,
                               d_Cantidad = a.d_Cantidad,
-                              v_NombreProducto = a.v_NombreProducto
                           }).ToList();
 
             return ticketdetalle;

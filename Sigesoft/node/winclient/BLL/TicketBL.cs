@@ -13,7 +13,7 @@ namespace Sigesoft.Node.WinClient.BLL
     {
         public string AddTicket(ref OperationResult objOperationResult, ticketDto objticketDto, List<ticketdetalleDto> pobjticketdetalleDto, List<string> ClientSession)
         {
-            string NewId0 = "(No generado)";
+            string NewId0 = null;
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -23,7 +23,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
                 objEntity.i_IsDeleted = 0;
                 // Autogeneramos el Pk de la tabla
-                int intNodeId = int.Parse(ClientSession[0]);
+                int intNodeId = int.Parse(ClientSession[11]);
                 NewId0 = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 345), "TK"); ;
                 objEntity.v_TicketId = NewId0;
 
@@ -49,18 +49,63 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 objOperationResult.Success = 1;
                 // Llenar entidad Log
-                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "TICKET", "v_TicketId=" + NewId0.ToString(), Success.Ok, null);
-             
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "TK", "v_TicketId=" + NewId0.ToString(), Success.Ok, null);             
             }
             catch (Exception ex)
             {
                 objOperationResult.Success = 0;
                 objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
                 // Llenar entidad Log
-                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "TICKET", "v_TicketId=" + NewId0.ToString(), Success.Failed, objOperationResult.ExceptionMessage);
-                
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "TK", "v_TicketId=" + NewId0.ToString(), Success.Failed, objOperationResult.ExceptionMessage);
             }
             return NewId0;
         }
+
+        public bool IsExistsproductoInTicket(ref OperationResult pobjOperationResult, string[] pobjComponenttIdToComparerList, string pstrProductoidToFind)
+        {
+            bool IsExists = false;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                // Obtener campos de una lista de componente pertenecientes a un mismo protocolo
+                var query1 = (from A in dbContext.ticketdetalle
+                              where (A.i_IsDeleted == 0) && (pobjComponenttIdToComparerList.Contains(A.v_IdProductoDetalle))
+                              orderby A.v_IdProductoDetalle
+                              select new TicketDetalleList
+                              {
+                                  v_IdProductoDetalle = A.v_IdProductoDetalle,
+                                  v_TicketId = A.v_TicketId,
+                                  d_Cantidad = A.d_Cantidad.Value,
+                                  i_EsDespachado = A.i_EsDespachado.Value
+                              }).ToList();
+
+                // Obtener campos del componente concurrente
+                var query2 = (from A in dbContext.ticketdetalle
+                              where (A.i_IsDeleted == 0) && (A.v_IdProductoDetalle == pstrProductoidToFind)
+                              orderby A.v_IdProductoDetalle
+                              select new TicketDetalleList
+                              {
+                                  v_IdProductoDetalle = A.v_IdProductoDetalle,
+                                  v_TicketId = A.v_TicketId,
+                                  d_Cantidad = A.d_Cantidad.Value,
+                                  i_EsDespachado = A.i_EsDespachado.Value
+                              }).ToList();
+
+                // Buscar los campos del componente concurrente obtenido en la lista 
+                // de campos pertenecientes a un mismo protocolo            
+                IsExists = query2.Exists(s => query1.Any(a => a.v_IdProductoDetalle == s.v_IdProductoDetalle));
+                var IsExists_ = query2.Where(s => query1.Any(a => a.v_IdProductoDetalle == s.v_IdProductoDetalle)).ToList();
+                return IsExists;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+            }
+
+            return IsExists;
+        }
+
     }
 }

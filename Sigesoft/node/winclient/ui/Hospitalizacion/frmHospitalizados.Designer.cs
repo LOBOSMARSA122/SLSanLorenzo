@@ -142,6 +142,7 @@
             this.txtPacient.Name = "txtPacient";
             this.txtPacient.Size = new System.Drawing.Size(230, 21);
             this.txtPacient.TabIndex = 9;
+            this.txtPacient.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtHospitalizados_KeyPress);
             // 
             // label5
             // 

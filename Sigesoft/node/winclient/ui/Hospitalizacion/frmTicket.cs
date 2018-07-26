@@ -27,7 +27,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         ticketDto objticketDto = null;
 
-        string ticketId;
+        string ticketId = string.Empty;
         //private readonly List<HospitalizacionList> _listHospitalizacionList;
         //private readonly List<HospitalizacionServiceList> _listHospitalizacionServiceList;
         private readonly List<TicketList> _listTicketList;

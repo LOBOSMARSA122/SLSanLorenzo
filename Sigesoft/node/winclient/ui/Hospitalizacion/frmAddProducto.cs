@@ -18,13 +18,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         public List<TicketDetalleList> _TempTicketDetalleList = null;
         TicketDetalleList _objTicketDetalleList = null;
-        
+
+        private TicketBL _ticketlBL = new TicketBL();
         string _ProductoId = null;
-        //string TicketIdpublic string _TicketId;
 
         public frmAddProducto()
         {
-            //_TicketId = TicketId;
             InitializeComponent();
         }
         
@@ -45,7 +44,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             try
             {
-                _pobjOperationResult = new OperationResult();
                 if (txtMedicamento.Tag == null)
                 {
                     MessageBox.Show(@"Por favor seleccione un medicamento", @"Error de validación", MessageBoxButtons.OK);
@@ -59,30 +57,45 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 }
 
                 OperationResult objOperationResult = new OperationResult();
-             
+
+                string[] componentIdFromProtocol = _TempTicketDetalleList.FindAll(p => p.i_RecordStatus != (int)RecordStatus.EliminadoLogico)
+                                                                               .Select(p => p.v_IdProductoDetalle).ToArray();
+
+                bool IsExists = _ticketlBL.IsExistsproductoInTicket(ref objOperationResult, componentIdFromProtocol, _ProductoId);
+
+                if (IsExists)
+                {
+                    var msj = string.Format("El examen producto puede agregar, ya existe", labelmensaje.Text);
+                    MessageBox.Show(msj, "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
 
                 var findResult = _TempTicketDetalleList.Find(p => p.v_IdProductoDetalle == _ProductoId);
                 _objTicketDetalleList = new TicketDetalleList();
-                decimal d;
+                
                 if (findResult == null)
                 {
+                    _objTicketDetalleList.v_TicketDetalleId = Guid.NewGuid().ToString();
 
                     _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                     _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
+                    decimal d;
                     _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
+                    //_objTicketDetalleList.i_EsDespachado = int.Parse()
                     _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
 
                     _TempTicketDetalleList.Add(_objTicketDetalleList);
                 }
-                else    // El examen ya esta agregado en la bolsa hay que actualizar su estado
+                else
                 {
                     if (findResult.i_RecordStatus == (int)RecordStatus.EliminadoLogico)
                     {
-                        if (findResult.i_RecordType == (int)RecordType.NoTemporal)   // El registro Tiene in ID de BD
+                        if (findResult.i_RecordType == (int)RecordType.NoTemporal) 
                         {
-
                             _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                             _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
+                            decimal d;
                             _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
 
                             findResult.i_RecordStatus = (int)RecordStatus.Grabado;
@@ -91,8 +104,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         {
                             _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                             _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
+                            decimal d;
                             _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
                             _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
+
                             findResult.i_RecordStatus = (int)RecordStatus.Agregado;
                         }
                     }
@@ -104,13 +119,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 }
 
                 MessageBox.Show("Se grabo correctamente.", "INFORMACION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
-                //if (_pobjOperationResult.Success == 0)
-                //{
-                //    MessageBox.Show(_pobjOperationResult.ErrorMessage, @"Error", MessageBoxButtons.OK,
-                //    MessageBoxIcon.Error);
-                //    return;
-                //}
 
                 this.Close();
             }
