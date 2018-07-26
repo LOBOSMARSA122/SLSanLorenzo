@@ -68,16 +68,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCalendar));
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn65 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CategoryName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn66 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_CategoryId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn67 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn68 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn69 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_QueueStatusName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentStatusName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CategoryName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_CategoryId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_QueueStatusName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentStatusName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceComponentId");
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
@@ -1409,27 +1409,27 @@
             appearance8.BackColor2 = System.Drawing.Color.Silver;
             appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.ugComponentes.DisplayLayout.Appearance = appearance8;
-            ultraGridColumn65.Header.VisiblePosition = 0;
-            ultraGridColumn65.Width = 159;
-            ultraGridColumn66.Header.VisiblePosition = 1;
-            ultraGridColumn67.Header.VisiblePosition = 2;
-            ultraGridColumn68.Header.VisiblePosition = 3;
-            ultraGridColumn69.Header.VisiblePosition = 4;
-            ultraGridColumn70.Header.VisiblePosition = 5;
-            ultraGridColumn4.Header.VisiblePosition = 6;
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn1.Width = 159;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn6.Header.VisiblePosition = 2;
+            ultraGridColumn7.Header.VisiblePosition = 3;
+            ultraGridColumn8.Header.VisiblePosition = 4;
+            ultraGridColumn9.Header.VisiblePosition = 5;
+            ultraGridColumn10.Header.VisiblePosition = 6;
             ultraGridBand2.Columns.AddRange(new object[] {
-            ultraGridColumn65,
-            ultraGridColumn66,
-            ultraGridColumn67,
-            ultraGridColumn68,
-            ultraGridColumn69,
-            ultraGridColumn70,
-            ultraGridColumn4});
-            ultraGridColumn3.Header.VisiblePosition = 0;
-            ultraGridColumn5.Header.VisiblePosition = 1;
+            ultraGridColumn1,
+            ultraGridColumn2,
+            ultraGridColumn6,
+            ultraGridColumn7,
+            ultraGridColumn8,
+            ultraGridColumn9,
+            ultraGridColumn10});
+            ultraGridColumn11.Header.VisiblePosition = 0;
+            ultraGridColumn12.Header.VisiblePosition = 1;
             ultraGridBand3.Columns.AddRange(new object[] {
-            ultraGridColumn3,
-            ultraGridColumn5});
+            ultraGridColumn11,
+            ultraGridColumn12});
             this.ugComponentes.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.ugComponentes.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
             this.ugComponentes.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;

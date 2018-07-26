@@ -1311,11 +1311,19 @@
     <Compile Include="History\frmRuidoPopup.designer.cs">
       <DependentUpon>frmRuidoPopup.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Hospitalizacion\frmAddProducto.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Hospitalizacion\frmAddProducto.Designer.cs">
       <DependentUpon>frmAddProducto.cs</DependentUpon>
+=======
+    <Compile Include="Hospitalizacion\frmEditarProfesional.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmEditarProfesional.Designer.cs">
+      <DependentUpon>frmEditarProfesional.cs</DependentUpon>
+>>>>>>> b477f1a130283ba282bdadf0c3998c3ec1a6f505
     </Compile>
     <Compile Include="Hospitalizacion\frmHospitalizados.cs">
       <SubType>Form</SubType>
@@ -1323,11 +1331,19 @@
     <Compile Include="Hospitalizacion\frmHospitalizados.Designer.cs">
       <DependentUpon>frmHospitalizados.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="Hospitalizacion\frmTicket.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Hospitalizacion\frmTicket.Designer.cs">
       <DependentUpon>frmTicket.cs</DependentUpon>
+=======
+    <Compile Include="Hospitalizacion\frmProfesionales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmProfesionales.Designer.cs">
+      <DependentUpon>frmProfesionales.cs</DependentUpon>
+>>>>>>> b477f1a130283ba282bdadf0c3998c3ec1a6f505
     </Compile>
     <Compile Include="MensajeAlerta.cs">
       <SubType>Form</SubType>
@@ -3500,14 +3516,24 @@
     <EmbeddedResource Include="History\frmRuidoPopup.resx">
       <DependentUpon>frmRuidoPopup.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Hospitalizacion\frmAddProducto.resx">
       <DependentUpon>frmAddProducto.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Hospitalizacion\frmEditarProfesional.resx">
+      <DependentUpon>frmEditarProfesional.cs</DependentUpon>
+>>>>>>> b477f1a130283ba282bdadf0c3998c3ec1a6f505
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmHospitalizados.resx">
       <DependentUpon>frmHospitalizados.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="Hospitalizacion\frmTicket.resx">
       <DependentUpon>frmTicket.cs</DependentUpon>
+=======
+    <EmbeddedResource Include="Hospitalizacion\frmProfesionales.resx">
+      <DependentUpon>frmProfesionales.cs</DependentUpon>
+>>>>>>> b477f1a130283ba282bdadf0c3998c3ec1a6f505
     </EmbeddedResource>
     <EmbeddedResource Include="MensajeAlerta.resx">
       <DependentUpon>MensajeAlerta.cs</DependentUpon>
@@ -6516,7 +6542,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

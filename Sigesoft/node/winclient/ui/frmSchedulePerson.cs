@@ -1356,6 +1356,11 @@ namespace Sigesoft.Node.WinClient.UI
                 ddlDepartamentId.SelectedValue = departamento[1].Id;
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+
+        }
     
     }
 }

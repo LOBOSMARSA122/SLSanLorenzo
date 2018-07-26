@@ -144,6 +144,7 @@
     <Compile Include="GeneratedAssemblers\multimediafileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\movementdetailAssembler.cs" />
     <Compile Include="GeneratedAssemblers\movementAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\medicoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\medicationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\masterrecommendationrestricctionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
@@ -151,7 +152,6 @@
     <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\historyAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\habitacionservicioAssembler.cs" />
     <Compile Include="GeneratedAssemblers\groupoccupationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gesAssembler.cs" />
     <Compile Include="GeneratedAssemblers\familymedicalantecedentsAssembler.cs" />
