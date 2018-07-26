@@ -35,6 +35,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             _ListaComponentes = ListaComponentes;
             InitializeComponent();
+
         }
 
         private void btnAgregarExamenAuxiliar_Click(object sender, EventArgs e)
