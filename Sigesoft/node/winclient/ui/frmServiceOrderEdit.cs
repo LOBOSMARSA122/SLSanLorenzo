@@ -254,6 +254,7 @@ namespace Sigesoft.Node.WinClient.UI
                     _oserviceorderDto.i_LineaCreditoId = int.Parse(cbLineaCredito.SelectedValue.ToString());
                     _oserviceorderDto.i_MostrarPrecio = rbSi.Checked ? 1 : 0;
                     _oserviceorderDto.i_EsProtocoloEspecial = chkProtocoloEspecial.Checked ? 1 : 0;
+                    
                     if (_TempServiceOrderDetail == null || _TempServiceOrderDetail.Count == 0)
                     {
                         _serviceorderdetailDto = null;
@@ -425,7 +426,7 @@ namespace Sigesoft.Node.WinClient.UI
             ProtocolBL oProtocolBL = new ProtocolBL();
             ProtocolList oProtocolList = new ProtocolList();
             int CantidadTrabajadores = 0;
-
+            #region
             if (txtProtocolName.Text.Trim() == String.Empty)
             {
                 MessageBox.Show("Por favor seleccione un Protocolo.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -448,7 +449,7 @@ namespace Sigesoft.Node.WinClient.UI
             int TotalTrabajadores = 0;
 
 
-
+            #endregion
             if (_TempServiceOrderDetail == null)
             {
                 _TempServiceOrderDetail = new List<ServiceOrderDetailList>();

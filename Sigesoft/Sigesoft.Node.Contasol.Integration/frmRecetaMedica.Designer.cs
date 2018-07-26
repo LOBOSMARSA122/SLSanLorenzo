@@ -63,7 +63,7 @@
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("_DeleteRecipe", 1);
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridGroup ultraGridGroup1 = new Infragistics.Win.UltraWinGrid.UltraGridGroup("NewGroup0", 10384110);
+            Infragistics.Win.UltraWinGrid.UltraGridGroup ultraGridGroup1 = new Infragistics.Win.UltraWinGrid.UltraGridGroup("NewGroup0", 686062766);
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
@@ -256,6 +256,7 @@
             ultraGridColumn9});
             ultraGridGroup1.Header.Caption = "Receta";
             ultraGridGroup1.Key = "NewGroup0";
+            ultraGridGroup1.RowLayoutGroupInfo.LabelSpan = 1;
             ultraGridGroup1.RowLayoutGroupInfo.OriginX = 0;
             ultraGridGroup1.RowLayoutGroupInfo.OriginY = 0;
             ultraGridGroup1.RowLayoutGroupInfo.SpanX = 14;
@@ -320,7 +321,7 @@
             this.grdTotalDiagnosticos.Location = new System.Drawing.Point(5, 18);
             this.grdTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2);
             this.grdTotalDiagnosticos.Name = "grdTotalDiagnosticos";
-            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1112, 307);
+            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1112, 306);
             this.grdTotalDiagnosticos.TabIndex = 51;
             this.grdTotalDiagnosticos.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdTotalDiagnosticos_InitializeLayout);
             this.grdTotalDiagnosticos.ClickCellButton += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.grdTotalDiagnosticos_ClickCellButton);
@@ -333,7 +334,7 @@
             this.ultraGroupBox1.Controls.Add(this.grdTotalDiagnosticos);
             this.ultraGroupBox1.Location = new System.Drawing.Point(12, 12);
             this.ultraGroupBox1.Name = "ultraGroupBox1";
-            this.ultraGroupBox1.Size = new System.Drawing.Size(1122, 330);
+            this.ultraGroupBox1.Size = new System.Drawing.Size(1122, 329);
             this.ultraGroupBox1.TabIndex = 52;
             this.ultraGroupBox1.Text = "Receta por Diagnóstico";
             // 
@@ -351,9 +352,9 @@
             this.frmRecetaMedica_Fill_Panel.ClientArea.Controls.Add(this.ultraGroupBox1);
             this.frmRecetaMedica_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.frmRecetaMedica_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmRecetaMedica_Fill_Panel.Location = new System.Drawing.Point(4, 27);
+            this.frmRecetaMedica_Fill_Panel.Location = new System.Drawing.Point(4, 28);
             this.frmRecetaMedica_Fill_Panel.Name = "frmRecetaMedica_Fill_Panel";
-            this.frmRecetaMedica_Fill_Panel.Size = new System.Drawing.Size(1148, 385);
+            this.frmRecetaMedica_Fill_Panel.Size = new System.Drawing.Size(1148, 384);
             this.frmRecetaMedica_Fill_Panel.TabIndex = 0;
             // 
             // ultraButton2
@@ -382,9 +383,9 @@
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager1;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 27);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 28);
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Name = "_frmRecetaMedica_UltraFormManager_Dock_Area_Left";
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 385);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 384);
             // 
             // _frmRecetaMedica_UltraFormManager_Dock_Area_Right
             // 
@@ -394,9 +395,9 @@
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager1;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1152, 27);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1152, 28);
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Name = "_frmRecetaMedica_UltraFormManager_Dock_Area_Right";
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 385);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 384);
             // 
             // _frmRecetaMedica_UltraFormManager_Dock_Area_Top
             // 
@@ -407,7 +408,7 @@
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.FormManager = this.ultraFormManager1;
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.Name = "_frmRecetaMedica_UltraFormManager_Dock_Area_Top";
-            this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1156, 27);
+            this._frmRecetaMedica_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1156, 28);
             // 
             // _frmRecetaMedica_UltraFormManager_Dock_Area_Bottom
             // 

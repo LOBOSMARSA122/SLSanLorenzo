@@ -280,6 +280,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     _protocolcomponent.v_ProtocolComponentId = Guid.NewGuid().ToString();
                     _protocolcomponent.v_ComponentId = _componentId;
                     _protocolcomponent.v_ComponentName = grdComponent.Selected.Rows[0].Cells[1].Value.ToString();
+
                     _protocolcomponent.r_Price = float.Parse(txtFinalPrice.Value.ToString());
                     _protocolcomponent.v_Operator = opera;
                     _protocolcomponent.i_Age = age;

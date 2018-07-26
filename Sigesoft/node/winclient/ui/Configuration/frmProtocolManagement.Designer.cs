@@ -109,6 +109,7 @@
             this.lblCostoTotal = new System.Windows.Forms.Label();
             this.btnUsuariosExternos = new System.Windows.Forms.Button();
             this.btnPlanes = new System.Windows.Forms.Button();
+            this.cachedcrReporteInterconsulta1 = new Sigesoft.Node.WinClient.UI.Reports.CachedcrReporteInterconsulta();
             ((System.ComponentModel.ISupportInitialize)(this.grd)).BeginInit();
             this.cmProtocol.SuspendLayout();
             this.gbProtocolComponents.SuspendLayout();
@@ -916,5 +917,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtComponente;
         private System.Windows.Forms.Button btnPlanes;
+        private Reports.CachedcrReporteInterconsulta cachedcrReporteInterconsulta1;
     }
 }

@@ -63,13 +63,9 @@
             this.txtNroTrabajadores = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnSendEmail = new System.Windows.Forms.Button();
-            this.btnReportePDF = new System.Windows.Forms.Button();
             this.txtTotalTrabajadores = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.grdData1 = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.btnAgregar = new System.Windows.Forms.Button();
-            this.btnSearchProtocol = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -83,10 +79,14 @@
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.txtDateTime = new System.Windows.Forms.TextBox();
             this.ultraValidator1 = new Infragistics.Win.Misc.UltraValidator(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnGenerarReporte = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.btnGenerarReporte = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnSendEmail = new System.Windows.Forms.Button();
+            this.btnReportePDF = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
+            this.btnSearchProtocol = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -375,50 +375,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Detalle de la Orden de Servicio";
             // 
-            // btnSendEmail
-            // 
-            this.btnSendEmail.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSendEmail.Enabled = false;
-            this.btnSendEmail.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnSendEmail.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnSendEmail.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnSendEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSendEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSendEmail.ForeColor = System.Drawing.Color.Black;
-            this.btnSendEmail.Image = global::Sigesoft.Node.WinClient.UI.Resources.email_transfer;
-            this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSendEmail.Location = new System.Drawing.Point(188, 320);
-            this.btnSendEmail.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSendEmail.Name = "btnSendEmail";
-            this.btnSendEmail.Size = new System.Drawing.Size(103, 24);
-            this.btnSendEmail.TabIndex = 106;
-            this.btnSendEmail.Text = "Enviar Email";
-            this.btnSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSendEmail.UseVisualStyleBackColor = false;
-            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click_1);
-            // 
-            // btnReportePDF
-            // 
-            this.btnReportePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnReportePDF.BackColor = System.Drawing.SystemColors.Control;
-            this.btnReportePDF.Enabled = false;
-            this.btnReportePDF.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnReportePDF.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnReportePDF.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnReportePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportePDF.ForeColor = System.Drawing.Color.Black;
-            this.btnReportePDF.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
-            this.btnReportePDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportePDF.Location = new System.Drawing.Point(5, 320);
-            this.btnReportePDF.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReportePDF.Name = "btnReportePDF";
-            this.btnReportePDF.Size = new System.Drawing.Size(164, 26);
-            this.btnReportePDF.TabIndex = 105;
-            this.btnReportePDF.Text = "Generar Reporte PDF";
-            this.btnReportePDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReportePDF.UseVisualStyleBackColor = false;
-            this.btnReportePDF.Click += new System.EventHandler(this.btnReportePDF_Click);
-            // 
             // txtTotalTrabajadores
             // 
             this.txtTotalTrabajadores.Enabled = false;
@@ -514,50 +470,6 @@
             this.grdData1.Name = "grdData1";
             this.grdData1.Size = new System.Drawing.Size(870, 197);
             this.grdData1.TabIndex = 57;
-            // 
-            // btnAgregar
-            // 
-            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
-            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(718, 89);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 22);
-            this.btnAgregar.TabIndex = 56;
-            this.btnAgregar.Text = "&Agregar";
-            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregar.UseVisualStyleBackColor = false;
-            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
-            // 
-            // btnSearchProtocol
-            // 
-            this.btnSearchProtocol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSearchProtocol.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSearchProtocol.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnSearchProtocol.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnSearchProtocol.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnSearchProtocol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchProtocol.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchProtocol.ForeColor = System.Drawing.Color.Black;
-            this.btnSearchProtocol.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnSearchProtocol.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSearchProtocol.Location = new System.Drawing.Point(796, 26);
-            this.btnSearchProtocol.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSearchProtocol.Name = "btnSearchProtocol";
-            this.btnSearchProtocol.Size = new System.Drawing.Size(75, 22);
-            this.btnSearchProtocol.TabIndex = 55;
-            this.btnSearchProtocol.Text = "&Buscar";
-            this.btnSearchProtocol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSearchProtocol.UseVisualStyleBackColor = false;
-            this.btnSearchProtocol.Click += new System.EventHandler(this.btnSearchProtocol_Click);
             // 
             // label4
             // 
@@ -701,6 +613,28 @@
             this.txtDateTime.Size = new System.Drawing.Size(63, 20);
             this.txtDateTime.TabIndex = 43;
             // 
+            // btnGenerarReporte
+            // 
+            this.btnGenerarReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGenerarReporte.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGenerarReporte.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGenerarReporte.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnGenerarReporte.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGenerarReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarReporte.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerarReporte.Image = global::Sigesoft.Node.WinClient.UI.Resources.note_add;
+            this.btnGenerarReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerarReporte.Location = new System.Drawing.Point(615, 478);
+            this.btnGenerarReporte.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarReporte.Name = "btnGenerarReporte";
+            this.btnGenerarReporte.Size = new System.Drawing.Size(117, 26);
+            this.btnGenerarReporte.TabIndex = 104;
+            this.btnGenerarReporte.Text = "Generar Reporte";
+            this.btnGenerarReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerarReporte.UseVisualStyleBackColor = false;
+            this.btnGenerarReporte.Visible = false;
+            this.btnGenerarReporte.Click += new System.EventHandler(this.btnGenerarReporte_Click);
+            // 
             // btnCancel
             // 
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -743,27 +677,93 @@
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
-            // btnGenerarReporte
+            // btnSendEmail
             // 
-            this.btnGenerarReporte.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGenerarReporte.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGenerarReporte.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnGenerarReporte.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnGenerarReporte.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnGenerarReporte.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerarReporte.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerarReporte.Image = global::Sigesoft.Node.WinClient.UI.Resources.note_add;
-            this.btnGenerarReporte.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarReporte.Location = new System.Drawing.Point(615, 478);
-            this.btnGenerarReporte.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGenerarReporte.Name = "btnGenerarReporte";
-            this.btnGenerarReporte.Size = new System.Drawing.Size(117, 26);
-            this.btnGenerarReporte.TabIndex = 104;
-            this.btnGenerarReporte.Text = "Generar Reporte";
-            this.btnGenerarReporte.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGenerarReporte.UseVisualStyleBackColor = false;
-            this.btnGenerarReporte.Visible = false;
-            this.btnGenerarReporte.Click += new System.EventHandler(this.btnGenerarReporte_Click);
+            this.btnSendEmail.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSendEmail.Enabled = false;
+            this.btnSendEmail.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSendEmail.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSendEmail.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSendEmail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSendEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSendEmail.ForeColor = System.Drawing.Color.Black;
+            this.btnSendEmail.Image = global::Sigesoft.Node.WinClient.UI.Resources.email_transfer;
+            this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSendEmail.Location = new System.Drawing.Point(188, 320);
+            this.btnSendEmail.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(103, 24);
+            this.btnSendEmail.TabIndex = 106;
+            this.btnSendEmail.Text = "Enviar Email";
+            this.btnSendEmail.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSendEmail.UseVisualStyleBackColor = false;
+            this.btnSendEmail.Click += new System.EventHandler(this.btnSendEmail_Click_1);
+            // 
+            // btnReportePDF
+            // 
+            this.btnReportePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReportePDF.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReportePDF.Enabled = false;
+            this.btnReportePDF.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnReportePDF.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReportePDF.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnReportePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportePDF.ForeColor = System.Drawing.Color.Black;
+            this.btnReportePDF.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.btnReportePDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportePDF.Location = new System.Drawing.Point(5, 320);
+            this.btnReportePDF.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReportePDF.Name = "btnReportePDF";
+            this.btnReportePDF.Size = new System.Drawing.Size(164, 26);
+            this.btnReportePDF.TabIndex = 105;
+            this.btnReportePDF.Text = "Generar Reporte PDF";
+            this.btnReportePDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReportePDF.UseVisualStyleBackColor = false;
+            this.btnReportePDF.Click += new System.EventHandler(this.btnReportePDF_Click);
+            // 
+            // btnAgregar
+            // 
+            this.btnAgregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregar.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
+            this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregar.Location = new System.Drawing.Point(718, 89);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 22);
+            this.btnAgregar.TabIndex = 56;
+            this.btnAgregar.Text = "&Agregar";
+            this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
+            // 
+            // btnSearchProtocol
+            // 
+            this.btnSearchProtocol.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSearchProtocol.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSearchProtocol.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSearchProtocol.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSearchProtocol.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSearchProtocol.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchProtocol.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchProtocol.ForeColor = System.Drawing.Color.Black;
+            this.btnSearchProtocol.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnSearchProtocol.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSearchProtocol.Location = new System.Drawing.Point(796, 26);
+            this.btnSearchProtocol.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSearchProtocol.Name = "btnSearchProtocol";
+            this.btnSearchProtocol.Size = new System.Drawing.Size(75, 22);
+            this.btnSearchProtocol.TabIndex = 55;
+            this.btnSearchProtocol.Text = "&Buscar";
+            this.btnSearchProtocol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSearchProtocol.UseVisualStyleBackColor = false;
+            this.btnSearchProtocol.Click += new System.EventHandler(this.btnSearchProtocol_Click);
             // 
             // frmServiceOrderEdit
             // 

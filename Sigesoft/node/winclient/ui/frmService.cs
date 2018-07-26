@@ -358,7 +358,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnEditarESO_Click(object sender, EventArgs e)
         {
-            Form frm;
+           Form frm;
            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
            if (TserviceId == (int)MasterService.AtxMedicaParticular)
            {

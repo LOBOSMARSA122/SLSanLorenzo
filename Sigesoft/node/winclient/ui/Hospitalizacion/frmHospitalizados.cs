@@ -23,7 +23,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         List<HospitalizacionList> _objData = new List<HospitalizacionList>();
         HospitalizacionBL _objHospBL = new HospitalizacionBL();
         List<string> ListaComponentes = new List<string>();
-        string _strServicelId;
+
+
+        private List<TicketList> _tempTicket = null;
+
         //private Sigesoft.Node.WinClient.UI.Utils.CustomizedToolTip _customizedToolTip = null;
 
         public frmHospitalizados()
@@ -49,15 +52,23 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
 
            this.BindGrid();
+
+         
         }
         //
         private void BindGrid()
         {
             var objData = GetData(0, null, "v_HopitalizacionId ASC", strFilterExpression);
-
             grdData.DataSource = objData;
+            lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
 
             this.grdData.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+
+            if (grdData.Rows.Count>0)
+            {
+                grdData.Rows[0].Selected = true;
+                btnTicket.Enabled = true;
+            }
         }
 
         private void grdData_InitializeLayout(object sender, InitializeLayoutEventArgs e)
@@ -83,12 +94,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnTicket_Click(object sender, EventArgs e)
         {
-            var TserviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            if (TserviceId != null)
-            {
-                btnTicket.Enabled = true;
-               
-            } MessageBox.Show("Service: " + TserviceId);
+            var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            //MessageBox.Show("Service: " + TserviceId);
+            frmTicket ticket = new frmTicket(_tempTicket, ServiceId);
+            ticket.ShowDialog();
         }
     }
 }

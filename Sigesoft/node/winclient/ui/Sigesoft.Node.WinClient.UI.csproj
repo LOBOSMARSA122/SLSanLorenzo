@@ -161,6 +161,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\ExternalLibraries\ScrapperReniecSunat.dll</HintPath>
     </Reference>
+    <Reference Include="Sigesoft.Server.WebClientAdmin.UI">
+      <HintPath>..\..\..\Server\WebClientAdmin\UI\obj\Debug\Sigesoft.Server.WebClientAdmin.UI.dll</HintPath>
+    </Reference>
     <Reference Include="SigPlusNET">
       <HintPath>..\..\..\..\ExternalLibraries\SigPlusNET.dll</HintPath>
     </Reference>
@@ -1308,11 +1311,23 @@
     <Compile Include="History\frmRuidoPopup.designer.cs">
       <DependentUpon>frmRuidoPopup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hospitalizacion\frmAddProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmAddProducto.Designer.cs">
+      <DependentUpon>frmAddProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hospitalizacion\frmHospitalizados.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Hospitalizacion\frmHospitalizados.Designer.cs">
       <DependentUpon>frmHospitalizados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmTicket.Designer.cs">
+      <DependentUpon>frmTicket.cs</DependentUpon>
     </Compile>
     <Compile Include="MensajeAlerta.cs">
       <SubType>Form</SubType>
@@ -3485,8 +3500,14 @@
     <EmbeddedResource Include="History\frmRuidoPopup.resx">
       <DependentUpon>frmRuidoPopup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hospitalizacion\frmAddProducto.resx">
+      <DependentUpon>frmAddProducto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmHospitalizados.resx">
       <DependentUpon>frmHospitalizados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hospitalizacion\frmTicket.resx">
+      <DependentUpon>frmTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MensajeAlerta.resx">
       <DependentUpon>MensajeAlerta.cs</DependentUpon>

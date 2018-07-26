@@ -86,6 +86,7 @@
     <Compile Include="ServiceOrderBL.cs" />
     <Compile Include="SupplierBL.cs" />
     <Compile Include="SystemParameterBL.cs" />
+    <Compile Include="TicketBL.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="WarehouseBL.cs" />
   </ItemGroup>
