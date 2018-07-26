@@ -1311,7 +1311,6 @@
     <Compile Include="History\frmRuidoPopup.designer.cs">
       <DependentUpon>frmRuidoPopup.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Hospitalizacion\frmAddProducto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1323,7 +1322,6 @@
     </Compile>
     <Compile Include="Hospitalizacion\frmEditarProfesional.Designer.cs">
       <DependentUpon>frmEditarProfesional.cs</DependentUpon>
-
     </Compile>
     <Compile Include="Hospitalizacion\frmHospitalizados.cs">
       <SubType>Form</SubType>
@@ -1331,7 +1329,6 @@
     <Compile Include="Hospitalizacion\frmHospitalizados.Designer.cs">
       <DependentUpon>frmHospitalizados.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Hospitalizacion\frmTicket.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1343,7 +1340,12 @@
     </Compile>
     <Compile Include="Hospitalizacion\frmProfesionales.Designer.cs">
       <DependentUpon>frmProfesionales.cs</DependentUpon>
-
+    </Compile>
+    <Compile Include="Hospitalizacion\frmLiquidacionMedicos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmLiquidacionMedicos.Designer.cs">
+      <DependentUpon>frmLiquidacionMedicos.cs</DependentUpon>
     </Compile>
     <Compile Include="MensajeAlerta.cs">
       <SubType>Form</SubType>
@@ -3530,7 +3532,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmProfesionales.resx">
       <DependentUpon>frmProfesionales.cs</DependentUpon>
-
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hospitalizacion\frmLiquidacionMedicos.resx">
+      <DependentUpon>frmLiquidacionMedicos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MensajeAlerta.resx">
       <DependentUpon>MensajeAlerta.cs</DependentUpon>

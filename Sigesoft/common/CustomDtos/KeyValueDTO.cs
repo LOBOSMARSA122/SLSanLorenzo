@@ -23,6 +23,8 @@ namespace Sigesoft.Common
         public byte[] Value5 { get; set; }
 
         public string Field { get; set; }
+
+        public int IdI { get; set; }
     }
 
    public class KeyValueDTOCheck
