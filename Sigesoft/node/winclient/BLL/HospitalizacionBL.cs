@@ -558,8 +558,8 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 var costoServicio = new ServiceBL().GetServiceCost(serviceId);
                 oPagosComisiones.r_costo = decimal.Parse(costoServicio);
-                oPagosComisiones.r_Comision = decimal.Parse(comisionMedico.r_Medico.Value.ToString());
-                oPagosComisiones.r_Total = oPagosComisiones.r_costo * oPagosComisiones.r_Comision / 100;
+                oPagosComisiones.r_Comision = oPagosComisiones.r_costo * comisionMedico.r_Medico.Value / 100;
+                oPagosComisiones.r_Total = oPagosComisiones.r_costo * comisionMedico.r_Clinica.Value / 100; ;
 
             }
             else
