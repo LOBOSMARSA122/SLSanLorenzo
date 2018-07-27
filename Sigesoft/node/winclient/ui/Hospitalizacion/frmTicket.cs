@@ -14,11 +14,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
     public partial class frmTicket : Form
     {
         public  string _serviceId;
+        public string _ticketId;
         private OperationResult _pobjOperationResult;
         private string _mode = null;
         private string _tickId = string.Empty;
         private int _rowIndexPc;
-
+        private string _ticketIdd;
         private readonly HospitalizacionBL _objHospitalizacionBl;
         private readonly RecetaBl _objRecetaBl;
         private readonly TicketBL _objTicketBl =  new TicketBL();
@@ -38,11 +39,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private readonly List<TicketList> _listTicketList;
         private readonly List<TicketDetalleList> _listTicketDetalleList;
 
-        public frmTicket(List<TicketList> Lista, string ServiceId, string id, string mode)
+        public frmTicket(List<TicketList> Lista, string IdControl, string id, string mode)
         {
             _tickId = id;
             _mode = mode;
-            _serviceId = ServiceId;
+            _serviceId = IdControl;
+            //_ticketId = IdControl;
             InitializeComponent();
             _pobjOperationResult = new OperationResult();
             _objHospitalizacionBl = new HospitalizacionBL();
@@ -100,19 +102,37 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void frmTicket_Load(object sender, EventArgs e)
         {
-            int Year = DateTime.Now.Year;
-            int Month = DateTime.Now.Month;
-            int intNodeId = int.Parse(Globals.ClientSession.GetAsList()[2]);
-
-            txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
-            txtNServicio.Text = _serviceId;
-
-            this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
-
+            LoadData();
             if (grdTicketDetalle.Rows.Count != 0)
                 grdTicketDetalle.Rows[0].Selected = true;
             if (grdTicketDetalle.Rows.Count != 0)
                 grdTicketDetalle.Rows[0].Selected = true;
+        }
+
+        private void LoadData()
+        {
+            if (_mode == "New")
+            {
+                int Year = DateTime.Now.Year;
+                int Month = DateTime.Now.Month;
+                int intNodeId = int.Parse(Globals.ClientSession.GetAsList()[2]);
+
+                txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
+                txtNServicio.Text = _serviceId;
+
+                this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            }
+            else if (_mode == "Edit")
+            {
+                //objticketDto = _objTicketBl.GetProtocol(ref _pobjOperationResult, _tickId);
+                //string idOrgInter = "-1";
+
+                //txtNTicket.Text = objticketDto.v_TicketId;
+                //_ticketIdd = txtNTicket.Text;
+
+            }
+            
+
         }
 
         private void btnNuevo_Click(object sender, EventArgs e)
@@ -165,6 +185,21 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             _rowIndexPc = ((Infragistics.Win.UltraWinGrid.UltraGrid)sender).Selected.Rows[0].Index;
             _ticketdetalletId = grdTicketDetalle.Selected.Rows[0].Cells["v_TicketDetalleId"].Value.ToString();
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            if (_mode == "New")
+            {
+                var resultado = _tmpTicketDetalleList.Find(p => p.v_TicketDetalleId == _ticketdetalletId);
+                _tmpTicketDetalleList.Remove(resultado);
+            }
+
+            var listanueva = _tmpTicketDetalleList.FindAll(p => p.i_RecordStatus != (int)RecordStatus.EliminadoLogico);
+            grdTicketDetalle.DataSource = new TicketDetalleList();
+            grdTicketDetalle.DataSource = listanueva;
+            grdTicketDetalle.Refresh();
+            lblRecordCount2.Text = string.Format("Se encontraron {0} registros.", listanueva.Count());
         }
     }
 }

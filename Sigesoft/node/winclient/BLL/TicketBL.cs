@@ -107,5 +107,10 @@ namespace Sigesoft.Node.WinClient.BLL
             return IsExists;
         }
 
+
+        public ticketDto GetProtocol(ref OperationResult objOperationResult, string _tickId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
