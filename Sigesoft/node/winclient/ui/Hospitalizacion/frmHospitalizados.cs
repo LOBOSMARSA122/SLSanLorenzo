@@ -23,11 +23,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         List<HospitalizacionList> _objData = new List<HospitalizacionList>();
         HospitalizacionBL _objHospBL = new HospitalizacionBL();
         List<string> ListaComponentes = new List<string>();
-
-
+        private string _ticketId;
+        private int _rowIndexPc;
         private List<TicketList> _tempTicket = null;
 
-        //private Sigesoft.Node.WinClient.UI.Utils.CustomizedToolTip _customizedToolTip = null;
+        private TicketBL _ticketlBL = new TicketBL();
 
         public frmHospitalizados()
         {
@@ -68,6 +68,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             {
                 grdData.Rows[0].Selected = true;
                 btnTicket.Enabled = true;
+                btnEditarTicket.Enabled = true;
             }
         }
 
@@ -123,5 +124,51 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 btnFilter_Click(null, null);
             }
         }
+
+        private void btnEditarTicket_Click(object sender, EventArgs e)
+        {
+            var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
+            //MessageBox.Show("Service: " + TserviceId);
+            _ticketId = ticketId;
+             frmTicket ticket = new frmTicket(_tempTicket, string.Empty, _ticketId, "Edit");
+            ticket.ShowDialog();
+
+            btnFilter_Click(sender, e);
+            //grdData.DataSource = new List<TicketDetalleList>();
+            //lblRecordCount.Text = "";
+        }
+
+        private void grd_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
+        {
+            //btnEditarTicket.Enabled = btnEliminarTicket.Enabled = (grdData.Selected.Rows.Count > 0);
+            //if (grdData.Selected.Rows.Count == 0)
+            //    return;
+
+
+            //_rowIndexPc = ((Infragistics.Win.UltraWinGrid.UltraGrid)sender).Selected.Rows[0].Index;
+            //_ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
+            ////if (grdData.Selected.Rows.Count != 0)
+            ////{
+               
+            //    float Total = 0;
+            //    _ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
+
+             
+            //    // Cargar componentes de un protocolo seleccionado
+            //    OperationResult objOperationResult = new OperationResult();
+
+            //    var dataListPc = _objHospBL.BuscarTickets(ticketId);
+
+            //    grdData.DataSource = dataListPc;
+
+            //    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", dataListPc.Count());
+
+            //    if (objOperationResult.Success != 1)
+            //    {
+            //        MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    }
+            //}
+        }
+
     }
 }

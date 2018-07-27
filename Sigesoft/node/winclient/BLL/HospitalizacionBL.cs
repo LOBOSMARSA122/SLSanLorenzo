@@ -194,7 +194,7 @@ namespace Sigesoft.Node.WinClient.BLL
             return Lista;
         }
 
-        private List<TicketList> BuscarTickets(string v_ServiceId)
+        public List<TicketList> BuscarTickets(string v_ServiceId)
         {
             //acá hace un select a la tabla hospitalizacionService y buscas todos que tengan foranea HospitalizacionId
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
