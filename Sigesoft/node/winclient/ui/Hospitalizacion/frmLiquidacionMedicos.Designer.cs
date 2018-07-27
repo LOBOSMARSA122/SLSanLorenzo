@@ -34,6 +34,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Servicios", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Paciente");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tipo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("r_costo");
@@ -180,20 +181,22 @@
             ultraGridColumn2});
             ultraGridColumn9.Header.VisiblePosition = 0;
             ultraGridColumn9.Width = 206;
+            ultraGridColumn10.Header.VisiblePosition = 1;
             ultraGridColumn3.Header.Caption = "Nro. Historia";
-            ultraGridColumn3.Header.VisiblePosition = 2;
+            ultraGridColumn3.Header.VisiblePosition = 3;
             ultraGridColumn4.Header.Caption = "Fecha Servicio";
-            ultraGridColumn4.Header.VisiblePosition = 3;
+            ultraGridColumn4.Header.VisiblePosition = 4;
             ultraGridColumn5.Header.Caption = "Costo";
-            ultraGridColumn5.Header.VisiblePosition = 4;
+            ultraGridColumn5.Header.VisiblePosition = 5;
             ultraGridColumn6.Header.Caption = "% Comision";
-            ultraGridColumn6.Header.VisiblePosition = 5;
+            ultraGridColumn6.Header.VisiblePosition = 6;
             ultraGridColumn7.Header.Caption = "% Clínica";
-            ultraGridColumn7.Header.VisiblePosition = 6;
+            ultraGridColumn7.Header.VisiblePosition = 7;
             ultraGridColumn8.Header.Caption = "Aseguradora";
-            ultraGridColumn8.Header.VisiblePosition = 1;
+            ultraGridColumn8.Header.VisiblePosition = 2;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn9,
+            ultraGridColumn10,
             ultraGridColumn3,
             ultraGridColumn4,
             ultraGridColumn5,

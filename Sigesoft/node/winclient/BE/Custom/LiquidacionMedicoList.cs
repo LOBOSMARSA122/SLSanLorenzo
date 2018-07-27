@@ -13,7 +13,9 @@ namespace Sigesoft.Node.WinClient.BE
         public string Paciente { get; set; }
         public DateTime? d_ServiceDate { get; set; }
         public string v_ServiceId { get; set; }
-        
+        public string Aseguradora { get; set; }
+        public string Tipo { get; set; }
+
         public List<LiquidacionServicios> Servicios { get; set; }
     }
 }
