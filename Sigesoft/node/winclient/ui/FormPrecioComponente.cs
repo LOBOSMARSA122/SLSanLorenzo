@@ -34,11 +34,15 @@ namespace Sigesoft.Node.WinClient.UI
 
        void calcular()
         {
-
            double Precio = double.Parse(txtPrecio.Text.ToString());
            double Factor = double.Parse(txtFactor.Text.ToString());
            txtTotal.Text = (Precio * Factor).ToString();
         }
+
+       private void FormPrecioComponente_Load(object sender, EventArgs e)
+       {
+
+       }
                 
 
      

@@ -143,6 +143,7 @@
             this.Name = "FormPrecioComponente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ingresar Precio";
+            this.Load += new System.EventHandler(this.FormPrecioComponente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
