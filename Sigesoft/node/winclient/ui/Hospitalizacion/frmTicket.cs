@@ -115,8 +115,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     {
                         ticketdetalleDto ticketdetalleDtoAdd = new ticketdetalleDto();
 
-                        ticketdetalleDtoAdd.v_TicketId = item.v_TicketId;
-                        ticketdetalleDtoAdd.v_TicketDetalleId = item.v_TicketDetalleId;
+                        //ticketdetalleDtoAdd.v_TicketId = item.v_TicketId;
+                        //ticketdetalleDtoAdd.v_TicketDetalleId = item.v_TicketDetalleId;
+                        //ticketdetalleDtoAdd.v_IdProductoDetalle = item.v_IdProductoDetalle;
+                        //ticketdetalleDtoAdd.d_Cantidad = item.d_Cantidad;
+                        //ticketdetalleDtoAdd.i_EsDespachado = item.i_EsDespachado;
+
+                        //_ticketdetalleDTO.Add(ticketdetalleDtoAdd);
+
                         ticketdetalleDtoAdd.v_IdProductoDetalle = item.v_IdProductoDetalle;
                         ticketdetalleDtoAdd.d_Cantidad = item.d_Cantidad;
                         ticketdetalleDtoAdd.i_EsDespachado = item.i_EsDespachado;

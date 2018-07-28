@@ -168,7 +168,8 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public void UpdateTicket(ref OperationResult _pobjOperationResult, ticketDto objticketDto, List<ticketdetalleDto> _ticketdetalleDTOAdd, List<ticketdetalleDto> _ticketdetalleDTOUpdate, List<ticketdetalleDto> _ticketdetalleDTODelete, List<string> ClientSession)
+        public void UpdateTicket(ref OperationResult _pobjOperationResult, ticketDto objticketDto, List<ticketdetalleDto> _ticketdetalleDTO,
+            List<ticketdetalleDto> _ticketdetalleDTOUpdate, List<ticketdetalleDto> _ticketdetalleDTODelete, List<string> ClientSession)
         {
             try
             {
@@ -183,11 +184,17 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var objStrongEntity = ticketAssembler.ToEntity(objticketDto);
                 dbContext.ticket.ApplyCurrentValues(objStrongEntity);
+
+                dbContext.SaveChanges();
+
+                _pobjOperationResult.Success = 1;
+                //LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "TICKET", "v_TicketId=" + objStrongEntity.v_TicketId.ToString(), Success.Ok, null);
+                
                 #endregion
                 int intNodeId = int.Parse(ClientSession[0]);
                 #region add detalle
 
-                foreach (var item in _ticketdetalleDTOAdd)
+                foreach (var item in _ticketdetalleDTO)
                 {
 
                     ticketdetalle objEntity1 = ticketdetalleAssembler.ToEntity(item);
@@ -201,7 +208,6 @@ namespace Sigesoft.Node.WinClient.BLL
                     objEntity1.v_TicketId = objticketDto.v_TicketId;
 
                     dbContext.AddToticketdetalle(objEntity1);
-
                 }
                 #endregion
 
@@ -225,7 +231,6 @@ namespace Sigesoft.Node.WinClient.BLL
                         updatedetalleticket.i_UpdateUserId = Int32.Parse(ClientSession[2]);
                     }
                 }
-
                 #endregion
                 #region del detalle
 
@@ -240,7 +245,6 @@ namespace Sigesoft.Node.WinClient.BLL
                         objEntitySource1.d_UpdateDate = DateTime.Now;
                         objEntitySource1.i_UpdateUserId = Int32.Parse(ClientSession[2]);
                         objEntitySource1.i_IsDeleted = 1;
-
                     }
                 }
                 #endregion
@@ -248,7 +252,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 dbContext.SaveChanges();
                 _pobjOperationResult.Success = 1;
 
-                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "TICKET / DETALLE","v_TicketId=" + objticketDto.v_TicketId.ToString(), Success.Ok, null);
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "TICKET / DETALLE",
+                    "v_TicketId=" + objticketDto.v_TicketId.ToString(), Success.Ok, null);
                 return;
             }
             catch (Exception ex)
