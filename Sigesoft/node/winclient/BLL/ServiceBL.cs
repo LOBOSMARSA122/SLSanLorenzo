@@ -1629,15 +1629,21 @@ namespace Sigesoft.Node.WinClient.BLL
 				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
 				var query = (from A in dbContext.servicecomponent
+                            join B in dbContext.component on A.v_ComponentId equals B.v_ComponentId
+                            join F in dbContext.systemparameter on new { a = B.i_CategoryId.Value, b = 116 } 
+                                    equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                            from F in F_join.DefaultIfEmpty()
 							 where A.v_ServiceId == pstrServiceId &&
 								   A.i_IsDeleted == isDeleted &&
 								   A.i_IsRequiredId == isRequired
 
 							 select new ServiceComponentList
 							 {
+                                 v_ServiceComponentId = A.v_ServiceComponentId,
 								 v_ComponentId = A.v_ComponentId,
-							   
-								
+                                 r_Price = A.r_Price,
+                                 v_ComponentName = B.v_Name,
+                                 v_CategoryName = F.v_Value1
 							 }).ToList();
 
 

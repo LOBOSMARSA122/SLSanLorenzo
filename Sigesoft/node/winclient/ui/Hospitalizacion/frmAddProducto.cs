@@ -84,6 +84,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         decimal d;
                         _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
                         //objTicketDetalleList.i_EsDespachado = int.Parse()
+                        _objTicketDetalleList.i_RecordStatus = (int)RecordStatus.Agregado;
                         _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
 
                         _TempTicketDetalleList.Add(_objTicketDetalleList);

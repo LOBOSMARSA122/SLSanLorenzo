@@ -15,5 +15,6 @@ namespace Sigesoft.Node.WinClient.BE
         public int i_IsDeleted { get; set; }
 
         public List<HospitalizacionServiceList> Servicios{ get; set; }
+       
     }
 }

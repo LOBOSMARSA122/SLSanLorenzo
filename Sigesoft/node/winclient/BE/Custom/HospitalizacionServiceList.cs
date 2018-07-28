@@ -12,5 +12,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_ServiceId { get; set; }
 
         public List<TicketList> Tickets { get; set; }
+
+        public List<ComponentesHospitalizacion> Componentes { get; set; }
     }
 }

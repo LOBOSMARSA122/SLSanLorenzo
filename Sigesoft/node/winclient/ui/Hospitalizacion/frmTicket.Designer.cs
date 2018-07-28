@@ -54,13 +54,17 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnNuevo = new System.Windows.Forms.Button();
             this.lblRecordCount2 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdTicketDetalle)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(3, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
@@ -69,7 +73,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(325, 19);
+            this.label2.Location = new System.Drawing.Point(199, 22);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 13);
             this.label2.TabIndex = 1;
@@ -78,7 +82,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(583, 19);
+            this.label3.Location = new System.Drawing.Point(377, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(66, 13);
             this.label3.TabIndex = 2;
@@ -87,45 +91,51 @@
             // txtNTicket
             // 
             this.txtNTicket.Enabled = false;
-            this.txtNTicket.Location = new System.Drawing.Point(70, 16);
+            this.txtNTicket.Location = new System.Drawing.Point(61, 19);
             this.txtNTicket.Name = "txtNTicket";
-            this.txtNTicket.Size = new System.Drawing.Size(186, 20);
+            this.txtNTicket.Size = new System.Drawing.Size(113, 20);
             this.txtNTicket.TabIndex = 3;
             // 
             // txtNServicio
             // 
             this.txtNServicio.Enabled = false;
-            this.txtNServicio.Location = new System.Drawing.Point(655, 16);
+            this.txtNServicio.Location = new System.Drawing.Point(449, 19);
             this.txtNServicio.Name = "txtNServicio";
-            this.txtNServicio.Size = new System.Drawing.Size(165, 20);
+            this.txtNServicio.Size = new System.Drawing.Size(113, 20);
             this.txtNServicio.TabIndex = 5;
             // 
             // btnCancelarTicket
             // 
-            this.btnCancelarTicket.Location = new System.Drawing.Point(560, 417);
+            this.btnCancelarTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
+            this.btnCancelarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCancelarTicket.Location = new System.Drawing.Point(14, 417);
             this.btnCancelarTicket.Name = "btnCancelarTicket";
-            this.btnCancelarTicket.Size = new System.Drawing.Size(132, 23);
+            this.btnCancelarTicket.Size = new System.Drawing.Size(77, 23);
             this.btnCancelarTicket.TabIndex = 7;
             this.btnCancelarTicket.Text = "Cancelar";
+            this.btnCancelarTicket.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCancelarTicket.UseVisualStyleBackColor = true;
             this.btnCancelarTicket.Click += new System.EventHandler(this.btnCancelarTicket_Click);
             // 
             // btnGuardarTicket
             // 
-            this.btnGuardarTicket.Location = new System.Drawing.Point(703, 417);
+            this.btnGuardarTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardarTicket.Location = new System.Drawing.Point(678, 417);
             this.btnGuardarTicket.Name = "btnGuardarTicket";
-            this.btnGuardarTicket.Size = new System.Drawing.Size(122, 23);
+            this.btnGuardarTicket.Size = new System.Drawing.Size(77, 23);
             this.btnGuardarTicket.TabIndex = 8;
             this.btnGuardarTicket.Text = "Guardar";
+            this.btnGuardarTicket.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnGuardarTicket.UseVisualStyleBackColor = true;
             this.btnGuardarTicket.Click += new System.EventHandler(this.btnGuardarTicket_Click);
             // 
             // txtFecha
             // 
             this.txtFecha.Enabled = false;
-            this.txtFecha.Location = new System.Drawing.Point(378, 16);
+            this.txtFecha.Location = new System.Drawing.Point(252, 19);
             this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(137, 20);
+            this.txtFecha.Size = new System.Drawing.Size(97, 20);
             this.txtFecha.TabIndex = 4;
             // 
             // grdTicketDetalle
@@ -196,10 +206,10 @@
             this.grdTicketDetalle.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdTicketDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdTicketDetalle.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdTicketDetalle.Location = new System.Drawing.Point(8, 88);
+            this.grdTicketDetalle.Location = new System.Drawing.Point(14, 104);
             this.grdTicketDetalle.Margin = new System.Windows.Forms.Padding(2);
             this.grdTicketDetalle.Name = "grdTicketDetalle";
-            this.grdTicketDetalle.Size = new System.Drawing.Size(727, 324);
+            this.grdTicketDetalle.Size = new System.Drawing.Size(741, 308);
             this.grdTicketDetalle.TabIndex = 47;
             this.grdTicketDetalle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdproduc_AfterSelectChange);
             // 
@@ -216,10 +226,10 @@
             this.btnRemover.ForeColor = System.Drawing.Color.Black;
             this.btnRemover.Image = ((System.Drawing.Image)(resources.GetObject("btnRemover.Image")));
             this.btnRemover.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemover.Location = new System.Drawing.Point(740, 166);
+            this.btnRemover.Location = new System.Drawing.Point(759, 166);
             this.btnRemover.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(88, 24);
+            this.btnRemover.Size = new System.Drawing.Size(69, 24);
             this.btnRemover.TabIndex = 96;
             this.btnRemover.Text = "     Eliminar";
             this.btnRemover.UseVisualStyleBackColor = false;
@@ -238,10 +248,10 @@
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
             this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditar.Location = new System.Drawing.Point(740, 128);
+            this.btnEditar.Location = new System.Drawing.Point(759, 128);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditar.Name = "btnEditar";
-            this.btnEditar.Size = new System.Drawing.Size(88, 24);
+            this.btnEditar.Size = new System.Drawing.Size(69, 24);
             this.btnEditar.TabIndex = 95;
             this.btnEditar.Text = "      Editar";
             this.btnEditar.UseVisualStyleBackColor = false;
@@ -259,10 +269,10 @@
             this.btnNuevo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form;
             this.btnNuevo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevo.Location = new System.Drawing.Point(740, 88);
+            this.btnNuevo.Location = new System.Drawing.Point(759, 88);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevo.Name = "btnNuevo";
-            this.btnNuevo.Size = new System.Drawing.Size(88, 24);
+            this.btnNuevo.Size = new System.Drawing.Size(69, 24);
             this.btnNuevo.TabIndex = 97;
             this.btnNuevo.Text = "     Nuevo";
             this.btnNuevo.UseVisualStyleBackColor = false;
@@ -273,7 +283,7 @@
             this.lblRecordCount2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCount2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCount2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCount2.Location = new System.Drawing.Point(476, 68);
+            this.lblRecordCount2.Location = new System.Drawing.Point(488, 13);
             this.lblRecordCount2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCount2.Name = "lblRecordCount2";
             this.lblRecordCount2.Size = new System.Drawing.Size(259, 18);
@@ -281,30 +291,57 @@
             this.lblRecordCount2.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCount2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.txtNServicio);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtNTicket);
+            this.groupBox1.Controls.Add(this.txtFecha);
+            this.groupBox1.Location = new System.Drawing.Point(8, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(817, 53);
+            this.groupBox1.TabIndex = 99;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos Ticket";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblRecordCount2);
+            this.groupBox2.Location = new System.Drawing.Point(8, 71);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(820, 340);
+            this.groupBox2.TabIndex = 100;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Detalle de Productos";
+            // 
             // frmTicket
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(837, 452);
-            this.Controls.Add(this.lblRecordCount2);
             this.Controls.Add(this.btnNuevo);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.grdTicketDetalle);
             this.Controls.Add(this.btnGuardarTicket);
             this.Controls.Add(this.btnCancelarTicket);
-            this.Controls.Add(this.txtNServicio);
-            this.Controls.Add(this.txtFecha);
-            this.Controls.Add(this.txtNTicket);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBox2);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmTicket";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ticket";
             this.Load += new System.EventHandler(this.frmTicket_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdTicketDetalle)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -323,5 +360,7 @@
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnNuevo;
         private System.Windows.Forms.Label lblRecordCount2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }

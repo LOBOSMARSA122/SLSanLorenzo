@@ -135,9 +135,9 @@
             this.frmSearchMedicamento_Fill_Panel.ClientArea.Controls.Add(this.gbBuscarMedicamento);
             this.frmSearchMedicamento_Fill_Panel.Cursor = System.Windows.Forms.Cursors.Default;
             this.frmSearchMedicamento_Fill_Panel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.frmSearchMedicamento_Fill_Panel.Location = new System.Drawing.Point(4, 27);
+            this.frmSearchMedicamento_Fill_Panel.Location = new System.Drawing.Point(4, 28);
             this.frmSearchMedicamento_Fill_Panel.Name = "frmSearchMedicamento_Fill_Panel";
-            this.frmSearchMedicamento_Fill_Panel.Size = new System.Drawing.Size(1277, 326);
+            this.frmSearchMedicamento_Fill_Panel.Size = new System.Drawing.Size(1277, 325);
             this.frmSearchMedicamento_Fill_Panel.TabIndex = 0;
             // 
             // gbRegistrarMedicamento
@@ -647,9 +647,9 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.InitialResizeAreaExtent = 4;
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 27);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Location = new System.Drawing.Point(0, 28);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Left";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 326);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Left.Size = new System.Drawing.Size(4, 325);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Right
             // 
@@ -659,9 +659,9 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.ForeColor = System.Drawing.SystemColors.ControlText;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.InitialResizeAreaExtent = 4;
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1281, 27);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Location = new System.Drawing.Point(1281, 28);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Right";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 326);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Right.Size = new System.Drawing.Size(4, 325);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Top
             // 
@@ -672,7 +672,7 @@
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.FormManager = this.ultraFormManager1;
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Location = new System.Drawing.Point(0, 0);
             this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Name = "_frmSearchMedicamento_UltraFormManager_Dock_Area_Top";
-            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1285, 27);
+            this._frmSearchMedicamento_UltraFormManager_Dock_Area_Top.Size = new System.Drawing.Size(1285, 28);
             // 
             // _frmSearchMedicamento_UltraFormManager_Dock_Area_Bottom
             // 
