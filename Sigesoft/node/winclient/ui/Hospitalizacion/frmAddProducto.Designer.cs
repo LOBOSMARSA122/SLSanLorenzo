@@ -159,7 +159,12 @@
             this.ClientSize = new System.Drawing.Size(413, 201);
             this.Controls.Add(this.lblIdDetalleProd);
             this.Controls.Add(this.gbReceta);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmAddProducto";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Medicamento ";
             this.Load += new System.EventHandler(this.frmAddProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).EndInit();

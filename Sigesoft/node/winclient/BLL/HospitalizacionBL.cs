@@ -7,6 +7,7 @@ using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.DAL;
 using Sigesoft.Common;
 using System.Data.Objects;
+using ConnectionState = System.Data.ConnectionState;
 
 namespace Sigesoft.Node.WinClient.BLL
 {
@@ -282,6 +283,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         ticketsdetallelist.v_TicketId = tickdetalle.v_TicketId;
                         ticketsdetallelist.v_TicketDetalleId = tickdetalle.v_TicketDetalleId;
                         ticketsdetallelist.v_IdProductoDetalle = tickdetalle.v_IdProductoDetalle;
+                        //ticketsdetallelist.v_NombreProducto = 
                         ticketsdetallelist.d_Cantidad = tickdetalle.d_Cantidad;
                         // acá estoy agregando a las lista
                         Ticketsdetalle.Add(tickdetalle);
@@ -290,9 +292,11 @@ namespace Sigesoft.Node.WinClient.BLL
                 }
                 Lista.Add(tickets);
             }
-
+           
             return Lista;
         }
+
+      
 
         private List<TicketDetalleList> BuscarTicketsDetalle(string v_TicketId)
         {
