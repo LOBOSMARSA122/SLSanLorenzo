@@ -19,23 +19,24 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private string _mode = null;
         private string _tickId = string.Empty;
         private int _rowIndexPc;
-        private string _ticketIdd;
         private readonly HospitalizacionBL _objHospitalizacionBl;
         private readonly RecetaBl _objRecetaBl;
-        private readonly TicketBL _objTicketBl =  new TicketBL();
+        
+        private TicketBL _objTicketBl =  new TicketBL();
+        private ticketDto objticketDto = null;
+        private ticketDto objticketDtoo = null;
 
         ticketdetalleDto _oserviceorderDto = new ticketdetalleDto();
-
+        
+        private List<ticketdetalleDto> _ticketdetalleDTO = null;
+        private List<ticketdetalleDto> _ticketdetalleDTODelete = null;
+        private List<ticketdetalleDto> _ticketdetalleDTOUpdate = null;
         private List<TicketDetalleList> _tmpTicketDetalleList = null;
 
-        private List<ticketdetalleDto> _ticketdetalleDTO = null;
-
-        ticketDto objticketDto = null;
+        
 
         private string ticketId = string.Empty;
         private string _ticketdetalletId = string.Empty;
-        //private readonly List<HospitalizacionList> _listHospitalizacionList;
-        //private readonly List<HospitalizacionServiceList> _listHospitalizacionServiceList;
         private readonly List<TicketList> _listTicketList;
         private readonly List<TicketDetalleList> _listTicketDetalleList;
 
@@ -73,31 +74,101 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             objticketDto.v_ServiceId = txtNServicio.Text;
             objticketDto.d_Fecha = DateTime.Parse(txtFecha.Text);
             if (_mode == "New")
-            { 
-            
-            }
-            foreach (var item in _tmpTicketDetalleList)
             {
-                ticketdetalleDto ticketDetalle = new ticketdetalleDto();
+                foreach (var item in _tmpTicketDetalleList)
+                {
+                    ticketdetalleDto ticketDetalle = new ticketdetalleDto();
 
-                ticketDetalle.v_IdProductoDetalle = item.v_IdProductoDetalle;
-                ticketDetalle.d_Cantidad = item.d_Cantidad;
-                ticketDetalle.i_EsDespachado = item.i_EsDespachado;
+                    ticketDetalle.v_IdProductoDetalle = item.v_IdProductoDetalle;
+                    ticketDetalle.d_Cantidad = item.d_Cantidad;
+                    ticketDetalle.i_EsDespachado = item.i_EsDespachado;
 
-                _ticketdetalleDTO.Add(ticketDetalle);
+                    _ticketdetalleDTO.Add(ticketDetalle);
+                }
+
+                
+                DialogResult Result = MessageBox.Show("¿Desea Guardar Ticket?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (Result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    ticketId = _objTicketBl.AddTicket(ref _pobjOperationResult, objticketDto, _ticketdetalleDTO, Globals.ClientSession.GetAsList());
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                }
+
+                if (!string.IsNullOrEmpty(_tickId))
+                {
+                    _mode = "Edit";
+                    _tickId = txtNTicket.Text;
+                }
             }
-
-            DialogResult Result = MessageBox.Show("¿Desea Guardar Ticket?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
-            if (Result == System.Windows.Forms.DialogResult.Yes)
+            else if(_mode == "Edit")
             {
-                ticketId = _objTicketBl.AddTicket(ref _pobjOperationResult, objticketDto,_ticketdetalleDTO, Globals.ClientSession.GetAsList());
-                this.Close();
+                objticketDto.v_TicketId = _tickId;
+                _ticketdetalleDTOUpdate = new List<ticketdetalleDto>();
+                _ticketdetalleDTODelete = new List<ticketdetalleDto>();
+
+                foreach (var item in _tmpTicketDetalleList)
+                {
+                    #region Add
+                    if (item.i_RecordType == (int)RecordType.Temporal && item.i_RecordStatus == (int)RecordStatus.Agregado)
+                    {
+                        ticketdetalleDto ticketdetalleDtoAdd = new ticketdetalleDto();
+                        ticketdetalleDtoAdd.v_TicketDetalleId = item.v_TicketDetalleId;
+                        ticketdetalleDtoAdd.v_IdProductoDetalle = item.v_IdProductoDetalle;
+                        ticketdetalleDtoAdd.d_Cantidad = item.d_Cantidad;
+                        ticketdetalleDtoAdd.i_EsDespachado = item.i_EsDespachado;
+
+                        _ticketdetalleDTO.Add(ticketdetalleDtoAdd);
+                    }
+                    #endregion
+
+                    #region Upd
+                    if (item.i_RecordType == (int)RecordType.NoTemporal && item.i_RecordStatus == (int)RecordStatus.Modificado)
+                    {
+                        ticketdetalleDto ticketdetalleDtoUp = new ticketdetalleDto();
+                        ticketdetalleDtoUp.v_TicketDetalleId = item.v_TicketDetalleId;
+                        ticketdetalleDtoUp.v_IdProductoDetalle = item.v_IdProductoDetalle;
+                        ticketdetalleDtoUp.d_Cantidad = item.d_Cantidad;
+                        ticketdetalleDtoUp.i_EsDespachado = item.i_EsDespachado;
+
+                        _ticketdetalleDTOUpdate.Add(ticketdetalleDtoUp);
+                    }
+                    #endregion
+
+                    #region Del
+                    if (item.i_RecordType == (int)RecordType.NoTemporal && item.i_RecordStatus == (int)RecordStatus.EliminadoLogico)
+                    {
+                        ticketdetalleDto ticketdetalleDtoDel = new ticketdetalleDto();
+
+                        ticketdetalleDtoDel.v_TicketDetalleId = item.v_TicketDetalleId;
+
+                        _ticketdetalleDTODelete.Add(ticketdetalleDtoDel);
+                    }
+                    #endregion
+                }
+                
+                DialogResult Result = MessageBox.Show("¿Desea Guardar Ticket Editado?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (Result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    _objTicketBl.UpdateTicket(ref _pobjOperationResult, 
+                        objticketDto, 
+                        _ticketdetalleDTO,
+                        _ticketdetalleDTOUpdate.Count == 0 ? null : _ticketdetalleDTOUpdate,
+                        _ticketdetalleDTODelete.Count == 0 ? null : _ticketdetalleDTODelete,
+                        Globals.ClientSession.GetAsList());
+                    this.Close();
+                }
+                else
+                {
+                    this.Close();
+                }
             }
-            else
-            {
-                this.Close();
-            }
+          
         }
 
         private void frmTicket_Load(object sender, EventArgs e)
@@ -111,6 +182,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void LoadData()
         {
+            this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
             if (_mode == "New")
             {
                 int Year = DateTime.Now.Year;
@@ -120,16 +192,25 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtFecha.Text = DateTime.Now.ToString("dd/MM/yyyy");
                 txtNServicio.Text = _serviceId;
 
-                this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
             }
             else if (_mode == "Edit")
             {
-                //objticketDto = _objTicketBl.GetProtocol(ref _pobjOperationResult, _tickId);
-                //string idOrgInter = "-1";
+                objticketDtoo = _objTicketBl.GetTicket(ref _pobjOperationResult, _tickId);
 
-                //txtNTicket.Text = objticketDto.v_TicketId;
-                //_ticketIdd = txtNTicket.Text;
+                txtNTicket.Text = objticketDtoo.v_TicketId;
+                txtFecha.Text = objticketDtoo.d_Fecha.ToString();
+                txtNServicio.Text = objticketDtoo.v_ServiceId;
 
+                var cargarGrup = _objTicketBl.GetTicketDetails(ref _pobjOperationResult, _tickId);
+
+                grdTicketDetalle.DataSource = cargarGrup;
+
+                _tmpTicketDetalleList = cargarGrup;
+
+                if (_pobjOperationResult.Success != 1)
+                {
+                    MessageBox.Show("Error en operación:" + System.Environment.NewLine + _pobjOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             
 
@@ -193,6 +274,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             {
                 var resultado = _tmpTicketDetalleList.Find(p => p.v_TicketDetalleId == _ticketdetalletId);
                 _tmpTicketDetalleList.Remove(resultado);
+            }
+            else if (_mode == "Edit")
+            {
+                var findResult = _tmpTicketDetalleList.Find(p => p.v_TicketDetalleId == _ticketdetalletId);
+                findResult.i_RecordStatus = (int)RecordStatus.EliminadoLogico;
             }
 
             var listanueva = _tmpTicketDetalleList.FindAll(p => p.i_RecordStatus != (int)RecordStatus.EliminadoLogico);

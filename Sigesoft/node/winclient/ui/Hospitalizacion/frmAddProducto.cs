@@ -16,9 +16,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private string _mode = null;
         private string _id = string.Empty;
 
-        private OperationResult _pobjOperationResult;
-        private ticketdetalleDto _ticketdetalleDto;
-
         public List<TicketDetalleList> _TempTicketDetalleList = null;
         TicketDetalleList _objTicketDetalleList = null;
 

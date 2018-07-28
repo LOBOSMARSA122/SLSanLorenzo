@@ -141,7 +141,6 @@ namespace Sigesoft.Node.WinClient.BLL
                            v_ServiceId = C.v_ServiceId
                         };
             List<HospitalizacionServiceList> objData = queryservice.ToList();
-            // en hospitalizaciones tienes los padres
             var hospitalizacionesservicios = (from a in objData
                                               select new HospitalizacionServiceList
                                      {
@@ -149,11 +148,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                         v_HopitalizacionId = a.v_HopitalizacionId,
                                         v_ServiceId = a.v_ServiceId
                                      }).ToList();
-
-            //var objtData = hospitalizacionesservicios.AsEnumerable()
-            //        .Where(a => a.v_HopitalizacionId != null)
-            //        .GroupBy(b => b.v_HopitalizacionId)
-            //        .Select(group => group.First());
 
             List<HospitalizacionServiceList> obj = hospitalizacionesservicios;
 
