@@ -99,6 +99,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             //MessageBox.Show("Service: " + TserviceId);
             frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New");
             ticket.ShowDialog();
+            btnFilter_Click(sender, e);
         }
 
         private void txtHospitalizados_KeyPress(object sender, KeyPressEventArgs e)
@@ -127,15 +128,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnEditarTicket_Click(object sender, EventArgs e)
         {
+            var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
             //MessageBox.Show("Service: " + TserviceId);
             _ticketId = ticketId;
-             frmTicket ticket = new frmTicket(_tempTicket, string.Empty, _ticketId, "Edit");
+            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, _ticketId, "Edit");
             ticket.ShowDialog();
 
             btnFilter_Click(sender, e);
-            //grdData.DataSource = new List<TicketDetalleList>();
-            //lblRecordCount.Text = "";
         }
 
         private void grd_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)

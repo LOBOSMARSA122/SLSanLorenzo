@@ -108,9 +108,157 @@ namespace Sigesoft.Node.WinClient.BLL
         }
 
 
-        public ticketDto GetProtocol(ref OperationResult objOperationResult, string _tickId)
+        public ticketDto GetTicket(ref OperationResult objOperationResult, string _tickId)
         {
-            throw new NotImplementedException();
+            try 
+            { 
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                ticketDto objDtoEntity= null;
+
+                var objEntity = (from  a in dbContext.ticket
+                                 where a.v_TicketId == _tickId
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+		            objDtoEntity = ticketAssembler.ToDTO(objEntity);
+
+                objOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public List<TicketDetalleList> GetTicketDetails(ref OperationResult _pobjOperationResult, string _tickId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var objEntity = (from A in dbContext.hospitalizacion
+                                         join C in dbContext.hospitalizacionservice on A.v_HopitalizacionId equals C.v_HopitalizacionId
+                                         join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
+                                         join E in dbContext.ticket on D.v_ServiceId equals E.v_ServiceId
+                                         join F in dbContext.ticketdetalle on E.v_TicketId equals F.v_TicketId
+                                         //join G in dbContext.productsformigration on F.v_IdProductoDetalle equals G.v_ProductId
+                                         where E.v_TicketId == _tickId
+                                         && A.i_IsDeleted == 0
+                                         select new TicketDetalleList
+                                         {
+                                             v_TicketDetalleId = F.v_TicketDetalleId,
+                                             v_TicketId = F.v_TicketId,
+                                             d_Cantidad = F.d_Cantidad.Value,
+                                             //v_NombreProducto = G.v_ProductName,
+                                             v_IdProductoDetalle = F.v_IdProductoDetalle,
+
+                                             i_RecordStatus = (int)RecordStatus.Grabado,
+                                             i_RecordType = (int)RecordType.NoTemporal
+                                         }).ToList();
+                _pobjOperationResult.Success = 1;
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                _pobjOperationResult.Success = 0;
+                _pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public void UpdateTicket(ref OperationResult _pobjOperationResult, ticketDto objticketDto, List<ticketdetalleDto> _ticketdetalleDTOAdd, List<ticketdetalleDto> _ticketdetalleDTOUpdate, List<ticketdetalleDto> _ticketdetalleDTODelete, List<string> ClientSession)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                #region Actualizar ticket
+                var objEntitySource = (from a in dbContext.ticket
+                                       where a.v_TicketId == objticketDto.v_TicketId
+                                       select a).FirstOrDefault();
+                objticketDto.d_UpdateDate = DateTime.Now;
+                objticketDto.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+
+                var objStrongEntity = ticketAssembler.ToEntity(objticketDto);
+                dbContext.ticket.ApplyCurrentValues(objStrongEntity);
+                #endregion
+                int intNodeId = int.Parse(ClientSession[0]);
+                #region add detalle
+
+                foreach (var item in _ticketdetalleDTOAdd)
+                {
+
+                    ticketdetalle objEntity1 = ticketdetalleAssembler.ToEntity(item);
+
+                    objEntity1.d_InsertDate = DateTime.Now;
+                    objEntity1.i_InsertUserId = Int32.Parse(ClientSession[2]);
+                    objEntity1.i_IsDeleted = 0;
+
+                    var NewId1 = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 346), "KD");
+                    objEntity1.v_TicketDetalleId = NewId1;
+                    objEntity1.v_TicketId = objticketDto.v_TicketId;
+
+                    dbContext.AddToticketdetalle(objEntity1);
+
+                }
+                #endregion
+
+                #region upd detalle
+                if (_ticketdetalleDTOUpdate != null)
+                {
+                    foreach (var item in _ticketdetalleDTOUpdate)
+                    {
+                        var updatedetalleticket = (from a in dbContext.ticketdetalle
+                                                where a.v_TicketDetalleId == item.v_TicketDetalleId
+                                                select a).FirstOrDefault();
+
+                        //objEntitySource1.v_ComponentId = item.v_ComponentId;
+
+                        updatedetalleticket.d_Cantidad = item.d_Cantidad;
+                        updatedetalleticket.i_EsDespachado = item.i_EsDespachado;
+
+                        updatedetalleticket.i_IsDeleted = 0;
+
+                        updatedetalleticket.d_UpdateDate = DateTime.Now;
+                        updatedetalleticket.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                    }
+                }
+
+                #endregion
+                #region del detalle
+
+                if (_ticketdetalleDTODelete != null)
+                {
+                    foreach (var item in _ticketdetalleDTODelete)
+                    {
+                        var objEntitySource1 = (from a in dbContext.ticketdetalle
+                                                where a.v_TicketDetalleId == item.v_TicketDetalleId
+                                                select a).FirstOrDefault();
+
+                        objEntitySource1.d_UpdateDate = DateTime.Now;
+                        objEntitySource1.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                        objEntitySource1.i_IsDeleted = 1;
+
+                    }
+                }
+                #endregion
+
+                dbContext.SaveChanges();
+                _pobjOperationResult.Success = 1;
+
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "TICKET / DETALLE","v_TicketId=" + objticketDto.v_TicketId.ToString(), Success.Ok, null);
+                return;
+            }
+            catch (Exception ex)
+            {
+                _pobjOperationResult.Success = 0;
+                _pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+
+                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "TICKET / DETALLE", "v_TicketId=" + objticketDto.v_TicketId.ToString(), Success.Failed, _pobjOperationResult.ExceptionMessage);
+                return;
+            }
         }
     }
 }

@@ -122,6 +122,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 txtValidDays.Text = _protocolDTO.i_ValidInDays.ToString();
                 chkIsActive.Checked = Convert.ToBoolean(_protocolDTO.i_IsActive);
                 cboVendedor.Text = _protocolDTO.v_NombreVendedor;
+
                 // Componentes del protocolo
                 var dataListPc = _protocolBL.GetProtocolComponents(ref objOperationResult, _protocolId);
 
@@ -976,7 +977,5 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
  
         }
-        
-        
     }
 }
