@@ -15,7 +15,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
     {
         public  string _serviceId;
         public string _ticketId;
-        private OperationResult _pobjOperationResult;
         private string _mode = null;
         private string _tickId = string.Empty;
         private int _rowIndexPc;
@@ -33,8 +32,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private List<ticketdetalleDto> _ticketdetalleDTOUpdate = null;
         private List<TicketDetalleList> _tmpTicketDetalleList = null;
 
-        
-
         private string ticketId = string.Empty;
         private string _ticketdetalletId = string.Empty;
         private readonly List<TicketList> _listTicketList;
@@ -47,7 +44,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             _serviceId = IdControl;
             //_ticketId = IdControl;
             InitializeComponent();
-            _pobjOperationResult = new OperationResult();
             _objHospitalizacionBl = new HospitalizacionBL();
             _objRecetaBl = new RecetaBl();
             _objTicketBl = new TicketBL();
@@ -62,6 +58,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnGuardarTicket_Click(object sender, EventArgs e)
         {
+            OperationResult objOperationResult = new OperationResult();
             _ticketdetalleDTO = new List<ticketdetalleDto>();
             if (objticketDto == null)
             {
@@ -91,7 +88,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 if (Result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    ticketId = _objTicketBl.AddTicket(ref _pobjOperationResult, objticketDto, _ticketdetalleDTO, Globals.ClientSession.GetAsList());
+                    ticketId = _objTicketBl.AddTicket(ref objOperationResult, objticketDto, _ticketdetalleDTO, Globals.ClientSession.GetAsList());
                     this.Close();
                 }
                 else
@@ -117,6 +114,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     if (item.i_RecordType == (int)RecordType.Temporal && item.i_RecordStatus == (int)RecordStatus.Agregado)
                     {
                         ticketdetalleDto ticketdetalleDtoAdd = new ticketdetalleDto();
+
+                        ticketdetalleDtoAdd.v_TicketId = item.v_TicketId;
                         ticketdetalleDtoAdd.v_TicketDetalleId = item.v_TicketDetalleId;
                         ticketdetalleDtoAdd.v_IdProductoDetalle = item.v_IdProductoDetalle;
                         ticketdetalleDtoAdd.d_Cantidad = item.d_Cantidad;
@@ -155,7 +154,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 if (Result == System.Windows.Forms.DialogResult.Yes)
                 {
-                    _objTicketBl.UpdateTicket(ref _pobjOperationResult, 
+                    _objTicketBl.UpdateTicket(ref objOperationResult, 
                         objticketDto, 
                         _ticketdetalleDTO,
                         _ticketdetalleDTOUpdate.Count == 0 ? null : _ticketdetalleDTOUpdate,
@@ -183,6 +182,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void LoadData()
         {
             this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            OperationResult objOperationResult = new OperationResult();
             if (_mode == "New")
             {
                 int Year = DateTime.Now.Year;
@@ -195,21 +195,21 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
             else if (_mode == "Edit")
             {
-                objticketDtoo = _objTicketBl.GetTicket(ref _pobjOperationResult, _tickId);
+                objticketDtoo = _objTicketBl.GetTicket(ref objOperationResult, _tickId);
 
                 txtNTicket.Text = objticketDtoo.v_TicketId;
                 txtFecha.Text = objticketDtoo.d_Fecha.ToString();
                 txtNServicio.Text = objticketDtoo.v_ServiceId;
 
-                var cargarGrup = _objTicketBl.GetTicketDetails(ref _pobjOperationResult, _tickId);
+                var dataListPc = _objTicketBl.GetTicketDetails(ref objOperationResult, _tickId);
 
-                grdTicketDetalle.DataSource = cargarGrup;
+                grdTicketDetalle.DataSource = dataListPc;
 
-                _tmpTicketDetalleList = cargarGrup;
+                _tmpTicketDetalleList = dataListPc;
 
-                if (_pobjOperationResult.Success != 1)
+                if (objOperationResult.Success != 1)
                 {
-                    MessageBox.Show("Error en operación:" + System.Environment.NewLine + _pobjOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             

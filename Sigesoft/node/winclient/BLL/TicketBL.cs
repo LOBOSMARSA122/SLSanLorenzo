@@ -152,7 +152,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                              v_TicketId = F.v_TicketId,
                                              d_Cantidad = F.d_Cantidad.Value,
                                              //v_NombreProducto = G.v_ProductName,
-                                             v_IdProductoDetalle = F.v_IdProductoDetalle
+                                             v_IdProductoDetalle = F.v_IdProductoDetalle,
+
+                                             i_RecordStatus = (int)RecordStatus.Grabado,
+                                             i_RecordType = (int)RecordType.NoTemporal
                                          }).ToList();
                 _pobjOperationResult.Success = 1;
                 return objEntity;
@@ -181,10 +184,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 var objStrongEntity = ticketAssembler.ToEntity(objticketDto);
                 dbContext.ticket.ApplyCurrentValues(objStrongEntity);
                 #endregion
-
+                int intNodeId = int.Parse(ClientSession[0]);
                 #region add detalle
 
-                int intNodeId = int.Parse(ClientSession[0]);
                 foreach (var item in _ticketdetalleDTOAdd)
                 {
 

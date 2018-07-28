@@ -977,7 +977,5 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
  
         }
-        
-        
     }
 }
