@@ -98,6 +98,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     if (servicios.Count > 0)
                     {
                         HospitalizacionServiceList oHospitalizacionServiceList;
+                        ComponentesHospitalizacion oComponentesHospitalizacion;
                         foreach (var servicio in servicios)
                         {
                             oHospitalizacionServiceList = new HospitalizacionServiceList();
@@ -110,6 +111,11 @@ namespace Sigesoft.Node.WinClient.BLL
                         }
                         hospit.Servicios= HospitalizacionServicios;
                     }
+
+                    #region Habitaciones
+
+
+                    #endregion
                     Lista.Add(hospit);
                 }
                 pobjOperationResult.Success = 1;
@@ -169,6 +175,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 tickets.v_HopitalizacionId = item.v_HopitalizacionId;
                 tickets.v_ServiceId = item.v_ServiceId;
 
+                #region Tickets
+
                 // estos son los hijos de 1 hopitalización
                 var ticketss = BuscarTickets(item.v_ServiceId).ToList();
 
@@ -188,7 +196,34 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
                     tickets.Tickets = Tickets;
                 }
+
+                #endregion
+
+                #region Componentes
+
+                OperationResult pobjOperationResult = new OperationResult();
+                ServiceBL oServiceBL = new ServiceBL();
+                var componentes = oServiceBL.GetServiceComponents_(ref pobjOperationResult, item.v_ServiceId);
+                ComponentesHospitalizacion oComponentesHospitalizacion;
+
+                List<ComponentesHospitalizacion> listaComponentes = new List<ComponentesHospitalizacion>();
+                foreach (var componente in componentes)
+                {
+                    oComponentesHospitalizacion = new ComponentesHospitalizacion();
+                    oComponentesHospitalizacion.ServiceComponentId = componente.v_ServiceComponentId;
+                    oComponentesHospitalizacion.Categoria = componente.v_CategoryName;
+                    oComponentesHospitalizacion.Componente = componente.v_ComponentName;
+                    oComponentesHospitalizacion.Precio = float.Parse(componente.r_Price.ToString());
+                    listaComponentes.Add(oComponentesHospitalizacion);
+                }
+                tickets.Componentes = listaComponentes;
+
+                #endregion
+
                 Lista.Add(tickets);
+
+         
+
             }
 
             return Lista;

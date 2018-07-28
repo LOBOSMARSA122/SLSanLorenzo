@@ -53,11 +53,13 @@
     <Compile Include="Custom\Antecedentes.cs" />
     <Compile Include="Custom\AntecedentesList.cs" />
     <Compile Include="Custom\CirugiaList.cs" />
+    <Compile Include="Custom\ComponentesHospitalizacion.cs" />
     <Compile Include="Custom\DatosAtencion.cs" />
     <Compile Include="Custom\DatosPersonales.cs" />
     <Compile Include="Custom\Embarazo.cs" />
     <Compile Include="Custom\frmEsoCuidadosPreventivos.cs" />
     <Compile Include="Custom\AtencionNinio.cs" />
+    <Compile Include="Custom\HospitalizacionHabitacionList.cs" />
     <Compile Include="Custom\HospitalizacionList.cs" />
     <Compile Include="Custom\HospitalizacionServiceList.cs" />
     <Compile Include="Custom\LiquidacionMedicoList.cs" />
@@ -392,6 +394,7 @@
     <Compile Include="Generated\logDto.cs" />
     <Compile Include="Generated\locationDto.cs" />
     <Compile Include="Generated\hospitalizacionserviceDto.cs" />
+    <Compile Include="Generated\hospitalizacionhabitacionDto.cs" />
     <Compile Include="Generated\hospitalizacionDto.cs" />
     <Compile Include="Generated\historyDto.cs" />
     <Compile Include="Generated\groupoccupationDto.cs" />
