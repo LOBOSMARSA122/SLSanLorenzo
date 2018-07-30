@@ -222,7 +222,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  v_HopitalizacionId = b.v_HopitalizacionId,
                                  i_HabitacionId = J1.i_ParameterId,
                                  NroHabitacion = J1.v_Value1,
-                                 d_Precio = J1.v_Value2
+                                 d_Precio = a.d_Precio.Value
                              }
 
                             ).FirstOrDefault();

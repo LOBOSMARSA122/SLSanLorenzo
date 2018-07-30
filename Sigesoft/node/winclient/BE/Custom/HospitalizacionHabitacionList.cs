@@ -13,7 +13,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string NroHabitacion { get; set; }
         public DateTime? d_StartDate { get; set; }
         public DateTime? d_EndDate { get; set; }
-        public string d_Precio { get; set; }
+        public decimal? d_Precio { get; set; }
         public decimal Total { get; set; }
     }
 }
