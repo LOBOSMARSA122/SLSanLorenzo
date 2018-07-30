@@ -107,7 +107,7 @@ namespace NetPdf
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
             document.Add(table);
 
-           
+           string[] fech = Fecha.ToString().Split(' '); 
             cells = new List<PdfPCell>()
             {
                 new PdfPCell(new Phrase("\n"+infoEmpresaPropietaria.v_Sede + ", " + Fecha, fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, BorderColor = BaseColor.WHITE, MinimumHeight = tamaño_celda},
