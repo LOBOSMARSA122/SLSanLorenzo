@@ -70,6 +70,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             txtNServicio.Text = _serviceId;
             objticketDto.v_ServiceId = txtNServicio.Text;
             objticketDto.d_Fecha = DateTime.Parse(txtFecha.Text);
+            objticketDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante :(int)CargoHospitalizacion.Paciente;
+            objticketDto.i_TipoCuentaId = int.Parse(cboTipoCuenta.SelectedValue.ToString());
             if (_mode == "New")
             {
                 foreach (var item in _tmpTicketDetalleList)
@@ -195,8 +197,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void LoadData()
         {
-            this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
             OperationResult objOperationResult = new OperationResult();
+            Utils.LoadDropDownList(cboTipoCuenta, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 310, null), DropDownListAction.All);
+            this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            
             if (_mode == "New")
             {
                 int Year = DateTime.Now.Year;
@@ -214,6 +218,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtNTicket.Text = objticketDtoo.v_TicketId;
                 txtFecha.Text = objticketDtoo.d_Fecha.ToString();
                 txtNServicio.Text = objticketDtoo.v_ServiceId;
+                if (objticketDtoo.i_ConCargoA == (int)CargoHospitalizacion.Paciente)
+                    rbPaciente.Checked = true;
+                else
+                    rbMedicoTratante.Checked = true;
+
+                cboTipoCuenta.SelectedValue = objticketDtoo.i_TipoCuentaId.ToString();
 
                 var dataListPc = _objTicketBl.GetTicketDetails(ref objOperationResult, _tickId);
 
