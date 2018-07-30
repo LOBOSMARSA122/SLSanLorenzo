@@ -37,6 +37,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Habitaciones");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Servicios", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ProtocolName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tickets");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Tickets", 1);
@@ -100,6 +102,7 @@
             this.btnEliminarTicket = new System.Windows.Forms.Button();
             this.btnEditarTicket = new System.Windows.Forms.Button();
             this.btnTicket = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -269,10 +272,16 @@
             ultraGridColumn4});
             ultraGridColumn6.Header.Caption = "Nro. Servicio";
             ultraGridColumn6.Header.VisiblePosition = 0;
-            ultraGridColumn7.Header.VisiblePosition = 1;
-            ultraGridColumn8.Header.VisiblePosition = 2;
+            ultraGridColumn50.Header.Caption = "Fecha Servicio";
+            ultraGridColumn50.Header.VisiblePosition = 1;
+            ultraGridColumn49.Header.Caption = "Protocolo";
+            ultraGridColumn49.Header.VisiblePosition = 2;
+            ultraGridColumn7.Header.VisiblePosition = 3;
+            ultraGridColumn8.Header.VisiblePosition = 4;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn6,
+            ultraGridColumn50,
+            ultraGridColumn49,
             ultraGridColumn7,
             ultraGridColumn8});
             ultraGridColumn34.Header.Caption = "Nro. Ticket";
@@ -482,6 +491,7 @@
             this.btnExport.Text = "Exportar a Excel";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // btnEliminarTicket
             // 
@@ -603,5 +613,6 @@
         private System.Windows.Forms.Button btnAgregarExamenes;
         private System.Windows.Forms.Button btnAsignarHabitacion;
         private System.Windows.Forms.Button btnEditarHabitacion;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
