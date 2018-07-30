@@ -595,7 +595,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                 Paciente = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
                                 d_ServiceDate = A1.d_ServiceDate,
                                 v_ServiceId = A.v_ServiceId,
-                                Tipo = E.v_Value1
+                                Tipo = E.v_Value1,
+                                v_ServiceComponentId = A.v_ServiceComponentId,
+                                r_CostoComponente = A.r_Price.Value
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -629,7 +631,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         //obtener datos de costo y comisiones
                         if (medico.MedicoTratanteId != null)
                         {
-                            var pagos = ObtenerPagos(servicio.v_ServiceId, medico.MedicoTratanteId.Value);
+                            var pagos = ObtenerPagos(servicio.v_ServiceId, medico.MedicoTratanteId.Value, servicio.r_CostoComponente);
 
                             oLiquidacionServicios.r_costo = pagos.r_costo;
                             oLiquidacionServicios.r_Comision = pagos.r_Comision;
@@ -652,7 +654,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        private PagosComisiones ObtenerPagos(string serviceId, int medicoTratanteId)
+        private PagosComisiones ObtenerPagos(string serviceId, int medicoTratanteId, float costoComponente)
         {
              SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -662,8 +664,8 @@ namespace Sigesoft.Node.WinClient.BLL
             var oPagosComisiones = new PagosComisiones();
             if (comisionMedico != null)
             {
-                var costoServicio = new ServiceBL().GetServiceCost(serviceId);
-                oPagosComisiones.r_costo = decimal.Parse(costoServicio);
+                //var costoServicio = new ServiceBL().GetServiceCost(serviceId);
+                oPagosComisiones.r_costo = decimal.Parse(costoComponente.ToString()); //decimal.Parse(costoServicio);
                 oPagosComisiones.r_Comision = oPagosComisiones.r_costo * comisionMedico.r_Medico.Value / 100;
                 oPagosComisiones.r_Total = oPagosComisiones.r_costo * comisionMedico.r_Clinica.Value / 100; ;
 
