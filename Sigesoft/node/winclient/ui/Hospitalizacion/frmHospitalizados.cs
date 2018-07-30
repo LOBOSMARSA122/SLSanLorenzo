@@ -64,12 +64,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             this.grdData.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
 
-            if (grdData.Rows.Count>0)
-            {
-                grdData.Rows[0].Selected = true;
-                btnTicket.Enabled = true;
-                btnEditarTicket.Enabled = true;
-            }
+            //if (grdData.Rows.Count>0)
+            //{
+            //    grdData.Rows[0].Selected = true;
+            //    btnTicket.Enabled = true;
+            //    btnEditarTicket.Enabled = true;
+            //}
         }
 
         private void grdData_InitializeLayout(object sender, InitializeLayoutEventArgs e)
@@ -140,34 +140,53 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void grd_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
         {
-            //btnEditarTicket.Enabled = btnEliminarTicket.Enabled = (grdData.Selected.Rows.Count > 0);
-            //if (grdData.Selected.Rows.Count == 0)
-            //    return;
+            foreach (UltraGridRow rowSelected in this.grdData.Selected.Rows)
+            {
+                if (rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
+                {
+                    btnAsignarHabitacion.Enabled = false;
+                }
+                else
+                {
+                    btnAsignarHabitacion.Enabled = true;
+                }
 
+                if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
+                {
+                    btnTicket.Enabled = false;
+                    btnAgregarExamenes.Enabled = false;
+                }
+                else
+                {
+                    btnTicket.Enabled = true;
+                    btnAgregarExamenes.Enabled = true;
+                }
 
-            //_rowIndexPc = ((Infragistics.Win.UltraWinGrid.UltraGrid)sender).Selected.Rows[0].Index;
-            //_ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
-            ////if (grdData.Selected.Rows.Count != 0)
-            ////{
-               
-            //    float Total = 0;
-            //    _ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
+                if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
+                {
+                    btnEditarTicket.Enabled = false;
+                    btnEliminarTicket.Enabled = false;
+                }
+                else
+                {
+                    btnEditarTicket.Enabled = true;
+                    btnEliminarTicket.Enabled = true;
+                }
 
-             
-            //    // Cargar componentes de un protocolo seleccionado
-            //    OperationResult objOperationResult = new OperationResult();
+                if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4")
+                {
+                    btnEditarHabitacion.Enabled = false;
+                }
+                else
+                {
+                    btnEditarHabitacion.Enabled = true;
+                }
+            }
+            
+            if (grdData.Selected.Rows.Count == 0)
+                 return;
 
-            //    var dataListPc = _objHospBL.BuscarTickets(ticketId);
-
-            //    grdData.DataSource = dataListPc;
-
-            //    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", dataListPc.Count());
-
-            //    if (objOperationResult.Success != 1)
-            //    {
-            //        MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    }
-            //}
+            btnExport.Enabled = grdData.Rows.Count > 0;
         }
 
     }

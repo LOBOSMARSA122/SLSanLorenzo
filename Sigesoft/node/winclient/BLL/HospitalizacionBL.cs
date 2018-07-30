@@ -114,9 +114,25 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     #region Habitaciones
+                    var habitacioenes = BuscarHospitalizacionHabitaciones(item.v_HopitalizacionId).ToList();
+                    List<HospitalizacionHabitacionList> ListaHabitaciones = new List<HospitalizacionHabitacionList>();
+                    HospitalizacionHabitacionList oHospitalizacionHabitacionList;
+                    foreach (var habitacion in habitacioenes)
+                    {
+                        oHospitalizacionHabitacionList = new HospitalizacionHabitacionList();
+                        oHospitalizacionHabitacionList.v_HospitalizacionHabitacionId = habitacion.v_HospitalizacionHabitacionId;
+                        oHospitalizacionHabitacionList.i_HabitacionId = habitacion.i_HabitacionId;
+                        oHospitalizacionHabitacionList.NroHabitacion = habitacion.NroHabitacion;
+                        oHospitalizacionHabitacionList.d_StartDate = habitacion.d_StartDate;
+                        oHospitalizacionHabitacionList.d_EndDate = habitacion.d_EndDate;
+                        oHospitalizacionHabitacionList.d_Precio = habitacion.d_Precio;
+                        oHospitalizacionHabitacionList.Total = CalcularCostoHabitacion(habitacion.d_Precio, habitacion.d_StartDate, habitacion.d_EndDate);
+                        ListaHabitaciones.Add(oHospitalizacionHabitacionList);
 
-
+                    }
+                    hospit.Habitaciones = ListaHabitaciones;
                     #endregion
+
                     Lista.Add(hospit);
                 }
                 pobjOperationResult.Success = 1;
@@ -131,6 +147,46 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        private decimal CalcularCostoHabitacion(string precio , DateTime? fechaIni, DateTime? fechafin)
+        {
+            var precioHabitacion = decimal.Parse(precio);
+            var cantidadDias = 0;
+            if (fechafin != null)
+            {
+                if (fechaIni != null)
+                    cantidadDias = int.Parse((fechafin.Value.AddTicks(-fechaIni.Value.Ticks).Day - 1).ToString());
+            }
+            else
+            {
+                if (fechaIni != null)
+                    cantidadDias = int.Parse((DateTime.Today.AddTicks(-fechaIni.Value.Ticks).Day - 1).ToString());
+            }
+
+            return precioHabitacion * cantidadDias;
+        }
+
+        private List<HospitalizacionHabitacionList> BuscarHospitalizacionHabitaciones(string hospitalizacionId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+              var habitaciones = (from A in dbContext.hospitalizacionhabitacion
+                                 join D in dbContext.systemparameter on new { a = A.i_HabitacionId.Value, b = 309 } equals new { a = D.i_ParameterId, b = D.i_GroupId }
+                                 where A.v_HopitalizacionId == hospitalizacionId && A.i_IsDeleted == 0
+                                 select new HospitalizacionHabitacionList
+                                 {
+                                     v_HospitalizacionHabitacionId = A.v_HospitalizacionHabitacionId,
+                                     v_HopitalizacionId = A.v_HopitalizacionId,
+                                     i_HabitacionId = A.i_HabitacionId.Value,
+                                     NroHabitacion = D.v_Value1,
+                                     d_StartDate = A.d_StartDate,
+                                     d_EndDate = A.d_EndDate,
+                                     d_Precio = D.v_Value2
+                                 }).ToList();
+              List<HospitalizacionHabitacionList> obj = habitaciones;
+
+            return obj;
+
+        }
+
         private List<HospitalizacionServiceList> BuscarServiciosHospitalizacion(string hospitalizacionId)
         {
             //acá hace un select a la tabla hospitalizacionService y buscas todos que tengan foranea HospitalizacionId
@@ -138,8 +194,7 @@ namespace Sigesoft.Node.WinClient.BLL
             var queryservice = from A in dbContext.hospitalizacion
                         join C in dbContext.hospitalizacionservice on A.v_HopitalizacionId equals C.v_HopitalizacionId
                         join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
-
-                               where A.v_HopitalizacionId == hospitalizacionId
+                        where A.v_HopitalizacionId == hospitalizacionId
 
                         select new HospitalizacionServiceList
                         {
