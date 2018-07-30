@@ -23,6 +23,7 @@ namespace Sigesoft.Node.WinClient.UI
         ServiceOrderBL _oServiceOrderBL = new ServiceOrderBL();
         serviceorderDto _oserviceorderDto = new serviceorderDto();
         ServiceBL _serviceBL = new ServiceBL();
+        private string _serviceId;
 
         List<ServiceOrderDetailList> _TempServiceOrderDetail = null;
         ServiceOrderDetailList _objServiceOrderDetailList = null;
@@ -553,6 +554,7 @@ namespace Sigesoft.Node.WinClient.UI
                     this.Enabled = false;
                     var MedicalCenter = _serviceBL.GetInfoMedicalCenterSede();
                     var pEmpresaCliente = new ProtocolBL().GetEmpresaByProtocoloId(_ProtocolId)[0].v_Name;
+                    
                 
 
                     foreach (var Protocolo in _TempServiceOrderDetail)
@@ -593,12 +595,12 @@ namespace Sigesoft.Node.WinClient.UI
 
                    if (chkProtocoloEspecial.Checked)
                    {
-                       OrdenServicioPromocion.CrearOrdenServicio(rbSi.Checked ? true : false, Lista, MedicalCenter, pEmpresaCliente, DateTime.Parse(txtDateTime.Text).ToString("dd/MMMM/yyyy"), oSystemUserList.Profesion + ". " + oSystemUserList.v_PersonName, ruta + _ServiceOrderId + ".pdf");
+                       OrdenServicioPromocion.CrearOrdenServicio(rbSi.Checked ? true : false, Lista, MedicalCenter, pEmpresaCliente, DateTime.Parse(txtDateTime.Text).ToString("dd de MMMM de yyyy"), oSystemUserList.Profesion + ". " + oSystemUserList.v_PersonName, ruta + _ServiceOrderId + ".pdf");
 
                    }
                    else
                    {
-                       OrdenServicio.CrearOrdenServicio(rbSi.Checked ? true : false, Lista, MedicalCenter, pEmpresaCliente, DateTime.Parse(txtDateTime.Text).ToString("dd/MMMM/yyyy"), oSystemUserList.Profesion + ". " + oSystemUserList.v_PersonName, ruta + _ServiceOrderId + ".pdf");
+                       OrdenServicio.CrearOrdenServicio(rbSi.Checked ? true : false, Lista, MedicalCenter, pEmpresaCliente, DateTime.Parse(txtDateTime.Text).ToString("dd 'd'e MMMM 'd'e yyyy"), oSystemUserList.Profesion + ". " + oSystemUserList.v_PersonName, ruta + _ServiceOrderId + ".pdf");
 
                    }
 

@@ -241,10 +241,10 @@ namespace Sigesoft.Node.WinClient.BLL
                 dbContext.protocol.ApplyCurrentValues(objStrongEntity);
 
                 #endregion
-
+                int intNodeId = int.Parse(ClientSession[0]);
                 #region Create Protocol Component
 
-                int intNodeId = int.Parse(ClientSession[0]);
+                
 
                 // Grabar Componentes del protocolo
                 foreach (var item in pobjProtocolComponentAdd)
