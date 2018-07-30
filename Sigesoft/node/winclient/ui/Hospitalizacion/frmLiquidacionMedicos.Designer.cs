@@ -41,6 +41,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("r_Comision");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("r_Total", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Aseguradora");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componente");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -187,13 +188,14 @@
             ultraGridColumn4.Header.Caption = "Fecha Servicio";
             ultraGridColumn4.Header.VisiblePosition = 4;
             ultraGridColumn5.Header.Caption = "Costo";
-            ultraGridColumn5.Header.VisiblePosition = 5;
+            ultraGridColumn5.Header.VisiblePosition = 6;
             ultraGridColumn6.Header.Caption = "% Comision";
-            ultraGridColumn6.Header.VisiblePosition = 6;
+            ultraGridColumn6.Header.VisiblePosition = 7;
             ultraGridColumn7.Header.Caption = "% Clínica";
-            ultraGridColumn7.Header.VisiblePosition = 7;
+            ultraGridColumn7.Header.VisiblePosition = 8;
             ultraGridColumn8.Header.Caption = "Aseguradora";
             ultraGridColumn8.Header.VisiblePosition = 2;
+            ultraGridColumn11.Header.VisiblePosition = 5;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn9,
             ultraGridColumn10,
@@ -202,7 +204,8 @@
             ultraGridColumn5,
             ultraGridColumn6,
             ultraGridColumn7,
-            ultraGridColumn8});
+            ultraGridColumn8,
+            ultraGridColumn11});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.grdData.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;

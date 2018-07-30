@@ -585,8 +585,9 @@ namespace Sigesoft.Node.WinClient.BLL
                             join D in dbContext.person on A1.v_PersonId equals D.v_PersonId
                             join E in dbContext.systemparameter on new { a = A1.i_MasterServiceId.Value, b = 119 } equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
                             from E in E_join.DefaultIfEmpty()
+                            join F in dbContext.component on A.v_ComponentId equals F.v_ComponentId
 
-                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2
+                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && ( A.r_Price != 0.00 || A.r_Price != 0)
 
                             select new LiquidacionMedicoList
                             {
@@ -597,7 +598,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_ServiceId = A.v_ServiceId,
                                 Tipo = E.v_Value1,
                                 v_ServiceComponentId = A.v_ServiceComponentId,
-                                r_CostoComponente = A.r_Price.Value
+                                r_CostoComponente = A.r_Price.Value,
+                                Componente = F.v_Name
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -628,6 +630,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquidacionServicios.v_ServiceId = servicio.v_ServiceId;
                         oLiquidacionServicios.d_ServiceDate = servicio.d_ServiceDate;
                         oLiquidacionServicios.Tipo = servicio.Tipo;
+                        oLiquidacionServicios.Componente = servicio.Componente;
                         //obtener datos de costo y comisiones
                         if (medico.MedicoTratanteId != null)
                         {

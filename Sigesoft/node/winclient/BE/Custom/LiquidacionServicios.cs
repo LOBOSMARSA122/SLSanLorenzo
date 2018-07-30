@@ -15,5 +15,6 @@ namespace Sigesoft.Node.WinClient.BE
         public decimal r_costo { get; set; }
         public decimal r_Comision { get; set; }
         public decimal r_Total { get; set; }
+        public string Componente { get; set; }
     }
 }
