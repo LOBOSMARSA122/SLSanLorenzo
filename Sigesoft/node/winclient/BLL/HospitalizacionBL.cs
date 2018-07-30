@@ -577,21 +577,22 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-                var query = from A in dbContext.service
+                var query = from A in dbContext.servicecomponent
+                            join A1 in dbContext.service on A.v_ServiceId equals  A1.v_ServiceId
                             join B in dbContext.systemuser on A.i_MedicoTratanteId equals B.i_SystemUserId
                             join C in dbContext.person on B.v_PersonId equals C.v_PersonId
-                            join D in dbContext.person on A.v_PersonId equals D.v_PersonId
-                            join E in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
+                            join D in dbContext.person on A1.v_PersonId equals D.v_PersonId
+                            join E in dbContext.systemparameter on new { a = A1.i_MasterServiceId.Value, b = 119 } equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
                             from E in E_join.DefaultIfEmpty()
 
-                            where A.i_IsDeleted == 0 && A.i_MasterServiceId != 2
+                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2
 
                             select new LiquidacionMedicoList
                             {
                                 MedicoTratanteId = B.i_SystemUserId,
                                 MedicoTratante = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
                                 Paciente = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
-                                d_ServiceDate = A.d_ServiceDate,
+                                d_ServiceDate = A1.d_ServiceDate,
                                 v_ServiceId = A.v_ServiceId,
                                 Tipo = E.v_Value1
                             };

@@ -66,7 +66,9 @@
             ultraGridColumn17.Width = 307;
             ultraGridColumn18.Header.VisiblePosition = 2;
             ultraGridColumn18.Width = 189;
+            ultraGridColumn19.Header.Caption = "% Clínica";
             ultraGridColumn19.Header.VisiblePosition = 3;
+            ultraGridColumn20.Header.Caption = "% Médico";
             ultraGridColumn20.Header.VisiblePosition = 4;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridBand1.Columns.AddRange(new object[] {
