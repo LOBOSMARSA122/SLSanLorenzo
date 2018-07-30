@@ -26,7 +26,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private string _ticketId;
         private int _rowIndexPc;
         private List<TicketList> _tempTicket = null;
-
         private TicketBL _ticketlBL = new TicketBL();
 
         public frmHospitalizados()
@@ -63,13 +62,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
 
             this.grdData.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
-
-            //if (grdData.Rows.Count>0)
-            //{
-            //    grdData.Rows[0].Selected = true;
-            //    btnTicket.Enabled = true;
-            //    btnEditarTicket.Enabled = true;
-            //}
         }
 
         private void grdData_InitializeLayout(object sender, InitializeLayoutEventArgs e)
@@ -130,7 +122,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
-            //MessageBox.Show("Service: " + TserviceId);
             _ticketId = ticketId;
             frmTicket ticket = new frmTicket(_tempTicket, ServiceId, _ticketId, "Edit");
             ticket.ShowDialog();
@@ -160,6 +151,17 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 {
                     btnTicket.Enabled = true;
                     btnAgregarExamenes.Enabled = true;
+                    var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                    OperationResult pobjOperationResult = new OperationResult();
+                    ServiceBL oServiceBL = new ServiceBL();
+                    var componentes = oServiceBL.GetServiceComponents_(ref pobjOperationResult, serviceId);
+
+                    ListaComponentes = new List<string>();
+                    foreach (var item in componentes)
+                    {
+                        ListaComponentes.Add(item.v_ComponentId);
+                    }
+
                 }
 
                 if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
@@ -219,6 +221,16 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
                 MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void btnAgregarExamenes_Click(object sender, EventArgs e)
+        {
+            var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            var frm = new frmAddExam(ListaComponentes) {_serviceId = serviceId};
+            frm.ShowDialog();
+
+            if (frm.DialogResult == DialogResult.Cancel)
+                return;
         }
 
     }
