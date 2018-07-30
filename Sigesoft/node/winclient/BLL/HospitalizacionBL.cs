@@ -129,7 +129,12 @@ namespace Sigesoft.Node.WinClient.BLL
                         oHospitalizacionHabitacionList.d_StartDate = habitacion.d_StartDate;
                         oHospitalizacionHabitacionList.d_EndDate = habitacion.d_EndDate;
                         oHospitalizacionHabitacionList.d_Precio = habitacion.d_Precio;
-                        oHospitalizacionHabitacionList.Total = CalcularCostoHabitacion(habitacion.d_Precio, habitacion.d_StartDate, habitacion.d_EndDate);
+                        if (habitacion.d_Precio != null)
+                            oHospitalizacionHabitacionList.Total =
+                                CalcularCostoHabitacion(habitacion.d_Precio.ToString(), habitacion.d_StartDate,
+                                    habitacion.d_EndDate);
+                        else
+                            oHospitalizacionHabitacionList.Total = 0;
                         ListaHabitaciones.Add(oHospitalizacionHabitacionList);
 
                     }
@@ -182,7 +187,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      NroHabitacion = D.v_Value1,
                                      d_StartDate = A.d_StartDate,
                                      d_EndDate = A.d_EndDate,
-                                     d_Precio = D.v_Value2
+                                     d_Precio = A.d_Precio.Value
                                  }).ToList();
               List<HospitalizacionHabitacionList> obj = habitaciones;
 
