@@ -189,5 +189,21 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             btnExport.Enabled = grdData.Rows.Count > 0;
         }
 
+        private void btnAsignarHabitacion_Click(object sender, EventArgs e)
+        {
+            var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New", "");
+            frm.ShowDialog();
+
+        }
+
+        private void btnEditarHabitacion_Click(object sender, EventArgs e)
+        {
+            var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            var hospitalizacionHabitacionId = grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
+            frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New", hospitalizacionHabitacionId);
+            frm.ShowDialog();
+        }
+
     }
 }

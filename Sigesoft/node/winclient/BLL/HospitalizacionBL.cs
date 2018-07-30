@@ -121,6 +121,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     {
                         oHospitalizacionHabitacionList = new HospitalizacionHabitacionList();
                         oHospitalizacionHabitacionList.v_HospitalizacionHabitacionId = habitacion.v_HospitalizacionHabitacionId;
+                        oHospitalizacionHabitacionList.v_HopitalizacionId = item.v_HopitalizacionId;
                         oHospitalizacionHabitacionList.i_HabitacionId = habitacion.i_HabitacionId;
                         oHospitalizacionHabitacionList.NroHabitacion = habitacion.NroHabitacion;
                         oHospitalizacionHabitacionList.d_StartDate = habitacion.d_StartDate;

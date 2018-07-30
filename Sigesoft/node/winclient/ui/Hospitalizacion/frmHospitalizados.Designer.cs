@@ -36,36 +36,27 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Habitaciones");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Servicios", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HospitalizacionServiceId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HopitalizacionId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tickets");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tickets");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Tickets", 1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Productos");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn35 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn36 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Productos");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Productos", 2);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketDetalleId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_IdProductoDetalle");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NombreProducto");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Cantidad");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_EsDespachado");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn37 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NombreProducto");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Cantidad");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_EsDespachado");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", 1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ServiceComponentId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Categoria");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componente");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Categoria");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componente");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn42 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand6 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Habitaciones", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HospitalizacionHabitacionId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_HabitacionId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroHabitacion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_StartDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn32 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_EndDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Precio");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn43 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroHabitacion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_StartDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn45 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_EndDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn46 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Precio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn47 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -101,14 +92,14 @@
             this.lblRecordCount = new System.Windows.Forms.Label();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
-            this.btnTicket = new System.Windows.Forms.Button();
-            this.btnEditarTicket = new System.Windows.Forms.Button();
-            this.btnEliminarTicket = new System.Windows.Forms.Button();
-            this.btnExport = new System.Windows.Forms.Button();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.btnAgregarExamenes = new System.Windows.Forms.Button();
-            this.btnAsignarHabitacion = new System.Windows.Forms.Button();
             this.btnEditarHabitacion = new System.Windows.Forms.Button();
+            this.btnAsignarHabitacion = new System.Windows.Forms.Button();
+            this.btnAgregarExamenes = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.btnEliminarTicket = new System.Windows.Forms.Button();
+            this.btnEditarTicket = new System.Windows.Forms.Button();
+            this.btnTicket = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -263,9 +254,10 @@
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdData.DisplayLayout.Appearance = appearance1;
-            ultraGridColumn1.Header.Caption = "Código";
+            ultraGridColumn1.Header.Caption = "Nro. Hospitalización";
             ultraGridColumn1.Header.VisiblePosition = 0;
-            ultraGridColumn1.Width = 184;
+            ultraGridColumn1.Width = 177;
+            ultraGridColumn2.Header.Caption = "Nombre de Paciente";
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn2.Width = 146;
             ultraGridColumn3.Header.VisiblePosition = 2;
@@ -275,87 +267,56 @@
             ultraGridColumn2,
             ultraGridColumn3,
             ultraGridColumn4});
-            ultraGridColumn15.Header.VisiblePosition = 0;
-            ultraGridColumn15.Hidden = true;
-            ultraGridColumn15.Width = 91;
-            ultraGridColumn16.Header.VisiblePosition = 1;
-            ultraGridColumn16.Hidden = true;
-            ultraGridColumn16.Width = 146;
-            ultraGridColumn17.Header.VisiblePosition = 2;
-            ultraGridColumn18.Header.VisiblePosition = 3;
-            ultraGridColumn18.Hidden = true;
-            ultraGridColumn9.Header.VisiblePosition = 4;
+            ultraGridColumn6.Header.Caption = "Nro. Servicio";
+            ultraGridColumn6.Header.VisiblePosition = 0;
+            ultraGridColumn7.Header.VisiblePosition = 1;
+            ultraGridColumn8.Header.VisiblePosition = 2;
             ultraGridBand2.Columns.AddRange(new object[] {
-            ultraGridColumn15,
-            ultraGridColumn16,
-            ultraGridColumn17,
-            ultraGridColumn18,
-            ultraGridColumn9});
-            ultraGridColumn19.Header.VisiblePosition = 0;
-            ultraGridColumn19.Width = 146;
-            ultraGridColumn20.Header.VisiblePosition = 1;
-            ultraGridColumn20.Hidden = true;
-            ultraGridColumn20.Width = 146;
-            ultraGridColumn21.Header.VisiblePosition = 2;
-            ultraGridColumn22.Header.VisiblePosition = 3;
-            ultraGridColumn22.Hidden = true;
+            ultraGridColumn6,
+            ultraGridColumn7,
+            ultraGridColumn8});
+            ultraGridColumn34.Header.Caption = "Nro. Ticket";
+            ultraGridColumn34.Header.VisiblePosition = 0;
+            ultraGridColumn35.Header.Caption = "Fecha";
+            ultraGridColumn35.Header.VisiblePosition = 1;
+            ultraGridColumn36.Header.VisiblePosition = 2;
+            ultraGridColumn36.Hidden = true;
             ultraGridBand3.Columns.AddRange(new object[] {
-            ultraGridColumn19,
-            ultraGridColumn20,
-            ultraGridColumn21,
-            ultraGridColumn22});
-            ultraGridColumn23.Header.VisiblePosition = 0;
-            ultraGridColumn23.Hidden = true;
-            ultraGridColumn23.Width = 53;
-            ultraGridColumn24.Header.VisiblePosition = 1;
-            ultraGridColumn24.Hidden = true;
-            ultraGridColumn24.Width = 146;
-            ultraGridColumn25.Header.VisiblePosition = 2;
-            ultraGridColumn25.Hidden = true;
-            ultraGridColumn26.Header.VisiblePosition = 3;
-            ultraGridColumn27.Header.VisiblePosition = 4;
-            ultraGridColumn28.Header.VisiblePosition = 5;
+            ultraGridColumn34,
+            ultraGridColumn35,
+            ultraGridColumn36});
+            ultraGridColumn37.Header.Caption = "Nombre Producto";
+            ultraGridColumn37.Header.VisiblePosition = 0;
+            ultraGridColumn38.Header.Caption = "Cantidad";
+            ultraGridColumn38.Header.VisiblePosition = 1;
+            ultraGridColumn39.Header.Caption = "¿Fue Despachado?";
+            ultraGridColumn39.Header.VisiblePosition = 2;
             ultraGridBand4.Columns.AddRange(new object[] {
-            ultraGridColumn23,
-            ultraGridColumn24,
-            ultraGridColumn25,
-            ultraGridColumn26,
-            ultraGridColumn27,
-            ultraGridColumn28});
-            ultraGridColumn10.Header.VisiblePosition = 0;
-            ultraGridColumn10.Hidden = true;
-            ultraGridColumn10.Width = 72;
-            ultraGridColumn11.Header.VisiblePosition = 1;
-            ultraGridColumn11.Width = 146;
-            ultraGridColumn12.Header.VisiblePosition = 2;
-            ultraGridColumn13.Header.VisiblePosition = 3;
+            ultraGridColumn37,
+            ultraGridColumn38,
+            ultraGridColumn39});
+            ultraGridColumn40.Header.VisiblePosition = 0;
+            ultraGridColumn41.Header.VisiblePosition = 1;
+            ultraGridColumn42.Header.VisiblePosition = 2;
             ultraGridBand5.Columns.AddRange(new object[] {
-            ultraGridColumn10,
-            ultraGridColumn11,
-            ultraGridColumn12,
-            ultraGridColumn13});
-            ultraGridColumn29.Header.VisiblePosition = 0;
-            ultraGridColumn29.Hidden = true;
-            ultraGridColumn30.Header.VisiblePosition = 2;
-            ultraGridColumn30.Hidden = true;
-            ultraGridColumn5.Header.VisiblePosition = 1;
-            ultraGridColumn5.Width = 165;
-            ultraGridColumn31.Header.Caption = "Fecha Inicio";
-            ultraGridColumn31.Header.VisiblePosition = 3;
-            ultraGridColumn31.Width = 146;
-            ultraGridColumn32.Header.Caption = "Fecha Fin";
-            ultraGridColumn32.Header.VisiblePosition = 4;
-            ultraGridColumn33.Header.Caption = "Precio";
-            ultraGridColumn33.Header.VisiblePosition = 6;
-            ultraGridColumn14.Header.VisiblePosition = 5;
+            ultraGridColumn40,
+            ultraGridColumn41,
+            ultraGridColumn42});
+            ultraGridColumn43.Header.Caption = "Nro. Habitacion";
+            ultraGridColumn43.Header.VisiblePosition = 0;
+            ultraGridColumn44.Header.Caption = "Fecha Inicio";
+            ultraGridColumn44.Header.VisiblePosition = 1;
+            ultraGridColumn45.Header.Caption = "Fecha Fin";
+            ultraGridColumn45.Header.VisiblePosition = 2;
+            ultraGridColumn46.Header.Caption = "Precio";
+            ultraGridColumn46.Header.VisiblePosition = 3;
+            ultraGridColumn47.Header.VisiblePosition = 4;
             ultraGridBand6.Columns.AddRange(new object[] {
-            ultraGridColumn29,
-            ultraGridColumn30,
-            ultraGridColumn5,
-            ultraGridColumn31,
-            ultraGridColumn32,
-            ultraGridColumn33,
-            ultraGridColumn14});
+            ultraGridColumn43,
+            ultraGridColumn44,
+            ultraGridColumn45,
+            ultraGridColumn46,
+            ultraGridColumn47});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
@@ -440,28 +401,109 @@
             ultraDataColumn16,
             ultraDataColumn17});
             // 
-            // btnTicket
+            // btnEditarHabitacion
             // 
-            this.btnTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTicket.BackColor = System.Drawing.SystemColors.Control;
-            this.btnTicket.Enabled = false;
-            this.btnTicket.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnTicket.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnTicket.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTicket.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTicket.ForeColor = System.Drawing.Color.Black;
-            this.btnTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form_add;
-            this.btnTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTicket.Location = new System.Drawing.Point(1142, 88);
-            this.btnTicket.Margin = new System.Windows.Forms.Padding(2);
-            this.btnTicket.Name = "btnTicket";
-            this.btnTicket.Size = new System.Drawing.Size(85, 46);
-            this.btnTicket.TabIndex = 51;
-            this.btnTicket.Text = "Nuevo        Ticket";
-            this.btnTicket.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnTicket.UseVisualStyleBackColor = false;
-            this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
+            this.btnEditarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarHabitacion.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditarHabitacion.Enabled = false;
+            this.btnEditarHabitacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditarHabitacion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditarHabitacion.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditarHabitacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarHabitacion.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarHabitacion.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarHabitacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_edit;
+            this.btnEditarHabitacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarHabitacion.Location = new System.Drawing.Point(1142, 399);
+            this.btnEditarHabitacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarHabitacion.Name = "btnEditarHabitacion";
+            this.btnEditarHabitacion.Size = new System.Drawing.Size(85, 46);
+            this.btnEditarHabitacion.TabIndex = 106;
+            this.btnEditarHabitacion.Text = "Editar Habitación";
+            this.btnEditarHabitacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditarHabitacion.UseVisualStyleBackColor = false;
+            this.btnEditarHabitacion.Click += new System.EventHandler(this.btnEditarHabitacion_Click);
+            // 
+            // btnAsignarHabitacion
+            // 
+            this.btnAsignarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAsignarHabitacion.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAsignarHabitacion.Enabled = false;
+            this.btnAsignarHabitacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAsignarHabitacion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAsignarHabitacion.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAsignarHabitacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAsignarHabitacion.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAsignarHabitacion.ForeColor = System.Drawing.Color.Black;
+            this.btnAsignarHabitacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
+            this.btnAsignarHabitacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAsignarHabitacion.Location = new System.Drawing.Point(1142, 349);
+            this.btnAsignarHabitacion.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAsignarHabitacion.Name = "btnAsignarHabitacion";
+            this.btnAsignarHabitacion.Size = new System.Drawing.Size(85, 46);
+            this.btnAsignarHabitacion.TabIndex = 105;
+            this.btnAsignarHabitacion.Text = "Asignar Habitación";
+            this.btnAsignarHabitacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAsignarHabitacion.UseVisualStyleBackColor = false;
+            this.btnAsignarHabitacion.Click += new System.EventHandler(this.btnAsignarHabitacion_Click);
+            // 
+            // btnAgregarExamenes
+            // 
+            this.btnAgregarExamenes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAgregarExamenes.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarExamenes.Enabled = false;
+            this.btnAgregarExamenes.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarExamenes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarExamenes.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarExamenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarExamenes.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarExamenes.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarExamenes.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
+            this.btnAgregarExamenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarExamenes.Location = new System.Drawing.Point(1142, 268);
+            this.btnAgregarExamenes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarExamenes.Name = "btnAgregarExamenes";
+            this.btnAgregarExamenes.Size = new System.Drawing.Size(85, 46);
+            this.btnAgregarExamenes.TabIndex = 104;
+            this.btnAgregarExamenes.Text = "Agregar Examenes";
+            this.btnAgregarExamenes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregarExamenes.UseVisualStyleBackColor = false;
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExport.Enabled = false;
+            this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(1142, 523);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(85, 46);
+            this.btnExport.TabIndex = 103;
+            this.btnExport.Text = "Exportar a Excel";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarTicket
+            // 
+            this.btnEliminarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEliminarTicket.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEliminarTicket.Enabled = false;
+            this.btnEliminarTicket.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEliminarTicket.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEliminarTicket.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEliminarTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarTicket.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarTicket.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_delete;
+            this.btnEliminarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminarTicket.Location = new System.Drawing.Point(1142, 188);
+            this.btnEliminarTicket.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarTicket.Name = "btnEliminarTicket";
+            this.btnEliminarTicket.Size = new System.Drawing.Size(85, 46);
+            this.btnEliminarTicket.TabIndex = 53;
+            this.btnEliminarTicket.Text = "Eliminar Ticket";
+            this.btnEliminarTicket.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminarTicket.UseVisualStyleBackColor = false;
             // 
             // btnEditarTicket
             // 
@@ -486,107 +528,28 @@
             this.btnEditarTicket.UseVisualStyleBackColor = false;
             this.btnEditarTicket.Click += new System.EventHandler(this.btnEditarTicket_Click);
             // 
-            // btnEliminarTicket
+            // btnTicket
             // 
-            this.btnEliminarTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEliminarTicket.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEliminarTicket.Enabled = false;
-            this.btnEliminarTicket.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEliminarTicket.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEliminarTicket.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEliminarTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarTicket.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarTicket.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_delete;
-            this.btnEliminarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarTicket.Location = new System.Drawing.Point(1142, 188);
-            this.btnEliminarTicket.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEliminarTicket.Name = "btnEliminarTicket";
-            this.btnEliminarTicket.Size = new System.Drawing.Size(85, 46);
-            this.btnEliminarTicket.TabIndex = 53;
-            this.btnEliminarTicket.Text = "Eliminar Ticket";
-            this.btnEliminarTicket.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminarTicket.UseVisualStyleBackColor = false;
-            // 
-            // btnExport
-            // 
-            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExport.Enabled = false;
-            this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(1142, 523);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(85, 46);
-            this.btnExport.TabIndex = 103;
-            this.btnExport.Text = "Exportar a Excel";
-            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExport.UseVisualStyleBackColor = true;
-            // 
-            // btnAgregarExamenes
-            // 
-            this.btnAgregarExamenes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAgregarExamenes.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarExamenes.Enabled = false;
-            this.btnAgregarExamenes.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarExamenes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarExamenes.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarExamenes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarExamenes.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarExamenes.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarExamenes.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
-            this.btnAgregarExamenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarExamenes.Location = new System.Drawing.Point(1142, 268);
-            this.btnAgregarExamenes.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarExamenes.Name = "btnAgregarExamenes";
-            this.btnAgregarExamenes.Size = new System.Drawing.Size(85, 46);
-            this.btnAgregarExamenes.TabIndex = 104;
-            this.btnAgregarExamenes.Text = "Agregar Examenes";
-            this.btnAgregarExamenes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregarExamenes.UseVisualStyleBackColor = false;
-            // 
-            // btnAsignarHabitacion
-            // 
-            this.btnAsignarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAsignarHabitacion.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAsignarHabitacion.Enabled = false;
-            this.btnAsignarHabitacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAsignarHabitacion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAsignarHabitacion.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAsignarHabitacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAsignarHabitacion.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAsignarHabitacion.ForeColor = System.Drawing.Color.Black;
-            this.btnAsignarHabitacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
-            this.btnAsignarHabitacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAsignarHabitacion.Location = new System.Drawing.Point(1142, 352);
-            this.btnAsignarHabitacion.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAsignarHabitacion.Name = "btnAsignarHabitacion";
-            this.btnAsignarHabitacion.Size = new System.Drawing.Size(85, 46);
-            this.btnAsignarHabitacion.TabIndex = 105;
-            this.btnAsignarHabitacion.Text = "Asignar Habitación";
-            this.btnAsignarHabitacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAsignarHabitacion.UseVisualStyleBackColor = false;
-            // 
-            // btnEditarHabitacion
-            // 
-            this.btnEditarHabitacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditarHabitacion.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEditarHabitacion.Enabled = false;
-            this.btnEditarHabitacion.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEditarHabitacion.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEditarHabitacion.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEditarHabitacion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarHabitacion.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarHabitacion.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarHabitacion.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_edit;
-            this.btnEditarHabitacion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarHabitacion.Location = new System.Drawing.Point(1142, 402);
-            this.btnEditarHabitacion.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditarHabitacion.Name = "btnEditarHabitacion";
-            this.btnEditarHabitacion.Size = new System.Drawing.Size(85, 46);
-            this.btnEditarHabitacion.TabIndex = 106;
-            this.btnEditarHabitacion.Text = "Editar Habitación";
-            this.btnEditarHabitacion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditarHabitacion.UseVisualStyleBackColor = false;
+            this.btnTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnTicket.BackColor = System.Drawing.SystemColors.Control;
+            this.btnTicket.Enabled = false;
+            this.btnTicket.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnTicket.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnTicket.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnTicket.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTicket.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTicket.ForeColor = System.Drawing.Color.Black;
+            this.btnTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form_add;
+            this.btnTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTicket.Location = new System.Drawing.Point(1142, 88);
+            this.btnTicket.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTicket.Name = "btnTicket";
+            this.btnTicket.Size = new System.Drawing.Size(85, 46);
+            this.btnTicket.TabIndex = 51;
+            this.btnTicket.Text = "Nuevo        Ticket";
+            this.btnTicket.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnTicket.UseVisualStyleBackColor = false;
+            this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
             // 
             // frmHospitalizados
             // 
