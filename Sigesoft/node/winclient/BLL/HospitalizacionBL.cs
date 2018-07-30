@@ -274,6 +274,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oComponentesHospitalizacion.Categoria = componente.v_CategoryName;
                     oComponentesHospitalizacion.Componente = componente.v_ComponentName;
                     oComponentesHospitalizacion.Precio = float.Parse(componente.r_Price.ToString());
+                    oComponentesHospitalizacion.MedicoTratante = componente.MedicoTratante;
                     listaComponentes.Add(oComponentesHospitalizacion);
                 }
                 tickets.Componentes = listaComponentes;

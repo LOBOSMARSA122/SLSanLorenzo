@@ -54,6 +54,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Categoria");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componente");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn42 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MedicoTratante");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand6 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Habitaciones", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn43 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroHabitacion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_StartDate");
@@ -310,10 +311,13 @@
             ultraGridColumn40.Header.VisiblePosition = 0;
             ultraGridColumn41.Header.VisiblePosition = 1;
             ultraGridColumn42.Header.VisiblePosition = 2;
+            ultraGridColumn10.Header.Caption = "Medico Tratante";
+            ultraGridColumn10.Header.VisiblePosition = 3;
             ultraGridBand5.Columns.AddRange(new object[] {
             ultraGridColumn40,
             ultraGridColumn41,
-            ultraGridColumn42});
+            ultraGridColumn42,
+            ultraGridColumn10});
             ultraGridColumn43.Header.Caption = "Nro. Habitacion";
             ultraGridColumn43.Header.VisiblePosition = 0;
             ultraGridColumn44.Header.Caption = "Fecha Inicio";

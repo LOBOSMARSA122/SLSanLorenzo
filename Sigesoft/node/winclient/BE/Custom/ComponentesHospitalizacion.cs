@@ -12,5 +12,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string Categoria { get; set; }
         public string Componente { get; set; }
         public float Precio { get; set; }
+        public string MedicoTratante { get; set; }
     }
 }
