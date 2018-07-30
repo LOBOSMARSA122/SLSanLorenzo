@@ -34,6 +34,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NombreProducto");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Cantidad");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_EsDespachado");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CodInterno");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -149,14 +150,21 @@
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdTicketDetalle.DisplayLayout.Appearance = appearance1;
             ultraGridColumn11.Header.VisiblePosition = 0;
-            ultraGridColumn15.Header.VisiblePosition = 1;
-            ultraGridColumn12.Header.VisiblePosition = 2;
-            ultraGridColumn13.Header.VisiblePosition = 3;
+            ultraGridColumn11.Hidden = true;
+            ultraGridColumn15.Header.Caption = "Nombre Producto";
+            ultraGridColumn15.Header.VisiblePosition = 2;
+            ultraGridColumn15.Width = 196;
+            ultraGridColumn12.Header.Caption = "Cantidad";
+            ultraGridColumn12.Header.VisiblePosition = 3;
+            ultraGridColumn13.Header.VisiblePosition = 4;
+            ultraGridColumn13.Hidden = true;
+            ultraGridColumn1.Header.VisiblePosition = 1;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn11,
             ultraGridColumn15,
             ultraGridColumn12,
-            ultraGridColumn13});
+            ultraGridColumn13,
+            ultraGridColumn1});
             this.grdTicketDetalle.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdTicketDetalle.DisplayLayout.InterBandSpacing = 10;
             this.grdTicketDetalle.DisplayLayout.MaxColScrollRegions = 1;

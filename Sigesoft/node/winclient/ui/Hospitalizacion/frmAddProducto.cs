@@ -38,6 +38,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 var medicamento = f.MedicamentoSeleccionado;
                 if (medicamento == null) return;
                 txtMedicamento.Text = medicamento.NombreCompleto;
+                txtCodigo.Text = medicamento.CodInterno;
                 txtMedicamento.Tag = medicamento.IdProductoDetalle;
             }
         }
@@ -81,6 +82,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                         _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                         _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
+                        _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
                         decimal d;
                         _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
                         //objTicketDetalleList.i_EsDespachado = int.Parse()
@@ -97,6 +99,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                             {
                                 _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                                 _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
+                                _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
                                 decimal d;
                                 _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
 
@@ -106,6 +109,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                             {
                                 _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                                 _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
+                                _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
                                 decimal d;
                                 _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
                                 _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
@@ -120,11 +124,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         }
                     }
                 }
-                else if (_mode == "Edit")
+                else if (_mode == "Edit")   
                 {
                      var result = _TempTicketDetalleList.Find(p => p.v_TicketDetalleId == _id);
                      decimal d;
                      result.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
+                        result.v_CodInterno = txtCodigo.Text;
                      result.i_RecordStatus = (int)RecordStatus.Modificado;
                 }
                 MessageBox.Show("Se grabo correctamente.", "INFORMACION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -145,6 +150,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtMedicamento.Enabled = false;
                 var findResult = _TempTicketDetalleList.Find(p => p.v_TicketDetalleId == _id);
                 txtMedicamento.Text = findResult.v_NombreProducto;
+                txtCodigo.Text = findResult.v_CodInterno;
                 txtCantidad.Value = findResult.d_Cantidad;
             }
         }

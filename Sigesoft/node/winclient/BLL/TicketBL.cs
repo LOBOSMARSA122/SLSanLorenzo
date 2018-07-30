@@ -151,7 +151,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                              v_TicketDetalleId = F.v_TicketDetalleId,
                                              v_TicketId = F.v_TicketId,
                                              d_Cantidad = F.d_Cantidad.Value,
-                                             //v_NombreProducto = G.v_ProductName,
+                                             v_NombreProducto = F.v_Descripcion,
+                                             v_CodInterno =  F.v_CodInterno,
                                              v_IdProductoDetalle = F.v_IdProductoDetalle,
 
                                              i_RecordStatus = (int)RecordStatus.Grabado,
@@ -199,7 +200,6 @@ namespace Sigesoft.Node.WinClient.BLL
                     var NewId1 = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 346), "KD");
                     objEntity1.v_TicketDetalleId = NewId1;
                     objEntity1.v_TicketId = objticketDto.v_TicketId;
-
                     dbContext.AddToticketdetalle(objEntity1);
                     dbContext.SaveChanges();
 

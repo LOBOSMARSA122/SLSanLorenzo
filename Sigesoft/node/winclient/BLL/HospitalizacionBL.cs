@@ -379,7 +379,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_TicketDetalleId = F.v_TicketDetalleId,
                                   v_TicketId = F.v_TicketId,
                                   d_Cantidad = F.d_Cantidad.Value,
-                                  //v_NombreProducto = G.v_ProductName,
+                                  v_Descripcion = F.v_Descripcion,
                                   v_IdProductoDetalle = F.v_IdProductoDetalle
                               };
             List<TicketDetalleList> objData = queryticketdetalle.ToList();
@@ -390,6 +390,7 @@ namespace Sigesoft.Node.WinClient.BLL
                               v_IdProductoDetalle = a.v_IdProductoDetalle,
                               v_TicketDetalleId = a.v_TicketDetalleId,
                               d_Cantidad = a.d_Cantidad,
+                              v_Descripcion = a.v_Descripcion
                           }).ToList();
 
             return ticketdetalle;

@@ -29,7 +29,10 @@
         private void InitializeComponent()
         {
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.labelmensaje = new System.Windows.Forms.Label();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.txtMedicamento = new System.Windows.Forms.TextBox();
@@ -41,11 +44,14 @@
             this.lblIdDetalleProd = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
             this.SuspendLayout();
             // 
             // gbReceta
             // 
+            this.gbReceta.Controls.Add(this.txtCodigo);
+            this.gbReceta.Controls.Add(this.ultraLabel3);
             this.gbReceta.Controls.Add(this.labelmensaje);
             this.gbReceta.Controls.Add(this.btnBuscar);
             this.gbReceta.Controls.Add(this.txtMedicamento);
@@ -59,6 +65,24 @@
             this.gbReceta.Size = new System.Drawing.Size(407, 173);
             this.gbReceta.TabIndex = 1;
             this.gbReceta.Text = "Buscar Medicina";
+            // 
+            // txtCodigo
+            // 
+            appearance1.TextHAlignAsString = "Right";
+            this.txtCodigo.Appearance = appearance1;
+            this.txtCodigo.Location = new System.Drawing.Point(103, 73);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(68, 21);
+            this.txtCodigo.TabIndex = 11;
+            // 
+            // ultraLabel3
+            // 
+            this.ultraLabel3.AutoSize = true;
+            this.ultraLabel3.Location = new System.Drawing.Point(22, 77);
+            this.ultraLabel3.Name = "ultraLabel3";
+            this.ultraLabel3.Size = new System.Drawing.Size(43, 14);
+            this.ultraLabel3.TabIndex = 12;
+            this.ultraLabel3.Text = "Código:";
             // 
             // labelmensaje
             // 
@@ -117,18 +141,18 @@
             // 
             // txtCantidad
             // 
-            appearance1.TextHAlignAsString = "Right";
-            this.txtCantidad.Appearance = appearance1;
-            this.txtCantidad.Location = new System.Drawing.Point(103, 89);
+            appearance2.TextHAlignAsString = "Right";
+            this.txtCantidad.Appearance = appearance2;
+            this.txtCantidad.Location = new System.Drawing.Point(103, 100);
             this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(242, 21);
+            this.txtCantidad.Size = new System.Drawing.Size(68, 21);
             this.txtCantidad.TabIndex = 1;
             this.txtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCantidad_KeyPress);
             // 
             // ultraLabel2
             // 
             this.ultraLabel2.AutoSize = true;
-            this.ultraLabel2.Location = new System.Drawing.Point(22, 93);
+            this.ultraLabel2.Location = new System.Drawing.Point(22, 104);
             this.ultraLabel2.Name = "ultraLabel2";
             this.ultraLabel2.Size = new System.Drawing.Size(53, 14);
             this.ultraLabel2.TabIndex = 2;
@@ -170,6 +194,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).EndInit();
             this.gbReceta.ResumeLayout(false);
             this.gbReceta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -188,6 +213,8 @@
         private System.Windows.Forms.TextBox txtMedicamento;
         private System.Windows.Forms.Label lblIdDetalleProd;
         private System.Windows.Forms.Label labelmensaje;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtCodigo;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel3;
 
     }
 }
