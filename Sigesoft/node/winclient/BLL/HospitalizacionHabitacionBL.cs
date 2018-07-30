@@ -92,7 +92,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public void AddHospitalizacionHabitacion(ref OperationResult pobjOperationResult, hospitalizacionhabitacionDto pobjDtoEntity, List<string> ClientSession)
+        public string AddHospitalizacionHabitacion(ref OperationResult pobjOperationResult, hospitalizacionhabitacionDto pobjDtoEntity, List<string> ClientSession)
         {
             //mon.IsActive = true;
             string NewId = "(No generado)";
@@ -115,7 +115,6 @@ namespace Sigesoft.Node.WinClient.BLL
                 pobjOperationResult.Success = 1;
                 // Llenar entidad Log
                 LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "ÁREA", "v_HospitalizacionHabitacionId=" + NewId.ToString(), Success.Ok, null);
-                return;
             }
             catch (Exception ex)
             {
@@ -123,8 +122,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
                 // Llenar entidad Log
                 LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "ÁREA", "v_HospitalizacionHabitacionId=" + NewId.ToString(), Success.Failed, pobjOperationResult.ExceptionMessage);
-                return;
+                
             }
+            return NewId;
         }
 
         public void UpdateHospitalizacionHabitacion(ref OperationResult pobjOperationResult, hospitalizacionhabitacionDto pobjDtoEntity, List<string> ClientSession)
@@ -199,6 +199,86 @@ namespace Sigesoft.Node.WinClient.BLL
                 // Llenar entidad Log
                 LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ELIMINACION, "ÁREA", "", Success.Failed, pobjOperationResult.ExceptionMessage);
                 return;
+            }
+        }
+
+        public HospitalizacionHabitacionList GetHabitaciónHospi(ref OperationResult pobjOperationResult, int habId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+               
+                    var query = (from a in dbContext.hospitalizacionhabitacion
+                             join b in dbContext.hospitalizacion on a.v_HopitalizacionId equals b.v_HopitalizacionId
+
+                             join J1 in dbContext.systemparameter on new { a = 309, b = a.i_HabitacionId.Value }
+                                                                     equals new { a = J1.i_GroupId, b = J1.i_ParameterId } into J1_join
+                             from J1 in J1_join.DefaultIfEmpty()
+
+                             where a.i_IsDeleted == 0 && J1.i_ParameterId == habId
+                             select new HospitalizacionHabitacionList
+                             {
+                                 v_HopitalizacionId = b.v_HopitalizacionId,
+                                 i_HabitacionId = J1.i_ParameterId,
+                                 NroHabitacion = J1.v_Value1,
+                                 d_Precio = J1.v_Value2
+                             }
+
+                            ).FirstOrDefault();
+                pobjOperationResult.Success = 1;
+                return query;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+
+        public SystemParameterList GetHabitaciónH(ref OperationResult pobjOperationResult, int habId)
+        {
+
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var query = (from a in dbContext.systemparameter
+                         where a.i_IsDeleted == 0 && a.i_ParameterId == habId && a.i_GroupId == 309
+                         select new SystemParameterList
+                         {
+                             i_ParameterId = a.i_ParameterId,
+                             i_GroupId = a.i_GroupId,
+                             v_Value1 = a.v_Value1,
+                             v_Value2 = a.v_Value2
+                         }
+                    ).FirstOrDefault();
+            pobjOperationResult.Success = 1;
+            return query;
+        }
+
+        public hospitalizacionhabitacionDto GetHabitacion(ref OperationResult objOperationResult, string _habitacionId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                hospitalizacionhabitacionDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.hospitalizacionhabitacion
+                                 where a.v_HospitalizacionHabitacionId == _habitacionId
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = hospitalizacionhabitacionAssembler.ToDTO(objEntity);
+
+                objOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
             }
         }
 

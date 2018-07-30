@@ -175,7 +175,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4")
                 {
-                    btnEditarHabitacion.Enabled = false;
+                    btnEditarHabitacion.Enabled = true;
                 }
                 else
                 {
@@ -201,7 +201,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
             var hospitalizacionHabitacionId = grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
-            frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New", hospitalizacionHabitacionId);
+            frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId);
             frm.ShowDialog();
         }
 
