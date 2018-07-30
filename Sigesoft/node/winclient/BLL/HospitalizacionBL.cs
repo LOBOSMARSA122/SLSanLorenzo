@@ -307,7 +307,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      join E in dbContext.ticket on D.v_ServiceId equals E.v_ServiceId
                                      join F in dbContext.ticketdetalle on E.v_TicketId equals F.v_TicketId
                                      //join G in dbContext.productsformigration on F.v_IdProductoDetalle equals G.v_ProductId
-                                     where E.v_TicketId == v_TicketId
+                                     where E.v_TicketId == v_TicketId && F.i_IsDeleted == 0
 
                               select new TicketDetalleList
                               {
