@@ -92,6 +92,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New");
             ticket.ShowDialog();
             btnFilter_Click(sender, e);
+            btnTicket.Enabled = false;
         }
 
         private void txtHospitalizados_KeyPress(object sender, KeyPressEventArgs e)
@@ -136,6 +137,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 if (rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
                 {
                     btnAsignarHabitacion.Enabled = false;
+                    btnEditarHabitacion.Enabled = false;
                 }
                 else
                 {
@@ -146,16 +148,18 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 {
                     btnTicket.Enabled = false;
                     btnAgregarExamenes.Enabled = false;
+                    btnEditarHabitacion.Enabled = false;
                 }
                 else
                 {
                     btnTicket.Enabled = true;
                     btnAgregarExamenes.Enabled = true;
+                    btnEditarHabitacion.Enabled = false;
                     var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
                     OperationResult pobjOperationResult = new OperationResult();
                     ServiceBL oServiceBL = new ServiceBL();
                     var componentes = oServiceBL.GetServiceComponents_(ref pobjOperationResult, serviceId);
-
+                    
                     ListaComponentes = new List<string>();
                     foreach (var item in componentes)
                     {
@@ -177,7 +181,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "1" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4")
                 {
-                    btnEditarHabitacion.Enabled = true;
+                    btnEditarHabitacion.Enabled = false;
                 }
                 else
                 {
@@ -196,6 +200,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
             frmHabitacion frm = new frmHabitacion(hospitalizacionId, "New", "");
             frm.ShowDialog();
+            btnFilter_Click(sender, e);
+            btnAsignarHabitacion.Enabled = false;
 
         }
 
@@ -205,6 +211,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             var hospitalizacionHabitacionId = grdData.Selected.Rows[0].Cells["v_HospitalizacionHabitacionId"].Value.ToString();
             frmHabitacion frm = new frmHabitacion(hospitalizacionId, "Edit", hospitalizacionHabitacionId);
             frm.ShowDialog();
+            btnFilter_Click(sender, e);
+            btnEditarHabitacion.Enabled = false;
         }
 
         private void btnExport_Click(object sender, EventArgs e)
