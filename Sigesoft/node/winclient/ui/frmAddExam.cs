@@ -18,6 +18,7 @@ namespace Sigesoft.Node.WinClient.UI
         public CalendarBL _calendarBL = new CalendarBL();
         public List<ServiceComponentList> _auxiliaryExams = null;    
         public string _serviceId;
+        private string _modo;
 
         List<string> _ListaComponentes = null;
         #endregion
@@ -31,9 +32,10 @@ namespace Sigesoft.Node.WinClient.UI
 
         #endregion
 
-        public frmAddExam(List<string> ListaComponentes)
+        public frmAddExam(List<string> ListaComponentes, string modo)
         {
             _ListaComponentes = ListaComponentes;
+            _modo = modo;
             InitializeComponent();
 
         }
@@ -113,6 +115,15 @@ namespace Sigesoft.Node.WinClient.UI
             var ListServiceComponent = objServiceBL.GetAllComponents(ref objOperationResult);
             grdDataServiceComponent.DataSource = ListServiceComponent;
             ultraGrid1.DataSource = ListServiceComponent;
+            if (_modo == "HOSPI")
+            {
+                cboMedico.Enabled = true;
+                Utils.LoadDropDownList(cboMedico, "Value1", "Id", BLL.Utils.GetProfessionalName(ref objOperationResult), DropDownListAction.Select);
+            }
+            else
+            {
+                cboMedico.Enabled = false;
+            }
         }
 
         private void lvExamenesSeleccionados_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
@@ -186,6 +197,8 @@ namespace Sigesoft.Node.WinClient.UI
                     objServiceComponentDto.i_IsManuallyAddedId = (int)Common.SiNo.NO;
                     objServiceComponentDto.i_IsRequiredId = (int)Common.SiNo.SI;
                     objServiceComponentDto.v_IdUnidadProductiva = objComponentDto.v_IdUnidadProductiva;
+                    objServiceComponentDto.i_MedicoTratanteId = int.Parse(cboMedico.SelectedValue.ToString());
+
 
                     //_calendarBL.UpdateAdditionalExam(_auxiliaryExams, _serviceId, (int?)SiNo.SI, Globals.ClientSession.GetAsList());
                     _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());

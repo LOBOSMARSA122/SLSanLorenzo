@@ -74,6 +74,8 @@
             this.btnAgregarExamenAuxiliar = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
+            this.cboMedico = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.gbExamenesSeleccionados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataServiceComponent)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).BeginInit();
@@ -300,7 +302,7 @@
             this.ultraGrid1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ultraGrid1.Location = new System.Drawing.Point(3, 12);
             this.ultraGrid1.Name = "ultraGrid1";
-            this.ultraGrid1.Size = new System.Drawing.Size(308, 331);
+            this.ultraGrid1.Size = new System.Drawing.Size(308, 291);
             this.ultraGrid1.TabIndex = 106;
             this.ultraGrid1.Text = "ultraGrid1";
             this.ultraGrid1.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.ultraGrid1_AfterSelectChange);
@@ -369,11 +371,37 @@
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
+            // cboMedico
+            // 
+            this.cboMedico.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMedico.Enabled = false;
+            this.cboMedico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMedico.FormattingEnabled = true;
+            this.cboMedico.Location = new System.Drawing.Point(3, 327);
+            this.cboMedico.Margin = new System.Windows.Forms.Padding(2);
+            this.cboMedico.Name = "cboMedico";
+            this.cboMedico.Size = new System.Drawing.Size(308, 21);
+            this.cboMedico.TabIndex = 110;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(11, 312);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.TabIndex = 109;
+            this.label3.Text = "Médico Tratante";
+            // 
             // frmAddExam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 375);
+            this.Controls.Add(this.cboMedico);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.ultraGrid1);
             this.Controls.Add(this.grdDataServiceComponent);
             this.Controls.Add(this.gbExamenesSeleccionados);
@@ -393,6 +421,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdDataServiceComponent)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraGrid1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -409,5 +438,7 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid grdDataServiceComponent;
         private System.Windows.Forms.ColumnHeader chServiceComponentConcatId;
         private Infragistics.Win.UltraWinGrid.UltraGrid ultraGrid1;
+        private System.Windows.Forms.ComboBox cboMedico;
+        private System.Windows.Forms.Label label3;
     }
 }
