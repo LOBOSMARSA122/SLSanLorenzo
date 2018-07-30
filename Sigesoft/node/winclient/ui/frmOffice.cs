@@ -948,7 +948,7 @@ namespace Sigesoft.Node.WinClient.UI
             //var ListServiceComponent = oServiceBL.GetServiceComponents(ref objOperationResult, _strServicelId);
             //grdDataServiceComponent.DataSource = ListServiceComponent;
             ServiceBL oServiceBL = new ServiceBL();
-            var frm = new frmAddExam(ListaComponentes);
+            var frm = new frmAddExam(ListaComponentes,"");
             frm._serviceId = _serviceId;
             frm.ShowDialog();
 

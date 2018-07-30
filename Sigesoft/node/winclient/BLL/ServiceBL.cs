@@ -1629,6 +1629,8 @@ namespace Sigesoft.Node.WinClient.BLL
 				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
 				var query = (from A in dbContext.servicecomponent
+                             join C in dbContext.systemuser on A.i_MedicoTratanteId equals C.i_SystemUserId
+                             join D in dbContext.person on C.v_PersonId equals D.v_PersonId
                             join B in dbContext.component on A.v_ComponentId equals B.v_ComponentId
                             join F in dbContext.systemparameter on new { a = B.i_CategoryId.Value, b = 116 } 
                                     equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
@@ -1643,7 +1645,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_ComponentId = A.v_ComponentId,
                                  r_Price = A.r_Price,
                                  v_ComponentName = B.v_Name,
-                                 v_CategoryName = F.v_Value1
+                                 v_CategoryName = F.v_Value1,
+                                 MedicoTratante = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName
 							 }).ToList();
 
 

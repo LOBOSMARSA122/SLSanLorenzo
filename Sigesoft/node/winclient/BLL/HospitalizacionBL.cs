@@ -274,6 +274,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oComponentesHospitalizacion.Categoria = componente.v_CategoryName;
                     oComponentesHospitalizacion.Componente = componente.v_ComponentName;
                     oComponentesHospitalizacion.Precio = float.Parse(componente.r_Price.ToString());
+                    oComponentesHospitalizacion.MedicoTratante = componente.MedicoTratante;
                     listaComponentes.Add(oComponentesHospitalizacion);
                 }
                 tickets.Componentes = listaComponentes;
@@ -379,7 +380,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_TicketDetalleId = F.v_TicketDetalleId,
                                   v_TicketId = F.v_TicketId,
                                   d_Cantidad = F.d_Cantidad.Value,
-                                  //v_NombreProducto = G.v_ProductName,
+                                  v_Descripcion = F.v_Descripcion,
                                   v_IdProductoDetalle = F.v_IdProductoDetalle
                               };
             List<TicketDetalleList> objData = queryticketdetalle.ToList();
@@ -390,6 +391,7 @@ namespace Sigesoft.Node.WinClient.BLL
                               v_IdProductoDetalle = a.v_IdProductoDetalle,
                               v_TicketDetalleId = a.v_TicketDetalleId,
                               d_Cantidad = a.d_Cantidad,
+                              v_Descripcion = a.v_Descripcion
                           }).ToList();
 
             return ticketdetalle;
@@ -576,23 +578,28 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
-                var query = from A in dbContext.service
+                var query = from A in dbContext.servicecomponent
+                            join A1 in dbContext.service on A.v_ServiceId equals  A1.v_ServiceId
                             join B in dbContext.systemuser on A.i_MedicoTratanteId equals B.i_SystemUserId
                             join C in dbContext.person on B.v_PersonId equals C.v_PersonId
-                            join D in dbContext.person on A.v_PersonId equals D.v_PersonId
-                            join E in dbContext.systemparameter on new { a = A.i_MasterServiceId.Value, b = 119 } equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
+                            join D in dbContext.person on A1.v_PersonId equals D.v_PersonId
+                            join E in dbContext.systemparameter on new { a = A1.i_MasterServiceId.Value, b = 119 } equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
                             from E in E_join.DefaultIfEmpty()
+                            join F in dbContext.component on A.v_ComponentId equals F.v_ComponentId
 
-                            where A.i_IsDeleted == 0 && A.i_MasterServiceId != 2
+                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && ( A.r_Price != 0.00 || A.r_Price != 0)
 
                             select new LiquidacionMedicoList
                             {
                                 MedicoTratanteId = B.i_SystemUserId,
                                 MedicoTratante = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
                                 Paciente = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
-                                d_ServiceDate = A.d_ServiceDate,
+                                d_ServiceDate = A1.d_ServiceDate,
                                 v_ServiceId = A.v_ServiceId,
-                                Tipo = E.v_Value1
+                                Tipo = E.v_Value1,
+                                v_ServiceComponentId = A.v_ServiceComponentId,
+                                r_CostoComponente = A.r_Price.Value,
+                                Componente = F.v_Name
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -623,10 +630,11 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquidacionServicios.v_ServiceId = servicio.v_ServiceId;
                         oLiquidacionServicios.d_ServiceDate = servicio.d_ServiceDate;
                         oLiquidacionServicios.Tipo = servicio.Tipo;
+                        oLiquidacionServicios.Componente = servicio.Componente;
                         //obtener datos de costo y comisiones
                         if (medico.MedicoTratanteId != null)
                         {
-                            var pagos = ObtenerPagos(servicio.v_ServiceId, medico.MedicoTratanteId.Value);
+                            var pagos = ObtenerPagos(servicio.v_ServiceId, medico.MedicoTratanteId.Value, servicio.r_CostoComponente);
 
                             oLiquidacionServicios.r_costo = pagos.r_costo;
                             oLiquidacionServicios.r_Comision = pagos.r_Comision;
@@ -649,7 +657,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        private PagosComisiones ObtenerPagos(string serviceId, int medicoTratanteId)
+        private PagosComisiones ObtenerPagos(string serviceId, int medicoTratanteId, float costoComponente)
         {
              SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -659,8 +667,8 @@ namespace Sigesoft.Node.WinClient.BLL
             var oPagosComisiones = new PagosComisiones();
             if (comisionMedico != null)
             {
-                var costoServicio = new ServiceBL().GetServiceCost(serviceId);
-                oPagosComisiones.r_costo = decimal.Parse(costoServicio);
+                //var costoServicio = new ServiceBL().GetServiceCost(serviceId);
+                oPagosComisiones.r_costo = decimal.Parse(costoComponente.ToString()); //decimal.Parse(costoServicio);
                 oPagosComisiones.r_Comision = oPagosComisiones.r_costo * comisionMedico.r_Medico.Value / 100;
                 oPagosComisiones.r_Total = oPagosComisiones.r_costo * comisionMedico.r_Clinica.Value / 100; ;
 

@@ -70,6 +70,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             txtNServicio.Text = _serviceId;
             objticketDto.v_ServiceId = txtNServicio.Text;
             objticketDto.d_Fecha = DateTime.Parse(txtFecha.Text);
+            objticketDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante :(int)CargoHospitalizacion.Paciente;
+            objticketDto.i_TipoCuentaId = int.Parse(cboTipoCuenta.SelectedValue.ToString());
             if (_mode == "New")
             {
                 foreach (var item in _tmpTicketDetalleList)
@@ -79,6 +81,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     ticketDetalle.v_IdProductoDetalle = item.v_IdProductoDetalle;
                     ticketDetalle.d_Cantidad = item.d_Cantidad;
                     ticketDetalle.i_EsDespachado = item.i_EsDespachado;
+                    ticketDetalle.v_CodInterno = item.v_CodInterno;
+                    ticketDetalle.v_Descripcion = item.v_NombreProducto;
 
                     _ticketdetalleDTO.Add(ticketDetalle);
                 }
@@ -118,7 +122,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         ticketdetalleDtoAdd.v_IdProductoDetalle = item.v_IdProductoDetalle;
                         ticketdetalleDtoAdd.d_Cantidad = item.d_Cantidad;
                         ticketdetalleDtoAdd.i_EsDespachado = item.i_EsDespachado;
-
+                        ticketdetalleDtoAdd.v_CodInterno = item.v_CodInterno;
+                        ticketdetalleDtoAdd.v_Descripcion = item.v_NombreProducto;
                         _ticketdetalleDTO.Add(ticketdetalleDtoAdd);
                     }
                     #endregion
@@ -131,7 +136,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         ticketdetalleDtoUp.v_IdProductoDetalle = item.v_IdProductoDetalle;
                         ticketdetalleDtoUp.d_Cantidad = item.d_Cantidad;
                         ticketdetalleDtoUp.i_EsDespachado = item.i_EsDespachado;
-
+                        ticketdetalleDtoUp.v_CodInterno = item.v_CodInterno;
+                        ticketdetalleDtoUp.v_Descripcion = item.v_NombreProducto;
                         _ticketdetalleDTOUpdate.Add(ticketdetalleDtoUp);
                     }
                     #endregion
@@ -191,8 +197,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void LoadData()
         {
-            this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
             OperationResult objOperationResult = new OperationResult();
+            Utils.LoadDropDownList(cboTipoCuenta, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 310, null), DropDownListAction.All);
+            this.grdTicketDetalle.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+            
             if (_mode == "New")
             {
                 int Year = DateTime.Now.Year;
@@ -210,6 +218,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtNTicket.Text = objticketDtoo.v_TicketId;
                 txtFecha.Text = objticketDtoo.d_Fecha.ToString();
                 txtNServicio.Text = objticketDtoo.v_ServiceId;
+                if (objticketDtoo.i_ConCargoA == (int)CargoHospitalizacion.Paciente)
+                    rbPaciente.Checked = true;
+                else
+                    rbMedicoTratante.Checked = true;
+
+                cboTipoCuenta.SelectedValue = objticketDtoo.i_TipoCuentaId.ToString();
 
                 var dataListPc = _objTicketBl.GetTicketDetails(ref objOperationResult, _tickId);
 

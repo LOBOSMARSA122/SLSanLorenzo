@@ -90,5 +90,6 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_Iscalling_1 { get; set; }
         public int? i_UpdateUserMedicalAnalystId { get; set; }
         public int? i_UpdateUserTechnicalDataRegisterId { get; set; }
+        public string MedicoTratante { get; set; }
     }
 }

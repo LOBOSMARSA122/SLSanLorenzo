@@ -11,6 +11,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_TicketId { get; set; }
         public string v_IdProductoDetalle { get; set; }
         public string v_NombreProducto { get; set; }
+        public string v_CodInterno { get; set; }
+        public string v_Descripcion { get; set; }
         public decimal d_Cantidad { get; set; }
         public int i_EsDespachado { get; set; }
         public int? i_RecordStatus { get; set; }

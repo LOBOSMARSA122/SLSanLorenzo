@@ -23,6 +23,12 @@ namespace Sigesoft.Common
         Agudo = 2
     }
 
+    public enum CargoHospitalizacion
+    {
+        MedicoTratante = 1,
+        Paciente = 2
+    }
+
     public enum TypePrinter
     {
         Image = 1,
