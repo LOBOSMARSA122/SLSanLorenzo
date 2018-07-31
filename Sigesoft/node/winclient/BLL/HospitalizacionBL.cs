@@ -162,12 +162,25 @@ namespace Sigesoft.Node.WinClient.BLL
             if (fechafin != null)
             {
                 if (fechaIni != null)
-                    cantidadDias = int.Parse((fechafin.Value.AddTicks(-fechaIni.Value.Ticks).Day - 1).ToString());
+                {
+                    TimeSpan ts = fechafin.Value.Date.AddDays(1) - fechaIni.Value.Date;
+                    cantidadDias = ts.Days;
+                }
             }
             else
             {
                 if (fechaIni != null)
-                    cantidadDias = int.Parse((DateTime.Today.AddTicks(-fechaIni.Value.Ticks).Day - 1).ToString());
+                {
+                    DateTime oldDate = fechaIni.Value.Date;
+                    DateTime newDate = DateTime.Now.Date;
+
+                    // Difference in days, hours, and minutes.
+                    TimeSpan ts = newDate - oldDate;
+
+                    // Difference in days.
+                    cantidadDias = ts.Days;
+                }
+                    //cantidadDias = int.Parse((DateTime.Today.AddTicks(-fechaIni.Value.Ticks).Day + 1).ToString());
             }
 
             return precioHabitacion * cantidadDias;

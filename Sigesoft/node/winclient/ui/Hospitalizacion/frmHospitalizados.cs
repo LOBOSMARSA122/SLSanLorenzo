@@ -66,7 +66,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void grdData_InitializeLayout(object sender, InitializeLayoutEventArgs e)
         {
-            this.BindGrid();
+            //this.BindGrid();
         }
 
         private List<HospitalizacionList> GetData(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
