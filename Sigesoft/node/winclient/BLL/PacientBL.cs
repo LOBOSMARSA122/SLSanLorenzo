@@ -6138,6 +6138,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                          equals new { a = oc.v_OrganizationId } into oc_join
                                  from oc in oc_join.DefaultIfEmpty()
 
+                                 join z in dbContext.organization on new { a = d.v_EmployerOrganizationId }
+                                         equals new { a = z.v_OrganizationId } into z_join
+                                 from z in z_join.DefaultIfEmpty()
+
                                  join lc in dbContext.location on new { a = d.v_CustomerOrganizationId, b = d.v_CustomerLocationId }
                                        equals new { a = lc.v_OrganizationId, b = lc.v_LocationId } into lc_join
                                  from lc in lc_join.DefaultIfEmpty()
@@ -6187,6 +6191,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_ResidenciaAnterior = b.v_ResidenciaAnterior,
                                      i_DocTypeId = b.i_DocTypeId,
                                      v_OwnerName = b.v_OwnerName,
+                                     v_Employer = z.v_Name,
+                                     
                                      //
                                      Genero = c.v_Value1,
                                      i_SexTypeId = b.i_SexTypeId,
@@ -6247,6 +6253,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_ResidenciaAnterior=a.v_ResidenciaAnterior,
                                   i_DocTypeId = a.i_DocTypeId,
                                   v_OwnerName = a.v_OwnerName,
+                                  v_Employer = a.v_Employer,
                                   //
                                   Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,

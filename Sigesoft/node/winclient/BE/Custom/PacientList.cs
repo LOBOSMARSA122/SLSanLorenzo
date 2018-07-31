@@ -140,6 +140,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_TypeOfInsuranceName { get; set; }
 
         public string v_WorkingOrganizationName { get; set; }
+        public string v_Employer { get; set; }
         public string v_WorkingOrganizationId { get; set; }
         public string v_WorkingLocationId { get; set; }
 
