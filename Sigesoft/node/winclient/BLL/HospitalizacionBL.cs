@@ -268,7 +268,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 OperationResult pobjOperationResult = new OperationResult();
                 ServiceBL oServiceBL = new ServiceBL();
-                var componentes = oServiceBL.GetServiceComponents_(ref pobjOperationResult, item.v_ServiceId);
+                var componentes = oServiceBL.GetServiceComponents_(ref pobjOperationResult, item.v_ServiceId).FindAll(p => p.r_Price != 0 || p.r_Price != 0.00);
                 ComponentesHospitalizacion oComponentesHospitalizacion;
 
                 List<ComponentesHospitalizacion> listaComponentes = new List<ComponentesHospitalizacion>();
