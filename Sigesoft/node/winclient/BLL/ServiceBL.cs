@@ -1637,7 +1637,8 @@ namespace Sigesoft.Node.WinClient.BLL
                             from F in F_join.DefaultIfEmpty()
 							 where A.v_ServiceId == pstrServiceId &&
 								   A.i_IsDeleted == isDeleted &&
-								   A.i_IsRequiredId == isRequired
+                                   A.i_IsRequiredId == isRequired 
+                                   //&& (A.r_Price != 0 || A.r_Price != 0.00 )
 
 							 select new ServiceComponentList
 							 {
