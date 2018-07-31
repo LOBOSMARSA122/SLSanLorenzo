@@ -4052,67 +4052,67 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/03/2018 12:47:39</publishTime>
     </File>
     <File Include="bin/ScrapperReniecSunat.dll">
-      <publishTime>07/03/2018 12:47:39</publishTime>
+      <publishTime>07/13/2018 09:29:31</publishTime>
     </File>
     <File Include="bin/Sigesoft.Common.dll">
-      <publishTime>07/10/2018 19:06:44</publishTime>
+      <publishTime>07/30/2018 23:14:37</publishTime>
     </File>
     <File Include="bin/Sigesoft.Common.pdb">
-      <publishTime>07/10/2018 19:06:44</publishTime>
+      <publishTime>07/30/2018 23:14:37</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.Contasol.Integration.dll">
-      <publishTime>07/10/2018 19:06:54</publishTime>
+      <publishTime>07/30/2018 23:14:50</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.Contasol.Integration.pdb">
-      <publishTime>07/10/2018 19:06:54</publishTime>
+      <publishTime>07/30/2018 23:14:50</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.WinClient.BE.dll">
-      <publishTime>07/10/2018 12:51:19</publishTime>
+      <publishTime>07/30/2018 23:14:33</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.WinClient.BE.pdb">
-      <publishTime>07/10/2018 12:51:19</publishTime>
+      <publishTime>07/30/2018 23:14:33</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.WinClient.BLL.dll">
-      <publishTime>07/10/2018 19:06:53</publishTime>
+      <publishTime>07/30/2018 23:14:48</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.WinClient.BLL.pdb">
-      <publishTime>07/10/2018 19:06:53</publishTime>
+      <publishTime>07/30/2018 23:14:48</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.WinClient.DAL.MSSQL.dll">
-      <publishTime>07/10/2018 12:51:21</publishTime>
+      <publishTime>07/30/2018 23:14:37</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.WinClient.DAL.MSSQL.pdb">
-      <publishTime>07/10/2018 12:51:21</publishTime>
+      <publishTime>07/30/2018 23:14:37</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.WinClient.UI.exe">
-      <publishTime>07/10/2018 19:07:01</publishTime>
+      <publishTime>07/30/2018 23:15:44</publishTime>
     </File>
     <File Include="bin/Sigesoft.Node.WinClient.UI.pdb">
-      <publishTime>07/10/2018 19:07:00</publishTime>
+      <publishTime>07/30/2018 23:15:43</publishTime>
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.BE.dll">
-      <publishTime>07/06/2018 09:57:28</publishTime>
+      <publishTime>07/30/2018 23:14:32</publishTime>
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.BE.pdb">
-      <publishTime>07/06/2018 09:57:28</publishTime>
+      <publishTime>07/30/2018 23:14:32</publishTime>
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.BLL.dll">
-      <publishTime>07/11/2018 12:05:09</publishTime>
+      <publishTime>07/30/2018 23:14:41</publishTime>
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.BLL.pdb">
-      <publishTime>07/11/2018 12:05:09</publishTime>
+      <publishTime>07/30/2018 23:14:41</publishTime>
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.DAL.MSSQL.dll">
-      <publishTime>07/06/2018 09:57:29</publishTime>
+      <publishTime>07/30/2018 23:14:34</publishTime>
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.DAL.MSSQL.pdb">
-      <publishTime>07/06/2018 09:57:29</publishTime>
+      <publishTime>07/30/2018 23:14:34</publishTime>
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.UI.dll">
-      <publishTime>07/11/2018 12:05:14</publishTime>
+      <publishTime>07/30/2018 23:15:52</publishTime>
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.UI.pdb">
-      <publishTime>07/11/2018 12:05:13</publishTime>
+      <publishTime>07/30/2018 23:15:52</publishTime>
     </File>
     <File Include="bin/SigPlusNET.dll">
       <publishTime>07/03/2018 12:47:39</publishTime>
@@ -4484,7 +4484,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/03/2018 12:47:42</publishTime>
     </File>
     <File Include="ExternalUser/FRM031.aspx">
-      <publishTime>07/03/2018 12:47:42</publishTime>
+      <publishTime>07/30/2018 22:59:58</publishTime>
     </File>
     <File Include="ExternalUser/FRM031A.aspx">
       <publishTime>07/03/2018 12:47:42</publishTime>
@@ -4521,6 +4521,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="ExternalUser/FRM031K.aspx">
       <publishTime>07/03/2018 12:47:42</publishTime>
+    </File>
+    <File Include="ExternalUser/FRM031M.aspx">
+      <publishTime>07/30/2018 20:50:58</publishTime>
     </File>
     <File Include="ExternalUser/FRM031X.aspx">
       <publishTime>07/03/2018 12:47:42</publishTime>
@@ -9914,7 +9917,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/03/2018 12:47:42</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/03/2018 12:47:43</publishTime>
+      <publishTime>07/30/2018 23:01:06</publishTime>
     </File>
   </ItemGroup>
 </Project>
