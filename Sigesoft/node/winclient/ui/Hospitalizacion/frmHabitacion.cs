@@ -35,19 +35,22 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void frmHabitacion_Load(object sender, EventArgs e)
         {                
             OperationResult objOperationResult = new OperationResult();
-            //if (_mode == "New")
-            //{
             Utils.LoadDropDownList(cboHabitación, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 309, null), DropDownListAction.Select);
-
-            //}
-
-           if (_mode == "Edit")
+               
+            if (_mode == "New")
+            {
+                 dtpFechaFin.Checked = false;
+            }
+            else if (_mode == "Edit")
             {
                 _hospitalizacionHabitaciónDto = _hospitalizacionBL.GetHabitacion(ref objOperationResult, _hospitalizacionHabitacionId);
 
                 cboHabitación.SelectedValue = _hospitalizacionHabitaciónDto.i_HabitacionId.ToString();
                 dtpFechaInicio.Value = _hospitalizacionHabitaciónDto.d_StartDate.Value;
-                dtpFechaFin.Value = _hospitalizacionHabitaciónDto.d_EndDate.Value;
+                if (_hospitalizacionHabitaciónDto.d_EndDate != null)
+                {
+                    dtpFechaFin.Value = _hospitalizacionHabitaciónDto.d_EndDate.Value;
+                }
                 txtPrecio.Text =(_hospitalizacionHabitaciónDto.d_Precio).ToString();
             }
         }
@@ -67,7 +70,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 _hospitalizacionHabitaciónDto.v_HopitalizacionId = _hospitalizacion;
                 _hospitalizacionHabitaciónDto.i_HabitacionId = int.Parse(cboHabitación.SelectedValue.ToString());
                 _hospitalizacionHabitaciónDto.d_StartDate = dtpFechaInicio.Value;
-                _hospitalizacionHabitaciónDto.d_EndDate = dtpFechaFin.Value;
+                _hospitalizacionHabitaciónDto.d_EndDate = (DateTime?) (dtpFechaFin.Checked == false ?  (ValueType) null : dtpFechaFin.Value);
 
                 decimal d;
                 _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null; 

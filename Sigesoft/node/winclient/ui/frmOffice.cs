@@ -337,7 +337,7 @@ namespace Sigesoft.Node.WinClient.UI
                 Form frm;
                 if (_TserviceId == (int)MasterService.AtxMedicaParticular)
                 {
-                    frm = new Operations.frmMedicalConsult(_serviceId, string.Join("|", _componentIds.Select(p => p)), null);
+                    frm = new Operations.frmEso(_serviceId, string.Join("|", _componentIds.Select(p => p)), null, (int)MasterService.Eso);
                     frm.ShowDialog();
                 }
                 else

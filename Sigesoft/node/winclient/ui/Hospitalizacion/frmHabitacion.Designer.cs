@@ -36,8 +36,8 @@
             this.cboHabitación = new System.Windows.Forms.ComboBox();
             this.btnGuardarTicket = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label1
@@ -130,16 +130,6 @@
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalir.UseVisualStyleBackColor = false;
             // 
-            // dtpFechaFin
-            // 
-            this.dtpFechaFin.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaFin.Location = new System.Drawing.Point(114, 86);
-            this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(95, 21);
-            this.dtpFechaFin.TabIndex = 5;
-            // 
             // dtpFechaInicio
             // 
             this.dtpFechaInicio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -150,11 +140,23 @@
             this.dtpFechaInicio.Size = new System.Drawing.Size(95, 21);
             this.dtpFechaInicio.TabIndex = 108;
             // 
+            // dtpFechaFin
+            // 
+            this.dtpFechaFin.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaFin.Location = new System.Drawing.Point(114, 91);
+            this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpFechaFin.Name = "dtpFechaFin";
+            this.dtpFechaFin.ShowCheckBox = true;
+            this.dtpFechaFin.Size = new System.Drawing.Size(122, 20);
+            this.dtpFechaFin.TabIndex = 109;
+            // 
             // frmHabitacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 208);
+            this.Controls.Add(this.dtpFechaFin);
             this.Controls.Add(this.dtpFechaInicio);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGuardarTicket);
@@ -162,7 +164,6 @@
             this.Controls.Add(this.txtPrecio);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dtpFechaFin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
@@ -188,7 +189,7 @@
         private System.Windows.Forms.ComboBox cboHabitación;
         private System.Windows.Forms.Button btnGuardarTicket;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.DateTimePicker dtpFechaFin;
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
+        private System.Windows.Forms.DateTimePicker dtpFechaFin;
     }
 }
