@@ -1349,6 +1349,7 @@
     <Content Include="Common\FRM005G.aspx" />
     <Content Include="Common\FRM005H.aspx" />
     <Content Include="Estadisticas\DXGRUPOETARIO.aspx" />
+    <Content Include="ExternalUser\FRM031M.aspx" />
     <Content Include="ExternalUser\FRM031K.aspx" />
     <Content Include="ExternalUser\FRM031E_.aspx" />
     <Content Include="ExternalUser\FRM031.aspx" />
@@ -4096,6 +4097,13 @@
     </Compile>
     <Compile Include="Estadisticas\DXGRUPOETARIO.aspx.designer.cs">
       <DependentUpon>DXGRUPOETARIO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ExternalUser\FRM031M.aspx.cs">
+      <DependentUpon>FRM031M.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ExternalUser\FRM031M.aspx.designer.cs">
+      <DependentUpon>FRM031M.aspx</DependentUpon>
     </Compile>
     <Compile Include="ExternalUser\FRM031K.aspx.cs">
       <DependentUpon>FRM031K.aspx</DependentUpon>
