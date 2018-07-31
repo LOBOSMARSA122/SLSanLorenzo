@@ -24,8 +24,8 @@ namespace NetPdf
             List<ServiceOrderPdf> ListaServiceOrder, 
             OrganizationList infoEmpresaPropietaria,
             string EmpresaCliente, 
-            string Fecha, 
-            string Usuario ,
+            string Fecha,
+            string Usuario, 
             string filePDF)
         {
 
@@ -107,12 +107,28 @@ namespace NetPdf
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
             document.Add(table);
 
-           string[] fech = Fecha.ToString().Split(' '); 
+            string[] fech = Fecha.ToString().Split(' ');
+            string mes = null;
+            if (fech[2] == "enero") mes = "01";
+            else if (fech[2] == "febrero") mes = "02";
+            else if (fech[2] == "marzo") mes = "03";
+            else if (fech[2] == "abril") mes = "04";
+            else if (fech[2] == "mayo") mes = "05";
+            else if (fech[2] == "junio") mes = "06";
+            else if (fech[2] == "julio") mes = "07";
+            else if (fech[2] == "agosto") mes = "08";
+            else if (fech[2] == "setiembre") mes = "09";
+            else if (fech[2] == "octubre") mes = "10";
+            else if (fech[2] == "noviembre") mes = "11";
+            else if (fech[2] == "diciembre") mes = "12";
+
+            string anio = fech[4];
+
             cells = new List<PdfPCell>()
             {
                 new PdfPCell(new Phrase("\n"+infoEmpresaPropietaria.v_Sede + ", " + Fecha, fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, BorderColor = BaseColor.WHITE, MinimumHeight = tamaño_celda},
                
-                new PdfPCell(new Phrase("Carta N° ", fontColumnValue))
+                new PdfPCell(new Phrase("Carta N° "+"-"+ mes +"-"+anio.Substring(2,2)+"CSLSRL/CAL.", fontColumnValue))
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK},    
                
                 new PdfPCell(new Phrase("Estimado (s) Sr (s). " + EmpresaCliente, fontColumnValue))
@@ -392,8 +408,8 @@ namespace NetPdf
 
                     new PdfPCell(new Phrase("", fontColumnValueBold1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK },
                     new PdfPCell(new Phrase("", fontColumnValue1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK },
-                    new PdfPCell(new Phrase("-", fontColumnValue1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK },
-                    new PdfPCell(new Phrase("-", fontColumnValue1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK },
+                    new PdfPCell(new Phrase("", fontColumnValue1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK },
+                    new PdfPCell(new Phrase("", fontColumnValue1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK },
 
                     new PdfPCell(new Phrase("CUENTA DE DETRACCIONES", fontColumnValueBold1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },
                     new PdfPCell(new Phrase("", fontColumnValue1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },

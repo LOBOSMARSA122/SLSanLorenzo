@@ -554,8 +554,7 @@ namespace Sigesoft.Node.WinClient.UI
                     this.Enabled = false;
                     var MedicalCenter = _serviceBL.GetInfoMedicalCenterSede();
                     var pEmpresaCliente = new ProtocolBL().GetEmpresaByProtocoloId(_ProtocolId)[0].v_Name;
-                    
-                
+                    //var DataService = _serviceBL.GetService(ref objOperationResult, Protocolo.);
 
                     foreach (var Protocolo in _TempServiceOrderDetail)
                     {
@@ -591,11 +590,11 @@ namespace Sigesoft.Node.WinClient.UI
 
                    string ruta = Common.Utils.GetApplicationConfigValue("rutaCotizacion").ToString();
 
-                    
+
 
                    if (chkProtocoloEspecial.Checked)
                    {
-                       OrdenServicioPromocion.CrearOrdenServicio(rbSi.Checked ? true : false, Lista, MedicalCenter, pEmpresaCliente, DateTime.Parse(txtDateTime.Text).ToString("dd de MMMM de yyyy"), oSystemUserList.Profesion + ". " + oSystemUserList.v_PersonName, ruta + _ServiceOrderId + ".pdf");
+                       OrdenServicioPromocion.CrearOrdenServicio(rbSi.Checked ? true : false, Lista, MedicalCenter, pEmpresaCliente, DateTime.Parse(txtDateTime.Text).ToString("dd 'd'e MMMM 'd'e yyyy"), oSystemUserList.Profesion + ". " + oSystemUserList.v_PersonName, ruta + _ServiceOrderId + ".pdf");
 
                    }
                    else

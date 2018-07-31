@@ -131,6 +131,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         }
 
+        private void txtPrecio_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnGuardarTicket_Click(null, null);
+            }
+        }
+
        
     }
 }
