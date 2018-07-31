@@ -14,6 +14,8 @@ using Infragistics.Win;
 using Infragistics.Win.UltraWinGrid.DocumentExport;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
+using Sigesoft.Node.Contasol.Integration;
+using NetPdf;
 
 namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 {
@@ -24,9 +26,24 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         HospitalizacionBL _objHospBL = new HospitalizacionBL();
         List<string> ListaComponentes = new List<string>();
         private string _ticketId;
-        private int _rowIndexPc;
         private List<TicketList> _tempTicket = null;
         private TicketBL _ticketlBL = new TicketBL();
+
+        private ServiceBL _serviceBL = new ServiceBL();
+        private PacientBL _pacientBL = new PacientBL();
+        private OperationResult _objOperationResult = new OperationResult();
+        private List<PersonList> personalList;
+        private List<HospitalizacionList> hospitalizacionlList;
+        private List<HospitalizacionServiceList> hospitalizacionServicelList;
+        private List<TicketList> ticketlList;
+        private List<TicketDetalleList> ticketdetallelList;
+        string _serviceId;
+        string _EmpresaClienteId;
+        string _pacientId;
+        string _customerOrganizationName;
+        string _personFullName;
+        string ruta;
+        int _edad;
 
         public frmHospitalizados()
         {
@@ -51,6 +68,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
 
            this.BindGrid();
+           btnTicket.Enabled = false;
+           btnAgregarExamenes.Enabled = false;
+           btnAsignarHabitacion.Enabled = false;
 
          
         }
@@ -138,10 +158,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 {
                     btnAsignarHabitacion.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
+                    //btnReportePDF.Enabled = false;
                 }
                 else
                 {
                     btnAsignarHabitacion.Enabled = true;
+                    //btnReportePDF.Enabled = true;
                 }
 
                 if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
@@ -149,11 +171,13 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     btnTicket.Enabled = false;
                     btnAgregarExamenes.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
+                    btnReportePDF.Enabled = false;
                 }
                 else
                 {
                     btnTicket.Enabled = true;
                     btnAgregarExamenes.Enabled = true;
+                    btnReportePDF.Enabled = true;
                     btnEditarHabitacion.Enabled = false;
                     var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
                     OperationResult pobjOperationResult = new OperationResult();
@@ -239,6 +263,27 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             if (frm.DialogResult == DialogResult.Cancel)
                 return;
+        }
+
+        private void btnReportePDF_Click(object sender, EventArgs e)
+        {
+            DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            saveFileDialog1.FileName = "Liquidacion";
+            saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
+            var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+                var _DataService = _serviceBL.GetServiceReport(serviceId);
+                var datosP = _pacientBL.DevolverDatosPaciente(serviceId);
+                var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola"+ ".pdf",_DataService, datosP, MedicalCenter);
+                this.Enabled = true;
+            }
         }
 
     }
