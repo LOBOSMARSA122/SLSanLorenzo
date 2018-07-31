@@ -20,10 +20,11 @@ namespace NetPdf
             proceso.Close();
 
         }
-        public static void CrearOrdenServicio(Boolean MostrarPrecio, 
+        public static void CrearOrdenServicio(Boolean MostrarPrecio,
             List<ServiceOrderPdf> ListaServiceOrder, 
             OrganizationList infoEmpresaPropietaria,
-            string EmpresaCliente, 
+            string EmpresaCliente,
+            string ServiceOrderId,
             string Fecha,
             string Usuario, 
             string filePDF)
@@ -128,7 +129,7 @@ namespace NetPdf
             {
                 new PdfPCell(new Phrase("\n"+infoEmpresaPropietaria.v_Sede + ", " + Fecha, fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, BorderColor = BaseColor.WHITE, MinimumHeight = tamaño_celda},
                
-                new PdfPCell(new Phrase("Carta N° "+"-"+ mes +"-"+anio.Substring(2,2)+"CSLSRL/CAL.", fontColumnValue))
+                new PdfPCell(new Phrase("Carta N° "+ServiceOrderId.Substring(7,9)+"-"+ mes +"-"+anio.Substring(2,2)+"-CSLS.R.L./CAL.", fontColumnValue))
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK},    
                
                 new PdfPCell(new Phrase("Estimado (s) Sr (s). " + EmpresaCliente, fontColumnValue))

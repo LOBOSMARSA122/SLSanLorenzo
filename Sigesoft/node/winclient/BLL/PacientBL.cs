@@ -6186,6 +6186,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_Nacionalidad=b.v_Nacionalidad,
                                      v_ResidenciaAnterior = b.v_ResidenciaAnterior,
                                      i_DocTypeId = b.i_DocTypeId,
+                                     v_OwnerName = b.v_OwnerName,
                                      //
                                      Genero = c.v_Value1,
                                      i_SexTypeId = b.i_SexTypeId,
@@ -6245,6 +6246,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_Nacionalidad=a.v_Nacionalidad,
                                   v_ResidenciaAnterior=a.v_ResidenciaAnterior,
                                   i_DocTypeId = a.i_DocTypeId,
+                                  v_OwnerName = a.v_OwnerName,
                                   //
                                   Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,

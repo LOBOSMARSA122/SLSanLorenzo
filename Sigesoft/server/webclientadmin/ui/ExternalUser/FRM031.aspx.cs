@@ -31,6 +31,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
                 LoadComboBox();
                 btnNewCertificado.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("../ExternalUser/FRM031J.aspx");
                 btnExAltura.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("../ExternalUser/FRM031K.aspx");
+                btnToxi.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("../ExternalUser/FRM031M.aspx");
                 btnNewFichaOcupacional.OnClientClick = winEdit2.GetSaveStateReference(hfRefresh.ClientID) + winEdit2.GetShowReference("../ExternalUser/FRM031H.aspx");
                 btnFMT1.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("../ExternalUser/FRMFMT1.aspx");
                 btnInterConsulta.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("../ExternalUser/FRMINTERC.aspx");
@@ -134,6 +135,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
                 btnExAltura.Enabled = (bool)Session["ExamenAltura"];
                 btnFMT1.Enabled = (bool)Session["FMT1"];
                 btnInterConsulta.Enabled = (bool)Session["Interconsultas"];
+                btnToxi.Enabled = true;
                 //btnFMT1.Enabled = (bool)Session["CertificadoAptitud"];
                 if (selectedCount > 1)
                 {

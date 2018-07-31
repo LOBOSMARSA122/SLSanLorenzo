@@ -67,23 +67,23 @@
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_ServiceDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_MasterServiceName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LocationName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn13 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_FechaEntrega");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn14 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Liq");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Moneda");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Valor");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diagnosticos");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn52 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn53 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_ServiceDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn54 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn55 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_UpdateDate");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn56 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_MasterServiceName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn57 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn58 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_OrganizationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn59 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_LocationName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn60 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ServiceTypeName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn61 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_ProtocolName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn62 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_Pacient");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn63 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_AptitudeStatusName");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn64 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_FechaEntrega");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn65 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Liq");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn66 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Moneda");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn67 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Valor");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn68 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diagnosticos");
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.txtPacient = new System.Windows.Forms.TextBox();
@@ -105,6 +105,7 @@
             this.btnEditarTicket = new System.Windows.Forms.Button();
             this.btnTicket = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnReportePDF = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -399,23 +400,23 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1,
-            ultraDataColumn2,
-            ultraDataColumn3,
-            ultraDataColumn4,
-            ultraDataColumn5,
-            ultraDataColumn6,
-            ultraDataColumn7,
-            ultraDataColumn8,
-            ultraDataColumn9,
-            ultraDataColumn10,
-            ultraDataColumn11,
-            ultraDataColumn12,
-            ultraDataColumn13,
-            ultraDataColumn14,
-            ultraDataColumn15,
-            ultraDataColumn16,
-            ultraDataColumn17});
+            ultraDataColumn52,
+            ultraDataColumn53,
+            ultraDataColumn54,
+            ultraDataColumn55,
+            ultraDataColumn56,
+            ultraDataColumn57,
+            ultraDataColumn58,
+            ultraDataColumn59,
+            ultraDataColumn60,
+            ultraDataColumn61,
+            ultraDataColumn62,
+            ultraDataColumn63,
+            ultraDataColumn64,
+            ultraDataColumn65,
+            ultraDataColumn66,
+            ultraDataColumn67,
+            ultraDataColumn68});
             // 
             // btnEditarHabitacion
             // 
@@ -569,11 +570,34 @@
             this.btnTicket.UseVisualStyleBackColor = false;
             this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
             // 
+            // btnReportePDF
+            // 
+            this.btnReportePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReportePDF.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReportePDF.Enabled = false;
+            this.btnReportePDF.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnReportePDF.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReportePDF.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnReportePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportePDF.ForeColor = System.Drawing.Color.Black;
+            this.btnReportePDF.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.btnReportePDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportePDF.Location = new System.Drawing.Point(1142, 472);
+            this.btnReportePDF.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReportePDF.Name = "btnReportePDF";
+            this.btnReportePDF.Size = new System.Drawing.Size(85, 46);
+            this.btnReportePDF.TabIndex = 107;
+            this.btnReportePDF.Text = "Reporte";
+            this.btnReportePDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReportePDF.UseVisualStyleBackColor = false;
+            this.btnReportePDF.Click += new System.EventHandler(this.btnReportePDF_Click);
+            // 
             // frmHospitalizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 581);
+            this.Controls.Add(this.btnReportePDF);
             this.Controls.Add(this.btnEditarHabitacion);
             this.Controls.Add(this.btnAsignarHabitacion);
             this.Controls.Add(this.btnAgregarExamenes);
@@ -622,5 +646,6 @@
         private System.Windows.Forms.Button btnAsignarHabitacion;
         private System.Windows.Forms.Button btnEditarHabitacion;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.Button btnReportePDF;
     }
 }

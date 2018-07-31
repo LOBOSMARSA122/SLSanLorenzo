@@ -248,7 +248,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             int GrupoEtario = 0;
             int Grupo = 0;
-
+            #region
             if (_edad <= 12)
             {
                 GrupoEtario = 4;
@@ -269,8 +269,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 GrupoEtario = 3;
                 Grupo = 2823;
             }
-            
-            
+
+            #endregion
             var listAntecedentes = _serviceBL.ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _pacientId);
             var datosNin = _pacientBL.DevolverNinio(_serviceId);
             var datosAdol = _pacientBL.DevolverAdolescente(_serviceId);
