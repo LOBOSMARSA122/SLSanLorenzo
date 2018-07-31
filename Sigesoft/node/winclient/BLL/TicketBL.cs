@@ -133,6 +133,33 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<TicketList> GetTicketById(string _serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = from A in dbContext.hospitalizacion
+                                 join B in dbContext.hospitalizacionservice on A.v_HopitalizacionId equals B.v_HopitalizacionId
+                                 join C in dbContext.service on B.v_HospitalizacionServiceId equals C.v_ServiceId
+                                 join D in dbContext.ticket on C.v_ServiceId equals D.v_ServiceId
+                                 join E in dbContext.ticketdetalle on D.v_TicketId equals E.v_TicketId
+                                 where C.v_ServiceId  == _serviceId && D.i_IsDeleted == 0
+                                 select new TicketList
+                                 {
+                                     v_ServiceId = D.v_ServiceId,
+                                     v_TicketId = D.v_TicketId,
+                                     d_Fecha = D.d_Fecha
+                                 };
+                List<TicketList> objData = objEntity.ToList();
+                return objData;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
         public List<TicketDetalleList> GetTicketDetails(ref OperationResult _pobjOperationResult, string _tickId)
         {
             try
@@ -143,7 +170,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                          join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
                                          join E in dbContext.ticket on D.v_ServiceId equals E.v_ServiceId
                                          join F in dbContext.ticketdetalle on E.v_TicketId equals F.v_TicketId
-                                         //join G in dbContext.productsformigration on F.v_IdProductoDetalle equals G.v_ProductId
                                          where E.v_TicketId == _tickId
                                          && A.i_IsDeleted == 0 && F.i_IsDeleted == 0
                                          select new TicketDetalleList
@@ -169,6 +195,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+      
         public void UpdateTicket(ref OperationResult _pobjOperationResult, ticketDto objticketDto, List<ticketdetalleDto> _ticketdetalleDTOAdd, List<ticketdetalleDto> _ticketdetalleDTOUpdate, List<ticketdetalleDto> _ticketdetalleDTODelete, List<string> ClientSession)
         {
             try

@@ -28,6 +28,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private string _ticketId;
         private List<TicketList> _tempTicket = null;
         private TicketBL _ticketlBL = new TicketBL();
+        private HospitalizacionBL _hospitBL = new HospitalizacionBL();
 
         private ServiceBL _serviceBL = new ServiceBL();
         private PacientBL _pacientBL = new PacientBL();
@@ -37,6 +38,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private List<HospitalizacionServiceList> hospitalizacionServicelList;
         private List<TicketList> ticketlList;
         private List<TicketDetalleList> ticketdetallelList;
+        private List<TicketDetalleList> _tempticketdetallelList = null;
+
+        List<TicketDetalleList> ListaTickets = new List<TicketDetalleList>();
         string _serviceId;
         string _EmpresaClienteId;
         string _pacientId;
@@ -171,13 +175,13 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     btnTicket.Enabled = false;
                     btnAgregarExamenes.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
-                    btnReportePDF.Enabled = false;
+                    //btnReportePDF.Enabled = false;
                 }
                 else
                 {
                     btnTicket.Enabled = true;
                     btnAgregarExamenes.Enabled = true;
-                    btnReportePDF.Enabled = true;
+                    //btnReportePDF.Enabled = true;
                     btnEditarHabitacion.Enabled = false;
                     var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
                     OperationResult pobjOperationResult = new OperationResult();
@@ -267,6 +271,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnReportePDF_Click(object sender, EventArgs e)
         {
+            TicketList ticket;
+            List<TicketDetalleList> ListaDetalleList = new List<TicketDetalleList>();
+
+            List<TicketList> Tickett = new List<TicketList>();
+
+            TicketDetalleList oticketDetalle;
             DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             saveFileDialog1.FileName = "Liquidacion";
@@ -279,9 +289,39 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 var datosP = _pacientBL.DevolverDatosPaciente(serviceId);
                 var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
+                //foreach (var item in _tempticketdetallelList)
+                //{
+                //    ticket = new TicketList();
+
+                //    var oTicket = _ticketlBL.GetTicketById(ref _objOperationResult, item.v_TicketId);
+
+                //    ticket.v_ServiceId = serviceId;
+                //    ticket.d_Fecha = oTicket.d_Fecha;
+
+                //    ListaTickets = _ticketlBL.GetTicketDetails(ref _objOperationResult, item.v_TicketId);
+                //    ListaDetalleList = new List<TicketDetalleList>();
+                //    foreach (var prod in ListaTickets)
+                //    {
+                //        oticketDetalle = new TicketDetalleList();
+                //        oticketDetalle.v_TicketId = _tempticketdetallelList.Find(p => p.v_TicketId == item.v_TicketId).v_TicketDetalleId;
+
+                //        oticketDetalle.v_IdProductoDetalle = prod.v_IdProductoDetalle;
+                //        oticketDetalle.v_NombreProducto = prod.v_NombreProducto;
+                //        oticketDetalle.v_CodInterno = prod.v_CodInterno;
+                //        oticketDetalle.d_Cantidad = prod.d_Cantidad;
+                //        ListaDetalleList.Add(oticketDetalle);
+                //    }
+                //    ticket.Productos = ListaDetalleList;
+                //    Tickett.Add(ticket);
+                //}
+
+                //var listaTicket = _ticketlBL.GetTicketById(serviceId);
+
+                var listaTicket = _hospitBL.BuscarTickets(serviceId);
+
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola"+ ".pdf",_DataService, datosP, MedicalCenter);
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", _DataService, datosP, MedicalCenter, listaTicket);
                 this.Enabled = true;
             }
         }

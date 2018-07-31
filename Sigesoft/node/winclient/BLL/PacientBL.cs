@@ -6216,7 +6216,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_Story = a.v_Story,
                                      Aptitud = J4.v_Value1,
                                      b_FirmaAuditor = pr.b_SignatureImage
-                                     
                                  }
                                 ).ToList();
                 var DatosMedicoMedicinaEvaluador = ObtenerDatosMedicoMedicina(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
