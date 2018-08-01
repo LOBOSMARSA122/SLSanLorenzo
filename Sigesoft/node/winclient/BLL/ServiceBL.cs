@@ -1647,7 +1647,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                  r_Price = A.r_Price,
                                  v_ComponentName = B.v_Name,
                                  v_CategoryName = F.v_Value1,
-                                 MedicoTratante = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName
+                                 MedicoTratante = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                 d_InsertDate = A.d_InsertDate
 							 }).ToList();
 
 

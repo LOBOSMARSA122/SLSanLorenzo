@@ -81,6 +81,7 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? d_UpdateDateMedicalAnalyst { get; set; }
         public DateTime? d_UpdateDateTechnicalDataRegister { get; set; }
 
+        public DateTime? d_InsertDate { get; set; }
 
         public int? i_ApprovedInsertUserId { get; set; }
         public int? i_ApprovedUpdateUserId { get; set; }
