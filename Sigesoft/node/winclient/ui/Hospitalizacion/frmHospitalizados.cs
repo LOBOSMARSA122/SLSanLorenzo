@@ -91,9 +91,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void grdData_InitializeLayout(object sender, InitializeLayoutEventArgs e)
         {
-            //e.Layout.Bands[5].Summaries.Add(SummaryType.Sum, e.Layout.Bands[5].Columns["Total"]);
-            //SummarySettings SumSummary = band.Summaries.Add("Sum " + "Column 0", SummaryType.Sum, band.Columns["Column 0"]);  
-            //SumSummary = band.Summaries.Add(SummaryType.Sum, band.Columns["Column 1"]);
+          
         }
 
         private List<HospitalizacionList> GetData(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
