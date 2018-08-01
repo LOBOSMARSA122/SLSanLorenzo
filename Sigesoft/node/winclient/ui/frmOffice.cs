@@ -647,17 +647,23 @@ namespace Sigesoft.Node.WinClient.UI
                 OperationResult objOperationResult = new OperationResult();
                 CalendarBL objCalendarBL = new CalendarBL();
                 List<CalendarList> objCalendarList = new List<CalendarList>();
-                ServiceComponentList objServiceComponent = new ServiceComponentList();
                 List<ServiceComponentList> ListServiceComponent = new List<ServiceComponentList>();
 
-                objCalendarList = objCalendarBL.GetPacientInLineByComponentId1(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray(), int.Parse(cbService.SelectedValue.ToString()));
-                grdListaLlamando.DataSource = objCalendarList;
+                if (cbServiceType.SelectedValue.ToString() == "1")
+                {
+                    objCalendarList = objCalendarBL.GetPacientInLineByComponentId1(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray(), int.Parse(cbService.SelectedValue.ToString()));
+              
+                }
+                else
+                {
+                  var client = Globals.ClientSession.GetAsList();
+                  objCalendarList = objCalendarBL.GetPacientInLineByComponentId1_ATX(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray(), int.Parse(cbService.SelectedValue.ToString()), Int32.Parse(client[2]));
+              
+                }
+
+                 grdListaLlamando.DataSource = objCalendarList;
             
                 lblNameComponent.Text = _componentName;
-
-                //var dataList = BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 125, null).FindAll(p => p.Id != "1" && p.Id != "3");
-
-                //Utils.LoadDropDownList(ddlServiceStatusId, "Value1", "Id", dataList, DropDownListAction.Select);
 
                 grdDataServiceComponent.DataSource = ListServiceComponent;       
             }
