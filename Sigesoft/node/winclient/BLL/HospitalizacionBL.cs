@@ -368,7 +368,8 @@ namespace Sigesoft.Node.WinClient.BLL
                         ticketsdetallelist.v_TicketId = tickdetalle.v_TicketId;
                         ticketsdetallelist.v_TicketDetalleId = tickdetalle.v_TicketDetalleId;
                         ticketsdetallelist.v_IdProductoDetalle = tickdetalle.v_IdProductoDetalle;
-                        //ticketsdetallelist.v_NombreProducto = 
+                        ticketsdetallelist.v_Descripcion = tickdetalle.v_Descripcion;
+                        ticketsdetallelist.EsDespachado = tickdetalle.EsDespachado;
                         ticketsdetallelist.d_Cantidad = tickdetalle.d_Cantidad;
                         ticketsdetallelist.d_PrecioVenta = tickdetalle.d_PrecioVenta;
                         ticketsdetallelist.Total = tickdetalle.d_Cantidad * tickdetalle.d_PrecioVenta;

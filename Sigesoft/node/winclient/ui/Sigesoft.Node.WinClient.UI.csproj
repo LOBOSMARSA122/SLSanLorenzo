@@ -1426,6 +1426,12 @@
     <Compile Include="Operations\Popups\frmSelectSignature.Designer.cs">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
     </Compile>
+    <Compile Include="otros\frmHospitalizados_.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="otros\frmHospitalizados_.Designer.cs">
+      <DependentUpon>frmHospitalizados_.cs</DependentUpon>
+    </Compile>
     <Compile Include="ReporteDeclaracionDrogas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3587,6 +3593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmSelectSignature.resx">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="otros\frmHospitalizados_.resx">
+      <DependentUpon>frmHospitalizados_.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
