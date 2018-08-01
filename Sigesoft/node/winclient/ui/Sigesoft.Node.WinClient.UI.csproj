@@ -110,6 +110,7 @@
     <Reference Include="Infragistics4.Win.Misc.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Infragistics4.Win.UltraWinCalcManager.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL" />
     <Reference Include="Infragistics4.Win.UltraWinDataSource.v13.1, Version=13.1.20131.1001, Culture=neutral, PublicKeyToken=7dd5c3163f2cd0cb, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>

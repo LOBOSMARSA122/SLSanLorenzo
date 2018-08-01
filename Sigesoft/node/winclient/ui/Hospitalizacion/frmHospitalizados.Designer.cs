@@ -33,6 +33,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HopitalizacionId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Paciente");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaIngreso");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaAlta");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PrecioTotal");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Habitaciones");
@@ -50,7 +52,9 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Cantidad");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EsDespachado");
-            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings1 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "d_Cantidad", 1, true, "Productos", 3, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, null, -1, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PrecioVenta");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings1 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "Total", 4, true, "Productos", 3, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, null, -1, false);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", 1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Categoria");
@@ -272,13 +276,19 @@
             ultraGridColumn2.Header.Caption = "Nombre de Paciente";
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn2.Width = 146;
+            ultraGridColumn12.Header.Caption = "Fecha Ingreso";
+            ultraGridColumn12.Header.VisiblePosition = 2;
+            ultraGridColumn13.Header.Caption = "Fecha Alta";
+            ultraGridColumn13.Header.VisiblePosition = 3;
             ultraGridColumn5.Header.Caption = "Precio Total";
-            ultraGridColumn5.Header.VisiblePosition = 2;
-            ultraGridColumn3.Header.VisiblePosition = 3;
-            ultraGridColumn4.Header.VisiblePosition = 4;
+            ultraGridColumn5.Header.VisiblePosition = 4;
+            ultraGridColumn3.Header.VisiblePosition = 5;
+            ultraGridColumn4.Header.VisiblePosition = 6;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2,
+            ultraGridColumn12,
+            ultraGridColumn13,
             ultraGridColumn5,
             ultraGridColumn3,
             ultraGridColumn4});
@@ -311,10 +321,14 @@
             ultraGridColumn38.Header.Caption = "Cantidad";
             ultraGridColumn38.Header.VisiblePosition = 2;
             ultraGridColumn11.Header.VisiblePosition = 1;
+            ultraGridColumn14.Header.VisiblePosition = 3;
+            ultraGridColumn15.Header.VisiblePosition = 4;
             ultraGridBand4.Columns.AddRange(new object[] {
             ultraGridColumn9,
             ultraGridColumn38,
-            ultraGridColumn11});
+            ultraGridColumn11,
+            ultraGridColumn14,
+            ultraGridColumn15});
             summarySettings1.GroupBySummaryValueAppearance = appearance2;
             ultraGridBand4.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
             summarySettings1});

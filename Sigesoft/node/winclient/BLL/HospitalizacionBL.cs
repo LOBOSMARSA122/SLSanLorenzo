@@ -369,8 +369,10 @@ namespace Sigesoft.Node.WinClient.BLL
                         ticketsdetallelist.v_IdProductoDetalle = tickdetalle.v_IdProductoDetalle;
                         //ticketsdetallelist.v_NombreProducto = 
                         ticketsdetallelist.d_Cantidad = tickdetalle.d_Cantidad;
+                        ticketsdetallelist.d_PrecioVenta = tickdetalle.d_PrecioVenta;
+                        ticketsdetallelist.Total = tickdetalle.d_Cantidad * tickdetalle.d_PrecioVenta;
                         // acá estoy agregando a las lista
-                        Ticketsdetalle.Add(tickdetalle);
+                        Ticketsdetalle.Add(ticketsdetallelist);
                     }
                     tickets.Productos = Ticketsdetalle;
                 }
@@ -400,7 +402,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                   d_Cantidad = F.d_Cantidad.Value,
                                   v_Descripcion = F.v_Descripcion,
                                   v_IdProductoDetalle = F.v_IdProductoDetalle,
-                                  i_EsDespachado = F.i_EsDespachado.Value
+                                  i_EsDespachado = F.i_EsDespachado.Value,
+                                  d_PrecioVenta = F.d_PrecioVenta.Value
                               };
             List<TicketDetalleList> objData = queryticketdetalle.ToList();
             var ticketdetalle = (from a in objData
@@ -412,7 +415,8 @@ namespace Sigesoft.Node.WinClient.BLL
                               d_Cantidad = a.d_Cantidad,
                               v_Descripcion = a.v_Descripcion,
                               i_EsDespachado = a.i_EsDespachado,
-                              EsDespachado = a.i_EsDespachado == 0 ? "NO" : "SI"
+                              EsDespachado = a.i_EsDespachado == 0 ? "NO" : "SI",
+                              d_PrecioVenta = a.d_PrecioVenta
                           }).ToList();
 
             return ticketdetalle;
