@@ -38,9 +38,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         private string _personFullName;
         string ruta;
         private readonly int _edad;
-
         
-
         public frmManagementReportsMedical(string serviceId, string pacientId, string customerOrganizationName, string personFullName, string pstrEmpresaCliente, int edad)
         {
             InitializeComponent();
