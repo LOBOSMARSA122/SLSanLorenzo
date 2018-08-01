@@ -156,6 +156,123 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<HospitalizacionList> GetHospitalizcion(ref OperationResult pobjOperationResult, string hospitalizacionId)
+        {
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from A in dbContext.hospitalizacion
+                            join person B in dbContext.person on A.v_PersonId equals B.v_PersonId
+
+                            where A.i_IsDeleted == 0 && A.v_HopitalizacionId == hospitalizacionId 
+
+                            select new HospitalizacionList
+                            {
+                                d_FechaAlta = A.d_FechaAlta,
+                                d_FechaIngreso = A.d_FechaIngreso,
+                                v_Paciente = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
+                                v_HopitalizacionId = A.v_HopitalizacionId,
+                                v_PersonId = A.v_PersonId,
+                                i_IsDeleted = A.i_IsDeleted.Value,
+
+                            };
+
+                List<HospitalizacionList> objData = query.ToList();
+
+                var hospitalizaciones = (from a in objData
+                                         select new HospitalizacionList
+                                         {
+                                             v_Paciente = a.v_Paciente,
+                                             d_FechaIngreso = a.d_FechaIngreso,
+                                             d_FechaAlta = a.d_FechaAlta,
+                                             v_HopitalizacionId = a.v_HopitalizacionId,
+                                             v_PersonId = a.v_PersonId
+                                         }).ToList();
+
+                var objtData = hospitalizaciones.AsEnumerable()
+                    .Where(a => a.v_HopitalizacionId != null)
+                    .GroupBy(b => b.v_HopitalizacionId)
+                    .Select(group => group.First());
+
+                List<HospitalizacionList> obj = objtData.ToList();
+
+                HospitalizacionList hospit;
+                List<HospitalizacionList> Lista = new List<HospitalizacionList>();
+
+                foreach (var item in obj)
+                {
+                    hospit = new HospitalizacionList();
+
+                    hospit.v_HopitalizacionId = item.v_HopitalizacionId;
+                    hospit.v_PersonId = item.v_PersonId;
+                    hospit.v_Paciente = item.v_Paciente;
+                    hospit.d_FechaIngreso = item.d_FechaIngreso;
+                    hospit.d_FechaAlta = item.d_FechaAlta;
+
+                    // estos son los hijos de 1 hopitalización
+                    var servicios = BuscarServiciosHospitalizacion(item.v_HopitalizacionId).ToList();
+
+                    List<HospitalizacionServiceList> HospitalizacionServicios = new List<HospitalizacionServiceList>();
+                    if (servicios.Count > 0)
+                    {
+                        HospitalizacionServiceList oHospitalizacionServiceList;
+                        foreach (var servicio in servicios)
+                        {
+                            oHospitalizacionServiceList = new HospitalizacionServiceList();
+                            // acá vas poblando la entidad hijo hospitalización
+                            oHospitalizacionServiceList.v_HopitalizacionId = servicio.v_HopitalizacionId;
+                            oHospitalizacionServiceList.v_ServiceId = servicio.v_ServiceId;
+                            oHospitalizacionServiceList.v_HospitalizacionServiceId = servicio.v_HospitalizacionServiceId;
+                            oHospitalizacionServiceList.d_ServiceDate = servicio.d_ServiceDate;
+                            oHospitalizacionServiceList.v_ProtocolName = servicio.v_ProtocolName;
+                            // acá estoy agregando a las lista
+                            HospitalizacionServicios.Add(servicio);
+                        }
+                        hospit.Servicios = HospitalizacionServicios;
+                    }
+
+                    #region Habitaciones
+                    var habitacioenes = BuscarHospitalizacionHabitaciones(item.v_HopitalizacionId).ToList();
+                    List<HospitalizacionHabitacionList> ListaHabitaciones = new List<HospitalizacionHabitacionList>();
+                    HospitalizacionHabitacionList oHospitalizacionHabitacionList;
+                    foreach (var habitacion in habitacioenes)
+                    {
+                        oHospitalizacionHabitacionList = new HospitalizacionHabitacionList();
+                        oHospitalizacionHabitacionList.v_HospitalizacionHabitacionId = habitacion.v_HospitalizacionHabitacionId;
+                        oHospitalizacionHabitacionList.v_HopitalizacionId = item.v_HopitalizacionId;
+                        oHospitalizacionHabitacionList.i_HabitacionId = habitacion.i_HabitacionId;
+                        oHospitalizacionHabitacionList.NroHabitacion = habitacion.NroHabitacion;
+                        oHospitalizacionHabitacionList.d_StartDate = habitacion.d_StartDate;
+                        oHospitalizacionHabitacionList.d_EndDate = habitacion.d_EndDate;
+                        oHospitalizacionHabitacionList.d_Precio = habitacion.d_Precio;
+                        if (habitacion.d_Precio != null)
+                            oHospitalizacionHabitacionList.Total =
+                                CalcularCostoHabitacion(habitacion.d_Precio.ToString(), habitacion.d_StartDate,
+                                    habitacion.d_EndDate);
+                        else
+                            oHospitalizacionHabitacionList.Total = 0;
+                        ListaHabitaciones.Add(oHospitalizacionHabitacionList);
+
+                    }
+                    hospit.Habitaciones = ListaHabitaciones;
+                    #endregion
+
+                    Lista.Add(hospit);
+                }
+                pobjOperationResult.Success = 1;
+                return Lista;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
         private decimal CalcularCostoHabitacion(string precio , DateTime? fechaIni, DateTime? fechafin)
         {
             var precioHabitacion = decimal.Parse(precio);
@@ -294,6 +411,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oComponentesHospitalizacion.Componente = componente.v_ComponentName;
                     oComponentesHospitalizacion.Precio = float.Parse(componente.r_Price.ToString());
                     oComponentesHospitalizacion.MedicoTratante = componente.MedicoTratante;
+                    oComponentesHospitalizacion.Ingreso = componente.d_InsertDate.Value;
                     listaComponentes.Add(oComponentesHospitalizacion);
                 }
                 tickets.Componentes = listaComponentes;
@@ -801,6 +919,26 @@ namespace Sigesoft.Node.WinClient.BLL
             
             return oPagosComisiones;
         }
+        public hospitalizacionserviceDto GetHospitServ( string hospitalizacionId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                hospitalizacionserviceDto objDtoEntity = null;
 
+                var objEntity = (from a in dbContext.hospitalizacionservice
+                                 where a.v_HopitalizacionId == hospitalizacionId
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = hospitalizacionserviceAssembler.ToDTO(objEntity);
+
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }

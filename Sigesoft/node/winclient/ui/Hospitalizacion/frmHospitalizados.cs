@@ -75,7 +75,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
            btnTicket.Enabled = false;
            btnAgregarExamenes.Enabled = false;
            btnAsignarHabitacion.Enabled = false;
+<<<<<<< HEAD
+           btnReportePDF.Enabled = false;
+=======
            btnDarAlta.Enabled = false;
+>>>>>>> 710aa9eb31112e49005fae3a407a157a70d16bef
 
         }
         //
@@ -163,14 +167,22 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 {
                     btnAsignarHabitacion.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
+<<<<<<< HEAD
+                    btnReportePDF.Enabled = false;
+=======
                     btnDarAlta.Enabled = false;
                     //btnReportePDF.Enabled = false;
+>>>>>>> 710aa9eb31112e49005fae3a407a157a70d16bef
                 }
                 else
                 {
                     btnAsignarHabitacion.Enabled = true;
+<<<<<<< HEAD
+                    btnReportePDF.Enabled = true;
+=======
                     btnDarAlta.Enabled = true;
                     //btnReportePDF.Enabled = true;
+>>>>>>> 710aa9eb31112e49005fae3a407a157a70d16bef
                 }
 
                 if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")
@@ -178,13 +190,13 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     btnTicket.Enabled = false;
                     btnAgregarExamenes.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
-                    btnReportePDF.Enabled = false;
+                    //btnReportePDF.Enabled = false;
                 }
                 else
                 {
                     btnTicket.Enabled = true;
                     btnAgregarExamenes.Enabled = true;
-                    btnReportePDF.Enabled = true;
+                    //btnReportePDF.Enabled = true;
                     btnEditarHabitacion.Enabled = false;
                     var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
                     OperationResult pobjOperationResult = new OperationResult();
@@ -275,28 +287,51 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void btnReportePDF_Click(object sender, EventArgs e)
         {
             TicketList ticket;
+
+            hospitalizacionserviceDto hospser = new hospitalizacionserviceDto();
             List<TicketDetalleList> ListaDetalleList = new List<TicketDetalleList>();
 
             List<TicketList> Tickett = new List<TicketList>();
 
-            TicketDetalleList oticketDetalle;
             DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
             saveFileDialog1.FileName = "Liquidacion";
             saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
-            var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            //var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            //{
+            //    this.Enabled = false;
+            //    var _DataService = _serviceBL.GetServiceReport(serviceId);
+            //    var datosP = _pacientBL.DevolverDatosPaciente(serviceId);
+            //    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            //    var listaTicket = _hospitBL.BuscarTickets(serviceId);
+
+            //    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+            //    Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", _DataService, datosP, MedicalCenter, listaTicket);
+            //    this.Enabled = true;
+            //}
+
+            var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
                 this.Enabled = false;
-                var _DataService = _serviceBL.GetServiceReport(serviceId);
-                var datosP = _pacientBL.DevolverDatosPaciente(serviceId);
+                
                 var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
-                var listaTicket = _hospitBL.BuscarTickets(serviceId);
+                var lista = _hospitBL.GetHospitalizcion(ref _objOperationResult,hospitId);
+
+                //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
+
+                hospser = _hospitBL.GetHospitServ(hospitId);
+
+                var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
+                var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
 
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", _DataService, datosP, MedicalCenter, listaTicket);
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP);
                 this.Enabled = true;
             }
         }
