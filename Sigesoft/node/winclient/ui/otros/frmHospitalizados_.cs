@@ -295,8 +295,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 var listaTicket = _hospitBL.BuscarTickets(serviceId);
 
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
-
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", _DataService, datosP, MedicalCenter, listaTicket);
+                //ruta,_DataService, datosP, MedicalCenter, listaTicket
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta, null, null, null, datosP);
                 this.Enabled = true;
             }
         }

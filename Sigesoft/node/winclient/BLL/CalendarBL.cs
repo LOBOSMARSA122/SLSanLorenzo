@@ -2106,7 +2106,7 @@ namespace Sigesoft.Node.WinClient.BLL
        //    }
        //}
 
-       public List<CalendarList> GetPacientInLineByComponentId1(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrComponentId, DateTime CurrentDate, string[] pobjComponentIds)
+       public List<CalendarList> GetPacientInLineByComponentId1(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrComponentId, DateTime CurrentDate, string[] pobjComponentIds, int masterServiceId)
        {
       
            int isDeleted = (int)SiNo.NO;
@@ -2141,8 +2141,6 @@ namespace Sigesoft.Node.WinClient.BLL
 
                             join P in dbContext.systemparameter on new { a = 116, b = L.i_CategoryId.Value }
                             equals new { a = P.i_GroupId, b = P.i_ParameterId } //into P_join
-                             
-
 
                            // Empresa / Sede Trabajo  ********************************************************
                            join ow in dbContext.organization on J.v_WorkingOrganizationId equals ow.v_OrganizationId into ow_join
@@ -2156,7 +2154,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                            where A.i_IsDeleted == isDeleted &&
                                  A.i_LineStatusId == lineStatus &&
-                                 D.i_IsRequiredId == isRequired
+                                 D.i_IsRequiredId == isRequired &&
+                                 C.i_MasterServiceId == masterServiceId
 
                            select new CalendarList
                            {
@@ -2183,9 +2182,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                v_ComponentId = D.v_ComponentId,
                                v_WorkingOrganizationName = ow.v_Name,
                                Piso = P.v_Value2
-
                            };
-
 
                var query1 = query.AsEnumerable()
                    .Where(j => j.d_DateTimeCalendar.Value.Date == CurrentDate.Date)

@@ -114,6 +114,10 @@
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnLlamar = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
+            this.cbServiceType = new System.Windows.Forms.ComboBox();
+            this.cbService = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -950,12 +954,69 @@
             this.label11.TabIndex = 86;
             this.label11.Text = "Lista de Llamando";
             // 
+            // cbServiceType
+            // 
+            this.cbServiceType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbServiceType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbServiceType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbServiceType.ForeColor = System.Drawing.Color.Red;
+            this.cbServiceType.FormattingEnabled = true;
+            this.cbServiceType.Location = new System.Drawing.Point(492, 8);
+            this.cbServiceType.Name = "cbServiceType";
+            this.cbServiceType.Size = new System.Drawing.Size(145, 21);
+            this.cbServiceType.TabIndex = 83;
+            this.cbServiceType.TextChanged += new System.EventHandler(this.cbServiceType_TextChanged);
+            // 
+            // cbService
+            // 
+            this.cbService.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbService.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbService.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbService.ForeColor = System.Drawing.Color.Red;
+            this.cbService.FormattingEnabled = true;
+            this.cbService.Location = new System.Drawing.Point(699, 8);
+            this.cbService.Name = "cbService";
+            this.cbService.Size = new System.Drawing.Size(250, 21);
+            this.cbService.TabIndex = 84;
+            this.cbService.SelectedIndexChanged += new System.EventHandler(this.cbService_SelectedIndexChanged);
+            this.cbService.SelectedValueChanged += new System.EventHandler(this.cbService_SelectedValueChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Red;
+            this.label13.Location = new System.Drawing.Point(642, 11);
+            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(53, 13);
+            this.label13.TabIndex = 86;
+            this.label13.Text = "Servicio";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Red;
+            this.label14.Location = new System.Drawing.Point(405, 11);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(82, 13);
+            this.label14.TabIndex = 85;
+            this.label14.Text = "Tipo Servicio";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // frmOffice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1163, 536);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.cbService);
+            this.Controls.Add(this.cbServiceType);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.lblNameComponent);
             this.Controls.Add(this.label1);
@@ -1028,5 +1089,9 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.ToolStripMenuItem btnAgregarAdiconal;
         private System.Windows.Forms.ToolStripMenuItem btnRemoverEsamen;
+        private System.Windows.Forms.ComboBox cbServiceType;
+        private System.Windows.Forms.ComboBox cbService;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
     }
 }

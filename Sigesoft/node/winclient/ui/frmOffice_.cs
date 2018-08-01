@@ -478,7 +478,7 @@ namespace Sigesoft.Node.WinClient.UI
                 ServiceComponentList objServiceComponent = new ServiceComponentList();
                 List<ServiceComponentList> ListServiceComponent = new List<ServiceComponentList>();
 
-                objCalendarList = objCalendarBL.GetPacientInLineByComponentId1(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray());
+                objCalendarList = objCalendarBL.GetPacientInLineByComponentId1(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray(),0);
                 grdListaLlamando.DataSource = objCalendarList;
             
                 lblNameComponent.Text = _componentName;
