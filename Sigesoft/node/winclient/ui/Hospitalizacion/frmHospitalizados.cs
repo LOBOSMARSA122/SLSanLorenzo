@@ -86,11 +86,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
 
             this.grdData.DisplayLayout.AutoFitStyle = AutoFitStyle.ResizeAllColumns;
+
         }
 
         private void grdData_InitializeLayout(object sender, InitializeLayoutEventArgs e)
         {
-            //this.BindGrid();
+            //e.Layout.Bands[5].Summaries.Add(SummaryType.Sum, e.Layout.Bands[5].Columns["Total"]);
+            //SummarySettings SumSummary = band.Summaries.Add("Sum " + "Column 0", SummaryType.Sum, band.Columns["Column 0"]);  
+            //SumSummary = band.Summaries.Add(SummaryType.Sum, band.Columns["Column 1"]);
         }
 
         private List<HospitalizacionList> GetData(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
@@ -296,6 +299,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", _DataService, datosP, MedicalCenter, listaTicket);
                 this.Enabled = true;
             }
+        }
+
+        private void frmHospitalizados_Load(object sender, EventArgs e)
+        {
+
         }
 
     }
