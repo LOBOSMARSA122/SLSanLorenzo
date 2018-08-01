@@ -34,7 +34,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_HopitalizacionId = A.v_HopitalizacionId,
                                 v_PersonId = A.v_PersonId,
                                 i_IsDeleted = A.i_IsDeleted.Value,
-
+                                v_Comentario = A.v_Comentario
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -69,7 +69,8 @@ namespace Sigesoft.Node.WinClient.BLL
                              d_FechaIngreso = a.d_FechaIngreso,
                              d_FechaAlta = a.d_FechaAlta,
                              v_HopitalizacionId = a.v_HopitalizacionId,
-                             v_PersonId = a.v_PersonId
+                             v_PersonId = a.v_PersonId,
+                             v_Comentario = a.v_Comentario
                          }).ToList();
 
                 var objtData = hospitalizaciones.AsEnumerable()
@@ -91,7 +92,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     hospit.v_Paciente = item.v_Paciente;
                     hospit.d_FechaIngreso = item.d_FechaIngreso;
                     hospit.d_FechaAlta = item.d_FechaAlta;
-
+                    hospit.v_Comentario = item.v_Comentario;
                     // estos son los hijos de 1 hopitalización
                     var servicios = BuscarServiciosHospitalizacion(item.v_HopitalizacionId).ToList();
                     
@@ -381,6 +382,98 @@ namespace Sigesoft.Node.WinClient.BLL
            
             return Lista;
         }
+
+
+        public void AddHospitalizacion(ref OperationResult pobjOperationResult, hospitalizacionDto pobjDtoEntity, List<string> ClientSession)
+        {
+            //mon.IsActive = true;
+            string NewId = "(No generado)";
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                hospitalizacion objEntity = hospitalizacionAssembler.ToEntity(pobjDtoEntity);
+
+                objEntity.d_InsertDate = DateTime.Now;
+                objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
+                objEntity.i_IsDeleted = 0;
+
+                // Autogeneramos el Pk de la tabla                 
+                int intNodeId = int.Parse(ClientSession[0]);
+                NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 350), "HP"); ;
+                objEntity.v_HopitalizacionId = NewId;
+
+                dbContext.AddTohospitalizacion(objEntity);
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+            }
+        }
+
+        public void UpdateHospitalizacion(ref OperationResult pobjOperationResult, hospitalizacionDto pobjDtoEntity, List<string> ClientSession)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.hospitalizacion
+                                       where a.v_HopitalizacionId == pobjDtoEntity.v_HopitalizacionId
+                                       select a).FirstOrDefault();
+
+                // Crear la entidad con los datos actualizados
+                pobjDtoEntity.d_UpdateDate = DateTime.Now;
+                pobjDtoEntity.i_IsDeleted = 0;
+                pobjDtoEntity.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+
+                hospitalizacion objEntity = hospitalizacionAssembler.ToEntity(pobjDtoEntity);
+
+                // Copiar los valores desde la entidad actualizada a la Entidad Fuente
+                dbContext.hospitalizacion.ApplyCurrentValues(objEntity);
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+            }
+        }
+
+        public hospitalizacionDto GetHospitalizacion(ref OperationResult pobjOperationResult, string v_HopitalizacionId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                hospitalizacionDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.hospitalizacion
+                                 where a.v_HopitalizacionId == v_HopitalizacionId
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = hospitalizacionAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
 
       
 

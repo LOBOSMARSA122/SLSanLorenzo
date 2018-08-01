@@ -75,8 +75,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
            btnTicket.Enabled = false;
            btnAgregarExamenes.Enabled = false;
            btnAsignarHabitacion.Enabled = false;
+           btnDarAlta.Enabled = false;
 
-         
         }
         //
         private void BindGrid()
@@ -163,11 +163,13 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 {
                     btnAsignarHabitacion.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
+                    btnDarAlta.Enabled = false;
                     //btnReportePDF.Enabled = false;
                 }
                 else
                 {
                     btnAsignarHabitacion.Enabled = true;
+                    btnDarAlta.Enabled = true;
                     //btnReportePDF.Enabled = true;
                 }
 
@@ -302,6 +304,39 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void frmHospitalizados_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDarAlta_Click(object sender, EventArgs e)
+        {
+            var hospitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            DateTime? fechaAlta = (DateTime?)(grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value == null ? (ValueType)null : DateTime.Parse(grdData.Selected.Rows[0].Cells["d_FechaAlta"].Value.ToString()));
+            var comentario = grdData.Selected.Rows[0].Cells["v_Comentario"].Value == null ?"" : grdData.Selected.Rows[0].Cells["v_Comentario"].Value.ToString();
+            var frm = new frmDarAlta(hospitalizacionId, "Edit", fechaAlta, comentario);
+            frm.ShowDialog();
+            btnFilter_Click(sender,e);
+        }
+
+        private void grdData_InitializeRow(object sender, InitializeRowEventArgs e)
+        {
+            foreach (UltraGridRow rowSelected in this.grdData.Rows)
+            {
+                var banda = e.Row.Band.Index.ToString();
+
+                if (banda == "0")
+                {
+                    if (rowSelected.Band.Index.ToString() == "0")
+                    {
+                        if (e.Row.Cells["d_FechaAlta"].Value!=null)
+                        {
+                            e.Row.Appearance.BackColor = Color.Yellow;
+                            e.Row.Appearance.BackColor2 = Color.White;
+                            //Y doy el efecto degradado vertical
+                            e.Row.Appearance.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+                        }
+                    }
+                }
+
+            }
         }
 
     }

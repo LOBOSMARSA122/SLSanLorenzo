@@ -31,44 +31,45 @@
             this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HopitalizacionId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Paciente");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaIngreso");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaAlta");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PrecioTotal");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Habitaciones");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HopitalizacionId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Paciente");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaIngreso");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaAlta");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PrecioTotal");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Comentario");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Habitaciones");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Servicios", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ProtocolName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tickets");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ProtocolName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tickets");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componentes");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Tickets", 1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn35 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn36 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Productos");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_TicketId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Productos");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Productos", 2);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Cantidad");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EsDespachado");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PrecioVenta");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn32 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Cantidad");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EsDespachado");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn37 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PrecioVenta");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn39 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
             Infragistics.Win.UltraWinGrid.SummarySettings summarySettings1 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "Total", 4, true, "Productos", 3, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, null, -1, false);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Componentes", 1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Categoria");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componente");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MedicoTratante");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn42 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Categoria");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componente");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MedicoTratante");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
             Infragistics.Win.UltraWinGrid.SummarySettings summarySettings2 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "Precio", 3, true, "Componentes", 4, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, null, -1, false);
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand6 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Habitaciones", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn43 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroHabitacion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_StartDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn45 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_EndDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn46 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Precio");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn47 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroHabitacion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn55 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_StartDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_EndDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Precio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
             Infragistics.Win.UltraWinGrid.SummarySettings summarySettings3 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "Total", 4, true, "Habitaciones", 5, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, null, -1, false);
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
@@ -107,6 +108,9 @@
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.btnDarAlta = new System.Windows.Forms.Button();
+            this.btnReportePDF = new System.Windows.Forms.Button();
             this.btnEditarHabitacion = new System.Windows.Forms.Button();
             this.btnAsignarHabitacion = new System.Windows.Forms.Button();
             this.btnAgregarExamenes = new System.Windows.Forms.Button();
@@ -114,8 +118,6 @@
             this.btnEliminarTicket = new System.Windows.Forms.Button();
             this.btnEditarTicket = new System.Windows.Forms.Button();
             this.btnTicket = new System.Windows.Forms.Button();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.btnReportePDF = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -270,97 +272,99 @@
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdData.DisplayLayout.Appearance = appearance1;
-            ultraGridColumn1.Header.Caption = "Nro. Hospitalización";
-            ultraGridColumn1.Header.VisiblePosition = 0;
-            ultraGridColumn1.Width = 177;
-            ultraGridColumn2.Header.Caption = "Nombre de Paciente";
-            ultraGridColumn2.Header.VisiblePosition = 1;
-            ultraGridColumn2.Width = 146;
-            ultraGridColumn12.Header.Caption = "Fecha Ingreso";
-            ultraGridColumn12.Header.VisiblePosition = 2;
-            ultraGridColumn13.Header.Caption = "Fecha Alta";
-            ultraGridColumn13.Header.VisiblePosition = 3;
-            ultraGridColumn5.Header.Caption = "Precio Total";
-            ultraGridColumn5.Header.VisiblePosition = 4;
-            ultraGridColumn3.Header.VisiblePosition = 5;
-            ultraGridColumn4.Header.VisiblePosition = 6;
+            ultraGridColumn16.Header.Caption = "Nro. Hospitalización";
+            ultraGridColumn16.Header.VisiblePosition = 0;
+            ultraGridColumn16.Width = 177;
+            ultraGridColumn17.Header.Caption = "Nombre de Paciente";
+            ultraGridColumn17.Header.VisiblePosition = 1;
+            ultraGridColumn17.Width = 146;
+            ultraGridColumn18.Header.Caption = "Fecha Ingreso";
+            ultraGridColumn18.Header.VisiblePosition = 2;
+            ultraGridColumn19.Header.Caption = "Fecha Alta";
+            ultraGridColumn19.Header.VisiblePosition = 3;
+            ultraGridColumn20.Header.Caption = "Precio Total";
+            ultraGridColumn20.Header.VisiblePosition = 4;
+            ultraGridColumn1.Header.VisiblePosition = 5;
+            ultraGridColumn21.Header.VisiblePosition = 6;
+            ultraGridColumn22.Header.VisiblePosition = 7;
             ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn16,
+            ultraGridColumn17,
+            ultraGridColumn18,
+            ultraGridColumn19,
+            ultraGridColumn20,
             ultraGridColumn1,
-            ultraGridColumn2,
-            ultraGridColumn12,
-            ultraGridColumn13,
-            ultraGridColumn5,
-            ultraGridColumn3,
-            ultraGridColumn4});
-            ultraGridColumn6.Header.Caption = "Nro. Servicio";
-            ultraGridColumn6.Header.VisiblePosition = 0;
-            ultraGridColumn50.Header.Caption = "Fecha Servicio";
-            ultraGridColumn50.Header.VisiblePosition = 1;
-            ultraGridColumn49.Header.Caption = "Protocolo";
-            ultraGridColumn49.Header.VisiblePosition = 2;
-            ultraGridColumn7.Header.VisiblePosition = 3;
-            ultraGridColumn8.Header.VisiblePosition = 4;
+            ultraGridColumn21,
+            ultraGridColumn22});
+            ultraGridColumn23.Header.Caption = "Nro. Servicio";
+            ultraGridColumn23.Header.VisiblePosition = 0;
+            ultraGridColumn24.Header.Caption = "Fecha Servicio";
+            ultraGridColumn24.Header.VisiblePosition = 1;
+            ultraGridColumn25.Header.Caption = "Protocolo";
+            ultraGridColumn25.Header.VisiblePosition = 2;
+            ultraGridColumn26.Header.VisiblePosition = 3;
+            ultraGridColumn27.Header.VisiblePosition = 4;
             ultraGridBand2.Columns.AddRange(new object[] {
-            ultraGridColumn6,
-            ultraGridColumn50,
-            ultraGridColumn49,
-            ultraGridColumn7,
-            ultraGridColumn8});
-            ultraGridColumn34.Header.Caption = "Nro. Ticket";
-            ultraGridColumn34.Header.VisiblePosition = 0;
-            ultraGridColumn35.Header.Caption = "Fecha";
-            ultraGridColumn35.Header.VisiblePosition = 1;
-            ultraGridColumn36.Header.VisiblePosition = 2;
-            ultraGridColumn36.Hidden = true;
+            ultraGridColumn23,
+            ultraGridColumn24,
+            ultraGridColumn25,
+            ultraGridColumn26,
+            ultraGridColumn27});
+            ultraGridColumn28.Header.Caption = "Nro. Ticket";
+            ultraGridColumn28.Header.VisiblePosition = 0;
+            ultraGridColumn29.Header.Caption = "Fecha";
+            ultraGridColumn29.Header.VisiblePosition = 1;
+            ultraGridColumn30.Header.VisiblePosition = 2;
+            ultraGridColumn30.Hidden = true;
             ultraGridBand3.Columns.AddRange(new object[] {
-            ultraGridColumn34,
-            ultraGridColumn35,
-            ultraGridColumn36});
-            ultraGridColumn9.Header.Caption = "Producto";
-            ultraGridColumn9.Header.VisiblePosition = 0;
-            ultraGridColumn38.Header.Caption = "Cantidad";
-            ultraGridColumn38.Header.VisiblePosition = 2;
-            ultraGridColumn11.Header.VisiblePosition = 1;
-            ultraGridColumn14.Header.VisiblePosition = 3;
-            ultraGridColumn15.Header.VisiblePosition = 4;
+            ultraGridColumn28,
+            ultraGridColumn29,
+            ultraGridColumn30});
+            ultraGridColumn31.Header.Caption = "Producto";
+            ultraGridColumn31.Header.VisiblePosition = 0;
+            ultraGridColumn32.Header.Caption = "Cantidad";
+            ultraGridColumn32.Header.VisiblePosition = 2;
+            ultraGridColumn33.Header.VisiblePosition = 1;
+            ultraGridColumn37.Header.VisiblePosition = 3;
+            ultraGridColumn39.Header.VisiblePosition = 4;
             ultraGridBand4.Columns.AddRange(new object[] {
-            ultraGridColumn9,
-            ultraGridColumn38,
-            ultraGridColumn11,
-            ultraGridColumn14,
-            ultraGridColumn15});
+            ultraGridColumn31,
+            ultraGridColumn32,
+            ultraGridColumn33,
+            ultraGridColumn37,
+            ultraGridColumn39});
             summarySettings1.GroupBySummaryValueAppearance = appearance2;
             ultraGridBand4.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
             summarySettings1});
-            ultraGridColumn40.Header.VisiblePosition = 0;
-            ultraGridColumn41.Header.VisiblePosition = 1;
-            ultraGridColumn10.Header.Caption = "Medico Tratante";
-            ultraGridColumn10.Header.VisiblePosition = 2;
-            ultraGridColumn42.Header.VisiblePosition = 3;
+            ultraGridColumn48.Header.VisiblePosition = 0;
+            ultraGridColumn51.Header.VisiblePosition = 1;
+            ultraGridColumn52.Header.Caption = "Medico Tratante";
+            ultraGridColumn52.Header.VisiblePosition = 2;
+            ultraGridColumn53.Header.VisiblePosition = 3;
             ultraGridBand5.Columns.AddRange(new object[] {
-            ultraGridColumn40,
-            ultraGridColumn41,
-            ultraGridColumn10,
-            ultraGridColumn42});
+            ultraGridColumn48,
+            ultraGridColumn51,
+            ultraGridColumn52,
+            ultraGridColumn53});
             summarySettings2.GroupBySummaryValueAppearance = appearance3;
             ultraGridBand5.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
             summarySettings2});
             ultraGridBand5.SummaryFooterCaption = "Summaries for [BANDHEADER]: [SCROLLTIPFIELD]";
-            ultraGridColumn43.Header.Caption = "Nro. Habitacion";
-            ultraGridColumn43.Header.VisiblePosition = 0;
-            ultraGridColumn44.Header.Caption = "Fecha Inicio";
-            ultraGridColumn44.Header.VisiblePosition = 1;
-            ultraGridColumn45.Header.Caption = "Fecha Fin";
-            ultraGridColumn45.Header.VisiblePosition = 2;
-            ultraGridColumn46.Header.Caption = "Precio";
-            ultraGridColumn46.Header.VisiblePosition = 3;
-            ultraGridColumn47.Header.VisiblePosition = 4;
+            ultraGridColumn54.Header.Caption = "Nro. Habitacion";
+            ultraGridColumn54.Header.VisiblePosition = 0;
+            ultraGridColumn55.Header.Caption = "Fecha Inicio";
+            ultraGridColumn55.Header.VisiblePosition = 1;
+            ultraGridColumn56.Header.Caption = "Fecha Fin";
+            ultraGridColumn56.Header.VisiblePosition = 2;
+            ultraGridColumn57.Header.Caption = "Precio";
+            ultraGridColumn57.Header.VisiblePosition = 3;
+            ultraGridColumn58.Header.VisiblePosition = 4;
             ultraGridBand6.Columns.AddRange(new object[] {
-            ultraGridColumn43,
-            ultraGridColumn44,
-            ultraGridColumn45,
-            ultraGridColumn46,
-            ultraGridColumn47});
+            ultraGridColumn54,
+            ultraGridColumn55,
+            ultraGridColumn56,
+            ultraGridColumn57,
+            ultraGridColumn58});
             summarySettings3.GroupBySummaryValueAppearance = appearance4;
             ultraGridBand6.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
             summarySettings3});
@@ -426,6 +430,7 @@
             this.grdData.Size = new System.Drawing.Size(1103, 447);
             this.grdData.TabIndex = 44;
             this.grdData.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdData_InitializeLayout);
+            this.grdData.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdData_InitializeRow);
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grd_AfterSelectChange);
             // 
             // ultraDataSource1
@@ -448,6 +453,51 @@
             ultraDataColumn15,
             ultraDataColumn16,
             ultraDataColumn17});
+            // 
+            // btnDarAlta
+            // 
+            this.btnDarAlta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDarAlta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnDarAlta.Enabled = false;
+            this.btnDarAlta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnDarAlta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnDarAlta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnDarAlta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDarAlta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDarAlta.ForeColor = System.Drawing.Color.Black;
+            this.btnDarAlta.Image = global::Sigesoft.Node.WinClient.UI.Resources.accept;
+            this.btnDarAlta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDarAlta.Location = new System.Drawing.Point(1142, 299);
+            this.btnDarAlta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDarAlta.Name = "btnDarAlta";
+            this.btnDarAlta.Size = new System.Drawing.Size(85, 25);
+            this.btnDarAlta.TabIndex = 108;
+            this.btnDarAlta.Text = "Dar de Alta";
+            this.btnDarAlta.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDarAlta.UseVisualStyleBackColor = false;
+            this.btnDarAlta.Click += new System.EventHandler(this.btnDarAlta_Click);
+            // 
+            // btnReportePDF
+            // 
+            this.btnReportePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReportePDF.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReportePDF.Enabled = false;
+            this.btnReportePDF.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnReportePDF.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReportePDF.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnReportePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportePDF.ForeColor = System.Drawing.Color.Black;
+            this.btnReportePDF.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.btnReportePDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportePDF.Location = new System.Drawing.Point(1142, 472);
+            this.btnReportePDF.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReportePDF.Name = "btnReportePDF";
+            this.btnReportePDF.Size = new System.Drawing.Size(85, 46);
+            this.btnReportePDF.TabIndex = 107;
+            this.btnReportePDF.Text = "Reporte";
+            this.btnReportePDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnReportePDF.UseVisualStyleBackColor = false;
+            this.btnReportePDF.Click += new System.EventHandler(this.btnReportePDF_Click);
             // 
             // btnEditarHabitacion
             // 
@@ -508,7 +558,7 @@
             this.btnAgregarExamenes.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarExamenes.Image = global::Sigesoft.Node.WinClient.UI.Properties.Resources.add;
             this.btnAgregarExamenes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarExamenes.Location = new System.Drawing.Point(1142, 268);
+            this.btnAgregarExamenes.Location = new System.Drawing.Point(1142, 238);
             this.btnAgregarExamenes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarExamenes.Name = "btnAgregarExamenes";
             this.btnAgregarExamenes.Size = new System.Drawing.Size(85, 46);
@@ -601,33 +651,12 @@
             this.btnTicket.UseVisualStyleBackColor = false;
             this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
             // 
-            // btnReportePDF
-            // 
-            this.btnReportePDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnReportePDF.BackColor = System.Drawing.SystemColors.Control;
-            this.btnReportePDF.Enabled = false;
-            this.btnReportePDF.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnReportePDF.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnReportePDF.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnReportePDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReportePDF.ForeColor = System.Drawing.Color.Black;
-            this.btnReportePDF.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
-            this.btnReportePDF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReportePDF.Location = new System.Drawing.Point(1142, 472);
-            this.btnReportePDF.Margin = new System.Windows.Forms.Padding(2);
-            this.btnReportePDF.Name = "btnReportePDF";
-            this.btnReportePDF.Size = new System.Drawing.Size(85, 46);
-            this.btnReportePDF.TabIndex = 107;
-            this.btnReportePDF.Text = "Reporte";
-            this.btnReportePDF.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnReportePDF.UseVisualStyleBackColor = false;
-            this.btnReportePDF.Click += new System.EventHandler(this.btnReportePDF_Click);
-            // 
             // frmHospitalizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 581);
+            this.Controls.Add(this.btnDarAlta);
             this.Controls.Add(this.btnReportePDF);
             this.Controls.Add(this.btnEditarHabitacion);
             this.Controls.Add(this.btnAsignarHabitacion);
@@ -679,5 +708,6 @@
         private System.Windows.Forms.Button btnEditarHabitacion;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnReportePDF;
+        private System.Windows.Forms.Button btnDarAlta;
     }
 }
