@@ -40,6 +40,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtMedicamento.Text = medicamento.NombreCompleto;
                 txtCodigo.Text = medicamento.CodInterno;
                 txtMedicamento.Tag = medicamento.IdProductoDetalle;
+                txtPrecioVenta.Text = medicamento.PrecioVenta.ToString();
             }
         }
 
@@ -83,6 +84,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                         _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
                         _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
+                        _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
                         decimal d;
                         _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
                         //objTicketDetalleList.i_EsDespachado = int.Parse()
@@ -100,6 +102,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                                 _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
                                 _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
+                                _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
                                 decimal d;
                                 _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
 
@@ -110,6 +113,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                                 _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
                                 _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
+                                _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
                                 decimal d;
                                 _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
                                 _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
@@ -152,6 +156,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtMedicamento.Text = findResult.v_NombreProducto;
                 txtCodigo.Text = findResult.v_CodInterno;
                 txtCantidad.Value = findResult.d_Cantidad;
+                txtPrecioVenta.Value = findResult.d_PrecioVenta;
             }
         }
 

@@ -122,6 +122,8 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else
             {
+                Utils.LoadDropDownList(cboMedico, "Value1", "Id", BLL.Utils.GetProfessionalName(ref objOperationResult), DropDownListAction.Select);
+                cboMedico.SelectedValue = "11";
                 cboMedico.Enabled = false;
             }
         }

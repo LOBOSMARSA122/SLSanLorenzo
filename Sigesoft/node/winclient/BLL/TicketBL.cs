@@ -180,7 +180,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                              v_NombreProducto = F.v_Descripcion,
                                              v_CodInterno =  F.v_CodInterno,
                                              v_IdProductoDetalle = F.v_IdProductoDetalle,
-
+                                             d_PrecioVenta = F.d_PrecioVenta.Value,
                                              i_RecordStatus = (int)RecordStatus.Grabado,
                                              i_RecordType = (int)RecordType.NoTemporal
                                          }).ToList();
@@ -212,7 +212,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 var objStrongEntity = ticketAssembler.ToEntity(objticketDto);
                 dbContext.ticket.ApplyCurrentValues(objStrongEntity);
                 #endregion
+
                 int intNodeId = int.Parse(ClientSession[0]);
+
                 #region add detalle
 
                 foreach (var item in _ticketdetalleDTOAdd)
@@ -256,6 +258,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 }
 
                 #endregion
+
                 #region del detalle
 
                 if (_ticketdetalleDTODelete != null)

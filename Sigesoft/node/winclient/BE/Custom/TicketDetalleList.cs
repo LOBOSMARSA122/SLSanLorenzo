@@ -18,5 +18,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string EsDespachado { get; set; }
         public int? i_RecordStatus { get; set; }
         public int? i_RecordType { get; set; }
+        public decimal? d_PrecioVenta{ get; set; }
+        public decimal? Total { get; set; }
+        
     }
 }

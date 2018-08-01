@@ -83,7 +83,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     ticketDetalle.i_EsDespachado = item.i_EsDespachado;
                     ticketDetalle.v_CodInterno = item.v_CodInterno;
                     ticketDetalle.v_Descripcion = item.v_NombreProducto;
-
+                    ticketDetalle.d_PrecioVenta = item.d_PrecioVenta;
                     _ticketdetalleDTO.Add(ticketDetalle);
                 }
 
@@ -124,6 +124,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         ticketdetalleDtoAdd.i_EsDespachado = item.i_EsDespachado;
                         ticketdetalleDtoAdd.v_CodInterno = item.v_CodInterno;
                         ticketdetalleDtoAdd.v_Descripcion = item.v_NombreProducto;
+                        ticketdetalleDtoAdd.d_PrecioVenta = item.d_PrecioVenta;
                         _ticketdetalleDTO.Add(ticketdetalleDtoAdd);
                     }
                     #endregion
@@ -138,6 +139,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         ticketdetalleDtoUp.i_EsDespachado = item.i_EsDespachado;
                         ticketdetalleDtoUp.v_CodInterno = item.v_CodInterno;
                         ticketdetalleDtoUp.v_Descripcion = item.v_NombreProducto;
+                        ticketdetalleDtoUp.d_PrecioVenta = item.d_PrecioVenta;
                         _ticketdetalleDTOUpdate.Add(ticketdetalleDtoUp);
                     }
                     #endregion

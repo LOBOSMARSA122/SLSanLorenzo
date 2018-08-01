@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
             this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
@@ -42,14 +43,19 @@
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.lblIdDetalleProd = new System.Windows.Forms.Label();
+            this.txtPrecioVenta = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).BeginInit();
             this.SuspendLayout();
             // 
             // gbReceta
             // 
+            this.gbReceta.Controls.Add(this.txtPrecioVenta);
+            this.gbReceta.Controls.Add(this.ultraLabel4);
             this.gbReceta.Controls.Add(this.txtCodigo);
             this.gbReceta.Controls.Add(this.ultraLabel3);
             this.gbReceta.Controls.Add(this.labelmensaje);
@@ -68,8 +74,9 @@
             // 
             // txtCodigo
             // 
-            appearance1.TextHAlignAsString = "Right";
-            this.txtCodigo.Appearance = appearance1;
+            appearance2.TextHAlignAsString = "Right";
+            this.txtCodigo.Appearance = appearance2;
+            this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(103, 73);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(68, 21);
@@ -141,8 +148,8 @@
             // 
             // txtCantidad
             // 
-            appearance2.TextHAlignAsString = "Right";
-            this.txtCantidad.Appearance = appearance2;
+            appearance3.TextHAlignAsString = "Right";
+            this.txtCantidad.Appearance = appearance3;
             this.txtCantidad.Location = new System.Drawing.Point(103, 100);
             this.txtCantidad.Name = "txtCantidad";
             this.txtCantidad.Size = new System.Drawing.Size(68, 21);
@@ -176,6 +183,25 @@
             this.lblIdDetalleProd.TabIndex = 9;
             this.lblIdDetalleProd.Text = ".";
             // 
+            // txtPrecioVenta
+            // 
+            appearance1.TextHAlignAsString = "Right";
+            this.txtPrecioVenta.Appearance = appearance1;
+            this.txtPrecioVenta.Enabled = false;
+            this.txtPrecioVenta.Location = new System.Drawing.Point(261, 73);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(68, 21);
+            this.txtPrecioVenta.TabIndex = 13;
+            // 
+            // ultraLabel4
+            // 
+            this.ultraLabel4.AutoSize = true;
+            this.ultraLabel4.Location = new System.Drawing.Point(180, 77);
+            this.ultraLabel4.Name = "ultraLabel4";
+            this.ultraLabel4.Size = new System.Drawing.Size(69, 14);
+            this.ultraLabel4.TabIndex = 14;
+            this.ultraLabel4.Text = "Precio Venta";
+            // 
             // frmAddProducto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -196,6 +222,7 @@
             this.gbReceta.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -215,6 +242,8 @@
         private System.Windows.Forms.Label labelmensaje;
         private Infragistics.Win.UltraWinEditors.UltraTextEditor txtCodigo;
         private Infragistics.Win.Misc.UltraLabel ultraLabel3;
+        private Infragistics.Win.UltraWinEditors.UltraTextEditor txtPrecioVenta;
+        private Infragistics.Win.Misc.UltraLabel ultraLabel4;
 
     }
 }
