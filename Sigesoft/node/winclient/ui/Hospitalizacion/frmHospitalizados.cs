@@ -76,6 +76,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
            btnAgregarExamenes.Enabled = false;
            btnAsignarHabitacion.Enabled = false;
            btnReportePDF.Enabled = false;
+           btnReportePDF.Enabled = false;
            btnDarAlta.Enabled = false;
 
         }
@@ -165,6 +166,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     btnAsignarHabitacion.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
                     btnReportePDF.Enabled = false;
+                    btnDarAlta.Enabled = false;
                     btnDarAlta.Enabled = false;
                 }
                 else

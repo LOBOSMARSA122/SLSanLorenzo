@@ -594,8 +594,6 @@ namespace Sigesoft.Node.WinClient.BLL
         }
 
 
-      
-
         private List<TicketDetalleList> BuscarTicketsDetalle(string v_TicketId)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
