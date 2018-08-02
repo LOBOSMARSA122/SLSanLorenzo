@@ -31,7 +31,7 @@ namespace NetPdf
             Adulto datosAdult,
             List<Embarazo> listEmbarazos,
             AdultoMayor datosAdultMay,
-            List<DiagnosticRepositoryList> Diagnosticos,  List<recetadespachoDto> medicina)
+            List<DiagnosticRepositoryList> Diagnosticos,  List<recetadespachoDto> medicina, List<ServiceComponentList> ExamenesServicio)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
@@ -2664,12 +2664,51 @@ namespace NetPdf
             cellsTit = new List<PdfPCell>()
                 { 
                     new PdfPCell(new Phrase("EXAMENES AUXILIARES", fontColumnValue)) {Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, BackgroundColor=BaseColor.GRAY, MinimumHeight=15F },
-                    new PdfPCell(new Phrase("-", fontColumnValue)) {Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT,VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight=tamaño_celda  },
                 };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
             document.Add(table);
+
+            string[] excludeComponents = { Sigesoft.Common.Constants.ANTROPOMETRIA_ID,
+                                                 Sigesoft.Common.Constants.FUNCIONES_VITALES_ID,
+                                                 Sigesoft.Common.Constants.EXAMEN_FISICO_ID,
+                                                 "N005-ME000000117",
+                                                 "N005-ME000000116",
+                                                 "N005-ME000000046"
+
+                                             };
+
+            //int[] excludeCategoryTypeExam = {  (int)Sigesoft.Common.CategoryTypeExam.Laboratorio,
+            //                                       (int)Sigesoft.Common.CategoryTypeExam.Psicologia,
+                                                
+            //                                    };
+            ////// &&
+            //                                               !excludeCategoryTypeExam.Contains(p.i_CategoryId.Value)
+
+            var otherExams = ExamenesServicio.FindAll(p => !excludeComponents.Contains(p.v_ComponentId));
+
+            // Utilizado Solo para mostrar titulo <OTROS>
+            cells = new List<PdfPCell>()
+            {
+
+            };
+
+            columnWidths = new float[] { 100f };
+
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            document.Add(table);
+
+            // Otros Examenes
+
+            foreach (var oe in otherExams)
+            {
+                table = TableBuilderReportFor312(oe, fontTitleTable, fontSubTitleNegroNegrita, fontColumnValue, subTitleBackGroundColor);
+
+                if (table != null)
+                    document.Add(table);
+            }
+
             #endregion
 
             #region DIAGNOSTICOS
@@ -2913,6 +2952,736 @@ namespace NetPdf
             document.Close();
             writer.Close();
             writer.Dispose();
+        }
+        private static PdfPTable TableBuilderReportFor312(ServiceComponentList serviceComponent, Font fontTitle, Font fontSubTitle, Font fontColumnValue, BaseColor SubtitleBackgroundColor)
+        {
+            PdfPTable table = null;
+            List<PdfPCell> cells = null;
+            PdfPCell cell = null;
+            float[] columnWidths = null;
+
+            switch (serviceComponent.v_ComponentId)
+            {
+
+                case Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_ID:
+
+                    #region ELECTROCARDIOGRAMA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 1,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_DESCRIPCION_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.EVALUACION_ERGONOMICA_ID:
+
+                    #region EVALUACION_ERGONOMICA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_ERGONOMICA_CONCLUSION_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+                case Sigesoft.Common.Constants.ALTURA_ESTRUCTURAL_ID:
+
+                    #region ALTURA_ESTRUCTURAL
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ALTURA_ESTRUCTURAL_DESCRIPCION_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.ALTURA_GEOGRAFICA_ID:
+
+                    #region ALTURA_GEOGRAFICA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ALTURA_GEOGRAFICA_DESCRIPCION_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+
+                case Sigesoft.Common.Constants.OSTEO_MUSCULAR_ID_1:
+
+                    #region OSTEO_MUSCULAR
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.DESCRIPCION);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.PRUEBA_ESFUERZO_ID:
+
+                    #region PRUEBA_ESFUERZO
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        //var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PRUEBA_ESFUERZO_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+                case Sigesoft.Common.Constants.TAMIZAJE_DERMATOLOGIO_ID:
+
+                    #region TAMIZAJE_DERMATOLOGICO
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TAMIZAJE_DERMATOLOGIO_DESCRIPCION1_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.ODONTOGRAMA_ID:
+
+                    #region ODONTOGRAMA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTOGRAMA_CONCLUSIONES_DESCRIPCION_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+                case Sigesoft.Common.Constants.GINECOLOGIA_ID:
+
+                    #region EVALUACION_GINECOLOGICA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var descripcion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GINECOLOGIA_HALLAZGOS_ID);
+
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(descripcion.v_Value1) ? "No se han registrado datos." : descripcion.v_Value1, fontColumnValue)));
+
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+                case Sigesoft.Common.Constants.EXAMEN_MAMA_ID:
+
+                    #region EXAMEN_MAMA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var descripcion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_MAMA_HALLAZGOS_ID);
+
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(descripcion.v_Value1) ? "No se han registrado datos." : descripcion.v_Value1, fontColumnValue)));
+
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.AUDIOMETRIA_ID:
+
+                    #region AUIDIOMETRIA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.AUDIOMETRIA_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.ESPIROMETRIA_ID:
+
+                    #region ESPIROMETRIA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.OFTALMOLOGIA_ID:
+
+                    #region OFTALMOLOGIA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.INMUNIZACIONES_ID:
+
+                    #region INMUNIZACIONES
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INMUNIZACIONES_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case "N002-ME000000033":
+
+                    #region PSICOLOGIA
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N002-ME000000033");
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+                case Sigesoft.Common.Constants.OIT_ID:
+
+                    #region RX OIT 
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OIT_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.RX_TORAX_ID:
+
+                    #region RX TORAX
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RX_TORAX_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case Sigesoft.Common.Constants.LUMBOSACRA_ID:
+
+                    #region RX LUMBAR
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LUMBOSACRA_ID);
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                case "N001-ME000000000":
+
+                    #region INFORME LABORATORIO
+
+                    cells = new List<PdfPCell>();
+
+                    // Subtitulo  ******************
+                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+                    {
+                        Colspan = 2,
+                        BackgroundColor = SubtitleBackgroundColor,
+                        HorizontalAlignment = Element.ALIGN_LEFT,
+                    };
+
+                    cells.Add(cell);
+                    //*****************************************
+
+                    if (serviceComponent.ServiceComponentFields.Count > 0)
+                    {
+                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N001-ME000000000");
+                        var hallazgos = serviceComponent.DiagnosticRepository;
+                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+
+                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)));
+                    }
+                    else
+                    {
+                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)));
+                    }
+
+                    columnWidths = new float[] { 100f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+
+                    #endregion
+
+                    break;
+
+                default:
+                    break;
+            }
+            
+            return table;
+
         }
     }
 }

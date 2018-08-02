@@ -320,10 +320,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosAdulMay = _pacientBL.DevolverAdultoMayor(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var medico = _pacientBL.ObtenerDatosMedicoMedicina(_serviceId, Constants.ATENCION_INTEGRAL_ID, Constants.EXAMEN_FISICO_7C_ID);
-            
+            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
             var medicina = objRecetaBl.GetReceta(_serviceId);
 
-            AtencionIntegral.CreateAtencionIntegral(pathFile, medico,datosP, listAntecedentes, MedicalCenter, exams, datosNin, datosAdol, datosAdul, listEmb, datosAdulMay, diagnosticRepository, medicina);
+            AtencionIntegral.CreateAtencionIntegral(pathFile, medico, datosP, listAntecedentes, MedicalCenter, exams, datosNin, datosAdol, datosAdul, listEmb, datosAdulMay, diagnosticRepository, medicina, _ExamenesServicio);
 
         }
 

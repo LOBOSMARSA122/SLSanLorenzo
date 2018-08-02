@@ -884,6 +884,8 @@ namespace Sigesoft.Common
 
         #endregion
 
+        public const string INMUNIZACIONES_ID = "N009-ME000000407";
+
         #region TOXICOLOGIA
 
         public const string SALMONELLA_ID = "N009-ME000000427";
@@ -1468,11 +1470,11 @@ namespace Sigesoft.Common
         public const string RX_U1_ID = "N009-MF000000755";
         #endregion
 
-        public const string INFORME_LABORATORIO_ID = "N009-ME000000002";
+        public const string INFORME_LABORATORIO_ID = "N001-ME000000000";
 
 
-        public const string LABORATORIO_HALLAZGO_PATOLOGICO_LABORATORIO_ID = "N009-MF000000272";
-
+        public const string INFORME_LABORATORIO_OBSERVACIONES = "N009-MF000000272";
+        public const string INFORME_LABORATORIO_NORMAL = "N009-MF000002132";
         #region OFTALMOLOGIA
 
         public const string OFTALMOLOGIA_CORRECTORES_OCULARES_SI_ID = "N002-MF000000224";
@@ -4220,6 +4222,7 @@ namespace Sigesoft.Common
         public const string CuestionarioAutoeva_ID = "N009-ME000000310";
 
         #region INMUNIZACIONES ANEXO16
+
         public const string TETANO_ANEXO16_ID = "N009-MF000003190";
         public const string INFLUENZA_ANEXO16_ID = "N009-MF000003191";
         public const string HEPATITISB_ANEXO16_ID = "N009-MF000003192";
