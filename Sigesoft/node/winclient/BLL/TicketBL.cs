@@ -149,7 +149,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                  {
                                      v_ServiceId = D.v_ServiceId,
                                      v_TicketId = D.v_TicketId,
-                                     d_Fecha = D.d_Fecha
+                                     d_Fecha = D.d_Fecha,
+                                     i_conCargoA = D.i_ConCargoA,
+                                     i_tipoCuenta =D.i_TipoCuentaId
                                  };
                 List<TicketList> objData = objEntity.ToList();
                 return objData;

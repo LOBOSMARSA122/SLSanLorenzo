@@ -287,47 +287,63 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             List<TicketList> Tickett = new List<TicketList>();
 
-            DialogResult Result = MessageBox.Show("¿Desea publicar a la WEB?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult Result = MessageBox.Show("Generado Para: ", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-            saveFileDialog1.FileName = "Liquidacion";
-            saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
-            //var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-            //{
-            //    this.Enabled = false;
-            //    var _DataService = _serviceBL.GetServiceReport(serviceId);
-            //    var datosP = _pacientBL.DevolverDatosPaciente(serviceId);
-            //    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-
-            //    var listaTicket = _hospitBL.BuscarTickets(serviceId);
-
-            //    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
-
-            //    Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", _DataService, datosP, MedicalCenter, listaTicket);
-            //    this.Enabled = true;
-            //}
-
-            var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            if (Result == System.Windows.Forms.DialogResult.Yes)
             {
-                this.Enabled = false;
-                
-                var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+                saveFileDialog1.FileName = "Liquidacion";
+                saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
 
-                var lista = _hospitBL.GetHospitalizcion(ref _objOperationResult,hospitId);
+                var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    this.Enabled = false;
 
-                //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
+                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
-                hospser = _hospitBL.GetHospitServ(hospitId);
+                    var lista = _hospitBL.GetHospitalizcion(ref _objOperationResult, hospitId);
 
-                var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
-                var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
+                    //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
+                    int doctor = 1;
+                    hospser = _hospitBL.GetHospitServ(hospitId);
 
-                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+                    var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
+                    var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
 
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP);
-                this.Enabled = true;
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                    Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor);
+                    this.Enabled = true;
+                }
             }
+            else
+            {
+                saveFileDialog1.FileName = "Liquidacion";
+                saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
+
+                var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    this.Enabled = false;
+
+                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+                    var lista = _hospitBL.GetHospitalizcion(ref _objOperationResult, hospitId);
+
+                    //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
+                    int paciente = 2;
+                    hospser = _hospitBL.GetHospitServ(hospitId);
+
+                    var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
+                    var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
+
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                    Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente);
+                    this.Enabled = true;
+                }
+            }
+            
         }
 
         private void frmHospitalizados_Load(object sender, EventArgs e)

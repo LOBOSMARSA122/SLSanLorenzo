@@ -442,7 +442,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                {
                                    v_ServiceId = E.v_ServiceId,
                                    v_TicketId = E.v_TicketId,
-                                   d_Fecha = E.d_Fecha
+                                   d_Fecha = E.d_Fecha,
+                                   i_conCargoA = E.i_ConCargoA,
+                                   i_tipoCuenta = E.i_TipoCuentaId
+                                   
                                };
             List<TicketList> objData = queryticket.ToList();
             // en hospitalizaciones tienes los padres
@@ -451,7 +454,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                               {
                                                   v_TicketId=a.v_TicketId,
                                                   v_ServiceId = a.v_ServiceId,
-                                                  d_Fecha = a.d_Fecha
+                                                  d_Fecha = a.d_Fecha,
+                                                  i_conCargoA = a.i_conCargoA,
+                                                  i_tipoCuenta = a.i_tipoCuenta
                                               }).ToList();
 
             var objtData = ticket.AsEnumerable()
@@ -471,6 +476,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 tickets.v_TicketId = item.v_TicketId;
                 tickets.v_ServiceId = item.v_ServiceId;
                 tickets.d_Fecha = item.d_Fecha;
+                tickets.i_conCargoA = item.i_conCargoA;
+                tickets.i_tipoCuenta = item.i_tipoCuenta;
 
                 // estos son los hijos de 1 hopitalización
                 var ticketssdetalle = BuscarTicketsDetalle(item.v_TicketId).ToList();
