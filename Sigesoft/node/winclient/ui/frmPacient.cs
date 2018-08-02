@@ -320,9 +320,18 @@ namespace Sigesoft.Node.WinClient.UI
                 RubricImage = objpacientDto.b_RubricImage;
                 RubricImageText = objpacientDto.t_RubricImageText;
 
-                ddlDepartamentId.SelectedValue = objpacientDto.i_DepartmentId == null ? "-1" : objpacientDto.i_DepartmentId.ToString();
-                ddlProvinceId.SelectedValue = objpacientDto.i_ProvinceId == null ? "-1" : objpacientDto.i_ProvinceId.ToString();
+                //ddlDepartamentId.SelectedValue = objpacientDto.i_DepartmentId == null ? "-1" : objpacientDto.i_DepartmentId.ToString();
+                //ddlProvinceId.SelectedValue = objpacientDto.i_ProvinceId == null ? "-1" : objpacientDto.i_ProvinceId.ToString();
+                //ddlDistricId.SelectedValue = objpacientDto.i_DistrictId == null ? "-1" : objpacientDto.i_DistrictId.ToString();
+
                 ddlDistricId.SelectedValue = objpacientDto.i_DistrictId == null ? "-1" : objpacientDto.i_DistrictId.ToString();
+                Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.ObtenerTodasProvincia(ref objOperationResult, 113), DropDownListAction.Select);
+
+                ddlProvinceId.SelectedValue = objpacientDto.i_ProvinceId == null ? "-1" : objpacientDto.i_ProvinceId.ToString();
+                Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", BLL.Utils.ObtenerTodasDepartamentos(ref objOperationResult, 113), DropDownListAction.Select);
+                ddlDepartamentId.SelectedValue = objpacientDto.i_DepartmentId == null ? "-1" : objpacientDto.i_DepartmentId.ToString();
+
+
                 ddlResidenceInWorkplaceId.SelectedValue = objpacientDto.i_ResidenceInWorkplaceId == null ? "-1" : objpacientDto.i_ResidenceInWorkplaceId.ToString();
                 txtResidenceTimeInWorkplace.Text = objpacientDto.v_ResidenceTimeInWorkplace;
 
