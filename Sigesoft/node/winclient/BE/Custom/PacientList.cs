@@ -239,5 +239,6 @@ namespace Sigesoft.Node.WinClient.BE
         public String v_Religion { get; set; }
         public String v_Nacionalidad { get; set; }
         public String v_ResidenciaAnterior { get; set; }
+
     }
 }

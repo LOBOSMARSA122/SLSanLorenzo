@@ -6159,6 +6159,13 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                  join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
                                  from pr in pr_join.DefaultIfEmpty()
+
+                                 join su1 in dbContext.systemuser on a.i_UpdateUserOccupationalMedicaltId.Value equals su1.i_SystemUserId into su1_join
+                                 from su1 in su1_join.DefaultIfEmpty()
+
+                                 join pr2 in dbContext.professional on su1.v_PersonId equals pr2.v_PersonId into pr2_join
+                                 from pr2 in pr2_join.DefaultIfEmpty()
+
                                  where a.v_ServiceId == pstrServiceId && a.i_IsDeleted == 0
                                  select new Sigesoft.Node.WinClient.BE.PacientList
                                  {
@@ -6215,7 +6222,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_Mac = O.v_Value1,
                                      v_Story = a.v_Story,
                                      Aptitud = J4.v_Value1,
-                                     b_FirmaAuditor = pr.b_SignatureImage
+                                     b_FirmaAuditor = pr.b_SignatureImage,
+                                     FirmaTrabajador = b.b_RubricImage,
+                                     HuellaTrabajador = b.b_FingerPrintImage,
+                                     FirmaDoctorAuditor = pr2.b_SignatureImage,
                                  }
                                 ).ToList();
                 var DatosMedicoMedicinaEvaluador = ObtenerDatosMedicoMedicina(pstrServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
@@ -6278,7 +6288,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_Story = a.v_Story,
                                   Aptitud = a.Aptitud,
                                   b_FirmaEvaluador = DatosMedicoMedicinaEvaluador== null?null:DatosMedicoMedicinaEvaluador.FirmaMedicoMedicina,
-                                  b_FirmaAuditor = a.b_FirmaAuditor
+                                  b_FirmaAuditor = a.b_FirmaAuditor,
+                                  FirmaTrabajador = a.FirmaTrabajador,
+                                  HuellaTrabajador = a.HuellaTrabajador,
+                                  FirmaDoctorAuditor = a.FirmaDoctorAuditor
                               }
                             ).FirstOrDefault();
 
@@ -6291,7 +6304,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        private DatosDoctorMedicina ObtenerDatosMedicoMedicina(string pstrServiceId, string p1, string p2)
+        public DatosDoctorMedicina ObtenerDatosMedicoMedicina(string pstrServiceId, string p1, string p2)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 

@@ -282,7 +282,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         private void GenerateAtencionIntegral(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var _DataService = _serviceBL.GetServiceReport(_serviceId);
             // en esta variable va a traer todos los valores de los examenes
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
@@ -319,11 +319,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var listEmb = _pacientBL.GetEmbarazos(_pacientId);
             var datosAdulMay = _pacientBL.DevolverAdultoMayor(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-
+            var medico = _pacientBL.ObtenerDatosMedicoMedicina(_serviceId, Constants.ATENCION_INTEGRAL_ID, Constants.EXAMEN_FISICO_7C_ID);
             
             var medicina = objRecetaBl.GetReceta(_serviceId);
 
-            AtencionIntegral.CreateAtencionIntegral(_DataService, pathFile, datosP, listAntecedentes, MedicalCenter, exams, datosNin, datosAdol, datosAdul, listEmb, datosAdulMay, diagnosticRepository, medicina);
+            AtencionIntegral.CreateAtencionIntegral(pathFile, medico,datosP, listAntecedentes, MedicalCenter, exams, datosNin, datosAdol, datosAdul, listEmb, datosAdulMay, diagnosticRepository, medicina);
 
         }
 
