@@ -75,9 +75,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
            btnTicket.Enabled = false;
            btnAgregarExamenes.Enabled = false;
            btnAsignarHabitacion.Enabled = false;
-
            btnReportePDF.Enabled = false;
-
+           btnReportePDF.Enabled = false;
            btnDarAlta.Enabled = false;
 
         }
@@ -166,17 +165,15 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 {
                     btnAsignarHabitacion.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
-
-
+                    btnReportePDF.Enabled = false;
                     btnDarAlta.Enabled = false;
-                    //btnReportePDF.Enabled = false;
+                    btnDarAlta.Enabled = false;
                 }
                 else
                 {
                     btnAsignarHabitacion.Enabled = true;
                     btnReportePDF.Enabled = true;
                     btnDarAlta.Enabled = true;
-                    //btnReportePDF.Enabled = true;
                 }
 
                 if (rowSelected.Band.Index.ToString() == "0" || rowSelected.Band.Index.ToString() == "2" || rowSelected.Band.Index.ToString() == "3" || rowSelected.Band.Index.ToString() == "4" || rowSelected.Band.Index.ToString() == "5")

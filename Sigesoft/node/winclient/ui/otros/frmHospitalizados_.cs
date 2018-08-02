@@ -331,11 +331,17 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
                     var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
 
+<<<<<<< HEAD
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                     Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente);
                     this.Enabled = true;
                 }
+=======
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP);
+                this.Enabled = true;
+>>>>>>> dbc0895fb9f4aea381eb2de904d3e299f0b67d72
             }
             
         }

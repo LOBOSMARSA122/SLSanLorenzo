@@ -4793,8 +4793,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void grdTotalDiagnosticos_ClickCell(object sender, Infragistics.Win.UltraWinGrid.ClickCellEventArgs e)
         {
-            //_rowIndex = e.Cell.Row.Index;
-            //EditTotalDiagnosticos(_rowIndex);
+            _rowIndex = e.Cell.Row.Index;
+            EditTotalDiagnosticos(_rowIndex);
         }
 
         private void EditTotalDiagnosticos(int? rowIndex)

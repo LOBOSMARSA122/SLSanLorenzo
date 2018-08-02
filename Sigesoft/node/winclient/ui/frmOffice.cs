@@ -59,9 +59,15 @@ namespace Sigesoft.Node.WinClient.UI
         private void frmOffice_Load(object sender, EventArgs e)
         {
             OperationResult objOperationResult = new OperationResult();
-
              //Utils.LoadDropDownList(cbOficina, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.Select);
-            
+
+            Utils.LoadDropDownList(cbServiceType, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, -1, null), DropDownListAction.All);
+            // combo servicio
+            Utils.LoadDropDownList(cbService, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, -1, null), DropDownListAction.All);
+
+            cbServiceType.SelectedValue = ((int)ServiceType.Empresarial).ToString();
+            cbService.SelectedValue = ((int)MasterService.Eso).ToString();
+          
             using (new LoadingClass.PleaseWait(this.Location, "Cargando..."))
             {
                 _customizedToolTip = new Sigesoft.Node.WinClient.UI.Utils.CustomizedToolTip(grdDataServiceComponent);
@@ -636,23 +642,28 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnRefresh_Click(object sender, EventArgs e)
         {
-
             try
             {
                 OperationResult objOperationResult = new OperationResult();
                 CalendarBL objCalendarBL = new CalendarBL();
                 List<CalendarList> objCalendarList = new List<CalendarList>();
-                ServiceComponentList objServiceComponent = new ServiceComponentList();
                 List<ServiceComponentList> ListServiceComponent = new List<ServiceComponentList>();
 
-                objCalendarList = objCalendarBL.GetPacientInLineByComponentId1(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray());
-                grdListaLlamando.DataSource = objCalendarList;
+                if (cbServiceType.SelectedValue.ToString() == "1")
+                {
+                    objCalendarList = objCalendarBL.GetPacientInLineByComponentId1(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray(), int.Parse(cbService.SelectedValue.ToString()));
+              
+                }
+                else
+                {
+                  var client = Globals.ClientSession.GetAsList();
+                  objCalendarList = objCalendarBL.GetPacientInLineByComponentId1_ATX(ref objOperationResult, 0, null, "d_ServiceDate ASC", _componentId, DateTime.Now.Date, _componentIds.ToArray(), int.Parse(cbService.SelectedValue.ToString()), Int32.Parse(client[2]));
+              
+                }
+
+                 grdListaLlamando.DataSource = objCalendarList;
             
                 lblNameComponent.Text = _componentName;
-
-                //var dataList = BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 125, null).FindAll(p => p.Id != "1" && p.Id != "3");
-
-                //Utils.LoadDropDownList(ddlServiceStatusId, "Value1", "Id", dataList, DropDownListAction.Select);
 
                 grdDataServiceComponent.DataSource = ListServiceComponent;       
             }
@@ -1062,6 +1073,28 @@ namespace Sigesoft.Node.WinClient.UI
         private void contextMenuStrip2_Opening(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void cbServiceType_TextChanged(object sender, EventArgs e)
+        {
+            if (cbServiceType.SelectedIndex == 0 || cbServiceType.SelectedIndex == -1)
+                return;
+
+            OperationResult objOperationResult = new OperationResult();
+            var id = int.Parse(cbServiceType.SelectedValue.ToString());
+            Utils.LoadDropDownList(cbService, "Value1", "Id", BLL.Utils.GetSystemParameterByParentIdForCombo(ref objOperationResult, 119, id, null), DropDownListAction.Select);
+
+        }
+
+        private void cbService_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbService_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+            //btnRefresh_Click(sender, e);
         }
 
     }
