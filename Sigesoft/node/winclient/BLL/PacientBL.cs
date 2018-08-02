@@ -799,7 +799,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_Deducible = B.v_Deducible.Value,
                                      i_NroHermanos = B.i_NroHermanos.Value,
                                      i_NumberLiveChildren = B.i_NumberLiveChildren,
-                                     i_NumberDeadChildren = B.i_NumberDeadChildren
+                                     i_NumberDeadChildren = B.i_NumberDeadChildren,
+                                     v_Nacionalidad =  B.v_Nacionalidad,
+                                     v_ResidenciaAnterior = B.v_ResidenciaAnterior,
+                                     v_Religion = B.v_Religion
                                  }).FirstOrDefault();
 
                 pobjOperationResult.Success = 1;

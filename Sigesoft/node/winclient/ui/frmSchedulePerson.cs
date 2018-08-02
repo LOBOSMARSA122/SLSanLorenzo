@@ -317,6 +317,9 @@ namespace Sigesoft.Node.WinClient.UI
                     ddlPlaceWorkId.SelectedValue = objpacientDto.i_PlaceWorkId == 0 ? "-1" : objpacientDto.i_PlaceWorkId.ToString();
                     txtExploitedMineral.Text = objpacientDto.v_ExploitedMineral;
 
+                    txtNacionalidad.Text = objpacientDto.v_Nacionalidad;
+                    txtResideAnte.Text = objpacientDto.v_ResidenciaAnterior;
+                    txtReligion.Text = objpacientDto.v_Religion;
 
                     ModePacient = "Edit";
 
@@ -561,6 +564,11 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_PlaceWorkId = Convert.ToInt32(ddlPlaceWorkId.SelectedValue);
                     objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
                     objpersonDto.v_Password = txtDocNumber.Text;
+
+                    objpersonDto.v_Nacionalidad = txtNacionalidad.Text;
+                    objpersonDto.v_ResidenciaAnterior = txtResideAnte.Text;
+                    objpersonDto.v_Religion = txtReligion.Text;
+
                     
                     if (dtpBirthdate.Value > DateTime.Now.Date)
                     {
@@ -630,6 +638,10 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.i_PlaceWorkId = Convert.ToInt32(ddlPlaceWorkId.SelectedValue);
 
                     objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
+
+                    objpersonDto.v_Nacionalidad = txtNacionalidad.Text;
+                    objpersonDto.v_ResidenciaAnterior = txtResideAnte.Text;
+                    objpersonDto.v_Religion = txtReligion.Text;
 
 
                     if (dtpBirthdate.Value > DateTime.Now.Date)

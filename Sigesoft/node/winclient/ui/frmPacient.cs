@@ -320,9 +320,18 @@ namespace Sigesoft.Node.WinClient.UI
                 RubricImage = objpacientDto.b_RubricImage;
                 RubricImageText = objpacientDto.t_RubricImageText;
 
-                ddlDepartamentId.SelectedValue = objpacientDto.i_DepartmentId == null ? "-1" : objpacientDto.i_DepartmentId.ToString();
-                ddlProvinceId.SelectedValue = objpacientDto.i_ProvinceId == null ? "-1" : objpacientDto.i_ProvinceId.ToString();
+                //ddlDepartamentId.SelectedValue = objpacientDto.i_DepartmentId == null ? "-1" : objpacientDto.i_DepartmentId.ToString();
+                //ddlProvinceId.SelectedValue = objpacientDto.i_ProvinceId == null ? "-1" : objpacientDto.i_ProvinceId.ToString();
+                //ddlDistricId.SelectedValue = objpacientDto.i_DistrictId == null ? "-1" : objpacientDto.i_DistrictId.ToString();
+
                 ddlDistricId.SelectedValue = objpacientDto.i_DistrictId == null ? "-1" : objpacientDto.i_DistrictId.ToString();
+                Utils.LoadDropDownList(ddlProvinceId, "Value1", "Id", BLL.Utils.ObtenerTodasProvincia(ref objOperationResult, 113), DropDownListAction.Select);
+
+                ddlProvinceId.SelectedValue = objpacientDto.i_ProvinceId == null ? "-1" : objpacientDto.i_ProvinceId.ToString();
+                Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", BLL.Utils.ObtenerTodasDepartamentos(ref objOperationResult, 113), DropDownListAction.Select);
+                ddlDepartamentId.SelectedValue = objpacientDto.i_DepartmentId == null ? "-1" : objpacientDto.i_DepartmentId.ToString();
+
+
                 ddlResidenceInWorkplaceId.SelectedValue = objpacientDto.i_ResidenceInWorkplaceId == null ? "-1" : objpacientDto.i_ResidenceInWorkplaceId.ToString();
                 txtResidenceTimeInWorkplace.Text = objpacientDto.v_ResidenceTimeInWorkplace;
 
@@ -334,6 +343,9 @@ namespace Sigesoft.Node.WinClient.UI
                 pbPersonImage.Image = Common.Utils.BytesArrayToImage(objpacientDto.b_Photo, pbPersonImage);
                 txtNombreTitular.Text = objpacientDto.v_OwnerName;
 
+                txtNacionalidad.Text = objpacientDto.v_Nacionalidad;
+                txtResideAnte.Text = objpacientDto.v_ResidenciaAnterior;
+                txtReligion.Text = objpacientDto.v_Religion ;
             }
 
         }
@@ -809,6 +821,9 @@ namespace Sigesoft.Node.WinClient.UI
             ddlTypeOfInsuranceId.SelectedValue = "-1";
             txtNumberLivingChildren.Text = "";
             txtNumberDependentChildren.Text = "";
+            txtNacionalidad.Text = "";
+            txtResideAnte.Text = "";
+            txtReligion.Text = "";
 
 
         }
@@ -856,6 +871,10 @@ namespace Sigesoft.Node.WinClient.UI
             ddlTypeOfInsuranceId.Enabled = valor;
             txtNumberLivingChildren.ReadOnly = !valor;
             txtNumberDependentChildren.ReadOnly = !valor;
+
+            txtNacionalidad.ReadOnly = !valor;
+            txtResideAnte.ReadOnly = !valor;
+            txtReligion.ReadOnly = !valor;
 
         }
 
@@ -1026,6 +1045,10 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
                     objpersonDto.v_OwnerName = txtNombreTitular.Text;
 
+                    objpersonDto.v_Nacionalidad = txtNacionalidad.Text;
+                    objpersonDto.v_ResidenciaAnterior = txtResideAnte.Text;
+                    objpersonDto.v_Religion = txtReligion.Text;
+
                     if (pbPersonImage.Image != null)
                     {
                         MemoryStream ms = new MemoryStream();
@@ -1086,6 +1109,9 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_OwnerName = txtNombreTitular.Text;
                     objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
 
+                    objpersonDto.v_Nacionalidad = txtNacionalidad.Text;
+                    objpersonDto.v_ResidenciaAnterior = txtResideAnte.Text;
+                    objpersonDto.v_Religion = txtReligion.Text;
 
                     if (pbPersonImage.Image != null)
                     {

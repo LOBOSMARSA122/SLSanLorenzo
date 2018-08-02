@@ -197,6 +197,12 @@
             this.grdDataPeopleAuthoritation = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnschedule = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.label52 = new System.Windows.Forms.Label();
+            this.txtNacionalidad = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.txtResideAnte = new System.Windows.Forms.TextBox();
+            this.txtReligion = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.gbDatosGenerales.SuspendLayout();
@@ -220,7 +226,7 @@
             this.lblRecordCountService.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCountService.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCountService.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountService.Location = new System.Drawing.Point(40, 361);
+            this.lblRecordCountService.Location = new System.Drawing.Point(40, 410);
             this.lblRecordCountService.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountService.Name = "lblRecordCountService";
             this.lblRecordCountService.Size = new System.Drawing.Size(231, 19);
@@ -252,7 +258,7 @@
             this.groupBox2.Controls.Add(this.label20);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox2.Location = new System.Drawing.Point(17, 532);
+            this.groupBox2.Location = new System.Drawing.Point(17, 581);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -680,7 +686,7 @@
             this.groupBox6.Controls.Add(this.label18);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox6.Location = new System.Drawing.Point(19, 462);
+            this.groupBox6.Location = new System.Drawing.Point(19, 511);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
@@ -820,6 +826,13 @@
             // gbDatosGenerales
             // 
             this.gbDatosGenerales.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.gbDatosGenerales.Controls.Add(this.txtReligion);
+            this.gbDatosGenerales.Controls.Add(this.label54);
+            this.gbDatosGenerales.Controls.Add(this.txtResideAnte);
+            this.gbDatosGenerales.Controls.Add(this.label53);
+            this.gbDatosGenerales.Controls.Add(this.txtNacionalidad);
+            this.gbDatosGenerales.Controls.Add(this.btnSavePacient);
+            this.gbDatosGenerales.Controls.Add(this.label52);
             this.gbDatosGenerales.Controls.Add(this.txtPuesto);
             this.gbDatosGenerales.Controls.Add(this.txtNroHermanos);
             this.gbDatosGenerales.Controls.Add(this.label51);
@@ -831,7 +844,6 @@
             this.gbDatosGenerales.Controls.Add(this.label39);
             this.gbDatosGenerales.Controls.Add(this.ddlRelationshipId);
             this.gbDatosGenerales.Controls.Add(this.Parentesco);
-            this.gbDatosGenerales.Controls.Add(this.btnSavePacient);
             this.gbDatosGenerales.Controls.Add(this.label37);
             this.gbDatosGenerales.Controls.Add(this.txtResidenceTimeInWorkplace);
             this.gbDatosGenerales.Controls.Add(this.label47);
@@ -873,7 +885,7 @@
             this.gbDatosGenerales.Margin = new System.Windows.Forms.Padding(2);
             this.gbDatosGenerales.Name = "gbDatosGenerales";
             this.gbDatosGenerales.Padding = new System.Windows.Forms.Padding(2);
-            this.gbDatosGenerales.Size = new System.Drawing.Size(488, 291);
+            this.gbDatosGenerales.Size = new System.Drawing.Size(488, 340);
             this.gbDatosGenerales.TabIndex = 1;
             this.gbDatosGenerales.TabStop = false;
             this.gbDatosGenerales.Text = "Datos Generales de Paciente";
@@ -1069,7 +1081,7 @@
             this.btnSavePacient.ForeColor = System.Drawing.Color.Black;
             this.btnSavePacient.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnSavePacient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSavePacient.Location = new System.Drawing.Point(319, 267);
+            this.btnSavePacient.Location = new System.Drawing.Point(328, 315);
             this.btnSavePacient.Margin = new System.Windows.Forms.Padding(2);
             this.btnSavePacient.Name = "btnSavePacient";
             this.btnSavePacient.Size = new System.Drawing.Size(156, 21);
@@ -1690,7 +1702,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.label22);
             this.splitContainer1.Panel2.Controls.Add(this.lblRecordCountService);
             this.splitContainer1.Panel2.Controls.Add(this.grdDataService);
-            this.splitContainer1.Size = new System.Drawing.Size(775, 413);
+            this.splitContainer1.Size = new System.Drawing.Size(775, 462);
             this.splitContainer1.SplitterDistance = 498;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -1850,7 +1862,7 @@
             this.grdDataService.Location = new System.Drawing.Point(2, 15);
             this.grdDataService.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataService.Name = "grdDataService";
-            this.grdDataService.Size = new System.Drawing.Size(265, 344);
+            this.grdDataService.Size = new System.Drawing.Size(265, 393);
             this.grdDataService.TabIndex = 45;
             this.grdDataService.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdDataService_MouseDown);
             // 
@@ -2040,7 +2052,7 @@
             this.btnschedule.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnschedule.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnschedule.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnschedule.Location = new System.Drawing.Point(999, 462);
+            this.btnschedule.Location = new System.Drawing.Point(999, 511);
             this.btnschedule.Margin = new System.Windows.Forms.Padding(2);
             this.btnschedule.Name = "btnschedule";
             this.btnschedule.Size = new System.Drawing.Size(75, 24);
@@ -2061,7 +2073,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
             this.btnCancel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancel.Location = new System.Drawing.Point(999, 491);
+            this.btnCancel.Location = new System.Drawing.Point(999, 540);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 24);
@@ -2070,12 +2082,80 @@
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.ForeColor = System.Drawing.Color.Black;
+            this.label52.Location = new System.Drawing.Point(9, 291);
+            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(69, 13);
+            this.label52.TabIndex = 152;
+            this.label52.Text = "Nacionalidad";
+            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtNacionalidad
+            // 
+            this.txtNacionalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNacionalidad.Location = new System.Drawing.Point(110, 291);
+            this.txtNacionalidad.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNacionalidad.MaxLength = 50;
+            this.txtNacionalidad.Name = "txtNacionalidad";
+            this.txtNacionalidad.Size = new System.Drawing.Size(126, 20);
+            this.txtNacionalidad.TabIndex = 154;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.ForeColor = System.Drawing.Color.Black;
+            this.label53.Location = new System.Drawing.Point(242, 294);
+            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(99, 13);
+            this.label53.TabIndex = 153;
+            this.label53.Text = "Residencia Anterior";
+            // 
+            // txtResideAnte
+            // 
+            this.txtResideAnte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResideAnte.Location = new System.Drawing.Point(351, 291);
+            this.txtResideAnte.Margin = new System.Windows.Forms.Padding(2);
+            this.txtResideAnte.MaxLength = 20;
+            this.txtResideAnte.Name = "txtResideAnte";
+            this.txtResideAnte.Size = new System.Drawing.Size(124, 20);
+            this.txtResideAnte.TabIndex = 155;
+            // 
+            // txtReligion
+            // 
+            this.txtReligion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReligion.Location = new System.Drawing.Point(351, 267);
+            this.txtReligion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtReligion.MaxLength = 250;
+            this.txtReligion.Name = "txtReligion";
+            this.txtReligion.Size = new System.Drawing.Size(124, 20);
+            this.txtReligion.TabIndex = 157;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.ForeColor = System.Drawing.Color.Black;
+            this.label54.Location = new System.Drawing.Point(245, 270);
+            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(45, 13);
+            this.label54.TabIndex = 156;
+            this.label54.Text = "Religión";
+            // 
             // frmSchedulePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(1085, 620);
+            this.ClientSize = new System.Drawing.Size(1085, 669);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnschedule);
             this.Controls.Add(this.groupBox4);
@@ -2246,5 +2326,11 @@
         private System.Windows.Forms.Label label51;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdDataService;
         private Infragistics.Win.UltraWinGrid.UltraCombo txtPuesto;
+        private System.Windows.Forms.TextBox txtResideAnte;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.TextBox txtNacionalidad;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.TextBox txtReligion;
+        private System.Windows.Forms.Label label54;
     }
 }

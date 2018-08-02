@@ -157,6 +157,12 @@
             this.btnNuevo = new System.Windows.Forms.Button();
             this.btnAntecedentes = new System.Windows.Forms.Button();
             this.txtCurrentOccupation = new Infragistics.Win.UltraWinGrid.UltraCombo();
+            this.label24 = new System.Windows.Forms.Label();
+            this.txtNacionalidad = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.txtResideAnte = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.txtReligion = new System.Windows.Forms.TextBox();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -373,6 +379,12 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.txtReligion);
+            this.groupBox6.Controls.Add(this.label24);
+            this.groupBox6.Controls.Add(this.txtNacionalidad);
+            this.groupBox6.Controls.Add(this.label25);
+            this.groupBox6.Controls.Add(this.txtResideAnte);
+            this.groupBox6.Controls.Add(this.label26);
             this.groupBox6.Controls.Add(this.label50);
             this.groupBox6.Controls.Add(this.txtDecucible);
             this.groupBox6.Controls.Add(this.txtNroPliza);
@@ -420,7 +432,7 @@
             this.groupBox6.Controls.Add(this.label16);
             this.groupBox6.Location = new System.Drawing.Point(349, 12);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(815, 221);
+            this.groupBox6.Size = new System.Drawing.Size(815, 257);
             this.groupBox6.TabIndex = 0;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Datos Generales";
@@ -958,22 +970,23 @@
             this.groupBox5.Controls.Add(this.txtExploitedMineral);
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Controls.Add(this.ddlPlaceWorkId);
-            this.groupBox5.Location = new System.Drawing.Point(349, 336);
+            this.groupBox5.Location = new System.Drawing.Point(349, 360);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(815, 62);
+            this.groupBox5.Size = new System.Drawing.Size(815, 39);
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Anexo 7C";
             // 
             // label5
             // 
+            this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(18, 11);
+            this.label5.Location = new System.Drawing.Point(17, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 49);
+            this.label5.Size = new System.Drawing.Size(84, 13);
             this.label5.TabIndex = 122;
-            this.label5.Text = "Minerales Explotados o Procesados ";
+            this.label5.Text = "Minerales Explo.";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label22
@@ -981,7 +994,7 @@
             this.label22.AutoSize = true;
             this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(314, 29);
+            this.label22.Location = new System.Drawing.Point(314, 16);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(66, 13);
@@ -994,7 +1007,7 @@
             this.ddlAltitudeWorkId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlAltitudeWorkId.ForeColor = System.Drawing.Color.Black;
             this.ddlAltitudeWorkId.FormattingEnabled = true;
-            this.ddlAltitudeWorkId.Location = new System.Drawing.Point(392, 25);
+            this.ddlAltitudeWorkId.Location = new System.Drawing.Point(392, 12);
             this.ddlAltitudeWorkId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlAltitudeWorkId.Name = "ddlAltitudeWorkId";
             this.ddlAltitudeWorkId.Size = new System.Drawing.Size(158, 21);
@@ -1005,7 +1018,7 @@
             this.txtExploitedMineral.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtExploitedMineral.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExploitedMineral.ForeColor = System.Drawing.Color.Black;
-            this.txtExploitedMineral.Location = new System.Drawing.Point(119, 25);
+            this.txtExploitedMineral.Location = new System.Drawing.Point(119, 12);
             this.txtExploitedMineral.Margin = new System.Windows.Forms.Padding(2);
             this.txtExploitedMineral.MaxLength = 50;
             this.txtExploitedMineral.Name = "txtExploitedMineral";
@@ -1017,7 +1030,7 @@
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.ForeColor = System.Drawing.Color.Black;
-            this.label21.Location = new System.Drawing.Point(585, 29);
+            this.label21.Location = new System.Drawing.Point(585, 16);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(64, 13);
@@ -1030,7 +1043,7 @@
             this.ddlPlaceWorkId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlPlaceWorkId.ForeColor = System.Drawing.Color.Black;
             this.ddlPlaceWorkId.FormattingEnabled = true;
-            this.ddlPlaceWorkId.Location = new System.Drawing.Point(654, 25);
+            this.ddlPlaceWorkId.Location = new System.Drawing.Point(654, 12);
             this.ddlPlaceWorkId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlPlaceWorkId.Name = "ddlPlaceWorkId";
             this.ddlPlaceWorkId.Size = new System.Drawing.Size(158, 21);
@@ -1042,9 +1055,9 @@
             this.groupBox4.Controls.Add(this.label23);
             this.groupBox4.Controls.Add(this.ddlRelationshipId);
             this.groupBox4.Controls.Add(this.Parentesco);
-            this.groupBox4.Location = new System.Drawing.Point(349, 283);
+            this.groupBox4.Location = new System.Drawing.Point(349, 323);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(815, 50);
+            this.groupBox4.Size = new System.Drawing.Size(815, 37);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Preventivo";
@@ -1052,7 +1065,7 @@
             // txtNombreTitular
             // 
             this.txtNombreTitular.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNombreTitular.Location = new System.Drawing.Point(392, 18);
+            this.txtNombreTitular.Location = new System.Drawing.Point(391, 12);
             this.txtNombreTitular.Margin = new System.Windows.Forms.Padding(2);
             this.txtNombreTitular.MaxLength = 250;
             this.txtNombreTitular.Name = "txtNombreTitular";
@@ -1064,7 +1077,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(304, 22);
+            this.label23.Location = new System.Drawing.Point(303, 16);
             this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(76, 13);
@@ -1077,7 +1090,7 @@
             this.ddlRelationshipId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlRelationshipId.ForeColor = System.Drawing.Color.Black;
             this.ddlRelationshipId.FormattingEnabled = true;
-            this.ddlRelationshipId.Location = new System.Drawing.Point(119, 18);
+            this.ddlRelationshipId.Location = new System.Drawing.Point(118, 12);
             this.ddlRelationshipId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlRelationshipId.Name = "ddlRelationshipId";
             this.ddlRelationshipId.Size = new System.Drawing.Size(158, 21);
@@ -1088,7 +1101,7 @@
             this.Parentesco.AutoSize = true;
             this.Parentesco.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Parentesco.ForeColor = System.Drawing.Color.Black;
-            this.Parentesco.Location = new System.Drawing.Point(42, 22);
+            this.Parentesco.Location = new System.Drawing.Point(41, 16);
             this.Parentesco.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.Parentesco.Name = "Parentesco";
             this.Parentesco.Size = new System.Drawing.Size(61, 13);
@@ -1103,9 +1116,9 @@
             this.groupBox1.Controls.Add(this.ddlDistricId);
             this.groupBox1.Controls.Add(this.label41);
             this.groupBox1.Controls.Add(this.label42);
-            this.groupBox1.Location = new System.Drawing.Point(349, 237);
+            this.groupBox1.Location = new System.Drawing.Point(349, 287);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(815, 44);
+            this.groupBox1.Size = new System.Drawing.Size(815, 36);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ubigeo";
@@ -1116,7 +1129,7 @@
             this.ddlProvinceId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlProvinceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlProvinceId.FormattingEnabled = true;
-            this.ddlProvinceId.Location = new System.Drawing.Point(361, 19);
+            this.ddlProvinceId.Location = new System.Drawing.Point(361, 12);
             this.ddlProvinceId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlProvinceId.Name = "ddlProvinceId";
             this.ddlProvinceId.Size = new System.Drawing.Size(158, 21);
@@ -1128,7 +1141,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(552, 19);
+            this.label14.Location = new System.Drawing.Point(552, 12);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(74, 13);
@@ -1141,7 +1154,7 @@
             this.ddlDepartamentId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlDepartamentId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDepartamentId.FormattingEnabled = true;
-            this.ddlDepartamentId.Location = new System.Drawing.Point(643, 19);
+            this.ddlDepartamentId.Location = new System.Drawing.Point(643, 12);
             this.ddlDepartamentId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlDepartamentId.Name = "ddlDepartamentId";
             this.ddlDepartamentId.Size = new System.Drawing.Size(159, 21);
@@ -1154,7 +1167,7 @@
             this.ddlDistricId.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlDistricId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDistricId.FormattingEnabled = true;
-            this.ddlDistricId.Location = new System.Drawing.Point(118, 19);
+            this.ddlDistricId.Location = new System.Drawing.Point(118, 12);
             this.ddlDistricId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlDistricId.Name = "ddlDistricId";
             this.ddlDistricId.Size = new System.Drawing.Size(159, 21);
@@ -1166,7 +1179,7 @@
             this.label41.AutoSize = true;
             this.label41.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label41.ForeColor = System.Drawing.Color.Black;
-            this.label41.Location = new System.Drawing.Point(298, 23);
+            this.label41.Location = new System.Drawing.Point(298, 16);
             this.label41.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label41.Name = "label41";
             this.label41.Size = new System.Drawing.Size(51, 13);
@@ -1178,7 +1191,7 @@
             this.label42.AutoSize = true;
             this.label42.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label42.ForeColor = System.Drawing.Color.Black;
-            this.label42.Location = new System.Drawing.Point(75, 19);
+            this.label42.Location = new System.Drawing.Point(75, 12);
             this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(39, 13);
@@ -1532,6 +1545,74 @@
             this.txtCurrentOccupation.Size = new System.Drawing.Size(420, 22);
             this.txtCurrentOccupation.TabIndex = 148;
             // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(32, 223);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(69, 13);
+            this.label24.TabIndex = 148;
+            this.label24.Text = "Nacionalidad";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtNacionalidad
+            // 
+            this.txtNacionalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNacionalidad.Location = new System.Drawing.Point(120, 219);
+            this.txtNacionalidad.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNacionalidad.MaxLength = 50;
+            this.txtNacionalidad.Name = "txtNacionalidad";
+            this.txtNacionalidad.Size = new System.Drawing.Size(158, 20);
+            this.txtNacionalidad.TabIndex = 150;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(287, 223);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(99, 13);
+            this.label25.TabIndex = 149;
+            this.label25.Text = "Residencia Anterior";
+            // 
+            // txtResideAnte
+            // 
+            this.txtResideAnte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResideAnte.Location = new System.Drawing.Point(391, 219);
+            this.txtResideAnte.Margin = new System.Windows.Forms.Padding(2);
+            this.txtResideAnte.MaxLength = 20;
+            this.txtResideAnte.Name = "txtResideAnte";
+            this.txtResideAnte.Size = new System.Drawing.Size(158, 20);
+            this.txtResideAnte.TabIndex = 151;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(604, 223);
+            this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(45, 13);
+            this.label26.TabIndex = 153;
+            this.label26.Text = "Religión";
+            // 
+            // txtReligion
+            // 
+            this.txtReligion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReligion.Location = new System.Drawing.Point(653, 220);
+            this.txtReligion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtReligion.MaxLength = 250;
+            this.txtReligion.Name = "txtReligion";
+            this.txtReligion.Size = new System.Drawing.Size(159, 20);
+            this.txtReligion.TabIndex = 154;
+            // 
             // frmPacient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
@@ -1680,6 +1761,12 @@
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.TextBox txtDecucible;
         private Infragistics.Win.UltraWinGrid.UltraCombo txtCurrentOccupation;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox txtNacionalidad;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox txtResideAnte;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.TextBox txtReligion;
     }
 }
 
