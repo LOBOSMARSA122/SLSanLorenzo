@@ -126,7 +126,7 @@ namespace NetPdf
             }
             cells = new List<PdfPCell>()
             {     
-                new PdfPCell(new Phrase("" + datosPac.v_IdService, fontColumnValue)) {BackgroundColor=BaseColor.GRAY, Colspan=16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f},
+                new PdfPCell(new Phrase("", fontColumnValue)) {BackgroundColor=BaseColor.GRAY, Colspan=16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f},
                 new PdfPCell(new Phrase("Código", fontColumnValue)) {Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f},
                 new PdfPCell(new Phrase(datosPac.v_IdService, fontColumnValue)) {Colspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f},
 
