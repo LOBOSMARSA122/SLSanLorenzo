@@ -56,7 +56,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             OperationResult objOperationResult = new OperationResult();
             List<ServiceComponentList> serviceComponents = new List<ServiceComponentList>();
-
+            serviceComponents = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
             if (_edad <= 12)
             {
                 serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "HISTORIA CLÍNICA NIÑO", v_ComponentId = Constants.FORMATO_ATENCION_NINIO });
