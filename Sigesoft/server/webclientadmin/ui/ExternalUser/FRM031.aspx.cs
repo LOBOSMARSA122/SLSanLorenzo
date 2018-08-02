@@ -153,8 +153,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
                     btnExAltura.Enabled = (bool)Session["ExamenAltura"];
                     btnFMT1.Enabled = (bool)Session["FMT1"];
                     btnInterConsulta.Enabled = (bool)Session["Interconsultas"];
-                    //Session["CertificadoAptitud"] = true;
-                    //Session["FichaOcupacional"] = true;
+
+                    int rowIndex = grdData.SelectedRowIndexArray[0];
+                    var dataKeys = grdData.DataKeys[rowIndex];
+                   var components = _ServiceBL.GetServiceComponentByServiceIdAndComponentId(dataKeys[0].ToString(),"");
+                    if (components != null)
+                        btnToxi.Enabled = true;
+                    else
+                        btnToxi.Enabled = false;
                 }
                 
             }
@@ -165,7 +171,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
                 btnNewFichaOcupacional.Enabled = false;
                 btnInterConsulta.Enabled = false;
                 btnExAltura.Enabled = false;
-
+                btnToxi.Enabled = false;
             }
 
             if (grdData.SelectedRowIndexArray.Length == 0)

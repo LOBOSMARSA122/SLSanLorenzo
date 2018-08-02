@@ -8332,7 +8332,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 return null;
             }
         }
-
+       
         public string GetDiagnosticByServiceIdAndCategoryId(string pstrServiceId, int pintCategoriaId)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
