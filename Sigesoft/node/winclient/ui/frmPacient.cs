@@ -334,6 +334,9 @@ namespace Sigesoft.Node.WinClient.UI
                 pbPersonImage.Image = Common.Utils.BytesArrayToImage(objpacientDto.b_Photo, pbPersonImage);
                 txtNombreTitular.Text = objpacientDto.v_OwnerName;
 
+                txtNacionalidad.Text = objpacientDto.v_Nacionalidad;
+                txtResideAnte.Text = objpacientDto.v_ResidenciaAnterior;
+                txtReligion.Text = objpacientDto.v_Religion ;
             }
 
         }
@@ -809,6 +812,9 @@ namespace Sigesoft.Node.WinClient.UI
             ddlTypeOfInsuranceId.SelectedValue = "-1";
             txtNumberLivingChildren.Text = "";
             txtNumberDependentChildren.Text = "";
+            txtNacionalidad.Text = "";
+            txtResideAnte.Text = "";
+            txtReligion.Text = "";
 
 
         }
@@ -856,6 +862,10 @@ namespace Sigesoft.Node.WinClient.UI
             ddlTypeOfInsuranceId.Enabled = valor;
             txtNumberLivingChildren.ReadOnly = !valor;
             txtNumberDependentChildren.ReadOnly = !valor;
+
+            txtNacionalidad.ReadOnly = !valor;
+            txtResideAnte.ReadOnly = !valor;
+            txtReligion.ReadOnly = !valor;
 
         }
 
@@ -1026,6 +1036,10 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
                     objpersonDto.v_OwnerName = txtNombreTitular.Text;
 
+                    objpersonDto.v_Nacionalidad = txtNacionalidad.Text;
+                    objpersonDto.v_ResidenciaAnterior = txtResideAnte.Text;
+                    objpersonDto.v_Religion = txtReligion.Text;
+
                     if (pbPersonImage.Image != null)
                     {
                         MemoryStream ms = new MemoryStream();
@@ -1086,6 +1100,9 @@ namespace Sigesoft.Node.WinClient.UI
                     objpersonDto.v_OwnerName = txtNombreTitular.Text;
                     objpersonDto.v_ExploitedMineral = txtExploitedMineral.Text;
 
+                    objpersonDto.v_Nacionalidad = txtNacionalidad.Text;
+                    objpersonDto.v_ResidenciaAnterior = txtResideAnte.Text;
+                    objpersonDto.v_Religion = txtReligion.Text;
 
                     if (pbPersonImage.Image != null)
                     {
