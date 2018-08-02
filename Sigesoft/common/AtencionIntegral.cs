@@ -20,7 +20,8 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateAtencionIntegral(ServiceList DataService, string filePDF,
+        public static void CreateAtencionIntegral(string filePDF,
+            DatosDoctorMedicina medico,
             PacientList datosPac,
             List<frmEsoAntecedentesPadre> Antecedentes,
             organizationDto infoEmpresaPropietaria,
@@ -2813,6 +2814,100 @@ namespace NetPdf
             columnWidths = new float[] { 5F, 25f, 10f, 30f, 20f, 10f };
             table = HandlingItextSharp.GenerateTableFromCells(cells2, columnWidths, null, fontTitleTable, columnHeaders);
             document.Add(table);
+            #endregion
+
+            #region Firma
+
+            #region Creando celdas de tipo Imagen y validando nulls
+
+            // Firma del trabajador ***************************************************
+            PdfPCell cellFirmaTrabajador = null;
+
+            if (datosPac.FirmaTrabajador != null)
+                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(datosPac.FirmaTrabajador, null, null, 70, 30));
+            else
+
+                cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
+           
+            // Huella del trabajador **************************************************
+            PdfPCell cellHuellaTrabajador = null;
+
+        if (datosPac.HuellaTrabajador != null)
+                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(datosPac.HuellaTrabajador, null, null, 30, 30));
+            else
+                cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
+          
+            // Firma del doctor Auditor **************************************************
+
+            PdfPCell cellFirma = null;
+
+            if (medico.FirmaMedicoMedicina != null)
+                cellFirma = new PdfPCell(HandlingItextSharp.GetImage(medico.FirmaMedicoMedicina, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
+            else
+                cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
+
+            #endregion
+
+            #region Crear tablas en duro (para la Firma y huella del trabajador)
+
+            cells = new List<PdfPCell>();
+
+            cellFirmaTrabajador.HorizontalAlignment = Element.ALIGN_CENTER;
+            cellFirmaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellFirmaTrabajador.Border = PdfPCell.NO_BORDER;
+            cellFirmaTrabajador.FixedHeight = 40F;
+            cells.Add(cellFirmaTrabajador);
+            cells.Add(new PdfPCell(new Phrase("FIRMA DEL EXAMINADO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+
+            columnWidths = new float[] { 100f };
+
+            var tableFirmaTrabajador = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+            //***********************************************
+
+            cells = new List<PdfPCell>();
+
+            cellHuellaTrabajador.HorizontalAlignment = Element.ALIGN_CENTER;
+            cellHuellaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellFirmaTrabajador.Border = PdfPCell.NO_BORDER;
+            cellHuellaTrabajador.FixedHeight = 40F;
+            cells.Add(cellHuellaTrabajador);
+            cells.Add(new PdfPCell(new Phrase("HUELLA DEL EXAMINADO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+
+            columnWidths = new float[] { 100f };
+
+            var tableHuellaTrabajador = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+            #endregion
+
+            cells = new List<PdfPCell>();
+
+            // 1 celda vacia              
+            cells.Add(new PdfPCell(tableFirmaTrabajador));
+
+            // 1 celda vacia
+            cells.Add(new PdfPCell(tableHuellaTrabajador));
+
+            // 2 celda
+            cell = new PdfPCell(new Phrase("FIRMA Y SELLO MÉDICO", fontColumnValue)) { Rowspan = 2 };
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cells.Add(cell);
+
+            // 3 celda (Imagen)
+            cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
+            cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellFirma.FixedHeight = 40F;
+            cells.Add(cellFirma);
+
+            cells.Add(new PdfPCell(new Phrase("CON LA CUAL DECLARA QUE LA INFORMACIÓN DECLARADA ES VERAZ", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2 });
+
+            columnWidths = new float[] { 35f, 35f, 30f, 40F };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+
+            document.Add(table);
+
             #endregion
             #endregion
             document.Close();
