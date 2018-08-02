@@ -405,83 +405,7 @@ namespace Sigesoft.Node.WinClient.UI
                   
            
         }
-
-        private void grdDataService_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
-        {
-            foreach (UltraGridRow rowSelected in this.grdDataService.Selected.Rows)
-            {
-                if (rowSelected.Band.Index.ToString() == "1")
-                {
-                    btnEditarESO.Enabled = false;
-                    button1.Enabled = false;
-                    button1.Enabled = false;
-                    btnAdminReportes.Enabled = false;
-                    btnGenerarLiquidacion.Enabled = false;
-                    btnInterconsulta.Enabled = false;
-                    btnTiempos.Enabled = false;
-                    btnFechaEntrega.Enabled = false;
-                 
-                    return;                
-                } 
-            }
-            if (_ListaServicios != null)
-            {
-                btnFechaEntrega.Enabled = true;
-            }
-            else
-            {
-                btnFechaEntrega.Enabled = false;
-            }
-            btn7D.Enabled = 
-            btnOdontograma.Enabled =
-            btnHistoriaOcupacional.Enabled = 
-            btnRadiologico.Enabled =
-            btnOsteomuscular.Enabled = 
-            btnPruebaEsfuerzo.Enabled = 
-            btnInformeRadiologicoOIT.Enabled = 
-            btnEstudioEKG.Enabled =
-            btnDermatologico.Enabled = 
-            btnEditarESO.Enabled =
-            button1.Enabled =
-            btnImprimirCertificadoAptitud.Enabled = 
-            btnInformeMedicoTrabajador.Enabled =
-            btnImprimirInformeMedicoEPS.Enabled = 
-            btnAdminReportes.Enabled = 
-            btnInforme312.Enabled = 
-            btnInformeMusculoEsqueletico.Enabled = 
-            btnInformeAlturaEstructural.Enabled = 
-            btnInformePsicologico.Enabled = 
-            btnInformeOftalmo.Enabled = 
-            btnGenerarLiquidacion.Enabled =
-            btnInterconsulta.Enabled=
-            btnTiempos.Enabled=
-
-               
-            //btnFechaEntrega.Enabled =
-            //btnImprimirFichaOcupacional.Enabled = 
-            (grdDataService.Selected.Rows.Count > 0);
-       
-            if (grdDataService.Selected.Rows.Count == 0)
-                return;
-
-            
-            _serviceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            _EmpresaClienteId = grdDataService.Selected.Rows[0].Cells["v_CustomerOrganizationId"].Value.ToString();
-            _pacientId = grdDataService.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
-            _protocolId = grdDataService.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-            _customerOrganizationName = grdDataService.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
-            _personFullName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
-
-            if (grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value== null)
-            {
-                btnImprimirExamenes.Enabled = false;
-            }
-            else
-            {
-                btnImprimirExamenes.Enabled = true;
-            }
-        }
-
+        
         private void Examenes_Click(object sender, EventArgs e)
         {
            List<string>  _filesNameToMerge = new List<string>();
@@ -902,11 +826,6 @@ namespace Sigesoft.Node.WinClient.UI
 
         }
 
-        private void grdDataService_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
-        {
-          
-        }
-
         private void grdDataService_InitializeRow(object sender, InitializeRowEventArgs e)
         {
 
@@ -943,11 +862,11 @@ namespace Sigesoft.Node.WinClient.UI
                         e.Row.Cells["Liq"].ToolTipText = "Generada";
                     }
                 }
-  
+
             }
 
 
-         
+
 
         }
 
@@ -2136,23 +2055,23 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 //int categoryId = int.Parse(cell.Row.Cells["i_CategoryId"].Value.ToString());
                 //oServiceComponentList = oServiceBL.GetServiceComponentByCategoryId(ref objOperationResult, categoryId, _serviceId);
-                string serviceId =cell.Row.Cells["v_ServiceId"].Value.ToString();
+                string serviceId = cell.Row.Cells["v_ServiceId"].Value.ToString();
                 oServiceComponentList = oServiceBL.GetServiceComponents(ref objOperationResult, serviceId);
                 //if (categoryId != -1)
                 //{
 
-                    foreach (var item in oServiceComponentList)
-                    {
-                        Cadena.Append(item.v_CategoryName + " - ");
-                        Cadena.Append(item.v_ServiceComponentStatusName);
-                        Cadena.Append("\n");
-                    }
+                foreach (var item in oServiceComponentList)
+                {
+                    Cadena.Append(item.v_CategoryName + " - ");
+                    Cadena.Append(item.v_ServiceComponentStatusName);
+                    Cadena.Append("\n");
+                }
 
-                    _customizedToolTip.AutomaticDelay = 1;
-                    _customizedToolTip.AutoPopDelay = 20000;
-                    _customizedToolTip.ToolTipMessage = Cadena.ToString();
-                    _customizedToolTip.StopTimerToolTip();
-                    _customizedToolTip.StartTimerToolTip();
+                _customizedToolTip.AutomaticDelay = 1;
+                _customizedToolTip.AutoPopDelay = 20000;
+                _customizedToolTip.ToolTipMessage = Cadena.ToString();
+                _customizedToolTip.StopTimerToolTip();
+                _customizedToolTip.StartTimerToolTip();
                 //}
 
             }
@@ -2753,6 +2672,87 @@ namespace Sigesoft.Node.WinClient.UI
 
         }
 
+        private void grdDataService_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
+        {
+            foreach (UltraGridRow rowSelected in this.grdDataService.Selected.Rows)
+            {
+                if (rowSelected.Band.Index.ToString() == "1")
+                {
+                    btnEditarESO.Enabled = false;
+                    button1.Enabled = false;
+                    button1.Enabled = false;
+                    btnAdminReportes.Enabled = false;
+                    btnGenerarLiquidacion.Enabled = false;
+                    btnInterconsulta.Enabled = false;
+                    btnTiempos.Enabled = false;
+                    btnFechaEntrega.Enabled = false;
+
+                    return;
+                }
+            }
+            if (_ListaServicios != null)
+            {
+                btnFechaEntrega.Enabled = true;
+            }
+            else
+            {
+                btnFechaEntrega.Enabled = false;
+            }
+            btn7D.Enabled =
+            btnOdontograma.Enabled =
+            btnHistoriaOcupacional.Enabled =
+            btnRadiologico.Enabled =
+            btnOsteomuscular.Enabled =
+            btnPruebaEsfuerzo.Enabled =
+            btnInformeRadiologicoOIT.Enabled =
+            btnEstudioEKG.Enabled =
+            btnDermatologico.Enabled =
+            btnEditarESO.Enabled =
+            button1.Enabled =
+            btnImprimirCertificadoAptitud.Enabled =
+            btnInformeMedicoTrabajador.Enabled =
+            btnImprimirInformeMedicoEPS.Enabled =
+            btnAdminReportes.Enabled =
+            btnInforme312.Enabled =
+            btnInformeMusculoEsqueletico.Enabled =
+            btnInformeAlturaEstructural.Enabled =
+            btnInformePsicologico.Enabled =
+            btnInformeOftalmo.Enabled =
+            btnGenerarLiquidacion.Enabled =
+            btnInterconsulta.Enabled =
+            btnTiempos.Enabled =
+
+
+            //btnFechaEntrega.Enabled =
+                //btnImprimirFichaOcupacional.Enabled = 
+            (grdDataService.Selected.Rows.Count > 0);
+
+            if (grdDataService.Selected.Rows.Count == 0)
+                return;
+
+
+            _serviceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            _EmpresaClienteId = grdDataService.Selected.Rows[0].Cells["v_CustomerOrganizationId"].Value.ToString();
+            _pacientId = grdDataService.Selected.Rows[0].Cells["v_PersonId"].Value.ToString();
+            _protocolId = grdDataService.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+            _customerOrganizationName = grdDataService.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
+            _personFullName = grdDataService.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
+
+            if (grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null)
+            {
+                btnImprimirExamenes.Enabled = false;
+            }
+            else
+            {
+                btnImprimirExamenes.Enabled = true;
+            }
+        }
+
+        private void grdDataService_InitializeLayout(object sender, InitializeLayoutEventArgs e)
+        {
+
+        }
+        
         //void ProcesoSErvicio()
         //{
         //    MigracionBL oMigracionBL = new MigracionBL();
