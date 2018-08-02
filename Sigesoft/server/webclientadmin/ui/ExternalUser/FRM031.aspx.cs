@@ -156,7 +156,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
 
                     int rowIndex = grdData.SelectedRowIndexArray[0];
                     var dataKeys = grdData.DataKeys[rowIndex];
-                   var components = _ServiceBL.GetServiceComponentByServiceIdAndComponentId(dataKeys[0].ToString(),"");
+                    var components = _ServiceBL.GetServiceComponentByServiceIdAndComponentId(dataKeys[0].ToString(), "N009-ME000000303");
                     if (components != null)
                         btnToxi.Enabled = true;
                     else
