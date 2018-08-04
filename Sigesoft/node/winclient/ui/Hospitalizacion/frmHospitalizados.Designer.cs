@@ -672,7 +672,7 @@
             this.Name = "frmHospitalizados";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Bandeja de Hospitalizados";
+            this.Text = "Hospitalizados y Aseguradoras";
             this.Load += new System.EventHandler(this.frmHospitalizados_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

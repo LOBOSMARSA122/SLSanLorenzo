@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             this.gbReceta = new Infragistics.Win.Misc.UltraGroupBox();
+            this.txtPrecioVenta = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
+            this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             this.txtCodigo = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
             this.ultraLabel3 = new Infragistics.Win.Misc.UltraLabel();
             this.labelmensaje = new System.Windows.Forms.Label();
@@ -43,13 +45,11 @@
             this.ultraLabel2 = new Infragistics.Win.Misc.UltraLabel();
             this.ultraLabel1 = new Infragistics.Win.Misc.UltraLabel();
             this.lblIdDetalleProd = new System.Windows.Forms.Label();
-            this.txtPrecioVenta = new Infragistics.Win.UltraWinEditors.UltraTextEditor();
-            this.ultraLabel4 = new Infragistics.Win.Misc.UltraLabel();
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).BeginInit();
             this.gbReceta.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).BeginInit();
             this.SuspendLayout();
             // 
             // gbReceta
@@ -71,6 +71,25 @@
             this.gbReceta.Size = new System.Drawing.Size(407, 173);
             this.gbReceta.TabIndex = 1;
             this.gbReceta.Text = "Buscar Medicina";
+            // 
+            // txtPrecioVenta
+            // 
+            appearance1.TextHAlignAsString = "Right";
+            this.txtPrecioVenta.Appearance = appearance1;
+            this.txtPrecioVenta.Enabled = false;
+            this.txtPrecioVenta.Location = new System.Drawing.Point(261, 73);
+            this.txtPrecioVenta.Name = "txtPrecioVenta";
+            this.txtPrecioVenta.Size = new System.Drawing.Size(68, 21);
+            this.txtPrecioVenta.TabIndex = 13;
+            // 
+            // ultraLabel4
+            // 
+            this.ultraLabel4.AutoSize = true;
+            this.ultraLabel4.Location = new System.Drawing.Point(180, 77);
+            this.ultraLabel4.Name = "ultraLabel4";
+            this.ultraLabel4.Size = new System.Drawing.Size(69, 14);
+            this.ultraLabel4.TabIndex = 14;
+            this.ultraLabel4.Text = "Precio Venta";
             // 
             // txtCodigo
             // 
@@ -168,11 +187,11 @@
             // ultraLabel1
             // 
             this.ultraLabel1.AutoSize = true;
-            this.ultraLabel1.Location = new System.Drawing.Point(18, 50);
+            this.ultraLabel1.Location = new System.Drawing.Point(22, 50);
             this.ultraLabel1.Name = "ultraLabel1";
-            this.ultraLabel1.Size = new System.Drawing.Size(75, 14);
+            this.ultraLabel1.Size = new System.Drawing.Size(48, 14);
             this.ultraLabel1.TabIndex = 0;
-            this.ultraLabel1.Text = "Medicamento:";
+            this.ultraLabel1.Text = "Nombre:";
             // 
             // lblIdDetalleProd
             // 
@@ -182,25 +201,6 @@
             this.lblIdDetalleProd.Size = new System.Drawing.Size(10, 13);
             this.lblIdDetalleProd.TabIndex = 9;
             this.lblIdDetalleProd.Text = ".";
-            // 
-            // txtPrecioVenta
-            // 
-            appearance1.TextHAlignAsString = "Right";
-            this.txtPrecioVenta.Appearance = appearance1;
-            this.txtPrecioVenta.Enabled = false;
-            this.txtPrecioVenta.Location = new System.Drawing.Point(261, 73);
-            this.txtPrecioVenta.Name = "txtPrecioVenta";
-            this.txtPrecioVenta.Size = new System.Drawing.Size(68, 21);
-            this.txtPrecioVenta.TabIndex = 13;
-            // 
-            // ultraLabel4
-            // 
-            this.ultraLabel4.AutoSize = true;
-            this.ultraLabel4.Location = new System.Drawing.Point(180, 77);
-            this.ultraLabel4.Name = "ultraLabel4";
-            this.ultraLabel4.Size = new System.Drawing.Size(69, 14);
-            this.ultraLabel4.TabIndex = 14;
-            this.ultraLabel4.Text = "Precio Venta";
             // 
             // frmAddProducto
             // 
@@ -215,14 +215,14 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Medicamento ";
+            this.Text = "Productos y Servicios";
             this.Load += new System.EventHandler(this.frmAddProducto_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gbReceta)).EndInit();
             this.gbReceta.ResumeLayout(false);
             this.gbReceta.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCodigo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCantidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPrecioVenta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
