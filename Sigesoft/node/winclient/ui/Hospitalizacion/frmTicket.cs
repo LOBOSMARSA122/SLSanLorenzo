@@ -244,7 +244,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            var nuevo = new frmAddProducto(string.Empty, "New");
+            var nuevo = new frmAddProducto(string.Empty, "New", _serviceId);
             if (_tmpTicketDetalleList != null)
             {
                 nuevo._TempTicketDetalleList = _tmpTicketDetalleList;
@@ -265,7 +265,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            var editar = new frmAddProducto(_ticketdetalletId, "Edit");
+            var editar = new frmAddProducto(_ticketdetalletId, "Edit",_serviceId);
             if (_tmpTicketDetalleList != null)
             {
                 editar._TempTicketDetalleList = _tmpTicketDetalleList;

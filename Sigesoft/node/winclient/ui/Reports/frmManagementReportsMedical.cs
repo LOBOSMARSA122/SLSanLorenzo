@@ -75,7 +75,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             }
 
             serviceComponents.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "ATENCIÓN INTEGRAL", v_ComponentId = Constants.ATENCION_INTEGRAL });
-
+            serviceComponents.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "INFORME DE LABORATORIO", v_ComponentId = Constants.INFORME_LABORATORIO_CLINICO });
             OrganizationBL oOrganizationBL = new OrganizationBL();
             List<ServiceComponentList> ListaOrdenada;
             List<ServiceComponentList> ListaFinalOrdena = new List<ServiceComponentList>();

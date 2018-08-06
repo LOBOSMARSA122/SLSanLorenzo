@@ -196,7 +196,6 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
-
       
         public void UpdateTicket(ref OperationResult _pobjOperationResult, ticketDto objticketDto, List<ticketdetalleDto> _ticketdetalleDTOAdd, List<ticketdetalleDto> _ticketdetalleDTOUpdate, List<ticketdetalleDto> _ticketdetalleDTODelete, List<string> ClientSession)
         {
@@ -294,6 +293,15 @@ namespace Sigesoft.Node.WinClient.BLL
                 LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "TICKET / DETALLE", "v_TicketId=" + objticketDto.v_TicketId.ToString(), Success.Failed, _pobjOperationResult.ExceptionMessage);
                 return;
             }
+        }
+
+        public decimal ObtenerPrecioTarifario(string serviceId, string productoDetalleId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+          var precio =  dbContext.obtenerpreciotarifario(serviceId, productoDetalleId).ToList()[0].d_Precio;
+
+          return precio.Value;
+
         }
     }
 }
