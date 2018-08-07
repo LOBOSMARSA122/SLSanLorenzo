@@ -2033,46 +2033,32 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
 
-
-                Utils.LoadDropDownList(listaEstadoCivilMujer, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
-                Utils.LoadDropDownList(listaGradoInstruccionMujer, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
-                Utils.LoadDropDownList(listTipoAfiliacionMujer, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 188, null), DropDownListAction.Select);
-
-                Utils.LoadDropDownList(listaEstadoCivilHombre, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
-                Utils.LoadDropDownList(listaGradoInstruccionHombre, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
-                Utils.LoadDropDownList(listTipoAfiliacionHombre, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 188, null), DropDownListAction.Select);
-
              
                 if (_age <= 12)
                 {
+                    Utils.LoadDropDownList(listaEstadoCivilMujer, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
+                    Utils.LoadDropDownList(listaGradoInstruccionMujer, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
+                    Utils.LoadDropDownList(listTipoAfiliacionMujer, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 188, null), DropDownListAction.Select);
+
+                    Utils.LoadDropDownList(listaEstadoCivilHombre, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
+                    Utils.LoadDropDownList(listaGradoInstruccionHombre, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
+                    Utils.LoadDropDownList(listTipoAfiliacionHombre, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 188, null), DropDownListAction.Select);
+
 
                     tbcDatos.TabPages.Remove(tbpAdultoMayor);
                     tbcDatos.TabPages.Remove(tbpAdolescente);
 
-                    objAdolDto = _objAtencionesIntegralesBl.GetAdolescente(ref objOperationResult, idPerson.v_PersonId);
+                    objNinioDto = _objAtencionesIntegralesBl.GetNinio(ref objOperationResult, idPerson.v_PersonId);
 
-                    if (objAdolDto != null)
+                    if (objNinioDto != null)
                     {
-                        textNombreCuidadorAdol.Text = objAdolDto.v_NombreCuidador;
-                        textDniCuidadorAdol.Text = objAdolDto.v_DniCuidador;
-                        textEdadAdol.Text = objAdolDto.v_EdadCuidador;
-                        textViveConAdol.Text = objAdolDto.v_ViveCon;
-                        txtAdoEdadIniTrab.Text = objAdolDto.v_EdadInicioTrabajo;
-                        txtAdoTipoTrab.Text = objAdolDto.v_TipoTrabajo;
-                        txtAdoNroTv.Text = objAdolDto.v_NroHorasTv;
-                        txtAdoNroJuegos.Text = objAdolDto.v_NroHorasJuegos;
-                        txtAdoMenarquia.Text = objAdolDto.v_MenarquiaEspermarquia;
-                        txtAdoEdadRS.Text = objAdolDto.v_EdadInicioRS;
-                        textObservacionesSexualidadAdol.Text = objAdolDto.v_Observaciones;
-
-
                         txtNombrePadreTutor.Text = objNinioDto.v_NombrePadre;
                         txtEdadPadre.Text = objNinioDto.v_EdadPadre;
                         txtDNIPadre.Text = objNinioDto.v_DniPadre;
                         //objNinioDto.i_TipoAfiliacionPadre = Convert.ToInt32(listTipoAfiliacionHombre.SelectedValue);
                         txtAfiliacionPadre.Text = objNinioDto.v_CodigoAfiliacionPadre;
                         //objNinioDto.i_GradoInstruccionPadre = Convert.ToInt32(listaGradoInstruccionHombre.SelectedValue);
-                        txtOcupacionPadre.Text = objNinioDto.v_OcupacionPadre ;
+                        txtOcupacionPadre.Text = objNinioDto.v_OcupacionPadre;
                         //objNinioDto.i_EstadoCivilIdPadre = Convert.ToInt32(listaEstadoCivilHombre.SelectedValue);
                         txtReligionPadre.Text = objNinioDto.v_ReligionPadre;
 
@@ -2106,6 +2092,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                         textAguaPotable.Text = objNinioDto.v_EspecificacionesAgua;
                         textDesague.Text = objNinioDto.v_EspecificacionesDesague;
+
                     }
                 }
                 else if (13 <= _age && _age <= 17)
