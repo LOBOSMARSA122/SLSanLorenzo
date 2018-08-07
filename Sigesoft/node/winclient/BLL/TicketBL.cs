@@ -106,8 +106,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return IsExists;
         }
-
-
+        
         public ticketDto GetTicket(ref OperationResult objOperationResult, string _tickId)
         {
             try 
@@ -302,6 +301,34 @@ namespace Sigesoft.Node.WinClient.BLL
 
           return precio.Value;
 
+        }
+
+        public List<PlanList> TienePlan(string protocolId, string unidadProd)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from a in dbContext.plan
+                                 where a.v_ProtocoloId == protocolId && a.v_IdUnidadProductiva == unidadProd
+                                 select new PlanList
+                                 {
+                                    i_PlanId = a.i_PlanId,
+                                    v_OrganizationSeguroId =a.v_OrganizationSeguroId,
+                                    v_ProtocoloId = a.v_ProtocoloId,
+                                    v_IdUnidadProductiva = a.v_IdUnidadProductiva,
+                                    i_EsDeducible = a.i_EsDeducible.Value,
+                                    i_EsCoaseguro = a.i_EsCoaseguro.Value,
+                                    d_Importe = a.d_Importe.Value
+                                 } ).ToList();
+
+
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
     }
 }

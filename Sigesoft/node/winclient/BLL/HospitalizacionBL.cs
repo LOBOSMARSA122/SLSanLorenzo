@@ -110,6 +110,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             oHospitalizacionServiceList.v_HospitalizacionServiceId = servicio.v_HospitalizacionServiceId;
                             oHospitalizacionServiceList.d_ServiceDate = servicio.d_ServiceDate;
                             oHospitalizacionServiceList.v_ProtocolName = servicio.v_ProtocolName;
+                            oHospitalizacionServiceList.v_ProtocolId = servicio.v_ProtocolId;
                             // acá estoy agregando a las lista
                             HospitalizacionServicios.Add(servicio);
                         }
@@ -227,6 +228,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             oHospitalizacionServiceList.v_HospitalizacionServiceId = servicio.v_HospitalizacionServiceId;
                             oHospitalizacionServiceList.d_ServiceDate = servicio.d_ServiceDate;
                             oHospitalizacionServiceList.v_ProtocolName = servicio.v_ProtocolName;
+                            oHospitalizacionServiceList.v_ProtocolId = servicio.v_ProtocolId;
                             // acá estoy agregando a las lista
                             HospitalizacionServicios.Add(servicio);
                         }
@@ -342,7 +344,8 @@ namespace Sigesoft.Node.WinClient.BLL
                            v_HopitalizacionId = C.v_HopitalizacionId,
                            v_ServiceId = C.v_ServiceId,
                            d_ServiceDate = D.d_ServiceDate.Value,
-                           v_ProtocolName = E.v_Name
+                           v_ProtocolName = E.v_Name,
+                           v_ProtocolId = E.v_ProtocolId
 
                         };
             List<HospitalizacionServiceList> objData = queryservice.ToList();
@@ -353,7 +356,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                         v_HopitalizacionId = a.v_HopitalizacionId,
                                         v_ServiceId = a.v_ServiceId,
                                         d_ServiceDate = a.d_ServiceDate,
-                                        v_ProtocolName = a.v_ProtocolName
+                                        v_ProtocolName = a.v_ProtocolName,
+                                        v_ProtocolId = a.v_ProtocolId
                                      }).ToList();
 
             List<HospitalizacionServiceList> obj = hospitalizacionesservicios;
@@ -371,6 +375,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 tickets.v_ServiceId = item.v_ServiceId;
                 tickets.d_ServiceDate = item.d_ServiceDate;
                 tickets.v_ProtocolName = item.v_ProtocolName;
+                tickets.v_ProtocolId = item.v_ProtocolId;
                 #region Tickets
 
                 // estos son los hijos de 1 hopitalización

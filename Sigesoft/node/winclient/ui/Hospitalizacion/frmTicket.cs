@@ -16,6 +16,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         public  string _serviceId;
         public string _ticketId;
         private string _mode = null;
+        private string _protocolId;
         private string _tickId = string.Empty;
         private int _rowIndexPc;
         private readonly HospitalizacionBL _objHospitalizacionBl;
@@ -37,11 +38,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private readonly List<TicketList> _listTicketList;
         private readonly List<TicketDetalleList> _listTicketDetalleList;
 
-        public frmTicket(List<TicketList> Lista, string IdControl, string id, string mode)
+        public frmTicket(List<TicketList> Lista, string IdControl, string id, string mode, string protocolId)
         {
             _tickId = id;
             _mode = mode;
             _serviceId = IdControl;
+            _protocolId = protocolId;
             //_ticketId = IdControl;
             InitializeComponent();
             _objHospitalizacionBl = new HospitalizacionBL();
@@ -244,7 +246,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnNuevo_Click(object sender, EventArgs e)
         {
-            var nuevo = new frmAddProducto(string.Empty, "New", _serviceId);
+            var nuevo = new frmAddProducto(string.Empty, "New", _serviceId,_protocolId);
             if (_tmpTicketDetalleList != null)
             {
                 nuevo._TempTicketDetalleList = _tmpTicketDetalleList;
@@ -265,7 +267,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            var editar = new frmAddProducto(_ticketdetalletId, "Edit",_serviceId);
+            var editar = new frmAddProducto(_ticketdetalletId, "Edit",_serviceId,_protocolId);
             if (_tmpTicketDetalleList != null)
             {
                 editar._TempTicketDetalleList = _tmpTicketDetalleList;
