@@ -22,13 +22,15 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private TicketBL _ticketlBL = new TicketBL();
         string _ProductoId = null;
         string _serviceId;
+        private string _protocolId;
 
-        public frmAddProducto(string id, string mode, string serviceId)
+        public frmAddProducto(string id, string mode, string serviceId, string protocolId)
         {
             InitializeComponent();
             _id = id;
             _mode = mode;
             _serviceId = serviceId;
+            _protocolId = protocolId;
         }
         
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -43,6 +45,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtCodigo.Text = medicamento.CodInterno;
                 txtMedicamento.Tag = medicamento.IdProductoDetalle;
                 txtPrecioVenta.Text = medicamento.PrecioVenta.ToString();
+                txtUnidadProductiva.Text = medicamento.IdLinea;
             }
         }
 
@@ -89,6 +92,27 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                        
                         var precioTarifa = oTicketBL.ObtenerPrecioTarifario(_serviceId, _objTicketDetalleList.v_IdProductoDetalle);
                         _objTicketDetalleList.d_PrecioVenta = precioTarifa;// decimal.Parse(txtPrecioVenta.Text);
+
+
+                        var tienePlan = false;
+                        var resultplan = oTicketBL.TienePlan(_protocolId, txtUnidadProductiva.Text);
+                        if (resultplan.Count > 0) tienePlan = true;
+                        else tienePlan = false;
+
+                        if (tienePlan)
+                        {
+                            if (resultplan[0].i_EsCoaseguro == 1)
+                            {
+                                _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe;
+                                _objTicketDetalleList.d_SaldoAseguradora = decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) - resultplan[0].d_Importe;
+                            }
+                            if (resultplan[0].i_EsDeducible == 1)
+                            {
+                                _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) / 100;
+                                _objTicketDetalleList.d_SaldoAseguradora = decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) - _objTicketDetalleList.d_SaldoPaciente;
+                            }
+                        }
+
                         decimal d;
                         _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
                         //objTicketDetalleList.i_EsDespachado = int.Parse()

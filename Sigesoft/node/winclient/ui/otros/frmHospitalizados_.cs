@@ -113,8 +113,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void btnTicket_Click(object sender, EventArgs e)
         {
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
             //MessageBox.Show("Service: " + TserviceId);
-            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New");
+            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, string.Empty, "New", protocolId);
             ticket.ShowDialog();
             btnFilter_Click(sender, e);
             btnTicket.Enabled = false;
@@ -148,8 +149,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
+            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
             _ticketId = ticketId;
-            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, _ticketId, "Edit");
+            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, _ticketId, "Edit", protocolId);
             ticket.ShowDialog();
 
             btnFilter_Click(sender, e);

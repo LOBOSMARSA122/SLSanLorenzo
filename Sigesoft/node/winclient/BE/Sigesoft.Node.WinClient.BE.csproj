@@ -69,6 +69,7 @@
     <Compile Include="Custom\MedicoList.cs" />
     <Compile Include="Custom\Ninioo.cs" />
     <Compile Include="Custom\PagosComisiones.cs" />
+    <Compile Include="Custom\PlanList.cs" />
     <Compile Include="Custom\ProblemasList.cs" />
     <Compile Include="Custom\AudiometriaList.cs" />
     <Compile Include="Custom\AudiometriaUserControlList.cs" />
