@@ -1162,7 +1162,7 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnAgregarExamen_Click(object sender, EventArgs e)
         {
             ServiceBL oServiceBL = new ServiceBL();
-            var frm = new frmAddExam(ListaComponentes,"");
+            var frm = new frmAddExam(ListaComponentes,"",_ProtocolId);
             frm._serviceId = _serviceId;
             frm.ShowDialog();
 

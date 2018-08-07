@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.UI.Operations.Popups;
+using Sigesoft.Node.WinClient.BLL;
 
 namespace Sigesoft.Node.Contasol.Integration
 {
@@ -17,8 +18,9 @@ namespace Sigesoft.Node.Contasol.Integration
         private readonly string _idDiagnosticRepository;
         private readonly int _recipeId;
         private string idUnidadProductiva;
+        private string _protocolId;
 
-        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId)
+        public frmAddRecipe(ActionForm actionForm, string idDiagnosticRepository, int recipeId, string protocolId)
         {
             InitializeComponent();
             _recipeId = recipeId;
@@ -26,6 +28,7 @@ namespace Sigesoft.Node.Contasol.Integration
             _pobjOperationResult = new OperationResult();
             _objRecetaBl = new RecetaBl();
             _actionForm = actionForm;
+            _protocolId = protocolId;
             Text = actionForm == ActionForm.Add ? "Agregar Nueva Receta" : "Editar Receta";
         }
 
@@ -61,7 +64,7 @@ namespace Sigesoft.Node.Contasol.Integration
                         txtDuracion.Text = _recetaDto.v_Duracion.Trim();
                         txtPosologia.Text = _recetaDto.v_Posologia.Trim();
                         idUnidadProductiva = _recetaDto.v_IdUnidadProductiva;
-
+                        txtUnidadProductiva.Text = _recetaDto.v_IdUnidadProductiva;
                         break;
 
                     default:
@@ -81,6 +84,7 @@ namespace Sigesoft.Node.Contasol.Integration
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
+            TicketBL oTicketBL = new TicketBL();
             try
             {
                 _pobjOperationResult = new OperationResult();
@@ -100,6 +104,26 @@ namespace Sigesoft.Node.Contasol.Integration
                 _recetaDto.t_FechaFin = dtpFechaFin.Value;
                 _recetaDto.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                 _recetaDto.v_IdUnidadProductiva = idUnidadProductiva;
+
+                var tienePlan = false;
+                var resultplan = oTicketBL.TienePlan(_protocolId, txtUnidadProductiva.Text);
+                if (resultplan.Count > 0) tienePlan = true;
+                else tienePlan = false;
+
+                if (tienePlan)
+                {
+                    if (resultplan[0].i_EsCoaseguro == 1)
+                    {
+                        _recetaDto.d_SaldoPaciente = resultplan[0].d_Importe;
+                        _recetaDto.d_SaldoAseguradora = (decimal.Parse(txtPrecio.Text) * _recetaDto.d_Cantidad) - resultplan[0].d_Importe;
+                    }
+                    if (resultplan[0].i_EsDeducible == 1)
+                    {
+                        _recetaDto.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(txtPrecio.Text) * _recetaDto.d_Cantidad / 100;
+                        _recetaDto.d_SaldoAseguradora = (decimal.Parse(txtPrecio.Text) * _recetaDto.d_Cantidad) - _recetaDto.d_SaldoPaciente;
+                    }
+                }
+
 
                 _objRecetaBl.AddUpdateRecipe(ref _pobjOperationResult, _recetaDto);
 
@@ -136,6 +160,8 @@ namespace Sigesoft.Node.Contasol.Integration
                 txtMedicamento.Text = medicamento.NombreCompleto;
                 txtMedicamento.Tag = medicamento.IdProductoDetalle;
                 idUnidadProductiva = medicamento.IdLinea;
+                txtUnidadProductiva.Text = medicamento.IdLinea;
+                txtPrecio.Text = medicamento.PrecioVenta.ToString();
             }
         }
     }
