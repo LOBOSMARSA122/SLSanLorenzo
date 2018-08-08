@@ -93,6 +93,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         var precioTarifa = oTicketBL.ObtenerPrecioTarifario(_serviceId, _objTicketDetalleList.v_IdProductoDetalle);
                         _objTicketDetalleList.d_PrecioVenta = precioTarifa;// decimal.Parse(txtPrecioVenta.Text);
 
+                        decimal d;
+                        _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
 
                         var tienePlan = false;
                         var resultplan = oTicketBL.TienePlan(_protocolId, txtUnidadProductiva.Text);
@@ -104,17 +106,16 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                             if (resultplan[0].i_EsCoaseguro == 1)
                             {
                                 _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe;
-                                _objTicketDetalleList.d_SaldoAseguradora = decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) - resultplan[0].d_Importe;
+                                _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad) - resultplan[0].d_Importe;
                             }
                             if (resultplan[0].i_EsDeducible == 1)
                             {
-                                _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) / 100;
-                                _objTicketDetalleList.d_SaldoAseguradora = decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) - _objTicketDetalleList.d_SaldoPaciente;
+                                _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad / 100;
+                                _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad) - _objTicketDetalleList.d_SaldoPaciente;
                             }
                         }
 
-                        decimal d;
-                        _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
+              
                         //objTicketDetalleList.i_EsDespachado = int.Parse()
                         _objTicketDetalleList.i_RecordStatus = (int)RecordStatus.Agregado;
                         _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
@@ -136,6 +137,25 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 decimal d;
                                 _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
 
+                                var tienePlan = false;
+                                var resultplan = oTicketBL.TienePlan(_protocolId, txtUnidadProductiva.Text);
+                                if (resultplan.Count > 0) tienePlan = true;
+                                else tienePlan = false;
+
+                                if (tienePlan)
+                                {
+                                    if (resultplan[0].i_EsCoaseguro == 1)
+                                    {
+                                        _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe;
+                                        _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad) - resultplan[0].d_Importe;
+                                    }
+                                    if (resultplan[0].i_EsDeducible == 1)
+                                    {
+                                        _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad / 100;
+                                        _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad) - _objTicketDetalleList.d_SaldoPaciente;
+                                    }
+                                }
+
                                 findResult.i_RecordStatus = (int)RecordStatus.Grabado;
                             }
                             else if (findResult.i_RecordType == (int)RecordType.Temporal)   // El registro tiene un ID temporal [GUID]
@@ -146,6 +166,26 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
                                 decimal d;
                                 _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
+
+                                var tienePlan = false;
+                                var resultplan = oTicketBL.TienePlan(_protocolId, txtUnidadProductiva.Text);
+                                if (resultplan.Count > 0) tienePlan = true;
+                                else tienePlan = false;
+
+                                if (tienePlan)
+                                {
+                                    if (resultplan[0].i_EsCoaseguro == 1)
+                                    {
+                                        _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe;
+                                        _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad) - resultplan[0].d_Importe;
+                                    }
+                                    if (resultplan[0].i_EsDeducible == 1)
+                                    {
+                                        _objTicketDetalleList.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad / 100;
+                                        _objTicketDetalleList.d_SaldoAseguradora = (decimal.Parse(_objTicketDetalleList.d_PrecioVenta.ToString()) * _objTicketDetalleList.d_Cantidad) - _objTicketDetalleList.d_SaldoPaciente;
+                                    }
+                                }
+
                                 _objTicketDetalleList.i_RecordType = (int)RecordType.Temporal;
 
                                 findResult.i_RecordStatus = (int)RecordStatus.Agregado;

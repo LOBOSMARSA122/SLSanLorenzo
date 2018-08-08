@@ -70,6 +70,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         public int? _EstadoComponente = null;
         private Keys _currentDownKey = Keys.None;
         private List<ComponentFieldsList> groupedFields = new List<ComponentFieldsList>();
+        private string _ProtocolId;
         HistoryBL _historyBL = new HistoryBL();
         /// <summary>
         /// lista temporal (solo diagnosticos vinculados a examenes / componentes)
@@ -1905,6 +1906,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 lblTipoEso.Text = personData.v_EsoTypeName;
                 lblProtocolName.Text = personData.v_ProtocolName;
+                _ProtocolId = personData.v_ProtocolId;
                 _customerOrganizationName = personData.v_EmployerOrganizationName;
                 lblFecVctoGlobal.Text = personData.d_GlobalExpirationDate == null ? "NO REQUIERE" : personData.d_GlobalExpirationDate.Value.ToShortDateString();
                 lblFecVctoObs.Text = personData.d_ObsExpirationDate == null ? string.Empty : personData.d_ObsExpirationDate.Value.ToShortDateString();
@@ -7834,7 +7836,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void btnReceta_Click(object sender, EventArgs e)
         {
             //grdTotalDiagnosticos.DataSource = _tmpTotalDiagnosticByServiceIdList;
-            frmRecetaMedica frm = new frmRecetaMedica(_tmpTotalDiagnosticByServiceIdList, _serviceId);
+            frmRecetaMedica frm = new frmRecetaMedica(_tmpTotalDiagnosticByServiceIdList, _serviceId, _ProtocolId);
             frm.ShowDialog();
         }
 

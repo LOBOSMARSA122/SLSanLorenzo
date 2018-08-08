@@ -1029,7 +1029,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 List<KeyValueDTO> DataComponentList;
                 DataComponentList = (from a in dbContext.organization
-                                     where a.i_IsDeleted == 0
+                                     where a.i_IsDeleted == 0 && a.i_OrganizationTypeId == 4
                                      select a).AsEnumerable()
                                            .Select(x => new KeyValueDTO
                                            {

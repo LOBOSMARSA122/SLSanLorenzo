@@ -19,6 +19,7 @@ namespace Sigesoft.Node.WinClient.UI
         public List<ServiceComponentList> _auxiliaryExams = null;    
         public string _serviceId;
         private string _modo;
+        private string _protocolId;
 
         List<string> _ListaComponentes = null;
         #endregion
@@ -32,10 +33,11 @@ namespace Sigesoft.Node.WinClient.UI
 
         #endregion
 
-        public frmAddExam(List<string> ListaComponentes, string modo)
+        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId)
         {
             _ListaComponentes = ListaComponentes;
             _modo = modo;
+            _protocolId = protocolId;
             InitializeComponent();
 
         }
@@ -178,7 +180,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                     servicecomponentDto objServiceComponentDto = new servicecomponentDto();
                     ServiceBL _ObjServiceBL = new ServiceBL();
-                    
+                    TicketBL oTicketBL = new TicketBL();
 
                     objServiceComponentDto.v_ServiceId = _serviceId;
                     objServiceComponentDto.i_ExternalInternalId = (int)Common.ComponenteProcedencia.Interno;
@@ -201,6 +203,25 @@ namespace Sigesoft.Node.WinClient.UI
                     objServiceComponentDto.v_IdUnidadProductiva = objComponentDto.v_IdUnidadProductiva;
                     objServiceComponentDto.i_MedicoTratanteId = int.Parse(cboMedico.SelectedValue.ToString());
 
+
+                    var tienePlan = false;
+                    var resultplan = oTicketBL.TienePlan(_protocolId, objComponentDto.v_IdUnidadProductiva);
+                    if (resultplan.Count > 0) tienePlan = true;
+                    else tienePlan = false;
+
+                    if (tienePlan)
+                    {
+                        if (resultplan[0].i_EsCoaseguro == 1)
+                        {
+                            objServiceComponentDto.d_SaldoPaciente = resultplan[0].d_Importe;
+                            objServiceComponentDto.d_SaldoAseguradora = decimal.Parse(objServiceComponentDto.r_Price.ToString()) - resultplan[0].d_Importe;
+                        }
+                        if (resultplan[0].i_EsDeducible == 1)
+                        {
+                            objServiceComponentDto.d_SaldoPaciente = resultplan[0].d_Importe * decimal.Parse(objServiceComponentDto.r_Price.ToString()) / 100;
+                            objServiceComponentDto.d_SaldoAseguradora = decimal.Parse(objServiceComponentDto.r_Price.ToString()) - objServiceComponentDto.d_SaldoPaciente;
+                        }
+                    }
 
                     //_calendarBL.UpdateAdditionalExam(_auxiliaryExams, _serviceId, (int?)SiNo.SI, Globals.ClientSession.GetAsList());
                     _ObjServiceBL.AddServiceComponent(ref objOperationResult, objServiceComponentDto, Globals.ClientSession.GetAsList());

@@ -86,6 +86,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     ticketDetalle.v_CodInterno = item.v_CodInterno;
                     ticketDetalle.v_Descripcion = item.v_NombreProducto;
                     ticketDetalle.d_PrecioVenta = item.d_PrecioVenta;
+                    ticketDetalle.d_SaldoPaciente = item.d_SaldoPaciente;
+                    ticketDetalle.d_SaldoAseguradora = item.d_SaldoAseguradora;
                     _ticketdetalleDTO.Add(ticketDetalle);
                 }
 
@@ -126,7 +128,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         ticketdetalleDtoAdd.i_EsDespachado = item.i_EsDespachado;
                         ticketdetalleDtoAdd.v_CodInterno = item.v_CodInterno;
                         ticketdetalleDtoAdd.v_Descripcion = item.v_NombreProducto;
-                        ticketdetalleDtoAdd.d_PrecioVenta = item.d_PrecioVenta;
+                        ticketdetalleDtoAdd.d_PrecioVenta =  item.d_PrecioVenta;
+                        ticketdetalleDtoAdd.d_SaldoPaciente = item.d_SaldoPaciente;
+                        ticketdetalleDtoAdd.d_SaldoAseguradora = item.d_SaldoAseguradora;
                         _ticketdetalleDTO.Add(ticketdetalleDtoAdd);
                     }
                     #endregion
@@ -142,6 +146,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         ticketdetalleDtoUp.v_CodInterno = item.v_CodInterno;
                         ticketdetalleDtoUp.v_Descripcion = item.v_NombreProducto;
                         ticketdetalleDtoUp.d_PrecioVenta = item.d_PrecioVenta;
+                        ticketdetalleDtoUp.d_SaldoPaciente = item.d_SaldoPaciente;
+                        ticketdetalleDtoUp.d_SaldoAseguradora = item.d_SaldoAseguradora;
                         _ticketdetalleDTOUpdate.Add(ticketdetalleDtoUp);
                     }
                     #endregion
