@@ -158,6 +158,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
         private AtencionesIntegralesBL _objAtencionesIntegralesBl = new AtencionesIntegralesBL();
+        private PacientBL _objPacienteBl = new PacientBL();
+
         string adolId = string.Empty;
         serviceDto idPerson = new serviceDto();
         private adolescenteDto objAdolDto = null;
@@ -171,6 +173,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         string ninioId = string.Empty;
         private ninioDto objNinioDto = null;
 
+        string PacientId;
+
+        private EmbarazoBL _objEmbarazoBL = new EmbarazoBL();
         #endregion
 
         public frmEso(string serviceId, string componentIdByDefault, string action, int tipo)
@@ -2020,7 +2025,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 cboGenero.SelectedValue = personData.i_SexTypeId.ToString();
                 txtEdad.Text = _age.ToString();
                 dtpFechaNacimiento.Value = personData.d_BirthDate.Value;
-                txtLugarNacimiento.Text = personData.v_AdressLocation;
+                txtLugarNacimiento.Text = personData.v_BirthPlace;
                 txtProcedencia.Text = personData.v_Procedencia;
                 ddlBloodFactorId.SelectedValue = personData.i_BloodFactorId.ToString();
                 ddlBloodGroupId.SelectedValue = personData.i_BloodGroupId.ToString();
@@ -2030,6 +2035,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 txtDomicilio.Text = personData.v_AdressLocation;
                 txtCentroEducativo.Text = personData.v_CentroEducativo;
                 txtHijosVivos.Text = personData.TotalHijos.ToString();
+                lblDni.Text = personData.v_DocNumber.ToString();
 
                 idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
 
@@ -2055,21 +2061,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         txtNombrePadreTutor.Text = objNinioDto.v_NombrePadre;
                         txtEdadPadre.Text = objNinioDto.v_EdadPadre;
                         txtDNIPadre.Text = objNinioDto.v_DniPadre;
-                        //objNinioDto.i_TipoAfiliacionPadre = Convert.ToInt32(listTipoAfiliacionHombre.SelectedValue);
+                        listTipoAfiliacionHombre.SelectedValue = objNinioDto.i_TipoAfiliacionPadre.ToString();
                         txtAfiliacionPadre.Text = objNinioDto.v_CodigoAfiliacionPadre;
-                        //objNinioDto.i_GradoInstruccionPadre = Convert.ToInt32(listaGradoInstruccionHombre.SelectedValue);
+                        listaGradoInstruccionHombre.SelectedValue = objNinioDto.i_GradoInstruccionPadre.ToString();
                         txtOcupacionPadre.Text = objNinioDto.v_OcupacionPadre;
-                        //objNinioDto.i_EstadoCivilIdPadre = Convert.ToInt32(listaEstadoCivilHombre.SelectedValue);
+                        listaEstadoCivilHombre.SelectedValue = objNinioDto.i_EstadoCivilIdPadre.ToString();
                         txtReligionPadre.Text = objNinioDto.v_ReligionPadre;
 
                         txtNombreMadreTutor.Text = objNinioDto.v_NombreMadre;
                         txtEdadMadre.Text = objNinioDto.v_EdadMadre;
                         txtDNIMadre.Text = objNinioDto.v_DniMadre;
-                        //objNinioDto.i_TipoAfiliacionMadre = Convert.ToInt32(listTipoAfiliacionMujer.SelectedValue);
+                        listTipoAfiliacionMujer.SelectedValue = objNinioDto.i_TipoAfiliacionMadre.ToString();
                         txtAfiliacionMadre.Text = objNinioDto.v_CodigoAfiliacionMadre;
-                        //objNinioDto.i_GradoInstruccionMadre = Convert.ToInt32(listaGradoInstruccionMujer.SelectedValue);
+                        listaGradoInstruccionMujer.SelectedValue = objNinioDto.i_GradoInstruccionMadre.ToString();
                         txtOcupacionMadre.Text = objNinioDto.v_OcupacionMadre;
-                        //objNinioDto.i_EstadoCivilIdMadre1 = Convert.ToInt32(listaEstadoCivilMujer.SelectedValue);
+                        listaEstadoCivilMujer.SelectedValue = objNinioDto.i_EstadoCivilIdMadre1.ToString();
                         txtReligionMadre.Text = objNinioDto.v_ReligionMadre;
 
                         textPatologiasGestacion.Text = objNinioDto.v_PatologiasGestacion;
@@ -2121,6 +2127,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     tbcDatos.TabPages.Remove(tbpNinio);
                     tbcDatos.TabPages.Remove(tbpAdolescente);
+                    CargarGrillaEmbarazos(idPerson.v_PersonId);
 
                     if (personData.i_SexTypeId == (int) Gender.MASCULINO)
                     {
@@ -7944,6 +7951,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             grdAgudos.DataSource = objData.FindAll(p => p.i_Tipo == (int)TipoProblema.Agudo);
         }
 
+        private void CargarGrillaEmbarazos(string personId)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var objData = _objEmbarazoBL.GetEmbarazoFiltered(ref objOperationResult, 0, null, "", "", personId);
+
+            grdEmbarazos.DataSource = objData;
+        }
         private void btnGuardarAntecedentes_Click(object sender, EventArgs e)
         {
             List<frmEsoAntecedentesPadre> Listado = new List<frmEsoAntecedentesPadre>();
@@ -7978,35 +7992,43 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             bool response = false;
 
+       
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
                 OperationResult objOperationResult = new OperationResult();
                 personDto oDatosPersonales = new personDto();
-                oDatosPersonales.v_FirstLastName = txtApellidoPaterno.Text;
-                oDatosPersonales.v_SecondLastName = txtApellidoMaterno.Text;
-                oDatosPersonales.v_FirstName = txtNombres.Text;
-                oDatosPersonales.i_SexTypeId = int.Parse(cboGenero.SelectedValue.ToString());
-                //oDatosPersonales.Edad = int.Parse(txtEdad.Text());
-                oDatosPersonales.v_BirthPlace = txtLugarNacimiento.Text;
-                oDatosPersonales.v_Procedencia = txtProcedencia.Text;
-                oDatosPersonales.i_LevelOfId = int.Parse(cboGradoInstruccion.SelectedValue.ToString());
-                oDatosPersonales.i_MaritalStatusId = int.Parse(cboEstadoCivil.SelectedValue.ToString());
-                oDatosPersonales.v_CurrentOccupation = txtOcupacion.Text;
-                oDatosPersonales.v_AdressLocation = txtDomicilio.Text;
-                oDatosPersonales.v_CentroEducativo = txtCentroEducativo.Text;
-                oDatosPersonales.i_NumberLivingChildren = int.Parse(txtHijosVivos.Text);
-
-                var resultDatosPersonales = new PacientBL().UpdatePacient(ref objOperationResult, oDatosPersonales, Globals.ClientSession.GetAsList(), _Dni, _Dni);
-               
                 idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
-                //var idAdol = _objAtencionesIntegralesBl.GetAdolescente(ref objOperationResult, idPersonAdol.v_PersonId);
-                //var idAdult = _objAtencionesIntegralesBl.GetAdulto(ref objOperationResult, idPersonAdol.v_PersonId);
-                //var idAdultMay = _objAtencionesIntegralesBl.GetAdultoMayor(ref objOperationResult, idPersonAdol.v_PersonId);
+                PacientId = idPerson.v_PersonId.ToString();
+                oDatosPersonales = _objPacienteBl.GetPerson(ref objOperationResult, PacientId);
+
+                
+                
+                oDatosPersonales.v_PersonId = PacientId;
+                oDatosPersonales.v_FirstName = txtNombres.Text.Trim();
+                oDatosPersonales.v_FirstLastName = txtApellidoPaterno.Text.Trim();
+                oDatosPersonales.v_SecondLastName = txtApellidoMaterno.Text.Trim();
+
+                    oDatosPersonales.i_SexTypeId = int.Parse(cboGenero.SelectedValue.ToString());
+                    //oDatosPersonales.Edad = int.Parse(txtEdad.Text());
+                    oDatosPersonales.v_BirthPlace = txtLugarNacimiento.Text.Trim();
+                    oDatosPersonales.v_Procedencia = txtProcedencia.Text.Trim();
+                    oDatosPersonales.i_LevelOfId = int.Parse(cboGradoInstruccion.SelectedValue.ToString());
+                    oDatosPersonales.i_MaritalStatusId = int.Parse(cboEstadoCivil.SelectedValue.ToString());
+                    oDatosPersonales.v_CurrentOccupation = txtOcupacion.Text.Trim();
+                    oDatosPersonales.v_AdressLocation = txtDomicilio.Text.Trim();
+                    oDatosPersonales.v_CentroEducativo = txtCentroEducativo.Text.Trim();
+                    oDatosPersonales.i_NumberLivingChildren = int.Parse(txtHijosVivos.Text);
+                    _Dni = lblDni.Text;
+                    //PacientId = _objPacienteBl.UpdatePacient(ref objOperationResult, oDatosPersonales, Globals.ClientSession.GetAsList(), _Dni, oDatosPersonales.v_DocNumber);
+                    PacientId = _objPacienteBl.UpdatePacient(ref objOperationResult, oDatosPersonales, Globals.ClientSession.GetAsList(), _Dni, lblDni.Text);
+                    
+                //}
+
+                
                 ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, _serviceId);
 
                 _sexType = (Gender)personData.i_SexTypeId;
                 _sexTypeId = personData.i_SexTypeId;
-                
 
                 if (_age <= 12)
                 {
@@ -8368,6 +8390,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
         }
 
+
         private void btnGuardarCuidadosPreventivos_Click(object sender, EventArgs e)
         {
             frmEsoCuidadosPreventivosFechas data = new frmEsoCuidadosPreventivosFechas();
@@ -8431,18 +8454,45 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnNuevoEmbarazo_Click(object sender, EventArgs e)
         {
+            idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
+            PacientId = idPerson.v_PersonId.ToString();
+            frmEmbarazo frm = new frmEmbarazo("New", PacientId, "");
 
+            frm.ShowDialog();
+            CargarGrillaEmbarazos(idPerson.v_PersonId);
         }
 
         private void btnEliminarEmbarazo_Click(object sender, EventArgs e)
         {
-            frmEmbarazo frm = new frmEmbarazo();
-            frm.ShowDialog();
+            idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
+            PacientId = idPerson.v_PersonId.ToString();
+            OperationResult objOperationResult = new OperationResult();
+            string id = grdEmbarazos.Selected.Rows[0].Cells["v_EmbarazoId"].Value.ToString();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                _objEmbarazoBL.DeleteEmbarazo(ref objOperationResult, id, Globals.ClientSession.GetAsList());
+                CargarGrillaEmbarazos(idPerson.v_PersonId);
+            }
+            else
+            {
+                this.Close();
+            }
         }
-
         private void label105_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnEditarEmbarazo_Click(object sender, EventArgs e)
+        {
+            idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
+            PacientId = idPerson.v_PersonId.ToString();
+            string id = grdEmbarazos.Selected.Rows[0].Cells["v_EmbarazoId"].Value.ToString();
+
+            frmEmbarazo frm = new frmEmbarazo("Edit", PacientId, id);
+            frm.ShowDialog();
+            CargarGrillaEmbarazos(idPerson.v_PersonId);
         }
 
     }

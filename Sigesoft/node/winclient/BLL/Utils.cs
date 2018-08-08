@@ -1007,7 +1007,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                                Value1 = x.v_Name,
                                                Id = x.v_ComponentId
                                            }).OrderBy(x => x.Value1).ToList();
-                //}).OrderBy(x => x.Value1).ToList();
 
                 pobjOperationResult.Success = 1;
                 return DataComponentList;
