@@ -55,7 +55,6 @@
     <Compile Include="DataHierarchyBL.cs" />
     <Compile Include="DxFrecuenteBL.cs" />
     <Compile Include="EmailBL.cs" />
-    <Compile Include="EmbarazoBL.cs" />
     <Compile Include="FacturacionBL.cs" />
     <Compile Include="GesBL.cs" />
     <Compile Include="GroupOccupationBL.cs" />

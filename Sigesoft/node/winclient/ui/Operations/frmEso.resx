@@ -158,7 +158,7 @@
   <data name="btnVerServicioAnterior.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAe
-        wAAAHsABES62twAAAAd0SU1FB9cLEBAgD/07evoAAAKESURBVDhPpZPrS5NhGMaf/6L/oQ99iEgsUjD7
+        vwAAHr8BQ/1smgAAAAd0SU1FB9cLEBAgD/07evoAAAKESURBVDhPpZPrS5NhGMaf/6L/oQ99iEgsUjD7
         kFGCIUF5SE0hcXnIxOpl6nQ6DymeNTVbmsvj5mTWZtt0B51MXNqchdaLNk8ryZ3d5nbV3vxgIol0wfXh
         5r5+FzcPPOS/9aKrr3VMqfYqNTooVDrIxrWQyCYwPCpHv1iK1wMSdApEaHnZj7q2HlQ28sGtaQdV1uCN
         T8tuIL/hwMfoKKwOnkKEKAympZVjvbi8gg3LNpJYT4VEqZ7GZnU5duavg2NkM4HjFMxYtn8iIT1fRIIn
@@ -178,7 +178,7 @@
   <data name="mnuVerServicio.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAe
-        wAAAHsABES62twAAAAd0SU1FB9cJGwsUJ84WuQcAAAEWSURBVDhPYxh8oGKH3Zey7dbt////Z0DHRAGg
+        vwAAHr8BQ/1smgAAAAd0SU1FB9cJGwsUJ84WuQcAAAEWSURBVDhPYxh8oGKH3Zey7dbt////Z0DHRAGg
         Af/Ltln/K1hvgWEIUaBki9X/ZZdq/9fvdfufscCkj2QD8teY/19ysfL/nLN5/4s2WPyP7dOfR5IBmYtN
         /s8+k/2/83DI/4nH4/5nLjL5H1ittYRoA5JnGIE1lm+3/Q8Kj4Z97v/jJxn898hVfQRVgh/E9On/bzsU
         8L9wvcX/oo2WYEOiOvX+O6eqbIYqwQ9CGrX/1+5x+Z+/1vx/6Tbr/2Etuv8dEpTWWITIs0CV4Af+FZr/
@@ -842,18 +842,6 @@
         h9VCxeTvgfgAJtBBeX6lGFUAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="btnEditarEmbarazo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAFySURBVDhPpZI/SEJBHMddWwuDlnCplkAEm1xEGqIh
-        hZYcDKPBiqQhaGupKYQyJDDQLUuNJMiGhIq0yD/Bq5BI1OJlWIQ12BOfknx790JIu+JBw+cLd/f9/A6O
-        kwH4F9RNGo8hZUvar3+JOwy1qH0I127l/d1GXwe1TCPlNeDWM4UyGwOfSyC+pkN4QRWglpsRbgeX3ALP
-        nqGSuxAppw8Rs+trVOE7ROZfI+AfvMgGpsExHhEyIOEYLlOlOnX5g9tDKTWBd2YGl24jstuziK3qhcof
-        j9ggZ8zgbvpRfVtGPmhCakUjVL56P0SCVJnQIBKO7T2SZULD4mCpG8X8kWSZIIZzXKEgMpvYRdRnkSwT
-        xHBYO1Fko6g+XWF/Xo3IugqZUysY1yDOF9VChS4TxCADKsLvKvjH8OzUImyRw29uR3CuVzimi3XEMOpa
-        kXSZUGI2UWB8OLENSJIJYoxo2zCqk8M12SWKIZtmp7n4G9RN6UD2CVVc9yZM1spMAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="btnNuevoEmbarazo.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29m
@@ -988,12 +976,6 @@
   <metadata name="backgroundWorker1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>508, 56</value>
   </metadata>
-<<<<<<< HEAD
-  <metadata name="ultraDataSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>672, 56</value>
-  </metadata>
-=======
->>>>>>> 913430fdd3bb5b4a26e32071d15099f1bf4a7e58
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>66</value>
   </metadata>
