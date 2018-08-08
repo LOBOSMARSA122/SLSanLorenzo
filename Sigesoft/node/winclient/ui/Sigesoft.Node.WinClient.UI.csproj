@@ -1342,6 +1342,12 @@
     <Compile Include="Hospitalizacion\frmHospitalizados.Designer.cs">
       <DependentUpon>frmHospitalizados.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hospitalizacion\frmLiquidacionAseguradora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmLiquidacionAseguradora.Designer.cs">
+      <DependentUpon>frmLiquidacionAseguradora.cs</DependentUpon>
+    </Compile>
     <Compile Include="Hospitalizacion\frmTicket.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3551,6 +3557,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmHospitalizados.resx">
       <DependentUpon>frmHospitalizados.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Hospitalizacion\frmLiquidacionAseguradora.resx">
+      <DependentUpon>frmLiquidacionAseguradora.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmTicket.resx">
       <DependentUpon>frmTicket.cs</DependentUpon>
