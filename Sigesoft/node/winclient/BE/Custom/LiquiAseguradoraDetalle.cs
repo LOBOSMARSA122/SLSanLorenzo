@@ -9,8 +9,10 @@ namespace Sigesoft.Node.WinClient.BE
     {
         public string Descripcion { get; set; }
         public string Tipo { get; set; }
-        public decimal SaldoPaciente { get; set; }
-        public decimal SaldoAseguradora { get; set; }
-        public decimal SubTotal { get; set; }
+        public decimal? Valor { get; set; }
+        public decimal? SaldoPaciente { get; set; }
+        public decimal? SaldoAseguradora { get; set; }
+        public decimal? SubTotal { get; set; }
+        
     }
 }

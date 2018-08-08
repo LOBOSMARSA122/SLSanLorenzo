@@ -92,5 +92,13 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_UpdateUserMedicalAnalystId { get; set; }
         public int? i_UpdateUserTechnicalDataRegisterId { get; set; }
         public string MedicoTratante { get; set; }
+
+        public decimal? d_SaldoPaciente { get; set; }
+        public decimal? d_SaldoAseguradora { get; set; }
+
+        public int i_EsDeducible { get; set; }
+        public int i_EsCoaseguro { get; set; }
+
+        public decimal? d_Importe { get; set; }
     }
 }

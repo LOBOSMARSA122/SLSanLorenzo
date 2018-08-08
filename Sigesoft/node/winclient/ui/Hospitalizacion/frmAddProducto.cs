@@ -89,7 +89,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                         _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                         _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
                         _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
-                       
+                        _objTicketDetalleList.v_IdUnidadProductiva = txtUnidadProductiva.Text;
                         var precioTarifa = oTicketBL.ObtenerPrecioTarifario(_serviceId, _objTicketDetalleList.v_IdProductoDetalle);
                         _objTicketDetalleList.d_PrecioVenta = precioTarifa;// decimal.Parse(txtPrecioVenta.Text);
 
@@ -132,6 +132,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 _objTicketDetalleList.v_IdProductoDetalle = txtMedicamento.Tag.ToString();
                                 _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
                                 _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
+                                _objTicketDetalleList.v_IdUnidadProductiva = txtUnidadProductiva.Text;
                                 var precioTarifa = oTicketBL.ObtenerPrecioTarifario(_serviceId, _objTicketDetalleList.v_IdProductoDetalle);
                                 _objTicketDetalleList.d_PrecioVenta = precioTarifa;// decimal.Parse(txtPrecioVenta.Text); 
                                 decimal d;
@@ -164,6 +165,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                                 _objTicketDetalleList.v_NombreProducto = txtMedicamento.Text;
                                 _objTicketDetalleList.v_CodInterno = txtCodigo.Text;
                                 _objTicketDetalleList.d_PrecioVenta = decimal.Parse(txtPrecioVenta.Text);
+                                _objTicketDetalleList.v_IdUnidadProductiva = txtUnidadProductiva.Text;
                                 decimal d;
                                 _objTicketDetalleList.d_Cantidad = decimal.TryParse(txtCantidad.Text, out d) ? d : 0;
 

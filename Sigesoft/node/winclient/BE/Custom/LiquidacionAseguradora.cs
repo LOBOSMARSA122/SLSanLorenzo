@@ -13,6 +13,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Paciente { get; set; }
         public string EmpresaId { get; set; }
         public string PacientDocument { get; set; }
+        public string Aseguradora { get; set; }
         public List<LiquiAseguradoraDetalle> Detalle { get; set; }
     }
 }
