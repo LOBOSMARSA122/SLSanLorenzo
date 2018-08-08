@@ -222,6 +222,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 txtNTicket.Text = objticketDtoo.v_TicketId;
                 txtFecha.Text = objticketDtoo.d_Fecha.ToString();
                 txtNServicio.Text = objticketDtoo.v_ServiceId;
+
                 if (objticketDtoo.i_ConCargoA == (int)CargoHospitalizacion.Paciente)
                     rbPaciente.Checked = true;
                 else

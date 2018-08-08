@@ -1209,6 +1209,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								v_EsoTypeName = H.v_Value1,
 								i_ServiceTypeId = E.i_MasterServiceTypeId.Value,
 								v_GenderName = J.v_Value1,
+                                v_AdressLocation = D.v_AdressLocation,
+                                v_BirthPlace = D.v_BirthPlace,
 
 								i_HasSymptomId = A.i_HasSymptomId,
 								v_MainSymptom = A.v_MainSymptom,

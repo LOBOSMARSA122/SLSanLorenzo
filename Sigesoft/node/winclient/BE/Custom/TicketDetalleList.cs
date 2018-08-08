@@ -24,6 +24,5 @@ namespace Sigesoft.Node.WinClient.BE
         public decimal d_SaldoPaciente { get; set; }
         public decimal d_SaldoAseguradora { get; set; }
         
-            
     }
 }

@@ -687,6 +687,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+
         public void DeletePacient(ref OperationResult pobjOperationResult, string pstrPersonId, List<string> ClientSession)
         {
             //mon.IsActive = true;

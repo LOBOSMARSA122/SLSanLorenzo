@@ -181,10 +181,10 @@
             Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn32 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_EsControlado", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Observacion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn101 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn102 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_EsControlado", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn111 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Observacion");
             Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
@@ -220,22 +220,6 @@
             Infragistics.Win.Appearance appearance89 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand13 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Anio");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn35 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cpn");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn36 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Complicacion", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn37 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Parto");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PesoRn");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Puerpio");
-            Infragistics.Win.Appearance appearance93 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance94 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance95 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance96 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance97 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance98 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance99 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance100 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance101 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand14 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
@@ -252,7 +236,30 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance104 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
+            Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand13 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_EmbarazoId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Anio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Cpn");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn32 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Complicacion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Parto");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn38 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_PesoRn");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn46 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Puerpio");
+            Infragistics.Win.Appearance appearance93 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance94 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance95 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance96 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance97 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance98 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance99 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance100 = new Infragistics.Win.Appearance();
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -442,7 +449,6 @@
             this.pnlEmbarazo = new System.Windows.Forms.Panel();
             this.label105 = new System.Windows.Forms.Label();
             this.textObservacionesEmbarazo = new System.Windows.Forms.TextBox();
-            this.grdEmbarzo = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnNuevoEmbarazo = new System.Windows.Forms.Button();
             this.btnEliminarEmbarazo = new System.Windows.Forms.Button();
             this.txtAmAborto = new System.Windows.Forms.TextBox();
@@ -501,13 +507,90 @@
             this.tbpNinio = new System.Windows.Forms.TabPage();
             this.ultgrboxVivienda = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel5 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
+            this.textDesague = new System.Windows.Forms.TextBox();
+            this.label136 = new System.Windows.Forms.Label();
+            this.textAguaPotable = new System.Windows.Forms.TextBox();
+            this.label135 = new System.Windows.Forms.Label();
             this.ultgrboxFamiliares = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel4 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
+            this.textQuienHepatitisB = new System.Windows.Forms.TextBox();
+            this.radioButton17 = new System.Windows.Forms.RadioButton();
+            this.radioButton18 = new System.Windows.Forms.RadioButton();
+            this.label134 = new System.Windows.Forms.Label();
+            this.textQuienDrogadiccion = new System.Windows.Forms.TextBox();
+            this.radioButton15 = new System.Windows.Forms.RadioButton();
+            this.radioButton16 = new System.Windows.Forms.RadioButton();
+            this.label133 = new System.Windows.Forms.Label();
+            this.textQuienAlcoholismo = new System.Windows.Forms.TextBox();
+            this.radioButton13 = new System.Windows.Forms.RadioButton();
+            this.radioButton14 = new System.Windows.Forms.RadioButton();
+            this.label132 = new System.Windows.Forms.Label();
+            this.textQuienViolenciaFamiliar = new System.Windows.Forms.TextBox();
+            this.radioButton11 = new System.Windows.Forms.RadioButton();
+            this.radioButton12 = new System.Windows.Forms.RadioButton();
+            this.label131 = new System.Windows.Forms.Label();
+            this.textQuienAlergias = new System.Windows.Forms.TextBox();
+            this.radioButton9 = new System.Windows.Forms.RadioButton();
+            this.radioButton10 = new System.Windows.Forms.RadioButton();
+            this.label130 = new System.Windows.Forms.Label();
+            this.textQuienEpilepsia = new System.Windows.Forms.TextBox();
+            this.radioButton7 = new System.Windows.Forms.RadioButton();
+            this.radioButton8 = new System.Windows.Forms.RadioButton();
+            this.label129 = new System.Windows.Forms.Label();
+            this.textQuienDiabetes = new System.Windows.Forms.TextBox();
+            this.radioButton5 = new System.Windows.Forms.RadioButton();
+            this.radioButton6 = new System.Windows.Forms.RadioButton();
+            this.label128 = new System.Windows.Forms.Label();
+            this.textQuienVIH = new System.Windows.Forms.TextBox();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.label127 = new System.Windows.Forms.Label();
+            this.textQuienASMA = new System.Windows.Forms.TextBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.label95 = new System.Windows.Forms.Label();
+            this.label94 = new System.Windows.Forms.Label();
+            this.textQuienTuberculosis = new System.Windows.Forms.TextBox();
+            this.rbNoTuberculosis = new System.Windows.Forms.RadioButton();
+            this.rbSiTuberculosis = new System.Windows.Forms.RadioButton();
             this.label162 = new System.Windows.Forms.Label();
             this.ultgrboxNacimiento = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel3 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
+            this.textOtrosAntecedentes = new System.Windows.Forms.TextBox();
+            this.label93 = new System.Windows.Forms.Label();
+            this.textAlergiaMedicamentos = new System.Windows.Forms.TextBox();
+            this.label92 = new System.Windows.Forms.Label();
+            this.textPerimetroToracico = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.textPerimetroCefalico = new System.Windows.Forms.TextBox();
+            this.label90 = new System.Windows.Forms.Label();
+            this.textTallaNacer = new System.Windows.Forms.TextBox();
+            this.label89 = new System.Windows.Forms.Label();
+            this.textPesoNacer = new System.Windows.Forms.TextBox();
+            this.label87 = new System.Windows.Forms.Label();
+            this.textEdadNacer = new System.Windows.Forms.TextBox();
+            this.label88 = new System.Windows.Forms.Label();
+            this.txtInicioAlimentación = new System.Windows.Forms.TextBox();
+            this.label86 = new System.Windows.Forms.Label();
+            this.textTiempoHospit = new System.Windows.Forms.TextBox();
+            this.label85 = new System.Windows.Forms.Label();
+            this.textEspecificacionesNacer = new System.Windows.Forms.TextBox();
+            this.label84 = new System.Windows.Forms.Label();
+            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.ultgrboxEmbarazo = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel1 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
+            this.textQuienAtendio = new System.Windows.Forms.TextBox();
+            this.label83 = new System.Windows.Forms.Label();
+            this.textComplicacionesParto = new System.Windows.Forms.TextBox();
+            this.label82 = new System.Windows.Forms.Label();
+            this.textLugarAPN = new System.Windows.Forms.TextBox();
+            this.label81 = new System.Windows.Forms.Label();
+            this.txtAPN = new System.Windows.Forms.TextBox();
+            this.label80 = new System.Windows.Forms.Label();
+            this.txtNEmbarazo = new System.Windows.Forms.TextBox();
+            this.textPatologiasGestacion = new System.Windows.Forms.TextBox();
             this.label96 = new System.Windows.Forms.Label();
             this.label97 = new System.Windows.Forms.Label();
             this.ultgrboxDatosFamiliares = new Infragistics.Win.Misc.UltraExpandableGroupBox();
@@ -549,6 +632,7 @@
             this.label126 = new System.Windows.Forms.Label();
             this.txtNombreMadreTutor = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.lblDni = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
             this.txtCentroEducativo = new System.Windows.Forms.TextBox();
             this.label44 = new System.Windows.Forms.Label();
@@ -618,83 +702,9 @@
             this.dsInformeEcograficoRenal1 = new Sigesoft.Node.WinClient.UI.Dataset.dsInformeEcograficoRenal();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.textPatologiasGestacion = new System.Windows.Forms.TextBox();
-            this.txtNEmbarazo = new System.Windows.Forms.TextBox();
-            this.txtAPN = new System.Windows.Forms.TextBox();
-            this.label80 = new System.Windows.Forms.Label();
-            this.textLugarAPN = new System.Windows.Forms.TextBox();
-            this.label81 = new System.Windows.Forms.Label();
-            this.textComplicacionesParto = new System.Windows.Forms.TextBox();
-            this.label82 = new System.Windows.Forms.Label();
-            this.textQuienAtendio = new System.Windows.Forms.TextBox();
-            this.label83 = new System.Windows.Forms.Label();
-            this.textEspecificacionesNacer = new System.Windows.Forms.TextBox();
-            this.label84 = new System.Windows.Forms.Label();
-            this.textTiempoHospit = new System.Windows.Forms.TextBox();
-            this.label85 = new System.Windows.Forms.Label();
-            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.txtInicioAlimentación = new System.Windows.Forms.TextBox();
-            this.label86 = new System.Windows.Forms.Label();
-            this.textPesoNacer = new System.Windows.Forms.TextBox();
-            this.label87 = new System.Windows.Forms.Label();
-            this.textEdadNacer = new System.Windows.Forms.TextBox();
-            this.label88 = new System.Windows.Forms.Label();
-            this.textTallaNacer = new System.Windows.Forms.TextBox();
-            this.label89 = new System.Windows.Forms.Label();
-            this.textPerimetroCefalico = new System.Windows.Forms.TextBox();
-            this.label90 = new System.Windows.Forms.Label();
-            this.textPerimetroToracico = new System.Windows.Forms.TextBox();
-            this.label91 = new System.Windows.Forms.Label();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.textAlergiaMedicamentos = new System.Windows.Forms.TextBox();
-            this.label92 = new System.Windows.Forms.Label();
-            this.textOtrosAntecedentes = new System.Windows.Forms.TextBox();
-            this.label93 = new System.Windows.Forms.Label();
-            this.rbSiTuberculosis = new System.Windows.Forms.RadioButton();
-            this.rbNoTuberculosis = new System.Windows.Forms.RadioButton();
-            this.textQuienTuberculosis = new System.Windows.Forms.TextBox();
-            this.label94 = new System.Windows.Forms.Label();
-            this.textQuienASMA = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.label95 = new System.Windows.Forms.Label();
-            this.textQuienVIH = new System.Windows.Forms.TextBox();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
-            this.label127 = new System.Windows.Forms.Label();
-            this.textQuienDiabetes = new System.Windows.Forms.TextBox();
-            this.radioButton5 = new System.Windows.Forms.RadioButton();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.label128 = new System.Windows.Forms.Label();
-            this.textQuienEpilepsia = new System.Windows.Forms.TextBox();
-            this.radioButton7 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.label129 = new System.Windows.Forms.Label();
-            this.textQuienAlergias = new System.Windows.Forms.TextBox();
-            this.radioButton9 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.label130 = new System.Windows.Forms.Label();
-            this.textQuienViolenciaFamiliar = new System.Windows.Forms.TextBox();
-            this.radioButton11 = new System.Windows.Forms.RadioButton();
-            this.radioButton12 = new System.Windows.Forms.RadioButton();
-            this.label131 = new System.Windows.Forms.Label();
-            this.textQuienAlcoholismo = new System.Windows.Forms.TextBox();
-            this.radioButton13 = new System.Windows.Forms.RadioButton();
-            this.radioButton14 = new System.Windows.Forms.RadioButton();
-            this.label132 = new System.Windows.Forms.Label();
-            this.textQuienDrogadiccion = new System.Windows.Forms.TextBox();
-            this.radioButton15 = new System.Windows.Forms.RadioButton();
-            this.radioButton16 = new System.Windows.Forms.RadioButton();
-            this.label133 = new System.Windows.Forms.Label();
-            this.textQuienHepatitisB = new System.Windows.Forms.TextBox();
-            this.radioButton17 = new System.Windows.Forms.RadioButton();
-            this.radioButton18 = new System.Windows.Forms.RadioButton();
-            this.label134 = new System.Windows.Forms.Label();
-            this.textAguaPotable = new System.Windows.Forms.TextBox();
-            this.label135 = new System.Windows.Forms.Label();
-            this.textDesague = new System.Windows.Forms.TextBox();
-            this.label136 = new System.Windows.Forms.Label();
+            this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
+            this.grdEmbarazos = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnEditarEmbarazo = new System.Windows.Forms.Button();
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -747,7 +757,6 @@
             this.tbpAdultoMayor.SuspendLayout();
             this.pnlSexualidad.SuspendLayout();
             this.pnlEmbarazo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdEmbarzo)).BeginInit();
             this.pnlMenarquia.SuspendLayout();
             this.tbpAdolescente.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -783,6 +792,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.uvAnalisisDx)).BeginInit();
             this.pnlLeftPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdEmbarazos)).BeginInit();
             this.SuspendLayout();
             // 
             // tcSubMain
@@ -3789,22 +3800,22 @@
             appearance65.BorderColor = System.Drawing.Color.DarkGray;
             appearance65.ForeColor = System.Drawing.Color.Black;
             this.grdCronicos.DisplayLayout.Appearance = appearance65;
-            ultraGridColumn29.Header.Caption = "Fecha";
-            ultraGridColumn29.Header.VisiblePosition = 0;
-            ultraGridColumn29.Width = 99;
-            ultraGridColumn31.Header.Caption = "Problema Crónico";
-            ultraGridColumn31.Header.VisiblePosition = 1;
-            ultraGridColumn31.Width = 212;
-            ultraGridColumn32.Header.Caption = "¿Es controlado?";
-            ultraGridColumn32.Header.VisiblePosition = 2;
-            ultraGridColumn33.Header.Caption = "Observación";
-            ultraGridColumn33.Header.VisiblePosition = 3;
-            ultraGridColumn33.Width = 151;
+            ultraGridColumn57.Header.Caption = "Fecha";
+            ultraGridColumn57.Header.VisiblePosition = 0;
+            ultraGridColumn57.Width = 99;
+            ultraGridColumn101.Header.Caption = "Problema Crónico";
+            ultraGridColumn101.Header.VisiblePosition = 1;
+            ultraGridColumn101.Width = 212;
+            ultraGridColumn102.Header.Caption = "¿Es controlado?";
+            ultraGridColumn102.Header.VisiblePosition = 2;
+            ultraGridColumn111.Header.Caption = "Observación";
+            ultraGridColumn111.Header.VisiblePosition = 3;
+            ultraGridColumn111.Width = 151;
             ultraGridBand10.Columns.AddRange(new object[] {
-            ultraGridColumn29,
-            ultraGridColumn31,
-            ultraGridColumn32,
-            ultraGridColumn33});
+            ultraGridColumn57,
+            ultraGridColumn101,
+            ultraGridColumn102,
+            ultraGridColumn111});
             appearance66.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             appearance66.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
             appearance66.FontData.SizeInPoints = 8F;
@@ -4439,9 +4450,10 @@
             // pnlEmbarazo
             // 
             this.pnlEmbarazo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlEmbarazo.Controls.Add(this.btnEditarEmbarazo);
+            this.pnlEmbarazo.Controls.Add(this.grdEmbarazos);
             this.pnlEmbarazo.Controls.Add(this.label105);
             this.pnlEmbarazo.Controls.Add(this.textObservacionesEmbarazo);
-            this.pnlEmbarazo.Controls.Add(this.grdEmbarzo);
             this.pnlEmbarazo.Controls.Add(this.btnNuevoEmbarazo);
             this.pnlEmbarazo.Controls.Add(this.btnEliminarEmbarazo);
             this.pnlEmbarazo.Controls.Add(this.txtAmAborto);
@@ -4472,99 +4484,6 @@
             this.textObservacionesEmbarazo.Name = "textObservacionesEmbarazo";
             this.textObservacionesEmbarazo.Size = new System.Drawing.Size(524, 39);
             this.textObservacionesEmbarazo.TabIndex = 134;
-            // 
-            // grdEmbarzo
-            // 
-            this.grdEmbarzo.CausesValidation = false;
-            appearance92.BackColor2 = System.Drawing.Color.White;
-            appearance92.BorderColor = System.Drawing.Color.DarkGray;
-            appearance92.ForeColor = System.Drawing.Color.Black;
-            this.grdEmbarzo.DisplayLayout.Appearance = appearance92;
-            ultraGridColumn34.Header.VisiblePosition = 0;
-            ultraGridColumn35.Header.VisiblePosition = 1;
-            ultraGridColumn36.Header.VisiblePosition = 2;
-            ultraGridColumn37.Header.VisiblePosition = 3;
-            ultraGridColumn38.Header.VisiblePosition = 4;
-            ultraGridColumn57.Header.VisiblePosition = 5;
-            ultraGridBand13.Columns.AddRange(new object[] {
-            ultraGridColumn34,
-            ultraGridColumn35,
-            ultraGridColumn36,
-            ultraGridColumn37,
-            ultraGridColumn38,
-            ultraGridColumn57});
-            appearance93.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance93.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance93.FontData.SizeInPoints = 8F;
-            appearance93.ForeColor = System.Drawing.Color.DarkBlue;
-            appearance93.TextHAlignAsString = "Left";
-            ultraGridBand13.Header.Appearance = appearance93;
-            this.grdEmbarzo.DisplayLayout.BandsSerializer.Add(ultraGridBand13);
-            this.grdEmbarzo.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.grdEmbarzo.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
-            this.grdEmbarzo.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
-            appearance94.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdEmbarzo.DisplayLayout.EmptyRowSettings.CellAppearance = appearance94;
-            appearance95.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
-            appearance95.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
-            appearance95.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdEmbarzo.DisplayLayout.EmptyRowSettings.RowAppearance = appearance95;
-            this.grdEmbarzo.DisplayLayout.InterBandSpacing = 10;
-            this.grdEmbarzo.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdEmbarzo.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdEmbarzo.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdEmbarzo.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
-            this.grdEmbarzo.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdEmbarzo.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdEmbarzo.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdEmbarzo.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdEmbarzo.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdEmbarzo.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance96.BackColor = System.Drawing.Color.Transparent;
-            this.grdEmbarzo.DisplayLayout.Override.CardAreaAppearance = appearance96;
-            appearance97.BackColor = System.Drawing.Color.White;
-            appearance97.BackColor2 = System.Drawing.Color.White;
-            appearance97.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance97.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdEmbarzo.DisplayLayout.Override.CellAppearance = appearance97;
-            this.grdEmbarzo.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance98.BackColor = System.Drawing.Color.White;
-            appearance98.BackColor2 = System.Drawing.Color.LightGray;
-            appearance98.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance98.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance98.BorderColor = System.Drawing.Color.DarkGray;
-            appearance98.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdEmbarzo.DisplayLayout.Override.HeaderAppearance = appearance98;
-            this.grdEmbarzo.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance99.AlphaLevel = ((short)(187));
-            appearance99.BackColor = System.Drawing.Color.Gainsboro;
-            appearance99.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance99.ForeColor = System.Drawing.Color.Black;
-            appearance99.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdEmbarzo.DisplayLayout.Override.RowAlternateAppearance = appearance99;
-            this.grdEmbarzo.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance100.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance100.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance100.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
-            appearance100.BackGradientStyle = Infragistics.Win.GradientStyle.None;
-            appearance100.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            appearance100.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance100.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance100.FontData.BoldAsString = "False";
-            appearance100.ForeColor = System.Drawing.Color.Black;
-            this.grdEmbarzo.DisplayLayout.Override.SelectedRowAppearance = appearance100;
-            this.grdEmbarzo.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdEmbarzo.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdEmbarzo.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdEmbarzo.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdEmbarzo.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdEmbarzo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdEmbarzo.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdEmbarzo.Location = new System.Drawing.Point(5, 28);
-            this.grdEmbarzo.Margin = new System.Windows.Forms.Padding(2);
-            this.grdEmbarzo.Name = "grdEmbarzo";
-            this.grdEmbarzo.Size = new System.Drawing.Size(435, 122);
-            this.grdEmbarzo.TabIndex = 129;
             // 
             // btnNuevoEmbarazo
             // 
@@ -4597,7 +4516,7 @@
             this.btnEliminarEmbarazo.ForeColor = System.Drawing.Color.Black;
             this.btnEliminarEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarEmbarazo.Image")));
             this.btnEliminarEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarEmbarazo.Location = new System.Drawing.Point(452, 76);
+            this.btnEliminarEmbarazo.Location = new System.Drawing.Point(452, 106);
             this.btnEliminarEmbarazo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarEmbarazo.Name = "btnEliminarEmbarazo";
             this.btnEliminarEmbarazo.Size = new System.Drawing.Size(75, 24);
@@ -5128,6 +5047,40 @@
             this.ultraExpandableGroupBoxPanel5.Size = new System.Drawing.Size(522, 146);
             this.ultraExpandableGroupBoxPanel5.TabIndex = 0;
             // 
+            // textDesague
+            // 
+            this.textDesague.Location = new System.Drawing.Point(3, 90);
+            this.textDesague.Multiline = true;
+            this.textDesague.Name = "textDesague";
+            this.textDesague.Size = new System.Drawing.Size(513, 40);
+            this.textDesague.TabIndex = 147;
+            // 
+            // label136
+            // 
+            this.label136.AutoSize = true;
+            this.label136.Location = new System.Drawing.Point(2, 73);
+            this.label136.Name = "label136";
+            this.label136.Size = new System.Drawing.Size(145, 13);
+            this.label136.TabIndex = 146;
+            this.label136.Text = "Especificaciones de Desagüe:";
+            // 
+            // textAguaPotable
+            // 
+            this.textAguaPotable.Location = new System.Drawing.Point(3, 23);
+            this.textAguaPotable.Multiline = true;
+            this.textAguaPotable.Name = "textAguaPotable";
+            this.textAguaPotable.Size = new System.Drawing.Size(513, 40);
+            this.textAguaPotable.TabIndex = 145;
+            // 
+            // label135
+            // 
+            this.label135.AutoSize = true;
+            this.label135.Location = new System.Drawing.Point(2, 6);
+            this.label135.Name = "label135";
+            this.label135.Size = new System.Drawing.Size(166, 13);
+            this.label135.TabIndex = 144;
+            this.label135.Text = "Especificaciones de Agua Potable:";
+            // 
             // ultgrboxFamiliares
             // 
             this.ultgrboxFamiliares.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
@@ -5192,6 +5145,386 @@
             this.ultraExpandableGroupBoxPanel4.Size = new System.Drawing.Size(522, 293);
             this.ultraExpandableGroupBoxPanel4.TabIndex = 0;
             // 
+            // textQuienHepatitisB
+            // 
+            this.textQuienHepatitisB.Location = new System.Drawing.Point(142, 266);
+            this.textQuienHepatitisB.Name = "textQuienHepatitisB";
+            this.textQuienHepatitisB.Size = new System.Drawing.Size(170, 21);
+            this.textQuienHepatitisB.TabIndex = 173;
+            // 
+            // radioButton17
+            // 
+            this.radioButton17.AutoSize = true;
+            this.radioButton17.Location = new System.Drawing.Point(392, 267);
+            this.radioButton17.Name = "radioButton17";
+            this.radioButton17.Size = new System.Drawing.Size(38, 17);
+            this.radioButton17.TabIndex = 172;
+            this.radioButton17.TabStop = true;
+            this.radioButton17.Text = "No";
+            this.radioButton17.UseVisualStyleBackColor = true;
+            // 
+            // radioButton18
+            // 
+            this.radioButton18.AutoSize = true;
+            this.radioButton18.Location = new System.Drawing.Point(336, 267);
+            this.radioButton18.Name = "radioButton18";
+            this.radioButton18.Size = new System.Drawing.Size(33, 17);
+            this.radioButton18.TabIndex = 171;
+            this.radioButton18.TabStop = true;
+            this.radioButton18.Text = "Si";
+            this.radioButton18.UseVisualStyleBackColor = true;
+            // 
+            // label134
+            // 
+            this.label134.AutoSize = true;
+            this.label134.Location = new System.Drawing.Point(4, 269);
+            this.label134.Name = "label134";
+            this.label134.Size = new System.Drawing.Size(60, 13);
+            this.label134.TabIndex = 170;
+            this.label134.Text = "Hepatitis B.";
+            // 
+            // textQuienDrogadiccion
+            // 
+            this.textQuienDrogadiccion.Location = new System.Drawing.Point(142, 239);
+            this.textQuienDrogadiccion.Name = "textQuienDrogadiccion";
+            this.textQuienDrogadiccion.Size = new System.Drawing.Size(170, 21);
+            this.textQuienDrogadiccion.TabIndex = 169;
+            // 
+            // radioButton15
+            // 
+            this.radioButton15.AutoSize = true;
+            this.radioButton15.Location = new System.Drawing.Point(392, 240);
+            this.radioButton15.Name = "radioButton15";
+            this.radioButton15.Size = new System.Drawing.Size(38, 17);
+            this.radioButton15.TabIndex = 168;
+            this.radioButton15.TabStop = true;
+            this.radioButton15.Text = "No";
+            this.radioButton15.UseVisualStyleBackColor = true;
+            // 
+            // radioButton16
+            // 
+            this.radioButton16.AutoSize = true;
+            this.radioButton16.Location = new System.Drawing.Point(336, 240);
+            this.radioButton16.Name = "radioButton16";
+            this.radioButton16.Size = new System.Drawing.Size(33, 17);
+            this.radioButton16.TabIndex = 167;
+            this.radioButton16.TabStop = true;
+            this.radioButton16.Text = "Si";
+            this.radioButton16.UseVisualStyleBackColor = true;
+            // 
+            // label133
+            // 
+            this.label133.AutoSize = true;
+            this.label133.Location = new System.Drawing.Point(4, 242);
+            this.label133.Name = "label133";
+            this.label133.Size = new System.Drawing.Size(69, 13);
+            this.label133.TabIndex = 166;
+            this.label133.Text = "Drogadicción";
+            // 
+            // textQuienAlcoholismo
+            // 
+            this.textQuienAlcoholismo.Location = new System.Drawing.Point(142, 212);
+            this.textQuienAlcoholismo.Name = "textQuienAlcoholismo";
+            this.textQuienAlcoholismo.Size = new System.Drawing.Size(170, 21);
+            this.textQuienAlcoholismo.TabIndex = 165;
+            // 
+            // radioButton13
+            // 
+            this.radioButton13.AutoSize = true;
+            this.radioButton13.Location = new System.Drawing.Point(392, 213);
+            this.radioButton13.Name = "radioButton13";
+            this.radioButton13.Size = new System.Drawing.Size(38, 17);
+            this.radioButton13.TabIndex = 164;
+            this.radioButton13.TabStop = true;
+            this.radioButton13.Text = "No";
+            this.radioButton13.UseVisualStyleBackColor = true;
+            // 
+            // radioButton14
+            // 
+            this.radioButton14.AutoSize = true;
+            this.radioButton14.Location = new System.Drawing.Point(336, 213);
+            this.radioButton14.Name = "radioButton14";
+            this.radioButton14.Size = new System.Drawing.Size(33, 17);
+            this.radioButton14.TabIndex = 163;
+            this.radioButton14.TabStop = true;
+            this.radioButton14.Text = "Si";
+            this.radioButton14.UseVisualStyleBackColor = true;
+            // 
+            // label132
+            // 
+            this.label132.AutoSize = true;
+            this.label132.Location = new System.Drawing.Point(4, 215);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(65, 13);
+            this.label132.TabIndex = 162;
+            this.label132.Text = "Alcoholismo";
+            // 
+            // textQuienViolenciaFamiliar
+            // 
+            this.textQuienViolenciaFamiliar.Location = new System.Drawing.Point(142, 184);
+            this.textQuienViolenciaFamiliar.Name = "textQuienViolenciaFamiliar";
+            this.textQuienViolenciaFamiliar.Size = new System.Drawing.Size(170, 21);
+            this.textQuienViolenciaFamiliar.TabIndex = 161;
+            // 
+            // radioButton11
+            // 
+            this.radioButton11.AutoSize = true;
+            this.radioButton11.Location = new System.Drawing.Point(392, 185);
+            this.radioButton11.Name = "radioButton11";
+            this.radioButton11.Size = new System.Drawing.Size(38, 17);
+            this.radioButton11.TabIndex = 160;
+            this.radioButton11.TabStop = true;
+            this.radioButton11.Text = "No";
+            this.radioButton11.UseVisualStyleBackColor = true;
+            // 
+            // radioButton12
+            // 
+            this.radioButton12.AutoSize = true;
+            this.radioButton12.Location = new System.Drawing.Point(336, 185);
+            this.radioButton12.Name = "radioButton12";
+            this.radioButton12.Size = new System.Drawing.Size(33, 17);
+            this.radioButton12.TabIndex = 159;
+            this.radioButton12.TabStop = true;
+            this.radioButton12.Text = "Si";
+            this.radioButton12.UseVisualStyleBackColor = true;
+            // 
+            // label131
+            // 
+            this.label131.AutoSize = true;
+            this.label131.Location = new System.Drawing.Point(4, 187);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(92, 13);
+            this.label131.TabIndex = 158;
+            this.label131.Text = "Violencia Familiar";
+            // 
+            // textQuienAlergias
+            // 
+            this.textQuienAlergias.Location = new System.Drawing.Point(142, 157);
+            this.textQuienAlergias.Name = "textQuienAlergias";
+            this.textQuienAlergias.Size = new System.Drawing.Size(170, 21);
+            this.textQuienAlergias.TabIndex = 157;
+            // 
+            // radioButton9
+            // 
+            this.radioButton9.AutoSize = true;
+            this.radioButton9.Location = new System.Drawing.Point(392, 158);
+            this.radioButton9.Name = "radioButton9";
+            this.radioButton9.Size = new System.Drawing.Size(38, 17);
+            this.radioButton9.TabIndex = 156;
+            this.radioButton9.TabStop = true;
+            this.radioButton9.Text = "No";
+            this.radioButton9.UseVisualStyleBackColor = true;
+            // 
+            // radioButton10
+            // 
+            this.radioButton10.AutoSize = true;
+            this.radioButton10.Location = new System.Drawing.Point(336, 158);
+            this.radioButton10.Name = "radioButton10";
+            this.radioButton10.Size = new System.Drawing.Size(33, 17);
+            this.radioButton10.TabIndex = 155;
+            this.radioButton10.TabStop = true;
+            this.radioButton10.Text = "Si";
+            this.radioButton10.UseVisualStyleBackColor = true;
+            // 
+            // label130
+            // 
+            this.label130.AutoSize = true;
+            this.label130.Location = new System.Drawing.Point(4, 160);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(104, 13);
+            this.label130.TabIndex = 154;
+            this.label130.Text = "Alergias a medicinas";
+            // 
+            // textQuienEpilepsia
+            // 
+            this.textQuienEpilepsia.Location = new System.Drawing.Point(142, 130);
+            this.textQuienEpilepsia.Name = "textQuienEpilepsia";
+            this.textQuienEpilepsia.Size = new System.Drawing.Size(170, 21);
+            this.textQuienEpilepsia.TabIndex = 153;
+            // 
+            // radioButton7
+            // 
+            this.radioButton7.AutoSize = true;
+            this.radioButton7.Location = new System.Drawing.Point(392, 131);
+            this.radioButton7.Name = "radioButton7";
+            this.radioButton7.Size = new System.Drawing.Size(38, 17);
+            this.radioButton7.TabIndex = 152;
+            this.radioButton7.TabStop = true;
+            this.radioButton7.Text = "No";
+            this.radioButton7.UseVisualStyleBackColor = true;
+            // 
+            // radioButton8
+            // 
+            this.radioButton8.AutoSize = true;
+            this.radioButton8.Location = new System.Drawing.Point(336, 131);
+            this.radioButton8.Name = "radioButton8";
+            this.radioButton8.Size = new System.Drawing.Size(33, 17);
+            this.radioButton8.TabIndex = 151;
+            this.radioButton8.TabStop = true;
+            this.radioButton8.Text = "Si";
+            this.radioButton8.UseVisualStyleBackColor = true;
+            // 
+            // label129
+            // 
+            this.label129.AutoSize = true;
+            this.label129.Location = new System.Drawing.Point(4, 133);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(50, 13);
+            this.label129.TabIndex = 150;
+            this.label129.Text = "Epilepsia";
+            // 
+            // textQuienDiabetes
+            // 
+            this.textQuienDiabetes.Location = new System.Drawing.Point(142, 103);
+            this.textQuienDiabetes.Name = "textQuienDiabetes";
+            this.textQuienDiabetes.Size = new System.Drawing.Size(170, 21);
+            this.textQuienDiabetes.TabIndex = 149;
+            // 
+            // radioButton5
+            // 
+            this.radioButton5.AutoSize = true;
+            this.radioButton5.Location = new System.Drawing.Point(392, 104);
+            this.radioButton5.Name = "radioButton5";
+            this.radioButton5.Size = new System.Drawing.Size(38, 17);
+            this.radioButton5.TabIndex = 148;
+            this.radioButton5.TabStop = true;
+            this.radioButton5.Text = "No";
+            this.radioButton5.UseVisualStyleBackColor = true;
+            // 
+            // radioButton6
+            // 
+            this.radioButton6.AutoSize = true;
+            this.radioButton6.Location = new System.Drawing.Point(336, 104);
+            this.radioButton6.Name = "radioButton6";
+            this.radioButton6.Size = new System.Drawing.Size(33, 17);
+            this.radioButton6.TabIndex = 147;
+            this.radioButton6.TabStop = true;
+            this.radioButton6.Text = "Si";
+            this.radioButton6.UseVisualStyleBackColor = true;
+            // 
+            // label128
+            // 
+            this.label128.AutoSize = true;
+            this.label128.Location = new System.Drawing.Point(4, 106);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(50, 13);
+            this.label128.TabIndex = 146;
+            this.label128.Text = "Diabetes";
+            // 
+            // textQuienVIH
+            // 
+            this.textQuienVIH.Location = new System.Drawing.Point(142, 77);
+            this.textQuienVIH.Name = "textQuienVIH";
+            this.textQuienVIH.Size = new System.Drawing.Size(170, 21);
+            this.textQuienVIH.TabIndex = 145;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.AutoSize = true;
+            this.radioButton3.Location = new System.Drawing.Point(392, 78);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(38, 17);
+            this.radioButton3.TabIndex = 144;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Text = "No";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            // 
+            // radioButton4
+            // 
+            this.radioButton4.AutoSize = true;
+            this.radioButton4.Location = new System.Drawing.Point(336, 78);
+            this.radioButton4.Name = "radioButton4";
+            this.radioButton4.Size = new System.Drawing.Size(33, 17);
+            this.radioButton4.TabIndex = 143;
+            this.radioButton4.TabStop = true;
+            this.radioButton4.Text = "Si";
+            this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // label127
+            // 
+            this.label127.AutoSize = true;
+            this.label127.Location = new System.Drawing.Point(4, 80);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(51, 13);
+            this.label127.TabIndex = 142;
+            this.label127.Text = "VIH - SIDA";
+            // 
+            // textQuienASMA
+            // 
+            this.textQuienASMA.Location = new System.Drawing.Point(142, 50);
+            this.textQuienASMA.Name = "textQuienASMA";
+            this.textQuienASMA.Size = new System.Drawing.Size(170, 21);
+            this.textQuienASMA.TabIndex = 141;
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Location = new System.Drawing.Point(392, 51);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(38, 17);
+            this.radioButton1.TabIndex = 140;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "No";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(336, 51);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(33, 17);
+            this.radioButton2.TabIndex = 139;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "Si";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(4, 53);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(33, 13);
+            this.label95.TabIndex = 138;
+            this.label95.Text = "ASMA";
+            // 
+            // label94
+            // 
+            this.label94.AutoSize = true;
+            this.label94.Location = new System.Drawing.Point(204, 7);
+            this.label94.Name = "label94";
+            this.label94.Size = new System.Drawing.Size(45, 13);
+            this.label94.TabIndex = 137;
+            this.label94.Text = "¿Quién?";
+            // 
+            // textQuienTuberculosis
+            // 
+            this.textQuienTuberculosis.Location = new System.Drawing.Point(142, 23);
+            this.textQuienTuberculosis.Name = "textQuienTuberculosis";
+            this.textQuienTuberculosis.Size = new System.Drawing.Size(170, 21);
+            this.textQuienTuberculosis.TabIndex = 136;
+            // 
+            // rbNoTuberculosis
+            // 
+            this.rbNoTuberculosis.AutoSize = true;
+            this.rbNoTuberculosis.Location = new System.Drawing.Point(392, 24);
+            this.rbNoTuberculosis.Name = "rbNoTuberculosis";
+            this.rbNoTuberculosis.Size = new System.Drawing.Size(38, 17);
+            this.rbNoTuberculosis.TabIndex = 135;
+            this.rbNoTuberculosis.TabStop = true;
+            this.rbNoTuberculosis.Text = "No";
+            this.rbNoTuberculosis.UseVisualStyleBackColor = true;
+            // 
+            // rbSiTuberculosis
+            // 
+            this.rbSiTuberculosis.AutoSize = true;
+            this.rbSiTuberculosis.Location = new System.Drawing.Point(336, 24);
+            this.rbSiTuberculosis.Name = "rbSiTuberculosis";
+            this.rbSiTuberculosis.Size = new System.Drawing.Size(33, 17);
+            this.rbSiTuberculosis.TabIndex = 134;
+            this.rbSiTuberculosis.TabStop = true;
+            this.rbSiTuberculosis.Text = "Si";
+            this.rbSiTuberculosis.UseVisualStyleBackColor = true;
+            // 
             // label162
             // 
             this.label162.AutoSize = true;
@@ -5246,6 +5579,197 @@
             this.ultraExpandableGroupBoxPanel3.TabIndex = 0;
             this.ultraExpandableGroupBoxPanel3.Visible = false;
             // 
+            // textOtrosAntecedentes
+            // 
+            this.textOtrosAntecedentes.Location = new System.Drawing.Point(3, 268);
+            this.textOtrosAntecedentes.Multiline = true;
+            this.textOtrosAntecedentes.Name = "textOtrosAntecedentes";
+            this.textOtrosAntecedentes.Size = new System.Drawing.Size(513, 40);
+            this.textOtrosAntecedentes.TabIndex = 171;
+            // 
+            // label93
+            // 
+            this.label93.AutoSize = true;
+            this.label93.Location = new System.Drawing.Point(1, 252);
+            this.label93.Name = "label93";
+            this.label93.Size = new System.Drawing.Size(156, 13);
+            this.label93.TabIndex = 170;
+            this.label93.Text = "Especificar otros antecedentes:";
+            // 
+            // textAlergiaMedicamentos
+            // 
+            this.textAlergiaMedicamentos.Location = new System.Drawing.Point(4, 207);
+            this.textAlergiaMedicamentos.Multiline = true;
+            this.textAlergiaMedicamentos.Name = "textAlergiaMedicamentos";
+            this.textAlergiaMedicamentos.Size = new System.Drawing.Size(513, 40);
+            this.textAlergiaMedicamentos.TabIndex = 169;
+            // 
+            // label92
+            // 
+            this.label92.AutoSize = true;
+            this.label92.Location = new System.Drawing.Point(2, 191);
+            this.label92.Name = "label92";
+            this.label92.Size = new System.Drawing.Size(177, 13);
+            this.label92.TabIndex = 168;
+            this.label92.Text = "Especificar Alergia a medicamentos:";
+            // 
+            // textPerimetroToracico
+            // 
+            this.textPerimetroToracico.Location = new System.Drawing.Point(301, 65);
+            this.textPerimetroToracico.Name = "textPerimetroToracico";
+            this.textPerimetroToracico.Size = new System.Drawing.Size(84, 21);
+            this.textPerimetroToracico.TabIndex = 167;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(298, 50);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(96, 13);
+            this.label91.TabIndex = 166;
+            this.label91.Text = "Perímetro Torácico";
+            // 
+            // textPerimetroCefalico
+            // 
+            this.textPerimetroCefalico.Location = new System.Drawing.Point(432, 25);
+            this.textPerimetroCefalico.Name = "textPerimetroCefalico";
+            this.textPerimetroCefalico.Size = new System.Drawing.Size(84, 21);
+            this.textPerimetroCefalico.TabIndex = 165;
+            // 
+            // label90
+            // 
+            this.label90.AutoSize = true;
+            this.label90.Location = new System.Drawing.Point(429, 5);
+            this.label90.Name = "label90";
+            this.label90.Size = new System.Drawing.Size(94, 13);
+            this.label90.TabIndex = 164;
+            this.label90.Text = "Perímetro cefálico";
+            // 
+            // textTallaNacer
+            // 
+            this.textTallaNacer.Location = new System.Drawing.Point(301, 25);
+            this.textTallaNacer.Name = "textTallaNacer";
+            this.textTallaNacer.Size = new System.Drawing.Size(84, 21);
+            this.textTallaNacer.TabIndex = 163;
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(298, 5);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(91, 13);
+            this.label89.TabIndex = 162;
+            this.label89.Text = "Talla al nacer (cm)";
+            // 
+            // textPesoNacer
+            // 
+            this.textPesoNacer.Location = new System.Drawing.Point(172, 25);
+            this.textPesoNacer.Name = "textPesoNacer";
+            this.textPesoNacer.Size = new System.Drawing.Size(84, 21);
+            this.textPesoNacer.TabIndex = 161;
+            // 
+            // label87
+            // 
+            this.label87.AutoSize = true;
+            this.label87.Location = new System.Drawing.Point(169, 5);
+            this.label87.Name = "label87";
+            this.label87.Size = new System.Drawing.Size(87, 13);
+            this.label87.TabIndex = 160;
+            this.label87.Text = "Peso al nacer (gr)";
+            // 
+            // textEdadNacer
+            // 
+            this.textEdadNacer.Location = new System.Drawing.Point(3, 25);
+            this.textEdadNacer.Name = "textEdadNacer";
+            this.textEdadNacer.Size = new System.Drawing.Size(124, 21);
+            this.textEdadNacer.TabIndex = 159;
+            // 
+            // label88
+            // 
+            this.label88.AutoSize = true;
+            this.label88.Location = new System.Drawing.Point(1, 5);
+            this.label88.Name = "label88";
+            this.label88.Size = new System.Drawing.Size(126, 13);
+            this.label88.TabIndex = 158;
+            this.label88.Text = "Edad Gest. al Nacer (sem)";
+            // 
+            // txtInicioAlimentación
+            // 
+            this.txtInicioAlimentación.Location = new System.Drawing.Point(200, 159);
+            this.txtInicioAlimentación.Name = "txtInicioAlimentación";
+            this.txtInicioAlimentación.Size = new System.Drawing.Size(316, 21);
+            this.txtInicioAlimentación.TabIndex = 157;
+            // 
+            // label86
+            // 
+            this.label86.AutoSize = true;
+            this.label86.Location = new System.Drawing.Point(3, 159);
+            this.label86.Name = "label86";
+            this.label86.Size = new System.Drawing.Size(194, 13);
+            this.label86.TabIndex = 156;
+            this.label86.Text = "Inicio de Alimentación Complementaria";
+            // 
+            // textTiempoHospit
+            // 
+            this.textTiempoHospit.Location = new System.Drawing.Point(3, 65);
+            this.textTiempoHospit.Name = "textTiempoHospit";
+            this.textTiempoHospit.Size = new System.Drawing.Size(196, 21);
+            this.textTiempoHospit.TabIndex = 154;
+            // 
+            // label85
+            // 
+            this.label85.AutoSize = true;
+            this.label85.Location = new System.Drawing.Point(2, 50);
+            this.label85.Name = "label85";
+            this.label85.Size = new System.Drawing.Size(131, 13);
+            this.label85.TabIndex = 153;
+            this.label85.Text = "Tiempo de Hospitalización";
+            // 
+            // textEspecificacionesNacer
+            // 
+            this.textEspecificacionesNacer.Location = new System.Drawing.Point(4, 104);
+            this.textEspecificacionesNacer.Multiline = true;
+            this.textEspecificacionesNacer.Name = "textEspecificacionesNacer";
+            this.textEspecificacionesNacer.Size = new System.Drawing.Size(513, 40);
+            this.textEspecificacionesNacer.TabIndex = 152;
+            // 
+            // label84
+            // 
+            this.label84.AutoSize = true;
+            this.label84.Location = new System.Drawing.Point(2, 88);
+            this.label84.Name = "label84";
+            this.label84.Size = new System.Drawing.Size(190, 13);
+            this.label84.TabIndex = 151;
+            this.label84.Text = "Especificación de Respiración al Nacer:";
+            // 
+            // shapeContainer2
+            // 
+            this.shapeContainer2.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer2.Name = "shapeContainer2";
+            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape3,
+            this.lineShape2});
+            this.shapeContainer2.Size = new System.Drawing.Size(537, 186);
+            this.shapeContainer2.TabIndex = 155;
+            this.shapeContainer2.TabStop = false;
+            // 
+            // lineShape3
+            // 
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.X1 = 5;
+            this.lineShape3.X2 = 508;
+            this.lineShape3.Y1 = 186;
+            this.lineShape3.Y2 = 186;
+            // 
+            // lineShape2
+            // 
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.X1 = 7;
+            this.lineShape2.X2 = 510;
+            this.lineShape2.Y1 = 151;
+            this.lineShape2.Y2 = 151;
+            // 
             // ultgrboxEmbarazo
             // 
             this.ultgrboxEmbarazo.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
@@ -5280,6 +5804,86 @@
             this.ultraExpandableGroupBoxPanel1.Name = "ultraExpandableGroupBoxPanel1";
             this.ultraExpandableGroupBoxPanel1.Size = new System.Drawing.Size(522, 188);
             this.ultraExpandableGroupBoxPanel1.TabIndex = 0;
+            // 
+            // textQuienAtendio
+            // 
+            this.textQuienAtendio.Location = new System.Drawing.Point(173, 162);
+            this.textQuienAtendio.Name = "textQuienAtendio";
+            this.textQuienAtendio.Size = new System.Drawing.Size(343, 21);
+            this.textQuienAtendio.TabIndex = 152;
+            // 
+            // label83
+            // 
+            this.label83.AutoSize = true;
+            this.label83.Location = new System.Drawing.Point(0, 165);
+            this.label83.Name = "label83";
+            this.label83.Size = new System.Drawing.Size(170, 13);
+            this.label83.TabIndex = 151;
+            this.label83.Text = "Especificar por quién fue atendido:";
+            // 
+            // textComplicacionesParto
+            // 
+            this.textComplicacionesParto.Location = new System.Drawing.Point(3, 114);
+            this.textComplicacionesParto.Multiline = true;
+            this.textComplicacionesParto.Name = "textComplicacionesParto";
+            this.textComplicacionesParto.Size = new System.Drawing.Size(513, 40);
+            this.textComplicacionesParto.TabIndex = 150;
+            // 
+            // label82
+            // 
+            this.label82.AutoSize = true;
+            this.label82.Location = new System.Drawing.Point(2, 97);
+            this.label82.Name = "label82";
+            this.label82.Size = new System.Drawing.Size(130, 13);
+            this.label82.TabIndex = 149;
+            this.label82.Text = "Complicaciones del Parto:";
+            // 
+            // textLugarAPN
+            // 
+            this.textLugarAPN.Location = new System.Drawing.Point(323, 70);
+            this.textLugarAPN.Name = "textLugarAPN";
+            this.textLugarAPN.Size = new System.Drawing.Size(196, 21);
+            this.textLugarAPN.TabIndex = 148;
+            // 
+            // label81
+            // 
+            this.label81.AutoSize = true;
+            this.label81.Location = new System.Drawing.Point(257, 73);
+            this.label81.Name = "label81";
+            this.label81.Size = new System.Drawing.Size(68, 13);
+            this.label81.TabIndex = 147;
+            this.label81.Text = "Lugar de APN";
+            // 
+            // txtAPN
+            // 
+            this.txtAPN.Location = new System.Drawing.Point(200, 68);
+            this.txtAPN.Name = "txtAPN";
+            this.txtAPN.Size = new System.Drawing.Size(39, 21);
+            this.txtAPN.TabIndex = 146;
+            // 
+            // label80
+            // 
+            this.label80.AutoSize = true;
+            this.label80.Location = new System.Drawing.Point(155, 73);
+            this.label80.Name = "label80";
+            this.label80.Size = new System.Drawing.Size(39, 13);
+            this.label80.TabIndex = 145;
+            this.label80.Text = "N° APN";
+            // 
+            // txtNEmbarazo
+            // 
+            this.txtNEmbarazo.Location = new System.Drawing.Point(92, 68);
+            this.txtNEmbarazo.Name = "txtNEmbarazo";
+            this.txtNEmbarazo.Size = new System.Drawing.Size(39, 21);
+            this.txtNEmbarazo.TabIndex = 144;
+            // 
+            // textPatologiasGestacion
+            // 
+            this.textPatologiasGestacion.Location = new System.Drawing.Point(6, 20);
+            this.textPatologiasGestacion.Multiline = true;
+            this.textPatologiasGestacion.Name = "textPatologiasGestacion";
+            this.textPatologiasGestacion.Size = new System.Drawing.Size(513, 40);
+            this.textPatologiasGestacion.TabIndex = 143;
             // 
             // label96
             // 
@@ -5678,6 +6282,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.lblDni);
             this.groupBox3.Controls.Add(this.label70);
             this.groupBox3.Controls.Add(this.txtCentroEducativo);
             this.groupBox3.Controls.Add(this.label44);
@@ -5716,6 +6321,17 @@
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "DATOS PERSONALES";
+            // 
+            // lblDni
+            // 
+            this.lblDni.AutoSize = true;
+            this.lblDni.Enabled = false;
+            this.lblDni.Location = new System.Drawing.Point(296, 15);
+            this.lblDni.Name = "lblDni";
+            this.lblDni.Size = new System.Drawing.Size(24, 13);
+            this.lblDni.TabIndex = 126;
+            this.lblDni.Text = "DNI";
+            this.lblDni.Visible = false;
             // 
             // label70
             // 
@@ -6384,14 +7000,14 @@
             // 
             // uvExamen
             // 
-            appearance104.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance104.BackColor2 = System.Drawing.Color.Transparent;
-            appearance104.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance104.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance104.BorderColor = System.Drawing.Color.Red;
-            appearance104.BorderColor2 = System.Drawing.Color.Red;
-            appearance104.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance104;
+            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance15.BackColor2 = System.Drawing.Color.Transparent;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance15.BorderColor = System.Drawing.Color.Red;
+            appearance15.BorderColor2 = System.Drawing.Color.Red;
+            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance15;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -6423,690 +7039,132 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // textPatologiasGestacion
-            // 
-            this.textPatologiasGestacion.Location = new System.Drawing.Point(6, 20);
-            this.textPatologiasGestacion.Multiline = true;
-            this.textPatologiasGestacion.Name = "textPatologiasGestacion";
-            this.textPatologiasGestacion.Size = new System.Drawing.Size(513, 40);
-            this.textPatologiasGestacion.TabIndex = 143;
-            // 
-            // txtNEmbarazo
-            // 
-            this.txtNEmbarazo.Location = new System.Drawing.Point(92, 68);
-            this.txtNEmbarazo.Name = "txtNEmbarazo";
-            this.txtNEmbarazo.Size = new System.Drawing.Size(39, 21);
-            this.txtNEmbarazo.TabIndex = 144;
-            // 
-            // txtAPN
-            // 
-            this.txtAPN.Location = new System.Drawing.Point(200, 68);
-            this.txtAPN.Name = "txtAPN";
-            this.txtAPN.Size = new System.Drawing.Size(39, 21);
-            this.txtAPN.TabIndex = 146;
-            // 
-            // label80
-            // 
-            this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(155, 73);
-            this.label80.Name = "label80";
-            this.label80.Size = new System.Drawing.Size(39, 13);
-            this.label80.TabIndex = 145;
-            this.label80.Text = "N° APN";
-            // 
-            // textLugarAPN
-            // 
-            this.textLugarAPN.Location = new System.Drawing.Point(323, 70);
-            this.textLugarAPN.Name = "textLugarAPN";
-            this.textLugarAPN.Size = new System.Drawing.Size(196, 21);
-            this.textLugarAPN.TabIndex = 148;
-            // 
-            // label81
-            // 
-            this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(257, 73);
-            this.label81.Name = "label81";
-            this.label81.Size = new System.Drawing.Size(68, 13);
-            this.label81.TabIndex = 147;
-            this.label81.Text = "Lugar de APN";
-            // 
-            // textComplicacionesParto
-            // 
-            this.textComplicacionesParto.Location = new System.Drawing.Point(3, 114);
-            this.textComplicacionesParto.Multiline = true;
-            this.textComplicacionesParto.Name = "textComplicacionesParto";
-            this.textComplicacionesParto.Size = new System.Drawing.Size(513, 40);
-            this.textComplicacionesParto.TabIndex = 150;
-            // 
-            // label82
-            // 
-            this.label82.AutoSize = true;
-            this.label82.Location = new System.Drawing.Point(2, 97);
-            this.label82.Name = "label82";
-            this.label82.Size = new System.Drawing.Size(130, 13);
-            this.label82.TabIndex = 149;
-            this.label82.Text = "Complicaciones del Parto:";
-            // 
-            // textQuienAtendio
-            // 
-            this.textQuienAtendio.Location = new System.Drawing.Point(173, 162);
-            this.textQuienAtendio.Name = "textQuienAtendio";
-            this.textQuienAtendio.Size = new System.Drawing.Size(343, 21);
-            this.textQuienAtendio.TabIndex = 152;
-            // 
-            // label83
-            // 
-            this.label83.AutoSize = true;
-            this.label83.Location = new System.Drawing.Point(0, 165);
-            this.label83.Name = "label83";
-            this.label83.Size = new System.Drawing.Size(170, 13);
-            this.label83.TabIndex = 151;
-            this.label83.Text = "Especificar por quién fue atendido:";
-            // 
-            // textEspecificacionesNacer
-            // 
-            this.textEspecificacionesNacer.Location = new System.Drawing.Point(4, 104);
-            this.textEspecificacionesNacer.Multiline = true;
-            this.textEspecificacionesNacer.Name = "textEspecificacionesNacer";
-            this.textEspecificacionesNacer.Size = new System.Drawing.Size(513, 40);
-            this.textEspecificacionesNacer.TabIndex = 152;
-            // 
-            // label84
-            // 
-            this.label84.AutoSize = true;
-            this.label84.Location = new System.Drawing.Point(2, 88);
-            this.label84.Name = "label84";
-            this.label84.Size = new System.Drawing.Size(190, 13);
-            this.label84.TabIndex = 151;
-            this.label84.Text = "Especificación de Respiración al Nacer:";
-            // 
-            // textTiempoHospit
-            // 
-            this.textTiempoHospit.Location = new System.Drawing.Point(3, 65);
-            this.textTiempoHospit.Name = "textTiempoHospit";
-            this.textTiempoHospit.Size = new System.Drawing.Size(196, 21);
-            this.textTiempoHospit.TabIndex = 154;
-            // 
-            // label85
-            // 
-            this.label85.AutoSize = true;
-            this.label85.Location = new System.Drawing.Point(2, 50);
-            this.label85.Name = "label85";
-            this.label85.Size = new System.Drawing.Size(131, 13);
-            this.label85.TabIndex = 153;
-            this.label85.Text = "Tiempo de Hospitalización";
-            // 
-            // shapeContainer2
-            // 
-            this.shapeContainer2.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer2.Name = "shapeContainer2";
-            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape3,
-            this.lineShape2});
-            this.shapeContainer2.Size = new System.Drawing.Size(537, 186);
-            this.shapeContainer2.TabIndex = 155;
-            this.shapeContainer2.TabStop = false;
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 7;
-            this.lineShape2.X2 = 510;
-            this.lineShape2.Y1 = 151;
-            this.lineShape2.Y2 = 151;
-            // 
-            // txtInicioAlimentación
-            // 
-            this.txtInicioAlimentación.Location = new System.Drawing.Point(200, 159);
-            this.txtInicioAlimentación.Name = "txtInicioAlimentación";
-            this.txtInicioAlimentación.Size = new System.Drawing.Size(316, 21);
-            this.txtInicioAlimentación.TabIndex = 157;
-            // 
-            // label86
-            // 
-            this.label86.AutoSize = true;
-            this.label86.Location = new System.Drawing.Point(3, 159);
-            this.label86.Name = "label86";
-            this.label86.Size = new System.Drawing.Size(194, 13);
-            this.label86.TabIndex = 156;
-            this.label86.Text = "Inicio de Alimentación Complementaria";
-            // 
-            // textPesoNacer
-            // 
-            this.textPesoNacer.Location = new System.Drawing.Point(172, 25);
-            this.textPesoNacer.Name = "textPesoNacer";
-            this.textPesoNacer.Size = new System.Drawing.Size(84, 21);
-            this.textPesoNacer.TabIndex = 161;
-            // 
-            // label87
-            // 
-            this.label87.AutoSize = true;
-            this.label87.Location = new System.Drawing.Point(169, 5);
-            this.label87.Name = "label87";
-            this.label87.Size = new System.Drawing.Size(87, 13);
-            this.label87.TabIndex = 160;
-            this.label87.Text = "Peso al nacer (gr)";
-            // 
-            // textEdadNacer
-            // 
-            this.textEdadNacer.Location = new System.Drawing.Point(3, 25);
-            this.textEdadNacer.Name = "textEdadNacer";
-            this.textEdadNacer.Size = new System.Drawing.Size(124, 21);
-            this.textEdadNacer.TabIndex = 159;
-            // 
-            // label88
-            // 
-            this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(1, 5);
-            this.label88.Name = "label88";
-            this.label88.Size = new System.Drawing.Size(126, 13);
-            this.label88.TabIndex = 158;
-            this.label88.Text = "Edad Gest. al Nacer (sem)";
-            // 
-            // textTallaNacer
-            // 
-            this.textTallaNacer.Location = new System.Drawing.Point(301, 25);
-            this.textTallaNacer.Name = "textTallaNacer";
-            this.textTallaNacer.Size = new System.Drawing.Size(84, 21);
-            this.textTallaNacer.TabIndex = 163;
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(298, 5);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(91, 13);
-            this.label89.TabIndex = 162;
-            this.label89.Text = "Talla al nacer (cm)";
-            // 
-            // textPerimetroCefalico
-            // 
-            this.textPerimetroCefalico.Location = new System.Drawing.Point(432, 25);
-            this.textPerimetroCefalico.Name = "textPerimetroCefalico";
-            this.textPerimetroCefalico.Size = new System.Drawing.Size(84, 21);
-            this.textPerimetroCefalico.TabIndex = 165;
-            // 
-            // label90
-            // 
-            this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(429, 5);
-            this.label90.Name = "label90";
-            this.label90.Size = new System.Drawing.Size(94, 13);
-            this.label90.TabIndex = 164;
-            this.label90.Text = "Perímetro cefálico";
-            // 
-            // textPerimetroToracico
-            // 
-            this.textPerimetroToracico.Location = new System.Drawing.Point(301, 65);
-            this.textPerimetroToracico.Name = "textPerimetroToracico";
-            this.textPerimetroToracico.Size = new System.Drawing.Size(84, 21);
-            this.textPerimetroToracico.TabIndex = 167;
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(298, 50);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(96, 13);
-            this.label91.TabIndex = 166;
-            this.label91.Text = "Perímetro Torácico";
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 5;
-            this.lineShape3.X2 = 508;
-            this.lineShape3.Y1 = 186;
-            this.lineShape3.Y2 = 186;
-            // 
-            // textAlergiaMedicamentos
-            // 
-            this.textAlergiaMedicamentos.Location = new System.Drawing.Point(4, 207);
-            this.textAlergiaMedicamentos.Multiline = true;
-            this.textAlergiaMedicamentos.Name = "textAlergiaMedicamentos";
-            this.textAlergiaMedicamentos.Size = new System.Drawing.Size(513, 40);
-            this.textAlergiaMedicamentos.TabIndex = 169;
-            // 
-            // label92
-            // 
-            this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(2, 191);
-            this.label92.Name = "label92";
-            this.label92.Size = new System.Drawing.Size(177, 13);
-            this.label92.TabIndex = 168;
-            this.label92.Text = "Especificar Alergia a medicamentos:";
-            // 
-            // textOtrosAntecedentes
-            // 
-            this.textOtrosAntecedentes.Location = new System.Drawing.Point(3, 268);
-            this.textOtrosAntecedentes.Multiline = true;
-            this.textOtrosAntecedentes.Name = "textOtrosAntecedentes";
-            this.textOtrosAntecedentes.Size = new System.Drawing.Size(513, 40);
-            this.textOtrosAntecedentes.TabIndex = 171;
-            // 
-            // label93
-            // 
-            this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(1, 252);
-            this.label93.Name = "label93";
-            this.label93.Size = new System.Drawing.Size(156, 13);
-            this.label93.TabIndex = 170;
-            this.label93.Text = "Especificar otros antecedentes:";
-            // 
-            // rbSiTuberculosis
-            // 
-            this.rbSiTuberculosis.AutoSize = true;
-            this.rbSiTuberculosis.Location = new System.Drawing.Point(336, 24);
-            this.rbSiTuberculosis.Name = "rbSiTuberculosis";
-            this.rbSiTuberculosis.Size = new System.Drawing.Size(33, 17);
-            this.rbSiTuberculosis.TabIndex = 134;
-            this.rbSiTuberculosis.TabStop = true;
-            this.rbSiTuberculosis.Text = "Si";
-            this.rbSiTuberculosis.UseVisualStyleBackColor = true;
-            // 
-            // rbNoTuberculosis
-            // 
-            this.rbNoTuberculosis.AutoSize = true;
-            this.rbNoTuberculosis.Location = new System.Drawing.Point(392, 24);
-            this.rbNoTuberculosis.Name = "rbNoTuberculosis";
-            this.rbNoTuberculosis.Size = new System.Drawing.Size(38, 17);
-            this.rbNoTuberculosis.TabIndex = 135;
-            this.rbNoTuberculosis.TabStop = true;
-            this.rbNoTuberculosis.Text = "No";
-            this.rbNoTuberculosis.UseVisualStyleBackColor = true;
-            // 
-            // textQuienTuberculosis
-            // 
-            this.textQuienTuberculosis.Location = new System.Drawing.Point(142, 23);
-            this.textQuienTuberculosis.Name = "textQuienTuberculosis";
-            this.textQuienTuberculosis.Size = new System.Drawing.Size(170, 21);
-            this.textQuienTuberculosis.TabIndex = 136;
-            // 
-            // label94
-            // 
-            this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(204, 7);
-            this.label94.Name = "label94";
-            this.label94.Size = new System.Drawing.Size(45, 13);
-            this.label94.TabIndex = 137;
-            this.label94.Text = "¿Quién?";
-            // 
-            // textQuienASMA
-            // 
-            this.textQuienASMA.Location = new System.Drawing.Point(142, 50);
-            this.textQuienASMA.Name = "textQuienASMA";
-            this.textQuienASMA.Size = new System.Drawing.Size(170, 21);
-            this.textQuienASMA.TabIndex = 141;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(392, 51);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(38, 17);
-            this.radioButton1.TabIndex = 140;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "No";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(336, 51);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(33, 17);
-            this.radioButton2.TabIndex = 139;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Si";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            // 
-            // label95
-            // 
-            this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(4, 53);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(33, 13);
-            this.label95.TabIndex = 138;
-            this.label95.Text = "ASMA";
-            // 
-            // textQuienVIH
-            // 
-            this.textQuienVIH.Location = new System.Drawing.Point(142, 77);
-            this.textQuienVIH.Name = "textQuienVIH";
-            this.textQuienVIH.Size = new System.Drawing.Size(170, 21);
-            this.textQuienVIH.TabIndex = 145;
-            // 
-            // radioButton3
-            // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(392, 78);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(38, 17);
-            this.radioButton3.TabIndex = 144;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "No";
-            this.radioButton3.UseVisualStyleBackColor = true;
-            // 
-            // radioButton4
-            // 
-            this.radioButton4.AutoSize = true;
-            this.radioButton4.Location = new System.Drawing.Point(336, 78);
-            this.radioButton4.Name = "radioButton4";
-            this.radioButton4.Size = new System.Drawing.Size(33, 17);
-            this.radioButton4.TabIndex = 143;
-            this.radioButton4.TabStop = true;
-            this.radioButton4.Text = "Si";
-            this.radioButton4.UseVisualStyleBackColor = true;
-            // 
-            // label127
-            // 
-            this.label127.AutoSize = true;
-            this.label127.Location = new System.Drawing.Point(4, 80);
-            this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(51, 13);
-            this.label127.TabIndex = 142;
-            this.label127.Text = "VIH - SIDA";
-            // 
-            // textQuienDiabetes
-            // 
-            this.textQuienDiabetes.Location = new System.Drawing.Point(142, 103);
-            this.textQuienDiabetes.Name = "textQuienDiabetes";
-            this.textQuienDiabetes.Size = new System.Drawing.Size(170, 21);
-            this.textQuienDiabetes.TabIndex = 149;
-            // 
-            // radioButton5
-            // 
-            this.radioButton5.AutoSize = true;
-            this.radioButton5.Location = new System.Drawing.Point(392, 104);
-            this.radioButton5.Name = "radioButton5";
-            this.radioButton5.Size = new System.Drawing.Size(38, 17);
-            this.radioButton5.TabIndex = 148;
-            this.radioButton5.TabStop = true;
-            this.radioButton5.Text = "No";
-            this.radioButton5.UseVisualStyleBackColor = true;
-            // 
-            // radioButton6
-            // 
-            this.radioButton6.AutoSize = true;
-            this.radioButton6.Location = new System.Drawing.Point(336, 104);
-            this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(33, 17);
-            this.radioButton6.TabIndex = 147;
-            this.radioButton6.TabStop = true;
-            this.radioButton6.Text = "Si";
-            this.radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // label128
-            // 
-            this.label128.AutoSize = true;
-            this.label128.Location = new System.Drawing.Point(4, 106);
-            this.label128.Name = "label128";
-            this.label128.Size = new System.Drawing.Size(50, 13);
-            this.label128.TabIndex = 146;
-            this.label128.Text = "Diabetes";
-            // 
-            // textQuienEpilepsia
-            // 
-            this.textQuienEpilepsia.Location = new System.Drawing.Point(142, 130);
-            this.textQuienEpilepsia.Name = "textQuienEpilepsia";
-            this.textQuienEpilepsia.Size = new System.Drawing.Size(170, 21);
-            this.textQuienEpilepsia.TabIndex = 153;
-            // 
-            // radioButton7
-            // 
-            this.radioButton7.AutoSize = true;
-            this.radioButton7.Location = new System.Drawing.Point(392, 131);
-            this.radioButton7.Name = "radioButton7";
-            this.radioButton7.Size = new System.Drawing.Size(38, 17);
-            this.radioButton7.TabIndex = 152;
-            this.radioButton7.TabStop = true;
-            this.radioButton7.Text = "No";
-            this.radioButton7.UseVisualStyleBackColor = true;
-            // 
-            // radioButton8
-            // 
-            this.radioButton8.AutoSize = true;
-            this.radioButton8.Location = new System.Drawing.Point(336, 131);
-            this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(33, 17);
-            this.radioButton8.TabIndex = 151;
-            this.radioButton8.TabStop = true;
-            this.radioButton8.Text = "Si";
-            this.radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // label129
-            // 
-            this.label129.AutoSize = true;
-            this.label129.Location = new System.Drawing.Point(4, 133);
-            this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(50, 13);
-            this.label129.TabIndex = 150;
-            this.label129.Text = "Epilepsia";
-            // 
-            // textQuienAlergias
-            // 
-            this.textQuienAlergias.Location = new System.Drawing.Point(142, 157);
-            this.textQuienAlergias.Name = "textQuienAlergias";
-            this.textQuienAlergias.Size = new System.Drawing.Size(170, 21);
-            this.textQuienAlergias.TabIndex = 157;
-            // 
-            // radioButton9
-            // 
-            this.radioButton9.AutoSize = true;
-            this.radioButton9.Location = new System.Drawing.Point(392, 158);
-            this.radioButton9.Name = "radioButton9";
-            this.radioButton9.Size = new System.Drawing.Size(38, 17);
-            this.radioButton9.TabIndex = 156;
-            this.radioButton9.TabStop = true;
-            this.radioButton9.Text = "No";
-            this.radioButton9.UseVisualStyleBackColor = true;
-            // 
-            // radioButton10
-            // 
-            this.radioButton10.AutoSize = true;
-            this.radioButton10.Location = new System.Drawing.Point(336, 158);
-            this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(33, 17);
-            this.radioButton10.TabIndex = 155;
-            this.radioButton10.TabStop = true;
-            this.radioButton10.Text = "Si";
-            this.radioButton10.UseVisualStyleBackColor = true;
-            // 
-            // label130
-            // 
-            this.label130.AutoSize = true;
-            this.label130.Location = new System.Drawing.Point(4, 160);
-            this.label130.Name = "label130";
-            this.label130.Size = new System.Drawing.Size(104, 13);
-            this.label130.TabIndex = 154;
-            this.label130.Text = "Alergias a medicinas";
-            // 
-            // textQuienViolenciaFamiliar
-            // 
-            this.textQuienViolenciaFamiliar.Location = new System.Drawing.Point(142, 184);
-            this.textQuienViolenciaFamiliar.Name = "textQuienViolenciaFamiliar";
-            this.textQuienViolenciaFamiliar.Size = new System.Drawing.Size(170, 21);
-            this.textQuienViolenciaFamiliar.TabIndex = 161;
-            // 
-            // radioButton11
-            // 
-            this.radioButton11.AutoSize = true;
-            this.radioButton11.Location = new System.Drawing.Point(392, 185);
-            this.radioButton11.Name = "radioButton11";
-            this.radioButton11.Size = new System.Drawing.Size(38, 17);
-            this.radioButton11.TabIndex = 160;
-            this.radioButton11.TabStop = true;
-            this.radioButton11.Text = "No";
-            this.radioButton11.UseVisualStyleBackColor = true;
-            // 
-            // radioButton12
-            // 
-            this.radioButton12.AutoSize = true;
-            this.radioButton12.Location = new System.Drawing.Point(336, 185);
-            this.radioButton12.Name = "radioButton12";
-            this.radioButton12.Size = new System.Drawing.Size(33, 17);
-            this.radioButton12.TabIndex = 159;
-            this.radioButton12.TabStop = true;
-            this.radioButton12.Text = "Si";
-            this.radioButton12.UseVisualStyleBackColor = true;
-            // 
-            // label131
-            // 
-            this.label131.AutoSize = true;
-            this.label131.Location = new System.Drawing.Point(4, 187);
-            this.label131.Name = "label131";
-            this.label131.Size = new System.Drawing.Size(92, 13);
-            this.label131.TabIndex = 158;
-            this.label131.Text = "Violencia Familiar";
-            // 
-            // textQuienAlcoholismo
-            // 
-            this.textQuienAlcoholismo.Location = new System.Drawing.Point(142, 212);
-            this.textQuienAlcoholismo.Name = "textQuienAlcoholismo";
-            this.textQuienAlcoholismo.Size = new System.Drawing.Size(170, 21);
-            this.textQuienAlcoholismo.TabIndex = 165;
-            // 
-            // radioButton13
-            // 
-            this.radioButton13.AutoSize = true;
-            this.radioButton13.Location = new System.Drawing.Point(392, 213);
-            this.radioButton13.Name = "radioButton13";
-            this.radioButton13.Size = new System.Drawing.Size(38, 17);
-            this.radioButton13.TabIndex = 164;
-            this.radioButton13.TabStop = true;
-            this.radioButton13.Text = "No";
-            this.radioButton13.UseVisualStyleBackColor = true;
-            // 
-            // radioButton14
-            // 
-            this.radioButton14.AutoSize = true;
-            this.radioButton14.Location = new System.Drawing.Point(336, 213);
-            this.radioButton14.Name = "radioButton14";
-            this.radioButton14.Size = new System.Drawing.Size(33, 17);
-            this.radioButton14.TabIndex = 163;
-            this.radioButton14.TabStop = true;
-            this.radioButton14.Text = "Si";
-            this.radioButton14.UseVisualStyleBackColor = true;
-            // 
-            // label132
-            // 
-            this.label132.AutoSize = true;
-            this.label132.Location = new System.Drawing.Point(4, 215);
-            this.label132.Name = "label132";
-            this.label132.Size = new System.Drawing.Size(65, 13);
-            this.label132.TabIndex = 162;
-            this.label132.Text = "Alcoholismo";
-            // 
-            // textQuienDrogadiccion
-            // 
-            this.textQuienDrogadiccion.Location = new System.Drawing.Point(142, 239);
-            this.textQuienDrogadiccion.Name = "textQuienDrogadiccion";
-            this.textQuienDrogadiccion.Size = new System.Drawing.Size(170, 21);
-            this.textQuienDrogadiccion.TabIndex = 169;
-            // 
-            // radioButton15
-            // 
-            this.radioButton15.AutoSize = true;
-            this.radioButton15.Location = new System.Drawing.Point(392, 240);
-            this.radioButton15.Name = "radioButton15";
-            this.radioButton15.Size = new System.Drawing.Size(38, 17);
-            this.radioButton15.TabIndex = 168;
-            this.radioButton15.TabStop = true;
-            this.radioButton15.Text = "No";
-            this.radioButton15.UseVisualStyleBackColor = true;
-            // 
-            // radioButton16
-            // 
-            this.radioButton16.AutoSize = true;
-            this.radioButton16.Location = new System.Drawing.Point(336, 240);
-            this.radioButton16.Name = "radioButton16";
-            this.radioButton16.Size = new System.Drawing.Size(33, 17);
-            this.radioButton16.TabIndex = 167;
-            this.radioButton16.TabStop = true;
-            this.radioButton16.Text = "Si";
-            this.radioButton16.UseVisualStyleBackColor = true;
-            // 
-            // label133
-            // 
-            this.label133.AutoSize = true;
-            this.label133.Location = new System.Drawing.Point(4, 242);
-            this.label133.Name = "label133";
-            this.label133.Size = new System.Drawing.Size(69, 13);
-            this.label133.TabIndex = 166;
-            this.label133.Text = "Drogadicción";
-            // 
-            // textQuienHepatitisB
-            // 
-            this.textQuienHepatitisB.Location = new System.Drawing.Point(142, 266);
-            this.textQuienHepatitisB.Name = "textQuienHepatitisB";
-            this.textQuienHepatitisB.Size = new System.Drawing.Size(170, 21);
-            this.textQuienHepatitisB.TabIndex = 173;
-            // 
-            // radioButton17
-            // 
-            this.radioButton17.AutoSize = true;
-            this.radioButton17.Location = new System.Drawing.Point(392, 267);
-            this.radioButton17.Name = "radioButton17";
-            this.radioButton17.Size = new System.Drawing.Size(38, 17);
-            this.radioButton17.TabIndex = 172;
-            this.radioButton17.TabStop = true;
-            this.radioButton17.Text = "No";
-            this.radioButton17.UseVisualStyleBackColor = true;
-            // 
-            // radioButton18
-            // 
-            this.radioButton18.AutoSize = true;
-            this.radioButton18.Location = new System.Drawing.Point(336, 267);
-            this.radioButton18.Name = "radioButton18";
-            this.radioButton18.Size = new System.Drawing.Size(33, 17);
-            this.radioButton18.TabIndex = 171;
-            this.radioButton18.TabStop = true;
-            this.radioButton18.Text = "Si";
-            this.radioButton18.UseVisualStyleBackColor = true;
-            // 
-            // label134
-            // 
-            this.label134.AutoSize = true;
-            this.label134.Location = new System.Drawing.Point(4, 269);
-            this.label134.Name = "label134";
-            this.label134.Size = new System.Drawing.Size(60, 13);
-            this.label134.TabIndex = 170;
-            this.label134.Text = "Hepatitis B.";
-            // 
-            // textAguaPotable
-            // 
-            this.textAguaPotable.Location = new System.Drawing.Point(3, 23);
-            this.textAguaPotable.Multiline = true;
-            this.textAguaPotable.Name = "textAguaPotable";
-            this.textAguaPotable.Size = new System.Drawing.Size(513, 40);
-            this.textAguaPotable.TabIndex = 145;
-            // 
-            // label135
-            // 
-            this.label135.AutoSize = true;
-            this.label135.Location = new System.Drawing.Point(2, 6);
-            this.label135.Name = "label135";
-            this.label135.Size = new System.Drawing.Size(166, 13);
-            this.label135.TabIndex = 144;
-            this.label135.Text = "Especificaciones de Agua Potable:";
-            // 
-            // textDesague
-            // 
-            this.textDesague.Location = new System.Drawing.Point(3, 90);
-            this.textDesague.Multiline = true;
-            this.textDesague.Name = "textDesague";
-            this.textDesague.Size = new System.Drawing.Size(513, 40);
-            this.textDesague.TabIndex = 147;
-            // 
-            // label136
-            // 
-            this.label136.AutoSize = true;
-            this.label136.Location = new System.Drawing.Point(2, 73);
-            this.label136.Name = "label136";
-            this.label136.Size = new System.Drawing.Size(145, 13);
-            this.label136.TabIndex = 146;
-            this.label136.Text = "Especificaciones de Desagüe:";
+            // ultraDataSource1
+            // 
+            this.ultraDataSource1.Band.Columns.AddRange(new object[] {
+            ultraDataColumn1,
+            ultraDataColumn2,
+            ultraDataColumn3,
+            ultraDataColumn4,
+            ultraDataColumn5,
+            ultraDataColumn6});
+            // 
+            // grdEmbarazos
+            // 
+            this.grdEmbarazos.CausesValidation = false;
+            this.grdEmbarazos.DataMember = null;
+            appearance92.BackColor2 = System.Drawing.Color.White;
+            appearance92.BorderColor = System.Drawing.Color.DarkGray;
+            appearance92.ForeColor = System.Drawing.Color.Black;
+            this.grdEmbarazos.DisplayLayout.Appearance = appearance92;
+            ultraGridColumn34.Header.VisiblePosition = 0;
+            ultraGridColumn34.Width = 64;
+            ultraGridColumn29.Header.VisiblePosition = 1;
+            ultraGridColumn31.Header.VisiblePosition = 2;
+            ultraGridColumn32.Header.VisiblePosition = 3;
+            ultraGridColumn33.Header.VisiblePosition = 4;
+            ultraGridColumn38.Header.VisiblePosition = 5;
+            ultraGridColumn46.Header.VisiblePosition = 6;
+            ultraGridBand13.Columns.AddRange(new object[] {
+            ultraGridColumn34,
+            ultraGridColumn29,
+            ultraGridColumn31,
+            ultraGridColumn32,
+            ultraGridColumn33,
+            ultraGridColumn38,
+            ultraGridColumn46});
+            appearance93.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance93.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance93.FontData.SizeInPoints = 8F;
+            appearance93.ForeColor = System.Drawing.Color.DarkBlue;
+            appearance93.TextHAlignAsString = "Left";
+            ultraGridBand13.Header.Appearance = appearance93;
+            this.grdEmbarazos.DisplayLayout.BandsSerializer.Add(ultraGridBand13);
+            this.grdEmbarazos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdEmbarazos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
+            this.grdEmbarazos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
+            appearance94.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdEmbarazos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance94;
+            appearance95.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
+            appearance95.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
+            appearance95.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdEmbarazos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance95;
+            this.grdEmbarazos.DisplayLayout.InterBandSpacing = 10;
+            this.grdEmbarazos.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdEmbarazos.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdEmbarazos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdEmbarazos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
+            this.grdEmbarazos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdEmbarazos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdEmbarazos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdEmbarazos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdEmbarazos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdEmbarazos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance96.BackColor = System.Drawing.Color.Transparent;
+            this.grdEmbarazos.DisplayLayout.Override.CardAreaAppearance = appearance96;
+            appearance97.BackColor = System.Drawing.Color.White;
+            appearance97.BackColor2 = System.Drawing.Color.White;
+            appearance97.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance97.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdEmbarazos.DisplayLayout.Override.CellAppearance = appearance97;
+            this.grdEmbarazos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance98.BackColor = System.Drawing.Color.White;
+            appearance98.BackColor2 = System.Drawing.Color.LightGray;
+            appearance98.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance98.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance98.BorderColor = System.Drawing.Color.DarkGray;
+            appearance98.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdEmbarazos.DisplayLayout.Override.HeaderAppearance = appearance98;
+            this.grdEmbarazos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance99.AlphaLevel = ((short)(187));
+            appearance99.BackColor = System.Drawing.Color.Gainsboro;
+            appearance99.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance99.ForeColor = System.Drawing.Color.Black;
+            appearance99.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdEmbarazos.DisplayLayout.Override.RowAlternateAppearance = appearance99;
+            this.grdEmbarazos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance100.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance100.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance100.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            appearance100.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance100.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance100.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance100.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance100.FontData.BoldAsString = "False";
+            appearance100.ForeColor = System.Drawing.Color.Black;
+            this.grdEmbarazos.DisplayLayout.Override.SelectedRowAppearance = appearance100;
+            this.grdEmbarazos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdEmbarazos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdEmbarazos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdEmbarazos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdEmbarazos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdEmbarazos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdEmbarazos.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdEmbarazos.Location = new System.Drawing.Point(6, 36);
+            this.grdEmbarazos.Margin = new System.Windows.Forms.Padding(2);
+            this.grdEmbarazos.Name = "grdEmbarazos";
+            this.grdEmbarazos.Size = new System.Drawing.Size(442, 113);
+            this.grdEmbarazos.TabIndex = 136;
+            // 
+            // btnEditarEmbarazo
+            // 
+            this.btnEditarEmbarazo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditarEmbarazo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditarEmbarazo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditarEmbarazo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditarEmbarazo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarEmbarazo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarEmbarazo.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarEmbarazo.Image")));
+            this.btnEditarEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarEmbarazo.Location = new System.Drawing.Point(452, 78);
+            this.btnEditarEmbarazo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarEmbarazo.Name = "btnEditarEmbarazo";
+            this.btnEditarEmbarazo.Size = new System.Drawing.Size(75, 24);
+            this.btnEditarEmbarazo.TabIndex = 137;
+            this.btnEditarEmbarazo.Text = "   Editar";
+            this.btnEditarEmbarazo.UseVisualStyleBackColor = false;
+            this.btnEditarEmbarazo.Click += new System.EventHandler(this.btnEditarEmbarazo_Click);
             // 
             // frmEso
             // 
@@ -7191,7 +7249,6 @@
             this.pnlSexualidad.PerformLayout();
             this.pnlEmbarazo.ResumeLayout(false);
             this.pnlEmbarazo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdEmbarzo)).EndInit();
             this.pnlMenarquia.ResumeLayout(false);
             this.pnlMenarquia.PerformLayout();
             this.tbpAdolescente.ResumeLayout(false);
@@ -7241,6 +7298,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.uvAnalisisDx)).EndInit();
             this.pnlLeftPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdEmbarazos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -7513,7 +7572,6 @@
         private System.Windows.Forms.TextBox txtAmPrematuro;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.TextBox txtAmNroParto;
-        private Infragistics.Win.UltraWinGrid.UltraGrid grdEmbarzo;
         private System.Windows.Forms.Button btnNuevoEmbarazo;
         private System.Windows.Forms.Button btnEliminarEmbarazo;
         private System.Windows.Forms.TabControl tbcDatos;
@@ -7689,5 +7747,9 @@
         private System.Windows.Forms.Label label136;
         private System.Windows.Forms.TextBox textAguaPotable;
         private System.Windows.Forms.Label label135;
+        private System.Windows.Forms.Label lblDni;
+        private Infragistics.Win.UltraWinDataSource.UltraDataSource ultraDataSource1;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdEmbarazos;
+        private System.Windows.Forms.Button btnEditarEmbarazo;
     }
 }
