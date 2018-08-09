@@ -80,6 +80,19 @@ namespace Sigesoft.Node.WinClient.BLL
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 
+                    var recetas = obtenerRecetasByServiceId(servicio.ServicioId);
+                    foreach (var receta in recetas)
+                    {
+                        oLiquiAseguradoraDetalle = new LiquiAseguradoraDetalle();
+                        oLiquiAseguradoraDetalle.Descripcion = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].v_Descripcion;// receta.v_IdProductoDetalle;
+                        oLiquiAseguradoraDetalle.Valor = receta.d_Importe;
+                        oLiquiAseguradoraDetalle.Tipo = receta.i_EsDeducible == 1 ? "DEDUCIBLE" : "COASEGURO";
+                        oLiquiAseguradoraDetalle.SaldoPaciente = receta.d_SaldoPaciente;
+                        oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
+                        oLiquiAseguradoraDetalle.SubTotal = receta.d_SaldoPaciente + receta.d_SaldoAseguradora;
+                        detalle.Add(oLiquiAseguradoraDetalle);
+                    }
+
                     oLiquidacionAseguradora.Detalle = detalle;
 
                     ListaLiquidacion.Add(oLiquidacionAseguradora);
@@ -88,6 +101,40 @@ namespace Sigesoft.Node.WinClient.BLL
                     pobjOperationResult.Success = 1;
             return ListaLiquidacion;
 
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        private List<recetaList> obtenerRecetasByServiceId(string serviceId)
+        {
+            try
+            {
+                 var dbContext = new SigesoftEntitiesModel();
+                 var query = (from A in dbContext.receta
+                              join B in dbContext.diagnosticrepository on A.v_DiagnosticRepositoryId equals B.v_DiagnosticRepositoryId
+                              join C in dbContext.service on B.v_ServiceId equals C.v_ServiceId
+                              join I in dbContext.protocol on C.v_ProtocolId equals I.v_ProtocolId
+                              join G in dbContext.plan on new { a = I.v_ProtocolId, b = A.v_IdUnidadProductiva }
+                                  equals new { a = G.v_ProtocoloId, b = G.v_IdUnidadProductiva } into G_join
+                              from G in G_join.DefaultIfEmpty()
+                              where C.v_ServiceId == serviceId && C.i_IsDeleted == 0 && (A.d_SaldoPaciente.Value > 0 || A.d_SaldoAseguradora.Value > 0)
+                              select new recetaList
+                              {
+                                  v_IdProductoDetalle = A.v_IdProductoDetalle,
+                                  d_SaldoPaciente = A.d_SaldoPaciente,
+                                  d_SaldoAseguradora = A.d_SaldoAseguradora,
+                                  v_IdUnidadProductiva = A.v_IdUnidadProductiva,
+                                  i_EsDeducible = G.i_EsDeducible.Value,
+                                  i_EsCoaseguro = G.i_EsCoaseguro.Value,
+                                  d_Importe = G.d_Importe
+                              }
+                             ).ToList();
+
+                 return query;
             }
             catch (Exception ex)
             {

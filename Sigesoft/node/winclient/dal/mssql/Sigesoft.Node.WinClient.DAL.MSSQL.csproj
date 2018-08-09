@@ -159,6 +159,7 @@
     <Compile Include="GeneratedAssemblers\facturaciondetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\reporteatencionmedicaResultAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\obtenerproductoResultAssembler.cs" />
     <Compile Include="GeneratedAssemblers\obtenerpreciotarifarioResultAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

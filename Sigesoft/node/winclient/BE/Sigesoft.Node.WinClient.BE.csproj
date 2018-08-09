@@ -184,6 +184,7 @@
     <Compile Include="Custom\PuestoList.cs" />
     <Compile Include="Custom\recetadespachoDto.cs" />
     <Compile Include="Custom\recetaDto.cs" />
+    <Compile Include="Custom\recetaList.cs" />
     <Compile Include="Custom\RecomendationList.cs" />
     <Compile Include="Custom\ReportAlturaEstructural.cs" />
     <Compile Include="Custom\ReportAntigenosFebriles.cs" />
@@ -406,6 +407,7 @@
     <Compile Include="Generated\facturaciondetalleDto.cs" />
     <Compile Include="Generated\facturacionDto.cs" />
     <Compile Include="Generated\reporteatencionmedicaResultDto.cs" />
+    <Compile Include="Generated\obtenerproductoResultDto.cs" />
     <Compile Include="Generated\obtenerpreciotarifarioResultDto.cs" />
     <Compile Include="IRastreable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
