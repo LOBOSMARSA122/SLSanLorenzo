@@ -597,6 +597,13 @@
             this.label97 = new System.Windows.Forms.Label();
             this.ultgrboxDatosFamiliares = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel2 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
+            this.label140 = new System.Windows.Forms.Label();
+            this.txtDNIMadrePadreResponsable = new System.Windows.Forms.TextBox();
+            this.label137 = new System.Windows.Forms.Label();
+            this.txtEdadMadrePadreResponsable = new System.Windows.Forms.TextBox();
+            this.label138 = new System.Windows.Forms.Label();
+            this.label139 = new System.Windows.Forms.Label();
+            this.txtNombreMadrePadreResponsable = new System.Windows.Forms.TextBox();
             this.listaEstadoCivilHombre = new System.Windows.Forms.ComboBox();
             this.listaEstadoCivilMujer = new System.Windows.Forms.ComboBox();
             this.listaGradoInstruccionHombre = new System.Windows.Forms.ComboBox();
@@ -633,6 +640,8 @@
             this.label125 = new System.Windows.Forms.Label();
             this.label126 = new System.Windows.Forms.Label();
             this.txtNombreMadreTutor = new System.Windows.Forms.TextBox();
+            this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblDni = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
@@ -705,15 +714,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
-            this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.txtDNIMadrePadreResponsable = new System.Windows.Forms.TextBox();
-            this.label137 = new System.Windows.Forms.Label();
-            this.txtEdadMadrePadreResponsable = new System.Windows.Forms.TextBox();
-            this.label138 = new System.Windows.Forms.Label();
-            this.label139 = new System.Windows.Forms.Label();
-            this.txtNombreMadrePadreResponsable = new System.Windows.Forms.TextBox();
-            this.label140 = new System.Windows.Forms.Label();
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -6098,6 +6098,63 @@
             this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(522, 291);
             this.ultraExpandableGroupBoxPanel2.TabIndex = 0;
             // 
+            // label140
+            // 
+            this.label140.AutoSize = true;
+            this.label140.Location = new System.Drawing.Point(27, 49);
+            this.label140.Name = "label140";
+            this.label140.Size = new System.Drawing.Size(234, 13);
+            this.label140.TabIndex = 192;
+            this.label140.Text = "(*) INFORMACIÓN PARA PROBLEMAS Y ATENCIONES ";
+            // 
+            // txtDNIMadrePadreResponsable
+            // 
+            this.txtDNIMadrePadreResponsable.Location = new System.Drawing.Point(411, 22);
+            this.txtDNIMadrePadreResponsable.Name = "txtDNIMadrePadreResponsable";
+            this.txtDNIMadrePadreResponsable.Size = new System.Drawing.Size(84, 21);
+            this.txtDNIMadrePadreResponsable.TabIndex = 191;
+            // 
+            // label137
+            // 
+            this.label137.AutoSize = true;
+            this.label137.Location = new System.Drawing.Point(413, 5);
+            this.label137.Name = "label137";
+            this.label137.Size = new System.Drawing.Size(24, 13);
+            this.label137.TabIndex = 190;
+            this.label137.Text = "DNI";
+            // 
+            // txtEdadMadrePadreResponsable
+            // 
+            this.txtEdadMadrePadreResponsable.Location = new System.Drawing.Point(352, 22);
+            this.txtEdadMadrePadreResponsable.Name = "txtEdadMadrePadreResponsable";
+            this.txtEdadMadrePadreResponsable.Size = new System.Drawing.Size(30, 21);
+            this.txtEdadMadrePadreResponsable.TabIndex = 189;
+            // 
+            // label138
+            // 
+            this.label138.AutoSize = true;
+            this.label138.Location = new System.Drawing.Point(352, 5);
+            this.label138.Name = "label138";
+            this.label138.Size = new System.Drawing.Size(30, 13);
+            this.label138.TabIndex = 188;
+            this.label138.Text = "Edad";
+            // 
+            // label139
+            // 
+            this.label139.AutoSize = true;
+            this.label139.Location = new System.Drawing.Point(3, 5);
+            this.label139.Name = "label139";
+            this.label139.Size = new System.Drawing.Size(283, 13);
+            this.label139.TabIndex = 186;
+            this.label139.Text = "Madre, Padre o adulto responsable del cuidado del niño (*)";
+            // 
+            // txtNombreMadrePadreResponsable
+            // 
+            this.txtNombreMadrePadreResponsable.Location = new System.Drawing.Point(7, 21);
+            this.txtNombreMadrePadreResponsable.Name = "txtNombreMadrePadreResponsable";
+            this.txtNombreMadrePadreResponsable.Size = new System.Drawing.Size(312, 21);
+            this.txtNombreMadrePadreResponsable.TabIndex = 187;
+            // 
             // listaEstadoCivilHombre
             // 
             this.listaEstadoCivilHombre.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
@@ -6415,6 +6472,25 @@
             this.txtNombreMadreTutor.Name = "txtNombreMadreTutor";
             this.txtNombreMadreTutor.Size = new System.Drawing.Size(214, 21);
             this.txtNombreMadreTutor.TabIndex = 134;
+            // 
+            // shapeContainer3
+            // 
+            this.shapeContainer3.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer3.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer3.Name = "shapeContainer3";
+            this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape4});
+            this.shapeContainer3.Size = new System.Drawing.Size(522, 291);
+            this.shapeContainer3.TabIndex = 185;
+            this.shapeContainer3.TabStop = false;
+            // 
+            // lineShape4
+            // 
+            this.lineShape4.Name = "lineShape4";
+            this.lineShape4.X1 = 2;
+            this.lineShape4.X2 = 517;
+            this.lineShape4.Y1 = 70;
+            this.lineShape4.Y2 = 70;
             // 
             // groupBox3
             // 
@@ -7157,7 +7233,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 749);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 732);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -7185,88 +7261,12 @@
             ultraDataColumn5,
             ultraDataColumn6});
             // 
-            // shapeContainer3
-            // 
-            this.shapeContainer3.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer3.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer3.Name = "shapeContainer3";
-            this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape4});
-            this.shapeContainer3.Size = new System.Drawing.Size(522, 291);
-            this.shapeContainer3.TabIndex = 185;
-            this.shapeContainer3.TabStop = false;
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 2;
-            this.lineShape4.X2 = 517;
-            this.lineShape4.Y1 = 70;
-            this.lineShape4.Y2 = 70;
-            // 
-            // txtDNIMadrePadreResponsable
-            // 
-            this.txtDNIMadrePadreResponsable.Location = new System.Drawing.Point(411, 22);
-            this.txtDNIMadrePadreResponsable.Name = "txtDNIMadrePadreResponsable";
-            this.txtDNIMadrePadreResponsable.Size = new System.Drawing.Size(84, 21);
-            this.txtDNIMadrePadreResponsable.TabIndex = 191;
-            // 
-            // label137
-            // 
-            this.label137.AutoSize = true;
-            this.label137.Location = new System.Drawing.Point(413, 5);
-            this.label137.Name = "label137";
-            this.label137.Size = new System.Drawing.Size(24, 13);
-            this.label137.TabIndex = 190;
-            this.label137.Text = "DNI";
-            // 
-            // txtEdadMadrePadreResponsable
-            // 
-            this.txtEdadMadrePadreResponsable.Location = new System.Drawing.Point(352, 22);
-            this.txtEdadMadrePadreResponsable.Name = "txtEdadMadrePadreResponsable";
-            this.txtEdadMadrePadreResponsable.Size = new System.Drawing.Size(30, 21);
-            this.txtEdadMadrePadreResponsable.TabIndex = 189;
-            // 
-            // label138
-            // 
-            this.label138.AutoSize = true;
-            this.label138.Location = new System.Drawing.Point(352, 5);
-            this.label138.Name = "label138";
-            this.label138.Size = new System.Drawing.Size(30, 13);
-            this.label138.TabIndex = 188;
-            this.label138.Text = "Edad";
-            // 
-            // label139
-            // 
-            this.label139.AutoSize = true;
-            this.label139.Location = new System.Drawing.Point(3, 5);
-            this.label139.Name = "label139";
-            this.label139.Size = new System.Drawing.Size(283, 13);
-            this.label139.TabIndex = 186;
-            this.label139.Text = "Madre, Padre o adulto responsable del cuidado del niño (*)";
-            // 
-            // txtNombreMadrePadreResponsable
-            // 
-            this.txtNombreMadrePadreResponsable.Location = new System.Drawing.Point(7, 21);
-            this.txtNombreMadrePadreResponsable.Name = "txtNombreMadrePadreResponsable";
-            this.txtNombreMadrePadreResponsable.Size = new System.Drawing.Size(312, 21);
-            this.txtNombreMadrePadreResponsable.TabIndex = 187;
-            // 
-            // label140
-            // 
-            this.label140.AutoSize = true;
-            this.label140.Location = new System.Drawing.Point(27, 49);
-            this.label140.Name = "label140";
-            this.label140.Size = new System.Drawing.Size(234, 13);
-            this.label140.TabIndex = 192;
-            this.label140.Text = "(*) INFORMACIÓN PARA PROBLEMAS Y ATENCIONES ";
-            // 
             // frmEso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 766);
+            this.ClientSize = new System.Drawing.Size(1350, 749);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;

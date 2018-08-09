@@ -8075,7 +8075,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         objNinioDto.v_LugarAPN = textLugarAPN.Text;
                         objNinioDto.v_ComplicacionesParto = textComplicacionesParto.Text;
                         objNinioDto.v_Atencion = textQuienAtendio.Text;
-
+                         
                         objNinioDto.v_EdadGestacion = textEdadNacer.Text;
                         objNinioDto.v_Peso = textPesoNacer.Text;
                         objNinioDto.v_Talla = textTallaNacer.Text;
