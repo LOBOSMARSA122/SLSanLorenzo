@@ -2058,6 +2058,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                     if (objNinioDto != null)
                     {
+                        txtNombreMadrePadreResponsable.Text = objNinioDto.v_NombreCuidador;
+                        txtEdadMadrePadreResponsable.Text = objNinioDto.v_EdadCuidador;
+                        txtDNIMadrePadreResponsable.Text = objNinioDto.v_DniCuidador;
+
                         txtNombrePadreTutor.Text = objNinioDto.v_NombrePadre;
                         txtEdadPadre.Text = objNinioDto.v_EdadPadre;
                         txtDNIPadre.Text = objNinioDto.v_DniPadre;
@@ -8040,6 +8044,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     if (objNinioDto.v_NinioId == null)
                     {
                         objNinioDto.v_PersonId = idPerson.v_PersonId.ToString();
+
+                        objNinioDto.v_NombreCuidador = txtNombreMadrePadreResponsable.Text;
+                        objNinioDto.v_EdadCuidador = txtEdadMadrePadreResponsable.Text;
+                        objNinioDto.v_DniCuidador = txtDNIMadrePadreResponsable.Text;
+
                         objNinioDto.v_NombrePadre =txtNombrePadreTutor.Text;
                         objNinioDto.v_EdadPadre = txtEdadPadre.Text;
                         objNinioDto.v_DniPadre = txtDNIPadre.Text;
@@ -8085,6 +8094,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     }
                     else
                     {
+                        objNinioDto.v_NombreCuidador = txtNombreMadrePadreResponsable.Text;
+                        objNinioDto.v_EdadCuidador = txtEdadMadrePadreResponsable.Text;
+                        objNinioDto.v_DniCuidador = txtDNIMadrePadreResponsable.Text;
+
                         objNinioDto.v_NombrePadre = txtNombrePadreTutor.Text;
                         objNinioDto.v_EdadPadre = txtEdadPadre.Text;
                         objNinioDto.v_DniPadre = txtDNIPadre.Text;
