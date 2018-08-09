@@ -57,6 +57,31 @@ namespace Sigesoft.Node.Contasol.Integration
             }
         }
 
+        //public string NombreProducto(string IdProductoDetalle)
+        //{
+        //    try
+        //    {
+        //        using (var cnx = ConnectionHelper.GetConnection)
+        //        {
+        //            if (cnx.State != ConnectionState.Open) cnx.Open();
+
+        //            var query = " select IdProductoDetalle " +
+        //                        " from productodetalle pd " +
+        //                        " inner join producto p on pd.v_IdProducto = p.v_IdProducto " +
+        //                        " where pd.v_IdProductoDetalle = '" + IdProductoDetalle + "'";
+
+        //            var listado = cnx.Query<MedicamentoDto>(query).ToList();
+
+        //            return listado[0].Nombre;
+        //        }               
+        //    }
+        //    catch (Exception ex)
+        //    {
+                
+        //        throw;
+        //    }
+        //}
+
         public void AddUpdateMedicamento(ref OperationResult pobjOperationResult, MedicamentoDto pobjDto)
         {
             try
