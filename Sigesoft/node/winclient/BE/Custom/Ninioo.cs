@@ -53,5 +53,29 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_EspecificacionesDesague { get; set; }
         public string v_TiempoHospitalizacion { get; set; }
 
+        public string v_QuienTuberculosis { get; set; }
+        public Nullable<Int32> i_QuienTuberculosis { get; set; }
+        public string v_QuienAsma { get; set; }
+        public Nullable<Int32> i_QuienAsma { get; set; }
+        public string v_QuienVIH { get; set; }
+        public Nullable<Int32> i_QuienVIH { get; set; }
+        public string v_QuienDiabetes { get; set; }
+        public Nullable<Int32> i_QuienDiabetes { get; set; }
+        public string v_QuienEpilepsia { get; set; }
+        public Nullable<Int32> i_QuienEpilepsia { get; set; }
+        public string v_QuienAlergias { get; set; }
+        public Nullable<Int32> i_QuienAlergias { get; set; }
+        public string v_QuienViolenciaFamiliar { get; set; }
+        public Nullable<Int32> i_QuienViolenciaFamiliar { get; set; }
+        public string v_QuienAlcoholismo { get; set; }
+        public Nullable<Int32> i_QuienAlcoholismo { get; set; }
+        public string v_QuienDrogadiccion { get; set; }
+        public Nullable<Int32> i_QuienDrogadiccion { get; set; }
+        public string v_QuienHeptitisB { get; set; }
+        public Nullable<Int32> i_QuienHeptitisB { get; set; }
+
+        public personDto person { get; set; }
+
+
     }
 }

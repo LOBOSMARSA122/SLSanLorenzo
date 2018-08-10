@@ -29,6 +29,13 @@ namespace Sigesoft.Common
         Paciente = 2
     }
 
+    public enum Enfermedad
+    {
+        Si = 1,
+        No = 0
+    }
+
+
     public enum TypePrinter
     {
         Image = 1,
