@@ -64,6 +64,8 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquiAseguradoraDetalle.SaldoPaciente = componente.d_SaldoPaciente.Value;
                         oLiquiAseguradoraDetalle.SaldoAseguradora = componente.d_SaldoAseguradora.Value;
                         oLiquiAseguradoraDetalle.SubTotal = componente.d_SaldoPaciente.Value + componente.d_SaldoAseguradora.Value;
+                        oLiquiAseguradoraDetalle.Cantidad = 1;
+                        oLiquiAseguradoraDetalle.PrecioUnitario = decimal.Parse(componente.r_Price.ToString());
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 
@@ -77,6 +79,8 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquiAseguradoraDetalle.SaldoPaciente = ticket.d_SaldoPaciente;
                         oLiquiAseguradoraDetalle.SaldoAseguradora = ticket.d_SaldoAseguradora;
                         oLiquiAseguradoraDetalle.SubTotal = ticket.d_SaldoPaciente + ticket.d_SaldoAseguradora;
+                        oLiquiAseguradoraDetalle.Cantidad = ticket.d_Cantidad;
+                        oLiquiAseguradoraDetalle.PrecioUnitario = ticket.d_PrecioVenta;
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 
@@ -90,6 +94,8 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquiAseguradoraDetalle.SaldoPaciente = receta.d_SaldoPaciente;
                         oLiquiAseguradoraDetalle.SaldoAseguradora = receta.d_SaldoAseguradora;
                         oLiquiAseguradoraDetalle.SubTotal = receta.d_SaldoPaciente + receta.d_SaldoAseguradora;
+                        oLiquiAseguradoraDetalle.Cantidad = receta.i_Cantidad;
+                        oLiquiAseguradoraDetalle.PrecioUnitario = dbContext.obtenerproducto(receta.v_IdProductoDetalle).ToList()[0].d_PrecioVenta;
                         detalle.Add(oLiquiAseguradoraDetalle);
                     }
 
@@ -130,7 +136,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_IdUnidadProductiva = A.v_IdUnidadProductiva,
                                   i_EsDeducible = G.i_EsDeducible.Value,
                                   i_EsCoaseguro = G.i_EsCoaseguro.Value,
-                                  d_Importe = G.d_Importe
+                                  d_Importe = G.d_Importe,
+                                  i_Cantidad = A.d_Cantidad.Value
                               }
                              ).ToList();
 
@@ -164,8 +171,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                  d_SaldoAseguradora = B.d_SaldoAseguradora.Value,
                                  i_EsDeducible = G.i_EsDeducible.Value,
                                  i_EsCoaseguro = G.i_EsCoaseguro.Value,
-                                 d_Importe = G.d_Importe
-
+                                 d_Importe = G.d_Importe,
+                                 d_Cantidad = B.d_Cantidad.Value,
+                                 d_PrecioVenta = B.d_PrecioVenta
                              }).ToList();
 
                 return query;
