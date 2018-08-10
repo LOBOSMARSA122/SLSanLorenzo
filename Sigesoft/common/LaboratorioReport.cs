@@ -1230,7 +1230,7 @@ namespace NetPdf
                         var LeucocitosBIO = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_LEUCOCITOS);
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS EN ORINA", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(LeucocitosBIO == null ? string.Empty : LeucocitosBIO.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("1 - 2 POR CAMPO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(LeucocitosBIO == null ? string.Empty : LeucocitosBIO.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         cells.Add(new PdfPCell(new Phrase("EXAMEN MICROSCOPICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER });
@@ -1238,13 +1238,13 @@ namespace NetPdf
                         var Leucocitos = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_LEUCOCITOS);
                         cells.Add(new PdfPCell(new Phrase("LEUCOCITOS EN ORINA", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("1 - 2 POR CAMPO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase("0 - 5 XC", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Hematies = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_HEMATIES);
                         cells.Add(new PdfPCell(new Phrase("HEMATIES EN ORINA", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(Hematies == null ? string.Empty : Hematies.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("NEGATIVO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(" 0 - 2 XC", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Hematies == null ? string.Empty : Hematies.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Germenes = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_GERMENES);
@@ -1280,7 +1280,7 @@ namespace NetPdf
                         var Celulas = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CELULAS_EPITELIALES);
                         cells.Add(new PdfPCell(new Phrase("CELULAS EPITELIALES", fontColumnValueBold)));
                         cells.Add(new PdfPCell(new Phrase(Celulas == null ? string.Empty : Celulas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
+                        cells.Add(new PdfPCell(new Phrase(" 0 - 6 XC", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase(Celulas == null ? string.Empty : Celulas.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                         var Cilindos = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CILINDROS);
