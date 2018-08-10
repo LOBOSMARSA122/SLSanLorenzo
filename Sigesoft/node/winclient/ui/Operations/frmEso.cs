@@ -6640,7 +6640,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var tagCtrl = (KeyTagControl)senderCtrl.Tag;
             // Capturar valor inicial
             _oldValue = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
-            if (tagCtrl.v_ComponentName == "RAYOS X")
+            if (tagCtrl.v_ComponentId == "N009-ME000000062")
             {
                 GroupBox gb = null;
                 gb = (GroupBox)FindControlInCurrentTab("gb_C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")[0];
