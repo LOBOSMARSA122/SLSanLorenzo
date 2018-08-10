@@ -2100,9 +2100,68 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         textAlergiaMedicamentos.Text = objNinioDto.v_AlergiasMedicamentos;
                         textOtrosAntecedentes.Text = objNinioDto.v_OtrosAntecedentes;
 
+                        textQuienTuberculosis.Text = objNinioDto.v_QuienTuberculosis;
+                        if (objNinioDto.i_QuienTuberculosis == (int)Enfermedad.Si)
+                            rbSiTuberculosis.Checked = true;
+                        else
+                            rbNoTuberculosis.Checked = true;
+
+                        textQuienASMA.Text = objNinioDto.v_QuienAsma;
+                        if (objNinioDto.i_QuienAsma == (int)Enfermedad.Si)
+                            rbSiAsma.Checked = true;
+                        else
+                            rbNoAsma.Checked = true;
+
+                        textQuienVIH.Text = objNinioDto.v_QuienVIH;
+                        if (objNinioDto.i_QuienVIH == (int)Enfermedad.Si)
+                            rbSiVih.Checked = true;
+                        else
+                            rbNoVih.Checked = true;
+
+                        textQuienDiabetes.Text = objNinioDto.v_QuienDiabetes;
+                        if (objNinioDto.i_QuienDiabetes == (int)Enfermedad.Si)
+                            rbSiDiabetes.Checked = true;
+                        else
+                            rbNoDiabetes.Checked = true;
+
+                        textQuienEpilepsia.Text = objNinioDto.v_QuienEpilepsia;
+                        if (objNinioDto.i_QuienEpilepsia == (int)Enfermedad.Si)
+                            rbSiEpilepsia.Checked = true;
+                        else
+                            rbNoEpilepsia.Checked = true;
+
+                        textQuienAlergias.Text = objNinioDto.v_QuienAlergias;
+                        if (objNinioDto.i_QuienAlergias == (int)Enfermedad.Si)
+                            rbSiAlergia.Checked = true;
+                        else
+                            rbNoAlergia.Checked = true;
+
+                        textQuienViolenciaFamiliar.Text = objNinioDto.v_QuienViolenciaFamiliar;
+                        if (objNinioDto.i_QuienViolenciaFamiliar == (int)Enfermedad.Si)
+                            rbSiViolencia.Checked = true;
+                        else
+                            rbNoViolencia.Checked = true;
+
+                        textQuienAlcoholismo.Text = objNinioDto.v_QuienAlcoholismo;
+                        if (objNinioDto.i_QuienAlcoholismo == (int)Enfermedad.Si)
+                            rbSiAlcoholismo.Checked = true;
+                        else
+                            rbNoAlcoholismo.Checked = true;
+
+                        textQuienDrogadiccion.Text = objNinioDto.v_QuienDrogadiccion;
+                        if (objNinioDto.i_QuienDrogadiccion == (int)Enfermedad.Si)
+                            rbSiDrogadiccion.Checked = true;
+                        else
+                            rbNoDrogadiccion.Checked = true;
+
+                        textQuienHepatitisB.Text = objNinioDto.v_QuienHeptitisB;
+                        if (objNinioDto.i_QuienHeptitisB == (int)Enfermedad.Si)
+                            rbSiHepatitis.Checked = true;
+                        else
+                            rbNoHepatitis.Checked = true;
+
                         textAguaPotable.Text = objNinioDto.v_EspecificacionesAgua;
                         textDesague.Text = objNinioDto.v_EspecificacionesDesague;
-
                     }
                 }
                 else if (13 <= _age && _age <= 17)
@@ -8087,6 +8146,36 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         objNinioDto.v_AlergiasMedicamentos = textAlergiaMedicamentos.Text;
                         objNinioDto.v_OtrosAntecedentes = textOtrosAntecedentes.Text;
 
+                        objNinioDto.v_QuienTuberculosis = textQuienTuberculosis.Text;
+                        objNinioDto.i_QuienTuberculosis = rbSiTuberculosis.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAsma = textQuienASMA.Text;
+                        objNinioDto.i_QuienAsma = rbSiAsma.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienVIH = textQuienVIH.Text;
+                        objNinioDto.i_QuienVIH = rbSiVih.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienDiabetes = textQuienDiabetes.Text;
+                        objNinioDto.i_QuienDiabetes = rbSiDiabetes.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienEpilepsia = textQuienEpilepsia.Text;
+                        objNinioDto.i_QuienEpilepsia = rbSiEpilepsia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAlergias = textQuienAlergias.Text;
+                        objNinioDto.i_QuienAlergias = rbSiAlergia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienViolenciaFamiliar = textQuienViolenciaFamiliar.Text;
+                        objNinioDto.i_QuienViolenciaFamiliar = rbSiViolencia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAlcoholismo = textQuienAlcoholismo.Text;
+                        objNinioDto.i_QuienAlcoholismo = rbSiAlcoholismo.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienDrogadiccion = textQuienDrogadiccion.Text;
+                        objNinioDto.i_QuienDrogadiccion = rbSiDrogadiccion.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienHeptitisB = textQuienHepatitisB.Text;
+                        objNinioDto.i_QuienHeptitisB = rbSiHepatitis.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
                         objNinioDto.v_EspecificacionesAgua = textAguaPotable.Text;
                         objNinioDto.v_EspecificacionesDesague = textDesague.Text;
 
@@ -8136,11 +8225,42 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         objNinioDto.v_AlergiasMedicamentos = textAlergiaMedicamentos.Text;
                         objNinioDto.v_OtrosAntecedentes = textOtrosAntecedentes.Text;
 
+                        objNinioDto.v_QuienTuberculosis = textQuienTuberculosis.Text;
+                        objNinioDto.i_QuienTuberculosis = rbSiTuberculosis.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAsma = textQuienASMA.Text;
+                        objNinioDto.i_QuienAsma = rbSiAsma.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienVIH = textQuienVIH.Text;
+                        objNinioDto.i_QuienVIH = rbSiVih.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienDiabetes = textQuienDiabetes.Text;
+                        objNinioDto.i_QuienDiabetes = rbSiDiabetes.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienEpilepsia = textQuienEpilepsia.Text;
+                        objNinioDto.i_QuienEpilepsia = rbSiEpilepsia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAlergias = textQuienAlergias.Text;
+                        objNinioDto.i_QuienAlergias = rbSiAlergia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienViolenciaFamiliar = textQuienViolenciaFamiliar.Text;
+                        objNinioDto.i_QuienViolenciaFamiliar = rbSiViolencia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAlcoholismo = textQuienAlcoholismo.Text;
+                        objNinioDto.i_QuienAlcoholismo = rbSiAlcoholismo.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienDrogadiccion = textQuienDrogadiccion.Text;
+                        objNinioDto.i_QuienDrogadiccion = rbSiDrogadiccion.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienHeptitisB = textQuienHepatitisB.Text;
+                        objNinioDto.i_QuienHeptitisB = rbSiHepatitis.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
                         objNinioDto.v_EspecificacionesAgua = textAguaPotable.Text;
                         objNinioDto.v_EspecificacionesDesague = textDesague.Text;
 
                         _objAtencionesIntegralesBl.UpdNinio(ref objOperationResult, objNinioDto, Globals.ClientSession.GetAsList());
                     }
+                    Refresh();
                 }
                 else if (13 <= _age && _age <= 17)
                 {
@@ -8506,6 +8626,121 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             frmEmbarazo frm = new frmEmbarazo("Edit", PacientId, id);
             frm.ShowDialog();
             CargarGrillaEmbarazos(idPerson.v_PersonId);
+        }
+
+        private void rbSiTuberculosis_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienTuberculosis.Enabled = true;
+        }
+
+        private void rbNoTuberculosis_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienTuberculosis.Enabled = false;
+            textQuienTuberculosis.Text = "";
+        }
+
+        private void rbSiAsma_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienASMA.Enabled = true;
+        }
+
+        private void rbNoAsma_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienASMA.Enabled = false;
+            textQuienASMA.Text = "";
+        }
+
+        private void rbSiVih_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienVIH.Enabled = true;
+        }
+
+        private void rbNoVih_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienVIH.Enabled = false;
+            textQuienVIH.Text = "";
+        }
+
+        private void rbSiDiabetes_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienDiabetes.Enabled = true;
+        }
+
+        private void rbNoDiabetes_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienDiabetes.Enabled = false;
+            textQuienDiabetes.Text = "";
+        }
+
+        private void rbSiEpilepsia_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienEpilepsia.Enabled = true;
+        }
+
+        private void rbNoEpilepsia_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienEpilepsia.Enabled = false;
+            textQuienEpilepsia.Text = "";
+        }
+
+        private void rbSiAlergia_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienAlergias.Enabled = true;
+        }
+
+        private void rbNoAlergia_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienAlergias.Enabled = false;
+            textQuienAlergias.Text = "";
+        }
+
+        private void rbSiViolencia_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienViolenciaFamiliar.Enabled = true;
+        }
+
+        private void rbNoViolencia_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienViolenciaFamiliar.Enabled = false;
+            textQuienViolenciaFamiliar.Text = "";
+        }
+
+        private void textQuienAlcoholismo_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rbSiAlcoholismo_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienAlcoholismo.Enabled = true;
+        }
+
+        private void rbNoAlcoholismo_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienAlcoholismo.Enabled = false;
+            textQuienAlcoholismo.Text = "";
+        }
+
+        private void rbSiDrogadiccion_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienDrogadiccion.Enabled = true;
+        }
+
+        private void rbNoDrogadiccion_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienDrogadiccion.Enabled = false;
+            textQuienDrogadiccion.Text = "";
+        }
+
+        private void rbSiHepatitis_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienHepatitisB.Enabled = true;
+        }
+
+        private void rbNoHepatitis_CheckedChanged(object sender, EventArgs e)
+        {
+            textQuienHepatitisB.Enabled = false;
+            textQuienHepatitisB.Text = "";
         }
 
     }
