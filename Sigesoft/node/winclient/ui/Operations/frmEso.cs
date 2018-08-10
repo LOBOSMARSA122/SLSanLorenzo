@@ -1348,7 +1348,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     lbl1.AutoSize = false;
                                     lbl1.Width = 50;
                                     lbl1.Text = f.v_MeasurementUnitName;
-                                    lbl1.Font = new Font(lbl1.Font, FontStyle.Bold | FontStyle.Italic);
+                                    lbl1.Font = new Font(lbl1.Font, FontStyle.Regular | FontStyle.Italic);
                                     lbl1.TextAlign = ContentAlignment.BottomLeft;
                                     fila = RedondeoMayor(nroControlNET, g.i_Column * Constants.COLUMNAS_POR_CONTROL);
                                     columna = nroControlNET - (fila - 1) * (g.i_Column * Constants.COLUMNAS_POR_CONTROL);

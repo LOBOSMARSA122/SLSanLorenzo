@@ -17,5 +17,7 @@ namespace Sigesoft.Node.WinClient.BE
         public int i_EsCoaseguro { get; set; }
 
         public decimal? d_Importe { get; set; }
+        public decimal? i_Cantidad { get; set; }
+        public decimal? d_PrecioVenta { get; set; }
     }
 }
