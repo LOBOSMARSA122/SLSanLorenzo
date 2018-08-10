@@ -5829,7 +5829,27 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_OtrosAntecedentes=b.v_OtrosAntecedentes,
                                      v_EspecificacionesAgua=b.v_EspecificacionesAgua,
                                      v_EspecificacionesDesague=b.v_EspecificacionesDesague,
-                                     v_TiempoHospitalizacion=b.v_TiempoHospitalizacion
+                                     v_TiempoHospitalizacion=b.v_TiempoHospitalizacion,
+                                     v_QuienTuberculosis = b.v_QuienTuberculosis,
+                                     v_QuienAsma = b.v_QuienAsma,
+                                     v_QuienVIH = b.v_QuienVIH,
+                                     v_QuienDiabetes = b.v_QuienDiabetes,
+                                     v_QuienEpilepsia = b.v_QuienEpilepsia,
+                                     v_QuienAlergias = b.v_QuienAlergias,
+                                     v_QuienViolenciaFamiliar = b.v_QuienViolenciaFamiliar,
+                                     v_QuienAlcoholismo = b.v_QuienAlcoholismo,
+                                     v_QuienDrogadiccion = b.v_QuienDrogadiccion,
+                                     v_QuienHeptitisB = b.v_QuienHeptitisB,
+                                     i_QuienTuberculosis = b.i_QuienTuberculosis,
+                                     i_QuienAsma = b.i_QuienAsma,
+                                     i_QuienVIH = b.i_QuienVIH,
+                                     i_QuienDiabetes = b.i_QuienDiabetes,
+                                     i_QuienEpilepsia = b.i_QuienEpilepsia,
+                                     i_QuienAlergias = b.i_QuienAlergias,
+                                     i_QuienViolenciaFamiliar = b.i_QuienViolenciaFamiliar,
+                                     i_QuienAlcoholismo = b.i_QuienAlcoholismo,
+                                     i_QuienDrogadiccion = b.i_QuienDrogadiccion,
+                                     i_QuienHeptitisB = b.i_QuienHeptitisB
                                  }).ToList();
 
                 var result = (from a in objEntity
@@ -5876,7 +5896,27 @@ namespace Sigesoft.Node.WinClient.BLL
                                   v_OtrosAntecedentes=a.v_OtrosAntecedentes,
                                   v_EspecificacionesAgua=a.v_EspecificacionesAgua,
                                   v_EspecificacionesDesague=a.v_EspecificacionesDesague,
-                                  v_TiempoHospitalizacion=a.v_TiempoHospitalizacion
+                                  v_TiempoHospitalizacion=a.v_TiempoHospitalizacion,
+                                  v_QuienTuberculosis=a.v_QuienTuberculosis,
+                                  v_QuienAsma = a.v_QuienAsma,
+                                  v_QuienVIH = a.v_QuienVIH,
+                                  v_QuienDiabetes = a.v_QuienDiabetes,
+                                  v_QuienEpilepsia = a.v_QuienEpilepsia,
+                                  v_QuienAlergias = a.v_QuienAlergias,
+                                  v_QuienViolenciaFamiliar = a.v_QuienViolenciaFamiliar,
+                                  v_QuienAlcoholismo = a.v_QuienAlcoholismo,
+                                  v_QuienDrogadiccion = a.v_QuienDrogadiccion,
+                                  v_QuienHeptitisB = a.v_QuienHeptitisB,
+                                  i_QuienTuberculosis = a.i_QuienTuberculosis,
+                                  i_QuienAsma = a.i_QuienAsma,
+                                  i_QuienVIH = a.i_QuienVIH,
+                                  i_QuienDiabetes = a.i_QuienDiabetes,
+                                  i_QuienEpilepsia = a.i_QuienEpilepsia,
+                                  i_QuienAlergias = a.i_QuienAlergias,
+                                  i_QuienViolenciaFamiliar = a.i_QuienViolenciaFamiliar,
+                                  i_QuienAlcoholismo = a.i_QuienAlcoholismo,
+                                  i_QuienDrogadiccion = a.i_QuienDrogadiccion,
+                                  i_QuienHeptitisB = a.i_QuienHeptitisB
                               }
                         ).FirstOrDefault();
                 return result;

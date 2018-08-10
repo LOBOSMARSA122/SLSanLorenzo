@@ -102,7 +102,7 @@ namespace NetPdf
             else if (datosPac.i_DocTypeId == 3) { tipodoc = "Licencia de Conducir"; }
             else if (datosPac.i_DocTypeId == 4) { tipodoc = "Carnet de Extranjeria"; }
 
-            ServiceComponentList declaracion_jurada = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
+            ServiceComponentList declaracion_jurada = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
             var fecha_regla = declaracion_jurada.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_FECHA_ULTIMA_REGLA) == null ? "" : declaracion_jurada.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_FECHA_ULTIMA_REGLA).v_Value1;
             
             #region Contenido

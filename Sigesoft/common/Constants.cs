@@ -1275,6 +1275,7 @@ namespace Sigesoft.Common
         public const string EXCEPCIONES_RX_EXO_NO = "N009-MF000003430";
         public const string EXCEPCIONES_RX_EXO_MOTIVO = "N009-MF000003431";
 
+        public const string EXCEPCIONES_RX_AUTORIZACION_ID = "N009-ME000000442";
         public const string EXCEPCIONES_RX_AUTORIZACION_SI = "N009-MF000003432";
         public const string EXCEPCIONES_RX_AUTORIZACION_NO = "N009-MF000003433";
         public const string EXCEPCIONES_RX_FECHA_ULTIMA_REGLA = "N009-MF000003434";

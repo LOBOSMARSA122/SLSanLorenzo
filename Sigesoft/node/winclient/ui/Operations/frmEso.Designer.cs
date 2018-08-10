@@ -253,13 +253,13 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance125 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn139 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn140 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn141 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn142 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn143 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn144 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -515,6 +515,57 @@
             this.label135 = new System.Windows.Forms.Label();
             this.ultgrboxFamiliares = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel4 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
+            this.label141 = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.textQuienHepatitisB = new System.Windows.Forms.TextBox();
+            this.rbNoHepatitis = new System.Windows.Forms.RadioButton();
+            this.rbSiHepatitis = new System.Windows.Forms.RadioButton();
+            this.label134 = new System.Windows.Forms.Label();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.textQuienDrogadiccion = new System.Windows.Forms.TextBox();
+            this.rbNoDrogadiccion = new System.Windows.Forms.RadioButton();
+            this.rbSiDrogadiccion = new System.Windows.Forms.RadioButton();
+            this.label133 = new System.Windows.Forms.Label();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.textQuienAlcoholismo = new System.Windows.Forms.TextBox();
+            this.rbNoAlcoholismo = new System.Windows.Forms.RadioButton();
+            this.rbSiAlcoholismo = new System.Windows.Forms.RadioButton();
+            this.label132 = new System.Windows.Forms.Label();
+            this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.textQuienViolenciaFamiliar = new System.Windows.Forms.TextBox();
+            this.rbNoViolencia = new System.Windows.Forms.RadioButton();
+            this.rbSiViolencia = new System.Windows.Forms.RadioButton();
+            this.label131 = new System.Windows.Forms.Label();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.textQuienAlergias = new System.Windows.Forms.TextBox();
+            this.rbNoAlergia = new System.Windows.Forms.RadioButton();
+            this.rbSiAlergia = new System.Windows.Forms.RadioButton();
+            this.label130 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.textQuienEpilepsia = new System.Windows.Forms.TextBox();
+            this.rbNoEpilepsia = new System.Windows.Forms.RadioButton();
+            this.rbSiEpilepsia = new System.Windows.Forms.RadioButton();
+            this.label129 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.textQuienDiabetes = new System.Windows.Forms.TextBox();
+            this.rbNoDiabetes = new System.Windows.Forms.RadioButton();
+            this.rbSiDiabetes = new System.Windows.Forms.RadioButton();
+            this.label128 = new System.Windows.Forms.Label();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.textQuienVIH = new System.Windows.Forms.TextBox();
+            this.rbNoVih = new System.Windows.Forms.RadioButton();
+            this.rbSiVih = new System.Windows.Forms.RadioButton();
+            this.label127 = new System.Windows.Forms.Label();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.textQuienASMA = new System.Windows.Forms.TextBox();
+            this.rbNoAsma = new System.Windows.Forms.RadioButton();
+            this.rbSiAsma = new System.Windows.Forms.RadioButton();
+            this.label95 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.textQuienTuberculosis = new System.Windows.Forms.TextBox();
+            this.rbNoTuberculosis = new System.Windows.Forms.RadioButton();
+            this.rbSiTuberculosis = new System.Windows.Forms.RadioButton();
+            this.label162 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
             this.ultgrboxNacimiento = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel3 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
@@ -674,57 +725,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textQuienTuberculosis = new System.Windows.Forms.TextBox();
-            this.rbNoTuberculosis = new System.Windows.Forms.RadioButton();
-            this.rbSiTuberculosis = new System.Windows.Forms.RadioButton();
-            this.label162 = new System.Windows.Forms.Label();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.textQuienASMA = new System.Windows.Forms.TextBox();
-            this.rbNoAsma = new System.Windows.Forms.RadioButton();
-            this.rbSiAsma = new System.Windows.Forms.RadioButton();
-            this.label95 = new System.Windows.Forms.Label();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.textQuienVIH = new System.Windows.Forms.TextBox();
-            this.rbNoVih = new System.Windows.Forms.RadioButton();
-            this.rbSiVih = new System.Windows.Forms.RadioButton();
-            this.label127 = new System.Windows.Forms.Label();
-            this.textQuienDiabetes = new System.Windows.Forms.TextBox();
-            this.rbNoDiabetes = new System.Windows.Forms.RadioButton();
-            this.rbSiDiabetes = new System.Windows.Forms.RadioButton();
-            this.label128 = new System.Windows.Forms.Label();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.textQuienEpilepsia = new System.Windows.Forms.TextBox();
-            this.rbNoEpilepsia = new System.Windows.Forms.RadioButton();
-            this.rbSiEpilepsia = new System.Windows.Forms.RadioButton();
-            this.label129 = new System.Windows.Forms.Label();
-            this.textQuienAlergias = new System.Windows.Forms.TextBox();
-            this.rbNoAlergia = new System.Windows.Forms.RadioButton();
-            this.rbSiAlergia = new System.Windows.Forms.RadioButton();
-            this.label130 = new System.Windows.Forms.Label();
-            this.groupBox12 = new System.Windows.Forms.GroupBox();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.textQuienViolenciaFamiliar = new System.Windows.Forms.TextBox();
-            this.rbNoViolencia = new System.Windows.Forms.RadioButton();
-            this.rbSiViolencia = new System.Windows.Forms.RadioButton();
-            this.label131 = new System.Windows.Forms.Label();
-            this.textQuienAlcoholismo = new System.Windows.Forms.TextBox();
-            this.rbNoAlcoholismo = new System.Windows.Forms.RadioButton();
-            this.rbSiAlcoholismo = new System.Windows.Forms.RadioButton();
-            this.label132 = new System.Windows.Forms.Label();
-            this.groupBox14 = new System.Windows.Forms.GroupBox();
-            this.textQuienDrogadiccion = new System.Windows.Forms.TextBox();
-            this.rbNoDrogadiccion = new System.Windows.Forms.RadioButton();
-            this.rbSiDrogadiccion = new System.Windows.Forms.RadioButton();
-            this.label133 = new System.Windows.Forms.Label();
-            this.textQuienHepatitisB = new System.Windows.Forms.TextBox();
-            this.rbNoHepatitis = new System.Windows.Forms.RadioButton();
-            this.rbSiHepatitis = new System.Windows.Forms.RadioButton();
-            this.label134 = new System.Windows.Forms.Label();
-            this.label141 = new System.Windows.Forms.Label();
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -792,6 +792,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultgrboxFamiliares)).BeginInit();
             this.ultgrboxFamiliares.SuspendLayout();
             this.ultraExpandableGroupBoxPanel4.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            this.groupBox13.SuspendLayout();
+            this.groupBox12.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox8.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox6.SuspendLayout();
+            this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultgrboxNacimiento)).BeginInit();
             this.ultgrboxNacimiento.SuspendLayout();
             this.ultraExpandableGroupBoxPanel3.SuspendLayout();
@@ -814,16 +824,6 @@
             this.pnlLeftPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.groupBox12.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox14.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcSubMain
@@ -5264,6 +5264,546 @@
             this.ultraExpandableGroupBoxPanel4.TabIndex = 0;
             this.ultraExpandableGroupBoxPanel4.Visible = false;
             // 
+            // label141
+            // 
+            this.label141.AutoSize = true;
+            this.label141.Location = new System.Drawing.Point(144, 332);
+            this.label141.Name = "label141";
+            this.label141.Size = new System.Drawing.Size(255, 13);
+            this.label141.TabIndex = 186;
+            this.label141.Text = "(*) Padre (P), Madre (M), Hno(H), Abuelo/a (A), Otro (O)";
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.textQuienHepatitisB);
+            this.groupBox11.Controls.Add(this.rbNoHepatitis);
+            this.groupBox11.Controls.Add(this.rbSiHepatitis);
+            this.groupBox11.Controls.Add(this.label134);
+            this.groupBox11.Location = new System.Drawing.Point(9, 295);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(500, 31);
+            this.groupBox11.TabIndex = 182;
+            this.groupBox11.TabStop = false;
+            // 
+            // textQuienHepatitisB
+            // 
+            this.textQuienHepatitisB.Enabled = false;
+            this.textQuienHepatitisB.Location = new System.Drawing.Point(175, 8);
+            this.textQuienHepatitisB.Name = "textQuienHepatitisB";
+            this.textQuienHepatitisB.Size = new System.Drawing.Size(170, 21);
+            this.textQuienHepatitisB.TabIndex = 177;
+            // 
+            // rbNoHepatitis
+            // 
+            this.rbNoHepatitis.AutoSize = true;
+            this.rbNoHepatitis.Location = new System.Drawing.Point(425, 9);
+            this.rbNoHepatitis.Name = "rbNoHepatitis";
+            this.rbNoHepatitis.Size = new System.Drawing.Size(38, 17);
+            this.rbNoHepatitis.TabIndex = 176;
+            this.rbNoHepatitis.TabStop = true;
+            this.rbNoHepatitis.Text = "No";
+            this.rbNoHepatitis.UseVisualStyleBackColor = true;
+            this.rbNoHepatitis.CheckedChanged += new System.EventHandler(this.rbNoHepatitis_CheckedChanged);
+            // 
+            // rbSiHepatitis
+            // 
+            this.rbSiHepatitis.AutoSize = true;
+            this.rbSiHepatitis.Location = new System.Drawing.Point(369, 9);
+            this.rbSiHepatitis.Name = "rbSiHepatitis";
+            this.rbSiHepatitis.Size = new System.Drawing.Size(33, 17);
+            this.rbSiHepatitis.TabIndex = 175;
+            this.rbSiHepatitis.TabStop = true;
+            this.rbSiHepatitis.Text = "Si";
+            this.rbSiHepatitis.UseVisualStyleBackColor = true;
+            this.rbSiHepatitis.CheckedChanged += new System.EventHandler(this.rbSiHepatitis_CheckedChanged);
+            // 
+            // label134
+            // 
+            this.label134.AutoSize = true;
+            this.label134.Location = new System.Drawing.Point(37, 11);
+            this.label134.Name = "label134";
+            this.label134.Size = new System.Drawing.Size(60, 13);
+            this.label134.TabIndex = 174;
+            this.label134.Text = "Hepatitis B.";
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.textQuienDrogadiccion);
+            this.groupBox14.Controls.Add(this.rbNoDrogadiccion);
+            this.groupBox14.Controls.Add(this.rbSiDrogadiccion);
+            this.groupBox14.Controls.Add(this.label133);
+            this.groupBox14.Location = new System.Drawing.Point(9, 265);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(500, 31);
+            this.groupBox14.TabIndex = 185;
+            this.groupBox14.TabStop = false;
+            // 
+            // textQuienDrogadiccion
+            // 
+            this.textQuienDrogadiccion.Enabled = false;
+            this.textQuienDrogadiccion.Location = new System.Drawing.Point(175, 8);
+            this.textQuienDrogadiccion.Name = "textQuienDrogadiccion";
+            this.textQuienDrogadiccion.Size = new System.Drawing.Size(170, 21);
+            this.textQuienDrogadiccion.TabIndex = 173;
+            // 
+            // rbNoDrogadiccion
+            // 
+            this.rbNoDrogadiccion.AutoSize = true;
+            this.rbNoDrogadiccion.Location = new System.Drawing.Point(425, 9);
+            this.rbNoDrogadiccion.Name = "rbNoDrogadiccion";
+            this.rbNoDrogadiccion.Size = new System.Drawing.Size(38, 17);
+            this.rbNoDrogadiccion.TabIndex = 172;
+            this.rbNoDrogadiccion.TabStop = true;
+            this.rbNoDrogadiccion.Text = "No";
+            this.rbNoDrogadiccion.UseVisualStyleBackColor = true;
+            this.rbNoDrogadiccion.CheckedChanged += new System.EventHandler(this.rbNoDrogadiccion_CheckedChanged);
+            // 
+            // rbSiDrogadiccion
+            // 
+            this.rbSiDrogadiccion.AutoSize = true;
+            this.rbSiDrogadiccion.Location = new System.Drawing.Point(369, 9);
+            this.rbSiDrogadiccion.Name = "rbSiDrogadiccion";
+            this.rbSiDrogadiccion.Size = new System.Drawing.Size(33, 17);
+            this.rbSiDrogadiccion.TabIndex = 171;
+            this.rbSiDrogadiccion.TabStop = true;
+            this.rbSiDrogadiccion.Text = "Si";
+            this.rbSiDrogadiccion.UseVisualStyleBackColor = true;
+            this.rbSiDrogadiccion.CheckedChanged += new System.EventHandler(this.rbSiDrogadiccion_CheckedChanged);
+            // 
+            // label133
+            // 
+            this.label133.AutoSize = true;
+            this.label133.Location = new System.Drawing.Point(37, 11);
+            this.label133.Name = "label133";
+            this.label133.Size = new System.Drawing.Size(69, 13);
+            this.label133.TabIndex = 170;
+            this.label133.Text = "Drogadicción";
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.textQuienAlcoholismo);
+            this.groupBox13.Controls.Add(this.rbNoAlcoholismo);
+            this.groupBox13.Controls.Add(this.rbSiAlcoholismo);
+            this.groupBox13.Controls.Add(this.label132);
+            this.groupBox13.Location = new System.Drawing.Point(9, 235);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(500, 31);
+            this.groupBox13.TabIndex = 184;
+            this.groupBox13.TabStop = false;
+            // 
+            // textQuienAlcoholismo
+            // 
+            this.textQuienAlcoholismo.Enabled = false;
+            this.textQuienAlcoholismo.Location = new System.Drawing.Point(175, 8);
+            this.textQuienAlcoholismo.Name = "textQuienAlcoholismo";
+            this.textQuienAlcoholismo.Size = new System.Drawing.Size(170, 21);
+            this.textQuienAlcoholismo.TabIndex = 169;
+            this.textQuienAlcoholismo.TextChanged += new System.EventHandler(this.textQuienAlcoholismo_TextChanged);
+            // 
+            // rbNoAlcoholismo
+            // 
+            this.rbNoAlcoholismo.AutoSize = true;
+            this.rbNoAlcoholismo.Location = new System.Drawing.Point(425, 9);
+            this.rbNoAlcoholismo.Name = "rbNoAlcoholismo";
+            this.rbNoAlcoholismo.Size = new System.Drawing.Size(38, 17);
+            this.rbNoAlcoholismo.TabIndex = 168;
+            this.rbNoAlcoholismo.TabStop = true;
+            this.rbNoAlcoholismo.Text = "No";
+            this.rbNoAlcoholismo.UseVisualStyleBackColor = true;
+            this.rbNoAlcoholismo.CheckedChanged += new System.EventHandler(this.rbNoAlcoholismo_CheckedChanged);
+            // 
+            // rbSiAlcoholismo
+            // 
+            this.rbSiAlcoholismo.AutoSize = true;
+            this.rbSiAlcoholismo.Location = new System.Drawing.Point(369, 9);
+            this.rbSiAlcoholismo.Name = "rbSiAlcoholismo";
+            this.rbSiAlcoholismo.Size = new System.Drawing.Size(33, 17);
+            this.rbSiAlcoholismo.TabIndex = 167;
+            this.rbSiAlcoholismo.TabStop = true;
+            this.rbSiAlcoholismo.Text = "Si";
+            this.rbSiAlcoholismo.UseVisualStyleBackColor = true;
+            this.rbSiAlcoholismo.CheckedChanged += new System.EventHandler(this.rbSiAlcoholismo_CheckedChanged);
+            // 
+            // label132
+            // 
+            this.label132.AutoSize = true;
+            this.label132.Location = new System.Drawing.Point(37, 11);
+            this.label132.Name = "label132";
+            this.label132.Size = new System.Drawing.Size(65, 13);
+            this.label132.TabIndex = 166;
+            this.label132.Text = "Alcoholismo";
+            // 
+            // groupBox12
+            // 
+            this.groupBox12.Controls.Add(this.textQuienViolenciaFamiliar);
+            this.groupBox12.Controls.Add(this.rbNoViolencia);
+            this.groupBox12.Controls.Add(this.rbSiViolencia);
+            this.groupBox12.Controls.Add(this.label131);
+            this.groupBox12.Location = new System.Drawing.Point(9, 205);
+            this.groupBox12.Name = "groupBox12";
+            this.groupBox12.Size = new System.Drawing.Size(500, 31);
+            this.groupBox12.TabIndex = 183;
+            this.groupBox12.TabStop = false;
+            // 
+            // textQuienViolenciaFamiliar
+            // 
+            this.textQuienViolenciaFamiliar.Enabled = false;
+            this.textQuienViolenciaFamiliar.Location = new System.Drawing.Point(175, 8);
+            this.textQuienViolenciaFamiliar.Name = "textQuienViolenciaFamiliar";
+            this.textQuienViolenciaFamiliar.Size = new System.Drawing.Size(170, 21);
+            this.textQuienViolenciaFamiliar.TabIndex = 165;
+            // 
+            // rbNoViolencia
+            // 
+            this.rbNoViolencia.AutoSize = true;
+            this.rbNoViolencia.Location = new System.Drawing.Point(425, 9);
+            this.rbNoViolencia.Name = "rbNoViolencia";
+            this.rbNoViolencia.Size = new System.Drawing.Size(38, 17);
+            this.rbNoViolencia.TabIndex = 164;
+            this.rbNoViolencia.TabStop = true;
+            this.rbNoViolencia.Text = "No";
+            this.rbNoViolencia.UseVisualStyleBackColor = true;
+            this.rbNoViolencia.CheckedChanged += new System.EventHandler(this.rbNoViolencia_CheckedChanged);
+            // 
+            // rbSiViolencia
+            // 
+            this.rbSiViolencia.AutoSize = true;
+            this.rbSiViolencia.Location = new System.Drawing.Point(369, 9);
+            this.rbSiViolencia.Name = "rbSiViolencia";
+            this.rbSiViolencia.Size = new System.Drawing.Size(33, 17);
+            this.rbSiViolencia.TabIndex = 163;
+            this.rbSiViolencia.TabStop = true;
+            this.rbSiViolencia.Text = "Si";
+            this.rbSiViolencia.UseVisualStyleBackColor = true;
+            this.rbSiViolencia.CheckedChanged += new System.EventHandler(this.rbSiViolencia_CheckedChanged);
+            // 
+            // label131
+            // 
+            this.label131.AutoSize = true;
+            this.label131.Location = new System.Drawing.Point(37, 11);
+            this.label131.Name = "label131";
+            this.label131.Size = new System.Drawing.Size(92, 13);
+            this.label131.TabIndex = 162;
+            this.label131.Text = "Violencia Familiar";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.textQuienAlergias);
+            this.groupBox10.Controls.Add(this.rbNoAlergia);
+            this.groupBox10.Controls.Add(this.rbSiAlergia);
+            this.groupBox10.Controls.Add(this.label130);
+            this.groupBox10.Location = new System.Drawing.Point(9, 175);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(500, 31);
+            this.groupBox10.TabIndex = 179;
+            this.groupBox10.TabStop = false;
+            // 
+            // textQuienAlergias
+            // 
+            this.textQuienAlergias.Enabled = false;
+            this.textQuienAlergias.Location = new System.Drawing.Point(175, 8);
+            this.textQuienAlergias.Name = "textQuienAlergias";
+            this.textQuienAlergias.Size = new System.Drawing.Size(170, 21);
+            this.textQuienAlergias.TabIndex = 161;
+            // 
+            // rbNoAlergia
+            // 
+            this.rbNoAlergia.AutoSize = true;
+            this.rbNoAlergia.Location = new System.Drawing.Point(425, 9);
+            this.rbNoAlergia.Name = "rbNoAlergia";
+            this.rbNoAlergia.Size = new System.Drawing.Size(38, 17);
+            this.rbNoAlergia.TabIndex = 160;
+            this.rbNoAlergia.TabStop = true;
+            this.rbNoAlergia.Text = "No";
+            this.rbNoAlergia.UseVisualStyleBackColor = true;
+            this.rbNoAlergia.CheckedChanged += new System.EventHandler(this.rbNoAlergia_CheckedChanged);
+            // 
+            // rbSiAlergia
+            // 
+            this.rbSiAlergia.AutoSize = true;
+            this.rbSiAlergia.Location = new System.Drawing.Point(369, 9);
+            this.rbSiAlergia.Name = "rbSiAlergia";
+            this.rbSiAlergia.Size = new System.Drawing.Size(33, 17);
+            this.rbSiAlergia.TabIndex = 159;
+            this.rbSiAlergia.TabStop = true;
+            this.rbSiAlergia.Text = "Si";
+            this.rbSiAlergia.UseVisualStyleBackColor = true;
+            this.rbSiAlergia.CheckedChanged += new System.EventHandler(this.rbSiAlergia_CheckedChanged);
+            // 
+            // label130
+            // 
+            this.label130.AutoSize = true;
+            this.label130.Location = new System.Drawing.Point(37, 11);
+            this.label130.Name = "label130";
+            this.label130.Size = new System.Drawing.Size(104, 13);
+            this.label130.TabIndex = 158;
+            this.label130.Text = "Alergias a medicinas";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.textQuienEpilepsia);
+            this.groupBox9.Controls.Add(this.rbNoEpilepsia);
+            this.groupBox9.Controls.Add(this.rbSiEpilepsia);
+            this.groupBox9.Controls.Add(this.label129);
+            this.groupBox9.Location = new System.Drawing.Point(9, 145);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(500, 31);
+            this.groupBox9.TabIndex = 178;
+            this.groupBox9.TabStop = false;
+            // 
+            // textQuienEpilepsia
+            // 
+            this.textQuienEpilepsia.Enabled = false;
+            this.textQuienEpilepsia.Location = new System.Drawing.Point(175, 8);
+            this.textQuienEpilepsia.Name = "textQuienEpilepsia";
+            this.textQuienEpilepsia.Size = new System.Drawing.Size(170, 21);
+            this.textQuienEpilepsia.TabIndex = 157;
+            // 
+            // rbNoEpilepsia
+            // 
+            this.rbNoEpilepsia.AutoSize = true;
+            this.rbNoEpilepsia.Location = new System.Drawing.Point(425, 10);
+            this.rbNoEpilepsia.Name = "rbNoEpilepsia";
+            this.rbNoEpilepsia.Size = new System.Drawing.Size(38, 17);
+            this.rbNoEpilepsia.TabIndex = 156;
+            this.rbNoEpilepsia.TabStop = true;
+            this.rbNoEpilepsia.Text = "No";
+            this.rbNoEpilepsia.UseVisualStyleBackColor = true;
+            this.rbNoEpilepsia.CheckedChanged += new System.EventHandler(this.rbNoEpilepsia_CheckedChanged);
+            // 
+            // rbSiEpilepsia
+            // 
+            this.rbSiEpilepsia.AutoSize = true;
+            this.rbSiEpilepsia.Location = new System.Drawing.Point(369, 10);
+            this.rbSiEpilepsia.Name = "rbSiEpilepsia";
+            this.rbSiEpilepsia.Size = new System.Drawing.Size(33, 17);
+            this.rbSiEpilepsia.TabIndex = 155;
+            this.rbSiEpilepsia.TabStop = true;
+            this.rbSiEpilepsia.Text = "Si";
+            this.rbSiEpilepsia.UseVisualStyleBackColor = true;
+            this.rbSiEpilepsia.CheckedChanged += new System.EventHandler(this.rbSiEpilepsia_CheckedChanged);
+            // 
+            // label129
+            // 
+            this.label129.AutoSize = true;
+            this.label129.Location = new System.Drawing.Point(37, 12);
+            this.label129.Name = "label129";
+            this.label129.Size = new System.Drawing.Size(50, 13);
+            this.label129.TabIndex = 154;
+            this.label129.Text = "Epilepsia";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.textQuienDiabetes);
+            this.groupBox8.Controls.Add(this.rbNoDiabetes);
+            this.groupBox8.Controls.Add(this.rbSiDiabetes);
+            this.groupBox8.Controls.Add(this.label128);
+            this.groupBox8.Location = new System.Drawing.Point(9, 115);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(500, 31);
+            this.groupBox8.TabIndex = 177;
+            this.groupBox8.TabStop = false;
+            // 
+            // textQuienDiabetes
+            // 
+            this.textQuienDiabetes.Enabled = false;
+            this.textQuienDiabetes.Location = new System.Drawing.Point(175, 8);
+            this.textQuienDiabetes.Name = "textQuienDiabetes";
+            this.textQuienDiabetes.Size = new System.Drawing.Size(170, 21);
+            this.textQuienDiabetes.TabIndex = 153;
+            // 
+            // rbNoDiabetes
+            // 
+            this.rbNoDiabetes.AutoSize = true;
+            this.rbNoDiabetes.Location = new System.Drawing.Point(425, 9);
+            this.rbNoDiabetes.Name = "rbNoDiabetes";
+            this.rbNoDiabetes.Size = new System.Drawing.Size(38, 17);
+            this.rbNoDiabetes.TabIndex = 152;
+            this.rbNoDiabetes.TabStop = true;
+            this.rbNoDiabetes.Text = "No";
+            this.rbNoDiabetes.UseVisualStyleBackColor = true;
+            this.rbNoDiabetes.CheckedChanged += new System.EventHandler(this.rbNoDiabetes_CheckedChanged);
+            // 
+            // rbSiDiabetes
+            // 
+            this.rbSiDiabetes.AutoSize = true;
+            this.rbSiDiabetes.Location = new System.Drawing.Point(369, 9);
+            this.rbSiDiabetes.Name = "rbSiDiabetes";
+            this.rbSiDiabetes.Size = new System.Drawing.Size(33, 17);
+            this.rbSiDiabetes.TabIndex = 151;
+            this.rbSiDiabetes.TabStop = true;
+            this.rbSiDiabetes.Text = "Si";
+            this.rbSiDiabetes.UseVisualStyleBackColor = true;
+            this.rbSiDiabetes.CheckedChanged += new System.EventHandler(this.rbSiDiabetes_CheckedChanged);
+            // 
+            // label128
+            // 
+            this.label128.AutoSize = true;
+            this.label128.Location = new System.Drawing.Point(37, 11);
+            this.label128.Name = "label128";
+            this.label128.Size = new System.Drawing.Size(50, 13);
+            this.label128.TabIndex = 150;
+            this.label128.Text = "Diabetes";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Controls.Add(this.textQuienVIH);
+            this.groupBox7.Controls.Add(this.rbNoVih);
+            this.groupBox7.Controls.Add(this.rbSiVih);
+            this.groupBox7.Controls.Add(this.label127);
+            this.groupBox7.Location = new System.Drawing.Point(9, 85);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(500, 31);
+            this.groupBox7.TabIndex = 176;
+            this.groupBox7.TabStop = false;
+            // 
+            // textQuienVIH
+            // 
+            this.textQuienVIH.Enabled = false;
+            this.textQuienVIH.Location = new System.Drawing.Point(175, 7);
+            this.textQuienVIH.Name = "textQuienVIH";
+            this.textQuienVIH.Size = new System.Drawing.Size(170, 21);
+            this.textQuienVIH.TabIndex = 149;
+            // 
+            // rbNoVih
+            // 
+            this.rbNoVih.AutoSize = true;
+            this.rbNoVih.Location = new System.Drawing.Point(425, 10);
+            this.rbNoVih.Name = "rbNoVih";
+            this.rbNoVih.Size = new System.Drawing.Size(38, 17);
+            this.rbNoVih.TabIndex = 148;
+            this.rbNoVih.TabStop = true;
+            this.rbNoVih.Text = "No";
+            this.rbNoVih.UseVisualStyleBackColor = true;
+            this.rbNoVih.CheckedChanged += new System.EventHandler(this.rbNoVih_CheckedChanged);
+            // 
+            // rbSiVih
+            // 
+            this.rbSiVih.AutoSize = true;
+            this.rbSiVih.Location = new System.Drawing.Point(369, 10);
+            this.rbSiVih.Name = "rbSiVih";
+            this.rbSiVih.Size = new System.Drawing.Size(33, 17);
+            this.rbSiVih.TabIndex = 147;
+            this.rbSiVih.TabStop = true;
+            this.rbSiVih.Text = "Si";
+            this.rbSiVih.UseVisualStyleBackColor = true;
+            this.rbSiVih.CheckedChanged += new System.EventHandler(this.rbSiVih_CheckedChanged);
+            // 
+            // label127
+            // 
+            this.label127.AutoSize = true;
+            this.label127.Location = new System.Drawing.Point(37, 12);
+            this.label127.Name = "label127";
+            this.label127.Size = new System.Drawing.Size(51, 13);
+            this.label127.TabIndex = 146;
+            this.label127.Text = "VIH - SIDA";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.textQuienASMA);
+            this.groupBox6.Controls.Add(this.rbNoAsma);
+            this.groupBox6.Controls.Add(this.rbSiAsma);
+            this.groupBox6.Controls.Add(this.label95);
+            this.groupBox6.Location = new System.Drawing.Point(9, 55);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(500, 31);
+            this.groupBox6.TabIndex = 175;
+            this.groupBox6.TabStop = false;
+            // 
+            // textQuienASMA
+            // 
+            this.textQuienASMA.Enabled = false;
+            this.textQuienASMA.Location = new System.Drawing.Point(175, 8);
+            this.textQuienASMA.Name = "textQuienASMA";
+            this.textQuienASMA.Size = new System.Drawing.Size(170, 21);
+            this.textQuienASMA.TabIndex = 149;
+            // 
+            // rbNoAsma
+            // 
+            this.rbNoAsma.AutoSize = true;
+            this.rbNoAsma.Location = new System.Drawing.Point(425, 9);
+            this.rbNoAsma.Name = "rbNoAsma";
+            this.rbNoAsma.Size = new System.Drawing.Size(38, 17);
+            this.rbNoAsma.TabIndex = 148;
+            this.rbNoAsma.TabStop = true;
+            this.rbNoAsma.Text = "No";
+            this.rbNoAsma.UseVisualStyleBackColor = true;
+            this.rbNoAsma.CheckedChanged += new System.EventHandler(this.rbNoAsma_CheckedChanged);
+            // 
+            // rbSiAsma
+            // 
+            this.rbSiAsma.AutoSize = true;
+            this.rbSiAsma.Location = new System.Drawing.Point(369, 9);
+            this.rbSiAsma.Name = "rbSiAsma";
+            this.rbSiAsma.Size = new System.Drawing.Size(33, 17);
+            this.rbSiAsma.TabIndex = 147;
+            this.rbSiAsma.TabStop = true;
+            this.rbSiAsma.Text = "Si";
+            this.rbSiAsma.UseVisualStyleBackColor = true;
+            this.rbSiAsma.CheckedChanged += new System.EventHandler(this.rbSiAsma_CheckedChanged);
+            // 
+            // label95
+            // 
+            this.label95.AutoSize = true;
+            this.label95.Location = new System.Drawing.Point(37, 11);
+            this.label95.Name = "label95";
+            this.label95.Size = new System.Drawing.Size(33, 13);
+            this.label95.TabIndex = 146;
+            this.label95.Text = "ASMA";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.textQuienTuberculosis);
+            this.groupBox5.Controls.Add(this.rbNoTuberculosis);
+            this.groupBox5.Controls.Add(this.rbSiTuberculosis);
+            this.groupBox5.Controls.Add(this.label162);
+            this.groupBox5.Location = new System.Drawing.Point(9, 22);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(500, 31);
+            this.groupBox5.TabIndex = 174;
+            this.groupBox5.TabStop = false;
+            // 
+            // textQuienTuberculosis
+            // 
+            this.textQuienTuberculosis.Enabled = false;
+            this.textQuienTuberculosis.Location = new System.Drawing.Point(175, 8);
+            this.textQuienTuberculosis.Name = "textQuienTuberculosis";
+            this.textQuienTuberculosis.Size = new System.Drawing.Size(170, 21);
+            this.textQuienTuberculosis.TabIndex = 140;
+            // 
+            // rbNoTuberculosis
+            // 
+            this.rbNoTuberculosis.AutoSize = true;
+            this.rbNoTuberculosis.Location = new System.Drawing.Point(425, 10);
+            this.rbNoTuberculosis.Name = "rbNoTuberculosis";
+            this.rbNoTuberculosis.Size = new System.Drawing.Size(38, 17);
+            this.rbNoTuberculosis.TabIndex = 139;
+            this.rbNoTuberculosis.TabStop = true;
+            this.rbNoTuberculosis.Text = "No";
+            this.rbNoTuberculosis.UseVisualStyleBackColor = true;
+            this.rbNoTuberculosis.CheckedChanged += new System.EventHandler(this.rbNoTuberculosis_CheckedChanged);
+            // 
+            // rbSiTuberculosis
+            // 
+            this.rbSiTuberculosis.AutoSize = true;
+            this.rbSiTuberculosis.Location = new System.Drawing.Point(369, 10);
+            this.rbSiTuberculosis.Name = "rbSiTuberculosis";
+            this.rbSiTuberculosis.Size = new System.Drawing.Size(33, 17);
+            this.rbSiTuberculosis.TabIndex = 138;
+            this.rbSiTuberculosis.TabStop = true;
+            this.rbSiTuberculosis.Text = "Si";
+            this.rbSiTuberculosis.UseVisualStyleBackColor = true;
+            this.rbSiTuberculosis.CheckedChanged += new System.EventHandler(this.rbSiTuberculosis_CheckedChanged);
+            // 
+            // label162
+            // 
+            this.label162.AutoSize = true;
+            this.label162.Location = new System.Drawing.Point(37, 12);
+            this.label162.Name = "label162";
+            this.label162.Size = new System.Drawing.Size(66, 13);
+            this.label162.TabIndex = 137;
+            this.label162.Text = "Tuberculosis";
+            // 
             // label94
             // 
             this.label94.AutoSize = true;
@@ -6825,14 +7365,14 @@
             // 
             // uvExamen
             // 
-            appearance125.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance125.BackColor2 = System.Drawing.Color.Transparent;
-            appearance125.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance125.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance125.BorderColor = System.Drawing.Color.Red;
-            appearance125.BorderColor2 = System.Drawing.Color.Red;
-            appearance125.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance125;
+            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance15.BackColor2 = System.Drawing.Color.Transparent;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance15.BorderColor = System.Drawing.Color.Red;
+            appearance15.BorderColor2 = System.Drawing.Color.Red;
+            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance15;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -6846,7 +7386,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 749);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 732);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -6867,559 +7407,19 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn139,
-            ultraDataColumn140,
-            ultraDataColumn141,
-            ultraDataColumn142,
-            ultraDataColumn143,
-            ultraDataColumn144});
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.textQuienTuberculosis);
-            this.groupBox5.Controls.Add(this.rbNoTuberculosis);
-            this.groupBox5.Controls.Add(this.rbSiTuberculosis);
-            this.groupBox5.Controls.Add(this.label162);
-            this.groupBox5.Location = new System.Drawing.Point(9, 22);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(500, 31);
-            this.groupBox5.TabIndex = 174;
-            this.groupBox5.TabStop = false;
-            // 
-            // textQuienTuberculosis
-            // 
-            this.textQuienTuberculosis.Enabled = false;
-            this.textQuienTuberculosis.Location = new System.Drawing.Point(175, 8);
-            this.textQuienTuberculosis.Name = "textQuienTuberculosis";
-            this.textQuienTuberculosis.Size = new System.Drawing.Size(170, 21);
-            this.textQuienTuberculosis.TabIndex = 140;
-            // 
-            // rbNoTuberculosis
-            // 
-            this.rbNoTuberculosis.AutoSize = true;
-            this.rbNoTuberculosis.Location = new System.Drawing.Point(425, 10);
-            this.rbNoTuberculosis.Name = "rbNoTuberculosis";
-            this.rbNoTuberculosis.Size = new System.Drawing.Size(38, 17);
-            this.rbNoTuberculosis.TabIndex = 139;
-            this.rbNoTuberculosis.TabStop = true;
-            this.rbNoTuberculosis.Text = "No";
-            this.rbNoTuberculosis.UseVisualStyleBackColor = true;
-            this.rbNoTuberculosis.CheckedChanged += new System.EventHandler(this.rbNoTuberculosis_CheckedChanged);
-            // 
-            // rbSiTuberculosis
-            // 
-            this.rbSiTuberculosis.AutoSize = true;
-            this.rbSiTuberculosis.Location = new System.Drawing.Point(369, 10);
-            this.rbSiTuberculosis.Name = "rbSiTuberculosis";
-            this.rbSiTuberculosis.Size = new System.Drawing.Size(33, 17);
-            this.rbSiTuberculosis.TabIndex = 138;
-            this.rbSiTuberculosis.TabStop = true;
-            this.rbSiTuberculosis.Text = "Si";
-            this.rbSiTuberculosis.UseVisualStyleBackColor = true;
-            this.rbSiTuberculosis.CheckedChanged += new System.EventHandler(this.rbSiTuberculosis_CheckedChanged);
-            // 
-            // label162
-            // 
-            this.label162.AutoSize = true;
-            this.label162.Location = new System.Drawing.Point(37, 12);
-            this.label162.Name = "label162";
-            this.label162.Size = new System.Drawing.Size(66, 13);
-            this.label162.TabIndex = 137;
-            this.label162.Text = "Tuberculosis";
-            // 
-            // groupBox6
-            // 
-            this.groupBox6.Controls.Add(this.textQuienASMA);
-            this.groupBox6.Controls.Add(this.rbNoAsma);
-            this.groupBox6.Controls.Add(this.rbSiAsma);
-            this.groupBox6.Controls.Add(this.label95);
-            this.groupBox6.Location = new System.Drawing.Point(9, 55);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(500, 31);
-            this.groupBox6.TabIndex = 175;
-            this.groupBox6.TabStop = false;
-            // 
-            // textQuienASMA
-            // 
-            this.textQuienASMA.Enabled = false;
-            this.textQuienASMA.Location = new System.Drawing.Point(175, 8);
-            this.textQuienASMA.Name = "textQuienASMA";
-            this.textQuienASMA.Size = new System.Drawing.Size(170, 21);
-            this.textQuienASMA.TabIndex = 149;
-            // 
-            // rbNoAsma
-            // 
-            this.rbNoAsma.AutoSize = true;
-            this.rbNoAsma.Location = new System.Drawing.Point(425, 9);
-            this.rbNoAsma.Name = "rbNoAsma";
-            this.rbNoAsma.Size = new System.Drawing.Size(38, 17);
-            this.rbNoAsma.TabIndex = 148;
-            this.rbNoAsma.TabStop = true;
-            this.rbNoAsma.Text = "No";
-            this.rbNoAsma.UseVisualStyleBackColor = true;
-            this.rbNoAsma.CheckedChanged += new System.EventHandler(this.rbNoAsma_CheckedChanged);
-            // 
-            // rbSiAsma
-            // 
-            this.rbSiAsma.AutoSize = true;
-            this.rbSiAsma.Location = new System.Drawing.Point(369, 9);
-            this.rbSiAsma.Name = "rbSiAsma";
-            this.rbSiAsma.Size = new System.Drawing.Size(33, 17);
-            this.rbSiAsma.TabIndex = 147;
-            this.rbSiAsma.TabStop = true;
-            this.rbSiAsma.Text = "Si";
-            this.rbSiAsma.UseVisualStyleBackColor = true;
-            this.rbSiAsma.CheckedChanged += new System.EventHandler(this.rbSiAsma_CheckedChanged);
-            // 
-            // label95
-            // 
-            this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(37, 11);
-            this.label95.Name = "label95";
-            this.label95.Size = new System.Drawing.Size(33, 13);
-            this.label95.TabIndex = 146;
-            this.label95.Text = "ASMA";
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.textQuienVIH);
-            this.groupBox7.Controls.Add(this.rbNoVih);
-            this.groupBox7.Controls.Add(this.rbSiVih);
-            this.groupBox7.Controls.Add(this.label127);
-            this.groupBox7.Location = new System.Drawing.Point(9, 85);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(500, 31);
-            this.groupBox7.TabIndex = 176;
-            this.groupBox7.TabStop = false;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.textQuienDiabetes);
-            this.groupBox8.Controls.Add(this.rbNoDiabetes);
-            this.groupBox8.Controls.Add(this.rbSiDiabetes);
-            this.groupBox8.Controls.Add(this.label128);
-            this.groupBox8.Location = new System.Drawing.Point(9, 115);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(500, 31);
-            this.groupBox8.TabIndex = 177;
-            this.groupBox8.TabStop = false;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.textQuienEpilepsia);
-            this.groupBox9.Controls.Add(this.rbNoEpilepsia);
-            this.groupBox9.Controls.Add(this.rbSiEpilepsia);
-            this.groupBox9.Controls.Add(this.label129);
-            this.groupBox9.Location = new System.Drawing.Point(9, 145);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(500, 31);
-            this.groupBox9.TabIndex = 178;
-            this.groupBox9.TabStop = false;
-            // 
-            // textQuienVIH
-            // 
-            this.textQuienVIH.Enabled = false;
-            this.textQuienVIH.Location = new System.Drawing.Point(175, 7);
-            this.textQuienVIH.Name = "textQuienVIH";
-            this.textQuienVIH.Size = new System.Drawing.Size(170, 21);
-            this.textQuienVIH.TabIndex = 149;
-            // 
-            // rbNoVih
-            // 
-            this.rbNoVih.AutoSize = true;
-            this.rbNoVih.Location = new System.Drawing.Point(425, 10);
-            this.rbNoVih.Name = "rbNoVih";
-            this.rbNoVih.Size = new System.Drawing.Size(38, 17);
-            this.rbNoVih.TabIndex = 148;
-            this.rbNoVih.TabStop = true;
-            this.rbNoVih.Text = "No";
-            this.rbNoVih.UseVisualStyleBackColor = true;
-            this.rbNoVih.CheckedChanged += new System.EventHandler(this.rbNoVih_CheckedChanged);
-            // 
-            // rbSiVih
-            // 
-            this.rbSiVih.AutoSize = true;
-            this.rbSiVih.Location = new System.Drawing.Point(369, 10);
-            this.rbSiVih.Name = "rbSiVih";
-            this.rbSiVih.Size = new System.Drawing.Size(33, 17);
-            this.rbSiVih.TabIndex = 147;
-            this.rbSiVih.TabStop = true;
-            this.rbSiVih.Text = "Si";
-            this.rbSiVih.UseVisualStyleBackColor = true;
-            this.rbSiVih.CheckedChanged += new System.EventHandler(this.rbSiVih_CheckedChanged);
-            // 
-            // label127
-            // 
-            this.label127.AutoSize = true;
-            this.label127.Location = new System.Drawing.Point(37, 12);
-            this.label127.Name = "label127";
-            this.label127.Size = new System.Drawing.Size(51, 13);
-            this.label127.TabIndex = 146;
-            this.label127.Text = "VIH - SIDA";
-            // 
-            // textQuienDiabetes
-            // 
-            this.textQuienDiabetes.Enabled = false;
-            this.textQuienDiabetes.Location = new System.Drawing.Point(175, 8);
-            this.textQuienDiabetes.Name = "textQuienDiabetes";
-            this.textQuienDiabetes.Size = new System.Drawing.Size(170, 21);
-            this.textQuienDiabetes.TabIndex = 153;
-            // 
-            // rbNoDiabetes
-            // 
-            this.rbNoDiabetes.AutoSize = true;
-            this.rbNoDiabetes.Location = new System.Drawing.Point(425, 9);
-            this.rbNoDiabetes.Name = "rbNoDiabetes";
-            this.rbNoDiabetes.Size = new System.Drawing.Size(38, 17);
-            this.rbNoDiabetes.TabIndex = 152;
-            this.rbNoDiabetes.TabStop = true;
-            this.rbNoDiabetes.Text = "No";
-            this.rbNoDiabetes.UseVisualStyleBackColor = true;
-            this.rbNoDiabetes.CheckedChanged += new System.EventHandler(this.rbNoDiabetes_CheckedChanged);
-            // 
-            // rbSiDiabetes
-            // 
-            this.rbSiDiabetes.AutoSize = true;
-            this.rbSiDiabetes.Location = new System.Drawing.Point(369, 9);
-            this.rbSiDiabetes.Name = "rbSiDiabetes";
-            this.rbSiDiabetes.Size = new System.Drawing.Size(33, 17);
-            this.rbSiDiabetes.TabIndex = 151;
-            this.rbSiDiabetes.TabStop = true;
-            this.rbSiDiabetes.Text = "Si";
-            this.rbSiDiabetes.UseVisualStyleBackColor = true;
-            this.rbSiDiabetes.CheckedChanged += new System.EventHandler(this.rbSiDiabetes_CheckedChanged);
-            // 
-            // label128
-            // 
-            this.label128.AutoSize = true;
-            this.label128.Location = new System.Drawing.Point(37, 11);
-            this.label128.Name = "label128";
-            this.label128.Size = new System.Drawing.Size(50, 13);
-            this.label128.TabIndex = 150;
-            this.label128.Text = "Diabetes";
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.textQuienAlergias);
-            this.groupBox10.Controls.Add(this.rbNoAlergia);
-            this.groupBox10.Controls.Add(this.rbSiAlergia);
-            this.groupBox10.Controls.Add(this.label130);
-            this.groupBox10.Location = new System.Drawing.Point(9, 175);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(500, 31);
-            this.groupBox10.TabIndex = 179;
-            this.groupBox10.TabStop = false;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.textQuienHepatitisB);
-            this.groupBox11.Controls.Add(this.rbNoHepatitis);
-            this.groupBox11.Controls.Add(this.rbSiHepatitis);
-            this.groupBox11.Controls.Add(this.label134);
-            this.groupBox11.Location = new System.Drawing.Point(9, 295);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(500, 31);
-            this.groupBox11.TabIndex = 182;
-            this.groupBox11.TabStop = false;
-            // 
-            // textQuienEpilepsia
-            // 
-            this.textQuienEpilepsia.Enabled = false;
-            this.textQuienEpilepsia.Location = new System.Drawing.Point(175, 8);
-            this.textQuienEpilepsia.Name = "textQuienEpilepsia";
-            this.textQuienEpilepsia.Size = new System.Drawing.Size(170, 21);
-            this.textQuienEpilepsia.TabIndex = 157;
-            // 
-            // rbNoEpilepsia
-            // 
-            this.rbNoEpilepsia.AutoSize = true;
-            this.rbNoEpilepsia.Location = new System.Drawing.Point(425, 10);
-            this.rbNoEpilepsia.Name = "rbNoEpilepsia";
-            this.rbNoEpilepsia.Size = new System.Drawing.Size(38, 17);
-            this.rbNoEpilepsia.TabIndex = 156;
-            this.rbNoEpilepsia.TabStop = true;
-            this.rbNoEpilepsia.Text = "No";
-            this.rbNoEpilepsia.UseVisualStyleBackColor = true;
-            this.rbNoEpilepsia.CheckedChanged += new System.EventHandler(this.rbNoEpilepsia_CheckedChanged);
-            // 
-            // rbSiEpilepsia
-            // 
-            this.rbSiEpilepsia.AutoSize = true;
-            this.rbSiEpilepsia.Location = new System.Drawing.Point(369, 10);
-            this.rbSiEpilepsia.Name = "rbSiEpilepsia";
-            this.rbSiEpilepsia.Size = new System.Drawing.Size(33, 17);
-            this.rbSiEpilepsia.TabIndex = 155;
-            this.rbSiEpilepsia.TabStop = true;
-            this.rbSiEpilepsia.Text = "Si";
-            this.rbSiEpilepsia.UseVisualStyleBackColor = true;
-            this.rbSiEpilepsia.CheckedChanged += new System.EventHandler(this.rbSiEpilepsia_CheckedChanged);
-            // 
-            // label129
-            // 
-            this.label129.AutoSize = true;
-            this.label129.Location = new System.Drawing.Point(37, 12);
-            this.label129.Name = "label129";
-            this.label129.Size = new System.Drawing.Size(50, 13);
-            this.label129.TabIndex = 154;
-            this.label129.Text = "Epilepsia";
-            // 
-            // textQuienAlergias
-            // 
-            this.textQuienAlergias.Enabled = false;
-            this.textQuienAlergias.Location = new System.Drawing.Point(175, 8);
-            this.textQuienAlergias.Name = "textQuienAlergias";
-            this.textQuienAlergias.Size = new System.Drawing.Size(170, 21);
-            this.textQuienAlergias.TabIndex = 161;
-            // 
-            // rbNoAlergia
-            // 
-            this.rbNoAlergia.AutoSize = true;
-            this.rbNoAlergia.Location = new System.Drawing.Point(425, 9);
-            this.rbNoAlergia.Name = "rbNoAlergia";
-            this.rbNoAlergia.Size = new System.Drawing.Size(38, 17);
-            this.rbNoAlergia.TabIndex = 160;
-            this.rbNoAlergia.TabStop = true;
-            this.rbNoAlergia.Text = "No";
-            this.rbNoAlergia.UseVisualStyleBackColor = true;
-            this.rbNoAlergia.CheckedChanged += new System.EventHandler(this.rbNoAlergia_CheckedChanged);
-            // 
-            // rbSiAlergia
-            // 
-            this.rbSiAlergia.AutoSize = true;
-            this.rbSiAlergia.Location = new System.Drawing.Point(369, 9);
-            this.rbSiAlergia.Name = "rbSiAlergia";
-            this.rbSiAlergia.Size = new System.Drawing.Size(33, 17);
-            this.rbSiAlergia.TabIndex = 159;
-            this.rbSiAlergia.TabStop = true;
-            this.rbSiAlergia.Text = "Si";
-            this.rbSiAlergia.UseVisualStyleBackColor = true;
-            this.rbSiAlergia.CheckedChanged += new System.EventHandler(this.rbSiAlergia_CheckedChanged);
-            // 
-            // label130
-            // 
-            this.label130.AutoSize = true;
-            this.label130.Location = new System.Drawing.Point(37, 11);
-            this.label130.Name = "label130";
-            this.label130.Size = new System.Drawing.Size(104, 13);
-            this.label130.TabIndex = 158;
-            this.label130.Text = "Alergias a medicinas";
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Controls.Add(this.textQuienViolenciaFamiliar);
-            this.groupBox12.Controls.Add(this.rbNoViolencia);
-            this.groupBox12.Controls.Add(this.rbSiViolencia);
-            this.groupBox12.Controls.Add(this.label131);
-            this.groupBox12.Location = new System.Drawing.Point(9, 205);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(500, 31);
-            this.groupBox12.TabIndex = 183;
-            this.groupBox12.TabStop = false;
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.textQuienAlcoholismo);
-            this.groupBox13.Controls.Add(this.rbNoAlcoholismo);
-            this.groupBox13.Controls.Add(this.rbSiAlcoholismo);
-            this.groupBox13.Controls.Add(this.label132);
-            this.groupBox13.Location = new System.Drawing.Point(9, 235);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(500, 31);
-            this.groupBox13.TabIndex = 184;
-            this.groupBox13.TabStop = false;
-            // 
-            // textQuienViolenciaFamiliar
-            // 
-            this.textQuienViolenciaFamiliar.Enabled = false;
-            this.textQuienViolenciaFamiliar.Location = new System.Drawing.Point(175, 8);
-            this.textQuienViolenciaFamiliar.Name = "textQuienViolenciaFamiliar";
-            this.textQuienViolenciaFamiliar.Size = new System.Drawing.Size(170, 21);
-            this.textQuienViolenciaFamiliar.TabIndex = 165;
-            // 
-            // rbNoViolencia
-            // 
-            this.rbNoViolencia.AutoSize = true;
-            this.rbNoViolencia.Location = new System.Drawing.Point(425, 9);
-            this.rbNoViolencia.Name = "rbNoViolencia";
-            this.rbNoViolencia.Size = new System.Drawing.Size(38, 17);
-            this.rbNoViolencia.TabIndex = 164;
-            this.rbNoViolencia.TabStop = true;
-            this.rbNoViolencia.Text = "No";
-            this.rbNoViolencia.UseVisualStyleBackColor = true;
-            this.rbNoViolencia.CheckedChanged += new System.EventHandler(this.rbNoViolencia_CheckedChanged);
-            // 
-            // rbSiViolencia
-            // 
-            this.rbSiViolencia.AutoSize = true;
-            this.rbSiViolencia.Location = new System.Drawing.Point(369, 9);
-            this.rbSiViolencia.Name = "rbSiViolencia";
-            this.rbSiViolencia.Size = new System.Drawing.Size(33, 17);
-            this.rbSiViolencia.TabIndex = 163;
-            this.rbSiViolencia.TabStop = true;
-            this.rbSiViolencia.Text = "Si";
-            this.rbSiViolencia.UseVisualStyleBackColor = true;
-            this.rbSiViolencia.CheckedChanged += new System.EventHandler(this.rbSiViolencia_CheckedChanged);
-            // 
-            // label131
-            // 
-            this.label131.AutoSize = true;
-            this.label131.Location = new System.Drawing.Point(37, 11);
-            this.label131.Name = "label131";
-            this.label131.Size = new System.Drawing.Size(92, 13);
-            this.label131.TabIndex = 162;
-            this.label131.Text = "Violencia Familiar";
-            // 
-            // textQuienAlcoholismo
-            // 
-            this.textQuienAlcoholismo.Enabled = false;
-            this.textQuienAlcoholismo.Location = new System.Drawing.Point(175, 8);
-            this.textQuienAlcoholismo.Name = "textQuienAlcoholismo";
-            this.textQuienAlcoholismo.Size = new System.Drawing.Size(170, 21);
-            this.textQuienAlcoholismo.TabIndex = 169;
-            this.textQuienAlcoholismo.TextChanged += new System.EventHandler(this.textQuienAlcoholismo_TextChanged);
-            // 
-            // rbNoAlcoholismo
-            // 
-            this.rbNoAlcoholismo.AutoSize = true;
-            this.rbNoAlcoholismo.Location = new System.Drawing.Point(425, 9);
-            this.rbNoAlcoholismo.Name = "rbNoAlcoholismo";
-            this.rbNoAlcoholismo.Size = new System.Drawing.Size(38, 17);
-            this.rbNoAlcoholismo.TabIndex = 168;
-            this.rbNoAlcoholismo.TabStop = true;
-            this.rbNoAlcoholismo.Text = "No";
-            this.rbNoAlcoholismo.UseVisualStyleBackColor = true;
-            this.rbNoAlcoholismo.CheckedChanged += new System.EventHandler(this.rbNoAlcoholismo_CheckedChanged);
-            // 
-            // rbSiAlcoholismo
-            // 
-            this.rbSiAlcoholismo.AutoSize = true;
-            this.rbSiAlcoholismo.Location = new System.Drawing.Point(369, 9);
-            this.rbSiAlcoholismo.Name = "rbSiAlcoholismo";
-            this.rbSiAlcoholismo.Size = new System.Drawing.Size(33, 17);
-            this.rbSiAlcoholismo.TabIndex = 167;
-            this.rbSiAlcoholismo.TabStop = true;
-            this.rbSiAlcoholismo.Text = "Si";
-            this.rbSiAlcoholismo.UseVisualStyleBackColor = true;
-            this.rbSiAlcoholismo.CheckedChanged += new System.EventHandler(this.rbSiAlcoholismo_CheckedChanged);
-            // 
-            // label132
-            // 
-            this.label132.AutoSize = true;
-            this.label132.Location = new System.Drawing.Point(37, 11);
-            this.label132.Name = "label132";
-            this.label132.Size = new System.Drawing.Size(65, 13);
-            this.label132.TabIndex = 166;
-            this.label132.Text = "Alcoholismo";
-            // 
-            // groupBox14
-            // 
-            this.groupBox14.Controls.Add(this.textQuienDrogadiccion);
-            this.groupBox14.Controls.Add(this.rbNoDrogadiccion);
-            this.groupBox14.Controls.Add(this.rbSiDrogadiccion);
-            this.groupBox14.Controls.Add(this.label133);
-            this.groupBox14.Location = new System.Drawing.Point(9, 265);
-            this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(500, 31);
-            this.groupBox14.TabIndex = 185;
-            this.groupBox14.TabStop = false;
-            // 
-            // textQuienDrogadiccion
-            // 
-            this.textQuienDrogadiccion.Enabled = false;
-            this.textQuienDrogadiccion.Location = new System.Drawing.Point(175, 8);
-            this.textQuienDrogadiccion.Name = "textQuienDrogadiccion";
-            this.textQuienDrogadiccion.Size = new System.Drawing.Size(170, 21);
-            this.textQuienDrogadiccion.TabIndex = 173;
-            // 
-            // rbNoDrogadiccion
-            // 
-            this.rbNoDrogadiccion.AutoSize = true;
-            this.rbNoDrogadiccion.Location = new System.Drawing.Point(425, 9);
-            this.rbNoDrogadiccion.Name = "rbNoDrogadiccion";
-            this.rbNoDrogadiccion.Size = new System.Drawing.Size(38, 17);
-            this.rbNoDrogadiccion.TabIndex = 172;
-            this.rbNoDrogadiccion.TabStop = true;
-            this.rbNoDrogadiccion.Text = "No";
-            this.rbNoDrogadiccion.UseVisualStyleBackColor = true;
-            this.rbNoDrogadiccion.CheckedChanged += new System.EventHandler(this.rbNoDrogadiccion_CheckedChanged);
-            // 
-            // rbSiDrogadiccion
-            // 
-            this.rbSiDrogadiccion.AutoSize = true;
-            this.rbSiDrogadiccion.Location = new System.Drawing.Point(369, 9);
-            this.rbSiDrogadiccion.Name = "rbSiDrogadiccion";
-            this.rbSiDrogadiccion.Size = new System.Drawing.Size(33, 17);
-            this.rbSiDrogadiccion.TabIndex = 171;
-            this.rbSiDrogadiccion.TabStop = true;
-            this.rbSiDrogadiccion.Text = "Si";
-            this.rbSiDrogadiccion.UseVisualStyleBackColor = true;
-            this.rbSiDrogadiccion.CheckedChanged += new System.EventHandler(this.rbSiDrogadiccion_CheckedChanged);
-            // 
-            // label133
-            // 
-            this.label133.AutoSize = true;
-            this.label133.Location = new System.Drawing.Point(37, 11);
-            this.label133.Name = "label133";
-            this.label133.Size = new System.Drawing.Size(69, 13);
-            this.label133.TabIndex = 170;
-            this.label133.Text = "Drogadicción";
-            // 
-            // textQuienHepatitisB
-            // 
-            this.textQuienHepatitisB.Enabled = false;
-            this.textQuienHepatitisB.Location = new System.Drawing.Point(175, 8);
-            this.textQuienHepatitisB.Name = "textQuienHepatitisB";
-            this.textQuienHepatitisB.Size = new System.Drawing.Size(170, 21);
-            this.textQuienHepatitisB.TabIndex = 177;
-            // 
-            // rbNoHepatitis
-            // 
-            this.rbNoHepatitis.AutoSize = true;
-            this.rbNoHepatitis.Location = new System.Drawing.Point(425, 9);
-            this.rbNoHepatitis.Name = "rbNoHepatitis";
-            this.rbNoHepatitis.Size = new System.Drawing.Size(38, 17);
-            this.rbNoHepatitis.TabIndex = 176;
-            this.rbNoHepatitis.TabStop = true;
-            this.rbNoHepatitis.Text = "No";
-            this.rbNoHepatitis.UseVisualStyleBackColor = true;
-            this.rbNoHepatitis.CheckedChanged += new System.EventHandler(this.rbNoHepatitis_CheckedChanged);
-            // 
-            // rbSiHepatitis
-            // 
-            this.rbSiHepatitis.AutoSize = true;
-            this.rbSiHepatitis.Location = new System.Drawing.Point(369, 9);
-            this.rbSiHepatitis.Name = "rbSiHepatitis";
-            this.rbSiHepatitis.Size = new System.Drawing.Size(33, 17);
-            this.rbSiHepatitis.TabIndex = 175;
-            this.rbSiHepatitis.TabStop = true;
-            this.rbSiHepatitis.Text = "Si";
-            this.rbSiHepatitis.UseVisualStyleBackColor = true;
-            this.rbSiHepatitis.CheckedChanged += new System.EventHandler(this.rbSiHepatitis_CheckedChanged);
-            // 
-            // label134
-            // 
-            this.label134.AutoSize = true;
-            this.label134.Location = new System.Drawing.Point(37, 11);
-            this.label134.Name = "label134";
-            this.label134.Size = new System.Drawing.Size(60, 13);
-            this.label134.TabIndex = 174;
-            this.label134.Text = "Hepatitis B.";
-            // 
-            // label141
-            // 
-            this.label141.AutoSize = true;
-            this.label141.Location = new System.Drawing.Point(144, 332);
-            this.label141.Name = "label141";
-            this.label141.Size = new System.Drawing.Size(255, 13);
-            this.label141.TabIndex = 186;
-            this.label141.Text = "(*) Padre (P), Madre (M), Hno(H), Abuelo/a (A), Otro (O)";
+            ultraDataColumn1,
+            ultraDataColumn2,
+            ultraDataColumn3,
+            ultraDataColumn4,
+            ultraDataColumn5,
+            ultraDataColumn6});
             // 
             // frmEso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 766);
+            this.ClientSize = new System.Drawing.Size(1350, 749);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;
@@ -7521,6 +7521,26 @@
             this.ultgrboxFamiliares.ResumeLayout(false);
             this.ultraExpandableGroupBoxPanel4.ResumeLayout(false);
             this.ultraExpandableGroupBoxPanel4.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
+            this.groupBox12.ResumeLayout(false);
+            this.groupBox12.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultgrboxNacimiento)).EndInit();
             this.ultgrboxNacimiento.ResumeLayout(false);
             this.ultraExpandableGroupBoxPanel3.ResumeLayout(false);
@@ -7548,26 +7568,6 @@
             this.pnlLeftPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox7.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox13.PerformLayout();
-            this.groupBox14.ResumeLayout(false);
-            this.groupBox14.PerformLayout();
             this.ResumeLayout(false);
 
         }
