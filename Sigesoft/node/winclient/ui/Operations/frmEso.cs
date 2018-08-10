@@ -1348,7 +1348,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                     lbl1.AutoSize = false;
                                     lbl1.Width = 50;
                                     lbl1.Text = f.v_MeasurementUnitName;
-                                    lbl1.Font = new Font(lbl1.Font, FontStyle.Bold | FontStyle.Italic);
+                                    lbl1.Font = new Font(lbl1.Font, FontStyle.Regular | FontStyle.Italic);
                                     lbl1.TextAlign = ContentAlignment.BottomLeft;
                                     fila = RedondeoMayor(nroControlNET, g.i_Column * Constants.COLUMNAS_POR_CONTROL);
                                     columna = nroControlNET - (fila - 1) * (g.i_Column * Constants.COLUMNAS_POR_CONTROL);
@@ -6640,7 +6640,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             var tagCtrl = (KeyTagControl)senderCtrl.Tag;
             // Capturar valor inicial
             _oldValue = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
-            if (tagCtrl.v_ComponentName == "RAYOS X")
+            if (tagCtrl.v_ComponentId == "N009-ME000000062")
             {
                 GroupBox gb = null;
                 gb = (GroupBox)FindControlInCurrentTab("gb_C 3. Forma y Tamaño: (Consulte las radiografías estandar, se requieres dos símbolos; marque un primario y un secundario)")[0];

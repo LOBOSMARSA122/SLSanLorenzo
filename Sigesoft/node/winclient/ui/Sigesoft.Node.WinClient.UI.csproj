@@ -1444,6 +1444,12 @@
     <Compile Include="ReporteDeclaracionDrogas.Designer.cs">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\crCertificadoDeAptitudSinDX.cs">
+      <DependentUpon>crCertificadoDeAptitudSinDX.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\crApendice03_Audio.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1900,12 +1906,6 @@
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="Reports\crOccupationalCertificateSinFirma.cs">
-      <DependentUpon>crOccupationalCertificateSinFirma.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <Compile Include="Reports\crOdontogramaSinFirma.cs">
       <DependentUpon>crOdontogramaSinFirma.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -2128,10 +2128,10 @@
       <DependentUpon>crCertificadoDeAptitudCompleto.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\crCertificadoDeAptitudSinDX.cs">
+    <Compile Include="Reports\crOccupationalCertificateSinFirma.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>crCertificadoDeAptitudSinDX.rpt</DependentUpon>
+      <DependentUpon>crOccupationalCertificateSinFirma.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reports\crConsolidateCotizacion.cs">
@@ -3609,6 +3609,10 @@
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crCertificadoDeAptitudSinDX.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crCertificadoDeAptitudSinDX.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crApendice03_Audio.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crApendice03_Audio.cs</LastGenOutput>
@@ -3913,10 +3917,6 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crCertificadoSinDXSinFirma.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\crOccupationalCertificateSinFirma.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crOccupationalCertificateSinFirma.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crOdontogramaSinFirma.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crOdontogramaSinFirma.cs</LastGenOutput>
@@ -4056,9 +4056,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crCertificadoDeAptitudCompleto.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\crCertificadoDeAptitudSinDX.rpt">
+    <EmbeddedResource Include="Reports\crOccupationalCertificateSinFirma.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crCertificadoDeAptitudSinDX.cs</LastGenOutput>
+      <LastGenOutput>crOccupationalCertificateSinFirma.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crConsolidateCotizacion.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
