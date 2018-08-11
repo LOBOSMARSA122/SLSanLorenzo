@@ -115,7 +115,7 @@ namespace NetPdf
 
             var cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("ANEXO 8: INFORME MÉDICO OCUPACIONAL", fontColumnValueBold)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase("ANEXO 8: INFORME MÉDICO OCUPACIONAL", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("N° H.C." + datosPac.v_PersonId, fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                 };
             columnWidths = new float[] {80f, 20f };
@@ -138,6 +138,9 @@ namespace NetPdf
                
                 new PdfPCell(new Phrase("Puesto de trabajo:", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                 new PdfPCell(new Phrase(datosPac.v_CurrentOccupation, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},    
+                
+                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight=1f},    
+                new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight =1f},    
                 
               };
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -379,56 +382,56 @@ namespace NetPdf
 
             cells = new List<PdfPCell>()
                 {
+                    new PdfPCell(new Phrase("ANTECEDENTES O PREEXISTENCIA" + noRefiereAP, fontColumnValueBold)){ Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },       
+                    //fila
+                    new PdfPCell(new Phrase("ALERGIAS", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },                                   
+                    new PdfPCell(new Phrase(AlergiaX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },                                    
+                    new PdfPCell(new Phrase("DIABETES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
+                    new PdfPCell(new Phrase(DiabetesX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("TBC", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase(TBCX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },                                        
+                    new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase(HepatitisBX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },    
 
                     //fila
-                    new PdfPCell(new Phrase("ALERGIAS", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase(AlergiaX, fontColumnValue)),                                    
-                    new PdfPCell(new Phrase("DIABETES", fontColumnValue)), 
-                    new PdfPCell(new Phrase(DiabetesX, fontColumnValue)),
-                    new PdfPCell(new Phrase("TBC", fontColumnValue)),
-                    new PdfPCell(new Phrase(TBCX, fontColumnValue)),                                        
-                    new PdfPCell(new Phrase("HEPATITIS B", fontColumnValue)),
-                    new PdfPCell(new Phrase(HepatitisBX, fontColumnValue)),    
+                    new PdfPCell(new Phrase("ASMA ", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },                                   
+                    new PdfPCell(new Phrase(AsmaX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },                                    
+                    new PdfPCell(new Phrase("HTA", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase(HTAX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("ITS", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase(ITSX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },                                       
+                    new PdfPCell(new Phrase("TIFOIDEA", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase(TifoideaX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE }, 
 
                     //fila
-                    new PdfPCell(new Phrase("ASMA ", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase(AsmaX, fontColumnValue)),                                    
-                    new PdfPCell(new Phrase("HTA", fontColumnValue)), 
-                    new PdfPCell(new Phrase(HTAX, fontColumnValue)),
-                    new PdfPCell(new Phrase("ITS", fontColumnValue)),
-                    new PdfPCell(new Phrase(ITSX, fontColumnValue)),                                        
-                    new PdfPCell(new Phrase("TIFOIDEA", fontColumnValue)),
-                    new PdfPCell(new Phrase(TifoideaX, fontColumnValue)),    
-
-                    //fila
-                    new PdfPCell(new Phrase("BRONQUITIS", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase(BronquitisX, fontColumnValue)),                                    
-                    new PdfPCell(new Phrase("NEOPLASIA", fontColumnValue)), 
-                    new PdfPCell(new Phrase(NeoplasiasX, fontColumnValue)),
-                    new PdfPCell(new Phrase("CONVULSIONES", fontColumnValue)),
-                    new PdfPCell(new Phrase(ConvulsionesX, fontColumnValue)),                                        
-                    new PdfPCell(new Phrase("OTROS", fontColumnValue)),
-                    new PdfPCell(new Phrase("---", fontColumnValue)), 
+                    new PdfPCell(new Phrase("BRONQUITIS", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },                                   
+                    new PdfPCell(new Phrase(BronquitisX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },                                    
+                    new PdfPCell(new Phrase("NEOPLASIA", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
+                    new PdfPCell(new Phrase(NeoplasiasX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("CONVULSIONES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase(ConvulsionesX, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },                                        
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
  
                     //fila
-                    new PdfPCell(new Phrase("QUEMADURAS", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase(QuemadurasX, fontColumnValue))
-                                     { Colspan=7, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase("QUEMADURAS", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },                                   
+                    new PdfPCell(new Phrase(QuemadurasX, fontColumnValue)){Colspan=7, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
 
                     //fila
-                    new PdfPCell(new Phrase("CIRUGÍAS", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase(CirugiasX, fontColumnValue))
-                                     { Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase("CIRUGÍAS", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },                                   
+                    new PdfPCell(new Phrase(CirugiasX, fontColumnValue)){Colspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
 
-                    new PdfPCell(new Phrase("INTOXICACIONES", fontColumnValue)),                                   
-                    new PdfPCell(new Phrase(IntoxicacionesX, fontColumnValue))
-                                     { Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase("INTOXICACIONES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },                                   
+                    new PdfPCell(new Phrase(IntoxicacionesX, fontColumnValue)){Colspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
+
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight=2F },                                   
+                    new PdfPCell(new Phrase("", fontColumnValue)){Colspan=7, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight=2F },
 
                 };
 
-            columnWidths = new float[] { 20f, 5f, 20f, 5f, 20f, 5f, 20f, 5f, };
+            columnWidths = new float[] { 15f, 10f, 20f, 5f, 20f, 5f, 20f, 5f, };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "ANTECEDENTES O PREEXISTENCIA" + noRefiereAP, fontTitleTable);
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, null);
 
             document.Add(filiationWorker);
 
@@ -451,21 +454,24 @@ namespace NetPdf
             cells = new List<PdfPCell>()
                 {
                      //fila
-                    new PdfPCell(new Phrase("HÁBITOS NOCIVOS ", fontColumnValueBold)), 
+                    new PdfPCell(new Phrase("HÁBITOS NOCIVOS ", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
 
-                    new PdfPCell(new Phrase("FRECUENCIA ", fontColumnValueBold)),
-
-                    //fila
-                    new PdfPCell(new Phrase("ALCOHOL ", fontColumnValue)), 
-                    new PdfPCell(new Phrase(Alcohol ==  null || Alcohol.Count == 0 ? string.Empty :Alcohol[0].v_Frequency, fontColumnValue)),
+                    new PdfPCell(new Phrase("FRECUENCIA ", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
 
                     //fila
-                    new PdfPCell(new Phrase("TABACO ", fontColumnValue)), 
-                    new PdfPCell(new Phrase(Tabaco ==  null || Tabaco.Count == 0 ? string.Empty :Tabaco[0].v_Frequency, fontColumnValue)),
+                    new PdfPCell(new Phrase("ALCOHOL ", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
+                    new PdfPCell(new Phrase(Alcohol ==  null || Alcohol.Count == 0 ? string.Empty :Alcohol[0].v_Frequency, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
 
                     //fila
-                    new PdfPCell(new Phrase("DROGAS ", fontColumnValue)), 
-                    new PdfPCell(new Phrase(Drogas ==  null || Drogas.Count == 0 ? string.Empty :Drogas[0].v_Frequency, fontColumnValue)),
+                    new PdfPCell(new Phrase("TABACO ", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
+                    new PdfPCell(new Phrase(Tabaco ==  null || Tabaco.Count == 0 ? string.Empty :Tabaco[0].v_Frequency, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
+
+                    //fila
+                    new PdfPCell(new Phrase("DROGAS ", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
+                    new PdfPCell(new Phrase(Drogas ==  null || Drogas.Count == 0 ? string.Empty :Drogas[0].v_Frequency, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE },
+                    
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
 
                 };
 
@@ -483,8 +489,10 @@ namespace NetPdf
 
             var noRefiere = string.Empty;
 
-            if (listaPatologicosFamiliares != null && listaPatologicosFamiliares.Count > 0)
+            if (listaPatologicosFamiliares == null && listaPatologicosFamiliares.Count < 0)
             {
+                noRefiere = ": NO REFIERE";
+            }
                 columnWidths = new float[] { 7f };
                 include = "DxAndComment";
 
@@ -494,8 +502,10 @@ namespace NetPdf
                 oFamilyMedicalAntecedentsList.DxAndComment = "NO REFIERE ANTECEDENTES";
                 ListaVacia.Add(oFamilyMedicalAntecedentsList);
 
+                cell = new PdfPCell(new Phrase("ANTECEDENTES PATOLÓGICOS FAMILIARES" + noRefiere, fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
+                cells.Add(cell);
                 //Columna FAMILIAR
-                cell = new PdfPCell(new Phrase("PADRE", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cell = new PdfPCell(new Phrase("PADRE", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
                 var PadreDx = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId == (int)Sigesoft.Common.TypeFamily.PADRE_OK);
 
@@ -503,7 +513,7 @@ namespace NetPdf
                 cell = new PdfPCell(table);
                 cells.Add(cell);
 
-                cell = new PdfPCell(new Phrase("MADRE", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cell = new PdfPCell(new Phrase("MADRE", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
                 var MadreDx = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId == (int)Sigesoft.Common.TypeFamily.MADRE_OK);
 
@@ -511,7 +521,7 @@ namespace NetPdf
                 cell = new PdfPCell(table);
                 cells.Add(cell);
 
-                cell = new PdfPCell(new Phrase("HERMANOS", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cell = new PdfPCell(new Phrase("HERMANOS", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
                 var HermanosDx = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId == (int)Sigesoft.Common.TypeFamily.HERMANOS_OK);
 
@@ -520,7 +530,7 @@ namespace NetPdf
                 cells.Add(cell);
 
 
-                cell = new PdfPCell(new Phrase("ESPOSO(A)", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cell = new PdfPCell(new Phrase("ESPOSO(A)", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
                 var EspososDx = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId == (int)Sigesoft.Common.TypeFamily.ABUELOS_OK);
 
@@ -529,7 +539,7 @@ namespace NetPdf
                 cells.Add(cell);
 
                 //Columna FAMILIAR
-                cell = new PdfPCell(new Phrase("HIJOS", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                cell = new PdfPCell(new Phrase("HIJOS", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE };
                 cells.Add(cell);
                 var HijosDx = listaPatologicosFamiliares.FindAll(p => p.i_TypeFamilyId == (int)Sigesoft.Common.TypeFamily.HIJOS_OK);
 
@@ -537,17 +547,14 @@ namespace NetPdf
                 cell = new PdfPCell(table);
                 cells.Add(cell);
 
-                cell = new PdfPCell(table);
+                cell = new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, FixedHeight=2f };
                 cells.Add(cell);
-
+                cell = new PdfPCell(new Phrase("", fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, FixedHeight = 2f };
+                cells.Add(cell);
                 columnWidths = new float[] { 10, 60f };
-            }
-            else
-            {
-                noRefiere = ": NO REFIERE";
-            }
+            
 
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "ANTECEDENTES PATOLÓGICOS FAMILIARES" + noRefiere, fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, null);
 
             document.Add(table);
 
@@ -585,10 +592,21 @@ namespace NetPdf
                     new PdfPCell(new Phrase("Periódico", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda ,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
                     new PdfPCell(new Phrase(Periodica, fontColumnValue)){ Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
 
-                    new PdfPCell(new Phrase("Retiro", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
+                    new PdfPCell(new Phrase("Retiro", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
                     new PdfPCell(new Phrase(Retiro, fontColumnValue)){ Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
-                    new PdfPCell(new Phrase("Otro(Especifique)", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
+                    new PdfPCell(new Phrase("Otro(Especifique)", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
                     new PdfPCell(new Phrase(Otros, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                    
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE ,FixedHeight=2f},    
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda ,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE ,FixedHeight=2f},    
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK ,FixedHeight=2f},    
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda ,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE ,FixedHeight=2f},    
+                    new PdfPCell(new Phrase("", fontColumnValue)){ Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK ,FixedHeight=2f},    
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE ,FixedHeight=2f},    
+                    new PdfPCell(new Phrase("", fontColumnValue)){ Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK ,FixedHeight=2f},    
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE ,FixedHeight=2f},    
+                    new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK ,FixedHeight=2f},    
+            
             };
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
@@ -649,12 +667,12 @@ namespace NetPdf
 
             var dxExamenFisico = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
             var dxExamenFisicoConcatenado = string.Join(", ", dxExamenFisico.Select(p => p.v_DiseasesName));
-            if (dxExamenFisicoConcatenado != null)
+            if (dxExamenFisico != null)
             {
                 cells = new List<PdfPCell>()
                     {
                      new PdfPCell(new Phrase("Clínico Ocupacional", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
-                     new PdfPCell(new Phrase(dxExamenFisicoConcatenado == null ? "SIN RESULTADOS":dxExamenFisicoConcatenado, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE}, 
+                     new PdfPCell(new Phrase(dxExamenFisicoConcatenado == null ? "SIN RESULTADOS":dxExamenFisicoConcatenado, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK}, 
                      };
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
@@ -665,7 +683,7 @@ namespace NetPdf
                 cells = new List<PdfPCell>()
                     {
                         new PdfPCell(new Phrase("Clínico Ocupacional", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
-                        new PdfPCell(new Phrase("NO TIENE OBSERVACIONES", fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
+                        new PdfPCell(new Phrase("NO TIENE OBSERVACIONES", fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK  }, 
                     };
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
@@ -756,159 +774,18 @@ namespace NetPdf
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                 document.Add(filiationWorker);
             }
+            #endregion
+            #endregion
 
-            #endregion
-            #endregion
             #region OFTALMOLOGÍA
-            ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-            if (oftalmologia != null)
+            var xOftalmo = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+            if (xOftalmo != null)
             {
-                var av_cerca_sc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID).v_Value1;
-                string av_cerca_sc_od_1 = "", av_cerca_sc_oi_1 = "", av_cerca_cc_od_1 = "", av_cerca_cc_oi_1 = "";
-                if (av_cerca_sc_od == "1") av_cerca_sc_od_1 = "J1 0.50";
-                else if (av_cerca_sc_od == "2") av_cerca_sc_od_1 = "J2 0.75";
-                else if (av_cerca_sc_od == "3") av_cerca_sc_od_1 = "J3 1.00";
-                else if (av_cerca_sc_od == "4") av_cerca_sc_od_1 = "J4 1.25";
-                else if (av_cerca_sc_od == "5") av_cerca_sc_od_1 = "J5 1.50";
-                else if (av_cerca_sc_od == "6") av_cerca_sc_od_1 = "J6 1.75";
-                else if (av_cerca_sc_od == "7") av_cerca_sc_od_1 = "J7 2.00";
-                else if (av_cerca_sc_od == "8") av_cerca_sc_od_1 = "J8 >2.00";
-
-                var av_cerca_sc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_IZQUIERDO_ID).v_Value1;
-
-                if (av_cerca_sc_oi == "1") av_cerca_sc_oi_1 = "J1 0.50";
-                else if (av_cerca_sc_oi == "2") av_cerca_sc_oi_1 = "J2 0.75";
-                else if (av_cerca_sc_oi == "3") av_cerca_sc_oi_1 = "J3 1.00";
-                else if (av_cerca_sc_oi == "4") av_cerca_sc_oi_1 = "J4 1.25";
-                else if (av_cerca_sc_oi == "5") av_cerca_sc_oi_1 = "J5 1.50";
-                else if (av_cerca_sc_oi == "6") av_cerca_sc_oi_1 = "J6 1.75";
-                else if (av_cerca_sc_oi == "7") av_cerca_sc_oi_1 = "J7 2.00";
-                else if (av_cerca_sc_oi == "8") av_cerca_sc_oi_1 = "J8 >2.00";
-
-                var av_cerca_cc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_DERECHO_ID).v_Value1;
-
-                if (av_cerca_cc_od == "1") av_cerca_cc_od_1 = "J1 0.50";
-                else if (av_cerca_cc_od == "2") av_cerca_cc_od_1 = "J2 0.75";
-                else if (av_cerca_cc_od == "3") av_cerca_cc_od_1 = "J3 1.00";
-                else if (av_cerca_cc_od == "4") av_cerca_cc_od_1 = "J4 1.25";
-                else if (av_cerca_cc_od == "5") av_cerca_cc_od_1 = "J5 1.50";
-                else if (av_cerca_cc_od == "6") av_cerca_cc_od_1 = "J6 1.75";
-                else if (av_cerca_cc_od == "7") av_cerca_cc_od_1 = "J7 2.00";
-                else if (av_cerca_cc_od == "8") av_cerca_cc_od_1 = "J8 >2.00";
-
-                var av_cerca_cc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID).v_Value1;
-
-                if (av_cerca_cc_oi == "1") av_cerca_cc_oi_1 = "J1 0.50";
-                else if (av_cerca_cc_oi == "2") av_cerca_cc_oi_1 = "J2 0.75";
-                else if (av_cerca_cc_oi == "3") av_cerca_cc_oi_1 = "J3 1.00";
-                else if (av_cerca_cc_oi == "4") av_cerca_cc_oi_1 = "J4 1.25";
-                else if (av_cerca_cc_oi == "5") av_cerca_cc_oi_1 = "J5 1.50";
-                else if (av_cerca_cc_oi == "6") av_cerca_cc_oi_1 = "J6 1.75";
-                else if (av_cerca_cc_oi == "7") av_cerca_cc_oi_1 = "J7 2.00";
-                else if (av_cerca_cc_oi == "8") av_cerca_cc_oi_1 = "J8 >2.00";
-
-                var av_lejos_sc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID).v_Value1;
-                string av_lejos_sc_od_1 = "", av_lejos_sc_oi_1 = "", av_lejos_cc_od_1 = "", av_lejos_cc_oi_1 = "";
-                if (av_lejos_sc_od == "1") av_lejos_sc_od_1 = "20/10";
-                else if (av_lejos_sc_od == "2") av_lejos_sc_od_1 = "20/100";
-                else if (av_lejos_sc_od == "3") av_lejos_sc_od_1 = "20/13";
-                else if (av_lejos_sc_od == "4") av_lejos_sc_od_1 = "20/15";
-                else if (av_lejos_sc_od == "5") av_lejos_sc_od_1 = "20/20";
-                else if (av_lejos_sc_od == "6") av_lejos_sc_od_1 = "20/200";
-                else if (av_lejos_sc_od == "7") av_lejos_sc_od_1 = "20/25";
-                else if (av_lejos_sc_od == "8") av_lejos_sc_od_1 = "20/30";
-                else if (av_lejos_sc_od == "9") av_lejos_sc_od_1 = "20/40";
-                else if (av_lejos_sc_od == "10") av_lejos_sc_od_1 = "20/50";
-                else if (av_lejos_sc_od == "11") av_lejos_sc_od_1 = "20/70";
-                else if (av_lejos_sc_od == "12") av_lejos_sc_od_1 = "NO APLICA";
-
-                var av_lejos_sc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID).v_Value1;
-
-                if (av_lejos_sc_oi == "1") av_lejos_sc_oi_1 = "20/10";
-                else if (av_lejos_sc_oi == "2") av_lejos_sc_oi_1 = "20/100";
-                else if (av_lejos_sc_oi == "3") av_lejos_sc_oi_1 = "20/13";
-                else if (av_lejos_sc_oi == "4") av_lejos_sc_oi_1 = "20/15";
-                else if (av_lejos_sc_oi == "5") av_lejos_sc_oi_1 = "20/20";
-                else if (av_lejos_sc_oi == "6") av_lejos_sc_oi_1 = "20/200";
-                else if (av_lejos_sc_oi == "7") av_lejos_sc_oi_1 = "20/25";
-                else if (av_lejos_sc_oi == "8") av_lejos_sc_oi_1 = "20/30";
-                else if (av_lejos_sc_oi == "9") av_lejos_sc_oi_1 = "20/40";
-                else if (av_lejos_sc_oi == "10") av_lejos_sc_oi_1 = "20/50";
-                else if (av_lejos_sc_oi == "11") av_lejos_sc_oi_1 = "20/70";
-                else if (av_lejos_sc_oi == "12") av_lejos_sc_oi_1 = "NO APLICA";
-
-                var av_lejos_cc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID).v_Value1;
-
-                if (av_lejos_cc_od == "1") av_lejos_cc_od_1 = "20/10";
-                else if (av_lejos_cc_od == "2") av_lejos_cc_od_1 = "20/100";
-                else if (av_lejos_cc_od == "3") av_lejos_cc_od_1 = "20/13";
-                else if (av_lejos_cc_od == "4") av_lejos_cc_od_1 = "20/15";
-                else if (av_lejos_cc_od == "5") av_lejos_cc_od_1 = "20/20";
-                else if (av_lejos_cc_od == "6") av_lejos_cc_od_1 = "20/200";
-                else if (av_lejos_cc_od == "7") av_lejos_cc_od_1 = "20/25";
-                else if (av_lejos_cc_od == "8") av_lejos_cc_od_1 = "20/30";
-                else if (av_lejos_cc_od == "9") av_lejos_cc_od_1 = "20/40";
-                else if (av_lejos_cc_od == "10") av_lejos_cc_od_1 = "20/50";
-                else if (av_lejos_cc_od == "11") av_lejos_cc_od_1 = "20/70";
-                else if (av_lejos_cc_od == "12") av_lejos_cc_od_1 = "NO APLICA";
-
-                var av_lejos_cc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID).v_Value1;
-
-                if (av_lejos_cc_oi == "1") av_lejos_cc_oi_1 = "20/10";
-                else if (av_lejos_cc_oi == "2") av_lejos_cc_oi_1 = "20/100";
-                else if (av_lejos_cc_oi == "3") av_lejos_cc_oi_1 = "20/13";
-                else if (av_lejos_cc_oi == "4") av_lejos_cc_oi_1 = "20/15";
-                else if (av_lejos_cc_oi == "5") av_lejos_cc_oi_1 = "20/20";
-                else if (av_lejos_cc_oi == "6") av_lejos_cc_oi_1 = "20/200";
-                else if (av_lejos_cc_oi == "7") av_lejos_cc_oi_1 = "20/25";
-                else if (av_lejos_cc_oi == "8") av_lejos_cc_oi_1 = "20/30";
-                else if (av_lejos_cc_oi == "9") av_lejos_cc_oi_1 = "20/40";
-                else if (av_lejos_cc_oi == "10") av_lejos_cc_oi_1 = "20/50";
-                else if (av_lejos_cc_oi == "11") av_lejos_cc_oi_1 = "20/70";
-                else if (av_lejos_cc_oi == "12") av_lejos_cc_oi_1 = "NO APLICA";
-
-                var estereopsis = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_A) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_A).v_Value1;
-                var TestIshiharaNormal = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;
-                var TestIshiharaAnormal = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;
-                //var Dicromatopsia = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID).v_Value1;
-                string VisonColores = "";
-                if (TestIshiharaNormal == "1")
-                {
-                    VisonColores = "Normal";
-                }
-                else if (TestIshiharaAnormal == "2")
-                {
-                    VisonColores = "Anormal";
-                }
+                string ValorDxOdo = string.Join(", ", xOftalmo.Select(p => p.v_DiseasesName));
                 cells = new List<PdfPCell>()
                 {
-                    new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
-
-                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 2, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
-                    new PdfPCell(new Phrase("Agudeza Visual", fontColumnValue)) { Colspan = 2, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("V. de cerca", fontColumnValue)) { Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("OD S/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(av_cerca_sc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("OD C/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(av_cerca_cc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("OI S/C", fontColumnValue)) { Colspan = 1,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(av_cerca_sc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("OI C/C", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(av_cerca_cc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("Esteropsis", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(estereopsis, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-
-                    new PdfPCell(new Phrase("V. de lejos", fontColumnValue)) { Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("OD S/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(av_lejos_sc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("OD C/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(av_lejos_cc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("OI S/C", fontColumnValue)) { Colspan = 1,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(av_lejos_sc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("OI C/C", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(av_lejos_cc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("Ishihara", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase(VisonColores, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
+                    new PdfPCell(new Phrase(ValorDxOdo == "" ? "SIN RESULTADOS": ValorDxOdo, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
                 };
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
@@ -916,19 +793,185 @@ namespace NetPdf
             }
             else
             {
-
                 cells = new List<PdfPCell>()
                 {
-                    new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
-
-                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
-                    new PdfPCell(new Phrase("Agudeza Visual", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                    new PdfPCell(new Phrase("NO APLICA EXAMEN ", fontColumnValue)) { Colspan =16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
+                    new PdfPCell(new Phrase("NO APLICA EXAMEN", fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
                 };
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                 document.Add(filiationWorker);
             }
+            #endregion
+
+            #region OFTALMOLOGÍADATOS
+            //ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+            //if (oftalmologia != null)
+            //{
+            //    var av_cerca_sc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID).v_Value1;
+            //    string av_cerca_sc_od_1 = "", av_cerca_sc_oi_1 = "", av_cerca_cc_od_1 = "", av_cerca_cc_oi_1 = "";
+            //    if (av_cerca_sc_od == "1") av_cerca_sc_od_1 = "J1 0.50";
+            //    else if (av_cerca_sc_od == "2") av_cerca_sc_od_1 = "J2 0.75";
+            //    else if (av_cerca_sc_od == "3") av_cerca_sc_od_1 = "J3 1.00";
+            //    else if (av_cerca_sc_od == "4") av_cerca_sc_od_1 = "J4 1.25";
+            //    else if (av_cerca_sc_od == "5") av_cerca_sc_od_1 = "J5 1.50";
+            //    else if (av_cerca_sc_od == "6") av_cerca_sc_od_1 = "J6 1.75";
+            //    else if (av_cerca_sc_od == "7") av_cerca_sc_od_1 = "J7 2.00";
+            //    else if (av_cerca_sc_od == "8") av_cerca_sc_od_1 = "J8 >2.00";
+
+            //    var av_cerca_sc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_IZQUIERDO_ID).v_Value1;
+
+            //    if (av_cerca_sc_oi == "1") av_cerca_sc_oi_1 = "J1 0.50";
+            //    else if (av_cerca_sc_oi == "2") av_cerca_sc_oi_1 = "J2 0.75";
+            //    else if (av_cerca_sc_oi == "3") av_cerca_sc_oi_1 = "J3 1.00";
+            //    else if (av_cerca_sc_oi == "4") av_cerca_sc_oi_1 = "J4 1.25";
+            //    else if (av_cerca_sc_oi == "5") av_cerca_sc_oi_1 = "J5 1.50";
+            //    else if (av_cerca_sc_oi == "6") av_cerca_sc_oi_1 = "J6 1.75";
+            //    else if (av_cerca_sc_oi == "7") av_cerca_sc_oi_1 = "J7 2.00";
+            //    else if (av_cerca_sc_oi == "8") av_cerca_sc_oi_1 = "J8 >2.00";
+
+            //    var av_cerca_cc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_DERECHO_ID).v_Value1;
+
+            //    if (av_cerca_cc_od == "1") av_cerca_cc_od_1 = "J1 0.50";
+            //    else if (av_cerca_cc_od == "2") av_cerca_cc_od_1 = "J2 0.75";
+            //    else if (av_cerca_cc_od == "3") av_cerca_cc_od_1 = "J3 1.00";
+            //    else if (av_cerca_cc_od == "4") av_cerca_cc_od_1 = "J4 1.25";
+            //    else if (av_cerca_cc_od == "5") av_cerca_cc_od_1 = "J5 1.50";
+            //    else if (av_cerca_cc_od == "6") av_cerca_cc_od_1 = "J6 1.75";
+            //    else if (av_cerca_cc_od == "7") av_cerca_cc_od_1 = "J7 2.00";
+            //    else if (av_cerca_cc_od == "8") av_cerca_cc_od_1 = "J8 >2.00";
+
+            //    var av_cerca_cc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID).v_Value1;
+
+            //    if (av_cerca_cc_oi == "1") av_cerca_cc_oi_1 = "J1 0.50";
+            //    else if (av_cerca_cc_oi == "2") av_cerca_cc_oi_1 = "J2 0.75";
+            //    else if (av_cerca_cc_oi == "3") av_cerca_cc_oi_1 = "J3 1.00";
+            //    else if (av_cerca_cc_oi == "4") av_cerca_cc_oi_1 = "J4 1.25";
+            //    else if (av_cerca_cc_oi == "5") av_cerca_cc_oi_1 = "J5 1.50";
+            //    else if (av_cerca_cc_oi == "6") av_cerca_cc_oi_1 = "J6 1.75";
+            //    else if (av_cerca_cc_oi == "7") av_cerca_cc_oi_1 = "J7 2.00";
+            //    else if (av_cerca_cc_oi == "8") av_cerca_cc_oi_1 = "J8 >2.00";
+
+            //    var av_lejos_sc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID).v_Value1;
+            //    string av_lejos_sc_od_1 = "", av_lejos_sc_oi_1 = "", av_lejos_cc_od_1 = "", av_lejos_cc_oi_1 = "";
+            //    if (av_lejos_sc_od == "1") av_lejos_sc_od_1 = "20/10";
+            //    else if (av_lejos_sc_od == "2") av_lejos_sc_od_1 = "20/100";
+            //    else if (av_lejos_sc_od == "3") av_lejos_sc_od_1 = "20/13";
+            //    else if (av_lejos_sc_od == "4") av_lejos_sc_od_1 = "20/15";
+            //    else if (av_lejos_sc_od == "5") av_lejos_sc_od_1 = "20/20";
+            //    else if (av_lejos_sc_od == "6") av_lejos_sc_od_1 = "20/200";
+            //    else if (av_lejos_sc_od == "7") av_lejos_sc_od_1 = "20/25";
+            //    else if (av_lejos_sc_od == "8") av_lejos_sc_od_1 = "20/30";
+            //    else if (av_lejos_sc_od == "9") av_lejos_sc_od_1 = "20/40";
+            //    else if (av_lejos_sc_od == "10") av_lejos_sc_od_1 = "20/50";
+            //    else if (av_lejos_sc_od == "11") av_lejos_sc_od_1 = "20/70";
+            //    else if (av_lejos_sc_od == "12") av_lejos_sc_od_1 = "NO APLICA";
+
+            //    var av_lejos_sc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID).v_Value1;
+
+            //    if (av_lejos_sc_oi == "1") av_lejos_sc_oi_1 = "20/10";
+            //    else if (av_lejos_sc_oi == "2") av_lejos_sc_oi_1 = "20/100";
+            //    else if (av_lejos_sc_oi == "3") av_lejos_sc_oi_1 = "20/13";
+            //    else if (av_lejos_sc_oi == "4") av_lejos_sc_oi_1 = "20/15";
+            //    else if (av_lejos_sc_oi == "5") av_lejos_sc_oi_1 = "20/20";
+            //    else if (av_lejos_sc_oi == "6") av_lejos_sc_oi_1 = "20/200";
+            //    else if (av_lejos_sc_oi == "7") av_lejos_sc_oi_1 = "20/25";
+            //    else if (av_lejos_sc_oi == "8") av_lejos_sc_oi_1 = "20/30";
+            //    else if (av_lejos_sc_oi == "9") av_lejos_sc_oi_1 = "20/40";
+            //    else if (av_lejos_sc_oi == "10") av_lejos_sc_oi_1 = "20/50";
+            //    else if (av_lejos_sc_oi == "11") av_lejos_sc_oi_1 = "20/70";
+            //    else if (av_lejos_sc_oi == "12") av_lejos_sc_oi_1 = "NO APLICA";
+
+            //    var av_lejos_cc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID).v_Value1;
+
+            //    if (av_lejos_cc_od == "1") av_lejos_cc_od_1 = "20/10";
+            //    else if (av_lejos_cc_od == "2") av_lejos_cc_od_1 = "20/100";
+            //    else if (av_lejos_cc_od == "3") av_lejos_cc_od_1 = "20/13";
+            //    else if (av_lejos_cc_od == "4") av_lejos_cc_od_1 = "20/15";
+            //    else if (av_lejos_cc_od == "5") av_lejos_cc_od_1 = "20/20";
+            //    else if (av_lejos_cc_od == "6") av_lejos_cc_od_1 = "20/200";
+            //    else if (av_lejos_cc_od == "7") av_lejos_cc_od_1 = "20/25";
+            //    else if (av_lejos_cc_od == "8") av_lejos_cc_od_1 = "20/30";
+            //    else if (av_lejos_cc_od == "9") av_lejos_cc_od_1 = "20/40";
+            //    else if (av_lejos_cc_od == "10") av_lejos_cc_od_1 = "20/50";
+            //    else if (av_lejos_cc_od == "11") av_lejos_cc_od_1 = "20/70";
+            //    else if (av_lejos_cc_od == "12") av_lejos_cc_od_1 = "NO APLICA";
+
+            //    var av_lejos_cc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID).v_Value1;
+
+            //    if (av_lejos_cc_oi == "1") av_lejos_cc_oi_1 = "20/10";
+            //    else if (av_lejos_cc_oi == "2") av_lejos_cc_oi_1 = "20/100";
+            //    else if (av_lejos_cc_oi == "3") av_lejos_cc_oi_1 = "20/13";
+            //    else if (av_lejos_cc_oi == "4") av_lejos_cc_oi_1 = "20/15";
+            //    else if (av_lejos_cc_oi == "5") av_lejos_cc_oi_1 = "20/20";
+            //    else if (av_lejos_cc_oi == "6") av_lejos_cc_oi_1 = "20/200";
+            //    else if (av_lejos_cc_oi == "7") av_lejos_cc_oi_1 = "20/25";
+            //    else if (av_lejos_cc_oi == "8") av_lejos_cc_oi_1 = "20/30";
+            //    else if (av_lejos_cc_oi == "9") av_lejos_cc_oi_1 = "20/40";
+            //    else if (av_lejos_cc_oi == "10") av_lejos_cc_oi_1 = "20/50";
+            //    else if (av_lejos_cc_oi == "11") av_lejos_cc_oi_1 = "20/70";
+            //    else if (av_lejos_cc_oi == "12") av_lejos_cc_oi_1 = "NO APLICA";
+
+            //    var estereopsis = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_A) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_A).v_Value1;
+            //    var TestIshiharaNormal = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;
+            //    var TestIshiharaAnormal = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;
+            //    //var Dicromatopsia = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID).v_Value1;
+            //    string VisonColores = "";
+            //    if (TestIshiharaNormal == "1")
+            //    {
+            //        VisonColores = "Normal";
+            //    }
+            //    else if (TestIshiharaAnormal == "2")
+            //    {
+            //        VisonColores = "Anormal";
+            //    }
+            //    cells = new List<PdfPCell>()
+            //    {
+            //        new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 2, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+            //        new PdfPCell(new Phrase("Agudeza Visual", fontColumnValue)) { Colspan = 2, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("V. de cerca", fontColumnValue)) { Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("OD S/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(av_cerca_sc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("OD C/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(av_cerca_cc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("OI S/C", fontColumnValue)) { Colspan = 1,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(av_cerca_sc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("OI C/C", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(av_cerca_cc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("Esteropsis", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(estereopsis, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+
+            //        new PdfPCell(new Phrase("V. de lejos", fontColumnValue)) { Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("OD S/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(av_lejos_sc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("OD C/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(av_lejos_cc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("OI S/C", fontColumnValue)) { Colspan = 1,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(av_lejos_sc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("OI C/C", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(av_lejos_cc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("Ishihara", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase(VisonColores, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //    };
+            //    columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            //    filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+            //    document.Add(filiationWorker);
+            //}
+            //else
+            //{
+
+            //    cells = new List<PdfPCell>()
+            //    {
+            //        new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
+
+            //        new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+            //        new PdfPCell(new Phrase("Agudeza Visual", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //        new PdfPCell(new Phrase("NO APLICA EXAMEN ", fontColumnValue)) { Colspan =16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+            //    };
+            //    columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            //    filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+            //    document.Add(filiationWorker);
+            //}
 
             #endregion
 
@@ -1152,23 +1195,23 @@ namespace NetPdf
                 {
                     new PdfPCell(new Phrase("LABORATORIO:", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 13, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},       
 
-                    new PdfPCell(new Phrase("Hemoglobina", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
-                    new PdfPCell(new Phrase(Hemo + " " + uniHemo, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE}, 
-                    new PdfPCell(new Phrase("Trigliceridos", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
-                    new PdfPCell(new Phrase(valor_trigliceridos + " " +uni_trigliceridos , fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE}, 
+                    new PdfPCell(new Phrase("Hemoglobina", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    new PdfPCell(new Phrase(Hemo + " " + uniHemo, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK}, 
+                    new PdfPCell(new Phrase("Trigliceridos", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
+                    new PdfPCell(new Phrase(valor_trigliceridos + " " +uni_trigliceridos , fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK}, 
                 
-                    new PdfPCell(new Phrase("Glucosa", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
-                    new PdfPCell(new Phrase(Valor + " " + Uni, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE}, 
-                    new PdfPCell(new Phrase("Creatinina", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
-                    new PdfPCell(new Phrase(valor_creatinina+ " " + uni_creatinina, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE}, 
+                    new PdfPCell(new Phrase("Glucosa", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
+                    new PdfPCell(new Phrase(Valor + " " + Uni, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK}, 
+                    new PdfPCell(new Phrase("Creatinina", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
+                    new PdfPCell(new Phrase(valor_creatinina+ " " + uni_creatinina, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK}, 
                 
-                    new PdfPCell(new Phrase("Colesterol Total", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
-                    new PdfPCell(new Phrase(valor_colesterol + " " + uni_colesterol, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE }, 
-                    new PdfPCell(new Phrase("Examen de Orina", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
-                    new PdfPCell(new Phrase(dxOrinaConcatenado, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE }, 
+                    new PdfPCell(new Phrase("Colesterol Total", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    new PdfPCell(new Phrase(valor_colesterol + " " + uni_colesterol, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK }, 
+                    new PdfPCell(new Phrase("Examen de Orina", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
+                    new PdfPCell(new Phrase(dxOrinaConcatenado, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK }, 
                     
-                    new PdfPCell(new Phrase("Colesterol HDL", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
-                    new PdfPCell(new Phrase(valor_hdl + " " + uni_hdl, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE }, 
+                    new PdfPCell(new Phrase("Colesterol HDL", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
+                    new PdfPCell(new Phrase(valor_hdl + " " + uni_hdl, fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK }, 
                     new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
                     new PdfPCell(new Phrase("",fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE }, 
                   
@@ -1209,6 +1252,10 @@ namespace NetPdf
                         new PdfPCell(new Phrase(alt_estruc_3, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
                         new PdfPCell(new Phrase("OBSERVADO", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },    
                         new PdfPCell(new Phrase(alt_estruc_4, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                    
+                        new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight=2f },    
+                        new PdfPCell(new Phrase("", fontColumnValue)) { Colspan =12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK, FixedHeight=2f },    
+                        
                     };
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
@@ -1222,6 +1269,10 @@ namespace NetPdf
 
                         new PdfPCell(new Phrase("Trabajos en altura estructural mayor a 1.8m:", fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
                         new PdfPCell(new Phrase("NO APLICA EXAMEN", fontColumnValue)) { Colspan =12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  },    
+                        
+                        new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight=2f },    
+                        new PdfPCell(new Phrase("", fontColumnValue)) { Colspan =12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK, FixedHeight=2f },    
+                        
                     };
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
@@ -1347,7 +1398,8 @@ namespace NetPdf
             string[] fechacaducidad = datosPac.FechaCaducidad.ToString().Split(' ');
             cells = new List<PdfPCell>()
                  {
-                    new PdfPCell(new Phrase("Resultado para Trabajar", fontColumnValue)){ Colspan=20,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor=BaseColor.GRAY, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("Resultado para Trabajar", fontColumnValueBold)){ Colspan=20,HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    
                     new PdfPCell(new Phrase("APTO", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
                     new PdfPCell(new Phrase(Apto,fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , MinimumHeight= tamaño_celda},
 
@@ -1357,11 +1409,28 @@ namespace NetPdf
                     new PdfPCell(new Phrase("NO APTO", fontColumnValue)){ Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
                     new PdfPCell(new Phrase(NoApto,fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , MinimumHeight= tamaño_celda},
                     
+                    new PdfPCell(new Phrase("", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight=2f },
+                    new PdfPCell(new Phrase("",fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK, FixedHeight=2f},
+
+                    new PdfPCell(new Phrase("", fontColumnValue)){Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight=2f },
+                    new PdfPCell(new Phrase("",fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK, FixedHeight=2f},
+
+                    new PdfPCell(new Phrase("", fontColumnValue)){ Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE, FixedHeight=2f },
+                    new PdfPCell(new Phrase("",fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK, FixedHeight=2f},
+                    
+                  
+
                     new PdfPCell(new Phrase("FECHA DE EXAMEN", fontColumnValue)){Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
                     new PdfPCell(new Phrase(fechaServicio[0],fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , MinimumHeight= tamaño_celda},
 
                     new PdfPCell(new Phrase("FECHA DE CADUCIDAD", fontColumnValue)){ Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
                     new PdfPCell(new Phrase(fechacaducidad[0],fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , MinimumHeight= tamaño_celda},
+
+                    new PdfPCell(new Phrase("", fontColumnValue)){Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT, FixedHeight= 2f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("",fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , FixedHeight= 2f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK},
+
+                    new PdfPCell(new Phrase("", fontColumnValue)){ Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT, FixedHeight= 2f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("",fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE , FixedHeight= 2f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK},
 
                  };
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
