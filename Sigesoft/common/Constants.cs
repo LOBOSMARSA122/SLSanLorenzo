@@ -1163,6 +1163,10 @@ namespace Sigesoft.Common
         public const string CERTIFICADO_PSICOSENSOMETRICO_DATOS_RESTRICCIONES = "N009-MF000003389";
         #endregion
 
+
+        public const string INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL = "INF-MED-SO-EX-MED-ANUAL";
+        public const string ANEXO_8_INFORME_MEDICO_OCUPACIONAL = "ANEXO-8-INF-MED-OC";
+
         #region COSAPI
 
         public const string INFORME_MEDICO_OCUPACIONAL_COSAPI = "IMO-COSAPI";

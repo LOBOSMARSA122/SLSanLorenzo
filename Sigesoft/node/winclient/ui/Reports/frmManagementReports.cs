@@ -115,7 +115,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 59, v_ComponentName = "CERTIFICADO DE APTITUD MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.CERTIFICADO_APTITUD_MEDICO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "EXONERACIÓN DE EXAMENES DE LABORATORIO", v_ComponentId = Constants.EXONERACION_EXAMEN_LABORATORIO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "EXONERACIÓN DE PLACA DE TORAX P-A", v_ComponentId = Constants.EXONERACION_PLACA_TORAXICA });
-                
+                serviceComponents.Add(new ServiceComponentList { Orden = 72, v_ComponentName = "INFORME MEDICO SALUD OCUPACIONAL - EXAMEN ANUAL", v_ComponentId = Constants.INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL });
+                serviceComponents.Add(new ServiceComponentList { Orden = 73, v_ComponentName = "ANEXO 8 INFORME MEDICO OCUPASIONAL", v_ComponentId = Constants.ANEXO_8_INFORME_MEDICO_OCUPACIONAL });
+
                 if (datosP.Genero.ToUpper() == "FEMENINO")
                 {
                     serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
@@ -1379,6 +1381,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 RecoNeuro, RecoAltEst, RecoActFis, RecoCustNor, RecoAlt7D, RecoExaFis, RecoExaFis7C, RecoOsteoMus1, RecoTamDer, RecoOdon,
                 RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionales, _listaPatologicosFamiliares, _listMedicoPersonales, _listaHabitoNocivos);
         }
+        
         private void GenerateCertificadoAptitudMedicoOcupacional_Cosapi(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -1397,6 +1400,99 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
                 datosP,
                 pathFile);
+        }
+
+        private void GenerateInformeMedicoOcupacionalExamenMedicoAnual(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var RecoAudio = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.AUDIOMETRIA_ID);
+            var RecoElectro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ELECTROCARDIOGRAMA_ID);
+            var RecoEspiro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ESPIROMETRIA_ID);
+            var RecoNeuro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EVAL_NEUROLOGICA_ID);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            var RecoAltEst = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);
+            var RecoActFis = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.CUESTIONARIO_ACTIVIDAD_FISICA);
+            var RecoCustNor = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.C_N_ID);
+            var RecoAlt7D = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ALTURA_7D_ID);
+            var RecoExaFis = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EXAMEN_FISICO_ID);
+            var RecoExaFis7C = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EXAMEN_FISICO_7C_ID);
+            var RecoOsteoMus1 = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
+            var RecoTamDer = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.TAMIZAJE_DERMATOLOGIO_ID);
+            var RecoOdon = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ODONTOGRAMA_ID);
+            var RecoPsico = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.PSICOLOGIA_ID);
+            var RecoRx = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.RX_TORAX_ID);
+            var RecoOit = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OIT_ID);
+            var RecoOft = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OFTALMOLOGIA_ID);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+
+            var Restricciton = _serviceBL.GetRestrictionByServiceId(_serviceId);
+            var Aptitud = _serviceBL.DevolverAptitud(_serviceId);
+
+            var _listAtecedentesOcupacionales = _historyBL.GetHistoryReport(_pacientId);
+            var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
+            var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
+            var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacientId);
+
+            InformeMedicoSaludOcupacional_ExamenAnual.CreateInformeMedicoOcupacionalExamenMedicoAnual(_DataService,
+                filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
+                datosP,
+                pathFile,
+                RecoAudio,
+                RecoElectro,
+                RecoEspiro,
+                RecoNeuro, RecoAltEst, RecoActFis, RecoCustNor, RecoAlt7D, RecoExaFis, RecoExaFis7C, RecoOsteoMus1, RecoTamDer, RecoOdon,
+                RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionales, _listaPatologicosFamiliares, _listMedicoPersonales, _listaHabitoNocivos);
+        }
+        private void GenerateAnexo8InformeMedicoOcupacional(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var RecoAudio = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.AUDIOMETRIA_ID);
+            var RecoElectro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ELECTROCARDIOGRAMA_ID);
+            var RecoEspiro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ESPIROMETRIA_ID);
+            var RecoNeuro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EVAL_NEUROLOGICA_ID);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            var RecoAltEst = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);
+            var RecoActFis = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.CUESTIONARIO_ACTIVIDAD_FISICA);
+            var RecoCustNor = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.C_N_ID);
+            var RecoAlt7D = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ALTURA_7D_ID);
+            var RecoExaFis = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EXAMEN_FISICO_ID);
+            var RecoExaFis7C = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EXAMEN_FISICO_7C_ID);
+            var RecoOsteoMus1 = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
+            var RecoTamDer = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.TAMIZAJE_DERMATOLOGIO_ID);
+            var RecoOdon = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ODONTOGRAMA_ID);
+            var RecoPsico = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.PSICOLOGIA_ID);
+            var RecoRx = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.RX_TORAX_ID);
+            var RecoOit = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OIT_ID);
+            var RecoOft = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OFTALMOLOGIA_ID);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+
+            var Restricciton = _serviceBL.GetRestrictionByServiceId(_serviceId);
+            var Aptitud = _serviceBL.DevolverAptitud(_serviceId);
+
+            var _listAtecedentesOcupacionales = _historyBL.GetHistoryReport(_pacientId);
+            var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
+            var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
+            var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacientId);
+
+            Anexo8_InformeMedicoOcupacionalcs.CreateAnexo8InformeMedicoOcupacional(_DataService,
+                filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
+                datosP,
+                pathFile,
+                RecoAudio,
+                RecoElectro,
+                RecoEspiro,
+                RecoNeuro, RecoAltEst, RecoActFis, RecoCustNor, RecoAlt7D, RecoExaFis, RecoExaFis7C, RecoOsteoMus1, RecoTamDer, RecoOdon,
+                RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionales, _listaPatologicosFamiliares, _listMedicoPersonales, _listaHabitoNocivos);
         }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
@@ -4538,6 +4634,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.EXONERACION_PLACA_TORAXICA:
                     GenerateExoneraxionPlacaTorax(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXONERACION_PLACA_TORAXICA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL:
+                    GenerateInformeMedicoOcupacionalExamenMedicoAnual(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.ANEXO_8_INFORME_MEDICO_OCUPACIONAL:
+                    GenerateAnexo8InformeMedicoOcupacional(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ANEXO_8_INFORME_MEDICO_OCUPACIONAL)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
 
