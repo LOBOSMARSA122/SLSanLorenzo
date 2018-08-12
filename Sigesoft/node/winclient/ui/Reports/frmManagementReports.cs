@@ -422,14 +422,50 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             OperationResult objOperationResult = new OperationResult();
             List<ServiceComponentList> ListaFinalOrdena = new List<ServiceComponentList>();
             var ListaOrdenReportes = oOrganizationBL.GetOrdenReportes(ref objOperationResult, _EmpresaClienteId);
+
+            #region lógica de exoneración
+
+            var serviceComponenteStatusRx = _serviceBL.ServiceComponentStatusByCategoria(6, _serviceId);
+            var serviceComponenteStatusLab = _serviceBL.ServiceComponentStatusByCategoria(1, _serviceId);
             if (ListaOrdenReportes.Count > 0)
             {
                 ListaOrdenada = new List<ServiceComponentList>();
                 ServiceComponentList oServiceComponentList = null;
 
+                if (serviceComponenteStatusRx == 7)
+                {
+                    ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                         p =>
+                             p.v_ComponenteId != "N002-ME000000032" && p.v_ComponenteId != "N009-ME000000062" &&
+                             p.v_ComponenteId != "N009-ME000000440" && p.v_ComponenteId != "N009-ME000000130" &&
+                             p.v_ComponenteId != "N009-ME000000302");
+                }
+                else
+                {
+                    ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                       p =>
+                           p.v_ComponenteId != "EXO-RX-SL");
+                }
+
+                if (serviceComponenteStatusLab == 7)
+                {
+                    ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                         p =>
+                             p.v_ComponenteId != "ILAB_CLINICO");
+                }
+                else
+                {
+                    ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                       p =>
+                           p.v_ComponenteId != "EXO-LAB-SL");
+                }
+
+            #endregion
+           
 
                 foreach (var item in ListaOrdenReportes)
                 {
+                 
                     oServiceComponentList = new ServiceComponentList();
                     oServiceComponentList.v_ComponentName = item.v_NombreReporte;
                     oServiceComponentList.v_ComponentId = item.v_ComponenteId + "|" + item.i_NombreCrystalId;

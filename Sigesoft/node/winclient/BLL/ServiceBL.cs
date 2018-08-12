@@ -3649,6 +3649,22 @@ namespace Sigesoft.Node.WinClient.BLL
 			return string.Join(", ", qry.Select(p => p.v_RestrictionsName));
 		}
 
+        public int ServiceComponentStatusByCategoria(int pintCategoryId, string pstrServiceId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var qry = (from a in dbContext.servicecomponent 
+                       join c in dbContext.component on a.v_ComponentId equals c.v_ComponentId
+                        where c.i_CategoryId == pintCategoryId && a.v_ServiceId == pstrServiceId &&
+                       a.i_IsDeleted == 0
+                       select new ServiceComponentList()
+                       {
+                           i_ServiceComponentStatusId = a.i_ServiceComponentStatusId
+                       }).ToList();
+
+            return qry[0].i_ServiceComponentStatusId.Value;
+        }
+
 		public string ConcatenateRestrictionByComponentId(string pstrComponentId, string pstrServiceId)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
