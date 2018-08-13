@@ -609,8 +609,7 @@ namespace NetPdf
             #region ANTECEDENTES LABORALES
             cells = new List<PdfPCell>()
                 {
-                    new PdfPCell(new Phrase("III. ANTECEDENTES LABORALES", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
-           
+                    new PdfPCell(new Phrase("III. ANTECEDENTES LABORALES", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },   
                 };
 
             columnWidths = new float[] { 33f, 33f, 33f };
