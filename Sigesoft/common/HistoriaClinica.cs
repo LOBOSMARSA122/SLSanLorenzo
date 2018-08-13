@@ -13,7 +13,9 @@ namespace NetPdf
 {
     public class HistoriaClinica
     {
-        public static void CreateHistoriaClinica(PacientList filiationData, List<ServiceComponentList> serviceComponent, organizationDto infoEmpresaPropietaria, List<PersonMedicalHistoryList> listMedicoPersonales, List<FamilyMedicalAntecedentsList> listaPatologicosFamiliares, List<NoxiousHabitsList> listaHabitoNocivos, List<DiagnosticRepositoryList> ListDiagnosticRepository, List<MedicationList> ListMedicamentos, string Recomendaciones, string filePDF)
+        public static void CreateHistoriaClinica(PacientList filiationData, List<ServiceComponentList> serviceComponent, 
+            organizationDto infoEmpresaPropietaria, List<PersonMedicalHistoryList> listMedicoPersonales, 
+            List<FamilyMedicalAntecedentsList> listaPatologicosFamiliares, List<NoxiousHabitsList> listaHabitoNocivos, List<DiagnosticRepositoryList> ListDiagnosticRepository, List<MedicationList> ListMedicamentos, string Recomendaciones, string filePDF)
         {
             //      
             // step 1: creation of a document-object

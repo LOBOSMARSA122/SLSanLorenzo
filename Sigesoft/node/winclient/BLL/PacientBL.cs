@@ -6253,6 +6253,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      Sede = lc.v_Name,
                                      v_CurrentOccupation = b.v_CurrentOccupation,
                                      FechaServicio = a.d_ServiceDate.Value,
+                                     i_MaritalStatusId = b.i_MaritalStatusId,
                                      // Antecedentes ginecologicos
                                      d_PAP = a.d_PAP.Value,
                                      d_Mamografia = a.d_Mamografia.Value,
@@ -6307,6 +6308,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   i_DocTypeId = a.i_DocTypeId,
                                   v_OwnerName = a.v_OwnerName,
                                   v_Employer = a.v_Employer,
+                                  i_MaritalStatusId = a.i_MaritalStatusId,
                                   //
                                   Edad = GetAge(a.d_Birthdate.Value),
                                   Genero = a.Genero,

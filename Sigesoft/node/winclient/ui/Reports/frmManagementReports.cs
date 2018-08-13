@@ -1437,7 +1437,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacientId);
-
+            var anamnesis = _serviceBL.GetAnamnesisReport(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
             InformeMedicoSaludOcupacional_ExamenAnual.CreateInformeMedicoOcupacionalExamenMedicoAnual(_DataService,
                 filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
                 datosP,
@@ -1446,7 +1448,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 RecoElectro,
                 RecoEspiro,
                 RecoNeuro, RecoAltEst, RecoActFis, RecoCustNor, RecoAlt7D, RecoExaFis, RecoExaFis7C, RecoOsteoMus1, RecoTamDer, RecoOdon,
-                RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionales, _listaPatologicosFamiliares, _listMedicoPersonales, _listaHabitoNocivos);
+                RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionales, _listaPatologicosFamiliares, _listMedicoPersonales, _listaHabitoNocivos, anamnesis, exams, _ExamenesServicio);
         }
         private void GenerateAnexo8InformeMedicoOcupacional(string pathFile)
         {
