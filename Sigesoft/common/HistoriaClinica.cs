@@ -342,7 +342,8 @@ namespace NetPdf
 
             cells = new List<PdfPCell>()
                 {
-                    new PdfPCell(new Phrase("Examen Físico: ", fontColumnValue)){HorizontalAlignment = Element.ALIGN_RIGHT }, new PdfPCell(new Phrase(ValorExamenFisico, fontColumnValue)),                   
+                    new PdfPCell(new Phrase("Examen Físico: ", fontColumnValue)){HorizontalAlignment = Element.ALIGN_RIGHT }, 
+                    new PdfPCell(new Phrase(ValorExamenFisico, fontColumnValue)),                   
                 };
 
             columnWidths = new float[] { 12.5f,88.5f };

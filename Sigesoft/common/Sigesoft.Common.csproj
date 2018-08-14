@@ -109,6 +109,7 @@
     <Compile Include="HojaCotizacion.cs" />
     <Compile Include="HUDBAY\ConsentimientoInformadoAccesoClinica.cs" />
     <Compile Include="HUDBAY\InformeMedicoDeAptitudOcupacional_Empresa.cs" />
+    <Compile Include="InformedeResultados_Autorización.cs" />
     <Compile Include="InformeMedicoOcupacional.cs" />
     <Compile Include="InformeMedicoOcupacional_Cosapi.cs" />
     <Compile Include="InformeMedicoSaludOcupacional_ExamenAnual.cs" />

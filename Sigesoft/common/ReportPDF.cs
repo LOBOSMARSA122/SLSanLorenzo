@@ -6800,10 +6800,6 @@ namespace NetPdf
                     new PdfPCell(new Phrase(SistemaNervioso, fontColumnValue))
                                       { Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
 
-
-
-
-
                };
 
                 #endregion

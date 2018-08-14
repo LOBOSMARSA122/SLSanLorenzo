@@ -117,7 +117,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "EXONERACIÓN DE PLACA DE TORAX P-A", v_ComponentId = Constants.EXONERACION_PLACA_TORAXICA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 72, v_ComponentName = "INFORME MEDICO SALUD OCUPACIONAL - EXAMEN ANUAL", v_ComponentId = Constants.INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL });
                 serviceComponents.Add(new ServiceComponentList { Orden = 73, v_ComponentName = "ANEXO 8 INFORME MEDICO OCUPASIONAL", v_ComponentId = Constants.ANEXO_8_INFORME_MEDICO_OCUPACIONAL });
+                serviceComponents.Add(new ServiceComponentList { Orden = 74, v_ComponentName = "INFORME RESULTADOS EVALUACION MEDICA - AUTORIZACION", v_ComponentId = Constants.INFORME_RESULTADOS_EVALUACION_MEDICA });
 
+                //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
                 if (datosP.Genero.ToUpper() == "FEMENINO")
                 {
                     serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
@@ -1342,6 +1344,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             DeclaracionJuradaRX.CreateDeclaracionJurada(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
+        private void GenerateInformeResultadosAutorizacion(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+
+            InformedeResultados_Autorización.CreateInformeResultadosAutorizacion(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+        }
 
         #region HUDBAY METODOS
         private void GenerateConsentimientoInformadoAccesoHistoriaClinica(string pathFile)
@@ -1469,13 +1483,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var Restricciton = _serviceBL.GetRestrictionByServiceId(_serviceId);
             var Aptitud = _serviceBL.DevolverAptitud(_serviceId);
 
-            var _listAtecedentesOcupacionales = _historyBL.GetHistoryReport(_pacientId);
+            var _listAtecedentesOcupacionalesA = _historyBL.GetHistoryReportA(_pacientId);
+            var _listAtecedentesOcupacionalesB = _historyBL.GetHistoryReportB(_pacientId);
             var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
             var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
             var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacientId);
             var anamnesis = _serviceBL.GetAnamnesisReport(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var ExamenFisico = _serviceBL.ValoresComponente(_serviceId, Constants.EXAMEN_FISICO_ID);
+            var Oftalmologia = _serviceBL.ValoresComponente(_serviceId, Constants.OFTALMOLOGIA_ID);
+            var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
+            var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
             InformeMedicoSaludOcupacional_ExamenAnual.CreateInformeMedicoOcupacionalExamenMedicoAnual(_DataService,
                 filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
                 datosP,
@@ -1484,7 +1503,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 RecoElectro,
                 RecoEspiro,
                 RecoNeuro, RecoAltEst, RecoActFis, RecoCustNor, RecoAlt7D, RecoExaFis, RecoExaFis7C, RecoOsteoMus1, RecoTamDer, RecoOdon,
-                RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionales, _listaPatologicosFamiliares, _listMedicoPersonales, _listaHabitoNocivos, anamnesis, exams, _ExamenesServicio);
+                RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionalesA,_listAtecedentesOcupacionalesB, _listaPatologicosFamiliares,
+                _listMedicoPersonales, _listaHabitoNocivos, anamnesis, exams, _ExamenesServicio, ExamenFisico, TestIhihara, TestEstereopsis, Oftalmologia);
         }
         private void GenerateAnexo8InformeMedicoOcupacional(string pathFile)
         {
@@ -4699,8 +4719,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateInformeMedicoAptitudOcupacional(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_MEDICO_APTITUD_OCUPACIONAL_EMPRESA_HUDBAY)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
+                 case Constants.INFORME_RESULTADOS_EVALUACION_MEDICA:
+                    GenerateInformeResultadosAutorizacion(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_RESULTADOS_EVALUACION_MEDICA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
                    
-
                 case Constants.FICHA_SUFICIENCIA_MEDICA_ID:
                     GenerateCertificadoSuficienciaMedicaTC(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FICHA_SUFICIENCIA_MEDICA_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));

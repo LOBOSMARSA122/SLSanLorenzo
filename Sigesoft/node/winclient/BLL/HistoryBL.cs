@@ -519,6 +519,123 @@ namespace Sigesoft.Node.WinClient.BLL
            }
        }
 
+       public List<HistoryList> GetHistoryReportA(string pstrPersonId)
+       {
+           try
+           {
+               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+               var query = (from A in dbContext.history
+                            join D in dbContext.systemparameter on new { a = A.i_TypeOperationId.Value, b = 204 } equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                            from D in D_join.DefaultIfEmpty()
+                            
+                            where A.i_IsDeleted == 0 && A.i_TrabajoActual == 0 && A.v_PersonId == pstrPersonId
+
+                            select new HistoryList
+                            {
+                                v_HistoryId = A.v_HistoryId,
+                                d_StartDate = A.d_StartDate,
+                                d_EndDate = A.d_EndDate,
+                                v_Organization = A.v_Organization,
+                                v_TypeActivity = A.v_TypeActivity,
+                                i_GeografixcaHeight = A.i_GeografixcaHeight,
+                                v_workstation = A.v_workstation,
+                                d_CreationDate = A.d_InsertDate,
+                                d_UpdateDate = A.d_UpdateDate,
+                                b_FingerPrintImage = A.b_FingerPrintImage,
+                                b_RubricImage = A.b_RubricImage,
+                                t_RubricImageText = A.t_RubricImageText,
+                                v_TypeOperationName = D.v_Value1
+                            }).ToList();
+               var q = (from a in query
+                        let xxx = new ServiceBL().GetYearsAndMonth(a.d_EndDate, a.d_StartDate)
+                        select new HistoryList
+                        {
+                            v_HistoryId = a.v_HistoryId,
+                            d_StartDate = a.d_StartDate,
+                            d_EndDate = a.d_EndDate,
+                            v_Organization = a.v_Organization,
+                            v_TypeActivity = a.v_TypeActivity,
+                            i_GeografixcaHeight = a.i_GeografixcaHeight,
+                            v_workstation = a.v_workstation,
+                            d_CreationDate = a.d_CreationDate,
+                            d_UpdateDate = a.d_UpdateDate,
+                            b_FingerPrintImage = a.b_FingerPrintImage,
+                            b_RubricImage = a.b_RubricImage,
+                            t_RubricImageText = a.t_RubricImageText,
+                            Fecha = "Fecha Inicio: " + a.d_StartDate.ToString().Substring(4, 7) + "  Fecha Fin: " + a.d_EndDate.ToString().Substring(4, 7),
+                            Exposicion = ConcatenateExposiciones(a.v_HistoryId),
+                            Epps = ConcatenateEpps(a.v_HistoryId),
+                            v_TypeOperationName = a.v_TypeOperationName,
+                            TiempoLabor = xxx
+                        }).ToList();
+               List<HistoryList> objData = q.ToList();
+               return objData;
+
+           }
+           catch (Exception ex)
+           {
+               return null;
+           }
+       }
+
+       public List<HistoryList> GetHistoryReportB(string pstrPersonId)
+       {
+           try
+           {
+               SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+               var query = (from A in dbContext.history
+                            join D in dbContext.systemparameter on new { a = A.i_TypeOperationId.Value, b = 204 } equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                            from D in D_join.DefaultIfEmpty()
+
+                            where A.i_IsDeleted == 0 && A.i_TrabajoActual == 1 && A.v_PersonId == pstrPersonId
+
+                            select new HistoryList
+                            {
+                                v_HistoryId = A.v_HistoryId,
+                                d_StartDate = A.d_StartDate,
+                                d_EndDate = A.d_EndDate,
+                                v_Organization = A.v_Organization,
+                                v_TypeActivity = A.v_TypeActivity,
+                                i_GeografixcaHeight = A.i_GeografixcaHeight,
+                                v_workstation = A.v_workstation,
+                                d_CreationDate = A.d_InsertDate,
+                                d_UpdateDate = A.d_UpdateDate,
+                                b_FingerPrintImage = A.b_FingerPrintImage,
+                                b_RubricImage = A.b_RubricImage,
+                                t_RubricImageText = A.t_RubricImageText,
+                                v_TypeOperationName = D.v_Value1
+                            }).ToList();
+               var q = (from a in query
+                        let xxx = new ServiceBL().GetYearsAndMonth(a.d_EndDate, a.d_StartDate)
+                        select new HistoryList
+                        {
+                            v_HistoryId = a.v_HistoryId,
+                            d_StartDate = a.d_StartDate,
+                            d_EndDate = a.d_EndDate,
+                            v_Organization = a.v_Organization,
+                            v_TypeActivity = a.v_TypeActivity,
+                            i_GeografixcaHeight = a.i_GeografixcaHeight,
+                            v_workstation = a.v_workstation,
+                            d_CreationDate = a.d_CreationDate,
+                            d_UpdateDate = a.d_UpdateDate,
+                            b_FingerPrintImage = a.b_FingerPrintImage,
+                            b_RubricImage = a.b_RubricImage,
+                            t_RubricImageText = a.t_RubricImageText,
+                            Fecha = "Fecha Inicio: " + a.d_StartDate.ToString().Substring(4, 7) + "  Fecha Fin: " + a.d_EndDate.ToString().Substring(4, 7),
+                            Exposicion = ConcatenateExposiciones(a.v_HistoryId),
+                            Epps = ConcatenateEpps(a.v_HistoryId),
+                            v_TypeOperationName = a.v_TypeOperationName,
+                            TiempoLabor = xxx
+                        }).ToList();
+               List<HistoryList> objData = q.ToList();
+               return objData;
+
+           }
+           catch (Exception ex)
+           {
+               return null;
+           }
+       }
        private string ConcatenateExposiciones(string pstrHistoryId)
        {
            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();

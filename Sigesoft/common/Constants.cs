@@ -1166,6 +1166,7 @@ namespace Sigesoft.Common
 
         public const string INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL = "INF-MED-SO-EX-MED-ANUAL";
         public const string ANEXO_8_INFORME_MEDICO_OCUPACIONAL = "ANEXO-8-INF-MED-OC";
+        public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
 
         #region COSAPI
 
