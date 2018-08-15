@@ -61,27 +61,27 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 LoadCombos();
 
 
-                chkuso_de_correctores_si.Attributes.Add("Tag","N002-MF000000224");
-                chkuso_de_correctores_no.Attributes.Add("Tag","N009-MF000000719");
+                chkuso_de_correctores_si.Attributes.Add("Tag", "N002-MF000000224");
+                chkuso_de_correctores_no.Attributes.Add("Tag", "N009-MF000000719");
                 txtultima_refraccion.Attributes.Add("Tag","N002-MF000000225");
-                chkdiabetes.Attributes.Add("Tag","N009-MF000000176");
-                chkhipertension.Attributes.Add("Tag","N009-MF000000175");
-                chksust_quimicas.Attributes.Add("Tag","N009-MF000000180");
-                chkexp_a_radiacion.Attributes.Add("Tag","N009-MF000000182");
-                chkmiopia.Attributes.Add("Tag","N009-MF000000709");
-                chkcirugia_ocular.Attributes.Add("Tag","N009-MF000000181");
-                chktrauma_ocular.Attributes.Add("Tag","N009-MF000000178");
-                chkglaucoma.Attributes.Add("Tag","N009-MF000000177");
-                chkastigmatismo.Attributes.Add("Tag","N009-MF000000179");
-                txtotros_especificar.Attributes.Add("Tag","N009-MF000000710");
-                chksin_patologias.Attributes.Add("Tag","N009-MF000002092");
-                chkptosis_palpebral.Attributes.Add("Tag","N009-MF000002084");
-                chkconjuntivitis.Attributes.Add("Tag","N009-MF000002085");
-                chkpterigium.Attributes.Add("Tag","N009-MF000002086");
-                chkestrabismo.Attributes.Add("Tag","N009-MF000002087");
-                chktrans_de_cornea.Attributes.Add("Tag","N009-MF000002088");
-                chkcataratas.Attributes.Add("Tag","N009-MF000002089");
-                chkchalazion.Attributes.Add("Tag","N009-MF000002090");
+                //chkdiabetes.Attributes.Add("Tag","N009-MF000000176");
+                //chkhipertension.Attributes.Add("Tag","N009-MF000000175");
+                //chksust_quimicas.Attributes.Add("Tag","N009-MF000000180");
+                //chkexp_a_radiacion.Attributes.Add("Tag","N009-MF000000182");
+                //chkmiopia.Attributes.Add("Tag","N009-MF000000709");
+                //chkcirugia_ocular.Attributes.Add("Tag","N009-MF000000181");
+                //chktrauma_ocular.Attributes.Add("Tag","N009-MF000000178");
+                //chkglaucoma.Attributes.Add("Tag","N009-MF000000177");
+                //chkastigmatismo.Attributes.Add("Tag","N009-MF000000179");
+                txtotros_especificar.Attributes.Add("Tag", "N009-MF000000710");
+                //chksin_patologias.Attributes.Add("Tag","N009-MF000002092");
+                //chkptosis_palpebral.Attributes.Add("Tag","N009-MF000002084");
+                //chkconjuntivitis.Attributes.Add("Tag","N009-MF000002085");
+                //chkpterigium.Attributes.Add("Tag","N009-MF000002086");
+                //chkestrabismo.Attributes.Add("Tag","N009-MF000002087");
+                //chktrans_de_cornea.Attributes.Add("Tag","N009-MF000002088");
+                //chkcataratas.Attributes.Add("Tag","N009-MF000002089");
+                //chkchalazion.Attributes.Add("Tag","N009-MF000002090");
                 txtotras_patologia.Attributes.Add("Tag","N009-MF000002091");
 
 
@@ -90,51 +90,52 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtsc_cerca_ojo_izquierdo.Attributes.Add("Tag", "N002-MF000000227");
                 txtcc_cerca_ojo_derecho.Attributes.Add("Tag", "N002-MF000000235");
                 txtcc_cerca_ojo_izquierdo.Attributes.Add("Tag", "N009-MF000000646");
-                txtae_cerca_ojo_derecho.Attributes.Add("Tag", "N009-MF000000641");
-                txtae_cerca_izquierdo.Attributes.Add("Tag", "N002-MF000000237");
+                //txtae_cerca_ojo_derecho.Attributes.Add("Tag", "N009-MF000000641");
+                //txtae_cerca_izquierdo.Attributes.Add("Tag", "N002-MF000000237");
 
                 txtsc_lejos_ojo_derecho.Attributes.Add("Tag", "N002-MF000000234");
                 txtsc_lejos_ojo_izquierdo.Attributes.Add("Tag", "N002-MF000000230");
                 txtcc_lejos_ojo_derecho.Attributes.Add("Tag", "N002-MF000000231");
                 txtcc_lejos_ojo_izquierdo.Attributes.Add("Tag", "N002-MF000000236");
-                txtae_lejos_ojo_derecho.Attributes.Add("Tag", "N009-MF000002080");
-                txtae_lejos_ojo_izquierdo.Attributes.Add("Tag", "N009-MF000002081");
+                //txtae_lejos_ojo_derecho.Attributes.Add("Tag", "N009-MF000002080");
+                //txtae_lejos_ojo_izquierdo.Attributes.Add("Tag", "N009-MF000002081");
 
 
 
 
                 //chkemetrope.Attributes.Add("Tag","N009-MF000002071");
 
-                ddlmaculopatia_ojo_derecho.Attributes.Add("Tag", "N002-MF000000251");
+                //ddlmaculopatia_ojo_derecho.Attributes.Add("Tag", "N002-MF000000251");
+                ddlReflejospupilares.Attributes.Add("Tag", "N002-MF000000261");
                 //chkmaculopatia_ojo_izquierdo.Attributes.Add("Tag","N002-MF000000252");
 
-                ddlneuritis_ojo_derecho.Attributes.Add("Tag", "N002-MF000000254");
+                //ddlneuritis_ojo_derecho.Attributes.Add("Tag", "N002-MF000000254");
                 //chkneuritis_ojo_izquierdo.Attributes.Add("Tag","N002-MF000000255");
 
-                ddlretinopatia_ojo_derecho.Attributes.Add("Tag", "N009-MF000000524");
+                //ddlretinopatia_ojo_derecho.Attributes.Add("Tag", "N009-MF000000524");
                 //chkretinopatia_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000525");
 
-                ddledema_papilar_ojo_derecho.Attributes.Add("Tag", "N009-MF000000527");
+                //ddledema_papilar_ojo_derecho.Attributes.Add("Tag", "N009-MF000000527");
                 //chkedema_papilar_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000528");
 
-                ddlangiopatia_ojo_derecho.Attributes.Add("Tag", "N009-MF000000530");
+                //ddlangiopatia_ojo_derecho.Attributes.Add("Tag", "N009-MF000000530");
                 //chkangiopatia_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000531");
 
-                ddlatrofia_de_no_ojo_derecho.Attributes.Add("Tag", "N009-MF000000533");
+                //ddlatrofia_de_no_ojo_derecho.Attributes.Add("Tag", "N009-MF000000533");
                 //chkatrofia_de_no_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000534");
 
-                txtcampimetria_od.Attributes.Add("Tag","N009-MF000002094");
+                //txtcampimetria_od.Attributes.Add("Tag","N009-MF000002094");
                 txtcampimetria_oi.Attributes.Add("Tag","N009-MF000002095");
                 txttonometria_od.Attributes.Add("Tag","N009-MF000002096");
                 txttonometria_oi.Attributes.Add("Tag","N009-MF000002097");
-                chknormal_ishihara.Attributes.Add("Tag","N009-MF000000717");
-                chkanormal_ishihara.Attributes.Add("Tag","N009-MF000000718");
-                ddldescripcion_ishihara.Attributes.Add("Tag","N009-MF000000522");
-                txtrecuperacion_estereopsis.Attributes.Add("Tag","N009-MF000002093");
+                chknormal_ishihara.Attributes.Add("Tag","N009-MF000000711");
+                chkanormal_ishihara.Attributes.Add("Tag","N009-MF000000712");
+                ddldescripcion_ishihara.Attributes.Add("Tag","N009-MF000002094");
+                txtrecuperacion_estereopsis.Attributes.Add("Tag", "N009-MF000002093");
                 txtencandilamiento_estereopsis.Attributes.Add("Tag","N002-MF000000226");
-                txttiempo_estereopsis.Attributes.Add("Tag","N002-MF000000258");
-                chkanormal_estereopsis.Attributes.Add("Tag","N002-MF000000342");
-                chknormal_estereopsis.Attributes.Add("Tag","N002-MF000000343");
+                //txttiempo_estereopsis.Attributes.Add("Tag","N002-MF000000258");
+                //chkanormal_estereopsis.Attributes.Add("Tag","N002-MF000000342");
+                //chknormal_estereopsis.Attributes.Add("Tag","N002-MF000000343");
 
 
 
@@ -1155,15 +1156,29 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);
             var Combo217 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 217);
+            var Combo290 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 290);
+            var Combo287 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 287);
+            var Combo289 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 289);
+            var Combo288 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 288);
 
-            Utils.LoadDropDownList(ddlmaculopatia_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlneuritis_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlretinopatia_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddledema_papilar_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlangiopatia_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlatrofia_de_no_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlmaculopatia_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlneuritis_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlretinopatia_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddledema_papilar_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlangiopatia_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlatrofia_de_no_ojo_derecho, "Value1", "Id", Combo111, DropDownListAction.Select);
 
-            Utils.LoadDropDownList(ddldescripcion_ishihara, "Value1", "Id", Combo217, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddldescripcion_ishihara, "Value1", "Id", Combo289, DropDownListAction.Select);
+
+            Utils.LoadDropDownList(txtsc_cerca_ojo_derecho, "Value1", "Id", Combo290, DropDownListAction.Select);
+            Utils.LoadDropDownList(txtsc_cerca_ojo_izquierdo, "Value1", "Id", Combo290, DropDownListAction.Select);
+            Utils.LoadDropDownList(txtcc_cerca_ojo_derecho, "Value1", "Id", Combo290, DropDownListAction.Select);
+            Utils.LoadDropDownList(txtcc_cerca_ojo_izquierdo, "Value1", "Id", Combo290, DropDownListAction.Select);
+            Utils.LoadDropDownList(txtsc_lejos_ojo_derecho, "Value1", "Id", Combo287, DropDownListAction.Select);
+            Utils.LoadDropDownList(txtsc_lejos_ojo_izquierdo, "Value1", "Id", Combo287, DropDownListAction.Select);
+            Utils.LoadDropDownList(txtcc_lejos_ojo_derecho, "Value1", "Id", Combo287, DropDownListAction.Select);
+            Utils.LoadDropDownList(txtcc_lejos_ojo_izquierdo, "Value1", "Id", Combo287, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlReflejospupilares, "Value1", "Id", Combo288, DropDownListAction.Select);
            
         }
 

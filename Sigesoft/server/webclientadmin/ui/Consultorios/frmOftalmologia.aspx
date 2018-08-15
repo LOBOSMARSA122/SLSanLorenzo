@@ -282,13 +282,13 @@
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar4" runat="server">
                                     <Items>
-                                        <x:Button ID="btnGrabarOftalmologia" Text="Grabar Electrocardiograma" Icon="SystemSave" runat="server" OnClick="btnGrabarOftalmologia_Click" AjaxLoadingType="Mask"></x:Button>                                   
+                                        <x:Button ID="btnGrabarOftalmologia" Text="Grabar Oftalmología" Icon="SystemSave" runat="server" OnClick="btnGrabarOftalmologia_Click" AjaxLoadingType="Mask"></x:Button>                                   
                                       
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
                             <Items>
-                                <x:Panel ID="panel1" Title="USO DE CORRECTORES" EnableBackgroundColor="true" Height="40px" runat="server"
+                                <%--<x:Panel ID="panel1" Title="USO DE CORRECTORES" EnableBackgroundColor="true" Height="40px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
                                     <Items>
                                         <x:Form ID="Form11" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
@@ -308,13 +308,13 @@
                                             </Rows>
                                         </x:Form>
                                     </Items>
-                                </x:Panel>
-                                <x:Panel ID="panel3" Title="ANTECEDENTES" EnableBackgroundColor="true" Height="120px" runat="server"
+                                </x:Panel>--%>
+                                <x:Panel ID="panel3" Title="ANTECEDENTES LABORALES:" EnableBackgroundColor="true" Height="60px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
                                     <Items>
                                         <x:Form ID="Form2" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
                                             <Rows>
-                                                <x:FormRow ID="FormRow1" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px" runat="server" >
+                                                <%--<x:FormRow ID="FormRow1" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px" runat="server" >
                                                     <Items>
                                                         <x:Label ID="label3" runat="server" Text="DIABETES" ShowLabel="false"></x:Label>
                                                         <x:CheckBox ID="chkdiabetes" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
@@ -325,13 +325,13 @@
                                                          <x:Label ID="label6" runat="server" Text="EXP A RADIACIÓN" ShowLabel="false"></x:Label>
                                                         <x:CheckBox ID="chkexp_a_radiacion" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
                                                     </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow3" ColumnWidths="960px" runat="server" >
+                                                </x:FormRow>--%>
+                                                <%--  <x:FormRow ID="FormRow3" ColumnWidths="960px" runat="server" >
                                                     <Items>
                                                         <x:Label ID="label11" runat="server" Text=". " ShowLabel="false"></x:Label>                                                      
                                                     </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow2" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px" runat="server" >
+                                                </x:FormRow>--%>
+                                                <%--<x:FormRow ID="FormRow2" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px" runat="server" >
                                                     <Items>
                                                         <x:Label ID="label7" runat="server" Text="MIOPÍA " ShowLabel="false"></x:Label>
                                                         <x:CheckBox ID="chkmiopia" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
@@ -342,30 +342,30 @@
                                                          <x:Label ID="label10" runat="server" Text="GLAUCOMA" ShowLabel="false"></x:Label>
                                                         <x:CheckBox ID="chkglaucoma" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
                                                     </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow4" ColumnWidths="960px" runat="server" >
+                                                </x:FormRow>--%>
+                                                <%--<x:FormRow ID="FormRow4" ColumnWidths="960px" runat="server" >
                                                     <Items>
                                                         <x:Label ID="label12" runat="server" Text=". " ShowLabel="false"></x:Label>                                                      
                                                     </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow5" ColumnWidths="150px 50px  150px 600px" runat="server" >
+                                                </x:FormRow>--%>
+                                                <x:FormRow ID="FormRow5" ColumnWidths="150px 800px" runat="server" >
                                                     <Items>
-                                                        <x:Label ID="label13" runat="server" Text="ASTIGMATISMO" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkastigmatismo" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
-                                                        <x:Label ID="label14" runat="server" Text="OTROS ANTECEDENTES" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtotros_especificar" runat="server" Text="" Width="590px"  ShowLabel="false"></x:TextBox>
+                                                        <%--<x:Label ID="label13" runat="server" Text="ASTIGMATISMO" ShowLabel="false"></x:Label>
+                                                        <x:CheckBox ID="chkastigmatismo" runat="server" Text="" ShowLabel="false"></x:CheckBox>  --%>
+                                                        <x:Label ID="label14" runat="server" Text="ANTECEDENTES LABORALES:" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txtotros_especificar" runat="server" Text="" Width="790px" Height="40px" ShowLabel="false"></x:TextBox>
                                                     </Items>
                                                 </x:FormRow>
                                             </Rows>
                                         </x:Form> 
                                     </Items>
                                 </x:Panel>
-                                <x:Panel ID="panel4" Title="PATOLOGÍA OCULAR" EnableBackgroundColor="true" Height="120px" runat="server"
+                                <x:Panel ID="panel4" Title="ANTECEDENTES PATOLÓGICOS:" EnableBackgroundColor="true" Height="60px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
                                     <Items>
                                         <x:Form ID="Form3" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
                                             <Rows>
-                                                <x:FormRow ID="FormRow6" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px" runat="server" >
+                                               <%-- <x:FormRow ID="FormRow6" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px" runat="server" >
                                                     <Items>
                                                         <x:Label ID="label15" runat="server" Text="PTOSIS PALPEBRAL" ShowLabel="false"></x:Label>
                                                         <x:CheckBox ID="chkptosis_palpebral" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
@@ -376,8 +376,8 @@
                                                          <x:Label ID="label18" runat="server" Text="ESTRABISMO" ShowLabel="false"></x:Label>
                                                         <x:CheckBox ID="chkestrabismo" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
                                                     </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow7" ColumnWidths="960px" runat="server" >
+                                                </x:FormRow>--%>
+                                               <%--  <x:FormRow ID="FormRow7" ColumnWidths="960px" runat="server" >
                                                     <Items>
                                                         <x:Label ID="label19" runat="server" Text=". " ShowLabel="false"></x:Label>                                                      
                                                     </Items>
@@ -393,16 +393,16 @@
                                                          <x:Label ID="label23" runat="server" Text="SIN PATOLOGÍA" ShowLabel="false"></x:Label>
                                                         <x:CheckBox ID="chksin_patologias" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
                                                     </Items>
-                                                </x:FormRow>
-                                                <x:FormRow ID="FormRow9" ColumnWidths="960px" runat="server" >
+                                                </x:FormRow>--%>
+                                               <%-- <x:FormRow ID="FormRow9" ColumnWidths="960px" runat="server" >
                                                     <Items>
                                                         <x:Label ID="label24" runat="server" Text=". " ShowLabel="false"></x:Label>                                                      
                                                     </Items>
-                                                </x:FormRow>
+                                                </x:FormRow>--%>
                                                 <x:FormRow ID="FormRow10" ColumnWidths="150px 800px" runat="server" >
                                                     <Items>                                                     
                                                         <x:Label ID="label26" runat="server" Text="OTRAS PATOLOGÍAS" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtotras_patologia" runat="server" Text="" Width="790px"  ShowLabel="false"></x:TextBox>
+                                                        <x:TextBox ID="txtotras_patologia" runat="server" Text="" Width="790px" Height="40px"  ShowLabel="false"></x:TextBox>
                                                     </Items>
                                                 </x:FormRow>
                                             </Rows>
@@ -414,19 +414,19 @@
                                     <Items>
                                         <x:Form ID="Form79" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
-                                           <x:FormRow ID="FormRow260" ColumnWidths="240px 240px 240px 240px" runat="server" >
+                                           <x:FormRow ID="FormRow260" ColumnWidths="240px 240px 240px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label289" runat="server" Text="" ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label290" runat="server" Text="-------------SIN CORREGIR------------" ShowLabel="false"></x:Label> 
                                                     <x:Label ID="Label291" runat="server" Text="---------------CORREGIDA--------------" ShowLabel="false"></x:Label> 
-                                                    <x:Label ID="Label292" runat="server" Text="------AGUJERO ESTENOPEICO------" ShowLabel="false"></x:Label>  
+                                                   <%-- <x:Label ID="Label292" runat="server" Text="------AGUJERO ESTENOPEICO------" ShowLabel="false"></x:Label> --%> 
                                                 </Items>
                                           </x:FormRow>
                                         </Rows>
                                         </x:Form>
                                         <x:Form ID="Form80" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
-                                           <x:FormRow ID="FormRow261" ColumnWidths="120px 120px 120px 120px 120px 120px 120px 120px" runat="server" >
+                                           <x:FormRow ID="FormRow261" ColumnWidths="120px 120px 120px 120px 120px 120px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label293" runat="server" Text="" ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label297" runat="server" Text="" ShowLabel="false"></x:Label>
@@ -434,31 +434,35 @@
                                                     <x:Label ID="Label295" runat="server" Text="IZQUIERDO" ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label296" runat="server" Text="DERECHO" ShowLabel="false"></x:Label> 
                                                     <x:Label ID="Label298" runat="server" Text="IZQUIERDO" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="Label299" runat="server" Text="DERECHO" ShowLabel="false"></x:Label> 
-                                                    <x:Label ID="Label300" runat="server" Text="IZQUIERDO" ShowLabel="false"></x:Label> 
+                                                   <%-- <x:Label ID="Label299" runat="server" Text="DERECHO" ShowLabel="false"></x:Label> 
+                                                    <x:Label ID="Label300" runat="server" Text="IZQUIERDO" ShowLabel="false"></x:Label> --%>
                                                 </Items>
                                           </x:FormRow>
                                         </Rows>
                                         </x:Form>
                                     <x:Form ID="Form81" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
-                                           <x:FormRow ID="FormRow262" ColumnWidths="120px 120px 120px 120px 120px 120px 120px 120px" runat="server" >
+                                           <x:FormRow ID="FormRow262" ColumnWidths="120px 120px 120px 120px 120px 120px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label301" runat="server" Text="" ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label302" runat="server" Text="VISIÓN DE CERCA" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtsc_cerca_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
-                                                    <x:TextBox ID="txtsc_cerca_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>
-                                                    <x:TextBox ID="txtcc_cerca_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
-                                                    <x:TextBox ID="txtcc_cerca_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>
-                                                    <x:TextBox ID="txtae_cerca_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
-                                                    <x:TextBox ID="txtae_cerca_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
+                                                    <x:DropDownList ID="txtsc_cerca_ojo_derecho" runat="server" Width="80" ShowLabel="false"></x:DropDownList> 
+                                                    <x:DropDownList ID="txtsc_cerca_ojo_izquierdo" runat="server" Width="80" ShowLabel="false"></x:DropDownList> 
+                                                    <x:DropDownList ID="txtcc_cerca_ojo_derecho" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="txtcc_cerca_ojo_izquierdo" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:TextBox ID="txtsc_cerca_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>--%> 
+                                                    <%--<x:TextBox ID="txtsc_cerca_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>--%>
+                                                    <%--<x:TextBox ID="txtcc_cerca_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>--%> 
+                                                    <%--<x:TextBox ID="txtcc_cerca_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>--%>
+                                                    <%--<x:TextBox ID="txtae_cerca_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
+                                                    <x:TextBox ID="txtae_cerca_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> --%>
                                                 </Items>
                                           </x:FormRow>
                                          </Rows>
                                         </x:Form>
                                         <x:Form ID="Form83" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
-                                           <x:FormRow ID="FormRow264" ColumnWidths="120px 120px 120px 120px 120px 120px 120px 120px" runat="server" >
+                                           <x:FormRow ID="FormRow264" ColumnWidths="120px 120px 120px 120px 120px 120px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label305" runat="server" Text="" ShowLabel="false"></x:Label>
                                                </Items>
@@ -467,77 +471,24 @@
                                         </x:Form>
                                         <x:Form ID="Form82" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
-                                           <x:FormRow ID="FormRow263" ColumnWidths="120px 120px 120px 120px 120px 120px 120px 120px" runat="server" >
+                                           <x:FormRow ID="FormRow263" ColumnWidths="120px 120px 120px 120px 120px 120px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label303" runat="server" Text="" ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label304" runat="server" Text="VISIÓN DE LEJOS" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtsc_lejos_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
-                                                    <x:TextBox ID="txtsc_lejos_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>
-                                                    <x:TextBox ID="txtcc_lejos_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
-                                                    <x:TextBox ID="txtcc_lejos_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>
-                                                    <x:TextBox ID="txtae_lejos_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
-                                                    <x:TextBox ID="txtae_lejos_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
+                                                    <x:DropDownList ID="txtsc_lejos_ojo_derecho" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="txtsc_lejos_ojo_izquierdo" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="txtcc_lejos_ojo_derecho" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="txtcc_lejos_ojo_izquierdo" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:TextBox ID="txtsc_lejos_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> --%>
+                                                    <%--<x:TextBox ID="txtsc_lejos_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>--%>
+                                                    <%--<x:TextBox ID="txtcc_lejos_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> --%>
+                                                    <%--<x:TextBox ID="txtcc_lejos_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox>--%>
+                                                    <%--<x:TextBox ID="txtae_lejos_ojo_derecho" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> 
+                                                    <x:TextBox ID="txtae_lejos_ojo_izquierdo" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="60"></x:TextBox> --%>
                                                 </Items>
                                           </x:FormRow>
                                          </Rows>
                                         </x:Form>
-                                    </Items>
-                                </x:Panel>
-                                <x:Panel ID="panel5" Title="FONDO DE OJO" EnableBackgroundColor="true" Height="280px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" Layout="Column">
-                                    <Items>
-                                        <x:Panel ID="Panel27" Width="250px" Height="240px" EnableBackgroundColor="true" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="DESCRIPCIÓN">
-                                            <Items>
-                                                <x:TextBox ID="label25" runat="server" Text="MACULOPATÍA" ShowLabel="false" Width="240px"></x:TextBox>
-                                                <x:Label ID="label27" runat="server" Text="." ShowLabel="false"></x:Label>
-                                                <x:TextBox ID="TextBox2" runat="server" Text="NEURITIS" ShowLabel="false" Width="240px"></x:TextBox>
-                                                <x:Label ID="label28" runat="server" Text="." ShowLabel="false"></x:Label>
-                                                <x:TextBox ID="TextBox3" runat="server" Text="RETINOPATÍA" ShowLabel="false" Width="240px"></x:TextBox>
-                                                <x:Label ID="label29" runat="server" Text="." ShowLabel="false"></x:Label>
-                                                <x:TextBox ID="TextBox4" runat="server" Text="EDEMA PAPILA" ShowLabel="false" Width="240px"></x:TextBox>
-                                                <x:Label ID="label31" runat="server" Text="." ShowLabel="false"></x:Label>
-                                                <x:TextBox ID="TextBox5" runat="server" Text="ANGIOPATÍA" ShowLabel="false" Width="240px"></x:TextBox>
-                                                <x:Label ID="label32" runat="server" Text="." ShowLabel="false"></x:Label>
-                                                <x:TextBox ID="TextBox6" runat="server" Text="ATROFIA DEL NERVIO ÓPTICO" ShowLabel="false" Width="240px"></x:TextBox>
-                                            </Items>
-                                        </x:Panel>
-                                        <x:Panel ID="Panel6" Width="200px" Height="240px" EnableBackgroundColor="true" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="DERECHA / IZQUIERDA">
-                                            <Items>
-                                                <x:DropDownList ID="ddlmaculopatia_ojo_derecho" runat="server" Width="190"></x:DropDownList>                                               
-                                                <x:Label ID="Label196" runat="server" Text="."></x:Label>                                           
-                                                <x:DropDownList ID="ddlneuritis_ojo_derecho" runat="server" Width="190"></x:DropDownList>                                               
-                                                <x:Label ID="Label33" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlretinopatia_ojo_derecho" runat="server" Width="190"></x:DropDownList>                                               
-                                                <x:Label ID="Label34" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddledema_papilar_ojo_derecho" runat="server" Width="190"></x:DropDownList>                                               
-                                                <x:Label ID="Label35" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlangiopatia_ojo_derecho" runat="server" Width="190"></x:DropDownList>                                               
-                                                <x:Label ID="Label36" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlatrofia_de_no_ojo_derecho" runat="server" Width="190"></x:DropDownList>    
-                                            </Items>
-                                        </x:Panel>
-                                         <x:Panel ID="Panel7" Width="250px" Height="240px" EnableBackgroundColor="true" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="CAMPIMETRÍA">
-                                            <Items>
-                                                <x:Label ID="Label37" runat="server" Text="OJO DERECHO"></x:Label> 
-                                                 <x:Label ID="Label38" runat="server" Text="."></x:Label>       
-                                                <x:TextBox ID="txtcampimetria_od" runat="server" Text="" ShowLabel="false" Width="240"></x:TextBox>
-                                                 <x:Label ID="Label39" runat="server" Text="."></x:Label>   
-                                                 <x:Label ID="Label40" runat="server" Text="OJO IZQUIERDO"></x:Label> 
-                                                 <x:Label ID="Label41" runat="server" Text="."></x:Label>       
-                                                <x:TextBox ID="txtcampimetria_oi" runat="server" Text="" ShowLabel="false" Width="240"></x:TextBox>  
-                                            </Items>
-                                        </x:Panel>
-                                        <x:Panel ID="Panel8" Width="250px" Height="240px" EnableBackgroundColor="true" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="TONOMETRÍA">
-                                            <Items>
-                                                <x:Label ID="Label43" runat="server" Text="OJO DERECHO"></x:Label> 
-                                                <x:Label ID="Label44" runat="server" Text="."></x:Label>       
-                                                <x:TextBox ID="txttonometria_od" runat="server" Text="" ShowLabel="false" Width="240"></x:TextBox>
-                                                <x:Label ID="Label45" runat="server" Text="."></x:Label>   
-                                                <x:Label ID="Label46" runat="server" Text="OJO IZQUIERDO"></x:Label> 
-                                                <x:Label ID="Label47" runat="server" Text="."></x:Label>       
-                                                <x:TextBox ID="txttonometria_oi" runat="server" Text="" ShowLabel="false" Width="240"></x:TextBox>       
-                                            </Items>
-                                        </x:Panel>
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="panel9" Title="VISIÓN CROMÁTICA Test de Ishihara" EnableBackgroundColor="true" Height="50px" runat="server"
@@ -551,41 +502,188 @@
                                                         <x:CheckBox ID="chknormal_ishihara" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
                                                         <x:Label ID="label48" runat="server" Text="ALTERADO" ShowLabel="false"></x:Label>                                                        
                                                         <x:CheckBox ID="chkanormal_ishihara" runat="server" Text="" ShowLabel="false"></x:CheckBox> 
-                                                        <x:Label ID="label49" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>  
+                                                        <x:Label ID="label49" runat="server" Text="DISCRIMINACIÓN:" ShowLabel="false"></x:Label>  
                                                         <x:DropDownList ID="ddldescripcion_ishihara" runat="server" Text="" Width="190px"  ShowLabel="false"></x:DropDownList>
                                                     </Items>
                                                 </x:FormRow>
                                             </Rows>
                                         </x:Form>
                                     </Items>
-                                </x:Panel>
-                                <x:Panel ID="panel10" Title="VISIÓN DE PROFUNDIDAD Test de Estereopsis" EnableBackgroundColor="true" Height="80px" runat="server"
+                                </x:Panel>                               
+                                <x:Panel ID="panel10" Title="VISIÓN DE PROFUNDIDAD Test de Estereopsis" EnableBackgroundColor="true" Height="60px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" Layout="Column">
                                     <Items>
-                                         <x:Form ID="Form5" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
+                                         <x:Form ID="Form5" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
                                             <Rows>
-                                                 <x:FormRow ID="FormRow13" ColumnWidths="150px 200px 150px 150px" runat="server" >
+                                                <%--                                                 <x:FormRow ID="FormRow13" ColumnWidths="150px 800px" runat="server" >
                                                     <Items>
                                                         <x:Label ID="label53" runat="server" Text="TIEMPO" ShowLabel="false"></x:Label>
                                                         <x:TextBox ID="txttiempo_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
                                                         <x:Label ID="label54" runat="server" Text="RECUPERACIÓN" ShowLabel="false"></x:Label>
                                                         <x:TextBox ID="txtrecuperacion_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
                                                     </Items>
-                                                </x:FormRow>
-                                                 <x:FormRow ID="FormRow12" ColumnWidths="150px 50px  150px 50px 100px 400px" runat="server" >
+                                                </x:FormRow>--%>
+                                                 <x:FormRow ID="FormRow12" ColumnWidths="150px 800px" runat="server" >
                                                     <Items>
-                                                        <x:Label ID="label50" runat="server" Text="SIN ALTERACIÓN " ShowLabel="false"></x:Label>
+                                                        <%--<x:Label ID="label50" runat="server" Text="SIN ALTERACIÓN " ShowLabel="false"></x:Label>
                                                         <x:CheckBox ID="chkanormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
                                                         <x:Label ID="label51" runat="server" Text="ALTERADO" ShowLabel="false"></x:Label>                                                        
-                                                        <x:CheckBox ID="chknormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox> 
+                                                        <x:CheckBox ID="chknormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox> --%>
                                                         <x:Label ID="label52" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>  
-                                                        <x:TextBox ID="txtencandilamiento_estereopsis" runat="server" Text="" Width="590px"  ShowLabel="false"></x:TextBox>
+                                                        <x:TextBox ID="txtencandilamiento_estereopsis" runat="server" Text="" Width="790px" Height="40px" ShowLabel="false"></x:TextBox>
                                                     </Items>
                                                 </x:FormRow>
                                             </Rows>
                                         </x:Form>
                                     </Items>
                                 </x:Panel>
+                                <x:Panel ID="panel1" Title="REFLEJOS PUPILARES" EnableBackgroundColor="true" Height="40px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" Layout="Column">
+                                    <Items>
+                                         <x:Form ID="Form11" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
+                                            <Rows>
+                                                <%--                                                 <x:FormRow ID="FormRow13" ColumnWidths="150px 800px" runat="server" >
+                                                    <Items>
+                                                        <x:Label ID="label53" runat="server" Text="TIEMPO" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txttiempo_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
+                                                        <x:Label ID="label54" runat="server" Text="RECUPERACIÓN" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txtrecuperacion_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
+                                                    </Items>
+                                                </x:FormRow>--%>
+                                                 <x:FormRow ID="FormRow1" ColumnWidths="150px 800px" runat="server" >
+                                                    <Items>
+                                                        <%--<x:Label ID="label50" runat="server" Text="SIN ALTERACIÓN " ShowLabel="false"></x:Label>
+                                                        <x:CheckBox ID="chkanormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
+                                                        <x:Label ID="label51" runat="server" Text="ALTERADO" ShowLabel="false"></x:Label>                                                        
+                                                        <x:CheckBox ID="chknormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox> --%>
+                                                        <x:Label ID="label1" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>  
+                                                        <x:DropDownList ID="ddlReflejospupilares" runat="server" Width="180" ShowLabel="false"></x:DropDownList> 
+                                                    </Items>
+                                                </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="panel14" Title="FUNDOSCOPÍA" EnableBackgroundColor="true" Height="60px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" Layout="Column">
+                                    <Items>
+                                         <x:Form ID="Form16" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
+                                            <Rows>
+                                                <%--                                                 <x:FormRow ID="FormRow13" ColumnWidths="150px 800px" runat="server" >
+                                                    <Items>
+                                                        <x:Label ID="label53" runat="server" Text="TIEMPO" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txttiempo_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
+                                                        <x:Label ID="label54" runat="server" Text="RECUPERACIÓN" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txtrecuperacion_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
+                                                    </Items>
+                                                </x:FormRow>--%>
+                                                 <x:FormRow ID="FormRow3" ColumnWidths="150px 800px" runat="server" >
+                                                    <Items>
+                                                        <%--<x:Label ID="label50" runat="server" Text="SIN ALTERACIÓN " ShowLabel="false"></x:Label>
+                                                        <x:CheckBox ID="chkanormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
+                                                        <x:Label ID="label51" runat="server" Text="ALTERADO" ShowLabel="false"></x:Label>                                                        
+                                                        <x:CheckBox ID="chknormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox> --%>
+                                                        <x:Label ID="label4" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>  
+                                                        <x:TextBox ID="txtcampimetria_oi" runat="server" Text="" Width="790px" Height="40px" ShowLabel="false"></x:TextBox>
+                                                    </Items>
+                                                </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="panel15" Title="EXÁMENES AUXILIARES" EnableBackgroundColor="true" Height="60px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" Layout="Column">
+                                    <Items>
+                                         <x:Form ID="Form17" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
+                                            <Rows>
+                                                <%--                                                 <x:FormRow ID="FormRow13" ColumnWidths="150px 800px" runat="server" >
+                                                    <Items>
+                                                        <x:Label ID="label53" runat="server" Text="TIEMPO" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txttiempo_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
+                                                        <x:Label ID="label54" runat="server" Text="RECUPERACIÓN" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txtrecuperacion_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
+                                                    </Items>
+                                                </x:FormRow>--%>
+                                                 <x:FormRow ID="FormRow4" ColumnWidths="150px 800px" runat="server" >
+                                                    <Items>
+                                                        <%--<x:Label ID="label50" runat="server" Text="SIN ALTERACIÓN " ShowLabel="false"></x:Label>
+                                                        <x:CheckBox ID="chkanormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
+                                                        <x:Label ID="label51" runat="server" Text="ALTERADO" ShowLabel="false"></x:Label>                                                        
+                                                        <x:CheckBox ID="chknormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox> --%>
+                                                        <x:Label ID="label5" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>  
+                                                        <x:TextBox ID="txtultima_refraccion" runat="server" Text="" Width="790px" Height="40px" ShowLabel="false"></x:TextBox>
+                                                    </Items>
+                                                </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="panel13" Title="PRESIÓN INTRAOCULAR" EnableBackgroundColor="true" Height="50px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" Layout="Column">
+                                    <Items>
+                                         <x:Form ID="Form15" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
+                                            <Rows>
+                                                 <x:FormRow ID="FormRow2" ColumnWidths="110px 75px 50px 110px 75px 50px" runat="server" >
+                                                <Items>
+                                                    <x:Label ID="Label2" runat="server" Text="OJO DERECHO" ShowLabel="false"></x:Label>
+                                                    <x:TextBox ID="txttonometria_od" runat="server" Text="" ShowLabel="false" Width="75"></x:TextBox>
+                                                    <x:Label ID="Label12" runat="server" Text="mmHg" ShowLabel="false"></x:Label>
+                                                    <x:Label ID="Label3" runat="server" Text="OJO IZQUIERDO" ShowLabel="false"></x:Label> 
+                                                    <x:TextBox ID="txttonometria_oi" runat="server" Text="" ShowLabel="false" Width="75"></x:TextBox>
+                                                    <x:Label ID="Label22" runat="server" Text="mmHg" ShowLabel="false"></x:Label>                                                     
+                                                </Items> 
+                                                </x:FormRow>                                                                                             
+                                            </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="panel16" Title="OBSERVACIONES" EnableBackgroundColor="true" Height="60px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" Layout="Column">
+                                    <Items>
+                                         <x:Form ID="Form18" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
+                                            <Rows>
+                                                <%--                                                 <x:FormRow ID="FormRow13" ColumnWidths="150px 800px" runat="server" >
+                                                    <Items>
+                                                        <x:Label ID="label53" runat="server" Text="TIEMPO" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txttiempo_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
+                                                        <x:Label ID="label54" runat="server" Text="RECUPERACIÓN" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="txtrecuperacion_estereopsis" runat="server" Text="" Width="150px"  ShowLabel="false"></x:TextBox>
+                                                    </Items>
+                                                </x:FormRow>--%>
+                                                 <x:FormRow ID="FormRow6" ColumnWidths="150px 800px" runat="server" >
+                                                    <Items>
+                                                        <%--<x:Label ID="label50" runat="server" Text="SIN ALTERACIÓN " ShowLabel="false"></x:Label>
+                                                        <x:CheckBox ID="chkanormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
+                                                        <x:Label ID="label51" runat="server" Text="ALTERADO" ShowLabel="false"></x:Label>                                                        
+                                                        <x:CheckBox ID="chknormal_estereopsis" runat="server" Text="" ShowLabel="false"></x:CheckBox> --%>
+                                                        <x:Label ID="label6" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>  
+                                                        <x:TextBox ID="txtrecuperacion_estereopsis" runat="server" Text="" Width="790px" Height="40px" ShowLabel="false"></x:TextBox>
+                                                    </Items>
+                                                </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="panel17" Title="APTITUD" EnableBackgroundColor="true" Height="60px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" Layout="Column">
+                                    <Items>
+                                         <x:Form ID="Form19" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
+                                            <Rows>
+                                                <x:FormRow ID="FormRow7" ColumnWidths="80px 60px 100px 80px 60px" runat="server" >
+                                                <Items>
+                                                    <x:Label ID="Label7" runat="server" Text="APTO" ShowLabel="false"></x:Label>
+                                                    <x:CheckBox ID="chkuso_de_correctores_si" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:Label ID="Label9" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                    <x:Label ID="Label8" runat="server" Text="NO APTO" ShowLabel="false"></x:Label>
+                                                    <x:CheckBox ID="chkuso_de_correctores_no" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                </Items>
+                                          </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
+                                
+                                
                             </Items>
                         </x:Tab>
 
