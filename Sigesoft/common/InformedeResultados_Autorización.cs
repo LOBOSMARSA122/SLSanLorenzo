@@ -88,43 +88,56 @@ namespace NetPdf
 
             var cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("DECLARACIÓN JURADA", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, BorderColor=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("INFORME DE RESULTADOS DE \n EVALUACIÓN MÉDICA OCUPACIONAL", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, BorderColor=BaseColor.WHITE },
                 };
             columnWidths = new float[] { 100f };
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
-            var tamaño_celda = 25f;
+            var tamaño_celda = 24f;
             string tipodoc = "";
             if (datosPac.i_DocTypeId == 1) { tipodoc = "DNI"; }
             else if (datosPac.i_DocTypeId == 2) { tipodoc = "Pasaporte"; }
             else if (datosPac.i_DocTypeId == 3) { tipodoc = "Licencia de Conducir"; }
             else if (datosPac.i_DocTypeId == 4) { tipodoc = "Carnet de Extranjeria"; }
 
-            ServiceComponentList declaracion_jurada = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
-            var fecha_regla = declaracion_jurada.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_FECHA_ULTIMA_REGLA) == null ? "" : declaracion_jurada.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_FECHA_ULTIMA_REGLA).v_Value1;
-
             #region Contenido
             cells = new List<PdfPCell>()
             {          
                 
-                new PdfPCell(new Phrase("\n \n YO :                  " + datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue))
+                new PdfPCell(new Phrase("\n \nYO,                   " + datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue))
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BorderColor=BaseColor.WHITE},    
                
-                new PdfPCell(new Phrase("\nIdentificado (a) con " + tipodoc + " N°  " + datosPac.v_DocNumber+" DECLARO BAJO JURAMENTO", fontColumnValue)) 
+                new PdfPCell(new Phrase("\nTrabajador de la empresa :    ", fontColumnValue)) 
+                { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
+                new PdfPCell(new Phrase("\n"+DataService.v_CustomerOrganizationName, fontColumnValue)) 
+                { Colspan = 12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
+                
+
+                new PdfPCell(new Phrase("\nIdentificado (a) con " +  tipodoc  + " N° " + datosPac.v_DocNumber + " DECLARO haber sido informado(a)", fontColumnValue)) 
+                { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
+
+                new PdfPCell(new Phrase("respecto de los resultador de mi evaluación médica ocupacional y otros, según el Perfil", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
-                new PdfPCell(new Phrase("que la fecha de mi última regla se inició el: " +fecha_regla+"; por tal razón doy de mi consentimiento", fontColumnValue)) 
+                new PdfPCell(new Phrase("de trabajo de la Empresa.", fontColumnValue)) 
+                { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
+              
+                new PdfPCell(new Phrase("\nAdemás AUTORIZO la administración y archivo, dentro de los parámetros que establece", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
-                new PdfPCell(new Phrase("para que se me practique el procedimmiento de Radiología respectivo (Radiografía de Tórax),", fontColumnValue)) 
+                new PdfPCell(new Phrase("la Norma Técnica de Historia Clínica NTS N° 139MINSA/DGSPV.02.", fontColumnValue)) 
+                { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
+              
+                new PdfPCell(new Phrase("\nAsí mismo, según la Ley 27269 (Ley de firmas y certificados digitales) AUTORIZO a", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
-                new PdfPCell(new Phrase("exonerando de responsabilidad alguna a la clínica San Lorenzo S.R.L., por dicho examen.", fontColumnValue)) 
+                new PdfPCell(new Phrase("Clínica San Lorenzo S.R.L., el uso de mi firma y/o huella digital en el proceso de mi", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
+              
+                new PdfPCell(new Phrase("examen médico ocupacional y emisión de mi certificado correspondiente.", fontColumnValue)) 
+                { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
-            
-            
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -167,7 +180,7 @@ namespace NetPdf
             cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            #region Fecha / Firmma
+            #region Fecha / Firmmal
             cells = new List<PdfPCell>()
             {          
                 
@@ -177,7 +190,8 @@ namespace NetPdf
                 new PdfPCell(cellFirmaTrabajador ) {Colspan=10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_BOTTOM, FixedHeight=180, BorderColor=BaseColor.WHITE},
                 new PdfPCell(cellHuellaTrabajador ) {Colspan=10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_BOTTOM, FixedHeight=180, BorderColor=BaseColor.WHITE},
                 new PdfPCell(new Phrase("_____________________________________", fontColumnValue)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = tamaño_celda , BorderColor=BaseColor.WHITE},
-                new PdfPCell(new Phrase("           Firma del Paciente        ", fontColumnValue)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = tamaño_celda , BorderColor=BaseColor.WHITE},
+                new PdfPCell(new Phrase("Firma del Paciente", fontColumnValue)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = tamaño_celda , BorderColor=BaseColor.WHITE},
+                new PdfPCell(new Phrase("N° de DNI: " + datosPac.v_DocNumber, fontColumnValue)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = tamaño_celda , BorderColor=BaseColor.WHITE},
 
               };
 
