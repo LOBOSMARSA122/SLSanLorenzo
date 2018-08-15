@@ -38,6 +38,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             if (!IsPostBack)
             {
+                if (int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.ToString()) == 30)
+                {
+                    AccordionPane2.Visible = false;
+                }
+                else
+                {
+                    AccordionPane2.Visible = true;
+                }
                 btnNewDiagnosticosFrecuente.OnClientClick = WindowAddDXFrecuente.GetSaveStateReference(hfRefresh.ClientID) + WindowAddDXFrecuente.GetShowReference("../Auditar/FRM033G.aspx?Mode=New");
                 btnReporteOdonto.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=OdontoCI");
                 btnCertificadoAptitud.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=Certificado");

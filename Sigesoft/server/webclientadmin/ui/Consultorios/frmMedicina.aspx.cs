@@ -39,7 +39,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {             
+            {
+                if (int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.ToString()) == 30)
+                {
+                    AccordionPane2.Visible = false;
+                }
+                else
+                {
+                    AccordionPane2.Visible = true;
+                }
                 btnNuevoAntecedenteOcupacional.OnClientClick = WindowAddAntecedenteOcupacional.GetSaveStateReference(hfRefresh.ClientID) + WindowAddAntecedenteOcupacional.GetShowReference("../Consultorios/frmAntecedenteOcupacional.aspx?Mode=New");
                 btnNuevoAntecedentePersonal.OnClientClick = WindowAddAntecedentePersonal.GetSaveStateReference(hfRefresh.ClientID) + WindowAddAntecedentePersonal.GetShowReference("../Consultorios/frmAntecedentePersonal.aspx?Mode=New");
 
