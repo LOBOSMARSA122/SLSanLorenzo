@@ -293,13 +293,13 @@
                                         <x:Panel ID="Panel10" Width="530px" Height="200px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="REQUISITOS PARA AUDIOMETRÍA">
                                             <Items>
-                                                <x:TextBox ID="tLabel28" runat="server" Text="SI HIZO CAMBIOS DE ALTITUD MENORES A 3500msnm ¿HA REPOSADO MENOS DE 48 Hrs?" Width="520"></x:TextBox>
+                                                <x:TextBox ID="tLabel28" runat="server" Text="1. SI HIZO CAMBIOS DE ALTITUD MENORES A 3500 MSNM ¿HA REPOSADO MENOS DE 48 HRS?" Width="520"></x:TextBox>
                                                 <x:Label ID="tLabel38" runat="server" Text="."></x:Label>
-                                                <x:TextBox ID="TextBox1" runat="server" Text="¿ESTUVO EXPUESTO A RUÍDO EN LAS 14 HORAS PREVIAS? (Música,Practica  De Tiro,Etc.)" Width="520"></x:TextBox>
+                                                <x:TextBox ID="TextBox1" runat="server" Text="2.- ¿VIAJES FRECUENTES A ALTURA? " Width="520"></x:TextBox>
                                                 <x:Label ID="Label1" runat="server" Text="."></x:Label>
-                                                <x:TextBox ID="TextBox2" runat="server" Text="¿PRESENTA PROCESO INFECCIOSO INFLAMATORIO OTORRINOLARINGOLÓGICO?" Width="520"></x:TextBox>
+                                                <x:TextBox ID="TextBox2" runat="server" Text="3.- ¿CUANTAS HORAS HA DESCANZADO ANTES DEL EXAMEN?" Width="520"></x:TextBox>
                                                 <x:Label ID="Label2" runat="server" Text="."></x:Label>
-                                                <x:TextBox ID="TextBox3" runat="server" Text="¿DURMIÓ MAL LA NOCHE PREVIA?" Width="520"></x:TextBox>
+                                                <x:TextBox ID="TextBox3" runat="server" Text="4. TIEMPO DE TRABAJO" Width="520"></x:TextBox>
                                                 <x:Label ID="Label3" runat="server" Text="."></x:Label>
                                                 <x:TextBox ID="TextBox4" runat="server" Text="¿CONSUMIÓ ALCOHOL EL DÍA PREVIO?" Width="520"></x:TextBox>
                                               
@@ -312,11 +312,12 @@
                                                 <x:Label ID="Label41" runat="server" Text="."></x:Label>
                                                 <x:DropDownList ID="ddlestuvo_expuesto" runat="server" Width="100"></x:DropDownList>                                               
                                                 <x:Label ID="Label5" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlpresenta_algun" runat="server" Width="100"></x:DropDownList>                                               
+                                                <x:TextBox ID="ddldurmio_mal_la_noche" runat="server" Text="" Width="100" Label="" ></x:TextBox> 
+                                                <%--<x:DropDownList ID="ddlpresenta_algun" runat="server" Width="100"></x:DropDownList>--%>                                               
                                                 <x:Label ID="Label6" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddldurmio_mal_la_noche" runat="server" Width="100"></x:DropDownList>                                               
-                                                <x:Label ID="Label7" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlconsumio_alcohol" runat="server" Width="100"></x:DropDownList>       
+                                                <%--<x:DropDownList ID="ddldurmio_mal_la_noche" runat="server" Width="100"></x:DropDownList>--%>                                               
+                                                <%--<x:Label ID="Label7" runat="server" Text="."></x:Label>--%>
+                                                <x:TextBox ID="txttiempo_de_trabajo" runat="server" Text="" Width="100" Label="" ></x:TextBox>       
                                             </Items>
                                         </x:Panel>
                                     </Items>

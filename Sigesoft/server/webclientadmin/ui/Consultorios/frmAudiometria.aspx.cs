@@ -84,11 +84,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 ddlsi_hizo_cambios.Attributes.Add("Tag", "N009-MF000001299");
                 ddlestuvo_expuesto.Attributes.Add("Tag", "N009-MF000001300");
-                ddlpresenta_algun.Attributes.Add("Tag", "N009-MF000001301");
+                //ddlpresenta_algun.Attributes.Add("Tag", "N009-MF000001301");
                 ddldurmio_mal_la_noche.Attributes.Add("Tag", "N009-MF000001302");
-                ddlconsumio_alcohol.Attributes.Add("Tag", "N009-MF000001303");
+                //ddlconsumio_alcohol.Attributes.Add("Tag", "N009-MF000001303");
 
-                //txttiempo_de_trabajo.Attributes.Add("Tag", "N009-MF000001378");
+                txttiempo_de_trabajo.Attributes.Add("Tag", "N009-MF000001378");
                 ddlRinitis.Attributes.Add("Tag", "N009-MF000000089");
                 ddlOtitis.Attributes.Add("Tag", "N009-MF000000091");
                 ddlMedicamentos.Attributes.Add("Tag", "N009-MF000000087");
@@ -1456,9 +1456,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             Utils.LoadDropDownList(ddlsi_hizo_cambios, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlestuvo_expuesto, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlpresenta_algun, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddldurmio_mal_la_noche, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlconsumio_alcohol, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlpresenta_algun, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddldurmio_mal_la_noche, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlconsumio_alcohol, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlRinitis, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSarampion, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlOtitis, "Value1", "Id", Combo111, DropDownListAction.Select);
