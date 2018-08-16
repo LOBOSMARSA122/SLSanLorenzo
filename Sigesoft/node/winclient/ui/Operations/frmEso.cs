@@ -33,6 +33,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             public List<DiagnosticRepositoryList> ExamDiagnosticComponentList { get; set; }
             public servicecomponentDto ServiceComponent { get; set; }
             public int? i_SystemUserSuplantadorId { get; set; }
+            public int? i_SystemUserEspecialistaId { get; set; }
+            
         }
 
         public class ValidacionAMC
@@ -2846,6 +2848,17 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             }
 
                         }
+
+                        if (cbEstadoComponente.SelectedValue.ToString() == "8")
+                        {
+                            var frm = new Operations.Popups.frmEspecialista();
+                            frm.ShowDialog();
+                            if (frm.DialogResult != System.Windows.Forms.DialogResult.Cancel)
+                            {
+                                serviceComponentDto.i_SystemUserEspecialistaId = frm.i_SystemUserEspecialistaId;
+                            }
+                        }
+
 
                         packageForSave.SelectedTab = selectedTab;
                         packageForSave.ExamDiagnosticComponentList = _tmpExamDiagnosticComponentList;

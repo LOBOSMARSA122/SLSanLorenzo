@@ -1285,6 +1285,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["v_ExploitedMineral"] =  dataKeys[5] == null?"": dataKeys[5].ToString();
             Session["i_AltitudeWorkId"] = dataKeys[6] == null ? "" : dataKeys[6].ToString();
             Session["i_PlaceWorkId"] = dataKeys[7] == null ? "" : dataKeys[7].ToString();
+            Session["d_ServiceDate"] = dataKeys[10] == null ? "" : dataKeys[10].ToString();
+
             var genero = dataKeys[2] == null ? "" : dataKeys[2].ToString();
             if (genero.ToUpper() == "FEMENINO")
             {
@@ -2052,11 +2054,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             string Ruta = WebConfigurationManager.AppSettings["Ruta312"].ToString();
             string Dni = Session["DniTrabajador"].ToString();
             string Fecha = Session["FechaServicio"].ToString();
-            string Consultorio = "Consultorio312";
+            string Consultorio = "MEDICINA";
             string Ext = fileDoc.FileName.Substring(fileDoc.FileName.Length - 3, 3);
             fileDoc.SaveAs(Ruta + Dni + "-" + Fecha + "-" + Consultorio + "." + Ext);
 
             Alert.ShowInTop("El archivo subió correctamente", MessageBoxIcon.Information);
+            fileDoc.Text = "";
         }
 
         protected void grdAntecedenteFamiliar_RowCommand(object sender, GridCommandEventArgs e)

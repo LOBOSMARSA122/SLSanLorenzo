@@ -277,7 +277,7 @@
                             </Items>
                         </x:AccordionPane>
                     </Panes>
-                </x:Accordion>
+            </x:Accordion>
                 <x:TabStrip ID="TabStrip1" Width="1000px" Height="5670px" ShowBorder="true" ActiveTabIndex="0" runat="server" EnableTitleBackgroundColor="False">
                     <Tabs>
                         <x:Tab ID="TabRayosX" BodyPadding="5px" Title="Rayos X" runat="server">

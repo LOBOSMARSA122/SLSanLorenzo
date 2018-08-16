@@ -183,6 +183,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["v_ExploitedMineral"] = dataKeys[5] == null ? "" : dataKeys[5].ToString();
             Session["i_AltitudeWorkId"] = dataKeys[6] == null ? "" : dataKeys[6].ToString();
             Session["i_PlaceWorkId"] = dataKeys[7] == null ? "" : dataKeys[7].ToString();
+            Session["d_ServiceDate"] = dataKeys[10] == null ? "" : dataKeys[10].ToString();
+
 
 
             txtEmpresaClienteCabecera.Text = dataKeys[14] == null ? "" : dataKeys[14].ToString();
@@ -1251,10 +1253,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             string Ruta = WebConfigurationManager.AppSettings["ImgEKGOrigen"].ToString();
             string Dni = Session["DniTrabajador"].ToString();
             string Fecha = Session["FechaServicio"].ToString();
-            string Consultorio = "ConsultorioCARDIO";
+            string Consultorio = "CARDIOLOGÍA";
             string Ext = fileDoc.FileName.Substring(fileDoc.FileName.Length - 3, 3);
             fileDoc.SaveAs(Ruta + Dni + "-" + Fecha + "-" + Consultorio + "." + Ext);
             Alert.ShowInTop("El archivo subió correctamente", MessageBoxIcon.Information);
+            fileDoc.Text = "";
         }
 
         protected void lnkElectro_Click(object sender, EventArgs e)
