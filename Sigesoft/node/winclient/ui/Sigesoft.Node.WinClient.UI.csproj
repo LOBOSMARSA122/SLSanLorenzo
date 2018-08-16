@@ -1402,6 +1402,12 @@
     <Compile Include="Operations\Popups\frmEmbarazo.Designer.cs">
       <DependentUpon>frmEmbarazo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\Popups\frmEspecialista.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\Popups\frmEspecialista.Designer.cs">
+      <DependentUpon>frmEspecialista.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Popups\frmPopupAnamnesis.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3587,6 +3593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmEmbarazo.resx">
       <DependentUpon>frmEmbarazo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations\Popups\frmEspecialista.resx">
+      <DependentUpon>frmEspecialista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmPopupAnamnesis.resx">
       <DependentUpon>frmPopupAnamnesis.cs</DependentUpon>

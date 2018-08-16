@@ -264,7 +264,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["v_ExploitedMineral"] = dataKeys[5] == null ? "" : dataKeys[5].ToString();
             Session["i_AltitudeWorkId"] = dataKeys[6] == null ? "" : dataKeys[6].ToString();
             Session["i_PlaceWorkId"] = dataKeys[7] == null ? "" : dataKeys[7].ToString();
-
+            Session["d_ServiceDate"] = dataKeys[10] == null ? "" : dataKeys[10].ToString();
 
             txtEmpresaClienteCabecera.Text = dataKeys[14] == null ? "" : dataKeys[14].ToString();
             txtActividadEmpresaClienteCabecera.Text = dataKeys[16] == null ? "" : dataKeys[16].ToString();
