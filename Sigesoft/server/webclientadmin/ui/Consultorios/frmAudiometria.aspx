@@ -287,41 +287,71 @@
                                 </x:Toolbar>
                             </Toolbars>
                             <Items> 
-                                <x:Panel ID="Panel9" Title=" REQUISITOS PARA AUDIOMETRÍA" EnableBackgroundColor="true" Height="240px" runat="server"
+                                <x:Panel ID="Panel9" Title="CUESTIONARIO DE AUDIOMETRÍA" EnableBackgroundColor="true" Height="180px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="False" Layout="Column">
                                     <Items>    
-                                        <x:Panel ID="Panel10" Width="530px" Height="200px" EnableBackgroundColor="true"
-                                            runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="REQUISITOS PARA AUDIOMETRÍA">
+                                        <x:Panel ID="Panel10" Width="630px" Height="180px" EnableBackgroundColor="true"
+                                            runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="CUESTIONARIO DE AUDIOMETRÍA">
                                             <Items>
-                                                <x:TextBox ID="tLabel28" runat="server" Text="1. SI HIZO CAMBIOS DE ALTITUD MENORES A 3500 MSNM ¿HA REPOSADO MENOS DE 48 HRS?" Width="520"></x:TextBox>
+                                                <x:TextBox ID="tLabel28" runat="server" Text="1. SI HIZO CAMBIOS DE ALTITUD MENORES A 3500 MSNM ¿HA REPOSADO MENOS DE 48 HRS?" Width="620" Enabled="False"></x:TextBox>
                                                 <x:Label ID="tLabel38" runat="server" Text="."></x:Label>
-                                                <x:TextBox ID="TextBox1" runat="server" Text="2.- ¿VIAJES FRECUENTES A ALTURA? " Width="520"></x:TextBox>
+                                                <x:TextBox ID="TextBox1" runat="server" Text="2.- ¿VIAJES FRECUENTES A ALTURA? " Width="620" Enabled="False"></x:TextBox>
                                                 <x:Label ID="Label1" runat="server" Text="."></x:Label>
-                                                <x:TextBox ID="TextBox2" runat="server" Text="3.- ¿CUANTAS HORAS HA DESCANZADO ANTES DEL EXAMEN?" Width="520"></x:TextBox>
+                                                <x:TextBox ID="TextBox2" runat="server" Text="3.- ¿CUANTAS HORAS HA DESCANSADO ANTES DEL EXAMEN?" Width="620" Enabled="False"></x:TextBox>
                                                 <x:Label ID="Label2" runat="server" Text="."></x:Label>
-                                                <x:TextBox ID="TextBox3" runat="server" Text="4. TIEMPO DE TRABAJO" Width="520"></x:TextBox>
-                                                <x:Label ID="Label3" runat="server" Text="."></x:Label>
-                                                <x:TextBox ID="TextBox4" runat="server" Text="¿CONSUMIÓ ALCOHOL EL DÍA PREVIO?" Width="520"></x:TextBox>
+                                                <x:TextBox ID="TextBox3" runat="server" Text="4. TIEMPO DE TRABAJO" Width="620" Enabled="False"></x:TextBox>
+                                                <%--<x:Label ID="Label3" runat="server" Text="."></x:Label>
+                                                <x:TextBox ID="TextBox4" runat="server" Text="¿CONSUMIÓ ALCOHOL EL DÍA PREVIO?" Width="620" Enabled="False"></x:TextBox>--%>
                                               
                                             </Items>
                                         </x:Panel>
                                         <x:Panel ID="Panel1" Width="110px" Height="200px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>
-                                                <x:DropDownList ID="ddlsi_hizo_cambios" runat="server" Width="100"></x:DropDownList>                                               
+                                                <x:DropDownList ID="ddlsi_hizo_cambios" runat="server" Width="100" Enabled="False"></x:DropDownList>                                               
                                                 <x:Label ID="Label41" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlestuvo_expuesto" runat="server" Width="100"></x:DropDownList>                                               
+                                                <x:DropDownList ID="ddlestuvo_expuesto" runat="server" Width="100" Enabled="False"></x:DropDownList>                                               
                                                 <x:Label ID="Label5" runat="server" Text="."></x:Label>
-                                                <x:TextBox ID="ddldurmio_mal_la_noche" runat="server" Text="" Width="100" Label="" ></x:TextBox> 
+                                                <x:TextBox ID="ddldurmio_mal_la_noche" runat="server" Text="" Width="100" Label="" Enabled="False"></x:TextBox> 
                                                 <%--<x:DropDownList ID="ddlpresenta_algun" runat="server" Width="100"></x:DropDownList>--%>                                               
-                                                <x:Label ID="Label6" runat="server" Text="."></x:Label>
+                                                <x:Label ID="Label6" runat="server" Text="." Enabled="False"></x:Label>
                                                 <%--<x:DropDownList ID="ddldurmio_mal_la_noche" runat="server" Width="100"></x:DropDownList>--%>                                               
                                                 <%--<x:Label ID="Label7" runat="server" Text="."></x:Label>--%>
-                                                <x:TextBox ID="txttiempo_de_trabajo" runat="server" Text="" Width="100" Label="" ></x:TextBox>       
+                                                <x:TextBox ID="txttiempo_de_trabajo" runat="server" Text="" Width="100" Label="" Enabled="False"></x:TextBox>       
                                             </Items>
                                         </x:Panel>
                                     </Items>
                                 </x:Panel>
+                                <x:Panel runat="server" Title="DATOS DEL AUDIÓMETRO" ID="Panel012" BoxFlex="1" Height="30" TableColspan="2">   
+                                            <Items>
+                                                <x:Form ID="Form26" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow95" ColumnWidths="315px 315px 315px" runat="server">
+                                                            <Items>                                                            
+                                                                <x:TextBox ID="txtCalibracion" runat="server" Text="" Width="180" Label="Calibración" ></x:TextBox> 
+                                                                 <x:TextBox ID="txtMarca" runat="server" Text="" Width="180" Label="Marca" ></x:TextBox>     
+                                                                <x:TextBox ID="txtModelo" runat="server" Text="" Width="180" Label="Modelo" ></x:TextBox>           
+                                                            </Items> 
+                                                        </x:FormRow>                                                        
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:Panel>
+                                  <x:Panel runat="server" Title="APRECIACIÓN DEL RUIDO" ID="Panel17" BoxFlex="1" Height="30" TableColspan="2">   
+                                            <Items>
+                                                <x:Form ID="Form12" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow25" ColumnWidths="315px 315px 315px" runat="server">
+                                                            <Items>                                                            
+                                                                <x:DropDownList ID="chkRuidoExtra" runat="server" Text="" Width="180" Label="Protectores" ></x:DropDownList> 
+                                                                 <x:DropDownList ID="ddlSarampion" runat="server" Text="" Width="180" Label="Apreciación" ></x:DropDownList>     
+                                                                <x:TextBox ID="TextBox19" runat="server" Text="" Width="180" Label="Tiempo exp.pond. 8h" ></x:TextBox>           
+                                                            </Items> 
+                                                        </x:FormRow>                                                        
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:Panel>
                                 <x:Panel ID="Panel3" Title=" ANTECEDENTES MÉDICOS DE IMPORTANCIA" EnableBackgroundColor="true" Height="190px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Layout="Column">
                                     <Items>  
@@ -342,7 +372,7 @@
                                             <Items>
                                                 <x:DropDownList ID="ddlRinitis" runat="server" Width="100"></x:DropDownList>                                               
                                                 <x:Label ID="Label10" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlSarampion" runat="server" Width="100"></x:DropDownList>                                               
+                                                <%--<x:DropDownList ID="ddlSarampion" runat="server" Width="100"></x:DropDownList>--%>                                               
                                                 <x:Label ID="Label14" runat="server" Text="."></x:Label>
                                                 <x:DropDownList ID="ddlOtitis" runat="server" Width="100"></x:DropDownList>                                               
                                                 <x:Label ID="Label15" runat="server" Text="."></x:Label>
@@ -456,21 +486,7 @@
                                                 </x:Form>
                                             </Items>
                                         </x:GroupPanel>
-                                        <x:GroupPanel runat="server" Title="Datos del Audiometro" ID="GroupPanel12" BoxFlex="1" Height="50" TableColspan="2">   
-                                            <Items>
-                                                <x:Form ID="Form26" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
-                                                    <Rows>
-                                                        <x:FormRow ID="FormRow95" ColumnWidths="315px 315px 315px" runat="server">
-                                                            <Items>                                                            
-                                                                <x:TextBox ID="txtCalibracion" runat="server" Text="" Width="180" Label="Calibración" ></x:TextBox> 
-                                                                 <x:TextBox ID="txtMarca" runat="server" Text="" Width="180" Label="Marca" ></x:TextBox>     
-                                                                <x:TextBox ID="txtModelo" runat="server" Text="" Width="180" Label="Modelo" ></x:TextBox>           
-                                                            </Items> 
-                                                        </x:FormRow>                                                        
-                                                    </Rows>
-                                                </x:Form>
-                                            </Items>
-                                        </x:GroupPanel>
+                                       
                                         <x:GroupPanel runat="server" Title="Oído Derecho" ID="GroupPanel9" BoxFlex="1" Height="150" TableColspan="3">
                                             <Items>
                                                 <x:Form ID="Form23" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
@@ -830,7 +846,7 @@
                                                     <Rows>
                                                         <x:FormRow ID="FormRow64" ColumnWidths="600px" runat="server">
                                                             <Items>
-                                                                <x:CheckBox ID="chkRuidoExtra" runat="server" Label="*Ruido extra laboral"></x:CheckBox>
+                                                                <%--<x:CheckBox ID="chkRuidoExtra" runat="server" Label="*Ruido extra laboral"></x:CheckBox>--%>
                                                             </Items>
                                                         </x:FormRow>
                                                         <x:FormRow ID="FormRow65" ColumnWidths="600px" runat="server">

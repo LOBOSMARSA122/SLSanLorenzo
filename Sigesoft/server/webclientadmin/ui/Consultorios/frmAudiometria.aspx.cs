@@ -115,6 +115,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chknormoacusia_bilateral.Attributes.Add("Tag", "N009-MF000002128");
                 chknormoacusia_od.Attributes.Add("Tag", "N009-MF000002129");
                 chknormoacusia_oi.Attributes.Add("Tag", "N009-MF000002130");
+                chkRuidoExtra.Attributes.Add("Tag", "N009-MF000000100");
 
                 //OD
                 txtOD_VA_125.Attributes.Add("Tag", Constants.txt_VA_OD_125);//.Text = objAudiometria.Find(p => p.v_ComponentFieldsId == Constants.txt_VA_OD_125) == null ? "" : objAudiometria.Find(p => p.v_ComponentFieldsId == Constants.txt_VA_OD_125).ServiceComponentFieldValues[0].v_Value1;
@@ -411,7 +412,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkConsumoMedicamento.Attributes.Add("Tag", "N005-MF000000098");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000098") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000098").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkExposicionSolventes.Attributes.Add("Tag", "N005-MF000000099");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000099") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000099").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
 
-                chkRuidoExtra.Attributes.Add("Tag", "N005-MF000000100");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000100") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000100").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
+                //chkRuidoExtra.Attributes.Add("Tag", "N005-MF000000100");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000100") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000100").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkRuidoLaboral.Attributes.Add("Tag", "N005-MF000000101");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000101") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000101").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkServicioMilitar.Attributes.Add("Tag", "N005-MF000001299");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000001299") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000001299").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkDeportesAereos.Attributes.Add("Tag", "N005-MF000001300");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000001300") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000001300").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
@@ -1453,6 +1454,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             OperationResult objOperationResult = new OperationResult();
             var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 111);
+            var Combo253 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 253);
+            var Combo191 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 191);
 
             Utils.LoadDropDownList(ddlsi_hizo_cambios, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlestuvo_expuesto, "Value1", "Id", Combo111, DropDownListAction.Select);
@@ -1471,6 +1474,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Utils.LoadDropDownList(ddlDislipidemia, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlTiroida, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSustQuimicas, "Value1", "Id", Combo111, DropDownListAction.Select);
+            Utils.LoadDropDownList(chkRuidoExtra, "Value1", "Id", Combo253, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlSarampion, "Value1", "Id", Combo191, DropDownListAction.Select);
            
         }
 
