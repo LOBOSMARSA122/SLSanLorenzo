@@ -435,7 +435,7 @@
                                 </x:Panel>
                             </Items>
                         </x:Tab>
-                        <x:Tab ID="TabOIT" BodyPadding="5px" Title="OIT" runat="server" Enabled="False">
+                        <x:Tab ID="TabOIT" BodyPadding="5px" Title="OIT" runat="server" Enabled="true">
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar1" runat="server">
                                     <Items>
@@ -453,7 +453,7 @@
                             </Toolbars>
                             <Items>
                                 <x:Panel ID="Panel35" Title="DATOS DE LA PLACA: " EnableBackgroundColor="true" Height="100px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="False">
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="true">
                                     <Items>
                                                <x:Form ID="Form101" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>

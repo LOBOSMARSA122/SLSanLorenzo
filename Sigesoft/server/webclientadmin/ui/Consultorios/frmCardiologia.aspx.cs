@@ -302,6 +302,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 Alert.ShowInTop("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage);
             }
 
+            #region ESPECIALISTA
+            if (int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.ToString()) == 30)
+            {
+                _objData = _objData.FindAll(p => p.i_SystemUserEspecialistaId == int.Parse(((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString()));
+            }
+            #endregion          
+
             return _objData;
         }
 

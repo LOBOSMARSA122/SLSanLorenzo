@@ -50,7 +50,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DMSQLServer.edmx</DependentUpon>
     </Compile>
-    <Compile Include="GeneratedAssemblers\consolidadoexamenesResultAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\adolescenteAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\adultoAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\adultomayorAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\antecedenteasistencialAssembler.cs" />
     <Compile Include="GeneratedAssemblers\applicationhierarchyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\areaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\attentioninareaAssembler.cs" />
@@ -68,6 +71,8 @@
     <Compile Include="GeneratedAssemblers\componentfieldvaluesAssembler.cs" />
     <Compile Include="GeneratedAssemblers\componentfieldvaluesrecommendationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\componentfieldvaluesrestrictionAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\cuidadopreventivoAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\cuidadopreventivocomentarioAssembler.cs" />
     <Compile Include="GeneratedAssemblers\datahierarchyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\deploymentfileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\diagnosticrepositoryAssembler.cs" />
@@ -75,9 +80,12 @@
     <Compile Include="GeneratedAssemblers\dxfrecuenteAssembler.cs" />
     <Compile Include="GeneratedAssemblers\dxfrecuentedetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\emailAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\embarzoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\workstationdangersAssembler.cs" />
     <Compile Include="GeneratedAssemblers\warehouseAssembler.cs" />
     <Compile Include="GeneratedAssemblers\typeofeepAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\ticketdetalleAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\ticketAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserrolenodeAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemusergobalprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\systemuserAssembler.cs" />
@@ -104,6 +112,8 @@
     <Compile Include="GeneratedAssemblers\restrictionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\restrictedwarehouseprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\recommendationAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\recetadespachoAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\recetaAssembler.cs" />
     <Compile Include="GeneratedAssemblers\protocolsystemuserAssembler.cs" />
     <Compile Include="GeneratedAssemblers\protocolcomponentAssembler.cs" />
     <Compile Include="GeneratedAssemblers\protocolAssembler.cs" />
@@ -112,6 +122,9 @@
     <Compile Include="GeneratedAssemblers\productsformigrationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\productAssembler.cs" />
     <Compile Include="GeneratedAssemblers\procedurebyserviceAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\problemaAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\planintegralAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\planAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personmedicalhistoryAssembler.cs" />
     <Compile Include="GeneratedAssemblers\personAssembler.cs" />
     <Compile Include="GeneratedAssemblers\pacientmultimediadataAssembler.cs" />
@@ -127,14 +140,18 @@
     <Compile Include="GeneratedAssemblers\nodeorganizationlocationprofileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodedatabasestatusAssembler.cs" />
     <Compile Include="GeneratedAssemblers\nodeAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\ninioAssembler.cs" />
     <Compile Include="GeneratedAssemblers\multimediafileAssembler.cs" />
     <Compile Include="GeneratedAssemblers\movementdetailAssembler.cs" />
     <Compile Include="GeneratedAssemblers\movementAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\medicoAssembler.cs" />
     <Compile Include="GeneratedAssemblers\medicationAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\matrizAssembler.cs" />
     <Compile Include="GeneratedAssemblers\masterrecommendationrestricctionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\hospitalizacionhabitacionAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\historyAssembler.cs" />
     <Compile Include="GeneratedAssemblers\groupoccupationAssembler.cs" />
     <Compile Include="GeneratedAssemblers\gesAssembler.cs" />
@@ -142,7 +159,8 @@
     <Compile Include="GeneratedAssemblers\facturaciondetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\reporteatencionmedicaResultAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\llenargrillasigesoftResultAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\obtenerproductoResultAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\obtenerpreciotarifarioResultAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
