@@ -567,7 +567,7 @@
          <x:HiddenField ID="hfRefresh" runat="server" />
         <x:Window ID="Window2" Title="Descargar" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"
             CloseAction="HidePostBack" EnableConfirmOnClose="true" IFrameUrl="about:blank" EnableMaximize="false" EnableResize="false" 
-            Target="Top"  IsModal="True" Width="450px" Height="370px" >
+            Target="Top"  IsModal="True" Width="450px" Height="370px" OnClose="Window2_Close" >
         </x:Window>
         <x:Window ID="WindowAddDX" Title="Nuevo Diagnóstico" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"
             CloseAction="HidePostBack" EnableConfirmOnClose="true" IFrameUrl="about:blank" EnableMaximize="false" EnableResize="false"

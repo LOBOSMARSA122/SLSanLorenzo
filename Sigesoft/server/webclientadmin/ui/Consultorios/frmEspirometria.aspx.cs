@@ -209,6 +209,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["i_AltitudeWorkId"] = dataKeys[6] == null ? "" : dataKeys[6].ToString();
             Session["i_PlaceWorkId"] = dataKeys[7] == null ? "" : dataKeys[7].ToString();
 
+            Session["d_ServiceDate"] = dataKeys[10] == null ? "" : dataKeys[10].ToString();
+
 
             txtEmpresaClienteCabecera.Text = dataKeys[14] == null ? "" : dataKeys[14].ToString();
             txtActividadEmpresaClienteCabecera.Text = dataKeys[16] == null ? "" : dataKeys[16].ToString();
@@ -1318,10 +1320,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             string Ruta = WebConfigurationManager.AppSettings["ImgESPIROOrigen"].ToString();
             string Dni = Session["DniTrabajador"].ToString();
             string Fecha = Session["FechaServicio"].ToString();
-            string Consultorio = "ConsultorioESPIRO";
+            string Consultorio = "ESPIROMETRÍA";
             string Ext = fileDoc.FileName.Substring(fileDoc.FileName.Length - 3, 3);
             fileDoc.SaveAs(Ruta + Dni + "-" + Fecha + "-" + Consultorio + "." + Ext);
             Alert.ShowInTop("El archivo subió correctamente", MessageBoxIcon.Information);
+            fileDoc.Text = "";
         }
 
         protected void lnkEspirometria_Click(object sender, EventArgs e)
@@ -1355,6 +1358,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             rp.ExportOptions.DestinationOptions = objDiskOpt;
             rp.Export();
             rp.Close();
+        }
+
+        protected void Window2_Close(object sender, WindowCloseEventArgs e)
+        {
+            fileDoc.Text = "";
         }
 
      

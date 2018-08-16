@@ -60,10 +60,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 files = rutaOrigen.GetFiles();
             }
            
-
+            var fechaServicio = DateTime.Parse(Session["d_ServiceDate"].ToString());
+            var dia = string.Format("{0}", fechaServicio.Day.ToString("00"));
+            var mes = string.Format("{0}", fechaServicio.Month.ToString("00"));
+            var anio = string.Format("{0}", fechaServicio.Year.ToString("00"));
             foreach (var item in files)
             {
-                if (item.ToString().Substring(0, 8) == Session["DniTrabajador"].ToString())
+                if (item.ToString().Substring(0, 17) == Session["DniTrabajador"].ToString() + "-" + dia + mes + anio)
                 {
                     LinkButton objLinkButton = new LinkButton();
 
@@ -116,8 +119,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             string path;
             path = rutaReportes + senderCtrl.ID.ToString();
 
-
-            Download(senderCtrl.Text, path);
+            Download(senderCtrl.Text, path);          
 
         }
 
@@ -129,6 +131,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             System.IO.FileInfo Dfile = new System.IO.FileInfo(sFilePath);
             HttpContext.Current.Response.WriteFile(Dfile.FullName);
             HttpContext.Current.Response.End();
+
+
         }      
 
     }
