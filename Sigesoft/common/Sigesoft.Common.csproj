@@ -104,6 +104,7 @@
     <Compile Include="Exoneracion_Placa_Torax_PA.cs" />
     <Compile Include="FichaMedicaOcupacional312.cs" />
     <Compile Include="FichaMedicaOcupacional312_CI.cs" />
+    <Compile Include="FichaPsicologicaGoldfields.cs" />
     <Compile Include="HandlingItextSharp.cs" />
     <Compile Include="HistoriaClinica.cs" />
     <Compile Include="HojaCotizacion.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="InformeMedicoOcupacional_Cosapi.cs" />
     <Compile Include="InformeMedicoSaludOcupacional_ExamenAnual.cs" />
     <Compile Include="InformeMedicoTrabajadorInternacional.cs" />
+    <Compile Include="InformePsicologicoGoldfields.cs" />
     <Compile Include="InformeTrabajador.cs" />
     <Compile Include="InformeTrabajador3.cs" />
     <Compile Include="INFORME_SAS_REPORT.cs" />

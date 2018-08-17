@@ -9812,6 +9812,96 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+        public List<ReportHistoriaClinicaPsicologica> GetPsicologia(string pstrserviceId, string pstrComponentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                                 join M in dbContext.systemparameter on new { a = B.i_MaritalStatusId.Value, b = 101 }
+                                              equals new { a = M.i_ParameterId, b = M.i_GroupId } into M_join
+                                 from M in M_join.DefaultIfEmpty()
+                                 join N in dbContext.datahierarchy on new { a = B.i_LevelOfId.Value, b = 108 }
+                                                equals new { a = N.i_ItemId, b = N.i_GroupId } into N_join
+                                 from N in N_join.DefaultIfEmpty()
+
+                                 join E1 in dbContext.protocol on A.v_ProtocolId equals E1.v_ProtocolId
+
+                                 join D1 in dbContext.organization on E1.v_CustomerOrganizationId equals D1.v_OrganizationId into D1_join
+                                 from D1 in D1_join.DefaultIfEmpty()
+
+                                 join et in dbContext.systemparameter on new { a = E1.i_EsoTypeId.Value, b = 118 }
+                                            equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
+                                 from et in et_join.DefaultIfEmpty()
+
+                                 join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
+                                                                     equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+
+                                 // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                 join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                                 from me in me_join.DefaultIfEmpty()
+
+                                 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                                 from pme in pme_join.DefaultIfEmpty()
+
+                                 join E2 in dbContext.area on A.v_AreaId equals E2.v_AreaId into E2_join
+                                 from E2 in E2_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrserviceId
+                                 select new ReportHistoriaClinicaPsicologica
+                                 {
+                                     ApellidosNombres = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                     FechaNacimiento = B.d_Birthdate,
+                                     LugarNacimiento = B.v_AdressLocation,
+                                     EstadoCivil = M.v_Value1,
+                                     GradoInstruccion = N.v_Value1,
+                                     LugarResidencia = B.v_AdressLocation,
+                                     PuestoTrabajo = B.v_CurrentOccupation,
+                                     TipoESO = E1.i_EsoTypeId.Value,
+                                     NombreEmpresa = D1.v_Name,
+                                     ActividadEmpresa = D1.v_SectorName,
+                                     FechaEvaluacion = A.d_ServiceDate.Value,
+                                     IdServicio = A.v_ServiceId,
+                                     AreaTrabajo = E2.v_Name,
+                                     FirmaGraba = pme.b_SignatureImage,
+                                 });
+
+                var MedicalCenter = GetInfoMedicalCenter();
+
+                var sql = (from a in objEntity.ToList()
+                           let Valores = ValoresComponente(pstrserviceId, pstrComponentId)
+                           let ValoresExamenMental = ValoresComponente(pstrserviceId, Constants.PSICOLOGIA_ID)
+                           select new ReportHistoriaClinicaPsicologica
+                           {
+                               ApellidosNombres = a.ApellidosNombres,
+                               FechaNacimiento = a.FechaNacimiento,
+                               Edad = GetAge(a.FechaNacimiento.Value),
+                               LugarNacimiento = a.LugarNacimiento,
+                               EstadoCivil = a.EstadoCivil,
+                               GradoInstruccion = a.GradoInstruccion,
+                               LugarResidencia = a.LugarResidencia,
+                               PuestoTrabajo = a.PuestoTrabajo,
+                               TipoESO = a.TipoESO,
+                               NombreEmpresa = a.NombreEmpresa,
+                               ActividadEmpresa = a.ActividadEmpresa,
+                               FechaEvaluacion = a.FechaEvaluacion,
+                               IdServicio = a.IdServicio,
+                               AreaTrabajo = a.AreaTrabajo,
+                               LogoPropietaria = MedicalCenter.b_Image,
+                               FirmaGraba = a.FirmaGraba
+                           }).ToList();
+
+                return sql;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 		public void ActualizarServicioArea(string pstrServiceId, string pstrAreaId)
 		{
 			try

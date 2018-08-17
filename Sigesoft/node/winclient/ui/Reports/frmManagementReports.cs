@@ -1276,6 +1276,30 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             INFORME_SAS_REPORT.CreateReportSAS(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
         }
 
+        private void GenerateFichaPsicologicaGoldfies(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
+            FichaPsicologicaGoldfields.CreateFichaPsicologicaGoldfields(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
+        private void GenerateInformePsicologicoGoldfieds(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
+            var _InformacionHistoriaPsico = _serviceBL.GetHistoriaClinicaPsicologica(_serviceId, Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+            
+
+            InformePsicologicoGoldfields.CreateInformePsicologicoGoldfields(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
+
         private void GenerateCertificadoPsicosensometricoDatos(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -4726,6 +4750,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                    
                 case Constants.FICHA_SUFICIENCIA_MEDICA_ID:
                     GenerateCertificadoSuficienciaMedicaTC(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FICHA_SUFICIENCIA_MEDICA_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+
+                case Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS:
+                    GenerateInformePsicologicoGoldfieds(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+
+                case Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS:
+                    GenerateFichaPsicologicaGoldfies(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///
