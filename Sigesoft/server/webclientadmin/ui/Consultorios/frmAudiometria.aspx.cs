@@ -84,11 +84,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 ddlsi_hizo_cambios.Attributes.Add("Tag", "N009-MF000001299");
                 ddlestuvo_expuesto.Attributes.Add("Tag", "N009-MF000001300");
-                ddlpresenta_algun.Attributes.Add("Tag", "N009-MF000001301");
+                //ddlpresenta_algun.Attributes.Add("Tag", "N009-MF000001301");
                 ddldurmio_mal_la_noche.Attributes.Add("Tag", "N009-MF000001302");
-                ddlconsumio_alcohol.Attributes.Add("Tag", "N009-MF000001303");
+                //ddlconsumio_alcohol.Attributes.Add("Tag", "N009-MF000001303");
 
-                //txttiempo_de_trabajo.Attributes.Add("Tag", "N009-MF000001378");
+                txttiempo_de_trabajo.Attributes.Add("Tag", "N009-MF000001378");
                 ddlRinitis.Attributes.Add("Tag", "N009-MF000000089");
                 ddlOtitis.Attributes.Add("Tag", "N009-MF000000091");
                 ddlMedicamentos.Attributes.Add("Tag", "N009-MF000000087");
@@ -115,6 +115,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chknormoacusia_bilateral.Attributes.Add("Tag", "N009-MF000002128");
                 chknormoacusia_od.Attributes.Add("Tag", "N009-MF000002129");
                 chknormoacusia_oi.Attributes.Add("Tag", "N009-MF000002130");
+                chkRuidoExtra.Attributes.Add("Tag", "N009-MF000000100");
 
                 //OD
                 txtOD_VA_125.Attributes.Add("Tag", Constants.txt_VA_OD_125);//.Text = objAudiometria.Find(p => p.v_ComponentFieldsId == Constants.txt_VA_OD_125) == null ? "" : objAudiometria.Find(p => p.v_ComponentFieldsId == Constants.txt_VA_OD_125).ServiceComponentFieldValues[0].v_Value1;
@@ -411,7 +412,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkConsumoMedicamento.Attributes.Add("Tag", "N005-MF000000098");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000098") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000098").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkExposicionSolventes.Attributes.Add("Tag", "N005-MF000000099");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000099") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000099").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
 
-                chkRuidoExtra.Attributes.Add("Tag", "N005-MF000000100");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000100") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000100").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
+                //chkRuidoExtra.Attributes.Add("Tag", "N005-MF000000100");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000100") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000100").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkRuidoLaboral.Attributes.Add("Tag", "N005-MF000000101");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000101") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000101").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkServicioMilitar.Attributes.Add("Tag", "N005-MF000001299");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000001299") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000001299").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkDeportesAereos.Attributes.Add("Tag", "N005-MF000001300");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000001300") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000001300").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
@@ -515,7 +516,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["v_ExploitedMineral"] = dataKeys[5] == null ? "" : dataKeys[5].ToString();
             Session["i_AltitudeWorkId"] = dataKeys[6] == null ? "" : dataKeys[6].ToString();
             Session["i_PlaceWorkId"] = dataKeys[7] == null ? "" : dataKeys[7].ToString();
-          
+            Session["d_ServiceDate"] = dataKeys[10] == null ? "" : dataKeys[10].ToString();
+
            
             txtEmpresaClienteCabecera.Text = dataKeys[14] == null ? "" : dataKeys[14].ToString();
             txtActividadEmpresaClienteCabecera.Text = dataKeys[16] == null ? "" : dataKeys[16].ToString();
@@ -654,7 +656,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             {
                 Alert.ShowInTop("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage);
             }
-
+            #region ESPECIALISTA
+            if (int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.ToString()) == 30)
+            {
+                _objData = _objData.FindAll(p => p.i_SystemUserEspecialistaId == int.Parse(((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString()));
+            }
+            #endregion          
             return _objData;
         }
         
@@ -1453,12 +1460,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             OperationResult objOperationResult = new OperationResult();
             var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 111);
+            var Combo253 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 253);
+            var Combo191 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 191);
 
             Utils.LoadDropDownList(ddlsi_hizo_cambios, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlestuvo_expuesto, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlpresenta_algun, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddldurmio_mal_la_noche, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlconsumio_alcohol, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlpresenta_algun, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddldurmio_mal_la_noche, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlconsumio_alcohol, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlRinitis, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSarampion, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlOtitis, "Value1", "Id", Combo111, DropDownListAction.Select);
@@ -1471,6 +1480,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Utils.LoadDropDownList(ddlDislipidemia, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlTiroida, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSustQuimicas, "Value1", "Id", Combo111, DropDownListAction.Select);
+            Utils.LoadDropDownList(chkRuidoExtra, "Value1", "Id", Combo253, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlSarampion, "Value1", "Id", Combo191, DropDownListAction.Select);
            
         }
 

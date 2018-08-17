@@ -2821,6 +2821,7 @@ namespace Sigesoft.Node.WinClient.BLL
 				foreach (var item in objEntitySource)
 				{
 					// Crear la entidad con los datos actualizados
+				    item.i_SystemUserEspecialistaId = pobjDtoEntity.i_SystemUserEspecialistaId;
 					item.v_Comment = pobjDtoEntity.v_Comment;
 					item.i_ServiceComponentStatusId = pobjDtoEntity.i_ServiceComponentStatusId;
 					item.i_ExternalInternalId = pobjDtoEntity.i_ExternalInternalId;

@@ -159,7 +159,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                            //**********************************************************************************
 
-                           where A.i_IsDeleted == 0 && D.i_IsRequiredId ==1
+                           where A.i_IsDeleted == 0 && D.i_IsRequiredId == 1 
 
                            select new ServiceList
                            {
@@ -190,7 +190,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                v_SectorName = oc.v_SectorName,
                                ComentarioAptitud = A.v_ObsStatusService,
                                i_ServiceComponentStatusId = D.i_ServiceComponentStatusId,
-                               AtSchool = D.i_ServiceComponentStatusId == 4 || D.i_ServiceComponentStatusId == 3 ? true : false
+                               AtSchool = D.i_ServiceComponentStatusId == 4 || D.i_ServiceComponentStatusId == 3 ? true : false,
+                               i_SystemUserEspecialistaId = D.i_SystemUserEspecialistaId.Value
                            };
 
                if (!string.IsNullOrEmpty(pstrFilterExpression))

@@ -264,7 +264,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["v_ExploitedMineral"] = dataKeys[5] == null ? "" : dataKeys[5].ToString();
             Session["i_AltitudeWorkId"] = dataKeys[6] == null ? "" : dataKeys[6].ToString();
             Session["i_PlaceWorkId"] = dataKeys[7] == null ? "" : dataKeys[7].ToString();
-
+            Session["d_ServiceDate"] = dataKeys[10] == null ? "" : dataKeys[10].ToString();
 
             txtEmpresaClienteCabecera.Text = dataKeys[14] == null ? "" : dataKeys[14].ToString();
             txtActividadEmpresaClienteCabecera.Text = dataKeys[16] == null ? "" : dataKeys[16].ToString();
@@ -393,7 +393,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             ComponentesId.Add("N002-ME000000032");
             ComponentesId.Add("N009-ME000000062");
             var _objData = _serviceBL.GetAllServices_Consultorio(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, dpFechaInicio.SelectedDate.Value, dpFechaFin.SelectedDate.Value.AddDays(1), ComponentesId.ToArray());
-           
+                       
             if (_objData.Count == 0)
             {
                 TabRayosX.Hidden = true;
@@ -404,6 +404,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 Alert.ShowInTop("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage);
             }
 
+            #region ESPECIALISTA
+            if (int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.ToString()) == 30)
+            {
+                _objData = _objData.FindAll(p => p.i_SystemUserEspecialistaId == int.Parse(((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString()));
+            }
+            #endregion          
+          
             return _objData;
         }
 
