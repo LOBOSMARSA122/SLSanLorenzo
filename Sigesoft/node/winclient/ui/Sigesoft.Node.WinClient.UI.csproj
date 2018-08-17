@@ -1450,6 +1450,12 @@
     <Compile Include="ReporteDeclaracionDrogas.Designer.cs">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\crEstudioElectrocardiografico_Reserva.cs">
+      <DependentUpon>crEstudioElectrocardiografico_Reserva.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\crCertificadoDeAptitudSinDX.cs">
       <DependentUpon>crCertificadoDeAptitudSinDX.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -3617,6 +3623,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crEstudioElectrocardiografico_Reserva.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crEstudioElectrocardiografico_Reserva.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crCertificadoDeAptitudSinDX.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -6589,7 +6599,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

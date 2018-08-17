@@ -328,83 +328,116 @@
                                                     <Rows>
                                                         <x:FormRow ID="FormRow95" ColumnWidths="315px 315px 315px" runat="server">
                                                             <Items>                                                            
-                                                                <x:TextBox ID="txtCalibracion" runat="server" Text="" Width="180" Label="Calibración" ></x:TextBox> 
-                                                                 <x:TextBox ID="txtMarca" runat="server" Text="" Width="180" Label="Marca" ></x:TextBox>     
-                                                                <x:TextBox ID="txtModelo" runat="server" Text="" Width="180" Label="Modelo" ></x:TextBox>           
+                                                                <x:TextBox ID="txtCalibracion" runat="server" Text="" Width="180" Label="Calibración" Enabled="False" ></x:TextBox> 
+                                                                 <x:TextBox ID="txtMarca" runat="server" Text="" Width="180" Label="Marca" Enabled="False"></x:TextBox>     
+                                                                <x:TextBox ID="txtModelo" runat="server" Text="" Width="180" Label="Modelo" Enabled="False"></x:TextBox>           
                                                             </Items> 
                                                         </x:FormRow>                                                        
                                                     </Rows>
                                                 </x:Form>
                                             </Items>
                                         </x:Panel>
-                                  <x:Panel runat="server" Title="APRECIACIÓN DEL RUIDO" ID="Panel17" BoxFlex="1" Height="30" TableColspan="2">   
+                                <x:Panel runat="server" Title="APRECIACIÓN DEL RUIDO" ID="Panel17" BoxFlex="1" Height="30" TableColspan="2">   
                                             <Items>
                                                 <x:Form ID="Form12" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                                     <Rows>
                                                         <x:FormRow ID="FormRow25" ColumnWidths="315px 315px 315px" runat="server">
                                                             <Items>                                                            
-                                                                <x:DropDownList ID="chkRuidoExtra" runat="server" Text="" Width="180" Label="Protectores" ></x:DropDownList> 
-                                                                 <x:DropDownList ID="ddlSarampion" runat="server" Text="" Width="180" Label="Apreciación" ></x:DropDownList>     
-                                                                <x:TextBox ID="TextBox19" runat="server" Text="" Width="180" Label="Tiempo exp.pond. 8h" ></x:TextBox>           
+                                                                <x:DropDownList ID="chkRuidoExtra" runat="server" Text="" Width="180" Label="Protectores" Enabled="False"></x:DropDownList> 
+                                                                 <x:DropDownList ID="ddlSarampion" runat="server" Text="" Width="180" Label="Apreciación" Enabled="False"></x:DropDownList>     
+                                                                <x:TextBox ID="ddlconsumio_alcohol" runat="server" Text="" Width="180" Label="Tiempo exp.pond.8h" Enabled="False"></x:TextBox>           
                                                             </Items> 
                                                         </x:FormRow>                                                        
                                                     </Rows>
                                                 </x:Form>
                                             </Items>
                                         </x:Panel>
+                                 <x:Panel ID="Panel13" Title="SÍNTOMAS ACTUALES" EnableBackgroundColor="true" Height="70px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                    <Items>
+                                        <x:Form ID="Form2" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="30px" LabelAlign="Left">
+                                            <Rows>
+                                                <x:FormRow ID="FormRow1" ColumnWidths="240px 240px 240px 240px" runat="server">
+                                                    <Items>  
+                                                        <x:CheckBox ID="chksordera" runat="server" Text="SORDERA-DISM. AUD." ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="chkacuferos" runat="server" Text="ZUMBIDO" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="chkvertigos" runat="server" Text="VÉRTIGOS - MAREOS" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="chkotalgia" runat="server" Text="OTALGIA - DOLOR OÍDO" ShowLabel="true" Enabled="False"></x:CheckBox>                                                          
+                                                    </Items>
+                                                </x:FormRow>
+                                                <x:FormRow ID="FormRow26" ColumnWidths="240px 240px 240px 240px" runat="server">
+                                                    <Items>  
+                                                        <x:Label ID="Label3" runat="server" Text=""></x:Label>
+                                                        <x:Label ID="Label7" runat="server" Text=""></x:Label>
+                                                        <x:Label ID="Label71" runat="server" Text=""></x:Label>
+                                                        <x:Label ID="Label72" runat="server" Text=""></x:Label>
+                                                    </Items>
+                                                </x:FormRow>
+                                                  <x:FormRow ID="FormRow2" ColumnWidths="240px 240px 240px 240px" runat="server">
+                                                    <Items>  
+                                                        <x:CheckBox ID="chksecrecion_otica" runat="server" Text="SECRECIÓN ÓTICA" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="ddlpresenta_algun" runat="server" Text="OTROS SINT." ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:Label ID="Label73" runat="server" Text=""></x:Label>
+                                                        <x:Label ID="Label74" runat="server" Text=""></x:Label>
+                                                    </Items>
+                                                </x:FormRow>
+                                                
+                                            </Rows>
+                                        </x:Form>    
+                                    </Items>       
+                                </x:Panel>
                                 <x:Panel ID="Panel3" Title=" ANTECEDENTES MÉDICOS DE IMPORTANCIA" EnableBackgroundColor="true" Height="190px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Layout="Column">
                                     <Items>  
-                                        <x:Panel ID="Panel4" Width="200px" Height="150px" EnableBackgroundColor="true"
+                                        <x:Panel ID="Panel4" Width="250px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="DESCRIPCIÓN">
                                             <Items>
-                                                <x:TextBox ID="TextBox5" runat="server" Text="RINITIS, SINUSITIS" Width="190"></x:TextBox>
+                                                <x:TextBox ID="TextBox5" runat="server" Text="INFECCIONES AUDITIVAS" Width="240" Enabled="False"></x:TextBox>
                                                 <x:Label ID="Label9" runat="server" Text="."></x:Label>
-                                                 <x:TextBox ID="TextBox6" runat="server" Text="SARAMPIÓN" Width="190"></x:TextBox>
+                                                 <x:TextBox ID="TextBox6" runat="server" Text="INFECCIONES OROFARINGEAS " Width="240" Enabled="False"></x:TextBox>
                                                 <x:Label ID="Label11" runat="server" Text="."></x:Label>
-                                                 <x:TextBox ID="TextBox7" runat="server" Text="OTITIS MEDIA CRÓNICA" Width="190"></x:TextBox>
+                                                 <x:TextBox ID="TextBox7" runat="server" Text="RESFRÍOS" Width="240" Enabled="False"></x:TextBox>
                                                 <x:Label ID="Label12" runat="server" Text="."></x:Label>
-                                                 <x:TextBox ID="TextBox8" runat="server" Text="SORDERA" Width="190"></x:TextBox>
+                                                 <x:TextBox ID="TextBox8" runat="server" Text="ACCIDENTES TRAUMÁTICO AUDITIVOS" Width="240" Enabled="False"></x:TextBox>
                                             </Items>
                                         </x:Panel>
                                         <x:Panel ID="Panel5" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>
-                                                <x:DropDownList ID="ddlRinitis" runat="server" Width="100"></x:DropDownList>                                               
+                                                <x:DropDownList ID="ddlOtitis" runat="server" Width="100" Enabled="False"></x:DropDownList>                                                                                               
                                                 <x:Label ID="Label10" runat="server" Text="."></x:Label>
-                                                <%--<x:DropDownList ID="ddlSarampion" runat="server" Width="100"></x:DropDownList>--%>                                               
+                                                <x:DropDownList ID="ddlRinitis" runat="server" Width="100" Enabled="False"></x:DropDownList>                                               
                                                 <x:Label ID="Label14" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlOtitis" runat="server" Width="100"></x:DropDownList>                                               
+                                                <x:DropDownList ID="ddlSustQuimicas" runat="server" Width="100" Enabled="False"></x:DropDownList>                                             
                                                 <x:Label ID="Label15" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlSordera" runat="server" Width="100"></x:DropDownList>   
+                                                <x:DropDownList ID="ddlSorderaFamiliar" runat="server" Width="100" Enabled="False"></x:DropDownList>   
                                             </Items>
                                         </x:Panel>
-                                         <x:Panel ID="Panel6" Width="200px" Height="150px" EnableBackgroundColor="true"
+                                         <x:Panel ID="Panel6" Width="250px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="DESCRIPCIÓN">
                                             <Items>
-                                                 <x:TextBox ID="TextBox9" runat="server" Text="USO  DE MEDICAMENTOS" Width="190"></x:TextBox>
+                                                 <x:TextBox ID="TextBox9" runat="server" Text="USO  DE MEDICAMENTOS" Width="240" Enabled="False"></x:TextBox>
                                                 <x:Label ID="Label17" runat="server" Text="."></x:Label>
-                                                 <x:TextBox ID="TextBox10" runat="server" Text="TEC" Width="190"></x:TextBox>
+                                                <x:Label ID="Label75" runat="server" Text="."></x:Label>
                                                 <x:Label ID="Label18" runat="server" Text="."></x:Label>
-                                                 <x:TextBox ID="TextBox11" runat="server" Text="DIABETES MELLITUS" Width="190"></x:TextBox>
+                                                <x:Label ID="Label76" runat="server" Text="."></x:Label>
                                                 <x:Label ID="Label19" runat="server" Text="."></x:Label>
-                                                 <x:TextBox ID="TextBox12" runat="server" Text="SORDERA FAMILIAR" Width="190"></x:TextBox>
+                                                <x:Label ID="Label77" runat="server" Text="."></x:Label>
                                             </Items>
                                         </x:Panel>
                                         <x:Panel ID="Panel7" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>
-                                                 <x:DropDownList ID="ddlMedicamentos" runat="server" Width="100"></x:DropDownList>                                               
+                                                 <x:DropDownList ID="chkuso_de_medicamentos" runat="server" Width="100" Enabled="False"></x:DropDownList>                                               
                                                 <x:Label ID="Label25" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlTec" runat="server" Width="100"></x:DropDownList>                                               
+                                                <x:Label ID="Label78" runat="server" Text="."></x:Label>                                         
                                                 <x:Label ID="Label26" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlDiabetes" runat="server" Width="100"></x:DropDownList>                                               
+                                               <x:Label ID="Label79" runat="server" Text="."></x:Label>                                              
                                                 <x:Label ID="Label27" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlSorderaFamiliar" runat="server" Width="100"></x:DropDownList>     
+                                                <%--<x:DropDownList ID="ddlSorderaFamiliar" runat="server" Width="100"></x:DropDownList>--%>     
                                             </Items>
                                         </x:Panel>
                                          <x:Panel ID="Panel8" Width="200px" Height="150px" EnableBackgroundColor="true"
-                                            runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="DESCRIPCIÓN">
+                                            runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="DESCRIPCIÓN" visible="false">
                                             <Items>
                                                  <x:TextBox ID="TextBox13" runat="server" Text="MENINGITIS" Width="190"></x:TextBox>
                                                 <x:Label ID="Label21" runat="server" Text="."></x:Label>
@@ -416,57 +449,50 @@
                                             </Items>
                                         </x:Panel>
                                         <x:Panel ID="Panel11" Width="110px" Height="150px" EnableBackgroundColor="true"
-                                            runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
+                                            runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI" visible="false">
                                             <Items>
-                                                 <x:DropDownList ID="ddlMeningitis" runat="server" Width="100"></x:DropDownList>                                               
+                                                 <%--<x:DropDownList ID="ddlMeningitis" runat="server" Width="100"></x:DropDownList>--%>                                               
                                                 <x:Label ID="Label29" runat="server" Text="."></x:Label>
                                                 <x:DropDownList ID="ddlDislipidemia" runat="server" Width="100"></x:DropDownList>                                               
                                                 <x:Label ID="Label30" runat="server" Text="."></x:Label>
                                                 <x:DropDownList ID="ddlTiroida" runat="server" Width="100"></x:DropDownList>                                               
                                                 <x:Label ID="Label31" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlSustQuimicas" runat="server" Width="100"></x:DropDownList>         
+                                                <%--<x:DropDownList ID="ddlSustQuimicas" runat="server" Width="100"></x:DropDownList>--%>         
                                             </Items>
                                         </x:Panel>
                                     </Items>  
                                 </x:Panel>
-                                <x:Panel ID="Panel12" Title="HOBBIES" EnableBackgroundColor="true" Height="40px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                <x:Panel ID="Panel12" Title="ANTECEDENTES RELACIONADOS" EnableBackgroundColor="true" Height="70px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true">
                                     <Items>
-                                        <x:Form ID="Form4" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
+                                        <x:Form ID="Form4" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="30px" LabelAlign="Left">
                                             <Rows>
-                                                <x:FormRow ID="FormRow17" ColumnWidths="220px 220px 220px" runat="server">
+                                                <x:FormRow ID="FormRow17" ColumnWidths="240px 240px 240px" runat="server">
                                                     <Items>  
-                                                        <x:CheckBox ID="chkUsoMP3" runat="server" Text="USO DE MP3" ShowLabel="true"></x:CheckBox>
-                                                        <x:CheckBox ID="chkTiro" runat="server" Text="PRÁTICA TIRO" ShowLabel="true"></x:CheckBox>
-                                                        <x:CheckBox ID="chkotros" runat="server" Text="OTROS" ShowLabel="true"></x:CheckBox>
+                                                        <x:CheckBox ID="ddlDiabetes" runat="server" Text="CONSUMO DE TABACO" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="chkTiro" runat="server" Text="SERVICIO MILITAR" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="chkUsoMP3" runat="server" Text="HOBBIES C. EXPOS. A RUIDO" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                    </Items>
+                                                </x:FormRow>
+                                                 <x:FormRow ID="FormRow28" ColumnWidths="240px 240px 240px 240px" runat="server">
+                                                    <Items>  
+                                                        <x:Label ID="Label82" runat="server" Text=""></x:Label>
+                                                        <x:Label ID="Label83" runat="server" Text=""></x:Label>
+                                                        <x:Label ID="Label84" runat="server" Text=""></x:Label>
+                                                        <x:Label ID="Label85" runat="server" Text=""></x:Label>
+                                                    </Items>
+                                                </x:FormRow>
+                                                <x:FormRow ID="FormRow27" ColumnWidths="240px 240px 240px" runat="server">
+                                                    <Items>  
+                                                        <x:CheckBox ID="ddlMeningitis" runat="server" Text="EXPOS. LABORAL A QUÍMICOS" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:Label ID="Label80" runat="server" Text=""></x:Label>
+                                                        <x:Label ID="Label81" runat="server" Text=""></x:Label>
                                                     </Items>
                                                 </x:FormRow>
                                             </Rows>
                                         </x:Form>    
                                     </Items>                                           
                                 </x:Panel>
-                                <x:Panel ID="Panel13" Title="SÍNTOMAS ACTUALES" EnableBackgroundColor="true" Height="50px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true">
-                                    <Items>
-                                        <x:Form ID="Form2" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
-                                            <Rows>
-                                                <x:FormRow ID="FormRow1" ColumnWidths="200px 200px 200px 200px" runat="server">
-                                                    <Items>  
-                                                        <x:CheckBox ID="chksordera" runat="server" Text="SORDERA" ShowLabel="true"></x:CheckBox>
-                                                        <x:CheckBox ID="chkotalgia" runat="server" Text="OTALGIA" ShowLabel="true"></x:CheckBox>
-                                                        <x:CheckBox ID="chkvertigos" runat="server" Text="VÉRTIGOS" ShowLabel="true"></x:CheckBox>
-                                                        <x:CheckBox ID="chkacuferos" runat="server" Text="ACÚFEROS" ShowLabel="true"></x:CheckBox>
-                                                        
-                                                    </Items>
-                                                </x:FormRow>
-                                                  <x:FormRow ID="FormRow2" ColumnWidths="200px 200px 200px 200px" runat="server">
-                                                    <Items>  
-                                                       <x:CheckBox ID="chksecrecion_otica" runat="server" Text="SECRECIÓN ÓTICA" ShowLabel="true"></x:CheckBox>
-                                                    </Items>
-                                                </x:FormRow>
-                                                
-                                            </Rows>
-                                        </x:Form>    
-                                    </Items>       
-                                </x:Panel>
+                               
                                 <x:Panel ID="Panel14" Title="OTOSCOPIA" EnableBackgroundColor="true" Height="920px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true">
                                     <Items>
                                         <x:GroupPanel runat="server" Title="." ID="GroupPanel5" BoxFlex="1" Height="70" TableColspan="3">
@@ -476,10 +502,10 @@
                                                         <x:FormRow ID="FormRow3" ColumnWidths="90px 380px 90px 380px" runat="server">
                                                             <Items>
                                                                 <x:Label ID="Label16" runat="server" Text="" Width="90px" Label="OD"></x:Label>
-                                                                <x:TextArea ID="txtOidoDerecho" runat="server" Text="" Label="" ShowLabel="false" Height="40"></x:TextArea>
+                                                                <x:TextArea ID="txtOidoDerecho" runat="server" Text="" Label="" ShowLabel="false" Height="45" Enabled="False"></x:TextArea>
 
                                                                  <x:Label ID="Label20" runat="server" Text="" Width="90px" Label="OI"></x:Label>
-                                                                <x:TextArea ID="txtOidoIzquierdo" runat="server" Text="" Label="" ShowLabel="false" Height="40"></x:TextArea>
+                                                                <x:TextArea ID="txtOidoIzquierdo" runat="server" Text="" Label="" ShowLabel="false" Height="45" Enabled="False"></x:TextArea>
                                                             </Items>
                                                         </x:FormRow>                                                      
                                                     </Rows>
@@ -508,57 +534,57 @@
                                                         <x:FormRow ID="FormRow82" ColumnWidths="90px 80px 80px 80px 80px 80px 80px 80px 80px 80px" runat="server">
                                                             <Items>
                                                                 <x:TextBox ID="TextBox723" runat="server" Text="" Width="90px" Label="Vía Área"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="1"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="2"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="3"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="4"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="5"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="6"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="7"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="8"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VA_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="9"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="1" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="2" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="3" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="4" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="5" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="6" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="7" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="8" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VA_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="9" Enabled="False"></x:TextBox>
                                                             </Items>
                                                         </x:FormRow>
                                                         <x:FormRow ID="FormRow83" ColumnWidths="90px 80px 80px 80px 80px 80px 80px 80px 80px 80px" runat="server">
                                                             <Items>
                                                                 <x:TextBox ID="TextBox54" runat="server" Text="" Width="90px" Label="Vía Ósea"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="10"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="11"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="12"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="13"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="14"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="15"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="16"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="17"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_VO_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="18"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="10" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="11" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="12" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="13" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="14" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="15" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="16" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="17" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_VO_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="18" Enabled="False"></x:TextBox>
                                                             </Items>
                                                         </x:FormRow>
                                                         <x:FormRow ID="FormRow84" ColumnWidths="90px 80px 80px 80px 80px 80px 80px 80px 80px 80px" runat="server">
                                                             <Items>
                                                                 <x:TextBox ID="TextBox64" runat="server" Text="" Width="90px" Label="Enmascaramiento"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="19"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="20"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="21"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="22"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="23"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="24"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="25"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="26"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_EM_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="27"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="19" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="20" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="21" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="22" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="23" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="24" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="25" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="26" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_EM_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="27" Enabled="False"></x:TextBox>
                                                             </Items>
                                                         </x:FormRow>
                                                         <x:FormRow ID="FormRow4" ColumnWidths="90px 80px 80px 80px 80px 80px 80px 80px 80px 80px" runat="server">
                                                             <Items>
                                                                 <x:TextBox ID="TextBox6488" runat="server" Text="" Width="90px" Label="Anacusia"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="19"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="20"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="21"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="22"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="23"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="24"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="25"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="26"></x:TextBox>
-                                                                <x:TextBox ID="txtOD_AN_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="27"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="19" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="20" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="21" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="22" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="23" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="24" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="25" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="26" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOD_AN_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="27" Enabled="False"></x:TextBox>
                                                             </Items>
                                                         </x:FormRow>
 
@@ -588,57 +614,57 @@
                                                         <x:FormRow ID="FormRow87" ColumnWidths="90px 80px 80px 80px 80px 80px 80px 80px 80px 80px" runat="server">
                                                             <Items>
                                                                 <x:TextBox ID="Label138" runat="server" Text="" Width="90px" Label="Vía Aérea"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="28"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="29"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="30"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="31"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="32"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="33"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="34"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="35"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VA_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="36"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="28" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="29" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="30" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="31" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="32" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="33" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="34" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="35" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VA_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="36" Enabled="False"></x:TextBox>
                                                             </Items>
                                                         </x:FormRow>
                                                         <x:FormRow ID="FormRow88" ColumnWidths="90px 80px 80px 80px 80px 80px 80px 80px 80px 80px" runat="server">
                                                             <Items>
                                                                 <x:TextBox ID="TextBox94" runat="server" Text="" Width="90px" Label="Vía Ósea"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="37"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="38"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="39"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="40"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="41"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="42"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="43"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="44"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_VO_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="45"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="37" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="38" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="39" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="40" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="41" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="42" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="43" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="44" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_VO_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="45" Enabled="False"></x:TextBox>
                                                             </Items>
                                                         </x:FormRow>
                                                         <x:FormRow ID="FormRow89" ColumnWidths="90px 80px 80px 80px 80px 80px 80px 80px 80px 80px" runat="server">
                                                             <Items>
                                                                 <x:TextBox ID="TextBox104" runat="server" Text="" Width="90px" Label="Enmascaramiento"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="46"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="47"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="48"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="49"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="50"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="51"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="52"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="53"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_EM_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="54"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="46" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="47" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="48" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="49" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="50" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="51" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="52" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="53" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_EM_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="54" Enabled="False"></x:TextBox>
                                                             </Items>
                                                         </x:FormRow>
                                                          <x:FormRow ID="FormRow5" ColumnWidths="90px 80px 80px 80px 80px 80px 80px 80px 80px 80px" runat="server">
                                                             <Items>
                                                                 <x:TextBox ID="TextBox27" runat="server" Text="" Width="90px" Label="Anacusia"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="46"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="47"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="48"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="49"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="50"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="51"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="52"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="53"></x:TextBox>
-                                                                <x:TextBox ID="txtOI_AN_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="54"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_125" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="46" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_250" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="47" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_500" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="48" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_1000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="49" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_2000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="50" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_3000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="51" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_4000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="52" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_6000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="53" Enabled="False"></x:TextBox>
+                                                                <x:TextBox ID="txtOI_AN_8000" runat="server" Text="" Width="70px" ShowLabel="false" TabIndex="54" Enabled="False"></x:TextBox>
                                                             </Items>
                                                         </x:FormRow>
                                                     </Rows>
@@ -721,7 +747,7 @@
                                         </x:GroupPanel>
                                     </Items>                                           
                                 </x:Panel>
-                                <x:Panel ID="Panel15" Title="CONCLUSIONES" EnableBackgroundColor="true" Height="40px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true">
+                                <x:Panel ID="Panel15" Title="CONCLUSIONES" EnableBackgroundColor="true" Height="40px" runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" visible="false">
                                     <Items>
                                         <x:Form ID="Form5" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="10px" LabelAlign="Left">
                                             <Rows>
