@@ -23,10 +23,9 @@ namespace NetPdf
         {
             //Document document = new Document();
            // document.SetPageSize(iTextSharp.text.PageSize.A4);
-            Document document = new Document(PageSize.A4, 30f, 30f, 0f, 41f);
+            Document document = new Document(PageSize.A4, 30f, 30f, 20f, 40f);
             try
             {
-
                 PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
                 pdfPage page = new pdfPage();
                 page.Dato = "ILAB_CLINICO/" + filiationData.v_FirstName + " " + filiationData.v_FirstLastName + " " + filiationData.v_SecondLastName;
@@ -34,7 +33,7 @@ namespace NetPdf
                 document.Open();
 
                 #region Fonts
-                Font fontTitle1 = FontFactory.GetFont("Calibri", 10, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+                Font fontTitle1 = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
                 Font fontTitle2 = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
                 Font fontTitleTable = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
                 Font fontTitleTableNegro = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
@@ -68,31 +67,30 @@ namespace NetPdf
                 document.Add(new Paragraph("\r\n"));
                 #endregion
 
-                #region Title
+                #region TÍTULO
 
-                PdfPCell CellLogo = null;
                 cells = new List<PdfPCell>();
+
                 if (infoEmpresaPropietaria.b_Image != null)
                 {
-                    CellLogo = new PdfPCell(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image, 30F)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+                    iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresaPropietaria.b_Image));
+                    imagenEmpresa.ScalePercent(20);
+                    imagenEmpresa.SetAbsolutePosition(40, 805);
+                    document.Add(imagenEmpresa);
                 }
-                else
-                {
-                    CellLogo = new PdfPCell(new Phrase(" ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
-                }
-                columnWidths = new float[] { 100f };
+                //iTextSharp.text.Image imagenMinsa = iTextSharp.text.Image.GetInstance("C:/Banner/Minsa.png");
+                //imagenMinsa.ScalePercent(10);
+                //imagenMinsa.SetAbsolutePosition(400, 785);
+                //document.Add(imagenMinsa);
+
                 var cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("LABORATORIO CLÍNICO", fontTitle1)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER },              
+                    new PdfPCell(new Phrase("LABORATORIO CLÍNICO", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 7f},
                 };
-                table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
-                cells.Add(CellLogo);
-                cells.Add(new PdfPCell(table));
-                columnWidths = new float[] { 20f, 80f };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
+                columnWidths = new float[] { 100f };
+                table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
                 document.Add(table);
                 #endregion
-
                 float tamaño_caldas= 6f;
                 #region Datos personales del trabajador
 
@@ -1852,7 +1850,7 @@ namespace NetPdf
                 if (lab != null)
                 {
                     if (lab.FirmaMedico != null)
-                        cellFirma = new PdfPCell(HandlingItextSharp.GetImage(lab.FirmaMedico, null, null, 120, 45));
+                        cellFirma = new PdfPCell(HandlingItextSharp.GetImage(lab.FirmaMedico, null, null, 115, 38));
                     else
                         cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
                 }
@@ -1863,7 +1861,7 @@ namespace NetPdf
 
                 cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
                 cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
-                cellFirma.FixedHeight = 60F;
+                cellFirma.FixedHeight = 40F;
 
                 cell = new PdfPCell(new Phrase("FIRMA Y SELLO MÉDICO", fontColumnValue));
                 cell.HorizontalAlignment = Element.ALIGN_CENTER;
