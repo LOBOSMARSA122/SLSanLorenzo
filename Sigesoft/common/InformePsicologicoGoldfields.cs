@@ -634,7 +634,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("NO APTO", fontColumnValueBold)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase(aptitud == "1" ?"":aptitud=="2"?"":aptitud=="3"?"X":organizaciones, fontColumnValue)) { Colspan =2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
 
-                new PdfPCell(new Phrase("OBSERVACIONES: " + conclusion_desc == null ?"NO PRESENTA OBSERVACIONES - APTO":conclusion_desc, fontColumnValueBold)) { Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase("OBSERVACIONES: " + conclusion_desc == null ?"NO PRESENTA OBSERVACIONES - APTO":conclusion_desc, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -661,7 +661,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("RECOMENDACIÓN: " + recomendacion == null ?"NO REFIERE RECOMENDACIONE":recomendacion, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 
                 new PdfPCell(new Phrase("ATENDIDO POR: ", fontColumnValue)){ Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
-                new PdfPCell(new Phrase(DataService.NombreDoctor, fontColumnValue)){ Colspan=15, HorizontalAlignment = PdfPCell.ALIGN_CENTER, MinimumHeight= tamaño_celda},
+                new PdfPCell(new Phrase(DataService.NombreDoctor, fontColumnValue)){ Colspan=15, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
                     
             };
 
