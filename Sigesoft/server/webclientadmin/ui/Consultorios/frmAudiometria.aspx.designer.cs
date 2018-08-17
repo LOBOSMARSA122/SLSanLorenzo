@@ -949,13 +949,166 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DropDownList ddlSarampion;
         
         /// <summary>
-        /// Control TextBox19.
+        /// Control ddlconsumio_alcohol.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox19;
+        protected global::FineUI.TextBox ddlconsumio_alcohol;
+        
+        /// <summary>
+        /// Control Panel13.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Panel Panel13;
+        
+        /// <summary>
+        /// Control Form2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Form Form2;
+        
+        /// <summary>
+        /// Control FormRow1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow1;
+        
+        /// <summary>
+        /// Control chksordera.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox chksordera;
+        
+        /// <summary>
+        /// Control chkacuferos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox chkacuferos;
+        
+        /// <summary>
+        /// Control chkvertigos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox chkvertigos;
+        
+        /// <summary>
+        /// Control chkotalgia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox chkotalgia;
+        
+        /// <summary>
+        /// Control FormRow26.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow26;
+        
+        /// <summary>
+        /// Control Label3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label Label3;
+        
+        /// <summary>
+        /// Control Label7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label Label7;
+        
+        /// <summary>
+        /// Control Label71.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label Label71;
+        
+        /// <summary>
+        /// Control Label72.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label Label72;
+        
+        /// <summary>
+        /// Control FormRow2.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow2;
+        
+        /// <summary>
+        /// Control chksecrecion_otica.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox chksecrecion_otica;
+        
+        /// <summary>
+        /// Control ddlpresenta_algun.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ddlpresenta_algun;
+        
+        /// <summary>
+        /// Control Label73.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label Label73;
+        
+        /// <summary>
+        /// Control Label74.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label Label74;
         
         /// <summary>
         /// Control Panel3.
@@ -1048,13 +1201,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Panel Panel5;
         
         /// <summary>
-        /// Control ddlRinitis.
+        /// Control ddlOtitis.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlRinitis;
+        protected global::FineUI.DropDownList ddlOtitis;
         
         /// <summary>
         /// Control Label10.
@@ -1066,6 +1219,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label10;
         
         /// <summary>
+        /// Control ddlRinitis.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.DropDownList ddlRinitis;
+        
+        /// <summary>
         /// Control Label14.
         /// </summary>
         /// <remarks>
@@ -1075,13 +1237,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label14;
         
         /// <summary>
-        /// Control ddlOtitis.
+        /// Control ddlSustQuimicas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlOtitis;
+        protected global::FineUI.DropDownList ddlSustQuimicas;
         
         /// <summary>
         /// Control Label15.
@@ -1093,13 +1255,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label15;
         
         /// <summary>
-        /// Control ddlSordera.
+        /// Control ddlSorderaFamiliar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlSordera;
+        protected global::FineUI.DropDownList ddlSorderaFamiliar;
         
         /// <summary>
         /// Control Panel6.
@@ -1129,13 +1291,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label17;
         
         /// <summary>
-        /// Control TextBox10.
+        /// Control Label75.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox10;
+        protected global::FineUI.Label Label75;
         
         /// <summary>
         /// Control Label18.
@@ -1147,13 +1309,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label18;
         
         /// <summary>
-        /// Control TextBox11.
+        /// Control Label76.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox11;
+        protected global::FineUI.Label Label76;
         
         /// <summary>
         /// Control Label19.
@@ -1165,13 +1327,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label19;
         
         /// <summary>
-        /// Control TextBox12.
+        /// Control Label77.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox12;
+        protected global::FineUI.Label Label77;
         
         /// <summary>
         /// Control Panel7.
@@ -1183,13 +1345,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Panel Panel7;
         
         /// <summary>
-        /// Control ddlMedicamentos.
+        /// Control chkuso_de_medicamentos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlMedicamentos;
+        protected global::FineUI.DropDownList chkuso_de_medicamentos;
         
         /// <summary>
         /// Control Label25.
@@ -1201,13 +1363,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label25;
         
         /// <summary>
-        /// Control ddlTec.
+        /// Control Label78.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlTec;
+        protected global::FineUI.Label Label78;
         
         /// <summary>
         /// Control Label26.
@@ -1219,13 +1381,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label26;
         
         /// <summary>
-        /// Control ddlDiabetes.
+        /// Control Label79.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlDiabetes;
+        protected global::FineUI.Label Label79;
         
         /// <summary>
         /// Control Label27.
@@ -1235,15 +1397,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::FineUI.Label Label27;
-        
-        /// <summary>
-        /// Control ddlSorderaFamiliar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.DropDownList ddlSorderaFamiliar;
         
         /// <summary>
         /// Control Panel8.
@@ -1327,15 +1480,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Panel Panel11;
         
         /// <summary>
-        /// Control ddlMeningitis.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.DropDownList ddlMeningitis;
-        
-        /// <summary>
         /// Control Label29.
         /// </summary>
         /// <remarks>
@@ -1381,15 +1525,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label31;
         
         /// <summary>
-        /// Control ddlSustQuimicas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.DropDownList ddlSustQuimicas;
-        
-        /// <summary>
         /// Control Panel12.
         /// </summary>
         /// <remarks>
@@ -1417,13 +1552,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.FormRow FormRow17;
         
         /// <summary>
-        /// Control chkUsoMP3.
+        /// Control ddlDiabetes.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chkUsoMP3;
+        protected global::FineUI.CheckBox ddlDiabetes;
         
         /// <summary>
         /// Control chkTiro.
@@ -1435,94 +1570,94 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.CheckBox chkTiro;
         
         /// <summary>
-        /// Control chkotros.
+        /// Control chkUsoMP3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chkotros;
+        protected global::FineUI.CheckBox chkUsoMP3;
         
         /// <summary>
-        /// Control Panel13.
+        /// Control FormRow28.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.Panel Panel13;
+        protected global::FineUI.FormRow FormRow28;
         
         /// <summary>
-        /// Control Form2.
+        /// Control Label82.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.Form Form2;
+        protected global::FineUI.Label Label82;
         
         /// <summary>
-        /// Control FormRow1.
+        /// Control Label83.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow1;
+        protected global::FineUI.Label Label83;
         
         /// <summary>
-        /// Control chksordera.
+        /// Control Label84.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chksordera;
+        protected global::FineUI.Label Label84;
         
         /// <summary>
-        /// Control chkotalgia.
+        /// Control Label85.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chkotalgia;
+        protected global::FineUI.Label Label85;
         
         /// <summary>
-        /// Control chkvertigos.
+        /// Control FormRow27.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chkvertigos;
+        protected global::FineUI.FormRow FormRow27;
         
         /// <summary>
-        /// Control chkacuferos.
+        /// Control ddlMeningitis.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chkacuferos;
+        protected global::FineUI.CheckBox ddlMeningitis;
         
         /// <summary>
-        /// Control FormRow2.
+        /// Control Label80.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow2;
+        protected global::FineUI.Label Label80;
         
         /// <summary>
-        /// Control chksecrecion_otica.
+        /// Control Label81.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chksecrecion_otica;
+        protected global::FineUI.Label Label81;
         
         /// <summary>
         /// Control Panel14.
