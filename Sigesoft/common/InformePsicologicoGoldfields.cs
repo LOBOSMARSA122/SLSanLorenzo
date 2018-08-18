@@ -26,7 +26,7 @@ namespace NetPdf
             PacientList datosPac,
             string filePDF)
         {
-            Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
+            Document document = new Document(PageSize.A4, 30f, 30f, 42f, 41f);
 
             document.SetPageSize(iTextSharp.text.PageSize.A4);
 
@@ -59,19 +59,19 @@ namespace NetPdf
             #endregion
 
             #region Fonts
-            Font fontTitle1 = FontFactory.GetFont("Calibri", 10, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontTitle1 = FontFactory.GetFont("Calibri", 8, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             Font fontTitle2 = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontTitleTable = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             Font fontTitleTableNegro = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             Font fontSubTitle = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.White));
             Font fontSubTitleNegroNegrita = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
 
-            Font fontColumnValue = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
-            Font fontColumnValueBold = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValue = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueBold = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             #endregion
 
-            var tamaño_celda = 13f;
+            var tamaño_celda = 10f;
             #region TÍTULO
 
             cells = new List<PdfPCell>();
@@ -90,7 +90,7 @@ namespace NetPdf
 
             var cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("INFORME PSICOLÓGICO OCUPACIONAL", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 25f},
+                    new PdfPCell(new Phrase("INFORME PSICOLÓGICO OCUPACIONAL", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f},
                 };
             columnWidths = new float[] { 100f };
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
@@ -117,7 +117,7 @@ namespace NetPdf
             cells = new List<PdfPCell>()
             {         
                
-                new PdfPCell(new Phrase("I. INFORMACIÓN GENERAL", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK  },       
+                new PdfPCell(new Phrase("I. INFORMACIÓN GENERAL", fontColumnValueBold)) {BackgroundColor = BaseColor.GRAY,  Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK  },       
 
                 new PdfPCell(new Phrase("Apellidos Y Nombres", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                 new PdfPCell(new Phrase(datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue)) { Colspan = 15, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
@@ -187,7 +187,7 @@ namespace NetPdf
             {
                 postOcup = "X";
             }
-
+           
             cells = new List<PdfPCell>()
             {         
                
@@ -211,7 +211,7 @@ namespace NetPdf
             cells = new List<PdfPCell>()
             {         
                 new PdfPCell(new Phrase("III. OBSERVACIÓN DE CONDUCTA", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
-                new PdfPCell(new Phrase(observacion_conducta, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda},    
+                new PdfPCell(new Phrase(observacion_conducta, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20},    
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -296,8 +296,8 @@ namespace NetPdf
                 new PdfPCell(new Phrase(comprension == "1" ?"":comprension=="2"?"":comprension=="3"?"":comprension=="4"?"X":comprension=="5"?"":comprension, fontColumnValue)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase(comprension == "1" ?"":comprension=="2"?"":comprension=="3"?"":comprension=="4"?"":comprension=="5"?"X":comprension, fontColumnValue)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
 
-                new PdfPCell(new Phrase("Stroop", fontColumnValueBold)) { Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
-                new PdfPCell(new Phrase(stroop, fontColumnValue)) { Colspan =15,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase("Stroop", fontColumnValueBold)) { Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20},    
+                new PdfPCell(new Phrase(stroop, fontColumnValue)) { Colspan =15,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20},    
                 
                 new PdfPCell(new Phrase("CONCLUSIÓN", fontColumnValueBold)) { Colspan =5,Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase("Funciones Cognitivas Comprometidas", fontColumnValueBold)) { Colspan =8,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
@@ -356,7 +356,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase(motivacion == "1" ?"":motivacion=="2"?"":motivacion=="3"?"":motivacion=="4"?"X":motivacion=="5"?"":motivacion, fontColumnValue)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase(motivacion == "1" ?"":motivacion=="2"?"":motivacion=="3"?"":motivacion=="4"?"":motivacion=="5"?"X":motivacion, fontColumnValue)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
 
-                new PdfPCell(new Phrase("OBSERVACIÓN:  " + descripcion_ASP == null ?"NO PRESENTA OBSERVACIONES": descripcion_ASP, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase("OBSERVACIÓN:  " + descripcion_ASP == null ?"NO PRESENTA OBSERVACIONES": descripcion_ASP, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f},    
             
             };
 
@@ -370,7 +370,7 @@ namespace NetPdf
                 cells = new List<PdfPCell>()
             {         
                 new PdfPCell(new Phrase("VII. PERFIL DE PERSONALIDAD TEST DE COLORES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
-                new PdfPCell(new Phrase(perfil_personalidad_test_colores, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda},    
+                new PdfPCell(new Phrase(perfil_personalidad_test_colores, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20f},    
             };
 
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -383,7 +383,7 @@ namespace NetPdf
                 cells = new List<PdfPCell>()
             {         
                 new PdfPCell(new Phrase("VIII. ADAPTABILIDAD, CAPACIDAD DE AFRONTE - HOMBRE BAJO LA LLUVIA", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
-                new PdfPCell(new Phrase(adaptabilidad_hombre_bajo_lluvia, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda},    
+                new PdfPCell(new Phrase(adaptabilidad_hombre_bajo_lluvia, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20f},    
             };
 
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -467,7 +467,7 @@ namespace NetPdf
                 cells = new List<PdfPCell>()
             {         
                 new PdfPCell(new Phrase("VI. ASPECTOS INTRA E INTERPERSONALES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
-                new PdfPCell(new Phrase("CONCLUSIONES GENERALES DE PERSONALIDAD:  " + conclusiones_generales, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase("CONCLUSIONES GENERALES DE PERSONALIDAD:  " + conclusiones_generales, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20},    
             };
 
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -508,7 +508,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase(n03, fontColumnValueBold)) { Colspan =4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase(n04, fontColumnValueBold)) { Colspan =4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 
-                new PdfPCell(new Phrase("OBSERVACIÓN:  " + observaciones_perfilPersonalidad == null ?"NO PRESENTA OBSERVACIONES": observaciones_perfilPersonalidad, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase("OBSERVACIÓN:  " + observaciones_perfilPersonalidad == null ?"NO PRESENTA OBSERVACIONES": observaciones_perfilPersonalidad, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f},    
 
             };
 
@@ -538,7 +538,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase(autorrealizacion, fontColumnValueBold)) { Colspan =6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase(estabilidad_cambios, fontColumnValueBold)) { Colspan =6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 
-                new PdfPCell(new Phrase("OBSERVACIÓN:  " + obs_Adaptabilidad == null ?"NO PRESENTA OBSERVACIONES": obs_Adaptabilidad, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase("OBSERVACIÓN:  " + obs_Adaptabilidad == null ?"NO PRESENTA OBSERVACIONES": obs_Adaptabilidad, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f},    
 
             };
 
@@ -553,7 +553,7 @@ namespace NetPdf
                 cells = new List<PdfPCell>()
             {         
                 new PdfPCell(new Phrase("IX. EVALUACIONES COMPLEMENTARIAS (MASLACH, PITTSBURG, INTELIGENCIA EMOCIONAL, BARRAT)", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
-                new PdfPCell(new Phrase(evaluaciones_comp == null ?"NO PRESENTA EVALUACIONES COMPLEMENTARIAS":evaluaciones_comp, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase(evaluaciones_comp == null ?"NO PRESENTA EVALUACIONES COMPLEMENTARIAS":evaluaciones_comp, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f},    
             };
 
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -610,7 +610,7 @@ namespace NetPdf
             cells = new List<PdfPCell>()
             {         
                 new PdfPCell(new Phrase("XI. PSICOSENSOMÉTRICO", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
-                new PdfPCell(new Phrase(psicosensometrico, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda},    
+                new PdfPCell(new Phrase(psicosensometrico, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20f},    
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -624,7 +624,7 @@ namespace NetPdf
 
             cells = new List<PdfPCell>()
             {         
-                new PdfPCell(new Phrase("X. FACTORES PSICOSOCIALES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
+                new PdfPCell(new Phrase("X. CONCLUSIONES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
                 
                 new PdfPCell(new Phrase("RESULTADO - APTITUD PSICOLOGICA", fontColumnValueBold)) { Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase("APTO", fontColumnValueBold)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
@@ -634,13 +634,15 @@ namespace NetPdf
                 new PdfPCell(new Phrase("NO APTO", fontColumnValueBold)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase(aptitud == "1" ?"":aptitud=="2"?"":aptitud=="3"?"X":organizaciones, fontColumnValue)) { Colspan =2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
 
-                new PdfPCell(new Phrase("OBSERVACIONES: " + conclusion_desc == null ?"NO PRESENTA OBSERVACIONES - APTO":conclusion_desc, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase("OBSERVACIONES: " + conclusion_desc == null ?"NO PRESENTA OBSERVACIONES - APTO":conclusion_desc, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f},    
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
+            var psico = serviceComponent.Find(p => p.i_CategoryId == (int)Sigesoft.Common.Consultorio.Psicología);
+
 
             #region  RECOMENDACIONES
             var tipo_recomendacion_1 = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RECOMEN_INTERVENCION_TERAPEUTICA) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RECOMEN_INTERVENCION_TERAPEUTICA).v_Value1;
@@ -649,7 +651,7 @@ namespace NetPdf
 
             cells = new List<PdfPCell>()
             {         
-                new PdfPCell(new Phrase("X. FACTORES PSICOSOCIALES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
+                new PdfPCell(new Phrase("X. RECOMENDACIONES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
                 
                 new PdfPCell(new Phrase("RESULTADO - APTITUD PSICOLOGICA", fontColumnValueBold)) { Colspan =5, Rowspan=2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase("Intervención Terapéutico (Psicólogo - Psiquiatra)", fontColumnValueBold)) { Colspan =9,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
@@ -658,11 +660,12 @@ namespace NetPdf
                 new PdfPCell(new Phrase(tipo_recomendacion_1 == "1" ?"X":tipo_recomendacion_1=="0"?"":tipo_recomendacion_1, fontColumnValue)) { Colspan =9,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase(tipo_recomendacion_2 == "1" ?"X":tipo_recomendacion_2=="0"?"":tipo_recomendacion_2, fontColumnValue)) { Colspan =6,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
 
-                new PdfPCell(new Phrase("RECOMENDACIÓN: " + recomendacion == null ?"NO REFIERE RECOMENDACIONE":recomendacion, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase("RECOMENDACIÓN: " + recomendacion == null ?"NO REFIERE RECOMENDACIONE":recomendacion, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f},    
                 
                 new PdfPCell(new Phrase("ATENDIDO POR: ", fontColumnValue)){ Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
                 new PdfPCell(new Phrase(DataService.NombreDoctor, fontColumnValue)){ Colspan=15, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
-                    
+                //new PdfPCell(new Phrase(psico.v_CreationUser, fontColumnValue)){ Colspan=15, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
+     
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -694,12 +697,20 @@ namespace NetPdf
 
             // Firma del doctor Auditor **************************************************
 
+
             PdfPCell cellFirma = null;
 
-            if (DataService.FirmaMedicoMedicina != null)
-                cellFirma = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
+            if (psico != null)
+            {
+                if (psico.FirmaMedico != null)
+                    cellFirma = new PdfPCell(HandlingItextSharp.GetImage(psico.FirmaMedico, null, null, 120, 50));
+                else
+                    cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
+            }
             else
-                cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
+            {
+                cellFirma = new PdfPCell();
+            }
 
             #endregion
 
