@@ -2992,7 +2992,7 @@
       <DependentUpon>crOccupationalMedicalAptitudeCertificate.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\crOdontograma1.cs">
+    <Compile Include="Reports\crOdontograma.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>crOdontograma.rpt</DependentUpon>
@@ -4570,7 +4570,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crOdontograma.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crOdontograma1.cs</LastGenOutput>
+      <LastGenOutput>crOdontograma.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crOftalmologia.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
