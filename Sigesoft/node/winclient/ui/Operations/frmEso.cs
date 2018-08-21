@@ -7698,7 +7698,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     this.Close();
                 }
-
                 //si genera a los pdf pero no los une...
 
             }
