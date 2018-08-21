@@ -1293,7 +1293,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
-
+             
             var _InformacionHistoriaPsico = _serviceBL.GetHistoriaClinicaPsicologica(_serviceId, Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
             
 
@@ -1906,7 +1906,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             //}
         }
 
-        private void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)
+        public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)
         {
             OperationResult objOperationResult = new OperationResult();
             MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
@@ -2154,7 +2154,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         }
 
-        private void ChooseReport(string componentId, string serviceId, string pPacienteId, int pintIdCrystal)
+        public void ChooseReport(string componentId, string serviceId, string pPacienteId, int pintIdCrystal)
         {
             ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
             _tempSourcePath = Path.Combine(Application.StartupPath, "TempMerge");

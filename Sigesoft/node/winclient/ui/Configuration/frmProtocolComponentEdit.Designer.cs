@@ -61,6 +61,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cbGrupoEtario = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.chkExaAdd = new System.Windows.Forms.CheckBox();
             this.gbFilter = new Infragistics.Win.Misc.UltraGroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
@@ -68,8 +70,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnOK = new System.Windows.Forms.Button();
-            this.cbGrupoEtario = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gbAddExam)).BeginInit();
             this.gbAddExam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdComponent)).BeginInit();
@@ -336,6 +336,7 @@
             this.txtFinalPrice.PromptChar = ' ';
             this.txtFinalPrice.Size = new System.Drawing.Size(91, 21);
             this.txtFinalPrice.TabIndex = 15;
+            this.txtFinalPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFinalPrice_KeyPress);
             // 
             // label1
             // 
@@ -377,6 +378,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Examen seleccionado";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+            // 
+            // cbGrupoEtario
+            // 
+            this.cbGrupoEtario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGrupoEtario.FormattingEnabled = true;
+            this.cbGrupoEtario.Location = new System.Drawing.Point(112, 271);
+            this.cbGrupoEtario.Name = "cbGrupoEtario";
+            this.cbGrupoEtario.Size = new System.Drawing.Size(96, 21);
+            this.cbGrupoEtario.TabIndex = 52;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(56, 271);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 41);
+            this.label3.TabIndex = 51;
+            this.label3.Text = "Grupo Etario";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // chkExaAdd
             // 
@@ -432,6 +454,7 @@
             this.txtComponentName.Name = "txtComponentName";
             this.txtComponentName.Size = new System.Drawing.Size(328, 20);
             this.txtComponentName.TabIndex = 11;
+            this.txtComponentName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtComponentName_KeyPress);
             // 
             // label5
             // 
@@ -486,27 +509,6 @@
             this.btnOK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
-            // 
-            // cbGrupoEtario
-            // 
-            this.cbGrupoEtario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbGrupoEtario.FormattingEnabled = true;
-            this.cbGrupoEtario.Location = new System.Drawing.Point(112, 271);
-            this.cbGrupoEtario.Name = "cbGrupoEtario";
-            this.cbGrupoEtario.Size = new System.Drawing.Size(96, 21);
-            this.cbGrupoEtario.TabIndex = 52;
-            // 
-            // label3
-            // 
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(56, 271);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 41);
-            this.label3.TabIndex = 51;
-            this.label3.Text = "Grupo Etario";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // frmProtocolComponentEdit
             // 

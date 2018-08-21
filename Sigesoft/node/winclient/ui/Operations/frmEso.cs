@@ -22,11 +22,15 @@ using System.Diagnostics;
 using Sigesoft.Node.Contasol.Integration;
 using Sigesoft.Node.WinClient.UI.Operations.Popups;
 using AutoCompleteMode = System.Windows.Forms.AutoCompleteMode;
+using Sigesoft.Node.WinClient.UI.Reports;
+using Sigesoft.Node.WinClient.UI;
 
 namespace Sigesoft.Node.WinClient.UI.Operations
 {
     public partial class frmEso : Form
     {
+       
+
         public class RunWorkerAsyncPackage
         {
             public Infragistics.Win.UltraWinTabControl.UltraTabPageControl SelectedTab { get; set; }
@@ -61,6 +65,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private DateTime? _FechaServico;
         private List<BE.ComponentList> _tmpServiceComponentsForBuildMenuList = null;
         private ServiceBL _serviceBL = new ServiceBL();
+        private PacientBL _pacientBL = new PacientBL();
         private string _serviceId = null;
         private string _componentId;
         private string _serviceComponentId;
@@ -178,6 +183,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         string PacientId;
 
         private EmbarazoBL _objEmbarazoBL = new EmbarazoBL();
+
+        private MergeExPDF _mergeExPDF = new MergeExPDF();
+        List<ServiceComponentList> _listaDosaje = new List<ServiceComponentList>();
+
+        List<ServiceComponentList> serviceComponent;
+
+        public List<string> _filesNameToMerge = new List<string>();
+        string ruta;
+        public frmManagementReports rep = new frmManagementReports();
         #endregion
 
         public frmEso(string serviceId, string componentIdByDefault, string action, int tipo)
@@ -7641,7 +7655,52 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
             else if (arrComponentId.Contains(Constants.PSICOLOGIA_ID))
             {
-                frm = new Reports.frmInformePsicologicoOcupacional(_serviceId);
+
+                //este es el original
+                //frm = new Reports.frmInformePsicologicoOcupacional(_serviceId);
+
+
+                //esto intente...
+                DialogResult Result = MessageBox.Show("¿Desea ver reporte?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                OperationResult objOperationResult = new OperationResult();
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+                string rutaBasura = Common.Utils.GetApplicationConfigValue("rutaReportesBasura").ToString();
+                string rutaConsolidado = Common.Utils.GetApplicationConfigValue("rutaConsolidado").ToString();
+                
+                List<string> componentId = new List<string>();
+                componentId.Add(Constants.PSICOLOGIA_ID);
+
+                var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+                var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+                ServiceComponentList informe_psico_goldfields = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+
+                if (informe_psico_goldfields != null)
+                {
+                    componentId.Add(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+                }
+
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    rep.CrearReportesCrystal(_serviceId, datosP.v_PersonId, componentId, _listaDosaje, Result == System.Windows.Forms.DialogResult.Yes ? true : false); ;
+                };
+
+                if (Result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    var x = _filesNameToMerge.ToList();
+                    _mergeExPDF.FilesName = x;
+                    _mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf"; ;
+                    _mergeExPDF.DestinationFile = rutaBasura + _serviceId + ".pdf"; ;
+                    _mergeExPDF.Execute();
+                    _mergeExPDF.RunFile();
+                }
+                else
+                {
+                    this.Close();
+                }
+
+                //si genera a los pdf pero no los une...
+
             }
             else if (arrComponentId.Contains(Constants.ELECTROCARDIOGRAMA_ID))
             {
@@ -7681,6 +7740,42 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         }
 
+        //public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)
+        //{
+        //    OperationResult objOperationResult = new OperationResult();
+        //    MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
+        //    crConsolidatedReports rp = null;
+        //    ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+        //    rp = new Reports.crConsolidatedReports();
+        //    _filesNameToMerge = new List<string>();
+
+
+        //    //reportesId.FindAll(p => p != Constants.HISTORIA_CLINICA_PSICOLOGICA_ID || p != Constants.PSICOLOGIA_ID || p != Constants.INFORME_LABORATORIO_ID);
+
+        //    foreach (var com in reportesId)
+        //    {
+        //        //string CompnenteId = "";
+        //        int IdCrystal = 0;
+        //        //Obtener el Id del componente 
+
+        //        var array = com.Split('|');
+
+        //        if (array.Count() == 1)
+        //        {
+        //            IdCrystal = 0;
+        //        }
+        //        else if (array[1] == "")
+        //        {
+        //            IdCrystal = 0;
+        //        }
+        //        else
+        //        {
+        //            IdCrystal = int.Parse(array[1].ToString());
+        //        }
+
+        //        rep.ChooseReport(array[0], serviceId, pPacienteId, IdCrystal);
+        //    }
+        //}
         public void RunFile(string fileName)
         {
             Process proceso = Process.Start(fileName);

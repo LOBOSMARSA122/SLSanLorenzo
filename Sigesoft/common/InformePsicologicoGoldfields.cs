@@ -246,7 +246,7 @@ namespace NetPdf
             var no_Sec = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_SEC_INCOMP) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_SEC_INCOMP).v_Value1;
             var sec = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_SEC_COMP) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_SEC_COMP).v_Value1;
             var geren = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_GERENTE) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_GERENTE).v_Value1;
-            
+            string numeracionFP = "", numeracionPS = "", numeracionC = "", numeracionR = "";
             if (no_Sec =="1")
             {
                 #region  FUNCIONES COGNITIVAS - NO SECUNDARIA
@@ -390,6 +390,11 @@ namespace NetPdf
                 table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
                 document.Add(table);
                 #endregion
+                
+                numeracionFP = "IX";
+                numeracionPS = "X";
+                numeracionC = "XI";
+                numeracionR = "XII";
 
             }
             else if (sec == "1")
@@ -560,6 +565,11 @@ namespace NetPdf
                 table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
                 document.Add(table);
                 #endregion
+                
+                numeracionFP = "X";
+                numeracionPS = "XI";
+                numeracionC = "XII";
+                numeracionR = "XIII";
             }
 
             #region  FACTORES PSICOSOCIALES
@@ -570,7 +580,7 @@ namespace NetPdf
             
             cells = new List<PdfPCell>()
             {         
-                new PdfPCell(new Phrase("X. FACTORES PSICOSOCIALES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
+                new PdfPCell(new Phrase(numeracionFP+". FACTORES PSICOSOCIALES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
                 
                 new PdfPCell(new Phrase("DIMENSIONES", fontColumnValueBold)) { Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase("Alto", fontColumnValueBold)) { Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
@@ -609,7 +619,7 @@ namespace NetPdf
             var psicosensometrico = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_PSICOSENSOMETRICO_DESC) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_PSICOSENSOMETRICO_DESC).v_Value1;
             cells = new List<PdfPCell>()
             {         
-                new PdfPCell(new Phrase("XI. PSICOSENSOMÉTRICO", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
+                new PdfPCell(new Phrase(numeracionPS+". PSICOSENSOMÉTRICO", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
                 new PdfPCell(new Phrase(psicosensometrico, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20f},    
             };
 
@@ -624,7 +634,7 @@ namespace NetPdf
 
             cells = new List<PdfPCell>()
             {         
-                new PdfPCell(new Phrase("X. CONCLUSIONES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
+                new PdfPCell(new Phrase(numeracionC+". CONCLUSIONES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
                 
                 new PdfPCell(new Phrase("RESULTADO - APTITUD PSICOLOGICA", fontColumnValueBold)) { Colspan =5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase("APTO", fontColumnValueBold)) { Colspan =3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
@@ -643,15 +653,14 @@ namespace NetPdf
             #endregion
             var psico = serviceComponent.Find(p => p.i_CategoryId == (int)Sigesoft.Common.Consultorio.Psicología);
 
-
-            #region  RECOMENDACIONES
+           #region  RECOMENDACIONES
             var tipo_recomendacion_1 = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RECOMEN_INTERVENCION_TERAPEUTICA) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RECOMEN_INTERVENCION_TERAPEUTICA).v_Value1;
             var tipo_recomendacion_2 = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RECOMEN_CONSEJERIA_REFORZAMIENTO) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RECOMEN_CONSEJERIA_REFORZAMIENTO).v_Value1;
             var recomendacion = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RECOMEN_DESC) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RECOMEN_DESC).v_Value1;
 
             cells = new List<PdfPCell>()
             {         
-                new PdfPCell(new Phrase("X. RECOMENDACIONES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
+                new PdfPCell(new Phrase(numeracionR+". RECOMENDACIONES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
                 
                 new PdfPCell(new Phrase("RESULTADO - APTITUD PSICOLOGICA", fontColumnValueBold)) { Colspan =5, Rowspan=2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase("Intervención Terapéutico (Psicólogo - Psiquiatra)", fontColumnValueBold)) { Colspan =9,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
