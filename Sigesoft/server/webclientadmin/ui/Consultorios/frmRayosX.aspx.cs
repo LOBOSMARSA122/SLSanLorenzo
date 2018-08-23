@@ -186,6 +186,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                 ddlUsuarioGrabar.Enabled = false;
+
+                ddlUsuarioGrabaOIT.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                ddlUsuarioGrabaOIT.Enabled = false;
+
+                
             }
         }
 
