@@ -1276,6 +1276,48 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             INFORME_SAS_REPORT.CreateReportSAS(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
         }
 
+        private void GenerateExamenOftalmologicoSimple(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
+            Examen_Oftalmologico_Simple.CreateExamen_Oftalmologico_Simple(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
+        private void GenerateExamenOftalmologicoCompleto(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
+            Examen_Oftalmologico_Completo.CreateExamen_Oftalmologico_Completo(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
+        private void GenerateEvaluavionOftalmologicaYanacocha(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
+            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
+
+        private void GenerateInformeOftalmologicoHudbay(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
+            Informe_Oftalmologico_Hudbay.CreateInforme_Oftalmologico_Hudbay(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
+
         private void GenerateFichaPsicologicaGoldfies(string pathFile)
         {
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -4760,6 +4802,22 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS:
                     GenerateFichaPsicologicaGoldfies(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID:
+                    GenerateExamenOftalmologicoSimple(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID:
+                    GenerateExamenOftalmologicoCompleto(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID:
+                    GenerateEvaluavionOftalmologicaYanacocha(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID:
+                    GenerateInformeOftalmologicoHudbay(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///
