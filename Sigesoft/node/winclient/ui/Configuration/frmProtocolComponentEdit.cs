@@ -429,6 +429,22 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 txtMayorque.Enabled = false;
                 txtMayorque.Value = "0";
             }
+        }
+
+        private void txtComponentName_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(sender, e);
+            }
+        }
+
+        private void txtFinalPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnOK_Click(sender, e);
+            }
         }      
         
     }

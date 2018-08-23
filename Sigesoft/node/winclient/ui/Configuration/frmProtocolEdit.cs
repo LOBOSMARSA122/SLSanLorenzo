@@ -352,7 +352,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                 {
                     //this.DialogResult = DialogResult.OK;
                     MessageBox.Show("Se grabo correctamente.", "INFORMACION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _mode = "Edit";
+                    this.Close();
+                    //_mode = "Edit";
                     LoadData();
                     //this.Close();
                 }
