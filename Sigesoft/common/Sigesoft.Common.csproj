@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Anexo8_InformeMedicoOcupacionalcs.cs" />
+    <Compile Include="ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.cs" />
     <Compile Include="AtencionIntegral.cs" />
     <Compile Include="AtencionIntegralAdolescente.cs" />
     <Compile Include="AtencionIntegralAdulto.cs" />
@@ -99,6 +100,8 @@
     <Compile Include="CustomDtos\KeyValueDTO.cs" />
     <Compile Include="CustomDtos\OperationResult.cs" />
     <Compile Include="ExamenesEspecialesReport.cs" />
+    <Compile Include="Examen_Oftalmologico_Completo.cs" />
+    <Compile Include="Examen_Oftalmologico_Simple.cs" />
     <Compile Include="EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.cs" />
     <Compile Include="Exoneracion_Laboratorio.cs" />
     <Compile Include="Exoneracion_Placa_Torax_PA.cs" />
@@ -118,6 +121,7 @@
     <Compile Include="InformePsicologicoGoldfields.cs" />
     <Compile Include="InformeTrabajador.cs" />
     <Compile Include="InformeTrabajador3.cs" />
+    <Compile Include="Informe_Oftalmologico_Hudbay.cs" />
     <Compile Include="INFORME_SAS_REPORT.cs" />
     <Compile Include="LaboratorioReport.cs" />
     <Compile Include="Liquidacion_Hospitalizacion.cs" />
