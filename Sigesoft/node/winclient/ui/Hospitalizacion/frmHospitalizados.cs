@@ -384,5 +384,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
         }
 
+        private void btnEliminarTicket_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

@@ -311,7 +311,8 @@ namespace NetPdf
                     }
                 }
 
-                decimal totalFinal = sumaMedicina + sumaServicio + sumaHabitacion;
+                decimal totalFinal = 0;
+                totalFinal= sumaMedicina + sumaServicio + sumaHabitacion;
                 decimal IGV = totalFinal * (decimal)0.18;
                 decimal subTotalFinal = totalFinal - IGV;
                 cell = new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
