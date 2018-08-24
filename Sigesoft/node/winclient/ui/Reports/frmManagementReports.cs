@@ -1283,6 +1283,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            //var oftal = _pacientBL.GetOftalmologia(_serviceId, Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
 
             Examen_Oftalmologico_Simple.CreateExamen_Oftalmologico_Simple(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
         }
@@ -3252,6 +3253,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 case Constants.OFTALMOLOGIA_ID:
 
                         var OFTALMO_ANTIGUO = new PacientBL().GetOftalmologia(_serviceId, Constants.OFTALMOLOGIA_ID);
+
                         dsGetRepo = new DataSet();
                         DataTable dt_OFTALMO_ANTIGUO = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(OFTALMO_ANTIGUO);
                         dt_OFTALMO_ANTIGUO.TableName = "dtOftalmologia";
