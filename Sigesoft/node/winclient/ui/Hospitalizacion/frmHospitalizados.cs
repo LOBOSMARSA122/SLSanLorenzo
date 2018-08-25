@@ -149,11 +149,14 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnEditarTicket_Click(object sender, EventArgs e)
         {
+            OperationResult objOperationResult = new OperationResult();
             var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
-            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+
+            ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
+            //var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
             _ticketId = ticketId;
-            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, _ticketId, "Edit", protocolId);
+            frmTicket ticket = new frmTicket(_tempTicket, ServiceId, _ticketId, "Edit", personData.v_ProtocolId);
             ticket.ShowDialog();
 
             btnFilter_Click(sender, e);
@@ -280,70 +283,12 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnReportePDF_Click(object sender, EventArgs e)
         {
-            TicketList ticket;
+            var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
 
-            hospitalizacionserviceDto hospser = new hospitalizacionserviceDto();
-            List<TicketDetalleList> ListaDetalleList = new List<TicketDetalleList>();
+            frmLiquidacionReport liquidacionReport = new frmLiquidacionReport(hospitId);
+            liquidacionReport.ShowDialog();
 
-            List<TicketList> Tickett = new List<TicketList>();
-
-            DialogResult Result = MessageBox.Show("Generado Para: ", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-
-            if (Result == System.Windows.Forms.DialogResult.Yes)
-            {
-                saveFileDialog1.FileName = "Liquidacion";
-                saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
-
-                var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-                {
-                    this.Enabled = false;
-
-                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-
-                    var lista = _hospitBL.GetHospitalizcion(ref _objOperationResult, hospitId);
-
-                    //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
-                    int doctor = 1;
-                    hospser = _hospitBL.GetHospitServ(hospitId);
-
-                    var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
-                    var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
-
-                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
-
-                    Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor);
-                    this.Enabled = true;
-                }
-            }
-            else
-            {
-                saveFileDialog1.FileName = "Liquidacion";
-                saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
-
-                var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
-                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-                {
-                    this.Enabled = false;
-
-                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-
-                    var lista = _hospitBL.GetHospitalizcion(ref _objOperationResult, hospitId);
-
-                    //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
-                    int paciente = 2;
-                    hospser = _hospitBL.GetHospitServ(hospitId);
-
-                    var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
-                    var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
-
-                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
-
-                    Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente);
-                    this.Enabled = true;
-                }
-            }
-            
+               
         }
 
         private void frmHospitalizados_Load(object sender, EventArgs e)

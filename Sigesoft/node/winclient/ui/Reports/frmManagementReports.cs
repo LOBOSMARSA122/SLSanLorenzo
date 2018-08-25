@@ -1417,11 +1417,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
 
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
-            InformedeResultados_Autorización.CreateInformeResultadosAutorizacion(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+            InformedeResultados_Autorización.CreateInformeResultadosAutorizacion(filiationData, _DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
 
         #region HUDBAY METODOS
