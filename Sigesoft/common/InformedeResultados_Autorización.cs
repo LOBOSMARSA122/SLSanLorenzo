@@ -19,7 +19,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
-        public static void CreateInformeResultadosAutorizacion(ServiceList DataService, string filePDF,
+        public static void CreateInformeResultadosAutorizacion(PacientList filiationData, ServiceList DataService, string filePDF,
             PacientList datosPac,
             organizationDto infoEmpresaPropietaria,
             List<ServiceComponentList> exams,
@@ -110,7 +110,7 @@ namespace NetPdf
                
                 new PdfPCell(new Phrase("\nTrabajador de la empresa :    ", fontColumnValue)) 
                 { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
-                new PdfPCell(new Phrase("\n"+DataService.v_CustomerOrganizationName, fontColumnValue)) 
+                new PdfPCell(new Phrase("\n"+filiationData.v_FullWorkingOrganizationName, fontColumnValue)) 
                 { Colspan = 12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
 
@@ -164,21 +164,21 @@ namespace NetPdf
 
             PdfPCell cellHuellaTrabajador = null;
 
-            if (DataService.FirmaTrabajador != null)
-                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaTrabajador, null, null, 100, 35));
+            if (filiationData.FirmaTrabajador != null)
+                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 100, 35));
             else
                 cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
             cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
-
-            if (DataService.HuellaTrabajador != null)
-                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.HuellaTrabajador, null, null, 60, 80));
+            if (filiationData.HuellaTrabajador != null)
+                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 60, 80));
             else
                 cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
-            cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
-            cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+                cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+                cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+
 
             #region Fecha / Firmmal
             cells = new List<PdfPCell>()
