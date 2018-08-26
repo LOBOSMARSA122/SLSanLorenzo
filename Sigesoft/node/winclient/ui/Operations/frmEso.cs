@@ -5936,81 +5936,81 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             DialogResult Result = MessageBox.Show("¿Está seguro de grabar este registro?:", "CONFIRMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
 
-            #region API TRACKING
+            //#region API TRACKING
 
-            Sigesoft.Api.Api API = new Sigesoft.Api.Api();
+            //Sigesoft.Api.Api API = new Sigesoft.Api.Api();
 
-            Dictionary<string, string> arg = new Dictionary<string, string>()
-            {
-                { "servicioId", _datosPersona.v_ServiceId }
-            };
+            //Dictionary<string, string> arg = new Dictionary<string, string>()
+            //{
+            //    { "servicioId", _datosPersona.v_ServiceId }
+            //};
 
-            var estaEnServicioTracking = API.Get<bool>("PlanDeVida/EstaEnServicio", arg);
+            //var estaEnServicioTracking = API.Get<bool>("PlanDeVida/EstaEnServicio", arg);
 
-            if (!estaEnServicioTracking)
-            {
-                Dictionary<string, string> arg2 = new Dictionary<string, string>()
-            {
-                { "organizationId", _v_CustomerOrganizationId }
-            };
-                var planesVida = API.Get<List<PlanesDeVida>>("PlanDeVida/ObtenerPlanesVidaPorOrganizationId", arg2);
+            //if (!estaEnServicioTracking)
+            //{
+            //    Dictionary<string, string> arg2 = new Dictionary<string, string>()
+            //{
+            //    { "organizationId", _v_CustomerOrganizationId }
+            //};
+            //    var planesVida = API.Get<List<PlanesDeVida>>("PlanDeVida/ObtenerPlanesVidaPorOrganizationId", arg2);
 
-                if (planesVida.ToList().Count > 0)
-                {
-                    DialogResult ResultPlanVida = MessageBox.Show("La empresa tiene planes de vida ¿Desea enviar a SEGUIMIENTO?:", "CONFIRMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (ResultPlanVida == DialogResult.Yes)
-                    {
-                        var oEnviarSeguimiento = new EnviarSeguimientoSigesoft();
-                        oEnviarSeguimiento.v_ServiceId = _datosPersona.v_ServiceId;
-                        oEnviarSeguimiento.v_CustomerOrganizationId = _datosPersona.v_CustomerOrganizationId;
-                        oEnviarSeguimiento.v_PersonId = _datosPersona.v_PersonId;
-                        oEnviarSeguimiento.Nombres = _datosPersona.v_FirstName;
-                        oEnviarSeguimiento.ApellidoPaterno = _datosPersona.v_FirstLastName;
-                        oEnviarSeguimiento.ApellidoMaterno = _datosPersona.v_SecondLastName;
-                        oEnviarSeguimiento.TipoDocumentoId = _datosPersona.i_DocTypeId;
-                        oEnviarSeguimiento.NroDocumento = _datosPersona.v_DocNumber;
-                        oEnviarSeguimiento.GeneroId = _datosPersona.i_SexTypeId.Value;
-                        oEnviarSeguimiento.FechaNacimiento = _datosPersona.d_BirthDate.Value;
-                        oEnviarSeguimiento.Correo = _datosPersona.v_Mail;
-                        oEnviarSeguimiento.Telefono = _datosPersona.v_TelephoneNumber;
-                        oEnviarSeguimiento.Foto = _datosPersona.b_PersonImage;
-                        oEnviarSeguimiento.LugarNacimiento = _datosPersona.v_AdressLocation;
-                        oEnviarSeguimiento.EstadoCivilId = _datosPersona.i_MaritalStatusId;
-                        oEnviarSeguimiento.PuestoLaboral = _datosPersona.v_CurrentOccupation;
-                        oEnviarSeguimiento.GradoInstruccionId = _datosPersona.i_LevelOfId;
-                        oEnviarSeguimiento.Direccion = _datosPersona.v_AdressLocation;
+            //    if (planesVida.ToList().Count > 0)
+            //    {
+            //        DialogResult ResultPlanVida = MessageBox.Show("La empresa tiene planes de vida ¿Desea enviar a SEGUIMIENTO?:", "CONFIRMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            //        if (ResultPlanVida == DialogResult.Yes)
+            //        {
+            //            var oEnviarSeguimiento = new EnviarSeguimientoSigesoft();
+            //            oEnviarSeguimiento.v_ServiceId = _datosPersona.v_ServiceId;
+            //            oEnviarSeguimiento.v_CustomerOrganizationId = _datosPersona.v_CustomerOrganizationId;
+            //            oEnviarSeguimiento.v_PersonId = _datosPersona.v_PersonId;
+            //            oEnviarSeguimiento.Nombres = _datosPersona.v_FirstName;
+            //            oEnviarSeguimiento.ApellidoPaterno = _datosPersona.v_FirstLastName;
+            //            oEnviarSeguimiento.ApellidoMaterno = _datosPersona.v_SecondLastName;
+            //            oEnviarSeguimiento.TipoDocumentoId = _datosPersona.i_DocTypeId;
+            //            oEnviarSeguimiento.NroDocumento = _datosPersona.v_DocNumber;
+            //            oEnviarSeguimiento.GeneroId = _datosPersona.i_SexTypeId.Value;
+            //            oEnviarSeguimiento.FechaNacimiento = _datosPersona.d_BirthDate.Value;
+            //            oEnviarSeguimiento.Correo = _datosPersona.v_Mail;
+            //            oEnviarSeguimiento.Telefono = _datosPersona.v_TelephoneNumber;
+            //            oEnviarSeguimiento.Foto = _datosPersona.b_PersonImage;
+            //            oEnviarSeguimiento.LugarNacimiento = _datosPersona.v_AdressLocation;
+            //            oEnviarSeguimiento.EstadoCivilId = _datosPersona.i_MaritalStatusId;
+            //            oEnviarSeguimiento.PuestoLaboral = _datosPersona.v_CurrentOccupation;
+            //            oEnviarSeguimiento.GradoInstruccionId = _datosPersona.i_LevelOfId;
+            //            oEnviarSeguimiento.Direccion = _datosPersona.v_AdressLocation;
 
-                        var listaDxs = new List<DiagnosticoSeguimientoSigesoft>();
-                        var dxSeguimiento =
-                            _tmpTotalConclusionesDxByServiceIdList.FindAll(
-                                p => p.i_FinalQualificationId != (int)FinalQualification.Descartado);
-                        foreach (var dx in dxSeguimiento)
-                        {
-                            var oDiagnosticoSeguimiento = new DiagnosticoSeguimientoSigesoft();
+            //            var listaDxs = new List<DiagnosticoSeguimientoSigesoft>();
+            //            var dxSeguimiento =
+            //                _tmpTotalConclusionesDxByServiceIdList.FindAll(
+            //                    p => p.i_FinalQualificationId != (int)FinalQualification.Descartado);
+            //            foreach (var dx in dxSeguimiento)
+            //            {
+            //                var oDiagnosticoSeguimiento = new DiagnosticoSeguimientoSigesoft();
 
-                            oDiagnosticoSeguimiento.v_DiseaseId = dx.v_DiseasesId;
-                            oDiagnosticoSeguimiento.v_CIE10 = dx.v_Cie10;
-                            oDiagnosticoSeguimiento.v_ComponentId = dx.v_ComponentId;
-                            listaDxs.Add(oDiagnosticoSeguimiento);
-                        }
-                        oEnviarSeguimiento.Dxs = listaDxs;
+            //                oDiagnosticoSeguimiento.v_DiseaseId = dx.v_DiseasesId;
+            //                oDiagnosticoSeguimiento.v_CIE10 = dx.v_Cie10;
+            //                oDiagnosticoSeguimiento.v_ComponentId = dx.v_ComponentId;
+            //                listaDxs.Add(oDiagnosticoSeguimiento);
+            //            }
+            //            oEnviarSeguimiento.Dxs = listaDxs;
 
-                        var json = new JavaScriptSerializer().Serialize(oEnviarSeguimiento);
+            //            var json = new JavaScriptSerializer().Serialize(oEnviarSeguimiento);
 
-                        Dictionary<string, string> arg1 = new Dictionary<string, string>()
-                    {
-                        { "String1", json }
-                    };
-                        var result = API.Post<bool>("EMO/EnviarSeguimiento", arg1);
+            //            Dictionary<string, string> arg1 = new Dictionary<string, string>()
+            //        {
+            //            { "String1", json }
+            //        };
+            //            var result = API.Post<bool>("EMO/EnviarSeguimiento", arg1);
 
 
-                    }
-                }
-            }
+            //        }
+            //    }
+            //}
 
 
            
-            #endregion
+            //#endregion
           
 
             if (Result == DialogResult.Yes)

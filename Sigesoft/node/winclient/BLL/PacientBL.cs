@@ -1162,7 +1162,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      i_AptitudeStatusId = s.i_AptitudeStatusId,
                                      v_MaritalStatus = H.v_Value1,
                                      //EmpresaClienteId = ow.v_OrganizationId
-                                     
+                                     logoCliente = ow.b_Image
                                  });
 
              
@@ -1222,6 +1222,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_ObsStatusService = a.v_ObsStatusService,
                                 v_MaritalStatus = a.v_MaritalStatus,
                                 //EmpresaClienteId = a.EmpresaClienteId
+                                logoCliente = a.logoCliente
                             }).FirstOrDefault();
 
                 return sql;

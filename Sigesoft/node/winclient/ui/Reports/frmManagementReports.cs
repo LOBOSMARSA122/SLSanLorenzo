@@ -1251,7 +1251,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-
+            // usar para el logo cliente filiationData.LogoCliente
             LaboratorioReport.CreateLaboratorioReport(filiationData, serviceComponents, MedicalCenter, pathFile);
         }
         //ARNOLD
