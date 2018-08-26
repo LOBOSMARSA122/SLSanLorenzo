@@ -94,7 +94,7 @@ namespace NetPdf
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
-            var tamaño_celda = 24f;
+            var tamaño_celda = 20f;
             string tipodoc = "";
             if (datosPac.i_DocTypeId == 1) { tipodoc = "DNI"; }
             else if (datosPac.i_DocTypeId == 2) { tipodoc = "Pasaporte"; }
