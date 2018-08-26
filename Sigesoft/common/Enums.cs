@@ -5,6 +5,14 @@ using System.Text;
 
 namespace Sigesoft.Common
 {
+    public enum HttpVerb
+    {
+        GET,
+        POST,
+        PUT,
+        DELETE
+    }
+
     public enum SystemUserTypeId
     {
         Internal = 1,

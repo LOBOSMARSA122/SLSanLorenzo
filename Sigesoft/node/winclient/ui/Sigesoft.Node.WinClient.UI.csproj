@@ -5748,6 +5748,10 @@
       <Project>{83b4875b-6b20-49f1-891d-b1f379760899}</Project>
       <Name>Sigesoft.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Sigesoft.Api\Sigesoft.Api.csproj">
+      <Project>{2ffca4fa-7bc4-41fb-814d-604929746b7d}</Project>
+      <Name>Sigesoft.Api</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Sigesoft.Node.Contasol.Integration\Sigesoft.Node.Contasol.Integration.csproj">
       <Project>{02cd938d-a8d0-4540-b50a-fec346261ce4}</Project>
       <Name>Sigesoft.Node.Contasol.Integration</Name>
@@ -6599,7 +6603,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

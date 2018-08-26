@@ -11,6 +11,7 @@ using Sigesoft.Node.WinClient.BLL;
 using Sigesoft.Node.WinClient.BE;
 using System.IO;
 using System.Drawing.Imaging;
+using System.Web.Script.Serialization;
 
 namespace Sigesoft.Node.WinClient.UI.Configuration
 {
@@ -366,9 +367,44 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                         this.Enabled = false;
                         frmWaiting.Show(this);
                         bgwSendEmail.RunWorkerAsync();
-                    }                        
+                    }
 
                 }
+
+                #region API TRACKING
+                Sigesoft.Api.Api API = new Sigesoft.Api.Api();
+
+                var oUsuarioExternoSeguimiento = new UsuarioExternoSeguimiento();
+
+                oUsuarioExternoSeguimiento.v_PersonId = _personId;
+                oUsuarioExternoSeguimiento.Nombres = txtName.Text.Trim();
+                oUsuarioExternoSeguimiento.ApellidoPaterno = txtFirstLastName.Text.Trim();
+                oUsuarioExternoSeguimiento.ApellidoMaterno = txtSecondLastName.Text.Trim();
+                oUsuarioExternoSeguimiento.TipoDocumentoId = Convert.ToInt32(ddlDocType.SelectedValue);
+                oUsuarioExternoSeguimiento.GeneroId = Convert.ToInt32(ddlSexType.SelectedValue);
+                oUsuarioExternoSeguimiento.EstadoCivilId = Convert.ToInt32(ddlMaritalStatus.SelectedValue);
+                oUsuarioExternoSeguimiento.GradoInstruccionId = Convert.ToInt32(ddlLevelOfId.SelectedValue);
+                oUsuarioExternoSeguimiento.NroDocumento = txtDocNumber.Text.Trim();
+                oUsuarioExternoSeguimiento.FechaNacimiento = dtpBirthdate.Value;
+                oUsuarioExternoSeguimiento.LugarNacimiento = txtBirthPlace.Text.Trim();
+                oUsuarioExternoSeguimiento.Telefono = txtTelephoneNumber.Text.Trim();
+                oUsuarioExternoSeguimiento.Direccion = txtAdressLocation.Text.Trim();
+                oUsuarioExternoSeguimiento.Correo = txtMail.Text.Trim();
+
+                var json = new JavaScriptSerializer().Serialize(oUsuarioExternoSeguimiento);
+
+                Dictionary<string, string> arg1 = new Dictionary<string, string>()
+                    {
+                        { "String1", json }
+                    };
+                var result = API.Post<bool>("Persona/InsertNewPersona", arg1);
+
+                if (!result)
+                {
+                    MessageBox.Show("Error al grabar usuario en Seguimiento","ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                #endregion
 
                 if (objOperationResult.ErrorMessage != null)
                 {

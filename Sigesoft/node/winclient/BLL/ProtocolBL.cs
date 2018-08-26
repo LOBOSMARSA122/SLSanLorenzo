@@ -872,7 +872,6 @@ namespace Sigesoft.Node.WinClient.BLL
 
         public List<KeyValueDTO> GetExternalPermisionForChekedListByTypeId(ref OperationResult pobjOperationResult, int pintExternalUserFunctionalityTypeId)
         {
-            //mon.IsActive = true;
             try
             {
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();

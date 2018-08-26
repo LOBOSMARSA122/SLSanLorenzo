@@ -1197,6 +1197,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								v_SecondLastName = D.v_SecondLastName,
 								d_BirthDate = D.d_Birthdate,
 								i_SexTypeId = D.i_SexTypeId,
+                                i_DocTypeId = D.i_DocTypeId.Value,
+                                v_Mail = D.v_Mail,
 								v_ServiceStatusName = B.v_Value1,
 								i_AptitudeStatusId = A.i_AptitudeStatusId,
 								d_GlobalExpirationDate = A.d_GlobalExpirationDate.Value,
@@ -1211,7 +1213,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								v_GenderName = J.v_Value1,
                                 v_AdressLocation = D.v_AdressLocation,
                                 v_BirthPlace = D.v_BirthPlace,
-
+                                v_TelephoneNumber = D.v_TelephoneNumber,
 								i_HasSymptomId = A.i_HasSymptomId,
 								v_MainSymptom = A.v_MainSymptom,
 								i_TimeOfDisease = A.i_TimeOfDisease,
@@ -1265,7 +1267,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_Procedencia = D.v_Procedencia,
                                 v_CentroEducativo = D.v_CentroEducativo,
                                 i_LevelOfId = D.i_LevelOfId.Value,
-                                i_MaritalStatusId = D.i_MaritalStatusId.Value
+                                i_MaritalStatusId = D.i_MaritalStatusId.Value,
+                                v_CustomerOrganizationId = E.v_CustomerOrganizationId
 							};
 
 				ServiceList objData = query.FirstOrDefault();

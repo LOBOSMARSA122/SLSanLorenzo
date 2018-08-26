@@ -462,6 +462,8 @@ namespace Sigesoft.Node.WinClient.BE
        public int? i_BloodGroupId { get; set; }
        public string v_Procedencia { get; set; }
        public string v_CentroEducativo { get; set; }
+       public string v_Mail { get; set; }
+       public string v_TelephoneNumber { get; set; }
    }
 
 
