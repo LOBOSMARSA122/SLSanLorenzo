@@ -94,7 +94,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 //oit
                 txtOITCodigoPlaca.Attributes.Add("Tag", "N002-MF000000211");
-                dptOITFechaLectura.Attributes.Add("Tag", "N009-MF000001981");
+                dptOITFechaLectura.Attributes.Add("Tag", "N009-MF000000587");
                 dptOITFechaToma.Attributes.Add("Tag", "N009-MF000001982");
                 ddlOITCalidad.Attributes.Add("Tag", "N002-MF000000184");
                 ddlOITCausas.Attributes.Add("Tag", "N002-MF000000210");
@@ -1252,6 +1252,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
             Utils.LoadDropDownList(ddlUsuarioGrabaOIT, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            ddlUsuarioGrabaOIT.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
           
         }
 
