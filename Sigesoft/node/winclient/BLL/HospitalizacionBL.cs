@@ -929,6 +929,7 @@ namespace Sigesoft.Node.WinClient.BLL
             
             return oPagosComisiones;
         }
+
         public hospitalizacionserviceDto GetHospitServ( string hospitalizacionId)
         {
             try
@@ -947,6 +948,32 @@ namespace Sigesoft.Node.WinClient.BLL
             }
             catch (Exception ex)
             {
+                return null;
+            }
+        }
+        public hospitalizacionhabitacionDto GetHospitalizacionHabitacion(ref OperationResult pobjOperationResult, string v_HopitalizacionId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                hospitalizacionhabitacionDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.hospitalizacionhabitacion
+                                 where a.v_HopitalizacionId == v_HopitalizacionId
+                                 orderby a.d_InsertDate descending
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = hospitalizacionhabitacionAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
                 return null;
             }
         }

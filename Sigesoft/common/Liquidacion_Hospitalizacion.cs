@@ -24,7 +24,8 @@ namespace NetPdf
             proceso.Close();
         }
         public static void CreateLiquidacion(string filePDF,
-            organizationDto infoEmpresaPropietaria, List<HospitalizacionList> ListaHospit, ServiceList DataService,PacientList datosPac, int cargo )
+            organizationDto infoEmpresaPropietaria, List<HospitalizacionList> ListaHospit,
+            ServiceList DataService, PacientList datosPac, int cargo, hospitalizacionDto hospit, hospitalizacionhabitacionDto hospitHabit)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
@@ -113,6 +114,23 @@ namespace NetPdf
             else {
                 titular = datosPac.v_OwnerName;
             }
+            string n_habitac = "";
+            if (hospitHabit.i_HabitacionId == 1) n_habitac = "201";
+            else if (hospitHabit.i_HabitacionId == 2) n_habitac = "202";
+            else if (hospitHabit.i_HabitacionId == 3) n_habitac = "203";
+            else if (hospitHabit.i_HabitacionId == 4) n_habitac = "204";
+            else if (hospitHabit.i_HabitacionId == 5) n_habitac = "205";
+            else if (hospitHabit.i_HabitacionId == 6) n_habitac = "206";
+            else if (hospitHabit.i_HabitacionId == 7) n_habitac = "207";
+            else if (hospitHabit.i_HabitacionId == 8) n_habitac = "208";
+            else if (hospitHabit.i_HabitacionId == 2) n_habitac = "301";
+            else if (hospitHabit.i_HabitacionId == 2) n_habitac = "302";
+            else if (hospitHabit.i_HabitacionId == 3) n_habitac = "303";
+            else if (hospitHabit.i_HabitacionId == 4) n_habitac = "304";
+            else if (hospitHabit.i_HabitacionId == 5) n_habitac = "305";
+            else if (hospitHabit.i_HabitacionId == 6) n_habitac = "306";
+            else if (hospitHabit.i_HabitacionId == 7) n_habitac = "307";
+            else if (hospitHabit.i_HabitacionId == 8) n_habitac = "308";
             cells = new List<PdfPCell>()
             {
                     new PdfPCell(new Phrase("ASEGURADORA", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK},
@@ -135,16 +153,16 @@ namespace NetPdf
                     new PdfPCell(new Phrase("EMPRESA", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase(datosPac.v_Employer, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("F. INGRESO", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase(hospit.d_FechaIngreso.ToString()==null?"":hospit.d_FechaIngreso.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("F. ALTA", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase(hospit.d_FechaAlta.ToString()==null ?"":hospit.d_FechaAlta.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
 
                     new PdfPCell(new Phrase("PLAN DE SALUD", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("HIST. CLINICA", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase(datosPac.v_DocNumber, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("CAMA", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
-                    new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase(n_habitac, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
 
                     new PdfPCell(new Phrase("COBERTURA", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},
                     new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},
@@ -189,62 +207,76 @@ namespace NetPdf
                         if (cargo == 1)
                         {
                             var ListaTickets = servicios.Tickets.FindAll(p => p.i_conCargoA == 1);
-                            foreach (var tickets in ListaTickets)
+                            if (ListaTickets.Count() >= 1)
                             {
-                                var detalletickets = tickets.Productos.FindAll(p => p.d_Cantidad != 0);
-                                tamañoTickets = detalletickets.Count();
-                                cell = new PdfPCell(new Phrase(tickets.d_Fecha.ToString().Split(' ')[0], fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                                cells.Add(cell);
-
-                                cell = new PdfPCell(new Phrase(tickets.v_TicketId, fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                                cells.Add(cell);
-
-                                foreach (var Detalle in detalletickets)
+                                foreach (var tickets in ListaTickets)
                                 {
-                                    cell = new PdfPCell(new Phrase(Detalle.v_Descripcion, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                                    cells.Add(cell);
-                                    int cantidad = (int)Detalle.d_Cantidad;
-                                    cell = new PdfPCell(new Phrase(cantidad.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                    var detalletickets = tickets.Productos.FindAll(p => p.d_Cantidad != 0);
+                                    tamañoTickets = detalletickets.Count();
+                                    cell = new PdfPCell(new Phrase(tickets.d_Fecha.ToString().Split(' ')[0], fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                                     cells.Add(cell);
 
-                                    cell = new PdfPCell(new Phrase(Detalle.d_PrecioVenta.ToString().Split('.')[0] + "." + Detalle.d_PrecioVenta.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                    cell = new PdfPCell(new Phrase(tickets.v_TicketId, fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                                     cells.Add(cell);
-                                    totalParcialMedicina = (decimal)(Detalle.d_PrecioVenta * cantidad);
-                                    cell = new PdfPCell(new Phrase(totalParcialMedicina.ToString().Split('.')[0] + "." + totalParcialMedicina.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                                    cells.Add(cell);
-                                    sumaMedicina += (decimal)totalParcialMedicina;
+
+                                    foreach (var Detalle in detalletickets)
+                                    {
+                                        cell = new PdfPCell(new Phrase(Detalle.v_Descripcion, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                        cells.Add(cell);
+                                        int cantidad = (int)Detalle.d_Cantidad;
+                                        cell = new PdfPCell(new Phrase(cantidad.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                        cells.Add(cell);
+
+                                        cell = new PdfPCell(new Phrase(Detalle.d_PrecioVenta.ToString().Split('.')[0] + "." + Detalle.d_PrecioVenta.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                        cells.Add(cell);
+                                        totalParcialMedicina = (decimal)(Detalle.d_PrecioVenta * cantidad);
+                                        cell = new PdfPCell(new Phrase(totalParcialMedicina.ToString().Split('.')[0] + "." + totalParcialMedicina.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                        cells.Add(cell);
+                                        sumaMedicina += (decimal)totalParcialMedicina;
+                                    }
                                 }
+                            }
+                            else {
+                                totalParcialMedicina = 0;
                             }
                         }
                         else if (cargo == 2)
                         {
                             var ListaTickets = servicios.Tickets.FindAll(p => p.i_conCargoA == 2);
-                            foreach (var tickets in ListaTickets)
+                            if (ListaTickets.Count() >= 1)
                             {
-                                var detalletickets = tickets.Productos.FindAll(p => p.d_Cantidad != 0);
-                                tamañoTickets = detalletickets.Count();
-                                cell = new PdfPCell(new Phrase(tickets.d_Fecha.ToString().Split(' ')[0], fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                                cells.Add(cell);
-
-                                cell = new PdfPCell(new Phrase(tickets.v_TicketId, fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                                cells.Add(cell);
-
-                                foreach (var Detalle in detalletickets)
+                                foreach (var tickets in ListaTickets)
                                 {
-                                    cell = new PdfPCell(new Phrase(Detalle.v_Descripcion, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                                    cells.Add(cell);
-                                    int cantidad = (int)Detalle.d_Cantidad;
-                                    cell = new PdfPCell(new Phrase(cantidad.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                    var detalletickets = tickets.Productos.FindAll(p => p.d_Cantidad != 0);
+                                    tamañoTickets = detalletickets.Count();
+                                    cell = new PdfPCell(new Phrase(tickets.d_Fecha.ToString().Split(' ')[0], fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                                     cells.Add(cell);
 
-                                    cell = new PdfPCell(new Phrase(Detalle.d_PrecioVenta.ToString().Split('.')[0] + "." + Detalle.d_PrecioVenta.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                    cell = new PdfPCell(new Phrase(tickets.v_TicketId, fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                                     cells.Add(cell);
-                                    totalParcialMedicina = (decimal)(Detalle.d_PrecioVenta * cantidad);
-                                    cell = new PdfPCell(new Phrase(totalParcialMedicina.ToString().Split('.')[0] +"."+ totalParcialMedicina.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                                    cells.Add(cell);
-                                    sumaMedicina += (decimal)totalParcialMedicina;
-                                }
+
+                                    foreach (var Detalle in detalletickets)
+                                    {
+                                        cell = new PdfPCell(new Phrase(Detalle.v_Descripcion, fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                        cells.Add(cell);
+                                        int cantidad = (int)Detalle.d_Cantidad;
+                                        cell = new PdfPCell(new Phrase(cantidad.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                        cells.Add(cell);
+
+                                        cell = new PdfPCell(new Phrase(Detalle.d_PrecioVenta.ToString().Split('.')[0] + "." + Detalle.d_PrecioVenta.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                        cells.Add(cell);
+                                        totalParcialMedicina = (decimal)(Detalle.d_PrecioVenta * cantidad);
+                                        cell = new PdfPCell(new Phrase(totalParcialMedicina.ToString().Split('.')[0] + "." + totalParcialMedicina.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                                        cells.Add(cell);
+                                        sumaMedicina += (decimal)totalParcialMedicina;
+                                    }
+                                } 
                             }
+                            else
+                            {
+                                totalParcialMedicina = 0;
+                            }
+                            
                         }
                     }
                     if (cargo == 2)
@@ -287,7 +319,16 @@ namespace NetPdf
                         cell = new PdfPCell(new Phrase("Del " + habitacion.d_StartDate.ToString().Split(' ')[0] + "\n" + "Al   " + habitacion.d_EndDate.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                         cells.Add(cell);
                         DateTime inicio = habitacion.d_StartDate.Value;
-                        DateTime fin = habitacion.d_EndDate.Value;
+                        DateTime fin;
+                        if (habitacion.d_EndDate != null || habitacion.d_EndDate.ToString()=="00/00/0000 0:0:0")
+                        {
+                            fin = habitacion.d_EndDate.Value;
+                        }
+                        else {
+                            fin = DateTime.Now;
+                            
+                        }
+                        
                         TimeSpan tSpan = fin - inicio;
 
                         int dias = tSpan.Days + 1;
@@ -334,8 +375,9 @@ namespace NetPdf
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase("TOTAL", fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
-                cell = new PdfPCell(new Phrase(totalFinal.ToString().Split('.')[0] + "." + totalFinal.ToString().Split('.')[1].Substring(0, 2), fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                cell = new PdfPCell(new Phrase(totalFinal.ToString(), fontColumnValue)) { Colspan = 1, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
+                //.Split('.')[0] + "." + totalFinal.ToString().Split('.')[1].Substring(0, 2)
             }
 
             columnWidths = new float[] { 11f, 15f, 42f, 10f, 10F, 12F };
@@ -348,6 +390,7 @@ namespace NetPdf
             document.Close();
             writer.Close();
             writer.Dispose();
+            RunFile(filePDF);
         }
 
     }
