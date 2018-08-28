@@ -66,7 +66,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
             string Result = "";
             string personId;
             bool sendNotification = false;
-
+            Sigesoft.Api.Api API = new Sigesoft.Api.Api();
             if (uvPacient.Validate(true, false).IsValid)
             {
 
@@ -204,7 +204,8 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                     pobjSystemUser.v_Password = SecurityBL.Encrypt(txtPassword2.Text.Trim());
                     if (rbFEchaExpiracion.Checked)                  
                         pobjSystemUser.d_ExpireDate = dtpExpiredDate.Value.Date;
-                                     
+
+               
 
                     #region Eval CheckedList for create new ->  chklPermisosOpciones / chklNotificaciones
 
@@ -235,6 +236,54 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
                                                               pobjSystemUser,
                                                               _tmpListProtocolSystemUser,
                                                               Globals.ClientSession.GetAsList());
+
+                    if (_tmpListProtocolSystemUser.Find(p => p.i_ApplicationHierarchyId == 3003).i_ApplicationHierarchyId != null)
+                    {
+                        #region API TRACKING
+
+
+                        var oUsuarioExternoSeguimientoNew = new UsuarioExternoSeguimiento();
+
+                        oUsuarioExternoSeguimientoNew.v_PersonId = _personId;
+                        oUsuarioExternoSeguimientoNew.Nombres = txtName.Text.Trim();
+                        oUsuarioExternoSeguimientoNew.ApellidoPaterno = txtFirstLastName.Text.Trim();
+                        oUsuarioExternoSeguimientoNew.ApellidoMaterno = txtSecondLastName.Text.Trim();
+                        oUsuarioExternoSeguimientoNew.TipoDocumentoId = Convert.ToInt32(ddlDocType.SelectedValue);
+                        oUsuarioExternoSeguimientoNew.GeneroId = Convert.ToInt32(ddlSexType.SelectedValue);
+                        oUsuarioExternoSeguimientoNew.EstadoCivilId = Convert.ToInt32(ddlMaritalStatus.SelectedValue);
+                        oUsuarioExternoSeguimientoNew.GradoInstruccionId = Convert.ToInt32(ddlLevelOfId.SelectedValue);
+                        oUsuarioExternoSeguimientoNew.NroDocumento = txtDocNumber.Text.Trim();
+                        oUsuarioExternoSeguimientoNew.FechaNacimiento = dtpBirthdate.Value;
+                        oUsuarioExternoSeguimientoNew.LugarNacimiento = txtBirthPlace.Text.Trim();
+                        oUsuarioExternoSeguimientoNew.Telefono = txtTelephoneNumber.Text.Trim();
+                        oUsuarioExternoSeguimientoNew.Direccion = txtAdressLocation.Text.Trim();
+                        oUsuarioExternoSeguimientoNew.Correo = txtMail.Text.Trim();
+
+                        var jsonPersonNew = new JavaScriptSerializer().Serialize(oUsuarioExternoSeguimientoNew);
+
+                        var oUsuarioTrackingNew = new UsuarioTracking();
+                        oUsuarioTrackingNew.NombreUsuario = txtUserName.Text;
+                        oUsuarioTrackingNew.Contrasenia = txtPassword1.Text;
+                        oUsuarioTrackingNew.RolId = 2;
+                        oUsuarioTrackingNew.EmpresaId = 1;
+                        oUsuarioTrackingNew.FechaCaduca = dtpExpiredDate.Value;
+                        var jsonUsuarioNew = new JavaScriptSerializer().Serialize(oUsuarioTrackingNew);
+
+                        Dictionary<string, string> arg1New = new Dictionary<string, string>()
+                    {
+                        { "String1", jsonPersonNew },
+                        { "String2", jsonUsuarioNew },
+                          { "Int1", "2" }
+                    };
+                        var resultNew = API.Post<bool>("Persona/InsertNewPersona", arg1New);
+
+                        //if (!result)
+                        //{
+                        //    MessageBox.Show("Error al grabar usuario en Seguimiento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //}
+
+                        #endregion
+                    }
 
                     if (personId == "-1")
                     {
@@ -371,40 +420,64 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
                 }
 
-                //#region API TRACKING
-                //Sigesoft.Api.Api API = new Sigesoft.Api.Api();
+                var listaPermisosActualizados = new List<protocolsystemuserDto>();
+                for (int i = 0; i < chklPermisosOpciones.CheckedItems.Count; i++)
+                {
+                    protocolsystemuserDto protocolSystemUser = new protocolsystemuserDto();
+                    KeyValueDTO obj = (KeyValueDTO)chklPermisosOpciones.CheckedItems[i];
+                    protocolSystemUser.v_ProtocolId = _protocolId;
+                    protocolSystemUser.i_ApplicationHierarchyId = int.Parse(obj.Id);
+                    listaPermisosActualizados.Add(protocolSystemUser);
+                }
 
-                //var oUsuarioExternoSeguimiento = new UsuarioExternoSeguimiento();
+                if (listaPermisosActualizados.Find(p => p.i_ApplicationHierarchyId == 3003).i_ApplicationHierarchyId != null)
+                {
+                    #region API TRACKING
 
-                //oUsuarioExternoSeguimiento.v_PersonId = _personId;
-                //oUsuarioExternoSeguimiento.Nombres = txtName.Text.Trim();
-                //oUsuarioExternoSeguimiento.ApellidoPaterno = txtFirstLastName.Text.Trim();
-                //oUsuarioExternoSeguimiento.ApellidoMaterno = txtSecondLastName.Text.Trim();
-                //oUsuarioExternoSeguimiento.TipoDocumentoId = Convert.ToInt32(ddlDocType.SelectedValue);
-                //oUsuarioExternoSeguimiento.GeneroId = Convert.ToInt32(ddlSexType.SelectedValue);
-                //oUsuarioExternoSeguimiento.EstadoCivilId = Convert.ToInt32(ddlMaritalStatus.SelectedValue);
-                //oUsuarioExternoSeguimiento.GradoInstruccionId = Convert.ToInt32(ddlLevelOfId.SelectedValue);
-                //oUsuarioExternoSeguimiento.NroDocumento = txtDocNumber.Text.Trim();
-                //oUsuarioExternoSeguimiento.FechaNacimiento = dtpBirthdate.Value;
-                //oUsuarioExternoSeguimiento.LugarNacimiento = txtBirthPlace.Text.Trim();
-                //oUsuarioExternoSeguimiento.Telefono = txtTelephoneNumber.Text.Trim();
-                //oUsuarioExternoSeguimiento.Direccion = txtAdressLocation.Text.Trim();
-                //oUsuarioExternoSeguimiento.Correo = txtMail.Text.Trim();
+                    var oUsuarioExternoSeguimiento = new UsuarioExternoSeguimiento();
 
-                //var json = new JavaScriptSerializer().Serialize(oUsuarioExternoSeguimiento);
+                    oUsuarioExternoSeguimiento.v_PersonId = _personId;
+                    oUsuarioExternoSeguimiento.Nombres = txtName.Text.Trim();
+                    oUsuarioExternoSeguimiento.ApellidoPaterno = txtFirstLastName.Text.Trim();
+                    oUsuarioExternoSeguimiento.ApellidoMaterno = txtSecondLastName.Text.Trim();
+                    oUsuarioExternoSeguimiento.TipoDocumentoId = Convert.ToInt32(ddlDocType.SelectedValue);
+                    oUsuarioExternoSeguimiento.GeneroId = Convert.ToInt32(ddlSexType.SelectedValue);
+                    oUsuarioExternoSeguimiento.EstadoCivilId = Convert.ToInt32(ddlMaritalStatus.SelectedValue);
+                    oUsuarioExternoSeguimiento.GradoInstruccionId = Convert.ToInt32(ddlLevelOfId.SelectedValue);
+                    oUsuarioExternoSeguimiento.NroDocumento = txtDocNumber.Text.Trim();
+                    oUsuarioExternoSeguimiento.FechaNacimiento = dtpBirthdate.Value;
+                    oUsuarioExternoSeguimiento.LugarNacimiento = txtBirthPlace.Text.Trim();
+                    oUsuarioExternoSeguimiento.Telefono = txtTelephoneNumber.Text.Trim();
+                    oUsuarioExternoSeguimiento.Direccion = txtAdressLocation.Text.Trim();
+                    oUsuarioExternoSeguimiento.Correo = txtMail.Text.Trim();
 
-                //Dictionary<string, string> arg1 = new Dictionary<string, string>()
-                //    {
-                //        { "String1", json }
-                //    };
-                //var result = API.Post<bool>("Persona/InsertNewPersona", arg1);
+                    var jsonPerson = new JavaScriptSerializer().Serialize(oUsuarioExternoSeguimiento);
 
-                //if (!result)
-                //{
-                //    MessageBox.Show("Error al grabar usuario en Seguimiento","ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                    var oUsuarioTracking = new UsuarioTracking();
+                    oUsuarioTracking.NombreUsuario = txtUserName.Text;
+                    oUsuarioTracking.Contrasenia = txtPassword1.Text;
+                    oUsuarioTracking.RolId = 2;
+                    oUsuarioTracking.EmpresaId = 1;
+                    oUsuarioTracking.FechaCaduca = dtpExpiredDate.Value;
+                    var jsonUsuario = new JavaScriptSerializer().Serialize(oUsuarioTracking);
 
-                //#endregion
+                    Dictionary<string, string> arg1 = new Dictionary<string, string>()
+                    {
+                        { "String1", jsonPerson },
+                        { "String2", jsonUsuario },
+                          { "Int1", "2" }
+                    };
+                    var result = API.Post<bool>("Persona/InsertNewPersona", arg1);
+
+                    //if (!result)
+                    //{
+                    //    MessageBox.Show("Error al grabar usuario en Seguimiento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //}
+
+                    #endregion
+                }
+
+           
 
                 if (objOperationResult.ErrorMessage != null)
                 {
