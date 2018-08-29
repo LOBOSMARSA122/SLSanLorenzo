@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BLL;
 using Sigesoft.Node.WinClient.BE;
@@ -1360,6 +1361,68 @@ namespace Sigesoft.Node.WinClient.UI
 
         }
 
+        private void btnGenerarXML_Click(object sender, EventArgs e)
+        {
+            Natclar oNatclarBL = new Natclar();
+
+            saveFileDialog1.FileName = string.Empty;
+            saveFileDialog1.Filter = "Files (*.xml;*.xml;*)|*.xml;*.xml;*";
+            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
+            {
+                foreach (var item in grdDataCalendar.Rows)
+                {
+                    if ((bool)item.Cells["b_Seleccionar"].Value)
+                    {
+                        var serviceId = item.Cells["v_ServiceId"].Value.ToString();
+                        var datos = oNatclarBL.DatosXmlNatclar(serviceId);
+                        var ubigeo = oNatclarBL.DevolverUbigue(datos.DepartamentoNacimiento, datos.ProvinciaNacimiento, datos.ProvinciaNacimiento);
+                        #region Transformación de la data
+
+                        if (datos.FechaNacimientoSigesoft != null)
+                            datos.FechaNacimiento = datos.FechaNacimientoSigesoft.Value.ToString("dd/MM/yyyy");
+
+                    
+                        #endregion
+
+                        #region XML
+
+                   
+                            var xmlDocument = new XDocument(
+                                new XDeclaration("1.0", "utf-8", "yes"),
+                                    new XElement("Registro",
+                                        new XElement("DatosPaciente",
+                                            new XElement("HC", datos.Hc),
+                                            new XElement("DNI", datos.TipoDocumento),
+                                            new XElement("Sexo", datos.Sexo),
+                                            new XElement("PrimerApellido", datos.PrimerApellido),
+                                            new XElement("SegundoApellido", datos.SegundoApellido),
+                                            new XElement("Nombre", datos.Nombre),
+                                            new XElement("EstadoCivil", datos.EstadoCivil),
+                                            new XElement("FechaNacimiento", datos.FechaNacimiento),
+                                            new XElement("ProvinciaNacimiento", ubigeo.prov),
+                                            new XElement("DistritoNacimiento", ubigeo.distr),
+                                            new XElement("DepartamentoNacimiento", ubigeo.depar),
+                                            new XElement("email", datos.Email),
+                                            new XElement("ResidenciaActual", datos.ResidenciaActual),
+                                            new XElement("Direccion", datos.Direccion)
+                                        ),
+                                        new XElement("DatosExamen")
+                                    )
+                                );
+
+                            xmlDocument.Save(folderBrowserDialog1.SelectedPath + @"\" + datos.Hc);
+
+                            
+
+                        #endregion
+                    }
+                }
+
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
+
+            }
+        }
        
     }
 }
