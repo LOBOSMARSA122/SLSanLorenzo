@@ -334,7 +334,6 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
                     var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
 
-
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
                     Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + "Hola" + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente);

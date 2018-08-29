@@ -1444,12 +1444,6 @@
     <Compile Include="Operations\Popups\frmSelectSignature.Designer.cs">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
     </Compile>
-    <Compile Include="otros\frmHospitalizados_.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="otros\frmHospitalizados_.Designer.cs">
-      <DependentUpon>frmHospitalizados_.cs</DependentUpon>
-    </Compile>
     <Compile Include="ReporteDeclaracionDrogas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3626,9 +3620,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmSelectSignature.resx">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="otros\frmHospitalizados_.resx">
-      <DependentUpon>frmHospitalizados_.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
@@ -6252,6 +6243,7 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="otros\" />
     <Folder Include="Temp\" />
   </ItemGroup>
   <ItemGroup>
@@ -6612,7 +6604,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

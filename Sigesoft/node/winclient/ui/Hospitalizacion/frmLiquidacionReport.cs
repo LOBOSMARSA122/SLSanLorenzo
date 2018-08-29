@@ -36,6 +36,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnDoctor_Click(object sender, EventArgs e)
         {
+            
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
                 this.Enabled = false;
@@ -54,8 +55,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
                 ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, hospser.v_ServiceId);
 
-                string nombre = personData.v_DocNumber + "_" + personData.v_ProtocolName;
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor);
+                var hospitalizacion = _hospitBL.GetHospitalizacion(ref objOperationResult, hospiId);
+                var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref objOperationResult, hospiId);
+
+                string nombre = personData.v_DocNumber + "_" + personData.v_ProtocolName + "-LiquMédico";
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor, hospitalizacion, hospitalizacionhabitacion);
                 this.Enabled = true;
             }
             this.Close();
@@ -82,8 +86,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, hospser.v_ServiceId);
 
-                string nombre = personData.v_DocNumber + "_" + personData.v_ProtocolName;
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente);
+                var hospitalizacion = _hospitBL.GetHospitalizacion(ref objOperationResult, hospiId);
+                var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref objOperationResult, hospiId);
+
+                string nombre = personData.v_DocNumber + "_" + personData.v_ProtocolName + "-LiquPac";
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente, hospitalizacion, hospitalizacionhabitacion);
                 this.Enabled = true;
             }
             this.Close();

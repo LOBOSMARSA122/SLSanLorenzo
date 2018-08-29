@@ -542,8 +542,8 @@ namespace Sigesoft.Node.WinClient.UI
 
             SystemUserList oSystemUserList = new SystemUserList();
 
-            saveFileDialog1.FileName = "Orden de Servicio";
-            saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
+            //saveFileDialog1.FileName = "Orden de Servicio";
+            //saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
 
             //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             //{
