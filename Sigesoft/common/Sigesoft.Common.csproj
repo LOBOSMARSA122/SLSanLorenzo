@@ -87,6 +87,7 @@
     <Compile Include="CertificadoAptitudMedico_Cosapi.cs" />
     <Compile Include="Certificado_Psicosensometrico_Datos.cs" />
     <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
+    <Compile Include="ConstantsNatclar.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />
     <Compile Include="Constants.cs" />
