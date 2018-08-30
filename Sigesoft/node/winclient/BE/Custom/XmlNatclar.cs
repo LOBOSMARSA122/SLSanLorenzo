@@ -23,5 +23,34 @@ namespace Sigesoft.Node.WinClient.BE
         public string Email { get; set; }
         public string ResidenciaActual { get; set; }
         public string Direccion { get; set; }
+
+        public string IDEstructura { get; set; }
+        public string IDCentro { get; set; }
+        public string IDExamen { get; set; }
+        public string IDActuacion { get; set; }
+        public int? TipoExamen { get; set; }
+        public int? IDEstado { get; set; }
+        public DateTime? FechaRegistro { get; set; }
+
+        public List<Perfiles> Examenes { get; set; }
+
+    }
+
+    public class Perfiles
+    {
+       
+        public int? CategoriaId { get; set; }
+        public string Perfil1 { get; set; }
+        public string Prueba { get; set; }
+        public string ValorPrueba { get; set; }
+        public string Observaciones { get; set; }
+        public string ComponentId { get; set; }
+        public string ServiceComponentId { get; set; }
+        public List<Pruebas> Pruebas { get; set; }
+    }
+
+    public class Pruebas
+    {
+        public string Prueba { get; set; }
     }
 }

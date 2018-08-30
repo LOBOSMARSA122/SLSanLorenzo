@@ -360,7 +360,9 @@ namespace Sigesoft.Common
         Retiro = 3,
         Preventivo = 4,
         Reubicacion = 5,
-        Chequeo = 6
+        Chequeo = 6,
+        Especialista =7,
+        Visita = 8
     }
 
     public enum PreQualification

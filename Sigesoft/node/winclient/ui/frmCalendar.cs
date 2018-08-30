@@ -1361,66 +1361,272 @@ namespace Sigesoft.Node.WinClient.UI
 
         }
 
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+
         private void btnGenerarXML_Click(object sender, EventArgs e)
         {
+
+            //_ListaCalendar = new List<string>();
+            //foreach (var item in grdDataCalendar.Rows)
+            //{
+            //    //CheckBox ck = (CheckBox)item.Cells["b_FechaEntrega"].Value;
+
+            //    if ((bool)item.Cells["b_Seleccionar"].Value)
+            //    {
+            //        string x = item.Cells["v_CalendarId"].Value.ToString();
+            //        _ListaCalendar.Add(x);
+            //    }
+            //}
+
             Natclar oNatclarBL = new Natclar();
 
             saveFileDialog1.FileName = string.Empty;
             saveFileDialog1.Filter = "Files (*.xml;*.xml;*)|*.xml;*.xml;*";
             if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
             {
+                List<string> ServicioIds = new List<string>();
                 foreach (var item in grdDataCalendar.Rows)
                 {
-                    if ((bool)item.Cells["b_Seleccionar"].Value)
+                    if ((bool) item.Cells["b_Seleccionar"].Value)
                     {
-                        var serviceId = item.Cells["v_ServiceId"].Value.ToString();
-                        var datos = oNatclarBL.DatosXmlNatclar(serviceId);
-                        var ubigeo = oNatclarBL.DevolverUbigue(datos.DepartamentoNacimiento, datos.ProvinciaNacimiento, datos.ProvinciaNacimiento);
-                        #region Transformación de la data
-
-                        if (datos.FechaNacimientoSigesoft != null)
-                            datos.FechaNacimiento = datos.FechaNacimientoSigesoft.Value.ToString("dd/MM/yyyy");
-
+                        string serviceId = item.Cells["v_ServiceId"].Value.ToString();
+                        ServicioIds.Add(serviceId);
+                    }
                     
+                }
+
+                var consolidadoDatos = new ServiceBL().DevolverValorCampoPorServicioMejorado(ServicioIds);
+               
+
+                foreach (var item in grdDataCalendar.Rows)
+                {
+                 
+                    if ((bool) item.Cells["b_Seleccionar"].Value)
+                    {
+
+                        var serviceId = item.Cells["v_ServiceId"].Value.ToString();
+                        var datosPaciente = oNatclarBL.DatosXmlNatclar(serviceId);
+                        var ubigeoPaciente = oNatclarBL.DevolverUbigue(datosPaciente.DepartamentoNacimiento, datosPaciente.ProvinciaNacimiento, datosPaciente.ProvinciaNacimiento);
+                        var datosServicioCompleto = consolidadoDatos.Find(p => p.ServicioId == serviceId);
+
+                        #region Transformación de la data
+                        if (datosPaciente.FechaNacimientoSigesoft != null)
+                            datosPaciente.FechaNacimiento = datosPaciente.FechaNacimientoSigesoft.Value.ToString("dd/MM/yyyy");
                         #endregion
 
                         #region XML
 
-                   
-                            var xmlDocument = new XDocument(
-                                new XDeclaration("1.0", "utf-8", "yes"),
-                                    new XElement("Registro",
-                                        new XElement("DatosPaciente",
-                                            new XElement("HC", datos.Hc),
-                                            new XElement("DNI", datos.TipoDocumento),
-                                            new XElement("Sexo", datos.Sexo),
-                                            new XElement("PrimerApellido", datos.PrimerApellido),
-                                            new XElement("SegundoApellido", datos.SegundoApellido),
-                                            new XElement("Nombre", datos.Nombre),
-                                            new XElement("EstadoCivil", datos.EstadoCivil),
-                                            new XElement("FechaNacimiento", datos.FechaNacimiento),
-                                            new XElement("ProvinciaNacimiento", ubigeo.prov),
-                                            new XElement("DistritoNacimiento", ubigeo.distr),
-                                            new XElement("DepartamentoNacimiento", ubigeo.depar),
-                                            new XElement("email", datos.Email),
-                                            new XElement("ResidenciaActual", datos.ResidenciaActual),
-                                            new XElement("Direccion", datos.Direccion)
-                                        ),
-                                        new XElement("DatosExamen")
-                                    )
-                                );
+                        #region Datos Paciente
 
-                            xmlDocument.Save(folderBrowserDialog1.SelectedPath + @"\" + datos.Hc);
+                        var eDatosPaciente = new List<string>();
+                        eDatosPaciente.Add("HC");
+                        eDatosPaciente.Add("DNI");
+                        eDatosPaciente.Add("Sexo");
+                        eDatosPaciente.Add("PrimerApellido");
+                        eDatosPaciente.Add("SegundoApellido");
+                        eDatosPaciente.Add("Nombre");
+                        eDatosPaciente.Add("EstadoCivil");
+                        eDatosPaciente.Add("FechaNacimiento");
+                        eDatosPaciente.Add("ProvinciaNacimiento");
+                        eDatosPaciente.Add("DistritoNacimiento");
+                        eDatosPaciente.Add("DepartamentoNacimiento");
+                        eDatosPaciente.Add("email");
+                        eDatosPaciente.Add("ResidenciaActual");
+                        eDatosPaciente.Add("Direccion");
 
-                            
+                        var xeRoot = new XElement("Registro");
+                        var xeDatosPaciente = new XElement("DatosPaciente");
 
+                        foreach (var eDatoPaciente in eDatosPaciente)
+                        {
+                            xeDatosPaciente.Add(new XElement(eDatoPaciente));
+                        }
+
+                       
+                        foreach (var elementName in eDatosPaciente)
+                        {
+                            switch (elementName)
+                            {
+                                case "HC":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Hc;
+                                    break;
+                                case "DNI":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Dni;
+                                    break;
+                                case "Sexo":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Sexo.Value.ToString();
+                                    break;
+                                case "PrimerApellido":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.PrimerApellido;
+                                    break;
+                                case "SegundoApellido":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.SegundoApellido;
+                                    break;
+                                case "Nombre":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Nombre;
+                                    break;
+                                case "EstadoCivil":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.EstadoCivil.Value.ToString();
+                                    break;
+                                case "FechaNacimiento":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.FechaNacimiento;
+                                    break;
+                                case "ProvinciaNacimiento":
+                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.prov;
+                                    break;
+                                case "DistritoNacimiento":
+                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.distr;
+                                    break;
+                                case "DepartamentoNacimiento":
+                                    xeDatosPaciente.Element(elementName).Value = ubigeoPaciente.depar;
+                                    break;
+                                case "email":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Email;
+                                    break;
+                                case "ResidenciaActual":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.ResidenciaActual;
+                                    break;
+                                case "Direccion":
+                                    xeDatosPaciente.Element(elementName).Value = datosPaciente.Direccion;
+                                    break;
+                                default: break;
+                            }
+
+                        }
+                        xeRoot.Add(new XElement(xeDatosPaciente));
+
+                        #endregion
+
+                        #region Datos del Examen
+
+                        var eDatosExamen = new List<string>();
+                        eDatosExamen.Add("IDEstructura");
+                        eDatosExamen.Add("IDCentro");
+                        eDatosExamen.Add("IDExamen");
+                        eDatosExamen.Add("IDActuacion");
+                        eDatosExamen.Add("TipoExamen");
+                        eDatosExamen.Add("IDEstado");
+                        eDatosExamen.Add("FechaRegistro");
+
+                        var xeDatosExamen = new XElement("DatosExamen");
+
+                        foreach (var eDatoExamen in eDatosExamen)
+                        {
+                            xeDatosExamen.Add(new XElement(eDatoExamen));
+                        }
+
+                        foreach (var edatoExamen in eDatosExamen)
+                        {
+                            switch (edatoExamen)
+                            {
+                                case "IDEstructura":
+                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstructura;
+                                    break;
+                                case "IDCentro":
+                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDCentro;
+                                    break;
+                                case "IDExamen":
+                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDExamen;
+                                    break;
+                                case "IDActuacion":
+                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDActuacion;
+                                    break;
+                                case "TipoExamen":
+                                    var tipoExamen = "";
+                                    switch (datosPaciente.TipoExamen)
+                                    {
+                                        case (int) TypeESO.PreOcupacional:
+                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_INGRESO;
+                                            break;
+                                        case (int) TypeESO.PeriodicoAnual:
+                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_PERIODICO;
+                                            break;
+                                        case (int) TypeESO.Retiro:
+                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_RETIRO;
+                                            break;
+                                        case (int) TypeESO.Especialista:
+                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_ESPECIAL;
+                                            break;
+                                        case (int) TypeESO.Visita:
+                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_VISITA;
+                                            break;
+                                        default:
+                                            break;
+                                    }
+
+                                    xeDatosExamen.Element(edatoExamen).Value = tipoExamen;
+                                    break;
+                                case "IDEstado":
+                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstado.ToString() == "0"
+                                        ? "A"
+                                        : "I";
+                                    break;
+                                case "FechaRegistro":
+                                    xeDatosExamen.Element(edatoExamen).Value =
+                                        datosPaciente.FechaRegistro.Value.ToString("dd/MM/yyyy");
+                                    break;
+
+                                default:
+                                    break;
+                            }
+                        }
+                        xeRoot.Add(new XElement(xeDatosExamen));
+
+                        //var examenes = datosPaciente.Examenes;
+                        var perfiles = datosServicioCompleto.CampoValores.FindAll(p => p.CategoryId == (int)CategoryTypeExam.Laboratorio).GroupBy(p => p.IdComponente).Select(group => group.First()).ToList();
+                         if (perfiles.Count > 0)
+                        {
+                            #region Analítica
+
+                            var xeAnalitica = new XElement("Analitica");
+                            var contadorPerfil = 1;
+
+                          
+                            foreach (var perfil in perfiles)
+                            {
+                                var xePerfil = new XElement("Perfil" + contadorPerfil);
+                                xePerfil.Value = perfil.NombreComponente;
+
+                                //var pruebas = perfiles.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
+                                var contadorPrueba = 1;
+
+                                var campos = datosServicioCompleto.CampoValores.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
+
+                                foreach (var prueba in campos)
+                                {
+                                    var xePrueba = new XElement("Prueba" + contadorPrueba);
+                                    xePerfil.Add(xePrueba);
+                                    xePerfil.Element("Prueba" + contadorPrueba).Value = prueba.NombreCampo;
+                                    contadorPrueba++;
+
+                                    var xeValorPrueba = new XElement("ValorPrueba1");
+                                    xeValorPrueba.Value = prueba.Valor;
+                                    xePrueba.Add(xeValorPrueba);
+
+                                }
+                                xeAnalitica.Add(xePerfil);
+
+                                contadorPerfil ++;
+                            }
+                            xeRoot.Add(new XElement(xeAnalitica));
+                            #endregion
+
+                        }
+
+                            #endregion
+
+                        xeRoot.Save(folderBrowserDialog1.SelectedPath + @"\" + datosPaciente.Hc);
+                    
                         #endregion
                     }
                 }
-
-                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                   
-
             }
         }
        

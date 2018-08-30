@@ -18,6 +18,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.calendar
                             join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                            join C in dbContext.service on A.v_ServiceId equals C.v_ServiceId
                             // Ubigeo de la persona *******************************************************
                             join dep in dbContext.datahierarchy on new { a = B.i_DepartmentId.Value, b = groupUbigeo }
                                                  equals new { a = dep.i_ItemId, b = dep.i_GroupId } into dep_join
@@ -48,15 +49,22 @@ namespace Sigesoft.Node.WinClient.BLL
                                 DepartamentoNacimiento = dep.v_Value1,
                                 Email = B.v_Mail,
                                 ResidenciaActual =B.v_AdressLocation,
-                                Direccion =B.v_AdressLocation
+                                Direccion =B.v_AdressLocation,
+                                IDEstructura = "2",
+                                IDCentro = "CX35",
+                                IDExamen = serviceId,
+                                IDActuacion = "",
+                                TipoExamen = C.i_MasterServiceId.Value,
+                                IDEstado = B.i_IsDeleted,
+                                FechaRegistro = C.d_ServiceDate.Value,
                             };
 
 
                 var objData = query.FirstOrDefault();
 
+                if (objData == null) return null;
+                objData.Examenes = ObtenerExamenesPorServicio(serviceId);
                 return objData;
-
-
             }
             catch (Exception ex)
             {
@@ -64,6 +72,58 @@ namespace Sigesoft.Node.WinClient.BLL
                 throw;
             }
 
+        }
+
+        public List<Perfiles> ObtenerExamenesPorServicio(string serviceId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.service
+                            join B in dbContext.servicecomponent on A.v_ServiceId equals  B.v_ServiceId
+                            join C in dbContext.component on B.v_ComponentId equals C.v_ComponentId
+                            where A.i_IsDeleted == 0 && A.v_ServiceId == serviceId
+                            select new Perfiles
+                            {
+                                Perfil1 = C.v_Name,
+                                CategoriaId = C.i_CategoryId.Value,
+                                ComponentId = C.v_ComponentId,
+                                ServiceComponentId =B.v_ServiceComponentId
+                            };
+                var objData = query.ToList();
+                foreach (var item in objData)
+                {
+                    item.Pruebas = ObtenerPruebas(item.ServiceComponentId);
+                }
+                return objData;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+        }
+
+        private List<Pruebas> ObtenerPruebas(string serviceComponentId)
+        {
+            try
+            {
+                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.servicecomponentfields
+                            where A.v_ServiceComponentId == serviceComponentId
+                            select new Pruebas()
+                            {
+                                Prueba = A.v_ServiceComponentFieldsId
+                            };
+                var objData = query.ToList();
+                return objData;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
         }
 
         public Ubigeo DevolverUbigue(string departamento, string provincia, string distrito)

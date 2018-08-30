@@ -15,5 +15,6 @@ namespace Sigesoft.Node.WinClient.BE
        public string Valor { get; set; }
        public string ValorName { get; set; }
        public int i_GroupId { get; set; }
+       public int? CategoryId { get; set; }
     }
 }
