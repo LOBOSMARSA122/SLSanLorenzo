@@ -180,6 +180,7 @@ namespace Sigesoft.Node.WinClient.UI
                 pbEmployee.Image = Common.Utils.BytesArrayToImageOficce(ooo, pbEmployee);
                 _personImage = ooo;
             }
+
             txtEmployee.Text = _personName;
             Utils.LoadDropDownList(ddlDocTypeId, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 106, null), DropDownListAction.Select);
             ddlDocTypeId.SelectedValue = objPersonDto.i_DocTypeId.ToString();
@@ -290,7 +291,7 @@ namespace Sigesoft.Node.WinClient.UI
             // Iniciar el componente Firma
             //sigPlusNET1.SetTabletState(1);
 
-            lblResultFirma.Text = "Sensor de firma conectado";
+            lblResultFirma.Text = "";
             ShowHintImageFirma(3);
 
             FAutoIdentify = false;

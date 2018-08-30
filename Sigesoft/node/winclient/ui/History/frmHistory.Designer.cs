@@ -1270,8 +1270,9 @@
             // 
             // imgInfoFirma
             // 
+            this.imgInfoFirma.Enabled = false;
             this.imgInfoFirma.Image = global::Sigesoft.Node.WinClient.UI.Resources.information;
-            this.imgInfoFirma.Location = new System.Drawing.Point(633, 136);
+            this.imgInfoFirma.Location = new System.Drawing.Point(636, 137);
             this.imgInfoFirma.Name = "imgInfoFirma";
             this.imgInfoFirma.Size = new System.Drawing.Size(17, 16);
             this.imgInfoFirma.TabIndex = 108;
@@ -1353,10 +1354,11 @@
             this.panelRubric.Controls.Add(this.memoHint);
             this.panelRubric.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelRubric.ForeColor = System.Drawing.Color.White;
-            this.panelRubric.Location = new System.Drawing.Point(637, 19);
+            this.panelRubric.Location = new System.Drawing.Point(636, 19);
             this.panelRubric.Name = "panelRubric";
             this.panelRubric.Size = new System.Drawing.Size(296, 120);
             this.panelRubric.TabIndex = 102;
+            this.panelRubric.Visible = false;
             // 
             // sigPlusNET1
             // 
@@ -1397,6 +1399,7 @@
             this.pnlPreviewTitle.Name = "pnlPreviewTitle";
             this.pnlPreviewTitle.Size = new System.Drawing.Size(120, 120);
             this.pnlPreviewTitle.TabIndex = 96;
+            this.pnlPreviewTitle.Visible = false;
             // 
             // pbFingerPrint
             // 
@@ -1409,6 +1412,7 @@
             this.pbFingerPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFingerPrint.TabIndex = 39;
             this.pbFingerPrint.TabStop = false;
+            this.pbFingerPrint.Visible = false;
             // 
             // ddlDocTypeId
             // 
