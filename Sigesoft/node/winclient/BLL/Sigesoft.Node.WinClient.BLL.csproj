@@ -72,6 +72,7 @@
     <Compile Include="MedicalExamFieldsBL.cs" />
     <Compile Include="MedicalExamFieldValuesBL.cs" />
     <Compile Include="MultimediaFileBL.cs" />
+    <Compile Include="Natclar.cs" />
     <Compile Include="NodeBL.cs" />
     <Compile Include="OccupationBL.cs" />
     <Compile Include="OrganizationBL.cs" />

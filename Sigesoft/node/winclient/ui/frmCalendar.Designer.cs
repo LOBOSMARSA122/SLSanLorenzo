@@ -173,6 +173,7 @@
             this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregarExamen = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnGenerarXML = new System.Windows.Forms.Button();
             this.btnAdjuntar = new System.Windows.Forms.Button();
             this.btnEnviarInformes = new System.Windows.Forms.Button();
             this.btnEnviarAsistencia = new System.Windows.Forms.Button();
@@ -192,6 +193,7 @@
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -716,7 +718,7 @@
             this.grdDataCalendar.Location = new System.Drawing.Point(9, 40);
             this.grdDataCalendar.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataCalendar.Name = "grdDataCalendar";
-            this.grdDataCalendar.Size = new System.Drawing.Size(601, 347);
+            this.grdDataCalendar.Size = new System.Drawing.Size(601, 315);
             this.grdDataCalendar.TabIndex = 44;
             this.grdDataCalendar.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdDataCalendar_InitializeLayout);
             this.grdDataCalendar.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataCalendar_InitializeRow);
@@ -1138,6 +1140,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnGenerarXML);
             this.splitContainer1.Panel1.Controls.Add(this.btnAdjuntar);
             this.splitContainer1.Panel1.Controls.Add(this.btnEnviarInformes);
             this.splitContainer1.Panel1.Controls.Add(this.btnEnviarAsistencia);
@@ -1164,6 +1167,28 @@
             this.splitContainer1.SplitterDistance = 622;
             this.splitContainer1.TabIndex = 53;
             // 
+            // btnGenerarXML
+            // 
+            this.btnGenerarXML.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGenerarXML.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGenerarXML.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGenerarXML.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnGenerarXML.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGenerarXML.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarXML.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarXML.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerarXML.Image = global::Sigesoft.Node.WinClient.UI.Resources.cog;
+            this.btnGenerarXML.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerarXML.Location = new System.Drawing.Point(9, 414);
+            this.btnGenerarXML.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarXML.Name = "btnGenerarXML";
+            this.btnGenerarXML.Size = new System.Drawing.Size(104, 24);
+            this.btnGenerarXML.TabIndex = 96;
+            this.btnGenerarXML.Text = "Generar XML";
+            this.btnGenerarXML.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerarXML.UseVisualStyleBackColor = false;
+            this.btnGenerarXML.Click += new System.EventHandler(this.btnGenerarXML_Click);
+            // 
             // btnAdjuntar
             // 
             this.btnAdjuntar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1176,7 +1201,7 @@
             this.btnAdjuntar.ForeColor = System.Drawing.Color.Black;
             this.btnAdjuntar.Image = global::Sigesoft.Node.WinClient.UI.Resources.attach;
             this.btnAdjuntar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdjuntar.Location = new System.Drawing.Point(471, 418);
+            this.btnAdjuntar.Location = new System.Drawing.Point(471, 386);
             this.btnAdjuntar.Margin = new System.Windows.Forms.Padding(2);
             this.btnAdjuntar.Name = "btnAdjuntar";
             this.btnAdjuntar.Size = new System.Drawing.Size(139, 24);
@@ -1198,7 +1223,7 @@
             this.btnEnviarInformes.ForeColor = System.Drawing.Color.Black;
             this.btnEnviarInformes.Image = global::Sigesoft.Node.WinClient.UI.Resources.email_transfer;
             this.btnEnviarInformes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnviarInformes.Location = new System.Drawing.Point(295, 391);
+            this.btnEnviarInformes.Location = new System.Drawing.Point(295, 359);
             this.btnEnviarInformes.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnviarInformes.Name = "btnEnviarInformes";
             this.btnEnviarInformes.Size = new System.Drawing.Size(122, 24);
@@ -1220,7 +1245,7 @@
             this.btnEnviarAsistencia.ForeColor = System.Drawing.Color.Black;
             this.btnEnviarAsistencia.Image = global::Sigesoft.Node.WinClient.UI.Resources.group_add;
             this.btnEnviarAsistencia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnviarAsistencia.Location = new System.Drawing.Point(295, 418);
+            this.btnEnviarAsistencia.Location = new System.Drawing.Point(295, 386);
             this.btnEnviarAsistencia.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnviarAsistencia.Name = "btnEnviarAsistencia";
             this.btnEnviarAsistencia.Size = new System.Drawing.Size(122, 24);
@@ -1241,7 +1266,7 @@
             this.btnEnviarCertificados.ForeColor = System.Drawing.Color.Black;
             this.btnEnviarCertificados.Image = global::Sigesoft.Node.WinClient.UI.Resources.email_transfer;
             this.btnEnviarCertificados.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEnviarCertificados.Location = new System.Drawing.Point(152, 418);
+            this.btnEnviarCertificados.Location = new System.Drawing.Point(152, 386);
             this.btnEnviarCertificados.Margin = new System.Windows.Forms.Padding(2);
             this.btnEnviarCertificados.Name = "btnEnviarCertificados";
             this.btnEnviarCertificados.Size = new System.Drawing.Size(139, 24);
@@ -1263,7 +1288,7 @@
             this.btnIniciarCircuitoMasivo.ForeColor = System.Drawing.Color.Black;
             this.btnIniciarCircuitoMasivo.Image = global::Sigesoft.Node.WinClient.UI.Resources.time;
             this.btnIniciarCircuitoMasivo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnIniciarCircuitoMasivo.Location = new System.Drawing.Point(9, 418);
+            this.btnIniciarCircuitoMasivo.Location = new System.Drawing.Point(9, 386);
             this.btnIniciarCircuitoMasivo.Margin = new System.Windows.Forms.Padding(2);
             this.btnIniciarCircuitoMasivo.Name = "btnIniciarCircuitoMasivo";
             this.btnIniciarCircuitoMasivo.Size = new System.Drawing.Size(139, 24);
@@ -1286,7 +1311,7 @@
             this.btnSendEmail.ForeColor = System.Drawing.Color.Black;
             this.btnSendEmail.Image = global::Sigesoft.Node.WinClient.UI.Resources.email_transfer;
             this.btnSendEmail.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSendEmail.Location = new System.Drawing.Point(295, 391);
+            this.btnSendEmail.Location = new System.Drawing.Point(295, 359);
             this.btnSendEmail.Margin = new System.Windows.Forms.Padding(2);
             this.btnSendEmail.Name = "btnSendEmail";
             this.btnSendEmail.Size = new System.Drawing.Size(122, 24);
@@ -1310,7 +1335,7 @@
             this.btnExportExcel.ForeColor = System.Drawing.Color.Black;
             this.btnExportExcel.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
             this.btnExportExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportExcel.Location = new System.Drawing.Point(421, 391);
+            this.btnExportExcel.Location = new System.Drawing.Point(421, 359);
             this.btnExportExcel.Margin = new System.Windows.Forms.Padding(2);
             this.btnExportExcel.Name = "btnExportExcel";
             this.btnExportExcel.Size = new System.Drawing.Size(99, 24);
@@ -1331,7 +1356,7 @@
             this.btnPerson.ForeColor = System.Drawing.Color.Black;
             this.btnPerson.Image = global::Sigesoft.Node.WinClient.UI.Resources.user;
             this.btnPerson.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPerson.Location = new System.Drawing.Point(9, 391);
+            this.btnPerson.Location = new System.Drawing.Point(9, 359);
             this.btnPerson.Margin = new System.Windows.Forms.Padding(2);
             this.btnPerson.Name = "btnPerson";
             this.btnPerson.Size = new System.Drawing.Size(139, 24);
@@ -1354,7 +1379,7 @@
             this.btnExportPdf.ForeColor = System.Drawing.Color.Black;
             this.btnExportPdf.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
             this.btnExportPdf.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportPdf.Location = new System.Drawing.Point(524, 391);
+            this.btnExportPdf.Location = new System.Drawing.Point(524, 359);
             this.btnExportPdf.Margin = new System.Windows.Forms.Padding(2);
             this.btnExportPdf.Name = "btnExportPdf";
             this.btnExportPdf.Size = new System.Drawing.Size(86, 24);
@@ -1376,7 +1401,7 @@
             this.btnMassive.ForeColor = System.Drawing.Color.Black;
             this.btnMassive.Image = global::Sigesoft.Node.WinClient.UI.Resources.group;
             this.btnMassive.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMassive.Location = new System.Drawing.Point(152, 391);
+            this.btnMassive.Location = new System.Drawing.Point(152, 359);
             this.btnMassive.Margin = new System.Windows.Forms.Padding(2);
             this.btnMassive.Name = "btnMassive";
             this.btnMassive.Size = new System.Drawing.Size(139, 24);
@@ -1713,5 +1738,7 @@
         private System.Windows.Forms.Button btnAdjuntar;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem tsmDeclaracionDrogas;
+        private System.Windows.Forms.Button btnGenerarXML;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
