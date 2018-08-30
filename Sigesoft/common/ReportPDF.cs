@@ -14081,11 +14081,15 @@ namespace NetPdf
                 }
 
                 ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000028");
-                var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
-                if (Reflejos != null)
+                if (oftalmologia!= null)
                 {
-                    ValorReflejosPupilares = Reflejos.v_Value1Name;
+                    var Reflejos = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_PRESION_INTRAOCULAR_OJO_DERECHO_ID);
+                    if (Reflejos != null)
+                    {
+                        ValorReflejosPupilares = Reflejos.v_Value1Name;
+                    }
                 }
+                
 
             #endregion
 
