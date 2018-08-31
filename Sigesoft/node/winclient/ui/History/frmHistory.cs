@@ -186,9 +186,19 @@ namespace Sigesoft.Node.WinClient.UI
             ddlDocTypeId.SelectedValue = objPersonDto.i_DocTypeId.ToString();
             txtNumDocument.Text = objPersonDto.v_DocNumber;
 
+            Utils.LoadDropDownList(cbEstCivil, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
+            cbEstCivil.SelectedValue = objPersonDto.i_MaritalStatusId.ToString();
+
+            Utils.LoadDropDownList(cbGInstruccion, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
+            cbGInstruccion.SelectedValue = objPersonDto.i_LevelOfId.ToString();
+
+            txtFNac.Text = objPersonDto.d_Birthdate.ToString().Split(' ')[0];
             DateTime FechaNacimiento = (DateTime)objPersonDto.d_Birthdate;
             int PacientAge = DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1;
             txtAge.Text = PacientAge.ToString();
+            textHijos.Text = (objPersonDto.i_NumberLivingChildren + objPersonDto.i_NumberDependentChildren).ToString();
+            textNacionalidad.Text = objPersonDto.v_Nacionalidad;
+            textReligion.Text = objPersonDto.v_Religion;
 
             this.Text = this.Text + "Antecedentes del Paciente : " + " (" + _personName + ")";
 
@@ -199,7 +209,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             if (FingerPrintImage == null || FingerPrintImage.Count() == 0) return;
 
-
+            
             pbFingerPrint.Image = Common.Utils.byteArrayToImage(FingerPrintImage);
 
             if (RubricImageText == null) return;

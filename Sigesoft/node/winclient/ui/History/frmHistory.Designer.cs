@@ -150,12 +150,16 @@
             this.treeViewPersonMedical = new System.Windows.Forms.TreeView();
             this.btnMovePersonMedical = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtFNac = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbEstCivil = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbGInstruccion = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.lblValidationStatus = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.imgInfoFirma = new System.Windows.Forms.PictureBox();
             this.lblResultFirma = new System.Windows.Forms.Label();
-            this.imgOkFirma = new System.Windows.Forms.PictureBox();
-            this.imgNoFirma = new System.Windows.Forms.PictureBox();
             this.imgInfo = new System.Windows.Forms.PictureBox();
             this.lblresult = new System.Windows.Forms.Label();
             this.imgNO = new System.Windows.Forms.PictureBox();
@@ -166,6 +170,9 @@
             this.memoHint = new System.Windows.Forms.TextBox();
             this.pnlPreviewTitle = new System.Windows.Forms.Panel();
             this.pbFingerPrint = new System.Windows.Forms.PictureBox();
+            this.imgInfoFirma = new System.Windows.Forms.PictureBox();
+            this.imgOkFirma = new System.Windows.Forms.PictureBox();
+            this.imgNoFirma = new System.Windows.Forms.PictureBox();
             this.ddlDocTypeId = new System.Windows.Forms.ComboBox();
             this.txtAge = new System.Windows.Forms.TextBox();
             this.txtNumDocument = new System.Windows.Forms.TextBox();
@@ -177,6 +184,11 @@
             this.pbEmployee = new System.Windows.Forms.PictureBox();
             this.ZKFPEngX1 = new AxZKFPEngXControl.AxZKFPEngX();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
+            this.txtReligión = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textHijos = new System.Windows.Forms.TextBox();
+            this.textNacionalidad = new System.Windows.Forms.TextBox();
+            this.textReligion = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -193,15 +205,15 @@
             this.contextMenuFamilyMedic.SuspendLayout();
             this.contextMenuStripOcupacional.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgInfoFirma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgOkFirma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgNoFirma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgNO)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgOK)).BeginInit();
             this.panelRubric.SuspendLayout();
             this.pnlPreviewTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFingerPrint)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgInfoFirma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgOkFirma)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgNoFirma)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZKFPEngX1)).BeginInit();
             this.SuspendLayout();
@@ -215,11 +227,11 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(7, 189);
+            this.tabControl1.Location = new System.Drawing.Point(7, 165);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(953, 367);
+            this.tabControl1.Size = new System.Drawing.Size(953, 412);
             this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
@@ -236,7 +248,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(945, 341);
+            this.tabPage1.Size = new System.Drawing.Size(945, 386);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Ocupacionales";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -291,7 +303,7 @@
             this.BtnNew.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.BtnNew.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.BtnNew.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnNew.Image = global::Sigesoft.Node.WinClient.UI.Resources.application;
+            this.BtnNew.Image = ((System.Drawing.Image)(resources.GetObject("BtnNew.Image")));
             this.BtnNew.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnNew.Location = new System.Drawing.Point(856, 41);
             this.BtnNew.Margin = new System.Windows.Forms.Padding(2);
@@ -326,7 +338,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(843, 306);
+            this.groupBox2.Size = new System.Drawing.Size(843, 351);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Resultados";
@@ -433,7 +445,7 @@
             this.grdDataOccupational.Location = new System.Drawing.Point(8, 17);
             this.grdDataOccupational.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataOccupational.Name = "grdDataOccupational";
-            this.grdDataOccupational.Size = new System.Drawing.Size(831, 278);
+            this.grdDataOccupational.Size = new System.Drawing.Size(831, 323);
             this.grdDataOccupational.TabIndex = 44;
             this.grdDataOccupational.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataOccupational_AfterSelectChange);
             // 
@@ -450,7 +462,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(945, 341);
+            this.tabPage2.Size = new System.Drawing.Size(945, 386);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Médicos Personales";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -463,9 +475,9 @@
             this.btnOtros.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnOtros.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnOtros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOtros.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.btnOtros.Image = ((System.Drawing.Image)(resources.GetObject("btnOtros.Image")));
             this.btnOtros.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOtros.Location = new System.Drawing.Point(442, 310);
+            this.btnOtros.Location = new System.Drawing.Point(442, 354);
             this.btnOtros.Margin = new System.Windows.Forms.Padding(2);
             this.btnOtros.Name = "btnOtros";
             this.btnOtros.Size = new System.Drawing.Size(75, 24);
@@ -483,9 +495,9 @@
             this.btnCancelPersonMedical.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCancelPersonMedical.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnCancelPersonMedical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelPersonMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnCancelPersonMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelPersonMedical.Image")));
             this.btnCancelPersonMedical.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelPersonMedical.Location = new System.Drawing.Point(866, 310);
+            this.btnCancelPersonMedical.Location = new System.Drawing.Point(866, 354);
             this.btnCancelPersonMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelPersonMedical.Name = "btnCancelPersonMedical";
             this.btnCancelPersonMedical.Size = new System.Drawing.Size(75, 24);
@@ -502,9 +514,9 @@
             this.btnSavePersonMedical.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSavePersonMedical.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnSavePersonMedical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSavePersonMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnSavePersonMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnSavePersonMedical.Image")));
             this.btnSavePersonMedical.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSavePersonMedical.Location = new System.Drawing.Point(787, 310);
+            this.btnSavePersonMedical.Location = new System.Drawing.Point(787, 354);
             this.btnSavePersonMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnSavePersonMedical.Name = "btnSavePersonMedical";
             this.btnSavePersonMedical.Size = new System.Drawing.Size(75, 24);
@@ -607,7 +619,7 @@
             this.ultraGrid2.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.ultraGrid2.Location = new System.Drawing.Point(13, 8);
             this.ultraGrid2.Name = "ultraGrid2";
-            this.ultraGrid2.Size = new System.Drawing.Size(401, 327);
+            this.ultraGrid2.Size = new System.Drawing.Size(401, 371);
             this.ultraGrid2.TabIndex = 56;
             this.ultraGrid2.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.ultraGrid2_InitializeLayout);
             this.ultraGrid2.CellChange += new Infragistics.Win.UltraWinGrid.CellEventHandler(this.ultraGrid2_CellChange);
@@ -720,7 +732,7 @@
             this.grdDataPersonMedical.Location = new System.Drawing.Point(442, 26);
             this.grdDataPersonMedical.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataPersonMedical.Name = "grdDataPersonMedical";
-            this.grdDataPersonMedical.Size = new System.Drawing.Size(499, 280);
+            this.grdDataPersonMedical.Size = new System.Drawing.Size(499, 324);
             this.grdDataPersonMedical.TabIndex = 49;
             this.grdDataPersonMedical.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataPersonMedical_AfterSelectChange);
             this.grdDataPersonMedical.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdDataPersonMedical_MouseDown);
@@ -743,7 +755,7 @@
             // btnDeletePersonMedical
             // 
             this.btnDeletePersonMedical.Enabled = false;
-            this.btnDeletePersonMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnDeletePersonMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnDeletePersonMedical.Image")));
             this.btnDeletePersonMedical.Location = new System.Drawing.Point(414, 170);
             this.btnDeletePersonMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeletePersonMedical.Name = "btnDeletePersonMedical";
@@ -764,7 +776,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(945, 341);
+            this.tabPage3.Size = new System.Drawing.Size(945, 386);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Hábitos Nocivos";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -778,9 +790,9 @@
             this.btnCancelNoxiuosHabits.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCancelNoxiuosHabits.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnCancelNoxiuosHabits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelNoxiuosHabits.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnCancelNoxiuosHabits.Image = ((System.Drawing.Image)(resources.GetObject("btnCancelNoxiuosHabits.Image")));
             this.btnCancelNoxiuosHabits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCancelNoxiuosHabits.Location = new System.Drawing.Point(854, 308);
+            this.btnCancelNoxiuosHabits.Location = new System.Drawing.Point(854, 352);
             this.btnCancelNoxiuosHabits.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancelNoxiuosHabits.Name = "btnCancelNoxiuosHabits";
             this.btnCancelNoxiuosHabits.Size = new System.Drawing.Size(75, 24);
@@ -797,9 +809,9 @@
             this.btnSaveNoxiousHabits.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSaveNoxiousHabits.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnSaveNoxiousHabits.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveNoxiousHabits.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnSaveNoxiousHabits.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveNoxiousHabits.Image")));
             this.btnSaveNoxiousHabits.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveNoxiousHabits.Location = new System.Drawing.Point(775, 308);
+            this.btnSaveNoxiousHabits.Location = new System.Drawing.Point(775, 352);
             this.btnSaveNoxiousHabits.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveNoxiousHabits.Name = "btnSaveNoxiousHabits";
             this.btnSaveNoxiousHabits.Size = new System.Drawing.Size(75, 24);
@@ -879,7 +891,7 @@
             this.grdDataNoxiousHabits.Location = new System.Drawing.Point(302, 42);
             this.grdDataNoxiousHabits.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataNoxiousHabits.Name = "grdDataNoxiousHabits";
-            this.grdDataNoxiousHabits.Size = new System.Drawing.Size(627, 262);
+            this.grdDataNoxiousHabits.Size = new System.Drawing.Size(627, 306);
             this.grdDataNoxiousHabits.TabIndex = 60;
             this.grdDataNoxiousHabits.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdDataNoxiousHabits_MouseDown);
             // 
@@ -918,13 +930,13 @@
             this.treeViewNoxiousHabits.Location = new System.Drawing.Point(20, 21);
             this.treeViewNoxiousHabits.Margin = new System.Windows.Forms.Padding(2);
             this.treeViewNoxiousHabits.Name = "treeViewNoxiousHabits";
-            this.treeViewNoxiousHabits.Size = new System.Drawing.Size(242, 282);
+            this.treeViewNoxiousHabits.Size = new System.Drawing.Size(242, 326);
             this.treeViewNoxiousHabits.TabIndex = 58;
             // 
             // btnDeleteNoxiousHabits
             // 
             this.btnDeleteNoxiousHabits.Enabled = false;
-            this.btnDeleteNoxiousHabits.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnDeleteNoxiousHabits.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteNoxiousHabits.Image")));
             this.btnDeleteNoxiousHabits.Location = new System.Drawing.Point(273, 169);
             this.btnDeleteNoxiousHabits.Margin = new System.Windows.Forms.Padding(2);
             this.btnDeleteNoxiousHabits.Name = "btnDeleteNoxiousHabits";
@@ -935,7 +947,7 @@
             // 
             // btnMoveNoxiousHabits
             // 
-            this.btnMoveNoxiousHabits.Image = global::Sigesoft.Node.WinClient.UI.Resources.play_green;
+            this.btnMoveNoxiousHabits.Image = ((System.Drawing.Image)(resources.GetObject("btnMoveNoxiousHabits.Image")));
             this.btnMoveNoxiousHabits.Location = new System.Drawing.Point(273, 128);
             this.btnMoveNoxiousHabits.Margin = new System.Windows.Forms.Padding(2);
             this.btnMoveNoxiousHabits.Name = "btnMoveNoxiousHabits";
@@ -957,7 +969,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(945, 341);
+            this.tabPage4.Size = new System.Drawing.Size(945, 386);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Médicos Familiares";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -971,9 +983,9 @@
             this.btnOtrosFamilyMedical.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnOtrosFamilyMedical.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnOtrosFamilyMedical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOtrosFamilyMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.btnOtrosFamilyMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnOtrosFamilyMedical.Image")));
             this.btnOtrosFamilyMedical.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOtrosFamilyMedical.Location = new System.Drawing.Point(190, 312);
+            this.btnOtrosFamilyMedical.Location = new System.Drawing.Point(190, 356);
             this.btnOtrosFamilyMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnOtrosFamilyMedical.Name = "btnOtrosFamilyMedical";
             this.btnOtrosFamilyMedical.Size = new System.Drawing.Size(75, 24);
@@ -991,9 +1003,9 @@
             this.btnCloseFamilyMedical.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCloseFamilyMedical.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnCloseFamilyMedical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseFamilyMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnCloseFamilyMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseFamilyMedical.Image")));
             this.btnCloseFamilyMedical.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCloseFamilyMedical.Location = new System.Drawing.Point(868, 315);
+            this.btnCloseFamilyMedical.Location = new System.Drawing.Point(868, 359);
             this.btnCloseFamilyMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnCloseFamilyMedical.Name = "btnCloseFamilyMedical";
             this.btnCloseFamilyMedical.Size = new System.Drawing.Size(75, 24);
@@ -1010,9 +1022,9 @@
             this.btnSaveFamilyMedical.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnSaveFamilyMedical.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnSaveFamilyMedical.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSaveFamilyMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnSaveFamilyMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveFamilyMedical.Image")));
             this.btnSaveFamilyMedical.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSaveFamilyMedical.Location = new System.Drawing.Point(789, 315);
+            this.btnSaveFamilyMedical.Location = new System.Drawing.Point(789, 359);
             this.btnSaveFamilyMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnSaveFamilyMedical.Name = "btnSaveFamilyMedical";
             this.btnSaveFamilyMedical.Size = new System.Drawing.Size(75, 24);
@@ -1091,7 +1103,7 @@
             this.grdDataFamilyMedical.Location = new System.Drawing.Point(306, 26);
             this.grdDataFamilyMedical.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataFamilyMedical.Name = "grdDataFamilyMedical";
-            this.grdDataFamilyMedical.Size = new System.Drawing.Size(637, 284);
+            this.grdDataFamilyMedical.Size = new System.Drawing.Size(637, 328);
             this.grdDataFamilyMedical.TabIndex = 67;
             this.grdDataFamilyMedical.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdDataFamilyMedical_MouseDown);
             // 
@@ -1131,14 +1143,14 @@
             this.treeViewFamilyMedicalAntecedents.Location = new System.Drawing.Point(23, 26);
             this.treeViewFamilyMedicalAntecedents.Margin = new System.Windows.Forms.Padding(2);
             this.treeViewFamilyMedicalAntecedents.Name = "treeViewFamilyMedicalAntecedents";
-            this.treeViewFamilyMedicalAntecedents.Size = new System.Drawing.Size(242, 282);
+            this.treeViewFamilyMedicalAntecedents.Size = new System.Drawing.Size(242, 326);
             this.treeViewFamilyMedicalAntecedents.TabIndex = 64;
             this.treeViewFamilyMedicalAntecedents.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeViewFamilyMedicalAntecedents_AfterSelect);
             // 
             // btnRemoveFamilyMedical
             // 
             this.btnRemoveFamilyMedical.Enabled = false;
-            this.btnRemoveFamilyMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnRemoveFamilyMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoveFamilyMedical.Image")));
             this.btnRemoveFamilyMedical.Location = new System.Drawing.Point(274, 180);
             this.btnRemoveFamilyMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoveFamilyMedical.Name = "btnRemoveFamilyMedical";
@@ -1149,7 +1161,7 @@
             // 
             // btnMoveFamilyMedical
             // 
-            this.btnMoveFamilyMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.play_green;
+            this.btnMoveFamilyMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnMoveFamilyMedical.Image")));
             this.btnMoveFamilyMedical.Location = new System.Drawing.Point(274, 139);
             this.btnMoveFamilyMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnMoveFamilyMedical.Name = "btnMoveFamilyMedical";
@@ -1169,7 +1181,7 @@
             // 
             // mnuNewOccupational
             // 
-            this.mnuNewOccupational.Image = global::Sigesoft.Node.WinClient.UI.Resources.application;
+            this.mnuNewOccupational.Image = ((System.Drawing.Image)(resources.GetObject("mnuNewOccupational.Image")));
             this.mnuNewOccupational.Name = "mnuNewOccupational";
             this.mnuNewOccupational.Size = new System.Drawing.Size(125, 22);
             this.mnuNewOccupational.Text = "Nuevo";
@@ -1205,7 +1217,7 @@
             // 
             // btnMovePersonMedical
             // 
-            this.btnMovePersonMedical.Image = global::Sigesoft.Node.WinClient.UI.Resources.play_green;
+            this.btnMovePersonMedical.Image = ((System.Drawing.Image)(resources.GetObject("btnMovePersonMedical.Image")));
             this.btnMovePersonMedical.Location = new System.Drawing.Point(420, 694);
             this.btnMovePersonMedical.Margin = new System.Windows.Forms.Padding(2);
             this.btnMovePersonMedical.Name = "btnMovePersonMedical";
@@ -1215,12 +1227,21 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textReligion);
+            this.groupBox1.Controls.Add(this.textNacionalidad);
+            this.groupBox1.Controls.Add(this.textHijos);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.txtReligión);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.txtFNac);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.cbEstCivil);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.cbGInstruccion);
+            this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.lblValidationStatus);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.imgInfoFirma);
             this.groupBox1.Controls.Add(this.lblResultFirma);
-            this.groupBox1.Controls.Add(this.imgOkFirma);
-            this.groupBox1.Controls.Add(this.imgNoFirma);
             this.groupBox1.Controls.Add(this.imgInfo);
             this.groupBox1.Controls.Add(this.lblresult);
             this.groupBox1.Controls.Add(this.imgNO);
@@ -1240,10 +1261,87 @@
             this.groupBox1.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox1.Location = new System.Drawing.Point(7, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(948, 156);
+            this.groupBox1.Size = new System.Drawing.Size(948, 141);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Trabajador";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(488, 90);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(45, 13);
+            this.label10.TabIndex = 120;
+            this.label10.Text = "N° Hijos";
+            // 
+            // txtFNac
+            // 
+            this.txtFNac.Enabled = false;
+            this.txtFNac.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFNac.Location = new System.Drawing.Point(534, 54);
+            this.txtFNac.Name = "txtFNac";
+            this.txtFNac.Size = new System.Drawing.Size(101, 20);
+            this.txtFNac.TabIndex = 119;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(489, 57);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 118;
+            this.label9.Text = "F. Nac";
+            // 
+            // cbEstCivil
+            // 
+            this.cbEstCivil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstCivil.Enabled = false;
+            this.cbEstCivil.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEstCivil.FormattingEnabled = true;
+            this.cbEstCivil.Location = new System.Drawing.Point(317, 83);
+            this.cbEstCivil.Margin = new System.Windows.Forms.Padding(2);
+            this.cbEstCivil.Name = "cbEstCivil";
+            this.cbEstCivil.Size = new System.Drawing.Size(144, 21);
+            this.cbEstCivil.TabIndex = 117;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(268, 90);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 13);
+            this.label8.TabIndex = 116;
+            this.label8.Text = "Est Civil";
+            // 
+            // cbGInstruccion
+            // 
+            this.cbGInstruccion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbGInstruccion.Enabled = false;
+            this.cbGInstruccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbGInstruccion.FormattingEnabled = true;
+            this.cbGInstruccion.Location = new System.Drawing.Point(98, 83);
+            this.cbGInstruccion.Margin = new System.Windows.Forms.Padding(2);
+            this.cbGInstruccion.Name = "cbGInstruccion";
+            this.cbGInstruccion.Size = new System.Drawing.Size(144, 21);
+            this.cbGInstruccion.TabIndex = 115;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(20, 90);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(73, 13);
+            this.label7.TabIndex = 114;
+            this.label7.Text = "G. Instrucción";
             // 
             // lblValidationStatus
             // 
@@ -1251,7 +1349,7 @@
             this.lblValidationStatus.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblValidationStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblValidationStatus.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblValidationStatus.Location = new System.Drawing.Point(84, 112);
+            this.lblValidationStatus.Location = new System.Drawing.Point(533, 117);
             this.lblValidationStatus.Name = "lblValidationStatus";
             this.lblValidationStatus.Size = new System.Drawing.Size(119, 15);
             this.lblValidationStatus.TabIndex = 113;
@@ -1262,22 +1360,11 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(19, 112);
+            this.label5.Location = new System.Drawing.Point(487, 117);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 13);
             this.label5.TabIndex = 112;
             this.label5.Text = "Estado";
-            // 
-            // imgInfoFirma
-            // 
-            this.imgInfoFirma.Enabled = false;
-            this.imgInfoFirma.Image = global::Sigesoft.Node.WinClient.UI.Resources.information;
-            this.imgInfoFirma.Location = new System.Drawing.Point(636, 137);
-            this.imgInfoFirma.Name = "imgInfoFirma";
-            this.imgInfoFirma.Size = new System.Drawing.Size(17, 16);
-            this.imgInfoFirma.TabIndex = 108;
-            this.imgInfoFirma.TabStop = false;
-            this.imgInfoFirma.Visible = false;
             // 
             // lblResultFirma
             // 
@@ -1287,30 +1374,10 @@
             this.lblResultFirma.Size = new System.Drawing.Size(0, 13);
             this.lblResultFirma.TabIndex = 111;
             // 
-            // imgOkFirma
-            // 
-            this.imgOkFirma.Image = ((System.Drawing.Image)(resources.GetObject("imgOkFirma.Image")));
-            this.imgOkFirma.Location = new System.Drawing.Point(636, 137);
-            this.imgOkFirma.Name = "imgOkFirma";
-            this.imgOkFirma.Size = new System.Drawing.Size(17, 16);
-            this.imgOkFirma.TabIndex = 110;
-            this.imgOkFirma.TabStop = false;
-            this.imgOkFirma.Visible = false;
-            // 
-            // imgNoFirma
-            // 
-            this.imgNoFirma.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
-            this.imgNoFirma.Location = new System.Drawing.Point(636, 137);
-            this.imgNoFirma.Name = "imgNoFirma";
-            this.imgNoFirma.Size = new System.Drawing.Size(17, 16);
-            this.imgNoFirma.TabIndex = 109;
-            this.imgNoFirma.TabStop = false;
-            this.imgNoFirma.Visible = false;
-            // 
             // imgInfo
             // 
-            this.imgInfo.Image = global::Sigesoft.Node.WinClient.UI.Resources.information;
-            this.imgInfo.Location = new System.Drawing.Point(456, 137);
+            this.imgInfo.Image = ((System.Drawing.Image)(resources.GetObject("imgInfo.Image")));
+            this.imgInfo.Location = new System.Drawing.Point(840, 24);
             this.imgInfo.Name = "imgInfo";
             this.imgInfo.Size = new System.Drawing.Size(17, 16);
             this.imgInfo.TabIndex = 107;
@@ -1327,8 +1394,8 @@
             // 
             // imgNO
             // 
-            this.imgNO.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
-            this.imgNO.Location = new System.Drawing.Point(455, 137);
+            this.imgNO.Image = ((System.Drawing.Image)(resources.GetObject("imgNO.Image")));
+            this.imgNO.Location = new System.Drawing.Point(840, 54);
             this.imgNO.Name = "imgNO";
             this.imgNO.Size = new System.Drawing.Size(17, 16);
             this.imgNO.TabIndex = 105;
@@ -1338,7 +1405,7 @@
             // imgOK
             // 
             this.imgOK.Image = ((System.Drawing.Image)(resources.GetObject("imgOK.Image")));
-            this.imgOK.Location = new System.Drawing.Point(458, 137);
+            this.imgOK.Location = new System.Drawing.Point(840, 83);
             this.imgOK.Name = "imgOK";
             this.imgOK.Size = new System.Drawing.Size(17, 16);
             this.imgOK.TabIndex = 104;
@@ -1354,9 +1421,9 @@
             this.panelRubric.Controls.Add(this.memoHint);
             this.panelRubric.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelRubric.ForeColor = System.Drawing.Color.White;
-            this.panelRubric.Location = new System.Drawing.Point(636, 19);
+            this.panelRubric.Location = new System.Drawing.Point(902, 12);
             this.panelRubric.Name = "panelRubric";
-            this.panelRubric.Size = new System.Drawing.Size(296, 120);
+            this.panelRubric.Size = new System.Drawing.Size(30, 120);
             this.panelRubric.TabIndex = 102;
             this.panelRubric.Visible = false;
             // 
@@ -1372,7 +1439,7 @@
             // 
             // btnDelSignature
             // 
-            this.btnDelSignature.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_close;
+            this.btnDelSignature.Image = ((System.Drawing.Image)(resources.GetObject("btnDelSignature.Image")));
             this.btnDelSignature.Location = new System.Drawing.Point(2, 3);
             this.btnDelSignature.Name = "btnDelSignature";
             this.btnDelSignature.Size = new System.Drawing.Size(20, 19);
@@ -1393,11 +1460,14 @@
             this.pnlPreviewTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlPreviewTitle.BackColor = System.Drawing.Color.Silver;
             this.pnlPreviewTitle.Controls.Add(this.pbFingerPrint);
+            this.pnlPreviewTitle.Controls.Add(this.imgInfoFirma);
+            this.pnlPreviewTitle.Controls.Add(this.imgOkFirma);
+            this.pnlPreviewTitle.Controls.Add(this.imgNoFirma);
             this.pnlPreviewTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlPreviewTitle.ForeColor = System.Drawing.Color.White;
-            this.pnlPreviewTitle.Location = new System.Drawing.Point(483, 19);
+            this.pnlPreviewTitle.Location = new System.Drawing.Point(860, 12);
             this.pnlPreviewTitle.Name = "pnlPreviewTitle";
-            this.pnlPreviewTitle.Size = new System.Drawing.Size(120, 120);
+            this.pnlPreviewTitle.Size = new System.Drawing.Size(36, 120);
             this.pnlPreviewTitle.TabIndex = 96;
             this.pnlPreviewTitle.Visible = false;
             // 
@@ -1406,13 +1476,44 @@
             this.pbFingerPrint.BackColor = System.Drawing.Color.Gray;
             this.pbFingerPrint.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbFingerPrint.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbFingerPrint.Location = new System.Drawing.Point(3, 3);
+            this.pbFingerPrint.Location = new System.Drawing.Point(3, 5);
             this.pbFingerPrint.Name = "pbFingerPrint";
-            this.pbFingerPrint.Size = new System.Drawing.Size(114, 114);
+            this.pbFingerPrint.Size = new System.Drawing.Size(43, 112);
             this.pbFingerPrint.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbFingerPrint.TabIndex = 39;
             this.pbFingerPrint.TabStop = false;
             this.pbFingerPrint.Visible = false;
+            // 
+            // imgInfoFirma
+            // 
+            this.imgInfoFirma.Enabled = false;
+            this.imgInfoFirma.Image = ((System.Drawing.Image)(resources.GetObject("imgInfoFirma.Image")));
+            this.imgInfoFirma.Location = new System.Drawing.Point(62, 12);
+            this.imgInfoFirma.Name = "imgInfoFirma";
+            this.imgInfoFirma.Size = new System.Drawing.Size(17, 16);
+            this.imgInfoFirma.TabIndex = 108;
+            this.imgInfoFirma.TabStop = false;
+            this.imgInfoFirma.Visible = false;
+            // 
+            // imgOkFirma
+            // 
+            this.imgOkFirma.Image = ((System.Drawing.Image)(resources.GetObject("imgOkFirma.Image")));
+            this.imgOkFirma.Location = new System.Drawing.Point(62, 33);
+            this.imgOkFirma.Name = "imgOkFirma";
+            this.imgOkFirma.Size = new System.Drawing.Size(17, 16);
+            this.imgOkFirma.TabIndex = 110;
+            this.imgOkFirma.TabStop = false;
+            this.imgOkFirma.Visible = false;
+            // 
+            // imgNoFirma
+            // 
+            this.imgNoFirma.Image = ((System.Drawing.Image)(resources.GetObject("imgNoFirma.Image")));
+            this.imgNoFirma.Location = new System.Drawing.Point(62, 55);
+            this.imgNoFirma.Name = "imgNoFirma";
+            this.imgNoFirma.Size = new System.Drawing.Size(17, 16);
+            this.imgNoFirma.TabIndex = 109;
+            this.imgNoFirma.TabStop = false;
+            this.imgNoFirma.Visible = false;
             // 
             // ddlDocTypeId
             // 
@@ -1420,37 +1521,37 @@
             this.ddlDocTypeId.Enabled = false;
             this.ddlDocTypeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlDocTypeId.FormattingEnabled = true;
-            this.ddlDocTypeId.Location = new System.Drawing.Point(84, 52);
+            this.ddlDocTypeId.Location = new System.Drawing.Point(99, 53);
             this.ddlDocTypeId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlDocTypeId.Name = "ddlDocTypeId";
-            this.ddlDocTypeId.Size = new System.Drawing.Size(123, 21);
+            this.ddlDocTypeId.Size = new System.Drawing.Size(144, 21);
             this.ddlDocTypeId.TabIndex = 101;
             // 
             // txtAge
             // 
             this.txtAge.Enabled = false;
             this.txtAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAge.Location = new System.Drawing.Point(84, 82);
+            this.txtAge.Location = new System.Drawing.Point(534, 24);
             this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(81, 20);
+            this.txtAge.Size = new System.Drawing.Size(101, 20);
             this.txtAge.TabIndex = 100;
             // 
             // txtNumDocument
             // 
             this.txtNumDocument.Enabled = false;
             this.txtNumDocument.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumDocument.Location = new System.Drawing.Point(246, 52);
+            this.txtNumDocument.Location = new System.Drawing.Point(317, 53);
             this.txtNumDocument.Name = "txtNumDocument";
-            this.txtNumDocument.Size = new System.Drawing.Size(78, 20);
+            this.txtNumDocument.Size = new System.Drawing.Size(144, 20);
             this.txtNumDocument.TabIndex = 99;
             // 
             // txtEmployee
             // 
             this.txtEmployee.Enabled = false;
             this.txtEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmployee.Location = new System.Drawing.Point(84, 24);
+            this.txtEmployee.Location = new System.Drawing.Point(98, 24);
             this.txtEmployee.Name = "txtEmployee";
-            this.txtEmployee.Size = new System.Drawing.Size(240, 20);
+            this.txtEmployee.Size = new System.Drawing.Size(363, 20);
             this.txtEmployee.TabIndex = 97;
             // 
             // label4
@@ -1458,7 +1559,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(19, 85);
+            this.label4.Location = new System.Drawing.Point(496, 27);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(32, 13);
             this.label4.TabIndex = 96;
@@ -1469,7 +1570,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(19, 57);
+            this.label3.Location = new System.Drawing.Point(30, 56);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(62, 13);
             this.label3.TabIndex = 95;
@@ -1480,7 +1581,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(214, 57);
+            this.label2.Location = new System.Drawing.Point(284, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 13);
             this.label2.TabIndex = 94;
@@ -1491,7 +1592,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(19, 31);
+            this.label1.Location = new System.Drawing.Point(34, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 93;
@@ -1502,7 +1603,7 @@
             this.pbEmployee.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pbEmployee.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbEmployee.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbEmployee.Location = new System.Drawing.Point(338, 19);
+            this.pbEmployee.Location = new System.Drawing.Point(697, 12);
             this.pbEmployee.Name = "pbEmployee";
             this.pbEmployee.Size = new System.Drawing.Size(110, 120);
             this.pbEmployee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1528,6 +1629,55 @@
             // ultraToolTipManager1
             // 
             this.ultraToolTipManager1.ContainingControl = this;
+            // 
+            // txtReligión
+            // 
+            this.txtReligión.AutoSize = true;
+            this.txtReligión.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReligión.ForeColor = System.Drawing.Color.Black;
+            this.txtReligión.Location = new System.Drawing.Point(266, 117);
+            this.txtReligión.Name = "txtReligión";
+            this.txtReligión.Size = new System.Drawing.Size(45, 13);
+            this.txtReligión.TabIndex = 122;
+            this.txtReligión.Text = "Religión";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(23, 115);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 13);
+            this.label12.TabIndex = 124;
+            this.label12.Text = "Nacionalidad";
+            // 
+            // textHijos
+            // 
+            this.textHijos.Enabled = false;
+            this.textHijos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textHijos.Location = new System.Drawing.Point(534, 84);
+            this.textHijos.Name = "textHijos";
+            this.textHijos.Size = new System.Drawing.Size(101, 20);
+            this.textHijos.TabIndex = 125;
+            // 
+            // textNacionalidad
+            // 
+            this.textNacionalidad.Enabled = false;
+            this.textNacionalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNacionalidad.Location = new System.Drawing.Point(98, 112);
+            this.textNacionalidad.Name = "textNacionalidad";
+            this.textNacionalidad.Size = new System.Drawing.Size(144, 20);
+            this.textNacionalidad.TabIndex = 126;
+            // 
+            // textReligion
+            // 
+            this.textReligion.Enabled = false;
+            this.textReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textReligion.Location = new System.Drawing.Point(317, 114);
+            this.textReligion.Name = "textReligion";
+            this.textReligion.Size = new System.Drawing.Size(144, 20);
+            this.textReligion.TabIndex = 127;
             // 
             // frmHistory
             // 
@@ -1562,9 +1712,6 @@
             this.contextMenuStripOcupacional.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgInfoFirma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgOkFirma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgNoFirma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgNO)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgOK)).EndInit();
@@ -1572,6 +1719,9 @@
             this.panelRubric.PerformLayout();
             this.pnlPreviewTitle.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbFingerPrint)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgInfoFirma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgOkFirma)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgNoFirma)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ZKFPEngX1)).EndInit();
             this.ResumeLayout(false);
@@ -1658,5 +1808,17 @@
         private System.Windows.Forms.Button btnCloseFamilyMedical;
         private System.Windows.Forms.Button btnSaveFamilyMedical;
         private Infragistics.Win.UltraWinToolTip.UltraToolTipManager ultraToolTipManager1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtFNac;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbEstCivil;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox cbGInstruccion;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label txtReligión;
+        private System.Windows.Forms.TextBox textReligion;
+        private System.Windows.Forms.TextBox textNacionalidad;
+        private System.Windows.Forms.TextBox textHijos;
     }
 }
