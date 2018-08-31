@@ -23481,7 +23481,8 @@ namespace Sigesoft.Node.WinClient.BLL
 									IdComponente = H.v_ComponentId,
 									NombreCampo = G.v_TextLabel,
 									IdCampo = C.v_ComponentFieldId,
-									i_GroupId = G.i_GroupId.Value
+									i_GroupId = G.i_GroupId.Value,
+                                    CategoryId =H.i_CategoryId.Value
 								}
 
 							);
@@ -23501,7 +23502,8 @@ namespace Sigesoft.Node.WinClient.BLL
 									  IdComponente = a.IdComponente,
 									  NombreCampo = a.NombreCampo,
 									  IdCampo = a.IdCampo,
-									  ValorName = sp == null ? "" : sp.v_Value1
+									  ValorName = sp == null ? "" : sp.v_Value1,
+                                      CategoryId = a.CategoryId
 								  }).ToList();
 
 
