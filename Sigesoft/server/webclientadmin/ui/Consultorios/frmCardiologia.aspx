@@ -455,9 +455,86 @@
 
                             </Items>
                         </x:Tab>
-                         <x:Tab ID="TabVacio" BodyPadding="5px" Title=" " runat="server">
-                            <Items>
+                         <x:Tab ID="TabElectroYanacocha" BodyPadding="5px" Title="Electrocardiograma" runat="server">
+                                <Toolbars>
+                                <x:Toolbar ID="Toolbar1" runat="server">
+                                    <Items>
+                                        <%--<x:Button ID="Button1" Text="Grabar Electrocardiograma" Icon="SystemSave" runat="server" OnClick="btnGrabarElectrocardiograma_Click" AjaxLoadingType="Mask"></x:Button>                                   
+                                          <x:FileUpload runat="server" ID="FileUpload1" EmptyText="Por favor seleccione un archivo" Width="300" Height="25"
+                                        Label="Seleccionar Excel" ButtonIcon="SystemSearch" OnFileSelected="fileDoc_FileSelected" AutoPostBack="true" ButtonText="Subir Adjunto" Readonly="False">
+                                        </x:FileUpload>
+                                         <x:Button ID="Button2" runat="server" Text="Descargar Adjuntos" Icon="ArrowDown"></x:Button>
+                                        <x:Label ID="Label20" runat="server" Text="....." ShowLabel="false"></x:Label>
+                                        <x:Label ID="Label21" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
+                                        <x:DropDownList ID="DropDownList1" runat="server"></x:DropDownList>
+                                        <x:Button ID="Button3" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>--%>
+                                    </Items>
+                                </x:Toolbar>
+                                </Toolbars>
+                             <Items>
+                               <x:Panel ID="panel7" Title="INTERPRETACIÓN DEL ELECTROCARDIOGRAMA" EnableBackgroundColor="true" Height="80px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
+                                    <Items>
+                                        <x:Form ID="Form4" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
+                                            <Rows>
+                                                 <x:FormRow ID="FormRow6" ColumnWidths="200px 80px  200px 80px  200px 80px  " runat="server" >
+                                                    <Items>
+                                                        <x:Label ID="label20" runat="server" Text="FRECUENCIA CARDIACA:" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="TextBox1" runat="server" Text="" ShowLabel="false"></x:TextBox>  
 
+                                                         <x:Label ID="label21" runat="server" Text="RITMO CARDIACO:" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="TextBox2" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+
+                                                         <x:Label ID="label22" runat="server" Text="INTERVALO PR:" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="TextBox3" runat="server" Text="" ShowLabel="false"></x:TextBox> 
+                                                    </Items>
+                                                </x:FormRow>
+                                                 <x:FormRow ID="FormRow7" ColumnWidths="200px 80px  200px 80px  200px 80px  " runat="server" >
+                                                    <Items>
+                                                       <x:Label ID="label23" runat="server" Text="INTERVALO QT:" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="TextBox4" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+
+                                                         <x:Label ID="label24" runat="server" Text="EJE CARDIACO:" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="TextBox5" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+
+                                                         <x:Label ID="label25" runat="server" Text="SEGMENTO ST:" ShowLabel="false"></x:Label>
+                                                        <x:TextBox ID="TextBox6" runat="server" Text="" ShowLabel="false"></x:TextBox>                                                                                          
+                                                    </Items>
+                                                </x:FormRow>
+                                             </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
+                               <x:Panel ID="panel8" Title="OTRAS ALTERACIONES ELECTROCARDIOGRAFICAS" EnableBackgroundColor="true" Height="80px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
+                                    <Items>
+                                        <x:Form ID="Form5" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left" >
+                                            <Rows>
+                                                 <x:FormRow ID="FormRow8" ColumnWidths="100px 480px  " runat="server" >
+                                                    <Items>
+                                                        <x:Label ID="label26" runat="server" Text="DESCRIPCION:" ShowLabel="false"></x:Label>
+                                                        <x:TextArea ID="TextArea1" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>  
+                                                    </Items>
+                                                </x:FormRow>
+                                             </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
+                               <x:Panel ID="panel9" Title="HALLAZGOS" EnableBackgroundColor="true" Height="80px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
+                                    <Items>
+                                        <x:Form ID="Form6" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left" >
+                                            <Rows>
+                                                 <x:FormRow ID="FormRow9" ColumnWidths="100px 480px  " runat="server" >
+                                                    <Items>
+                                                        <x:Label ID="label27" runat="server" Text="DESCRIPCION:" ShowLabel="false"></x:Label>
+                                                        <x:TextArea ID="TextArea2" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>  
+                                                    </Items>
+                                                </x:FormRow>
+                                             </Rows>
+                                        </x:Form>
+                                    </Items>
+                                </x:Panel>
                             </Items>
                         </x:Tab>
                     </Tabs>

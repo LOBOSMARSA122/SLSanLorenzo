@@ -62,16 +62,17 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 TabOftalmologia_Internacional.Hidden = true;
 
                 TabOftalmo.Attributes.Add("Tag", "N002-ME000000028");
+                TabOftalmoYanacocha.Attributes.Add("Tag", "N009-ME000000449");
                 TabOftalmologia_Internacional.Attributes.Add("Tag", "N005-ME000000028");
 
                 dpFechaInicio.SelectedDate = DateTime.Now.AddDays(-1);  //  DateTime.Parse("12/11/2016");
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
 
-
+                #region Oftalmo
                 chkuso_de_correctores_si.Attributes.Add("Tag", "N002-MF000000224");
                 chkuso_de_correctores_no.Attributes.Add("Tag", "N009-MF000000719");
-                txtultima_refraccion.Attributes.Add("Tag","N002-MF000000225");
+                txtultima_refraccion.Attributes.Add("Tag", "N002-MF000000225");
                 //chkdiabetes.Attributes.Add("Tag","N009-MF000000176");
                 //chkhipertension.Attributes.Add("Tag","N009-MF000000175");
                 //chksust_quimicas.Attributes.Add("Tag","N009-MF000000180");
@@ -90,7 +91,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 //chktrans_de_cornea.Attributes.Add("Tag","N009-MF000002088");
                 //chkcataratas.Attributes.Add("Tag","N009-MF000002089");
                 //chkchalazion.Attributes.Add("Tag","N009-MF000002090");
-                txtotras_patologia.Attributes.Add("Tag","N009-MF000002091");
+                txtotras_patologia.Attributes.Add("Tag", "N009-MF000002091");
 
 
 
@@ -133,21 +134,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 //chkatrofia_de_no_ojo_izquierdo.Attributes.Add("Tag","N009-MF000000534");
 
                 //txtcampimetria_od.Attributes.Add("Tag","N009-MF000002094");
-                txtcampimetria_oi.Attributes.Add("Tag","N009-MF000002095");
-                txttonometria_od.Attributes.Add("Tag","N009-MF000002096");
-                txttonometria_oi.Attributes.Add("Tag","N009-MF000002097");
-                chknormal_ishihara.Attributes.Add("Tag","N009-MF000000711");
-                chkanormal_ishihara.Attributes.Add("Tag","N009-MF000000712");
-                ddldescripcion_ishihara.Attributes.Add("Tag","N009-MF000002094");
+                txtcampimetria_oi.Attributes.Add("Tag", "N009-MF000002095");
+                txttonometria_od.Attributes.Add("Tag", "N009-MF000002096");
+                txttonometria_oi.Attributes.Add("Tag", "N009-MF000002097");
+                chknormal_ishihara.Attributes.Add("Tag", "N009-MF000000711");
+                chkanormal_ishihara.Attributes.Add("Tag", "N009-MF000000712");
+                ddldescripcion_ishihara.Attributes.Add("Tag", "N009-MF000002094");
                 txtrecuperacion_estereopsis.Attributes.Add("Tag", "N009-MF000002093");
-                txtencandilamiento_estereopsis.Attributes.Add("Tag","N002-MF000000226");
+                txtencandilamiento_estereopsis.Attributes.Add("Tag", "N002-MF000000226");
                 //txttiempo_estereopsis.Attributes.Add("Tag","N002-MF000000258");
                 //chkanormal_estereopsis.Attributes.Add("Tag","N002-MF000000342");
                 //chknormal_estereopsis.Attributes.Add("Tag","N002-MF000000343");
-
-
-
-
+                #endregion
                 #region Oftalmologia Internacional
 
                 //Oftalmología
@@ -187,6 +185,29 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkIrisIzquierdo_Internacional.Attributes.Add("Tag", "N005-MF000000531");
                 chkMovOcularDerecho_Internacional.Attributes.Add("Tag", "N005-MF000000533");
                 chkMovOcularIzquierdo_Internacional.Attributes.Add("Tag", "N005-MF000000534");
+                #endregion
+                #region OftalmoYanacocha
+                ddlSCVCOD_Yana.Attributes.Add("Tag", "N009-MF000003614");
+                ddlSCVCOI_Yana.Attributes.Add("Tag", "N009-MF000003615");
+                ddlCCVCOD_Yana.Attributes.Add("Tag", "N009-MF000003616");
+                ddlCCVCOI_Yana.Attributes.Add("Tag", "N009-MF000003617");
+                ddlSCVLOD_Yana.Attributes.Add("Tag", "N009-MF000003618");
+                ddlSCVLOI_Yana.Attributes.Add("Tag", "N009-MF000003619");
+                ddlCCVLOD_Yana.Attributes.Add("Tag", "N009-MF000003620");
+                ddlCCVLOI_Yana.Attributes.Add("Tag", "N009-MF000003621");
+                txtEnfOculares_Yana.Attributes.Add("Tag", "N009-MF000003592");
+                ddlTestIshihara_Yana.Attributes.Add("Tag", "N009-MF000003593");
+                ddlReflejos_Yana.Attributes.Add("Tag", "N009-MF000003594");
+                ddlMaculaOD_Yana.Attributes.Add("Tag", "N009-MF000003597");
+                ddlNervioOD_Yana.Attributes.Add("Tag", "N009-MF000003599");
+                ddlRetinaOD_Yana.Attributes.Add("Tag", "N009-MF000003601");
+                ddlMaculaOI_Yana.Attributes.Add("Tag", "N009-MF000003598");
+                ddlNervioOI_Yana.Attributes.Add("Tag", "N009-MF000003600");
+                ddlRetinaOI_Yana.Attributes.Add("Tag", "N009-MF000003602");
+                txtPIOD_Yana.Attributes.Add("Tag", "N009-MF000003595");
+                txtPIOI_Yana.Attributes.Add("Tag", "N009-MF000003596");
+                txtObsv_Yana.Attributes.Add("Tag", "N009-MF000003603");
+
                 #endregion
 
                 int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
@@ -399,6 +420,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             //var _objData = _serviceBL.GetAllServices_(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, dpFechaInicio.SelectedDate.Value, dpFechaFin.SelectedDate.Value.AddDays(1));
             List<string> ComponentesId = new List<string>();
             ComponentesId.Add("N002-ME000000028");
+            ComponentesId.Add("N009-ME000000449");
             ComponentesId.Add("N005-ME000000028");
             var _objData = _serviceBL.GetAllServices_Consultorio(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, dpFechaInicio.SelectedDate.Value, dpFechaFin.SelectedDate.Value.AddDays(1), ComponentesId.ToArray());
            
@@ -1170,6 +1192,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);
             var Combo217 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 217);
+            var Combo221 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 221);
             var Combo290 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 290);
             var Combo287 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 287);
             var Combo289 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 289);
@@ -1202,6 +1225,29 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
 
+        }
+        private void LoadCombosOftalmoYanacocha()
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);
+            var Combo217 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 217);
+            var Combo221 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 221);
+            var Combo290 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 290);
+            var Combo287 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 287);
+            var Combo289 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 289);
+            var Combo288 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 288);
+
+
+            Utils.LoadDropDownList(ddlSCVCOD_Yana, "Value1", "Id", Combo290, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlSCVCOI_Yana, "Value1", "Id", Combo290, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCCVCOD_Yana, "Value1", "Id", Combo290, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCCVCOI_Yana, "Value1", "Id", Combo290, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlSCVLOD_Yana, "Value1", "Id", Combo287, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlSCVLOI_Yana, "Value1", "Id", Combo287, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCCVLOD_Yana, "Value1", "Id", Combo287, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCCVLOI_Yana, "Value1", "Id", Combo287, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlTestIshihara_Yana, "Value1", "Id", Combo221, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlReflejos_Yana, "Value1", "Id", Combo288, DropDownListAction.Select);
         }
 
         private void ObtenerDatosOftalmo(string pServiceId, string pPersonId)

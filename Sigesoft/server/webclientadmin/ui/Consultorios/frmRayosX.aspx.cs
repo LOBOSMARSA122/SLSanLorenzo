@@ -94,11 +94,25 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 //oit
                 txtOITCodigoPlaca.Attributes.Add("Tag", "N002-MF000000211");
-                dptOITFechaLectura.Attributes.Add("Tag", "N009-MF000000587");
-                dptOITFechaToma.Attributes.Add("Tag", "N009-MF000001982");
+                txtOITFechaLectura.Attributes.Add("Tag", "N009-MF000000587");
+                txtOITFechaToma.Attributes.Add("Tag", "N009-MF000000588");
                 ddlOITCalidad.Attributes.Add("Tag", "N002-MF000000184");
-                ddlOITCausas.Attributes.Add("Tag", "N002-MF000000210");
                 txtOITComentarios.Attributes.Add("Tag", "N009-MF000000589");
+                //ddlOITCausas.Attributes.Add("Tag", "N002-MF000000210");
+                ChckNinguna.Attributes.Add("Tag", "N009-MF000003196");
+                ChckSobreExp.Attributes.Add("Tag", "N009-MF000003197");
+                ChckSubExp.Attributes.Add("Tag", "N009-MF000003198");
+                ChckPosCent.Attributes.Add("Tag", "N009-MF000003201");
+                ChckBajaInsp.Attributes.Add("Tag", "N009-MF000003199");
+                ChckEscapula.Attributes.Add("Tag", "N009-MF000003200");
+                ChckArtefact.Attributes.Add("Tag", "N009-MF000003202");
+                ChckOtros.Attributes.Add("Tag", "N009-MF000003203");
+                txtLectVertice.Attributes.Add("Tag", "N009-MF000002501");
+                txtLectSenos.Attributes.Add("Tag", "N009-MF000002496");
+                txtLectCampos.Attributes.Add("Tag", "N009-MF000002497");
+                txtLectMediast.Attributes.Add("Tag", "N009-MF000002498");
+                txtLectHilios.Attributes.Add("Tag", "N009-MF000002499");
+                txtLectSilueta.Attributes.Add("Tag", "N009-MF000002500");
                 chkOITSuperiorDer.Attributes.Add("Tag", "N009-MF000000218");
                 chkOITSuperiorIzq.Attributes.Add("Tag", "N009-MF000000219");
                 chkOITMedioDer.Attributes.Add("Tag", "N009-MF000000220");
@@ -1248,7 +1262,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var Combo166 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 166);
 
             Utils.LoadDropDownList(ddlOITCalidad, "Value1", "Id", Combo165, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlOITCausas, "Value1", "Id", Combo166, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlOITCausas, "Value1", "Id", Combo166, DropDownListAction.Select);
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
             Utils.LoadDropDownList(ddlUsuarioGrabaOIT, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);

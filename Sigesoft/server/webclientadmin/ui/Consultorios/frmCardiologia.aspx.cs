@@ -66,6 +66,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 TabElectrocardiograma.Hidden = true;
                 TabElectrocardiograma.Attributes.Add("Tag", "N002-ME000000025");
+                TabElectroYanacocha.Attributes.Add("Tag", "N009-ME000000413");
 
                 dpFechaInicio.SelectedDate = DateTime.Now.AddDays(-1);  //  DateTime.Parse("12/11/2016");
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 

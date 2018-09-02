@@ -1408,13 +1408,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label399;
         
         /// <summary>
-        /// Control dptOITFechaLectura.
+        /// Control txtOITFechaLectura.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox dptOITFechaLectura;
+        protected global::FineUI.TextBox txtOITFechaLectura;
         
         /// <summary>
         /// Control label400.
@@ -1426,13 +1426,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label400;
         
         /// <summary>
-        /// Control dptOITFechaToma.
+        /// Control txtOITFechaToma.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.DatePicker dptOITFechaToma;
+        protected global::FineUI.TextBox txtOITFechaToma;
         
         /// <summary>
         /// Control FormRow356.
@@ -1480,51 +1480,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DropDownList ddlOITCalidad;
         
         /// <summary>
-        /// Control label402.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.Label label402;
-        
-        /// <summary>
-        /// Control ddlOITCausas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.DropDownList ddlOITCausas;
-        
-        /// <summary>
-        /// Control FormRow439.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow439;
-        
-        /// <summary>
-        /// Control label605.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.Label label605;
-        
-        /// <summary>
-        /// Control FormRow437.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow437;
-        
-        /// <summary>
         /// Control label604.
         /// </summary>
         /// <remarks>
@@ -1543,22 +1498,292 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOITComentarios;
         
         /// <summary>
-        /// Control label606.
+        /// Control Panel3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.Label label606;
+        protected global::FineUI.Panel Panel3;
         
         /// <summary>
-        /// Control label607.
+        /// Control Form3.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.Label label607;
+        protected global::FineUI.Form Form3;
+        
+        /// <summary>
+        /// Control FormRow3.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow3;
+        
+        /// <summary>
+        /// Control ChckNinguna.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ChckNinguna;
+        
+        /// <summary>
+        /// Control ChckSobreExp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ChckSobreExp;
+        
+        /// <summary>
+        /// Control ChckSubExp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ChckSubExp;
+        
+        /// <summary>
+        /// Control ChckPosCent.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ChckPosCent;
+        
+        /// <summary>
+        /// Control FormRow4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow4;
+        
+        /// <summary>
+        /// Control label18.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label18;
+        
+        /// <summary>
+        /// Control FormRow5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow5;
+        
+        /// <summary>
+        /// Control ChckBajaInsp.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ChckBajaInsp;
+        
+        /// <summary>
+        /// Control ChckEscapula.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ChckEscapula;
+        
+        /// <summary>
+        /// Control ChckArtefact.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ChckArtefact;
+        
+        /// <summary>
+        /// Control ChckOtros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.CheckBox ChckOtros;
+        
+        /// <summary>
+        /// Control Panel4.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Panel Panel4;
+        
+        /// <summary>
+        /// Control Form5.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Form Form5;
+        
+        /// <summary>
+        /// Control FormRow6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow6;
+        
+        /// <summary>
+        /// Control label16.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label16;
+        
+        /// <summary>
+        /// Control txtLectVertice.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.TextArea txtLectVertice;
+        
+        /// <summary>
+        /// Control label17.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label17;
+        
+        /// <summary>
+        /// Control txtLectSenos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.TextArea txtLectSenos;
+        
+        /// <summary>
+        /// Control label19.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label19;
+        
+        /// <summary>
+        /// Control txtLectCampos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.TextArea txtLectCampos;
+        
+        /// <summary>
+        /// Control FormRow7.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow7;
+        
+        /// <summary>
+        /// Control label15.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label15;
+        
+        /// <summary>
+        /// Control FormRow8.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow8;
+        
+        /// <summary>
+        /// Control label20.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label20;
+        
+        /// <summary>
+        /// Control txtLectMediast.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.TextArea txtLectMediast;
+        
+        /// <summary>
+        /// Control label21.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label21;
+        
+        /// <summary>
+        /// Control txtLectHilios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.TextArea txtLectHilios;
+        
+        /// <summary>
+        /// Control label22.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label22;
+        
+        /// <summary>
+        /// Control txtLectSilueta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.TextArea txtLectSilueta;
         
         /// <summary>
         /// Control Panel36.
