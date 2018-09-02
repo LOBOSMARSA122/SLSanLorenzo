@@ -3235,6 +3235,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Toolbar Toolbar1;
         
         /// <summary>
+        /// Control btnGrabarYanacocha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Button btnGrabarYanacocha;
+        
+        /// <summary>
         /// Control Panel7.
         /// </summary>
         /// <remarks>

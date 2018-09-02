@@ -454,7 +454,12 @@ namespace Sigesoft.Common
         MP3,
         MP4,
         WMA,
-        WAV
+        WAV,
+        DCM,
+        DC3,
+        DIC
+
+
     }
 
     /// <summary>

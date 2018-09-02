@@ -1280,7 +1280,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["ComponentesOIT"] = objExamenOIT;
             var ComponentesOIT = (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["ComponentesOIT"];
             
-            if (ComponentesOIT.Find(p => p.v_ComponentFieldsId == "N009-MF000001981") != null)
+            if (ComponentesOIT.Find(p => p.v_ComponentFieldsId == "N002-MF000000211") != null)
             {
                 SearchControlAndLoadData(TabOIT, Session["ServicioComponentIdOIT"].ToString(), ComponentesOIT);
                 #region Campos de Auditoria

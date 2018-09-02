@@ -333,6 +333,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         ObtenerDatosOftalmo_Internacional(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabOftalmologia_Internacional.Hidden = false;
                     }
+                    else if (item.ComponentId == TabOftalmoYanacocha.Attributes.GetValue("Tag").ToString())
+                    {
+                        LoadCombosOftalmoYanacocha();
+                        ObtenerDatosOftalmoYanacocha(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                        TabOftalmoYanacocha.Hidden = false;
+                    }
                 }
             }
             else
@@ -1344,6 +1350,80 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
           
         }
 
+        protected void btnGrabarYanacocha_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            SearchControlAndSetValues(TabOftalmoYanacocha, Session["ServicioComponentIdOftalmoYanacocha"].ToString());
+
+            var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
+                                                       (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
+                                                      ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                       Session["PersonId"].ToString(),
+                                                      Session["ServicioComponentIdOftalmoYanacocha"].ToString());
+            //Gabar Dx
+            #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
+
+            var serviceComponentDto = new servicecomponentDto();
+            serviceComponentDto.v_ServiceComponentId = Session["ServicioComponentIdMedicina"].ToString();
+            //Obtener fecha de Actualizacion
+            var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, Session["ServicioComponentIdMedicina"].ToString()).d_UpdateDate;
+            serviceComponentDto.v_Comment = "";
+            //grabar estado del examen según profesión del usuario
+            int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
+
+            if (ProfesionId == 30) // evaluador
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
+
+            }
+            else if (ProfesionId == 31)//auditor
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
+
+            }
+            //serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceStatus.Culminado;
+
+            serviceComponentDto.i_ExternalInternalId = 1;
+            serviceComponentDto.i_IsApprovedId = 1;
+
+            serviceComponentDto.v_ComponentId = "N009-ME000000449";
+            serviceComponentDto.v_ServiceId = Session["ServiceId"].ToString();
+            serviceComponentDto.d_UpdateDate = FechaUpdate;
+
+            #endregion
+
+            //obtener el usuario antiguo
+            Session["UsuarioLogueado"] = ((ClientSession)Session["objClientSession"]).i_SystemUserId;
+            // Grabar Dx por examen componente mas sus restricciones
+
+            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(ddlUsuarioGrabar.SelectedValue.ToString());
+
+
+            _serviceBL.AddDiagnosticRepository(ref objOperationResult,
+                                                   null,
+                                                   serviceComponentDto,
+                                                   ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                   true);
+
+            //Analizar el resultado de la operación
+            if (objOperationResult.Success == 1)  // Operación sin error
+            {
+                //Mostrar
+                grdComponentes.DataSource = _serviceBL.GetServiceComponentByCategoryId(ref objOperationResult, int.Parse(ddlConsultorio.SelectedValue.ToString()), Session["ServiceId"].ToString());
+                grdComponentes.DataBind();
+                Session["_serviceComponentFieldsList"] = null;
+                Alert.ShowInTop("Se grabó correctamente", MessageBoxIcon.Information);
+            }
+            else  // Operación con error
+            {
+                Alert.ShowInTop("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage);
+                // Se queda en el formulario.
+            }
+            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(Session["UsuarioLogueado"].ToString());
+
+        }
+
+
         private void ObtenerDatosOftalmo_Internacional(string pServiceId, string pPersonId)
         {
             OperationResult objOperationResult = new OperationResult();
@@ -1358,6 +1438,59 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 #region Campos de Auditoria
 
                 var datosAuditoria = HistoryBL.CamposAuditoria(oExamenOftalmo[0].ServicioComponentId);
+                if (datosAuditoria != null)
+                {
+                    txtOftalmologiaAuditoria.Text = datosAuditoria.UserNameAuditoriaInsert;
+                    txtOftalmologiaAuditoriaInsercion.Text = datosAuditoria.FechaHoraAuditoriaInsert;
+                    txtOftalmologiaAuditoriaModificacion.Text = datosAuditoria.FechaHoraAuditoriaEdit;
+
+                    txtOftalmologiaEvaluador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                    txtOftalmologiaEvaluadorInsercion.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                    txtOftalmologiaEvaluadorModificacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+
+                    txtOftalmologiaInformador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                    txtOftalmologiaInformadorInsercion.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                    txtOftalmologiaInformadorModificacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+                }
+
+                #endregion
+            }
+            else
+            {
+                var _tmpServiceComponentsForBuildMenuList = new ServiceBL().ObtenerValoresPorDefecto(ref objOperationResult, pServiceId);
+                SearchControlAndClean(TabOftalmologia_Internacional, _tmpServiceComponentsForBuildMenuList);
+
+                txtOftalmologiaAuditoria.Text = "";
+                txtOftalmologiaAuditoriaInsercion.Text = "";
+                txtOftalmologiaAuditoriaModificacion.Text = "";
+
+                txtOftalmologiaEvaluador.Text = "";
+                txtOftalmologiaEvaluadorInsercion.Text = "";
+                txtOftalmologiaEvaluadorModificacion.Text = "";
+
+                txtOftalmologiaInformador.Text = "";
+                txtOftalmologiaInformadorInsercion.Text = "";
+                txtOftalmologiaInformadorModificacion.Text = "";
+            }
+
+
+
+        }
+
+        private void ObtenerDatosOftalmoYanacocha(string pServiceId, string pPersonId)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var oExamenOftalmoYanacocha = _serviceBL.ObtenerIdsParaImportacionExcel(new List<string> { pServiceId }, 14);
+            Session["ServicioComponentIdOftalmoYanacocha"] = oExamenOftalmoYanacocha[0].ServicioComponentId;
+            var objExamenOftalmoYanacocha = _serviceBL.GetServiceComponentFields(oExamenOftalmoYanacocha == null ? "" : oExamenOftalmoYanacocha[0].ServicioComponentId, pServiceId);
+            Session["ComponentesOftalmoYanacocha"] = objExamenOftalmoYanacocha;
+            if (objExamenOftalmoYanacocha.ToList().Count != 0)
+            {
+                SearchControlAndLoadData(TabOftalmoYanacocha, Session["ServicioComponentIdOftalmoYanacocha"].ToString(), (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["ComponentesOftalmoYanacocha"]);
+
+                #region Campos de Auditoria
+
+                var datosAuditoria = HistoryBL.CamposAuditoria(oExamenOftalmoYanacocha[0].ServicioComponentId);
                 if (datosAuditoria != null)
                 {
                     txtOftalmologiaAuditoria.Text = datosAuditoria.UserNameAuditoriaInsert;

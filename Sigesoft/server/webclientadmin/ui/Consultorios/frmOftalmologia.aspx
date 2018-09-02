@@ -1149,7 +1149,7 @@
                              <Toolbars>
                                 <x:Toolbar ID="Toolbar1" runat="server">
                                     <Items>
-                                        <%--<x:Button ID="btnGrabarYanacocha" Text="Grabar Oftalmología" Icon="SystemSave" runat="server" OnClick="btnGrabarYanacocha_Click" AjaxLoadingType="Mask"></x:Button>--%>                                   
+                                        <x:Button ID="btnGrabarYanacocha" Text="Grabar Oftalmología" Icon="SystemSave" runat="server" OnClick="btnGrabarYanacocha_Click" AjaxLoadingType="Mask"></x:Button>                                   
                                       
                                     </Items>
                                 </x:Toolbar>

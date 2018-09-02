@@ -155,11 +155,11 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
             {
                 var fileSize = Convert.ToInt32(Convert.ToSingle(Common.Utils.GetFileSizeInMegabytes(openFileDialog1.FileName)));
 
-                if (fileSize > 7)
-                {
-                    MessageBox.Show("La imagen que está tratando de subir es damasiado grande.\nEl tamaño maximo es de 7 MB.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                //if (fileSize > 7)
+                //{
+                //    MessageBox.Show("La imagen que está tratando de subir es damasiado grande.\nEl tamaño maximo es de 7 MB.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
                 prgFileUpload.Visible = true;
                 // Seteaar propiedades del control PictutreBox
                 LoadFileNoLock(openFileDialog1.FileName);             
@@ -426,6 +426,12 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
                         break;
                     case FileExtension.WAV:
                         pbFile.Image = Image.FromFile(Constants.IMAGE_PREVIEW_DIRECTORY + "wav.png");
+                        lblExt.Text = fe.ToString();
+                        pnlPreviewTitle.BackColor = Color.MediumPurple;
+                        _file = File.ReadAllBytes(pfilePath);
+                        break;
+                    case FileExtension.DCM:
+                        pbFile.Image = Image.FromFile(Constants.IMAGE_PREVIEW_DIRECTORY + "dcm.png");
                         lblExt.Text = fe.ToString();
                         pnlPreviewTitle.BackColor = Color.MediumPurple;
                         _file = File.ReadAllBytes(pfilePath);
