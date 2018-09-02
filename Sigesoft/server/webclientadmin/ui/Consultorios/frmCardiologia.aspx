@@ -480,25 +480,25 @@
                                                  <x:FormRow ID="FormRow6" ColumnWidths="200px 80px  200px 80px  200px 80px  " runat="server" >
                                                     <Items>
                                                         <x:Label ID="label20" runat="server" Text="FRECUENCIA CARDIACA:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox1" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+                                                        <x:TextBox ID="txtYanacocha_Frecuencia" runat="server" Text="" ShowLabel="false"></x:TextBox>  
 
                                                          <x:Label ID="label21" runat="server" Text="RITMO CARDIACO:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox2" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+                                                        <x:TextBox ID="txtYanacocha_Ritmo" runat="server" Text="" ShowLabel="false"></x:TextBox>  
 
                                                          <x:Label ID="label22" runat="server" Text="INTERVALO PR:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox3" runat="server" Text="" ShowLabel="false"></x:TextBox> 
+                                                        <x:TextBox ID="txtYanacocha_PR" runat="server" Text="" ShowLabel="false"></x:TextBox> 
                                                     </Items>
                                                 </x:FormRow>
                                                  <x:FormRow ID="FormRow7" ColumnWidths="200px 80px  200px 80px  200px 80px  " runat="server" >
                                                     <Items>
                                                        <x:Label ID="label23" runat="server" Text="INTERVALO QT:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox4" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+                                                        <x:TextBox ID="txtYanacocha_QT" runat="server" Text="" ShowLabel="false"></x:TextBox>  
 
                                                          <x:Label ID="label24" runat="server" Text="EJE CARDIACO:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox5" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+                                                        <x:TextBox ID="txtYanacocha_Eje" runat="server" Text="" ShowLabel="false"></x:TextBox>  
 
                                                          <x:Label ID="label25" runat="server" Text="SEGMENTO ST:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="TextBox6" runat="server" Text="" ShowLabel="false"></x:TextBox>                                                                                          
+                                                        <x:TextBox ID="txtYanacocha_ST" runat="server" Text="" ShowLabel="false"></x:TextBox>                                                                                          
                                                     </Items>
                                                 </x:FormRow>
                                              </Rows>
@@ -513,7 +513,7 @@
                                                  <x:FormRow ID="FormRow8" ColumnWidths="100px 480px  " runat="server" >
                                                     <Items>
                                                         <x:Label ID="label26" runat="server" Text="DESCRIPCION:" ShowLabel="false"></x:Label>
-                                                        <x:TextArea ID="TextArea1" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>  
+                                                        <x:TextArea ID="txtYanacocha_OtrasAlter" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>  
                                                     </Items>
                                                 </x:FormRow>
                                              </Rows>
@@ -528,7 +528,7 @@
                                                  <x:FormRow ID="FormRow9" ColumnWidths="100px 480px  " runat="server" >
                                                     <Items>
                                                         <x:Label ID="label27" runat="server" Text="DESCRIPCION:" ShowLabel="false"></x:Label>
-                                                        <x:TextArea ID="TextArea2" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>  
+                                                        <x:TextArea ID="txtYanacocha_Hallazgos" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>  
                                                     </Items>
                                                 </x:FormRow>
                                              </Rows>

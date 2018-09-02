@@ -1435,13 +1435,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label20;
         
         /// <summary>
-        /// Control TextBox1.
+        /// Control txtYanacocha_Frecuencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox1;
+        protected global::FineUI.TextBox txtYanacocha_Frecuencia;
         
         /// <summary>
         /// Control label21.
@@ -1453,13 +1453,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label21;
         
         /// <summary>
-        /// Control TextBox2.
+        /// Control txtYanacocha_Ritmo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox2;
+        protected global::FineUI.TextBox txtYanacocha_Ritmo;
         
         /// <summary>
         /// Control label22.
@@ -1471,13 +1471,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label22;
         
         /// <summary>
-        /// Control TextBox3.
+        /// Control txtYanacocha_PR.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox3;
+        protected global::FineUI.TextBox txtYanacocha_PR;
         
         /// <summary>
         /// Control FormRow7.
@@ -1498,13 +1498,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label23;
         
         /// <summary>
-        /// Control TextBox4.
+        /// Control txtYanacocha_QT.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox4;
+        protected global::FineUI.TextBox txtYanacocha_QT;
         
         /// <summary>
         /// Control label24.
@@ -1516,13 +1516,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label24;
         
         /// <summary>
-        /// Control TextBox5.
+        /// Control txtYanacocha_Eje.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox5;
+        protected global::FineUI.TextBox txtYanacocha_Eje;
         
         /// <summary>
         /// Control label25.
@@ -1534,13 +1534,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label25;
         
         /// <summary>
-        /// Control TextBox6.
+        /// Control txtYanacocha_ST.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextBox TextBox6;
+        protected global::FineUI.TextBox txtYanacocha_ST;
         
         /// <summary>
         /// Control panel8.
@@ -1579,13 +1579,58 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label26;
         
         /// <summary>
-        /// Control TextArea1.
+        /// Control txtYanacocha_OtrasAlter.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.TextArea TextArea1;
+        protected global::FineUI.TextArea txtYanacocha_OtrasAlter;
+        
+        /// <summary>
+        /// Control panel9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Panel panel9;
+        
+        /// <summary>
+        /// Control Form6.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Form Form6;
+        
+        /// <summary>
+        /// Control FormRow9.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow9;
+        
+        /// <summary>
+        /// Control label27.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Label label27;
+        
+        /// <summary>
+        /// Control txtYanacocha_Hallazgos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.TextArea txtYanacocha_Hallazgos;
         
         /// <summary>
         /// Control hfRefresh.

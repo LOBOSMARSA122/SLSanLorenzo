@@ -72,7 +72,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
 
-
+                #region Electro
                 chkObesidad.Attributes.Add("Tag", "N009-MF000000130");
                 chkDiabetes.Attributes.Add("Tag", "N009-MF000000132");
                 chkTabaco.Attributes.Add("Tag", "N009-MF000000131");
@@ -85,7 +85,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkDrogas.Attributes.Add("Tag", "N009-MF000000125");
                 chkArritmias.Attributes.Add("Tag", "N009-MF000000127");
                 chkTto.Attributes.Add("Tag", "N009-MF000000129");
-
                 txtFrecuenciaCardiaca.Attributes.Add("Tag", "N002-MF000000186");
                 ddlRitmo.Attributes.Add("Tag", "N002-MF000000190");
                 txtIntervPR.Attributes.Add("Tag", "N002-MF000000187");
@@ -96,6 +95,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlConclusiones.Attributes.Add("Tag", "N002-MF000000194");
                 txtDescripcionLectNormal.Attributes.Add("Tag", "N009-MF000000227");
                 chkLecturaNormal.Attributes.Add("Tag", "N009-MF000002133");
+                #endregion
+
+                #region Electro Yanacocha
+                txtYanacocha_Frecuencia.Attributes.Add("Tag", "N009-MF000003128");
+                txtYanacocha_Ritmo.Attributes.Add("Tag", "N009-MF000003129");
+                txtYanacocha_PR.Attributes.Add("Tag", "N009-MF000003130");
+                txtYanacocha_QT.Attributes.Add("Tag", "N009-MF000003131");
+                txtYanacocha_Eje.Attributes.Add("Tag", "N009-MF000003132");
+                txtYanacocha_ST.Attributes.Add("Tag", "N009-MF000003133");
+                txtYanacocha_OtrasAlter.Attributes.Add("Tag", "N009-MF000003134");
+                txtYanacocha_Hallazgos.Attributes.Add("Tag", "N009-MF000003263");                
+                #endregion
 
                 int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
                 OperationResult objOperationResult = new OperationResult();
