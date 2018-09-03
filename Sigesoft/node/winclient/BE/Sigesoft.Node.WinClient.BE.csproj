@@ -297,6 +297,7 @@
     <Compile Include="Custom\UcOtoscopiacs.cs" />
     <Compile Include="Custom\UcSomnolencia.cs" />
     <Compile Include="Custom\UsuarioExternoSeguimiento.cs" />
+    <Compile Include="Custom\UsuarioGrabo.cs" />
     <Compile Include="Custom\UsuarioTracking.cs" />
     <Compile Include="Custom\VacunaDetalleList.cs" />
     <Compile Include="Custom\VacunasList.cs" />

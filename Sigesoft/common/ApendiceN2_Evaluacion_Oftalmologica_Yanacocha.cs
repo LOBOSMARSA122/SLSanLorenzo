@@ -23,7 +23,7 @@ namespace NetPdf
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
-            string filePDF)
+            string filePDF, UsuarioGrabo DatosGrabo)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 42f, 41f);
 
