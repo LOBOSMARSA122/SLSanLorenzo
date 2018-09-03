@@ -720,9 +720,26 @@ namespace NetPdf
             #endregion
             #region PSICOLOGÍA
             var xPsico = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            var xPsicoGoldFicha = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+            var xPsicoGoldInforme = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+
             if (xPsico != null)
             {
                 var ValorDxPsico = string.Join(", ", xPsico.Select(p => p.v_DiseasesName)); ;
+
+                cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Psicología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
+                    new PdfPCell(new Phrase(ValorDxPsico == "" ?"SIN RESULTADOS" : ValorDxPsico, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
+                };
+
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            }
+            else if (xPsicoGoldInforme != null)
+            {
+                var ValorDxPsico = string.Join(", ", xPsicoGoldInforme.Select(p => p.v_DiseasesName)); ;
 
                 cells = new List<PdfPCell>()
                 {
@@ -778,14 +795,54 @@ namespace NetPdf
             #endregion
 
             #region OFTALMOLOGÍA
-            var xOftalmo = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-            if (xOftalmo != null)
+            var xOftalmoSimple = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+            var xOftalmoCompleto = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
+            var xOftalmoYanacocha = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
+            var xOftalmoHudbay = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+
+            if (xOftalmoSimple != null)
             {
-                string ValorDxOdo = string.Join(", ", xOftalmo.Select(p => p.v_DiseasesName));
+                string ValorDxOft = string.Join(", ", xOftalmoSimple.Select(p => p.v_DiseasesName));
                 cells = new List<PdfPCell>()
                 {
                     new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
-                    new PdfPCell(new Phrase(ValorDxOdo == "" ? "SIN RESULTADOS": ValorDxOdo, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
+                    new PdfPCell(new Phrase(ValorDxOft == "" ? "SIN RESULTADOS": ValorDxOft, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
+                };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            }
+            else if (xOftalmoCompleto != null)
+            {
+                string ValorDxOft = string.Join(", ", xOftalmoCompleto.Select(p => p.v_DiseasesName));
+                cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
+                    new PdfPCell(new Phrase(ValorDxOft == "" ? "SIN RESULTADOS": ValorDxOft, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
+                };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            }
+            else if (xOftalmoYanacocha != null)
+            {
+                string ValorDxOft = string.Join(", ", xOftalmoYanacocha.Select(p => p.v_DiseasesName));
+                cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
+                    new PdfPCell(new Phrase(ValorDxOft == "" ? "SIN RESULTADOS": ValorDxOft, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
+                };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            }
+            else if (xOftalmoHudbay != null)
+            {
+                string ValorDxOft = string.Join(", ", xOftalmoHudbay.Select(p => p.v_DiseasesName));
+                cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
+                    new PdfPCell(new Phrase(ValorDxOft == "" ? "SIN RESULTADOS": ValorDxOft, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
                 };
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
@@ -804,177 +861,7 @@ namespace NetPdf
             }
             #endregion
 
-            #region OFTALMOLOGÍADATOS
-            //ServiceComponentList oftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
-            //if (oftalmologia != null)
-            //{
-            //    var av_cerca_sc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID).v_Value1;
-            //    string av_cerca_sc_od_1 = "", av_cerca_sc_oi_1 = "", av_cerca_cc_od_1 = "", av_cerca_cc_oi_1 = "";
-            //    if (av_cerca_sc_od == "1") av_cerca_sc_od_1 = "J1 0.50";
-            //    else if (av_cerca_sc_od == "2") av_cerca_sc_od_1 = "J2 0.75";
-            //    else if (av_cerca_sc_od == "3") av_cerca_sc_od_1 = "J3 1.00";
-            //    else if (av_cerca_sc_od == "4") av_cerca_sc_od_1 = "J4 1.25";
-            //    else if (av_cerca_sc_od == "5") av_cerca_sc_od_1 = "J5 1.50";
-            //    else if (av_cerca_sc_od == "6") av_cerca_sc_od_1 = "J6 1.75";
-            //    else if (av_cerca_sc_od == "7") av_cerca_sc_od_1 = "J7 2.00";
-            //    else if (av_cerca_sc_od == "8") av_cerca_sc_od_1 = "J8 >2.00";
-
-            //    var av_cerca_sc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_IZQUIERDO_ID).v_Value1;
-
-            //    if (av_cerca_sc_oi == "1") av_cerca_sc_oi_1 = "J1 0.50";
-            //    else if (av_cerca_sc_oi == "2") av_cerca_sc_oi_1 = "J2 0.75";
-            //    else if (av_cerca_sc_oi == "3") av_cerca_sc_oi_1 = "J3 1.00";
-            //    else if (av_cerca_sc_oi == "4") av_cerca_sc_oi_1 = "J4 1.25";
-            //    else if (av_cerca_sc_oi == "5") av_cerca_sc_oi_1 = "J5 1.50";
-            //    else if (av_cerca_sc_oi == "6") av_cerca_sc_oi_1 = "J6 1.75";
-            //    else if (av_cerca_sc_oi == "7") av_cerca_sc_oi_1 = "J7 2.00";
-            //    else if (av_cerca_sc_oi == "8") av_cerca_sc_oi_1 = "J8 >2.00";
-
-            //    var av_cerca_cc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_DERECHO_ID).v_Value1;
-
-            //    if (av_cerca_cc_od == "1") av_cerca_cc_od_1 = "J1 0.50";
-            //    else if (av_cerca_cc_od == "2") av_cerca_cc_od_1 = "J2 0.75";
-            //    else if (av_cerca_cc_od == "3") av_cerca_cc_od_1 = "J3 1.00";
-            //    else if (av_cerca_cc_od == "4") av_cerca_cc_od_1 = "J4 1.25";
-            //    else if (av_cerca_cc_od == "5") av_cerca_cc_od_1 = "J5 1.50";
-            //    else if (av_cerca_cc_od == "6") av_cerca_cc_od_1 = "J6 1.75";
-            //    else if (av_cerca_cc_od == "7") av_cerca_cc_od_1 = "J7 2.00";
-            //    else if (av_cerca_cc_od == "8") av_cerca_cc_od_1 = "J8 >2.00";
-
-            //    var av_cerca_cc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID).v_Value1;
-
-            //    if (av_cerca_cc_oi == "1") av_cerca_cc_oi_1 = "J1 0.50";
-            //    else if (av_cerca_cc_oi == "2") av_cerca_cc_oi_1 = "J2 0.75";
-            //    else if (av_cerca_cc_oi == "3") av_cerca_cc_oi_1 = "J3 1.00";
-            //    else if (av_cerca_cc_oi == "4") av_cerca_cc_oi_1 = "J4 1.25";
-            //    else if (av_cerca_cc_oi == "5") av_cerca_cc_oi_1 = "J5 1.50";
-            //    else if (av_cerca_cc_oi == "6") av_cerca_cc_oi_1 = "J6 1.75";
-            //    else if (av_cerca_cc_oi == "7") av_cerca_cc_oi_1 = "J7 2.00";
-            //    else if (av_cerca_cc_oi == "8") av_cerca_cc_oi_1 = "J8 >2.00";
-
-            //    var av_lejos_sc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID).v_Value1;
-            //    string av_lejos_sc_od_1 = "", av_lejos_sc_oi_1 = "", av_lejos_cc_od_1 = "", av_lejos_cc_oi_1 = "";
-            //    if (av_lejos_sc_od == "1") av_lejos_sc_od_1 = "20/10";
-            //    else if (av_lejos_sc_od == "2") av_lejos_sc_od_1 = "20/100";
-            //    else if (av_lejos_sc_od == "3") av_lejos_sc_od_1 = "20/13";
-            //    else if (av_lejos_sc_od == "4") av_lejos_sc_od_1 = "20/15";
-            //    else if (av_lejos_sc_od == "5") av_lejos_sc_od_1 = "20/20";
-            //    else if (av_lejos_sc_od == "6") av_lejos_sc_od_1 = "20/200";
-            //    else if (av_lejos_sc_od == "7") av_lejos_sc_od_1 = "20/25";
-            //    else if (av_lejos_sc_od == "8") av_lejos_sc_od_1 = "20/30";
-            //    else if (av_lejos_sc_od == "9") av_lejos_sc_od_1 = "20/40";
-            //    else if (av_lejos_sc_od == "10") av_lejos_sc_od_1 = "20/50";
-            //    else if (av_lejos_sc_od == "11") av_lejos_sc_od_1 = "20/70";
-            //    else if (av_lejos_sc_od == "12") av_lejos_sc_od_1 = "NO APLICA";
-
-            //    var av_lejos_sc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID).v_Value1;
-
-            //    if (av_lejos_sc_oi == "1") av_lejos_sc_oi_1 = "20/10";
-            //    else if (av_lejos_sc_oi == "2") av_lejos_sc_oi_1 = "20/100";
-            //    else if (av_lejos_sc_oi == "3") av_lejos_sc_oi_1 = "20/13";
-            //    else if (av_lejos_sc_oi == "4") av_lejos_sc_oi_1 = "20/15";
-            //    else if (av_lejos_sc_oi == "5") av_lejos_sc_oi_1 = "20/20";
-            //    else if (av_lejos_sc_oi == "6") av_lejos_sc_oi_1 = "20/200";
-            //    else if (av_lejos_sc_oi == "7") av_lejos_sc_oi_1 = "20/25";
-            //    else if (av_lejos_sc_oi == "8") av_lejos_sc_oi_1 = "20/30";
-            //    else if (av_lejos_sc_oi == "9") av_lejos_sc_oi_1 = "20/40";
-            //    else if (av_lejos_sc_oi == "10") av_lejos_sc_oi_1 = "20/50";
-            //    else if (av_lejos_sc_oi == "11") av_lejos_sc_oi_1 = "20/70";
-            //    else if (av_lejos_sc_oi == "12") av_lejos_sc_oi_1 = "NO APLICA";
-
-            //    var av_lejos_cc_od = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID).v_Value1;
-
-            //    if (av_lejos_cc_od == "1") av_lejos_cc_od_1 = "20/10";
-            //    else if (av_lejos_cc_od == "2") av_lejos_cc_od_1 = "20/100";
-            //    else if (av_lejos_cc_od == "3") av_lejos_cc_od_1 = "20/13";
-            //    else if (av_lejos_cc_od == "4") av_lejos_cc_od_1 = "20/15";
-            //    else if (av_lejos_cc_od == "5") av_lejos_cc_od_1 = "20/20";
-            //    else if (av_lejos_cc_od == "6") av_lejos_cc_od_1 = "20/200";
-            //    else if (av_lejos_cc_od == "7") av_lejos_cc_od_1 = "20/25";
-            //    else if (av_lejos_cc_od == "8") av_lejos_cc_od_1 = "20/30";
-            //    else if (av_lejos_cc_od == "9") av_lejos_cc_od_1 = "20/40";
-            //    else if (av_lejos_cc_od == "10") av_lejos_cc_od_1 = "20/50";
-            //    else if (av_lejos_cc_od == "11") av_lejos_cc_od_1 = "20/70";
-            //    else if (av_lejos_cc_od == "12") av_lejos_cc_od_1 = "NO APLICA";
-
-            //    var av_lejos_cc_oi = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID).v_Value1;
-
-            //    if (av_lejos_cc_oi == "1") av_lejos_cc_oi_1 = "20/10";
-            //    else if (av_lejos_cc_oi == "2") av_lejos_cc_oi_1 = "20/100";
-            //    else if (av_lejos_cc_oi == "3") av_lejos_cc_oi_1 = "20/13";
-            //    else if (av_lejos_cc_oi == "4") av_lejos_cc_oi_1 = "20/15";
-            //    else if (av_lejos_cc_oi == "5") av_lejos_cc_oi_1 = "20/20";
-            //    else if (av_lejos_cc_oi == "6") av_lejos_cc_oi_1 = "20/200";
-            //    else if (av_lejos_cc_oi == "7") av_lejos_cc_oi_1 = "20/25";
-            //    else if (av_lejos_cc_oi == "8") av_lejos_cc_oi_1 = "20/30";
-            //    else if (av_lejos_cc_oi == "9") av_lejos_cc_oi_1 = "20/40";
-            //    else if (av_lejos_cc_oi == "10") av_lejos_cc_oi_1 = "20/50";
-            //    else if (av_lejos_cc_oi == "11") av_lejos_cc_oi_1 = "20/70";
-            //    else if (av_lejos_cc_oi == "12") av_lejos_cc_oi_1 = "NO APLICA";
-
-            //    var estereopsis = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_A) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_TEST_ESTEREOPSIS_A).v_Value1;
-            //    var TestIshiharaNormal = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;
-            //    var TestIshiharaAnormal = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;
-            //    //var Dicromatopsia = oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID) == null ? "" : oftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID).v_Value1;
-            //    string VisonColores = "";
-            //    if (TestIshiharaNormal == "1")
-            //    {
-            //        VisonColores = "Normal";
-            //    }
-            //    else if (TestIshiharaAnormal == "2")
-            //    {
-            //        VisonColores = "Anormal";
-            //    }
-            //    cells = new List<PdfPCell>()
-            //    {
-            //        new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 2, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
-            //        new PdfPCell(new Phrase("Agudeza Visual", fontColumnValue)) { Colspan = 2, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("V. de cerca", fontColumnValue)) { Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("OD S/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(av_cerca_sc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("OD C/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(av_cerca_cc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("OI S/C", fontColumnValue)) { Colspan = 1,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(av_cerca_sc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("OI C/C", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(av_cerca_cc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("Esteropsis", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(estereopsis, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-
-            //        new PdfPCell(new Phrase("V. de lejos", fontColumnValue)) { Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("OD S/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(av_lejos_sc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("OD C/C", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(av_lejos_cc_od_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("OI S/C", fontColumnValue)) { Colspan = 1,  HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(av_lejos_sc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("OI C/C", fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(av_lejos_cc_oi_1, fontColumnValue)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("Ishihara", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase(VisonColores, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //    };
-            //    columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
-            //    filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
-            //    document.Add(filiationWorker);
-            //}
-            //else
-            //{
-
-            //    cells = new List<PdfPCell>()
-            //    {
-            //        new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 2, BackgroundColor = BaseColor.GRAY },       
-
-            //        new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
-            //        new PdfPCell(new Phrase("Agudeza Visual", fontColumnValue)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //        new PdfPCell(new Phrase("NO APLICA EXAMEN ", fontColumnValue)) { Colspan =16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-            //    };
-            //    columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
-            //    filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
-            //    document.Add(filiationWorker);
-            //}
-
-            #endregion
-
+           
             #region ESPIROMETRÍA
             var xEspiro = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
 
