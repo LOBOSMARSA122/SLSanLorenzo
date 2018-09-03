@@ -730,6 +730,7 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+      
 		public ServiceList GetServiceReport(string pstrServiceId)
 		{
 			//mon.IsActive = true;
@@ -29755,6 +29756,31 @@ namespace Sigesoft.Node.WinClient.BLL
                   return false;
             }
 	    }
-        
+
+        public UsuarioGrabo DevolverDatosUsuarioGraboExamen(int categoriaId, string pstrserviceId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var objEntity = (from E in dbContext.servicecomponent
+
+                             join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+
+                             join B in dbContext.person on pme.v_PersonId equals B.v_PersonId
+
+                             join C in dbContext.component on E.v_ComponentId equals C.v_ComponentId
+
+                             where E.v_ServiceId == pstrserviceId && C.i_CategoryId == categoriaId
+                             select new UsuarioGrabo
+                             {
+                                 Firma = pme.b_SignatureImage,
+                                 Nombre = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName
+                             }).FirstOrDefault();
+
+            return objEntity;
+
+        }
 	}
 }
