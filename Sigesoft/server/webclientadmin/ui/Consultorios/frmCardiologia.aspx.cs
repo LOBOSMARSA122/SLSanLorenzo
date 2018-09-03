@@ -229,6 +229,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         ObtenerDatosElctro(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabElectrocardiograma.Hidden = false;
                     }
+                     if (item.ComponentId == TabElectroYanacocha.Attributes.GetValue("Tag").ToString())
+                    {
+                        LoadCombosElectroYana();
+                        ObtenerDatosElctroYanacocha(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                        TabElectroYanacocha.Hidden = false;
+                    }
                 }
             }
             else
@@ -247,6 +253,17 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                             LoadCombosElectro();
                             ObtenerDatosElctro(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                             TabElectrocardiograma.Hidden = false;
+                        }
+
+                    }
+                    else if (item == TabElectroYanacocha.Attributes.GetValue("Tag").ToString())
+                    {
+                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N009-ME000000413");
+                        if (Resultado != null)
+                        {
+                            LoadCombosElectroYana();
+                            ObtenerDatosElctroYanacocha(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                            TabElectroYanacocha.Hidden = false;
                         }
 
                     }
@@ -303,6 +320,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             //var _objData = _serviceBL.GetAllServices_(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, dpFechaInicio.SelectedDate.Value, dpFechaFin.SelectedDate.Value.AddDays(1));
             List<string> ComponentesId = new List<string>();
             ComponentesId.Add("N002-ME000000025");
+            ComponentesId.Add("N009-ME000000413");
             var _objData = _serviceBL.GetAllServices_Consultorio(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, dpFechaInicio.SelectedDate.Value, dpFechaFin.SelectedDate.Value.AddDays(1), ComponentesId.ToArray());
            
             if (_objData.Count == 0)
@@ -1215,6 +1233,16 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
               
         }
 
+        private void LoadCombosElectroYana()
+        {
+            OperationResult objOperationResult = new OperationResult();
+        
+            SystemParameterBL oSystemParameterBL = new SystemParameterBL();
+
+            Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+
+        }
+
         private void ObtenerDatosElctro(string pServiceId, string pPersonId)
         {
             OperationResult objOperationResult = new OperationResult();
@@ -1267,6 +1295,58 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
            
         }
 
+        private void ObtenerDatosElctroYanacocha(string pServiceId, string pPersonId)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var oExamenElectroYanacocha = _serviceBL.ObtenerIdsParaImportacionExcel(new List<string> { pServiceId }, 5);
+            Session["ServicioComponentIdElectroYanacocha"] = oExamenElectroYanacocha[0].ServicioComponentId;
+            var objExamenElectroYanacocha = _serviceBL.GetServiceComponentFields(oExamenElectroYanacocha == null ? "" : oExamenElectroYanacocha[0].ServicioComponentId, pServiceId);
+            Session["ComponentesElectroYanacocha"] = objExamenElectroYanacocha;
+            if (objExamenElectroYanacocha.ToList().Count != 0)
+            {
+                SearchControlAndLoadData(TabElectroYanacocha, Session["ServicioComponentIdElectroYanacocha"].ToString(), (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["ComponentesElectroYanacocha"]);
+                #region Campos de Auditoria
+
+                var datosAuditoria = HistoryBL.CamposAuditoria(oExamenElectroYanacocha[0].ServicioComponentId);
+                if (datosAuditoria != null)
+                {
+                    txtCardiologiaAuditor.Text = datosAuditoria.UserNameAuditoriaInsert;
+                    txtCardiologiaAuditorInsercion.Text = datosAuditoria.FechaHoraAuditoriaInsert;
+                    txtCardiologiaAuditorModificacion.Text = datosAuditoria.FechaHoraAuditoriaEdit;
+
+                    txtCardiologiaEvaluador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                    txtCardiologiaEvaluadorInsercion.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                    txtCardiologiaEvaluadorModificacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+
+                    txtCardiologiaInformador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                    txtCardiologiaInformadorInserta.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                    txtCardiologiaInformadorActualizacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+                }
+
+                #endregion
+            }
+            else
+            {
+                var _tmpServiceComponentsForBuildMenuList = new ServiceBL().ObtenerValoresPorDefecto(ref objOperationResult, pServiceId);
+                SearchControlAndClean(TabElectroYanacocha, _tmpServiceComponentsForBuildMenuList);
+
+                txtCardiologiaAuditor.Text = "";
+                txtCardiologiaAuditorInsercion.Text = "";
+                txtCardiologiaAuditorModificacion.Text = "";
+
+                txtCardiologiaEvaluador.Text = "";
+                txtCardiologiaEvaluadorInsercion.Text = "";
+                txtCardiologiaEvaluadorModificacion.Text = "";
+
+                txtCardiologiaInformador.Text = "";
+                txtCardiologiaInformadorInserta.Text = "";
+                txtCardiologiaInformadorActualizacion.Text = "";
+            }
+
+
+
+        }
+
         protected void fileDoc_FileSelected(object sender, EventArgs e)
         {
             string Ruta = WebConfigurationManager.AppSettings["ImgEKGOrigen"].ToString();
@@ -1312,6 +1392,105 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             rp.Close();
         }
 
-       
+
+        protected void btnGrabaYanacocha_OnClick(object sender, EventArgs e)
+        {
+            if (ddlUsuarioGrabarYanacocha.SelectedValue == "-1")
+            {
+                Alert.ShowInTop("Seleccionar Firma de usuario", MessageBoxIcon.Information);
+                return;
+            }
+            List<Sigesoft.Node.WinClient.BE.DiagnosticRepositoryList> l = new List<Sigesoft.Node.WinClient.BE.DiagnosticRepositoryList>();
+
+            OperationResult objOperationResult = new OperationResult();
+            SearchControlAndSetValues(TabElectroYanacocha, Session["ServicioComponentIdElectroYanacocha"].ToString());
+
+            var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
+                                                       (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
+                                                      ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                       Session["PersonId"].ToString(),
+                                                      Session["ServicioComponentIdElectroYanacocha"].ToString());
+
+            
+            //Gabar Dx
+            #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
+
+            var serviceComponentDto = new servicecomponentDto();
+            serviceComponentDto.v_ServiceComponentId = Session["ServicioComponentIdElectroYanacocha"].ToString();
+            //Obtener fecha de Actualizacion
+            var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, Session["ServicioComponentIdElectroYanacocha"].ToString()).d_UpdateDate;
+            serviceComponentDto.v_Comment = "";
+            //grabar estado del examen según profesión del usuario
+            int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
+
+            if (ProfesionId == 30) // evaluador
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
+
+            }
+            else if (ProfesionId == 31)//auditor
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
+
+            }
+            //serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceStatus.Culminado;
+
+            serviceComponentDto.i_ExternalInternalId = 1;
+            serviceComponentDto.i_IsApprovedId = 1;
+
+            serviceComponentDto.v_ComponentId = "N009-ME000000413";
+            serviceComponentDto.v_ServiceId = Session["ServiceId"].ToString();
+            serviceComponentDto.d_UpdateDate = FechaUpdate;
+            #endregion
+
+            //obtener el usuario antiguo
+            Session["UsuarioLogueado"] = ((ClientSession)Session["objClientSession"]).i_SystemUserId;
+            // Grabar Dx por examen componente mas sus restricciones
+
+            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(ddlUsuarioGrabarYanacocha.SelectedValue.ToString());
+
+
+            _serviceBL.AddDiagnosticRepository(ref objOperationResult,
+                                                   l,
+                                                   serviceComponentDto,
+                                                   ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                   true);
+
+            var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), "N009-ME000000413");
+
+            //Mostrar Auditoria
+            var datosAuditoria = HistoryBL.CamposAuditoria(scId);
+            if (datosAuditoria != null)
+            {
+                txtCardiologiaAuditor.Text = datosAuditoria.UserNameAuditoriaInsert;
+                txtCardiologiaAuditorInsercion.Text = datosAuditoria.FechaHoraAuditoriaInsert;
+                txtCardiologiaAuditorModificacion.Text = datosAuditoria.FechaHoraAuditoriaEdit;
+
+                txtCardiologiaEvaluador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                txtCardiologiaEvaluadorInsercion.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                txtCardiologiaEvaluadorModificacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+
+                txtCardiologiaInformador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                txtCardiologiaInformadorInserta.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                txtCardiologiaInformadorActualizacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+            }
+
+            //Analizar el resultado de la operación
+            if (objOperationResult.Success == 1)  // Operación sin error
+            {
+                ActualizaGrillasDx(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                //Mostrar
+                grdComponentes.DataSource = _serviceBL.GetServiceComponentByCategoryId(ref objOperationResult, int.Parse(ddlConsultorio.SelectedValue.ToString()), Session["ServiceId"].ToString());
+                grdComponentes.DataBind();
+                Session["_serviceComponentFieldsList"] = null;
+                Alert.ShowInTop("Se grabó correctamente", MessageBoxIcon.Information);
+            }
+            else  // Operación con error
+            {
+                Alert.ShowInTop("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage);
+                // Se queda en el formulario.
+            }
+            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(Session["UsuarioLogueado"].ToString());
+        }
     }
 }
