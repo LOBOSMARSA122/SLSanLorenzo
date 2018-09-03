@@ -2077,20 +2077,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
         }
 
-        private void grdDataService_MouseLeaveElement(object sender, Infragistics.Win.UIElementEventArgs e)
-        {
-            // if we are not leaving a cell, then don't anything
-            if (!(e.Element is CellUIElement))
-            {
-                return;
-            }
-
-            // prevent the timer from ticking again
-            _customizedToolTip.StopTimerToolTip();
-
-            // destroy the tooltip
-            _customizedToolTip.DestroyToolTip(this);
-        }
+      
 
         private void btnImprimirExamenes_Click(object sender, EventArgs e)
         {
@@ -2751,6 +2738,21 @@ namespace Sigesoft.Node.WinClient.UI
         private void grdDataService_InitializeLayout(object sender, InitializeLayoutEventArgs e)
         {
 
+        }
+
+        private void grdDataService_MouseLeaveElement(object sender, Infragistics.Win.UIElementEventArgs e)
+        {
+            // if we are not leaving a cell, then don't anything
+            if (!(e.Element is CellUIElement))
+            {
+                return;
+            }
+
+            // prevent the timer from ticking again
+            _customizedToolTip.StopTimerToolTip();
+
+            // destroy the tooltip
+            _customizedToolTip.DestroyToolTip(this);
         }
         
         //void ProcesoSErvicio()
