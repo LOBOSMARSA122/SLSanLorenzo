@@ -265,6 +265,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         if (Resultado != null)
                         {
                             LoadCombosElectroYana();
+                            ddlUsuarioGrabarYanacocha.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                            ddlUsuarioGrabarYanacocha.Enabled = false;
                             ObtenerDatosElctroYanacocha(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                             TabElectroYanacocha.Hidden = false;
                         }
