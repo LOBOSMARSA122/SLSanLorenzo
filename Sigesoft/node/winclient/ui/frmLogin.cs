@@ -13,6 +13,8 @@ using System.Data.SqlClient;
 using System.Data.Common;
 using System.Management;
 using System.IO;
+using System.Net;
+using System.Net.NetworkInformation;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -39,6 +41,79 @@ namespace Sigesoft.Node.WinClient.UI
             //    this.Close();
             //}
             InitializeComponent();
+            #region Setear Usuarios
+                 #region Obtener ip Local
+                        string localIP = "";
+                        string hostName = Dns.GetHostName();
+                        localIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+                #endregion
+                        #region Setear ip
+                        if (localIP == "192.168.1.179")
+                        {
+                            txtUserName.Text = "sa";
+                            txtPassword.Text = "Alph@2536";
+                        }
+                        else if (localIP == "192.168.1.106")
+                        {
+                            txtUserName.Text = "ruth.quispe";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.184")
+                        {
+                            txtUserName.Text = "cesar.medina";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.52")
+                        {
+                            txtUserName.Text = "cinthya.vasquez";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.81")
+                        {
+                            txtUserName.Text = "mmedina";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.80")
+                        {
+                            txtUserName.Text = "rocio.medina";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.117")
+                        {
+                            txtUserName.Text = "vladimir.figueroa";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.182")
+                        {
+                            txtUserName.Text = "roberto.perez";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.120")
+                        {
+                            txtUserName.Text = "roger.narro";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.73")
+                        {
+                            txtUserName.Text = "sali.palacios";
+                            txtPassword.Text = "";
+                        }
+                        else if (localIP == "192.168.1.69")
+                        {
+                            txtUserName.Text = "arnold";
+                            txtPassword.Text = "";
+                        }
+                        else
+                        {
+                            txtUserName.Text = "";
+                            txtPassword.Text = "";
+                        }
+
+                        #endregion
+
+            #endregion
+
+           
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -169,6 +244,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             //btnOK.Enabled = (txtUserName.Text != string.Empty && txtPassword.Text != string.Empty);
         }
+
 
 
   
