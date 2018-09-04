@@ -135,7 +135,6 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(125, 20);
             this.txtPassword.TabIndex = 1;
-            this.txtPassword.Text = "Alph@2536";
             // 
             // txtUserName
             // 
@@ -144,7 +143,6 @@
             this.txtUserName.Name = "txtUserName";
             this.txtUserName.Size = new System.Drawing.Size(125, 20);
             this.txtUserName.TabIndex = 0;
-            this.txtUserName.Text = "sa";
             // 
             // label2
             // 
