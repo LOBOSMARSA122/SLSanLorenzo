@@ -23,7 +23,7 @@ namespace NetPdf
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
-            string filePDF, UsuarioGrabo DatosGrabo)
+            string filePDF, UsuarioGrabo DatosGrabo,, List<DiagnosticRepositoryList> Diagnosticos)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 42f, 41f);
 
@@ -326,24 +326,117 @@ namespace NetPdf
             #endregion
 
             #region EXAMENES AUXILIARES COMPLEMENTARIOS
-            var examenesAuxiliares = informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_EXAMENES_AUXILIARES) == null ? "NO REFIERE EXAMENES AUXILIARES" : informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_EXAMENES_AUXILIARES).v_Value1;
+            //var examenesAuxiliares = informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_EXAMENES_AUXILIARES) == null ? "NO REFIERE EXAMENES AUXILIARES" : informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_EXAMENES_AUXILIARES).v_Value1;
 
-            cells = new List<PdfPCell>()
-            {         
+            //cells = new List<PdfPCell>()
+            //{         
                
-                new PdfPCell(new Phrase("EXAMENES AUXILIARES COMPLEMENTARIOS: ", fontColumnValue2)) {Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK  },       
+            //    new PdfPCell(new Phrase("EXAMENES AUXILIARES COMPLEMENTARIOS: ", fontColumnValue2)) {Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK  },       
                 
-                new PdfPCell(new Phrase(examenesAuxiliares, fontColumnValue)) {Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20F, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  },       
+            //    new PdfPCell(new Phrase(examenesAuxiliares, fontColumnValue)) {Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20F, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  },       
                 
-                //new PdfPCell(new Phrase("", fontTitle3)) {Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 2F, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK  },       
+            //    //new PdfPCell(new Phrase("", fontTitle3)) {Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 2F, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK  },       
   
-            };
+            //};
 
-            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-            document.Add(table);
+            //columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            //table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            //document.Add(table);
             #endregion
 
+            #region Hallazgos y recomendaciones
+            cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("HALLAZGOS Y EXAMENES AUXILIARES COMPLEMENTARIOS ", fontColumnValueBold)) {Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 13, BackgroundColor = BaseColor.GRAY },       
+
+                    new PdfPCell(new Phrase("CIE 10", fontColumnValueBold)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 13, BackgroundColor = BaseColor.GRAY },       
+                    new PdfPCell(new Phrase("ESPECIFICACIONES", fontColumnValueBold)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 13, BackgroundColor = BaseColor.GRAY },       
+
+                };
+            columnWidths = new float[] { 20.6f, 40.6f };
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+            document.Add(filiationWorker);
+            cells = new List<PdfPCell>();
+
+            var filterDiagnosticRepository = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+
+            if (filterDiagnosticRepository != null && filterDiagnosticRepository.Count > 0)
+            {
+                columnWidths = new float[] { 0.7f, 23.6f };
+                include = "i_Item,Valor1";
+
+                foreach (var item in filterDiagnosticRepository)
+                {
+                    if (item.v_DiseasesId == "N009-DD000000029")
+                    {
+                        cell = new PdfPCell(new Phrase("")) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        cells.Add(cell);
+                    }
+                    else
+                    {
+                        cell = new PdfPCell(new Phrase(item.v_DiseasesName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        cells.Add(cell);
+                    }
+
+                    ListaComun oListaComun = null;
+                    List<ListaComun> Listacomun = new List<ListaComun>();
+
+                    if (item.Recomendations.Count > 0)
+                    {
+                        oListaComun = new ListaComun();
+                        oListaComun.Valor1 = "RECOMENDACIONES";
+                        oListaComun.i_Item = "#";
+                        Listacomun.Add(oListaComun);
+                    }
+
+
+                    int Contador = 1;
+                    foreach (var Reco in item.Recomendations)
+                    {
+                        oListaComun = new ListaComun();
+
+                        oListaComun.Valor1 = Reco.v_RecommendationName;
+                        oListaComun.i_Item = Contador.ToString();
+                        Listacomun.Add(oListaComun);
+                        Contador++;
+                    }
+
+                    if (item.Restrictions.Count > 0)
+                    {
+                        oListaComun = new ListaComun();
+                        oListaComun.Valor1 = "RESTRICCIONES";
+                        oListaComun.i_Item = "#";
+                        Listacomun.Add(oListaComun);
+
+                    }
+                    int Contador1 = 1;
+                    foreach (var Rest in item.Restrictions)
+                    {
+                        oListaComun = new ListaComun();
+                        oListaComun.Valor1 = Rest.v_RestrictionName;
+                        oListaComun.i_Item = Contador1.ToString();
+                        Listacomun.Add(oListaComun);
+                        Contador1++;
+                    }
+
+                    // Crear tabla de recomendaciones para insertarla en la celda que corresponde
+                    table = HandlingItextSharp.GenerateTableFromList(Listacomun, columnWidths, include, fontColumnValue);
+                    cell = new PdfPCell(table);
+
+                    cells.Add(cell);
+                }
+
+                columnWidths = new float[] { 20.6f, 40.6f };
+            }
+            else
+            {
+                cells.Add(new PdfPCell(new Phrase("NO SE HAN REGISTRADO DATOS.", fontColumnValue)));
+                columnWidths = new float[] { 100 };
+            }
+
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, null);
+            document.Add(table);
+            #endregion
             document.Close();
             writer.Close();
             writer.Dispose();

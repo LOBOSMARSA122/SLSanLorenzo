@@ -100,8 +100,8 @@ namespace Sigesoft.Node.WinClient.UI
                         }
                         else if (localIP == "192.168.1.69")
                         {
-                            txtUserName.Text = "arnold";
-                            txtPassword.Text = "";
+                            txtUserName.Text = "sa";
+                            txtPassword.Text = "Alph@2536";
                         }
                         else
                         {
