@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEso));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_AntecedentTypeName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
@@ -53,7 +54,6 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEso));
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
@@ -253,13 +253,13 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance107 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn31 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn32 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn33 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn34 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn35 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn36 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -276,7 +276,22 @@
             this.lblGes = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.General = new System.Windows.Forms.TabPage();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.txtVidaSexual = new System.Windows.Forms.TextBox();
+            this.txtNroCausa = new System.Windows.Forms.TextBox();
+            this.label142 = new System.Windows.Forms.Label();
+            this.label143 = new System.Windows.Forms.Label();
+            this.label144 = new System.Windows.Forms.Label();
+            this.txtNroAbortos = new System.Windows.Forms.TextBox();
+            this.txtNroParejasActuales = new System.Windows.Forms.TextBox();
+            this.label145 = new System.Windows.Forms.Label();
             this.gbAntGinecologicos = new System.Windows.Forms.GroupBox();
+            this.txtFechaUltimaMamo = new System.Windows.Forms.TextBox();
+            this.txtFechaUltimoPAP = new System.Windows.Forms.TextBox();
+            this.label146 = new System.Windows.Forms.Label();
+            this.txtResultadoMamo = new System.Windows.Forms.TextBox();
+            this.label147 = new System.Windows.Forms.Label();
+            this.txtResultadoPAP = new System.Windows.Forms.TextBox();
             this.txtGestapara = new System.Windows.Forms.TextBox();
             this.txtMenarquia = new System.Windows.Forms.TextBox();
             this.label35 = new System.Windows.Forms.Label();
@@ -723,21 +738,6 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.txtVidaSexual = new System.Windows.Forms.TextBox();
-            this.txtNroCausa = new System.Windows.Forms.TextBox();
-            this.label142 = new System.Windows.Forms.Label();
-            this.label143 = new System.Windows.Forms.Label();
-            this.label144 = new System.Windows.Forms.Label();
-            this.txtNroAbortos = new System.Windows.Forms.TextBox();
-            this.txtNroParejasActuales = new System.Windows.Forms.TextBox();
-            this.label145 = new System.Windows.Forms.Label();
-            this.label146 = new System.Windows.Forms.Label();
-            this.txtResultadoMamo = new System.Windows.Forms.TextBox();
-            this.label147 = new System.Windows.Forms.Label();
-            this.txtResultadoPAP = new System.Windows.Forms.TextBox();
-            this.txtFechaUltimaMamo = new System.Windows.Forms.TextBox();
-            this.txtFechaUltimoPAP = new System.Windows.Forms.TextBox();
             this.tcSubMain.SuspendLayout();
             this.tpAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -751,6 +751,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdServiciosAnteriores)).BeginInit();
             this.cmVerServicioAnterior.SuspendLayout();
             this.General.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.gbAntGinecologicos.SuspendLayout();
             this.gbFuncionesBiologicas.SuspendLayout();
             this.gbSintomasySignos.SuspendLayout();
@@ -837,7 +838,6 @@
             this.pnlLeftPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
-            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcSubMain
@@ -1201,6 +1201,103 @@
             this.General.Text = "ANAMNESIS";
             this.General.UseVisualStyleBackColor = true;
             // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.txtVidaSexual);
+            this.groupBox15.Controls.Add(this.txtNroCausa);
+            this.groupBox15.Controls.Add(this.label142);
+            this.groupBox15.Controls.Add(this.label143);
+            this.groupBox15.Controls.Add(this.label144);
+            this.groupBox15.Controls.Add(this.txtNroAbortos);
+            this.groupBox15.Controls.Add(this.txtNroParejasActuales);
+            this.groupBox15.Controls.Add(this.label145);
+            this.groupBox15.Location = new System.Drawing.Point(29, 493);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(1171, 69);
+            this.groupBox15.TabIndex = 71;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Antecedentes de Reproducción";
+            // 
+            // txtVidaSexual
+            // 
+            this.txtVidaSexual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVidaSexual.Location = new System.Drawing.Point(135, 28);
+            this.txtVidaSexual.MaxLength = 100;
+            this.txtVidaSexual.Name = "txtVidaSexual";
+            this.txtVidaSexual.Size = new System.Drawing.Size(88, 20);
+            this.txtVidaSexual.TabIndex = 62;
+            // 
+            // txtNroCausa
+            // 
+            this.txtNroCausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroCausa.Location = new System.Drawing.Point(823, 28);
+            this.txtNroCausa.MaxLength = 100;
+            this.txtNroCausa.Name = "txtNroCausa";
+            this.txtNroCausa.Size = new System.Drawing.Size(290, 20);
+            this.txtNroCausa.TabIndex = 69;
+            // 
+            // label142
+            // 
+            this.label142.AutoSize = true;
+            this.label142.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label142.ForeColor = System.Drawing.Color.Black;
+            this.label142.Location = new System.Drawing.Point(19, 31);
+            this.label142.Name = "label142";
+            this.label142.Size = new System.Drawing.Size(106, 13);
+            this.label142.TabIndex = 61;
+            this.label142.Text = "Inicio de Vida Sexual";
+            // 
+            // label143
+            // 
+            this.label143.AutoSize = true;
+            this.label143.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label143.ForeColor = System.Drawing.Color.Black;
+            this.label143.Location = new System.Drawing.Point(734, 31);
+            this.label143.Name = "label143";
+            this.label143.Size = new System.Drawing.Size(83, 13);
+            this.label143.TabIndex = 68;
+            this.label143.Text = "Precisar Causas";
+            // 
+            // label144
+            // 
+            this.label144.AutoSize = true;
+            this.label144.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label144.ForeColor = System.Drawing.Color.Black;
+            this.label144.Location = new System.Drawing.Point(248, 31);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(109, 13);
+            this.label144.TabIndex = 64;
+            this.label144.Text = "Nro. Parejas Actuales";
+            // 
+            // txtNroAbortos
+            // 
+            this.txtNroAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroAbortos.Location = new System.Drawing.Point(563, 28);
+            this.txtNroAbortos.MaxLength = 100;
+            this.txtNroAbortos.Name = "txtNroAbortos";
+            this.txtNroAbortos.Size = new System.Drawing.Size(88, 20);
+            this.txtNroAbortos.TabIndex = 67;
+            // 
+            // txtNroParejasActuales
+            // 
+            this.txtNroParejasActuales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroParejasActuales.Location = new System.Drawing.Point(364, 28);
+            this.txtNroParejasActuales.MaxLength = 100;
+            this.txtNroParejasActuales.Name = "txtNroParejasActuales";
+            this.txtNroParejasActuales.Size = new System.Drawing.Size(88, 20);
+            this.txtNroParejasActuales.TabIndex = 65;
+            // 
+            // label145
+            // 
+            this.label145.AutoSize = true;
+            this.label145.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label145.ForeColor = System.Drawing.Color.Black;
+            this.label145.Location = new System.Drawing.Point(476, 31);
+            this.label145.Name = "label145";
+            this.label145.Size = new System.Drawing.Size(81, 13);
+            this.label145.TabIndex = 66;
+            this.label145.Text = "Nro. de Abortos";
+            // 
             // gbAntGinecologicos
             // 
             this.gbAntGinecologicos.Controls.Add(this.txtFechaUltimaMamo);
@@ -1231,6 +1328,60 @@
             this.gbAntGinecologicos.TabIndex = 61;
             this.gbAntGinecologicos.TabStop = false;
             this.gbAntGinecologicos.Text = "Antecedentes Ginecológicos";
+            // 
+            // txtFechaUltimaMamo
+            // 
+            this.txtFechaUltimaMamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaUltimaMamo.Location = new System.Drawing.Point(947, 46);
+            this.txtFechaUltimaMamo.Name = "txtFechaUltimaMamo";
+            this.txtFechaUltimaMamo.Size = new System.Drawing.Size(194, 20);
+            this.txtFechaUltimaMamo.TabIndex = 46;
+            // 
+            // txtFechaUltimoPAP
+            // 
+            this.txtFechaUltimoPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFechaUltimoPAP.Location = new System.Drawing.Point(947, 20);
+            this.txtFechaUltimoPAP.Name = "txtFechaUltimoPAP";
+            this.txtFechaUltimoPAP.Size = new System.Drawing.Size(194, 20);
+            this.txtFechaUltimoPAP.TabIndex = 45;
+            // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label146.ForeColor = System.Drawing.Color.Black;
+            this.label146.Location = new System.Drawing.Point(787, 109);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(131, 13);
+            this.label146.TabIndex = 43;
+            this.label146.Text = "Resultado de MAmografía";
+            // 
+            // txtResultadoMamo
+            // 
+            this.txtResultadoMamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResultadoMamo.Location = new System.Drawing.Point(929, 109);
+            this.txtResultadoMamo.Name = "txtResultadoMamo";
+            this.txtResultadoMamo.Size = new System.Drawing.Size(194, 20);
+            this.txtResultadoMamo.TabIndex = 44;
+            // 
+            // label147
+            // 
+            this.label147.AutoSize = true;
+            this.label147.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label147.ForeColor = System.Drawing.Color.Black;
+            this.label147.Location = new System.Drawing.Point(780, 86);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(96, 13);
+            this.label147.TabIndex = 41;
+            this.label147.Text = "Resultado del PAP";
+            // 
+            // txtResultadoPAP
+            // 
+            this.txtResultadoPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResultadoPAP.Location = new System.Drawing.Point(929, 83);
+            this.txtResultadoPAP.Name = "txtResultadoPAP";
+            this.txtResultadoPAP.Size = new System.Drawing.Size(194, 20);
+            this.txtResultadoPAP.TabIndex = 42;
             // 
             // txtGestapara
             // 
@@ -7363,14 +7514,14 @@
             // 
             // uvExamen
             // 
-            appearance107.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance107.BackColor2 = System.Drawing.Color.Transparent;
-            appearance107.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance107.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance107.BorderColor = System.Drawing.Color.Red;
-            appearance107.BorderColor2 = System.Drawing.Color.Red;
-            appearance107.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance107;
+            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance15.BackColor2 = System.Drawing.Color.Transparent;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance15.BorderColor = System.Drawing.Color.Red;
+            appearance15.BorderColor2 = System.Drawing.Color.Red;
+            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance15;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -7405,163 +7556,12 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn31,
-            ultraDataColumn32,
-            ultraDataColumn33,
-            ultraDataColumn34,
-            ultraDataColumn35,
-            ultraDataColumn36});
-            // 
-            // groupBox15
-            // 
-            this.groupBox15.Controls.Add(this.txtVidaSexual);
-            this.groupBox15.Controls.Add(this.txtNroCausa);
-            this.groupBox15.Controls.Add(this.label142);
-            this.groupBox15.Controls.Add(this.label143);
-            this.groupBox15.Controls.Add(this.label144);
-            this.groupBox15.Controls.Add(this.txtNroAbortos);
-            this.groupBox15.Controls.Add(this.txtNroParejasActuales);
-            this.groupBox15.Controls.Add(this.label145);
-            this.groupBox15.Location = new System.Drawing.Point(29, 493);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(1171, 69);
-            this.groupBox15.TabIndex = 71;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Antecedentes de Reproducción";
-            // 
-            // txtVidaSexual
-            // 
-            this.txtVidaSexual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVidaSexual.Location = new System.Drawing.Point(135, 28);
-            this.txtVidaSexual.MaxLength = 100;
-            this.txtVidaSexual.Name = "txtVidaSexual";
-            this.txtVidaSexual.Size = new System.Drawing.Size(88, 20);
-            this.txtVidaSexual.TabIndex = 62;
-            // 
-            // txtNroCausa
-            // 
-            this.txtNroCausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroCausa.Location = new System.Drawing.Point(823, 28);
-            this.txtNroCausa.MaxLength = 100;
-            this.txtNroCausa.Name = "txtNroCausa";
-            this.txtNroCausa.Size = new System.Drawing.Size(290, 20);
-            this.txtNroCausa.TabIndex = 69;
-            // 
-            // label142
-            // 
-            this.label142.AutoSize = true;
-            this.label142.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label142.ForeColor = System.Drawing.Color.Black;
-            this.label142.Location = new System.Drawing.Point(19, 31);
-            this.label142.Name = "label142";
-            this.label142.Size = new System.Drawing.Size(106, 13);
-            this.label142.TabIndex = 61;
-            this.label142.Text = "Inicio de Vida Sexual";
-            // 
-            // label143
-            // 
-            this.label143.AutoSize = true;
-            this.label143.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label143.ForeColor = System.Drawing.Color.Black;
-            this.label143.Location = new System.Drawing.Point(734, 31);
-            this.label143.Name = "label143";
-            this.label143.Size = new System.Drawing.Size(83, 13);
-            this.label143.TabIndex = 68;
-            this.label143.Text = "Precisar Causas";
-            // 
-            // label144
-            // 
-            this.label144.AutoSize = true;
-            this.label144.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label144.ForeColor = System.Drawing.Color.Black;
-            this.label144.Location = new System.Drawing.Point(248, 31);
-            this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(109, 13);
-            this.label144.TabIndex = 64;
-            this.label144.Text = "Nro. Parejas Actuales";
-            // 
-            // txtNroAbortos
-            // 
-            this.txtNroAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroAbortos.Location = new System.Drawing.Point(563, 28);
-            this.txtNroAbortos.MaxLength = 100;
-            this.txtNroAbortos.Name = "txtNroAbortos";
-            this.txtNroAbortos.Size = new System.Drawing.Size(88, 20);
-            this.txtNroAbortos.TabIndex = 67;
-            // 
-            // txtNroParejasActuales
-            // 
-            this.txtNroParejasActuales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroParejasActuales.Location = new System.Drawing.Point(364, 28);
-            this.txtNroParejasActuales.MaxLength = 100;
-            this.txtNroParejasActuales.Name = "txtNroParejasActuales";
-            this.txtNroParejasActuales.Size = new System.Drawing.Size(88, 20);
-            this.txtNroParejasActuales.TabIndex = 65;
-            // 
-            // label145
-            // 
-            this.label145.AutoSize = true;
-            this.label145.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label145.ForeColor = System.Drawing.Color.Black;
-            this.label145.Location = new System.Drawing.Point(476, 31);
-            this.label145.Name = "label145";
-            this.label145.Size = new System.Drawing.Size(81, 13);
-            this.label145.TabIndex = 66;
-            this.label145.Text = "Nro. de Abortos";
-            // 
-            // label146
-            // 
-            this.label146.AutoSize = true;
-            this.label146.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label146.ForeColor = System.Drawing.Color.Black;
-            this.label146.Location = new System.Drawing.Point(787, 109);
-            this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(131, 13);
-            this.label146.TabIndex = 43;
-            this.label146.Text = "Resultado de MAmografía";
-            // 
-            // txtResultadoMamo
-            // 
-            this.txtResultadoMamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultadoMamo.Location = new System.Drawing.Point(929, 109);
-            this.txtResultadoMamo.Name = "txtResultadoMamo";
-            this.txtResultadoMamo.Size = new System.Drawing.Size(194, 20);
-            this.txtResultadoMamo.TabIndex = 44;
-            // 
-            // label147
-            // 
-            this.label147.AutoSize = true;
-            this.label147.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label147.ForeColor = System.Drawing.Color.Black;
-            this.label147.Location = new System.Drawing.Point(780, 86);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(96, 13);
-            this.label147.TabIndex = 41;
-            this.label147.Text = "Resultado del PAP";
-            // 
-            // txtResultadoPAP
-            // 
-            this.txtResultadoPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultadoPAP.Location = new System.Drawing.Point(929, 83);
-            this.txtResultadoPAP.Name = "txtResultadoPAP";
-            this.txtResultadoPAP.Size = new System.Drawing.Size(194, 20);
-            this.txtResultadoPAP.TabIndex = 42;
-            // 
-            // txtFechaUltimaMamo
-            // 
-            this.txtFechaUltimaMamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaUltimaMamo.Location = new System.Drawing.Point(947, 46);
-            this.txtFechaUltimaMamo.Name = "txtFechaUltimaMamo";
-            this.txtFechaUltimaMamo.Size = new System.Drawing.Size(194, 20);
-            this.txtFechaUltimaMamo.TabIndex = 46;
-            // 
-            // txtFechaUltimoPAP
-            // 
-            this.txtFechaUltimoPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaUltimoPAP.Location = new System.Drawing.Point(947, 20);
-            this.txtFechaUltimoPAP.Name = "txtFechaUltimoPAP";
-            this.txtFechaUltimoPAP.Size = new System.Drawing.Size(194, 20);
-            this.txtFechaUltimoPAP.TabIndex = 45;
+            ultraDataColumn1,
+            ultraDataColumn2,
+            ultraDataColumn3,
+            ultraDataColumn4,
+            ultraDataColumn5,
+            ultraDataColumn6});
             // 
             // frmEso
             // 
@@ -7592,6 +7592,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.grdServiciosAnteriores)).EndInit();
             this.cmVerServicioAnterior.ResumeLayout(false);
             this.General.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.gbAntGinecologicos.ResumeLayout(false);
             this.gbAntGinecologicos.PerformLayout();
             this.gbFuncionesBiologicas.ResumeLayout(false);
@@ -7717,8 +7719,6 @@
             this.pnlLeftPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dsInformeEcograficoRenal1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.ResumeLayout(false);
 
         }
