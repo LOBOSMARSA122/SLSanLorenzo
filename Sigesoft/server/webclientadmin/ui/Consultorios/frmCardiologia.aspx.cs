@@ -54,6 +54,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 btnCertificadoAptitud.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=Certificado");
                
                 btnDescargar.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("DescargarAdjunto.aspx?Consultorio=EKG");
+                btnDescarga_Yana.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("DescargarAdjunto.aspx?Consultorio=EKG");
 
                 int RoleId = int.Parse(((ClientSession)Session["objClientSession"]).i_RoleId.Value.ToString());
                 var ComponentesPermisoLectura = new ServiceBL().GetRoleNodeComponentProfileByRoleNodeId(9, RoleId).FindAll(p => p.i_Read == 1);
@@ -227,7 +228,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         LoadCombosElectro();
                         ObtenerDatosElctro(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                        TabElectrocardiograma.Hidden = false;
+                        TabElectrocardiograma.Hidden = true;
                     }
                      if (item.ComponentId == TabElectroYanacocha.Attributes.GetValue("Tag").ToString())
                     {
@@ -252,7 +253,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         {
                             LoadCombosElectro();
                             ObtenerDatosElctro(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                            TabElectrocardiograma.Hidden = false;
+                            TabElectrocardiograma.Hidden = true;
                         }
 
                     }
@@ -1225,8 +1226,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             OperationResult objOperationResult = new OperationResult();
             var Combo197 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);
+            var Combo291 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 291);
             Utils.LoadDropDownList(ddlRitmo, "Value1", "Id", Combo197, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlConclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
+            Utils.LoadDropDownList(txtYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
       
             Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
