@@ -1377,9 +1377,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
 
             var serviceComponentDto = new servicecomponentDto();
-            serviceComponentDto.v_ServiceComponentId = Session["ServicioComponentIdMedicina"].ToString();
+            serviceComponentDto.v_ServiceComponentId = Session["ServicioComponentIdOftalmoYanacocha"].ToString();
             //Obtener fecha de Actualizacion
-            var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, Session["ServicioComponentIdMedicina"].ToString()).d_UpdateDate;
+            var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, Session["ServicioComponentIdOftalmoYanacocha"].ToString()).d_UpdateDate;
             serviceComponentDto.v_Comment = "";
             //grabar estado del examen según profesión del usuario
             int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());

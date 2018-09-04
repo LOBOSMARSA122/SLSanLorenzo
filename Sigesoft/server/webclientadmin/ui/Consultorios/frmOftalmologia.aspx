@@ -1254,21 +1254,21 @@
                                            <x:FormRow ID="FormRow9" ColumnWidths="140px 180px 140px 180px 140px 180px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label31" runat="server" Text="MÁCULA OD " ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlMaculaOD_Yana" runat="server" Width="100" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlMaculaOD_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
                                                     <x:Label ID="Label32" runat="server" Text="NERVIO ÓPT OD " ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlNervioOD_Yana" runat="server" Width="100" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlNervioOD_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
                                                     <x:Label ID="Label33" runat="server" Text="RETINA OD " ShowLabel="false"></x:Label>                                                    
-                                                    <x:DropDownList ID="ddlRetinaOD_Yana" runat="server" Width="100" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlRetinaOD_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
                                                 </Items>
                                           </x:FormRow>
                                            <x:FormRow ID="FormRow27" ColumnWidths="140px 180px 140px 180px 140px 180px" runat="server" >
                                                 <Items>
                                                      <x:Label ID="Label46" runat="server" Text="MÁCULA OI " ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlMaculaOI_Yana" runat="server" Width="100" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlMaculaOI_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
                                                     <x:Label ID="Label47" runat="server" Text="NERVIO ÓPT OI " ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlNervioOI_Yana" runat="server" Width="100" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlNervioOI_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
                                                     <x:Label ID="Label50" runat="server" Text="RETINA OI " ShowLabel="false"></x:Label>                                                    
-                                                    <x:DropDownList ID="ddlRetinaOI_Yana" runat="server" Width="100" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlRetinaOI_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
                                                 </Items>
                                           </x:FormRow>
                                          </Rows>
