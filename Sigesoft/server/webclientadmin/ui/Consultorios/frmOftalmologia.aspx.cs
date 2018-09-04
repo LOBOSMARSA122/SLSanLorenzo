@@ -372,6 +372,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         }
 
                     }
+                    else if (item == TabOftalmoYanacocha.Attributes.GetValue("Tag").ToString())
+                    {
+                        LoadCombosOftalmoYanacocha();
+                        ObtenerDatosOftalmoYanacocha(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                        TabOftalmoYanacocha.Hidden = false;
+                    }
                 }
             }
             if (grdData.Rows.Count > 0)
@@ -1236,6 +1242,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             OperationResult objOperationResult = new OperationResult();
             var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);
+            var Combo135 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 135);
             var Combo217 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 217);
             var Combo221 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 221);
             var Combo290 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 290);
@@ -1254,6 +1261,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Utils.LoadDropDownList(ddlCCVLOI_Yana, "Value1", "Id", Combo287, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlTestIshihara_Yana, "Value1", "Id", Combo221, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlReflejos_Yana, "Value1", "Id", Combo288, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMaculaOD_Yana, "Value1", "Id", Combo135, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlNervioOD_Yana, "Value1", "Id", Combo135, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlRetinaOD_Yana, "Value1", "Id", Combo135, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMaculaOI_Yana, "Value1", "Id", Combo135, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlNervioOI_Yana, "Value1", "Id", Combo135, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlRetinaOI_Yana, "Value1", "Id", Combo135, DropDownListAction.Select);
         }
 
         private void ObtenerDatosOftalmo(string pServiceId, string pPersonId)
