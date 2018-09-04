@@ -29776,7 +29776,8 @@ namespace Sigesoft.Node.WinClient.BLL
                              select new UsuarioGrabo
                              {
                                  Firma = pme.b_SignatureImage,
-                                 Nombre = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName
+                                 Nombre = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                 CMP = pme.v_ProfessionalCode
                              }).FirstOrDefault();
 
             return objEntity;

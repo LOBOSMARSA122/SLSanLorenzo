@@ -23,7 +23,7 @@ namespace NetPdf
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
-            string filePDF)
+            string filePDF, UsuarioGrabo DatosGrabo)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 42f, 41f);
 
@@ -342,10 +342,10 @@ namespace NetPdf
                 cellHuellaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
                 cellHuellaTrabajador.FixedHeight = 50F;
                 // Firma del doctor Auditor **************************************************
-                if (DataService != null)
+                if (DatosGrabo != null)
                 {
-                    if (DataService.FirmaMedicoMedicina != null)
-                        cellFirma = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
+                    if (DatosGrabo.Firma != null)
+                        cellFirma = new PdfPCell(HandlingItextSharp.GetImage(DatosGrabo.Firma, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
                 }
                 else
                     cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));

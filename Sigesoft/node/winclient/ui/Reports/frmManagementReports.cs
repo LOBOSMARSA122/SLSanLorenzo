@@ -1283,9 +1283,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            //var oftal = _pacientBL.GetOftalmologia(_serviceId, Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
 
-            Examen_Oftalmologico_Simple.CreateExamen_Oftalmologico_Simple(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+            Examen_Oftalmologico_Simple.CreateExamen_Oftalmologico_Simple(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
         private void GenerateExamenOftalmologicoCompleto(string pathFile)
         {
@@ -1294,8 +1294,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
-
-            Examen_Oftalmologico_Completo.CreateExamen_Oftalmologico_Completo(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
+            Examen_Oftalmologico_Completo.CreateExamen_Oftalmologico_Completo(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
         private void GenerateEvaluavionOftalmologicaYanacocha(string pathFile)
         {
@@ -1315,8 +1315,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
-
-            Informe_Oftalmologico_Hudbay.CreateInforme_Oftalmologico_Hudbay(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
+            Informe_Oftalmologico_Hudbay.CreateInforme_Oftalmologico_Hudbay(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
         private void GenerateFichaPsicologicaGoldfies(string pathFile)
