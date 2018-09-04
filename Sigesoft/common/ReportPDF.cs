@@ -8748,8 +8748,8 @@ namespace NetPdf
                     new PdfPCell(new Phrase("OI: " + nervioOpticoOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
 
                     new PdfPCell(new Phrase("Retina", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("OD: " + retinaOD, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("OI: " + retinaOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + retinaOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + retinaOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
 
                     //new PdfPCell(new Phrase("Mácula Od: "+ maculaOD + "Mácula Oi: "+ maculaOI + "\n" + "Nervio Opt Od: "+ nervioOpticoOD + "Nervio Opt Oi: "+ nervioOpticoOI + "\n" + "Retina Od: "+ retinaOD + "     Retina Oi: "+ retinaOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea

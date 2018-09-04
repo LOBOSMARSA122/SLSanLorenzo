@@ -1305,7 +1305,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
-            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
+            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
+            ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.CreateApendiceN2_Evaluacion_Oftalmologica_Yanacocha(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, _ExamenesServicio);
         }
 
         private void GenerateInformeOftalmologicoHudbay(string pathFile)
