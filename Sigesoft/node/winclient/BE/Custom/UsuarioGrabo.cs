@@ -9,5 +9,6 @@ namespace Sigesoft.Node.WinClient.BE
     {
         public string Nombre { get; set; }
         public byte[] Firma  { get; set; }
+        public string CMP { get; set; }
     }
 }
