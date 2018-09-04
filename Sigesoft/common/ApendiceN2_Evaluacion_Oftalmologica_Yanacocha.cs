@@ -23,7 +23,7 @@ namespace NetPdf
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
-            string filePDF, UsuarioGrabo DatosGrabo, List<ServiceComponentList> ExamenesServicio)
+            string filePDF, UsuarioGrabo DatosGrabo, List<ServiceComponentList> ExamenesServicio, List<DiagnosticRepositoryList> Diagnosticos)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 42f, 41f);
 
@@ -308,7 +308,7 @@ namespace NetPdf
 
             #region OBSERVACIONES
             var observaciones = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_OBSERVACIONES) == null ? "SIN OBSERVACIONES" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_OBSERVACIONES).v_Value1;
-
+            var a = Diagnosticos.FindAll(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
             cells = new List<PdfPCell>()
             {         
                
@@ -318,218 +318,216 @@ namespace NetPdf
                   
             };
 
+            foreach (var item in a)
+            {
+                cells.Add(new PdfPCell(new Phrase(item.v_ComponentName, fontColumnValue)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20F, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE });
+                //cells.Add(new PdfPCell(new Phrase(item.Recomendations, fontColumnValue)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20F, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE });
+                table = HandlingItextSharp.GenerateTableFromList(item.Recomendations, columnWidths, include, fontColumnValue, PdfPCell.NO_BORDER, null, null);
+                cell = new PdfPCell(table);
+                cells.Add(cell);
+            }
+            
+
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
 
 
-            string[] excludeComponents = { Sigesoft.Common.Constants.ANTROPOMETRIA_ID,
-                                                 Sigesoft.Common.Constants.FUNCIONES_VITALES_ID,
-                                                 Sigesoft.Common.Constants.EXAMEN_FISICO_ID,
-                                                 "N005-ME000000117",
-                                                 "N005-ME000000116",
-                                                 "N005-ME000000046","N001-ME000000000",
-                                                 Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_ID,
-                                                 Sigesoft.Common.Constants.EVALUACION_ERGONOMICA_ID,
-                                                 Sigesoft.Common.Constants.ALTURA_ESTRUCTURAL_ID,
-                                                 Sigesoft.Common.Constants.ALTURA_GEOGRAFICA_ID,
-                                                 Sigesoft.Common.Constants.OSTEO_MUSCULAR_ID_1,
-                                                 Sigesoft.Common.Constants.PRUEBA_ESFUERZO_ID,
-                                                 Sigesoft.Common.Constants.TAMIZAJE_DERMATOLOGIO_ID,
-                                                 Sigesoft.Common.Constants.ODONTOGRAMA_ID,
-                                                 Sigesoft.Common.Constants.EXAMEN_MAMA_ID,
-                                                 Sigesoft.Common.Constants.AUDIOMETRIA_ID,
-                                                 Sigesoft.Common.Constants.ESPIROMETRIA_ID,
-                                                 Sigesoft.Common.Constants.INMUNIZACIONES_ID,
-                                                 "N002-ME000000033",
-                                                 Sigesoft.Common.Constants.OIT_ID,
-                                                 Sigesoft.Common.Constants.RX_TORAX_ID,
-                                                 Sigesoft.Common.Constants.LUMBOSACRA_ID,
-                                             };
+            //string[] excludeComponents = { Sigesoft.Common.Constants.ANTROPOMETRIA_ID,
+            //                                     Sigesoft.Common.Constants.FUNCIONES_VITALES_ID,
+            //                                     Sigesoft.Common.Constants.EXAMEN_FISICO_ID,
+            //                                     "N005-ME000000117",
+            //                                     "N005-ME000000116",
+            //                                     "N005-ME000000046","N001-ME000000000",
+            //                                     Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_ID,
+            //                                     Sigesoft.Common.Constants.EVALUACION_ERGONOMICA_ID,
+            //                                     Sigesoft.Common.Constants.ALTURA_ESTRUCTURAL_ID,
+            //                                     Sigesoft.Common.Constants.ALTURA_GEOGRAFICA_ID,
+            //                                     Sigesoft.Common.Constants.OSTEO_MUSCULAR_ID_1,
+            //                                     Sigesoft.Common.Constants.PRUEBA_ESFUERZO_ID,
+            //                                     Sigesoft.Common.Constants.TAMIZAJE_DERMATOLOGIO_ID,
+            //                                     Sigesoft.Common.Constants.ODONTOGRAMA_ID,
+            //                                     Sigesoft.Common.Constants.EXAMEN_MAMA_ID,
+            //                                     Sigesoft.Common.Constants.AUDIOMETRIA_ID,
+            //                                     Sigesoft.Common.Constants.ESPIROMETRIA_ID,
+            //                                     Sigesoft.Common.Constants.INMUNIZACIONES_ID,
+            //                                     "N002-ME000000033",
+            //                                     Sigesoft.Common.Constants.OIT_ID,
+            //                                     Sigesoft.Common.Constants.RX_TORAX_ID,
+            //                                     Sigesoft.Common.Constants.LUMBOSACRA_ID,
+            //                                 };
 
-            var otherExams = ExamenesServicio.FindAll(p => !excludeComponents.Contains(p.v_ComponentId));
-            foreach (var oe in otherExams)
-            {
-                table = TableBuilderReportFor312(oe, fontTitleTable, fontSubTitleNegroNegrita, fontColumnValue, subTitleBackGroundColor);
+            //var otherExams = ExamenesServicio.FindAll(p => !excludeComponents.Contains(p.v_ComponentId));
+            //foreach (var oe in otherExams)
+            //{
+            //    table = TableBuilderReportFor312(oe, fontTitleTable, fontSubTitleNegroNegrita, fontColumnValue, subTitleBackGroundColor);
 
-                if (table != null)
-                    document.Add(table);
-            }
+            //    if (table != null)
+            //        document.Add(table);
+            //}
+
+            
             document.Close();
             writer.Close();
             writer.Dispose();
         }
-        private static PdfPTable TableBuilderReportFor312(ServiceComponentList serviceComponent, Font fontTitle, Font fontSubTitle, Font fontColumnValue, BaseColor SubtitleBackgroundColor)
-        {
-            PdfPTable table = null;
-            List<PdfPCell> cells = null;
-            PdfPCell cell = null;
-            float[] columnWidths = null;
-            float tamañocelda = 15f;
-            switch (serviceComponent.v_ComponentId)
-            {
-              case Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID:
+        //private static PdfPTable TableBuilderReportFor312(ServiceComponentList serviceComponent, Font fontTitle, Font fontSubTitle, Font fontColumnValue, BaseColor SubtitleBackgroundColor)
+        //{
+        //    PdfPTable table = null;
+        //    List<PdfPCell> cells = null;
+        //    PdfPCell cell = null;
+        //    float[] columnWidths = null;
+        //    float tamañocelda = 15f;
+        //    switch (serviceComponent.v_ComponentId)
+        //    {
+        //      case Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID:
 
-                    #region OFTALMOLOGIA SIMPLE
+        //            #region OFTALMOLOGIA SIMPLE
 
-                    cells = new List<PdfPCell>();
+        //            cells = new List<PdfPCell>();
 
-                    // Subtitulo  ******************
-                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
-                    {
-                        Colspan = 2,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        FixedHeight = tamañocelda
-                    };
+        //            // Subtitulo  ******************
+        //            cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+        //            {
+        //                Colspan = 2,
+        //                HorizontalAlignment = Element.ALIGN_LEFT,
+        //                FixedHeight = tamañocelda
+        //            };
 
-                    cells.Add(cell);
-                    //*****************************************
+        //            cells.Add(cell);
+        //            //*****************************************
 
-                    if (serviceComponent.ServiceComponentFields.Count > 0)
-                    {
-                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
-                        var hallazgos = serviceComponent.DiagnosticRepository;
-                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+        //            if (serviceComponent.ServiceComponentFields.Count > 0)
+        //            {
+        //                var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+        //                var hallazgos = serviceComponent.DiagnosticRepository;
+        //                var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
 
-                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)) { FixedHeight = tamañocelda });
-                    }
-                    else
-                    {
-                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)) { FixedHeight = tamañocelda });
-                    }
+        //                //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+        //                cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)) { FixedHeight = tamañocelda });
+        //            }
+        //            else
+        //            {
+        //                cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)) { FixedHeight = tamañocelda });
+        //            }
 
-                    columnWidths = new float[] { 100f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER);
+        //            columnWidths = new float[] { 100f };
+        //            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER);
 
-                    #endregion
+        //            #endregion
 
-                    break;
-                case Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID:
+        //            break;
+        //        case Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID:
 
-                    #region OFTALMOLOGIA COMPLETO
+        //            #region OFTALMOLOGIA COMPLETO
 
-                    cells = new List<PdfPCell>();
+        //            cells = new List<PdfPCell>();
 
-                    // Subtitulo  ******************
-                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
-                    {
-                        Colspan = 2,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        FixedHeight = tamañocelda
-                    };
+        //            // Subtitulo  ******************
+        //            cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+        //            {
+        //                Colspan = 2,
+        //                HorizontalAlignment = Element.ALIGN_LEFT,
+        //                FixedHeight = tamañocelda
+        //            };
 
-                    cells.Add(cell);
-                    //*****************************************
+        //            cells.Add(cell);
+        //            //*****************************************
 
-                    if (serviceComponent.ServiceComponentFields.Count > 0)
-                    {
-                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
-                        var hallazgos = serviceComponent.DiagnosticRepository;
-                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+        //            if (serviceComponent.ServiceComponentFields.Count > 0)
+        //            {
+        //                var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
+        //                var hallazgos = serviceComponent.DiagnosticRepository;
+        //                var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
 
-                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)) { FixedHeight = tamañocelda });
-                    }
-                    else
-                    {
-                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)) { FixedHeight = tamañocelda });
-                    }
+        //                //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+        //                cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)) { FixedHeight = tamañocelda });
+        //            }
+        //            else
+        //            {
+        //                cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)) { FixedHeight = tamañocelda });
+        //            }
 
-                    columnWidths = new float[] { 100f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER);
+        //            columnWidths = new float[] { 100f };
+        //            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER);
 
-                    #endregion
+        //            #endregion
 
-                    break;
+        //            break;
 
-                case Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID:
+        //        case Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID:
 
-                    #region OFTALMOLOGIA YANACOCHA
+        //            #region OFTALMOLOGIA YANACOCHA
+        //            cells = new List<PdfPCell>();
 
-                    cells = new List<PdfPCell>();
+        //            if (serviceComponent.ServiceComponentFields.Count > 0)
+        //            {
+        //                var hallazgos = serviceComponent.DiagnosticRepository;
+        //                var join1 = string.Join(" \n", hallazgos.Select(p => p.v_DiseasesName));
 
-                    // Subtitulo  ******************
-                    //cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
-                    //{
-                    //    Colspan = 2,
-                    //    HorizontalAlignment = Element.ALIGN_LEFT,
-                    //    FixedHeight = tamañocelda
-                    //};
+        //                var join2 = string.Join(" \n", hallazgos.Select(p => p.v_MasterRecommendationId));
 
-                    //cells.Add(cell);
-                    //*****************************************
+        //                //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+        //                cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join1) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join1, fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20F, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE });
+        //                cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join1) ? "RECOMENDACIONES: -----" : "RECOMENDACIONES: " + join2, fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20F, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE });
 
-                    if (serviceComponent.ServiceComponentFields.Count > 0)
-                    {
-                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
-                        var hallazgos = serviceComponent.DiagnosticRepository;
-                        var join1 = string.Join(" \n", hallazgos.Select(p => p.v_DiseasesName));
+        //            }
+        //            else
+        //            {
+        //                cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)) { FixedHeight = tamañocelda });
+        //            }
 
-                        //var recomendaciones = serviceComponent.Recomendation;
-                        var join2 = string.Join(" \n", hallazgos.Select(p => p.v_RecomendationsName));
+        //            columnWidths = new float[] { 50f,50f };
+        //            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
 
-                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join1) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join1, fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20F, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE });
-                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join1) ? "RECOMENDACIONES: -----" : "RECOMENDACIONES: " + join2, fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20F, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE });
+        //            #endregion
 
-                    }
-                    else
-                    {
-                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)) { FixedHeight = tamañocelda });
-                    }
+        //            break;
+        //        case Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID:
 
-                    columnWidths = new float[] { 50f,50f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths);
+        //            #region OFTALMOLOGIA HUDBAY
 
-                    #endregion
+        //            cells = new List<PdfPCell>();
 
-                    break;
-                case Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID:
+        //            // Subtitulo  ******************
+        //            cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
+        //            {
+        //                Colspan = 2,
+        //                HorizontalAlignment = Element.ALIGN_LEFT,
+        //                FixedHeight = tamañocelda
+        //            };
 
-                    #region OFTALMOLOGIA HUDBAY
+        //            cells.Add(cell);
+        //            //*****************************************
 
-                    cells = new List<PdfPCell>();
+        //            if (serviceComponent.ServiceComponentFields.Count > 0)
+        //            {
+        //                var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+        //                var hallazgos = serviceComponent.DiagnosticRepository;
+        //                var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
 
-                    // Subtitulo  ******************
-                    cell = new PdfPCell(new Phrase(serviceComponent.v_ComponentName + ": ", fontSubTitle))
-                    {
-                        Colspan = 2,
-                        HorizontalAlignment = Element.ALIGN_LEFT,
-                        FixedHeight = tamañocelda
-                    };
+        //                //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
+        //                cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)) { FixedHeight = tamañocelda });
+        //            }
+        //            else
+        //            {
+        //                cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)) { FixedHeight = tamañocelda });
+        //            }
 
-                    cells.Add(cell);
-                    //*****************************************
+        //            columnWidths = new float[] { 100f };
+        //            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER);
 
-                    if (serviceComponent.ServiceComponentFields.Count > 0)
-                    {
-                        var conclusion = serviceComponent.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
-                        var hallazgos = serviceComponent.DiagnosticRepository;
-                        var join = string.Join(",", hallazgos.Select(p => p.v_DiseasesName));
+        //            #endregion
 
-                        //cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(conclusion.v_Value1) ? "No se han registrado datos." : "Conclusiones: " + conclusion.v_Value1, fontColumnValue)));
-                        cells.Add(new PdfPCell(new Phrase(string.IsNullOrEmpty(join) ? "HALLAZGOS: -----" : "HALLAZGOS: " + join, fontColumnValue)) { FixedHeight = tamañocelda });
-                    }
-                    else
-                    {
-                        cells.Add(new PdfPCell(new Phrase("No se han registrado datos.", fontColumnValue)) { FixedHeight = tamañocelda });
-                    }
+        //            break;
+        //        default:
+        //            break;
+        //    }
 
-                    columnWidths = new float[] { 100f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER);
+        //    return table;
 
-                    #endregion
-
-                    break;
-                default:
-                    break;
-            }
-
-            return table;
-
-        }
+        //}
 
     }
 }
