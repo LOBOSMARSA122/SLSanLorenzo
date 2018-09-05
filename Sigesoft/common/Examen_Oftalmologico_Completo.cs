@@ -38,6 +38,7 @@ namespace NetPdf
             var subTitleBackGroundColor = new BaseColor(System.Drawing.Color.Gray);
             string include = string.Empty;
             List<PdfPCell> cells = null;
+            List<PdfPCell> cells1 = null;
             float[] columnWidths = null;
             string[] columnValues = null;
             string[] columnHeaders = null;
@@ -70,7 +71,7 @@ namespace NetPdf
             Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             #endregion
 
-            var tamaño_celda = 15f;
+            var tamaño_celda = 18f;
             #region TÍTULO
 
             cells = new List<PdfPCell>();
@@ -282,8 +283,7 @@ namespace NetPdf
             int tamañoDiag = diagnosticosOfatlmoCompleto.Count == 0 ? 1 : diagnosticosOfatlmoCompleto.Count;
 
             #region DIAGNÓSTICO
-            var rp = informeOftalmoCompleto.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_RP) == null ? "FALTA LLENAR" : informeOftalmoCompleto.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_RP).v_Value1;
-
+            cells = new List<PdfPCell>();
             string[] fechaServicio = datosPac.FechaServicio.ToString().Split(' ');
 
             cells.Add(new PdfPCell(new Phrase("DIAGNÓSTICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, Rowspan = tamañoDiag, MinimumHeight = tamaño_celda });
@@ -306,7 +306,9 @@ namespace NetPdf
             #endregion
 
             #region RP
-            cells = new List<PdfPCell>()
+            var rp = informeOftalmoCompleto.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_RP) == null ? "FALTA LLENAR" : informeOftalmoCompleto.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_RP).v_Value1;
+
+            var cellsRp = new List<PdfPCell>()
             {
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 5f,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK },    
 
@@ -314,13 +316,15 @@ namespace NetPdf
                 new PdfPCell(new Phrase(rp, fontColumnValueBold)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
 
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 5f,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK },    
+
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cellsRp, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
             #region RECOMENDACIÓN
+            cells = new List<PdfPCell>();
             int anchoReco = 1;
             if (diagnosticosOfatlmoCompleto.Count != 0)
             {
