@@ -365,8 +365,7 @@ namespace NetPdf
             #region CAMPOS VISUALES:
             var camposVisualesOD = informeOftalmoHudbay.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_CAMPOS_VISUALES_OD) == null ? "FALTA LLENAR" : informeOftalmoHudbay.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_CAMPOS_VISUALES_OD).v_Value1;
             var camposVisualesOI = informeOftalmoHudbay.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_CAMPOS_VISUALES_OI) == null ? "FALTA LLENAR" : informeOftalmoHudbay.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_CAMPOS_VISUALES_OI).v_Value1;
-
-            var diagnostico = informeOftalmoHudbay.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_DIAGNOSTICO) == null ? "FALTA LLENAR" : informeOftalmoHudbay.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_DIAGNOSTICO).v_Value1;
+          
             var indicaciones = informeOftalmoHudbay.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_INDICACIONES) == null ? "FALTA LLENAR" : informeOftalmoHudbay.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_INDICACIONES).v_Value1;
 
             cells = new List<PdfPCell>()
@@ -377,12 +376,88 @@ namespace NetPdf
                 new PdfPCell(new Phrase("OI", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK},    
                 new PdfPCell(new Phrase(camposVisualesOI, fontColumnValueBold)) { Colspan = 7, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK},    
                 
-                new PdfPCell(new Phrase("Diagnosticos: ", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE},    
-                new PdfPCell(new Phrase(diagnostico, fontColumnValueBold)) { Colspan = 15, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK},    
+                //new PdfPCell(new Phrase("Diagnosticos: ", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE},    
+                //new PdfPCell(new Phrase(diagnostico, fontColumnValueBold)) { Colspan = 15, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK},    
                 
                 new PdfPCell(new Phrase("Indicaciones: ", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE},    
                 new PdfPCell(new Phrase(indicaciones, fontColumnValueBold)) { Colspan = 15, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK},    
 
+            };
+
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            document.Add(table);
+            #endregion
+            var diagnosticosOfatlmoHudbay = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+            int tamañoDiag = diagnosticosOfatlmoHudbay.Count == 0 ? 1 : diagnosticosOfatlmoHudbay.Count;
+
+            #region DIAGNÓSTICO
+            cells = new List<PdfPCell>();
+            string[] fechaServicio = datosPac.FechaServicio.ToString().Split(' ');
+
+            cells.Add(new PdfPCell(new Phrase("Diagnóstico", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE });
+
+            if (diagnosticosOfatlmoHudbay.Count != 0)
+            {
+                foreach (var item in diagnosticosOfatlmoHudbay)
+                {
+                    cells.Add(new PdfPCell(new Phrase(item.v_DiseasesName == null ? "---" : item.v_DiseasesName == "" ? "---" : item.v_DiseasesName, fontColumnValueBold)) { Colspan = 15, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK });
+                }
+            }
+            else
+            {
+                cells.Add(new PdfPCell(new Phrase("FALTA LLENAR", fontColumnValueBold)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda });
+            }
+
+
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            document.Add(table);
+            #endregion
+            #region RECOMENDACIÓN
+            cells = new List<PdfPCell>();
+            int anchoReco = 1;
+            int anchoRest = 1;
+            if (diagnosticosOfatlmoHudbay.Count != 0)
+            {
+                foreach (var item in diagnosticosOfatlmoHudbay)
+                {
+                    anchoReco = item.Recomendations.Count;
+                    anchoRest = item.Restrictions.Count;
+                    if (item.Recomendations.Count == anchoReco || item.Recomendations.Count == anchoRest)
+                    {
+                        cells.Add(new PdfPCell(new Phrase("Indicaciones", fontColumnValueBold)) { Colspan = 5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, Rowspan = anchoReco + anchoRest });
+                    }
+                    anchoReco--;
+                    anchoRest--;
+                    foreach (var item2 in item.Recomendations)
+                    {
+                        cells.Add(new PdfPCell(new Phrase("Recomendaciones"+ item2.v_RecommendationName == null ? "---" : item2.v_RecommendationName == "" ? "---" : item2.v_RecommendationName, fontColumnValueBold)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda });
+                    }
+                    foreach (var item3 in item.Restrictions)
+                    {
+                        cells.Add(new PdfPCell(new Phrase("Restricciones:" + item3.v_RestrictionName == null ? "---" : item3.v_RestrictionName == "" ? "---" : item3.v_RestrictionName, fontColumnValueBold)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda });
+                    }
+                }
+            }
+            else
+            {
+                cells.Add(new PdfPCell(new Phrase("Indicaciones", fontColumnValueBold)) { Colspan = 5, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda });
+                cells.Add(new PdfPCell(new Phrase("Recomendaciones: ---", fontColumnValueBold)) { Colspan = 15, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda });
+                cells.Add(new PdfPCell(new Phrase("Restricciones: ---", fontColumnValueBold)) { Colspan = 15, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda });
+
+            }
+
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            document.Add(table);
+
+            cells = new List<PdfPCell>()
+            {
+                new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 5f,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK },    
+
+                new PdfPCell(new Phrase("FECHA DE EVALUACIÓN:", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(fechaServicio[0], fontColumnValueBold)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
