@@ -9760,7 +9760,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							   EXAMEN_MENTAL_apetito_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_apetito_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_apetito_ID).v_Value1,
 							   EXAMEN_MENTAL_conducta_sexual_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conducta_sexual_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_conducta_sexual_ID).v_Value1,
-                               EXAMEN_MENTAL_inteligencia_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID).v_Value1Name,
+                               EXAMEN_MENTAL_inteligencia_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_inteligencia_ID).v_Value1,
                                EXAMEN_MENTAL_fobias_ID = ValoresExamenMental.Count == 0 || ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_fobias_ID) == null ? string.Empty : ValoresExamenMental.Find(p => p.v_ComponentFieldId == Constants.EXAMEN_MENTAL_fobias_ID).v_Value1,
 
 
@@ -17344,6 +17344,7 @@ namespace Sigesoft.Node.WinClient.BLL
 									 Dia = A.d_ServiceDate.Value.Day,
 									 Mes = A.d_ServiceDate.Value.Month,
 									 Anio = A.d_ServiceDate.Value.Year,
+                                     //servicios[0].FechaServicio.Value.Year.ToString();
 									 FirmaMedico = F.b_SignatureImage == null ? p7c.b_SignatureImage : F.b_SignatureImage,
 									 FirmaTrabajador = B.b_RubricImage,
 									 HuellaTrabajador = B.b_FingerPrintImage,
@@ -21177,7 +21178,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      TipoEso = C.i_EsoTypeId.Value,
                                      EmpresaContratista = D2.v_Name,
                                      RazonSocial = D.v_Name,
-                                     //ActividadEconomica = SP2.v_Value1,
+                                     ActividadEconomica = D2.v_SectorName,
                                      PuestoTrabajo = E.v_CurrentOccupation,
                                      LogoCliente = D1.b_Image
 								 });
@@ -21202,7 +21203,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   NombreTrabajador = a.NombreTrabajador,
 							   FechaNacimineto_S = a.FechaNacimineto.Value.ToString("dd/MM/yyyy"),
                                RazonSocial = a.RazonSocial,
-                               ActividadEconomica = MedicalCenter.v_SectorName,
+                               ActividadEconomica = a.ActividadEconomica,
                                PuestoTrabajo = a.PuestoTrabajo,
                                LogoCliente = a.LogoCliente,
                                TiempoTrabajo = Espirometria.Count == 0 ? string.Empty : Espirometria.Find(p => p.v_ComponentFieldId == Constants.ESPIROMETRIA_TIEMPO_TRABAJO_ID).v_Value1,
