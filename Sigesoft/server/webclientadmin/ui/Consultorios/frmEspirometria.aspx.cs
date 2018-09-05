@@ -49,7 +49,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
                 btnNewDiagnosticos.OnClientClick = WindowAddDX.GetSaveStateReference(hfRefresh.ClientID) + WindowAddDX.GetShowReference("../Auditar/FRM033C.aspx?Mode=New");
                 btnNewDiagnosticosFrecuente.OnClientClick = WindowAddDXFrecuente.GetSaveStateReference(hfRefresh.ClientID) + WindowAddDXFrecuente.GetShowReference("../Auditar/FRM033G.aspx?Mode=New");
-                btnReporteEspiro.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=Espiro");
+                //btnReporteEspiro.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=Espiro");
                 btnCertificadoAptitud.OnClientClick = winEdit1.GetSaveStateReference(hfRefresh.ClientID) + winEdit1.GetShowReference("frmVisorReporte.aspx?Mode=Certificado");
                
                 btnDescargar.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("DescargarAdjunto.aspx?Consultorio=ESPIRO");
@@ -133,8 +133,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
                 else
                 {
-                    ddlUsuarioGrabar.Enabled = true;
-                    ddlUsuarioGrabar.SelectedValue = "-1";
+                    ddlUsuarioGrabar.Enabled = false;
+                    ddlUsuarioGrabar.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
                 }
 
 
@@ -1267,7 +1267,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
-            Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
              
         }
 

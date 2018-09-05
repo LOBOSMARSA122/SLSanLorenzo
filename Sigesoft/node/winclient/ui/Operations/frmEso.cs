@@ -7723,6 +7723,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnVisorReporteExamen_Click(object sender, EventArgs e)
         {
+            //VISOR DE REPORTES
             Form frm = null;
 
             var arrComponentId = _componentId.Split('|');

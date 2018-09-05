@@ -715,15 +715,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Button btnDescargar;
         
         /// <summary>
-        /// Control Label746.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.Label Label746;
-        
-        /// <summary>
         /// Control llll.
         /// </summary>
         /// <remarks>
@@ -740,15 +731,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::FineUI.DropDownList ddlUsuarioGrabar;
-        
-        /// <summary>
-        /// Control btnReporteEspiro.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::FineUI.Button btnReporteEspiro;
         
         /// <summary>
         /// Control Panel9.
