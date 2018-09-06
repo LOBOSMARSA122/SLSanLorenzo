@@ -116,7 +116,7 @@ namespace NetPdf
             var cellsTit = new List<PdfPCell>()
                 { 
                     new PdfPCell(new Phrase("ANEXO 8: INFORME MÉDICO OCUPACIONAL", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
-                    new PdfPCell(new Phrase("N° H.C." + datosPac.v_PersonId, fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase("N° H.C." + datosPac.v_DocNumber, fontColumnValue)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 15f,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
                 };
             columnWidths = new float[] {80f, 20f };
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
@@ -1329,16 +1329,12 @@ namespace NetPdf
 
             #endregion
 
-             #region Firma
+            #region Firma
 
             #region Creando celdas de tipo Imagen y validando nulls
 
             // Firma del trabajador ***************************************************
             PdfPCell cellFirmaTrabajador = null;
-            //DirectoryInfo rutaFirma = null;
-            //rutaFirma = new DirectoryInfo(WebConfigurationManager.AppSettings["FirmaHuella"].ToString());
-            //iTextSharp.text.Image Firmajpg = iTextSharp.text.Image.GetInstance(rutaFirma +DataService.v_DocNumber + "_Firma.jpg");
-
 
             if (filiationData.FirmaTrabajador != null)
                 cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 70, 30));
@@ -1350,15 +1346,10 @@ namespace NetPdf
             // Huella del trabajador **************************************************
             PdfPCell cellHuellaTrabajador = null;
 
-            //DirectoryInfo rutaHuella = null;
-            //rutaHuella = new DirectoryInfo(WebConfigurationManager.AppSettings["FirmaHuella"].ToString());
-            //iTextSharp.text.Image Huellajpg = iTextSharp.text.Image.GetInstance(rutaHuella + DataService.v_DocNumber + "_Huella.jpg");
-
             if (filiationData.HuellaTrabajador != null)
                 cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 30, 30));
             else
                 cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
-            //cellHuellaTrabajador = new PdfPCell(Huellajpg);
 
             // Firma del doctor Auditor **************************************************
 
@@ -1421,6 +1412,11 @@ namespace NetPdf
             cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
             cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
             cellFirma.FixedHeight = 40F;
+            cellFirma.UseVariableBorders = true;
+            cellFirma.BorderColorLeft = BaseColor.BLACK;
+            cellFirma.BorderColorRight = BaseColor.BLACK;
+            cellFirma.BorderColorBottom = BaseColor.WHITE;
+            cellFirma.BorderColorTop = BaseColor.BLACK;
             cells.Add(cellFirma);
 
             cells.Add(new PdfPCell(new Phrase("CON LA CUAL DECLARA QUE LA INFORMACIÓN DECLARADA ES VERAZ", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
