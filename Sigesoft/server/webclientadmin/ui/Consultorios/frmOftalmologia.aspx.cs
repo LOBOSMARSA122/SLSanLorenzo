@@ -59,6 +59,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
                 Session["ComponentesPermisoLectura"] = ListaComponentesPermisoLectura;
                 TabOftalmo.Hidden = true;
+                TabOftalmoYanacocha.Hidden = false;
                 TabOftalmologia_Internacional.Hidden = true;
 
                 TabOftalmo.Attributes.Add("Tag", "N002-ME000000028");
@@ -206,7 +207,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlRetinaOI_Yana.Attributes.Add("Tag", "N009-MF000003602");
                 txtPIOD_Yana.Attributes.Add("Tag", "N009-MF000003595");
                 txtPIOI_Yana.Attributes.Add("Tag", "N009-MF000003596");
-                txtObsv_Yana.Attributes.Add("Tag", "N009-MF000003603");
+                //txtObsv_Yana.Attributes.Add("Tag", "N009-MF000003603");
 
                 #endregion
 
@@ -286,6 +287,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             TabOftalmo.Hidden = true;
             TabOftalmologia_Internacional.Hidden = true;
+            TabOftalmoYanacocha.Hidden = true;
             int index = e.RowIndex;
             var dataKeys = grdData.DataKeys[index];
             Session["ServiceId"] = dataKeys[0] == null ? "" : dataKeys[0].ToString();
@@ -325,13 +327,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         LoadCombosOftalmo();
                         ObtenerDatosOftalmo(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                        TabOftalmo.Hidden = false;
+                        TabOftalmo.Hidden = true;
                     }
                     else  if (item.ComponentId == TabOftalmologia_Internacional.Attributes.GetValue("Tag").ToString())
                     {
                         LoadCombosOftalmo_CI();
                         ObtenerDatosOftalmo_Internacional(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                        TabOftalmologia_Internacional.Hidden = false;
+                        TabOftalmologia_Internacional.Hidden = true;
                     }
                     else if (item.ComponentId == TabOftalmoYanacocha.Attributes.GetValue("Tag").ToString())
                     {
@@ -356,7 +358,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         {
                             LoadCombosOftalmo();
                             ObtenerDatosOftalmo(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                            TabOftalmo.Hidden = false;
+                            TabOftalmo.Hidden = true;
                         }
 
                     }

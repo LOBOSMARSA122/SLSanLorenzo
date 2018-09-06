@@ -2988,7 +2988,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
 
                 #endregion
-
+                
                 #region GRABAR DATOS ADICIONALES COMO [Diagnósticos + restricciones + recomendaciones]
 
                 // Grabar Dx por examen componente mas sus restricciones

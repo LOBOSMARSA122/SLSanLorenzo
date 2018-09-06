@@ -895,15 +895,15 @@
                                         <Items>
                                           <x:Form ID="Form111" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                                 <Rows>
-                                                <x:FormRow ID="FormRow399" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
+                                                <x:FormRow ID="FormRow399" ColumnWidths="90px 150px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label463" runat="server" Text="De Perfil" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label464" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox38" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlPerfilPlacaPleurales" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox38" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label465" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox39" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label466" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox40" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox40" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow398" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
@@ -911,15 +911,15 @@
                                                     <x:Label ID="label461" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                                   </x:FormRow>
-                                                    <x:FormRow ID="FormRow400" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
+                                                    <x:FormRow ID="FormRow400" ColumnWidths="90px 150px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label462" runat="server" Text="De frente" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label467" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox37" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlFrentePlacaPleurales" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox37" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label468" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox41" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label469" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox42" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox42" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow401" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
@@ -927,15 +927,15 @@
                                                     <x:Label ID="label470" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                                   </x:FormRow>
-                                                    <x:FormRow ID="FormRow402" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
+                                                    <x:FormRow ID="FormRow402" ColumnWidths="90px 150px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label471" runat="server" Text="Diafragma" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label472" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox43" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlDiafragmaPlacaPleurales" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox43" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label473" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox44" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label474" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox45" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox45" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow403" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
@@ -943,15 +943,15 @@
                                                     <x:Label ID="label475" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                                   </x:FormRow>
-                                                    <x:FormRow ID="FormRow404" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
+                                                    <x:FormRow ID="FormRow404" ColumnWidths="90px 150px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label476" runat="server" Text="Otro(s) Sitio(s)" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label477" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox46" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlOtrosPlacaPleurales" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox46" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label478" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox47" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label479" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox48" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox48" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow405" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
@@ -967,14 +967,14 @@
                                          <Items>
                                           <x:Form ID="Form112" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                                 <Rows>
-                                                <x:FormRow ID="FormRow406" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
+                                                <x:FormRow ID="FormRow406" ColumnWidths="90px" runat="server" >
                                                 <Items>
-                                                   <x:Label ID="label482" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox49" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                   <x:DropDownList ID="ddlPerfilCalcifica" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox49" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label483" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox50" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label484" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox51" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox51" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow407" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
@@ -982,14 +982,14 @@
                                                     <x:Label ID="label485" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                                   </x:FormRow>
-                                                    <x:FormRow ID="FormRow408" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
+                                                    <x:FormRow ID="FormRow408" ColumnWidths="90px" runat="server" >
                                                 <Items>
-                                                    <x:Label ID="label487" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox52" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlFrenteCalcifica" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox52" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label488" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox53" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label489" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox54" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox54" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow409" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
@@ -997,14 +997,14 @@
                                                     <x:Label ID="label490" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                                   </x:FormRow>
-                                                    <x:FormRow ID="FormRow410" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
+                                                    <x:FormRow ID="FormRow410" ColumnWidths="90px" runat="server" >
                                                 <Items>
-                                                    <x:Label ID="label492" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox55" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlDiafragmaCalcifica" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox55" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label493" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox56" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label494" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox57" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox57" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow411" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
@@ -1012,14 +1012,14 @@
                                                     <x:Label ID="label495" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                                   </x:FormRow>
-                                                    <x:FormRow ID="FormRow412" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
+                                                    <x:FormRow ID="FormRow412" ColumnWidths="90px" runat="server" >
                                                 <Items>
-                                                    <x:Label ID="label497" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox58" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlOtrosCalcifica" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox58" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label498" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox59" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label499" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox60" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox60" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow413" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
@@ -1035,7 +1035,7 @@
                                          <Items>
                                             <x:Form ID="Form113" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                             <Rows>
-                                            <x:FormRow ID="FormRow414" ColumnWidths="43px 43px 43px 43px 43px 43px" runat="server" >
+                                            <x:FormRow ID="FormRow414" ColumnWidths="23px 43px 43px 43px 43px 43px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label481" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                     <x:Label ID="label501" runat="server" Text="O" ShowLabel="false"></x:Label>
@@ -1050,21 +1050,21 @@
                                                     <x:Label ID="label496" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
-                                                <x:FormRow ID="FormRow416" ColumnWidths="10px 30px 10px 30px 10px 30px 18px 10px 30px 10px 30px 10px 30px" runat="server" >
+                                                <x:FormRow ID="FormRow416" ColumnWidths="90px 60px 90px" runat="server" >
                                                 <Items>
-                                                    <x:Label ID="label504" runat="server" Text="1" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox61" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlExtensionDerPlacas" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox61" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label505" runat="server" Text="2" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox62" runat="server" Text="" ShowLabel="false"></x:CheckBox>
-                                                    <x:Label ID="label506" runat="server" Text="3" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox63" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:Label ID="label506" runat="server" Text="3" ShowLabel="false"></x:Label>--%>
+                                                    <%--<x:CheckBox ID="CheckBox63" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
                                                       <x:Label ID="label511" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label507" runat="server" Text="1" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox64" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlExtensionIzqPlacas" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                   <%-- <x:CheckBox ID="CheckBox64" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label508" runat="server" Text="2" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox65" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label509" runat="server" Text="3" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox66" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox66" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow417" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
@@ -1107,15 +1107,15 @@
                                                     <x:Label ID="label537" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
-                                                  <x:FormRow ID="FormRow422" ColumnWidths="90px 10px 40px 10px 40px 10px 40px" runat="server" >
+                                                  <x:FormRow ID="FormRow422" ColumnWidths="90px 150px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label527" runat="server" Text="Obliteración del Angulo Costofrenico" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label528" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox73" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlObliAngulo" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox73" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label529" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox74" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label530" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox75" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox75" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                             </Rows>
@@ -1142,21 +1142,21 @@
                                                     <x:Label ID="label518" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
-                                                <x:FormRow ID="FormRow420" ColumnWidths="10px 30px 10px 30px 10px 30px 18px 10px 30px 10px 30px 10px 30px" runat="server" >
+                                                <x:FormRow ID="FormRow420" ColumnWidths="120px 18px 120px" runat="server" >
                                                 <Items>
-                                                    <x:Label ID="label519" runat="server" Text="a" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox67" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlAnchoDerPlacas" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox67" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label520" runat="server" Text="b" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox68" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label521" runat="server" Text="c" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox69" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox69" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
                                                       <x:Label ID="label522" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label523" runat="server" Text="a" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox70" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                   <x:DropDownList ID="ddlAnchoIzqPlacas" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox70" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label524" runat="server" Text="b" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox71" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label525" runat="server" Text="c" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox72" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox72" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow421" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
@@ -1236,15 +1236,15 @@
                                         <Items>
                                           <x:Form ID="Form119" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                                 <Rows>
-                                                <x:FormRow ID="FormRow446" ColumnWidths="60px 10px 40px 10px 40px 10px 40px" runat="server" >
+                                                <x:FormRow ID="FormRow446" ColumnWidths="60px 150px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label554" runat="server" Text="De Perfil" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label555" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox76" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlPerfilEngrosa" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox76" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label556" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox77" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label557" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox78" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox78" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow447" ColumnWidths="60px 10px 40px 10px 40px 10px 40px" runat="server" >
@@ -1252,15 +1252,15 @@
                                                     <x:Label ID="label558" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                                   </x:FormRow>
-                                                    <x:FormRow ID="FormRow448" ColumnWidths="60px 10px 40px 10px 40px 10px 40px" runat="server" >
+                                                    <x:FormRow ID="FormRow448" ColumnWidths="60px 150px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label559" runat="server" Text="De frente" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label560" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox79" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlFrenteEngrosa" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                   <%-- <x:CheckBox ID="CheckBox79" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label561" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox80" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label562" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox81" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox81" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                     </Rows>
@@ -1271,14 +1271,14 @@
                                          <Items>
                                           <x:Form ID="Form120" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                                 <Rows>
-                                                <x:FormRow ID="FormRow454" ColumnWidths="20px 40px 20px 40px 20px 40px" runat="server" >
+                                                <x:FormRow ID="FormRow454" ColumnWidths="180px" runat="server" >
                                                 <Items>
-                                                   <x:Label ID="label574" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox88" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                   <x:DropDownList ID="ddlPerfilCalcificaEngrosa" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox88" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label575" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox89" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label576" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox90" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox90" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow455" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
@@ -1286,14 +1286,14 @@
                                                     <x:Label ID="label577" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                                   </x:FormRow>
-                                                    <x:FormRow ID="FormRow456" ColumnWidths="20px 40px 20px 40px 20px 40px" runat="server" >
+                                                    <x:FormRow ID="FormRow456" ColumnWidths="180px" runat="server" >
                                                 <Items>
-                                                    <x:Label ID="label578" runat="server" Text="O" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox91" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlFrenteCalcificaEngrosa" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox91" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label579" runat="server" Text="D" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox92" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label580" runat="server" Text="I" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox93" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox93" runat="server" Label="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                    <x:FormRow ID="FormRow461" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >
@@ -1325,21 +1325,21 @@
                                                     <x:Label ID="label596" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
-                                                <x:FormRow ID="FormRow464" ColumnWidths="10px 23px 10px 23px 10px 23px 18px 10px 23px 10px 23px 10px 23px" runat="server" >
+                                                <x:FormRow ID="FormRow464" ColumnWidths="99px 18px 99px" runat="server" >
                                                 <Items>
-                                                    <x:Label ID="label597" runat="server" Text="1" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox100" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlExtensionEngrosaDer" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox100" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label598" runat="server" Text="2" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox101" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label599" runat="server" Text="3" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox102" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox102" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
                                                       <x:Label ID="label600" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label601" runat="server" Text="1" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox103" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlExtensionEngrosaIzq" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox103" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label602" runat="server" Text="2" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox104" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label603" runat="server" Text="3" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox105" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox105" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                              </Rows>
@@ -1366,21 +1366,21 @@
                                                     <x:Label ID="label622" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
-                                                <x:FormRow ID="FormRow476" ColumnWidths="10px 23px 10px 23px 10px 23px 18px 10px 23px 10px 23px 10px 23px" runat="server" >
+                                                <x:FormRow ID="FormRow476" ColumnWidths="99px 18px 99px" runat="server" >
                                                 <Items>
-                                                    <x:Label ID="label623" runat="server" Text="a" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox109" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlAnchoEngrosaDer" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox109" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label624" runat="server" Text="b" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox110" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label625" runat="server" Text="c" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox111" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox111" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
                                                       <x:Label ID="label626" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label627" runat="server" Text="a" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox112" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:DropDownList ID="ddlAnchoEngrosaIzq" runat="server"   Width="80px" ShowLabel="false"></x:DropDownList>
+                                                    <%--<x:CheckBox ID="CheckBox112" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label628" runat="server" Text="b" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="CheckBox113" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label629" runat="server" Text="c" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="CheckBox114" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="CheckBox114" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
                                                 </Items>
                                                   </x:FormRow>
                                                      <x:FormRow ID="FormRow477" ColumnWidths="10px 20px 10px 20px 10px 20px" runat="server" >

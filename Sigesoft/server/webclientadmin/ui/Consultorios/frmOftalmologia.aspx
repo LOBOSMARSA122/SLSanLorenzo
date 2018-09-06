@@ -1296,7 +1296,7 @@
                                         </x:Form>
                                     </Items>
                                 </x:Panel>
-                                <x:Panel ID="panel30" Title="OBSERVACIONES" EnableBackgroundColor="true" Height="60px" runat="server"
+                               <%-- <x:Panel ID="panel30" Title="OBSERVACIONES" EnableBackgroundColor="true" Height="60px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true">
                                     <Items>
                                          <x:Form ID="Form34" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
@@ -1310,7 +1310,7 @@
                                             </Rows>
                                         </x:Form>
                                     </Items>
-                                </x:Panel>
+                                </x:Panel>--%>
                            </Items>
                         </x:Tab>
                     </Tabs>
