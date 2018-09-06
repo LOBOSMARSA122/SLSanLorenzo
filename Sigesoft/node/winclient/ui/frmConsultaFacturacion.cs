@@ -838,7 +838,7 @@ namespace Sigesoft.Node.WinClient.UI
             int flagPantalla = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
 
 
-            var frm = new Reports.frmManagementReports(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, "");
+            var frm = new Reports.frmManagementReports(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, "", 1);
                 frm.ShowDialog();         
 
         }

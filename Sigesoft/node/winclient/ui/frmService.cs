@@ -783,10 +783,10 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnConsolidadoReportes_Click(object sender, EventArgs e)
         {
             int flagPantalla = int.Parse(grdDataService.Selected.Rows[0].Cells["i_MasterServiceId"].Value.ToString()); // int.Parse(ddlServiceTypeId.SelectedValue.ToString());
-
+            int eso = 1;
             if (flagPantalla == 2)
             {
-                var frm = new Reports.frmManagementReports(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, _EmpresaClienteId);
+                var frm = new Reports.frmManagementReports(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, _EmpresaClienteId, eso);
                 frm.ShowDialog();
             }
             else

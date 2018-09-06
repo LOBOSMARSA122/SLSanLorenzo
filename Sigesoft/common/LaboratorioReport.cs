@@ -15,14 +15,19 @@ namespace NetPdf
     public class LaboratorioReport
     {
         #region Report de Laboratorio
-
-        public static void CreateLaboratorioReport(PacientList filiationData, 
-            List<ServiceComponentList> serviceComponent, 
-            organizationDto infoEmpresaPropietaria, 
+        private static void RunFile(string filePDF)
+        {
+            Process proceso = Process.Start(filePDF);
+            proceso.WaitForExit();
+            proceso.Close();
+        }
+        public static void CreateLaboratorioReport(PacientList filiationData,
+            List<ServiceComponentList> serviceComponent,
+            organizationDto infoEmpresaPropietaria,
             string filePDF)
         {
             //Document document = new Document();
-           // document.SetPageSize(iTextSharp.text.PageSize.A4);
+            // document.SetPageSize(iTextSharp.text.PageSize.A4);
             Document document = new Document(PageSize.A4, 30f, 30f, 20f, 40f);
             try
             {
@@ -99,7 +104,7 @@ namespace NetPdf
                 table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
                 document.Add(table);
                 #endregion
-                float tamaño_caldas= 10f;
+                float tamaño_caldas = 10f;
                 #region Datos personales del trabajador
 
                 cells = new List<PdfPCell>()
@@ -160,7 +165,7 @@ namespace NetPdf
                     var xPerfilLipidico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PERFIL_LIPIDICO);
                     var xPerfilHepatico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PERFIL_HEPATICO_ID);
                     var xAcidoUrico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.BIOQUIMICA01_ID);
-                    
+
                     var xUrea = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.UREA_ID);
                     var xCreatinina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.CREATININA_ID);
 
@@ -233,7 +238,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     }
-                   if (xPerfilLipidico != null)
+                    if (xPerfilLipidico != null)
                     {
                         #region PERFIL_LIPIDICO
                         //cells = new List<PdfPCell>();
@@ -431,7 +436,7 @@ namespace NetPdf
                         }
                         #endregion
                     }
-                   
+
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "BIOQUÍMICA ENZIMATICO/COLORIMETRICO AUTOMATIZADO", fontTitleTableNegro, null);
@@ -464,7 +469,7 @@ namespace NetPdf
                 var xTiempoCoagulacion = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TIEMPO_COAGULACION_ID);
                 var xTiempoProtombina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PROTOMBINA_ID);
                 var xINR = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INR_ID);
-                
+
                 if (xTiempoSangria != null)
                 {
                     var TiempoSangria = xTiempoSangria.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TIPO_DE_SANGRIA_TIEMPO);
@@ -698,7 +703,7 @@ namespace NetPdf
 
 
                     }
-                   
+
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "HEMOGRAMA IMPERANCIA DE FLIJO", fontTitleTableNegro, null);
@@ -721,22 +726,22 @@ namespace NetPdf
                     cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                   var xVSG = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.VSG_ID);
-                   if (xVSG != null)
-                   {
-                       var vsg = xVSG.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VSG_RESUL);
-                       var vsgValord = xVSG.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VSG_DESEABLE);
+                    var xVSG = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.VSG_ID);
+                    if (xVSG != null)
+                    {
+                        var vsg = xVSG.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VSG_RESUL);
+                        var vsgValord = xVSG.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.VSG_DESEABLE);
 
-                       cells.Add(new PdfPCell(new Phrase("VSG", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                       cells.Add(new PdfPCell(new Phrase(vsg == null ? string.Empty : vsg.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                       cells.Add(new PdfPCell(new Phrase(vsgValord == null ? string.Empty : vsgValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                       cells.Add(new PdfPCell(new Phrase(vsg == null ? string.Empty : vsg.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("VSG", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(vsg == null ? string.Empty : vsg.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(vsgValord == null ? string.Empty : vsgValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(vsg == null ? string.Empty : vsg.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                   }
+                    }
 
-                   columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                   table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "HEMOGRAMA", fontTitleTableNegro, null);
-                   document.Add(table);
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "HEMOGRAMA", fontTitleTableNegro, null);
+                    document.Add(table);
 
                 }
 
@@ -813,7 +818,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     }
 
-                   var xB_HCG = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SUB_UNIDAD_BETA_CUALITATIVO_ID);
+                    var xB_HCG = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SUB_UNIDAD_BETA_CUALITATIVO_ID);
 
                     if (xB_HCG != null)
                     {
@@ -832,7 +837,7 @@ namespace NetPdf
                 #endregion
 
                 #region INMUNOLOGIA
-                 string[] groupInmuno = new string[]
+                string[] groupInmuno = new string[]
                  {
                    
                     Sigesoft.Common.Constants.AGLUTINACIONES_LAMINA_ID,
@@ -872,7 +877,7 @@ namespace NetPdf
                     {
                         cells = new List<PdfPCell>();
                         cells.Add(new PdfPCell(new Phrase("AGLUTINACIONES", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        
+
                         var ParatificoA = xAglutinaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.AGLUTINACIONES_LAMINA_REACTIVOS_PARATIFICO_A);
                         var ParatificoB = xAglutinaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.AGLUTINACIONES_LAMINA_REACTIVOS_PARATIFICO_B);
                         var ParatificoO = xAglutinaciones.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.AGLUTINACIONES_LAMINA_REACTIVOS_TIFICO_O);
@@ -890,7 +895,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(ParatificoH == null ? string.Empty : ParatificoH.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                         cells.Add(new PdfPCell(new Phrase("BRUCELLA ABORTUS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Brucella == null ? string.Empty : Brucella.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas});
+                        cells.Add(new PdfPCell(new Phrase(Brucella == null ? string.Empty : Brucella.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(" ", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(" ", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                     }
@@ -964,7 +969,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     }
-                                        
+
                     var xHisopadoNasof = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISOPADO_NASOFARINGEO_ID);
 
                     if (xHisopadoNasof != null)
@@ -978,13 +983,13 @@ namespace NetPdf
 
                     }
                     var xReaaccionInfHeces = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.REACCION_INFLAMATORIA_ID);
-                    
+
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "MICROBIOLOGIA - BACILOSCOPIA", fontTitleTableNegro, null);
                     document.Add(table);
                 }
 
-               
+
 
                 #endregion
 
@@ -1007,7 +1012,7 @@ namespace NetPdf
                     cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                    
+
                     var xSalmonella = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SALMONELLA_ID);
 
                     if (xSalmonella != null)
@@ -1020,7 +1025,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     }
-                   
+
                     var xExamenSereadoEnHeces = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_SEREADO_EN_HECES_ID);
 
                     if (xExamenSereadoEnHeces != null)
@@ -1033,7 +1038,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     }
-                   
+
                     var xReaaccionInfHeces = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.REACCION_INFLAMATORIA_ID);
 
                     if (xReaaccionInfHeces != null)
@@ -1586,7 +1591,7 @@ namespace NetPdf
 
                     }
 
-                   
+
                     var xAnfetaminas = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TOXICOLOGICO_ANFETAMINAS);
 
                     if (xAnfetaminas != null)
@@ -1756,7 +1761,7 @@ namespace NetPdf
                     document.Add(table);
                 }
 
-              
+
 
                 #endregion
 
@@ -1840,10 +1845,10 @@ namespace NetPdf
                     document.Add(table);
                 }
 
-                
+
 
                 #endregion
-                
+
                 #region Firma y sello Médico
                 var lab = serviceComponent.Find(p => p.i_CategoryId == (int)Sigesoft.Common.Consultorio.Laboratorio);
                 table = new PdfPTable(2);
@@ -1896,18 +1901,6 @@ namespace NetPdf
             {
                 throw;
             }
-        }
-
-        #endregion
-
-        #region Utils
-
-        private static void RunFile(string filePDF)
-        {
-            Process proceso = Process.Start(filePDF);
-            proceso.WaitForExit();
-            proceso.Close();
-
         }
 
         #endregion

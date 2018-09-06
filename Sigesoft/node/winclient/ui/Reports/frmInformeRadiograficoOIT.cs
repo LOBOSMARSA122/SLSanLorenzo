@@ -34,8 +34,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 var rp = new Reports.crInformeRadiograficoOIT();
 
-                var AscensoAlturas = new ServiceBL().ReportInformeRadiografico(_serviceId, Constants.RX_TORAX_ID);
-              
+                //var AscensoAlturas = new ServiceBL().ReportInformeRadiografico(_serviceId, Constants.RX_TORAX_ID);
+                var AscensoAlturas = new ServiceBL().ReportInformeRadiografico(_serviceId, Constants.OIT_ID);
+
                 DataSet ds1 = new DataSet();
                 DataTable dt = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(AscensoAlturas);
                 dt.TableName = "dtInformeRadiografico";

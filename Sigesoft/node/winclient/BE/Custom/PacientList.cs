@@ -9,6 +9,7 @@ namespace Sigesoft.Node.WinClient.BE
     [DataContract]
     public class PacientList
     {
+        public string EmpresaClienteId{ get; set; }
         
         public string GradoInstruccion { get; set; }
         //public string EstadoCivil { get; set; }
