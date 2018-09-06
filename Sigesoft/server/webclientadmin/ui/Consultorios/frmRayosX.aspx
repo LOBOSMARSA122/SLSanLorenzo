@@ -1538,7 +1538,7 @@
                                     </Items>
                                 </x:Panel>  
                                 <x:Panel ID="Panel65" Title="AUDITORÍA" EnableBackgroundColor="true" Height="60px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="true">
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible="false">
                                     <Items>
                                         <x:Form ID="Form211" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
                                             <Rows>

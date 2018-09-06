@@ -411,7 +411,7 @@
                                                 <x:Label ID="Label33" runat="server" Text="."></x:Label>
                                                 <x:TextBox ID="TextBox21" runat="server" Text="6.¿REALIZÓ ALGÚN EJERCICIO FÍSICO FUERTE (COMO GIMNASIA, CAMINATA O TROTAR), EN LA ÚLTIMA HORA?" Width="790" Enabled="False"></x:TextBox>
                                                 <x:Label ID="Label34" runat="server" Text="."></x:Label>
-                                                 <x:TextBox ID="TextBox22" runat="server" Text="7. ¿COMIÓ EN LA ÚLTIMA HORA?" Width="790"></x:TextBox>
+                                                 <x:TextBox ID="TextBox22" runat="server" Text="7. ¿COMIÓ EN LA ÚLTIMA HORA?" Width="790" Enabled="False"></x:TextBox>
                                             </Items>
                                         </x:Panel>
                                         <x:Panel ID="Panel12" Width="160px" EnableBackgroundColor="true" runat="server"

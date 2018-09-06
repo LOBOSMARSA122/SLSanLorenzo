@@ -168,7 +168,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkOITOpacidadesA.Attributes.Add("Tag", "N009-MF000000757");
                 chkOITOpacidadesB.Attributes.Add("Tag", "N009-MF000000758");
                 chkOITOpacidadesC.Attributes.Add("Tag", "N009-MF000000759");
-                chkAnormalidadesSI.Attributes.Add("Tag", "N009-MF000000760");
+                chkAnormalidadesSI.Attributes.Add("Tag", "N009-MF000003194");
                 chkAnormalidadesNO.Attributes.Add("Tag", "N009-MF000000761");
                 chkOITaa.Attributes.Add("Tag", "N009-MF000000762");
                 chkOITat.Attributes.Add("Tag", "N009-MF000000763");
@@ -338,7 +338,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                      {
                          LoadCombosRayosX();
                          ObtenerDatosRX(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                         TabRayosX.Hidden = false;
+                         TabRayosX.Hidden = true;
                      }
                      else if (item.ComponentId == TabOIT.Attributes.GetValue("Tag").ToString())
                      {
@@ -363,7 +363,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         {
                             LoadCombosRayosX();
                             ObtenerDatosRX(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                            TabRayosX.Hidden = false;
+                            TabRayosX.Hidden = true;
                         }
                     }
 
