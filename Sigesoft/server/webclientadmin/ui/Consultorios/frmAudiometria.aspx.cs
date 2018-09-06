@@ -472,6 +472,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
             Utils.LoadDropDownList(ddlFirmaAuditor, "Value1", "Id", oSystemParameterBL.GetProfessionalAuditores(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabarAudio, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
         }
 
         #endregion
@@ -548,6 +549,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     if (item.ComponentId == TabAudiometria.Attributes.GetValue("Tag").ToString())
                     {
                         LoadCombosAudiometria();
+                        ddlUsuarioGrabarAudio.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                        ddlUsuarioGrabarAudio.Enabled = false;
                         ObtenerDatosAudiometria(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabAudiometria.Hidden = false;
                     }
@@ -574,6 +577,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         if (Resultado != null)
                         {
                             LoadCombosAudiometria();
+                            ddlUsuarioGrabarAudio.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                            ddlUsuarioGrabarAudio.Enabled = false;
                             ObtenerDatosAudiometria(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                             TabAudiometria.Hidden = false;
                         }
@@ -1666,6 +1671,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         protected void btnAudiometria_Click(object sender, EventArgs e)
         {
+            if (ddlUsuarioGrabarAudio.SelectedValue == "-1")
+            {
+                Alert.ShowInTop("Seleccionar Firma de usuario", MessageBoxIcon.Information);
+                return;
+            }
+
             SaveImagenAudiograma_CI();
 
             OperationResult objOperationResult = new OperationResult();
@@ -1678,6 +1689,51 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                                                       Session["ServicioComponentIdAudiometria"].ToString());
             ShowGraphicOD();
             ShowGraphicOI();
+
+            //Gabar Dx
+            #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
+
+            var serviceComponentDto = new servicecomponentDto();
+            serviceComponentDto.v_ServiceComponentId = Session["ServicioComponentIdAudiometria"].ToString();
+            //Obtener fecha de Actualizacion
+            var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, Session["ServicioComponentIdAudiometria"].ToString()).d_UpdateDate;
+            serviceComponentDto.v_Comment = "";
+            //grabar estado del examen según profesión del usuario
+            int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
+
+            if (ProfesionId == 30) // evaluador
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
+
+            }
+            else if (ProfesionId == 31)//auditor
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
+
+            }
+            //serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceStatus.Culminado;
+
+            serviceComponentDto.i_ExternalInternalId = 1;
+            serviceComponentDto.i_IsApprovedId = 1;
+
+            serviceComponentDto.v_ComponentId = "N002-ME000000005";
+            serviceComponentDto.v_ServiceId = Session["ServiceId"].ToString();
+            serviceComponentDto.d_UpdateDate = FechaUpdate;
+            #endregion
+
+            Session["UsuarioLogueado"] = ((ClientSession)Session["objClientSession"]).i_SystemUserId;
+            // Grabar Dx por examen componente mas sus restricciones
+
+            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(ddlUsuarioGrabarAudio.SelectedValue.ToString());
+
+
+            _serviceBL.AddDiagnosticRepository(ref objOperationResult,
+                                                   null,
+                                                   serviceComponentDto,
+                                                   ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                   true);
+      
+            
             //Analizar el resultado de la operación
             if (objOperationResult.Success == 1)  // Operación sin error
             {

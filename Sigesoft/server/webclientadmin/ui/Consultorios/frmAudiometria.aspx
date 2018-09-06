@@ -281,7 +281,8 @@
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar4" runat="server">
                                     <Items>
-                                        <x:Button ID="btnAudiometria" Text="Grabar Audiometría" Icon="SystemSave" runat="server" OnClick="btnAudiometria_Click" AjaxLoadingType="Mask"></x:Button>                                   
+                                        <x:Button ID="btnAudiometria" Text="Grabar Audiometría" Icon="SystemSave" runat="server" OnClick="btnAudiometria_Click" AjaxLoadingType="Mask"></x:Button>
+                                        <x:DropDownList ID="ddlUsuarioGrabarAudio" runat="server"></x:DropDownList>                                   
                                        
                                     </Items>
                                 </x:Toolbar>

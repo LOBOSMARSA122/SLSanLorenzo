@@ -287,10 +287,10 @@
                                         Label="Seleccionar Excel" ButtonIcon="SystemSearch" OnFileSelected="fileDoc_FileSelected" AutoPostBack="true" ButtonText="Subir Adjunto" Readonly="False">
                                         </x:FileUpload>
                                          <x:Button ID="btnDescargar" runat="server" Text="Descargar Adjuntos" Icon="ArrowDown"></x:Button>
-                                         <x:Label ID="Label746" runat="server" Text="....." ShowLabel="false"></x:Label>
+                                         <%--<x:Label ID="Label746" runat="server" Text="....." ShowLabel="false"></x:Label>--%>
                                         <x:Label ID="llll" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabar" runat="server"></x:DropDownList>
-                                        <x:Button ID="btnReporteEspiro" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button> 
+                                        <%--<x:Button ID="btnReporteEspiro" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>--%> 
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -301,7 +301,7 @@
                                         <x:Panel ID="Panel10" Width="800px" Height="200px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="CUESTIONARIO">
                                             <Items>
-                                                <x:TextBox ID="tLabel28" runat="server" Text="1. ¿TUVO DESPRENDIMIENTO DE LA RETINA O UNA OPERACIÓN (CIRUGÍA) DE LOS OJOS, TÓRAX O ABDOMEN, EN LOS ÚLTIMOS 3 MESES?" Width="790"></x:TextBox>
+                                                <x:TextBox ID="tLabel28" runat="server" Text="1. ¿TUVO DESPRENDIMIENTO DE LA RETINA O UNA OPERACIÓN (CIRUGÍA) DE LOS OJOS, TÓRAX O ABDOMEN, EN LOS ÚLTIMOS 3 MESES?" Width="790" Enabled="False"></x:TextBox>
                                                 <x:Label ID="tLabel38" runat="server" Text="."></x:Label>
                                                  <x:TextBox ID="TextBox1" runat="server" Text="2. ¿HA ESTADO HOSPITALIZADO (A) POR CUALQUIER OTRO PROBLEMA DEL CORAZÓN EN LOS ÚLTIMOS 3 MESES?" Width="790"></x:TextBox>
                                                 <x:Label ID="Label1" runat="server" Text="."></x:Label>

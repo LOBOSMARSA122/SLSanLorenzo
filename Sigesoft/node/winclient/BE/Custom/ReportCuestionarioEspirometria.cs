@@ -37,6 +37,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string EmbarazoAvanzadoSiNo { get; set; }
         public string EmbarazoComplicadoSiNo { get; set; }
 
+        
+
         public string Pregunta1BSiNo { get; set; }
         public string Pregunta2BSiNo { get; set; }
         public string Pregunta3BSiNo { get; set; }
@@ -99,5 +101,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string SindromeObtructivo  { get; set; }
         public string Observacion { get; set; }
         public byte[] LogoCliente { get; set; }
+
+        public string NroCigarros { get; set; }
     }    
 }

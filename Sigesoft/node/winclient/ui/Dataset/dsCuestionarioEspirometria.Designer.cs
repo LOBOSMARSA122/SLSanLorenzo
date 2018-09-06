@@ -437,6 +437,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnServiceComponentId;
             
+            private global::System.Data.DataColumn columnNroCigarros;
+            
             private global::System.Data.DataColumn columnLogoCliente;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1106,6 +1108,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NroCigarrosColumn {
+                get {
+                    return this.columnNroCigarros;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn LogoClienteColumn {
                 get {
                     return this.columnLogoCliente;
@@ -1229,6 +1239,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string SindromeObtructivo_, 
                         string Observacion, 
                         string ServiceComponentId, 
+                        string NroCigarros, 
                         byte[] LogoCliente) {
                 dtCuestionarioEspirometriaRow rowdtCuestionarioEspirometriaRow = ((dtCuestionarioEspirometriaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
@@ -1311,6 +1322,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         SindromeObtructivo_,
                         Observacion,
                         ServiceComponentId,
+                        NroCigarros,
                         LogoCliente};
                 rowdtCuestionarioEspirometriaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtCuestionarioEspirometriaRow);
@@ -1413,6 +1425,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnSindromeObtructivo_ = base.Columns["SindromeObtructivo "];
                 this.columnObservacion = base.Columns["Observacion"];
                 this.columnServiceComponentId = base.Columns["ServiceComponentId"];
+                this.columnNroCigarros = base.Columns["NroCigarros"];
                 this.columnLogoCliente = base.Columns["LogoCliente"];
             }
             
@@ -1577,6 +1590,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnObservacion);
                 this.columnServiceComponentId = new global::System.Data.DataColumn("ServiceComponentId", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnServiceComponentId);
+                this.columnNroCigarros = new global::System.Data.DataColumn("NroCigarros", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNroCigarros);
                 this.columnLogoCliente = new global::System.Data.DataColumn("LogoCliente", typeof(byte[]), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLogoCliente);
                 this.columnFVCDes.Caption = "FVC";
@@ -3064,6 +3079,23 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string NroCigarros {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtCuestionarioEspirometria.NroCigarrosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'NroCigarros\' de la tabla \'dtCuestionarioEspirometria\' es " +
+                                "DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtCuestionarioEspirometria.NroCigarrosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public byte[] LogoCliente {
                 get {
                     try {
@@ -4025,6 +4057,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetServiceComponentIdNull() {
                 this[this.tabledtCuestionarioEspirometria.ServiceComponentIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNroCigarrosNull() {
+                return this.IsNull(this.tabledtCuestionarioEspirometria.NroCigarrosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNroCigarrosNull() {
+                this[this.tabledtCuestionarioEspirometria.NroCigarrosColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
