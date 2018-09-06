@@ -97,6 +97,27 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtOITFechaLectura.Attributes.Add("Tag", "N009-MF000000587");
                 txtOITFechaToma.Attributes.Add("Tag", "N009-MF000000588");
                 ddlOITCalidad.Attributes.Add("Tag", "N002-MF000000184");
+                ddlPerfilPlacaPleurales.Attributes.Add("Tag", "N009-MF000002102");
+                ddlFrentePlacaPleurales.Attributes.Add("Tag", "N009-MF000002103");
+                ddlDiafragmaPlacaPleurales.Attributes.Add("Tag", "N009-MF000002104");
+                ddlOtrosPlacaPleurales.Attributes.Add("Tag", "N009-MF000002105");
+                ddlPerfilCalcifica.Attributes.Add("Tag", "N009-MF000002110");
+                ddlFrenteCalcifica.Attributes.Add("Tag", "N009-MF000002111");
+                ddlDiafragmaCalcifica.Attributes.Add("Tag", "N009-MF000002112");
+                ddlOtrosCalcifica.Attributes.Add("Tag", "N009-MF000002113");
+                ddlExtensionDerPlacas.Attributes.Add("Tag", "N009-MF000002114");
+                ddlExtensionIzqPlacas.Attributes.Add("Tag", "N009-MF000002115");
+                ddlObliAngulo.Attributes.Add("Tag", "N009-MF000002118");
+                ddlAnchoDerPlacas.Attributes.Add("Tag", "N009-MF000002116");
+                ddlAnchoIzqPlacas.Attributes.Add("Tag", "N009-MF000002117");
+                ddlPerfilEngrosa.Attributes.Add("Tag", "N009-MF000002120");
+                ddlFrenteEngrosa.Attributes.Add("Tag", "N009-MF000002121");
+                ddlPerfilCalcificaEngrosa.Attributes.Add("Tag", "N009-MF000002122");
+                ddlFrenteCalcificaEngrosa.Attributes.Add("Tag", "N009-MF000002123");
+                ddlExtensionEngrosaDer.Attributes.Add("Tag", "N009-MF000002124");
+                ddlExtensionEngrosaIzq.Attributes.Add("Tag", "N009-MF000002125");
+                ddlAnchoEngrosaDer.Attributes.Add("Tag", "N009-MF000002126");
+                ddlAnchoEngrosaIzq.Attributes.Add("Tag", "N009-MF000002127");
                 txtOITComentarios.Attributes.Add("Tag", "N009-MF000000589");
                 //ddlOITCausas.Attributes.Add("Tag", "N002-MF000000210");
                 ChckNinguna.Attributes.Add("Tag", "N009-MF000003196");
@@ -147,7 +168,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkOITOpacidadesA.Attributes.Add("Tag", "N009-MF000000757");
                 chkOITOpacidadesB.Attributes.Add("Tag", "N009-MF000000758");
                 chkOITOpacidadesC.Attributes.Add("Tag", "N009-MF000000759");
-                chkAnormalidadesSI.Attributes.Add("Tag", "N009-MF000000760");
+                chkAnormalidadesSI.Attributes.Add("Tag", "N009-MF000003194");
                 chkAnormalidadesNO.Attributes.Add("Tag", "N009-MF000000761");
                 chkOITaa.Attributes.Add("Tag", "N009-MF000000762");
                 chkOITat.Attributes.Add("Tag", "N009-MF000000763");
@@ -317,7 +338,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                      {
                          LoadCombosRayosX();
                          ObtenerDatosRX(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                         TabRayosX.Hidden = false;
+                         TabRayosX.Hidden = true;
                      }
                      else if (item.ComponentId == TabOIT.Attributes.GetValue("Tag").ToString())
                      {
@@ -342,7 +363,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         {
                             LoadCombosRayosX();
                             ObtenerDatosRX(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                            TabRayosX.Hidden = false;
+                            TabRayosX.Hidden = true;
                         }
                     }
 
@@ -1260,8 +1281,33 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             var Combo165 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 165);
             var Combo166 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 166);
+            var Combo158 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 158);
+            var Combo159 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 159);
+            var Combo172 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 172);
 
             Utils.LoadDropDownList(ddlOITCalidad, "Value1", "Id", Combo165, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlPerfilPlacaPleurales, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlFrentePlacaPleurales, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlDiafragmaPlacaPleurales, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlOtrosPlacaPleurales, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlPerfilCalcifica, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlFrenteCalcifica, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlDiafragmaCalcifica, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlOtrosCalcifica, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlExtensionDerPlacas, "Value1", "Id", Combo159, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlExtensionIzqPlacas, "Value1", "Id", Combo159, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlObliAngulo, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlAnchoDerPlacas, "Value1", "Id", Combo172, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlAnchoIzqPlacas, "Value1", "Id", Combo172, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlPerfilEngrosa, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlFrenteEngrosa, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlPerfilCalcificaEngrosa, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlFrenteCalcificaEngrosa, "Value1", "Id", Combo158, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlExtensionEngrosaDer, "Value1", "Id", Combo159, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlExtensionEngrosaIzq, "Value1", "Id", Combo159, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlAnchoEngrosaDer, "Value1", "Id", Combo172, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlAnchoEngrosaIzq, "Value1", "Id", Combo172, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlOITCausas, "Value1", "Id", Combo166, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlOITCausas, "Value1", "Id", Combo166, DropDownListAction.Select);
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 

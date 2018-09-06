@@ -1163,7 +1163,7 @@
                                            <x:FormRow ID="FormRow13" ColumnWidths="240px 240px 240px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label13" runat="server" Text="" ShowLabel="false"></x:Label>
-                                                    <x:Label ID="Label15" runat="server" Text="-------------SIN CORREGIR------------" ShowLabel="false"></x:Label> 
+                                                    <x:Label ID="Label15" runat="server" Text="-------------SIN CORREGIR------------" ShowLabel="false" ></x:Label> 
                                                     <x:Label ID="Label16" runat="server" Text="---------------CORREGIDA--------------" ShowLabel="false"></x:Label> 
                                                </Items>
                                           </x:FormRow>
@@ -1189,10 +1189,10 @@
                                                 <Items>
                                                     <x:Label ID="Label24" runat="server" Text="" ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label25" runat="server" Text="VISIÓN DE CERCA" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlSCVCOD_Yana" runat="server" Width="80" ShowLabel="false"></x:DropDownList> 
-                                                    <x:DropDownList ID="ddlSCVCOI_Yana" runat="server" Width="80" ShowLabel="false"></x:DropDownList> 
-                                                    <x:DropDownList ID="ddlCCVCOD_Yana" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
-                                                    <x:DropDownList ID="ddlCCVCOI_Yana" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlSCVCOD_Yana" runat="server" Width="80" ShowLabel="false" Enabled="false"></x:DropDownList> 
+                                                    <x:DropDownList ID="ddlSCVCOI_Yana" runat="server" Width="80" ShowLabel="false" Enabled="false"></x:DropDownList> 
+                                                    <x:DropDownList ID="ddlCCVCOD_Yana" runat="server" Width="80" ShowLabel="false" Enabled="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlCCVCOI_Yana" runat="server" Width="80" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                  </Items>
                                           </x:FormRow>
                                          </Rows>
@@ -1212,10 +1212,10 @@
                                                 <Items>
                                                     <x:Label ID="Label28" runat="server" Text="" ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label29" runat="server" Text="VISIÓN DE LEJOS" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlSCVLOD_Yana" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
-                                                    <x:DropDownList ID="ddlSCVLOI_Yana" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
-                                                    <x:DropDownList ID="ddlCCVLOD_Yana" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
-                                                    <x:DropDownList ID="ddlCCVLOI_Yana" runat="server" Width="80" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlSCVLOD_Yana" runat="server" Width="80" ShowLabel="false" Enabled="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlSCVLOI_Yana" runat="server" Width="80" ShowLabel="false" Enabled="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlCCVLOD_Yana" runat="server" Width="80" ShowLabel="false" Enabled="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlCCVLOI_Yana" runat="server" Width="80" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                 </Items>
                                           </x:FormRow>
                                          </Rows>
@@ -1235,11 +1235,11 @@
                                            <x:FormRow ID="FormRow8" ColumnWidths="140px 180px 140px 180px 140px 180px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label30" runat="server" Text="Enfermedades Oculares" ShowLabel="false"></x:Label>
-                                                    <x:TextArea ID="txtEnfOculares_Yana" runat="server" Text="" Label="" ShowLabel="false" Height="50"></x:TextArea>
+                                                    <x:TextArea ID="txtEnfOculares_Yana" runat="server" Text="" Label="" ShowLabel="false" Height="50" Enabled="false"></x:TextArea>
                                                     <x:Label ID="Label10" runat="server" Text="Test de Ishihara" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlTestIshihara_Yana" runat="server" Width="110" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlTestIshihara_Yana" runat="server" Width="110" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                     <x:Label ID="Label11" runat="server" Text="Reflejos Pupilares" ShowLabel="false"></x:Label>                                                    
-                                                    <x:DropDownList ID="ddlReflejos_Yana" runat="server" Width="110" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlReflejos_Yana" runat="server" Width="110" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                 </Items>
                                           </x:FormRow>
                                          </Rows>
@@ -1254,21 +1254,21 @@
                                            <x:FormRow ID="FormRow9" ColumnWidths="140px 180px 140px 180px 140px 180px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label31" runat="server" Text="MÁCULA OD " ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlMaculaOD_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlMaculaOD_Yana" runat="server" Width="140" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                     <x:Label ID="Label32" runat="server" Text="NERVIO ÓPT OD " ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlNervioOD_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlNervioOD_Yana" runat="server" Width="140" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                     <x:Label ID="Label33" runat="server" Text="RETINA OD " ShowLabel="false"></x:Label>                                                    
-                                                    <x:DropDownList ID="ddlRetinaOD_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlRetinaOD_Yana" runat="server" Width="140" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                 </Items>
                                           </x:FormRow>
                                            <x:FormRow ID="FormRow27" ColumnWidths="140px 180px 140px 180px 140px 180px" runat="server" >
                                                 <Items>
                                                      <x:Label ID="Label46" runat="server" Text="MÁCULA OI " ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlMaculaOI_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
-                                                    <x:Label ID="Label47" runat="server" Text="NERVIO ÓPT OI " ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlNervioOI_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlMaculaOI_Yana" runat="server" Width="140" ShowLabel="false" Enabled="false"></x:DropDownList>
+                                                    <x:Label ID="Label47" runat="server" Text="NERVIO ÓPT OI " ShowLabel="false" ></x:Label>
+                                                    <x:DropDownList ID="ddlNervioOI_Yana" runat="server" Width="140" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                     <x:Label ID="Label50" runat="server" Text="RETINA OI " ShowLabel="false"></x:Label>                                                    
-                                                    <x:DropDownList ID="ddlRetinaOI_Yana" runat="server" Width="140" ShowLabel="false"></x:DropDownList>
+                                                    <x:DropDownList ID="ddlRetinaOI_Yana" runat="server" Width="140" ShowLabel="false" Enabled="false"></x:DropDownList>
                                                 </Items>
                                           </x:FormRow>
                                          </Rows>
@@ -1283,12 +1283,12 @@
                                                  <x:FormRow ID="FormRow32" ColumnWidths="140px 80px 40px 190px 190px 140px 80px 40px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="Label37" runat="server" Text="OJO DERECHO" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtPIOD_Yana" runat="server" Text="" ShowLabel="false" Width="75"></x:TextBox>
+                                                    <x:TextBox ID="txtPIOD_Yana" runat="server" Text="" ShowLabel="false" Width="75" Enabled="false"></x:TextBox>
                                                     <x:Label ID="Label38" runat="server" Text="mmHg" ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label36" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label43" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                     <x:Label ID="Label39" runat="server" Text="OJO IZQUIERDO" ShowLabel="false"></x:Label> 
-                                                    <x:TextBox ID="txtPIOI_Yana" runat="server" Text="" ShowLabel="false" Width="75"></x:TextBox>
+                                                    <x:TextBox ID="txtPIOI_Yana" runat="server" Text="" ShowLabel="false" Width="75" Enabled="false"></x:TextBox>
                                                     <x:Label ID="Label40" runat="server" Text="mmHg" ShowLabel="false"></x:Label>                                                     
                                                 </Items> 
                                                 </x:FormRow>                                                                                             
@@ -1296,7 +1296,7 @@
                                         </x:Form>
                                     </Items>
                                 </x:Panel>
-                                <x:Panel ID="panel30" Title="OBSERVACIONES" EnableBackgroundColor="true" Height="60px" runat="server"
+                               <%-- <x:Panel ID="panel30" Title="OBSERVACIONES" EnableBackgroundColor="true" Height="60px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true">
                                     <Items>
                                          <x:Form ID="Form34" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="50px" LabelAlign="Left" >
@@ -1310,7 +1310,7 @@
                                             </Rows>
                                         </x:Form>
                                     </Items>
-                                </x:Panel>
+                                </x:Panel>--%>
                            </Items>
                         </x:Tab>
                     </Tabs>
