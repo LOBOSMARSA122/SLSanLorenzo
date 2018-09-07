@@ -7790,328 +7790,472 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
             PacientId = idPerson.v_PersonId.ToString();
             #region POR AHORA
-            int esoo = 2;
-            var frm = new Reports.frmManagementReports(_serviceId, PacientId, _DataService.EmpresaEmpleadora, personData.v_FirstLastName + " " + personData.v_SecondLastName + " " + personData.v_FirstName, 2, filiationData.EmpresaClienteId, esoo);
-            frm.ShowDialog();
+            //int esoo = 2;
+            //var frm = new Reports.frmManagementReports(_serviceId, PacientId, _DataService.EmpresaEmpleadora, personData.v_FirstLastName + " " + personData.v_SecondLastName + " " + personData.v_FirstName, 2, filiationData.EmpresaClienteId, esoo);
+            //frm.ShowDialog();
             #endregion
 
-            //frmManagementReports frmManagmentReport = new frmManagementReports();
-            //DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
+            frmManagementReports frmManagmentReport = new frmManagementReports();
+            DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
 
-            //List<ServiceComponentList> serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            List<ServiceComponentList> serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
-            //var arrComponentId = _componentId.Split('|');
+            var arrComponentId = _componentId.Split('|');
+            #region audiometria
+            if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)
+                || arrComponentId.Contains("N009-ME000000337")
+                || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList audiometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID);
+                ServiceComponentList cuestionarioEspCoimolache = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000337");
+                ServiceComponentList audioCoimolache = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIO_COIMOLACHE);
 
-            //if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)
-            //    || arrComponentId.Contains("N009-ME000000337")
-            //    || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE))
-            //{
-            //    List<string> componentIds = new List<string>();
+                if (audiometria != null){
+                //    componentIds.Add(Constants.AUDIOMETRIA_ID);
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.AUDIOMETRIA_ID + "|40");
+                    }
+                    else {
+                        componentIds.Add(Constants.AUDIOMETRIA_ID);
+                    }
+                }
+                if (cuestionarioEspCoimolache != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000591")
+                    {
+                        componentIds.Add("N009-ME000000337");
+                    }
+                }
+                if (audioCoimolache != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                        || filiationData.EmpresaClienteId == "N009-OO000000590")
+                    {
+                        componentIds.Add(Constants.AUDIO_COIMOLACHE);
+                    }
+                }
 
-            //    if (Constants.AUDIOMETRIA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.AUDIOMETRIA_ID);
-            //    }
-            //    else if ("N009-ME000000337" != null)
-            //    {
-            //        componentIds.Add("N009-ME000000337");
-            //    }
-            //    else if (Constants.AUDIO_COIMOLACHE != null)
-            //    {
-            //        componentIds.Add(Constants.AUDIO_COIMOLACHE);
-            //    }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region cardiologia
+            else if (arrComponentId.Contains(Constants.APENDICE_ID)//cardiologia
+                    || arrComponentId.Contains(Constants.ELECTROCARDIOGRAMA_ID)
+                    || arrComponentId.Contains(Constants.ELECTRO_GOLD)
+                    || arrComponentId.Contains(Constants.PRUEBA_ESFUERZO_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList apendice = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_ID);
+                ServiceComponentList electrocardiograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_ID);
+                ServiceComponentList electroGold = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTRO_GOLD);
+                ServiceComponentList pruebaEsfuerzo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PRUEBA_ESFUERZO_ID);
 
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
-            //else if (arrComponentId.Contains(Constants.APENDICE_ID)//cardiologia
-            //        || arrComponentId.Contains(Constants.ELECTROCARDIOGRAMA_ID)
-            //        || arrComponentId.Contains(Constants.ELECTRO_GOLD)
-            //        || arrComponentId.Contains(Constants.PRUEBA_ESFUERZO_ID))
-            //{
-            //    List<string> componentIds = new List<string>();
+                if (apendice != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.APENDICE_ID+"|43");
+                    }
+                }
+                if (electrocardiograma != null)
+                {
+                    componentIds.Add(Constants.ELECTROCARDIOGRAMA_ID);
+                }
+                if (electroGold != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                        || filiationData.EmpresaClienteId == "N009-OO000000590"
+                        || filiationData.EmpresaClienteId == "N009-OO000000591")
+                    {
+                        componentIds.Add(Constants.ELECTRO_GOLD);
+                    }
+                }
+                if (pruebaEsfuerzo != null)
+                {
+                    componentIds.Add(Constants.PRUEBA_ESFUERZO_ID);
+                }
 
-            //    if (Constants.APENDICE_ID != null)
-            //    {
-            //        componentIds.Add(Constants.APENDICE_ID);
-            //    }
-            //    else if (Constants.ELECTROCARDIOGRAMA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.ELECTROCARDIOGRAMA_ID);
-            //    }
-            //    else if (Constants.ELECTRO_GOLD != null)
-            //    {
-            //        componentIds.Add(Constants.ELECTRO_GOLD);
-            //    }
-            //    else if (Constants.PRUEBA_ESFUERZO_ID != null)
-            //    {
-            //        componentIds.Add(Constants.PRUEBA_ESFUERZO_ID);
-            //    }
+               
 
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
-            //else if (arrComponentId.Contains(Constants.ESPIROMETRIA_ID))
-            //{
-            //    List<string> componentIds = new List<string>();
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region espirometria
+            else if (arrComponentId.Contains(Constants.ESPIROMETRIA_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList espirometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
 
-            //    if (Constants.ESPIROMETRIA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.ESPIROMETRIA_ID);
-            //    }
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
-            //else if (arrComponentId.Contains(Constants.INFORME_LABORATORIO_ID)//laboratorio
-            //        || arrComponentId.Contains(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID))
-            //{
-            //    List<string> componentIds = new List<string>();
+                if (espirometria != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.ESPIROMETRIA_ID + "|35");
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                        || filiationData.EmpresaClienteId == "N009-OO000000590")
+                    {
+                        componentIds.Add(Constants.ESPIROMETRIA_ID + "|54");
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000591")
+                    {
+                        componentIds.Add(Constants.ESPIROMETRIA_ID + "|58");
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.INFORME_ESPIROMETRIA+ "|46");
+                    }
+                }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region laboratorio
+            else if (arrComponentId.Contains(Constants.INFORME_LABORATORIO_ID)//laboratorio
+                    || arrComponentId.Contains(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList informeLab = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_LABORATORIO_ID);
+                ServiceComponentList toxCocaMarihuana = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
 
-            //    if (Constants.INFORME_LABORATORIO_ID != null)
-            //    {
-            //        componentIds.Add(Constants.INFORME_LABORATORIO_ID);
-            //    }
-            //    else if (Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
-            //    }
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
-            //else if(arrComponentId.Contains(Constants.EXAMEN_FISICO_7C_ID)//medicina
-            //        || arrComponentId.Contains(Constants.EXAMEN_FISICO_ID)
-            //        || arrComponentId.Contains(Constants.ATENCION_INTEGRAL_ID)
-            //        || arrComponentId.Contains(Constants.C_N_ID)//cuestionario nordico
-            //        || arrComponentId.Contains(Constants.FICHA_SAS_ID)
-            //        || arrComponentId.Contains(Constants.EVA_ERGONOMICA_ID)
-            //        || arrComponentId.Contains(Constants.EVA_NEUROLOGICA_ID)
-            //        || arrComponentId.Contains(Constants.ALTURA_7D_ID)
-            //        || arrComponentId.Contains(Constants.ALTURA_ESTRUCTURAL_ID)
-            //        || arrComponentId.Contains(Constants.EXAMEN_SUF_MED__OPERADORES_ID)
-            //        || arrComponentId.Contains(Constants.OSTEO_MUSCULAR_ID_1)
-            //        || arrComponentId.Contains(Constants.FOTO_TIPO_ID)
-            //        || arrComponentId.Contains(Constants.OSTEO_COIMO)
-            //        || arrComponentId.Contains(Constants.SINTOMATICO_ID)
-            //        || arrComponentId.Contains(Constants.FICHA_SUFICIENCIA_MEDICA_ID)
-            //        || arrComponentId.Contains(Constants.TAMIZAJE_DERMATOLOGIO_ID)
-            //        || arrComponentId.Contains(Constants.TEST_VERTIGO_ID)
-            //        || arrComponentId.Contains(Constants.EVA_OSTEO_ID)){
+                if (informeLab != null)
+                {
+                    componentIds.Add(Constants.INFORME_LABORATORIO_ID);
+                }
+                if (toxCocaMarihuana != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID + "|48");
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000589")
+                    {
+                        componentIds.Add(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
+                    }
+                }
 
-            //            List<string> componentIds = new List<string>();
-
-            //            if (Constants.EXAMEN_FISICO_7C_ID != null)
-            //            {
-            //                componentIds.Add(Constants.EXAMEN_FISICO_7C_ID);
-            //            }
-            //            else if (Constants.EXAMEN_FISICO_ID != null)
-            //            {
-            //                componentIds.Add(Constants.EXAMEN_FISICO_ID);
-            //            }
-            //            else if (Constants.ATENCION_INTEGRAL_ID != null)
-            //            {
-            //                componentIds.Add(Constants.ATENCION_INTEGRAL_ID);
-            //            }
-            //            else if (Constants.C_N_ID != null)
-            //            {
-            //                componentIds.Add(Constants.C_N_ID);
-            //            }
-            //            else if (Constants.FICHA_SAS_ID != null)
-            //            {
-            //                componentIds.Add(Constants.FICHA_SAS_ID);
-            //            }
-            //            else if (Constants.EVA_ERGONOMICA_ID != null)
-            //            {
-            //                componentIds.Add(Constants.EVA_ERGONOMICA_ID);
-            //            }
-            //            else if (Constants.EVA_NEUROLOGICA_ID != null)
-            //            {
-            //                componentIds.Add(Constants.EVA_NEUROLOGICA_ID);
-            //            }
-            //            else if (Constants.ALTURA_7D_ID != null)
-            //            {
-            //                componentIds.Add(Constants.ALTURA_7D_ID);
-            //            }
-            //            else if (Constants.ALTURA_ESTRUCTURAL_ID != null)
-            //            {
-            //                componentIds.Add(Constants.ALTURA_ESTRUCTURAL_ID);
-            //            }
-            //            else if (Constants.EXAMEN_SUF_MED__OPERADORES_ID != null)
-            //            {
-            //                componentIds.Add(Constants.EXAMEN_SUF_MED__OPERADORES_ID);
-            //            }
-            //            else if (Constants.OSTEO_MUSCULAR_ID_1 != null)
-            //            {
-            //                componentIds.Add(Constants.OSTEO_MUSCULAR_ID_1);
-            //            }
-            //            else if (Constants.FOTO_TIPO_ID != null)
-            //            {
-            //                componentIds.Add(Constants.FOTO_TIPO_ID);
-            //            }
-            //            else if (Constants.OSTEO_COIMO != null)
-            //            {
-            //                componentIds.Add(Constants.OSTEO_COIMO);
-            //            }
-            //            else if (Constants.SINTOMATICO_ID != null)
-            //            {
-            //                componentIds.Add(Constants.SINTOMATICO_ID);
-            //            }
-            //            else if (Constants.FICHA_SUFICIENCIA_MEDICA_ID != null)
-            //            {
-            //                componentIds.Add(Constants.FICHA_SUFICIENCIA_MEDICA_ID);
-            //            }
-            //            else if (Constants.TAMIZAJE_DERMATOLOGIO_ID != null)
-            //            {
-            //                componentIds.Add(Constants.TAMIZAJE_DERMATOLOGIO_ID);
-            //            }
-            //            else if (Constants.TEST_VERTIGO_ID != null)
-            //            {
-            //                componentIds.Add(Constants.TEST_VERTIGO_ID);
-            //            }
-            //            else if (Constants.EVA_OSTEO_ID != null)
-            //            {
-            //                componentIds.Add(Constants.EVA_OSTEO_ID);
-            //            }
-            //            frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //        }
-            //else if (arrComponentId.Contains(Constants.ODONTOGRAMA_ID))
-            //{
-            //    List<string> componentIds = new List<string>();
-
-            //    if (Constants.ODONTOGRAMA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.ODONTOGRAMA_ID);
-            //    }
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
-            //else if (arrComponentId.Contains(Constants.OFTALMOLOGIA_ID)//oftalmologia
-            //        || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
-            //        || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
-            //        || arrComponentId.Contains(Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
-            //        || arrComponentId.Contains(Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID)
-            //        || arrComponentId.Contains(Constants.PETRINOVIC_ID)
-            //        || arrComponentId.Contains(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)
-            //        || arrComponentId.Contains("N009-ME000000437"))
-            //{
-            //    List<string> componentIds = new List<string>();
                 
-            //    if (Constants.OFTALMOLOGIA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.OFTALMOLOGIA_ID);
-            //    }
-            //    else if (Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID != null)
-            //    {
-            //        componentIds.Add(Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
-            //    }
-            //    else if (Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID != null)
-            //    {
-            //        componentIds.Add(Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
-            //    }
-            //    else if (Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
-            //    }
-            //    else if (Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID != null)
-            //    {
-            //        componentIds.Add(Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
-            //    }
-            //    else if (Constants.PETRINOVIC_ID != null)
-            //    {
-            //        componentIds.Add(Constants.PETRINOVIC_ID);
-            //    }
-            //    else if (Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID != null)
-            //    {
-            //        componentIds.Add(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
-            //    }
-            //    else if ("N009-ME000000437" != null)
-            //    {
-            //        componentIds.Add("N009-ME000000437");
-            //    }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region medicina
+            else if (arrComponentId.Contains(Constants.EXAMEN_FISICO_7C_ID)//medicina
+                    || arrComponentId.Contains(Constants.EXAMEN_FISICO_ID)
+                    || arrComponentId.Contains(Constants.ATENCION_INTEGRAL_ID)
+                    || arrComponentId.Contains(Constants.C_N_ID)//cuestionario nordico
+                    || arrComponentId.Contains(Constants.FICHA_SAS_ID)
+                    || arrComponentId.Contains(Constants.EVA_ERGONOMICA_ID)
+                    || arrComponentId.Contains(Constants.EVA_NEUROLOGICA_ID)
+                    || arrComponentId.Contains(Constants.ALTURA_7D_ID)
+                    || arrComponentId.Contains(Constants.ALTURA_ESTRUCTURAL_ID)
+                    || arrComponentId.Contains(Constants.EXAMEN_SUF_MED__OPERADORES_ID)
+                    || arrComponentId.Contains(Constants.OSTEO_MUSCULAR_ID_1)
+                    || arrComponentId.Contains(Constants.FOTO_TIPO_ID)
+                    || arrComponentId.Contains(Constants.OSTEO_COIMO)
+                    || arrComponentId.Contains(Constants.SINTOMATICO_ID)
+                    || arrComponentId.Contains(Constants.FICHA_SUFICIENCIA_MEDICA_ID)
+                    || arrComponentId.Contains(Constants.TAMIZAJE_DERMATOLOGIO_ID)
+                    || arrComponentId.Contains(Constants.TEST_VERTIGO_ID)
+                    || arrComponentId.Contains(Constants.EVA_OSTEO_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList anexo16 = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+                ServiceComponentList anexo312 = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ID);
+                ServiceComponentList atencionIntegral = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ID);
+                ServiceComponentList cuestionarioNordico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.C_N_ID);
+                ServiceComponentList sas = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SAS_ID);
+                ServiceComponentList evaluacionErgonomica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_ERGONOMICA_ID);
+                ServiceComponentList evaluacionNeurologica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_NEUROLOGICA_ID);
+                ServiceComponentList alturageografica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALTURA_7D_ID);
+                ServiceComponentList alturaestructural = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALTURA_ESTRUCTURAL_ID);
+                ServiceComponentList suficienciamedica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_ID);
+                ServiceComponentList osteoMuscular = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_MUSCULAR_ID_1);
+                ServiceComponentList fotoTipo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FOTO_TIPO_ID);
+                ServiceComponentList osteoCoimo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_COIMO);
+                ServiceComponentList sintomatico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SINTOMATICO_ID);
+                ServiceComponentList fichaSufcMedica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SUFICIENCIA_MEDICA_ID);
+                ServiceComponentList TamizajeDermat = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TAMIZAJE_DERMATOLOGIO_ID);
+                ServiceComponentList testVertigo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_VERTIGO_ID);
+                ServiceComponentList evaluacionOsteomuscular = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_OSTEO_ID);
 
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
+                if (anexo16 != null)
+                {
+                    //componentIds.Add(Constants.EXAMEN_FISICO_7C_ID);
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_16_YANACOCHA);
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000589")
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_16_GOLD_FIELD);
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000591")
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_16_SHAHUINDO);
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000590")
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_16_COIMOLACHE);
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_7C);
+                    }
+                }
+                if (anexo312 != null)
+                {
+                    componentIds.Add(Constants.EXAMEN_FISICO_ID);
+                }
+                if (atencionIntegral != null)
+                {
+                    componentIds.Add(Constants.ATENCION_INTEGRAL_ID);
+                }
+                if (cuestionarioNordico != null)
+                {
+                    componentIds.Add(Constants.C_N_ID);
+                }
+                if (sas != null)
+                {
+                    componentIds.Add(Constants.FICHA_SAS_ID);
+                }
+                if (evaluacionErgonomica != null)
+                {
+                    componentIds.Add(Constants.EVA_ERGONOMICA_ID);
+                }
+                if (evaluacionNeurologica != null)
+                {
+                    componentIds.Add(Constants.EVA_NEUROLOGICA_ID);
+                }
+                if (alturageografica != null)
+                {
+                    componentIds.Add(Constants.ALTURA_7D_ID);
+                }
+                if (alturaestructural != null)
+                {
+                    componentIds.Add(Constants.ALTURA_ESTRUCTURAL_ID);
+                }
+                if (suficienciamedica != null)
+                {
+                    componentIds.Add(Constants.EXAMEN_SUF_MED__OPERADORES_ID);
+                }
+                if (osteoMuscular != null)
+                {
+                    componentIds.Add(Constants.OSTEO_MUSCULAR_ID_1);
+                }
+                if (fotoTipo != null)
+                {
+                    componentIds.Add(Constants.FOTO_TIPO_ID);
+                }
+                if (osteoCoimo != null)
+                {
+                    componentIds.Add(Constants.OSTEO_COIMO);
+                }
+                if (sintomatico != null)
+                {
+                    componentIds.Add(Constants.SINTOMATICO_ID);
+                }
+                if (fichaSufcMedica != null)
+                {
+                    componentIds.Add(Constants.FICHA_SUFICIENCIA_MEDICA_ID);
+                }
+                if (TamizajeDermat != null)
+                {
+                    componentIds.Add(Constants.TAMIZAJE_DERMATOLOGIO_ID);
+                }
+                if (testVertigo != null)
+                {
+                    componentIds.Add(Constants.TEST_VERTIGO_ID);
+                }
+                if (evaluacionOsteomuscular != null)
+                {
+                    componentIds.Add(Constants.EVA_OSTEO_ID);
+                }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region odontologia
+            else if (arrComponentId.Contains(Constants.ODONTOGRAMA_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList odontograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
 
-            //if (arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
-            //        || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
-            //        || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
-            //        || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
-            //        || arrComponentId.Contains(Constants.SOMNOLENCIA_ID))
-            //{
-            //    List<string> componentIds = new List<string>();
+                if (odontograma != null)
+                {
+                    componentIds.Add(Constants.ODONTOGRAMA_ID);
+                }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region oftalmologia
+            else if (arrComponentId.Contains(Constants.OFTALMOLOGIA_ID)//oftalmologia
+                    || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                    || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                    || arrComponentId.Contains(Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                    || arrComponentId.Contains(Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID)
+                    || arrComponentId.Contains(Constants.PETRINOVIC_ID)
+                    || arrComponentId.Contains(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)
+                    || arrComponentId.Contains("N009-ME000000437"))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList agudezavisual = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+                ServiceComponentList oftsimple = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+                ServiceComponentList oftcompleto = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
+                ServiceComponentList oftYanacocha = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
+                ServiceComponentList oftHudbay = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+                ServiceComponentList petrinovic = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PETRINOVIC_ID);
+                ServiceComponentList certificadoPsico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
+                ServiceComponentList oftalmoPsico = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000437");
 
-            //    ServiceComponentList psico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
-            //    ServiceComponentList psicoHist = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
-            //    ServiceComponentList psicoGoldHis = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
-            //    ServiceComponentList psicoGolFich = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
-            //    ServiceComponentList somnolencia = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SOMNOLENCIA_ID);
+                if (agudezavisual != null)
+                {
+                    componentIds.Add(Constants.OFTALMOLOGIA_ID);
+                }
+                if (oftsimple != null)
+                {
+                    componentIds.Add(Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+                }
+                if (oftcompleto != null)
+                {
+                    componentIds.Add(Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
+                }
+                if (oftYanacocha != null)
+                {
+                    componentIds.Add(Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
+                }
+                if (oftHudbay != null)
+                {
+                    componentIds.Add(Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+                }
+                if (petrinovic != null)
+                {
+                    componentIds.Add(Constants.PETRINOVIC_ID);
+                }
+                if (certificadoPsico != null)
+                {
+                    componentIds.Add(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
+                }
+                if (oftalmoPsico != null)
+                {
+                    componentIds.Add("N009-ME000000437");
+                }
 
-            //    if (psico != null)
-            //    {
-            //        componentIds.Add(Constants.PSICOLOGIA_ID);
-            //    }
-            //    if (psicoHist != null)
-            //    {
-            //        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
-            //    }
-            //    if (psicoGoldHis != null)
-            //    {
-            //        componentIds.Add(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
-            //    }
-            //    if (psicoGolFich != null)
-            //    {
-            //        componentIds.Add(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
-            //    }
-            //    if (somnolencia != null)
-            //    {
-            //        componentIds.Add(Constants.SOMNOLENCIA_ID);
-            //    }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region psicologia
+            else if (arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
+                    || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
+                    || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
+                    || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
+                    || arrComponentId.Contains(Constants.SOMNOLENCIA_ID))
+            {
+                List<string> componentIds = new List<string>();
 
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
-
-            //else if (arrComponentId.Contains(Constants.OIT_ID)//rayos x
-            //        || arrComponentId.Contains(Constants.RX_TORAX_ID)
-            //        || arrComponentId.Contains(Constants.EXCEPCIONES_RX_ID)
-            //        || arrComponentId.Contains(Constants.EXCEPCIONES_RX_AUTORIZACION_ID))
-            //{
-            //    List<string> componentIds = new List<string>();
-
-            //    if (Constants.OIT_ID != null)
-            //    {
-            //        componentIds.Add(Constants.OIT_ID);
-            //    }
-            //    else if (Constants.RX_TORAX_ID != null)
-            //    {
-            //        componentIds.Add(Constants.RX_TORAX_ID);
-            //    }
-            //    else if (Constants.EXCEPCIONES_RX_ID != null)
-            //    {
-            //        componentIds.Add(Constants.EXCEPCIONES_RX_ID);
-            //    }
-            //    else if (Constants.EXCEPCIONES_RX_AUTORIZACION_ID != null)
-            //    {
-            //        componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
-            //    }
-             
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
-
-            //else if (arrComponentId.Contains(Constants.LUMBOSACRA_ID)
-            //        || arrComponentId.Contains(Constants.ELECTROENCEFALOGRAMA_ID)
-            //        || arrComponentId.Contains("N009-ME000000302"))
-            //{
-            //    List<string> componentIds = new List<string>();
-
-            //    if (Constants.LUMBOSACRA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.LUMBOSACRA_ID);
-            //    }
-            //    else if (Constants.ELECTROENCEFALOGRAMA_ID != null)
-            //    {
-            //        componentIds.Add(Constants.ELECTROENCEFALOGRAMA_ID);
-            //    }
-            //    else if ("N009-ME000000302" != null)
-            //    {
-            //        componentIds.Add("N009-ME000000302");
-            //    }
+                ServiceComponentList psico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+                ServiceComponentList psicoHist = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+                ServiceComponentList psicoGoldHis = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+                ServiceComponentList psicoGolFich = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+                ServiceComponentList somnolencia = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SOMNOLENCIA_ID);
                 
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
+
+                if (psico != null)
+                {
+                    componentIds.Add(Constants.PSICOLOGIA_ID);
+                }
+                if (psicoHist != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + "|42");
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+                    }
+                }
+                if (psicoGoldHis != null)
+                {
+                    componentIds.Add(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+                }
+                if (psicoGolFich != null)
+                {
+                    componentIds.Add(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+                }
+                if (somnolencia != null)
+                {
+                    componentIds.Add(Constants.SOMNOLENCIA_ID);
+                }
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region rayosx
+            else if (arrComponentId.Contains(Constants.OIT_ID)//rayos x
+                    || arrComponentId.Contains(Constants.RX_TORAX_ID)
+                    || arrComponentId.Contains(Constants.EXCEPCIONES_RX_ID)
+                    || arrComponentId.Contains(Constants.EXCEPCIONES_RX_AUTORIZACION_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList oit = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OIT_ID);
+                ServiceComponentList torax = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.RX_TORAX_ID);
+                ServiceComponentList excepciones = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
+                ServiceComponentList autorizacion = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+
+                if (oit != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.OIT_ID + "|45");
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.OIT_ID);
+                    }
+                }
+                if (torax != null)
+                {
+                    componentIds.Add(Constants.RX_TORAX_ID);
+                }
+                if (excepciones != null)
+                {
+                    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
+                }
+                if (autorizacion != null)
+                {
+                    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+                }
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region lumbar
+            else if (arrComponentId.Contains(Constants.LUMBOSACRA_ID)
+                    || arrComponentId.Contains(Constants.ELECTROENCEFALOGRAMA_ID)
+                    || arrComponentId.Contains("N009-ME000000302"))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList lumbosacra = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LUMBOSACRA_ID);
+                ServiceComponentList electroencefalograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROENCEFALOGRAMA_ID);
+                ServiceComponentList columnaCervicoDorso = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000302");
+
+                if (lumbosacra != null)
+                {
+                    componentIds.Add(Constants.LUMBOSACRA_ID);
+                }
+                if (electroencefalograma != null)
+                {
+                    componentIds.Add(Constants.ELECTROENCEFALOGRAMA_ID);
+                }
+                
+                if (columnaCervicoDorso != null)
+                {
+                    componentIds.Add("N009-ME000000302");
+                }
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
 
         }
 
