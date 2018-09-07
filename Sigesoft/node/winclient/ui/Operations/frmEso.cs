@@ -8428,53 +8428,33 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             var arrComponentId = _componentId.Split('|');
             #region audiometria
-            if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)
-                || arrComponentId.Contains("N009-ME000000337")
-                || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE))
-            {
-                List<string> componentIds = new List<string>();
-                ServiceComponentList audiometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID);
-                ServiceComponentList cuestionarioEspCoimolache = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000337");
-                ServiceComponentList audioCoimolache = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIO_COIMOLACHE);
-
-                if (audiometria != null)
-                {
-                    //    componentIds.Add(Constants.AUDIOMETRIA_ID);
-                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
-                    {
-                        componentIds.Add(Constants.AUDIOMETRIA_ID + "|40");
-                    }
-                    else
-                    {
-                        componentIds.Add(Constants.AUDIOMETRIA_ID);
-                    }
-                }
-                if (cuestionarioEspCoimolache != null)
-                {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000591")
-                    {
-                        componentIds.Add("N009-ME000000337");
-                    }
-                }
-                if (audioCoimolache != null)
-                {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                        || filiationData.EmpresaClienteId == "N009-OO000000590")
-                    {
-                        componentIds.Add(Constants.AUDIO_COIMOLACHE);
-                    }
-                }
-
-                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            }
-            #endregion
-            //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            //if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)
+            //    || arrComponentId.Contains("N009-ME000000337")
+            //    || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE))
             //{
-            //    Form frm = null;
+            //    List<string> componentIds = new List<string>();
+               
+                
+            //        //    componentIds.Add(Constants.AUDIOMETRIA_ID);
+            //    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+            //    {
+            //        componentIds.Add(Constants.AUDIOMETRIA_ID + "|40");
+            //    }
+            //    else
+            //    {
+            //        componentIds.Add(Constants.AUDIOMETRIA_ID);
+            //    }
 
-            //    frm = new Reports.frmOccupationalMedicalAptitudeCertificate(_serviceId);
-            //    frm.ShowDialog();
+            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             //}
+            #endregion
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                Form frm = null;
+
+                frm = new Reports.frmOccupationalMedicalAptitudeCertificate(_serviceId);
+                frm.ShowDialog();
+            }
         }
 
         private void btn312_Click(object sender, EventArgs e)

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEso));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_AntecedentTypeName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
@@ -53,7 +54,6 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEso));
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
@@ -253,13 +253,13 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -3094,7 +3094,7 @@
             this.btnSubirInterconsulta.ForeColor = System.Drawing.Color.Black;
             this.btnSubirInterconsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirInterconsulta.Image")));
             this.btnSubirInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubirInterconsulta.Location = new System.Drawing.Point(193, 567);
+            this.btnSubirInterconsulta.Location = new System.Drawing.Point(220, 566);
             this.btnSubirInterconsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubirInterconsulta.Name = "btnSubirInterconsulta";
             this.btnSubirInterconsulta.Size = new System.Drawing.Size(158, 24);
@@ -3182,7 +3182,7 @@
             this.btnCertificadoAptitud.ForeColor = System.Drawing.Color.Black;
             this.btnCertificadoAptitud.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificadoAptitud.Image")));
             this.btnCertificadoAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCertificadoAptitud.Location = new System.Drawing.Point(30, 608);
+            this.btnCertificadoAptitud.Location = new System.Drawing.Point(410, 567);
             this.btnCertificadoAptitud.Margin = new System.Windows.Forms.Padding(2);
             this.btnCertificadoAptitud.Name = "btnCertificadoAptitud";
             this.btnCertificadoAptitud.Size = new System.Drawing.Size(159, 24);
@@ -7368,14 +7368,14 @@
             // 
             // uvExamen
             // 
-            appearance103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance103.BackColor2 = System.Drawing.Color.Transparent;
-            appearance103.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance103.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance103.BorderColor = System.Drawing.Color.Red;
-            appearance103.BorderColor2 = System.Drawing.Color.Red;
-            appearance103.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance103;
+            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance15.BackColor2 = System.Drawing.Color.Transparent;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance15.BorderColor = System.Drawing.Color.Red;
+            appearance15.BorderColor2 = System.Drawing.Color.Red;
+            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance15;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -7389,7 +7389,7 @@
             this.pnlLeftPrincipal.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlLeftPrincipal.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftPrincipal.Name = "pnlLeftPrincipal";
-            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 732);
+            this.pnlLeftPrincipal.Size = new System.Drawing.Size(1358, 749);
             this.pnlLeftPrincipal.TabIndex = 6;
             // 
             // bgwSaveExamen
@@ -7410,19 +7410,19 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn7,
-            ultraDataColumn8,
-            ultraDataColumn9,
-            ultraDataColumn10,
-            ultraDataColumn11,
-            ultraDataColumn12});
+            ultraDataColumn1,
+            ultraDataColumn2,
+            ultraDataColumn3,
+            ultraDataColumn4,
+            ultraDataColumn5,
+            ultraDataColumn6});
             // 
             // frmEso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1350, 749);
+            this.ClientSize = new System.Drawing.Size(1350, 766);
             this.Controls.Add(this.pnlLeftPrincipal);
             this.Name = "frmEso";
             this.ShowIcon = false;
