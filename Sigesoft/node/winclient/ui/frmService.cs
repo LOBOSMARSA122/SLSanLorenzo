@@ -74,7 +74,7 @@ namespace Sigesoft.Node.WinClient.UI
             ddlConsultorio.SelectedValueChanged -= ddlConsultorio_SelectedValueChanged;
 
 
-            dtpDateTimeStar.Value = dtpDateTimeStar.Value.AddDays(-1);
+            dtpDateTimeStar.Value = dtpDateTimeStar.Value.AddDays(0);
 
             OperationResult objOperationResult = new OperationResult();
 
