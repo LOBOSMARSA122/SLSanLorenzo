@@ -7789,23 +7789,56 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             idPerson = _objAtencionesIntegralesBl.GetService(_serviceId);
             PacientId = idPerson.v_PersonId.ToString();
-
-            //int flagPantalla = personData.i_ServiceTypeId; // int.Parse(ddlServiceTypeId.SelectedValue.ToString());
-
-            //var frm = new Reports.frmManagementReports(_serviceId, PacientId, _customerOrganizationName, personData.v_FirstName + " " + personData.v_FirstLastName + " " + personData.v_SecondLastName, 2 , personData.EmpresaClienteId);
-            //frm.ShowDialog();
+            #region POR AHORA
             int esoo = 2;
             var frm = new Reports.frmManagementReports(_serviceId, PacientId, _DataService.EmpresaEmpleadora, personData.v_FirstLastName + " " + personData.v_SecondLastName + " " + personData.v_FirstName, 2, filiationData.EmpresaClienteId, esoo);
             frm.ShowDialog();
-            
+            #endregion
 
             //frmManagementReports frmManagmentReport = new frmManagementReports();
             //DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
-            //OperationResult objOperationResult = new OperationResult();
+
             //List<ServiceComponentList> serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
             //var arrComponentId = _componentId.Split('|');
 
+            //if (arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
+            //        || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
+            //        || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
+            //        || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
+            //        || arrComponentId.Contains(Constants.SOMNOLENCIA_ID))
+            //{
+            //    List<string> componentIds = new List<string>();
+
+            //    ServiceComponentList psico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            //    ServiceComponentList psicoHist = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+            //    ServiceComponentList psicoGoldHis = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+            //    ServiceComponentList psicoGolFich = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+            //    ServiceComponentList somnolencia = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SOMNOLENCIA_ID);
+
+            //    if (psico != null)
+            //    {
+            //        componentIds.Add(Constants.PSICOLOGIA_ID);
+            //    }
+            //    if (psicoHist != null)
+            //    {
+            //        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+            //    }
+            //    if (psicoGoldHis != null)
+            //    {
+            //        componentIds.Add(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+            //    }
+            //    if (psicoGolFich != null)
+            //    {
+            //        componentIds.Add(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+            //    }
+            //    if (somnolencia != null)
+            //    {
+            //        componentIds.Add(Constants.SOMNOLENCIA_ID);
+            //    }
+
+            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            //}
             //if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)
             //    || arrComponentId.Contains("N009-ME000000337")
             //    || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE))
@@ -8030,43 +8063,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             //}
-            //else if (arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
-            //        || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
-            //        || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
-            //        || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
-            //        || arrComponentId.Contains(Constants.SOMNOLENCIA_ID))
-            //{
-            //    List<string> componentIds = new List<string>();
+            
 
-            //    ServiceComponentList psico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
-            //    ServiceComponentList psicoHist = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
-            //    ServiceComponentList psicoGoldHis = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
-            //    ServiceComponentList psicoGolFich= serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
-            //    ServiceComponentList somnolencia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
 
-            //    if (psico != null)
-            //    {
-            //        componentIds.Add(Constants.PSICOLOGIA_ID);
-            //    }
-            //    if (psicoHist != null)
-            //    {
-            //        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
-            //    }
-            //    if (psicoGoldHis != null)
-            //    {
-            //        componentIds.Add(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
-            //    }
-            //    if (psicoGolFich != null)
-            //    {
-            //        componentIds.Add(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
-            //    }
-            //    if (somnolencia != null)
-            //    {
-            //        componentIds.Add(Constants.SOMNOLENCIA_ID);
-            //    }
-
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
             //else if (arrComponentId.Contains(Constants.OIT_ID)//rayos x
             //        || arrComponentId.Contains(Constants.RX_TORAX_ID)
             //        || arrComponentId.Contains(Constants.EXCEPCIONES_RX_ID)
