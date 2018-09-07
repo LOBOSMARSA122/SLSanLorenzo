@@ -249,6 +249,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 cbEstadoComponente.Enabled = false;
                 cbTipoProcedenciaExamen.Enabled = false;
                 btnGuardarExamen.Enabled = false;
+                btnVisorReporteExamen.Enabled = false;
 
                 #endregion
 
@@ -4053,10 +4054,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (cbEstadoComponente.SelectedValue.ToString() == ((int)ServiceComponentStatus.Iniciado).ToString())
             {
                 btnGuardarExamen.Enabled = false;
+                btnVisorReporteExamen.Enabled = false;
             }
             else
             {
                 btnGuardarExamen.Enabled = true;
+                btnVisorReporteExamen.Enabled = true;
             }
 
 
@@ -8329,10 +8332,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             if (cbEstadoComponente.SelectedValue.ToString() == "2")
             {
                 btnGuardarExamen.Enabled = false;
+                btnVisorReporteExamen.Enabled = false;
             }
             else
             {
                 btnGuardarExamen.Enabled = true;
+                btnVisorReporteExamen.Enabled = true;
             }
         }
 
