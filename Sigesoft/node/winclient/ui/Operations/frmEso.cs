@@ -8434,7 +8434,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             //{
             //    List<string> componentIds = new List<string>();
                
-                
             //        //    componentIds.Add(Constants.AUDIOMETRIA_ID);
             //    if (filiationData.EmpresaClienteId == "N009-OO000000587")
             //    {
