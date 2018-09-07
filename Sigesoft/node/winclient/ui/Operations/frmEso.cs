@@ -7802,43 +7802,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             //var arrComponentId = _componentId.Split('|');
 
-            //if (arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
-            //        || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
-            //        || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
-            //        || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
-            //        || arrComponentId.Contains(Constants.SOMNOLENCIA_ID))
-            //{
-            //    List<string> componentIds = new List<string>();
-
-            //    ServiceComponentList psico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
-            //    ServiceComponentList psicoHist = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
-            //    ServiceComponentList psicoGoldHis = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
-            //    ServiceComponentList psicoGolFich = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
-            //    ServiceComponentList somnolencia = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SOMNOLENCIA_ID);
-
-            //    if (psico != null)
-            //    {
-            //        componentIds.Add(Constants.PSICOLOGIA_ID);
-            //    }
-            //    if (psicoHist != null)
-            //    {
-            //        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
-            //    }
-            //    if (psicoGoldHis != null)
-            //    {
-            //        componentIds.Add(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
-            //    }
-            //    if (psicoGolFich != null)
-            //    {
-            //        componentIds.Add(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
-            //    }
-            //    if (somnolencia != null)
-            //    {
-            //        componentIds.Add(Constants.SOMNOLENCIA_ID);
-            //    }
-
-            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
-            //}
             //if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)
             //    || arrComponentId.Contains("N009-ME000000337")
             //    || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE))
@@ -8004,7 +7967,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             //            {
             //                componentIds.Add(Constants.EVA_OSTEO_ID);
             //            }
-
             //            frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             //        }
             //else if (arrComponentId.Contains(Constants.ODONTOGRAMA_ID))
@@ -8063,8 +8025,44 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             //}
-            
 
+            //if (arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
+            //        || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
+            //        || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
+            //        || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
+            //        || arrComponentId.Contains(Constants.SOMNOLENCIA_ID))
+            //{
+            //    List<string> componentIds = new List<string>();
+
+            //    ServiceComponentList psico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+            //    ServiceComponentList psicoHist = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+            //    ServiceComponentList psicoGoldHis = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+            //    ServiceComponentList psicoGolFich = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+            //    ServiceComponentList somnolencia = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SOMNOLENCIA_ID);
+
+            //    if (psico != null)
+            //    {
+            //        componentIds.Add(Constants.PSICOLOGIA_ID);
+            //    }
+            //    if (psicoHist != null)
+            //    {
+            //        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+            //    }
+            //    if (psicoGoldHis != null)
+            //    {
+            //        componentIds.Add(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+            //    }
+            //    if (psicoGolFich != null)
+            //    {
+            //        componentIds.Add(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+            //    }
+            //    if (somnolencia != null)
+            //    {
+            //        componentIds.Add(Constants.SOMNOLENCIA_ID);
+            //    }
+
+            //    frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            //}
 
             //else if (arrComponentId.Contains(Constants.OIT_ID)//rayos x
             //        || arrComponentId.Contains(Constants.RX_TORAX_ID)
@@ -8117,42 +8115,42 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         }
 
-        //public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)
-        //{
-        //    OperationResult objOperationResult = new OperationResult();
-        //    MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
-        //    crConsolidatedReports rp = null;
-        //    ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
-        //    rp = new Reports.crConsolidatedReports();
-        //    _filesNameToMerge = new List<string>();
+        public void CrearReportesCrystal(string serviceId, string pPacienteId, List<string> reportesId, List<ServiceComponentList> ListaDosaje, bool Publicar)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            MultimediaFileBL _multimediaFileBL = new MultimediaFileBL();
+            crConsolidatedReports rp = null;
+            ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+            rp = new Reports.crConsolidatedReports();
+            _filesNameToMerge = new List<string>();
 
 
-        //    //reportesId.FindAll(p => p != Constants.HISTORIA_CLINICA_PSICOLOGICA_ID || p != Constants.PSICOLOGIA_ID || p != Constants.INFORME_LABORATORIO_ID);
+            //reportesId.FindAll(p => p != Constants.HISTORIA_CLINICA_PSICOLOGICA_ID || p != Constants.PSICOLOGIA_ID || p != Constants.INFORME_LABORATORIO_ID);
 
-        //    foreach (var com in reportesId)
-        //    {
-        //        //string CompnenteId = "";
-        //        int IdCrystal = 0;
-        //        //Obtener el Id del componente 
+            foreach (var com in reportesId)
+            {
+                //string CompnenteId = "";
+                int IdCrystal = 0;
+                //Obtener el Id del componente 
 
-        //        var array = com.Split('|');
+                var array = com.Split('|');
 
-        //        if (array.Count() == 1)
-        //        {
-        //            IdCrystal = 0;
-        //        }
-        //        else if (array[1] == "")
-        //        {
-        //            IdCrystal = 0;
-        //        }
-        //        else
-        //        {
-        //            IdCrystal = int.Parse(array[1].ToString());
-        //        }
+                if (array.Count() == 1)
+                {
+                    IdCrystal = 0;
+                }
+                else if (array[1] == "")
+                {
+                    IdCrystal = 0;
+                }
+                else
+                {
+                    IdCrystal = int.Parse(array[1].ToString());
+                }
 
-        //        rep.ChooseReport(array[0], serviceId, pPacienteId, IdCrystal);
-        //    }
-        //}
+                rep.ChooseReport(array[0], serviceId, pPacienteId, IdCrystal);
+            }
+        }
         public void RunFile(string fileName)
         {
             Process proceso = Process.Start(fileName);
