@@ -7921,7 +7921,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 if (informeLab != null)
                 {
-                    componentIds.Add(Constants.INFORME_LABORATORIO_ID);
+                    componentIds.Add(Constants.INFORME_LABORATORIO_CLINICO);
                 }
                 if (toxCocaMarihuana != null)
                 {
