@@ -997,13 +997,13 @@
             this.cmAntecedentes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuGridAntecedent});
             this.cmAntecedentes.Name = "contextMenuStrip1";
-            this.cmAntecedentes.Size = new System.Drawing.Size(166, 26);
+            this.cmAntecedentes.Size = new System.Drawing.Size(167, 26);
             // 
             // mnuGridAntecedent
             // 
             this.mnuGridAntecedent.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridAntecedent.Image")));
             this.mnuGridAntecedent.Name = "mnuGridAntecedent";
-            this.mnuGridAntecedent.Size = new System.Drawing.Size(165, 22);
+            this.mnuGridAntecedent.Size = new System.Drawing.Size(166, 22);
             this.mnuGridAntecedent.Text = "Ver Antecedentes";
             this.mnuGridAntecedent.Click += new System.EventHandler(this.mnuGridAntecedent_Click);
             // 
@@ -1138,13 +1138,13 @@
             this.cmVerServicioAnterior.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuVerServicio});
             this.cmVerServicioAnterior.Name = "contextMenuStrip1";
-            this.cmVerServicioAnterior.Size = new System.Drawing.Size(135, 26);
+            this.cmVerServicioAnterior.Size = new System.Drawing.Size(136, 26);
             // 
             // mnuVerServicio
             // 
             this.mnuVerServicio.Image = ((System.Drawing.Image)(resources.GetObject("mnuVerServicio.Image")));
             this.mnuVerServicio.Name = "mnuVerServicio";
-            this.mnuVerServicio.Size = new System.Drawing.Size(134, 22);
+            this.mnuVerServicio.Size = new System.Drawing.Size(135, 22);
             this.mnuVerServicio.Text = "Ver Servicio";
             this.mnuVerServicio.Click += new System.EventHandler(this.mnuVerServicio_Click);
             // 
@@ -1756,19 +1756,19 @@
             this.groupBox4.Controls.Add(this.label23);
             this.groupBox4.Controls.Add(this.cbTipoProcedenciaExamen);
             this.groupBox4.Controls.Add(this.txtComentario);
-            this.groupBox4.Location = new System.Drawing.Point(634, 3);
+            this.groupBox4.Location = new System.Drawing.Point(643, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(673, 202);
+            this.groupBox4.Size = new System.Drawing.Size(664, 202);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             // 
             // btnPerson
             // 
-            this.btnPerson.Location = new System.Drawing.Point(549, 101);
+            this.btnPerson.Location = new System.Drawing.Point(374, 124);
             this.btnPerson.Name = "btnPerson";
-            this.btnPerson.Size = new System.Drawing.Size(113, 27);
+            this.btnPerson.Size = new System.Drawing.Size(272, 24);
             this.btnPerson.TabIndex = 98;
-            this.btnPerson.Text = "Ver Persona";
+            this.btnPerson.Text = "Ver Datos Generales";
             this.btnPerson.UseVisualStyleBackColor = true;
             this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
             // 
@@ -1783,7 +1783,7 @@
             this.btnServiciosAnteriores.ForeColor = System.Drawing.Color.Black;
             this.btnServiciosAnteriores.Image = ((System.Drawing.Image)(resources.GetObject("btnServiciosAnteriores.Image")));
             this.btnServiciosAnteriores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServiciosAnteriores.Location = new System.Drawing.Point(390, 44);
+            this.btnServiciosAnteriores.Location = new System.Drawing.Point(374, 43);
             this.btnServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.btnServiciosAnteriores.Name = "btnServiciosAnteriores";
             this.btnServiciosAnteriores.Size = new System.Drawing.Size(113, 24);
@@ -1804,7 +1804,7 @@
             this.btnGuardarExamen.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardarExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarExamen.Image")));
             this.btnGuardarExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarExamen.Location = new System.Drawing.Point(390, 72);
+            this.btnGuardarExamen.Location = new System.Drawing.Point(374, 70);
             this.btnGuardarExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarExamen.Name = "btnGuardarExamen";
             this.btnGuardarExamen.Size = new System.Drawing.Size(272, 24);
@@ -1825,10 +1825,10 @@
             this.btnAddListaNerga.ForeColor = System.Drawing.Color.Black;
             this.btnAddListaNerga.Image = ((System.Drawing.Image)(resources.GetObject("btnAddListaNerga.Image")));
             this.btnAddListaNerga.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddListaNerga.Location = new System.Drawing.Point(473, 101);
+            this.btnAddListaNerga.Location = new System.Drawing.Point(359, 126);
             this.btnAddListaNerga.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddListaNerga.Name = "btnAddListaNerga";
-            this.btnAddListaNerga.Size = new System.Drawing.Size(56, 25);
+            this.btnAddListaNerga.Size = new System.Drawing.Size(146, 25);
             this.btnAddListaNerga.TabIndex = 94;
             this.btnAddListaNerga.Text = "Lista Negra";
             this.btnAddListaNerga.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1849,7 +1849,7 @@
             this.btnReceta.ForeColor = System.Drawing.Color.Black;
             this.btnReceta.Image = ((System.Drawing.Image)(resources.GetObject("btnReceta.Image")));
             this.btnReceta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReceta.Location = new System.Drawing.Point(549, 44);
+            this.btnReceta.Location = new System.Drawing.Point(533, 43);
             this.btnReceta.Margin = new System.Windows.Forms.Padding(2);
             this.btnReceta.Name = "btnReceta";
             this.btnReceta.Size = new System.Drawing.Size(113, 24);
@@ -1870,7 +1870,7 @@
             this.btnAntecedentes.ForeColor = System.Drawing.Color.Black;
             this.btnAntecedentes.Image = ((System.Drawing.Image)(resources.GetObject("btnAntecedentes.Image")));
             this.btnAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAntecedentes.Location = new System.Drawing.Point(390, 16);
+            this.btnAntecedentes.Location = new System.Drawing.Point(374, 16);
             this.btnAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAntecedentes.Name = "btnAntecedentes";
             this.btnAntecedentes.Size = new System.Drawing.Size(113, 24);
@@ -1891,7 +1891,7 @@
             this.btnFichaMedica.ForeColor = System.Drawing.Color.Black;
             this.btnFichaMedica.Image = ((System.Drawing.Image)(resources.GetObject("btnFichaMedica.Image")));
             this.btnFichaMedica.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFichaMedica.Location = new System.Drawing.Point(400, 101);
+            this.btnFichaMedica.Location = new System.Drawing.Point(436, 124);
             this.btnFichaMedica.Margin = new System.Windows.Forms.Padding(2);
             this.btnFichaMedica.Name = "btnFichaMedica";
             this.btnFichaMedica.Size = new System.Drawing.Size(69, 25);
@@ -1909,14 +1909,14 @@
             this.btnVisorReporteExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnVisorReporteExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnVisorReporteExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVisorReporteExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisorReporteExamen.Font = new System.Drawing.Font("Calibri", 8.25F);
             this.btnVisorReporteExamen.ForeColor = System.Drawing.Color.Black;
             this.btnVisorReporteExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnVisorReporteExamen.Image")));
             this.btnVisorReporteExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVisorReporteExamen.Location = new System.Drawing.Point(322, 102);
+            this.btnVisorReporteExamen.Location = new System.Drawing.Point(374, 97);
             this.btnVisorReporteExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnVisorReporteExamen.Name = "btnVisorReporteExamen";
-            this.btnVisorReporteExamen.Size = new System.Drawing.Size(72, 24);
+            this.btnVisorReporteExamen.Size = new System.Drawing.Size(272, 24);
             this.btnVisorReporteExamen.TabIndex = 90;
             this.btnVisorReporteExamen.Text = "Ver Reporte de";
             this.btnVisorReporteExamen.UseVisualStyleBackColor = false;
@@ -1935,7 +1935,7 @@
             this.BtnAnamnesis.ForeColor = System.Drawing.Color.Black;
             this.BtnAnamnesis.Image = ((System.Drawing.Image)(resources.GetObject("BtnAnamnesis.Image")));
             this.BtnAnamnesis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAnamnesis.Location = new System.Drawing.Point(549, 16);
+            this.BtnAnamnesis.Location = new System.Drawing.Point(533, 16);
             this.BtnAnamnesis.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAnamnesis.Name = "BtnAnamnesis";
             this.BtnAnamnesis.Size = new System.Drawing.Size(113, 24);
@@ -1959,7 +1959,7 @@
             // 
             this.EXAMENES_lblEstadoComponente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EXAMENES_lblEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EXAMENES_lblEstadoComponente.Location = new System.Drawing.Point(20, 77);
+            this.EXAMENES_lblEstadoComponente.Location = new System.Drawing.Point(11, 77);
             this.EXAMENES_lblEstadoComponente.Name = "EXAMENES_lblEstadoComponente";
             this.EXAMENES_lblEstadoComponente.Size = new System.Drawing.Size(120, 18);
             this.EXAMENES_lblEstadoComponente.TabIndex = 51;
@@ -1980,7 +1980,7 @@
             this.cbEstadoComponente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbEstadoComponente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstadoComponente.FormattingEnabled = true;
-            this.cbEstadoComponente.Location = new System.Drawing.Point(146, 74);
+            this.cbEstadoComponente.Location = new System.Drawing.Point(137, 74);
             this.cbEstadoComponente.Name = "cbEstadoComponente";
             this.cbEstadoComponente.Size = new System.Drawing.Size(179, 21);
             this.cbEstadoComponente.TabIndex = 0;
@@ -1995,7 +1995,7 @@
             this.EXAMENES_lblComentarios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.EXAMENES_lblComentarios.AutoSize = true;
             this.EXAMENES_lblComentarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EXAMENES_lblComentarios.Location = new System.Drawing.Point(37, 6);
+            this.EXAMENES_lblComentarios.Location = new System.Drawing.Point(28, 6);
             this.EXAMENES_lblComentarios.Name = "EXAMENES_lblComentarios";
             this.EXAMENES_lblComentarios.Size = new System.Drawing.Size(97, 13);
             this.EXAMENES_lblComentarios.TabIndex = 49;
@@ -2005,7 +2005,7 @@
             // 
             this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(65, 151);
+            this.label23.Location = new System.Drawing.Point(56, 151);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(80, 13);
             this.label23.TabIndex = 52;
@@ -2016,7 +2016,7 @@
             this.cbTipoProcedenciaExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cbTipoProcedenciaExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoProcedenciaExamen.FormattingEnabled = true;
-            this.cbTipoProcedenciaExamen.Location = new System.Drawing.Point(191, 149);
+            this.cbTipoProcedenciaExamen.Location = new System.Drawing.Point(182, 149);
             this.cbTipoProcedenciaExamen.Name = "cbTipoProcedenciaExamen";
             this.cbTipoProcedenciaExamen.Size = new System.Drawing.Size(179, 21);
             this.cbTipoProcedenciaExamen.TabIndex = 53;
@@ -2028,7 +2028,7 @@
             // txtComentario
             // 
             this.txtComentario.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtComentario.Location = new System.Drawing.Point(20, 19);
+            this.txtComentario.Location = new System.Drawing.Point(11, 19);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -3093,7 +3093,7 @@
             this.btnSubirInterconsulta.ForeColor = System.Drawing.Color.Black;
             this.btnSubirInterconsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirInterconsulta.Image")));
             this.btnSubirInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubirInterconsulta.Location = new System.Drawing.Point(664, 568);
+            this.btnSubirInterconsulta.Location = new System.Drawing.Point(193, 567);
             this.btnSubirInterconsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btnSubirInterconsulta.Name = "btnSubirInterconsulta";
             this.btnSubirInterconsulta.Size = new System.Drawing.Size(158, 24);
@@ -3115,13 +3115,14 @@
             this.btn7C.ForeColor = System.Drawing.Color.Black;
             this.btn7C.Image = ((System.Drawing.Image)(resources.GetObject("btn7C.Image")));
             this.btn7C.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn7C.Location = new System.Drawing.Point(337, 568);
+            this.btn7C.Location = new System.Drawing.Point(356, 608);
             this.btn7C.Margin = new System.Windows.Forms.Padding(2);
             this.btn7C.Name = "btn7C";
             this.btn7C.Size = new System.Drawing.Size(159, 24);
             this.btn7C.TabIndex = 104;
             this.btn7C.Text = "7 C";
             this.btn7C.UseVisualStyleBackColor = false;
+            this.btn7C.Visible = false;
             this.btn7C.Click += new System.EventHandler(this.btn7C_Click);
             // 
             // btnInterConsulta
@@ -3136,7 +3137,7 @@
             this.btnInterConsulta.ForeColor = System.Drawing.Color.Black;
             this.btnInterConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnInterConsulta.Image")));
             this.btnInterConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInterConsulta.Location = new System.Drawing.Point(502, 568);
+            this.btnInterConsulta.Location = new System.Drawing.Point(31, 567);
             this.btnInterConsulta.Margin = new System.Windows.Forms.Padding(2);
             this.btnInterConsulta.Name = "btnInterConsulta";
             this.btnInterConsulta.Size = new System.Drawing.Size(158, 24);
@@ -3158,13 +3159,14 @@
             this.btn312.ForeColor = System.Drawing.Color.Black;
             this.btn312.Image = ((System.Drawing.Image)(resources.GetObject("btn312.Image")));
             this.btn312.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn312.Location = new System.Drawing.Point(174, 568);
+            this.btn312.Location = new System.Drawing.Point(193, 608);
             this.btn312.Margin = new System.Windows.Forms.Padding(2);
             this.btn312.Name = "btn312";
             this.btn312.Size = new System.Drawing.Size(159, 24);
             this.btn312.TabIndex = 102;
             this.btn312.Text = "Anexo 312";
             this.btn312.UseVisualStyleBackColor = false;
+            this.btn312.Visible = false;
             this.btn312.Click += new System.EventHandler(this.btn312_Click);
             // 
             // btnCertificadoAptitud
@@ -3179,13 +3181,14 @@
             this.btnCertificadoAptitud.ForeColor = System.Drawing.Color.Black;
             this.btnCertificadoAptitud.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificadoAptitud.Image")));
             this.btnCertificadoAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCertificadoAptitud.Location = new System.Drawing.Point(11, 568);
+            this.btnCertificadoAptitud.Location = new System.Drawing.Point(30, 608);
             this.btnCertificadoAptitud.Margin = new System.Windows.Forms.Padding(2);
             this.btnCertificadoAptitud.Name = "btnCertificadoAptitud";
             this.btnCertificadoAptitud.Size = new System.Drawing.Size(159, 24);
             this.btnCertificadoAptitud.TabIndex = 101;
             this.btnCertificadoAptitud.Text = "Certificado de Aptitud";
             this.btnCertificadoAptitud.UseVisualStyleBackColor = false;
+            this.btnCertificadoAptitud.Visible = false;
             this.btnCertificadoAptitud.Click += new System.EventHandler(this.btnCertificadoAptitud_Click);
             // 
             // dptDateGlobalExp
@@ -3766,7 +3769,7 @@
             this.btnGuardarConclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarConclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarConclusiones.Image")));
             this.btnGuardarConclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1101, 581);
+            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1101, 567);
             this.btnGuardarConclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarConclusiones.Name = "btnGuardarConclusiones";
             this.btnGuardarConclusiones.Size = new System.Drawing.Size(152, 24);

@@ -2539,7 +2539,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 btnAntecedentes.Visible = true;
                 BtnAnamnesis.Visible = true;
-                btnFichaMedica.Visible = true;
+                btnFichaMedica.Visible = false;
             }
             else
             {
