@@ -7877,8 +7877,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     componentIds.Add(Constants.PRUEBA_ESFUERZO_ID);
                 }
 
-               
-
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             }
             #endregion
