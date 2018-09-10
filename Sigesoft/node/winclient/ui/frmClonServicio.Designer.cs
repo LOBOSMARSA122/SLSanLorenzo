@@ -29,6 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             this.ddlCustomerOrganization = new System.Windows.Forms.ComboBox();
             this.ddlProtocolId = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -37,7 +49,10 @@
             this.dtpDateTimeStar = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.uvClon = new Infragistics.Win.Misc.UltraValidator(this.components);
+            this.txtCCosto = new Infragistics.Win.UltraWinGrid.UltraCombo();
+            this.label28 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.uvClon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCCosto)).BeginInit();
             this.SuspendLayout();
             // 
             // ddlCustomerOrganization
@@ -109,7 +124,7 @@
             this.btnClonar.ForeColor = System.Drawing.Color.Black;
             this.btnClonar.Image = global::Sigesoft.Node.WinClient.UI.Resources.chart_organisation;
             this.btnClonar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClonar.Location = new System.Drawing.Point(546, 82);
+            this.btnClonar.Location = new System.Drawing.Point(546, 95);
             this.btnClonar.Margin = new System.Windows.Forms.Padding(2);
             this.btnClonar.Name = "btnClonar";
             this.btnClonar.Size = new System.Drawing.Size(75, 24);
@@ -141,12 +156,83 @@
             this.label1.TabIndex = 109;
             this.label1.Text = "Fecha";
             // 
+            // txtCCosto
+            // 
+            this.txtCCosto.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.SuggestAppend;
+            appearance1.BackColor = System.Drawing.SystemColors.Window;
+            appearance1.BorderColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtCCosto.DisplayLayout.Appearance = appearance1;
+            this.txtCCosto.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.txtCCosto.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
+            appearance2.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            appearance2.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance2.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtCCosto.DisplayLayout.GroupByBox.Appearance = appearance2;
+            appearance3.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtCCosto.DisplayLayout.GroupByBox.BandLabelAppearance = appearance3;
+            this.txtCCosto.DisplayLayout.GroupByBox.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            appearance4.BackColor2 = System.Drawing.SystemColors.Control;
+            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance4.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.txtCCosto.DisplayLayout.GroupByBox.PromptAppearance = appearance4;
+            appearance5.BackColor = System.Drawing.SystemColors.Window;
+            appearance5.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.txtCCosto.DisplayLayout.Override.ActiveCellAppearance = appearance5;
+            appearance6.BackColor = System.Drawing.SystemColors.Highlight;
+            appearance6.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.txtCCosto.DisplayLayout.Override.ActiveRowAppearance = appearance6;
+            this.txtCCosto.DisplayLayout.Override.AllowColSizing = Infragistics.Win.UltraWinGrid.AllowColSizing.Free;
+            this.txtCCosto.DisplayLayout.Override.BorderStyleCell = Infragistics.Win.UIElementBorderStyle.Dotted;
+            this.txtCCosto.DisplayLayout.Override.BorderStyleRow = Infragistics.Win.UIElementBorderStyle.Dotted;
+            appearance7.BackColor = System.Drawing.SystemColors.Window;
+            this.txtCCosto.DisplayLayout.Override.CardAreaAppearance = appearance7;
+            appearance8.BorderColor = System.Drawing.Color.Silver;
+            appearance8.TextTrimming = Infragistics.Win.TextTrimming.EllipsisCharacter;
+            this.txtCCosto.DisplayLayout.Override.CellAppearance = appearance8;
+            this.txtCCosto.DisplayLayout.Override.CellPadding = 0;
+            this.txtCCosto.DisplayLayout.Override.ColumnSizingArea = Infragistics.Win.UltraWinGrid.ColumnSizingArea.EntireColumn;
+            appearance9.BackColor = System.Drawing.SystemColors.Control;
+            appearance9.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance9.BackGradientAlignment = Infragistics.Win.GradientAlignment.Element;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Horizontal;
+            appearance9.BorderColor = System.Drawing.SystemColors.Window;
+            this.txtCCosto.DisplayLayout.Override.GroupByRowAppearance = appearance9;
+            appearance10.TextHAlignAsString = "Left";
+            this.txtCCosto.DisplayLayout.Override.HeaderAppearance = appearance10;
+            this.txtCCosto.DisplayLayout.Override.HeaderStyle = Infragistics.Win.HeaderStyle.WindowsXPCommand;
+            appearance11.BackColor = System.Drawing.SystemColors.Window;
+            appearance11.BorderColor = System.Drawing.Color.Silver;
+            this.txtCCosto.DisplayLayout.Override.RowAppearance = appearance11;
+            appearance12.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.txtCCosto.DisplayLayout.Override.TemplateAddRowAppearance = appearance12;
+            this.txtCCosto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCCosto.Location = new System.Drawing.Point(330, 64);
+            this.txtCCosto.Name = "txtCCosto";
+            this.txtCCosto.Size = new System.Drawing.Size(291, 22);
+            this.txtCCosto.TabIndex = 162;
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(241, 72);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(47, 13);
+            this.label28.TabIndex = 163;
+            this.label28.Text = "C. Costo";
+            // 
             // frmClonServicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(656, 121);
+            this.ClientSize = new System.Drawing.Size(656, 130);
+            this.Controls.Add(this.txtCCosto);
+            this.Controls.Add(this.label28);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dtpDateTimeStar);
             this.Controls.Add(this.btnClonar);
@@ -162,6 +248,7 @@
             this.Text = "Clonar Servicio";
             this.Load += new System.EventHandler(this.frmClonServicio_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uvClon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtCCosto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,6 +264,8 @@
         private System.Windows.Forms.DateTimePicker dtpDateTimeStar;
         private System.Windows.Forms.Label label1;
         private Infragistics.Win.Misc.UltraValidator uvClon;
+        private Infragistics.Win.UltraWinGrid.UltraCombo txtCCosto;
+        private System.Windows.Forms.Label label28;
 
     }
 }

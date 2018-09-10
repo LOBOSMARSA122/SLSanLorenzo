@@ -65,6 +65,7 @@
     <Compile Include="Custom\HospitalizacionList.cs" />
     <Compile Include="Custom\HospitalizacionServiceList.cs" />
     <Compile Include="Custom\LiquiAseguradoraDetalle.cs" />
+    <Compile Include="Custom\Liquidacion.cs" />
     <Compile Include="Custom\LiquidacionAseguradora.cs" />
     <Compile Include="Custom\LiquidacionMedicoList.cs" />
     <Compile Include="Custom\LiquidacionServicios.cs" />
