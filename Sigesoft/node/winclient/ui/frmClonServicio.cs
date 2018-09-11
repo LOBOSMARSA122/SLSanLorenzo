@@ -37,11 +37,27 @@ namespace Sigesoft.Node.WinClient.UI
         private void frmClonServicio_Load(object sender, EventArgs e)
         {
             OperationResult objOperationResult = new OperationResult();
+            PacientBL _objPacientBL = new PacientBL();
             var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
             Utils.LoadDropDownList(ddlCustomerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.Select);
 
             Utils.LoadDropDownList(ddlProtocolId, "Value1", "Id", BLL.Utils.GetProtocolsByOrganizationForCombo(ref objOperationResult, "-1", "-1", null), DropDownListAction.Select);
-           
+
+            var lista = _objPacientBL.GetAllCCosto();
+            txtCCosto.DataSource = lista;
+            txtCCosto.DisplayMember = "Puesto";
+            txtCCosto.ValueMember = "Puesto";
+
+            txtCCosto.AutoCompleteMode = Infragistics.Win.AutoCompleteMode.Suggest;
+            txtCCosto.AutoSuggestFilterMode = Infragistics.Win.AutoSuggestFilterMode.Contains;
+            this.txtCCosto.DropDownWidth = 250;
+            txtCCosto.DisplayLayout.Bands[0].Columns[0].Width = 10;
+            txtCCosto.DisplayLayout.Bands[0].Columns[1].Width = 250;
+            //if (!string.IsNullOrEmpty(objpacientDto.v_CurrentOccupation))
+            //{
+            //    txtCCosto.Value = objpacientDto.v_CurrentOccupation;
+            //}
+
         }
 
         private void ddlCustomerOrganization_SelectedIndexChanged(object sender, EventArgs e)

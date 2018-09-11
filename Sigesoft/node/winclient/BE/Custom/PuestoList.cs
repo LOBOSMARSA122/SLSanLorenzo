@@ -11,4 +11,10 @@ namespace Sigesoft.Node.WinClient.BE
         public string Puesto { get; set; }
     }
 
+    public class CCostoList
+    {
+        public string CCostoId { get; set; }
+        public string CCosto { get; set; }
+    }
+
 }

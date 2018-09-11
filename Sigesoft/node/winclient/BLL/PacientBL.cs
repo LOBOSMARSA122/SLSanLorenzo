@@ -6502,6 +6502,32 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<CCostoList> GetAllCCosto()
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from A in dbContext.service
+                             where A.i_IsDeleted == 0
+                             select new CCostoList
+                             {
+                                 CCostoId = A.v_centrocosto,
+                                 CCosto = A.v_centrocosto
+                             }).ToList();
+
+
+                var objData = query.AsEnumerable().
+                            GroupBy(g => g.CCosto)
+                                        .Select(s => s.First());
+
+                List<CCostoList> x = objData.ToList().FindAll(p => p.CCosto != "" || p.CCosto != null);
+                return x;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
 

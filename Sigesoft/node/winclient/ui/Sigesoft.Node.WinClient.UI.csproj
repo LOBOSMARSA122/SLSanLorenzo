@@ -1054,6 +1054,12 @@
     <Compile Include="frmDiseases.Designer.cs">
       <DependentUpon>frmDiseases.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmEditarServicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmEditarServicio.Designer.cs">
+      <DependentUpon>frmEditarServicio.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEmail.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1161,6 +1167,12 @@
     </Compile>
     <Compile Include="frmLaboratorio.Designer.cs">
       <DependentUpon>frmLaboratorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLiquidacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLiquidacion.Designer.cs">
+      <DependentUpon>frmLiquidacion.cs</DependentUpon>
     </Compile>
     <Compile Include="frmListaAtenciones.cs">
       <SubType>Form</SubType>
@@ -3426,6 +3438,9 @@
     <EmbeddedResource Include="frmDiseases.resx">
       <DependentUpon>frmDiseases.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmEditarServicio.resx">
+      <DependentUpon>frmEditarServicio.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEmail.resx">
       <DependentUpon>frmEmail.cs</DependentUpon>
     </EmbeddedResource>
@@ -3479,6 +3494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLaboratorio.resx">
       <DependentUpon>frmLaboratorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLiquidacion.resx">
+      <DependentUpon>frmLiquidacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListaAtenciones.resx">
       <DependentUpon>frmListaAtenciones.cs</DependentUpon>
@@ -6604,7 +6622,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
