@@ -2540,13 +2540,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 btnAntecedentes.Visible = true;
                 BtnAnamnesis.Visible = true;
-                btnFichaMedica.Visible = false;
+                //btnFichaMedica.Visible = false;
             }
             else
             {
                 btnAntecedentes.Visible = true;
                 BtnAnamnesis.Visible = false;
-                btnFichaMedica.Visible = false;
+                //btnFichaMedica.Visible = false;
             }
             _componentId = e.Tab.Key;
             _serviceComponentId = e.Tab.Tag.ToString();

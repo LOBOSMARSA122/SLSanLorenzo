@@ -18726,7 +18726,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                QrsGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003122") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003122").v_Value1,
                                QtcGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003123") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003123").v_Value1,
                                EjeCardicacoGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003124") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003124").v_Value1,
+                               //HallazgoGold = GetDiagnosticByServiceIdAndComponent(a.NroHistoria, Constants.ELECTRO_GOLD),
                                HallazgoGold = GetDiagnosticByServiceIdAndComponent(a.NroHistoria, Constants.ELECTRO_GOLD),
+                               Hallazgos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003125") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003125").v_Value1,
+
                                ObservacionesGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126").v_Value1,
                                EkGNormalGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003127") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003127").v_Value1,
 

@@ -17807,7 +17807,7 @@ namespace NetPdf
             if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000637") == null)
             {
                 PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
-                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("");
                 oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000637";
                 oPersonMedicalHistoryList.v_DiseasesName = "CIRUGÍAS";
                 oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
@@ -17817,7 +17817,7 @@ namespace NetPdf
             if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000633") == null)
             {
                 PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
-                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("");
                 oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000633";
                 oPersonMedicalHistoryList.v_DiseasesName = "ALERGIAS";
                 oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
@@ -17827,7 +17827,7 @@ namespace NetPdf
             if (listaPersonMedicalHistory.Find(p => p.v_DiseasesId == "N009-DD000000642") == null)
             {
                 PersonMedicalHistoryList oPersonMedicalHistoryList = new PersonMedicalHistoryList();
-                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("01/01/2000");
+                oPersonMedicalHistoryList.d_StartDate = DateTime.Parse("");
                 oPersonMedicalHistoryList.v_DiseasesId = "N009-DD000000642";
                 oPersonMedicalHistoryList.v_DiseasesName = "DIABETES";
                 oPersonMedicalHistoryList.v_DiagnosticDetail = "NIEGA";
@@ -18477,7 +18477,7 @@ namespace NetPdf
 
                 testIshihara = informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_VISION_COLORES) == null ? "FALTA LLENAR" : informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_VISION_COLORES).v_Value1Name;
                 enfermedadesOculares = informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ENFERMEDADES_OCULARES) == null ? "FALTA LLENAR" : informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ENFERMEDADES_OCULARES).v_Value1;
-                reflejosPupilares = informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_REFLEJOS_PUPILARES) == null ? "FALTA LLENAR" : informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_REFLEJOS_PUPILARES).v_Value1;
+                reflejosPupilares = informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_REFLEJOS_PUPILARES) == null ? "FALTA LLENAR" : informeOftalmoSimple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_REFLEJOS_PUPILARES).v_Value1Name;
 
                 cells = new List<PdfPCell>()
                  {
