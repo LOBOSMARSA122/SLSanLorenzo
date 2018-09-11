@@ -479,17 +479,17 @@ namespace Sigesoft.Node.WinClient.UI
                 if (findResult == null)
                 {
                     // Levantar popup para registrar datos propios de ruido
-                    if (ParameterId == (int)PeligrosEnElPuesto.Ruido)
-                    {
-                        frm.ShowDialog();
+                    //if (ParameterId == (int)PeligrosEnElPuesto.Ruido)
+                    //{
+                    //    frm.ShowDialog();
 
-                        if (frm.DialogResult == DialogResult.Cancel)
-                            return;
+                    //    if (frm.DialogResult == DialogResult.Cancel)
+                    //        return;
 
-                        objWorkstationDangers.v_TimeOfExposureToNoise = frm.FuenteRuido;
-                        objWorkstationDangers.i_NoiseLevel = frm.NivelRuidoId;
-                        objWorkstationDangers.i_NoiseSource = frm.TiempoExposicionRuidoId;
-                    }
+                    //    objWorkstationDangers.v_TimeOfExposureToNoise = frm.FuenteRuido;
+                    //    objWorkstationDangers.i_NoiseLevel = frm.NivelRuidoId;
+                    //    objWorkstationDangers.i_NoiseSource = frm.TiempoExposicionRuidoId;
+                    //}
 
                     objWorkstationDangers.v_WorkstationDangersId = Guid.NewGuid().ToString();
                     
@@ -514,18 +514,18 @@ namespace Sigesoft.Node.WinClient.UI
                     // Levantar popup para registrar datos propios de ruido
                     if (ParameterId == (int)PeligrosEnElPuesto.Ruido)
                     {
-                        if (findResult.i_RecordStatus == (int)RecordStatus.EliminadoLogico)
-                        {
-                            frm.ShowDialog();
+                        //if (findResult.i_RecordStatus == (int)RecordStatus.EliminadoLogico)
+                        //{
+                        //    frm.ShowDialog();
 
-                            if (frm.DialogResult == DialogResult.Cancel)
-                                return;
-                        }
-                        else
-                        {
-                            MessageBox.Show("Por favor seleccione otro item. ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
+                        //    if (frm.DialogResult == DialogResult.Cancel)
+                        //        return;
+                        //}
+                        //else
+                        //{
+                        //    MessageBox.Show("Por favor seleccione otro item. ya existe", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        //    return;
+                        //}
                        
                     }
 
@@ -697,11 +697,11 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
 
-            History.frmEppPercentage frm = new History.frmEppPercentage(objSystemParameterList.v_Value1,0);
-            frm.ShowDialog();
+            //History.frmEppPercentage frm = new History.frmEppPercentage(objSystemParameterList.v_Value1,0);
+            //frm.ShowDialog();
 
-            if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
-            {
+            //if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
+            //{
                 if (objSystemParameterList != null)
                 {
                     TypeOfEEPList findResult = new TypeOfEEPList();
@@ -731,9 +731,9 @@ namespace Sigesoft.Node.WinClient.UI
                             objTypeOfEEP.i_TypeofEEPId = ParameterId;
                             objTypeOfEEP.v_TypeofEEPName = objSystemParameterList.v_Value1;
                         }
-                    
 
-                        objTypeOfEEP.r_Percentage = frm._Porcentage;
+
+                        objTypeOfEEP.r_Percentage = 100;// frm._Porcentage;
                         objTypeOfEEP.i_RecordStatus = (int)RecordStatus.Agregado;
                         objTypeOfEEP.i_RecordType = (int)RecordType.Temporal;
                         _TempTypeOfEEPList.Add(objTypeOfEEP);
@@ -746,14 +746,14 @@ namespace Sigesoft.Node.WinClient.UI
                             {
                                 findResult.i_TypeofEEPId = ParameterId;
                                 findResult.v_TypeofEEPName = objSystemParameterList.v_Value1;
-                                findResult.r_Percentage = frm._Porcentage;
+                                findResult.r_Percentage = 100;// frm._Porcentage;
                                 findResult.i_RecordStatus = (int)RecordStatus.Grabado;
                             }
                             else if (findResult.i_RecordType == (int)RecordType.Temporal) // El registro tiene un ID temporal [GUID]
                             {
                                 findResult.i_TypeofEEPId = ParameterId;
                                 findResult.v_TypeofEEPName = objSystemParameterList.v_Value1;
-                                findResult.r_Percentage = frm._Porcentage;
+                                findResult.r_Percentage = 100;// frm._Porcentage;
                                 findResult.i_RecordStatus = (int)RecordStatus.Agregado;
                             }
                         }
@@ -770,7 +770,7 @@ namespace Sigesoft.Node.WinClient.UI
                     grdDataEPP.DataSource = dataList;
                     grdDataEPP.Refresh();
                 }
-            }
+            //}
         }
 
         private void btnDeleteEPP_Click(object sender, EventArgs e)
