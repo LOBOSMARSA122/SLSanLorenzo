@@ -4165,7 +4165,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
 
                 case Constants.SOMNOLENCIA_ID:
-                    var SOMNOLENCIA_ID = new ServiceBL().ReporteSomnolencia(_serviceId, Constants.SOMNOLENCIA_ID);
+
+                    var servicesId = new List<string>();
+                    servicesId.Add(_serviceId);
+                    var componentReportId = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId, 7);
+                    var SOMNOLENCIA_ID = new ServiceBL().ReporteSomnolencia(_serviceId, componentId, componentReportId[0].ComponentId);
 
                     dsGetRepo = new DataSet();
 

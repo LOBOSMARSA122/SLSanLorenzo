@@ -23965,7 +23965,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 		#region User controls
 
-		public List<UcSomnolencia> ReporteSomnolencia(string pstrserviceId, string pstrComponentId)
+		public List<UcSomnolencia> ReporteSomnolencia(string pstrserviceId, string pstrComponentId, string pstrComponentReportId)
 		{
 			try
 			{
@@ -24010,7 +24010,7 @@ namespace Sigesoft.Node.WinClient.BLL
 									 Dni = B.v_DocNumber
 								 });
 
-                var ValorUSer = ValoresComponentesUserControl(pstrserviceId, Constants.SOMNOLENCIA_ID).ToList();
+                var ValorUSer = ValoresComponentesUserControl(pstrserviceId, pstrComponentReportId).ToList();
 				var MedicalCenter = GetInfoMedicalCenter();
 				var sql = (from a in objEntity.ToList()
 						   select new UcSomnolencia
@@ -24031,9 +24031,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                
 
 							   SOMNOLENCIA_1_SENTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID).v_Value1,
-
 							   SOMNOLENCIA_2_MIRANDO_TV_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_MIRANDO_TV_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_MIRANDO_TV_ID).v_Value1,
-
 							   SOMNOLENCIA_3_SENTADO_INACTIVO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_SENTADO_INACTIVO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_SENTADO_INACTIVO_ID).v_Value1,
 							   SOMNOLENCIA_4_PASAJERO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_PASAJERO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_PASAJERO_ID).v_Value1,
 							   SOMNOLENCIA_5_ACOSTADO_DESC_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_5_ACOSTADO_DESC_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_5_ACOSTADO_DESC_ID).v_Value1,
@@ -24041,14 +24039,13 @@ namespace Sigesoft.Node.WinClient.BLL
 							   SOMNOLENCIA_7_SENTADO_TRANQUILO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_7_SENTADO_TRANQUILO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_7_SENTADO_TRANQUILO_ID).v_Value1,
 							   SOMNOLENCIA_8_CARRO_TRACON_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_8_CARRO_TRACON_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_8_CARRO_TRACON_ID).v_Value1,
 
-							   SOMNOLENCIA_1_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_RESULTADO_ID).v_Value1,
-							   SOMNOLENCIA_2_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_RESULTADO_ID).v_Value1,
-							   SOMNOLENCIA_3_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_RESULTADO_ID).v_Value1,
-							   SOMNOLENCIA_4_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_RESULTADO_ID).v_Value1,
-							   SOMNOLENCIA_5_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_5_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_5_RESULTADO_ID).v_Value1,
-							   SOMNOLENCIA_6_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_6_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_6_RESULTADO_ID).v_Value1,
-							   SOMNOLENCIA_7_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_7_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_7_RESULTADO_ID).v_Value1,
-
+                               SOMNOLENCIA_1_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_RESULTADO_ID).v_Value1,
+                               SOMNOLENCIA_2_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_RESULTADO_ID).v_Value1,
+                               SOMNOLENCIA_3_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_RESULTADO_ID).v_Value1,
+                               SOMNOLENCIA_4_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_RESULTADO_ID).v_Value1,
+                               SOMNOLENCIA_5_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_5_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_5_RESULTADO_ID).v_Value1,
+                               SOMNOLENCIA_6_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_6_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_6_RESULTADO_ID).v_Value1,
+                               SOMNOLENCIA_7_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_7_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_7_RESULTADO_ID).v_Value1,
 							   SOMNOLENCIA_8_RESULTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_8_RESULTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_8_RESULTADO_ID).v_Value1,
 							   SOMNOLENCIA_TOTAL_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_TOTAL_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_TOTAL_ID).v_Value1,
 
