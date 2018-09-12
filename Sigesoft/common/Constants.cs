@@ -15,6 +15,7 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
+     
 
         #region PETRINOVIC
         public const string PETRINOVIC_ID = "N009-ME000000098";
@@ -1093,6 +1094,32 @@ namespace Sigesoft.Common
         public const string INFORME_ESPIROMETRIA = "INFORME_ESPIRO";
 
         public const string APTITUD_YANACOCHA = "APT_YANA";
+        #endregion
+        #region ADICIONALES CIELO AZUL
+        public const string CABECERA_DATOS = "N009-ME000000454";
+
+        public const string MICROBIOLOGIA = "N009-ME000000097";
+
+        public const string PARASITOLOGICO_SERIADO_CIELO_AZUL = "N009-ME000000452";
+
+        public const string COPROCULTIVO = "N009-ME000000453";
+
+        public const string INMUNOLOGIA_ID = "N009-ME000000455";
+        public const string INMUNOLOGIA_A = "N009-MF000003666";
+        public const string INMUNOLOGIA_B = "N009-MF000003667";
+        public const string INMUNOLOGIA_O = "N009-MF000003668";
+        public const string INMUNOLOGIA_H = "N009-MF000003669";
+        public const string BRUCELLS_SBORTUS = "N009-MF000003670";
+
+
+        public const string RASPADO_UÑAS_ID= "N009-ME000000451";
+        public const string RASPADO_UÑAS = "N009-MF000003661";
+
+        public const string SECRECION_FARINGEA_ID = "N009-ME000000456";
+        public const string MUESTRA_SECRECION_FARINGEA = "N009-MF000003671";
+        public const string GERMEN_AISLADO_SECRECION_FARINGEA = "N009-MF000003672";
+
+
         #endregion
 
         #region EXAMEN DE SUFICIENCIA MÉDICA PARA OPERADORES DE EQUIPOS MÓVILES V 2.0
