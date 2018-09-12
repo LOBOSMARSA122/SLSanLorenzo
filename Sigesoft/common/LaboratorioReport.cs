@@ -706,9 +706,67 @@ namespace NetPdf
 
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "HEMOGRAMA IMPERANCIA DE FLIJO", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "HEMOGRAMA IMPERANCIA DE FLUJO", fontTitleTableNegro, null);
                     document.Add(table);
                 }
+                #endregion
+                #region Hemoglobina y hematocrito
+
+                ServiceComponentList hemoglobinaa = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
+                if (hemoglobinaa != null)
+                {
+                    cells = new List<PdfPCell>();
+
+                    cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    cells.Add(new PdfPCell(new Phrase("HEMOGRAMA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    var Hemoglobina = hemoglobinaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGLOBINA_ID);
+                    var HemoglobinaValord = hemoglobinaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_VALOR_DESEABLE_ID);
+
+                    cells.Add(new PdfPCell(new Phrase("HEMOGLOBINA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(Hemoglobina == null ? string.Empty : Hemoglobina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(HemoglobinaValord == null ? "H: 13.0 - 18.0 / M: 12.0 - 16.0" : HemoglobinaValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(Hemoglobina == null ? string.Empty : Hemoglobina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "", fontTitleTableNegro, null);
+                    document.Add(table);
+                }
+
+                ServiceComponentList hematocritoo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMATOCRITO_ID);
+
+                if (hematocritoo != null)
+                {
+                    cells = new List<PdfPCell>();
+
+                    cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    cells.Add(new PdfPCell(new Phrase("HEMOGRAMA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    var Henmatocrito = hematocritoo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO_ID);
+                    var HenmatocritoValord = hematocritoo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO_HEMOGRAMA_HEMATOCRITO_DESEABLE);
+
+                    cells.Add(new PdfPCell(new Phrase("HEMATOCRITO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(Henmatocrito == null ? string.Empty : Henmatocrito.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(HenmatocritoValord == null ? "4,500.00 - 5,900.00" : HenmatocritoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(Henmatocrito == null ? string.Empty : Henmatocrito.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                       
+
+
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "", fontTitleTableNegro, null);
+                    document.Add(table);
+                }
+                
+                
                 #endregion
 
                 #region VSG
