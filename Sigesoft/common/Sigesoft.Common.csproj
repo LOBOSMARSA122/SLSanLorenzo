@@ -89,6 +89,7 @@
     <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
     <Compile Include="ConstantsNatclar.cs" />
     <Compile Include="ConsultaMedica.cs" />
+    <Compile Include="Coprocultivo_PSeriado.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomDtos\FileInfoDto.cs" />
