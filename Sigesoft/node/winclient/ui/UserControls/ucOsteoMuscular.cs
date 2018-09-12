@@ -83,19 +83,19 @@ namespace Sigesoft.Node.WinClient.UI.UserControls
 
                 if (rbAbduccion180DolorNO.Checked)
                 {
-                    SaveValueControlForInterfacingESO(Constants.UC_OSTEO_ABD_180_SINO, "1");
+                    SaveValueControlForInterfacingESO(Constants.UC_OSTEO_ABD_180_SINO, "2");
                 }
                 if (rbAbduccion60DolorNO.Checked)
                 {
-                    SaveValueControlForInterfacingESO(Constants.UC_OSTEO_ABD_60_SINO, "1");
+                    SaveValueControlForInterfacingESO(Constants.UC_OSTEO_ABD_60_SINO, "2");
                 }
                 if (rbRotacion090DolorNO.Checked)
                 {
-                    SaveValueControlForInterfacingESO(Constants.UC_OSTEO_ABD_90_SINO, "1");
+                    SaveValueControlForInterfacingESO(Constants.UC_OSTEO_ABD_90_SINO, "2");
                 }
                 if (rbRotacionExtIntDolorNO.Checked)
                 {
-                    SaveValueControlForInterfacingESO(Constants.UC_OSTEO_ROTACION_SINO, "1");
+                    SaveValueControlForInterfacingESO(Constants.UC_OSTEO_ROTACION_SINO, "2");
                 }
 
 
