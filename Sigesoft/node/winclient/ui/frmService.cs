@@ -374,7 +374,7 @@ namespace Sigesoft.Node.WinClient.UI
                {
                    //Obtener el usuario
                    int UserId= Globals.ClientSession.i_SystemUserId ;
-                   if (UserId==11)
+                   if (UserId == 11 || UserId == 175 || UserId == 173)
 	                {
                         this.Enabled = false;
                         frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
