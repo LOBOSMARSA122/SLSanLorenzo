@@ -1096,6 +1096,13 @@ namespace Sigesoft.Common
         public const string APTITUD_YANACOCHA = "APT_YANA";
         #endregion
 
+        #region DECLARACION JURADA PSICOLOGIA COIMOLACHE - LA ZANJA
+        public const string D_J_PSICOLOGIA_COIMOLACHE_LA_ZANJA_ID= "N009-ME000000457";
+
+        public const string D_J_P_COIMOLACHE_LA_ZANJA_ENFERMEDAD_MENTAL = "N009-MF000003673";
+        public const string D_J_P_COIMOLACHE_LA_ZANJA_SI_DESCRIPCION = "N009-MF000003676";
+        public const string D_J_P_COIMOLACHE_LA_ZANJA_OTRAS_ENFERMEDADES= "N009-MF000003677";
+        #endregion
         #region ADICIONALES CIELO AZUL
 
         public const string PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL = "PAR-COP-CIELO_AZUL";
