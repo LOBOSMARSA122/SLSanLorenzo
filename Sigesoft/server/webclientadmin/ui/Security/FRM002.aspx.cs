@@ -30,7 +30,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Security
                 Sigesoft.Server.WebClientAdmin.BLL.Utils.SetFormActionsInSession("FRM002");
                 btnNew.Enabled = Sigesoft.Server.WebClientAdmin.BLL.Utils.IsActionEnabled("FRM002_ADD");
                 BindGrid();
-                btnFilter_Click(txtUserNameFilter, e);
+                var cond = true;
+                cond = ((ClientSession)Session["objClientSession"]).i_SystemUserId == 11 ? false : true;
+                if (cond == true)
+                {
+                    btnFilter_Click(txtUserNameFilter, e);
+                }
+                
              
             }
         }
@@ -60,8 +66,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Security
             {
                 grdData.DataSource = objUserList;
                 grdData.DataBind();
-                txtUserNameFilter.Text = ((ClientSession)Session["objClientSession"]).v_UserName;
-                txtUserNameFilter.Enabled = false;                
+                var cond = true;
+                cond = ((ClientSession)Session["objClientSession"]).i_SystemUserId == 11 ? false : true;
+                if (cond == true)
+                {
+                    txtUserNameFilter.Text = ((ClientSession)Session["objClientSession"]).v_UserName;
+                    txtUserNameFilter.Enabled = false;   
+                }
+                             
             }
             else
             {
