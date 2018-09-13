@@ -29,7 +29,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Security
                 btnNew.OnClientClick = winEditUser.GetShowReference("FRM002A.aspx?Mode=New");
                 Sigesoft.Server.WebClientAdmin.BLL.Utils.SetFormActionsInSession("FRM002");
                 btnNew.Enabled = Sigesoft.Server.WebClientAdmin.BLL.Utils.IsActionEnabled("FRM002_ADD");
-                BindGrid();            
+                BindGrid();
+                btnFilter_Click(txtUserNameFilter, e);
              
             }
         }
@@ -59,12 +60,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Security
             {
                 grdData.DataSource = objUserList;
                 grdData.DataBind();
+                txtUserNameFilter.Text = ((ClientSession)Session["objClientSession"]).v_UserName;
+                txtUserNameFilter.Enabled = false;                
             }
             else
             {
                 Alert.ShowInTop("Información de operación:" + System.Environment.NewLine + "No existen registros.");
             }
-           
+
+            
         }
 
         private int GetTotalCount()
