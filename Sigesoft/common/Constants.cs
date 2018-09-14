@@ -15,8 +15,11 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
-     
 
+
+        #region  anexo 3 - exoneracion
+        public const string ANEXO_3_EXO_RESP_YANACOCHA = "N009-ME000000458";
+        #endregion
         #region PETRINOVIC
         public const string PETRINOVIC_ID = "N009-ME000000098";
 
