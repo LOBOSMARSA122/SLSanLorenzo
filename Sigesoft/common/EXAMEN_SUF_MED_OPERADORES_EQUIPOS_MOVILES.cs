@@ -133,58 +133,72 @@ namespace NetPdf
             var crsisis_convulsiva = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_CRISIS_CONV) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_CRISIS_CONV).v_Value1;
             string crsisis_convulsiva_1 = "";
             if (crsisis_convulsiva == "1") crsisis_convulsiva_1 = "X";
+            else if (crsisis_convulsiva == "0") crsisis_convulsiva_1 = "-";
 
             var crsisis_ausencia = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_CRISIS_AUSEN) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_CRISIS_AUSEN).v_Value1;
             string crsisis_ausencia_1 = "";
             if (crsisis_ausencia == "1") crsisis_ausencia_1 = "X";
+            else if (crsisis_ausencia == "0") crsisis_ausencia_1 = "-";
 
             var mov_invluntario = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_MOV_INVOLUNTARIO) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_MOV_INVOLUNTARIO).v_Value1;
             string mov_invluntario_1 = "";
             if (mov_invluntario == "1") mov_invluntario_1 = "X";
+            else if (mov_invluntario == "0") mov_invluntario_1 = "-";
 
             var medicacion_psico = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_MEDITACION_PCOTROP) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_MEDITACION_PCOTROP).v_Value1;
             string medicacion_psico_1 = "";
             if (medicacion_psico == "1") medicacion_psico_1 = "X";
+            else if (medicacion_psico == "0") medicacion_psico_1 = "-";
 
             var diabetes_melitus = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_DIABETES_MELITUS) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_DIABETES_MELITUS).v_Value1;
             string diabetes_melitus_1 = "";
             if (diabetes_melitus == "1") diabetes_melitus_1 = "X";
+            else if (diabetes_melitus == "0") diabetes_melitus_1 = "-";
 
             var renal_cronica = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_INSUFICIENCIA_RENAL_CRO) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_INSUFICIENCIA_RENAL_CRO).v_Value1;
             string renal_cronica_1 = "";
             if (renal_cronica == "1") renal_cronica_1 = "X";
+            else if (renal_cronica == "1") renal_cronica_1 = "X";
 
             var insf_cardiaca_cong = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_INSUF_CARDIACA_CONG) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_INSUF_CARDIACA_CONG).v_Value1;
             string insf_cardiaca_cong_1 = "";
             if (insf_cardiaca_cong == "1") insf_cardiaca_cong_1 = "X";
+            else if (insf_cardiaca_cong == "0") insf_cardiaca_cong_1 = "-";
 
             var insf_coronaria = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_INSUF_CORONARIA_CRON) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_INSUF_CORONARIA_CRON).v_Value1;
             string insf_coronaria_1 = "";
             if (insf_coronaria == "1") insf_coronaria_1 = "X";
+            else if (insf_coronaria == "0") insf_coronaria_1 = "-";
 
             var drogas_ilegales = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_CONSUMO_DROGAS_ILEGALES) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_CONSUMO_DROGAS_ILEGALES).v_Value1;
             string drogas_ilegales_1 = "";
             if (drogas_ilegales == "1") drogas_ilegales_1 = "X";
+            else if (drogas_ilegales == "0") drogas_ilegales_1 = "-";
 
             var dipropia_no_corregida = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_DIPOPIA_NO_CORREGIDA) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_DIPOPIA_NO_CORREGIDA).v_Value1;
             string dipropia_no_corregida_1 = "";
             if (dipropia_no_corregida == "1") dipropia_no_corregida_1 = "X";
+            else if (dipropia_no_corregida == "0") dipropia_no_corregida_1 = "-";
 
             var arrtimia_cardiaca = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_ARRITMIA_CARDIACA) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_ARRITMIA_CARDIACA).v_Value1;
             string arrtimia_cardiaca_1 = "";
             if (arrtimia_cardiaca == "1") arrtimia_cardiaca_1 = "X";
+            else if (arrtimia_cardiaca == "0") arrtimia_cardiaca_1 = "-";
 
             var hipertension_maligna = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_HIPERTENSION_MALIGNA) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_HIPERTENSION_MALIGNA).v_Value1;
             string hipertension_maligna_1 = "";
             if (hipertension_maligna == "1") hipertension_maligna_1 = "X";
+            else if (hipertension_maligna == "0") hipertension_maligna_1 = "-";
 
             var marcapaso = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_PORTADOR_MARCAPASO_CARDIACO) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_PORTADOR_MARCAPASO_CARDIACO).v_Value1;
             string marcapaso_1 = "";
             if (marcapaso == "1") marcapaso_1 = "X";
+            else if (marcapaso == "0") marcapaso_1 = "-";
 
             var protesis_valvular = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_PORTADOR_PROTESIS_VALVULAR) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_1_PORTADOR_PROTESIS_VALVULAR).v_Value1;
             string protesis_valvular_1 = "";
             if (protesis_valvular == "1") protesis_valvular_1 = "X";
+            else if (protesis_valvular == "0") protesis_valvular_1 = "-";
 
             cells = new List<PdfPCell>()
             {   
@@ -237,26 +251,32 @@ namespace NetPdf
             var intranquilidad = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_INTRANQUILIDAD) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_INTRANQUILIDAD).v_Value1;
             string intranquilidad_1 = "";
             if (intranquilidad == "1") intranquilidad_1 = "X";
+            else if (intranquilidad == "0") intranquilidad_1 = "-";
 
             var problemas_sueño = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_PROBLEMAS_SUEÑO) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_PROBLEMAS_SUEÑO).v_Value1;
             string problemas_sueño_1 = "";
             if (problemas_sueño == "1") problemas_sueño_1 = "X";
+            else if (problemas_sueño == "0") problemas_sueño_1 = "-";
 
             var labilidad_emocinal = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_LABILIDAD_EMOCIONAL) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_LABILIDAD_EMOCIONAL).v_Value1;
             string labilidad_emocinal_1 = "";
             if (labilidad_emocinal == "1") labilidad_emocinal_1 = "X";
+            else if (labilidad_emocinal == "0") labilidad_emocinal_1 = "-";
 
             var bajo_peso = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_BAJA_PESO_RECIENTE) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_BAJA_PESO_RECIENTE).v_Value1;
             string bajo_peso_1 = "";
             if (bajo_peso == "1") bajo_peso_1 = "X";
+            else if (bajo_peso == "0") bajo_peso_1 = "-";
 
             var fobia_altura = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_FOBIAS_ALTURA) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_FOBIAS_ALTURA).v_Value1;
             string fobia_altura_1 = "";
             if (fobia_altura == "1") fobia_altura_1 = "X";
+            else if (fobia_altura == "0") fobia_altura_1 = "-";
 
             var consumo_drogas = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_CONSUMO_DROGAS) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_2_CONSUMO_DROGAS).v_Value1;
             string consumo_drogas_1 = "";
             if (consumo_drogas == "1") consumo_drogas_1 = "X";
+            else if (consumo_drogas == "0") consumo_drogas_1 = "-";
 
             cells = new List<PdfPCell>()
             {   
@@ -290,34 +310,42 @@ namespace NetPdf
             var funciones_vitales = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_FUNCIONES_VITALES) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_FUNCIONES_VITALES).v_Value1;
             string funciones_vitales_1 = "";
             if (funciones_vitales == "1") funciones_vitales_1 = "X";
+            else if (funciones_vitales == "0") funciones_vitales_1 = "-";
 
             var aparato_locomotor = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_APARATO_LOCOMOTOR) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_APARATO_LOCOMOTOR).v_Value1;
             string aparato_locomotor_1 = "";
             if (aparato_locomotor == "1") aparato_locomotor_1 = "X";
+            else if (aparato_locomotor == "0") aparato_locomotor_1 = "-";
 
             var fuerza_muscular = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_FUERZA_MUSCULAR) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_FUERZA_MUSCULAR).v_Value1;
             string fuerza_muscular_1 = "";
             if (fuerza_muscular == "1") fuerza_muscular_1 = "X";
+            else if (fuerza_muscular == "0") fuerza_muscular_1 = "-";
 
             var pruebas_vestibulares = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_PRUEBAS_VESTIBULARES) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_PRUEBAS_VESTIBULARES).v_Value1;
             string pruebas_vestibulares_1 = "";
             if (pruebas_vestibulares == "1") pruebas_vestibulares_1 = "X";
+            if (pruebas_vestibulares == "0") pruebas_vestibulares_1 = "-";
 
             var agudeza_visual = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_AGUDEZA_VISUAL) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_AGUDEZA_VISUAL).v_Value1;
             string agudeza_visual_1 = "";
             if (agudeza_visual == "1") agudeza_visual_1 = "X";
+            else if (agudeza_visual == "0") agudeza_visual_1 = "-";
 
             var vision_cromatica = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_VISION_CROMATICA) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_VISION_CROMATICA).v_Value1;
             string vision_cromatica_1 = "";
             if (vision_cromatica == "1") vision_cromatica_1 = "X";
+            else if (vision_cromatica == "0") vision_cromatica_1 = "-";
 
             var vision_estereoscopica = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_VISION_ESTEREOSCOPICA) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_VISION_ESTEREOSCOPICA).v_Value1;
             string vision_estereoscopica_1 = "";
             if (vision_estereoscopica == "1") vision_estereoscopica_1 = "X";
+            else if (vision_estereoscopica == "0") vision_estereoscopica_1 = "-";
 
             var umbral_auditivo = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_UMBRAL_AUDITIVO) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_3_UMBRAL_AUDITIVO).v_Value1;
             string umbral_auditivo_1 = "";
             if (umbral_auditivo == "1") umbral_auditivo_1 = "X";
+            else if (umbral_auditivo == "0") umbral_auditivo_1 = "-";
 
             cells = new List<PdfPCell>()
             { 
@@ -355,7 +383,6 @@ namespace NetPdf
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
-
 
             #region RESULTADOS
             var apto_si = suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_4_APTO_TRABAJO_SI) == null ? "" : suficiencia_medica.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_4_APTO_TRABAJO_SI).v_Value1;

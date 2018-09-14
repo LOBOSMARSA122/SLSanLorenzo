@@ -143,6 +143,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string QtcGold { get; set; }
         public string EjeCardicacoGold { get; set; }
         public string HallazgoGold { get; set; }
+        //public string HallazgoscGold { get; set; }
         public string ObservacionesGold { get; set; }
 
         public byte[] HuellaPaciente { get; set; }

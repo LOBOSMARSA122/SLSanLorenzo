@@ -366,8 +366,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 else
                 {
-                    tcSubMain.TabPages.Remove(tpAntecedentes);
-                    tcSubMain.TabPages.Remove(General);
+                    //tcSubMain.TabPages.Remove(tpAntecedentes);
+                    //tcSubMain.TabPages.Remove(General);
                     tcSubMain.TabPages.Remove(tpFormatoAtencionIntegral);
                     tcSubMain.TabPages.Remove(tpDatosAntecedentes);
                     tcSubMain.TabPages.Remove(tpCuidadosPreventivos);
@@ -798,6 +798,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                 gb = new GroupBox();
                                 gb.Text = g.v_Group;
                                 gb.Name = "gb_" + g.v_Group;
+                                if (gb.Name == "gb_E. FUNCIONES COGNITIVAS")
+                                {
+
+                                } 
                                 gb.BackColor = Color.Azure;
                                 gb.AutoSize = true;
                                 gb.Dock = DockStyle.Top;
@@ -1151,6 +1155,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                                             ctl.Enter += new EventHandler(Capture_Value);
                                             ctl.Leave += new EventHandler(txt_Leave);
+                                            ctl.MouseWheel += new MouseEventHandler(comboBox1_MouseWheel);
 
                                             if (_action == "View")
                                             {
@@ -1277,12 +1282,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                             {
                                                 Width = f.i_ControlWidth,
                                                 Height = f.i_HeightControl,
-                                                DropDownStyle = ComboBoxStyle.DropDown,
+                                                DropDownStyle = ComboBoxStyle.DropDownList,
                                                 Name = f.v_ComponentFieldId,
-                                                AutoCompleteMode = AutoCompleteMode.SuggestAppend,
-                                                AutoCompleteSource = AutoCompleteSource.ListItems
+                                                //AutoCompleteMode = AutoCompleteMode.SuggestAppend,
+                                                //AutoCompleteSource = AutoCompleteSource.ListItems
                                             };
 
+                                            cb.MouseWheel += new MouseEventHandler(comboBox1_MouseWheel);
                                             //Utils.LoadDropDownList((ComboBox)ctl, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboAndItemId(ref objOperationResult, f.i_GroupId, f.i_ItemId, null), DropDownListAction.Select);
                                             var data = BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, f.i_GroupId, null);
 
@@ -1417,6 +1423,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             gb = new GroupBox();
                             gb.Text = g.v_Group;
                             gb.Name = "gb_" + g.v_Group;
+                            if (gb.Name == "gb_E. FUNCIONES COGNITIVAS")
+                            {
+
+                            } 
                             gb.BackColor = Color.Azure;
                             gb.AutoSize = true;
                             gb.Dock = DockStyle.Top;
@@ -1906,6 +1916,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         }
 
+        private void comboBox1_MouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
+        
         private void InitializeData()
         {
             if (this.InvokeRequired)
@@ -1989,20 +2004,30 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 txtRegimenCatamenial.Text = personData.v_CatemenialRegime;
                 cbMac.SelectedValue = personData.i_MacId == null ? "1" : personData.i_MacId.ToString();
 
+                txtFechaUltimoPAP.Text = string.IsNullOrEmpty(personData.v_FechaUltimoPAP) ? "" : personData.v_FechaUltimoPAP;
+                txtFechaUltimaMamo.Text = string.IsNullOrEmpty(personData.v_FechaUltimaMamo) ? "" : personData.v_FechaUltimaMamo;
+                txtResultadoPAP.Text = string.IsNullOrEmpty(personData.v_ResultadosPAP) ? "" : personData.v_ResultadosPAP;
+                txtResultadoMamo.Text = string.IsNullOrEmpty(personData.v_ResultadoMamo) ? "" : personData.v_ResultadoMamo;
+
+                txtVidaSexual.Text = string.IsNullOrEmpty(personData.v_InicioVidaSexaul) ? "" : personData.v_InicioVidaSexaul;
+                txtNroParejasActuales.Text = string.IsNullOrEmpty(personData.v_NroParejasActuales) ? "" : personData.v_NroParejasActuales;
+                txtNroAbortos.Text = string.IsNullOrEmpty(personData.v_NroAbortos) ? "" : personData.v_NroAbortos;
+                txtNroCausa.Text = string.IsNullOrEmpty(personData.v_PrecisarCausas) ? "" : personData.v_PrecisarCausas;
+
 
                 //-----------------------------------------------------------------
-                if (personData.d_PAP != null)
-                {
-                    dtpPAP.Value = personData.d_PAP.Value;
-                    dtpPAP.Checked = true;
-                }
+                //if (personData.d_PAP != null)
+                //{
+                //    dtpPAP.Value = personData.d_PAP.Value;
+                //    dtpPAP.Checked = true;
+                //}
 
 
-                if (personData.d_Mamografia != null)
-                {
-                    dtpMamografia.Value = personData.d_Mamografia.Value;
-                    dtpMamografia.Checked = true;
-                }
+                //if (personData.d_Mamografia != null)
+                //{
+                //    dtpMamografia.Value = personData.d_Mamografia.Value;
+                //    dtpMamografia.Checked = true;
+                //}
 
 
                 txtGestapara.Text = string.IsNullOrEmpty(personData.v_Gestapara) ? "G ( )  P ( ) ( ) ( ) ( ) " : personData.v_Gestapara;
@@ -2447,14 +2472,22 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     serviceDTO.i_MacId = int.Parse(cbMac.SelectedValue.ToString());
                     serviceDTO.i_HasSymptomId = Convert.ToInt32(chkPresentaSisntomas.Checked);
 
-                    serviceDTO.d_PAP = dtpPAP.Checked ? dtpPAP.Value : (DateTime?)null;
-                    serviceDTO.d_Mamografia = dtpMamografia.Checked ? dtpMamografia.Value : (DateTime?)null;
+                    //serviceDTO.d_PAP = dtpPAP.Checked ? dtpPAP.Value : (DateTime?)null;
+                    //serviceDTO.d_Mamografia = dtpMamografia.Checked ? dtpMamografia.Value : (DateTime?)null;
                     serviceDTO.v_Gestapara = txtGestapara.Text;
                     serviceDTO.v_Menarquia = txtMenarquia.Text;
                     serviceDTO.v_CiruGine = txtCiruGine.Text;
                     serviceDTO.v_Findings = txtHallazgos.Text;
 
+                    serviceDTO.v_FechaUltimoPAP = txtFechaUltimoPAP.Text;
+                    serviceDTO.v_ResultadosPAP = txtResultadoPAP.Text;
+                    serviceDTO.v_FechaUltimaMamo = txtFechaUltimaMamo.Text;
+                    serviceDTO.v_ResultadoMamo = txtResultadoPAP.Text;
 
+                    serviceDTO.v_InicioVidaSexaul = txtVidaSexual.Text;
+                    serviceDTO.v_NroParejasActuales = txtNroParejasActuales.Text;
+                    serviceDTO.v_NroAbortos = txtNroAbortos.Text;
+                    serviceDTO.v_PrecisarCausas = txtNroCausa.Text;
 
                     // datos de cabecera del Servicio
                     serviceDTO.i_AptitudeStatusId = int.Parse(cbAptitudEso.SelectedValue.ToString());
@@ -2538,15 +2571,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             if (e.Tab.Text == "MEDICINA")
             {
-                btnAntecedentes.Visible = true;
-                BtnAnamnesis.Visible = true;
-                btnFichaMedica.Visible = false;
+                btnAntecedentes.Visible = false;
+                BtnAnamnesis.Visible = false;
+                //btnFichaMedica.Visible = false;
             }
             else
             {
-                btnAntecedentes.Visible = true;
+                btnAntecedentes.Visible = false;
                 BtnAnamnesis.Visible = false;
-                btnFichaMedica.Visible = false;
+                //btnFichaMedica.Visible = false;
             }
             _componentId = e.Tab.Key;
             _serviceComponentId = e.Tab.Tag.ToString();
@@ -6854,7 +6887,103 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     gb6.Enabled = false;
                     gb6.Enabled = false;
                 }
-            }           
+            }
+            else if (tagCtrl.v_ComponentId == "N009-ME000000444")
+            {
+                GroupBox gbE = null;
+                gbE = (GroupBox)FindControlInCurrentTab("gb_E. FUNCIONES COGNITIVAS")[0];
+                GroupBox gbF = null;
+                gbF = (GroupBox)FindControlInCurrentTab("gb_F. ASPECTOS INTRA E INTERPERSONALES")[0];
+                GroupBox gbG = null;
+                gbG = (GroupBox)FindControlInCurrentTab("gb_G. PERFIL DE PERSONALIDAD - TEST DE COLORES")[0];
+                GroupBox gbH = null;
+                gbH = (GroupBox)FindControlInCurrentTab("gb_H. ADAPTABILIDAD, CAPACIDAD DE AFRONTE - HOMBRE BAJO LA LLUVIA")[0];
+
+                GroupBox gbI = null;
+                gbI = (GroupBox)FindControlInCurrentTab("gb_I. FUNCIONES COGNITIVAS.")[0];
+                GroupBox gbJ= null;
+                gbJ = (GroupBox)FindControlInCurrentTab("gb_J. ASPECTOS INTRA E INTERPERSONALES")[0];
+                GroupBox gbK = null;
+                gbK = (GroupBox)FindControlInCurrentTab("gb_K. PERFIL DE PERSONALIDAD")[0];
+                GroupBox gbL = null;
+                gbL = (GroupBox)FindControlInCurrentTab("gb_L.  ADAPTABILIDAD - CLIMA SOCIAL, LABORAL")[0];
+
+                var value = GetValueControl(tagCtrl.i_ControlId, senderCtrl);
+
+
+                RadioButton valSC = (RadioButton)FindControlInCurrentTab("N009-MF000003531")[0];
+                RadioButton valSI = (RadioButton)FindControlInCurrentTab("N009-MF000003530")[0];
+                RadioButton valGA = (RadioButton)FindControlInCurrentTab("N009-MF000003532")[0];
+
+                if (tagCtrl.v_ComponentFieldsId == "N009-MF000003531")
+                {
+
+                    gbE.Enabled = true;
+                    gbF.Enabled = true;
+                    gbG.Enabled = true;
+                    gbH.Enabled = true;
+
+                    gbI.Enabled = true;
+                    gbJ.Enabled = true;
+                    gbK.Enabled = true;
+                    gbL.Enabled = true;
+
+                    if (valSC.Checked != true)
+                    {
+                        gbE.Enabled = false;
+                        gbF.Enabled = false;
+                        gbG.Enabled = false;
+                        gbH.Enabled = false;
+
+                        gbI.Enabled = true;
+                        gbJ.Enabled = true;
+                        gbK.Enabled = true;
+                        gbL.Enabled = true;
+                    }
+                    //else
+                    //{
+                    //    gbE.Enabled = true;
+                    //    gbF.Enabled = true;
+                    //    gbG.Enabled = true;
+                    //    gbH.Enabled = true;
+                    //}
+
+                }
+                else if (tagCtrl.v_ComponentFieldsId == "N009-MF000003530")
+                {
+                    gbE.Enabled = true;
+                    gbF.Enabled = true;
+                    gbG.Enabled = true;
+                    gbH.Enabled = true;
+
+                    gbI.Enabled = true;
+                    gbJ.Enabled = true;
+                    gbK.Enabled = true;
+                    gbL.Enabled = true;
+
+                    if (valSI.Checked != true)
+                    {
+                        gbI.Enabled = false;
+                        gbJ.Enabled = false;
+                        gbK.Enabled = false;
+                        gbL.Enabled = false;
+
+                        gbE.Enabled = true;
+                        gbF.Enabled = true;
+                        gbG.Enabled = true;
+                        gbH.Enabled = true;
+                    }
+                    //else
+                    //{
+                    //    gbI.Enabled = true;
+                    //    gbJ.Enabled = true;
+                    //    gbK.Enabled = true;
+                    //    gbL.Enabled = true;
+                    //}
+                }
+
+                
+            }
 
         }
 

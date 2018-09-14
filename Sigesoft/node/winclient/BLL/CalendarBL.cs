@@ -2518,6 +2518,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                    equals new { a = L.v_OrganizationId } into L_join
                            from L in L_join.DefaultIfEmpty()
 
+                           join L1 in dbContext.organization on new { a = J.v_EmployerOrganizationId }
+                                   equals new { a = L1.v_OrganizationId } into L1_join
+                           from L1 in L1_join.DefaultIfEmpty()
+
                            join M in dbContext.location on new { a = L.v_OrganizationId, b = J.v_EmployerLocationId }
                                    equals new { a = M.v_OrganizationId, b = M.v_LocationId } into M_join
                            from M in M_join.DefaultIfEmpty()
@@ -2553,9 +2557,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                v_NumberDocument = B.v_DocNumber,
                                d_Birthdate = B.d_Birthdate.Value,
                                v_EsoTypeName = K.v_Value1,
-                               v_OrganizationName = L.v_Name + " / " + M.v_Name,
+                               v_OrganizationName = L.v_Name,
                                v_OrganizationLocationService = N.v_Name + " / " + O.v_Name,                              
-                               v_OrganizationIntermediaryName = P.v_Name,                         
+                               v_OrganizationIntermediaryName =L1.v_Name, //P.v_Name,                         
                                v_DocNumber = B.v_DocNumber,
                                b_PersonImage = B.b_PersonImage,  
                                d_ServiceDate = D.d_ServiceDate.Value,

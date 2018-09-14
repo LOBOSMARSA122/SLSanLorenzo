@@ -16,6 +16,10 @@ namespace Sigesoft.Common
         public const int COLUMNAS_POR_CONTROL = 3;
 
 
+
+        #region  anexo 3 - exoneracion
+        public const string ANEXO_3_EXO_RESP_YANACOCHA = "N009-ME000000458";
+        #endregion
         #region PETRINOVIC
         public const string PETRINOVIC_ID = "N009-ME000000098";
 
@@ -1093,6 +1097,55 @@ namespace Sigesoft.Common
         public const string INFORME_ESPIROMETRIA = "INFORME_ESPIRO";
 
         public const string APTITUD_YANACOCHA = "APT_YANA";
+        #endregion
+
+        #region DECLARACION JURADA PSICOLOGIA COIMOLACHE - LA ZANJA
+        public const string D_J_PSICOLOGIA_COIMOLACHE_LA_ZANJA_ID= "N009-ME000000457";
+
+        public const string D_J_P_COIMOLACHE_LA_ZANJA_ENFERMEDAD_MENTAL = "N009-MF000003673";
+        public const string D_J_P_COIMOLACHE_LA_ZANJA_SI_DESCRIPCION = "N009-MF000003676";
+        public const string D_J_P_COIMOLACHE_LA_ZANJA_OTRAS_ENFERMEDADES= "N009-MF000003677";
+        #endregion
+        #region ADICIONALES CIELO AZUL
+
+        public const string PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL = "PAR-COP-CIELO_AZUL";
+        public const string AGLUTINACIONES_KOH_SECRECION = "AGLU-KOH-SEC-CIELO_AZUL";
+        
+        public const string ADICIONALES_CIELO_AZUL = "N009-ME000000454";
+        public const string CABECERA_DATOS_IDENTIFICACION = "N009-MF000003253";
+        public const string CABECERA_DATOS_FECHA_EMISION = "N009-MF000003254";
+        public const string CABECERA_DATOS_MEDICO = "N009-MF000003255";
+
+        public const string MICROBIOLOGIA_ID = "N009-ME000000097";
+        public const string MICROBIOLOGIA_C_A_COLOR = "N009-MF000001812";
+        public const string MICROBIOLOGIA_C_A_CONSISTENCIA = "N009-MF000002069";
+        public const string MICROBIOLOGIA_C_A_MOCO = "N009-MF000002070";
+        public const string MICROBIOLOGIA_C_A_RESTOS_ALIMENTICIOS = "N009-MF000003251";
+        public const string MICROBIOLOGIA_C_A_LEUCOCITOS = "N009-MF000003252";
+        public const string MICROBIOLOGIA_C_A_THEVENON = "N009-MF000003662";
+
+        public const string PARASITOLOGICO_SERIADO_CIELO_AZUL_ID = "N009-ME000000452";
+        public const string METODO_DIRECTO_C_A = "N009-MF000003663";
+        public const string METODO_SEDIMENTACION_C_A = "N009-MF000003664";
+
+        public const string COPROCULTIVO_ID = "N009-ME000000453";
+        public const string COPROCULTIVO = "N009-MF000003665";
+
+        public const string INMUNOLOGIA_ID_CA = "N009-ME000000455";
+        public const string INMUNOLOGIA_A_CA = "N009-MF000003666";
+        public const string INMUNOLOGIA_B_CA = "N009-MF000003667";
+        public const string INMUNOLOGIA_O_CA = "N009-MF000003668";
+        public const string INMUNOLOGIA_H_CA= "N009-MF000003669";
+        public const string BRUCELLS_SBORTUS_CA = "N009-MF000003670";
+
+        public const string RASPADO_UÑAS_ID= "N009-ME000000451";
+        public const string RASPADO_UÑAS = "N009-MF000003661";
+
+        public const string SECRECION_FARINGEA_ID = "N009-ME000000456";
+        public const string MUESTRA_SECRECION_FARINGEA = "N009-MF000003671";
+        public const string GERMEN_AISLADO_SECRECION_FARINGEA = "N009-MF000003672";
+
+
         #endregion
 
         #region EXAMEN DE SUFICIENCIA MÉDICA PARA OPERADORES DE EQUIPOS MÓVILES V 2.0

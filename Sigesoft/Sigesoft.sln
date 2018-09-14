@@ -24,6 +24,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{6E9CD3C6-B052-41F4-B222-7151715B0292}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8FAC4208-1CD5-4C4E-91F2-63BBF46B104A}"
+	ProjectSection(SolutionItems) = preProject
+		node\winclient\ui\Reports\crOsteo.cs = node\winclient\ui\Reports\crOsteo.cs
+		node\winclient\ui\Reports\crOsteo.rpt = node\winclient\ui\Reports\crOsteo.rpt
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sigesoft.Node.WinClient.UI", "Node\WinClient\UI\Sigesoft.Node.WinClient.UI.csproj", "{5CF08CBC-3693-460B-873D-7398A48E20A9}"
 EndProject

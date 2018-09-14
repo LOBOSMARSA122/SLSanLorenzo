@@ -3533,10 +3533,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:29:51</publishTime>
     </File>
     <File Include="bin/Consultorios/flechaAzul.png">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
     </File>
     <File Include="bin/Consultorios/flechaRoja.png">
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/05/2018 12:05:56</publishTime>
+    </File>
+    <File Include="bin/Consultorios/flechaRoja.png">
+      <publishTime>09/05/2018 12:01:35</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="bin/Controls.dll">
       <publishTime>07/23/2018 15:29:39</publishTime>
@@ -3563,10 +3570,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:30:02</publishTime>
     </File>
     <File Include="bin/images/icons/flechaAzul.png">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
     </File>
     <File Include="bin/images/icons/flechaRoja.png">
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/05/2018 12:05:56</publishTime>
+    </File>
+    <File Include="bin/images/icons/flechaRoja.png">
+      <publishTime>09/05/2018 12:01:35</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="bin/images/icons/mayorazul.png">
       <publishTime>07/23/2018 15:30:02</publishTime>
@@ -3833,7 +3847,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:29:45</publishTime>
     </File>
     <File Include="bin/Resources/cuadradoazul.png">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/05/2018 12:13:43</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="bin/Resources/cuadradonegro.jpg">
       <publishTime>07/23/2018 15:29:45</publishTime>
@@ -3872,10 +3890,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:29:45</publishTime>
     </File>
     <File Include="bin/Resources/flechaAzul.png">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
     </File>
     <File Include="bin/Resources/flechaRoja.png">
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/05/2018 12:05:56</publishTime>
+    </File>
+    <File Include="bin/Resources/flechaRoja.png">
+      <publishTime>09/05/2018 12:01:35</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="bin/Resources/group.png">
       <publishTime>07/23/2018 15:29:45</publishTime>
@@ -4060,7 +4085,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/Sigesoft.Api.pdb">
       <publishTime>09/10/2018 15:02:48</publishTime>
     </File>
+    <File Include="bin/Sigesoft.Api.dll">
+      <publishTime>09/12/2018 17:12:37</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Api.pdb">
+      <publishTime>09/12/2018 17:12:37</publishTime>
+    </File>
     <File Include="bin/Sigesoft.Common.dll">
+<<<<<<< HEAD
       <publishTime>09/10/2018 15:02:47</publishTime>
     </File>
     <File Include="bin/Sigesoft.Common.pdb">
@@ -4119,6 +4151,66 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/Sigesoft.Server.WebClientAdmin.UI.pdb">
       <publishTime>09/13/2018 16:40:16</publishTime>
+=======
+      <publishTime>09/12/2018 17:12:36</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Common.pdb">
+      <publishTime>09/12/2018 17:12:36</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.Contasol.Integration.dll">
+      <publishTime>09/12/2018 17:12:49</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.Contasol.Integration.pdb">
+      <publishTime>09/12/2018 17:12:49</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.WinClient.BE.dll">
+      <publishTime>09/12/2018 17:12:32</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.WinClient.BE.pdb">
+      <publishTime>09/12/2018 17:12:32</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.WinClient.BLL.dll">
+      <publishTime>09/12/2018 17:12:48</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.WinClient.BLL.pdb">
+      <publishTime>09/12/2018 17:12:48</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.WinClient.DAL.MSSQL.dll">
+      <publishTime>09/12/2018 17:12:35</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.WinClient.DAL.MSSQL.pdb">
+      <publishTime>09/12/2018 17:12:35</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.WinClient.UI.exe">
+      <publishTime>09/13/2018 09:23:15</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Node.WinClient.UI.pdb">
+      <publishTime>09/13/2018 09:23:13</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Server.WebClientAdmin.BE.dll">
+      <publishTime>09/12/2018 17:12:31</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Server.WebClientAdmin.BE.pdb">
+      <publishTime>09/12/2018 17:12:31</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Server.WebClientAdmin.BLL.dll">
+      <publishTime>09/12/2018 17:12:41</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Server.WebClientAdmin.BLL.pdb">
+      <publishTime>09/12/2018 17:12:41</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Server.WebClientAdmin.DAL.MSSQL.dll">
+      <publishTime>09/12/2018 17:12:33</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Server.WebClientAdmin.DAL.MSSQL.pdb">
+      <publishTime>09/12/2018 17:12:33</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Server.WebClientAdmin.UI.dll">
+      <publishTime>09/13/2018 09:23:23</publishTime>
+    </File>
+    <File Include="bin/Sigesoft.Server.WebClientAdmin.UI.pdb">
+      <publishTime>09/13/2018 09:23:22</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="bin/SigPlusNET.dll">
       <publishTime>07/23/2018 15:29:39</publishTime>
@@ -4301,6 +4393,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:29:51</publishTime>
     </File>
     <File Include="Consultorios/flechaAzul.png">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
     </File>
     <File Include="Consultorios/flechaRoja.png">
@@ -4308,6 +4401,15 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="Consultorios/frmAntecedenteFamiliar.aspx">
       <publishTime>07/23/2018 15:29:51</publishTime>
+=======
+      <publishTime>09/05/2018 12:05:56</publishTime>
+    </File>
+    <File Include="Consultorios/flechaRoja.png">
+      <publishTime>09/05/2018 12:01:35</publishTime>
+    </File>
+    <File Include="Consultorios/frmAntecedenteFamiliar.aspx">
+      <publishTime>08/16/2018 16:23:14</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="Consultorios/frmAntecedenteOcupacional.aspx">
       <publishTime>07/23/2018 15:29:51</publishTime>
@@ -4316,19 +4418,31 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:29:51</publishTime>
     </File>
     <File Include="Consultorios/frmAudiometria.aspx">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/06/2018 12:39:14</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="Consultorios/FRMCAMBIOFECHASERVICIO.aspx">
       <publishTime>07/23/2018 15:29:51</publishTime>
     </File>
     <File Include="Consultorios/frmCardiologia.aspx">
+<<<<<<< HEAD
       <publishTime>09/04/2018 13:31:49</publishTime>
+=======
+      <publishTime>09/04/2018 13:00:07</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="Consultorios/frmEpp.aspx">
       <publishTime>07/23/2018 15:29:51</publishTime>
     </File>
     <File Include="Consultorios/frmEspirometria.aspx">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/06/2018 11:34:34</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="Consultorios/FRMEXAMENADICIONAL.aspx">
       <publishTime>07/23/2018 15:29:51</publishTime>
@@ -4349,7 +4463,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:29:51</publishTime>
     </File>
     <File Include="Consultorios/frmOftalmologia.aspx">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/06/2018 11:12:31</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="Consultorios/frmPeligros.aspx">
       <publishTime>07/23/2018 15:29:51</publishTime>
@@ -4358,7 +4476,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/16/2018 14:58:02</publishTime>
     </File>
     <File Include="Consultorios/frmRayosX.aspx">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/06/2018 11:02:48</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="Consultorios/frmVisorReporte.aspx">
       <publishTime>07/23/2018 15:29:51</publishTime>
@@ -7250,10 +7372,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:30:02</publishTime>
     </File>
     <File Include="images/icons/flechaAzul.png">
+<<<<<<< HEAD
       <publishTime>09/07/2018 11:44:07</publishTime>
     </File>
     <File Include="images/icons/flechaRoja.png">
       <publishTime>09/07/2018 11:44:07</publishTime>
+=======
+      <publishTime>09/05/2018 12:05:56</publishTime>
+    </File>
+    <File Include="images/icons/flechaRoja.png">
+      <publishTime>09/05/2018 12:01:35</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="images/icons/flower_daisy.png">
       <publishTime>07/23/2018 15:30:02</publishTime>
@@ -9878,7 +10007,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:29:52</publishTime>
     </File>
     <File Include="Security/FRM002.aspx">
+<<<<<<< HEAD
       <publishTime>07/23/2018 15:29:52</publishTime>
+=======
+      <publishTime>09/12/2018 19:49:11</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
     <File Include="Security/FRM002A.aspx">
       <publishTime>07/23/2018 15:29:52</publishTime>
@@ -9923,7 +10056,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/23/2018 15:29:52</publishTime>
     </File>
     <File Include="Web.config">
+<<<<<<< HEAD
       <publishTime>09/10/2018 10:29:25</publishTime>
+=======
+      <publishTime>09/12/2018 19:51:05</publishTime>
+>>>>>>> fba4b86f9362d5d376bef1a583622e014d6e92a9
     </File>
   </ItemGroup>
 </Project>

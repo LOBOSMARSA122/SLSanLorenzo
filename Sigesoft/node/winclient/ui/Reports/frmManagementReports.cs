@@ -120,6 +120,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 72, v_ComponentName = "INFORME MEDICO SALUD OCUPACIONAL - EXAMEN ANUAL", v_ComponentId = Constants.INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL });
                 serviceComponents.Add(new ServiceComponentList { Orden = 73, v_ComponentName = "ANEXO 8 INFORME MEDICO OCUPASIONAL", v_ComponentId = Constants.ANEXO_8_INFORME_MEDICO_OCUPACIONAL });
                 serviceComponents.Add(new ServiceComponentList { Orden = 74, v_ComponentName = "INFORME RESULTADOS EVALUACION MEDICA - AUTORIZACION", v_ComponentId = Constants.INFORME_RESULTADOS_EVALUACION_MEDICA });
+                serviceComponents.Add(new ServiceComponentList { Orden = 75, v_ComponentName = "AGLUTINACIONES KOH SECRECION CIELO AZUL", v_ComponentId = Constants.AGLUTINACIONES_KOH_SECRECION });
+                serviceComponents.Add(new ServiceComponentList { Orden = 76, v_ComponentName = "PARASITOLOGICO COPROCULTIVO CIELO AZUL", v_ComponentId = Constants.PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL });
 
                 //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
                 if (datosP.Genero.ToUpper() == "FEMENINO")
@@ -1339,6 +1341,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             FichaPsicologicaGoldfields.CreateFichaPsicologicaGoldfields(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
         }
+
+        public void GenerateDeclaracionJuradaCoimolacheLaZanja(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
+            DeclaracionJuradaPsicologia_Coimolache_LaZanja.CreateDeclaracionJuradaCoimolacheLaZanja(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+        }
         public void GenerateInformePsicologicoGoldfieds(string pathFile)
         {
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -1435,6 +1448,42 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             InformedeResultados_Autorización.CreateInformeResultadosAutorizacion(filiationData, _DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
 
+
+        private void Generate_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            Coprocultivo_PSeriado.CreateExamen_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
+        }
+        private void Generate_AGLUTINACIONES_KOH_SECRECION(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Oftalmología, _serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            Coprocultivo_PSeriado.CreateExamen_AGLUTINACIONES_KOH_SECRECION(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo, diagnosticRepository);
+        }
+
+        private void GenerateAnexo3_Exoneracion_ResponsabilidadYanacocha(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+
+            Anexo3_Exo_Resp_Yanacocha.CreateAnexo3_Exoneracion_ResponsabilidadYanacocha(_DataService, pathFile, datosP, MedicalCenter,filiationData, serviceComponents);
+        }
         #region HUDBAY METODOS
         private void GenerateConsentimientoInformadoAccesoHistoriaClinica(string pathFile)
         {
@@ -4165,7 +4214,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
 
                 case Constants.SOMNOLENCIA_ID:
-                    var SOMNOLENCIA_ID = new ServiceBL().ReporteSomnolencia(_serviceId, Constants.SOMNOLENCIA_ID);
+
+                    var servicesId = new List<string>();
+                    servicesId.Add(_serviceId);
+                    var componentReportId = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId, 7);
+                    var SOMNOLENCIA_ID = new ServiceBL().ReporteSomnolencia(_serviceId, componentId, componentReportId[0].ComponentId);
 
                     dsGetRepo = new DataSet();
 
@@ -4820,13 +4873,21 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     //// ARNOLD
+                case Constants.FICHA_SAS_ID:
+                    GenerateInformeSAS(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FICHA_SAS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
                 case Constants.MI_EXAMEN:
                     GenerateMiExamen(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.MI_EXAMEN)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
 
-                case Constants.FICHA_SAS_ID:
-                    GenerateInformeSAS(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FICHA_SAS_ID)));
+                case Constants.PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL:
+                    Generate_PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.AGLUTINACIONES_KOH_SECRECION:
+                    Generate_AGLUTINACIONES_KOH_SECRECION(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.AGLUTINACIONES_KOH_SECRECION)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
 
@@ -4912,6 +4973,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID:
                     GenerateInformeOftalmologicoHudbay(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.D_J_PSICOLOGIA_COIMOLACHE_LA_ZANJA_ID:
+                    GenerateDeclaracionJuradaCoimolacheLaZanja(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.D_J_PSICOLOGIA_COIMOLACHE_LA_ZANJA_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.ANEXO_3_EXO_RESP_YANACOCHA:
+                    GenerateAnexo3_Exoneracion_ResponsabilidadYanacocha(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ANEXO_3_EXO_RESP_YANACOCHA)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///

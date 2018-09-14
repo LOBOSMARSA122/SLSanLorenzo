@@ -77,6 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anexo3_Exo_Resp_Yanacocha.cs" />
     <Compile Include="Anexo8_InformeMedicoOcupacionalcs.cs" />
     <Compile Include="ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.cs" />
     <Compile Include="AtencionIntegral.cs" />
@@ -89,12 +90,14 @@
     <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
     <Compile Include="ConstantsNatclar.cs" />
     <Compile Include="ConsultaMedica.cs" />
+    <Compile Include="Coprocultivo_PSeriado.cs" />
     <Compile Include="CustomDtos\ClientSession.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomDtos\FileInfoDto.cs" />
     <Compile Include="CustomDtos\SoftwareComponentCheckDto.cs" />
     <Compile Include="CustomDtos\KeyValueDTOForTree.cs" />
     <Compile Include="CustomDtos\TableInfoDto.cs" />
+    <Compile Include="DeclaracionJuradaPsicologia_Coimolache_LaZanja.cs" />
     <Compile Include="DeclaracionJuradaRX.cs" />
     <Compile Include="DynamicLinq.cs" />
     <Compile Include="Enums.cs" />
