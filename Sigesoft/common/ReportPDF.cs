@@ -10713,7 +10713,7 @@ namespace NetPdf
                     new PdfPCell(PreOcupacional){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },
                     //fila
                     new PdfPCell(new Phrase(" ", fontColumnValue)) {Border = PdfPCell.LEFT_BORDER, Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
-                    new PdfPCell(cellPhoto1){Rowspan = 4, Border = PdfPCell.LEFT_BORDER, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(){Rowspan = 4, Border = PdfPCell.LEFT_BORDER, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                     new PdfPCell(new Phrase("ANUAL", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT},   
                     new PdfPCell(Periodica){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila

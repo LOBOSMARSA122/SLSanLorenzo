@@ -1484,6 +1484,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Anexo3_Exo_Resp_Yanacocha.CreateAnexo3_Exoneracion_ResponsabilidadYanacocha(_DataService, pathFile, datosP, MedicalCenter,filiationData, serviceComponents);
         }
+        private void GenerateExamen_Medico_Visitantes_GoldFields(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+
+            Examen_Medico_Visitantes_GoldFields.CreateExamen_Medico_Visitantes_GoldFields(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+        }
         #region HUDBAY METODOS
         private void GenerateConsentimientoInformadoAccesoHistoriaClinica(string pathFile)
         {
@@ -4981,6 +4991,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.ANEXO_3_EXO_RESP_YANACOCHA:
                     GenerateAnexo3_Exoneracion_ResponsabilidadYanacocha(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ANEXO_3_EXO_RESP_YANACOCHA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID:
+                    GenerateExamen_Medico_Visitantes_GoldFields(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///
