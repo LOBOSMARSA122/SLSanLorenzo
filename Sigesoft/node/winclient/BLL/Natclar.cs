@@ -57,6 +57,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 TipoExamen = C.i_MasterServiceId.Value,
                                 IDEstado = B.i_IsDeleted,
                                 FechaRegistro = C.d_ServiceDate.Value,
+                                FechaUltimaRegla = C.v_FechaUltimoPAP
                             };
 
 

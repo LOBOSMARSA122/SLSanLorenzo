@@ -1211,7 +1211,8 @@ namespace Sigesoft.Node.WinClient.BLL
                               d_UpdateDate = A.d_UpdateDate,
                               i_Answer = A.i_AnswerId.Value,
                               NombreHospital = A.NombreHospital,
-                              v_Complicaciones = A.v_Complicaciones
+                              v_Complicaciones = A.v_Complicaciones,
+                              v_CIE10Id = D.v_CIE10Id
                           };
 
               if (!string.IsNullOrEmpty(pstrFilterExpression))

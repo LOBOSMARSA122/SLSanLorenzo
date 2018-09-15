@@ -1670,6 +1670,54 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
+        public List<ServiceComponentList> GetServiceComponentsLiquidacion(ref OperationResult pobjOperationResult, string pstrServiceId)
+        {
+
+
+            int isDeleted = (int)SiNo.NO;
+            int isRequired = (int)SiNo.SI;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from A in dbContext.servicecomponent
+                             //join C in dbContext.systemuser on A.i_MedicoTratanteId equals C.i_SystemUserId
+                             //join D in dbContext.person on C.v_PersonId equals D.v_PersonId
+                             join B in dbContext.component on A.v_ComponentId equals B.v_ComponentId
+                             join F in dbContext.systemparameter on new { a = B.i_CategoryId.Value, b = 116 }
+                                     equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                             from F in F_join.DefaultIfEmpty()
+                             where A.v_ServiceId == pstrServiceId &&
+                                   A.i_IsDeleted == isDeleted &&
+                                   A.i_IsRequiredId == isRequired
+                             //&& (A.r_Price != 0 || A.r_Price != 0.00 )
+
+                             select new ServiceComponentList
+                             {
+                                 v_ServiceComponentId = A.v_ServiceComponentId,
+                                 v_ComponentId = A.v_ComponentId,
+                                 r_Price = A.r_Price,
+                                 v_ComponentName = B.v_Name,
+                                 v_CategoryName = F.v_Value1,
+                                 //MedicoTratante = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                 d_InsertDate = A.d_InsertDate
+                             }).ToList();
+
+
+
+                pobjOperationResult.Success = 1;
+                return query;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+
 	   public List<ServiceComponentList> GetServiceComponentsByCategoryExceptLab(ref OperationResult pobjOperationResult, string pstrServiceId)
 		{
 
@@ -8761,6 +8809,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 				var query = (from A in dbContext.service
 							 join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                             join B1 in dbContext.component on B.v_ComponentId equals B1.v_ComponentId
 							 join C in dbContext.servicecomponentmultimedia on B.v_ServiceComponentId equals C.v_ServiceComponentId
 							 join D in dbContext.multimediafile on C.v_MultimediaFileId equals D.v_MultimediaFileId
 
@@ -8772,6 +8821,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_MultimediaFileId = D.v_MultimediaFileId,
 								 v_FileName = D.v_FileName,
 								 b_File = D.b_File,
+                                 FechaServicio = A.d_ServiceDate.Value,
+                                 CategoryId = B1.i_CategoryId.Value
 
 							 });
 
@@ -13285,6 +13336,63 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 
 		}
+
+        public List<ServiceComponentFieldValuesList> ValoresComponenteconstantes(string pstrServiceId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            int rpta = 0;
+
+            try
+            {
+                var serviceComponentFieldValues = (from A in dbContext.service
+                                                   join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                                                   join C in dbContext.servicecomponentfields on B.v_ServiceComponentId equals C.v_ServiceComponentId
+                                                   join D in dbContext.servicecomponentfieldvalues on C.v_ServiceComponentFieldsId equals D.v_ServiceComponentFieldsId
+                                                   join E in dbContext.component on B.v_ComponentId equals E.v_ComponentId
+                                                   join F in dbContext.componentfields on C.v_ComponentFieldId equals F.v_ComponentFieldId
+                                                   join G in dbContext.componentfield on C.v_ComponentFieldId equals G.v_ComponentFieldId
+                                                   join H in dbContext.component on F.v_ComponentId equals H.v_ComponentId
+
+                                                   where A.v_ServiceId == pstrServiceId
+                                                           && (H.v_ComponentId == "N002-ME000000001" || H.v_ComponentId == "N002-ME000000002")
+                                                           && B.i_IsDeleted == 0
+                                                           && C.i_IsDeleted == 0
+
+                                                   select new ServiceComponentFieldValuesList
+                                                   {
+                                                       v_ComponentFieldId = G.v_ComponentFieldId,
+                                                       v_ComponentFielName = G.v_TextLabel,
+                                                       v_ServiceComponentFieldsId = C.v_ServiceComponentFieldsId,
+                                                       v_Value1 = D.v_Value1,
+                                                       i_GroupId = G.i_GroupId.Value
+                                                   });
+
+                var finalQuery = (from a in serviceComponentFieldValues.ToList()
+
+                                  let value1 = int.TryParse(a.v_Value1, out rpta)
+                                  join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
+                                                  equals new { a = sp.i_GroupId, b = sp.i_ParameterId } into sp_join
+                                  from sp in sp_join.DefaultIfEmpty()
+
+                                  select new ServiceComponentFieldValuesList
+                                  {
+                                      v_ComponentFieldId = a.v_ComponentFieldId,
+                                      v_ComponentFielName = a.v_ComponentFielName,
+                                      v_ServiceComponentFieldsId = a.v_ServiceComponentFieldsId,
+                                      v_Value1 = a.v_Value1,
+                                      v_Value1Name = sp == null ? "" : sp.v_Value1
+                                  }).ToList();
+
+
+                return finalQuery;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
 
 		// Alejandro
 		public string GetValueComponent(string pstrServiceId, string pstrComponentId, string componentFieldId)
@@ -29918,7 +30026,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                 NroDocumemto = C.v_DocNumber,
                                 Cargo = C.v_CurrentOccupation,
                                 Perfil = D.v_Name,
-                                v_ProtocolId = B.v_ProtocolId
+                                v_ProtocolId = B.v_ProtocolId,
+                                v_CustomerLocationId = B.v_CustomerLocationId,
+                                v_EmployerLocationId = B.v_EmployerLocationId
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -29994,7 +30104,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                         oLiquidacionDetalle.Perfil = servicio.Perfil;
                         oLiquidacionDetalle.Precio =
-                            GetServiceComponents_(ref pobjOperationResult, servicio.v_ServiceId).Sum(s => s.r_Price).Value;
+                            GetServiceComponentsLiquidacion(ref pobjOperationResult, servicio.v_ServiceId).Sum(s => s.r_Price).Value;
 
                         oLiquidacionDetalle.CCosto = servicio.CCosto;
 

@@ -1372,19 +1372,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnGenerarXML_Click(object sender, EventArgs e)
         {
-
-            //_ListaCalendar = new List<string>();
-            //foreach (var item in grdDataCalendar.Rows)
-            //{
-            //    //CheckBox ck = (CheckBox)item.Cells["b_FechaEntrega"].Value;
-
-            //    if ((bool)item.Cells["b_Seleccionar"].Value)
-            //    {
-            //        string x = item.Cells["v_CalendarId"].Value.ToString();
-            //        _ListaCalendar.Add(x);
-            //    }
-            //}
-
+            OperationResult objOperationResult = new OperationResult();
             Natclar oNatclarBL = new Natclar();
 
             saveFileDialog1.FileName = string.Empty;
@@ -1506,121 +1494,617 @@ namespace Sigesoft.Node.WinClient.UI
 
                         #region Datos del Examen
 
-                        var eDatosExamen = new List<string>();
-                        eDatosExamen.Add("IDEstructura");
-                        eDatosExamen.Add("IDCentro");
-                        eDatosExamen.Add("IDExamen");
-                        eDatosExamen.Add("IDActuacion");
-                        eDatosExamen.Add("TipoExamen");
-                        eDatosExamen.Add("IDEstado");
-                        eDatosExamen.Add("FechaRegistro");
+                            var eDatosExamen = new List<string>();
+                            eDatosExamen.Add("IDEstructura");
+                            eDatosExamen.Add("IDCentro");
+                            eDatosExamen.Add("IDExamen");
+                            eDatosExamen.Add("IDActuacion");
+                            eDatosExamen.Add("TipoExamen");
+                            eDatosExamen.Add("IDEstado");
+                            eDatosExamen.Add("FechaRegistro");
 
-                        var xeDatosExamen = new XElement("DatosExamen");
+                            var xeDatosExamen = new XElement("DatosExamen");
 
-                        foreach (var eDatoExamen in eDatosExamen)
-                        {
-                            xeDatosExamen.Add(new XElement(eDatoExamen));
-                        }
-
-                        foreach (var edatoExamen in eDatosExamen)
-                        {
-                            switch (edatoExamen)
+                            foreach (var eDatoExamen in eDatosExamen)
                             {
-                                case "IDEstructura":
-                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstructura;
-                                    break;
-                                case "IDCentro":
-                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDCentro;
-                                    break;
-                                case "IDExamen":
-                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDExamen;
-                                    break;
-                                case "IDActuacion":
-                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDActuacion;
-                                    break;
-                                case "TipoExamen":
-                                    var tipoExamen = "";
-                                    switch (datosPaciente.TipoExamen)
+                                xeDatosExamen.Add(new XElement(eDatoExamen));
+                            }
+
+                            foreach (var edatoExamen in eDatosExamen)
+                            {
+                                switch (edatoExamen)
+                                {
+                                    case "IDEstructura":
+                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstructura;
+                                        break;
+                                    case "IDCentro":
+                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDCentro;
+                                        break;
+                                    case "IDExamen":
+                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDExamen;
+                                        break;
+                                    case "IDActuacion":
+                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDActuacion;
+                                        break;
+                                    case "TipoExamen":
+                                        var tipoExamen = "";
+                                        switch (datosPaciente.TipoExamen)
+                                        {
+                                            case (int) TypeESO.PreOcupacional:
+                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_INGRESO;
+                                                break;
+                                            case (int) TypeESO.PeriodicoAnual:
+                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_PERIODICO;
+                                                break;
+                                            case (int) TypeESO.Retiro:
+                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_RETIRO;
+                                                break;
+                                            case (int) TypeESO.Especialista:
+                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_ESPECIAL;
+                                                break;
+                                            case (int) TypeESO.Visita:
+                                                tipoExamen = ConstantsNatclar.TIPO_EXAMEN_VISITA;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+
+                                        xeDatosExamen.Element(edatoExamen).Value = tipoExamen;
+                                        break;
+                                    case "IDEstado":
+                                        xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstado.ToString() == "0"
+                                            ? "A"
+                                            : "I";
+                                        break;
+                                    case "FechaRegistro":
+                                        xeDatosExamen.Element(edatoExamen).Value =
+                                            datosPaciente.FechaRegistro.Value.ToString("dd/MM/yyyy");
+                                        break;
+
+                                    default:
+                                        break;
+                                }
+                            }
+                            xeRoot.Add(new XElement(xeDatosExamen));
+
+                            var perfiles = datosServicioCompleto.CampoValores.FindAll(p => p.CategoryId == (int)CategoryTypeExam.Laboratorio).GroupBy(p => p.IdComponente).Select(group => group.First()).ToList();
+                             if (perfiles.Count > 0)
+                            {
+                                #region Analítica
+
+                                var xeAnalitica = new XElement("Analitica");
+                                var contadorPerfil = 1;
+
+                          
+                                foreach (var perfil in perfiles)
+                                {
+                                    var xePerfil = new XElement("Perfil" + contadorPerfil);
+                                    xePerfil.Value = CodigoNatclar(perfil.IdComponente);
+
+                                    //var pruebas = perfiles.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
+                                    var contadorPrueba = 1;
+
+                                    var campos = datosServicioCompleto.CampoValores.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
+
+                                    foreach (var prueba in campos)
                                     {
-                                        case (int) TypeESO.PreOcupacional:
-                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_INGRESO;
+                                        var xePrueba = new XElement("Prueba" + contadorPrueba);
+                                        xePerfil.Add(xePrueba);
+                                        xePerfil.Element("Prueba" + contadorPrueba).Value = CodigoNatclar(prueba.IdCampo);
+                                        contadorPrueba++;
+
+                                        var xeValorPrueba = new XElement("ValorPrueba1");
+                                        xeValorPrueba.Value = prueba.ValorName;
+                                        xePrueba.Add(xeValorPrueba);
+
+                                    }
+                                    xeAnalitica.Add(xePerfil);
+
+                                    contadorPerfil ++;
+                                }
+                                xeRoot.Add(new XElement(xeAnalitica));
+                                #endregion
+                            }
+
+                            var antecedentesMedicos = new HistoryBL().GetPersonMedicalHistoryPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId);
+                                #region Antecedentes
+
+                             if (antecedentesMedicos.Count > 0)
+                                {
+
+                                    var eAntecedentes = new List<string>();
+                                    eAntecedentes.Add("CodigoCIE");
+                                    eAntecedentes.Add("Descripcion");
+                                    eAntecedentes.Add("FechaInicio");
+                                    eAntecedentes.Add("FechaFin");
+                                    eAntecedentes.Add("AntecedenteLaboral");
+
+                                    var xeAntecedente = new XElement("ANTECEDENTES");
+
+                                    foreach (var eAntecedente in eAntecedentes)
+                                    {
+                                        xeAntecedente.Add(new XElement(eAntecedente));
+                                    }
+
+                                    foreach (var antecedente in antecedentesMedicos)
+                                    {
+                                        foreach (var elementName in eAntecedentes)
+                                        {
+                                            switch (elementName)
+                                            {
+                                                case "CodigoCIE":
+                                                    xeAntecedente.Element(elementName).Value = antecedente.v_CIE10Id;
+                                                    break;
+                                                case "Descripcion":
+                                                    xeAntecedente.Element(elementName).Value = antecedente.v_TreatmentSite;
+                                                    break;
+                                                case "FechaInicio":
+                                                    xeAntecedente.Element(elementName).Value =
+                                                        antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
+                                                    break;
+                                                case "FechaFin":
+                                                    xeAntecedente.Element(elementName).Value =
+                                                        antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
+                                                    break;
+                                                case "AntecedenteLaboral":
+                                                    xeAntecedente.Element(elementName).Value = antecedente.i_TypeDiagnosticId ==4? "S": "N";
+                                                    break;
+                                                default:
+                                                    break;
+                                            }
+                                            xeRoot.Add(new XElement(xeAntecedente));
+                                        }
+                                    }
+
+                                }
+
+                        #endregion
+
+                            var antecedentesQuirurgicos = new HistoryBL().GetPersonMedicalHistoryPagedAndFilteredByPersonId(ref objOperationResult, 0, null, "d_StartDate DESC", null, _PacientId).FindAll(p => p.v_DiseasesId == "N009-DD000000637");
+                                #region Antecedentes
+
+                             if (antecedentesQuirurgicos.Count > 0)
+                             {
+
+                                 var eAntecedentes = new List<string>();
+                                 eAntecedentes.Add("CodigoCIE");
+                                 eAntecedentes.Add("Descripcion");
+                                 eAntecedentes.Add("FechaInicio");
+                                 eAntecedentes.Add("FechaFin");
+                                 eAntecedentes.Add("AntecedenteLaboral");
+
+                                 var xeAntecedente = new XElement("ANTECEDENTES");
+
+                                 foreach (var eAntecedente in eAntecedentes)
+                                 {
+                                     xeAntecedente.Add(new XElement(eAntecedente));
+                                 }
+
+                                 foreach (var antecedente in antecedentesQuirurgicos)
+                                 {
+                                     foreach (var elementName in eAntecedentes)
+                                     {
+                                         switch (elementName)
+                                         {
+                                             case "CodigoCIE":
+                                                 xeAntecedente.Element(elementName).Value = antecedente.v_CIE10Id;
+                                                 break;
+                                             case "Descripcion":
+                                                 xeAntecedente.Element(elementName).Value = antecedente.v_TreatmentSite;
+                                                 break;
+                                             case "FechaInicio":
+                                                 xeAntecedente.Element(elementName).Value =
+                                                     antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
+                                                 break;
+                                             case "FechaFin":
+                                                 xeAntecedente.Element(elementName).Value =
+                                                     antecedente.d_StartDate.Value.ToString("dd/MM/yyyy");
+                                                 break;
+                                             case "AntecedenteLaboral":
+                                                 xeAntecedente.Element(elementName).Value = antecedente.i_TypeDiagnosticId == 4 ? "S" : "N";
+                                                 break;
+                                             default:
+                                                 break;
+                                         }
+                                         xeRoot.Add(new XElement(xeAntecedente));
+                                     }
+                                 }
+
+                             }
+
+                             #endregion
+
+                            var audiometriaValores = new ServiceBL().ValoresComponentesUserControl(_serviceId, Constants.AUDIOMETRIA_ID);
+                             #region audiometria
+
+                             if (audiometriaValores.Count > 0)
+                             {
+
+                                 var eAudiometria = new List<string>();
+                                 eAudiometria.Add("ATAND125");
+                                 eAudiometria.Add("ATAND250");
+                                 eAudiometria.Add("ATAND500");
+                                 eAudiometria.Add("ATAND750");
+                                 eAudiometria.Add("ATAND1000");
+                                 eAudiometria.Add("ATAND1500");
+                                 eAudiometria.Add("ATAND2000");
+                                 eAudiometria.Add("ATAND3000");
+                                 eAudiometria.Add("ATAND4000");
+                                 eAudiometria.Add("ATAND6000");
+                                 eAudiometria.Add("ATAND8000");
+
+                                 eAudiometria.Add("ATANI125");
+                                 eAudiometria.Add("ATANI250");
+                                 eAudiometria.Add("ATANI500");
+                                 eAudiometria.Add("ATANI750");
+                                 eAudiometria.Add("ATANI1000");
+                                 eAudiometria.Add("ATANI1500");
+                                 eAudiometria.Add("ATANI2000");
+                                 eAudiometria.Add("ATANI3000");
+                                 eAudiometria.Add("ATANI4000");
+                                 eAudiometria.Add("ATANI6000");
+                                 eAudiometria.Add("ATANI8000");
+
+                                 eAudiometria.Add("ATAED125");
+                                 eAudiometria.Add("ATAED250");
+                                 eAudiometria.Add("ATAED500");
+                                 eAudiometria.Add("ATAED750");
+                                 eAudiometria.Add("ATAED1000");
+                                 eAudiometria.Add("ATAED1500");
+                                 eAudiometria.Add("ATAED2000");
+                                 eAudiometria.Add("ATAED3000");
+                                 eAudiometria.Add("ATAED4000");
+                                 eAudiometria.Add("ATAED6000");
+                                 eAudiometria.Add("ATAED8000");
+
+                                 eAudiometria.Add("ATAEI125");
+                                 eAudiometria.Add("ATAEI250");
+                                 eAudiometria.Add("ATAEI500");
+                                 eAudiometria.Add("ATAEI750");
+                                 eAudiometria.Add("ATAEI1000");
+                                 eAudiometria.Add("ATAEI1500");
+                                 eAudiometria.Add("ATAEI2000");
+                                 eAudiometria.Add("ATAEI3000");
+                                 eAudiometria.Add("ATAEI4000");
+                                 eAudiometria.Add("ATAEI6000");
+                                 eAudiometria.Add("ATAEI8000");
+
+                                 eAudiometria.Add("ATOND125");
+                                 eAudiometria.Add("ATOND250");
+                                 eAudiometria.Add("ATOND500");
+                                 eAudiometria.Add("ATOND750");
+                                 eAudiometria.Add("ATOND1000");
+                                 eAudiometria.Add("ATOND1500");
+                                 eAudiometria.Add("ATOND2000");
+                                 eAudiometria.Add("ATOND3000");
+                                 eAudiometria.Add("ATOND4000");
+                                 eAudiometria.Add("ATOND6000");
+                                 eAudiometria.Add("ATOND8000");
+
+                                 eAudiometria.Add("ATONI125");
+                                 eAudiometria.Add("ATONI250");
+                                 eAudiometria.Add("ATONI500");
+                                 eAudiometria.Add("ATONI750");
+                                 eAudiometria.Add("ATONI1000");
+                                 eAudiometria.Add("ATONI1500");
+                                 eAudiometria.Add("ATONI2000");
+                                 eAudiometria.Add("ATONI3000");
+                                 eAudiometria.Add("ATONI4000");
+                                 eAudiometria.Add("ATONI6000");
+                                 eAudiometria.Add("ATONI8000");
+
+                                 eAudiometria.Add("ATOED125");
+                                 eAudiometria.Add("ATOED250");
+                                 eAudiometria.Add("ATOED500");
+                                 eAudiometria.Add("ATOED750");
+                                 eAudiometria.Add("ATOED1000");
+                                 eAudiometria.Add("ATOED1500");
+                                 eAudiometria.Add("ATOED2000");
+                                 eAudiometria.Add("ATOED3000");
+                                 eAudiometria.Add("ATOED4000");
+                                 eAudiometria.Add("ATOED6000");
+                                 eAudiometria.Add("ATOED8000");
+
+                                 eAudiometria.Add("ATOEI125");
+                                 eAudiometria.Add("ATOEI250");
+                                 eAudiometria.Add("ATOEI500");
+
+                                 eAudiometria.Add("ATOEI750");
+                                 eAudiometria.Add("ATOEI1000");
+                                 eAudiometria.Add("ATOEI1500");
+                                 eAudiometria.Add("ATOEI2000");
+                                 eAudiometria.Add("ATOEI3000");
+                                 eAudiometria.Add("ATOEI4000");
+                                 eAudiometria.Add("ATOEI6000");
+                                 eAudiometria.Add("ATOEI8000");
+                                 eAudiometria.Add("DESCATOTOD");
+                                 eAudiometria.Add("OBSATOTOD");
+
+                                 eAudiometria.Add("DESCATOTOI");
+                                 eAudiometria.Add("OBSATOTOI");
+
+                                 var xeAudiometria = new XElement("Audiometría");
+
+                                 foreach (var eCampo in eAudiometria)
+                                 {
+                                     xeAudiometria.Add(new XElement(eCampo));
+                                 }
+
+                                foreach (var elementName in eAudiometria)
+                                {
+                                    switch (elementName)
+                                    {
+                                        case "ATAND125":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
                                             break;
-                                        case (int) TypeESO.PeriodicoAnual:
-                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_PERIODICO;
+                                        case "ATAND250":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_250).v_Value1;
                                             break;
-                                        case (int) TypeESO.Retiro:
-                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_RETIRO;
+                                        case "ATAND500":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_500).v_Value1;
                                             break;
-                                        case (int) TypeESO.Especialista:
-                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_ESPECIAL;
+                                        case "ATAND750":
+                                            xeAudiometria.Element(elementName).Value = "";//audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
                                             break;
-                                        case (int) TypeESO.Visita:
-                                            tipoExamen = ConstantsNatclar.TIPO_EXAMEN_VISITA;
+                                        case "ATAND1000":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_1000).v_Value1;
                                             break;
+                                        case "ATAND1500":
+                                            xeAudiometria.Element(elementName).Value = "";//audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_125).v_Value1;
+                                            break;
+                                        case "ATAND2000":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_2000).v_Value1;
+                                            break;
+                                        case "ATAND3000":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_3000).v_Value1;
+                                            break;
+                                        case "ATAND4000":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_4000).v_Value1;
+                                            break;
+                                        case "ATAND6000":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_6000).v_Value1;
+                                            break;
+                                        case "ATAND8000":
+                                            xeAudiometria.Element(elementName).Value = audiometriaValores.Find(p => p.v_ComponentFieldId == Constants.txt_VA_OD_8000).v_Value1;
+                                            break;
+
+
                                         default:
                                             break;
                                     }
-
-                                    xeDatosExamen.Element(edatoExamen).Value = tipoExamen;
-                                    break;
-                                case "IDEstado":
-                                    xeDatosExamen.Element(edatoExamen).Value = datosPaciente.IDEstado.ToString() == "0"
-                                        ? "A"
-                                        : "I";
-                                    break;
-                                case "FechaRegistro":
-                                    xeDatosExamen.Element(edatoExamen).Value =
-                                        datosPaciente.FechaRegistro.Value.ToString("dd/MM/yyyy");
-                                    break;
-
-                                default:
-                                    break;
-                            }
-                        }
-                        xeRoot.Add(new XElement(xeDatosExamen));
-
-                        //var examenes = datosPaciente.Examenes;
-                        var perfiles = datosServicioCompleto.CampoValores.FindAll(p => p.CategoryId == (int)CategoryTypeExam.Laboratorio).GroupBy(p => p.IdComponente).Select(group => group.First()).ToList();
-                         if (perfiles.Count > 0)
-                        {
-                            #region Analítica
-
-                            var xeAnalitica = new XElement("Analitica");
-                            var contadorPerfil = 1;
-
-                          
-                            foreach (var perfil in perfiles)
-                            {
-                                var xePerfil = new XElement("Perfil" + contadorPerfil);
-                                xePerfil.Value = perfil.NombreComponente;
-
-                                //var pruebas = perfiles.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
-                                var contadorPrueba = 1;
-
-                                var campos = datosServicioCompleto.CampoValores.FindAll(p => p.IdComponente == perfil.IdComponente).ToList();
-
-                                foreach (var prueba in campos)
-                                {
-                                    var xePrueba = new XElement("Prueba" + contadorPrueba);
-                                    xePerfil.Add(xePrueba);
-                                    xePerfil.Element("Prueba" + contadorPrueba).Value = prueba.NombreCampo;
-                                    contadorPrueba++;
-
-                                    var xeValorPrueba = new XElement("ValorPrueba1");
-                                    xeValorPrueba.Value = prueba.Valor;
-                                    xePrueba.Add(xeValorPrueba);
-
                                 }
-                                xeAnalitica.Add(xePerfil);
+                                xeRoot.Add(new XElement(xeAudiometria));
 
-                                contadorPerfil ++;
+                             }
+
+                             #endregion
+
+                            var constantes = new ServiceBL().ValoresComponenteconstantes(_serviceId);
+                             #region Antecedentes
+
+                             if (constantes.Count > 0)
+                             {
+                                 var eConstantes = new List<string>();
+                                 eConstantes.Add("Peso");
+                                 eConstantes.Add("Talla");
+                                 eConstantes.Add("IMC");
+                                 eConstantes.Add("PresionSistolica");
+                                 eConstantes.Add("PresionDiastolica");
+                                 eConstantes.Add("Respiracion");
+                                 eConstantes.Add("Pulso");
+                                 eConstantes.Add("SaturacionOxigeno");
+                                 eConstantes.Add("Cintura");
+                                 eConstantes.Add("Cadera");
+                                 eConstantes.Add("ICC");
+                                 eConstantes.Add("Temperatura");
+                                 eConstantes.Add("FechaUltimaRegla");
+
+                                 var xeConstantes = new XElement("Constantes");
+
+                                 foreach (var eConstante in eConstantes)
+                                 {
+                                     xeConstantes.Add(new XElement(eConstante));
+                                 }
+
+                                 foreach (var elementName in eConstantes)
+                                    {
+                                        switch (elementName)
+                                        {
+                                            case "Peso":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
+                                                break;
+                                            case "Talla":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_TALLA_ID).v_Value1;
+                                                break;
+                                            case "IMC":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_IMC_ID).v_Value1;
+                                                break;
+                                            case "PresionSistolica":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAS_ID).v_Value1;
+                                                break;
+                                            case "PresionDiastolica":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_PAD_ID).v_Value1;
+                                                break;
+                                            case "Respiracion":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_FREC_RESPIRATORIA_ID).v_Value1;
+                                                break;
+                                            case "Pulso":
+                                                xeConstantes.Element(elementName).Value = "";//constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
+                                                break;
+                                            case "SaturacionOxigeno":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_SAT_O2_ID).v_Value1;
+                                                break;
+                                            case "Cintura":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_INDICE_CINTURA_ID).v_Value1;
+                                                break;
+                                            case "Cadera":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PERIMETRO_CADERA_ID).v_Value1;
+                                                break;
+                                            case "ICC":
+                                                xeConstantes.Element(elementName).Value = "";//constantes.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1;
+                                                break;
+                                            case "Temperatura":
+                                                xeConstantes.Element(elementName).Value = constantes.Find(p => p.v_ComponentFieldId == Constants.FUNCIONES_VITALES_TEMPERATURA_ID).v_Value1;
+                                                break;
+                                            case "FechaUltimaRegla":
+                                                xeConstantes.Element(elementName).Value = datosPaciente.FechaUltimaRegla == null ? "" : datosPaciente.FechaUltimaRegla;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                         
+                                    }
+                                    xeRoot.Add(new XElement(xeConstantes));
+
+                             }
+
+                             #endregion
+
+                             #region Datos Episodio
+
+                                 var eDatosEpisodio = new List<string>();
+                                 eDatosEpisodio.Add("EmpresaTitular");
+                                 eDatosEpisodio.Add("EmpTitularRUC");
+                                 eDatosEpisodio.Add("Contratista");
+                                 eDatosEpisodio.Add("ContratanteCodigo");
+                                 eDatosEpisodio.Add("Unidad");
+                                 eDatosEpisodio.Add("UnidadCodigo");
+                                 eDatosEpisodio.Add("Ocupacion");
+                                 eDatosEpisodio.Add("GradoInstruccion");
+                                 eDatosEpisodio.Add("ZonaTrabajo");
+                                 eDatosEpisodio.Add("AreaTrabajo");
+                                 eDatosEpisodio.Add("FechaExamen");
+                                 eDatosEpisodio.Add("TipodeExamen");
+                                 eDatosEpisodio.Add("TipoTarea");
+                                 eDatosEpisodio.Add("Observaciones");
+                                 eDatosEpisodio.Add("Vigencia");
+                                 eDatosEpisodio.Add("Caducidad");
+
+
+                                 var xeDatosEpisodio = new XElement("DatosEpisodio");
+
+                                 foreach (var eDatoEpisodio in eDatosEpisodio)
+                                 {
+                                     xeDatosEpisodio.Add(new XElement(eDatoEpisodio));
+                                 }
+
+                                 foreach (var elementName in eDatosEpisodio)
+                                 {
+                                     switch (elementName)
+                                     {
+                                         case "EmpresaTitular":
+                                             xeDatosEpisodio.Element(elementName).Value = "";// datosPaciente.Direccion;
+                                             break;
+                                         case "EmpTitularRUC":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "Contratista":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "ContratanteCodigo":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "Unidad":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "UnidadCodigo":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "Ocupacion":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "GradoInstruccion":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "ZonaTrabajo":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "AreaTrabajo":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "FechaExamen":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "TipodeExamen":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "TipoTarea":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "Observaciones":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "Vigencia":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         case "Caducidad":
+                                             xeDatosEpisodio.Element(elementName).Value =  "";//datosPaciente.Direccion;
+                                             break;
+                                         default:
+                                             break;
+                                     }
+
+                                 }
+                                 xeRoot.Add(new XElement(xeDatosEpisodio));
+
+
+                             #endregion
+
+                            var docimgs = new ServiceBL().GetFilePdfsByServiceId(ref objOperationResult, _serviceId);
+                            #region DOCIMG
+
+                            if (docimgs.Count > 0)
+                            {
+                                var eDocimgs = new List<string>();
+                                eDocimgs.Add("Fecha");
+                                eDocimgs.Add("Tipo");
+                                eDocimgs.Add("Codigo");
+                                eDocimgs.Add("Titulo");
+                                eDocimgs.Add("Observaciones");
+                                eDocimgs.Add("IdentificadorDocumento");
+
+                                var xeDocimg = new XElement("DOCIMG");
+
+                                foreach (var eDocimg in eDocimgs)
+                                {
+                                    xeDocimg.Add(new XElement(eDocimg));
+                                }
+
+                                foreach (var docimg in docimgs)
+                                {
+                                    foreach (var elementName in eDocimgs)
+                                    {
+                                        switch (elementName)
+                                        {
+                                            case "Fecha":
+                                                xeDocimg.Element(elementName).Value = docimg.FechaServicio.Value.ToString("dd/MM/yyyy");
+                                                break;
+                                            case "Tipo":
+                                                xeDocimg.Element(elementName).Value = ObtenerTipoEstudio(docimg.v_FileName);
+                                                break;
+                                            case "Codigo":
+                                                xeDocimg.Element(elementName).Value = ObtenerCodigo(docimg.v_FileName);
+                                                break;
+                                            case "Titulo":
+                                                xeDocimg.Element(elementName).Value = docimg.v_FileName;
+                                                break;
+                                            case "Observaciones":
+                                                xeDocimg.Element(elementName).Value = "";
+                                                break;
+                                            case "IdentificadorDocumento":
+                                                xeDocimg.Element(elementName).Value = docimg.v_FileName;
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                        xeRoot.Add(new XElement(xeDocimg));
+                                    }
+                                }
+
                             }
-                            xeRoot.Add(new XElement(xeAnalitica));
-                            #endregion
-
-                        }
 
                             #endregion
+                        #endregion
 
                         xeRoot.Save(folderBrowserDialog1.SelectedPath + @"\" + datosPaciente.Hc);
                     
@@ -1628,6 +2112,87 @@ namespace Sigesoft.Node.WinClient.UI
                     }
                 }
             }
+
+            MessageBox.Show("Se generó los archivos XML", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private string ObtenerTipoEstudio(string fileName)
+        {
+            var codigo = fileName.Split('-')[1].Substring(0, fileName.Split('-')[1].Length - 4);
+            switch (codigo)
+            {
+                case "pdf":
+                    return "1";
+                case "dcm":
+                    return "2";
+                default:
+                    return "";
+            }
+        }
+
+        private string ObtenerCodigo(string fileName)
+        {
+            var codigo = fileName.Split('-')[1].Substring(0, fileName.Split('-')[1].Length - 4);
+            switch (codigo)
+            {
+                case "ESPIROMETRÍA":
+                    return "6";
+                case "CARDIOLOGÍA":
+                    return "7";
+                case "LABORATORIO":
+                    return "19";
+                default:
+                    return "";
+            }
+        }
+
+        //Walter Natclar Laboratorio
+        private string CodigoNatclar(string Id)
+        {
+            var prefijo = Id.Split('-')[1].Substring(0,2);
+
+            var codigoNat = "";
+            if (prefijo == "ME")
+            {
+                #region Codigos Perfiles
+                if (Id == Constants.PERFIL_LIPIDICO)
+                {
+                    codigoNat = "000001";
+                }
+                else if (Id == Constants.PERFIL_HEPATICO_ID)
+                {
+                    codigoNat = "000002";
+                }
+                else if (Id == Constants.GRUPO_Y_FACTOR_SANGUINEO_ID)
+                {
+                    codigoNat = "GRUPO Y FACTOR";
+                }
+                #endregion
+
+                #region Codigos Pruebas Laboratorio
+                else if (Id == Constants.COLESTEROL_ID)
+                {
+                    codigoNat = "LB0001";
+                }
+                else if(Id == Constants.METADONA_ID)
+                {
+                    codigoNat = "LT0065";
+                }
+                #endregion
+            }
+            else if(prefijo == "MF")
+            {
+                if (Id == Constants.GRUPO_SANGUINEO_ID)
+                {
+                    codigoNat = "LH0026";
+                }
+                else if (Id == Constants.FACTOR_SANGUINEO_ID)
+                {
+                    codigoNat = "LH0027";
+                }
+            }
+
+            return codigoNat;
         }
        
     }

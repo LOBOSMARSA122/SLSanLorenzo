@@ -27,7 +27,9 @@ namespace Sigesoft.Node.WinClient.UI
             OperationResult objOperationResult = new OperationResult();
             var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
             Utils.LoadDropDownList(ddlCustomerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.All);
-            Utils.LoadDropDownList(ddlEmployerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.All);
+
+            var clientOrganization1 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
+            Utils.LoadDropDownList(ddlEmployerOrganization, "Value1", "Id", clientOrganization1, DropDownListAction.All);
 
             UltraGridColumn c = grdData.DisplayLayout.Bands[1].Columns["b_Seleccionar"];
             c.CellActivation = Activation.AllowEdit;

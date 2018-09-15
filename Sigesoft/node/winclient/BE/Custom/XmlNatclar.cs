@@ -30,6 +30,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string IDActuacion { get; set; }
         public int? TipoExamen { get; set; }
         public int? IDEstado { get; set; }
+        public string FechaUltimaRegla { get; set; }
         public DateTime? FechaRegistro { get; set; }
 
         public List<Perfiles> Examenes { get; set; }
