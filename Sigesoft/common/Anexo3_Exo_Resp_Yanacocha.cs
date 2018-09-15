@@ -101,8 +101,6 @@ namespace NetPdf
             else if (datosPac.i_DocTypeId == 3) { tipodoc = "Licencia de Conducir"; }
             else if (datosPac.i_DocTypeId == 4) { tipodoc = "Carnet de Extranjeria"; }
 
-            ServiceComponentList declaracion_jurada = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
-
             #region Contenido
             cells = new List<PdfPCell>()
             {          

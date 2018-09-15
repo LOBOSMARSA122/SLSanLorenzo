@@ -104,6 +104,7 @@
     <Compile Include="CustomDtos\KeyValueDTO.cs" />
     <Compile Include="CustomDtos\OperationResult.cs" />
     <Compile Include="ExamenesEspecialesReport.cs" />
+    <Compile Include="Examen_Medico_Visitantes_GoldFields.cs" />
     <Compile Include="Examen_Oftalmologico_Completo.cs" />
     <Compile Include="Examen_Oftalmologico_Simple.cs" />
     <Compile Include="EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.cs" />
