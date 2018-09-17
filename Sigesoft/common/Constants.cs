@@ -16,7 +16,9 @@ namespace Sigesoft.Common
         public const int COLUMNAS_POR_CONTROL = 3;
 
 
-
+        #region marcobre
+        public const string MARCOBRE_PASE_MEDICO = "MARCOBRE-PASE-MEDICO";
+        #endregion
         #region  anexo 3 - exoneracion
         public const string ANEXO_3_EXO_RESP_YANACOCHA = "N009-ME000000458";
         #endregion
