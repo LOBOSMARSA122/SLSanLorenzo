@@ -12772,7 +12772,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							 join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId
 
-							 join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId
+							 join ooo in dbContext.organization on E.v_CustomerOrganizationId equals ooo.v_OrganizationId
 
 							 join lll in dbContext.location on E.v_EmployerLocationId equals lll.v_LocationId
 
