@@ -361,8 +361,8 @@ namespace Sigesoft.Common
         Preventivo = 4,
         Reubicacion = 5,
         Chequeo = 6,
-        Especialista =7,
-        Visita = 8
+        Visita = 7,
+        Especialista = 8
     }
 
     public enum PreQualification

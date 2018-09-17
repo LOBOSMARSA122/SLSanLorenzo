@@ -12772,7 +12772,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							 join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId
 
-							 join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId
+							 join ooo in dbContext.organization on E.v_CustomerOrganizationId equals ooo.v_OrganizationId
 
 							 join lll in dbContext.location on E.v_EmployerLocationId equals lll.v_LocationId
 
@@ -18956,7 +18956,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                HallazgoGold = GetDiagnosticByServiceIdAndComponent(a.NroHistoria, Constants.ELECTRO_GOLD),
                                Hallazgos = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003125") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003125").v_Value1,
 
-                               ObservacionesGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126").v_Value1,
+                               //ObservacionesGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003126").v_Value1,
+                               ObservacionesGold = GetRecommendationByServiceIdAndComponent(a.NroHistoria, Constants.ELECTRO_GOLD),
+
                                EkGNormalGold = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003127") == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == "N009-MF000003127").v_Value1,
 
                            }).ToList();
