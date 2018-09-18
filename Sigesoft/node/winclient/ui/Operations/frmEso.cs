@@ -7956,18 +7956,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 if (cuestionarioEspCoimolache != null)
                 {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000591")
-                    {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000591")
+                    //{
                         componentIds.Add("N009-ME000000337");
-                    }
+                    //}
                 }
                 if (audioCoimolache != null)
                 {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                        || filiationData.EmpresaClienteId == "N009-OO000000590")
-                    {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000590")
+                    //{
                         componentIds.Add(Constants.AUDIO_COIMOLACHE);
-                    }
+                    //}
                 }
 
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
@@ -7987,10 +7987,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 if (apendice != null)
                 {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
-                    {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    //{
                         componentIds.Add(Constants.APENDICE_ID+"|43");
-                    }
+                    //}
                 }
                 if (electrocardiograma != null)
                 {
@@ -7998,12 +7998,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 if (electroGold != null)
                 {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                        || filiationData.EmpresaClienteId == "N009-OO000000590"
-                        || filiationData.EmpresaClienteId == "N009-OO000000591")
-                    {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000590"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000591")
+                    //{
                         componentIds.Add(Constants.ELECTRO_GOLD);
-                    }
+                    //}
                 }
                 if (pruebaEsfuerzo != null)
                 {
@@ -8026,7 +8026,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         componentIds.Add(Constants.ESPIROMETRIA_ID + "|35");
                     }
                     else if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                        || filiationData.EmpresaClienteId == "N009-OO000000590")
+                        || filiationData.EmpresaClienteId == "N009-OO000000590"
+                        || filiationData.EmpresaClienteId == "N002-OO000003575")
                     {
                         componentIds.Add(Constants.ESPIROMETRIA_ID + "|54");
                     }

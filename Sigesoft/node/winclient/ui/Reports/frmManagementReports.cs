@@ -115,8 +115,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 51, v_ComponentName = "APTITUD YANACOCHA", v_ComponentId = Constants.APTITUD_YANACOCHA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 58, v_ComponentName = "INFORME MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.INFORME_MEDICO_OCUPACIONAL_COSAPI });
                 serviceComponents.Add(new ServiceComponentList { Orden = 59, v_ComponentName = "CERTIFICADO DE APTITUD MEDICO OCUPACIONAL COSAPI", v_ComponentId = Constants.CERTIFICADO_APTITUD_MEDICO });
-                serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "EXONERACIÓN DE EXAMENES DE LABORATORIO", v_ComponentId = Constants.EXONERACION_EXAMEN_LABORATORIO });
-                serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "EXONERACIÓN DE PLACA DE TORAX P-A", v_ComponentId = Constants.EXONERACION_PLACA_TORAXICA });
+                //serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "EXONERACIÓN DE EXAMENES DE LABORATORIO", v_ComponentId = Constants.EXONERACION_EXAMEN_LABORATORIO });
+                //serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "EXONERACIÓN DE PLACA DE TORAX P-A", v_ComponentId = Constants.EXONERACION_PLACA_TORAXICA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 72, v_ComponentName = "INFORME MEDICO SALUD OCUPACIONAL - EXAMEN ANUAL", v_ComponentId = Constants.INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL });
                 serviceComponents.Add(new ServiceComponentList { Orden = 73, v_ComponentName = "ANEXO 8 INFORME MEDICO OCUPASIONAL", v_ComponentId = Constants.ANEXO_8_INFORME_MEDICO_OCUPACIONAL });
                 serviceComponents.Add(new ServiceComponentList { Orden = 74, v_ComponentName = "INFORME RESULTADOS EVALUACION MEDICA - AUTORIZACION", v_ComponentId = Constants.INFORME_RESULTADOS_EVALUACION_MEDICA });
@@ -126,10 +126,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "DECLARACIÓN JURADA", v_ComponentId = Constants.DECLARACION_JURADA });
 
                 //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
-                if (datosP.Genero.ToUpper() == "FEMENINO")
-                {
-                    serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
-                }
+                //if (datosP.Genero.ToUpper() == "FEMENINO")
+                //{
+                //    serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
+                //}
                 #region HUDBAY
                 serviceComponents.Add(new ServiceComponentList { Orden = 65, v_ComponentName = "CONSENTIMIENTO INFORMADO ACCESO HISTORIA CLÍNICA", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO_HUDBAY });
                 serviceComponents.Add(new ServiceComponentList { Orden = 66, v_ComponentName = "INF MÉD DE APTITUD OCUPACIONAL PARA LA EMPRESA", v_ComponentId = Constants.INFORME_MEDICO_APTITUD_OCUPACIONAL_EMPRESA_HUDBAY });
@@ -4943,12 +4943,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateCertificadoAptitudMedicoOcupacional_Cosapi(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERTIFICADO_APTITUD_MEDICO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
-                case Constants.EXONERACION_EXAMEN_LABORATORIO:
-                    GenerateExoneraxionLaboratorio(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXONERACION_EXAMEN_LABORATORIO)));
+                case Constants.EXCEPCIONES_LABORATORIO_ID:
+                    GenerateExoneraxionLaboratorio(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXCEPCIONES_LABORATORIO_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
-                case Constants.EXONERACION_PLACA_TORAXICA:
-                    GenerateExoneraxionPlacaTorax(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXONERACION_PLACA_TORAXICA)));
+                case Constants.EXCEPCIONES_RX_ID:
+                    GenerateExoneraxionPlacaTorax(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXCEPCIONES_RX_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL:
@@ -4960,11 +4960,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
 
-                 case Constants.DECLARACION_JURADA_EMBARAZADAS_RX :
+                case Constants.EXCEPCIONES_RX_AUTORIZACION_ID:
                     var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
                     if (datosP.Genero.ToUpper() == "FEMENINO")
                     {
-                        GenerateDeclaracionJuradaRX(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.DECLARACION_JURADA_EMBARAZADAS_RX)));
+                        GenerateDeclaracionJuradaRX(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXCEPCIONES_RX_AUTORIZACION_ID)));
                         _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     }
                     break;
