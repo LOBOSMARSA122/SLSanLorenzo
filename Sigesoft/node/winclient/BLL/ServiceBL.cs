@@ -30298,5 +30298,26 @@ namespace Sigesoft.Node.WinClient.BLL
 	        }
 	    }
 
+        public void CambiarProtocoloDeServicio(string psrtServiceId, string pstrPrococolId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.service
+                                       where a.v_ServiceId == psrtServiceId
+                                       select a).FirstOrDefault();
+
+                objEntitySource.v_ProtocolId = pstrPrococolId;
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 	}
 }

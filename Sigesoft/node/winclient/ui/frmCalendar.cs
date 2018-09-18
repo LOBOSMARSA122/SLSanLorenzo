@@ -16,6 +16,7 @@ using Infragistics.Win.UltraWinGrid.DocumentExport;
 using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.IO;
+using Sigesoft.Node.WinClient.UI.Configuration;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -979,6 +980,25 @@ namespace Sigesoft.Node.WinClient.UI
                     //btnAdjuntarArchivo.Enabled = false;
                 }
 
+            }
+
+            var grid = grdDataCalendar.Rows;
+            var count = 0;
+            foreach (var item in grid)
+            {
+                if ((bool)item.Cells["b_Seleccionar"].Value)
+                {
+                    count += 1;
+                }
+            }
+
+            if (count > 0)
+            {
+                btnCambiarProtocolo.Enabled = true;
+            }
+            else
+            {
+                btnCambiarProtocolo.Enabled = false;
             }
         }
 
@@ -3432,6 +3452,34 @@ namespace Sigesoft.Node.WinClient.UI
                 }
                
             }
+        }
+
+        private void btnCambiarProtocolo_Click(object sender, EventArgs e)
+        {
+            ServiceBL oServiceBL = new ServiceBL();
+            frmProtocolManagement frm = new frmProtocolManagement("View", (int)ServiceType.Empresarial, (int)MasterService.Eso);
+            frm.ShowDialog();
+
+            if (frm.DialogResult == System.Windows.Forms.DialogResult.Cancel)
+                return;
+
+            if (string.IsNullOrEmpty(frm._pstrProtocolId))
+                return;
+
+            var protocolId = frm._pstrProtocolId;
+
+            var check = grdDataCalendar.Rows;
+            foreach (var item in check)
+            {
+                if ((bool)item.Cells["b_Seleccionar"].Value)
+                {
+                    var serviceId = item.Cells["v_ServiceId"].Value.ToString();
+                    oServiceBL.CambiarProtocoloDeServicio(serviceId, protocolId);
+                }
+            }
+            btnFilter_Click(sender, e);
+            MessageBox.Show("Se completo correctamente", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
         }
        
     }
