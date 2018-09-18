@@ -3474,19 +3474,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             //    || val.v_DiseasesId == "N009-DD000000661" || val.v_DiseasesId == "N009-DD000000505" || val.v_DiseasesId == "N009-DD000000484" || val.v_DiseasesId == "N009-DD000000483" || val.v_DiseasesId == "N009-DD000000771"
                             //    || val.v_DiseasesId == "N009-DD000000662" || val.v_DiseasesId == "N009-DD000000795" || val.v_DiseasesId == "N009-DD000000797" || val.v_DiseasesId == "N009-DD000000799")
                             //{
-                            if (val.v_CIE10 == "Z000" || val.v_CIE10 == "Z001")
-                            {
-                                diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Normal;
-                                diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Descartado;
-                            }
-                            else
-                            {
-                                diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Enfermedad_Comun;
-                                diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Definitivo;
-                            }
+                            //if (val.v_CIE10 == "Z000" || val.v_CIE10 == "Z001")
+                            //{
+                            //    diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Normal;
+                            //    diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Descartado;
+                            //}
+                            //else
+                            //{
+                            //    diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Enfermedad_Comun;
+                            //    diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Definitivo;
+                            //}
 
 
-
+                            diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Enfermedad_Comun;
+                            diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Descartado;
 
                             diagnosticRepository.v_ServiceId = _serviceId;
                             diagnosticRepository.v_ComponentId = val.v_ComponentId;
