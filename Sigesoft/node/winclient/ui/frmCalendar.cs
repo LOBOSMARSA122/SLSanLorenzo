@@ -2667,39 +2667,39 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
 
                         xeRoot.Add(new XElement(xeExFISICO));
-
-
                     #endregion
 
                         #region Examen Ocular VB
                         var examenOcular = new ServiceBL().ValoresComponenteExamenOcular(_serviceId);
-// N009-MF000003547	VISIÓNDECERCASCOD
-//N009-MF000003548	VISIÓNDECERCASCOI
-//N009-MF000003549	VISIÓNDECERCACCOD
-//N009-MF000003550	VISIÓNDECERCACCOI
-//N009-MF000003551	VISIÓNDELEJOSSCOD
-//N009-MF000003552	VISIÓNDELEJOSSCOI
-//N009-MF000003553	VISIÓNDELEJOSCCOD
-//N009-MF000003554	VISIÓNDELEJOSCCOI
+                        var examenOftalmoId = examenOcular == null ? "" : examenOcular[0].v_ComponentId;
+// N009-MF000003547	VISIÓNDECERCA SC OD
+//N009-MF000003548	VISIÓNDECERCA SC OI
+//N009-MF000003549	VISIÓNDECERCA CC OD
+//N009-MF000003550	VISIÓNDECERCA CC OI
+//N009-MF000003551	VISIÓNDELEJOS SC OD
+//N009-MF000003552	VISIÓNDELEJOS SC OI
+//N009-MF000003553	VISIÓNDELEJOS CC OD
+//N009-MF000003554	VISIÓNDELEJOS CC OI
 
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VLSCOD = "N009-MF000003568";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VLSCOI = "N009-MF000003566";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VLCCOD = "N009-MF000003567";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VLCCOI = "N009-MF000003568";
+        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL SC OD = "N009-MF000003568";
+        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL SC OI = "N009-MF000003566";
+        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL CC OD = "N009-MF000003567";
+        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VL CC OI = "N009-MF000003568";
 
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VCSCOD = "N009-MF000003569";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VCSCOI = "N009-MF000003570";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VCCCOD = "N009-MF000003571";
-        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VCCCOI = "N009-MF000003572";
+        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC SC OD = "N009-MF000003569";
+        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC SC OI = "N009-MF000003570";
+        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC CC OD = "N009-MF000003571";
+        //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_VC CC OI = "N009-MF000003572";
 
-//N009-MF000003614	VISIÓNDECERCASCOD
-//N009-MF000003615	VISIÓNDECERCASCOI
-//N009-MF000003616	VISIÓNDECERCACCOD
-//N009-MF000003617	VISIÓNDECERCACCOI
-//N009-MF000003618	VISIÓNDELEJOSSCOD
-//N009-MF000003619	VISIÓNDELEJOSSCOI
-//N009-MF000003620	VISIÓNDELEJOSCCOD
-//N009-MF000003621	VISIÓNDELEJOSCCOI
+//N009-MF000003614	VISIÓNDECERCA SC OD
+//N009-MF000003615	VISIÓNDECERCA SC OI
+//N009-MF000003616	VISIÓNDECERCA CC OD
+//N009-MF000003617	VISIÓNDECERCA CC OI
+
+//N009-MF000003618	VISIÓNDELEJOS SC OD
+//N009-MF000003619	VISIÓNDELEJOS SC OI
+//N009-MF000003620	VISIÓNDELEJOS CC OD
+//N009-MF000003621	VISIÓNDELEJOS C COI
 
                         var eExOcularVB = new List<string>();
                         eExOcularVB.Add("VisionCercaODSCVB");
@@ -2728,40 +2728,112 @@ namespace Sigesoft.Node.WinClient.UI
                             switch (elementName)
                             {
                                 case "VisionCercaODSCVB":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003547") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003547").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003569") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003569").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003614") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003614").v_Value1;
+
                                     break;
                                 case "VisionCercaOISCVB":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003548") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003548").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003570") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003570").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003615") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003615").v_Value1;
+
                                     break;
                                 case "VisionLejosODSCVB":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003551") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003551").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003618") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003618").v_Value1;
+
                                     break;
                                 case "VisionLejosOISCVB":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003552") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003552").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003566") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003566").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003619") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003619").v_Value1;
+
                                     break;
                                 case "VisionCercaODCVB":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003549") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003549").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003571") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003571").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003616") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003616").v_Value1;
+
                                     break;
                                 case "VisionCercaOICVB":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003550") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003550").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003572") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003572").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003617") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003617").v_Value1;
+
                                     break;
                                 case "VisionLejosODCVB":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003553") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003553").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003567") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003567").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003620") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003620").v_Value1;
+
                                     break;
                                 case "VisionLejosOICVB":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003554") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003554").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003568").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003621") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "N009-MF000003621").v_Value1;
+
                                     break;
                                 case "ProvinciaNacimiento":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
                                     break;
                                 case "TestColores":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
                                     break;
                                 case "RestriccionActual":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
                                     break;
                                 case "TipoRestriccion":
-                                    xeExOcularVB.Element(elementName).Value = "";
+                                    if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+                                    else if (examenOftalmoId == Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+                                    else if (examenOftalmoId == Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                                        xeExOcularVB.Element(elementName).Value = examenOcular.Find(p => p.v_ComponentFieldId == "") == null ? "" : examenOcular.Find(p => p.v_ComponentFieldId == "").v_Value1;
+
                                     break;
                               
                                 default: break;
