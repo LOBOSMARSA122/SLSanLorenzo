@@ -413,7 +413,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 // Setear pestaña de Aptitud x default
                 if (_action == "Service")
-                    tcSubMain.SelectedIndex = 3;
+                    tcSubMain.SelectedIndex = 2;
 
                 // Información para grillas
                 GetTotalDiagnosticsForGridView();

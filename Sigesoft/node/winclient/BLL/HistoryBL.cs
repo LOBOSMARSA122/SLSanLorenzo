@@ -31,6 +31,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                                            equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
                            from J2 in J2_join.DefaultIfEmpty()
 
+                           join D in dbContext.systemparameter on new { a = A.i_TypeOperationId.Value, b = 204 } equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                           from D in D_join.DefaultIfEmpty()
+
+
                            where A.i_IsDeleted == 0 && A.v_PersonId == pstrPersonId
 
                            select new HistoryList
@@ -48,7 +52,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                d_UpdateDate = A.d_UpdateDate,
                                b_FingerPrintImage = A.b_FingerPrintImage,
                                b_RubricImage = A.b_RubricImage,
-                               t_RubricImageText = A.t_RubricImageText
+                               t_RubricImageText = A.t_RubricImageText,
+                               i_Trabajo_Actual = A.i_TrabajoActual.Value,
+                               v_TypeOperationName = D.v_Value1
                            };
 
                if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -91,7 +97,8 @@ namespace Sigesoft.Node.WinClient.BLL
                             d_UpdateDate = A.d_UpdateDate,
                             b_FingerPrintImage = A.b_FingerPrintImage,
                             b_RubricImage = A.b_RubricImage,
-                            t_RubricImageText = A.t_RubricImageText
+                            t_RubricImageText = A.t_RubricImageText,
+                            v_TypeOperationName = A.v_TypeOperationName
                         }).ToList();
 
                pobjOperationResult.Success = 1;
