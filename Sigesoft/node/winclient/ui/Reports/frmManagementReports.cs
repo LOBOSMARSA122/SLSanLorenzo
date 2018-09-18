@@ -123,6 +123,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 75, v_ComponentName = "AGLUTINACIONES KOH SECRECION CIELO AZUL", v_ComponentId = Constants.AGLUTINACIONES_KOH_SECRECION });
                 serviceComponents.Add(new ServiceComponentList { Orden = 76, v_ComponentName = "PARASITOLOGICO COPROCULTIVO CIELO AZUL", v_ComponentId = Constants.PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL });
                 serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "MARCOBRE PASE MÉDICO", v_ComponentId = Constants.MARCOBRE_PASE_MEDICO });
+                serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "DECLARACIÓN JURADA", v_ComponentId = Constants.DECLARACION_JURADA });
 
                 //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
                 if (datosP.Genero.ToUpper() == "FEMENINO")
@@ -1485,6 +1486,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Anexo3_Exo_Resp_Yanacocha.CreateAnexo3_Exoneracion_ResponsabilidadYanacocha(_DataService, pathFile, datosP, MedicalCenter,filiationData, serviceComponents);
         }
+        private void GenerateDeclaracionJurada(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+
+            DeclaracionJurada.CreateDeclaracionJurada(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+        }
         private void GenerateExamen_Medico_Visitantes_GoldFields(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -2029,7 +2040,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     _mergeExPDF.Execute();
 
                     //Cambiar de estado a generado de reportes
-                    _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
+                    //_serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
                 }
                 else
                 {
@@ -2071,7 +2082,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
 
                 //Cambiar de estado a generado de reportes
-                _serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
+                //_serviceBL.UpdateStatusPreLiquidation(ref objOperationResult, 2, _serviceId, Globals.ClientSession.GetAsList());
             }
             else
             {
@@ -5014,6 +5025,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.MARCOBRE_PASE_MEDICO:
                     GenerateMarcobrePaseMedico(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.MARCOBRE_PASE_MEDICO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.DECLARACION_JURADA:
+                    GenerateDeclaracionJurada(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.DECLARACION_JURADA)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///
