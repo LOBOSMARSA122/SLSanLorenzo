@@ -1520,6 +1520,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Marcobre_Pase_Medico.CreateMarcobrePaseMedico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
         }
+        private void GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            TOXICOLOGICO_COCAINA_MARIHUANA_TODOS.CreateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+        }
         #region HUDBAY METODOS
         private void GenerateConsentimientoInformadoAccesoHistoriaClinica(string pathFile)
         {
@@ -5029,6 +5038,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.DECLARACION_JURADA:
                     GenerateDeclaracionJurada(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.DECLARACION_JURADA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T:
+                    GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///
