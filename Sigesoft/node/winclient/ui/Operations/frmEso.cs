@@ -3474,19 +3474,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             //    || val.v_DiseasesId == "N009-DD000000661" || val.v_DiseasesId == "N009-DD000000505" || val.v_DiseasesId == "N009-DD000000484" || val.v_DiseasesId == "N009-DD000000483" || val.v_DiseasesId == "N009-DD000000771"
                             //    || val.v_DiseasesId == "N009-DD000000662" || val.v_DiseasesId == "N009-DD000000795" || val.v_DiseasesId == "N009-DD000000797" || val.v_DiseasesId == "N009-DD000000799")
                             //{
-                            if (val.v_CIE10 == "Z000" || val.v_CIE10 == "Z001")
-                            {
-                                diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Normal;
-                                diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Descartado;
-                            }
-                            else
-                            {
-                                diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Enfermedad_Comun;
-                                diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Definitivo;
-                            }
+                            //if (val.v_CIE10 == "Z000" || val.v_CIE10 == "Z001")
+                            //{
+                            //    diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Normal;
+                            //    diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Descartado;
+                            //}
+                            //else
+                            //{
+                            //    diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Enfermedad_Comun;
+                            //    diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Definitivo;
+                            //}
 
 
-
+                            diagnosticRepository.i_DiagnosticTypeId = (int)TipoDx.Enfermedad_Comun;
+                            diagnosticRepository.i_FinalQualificationId = (int)FinalQualification.Descartado;
 
                             diagnosticRepository.v_ServiceId = _serviceId;
                             diagnosticRepository.v_ComponentId = val.v_ComponentId;
@@ -7955,18 +7956,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 if (cuestionarioEspCoimolache != null)
                 {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000591")
-                    {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000591")
+                    //{
                         componentIds.Add("N009-ME000000337");
-                    }
+                    //}
                 }
                 if (audioCoimolache != null)
                 {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                        || filiationData.EmpresaClienteId == "N009-OO000000590")
-                    {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000590")
+                    //{
                         componentIds.Add(Constants.AUDIO_COIMOLACHE);
-                    }
+                    //}
                 }
 
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
@@ -7986,10 +7987,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 if (apendice != null)
                 {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
-                    {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    //{
                         componentIds.Add(Constants.APENDICE_ID+"|43");
-                    }
+                    //}
                 }
                 if (electrocardiograma != null)
                 {
@@ -7997,12 +7998,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 }
                 if (electroGold != null)
                 {
-                    if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                        || filiationData.EmpresaClienteId == "N009-OO000000590"
-                        || filiationData.EmpresaClienteId == "N009-OO000000591")
-                    {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000590"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000591")
+                    //{
                         componentIds.Add(Constants.ELECTRO_GOLD);
-                    }
+                    //}
                 }
                 if (pruebaEsfuerzo != null)
                 {
@@ -8025,7 +8026,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                         componentIds.Add(Constants.ESPIROMETRIA_ID + "|35");
                     }
                     else if (filiationData.EmpresaClienteId == "N009-OO000000589"
-                        || filiationData.EmpresaClienteId == "N009-OO000000590")
+                        || filiationData.EmpresaClienteId == "N009-OO000000590"
+                        || filiationData.EmpresaClienteId == "N002-OO000003575")
                     {
                         componentIds.Add(Constants.ESPIROMETRIA_ID + "|54");
                     }

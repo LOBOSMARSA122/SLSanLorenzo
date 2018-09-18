@@ -19,6 +19,9 @@ namespace Sigesoft.Common
         #region marcobre
         public const string MARCOBRE_PASE_MEDICO = "MARCOBRE-PASE-MEDICO";
         #endregion
+        #region Declaracion Jurada
+        public const string DECLARACION_JURADA = "DECLARACION-JURADA";
+        #endregion
         #region  anexo 3 - exoneracion
         public const string ANEXO_3_EXO_RESP_YANACOCHA = "N009-ME000000458";
         #endregion
