@@ -311,7 +311,7 @@ namespace NetPdf
             var unidadcircunferencia = examenes.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FICHA_SAS_CIRCUNFERENCIA_CUELLO) == null ? "" : examenes.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FICHA_SAS_CIRCUNFERENCIA_CUELLO).v_MeasurementUnitName;
 
             var normal = examenes.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FICHA_SAS_NORMAL) == null ? "" : examenes.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FICHA_SAS_NORMAL).v_Value1;
-            string normal_1 = "", normal_2="";
+            string normal_1 = "", normal_2 = "";
             if (normal == "1") normal_1 = "X";
             else if (normal == "0") normal_2 = "X";
 
@@ -374,7 +374,7 @@ namespace NetPdf
             boca_2.ScalePercent(40);
             boca_2.SetAbsolutePosition(195, 380);
             document.Add(boca_2);
-            
+
             iTextSharp.text.Image boca_3 = iTextSharp.text.Image.GetInstance("C:/Banner/BOCA_3.jpg");
             boca_3.ScalePercent(40);
             boca_3.SetAbsolutePosition(320, 380);
@@ -419,7 +419,7 @@ namespace NetPdf
             //VALORES FILIACION
             ServiceComponentList conlusion = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SAS_ID);
             var puntaje_epworth = conlusion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FICHA_SAS_PUNTAJE_EPWORTH_MAY_10) == null ? "" : conlusion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FICHA_SAS_PUNTAJE_EPWORTH_MAY_10).v_Value1;
-            string puntaje_epworth_1 = "", puntaje_epworth_2="";
+            string puntaje_epworth_1 = "", puntaje_epworth_2 = "";
             if (puntaje_epworth == "1") puntaje_epworth_1 = "X";
             else if (puntaje_epworth == "0") puntaje_epworth_2 = "X";
 
@@ -462,7 +462,7 @@ namespace NetPdf
             string riesgo_bajo_1 = "", riesgo_bajo_2 = "";
             if (riesgo_bajo == "1") riesgo_bajo_1 = "X";
             else if (riesgo_bajo == "0") riesgo_bajo_2 = "X";
-           
+
             cells = new List<PdfPCell>()
             {          
                 new PdfPCell(new Phrase("6. Conclusión de evaluación:", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
@@ -518,7 +518,7 @@ namespace NetPdf
             #endregion
 
             #region PUNTUACIÓN EN ESCALA DE EPWORTH
-  
+
             ServiceComponentList calificacion = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SAS_ID);
             var apto = calificacion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FICHA_SAS_APTO) == null ? "" : calificacion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FICHA_SAS_APTO).v_Value1;
             string apto_1 = "";
@@ -546,10 +546,10 @@ namespace NetPdf
                 new PdfPCell(new Phrase("Riesgo Bajo", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor=BaseColor.GRAY},    
                 new PdfPCell(new Phrase("Vigencia", fontColumnValue)) { Colspan = 11, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
                 
-                new PdfPCell(new Phrase("Observado: Debe pasar evaluación por neurología y Polisomnografía", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
-                new PdfPCell(new Phrase(observado_1, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
-                new PdfPCell(new Phrase("Riesgo Medio", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BackgroundColor=BaseColor.GRAY},    
-                new PdfPCell(new Phrase("Desde :    " + fecha_desde + "\n" + "Hasta :   " + fecha_hasta, fontColumnValue)) { Colspan = 11, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase("Observado: Debe pasar evaluación por neurología y Polisomnografía", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
+                new PdfPCell(new Phrase(observado_1, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase("Riesgo Medio", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor=BaseColor.GRAY},    
+                new PdfPCell(new Phrase("Desde :    " + fecha_desde + "\n" + "Hasta :   " + fecha_hasta, fontColumnValue)) { Colspan = 11, Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
                 
                 new PdfPCell(new Phrase("No Apto", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                 new PdfPCell(new Phrase(no_apto_1, fontColumnValue)) { Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 

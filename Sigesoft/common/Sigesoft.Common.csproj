@@ -98,9 +98,11 @@
     <Compile Include="CustomDtos\KeyValueDTOForTree.cs" />
     <Compile Include="CustomDtos\TableInfoDto.cs" />
     <Compile Include="DeclaracionJurada.cs" />
+    <Compile Include="DeclaracionJuradaAntecedentesPersonales.cs" />
     <Compile Include="DeclaracionJuradaPsicologia_Coimolache_LaZanja.cs" />
     <Compile Include="DeclaracionJuradaRX.cs" />
     <Compile Include="DynamicLinq.cs" />
+    <Compile Include="EntregaExamenMedicoOcipacional.cs" />
     <Compile Include="Enums.cs" />
     <Compile Include="CustomDtos\KeyValueDTO.cs" />
     <Compile Include="CustomDtos\OperationResult.cs" />
@@ -128,6 +130,7 @@
     <Compile Include="InformeTrabajador.cs" />
     <Compile Include="InformeTrabajador3.cs" />
     <Compile Include="Informe_Oftalmologico_Hudbay.cs" />
+    <Compile Include="Informe_Otorrinolaringologico.cs" />
     <Compile Include="INFORME_SAS_REPORT.cs" />
     <Compile Include="LaboratorioReport.cs" />
     <Compile Include="Liquidacion_Hospitalizacion.cs" />

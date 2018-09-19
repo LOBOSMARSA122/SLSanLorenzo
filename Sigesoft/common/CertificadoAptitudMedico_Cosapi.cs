@@ -28,7 +28,7 @@ namespace NetPdf
             string filePDF
             )
         {
-         Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
+            Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
             document.SetPageSize(iTextSharp.text.PageSize.A4);
 
@@ -82,7 +82,7 @@ namespace NetPdf
             {
                 iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(infoEmpresa.b_Image));
                 imagenEmpresa.ScalePercent(25);
-                imagenEmpresa.SetAbsolutePosition(40, 790);
+                imagenEmpresa.SetAbsolutePosition(40, 785);
                 document.Add(imagenEmpresa);
             }
             //iTextSharp.text.Image imagenMinsa = iTextSharp.text.Image.GetInstance("C:/Banner/Minsa.png");
@@ -99,7 +99,7 @@ namespace NetPdf
             document.Add(table);
             #endregion
             #region DATOS GENERALES
-            string sexM = " ",sexF = " ";
+            string sexM = " ", sexF = " ";
             if (datosPac.i_SexTypeId == 1) sexM = "X";
             else if (datosPac.i_SexTypeId == 2) sexF = "X";
 
@@ -168,7 +168,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase(datosPac.v_CurrentOccupation, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 
                 new PdfPCell(new Phrase("N° de Historia Clínica", fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
-                new PdfPCell(new Phrase(datosPac.v_PersonId, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
+                new PdfPCell(new Phrase(datosPac.v_DocNumber, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 
                 new PdfPCell(new Phrase(null, fontColumnValue)) {BackgroundColor=BaseColor.GRAY, Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 2 },    
 
@@ -195,26 +195,26 @@ namespace NetPdf
             {
                 columnWidths = new float[] { 100f };
                 include = "Valor1";
-               
+
                 foreach (var item in filterDiagnosticRepository)
                 {
                     ListaComun oListaComun = null;
                     List<ListaComun> Listacomun = new List<ListaComun>();
-                    
-                        foreach (var Reco in item.Recomendations)
-                        {
-                            oListaComun = new ListaComun();
-                            oListaComun.Valor1 = Reco.v_RecommendationName;
-                            Listacomun.Add(oListaComun);
-                        }
 
-                        table = HandlingItextSharp.GenerateTableFromList(Listacomun, columnWidths, include, fontColumnValue);
-                        cell = new PdfPCell(table);
+                    foreach (var Reco in item.Recomendations)
+                    {
+                        oListaComun = new ListaComun();
+                        oListaComun.Valor1 = Reco.v_RecommendationName;
+                        Listacomun.Add(oListaComun);
+                    }
 
-                        cells.Add(cell);
-                    
+                    table = HandlingItextSharp.GenerateTableFromList(Listacomun, columnWidths, include, fontColumnValue);
+                    cell = new PdfPCell(table);
+
+                    cells.Add(cell);
+
                 }
-                columnWidths = new float[] { 100f};
+                columnWidths = new float[] { 100f };
             }
             else
             {
@@ -246,17 +246,17 @@ namespace NetPdf
                 {
                     ListaComun oListaComun = null;
                     List<ListaComun> Listacomun = new List<ListaComun>();
-                 
-                        foreach (var Rest_1 in item_1.Restrictions)
-                        {
-                            oListaComun = new ListaComun();
-                            oListaComun.Valor1 = Rest_1.v_RestrictionName;
-                            Listacomun.Add(oListaComun);
-                        }
-                        table = HandlingItextSharp.GenerateTableFromList(Listacomun, columnWidths, include, fontColumnValue);
-                        cell = new PdfPCell(table);
-                        cells.Add(cell);
-                   
+
+                    foreach (var Rest_1 in item_1.Restrictions)
+                    {
+                        oListaComun = new ListaComun();
+                        oListaComun.Valor1 = Rest_1.v_RestrictionName;
+                        Listacomun.Add(oListaComun);
+                    }
+                    table = HandlingItextSharp.GenerateTableFromList(Listacomun, columnWidths, include, fontColumnValue);
+                    cell = new PdfPCell(table);
+                    cells.Add(cell);
+
                 }
                 columnWidths = new float[] { 100f };
             }
@@ -289,7 +289,7 @@ namespace NetPdf
             {
                 AptoObs = "X";
             }
-           
+
             cells = new List<PdfPCell>()
                  {
                     new PdfPCell(new Phrase("Resultado para Trabajar", fontColumnValue)){ Colspan=20,HorizontalAlignment = PdfPCell.ALIGN_LEFT, BackgroundColor=BaseColor.GRAY, MinimumHeight= tamaño_celda},
@@ -395,10 +395,10 @@ namespace NetPdf
                 document.Add(filiationWorker);
             }
             #endregion
-                #region FECHA  NOMBRE DE MEDICO
-                string[] fechaServicio = datosPac.FechaServicio.ToString().Split(' ');
-                string[] fechacaducidad = datosPac.FechaCaducidad.ToString().Split(' ');
-                cells = new List<PdfPCell>()
+            #region FECHA  NOMBRE DE MEDICO
+            string[] fechaServicio = datosPac.FechaServicio.ToString().Split(' ');
+            string[] fechacaducidad = datosPac.FechaCaducidad.ToString().Split(' ');
+            cells = new List<PdfPCell>()
                  {
                     
                     new PdfPCell(new Phrase("FECHA DE EXAMEN", fontColumnValue)){Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
@@ -412,116 +412,116 @@ namespace NetPdf
                     new PdfPCell(new Phrase("Número de CMP:", fontColumnValue)){ Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
                     new PdfPCell(new Phrase(DataService.CMP, fontColumnValue)){ Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_CENTER, MinimumHeight= tamaño_celda},
                  };
-                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
 
-                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-                document.Add(filiationWorker);
-                #endregion
-                #region Firma
+            document.Add(filiationWorker);
+            #endregion
+            #region Firma
 
-                #region Creando celdas de tipo Imagen y validando nulls
+            #region Creando celdas de tipo Imagen y validando nulls
 
-                // Firma del trabajador ***************************************************
-                PdfPCell cellFirmaTrabajador = null;
-                //DirectoryInfo rutaFirma = null;
-                //rutaFirma = new DirectoryInfo(WebConfigurationManager.AppSettings["FirmaHuella"].ToString());
-                //iTextSharp.text.Image Firmajpg = iTextSharp.text.Image.GetInstance(rutaFirma +DataService.v_DocNumber + "_Firma.jpg");
+            // Firma del trabajador ***************************************************
+            PdfPCell cellFirmaTrabajador = null;
+            //DirectoryInfo rutaFirma = null;
+            //rutaFirma = new DirectoryInfo(WebConfigurationManager.AppSettings["FirmaHuella"].ToString());
+            //iTextSharp.text.Image Firmajpg = iTextSharp.text.Image.GetInstance(rutaFirma +DataService.v_DocNumber + "_Firma.jpg");
 
 
-                if (filiationData.FirmaTrabajador != null)
-                    cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 70, 30));
-                else
+            if (filiationData.FirmaTrabajador != null)
+                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 70, 30));
+            else
 
-                    cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
-                //cellFirmaTrabajador = new PdfPCell(Firmajpg);
+                cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
+            //cellFirmaTrabajador = new PdfPCell(Firmajpg);
 
-                // Huella del trabajador **************************************************
-                PdfPCell cellHuellaTrabajador = null;
+            // Huella del trabajador **************************************************
+            PdfPCell cellHuellaTrabajador = null;
 
-                //DirectoryInfo rutaHuella = null;
-                //rutaHuella = new DirectoryInfo(WebConfigurationManager.AppSettings["FirmaHuella"].ToString());
-                //iTextSharp.text.Image Huellajpg = iTextSharp.text.Image.GetInstance(rutaHuella + DataService.v_DocNumber + "_Huella.jpg");
+            //DirectoryInfo rutaHuella = null;
+            //rutaHuella = new DirectoryInfo(WebConfigurationManager.AppSettings["FirmaHuella"].ToString());
+            //iTextSharp.text.Image Huellajpg = iTextSharp.text.Image.GetInstance(rutaHuella + DataService.v_DocNumber + "_Huella.jpg");
 
-                if (filiationData.HuellaTrabajador != null)
-                    cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 30, 30));
-                else
-                    cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
-                //cellHuellaTrabajador = new PdfPCell(Huellajpg);
+            if (filiationData.HuellaTrabajador != null)
+                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 30, 30));
+            else
+                cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
+            //cellHuellaTrabajador = new PdfPCell(Huellajpg);
 
-                // Firma del doctor Auditor **************************************************
+            // Firma del doctor Auditor **************************************************
 
-                PdfPCell cellFirma = null;
+            PdfPCell cellFirma = null;
 
-                if (DataService.FirmaMedicoMedicina != null)
-                    cellFirma = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
-                else
-                    cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
+            if (DataService.FirmaMedicoMedicina != null)
+                cellFirma = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
+            else
+                cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
 
-                #endregion
+            #endregion
 
-                #region Crear tablas en duro (para la Firma y huella del trabajador)
+            #region Crear tablas en duro (para la Firma y huella del trabajador)
 
-                cells = new List<PdfPCell>();
+            cells = new List<PdfPCell>();
 
-                cellFirmaTrabajador.HorizontalAlignment = Element.ALIGN_CENTER;
-                cellFirmaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
-                cellFirmaTrabajador.Border = PdfPCell.NO_BORDER;
-                cellFirmaTrabajador.FixedHeight = 40F;
-                cells.Add(cellFirmaTrabajador);
-                cells.Add(new PdfPCell(new Phrase("FIRMA DEL EXAMINADO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cellFirmaTrabajador.HorizontalAlignment = Element.ALIGN_CENTER;
+            cellFirmaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellFirmaTrabajador.Border = PdfPCell.NO_BORDER;
+            cellFirmaTrabajador.FixedHeight = 40F;
+            cells.Add(cellFirmaTrabajador);
+            cells.Add(new PdfPCell(new Phrase("FIRMA DEL EXAMINADO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
-                columnWidths = new float[] { 100f };
+            columnWidths = new float[] { 100f };
 
-                var tableFirmaTrabajador = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+            var tableFirmaTrabajador = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-                //***********************************************
+            //***********************************************
 
-                cells = new List<PdfPCell>();
+            cells = new List<PdfPCell>();
 
-                cellHuellaTrabajador.HorizontalAlignment = Element.ALIGN_CENTER;
-                cellHuellaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
-                cellFirmaTrabajador.Border = PdfPCell.NO_BORDER;
-                cellHuellaTrabajador.FixedHeight = 40F;
-                cells.Add(cellHuellaTrabajador);
-                cells.Add(new PdfPCell(new Phrase("HUELLA DEL EXAMINADO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cellHuellaTrabajador.HorizontalAlignment = Element.ALIGN_CENTER;
+            cellHuellaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellFirmaTrabajador.Border = PdfPCell.NO_BORDER;
+            cellHuellaTrabajador.FixedHeight = 40F;
+            cells.Add(cellHuellaTrabajador);
+            cells.Add(new PdfPCell(new Phrase("HUELLA DEL EXAMINADO", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE });
 
-                columnWidths = new float[] { 100f };
+            columnWidths = new float[] { 100f };
 
-                var tableHuellaTrabajador = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+            var tableHuellaTrabajador = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-                #endregion
+            #endregion
 
-                cells = new List<PdfPCell>();
+            cells = new List<PdfPCell>();
 
-                // 1 celda vacia              
-                cells.Add(new PdfPCell(tableFirmaTrabajador));
+            // 1 celda vacia              
+            cells.Add(new PdfPCell(tableFirmaTrabajador));
 
-                // 1 celda vacia
-                cells.Add(new PdfPCell(tableHuellaTrabajador));
+            // 1 celda vacia
+            cells.Add(new PdfPCell(tableHuellaTrabajador));
 
-                // 2 celda
-                cell = new PdfPCell(new Phrase("FIRMA Y SELLO MÉDICO", fontColumnValue)) { Rowspan = 2 };
-                cell.HorizontalAlignment = Element.ALIGN_CENTER;
-                cell.VerticalAlignment = Element.ALIGN_MIDDLE;
-                cells.Add(cell);
+            // 2 celda
+            cell = new PdfPCell(new Phrase("FIRMA Y SELLO MÉDICO", fontColumnValue)) { Rowspan = 2 };
+            cell.HorizontalAlignment = Element.ALIGN_CENTER;
+            cell.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cells.Add(cell);
 
-                // 3 celda (Imagen)
-                cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
-                cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
-                cellFirma.FixedHeight = 40F;
-                cells.Add(cellFirma);
+            // 3 celda (Imagen)
+            cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
+            cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
+            cellFirma.FixedHeight = 40F;
+            cells.Add(cellFirma);
 
-                cells.Add(new PdfPCell(new Phrase("CON LA CUAL DECLARA QUE LA INFORMACIÓN DECLARADA ES VERAZ", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
-                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE });
+            cells.Add(new PdfPCell(new Phrase("CON LA CUAL DECLARA QUE LA INFORMACIÓN DECLARADA ES VERAZ", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
+            cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE });
 
-                columnWidths = new float[] { 35f, 35f, 30f, 40F };
-                table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            columnWidths = new float[] { 35f, 35f, 30f, 40F };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
 
-                document.Add(table);
+            document.Add(table);
 
-                #endregion
-                document.Close();
+            #endregion
+            document.Close();
             writer.Close();
             writer.Dispose();
         }
