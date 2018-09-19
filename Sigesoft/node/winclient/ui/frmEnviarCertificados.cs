@@ -101,6 +101,30 @@ namespace Sigesoft.Node.WinClient.UI
                     _filesNameToMerge.Add(o);
                 }
             }
+            else if (rbToxicologico.Checked)
+            {
+                foreach (var item in _ListaServicios)
+                {
+                    var o = ruta + item.ToString() + "-" + Constants.TOXICOLOGICO_ID + ".pdf";
+                    _filesNameToMerge.Add(o);
+                }
+            }
+            else if (rbAltura18.Checked)
+            {
+                foreach (var item in _ListaServicios)
+                {
+                    var o = ruta + item.ToString() + "-" + Constants.ALTURA_ESTRUCTURAL_ID + ".pdf";
+                    _filesNameToMerge.Add(o);
+                }
+            }
+            else if (rbSomnolencia.Checked)
+            {
+                foreach (var item in _ListaServicios)
+                {
+                    var o = ruta + item.ToString() + "-" + Constants.SOMNOLENCIA_ID + ".pdf";
+                    _filesNameToMerge.Add(o);
+                }
+            }
 
 
             var resultado = MessageBox.Show("¿Desea enviar certificados?", "¡ INFORMACIÓN !", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
