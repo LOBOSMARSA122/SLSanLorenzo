@@ -2820,7 +2820,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.OSTEO_MUSCULAR_ID_1:
                     DataSet dsOsteomuscularNuevo = new DataSet();
-                    var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
+                      var servicesId7 = new List<string>();
+                    servicesId7.Add(_serviceId);
+                    var componentReportId7 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId7, 11);
+                    var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, componentId, componentReportId7[0].ComponentId);
+
+
+                    //var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
                     var UC_OSTEO_ID = new ServiceBL().ReporteOsteomuscular(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
                     DataTable dt_UC_OSTEO_ID = BLL.Utils.ConvertToDatatable(UC_OSTEO_ID);
                     DataTable dtOSTEO_MUSCULAR_ID_1 = BLL.Utils.ConvertToDatatable(OSTEO_MUSCULAR_ID_1);
@@ -3086,7 +3092,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.ALTURA_7D_ID:
 
-                    var AscensoAlturas = new ServiceBL().ReportAscensoGrandesAlturas(_serviceId, Constants.ALTURA_7D_ID);
+                     var servicesId1 = new List<string>();
+                    servicesId1.Add(_serviceId);
+                    var componentReportId1 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId1, 11);
+
+                    var AscensoAlturas = new ServiceBL().ReportAscensoGrandesAlturas(_serviceId, componentId, componentReportId1[0].ComponentId);
                     var FuncionesVitales = new ServiceBL().ReportFuncionesVitales(_serviceId, Constants.FUNCIONES_VITALES_ID);
                     var Antropometria = new ServiceBL().ReportAntropometria(_serviceId, Constants.ANTROPOMETRIA_ID);
 
@@ -3118,8 +3128,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                     break;
                 case Constants.ALTURA_ESTRUCTURAL_ID:
+                    var servicesId9 = new List<string>();
+                    servicesId9.Add(_serviceId);
+                    var componentReportId9 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId9, 7);
+                    var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID, componentReportId9[0].ComponentId);
 
-                    var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);
+                    //var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);
 
                     dsGetRepo = new DataSet();
 
@@ -4071,7 +4085,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
 
                 case Constants.TEST_VERTIGO_ID:
-                    var TEST_VERTIGO_ID = new ServiceBL().GetReportTestVertigo(_serviceId, Constants.TEST_VERTIGO_ID);
+                    var servicesId3 = new List<string>();
+                    servicesId3.Add(_serviceId);
+                    var componentReportId = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId3, 11);
+                    var TEST_VERTIGO_ID = new ServiceBL().GetReportTestVertigo(_serviceId, componentId, componentReportId[0].ComponentId);
+
+                    //var TEST_VERTIGO_ID = new ServiceBL().GetReportTestVertigo(_serviceId, Constants.TEST_VERTIGO_ID, componentReportId[0].ComponentId);
 
                     dsGetRepo = new DataSet();
 
@@ -4301,10 +4320,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.SOMNOLENCIA_ID:
 
-                    var servicesId = new List<string>();
-                    servicesId.Add(_serviceId);
-                    var componentReportId = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId, 7);
-                    var SOMNOLENCIA_ID = new ServiceBL().ReporteSomnolencia(_serviceId, componentId, componentReportId[0].ComponentId);
+                    var servicesId11 = new List<string>();
+                    servicesId11.Add(_serviceId);
+                    var componentReportId11 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId11, 11);
+                    var SOMNOLENCIA_ID = new ServiceBL().ReporteSomnolencia(_serviceId, componentId, componentReportId11[0].ComponentId);
 
                     dsGetRepo = new DataSet();
 

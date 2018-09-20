@@ -11672,7 +11672,7 @@ namespace Sigesoft.Node.WinClient.BLL
 		}
 
 		// Alberto
-		public List<ReportTestVertigo> GetReportTestVertigo(string pstrserviceId, string pstrComponentId)
+		public List<ReportTestVertigo> GetReportTestVertigo(string pstrserviceId, string pstrComponentId, string idComponentReport)
 		{
 			try
 			{
@@ -11712,9 +11712,9 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-
+                var CuestNordi = ValoresComponente(pstrserviceId, idComponentReport);
 				var sql = (from a in objEntity.ToList()
-						   let CuestNordi = ValoresComponente(pstrserviceId, Constants.TEST_VERTIGO_ID)
+                          
 
 						   select new ReportTestVertigo
 						   {
@@ -15034,7 +15034,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 		//AMC
 
-		public List<ServiceList> ReportAscensoGrandesAlturas(string pstrserviceId, string pstrComponentId)
+        public List<ServiceList> ReportAscensoGrandesAlturas(string pstrserviceId, string pstrComponentId, string pstrComponentReportId)
 		{
 			try
 			{
@@ -15043,7 +15043,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 				var objEntity = (from A in dbContext.service
 								 join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-								 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentId }
+                                 join E in dbContext.servicecomponent on new { a = pstrserviceId, b = pstrComponentReportId }
 																		equals new { a = E.v_ServiceId, b = E.v_ComponentId }
 
 								 // Usuario Medico Evaluador / Medico Aprobador ****************************
@@ -15091,7 +15091,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-
+                var ValorCampos = GetListValueComponent(pstrserviceId, pstrComponentReportId).ToList();
 				var funcionesVitales = ReportFuncionesVitales(pstrserviceId, Constants.FUNCIONES_VITALES_ID);
 				var antropometria = ReportAntropometria(pstrserviceId, Constants.ANTROPOMETRIA_ID);
 				var FirmaMedicoMedicina = ObtenerDatosMedicoMedicina(pstrserviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
@@ -15112,25 +15112,26 @@ namespace Sigesoft.Node.WinClient.BLL
 							   v_DocNumber = a.v_DocNumber,
 							   i_SexTypeId = a.i_SexTypeId,
 
-							   Anemia = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ALTURA_7D_ANEMIA_ID, "NOCOMBO", 0, "SI"),
-							   Cirugia = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_CIRUGIA_MAYOR_CRECIENTE_ID, "NOCOMBO", 0, "SI"),
-							   Desordenes = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_DESORDENES_COAGULACION_ID, "NOCOMBO", 0, "SI"),
-							   Diabetes = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_DIABETES_MELLITUS_ID, "NOCOMBO", 0, "SI"),
-							   Hipertension = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_HIPERTENSION_ARTERIAL_ID, "NOCOMBO", 0, "SI"),
-							   Embarazo = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_EMBARAZO_ID, "NOCOMBO", 0, "SI"),
-							   ProbNeurologicos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_NEUROLOGICOS_ID, "NOCOMBO", 0, "SI"),
-							   Infecciones = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_INFECCIONES_RECIENTES_ID, "NOCOMBO", 0, "SI"),
-							   Obesidad = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_OBESIDAD_MORBIDA_ID, "NOCOMBO", 0, "SI"),
-							   ProCardiacos = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_CARDIACOS_ID, "NOCOMBO", 0, "SI"),
-							   ProRespiratorios = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_RESPIRATORIOS_ID, "NOCOMBO", 0, "SI"),
-							   ProOftalmologico = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_OFTALMOLOGICOS_ID, "NOCOMBO", 0, "SI"),
-							   ProDigestivo = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_DIGESTIVOS_ID, "NOCOMBO", 0, "SI"),
-							   Apnea = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_APNEA_SUEÑO_ID, "NOCOMBO", 0, "SI"),
-							   Otra = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_OTRA_CONDICON_ID, "NOCOMBO", 0, "SI"),
-							   Alergia = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_ALERGIAS_ID, "NOCOMBO", 0, "SI"),
-							   MedicacionActual = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_USO_MEDICACION_ACTUAL_ID, "NOCOMBO", 0, "SI"),
-							   AptoAscenderAlturas = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_APTO_ASCENDER_GRANDES_ALTURAS_ID, "SICOMBO", 163, "NO"),
-							   ActividadRealizar = GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_ACTIVIDAD_REALIZAR_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
+                               Anemia = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ALTURA_7D_ANEMIA_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ALTURA_7D_ANEMIA_ID).Valor,//
+
+                               Cirugia = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_CIRUGIA_MAYOR_CRECIENTE_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_CIRUGIA_MAYOR_CRECIENTE_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_CIRUGIA_MAYOR_CRECIENTE_ID, "NOCOMBO", 0, "SI"),
+                               Desordenes = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_DESORDENES_COAGULACION_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_DESORDENES_COAGULACION_ID).Valor,//,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_DESORDENES_COAGULACION_ID, "NOCOMBO", 0, "SI"),
+                               Diabetes = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_DIABETES_MELLITUS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_DIABETES_MELLITUS_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_DIABETES_MELLITUS_ID, "NOCOMBO", 0, "SI"),
+                               Hipertension = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_HIPERTENSION_ARTERIAL_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_HIPERTENSION_ARTERIAL_ID).Valor,//,//GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_HIPERTENSION_ARTERIAL_ID, "NOCOMBO", 0, "SI"),
+                               Embarazo = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_EMBARAZO_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_EMBARAZO_ID).Valor,//,// GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_EMBARAZO_ID, "NOCOMBO", 0, "SI"),
+                               ProbNeurologicos = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_NEUROLOGICOS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_NEUROLOGICOS_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_NEUROLOGICOS_ID, "NOCOMBO", 0, "SI"),
+                               Infecciones = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_INFECCIONES_RECIENTES_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_INFECCIONES_RECIENTES_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_INFECCIONES_RECIENTES_ID, "NOCOMBO", 0, "SI"),
+                               Obesidad = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_OBESIDAD_MORBIDA_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_OBESIDAD_MORBIDA_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_OBESIDAD_MORBIDA_ID, "NOCOMBO", 0, "SI"),
+                               ProCardiacos = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_CARDIACOS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_CARDIACOS_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_CARDIACOS_ID, "NOCOMBO", 0, "SI"),
+                               ProRespiratorios = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_RESPIRATORIOS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_RESPIRATORIOS_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_RESPIRATORIOS_ID, "NOCOMBO", 0, "SI"),
+                               ProOftalmologico = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_OFTALMOLOGICOS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_OFTALMOLOGICOS_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_OFTALMOLOGICOS_ID, "NOCOMBO", 0, "SI"),
+                               ProDigestivo = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_DIGESTIVOS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_DIGESTIVOS_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_PROBLEMAS_DIGESTIVOS_ID, "NOCOMBO", 0, "SI"),
+                               Apnea = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_APNEA_SUEÑO_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_APNEA_SUEÑO_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_APNEA_SUEÑO_ID, "NOCOMBO", 0, "SI"),
+                               Otra = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_OTRA_CONDICON_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_OTRA_CONDICON_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_OTRA_CONDICON_ID, "NOCOMBO", 0, "SI"),
+                               Alergia = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_ALERGIAS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_ALERGIAS_ID).Valor,//,// GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_ALERGIAS_ID, "NOCOMBO", 0, "SI"),
+                               MedicacionActual = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_USO_MEDICACION_ACTUAL_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_USO_MEDICACION_ACTUAL_ID).Valor,////etServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_USO_MEDICACION_ACTUAL_ID, "NOCOMBO", 0, "SI"),
+                               AptoAscenderAlturas = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_APTO_ASCENDER_GRANDES_ALTURAS_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_APTO_ASCENDER_GRANDES_ALTURAS_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_APTO_ASCENDER_GRANDES_ALTURAS_ID, "SICOMBO", 163, "NO"),
+                               ActividadRealizar = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_ACTIVIDAD_REALIZAR_DESCRIPCION_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_ACTIVIDAD_REALIZAR_DESCRIPCION_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_ACTIVIDAD_REALIZAR_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
 
 
 							   EmpresaEmpleadora = a.EmpresaEmpleadora,
