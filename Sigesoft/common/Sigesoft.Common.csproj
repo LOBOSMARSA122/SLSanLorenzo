@@ -101,6 +101,7 @@
     <Compile Include="DeclaracionJuradaAntecedentesPersonales.cs" />
     <Compile Include="DeclaracionJuradaPsicologia_Coimolache_LaZanja.cs" />
     <Compile Include="DeclaracionJuradaRX.cs" />
+    <Compile Include="DeclaracionJurada_Encuesta.cs" />
     <Compile Include="DynamicLinq.cs" />
     <Compile Include="EntregaExamenMedicoOcipacional.cs" />
     <Compile Include="Enums.cs" />
