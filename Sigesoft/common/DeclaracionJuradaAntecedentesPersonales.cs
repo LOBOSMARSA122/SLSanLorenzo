@@ -380,7 +380,7 @@ namespace NetPdf
             cells = new List<PdfPCell>()
             {          
                 
-                new PdfPCell(new Phrase("\n \n  Cajamarca, "+ fechaServicio[0] + " de " + mes + " del " + fechaServicio[2], fontColumnValue2))
+                new PdfPCell(new Phrase("\n \n  "+infoEmpresa.v_SectorName+", "+ fechaServicio[0] + " de " + mes + " del " + fechaServicio[2], fontColumnValue2))
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BorderColor=BaseColor.WHITE },    
                 
                 new PdfPCell(cellFirmaTrabajador ) {Colspan=10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_BOTTOM, FixedHeight=80, BorderColor=BaseColor.WHITE},

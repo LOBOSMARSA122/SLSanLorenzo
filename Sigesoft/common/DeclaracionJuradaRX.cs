@@ -121,7 +121,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("para que se me practique el procedimmiento de Radiología respectivo (Radiografía de Tórax),", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
-                new PdfPCell(new Phrase("exonerando de responsabilidad alguna a la clínica San Lorenzo S.R.L., por dicho examen.", fontColumnValue)) 
+                new PdfPCell(new Phrase("exonerando de responsabilidad alguna a: "+ infoEmpresaPropietaria.v_Name +" , por dicho examen.", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
             
@@ -172,7 +172,7 @@ namespace NetPdf
             cells = new List<PdfPCell>()
             {          
                 
-                new PdfPCell(new Phrase("\n \n \n \n Cajamarca, "+ fechaServicio[0] + " de " + mes + " del " + fechaServicio[2], fontColumnValue))
+                new PdfPCell(new Phrase("\n \n \n \n "+infoEmpresaPropietaria.v_SectorName+", "+ fechaServicio[0] + " de " + mes + " del " + fechaServicio[2], fontColumnValue))
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BorderColor=BaseColor.WHITE },    
                 
                 new PdfPCell(cellFirmaTrabajador ) {Colspan=10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_BOTTOM, FixedHeight=180, BorderColor=BaseColor.WHITE},

@@ -132,7 +132,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("\nAsí mismo, según la Ley 27269 (Ley de firmas y certificados digitales) AUTORIZO a", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
-                new PdfPCell(new Phrase("Clínica San Lorenzo S.R.L., el uso de mi firma y/o huella digital en el proceso de mi", fontColumnValue)) 
+                new PdfPCell(new Phrase(infoEmpresaPropietaria.v_Name+" , el uso de mi firma y/o huella digital en el proceso de mi", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
               
                 new PdfPCell(new Phrase("examen médico ocupacional y emisión de mi certificado correspondiente.", fontColumnValue)) 
@@ -184,7 +184,7 @@ namespace NetPdf
             cells = new List<PdfPCell>()
             {          
                 
-                new PdfPCell(new Phrase("\n \n \n \n Cajamarca, "+ fechaServicio[0] + " de " + mes + " del " + fechaServicio[2], fontColumnValue))
+                new PdfPCell(new Phrase("\n \n \n \n "+infoEmpresaPropietaria.v_SectorName+", "+ fechaServicio[0] + " de " + mes + " del " + fechaServicio[2], fontColumnValue))
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, BorderColor=BaseColor.WHITE },    
                 
                 new PdfPCell(cellFirmaTrabajador ) {Colspan=10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_BOTTOM, FixedHeight=180, BorderColor=BaseColor.WHITE},

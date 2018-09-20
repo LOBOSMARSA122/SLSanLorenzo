@@ -2883,7 +2883,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
 
                     //var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
-                    var UC_OSTEO_ID = new ServiceBL().ReporteOsteomuscular(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
+                    var UC_OSTEO_ID = new ServiceBL().ReporteOsteomuscular(_serviceId, componentReportId7[0].ComponentId);
                     DataTable dt_UC_OSTEO_ID = BLL.Utils.ConvertToDatatable(UC_OSTEO_ID);
                     DataTable dtOSTEO_MUSCULAR_ID_1 = BLL.Utils.ConvertToDatatable(OSTEO_MUSCULAR_ID_1);
 

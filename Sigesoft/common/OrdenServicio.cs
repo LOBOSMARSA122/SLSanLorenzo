@@ -158,7 +158,7 @@ namespace NetPdf
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE}, 
                 
 
-                new PdfPCell(new Phrase("\n\t    Clínica San Lorenzo SRL agradece su rpeferencia y está a vuestra disposición para iniciar un vínculo", fontColumnValue)) 
+                new PdfPCell(new Phrase("\n\t    "+infoEmpresaPropietaria.v_Name+" agradece su rpeferencia y está a vuestra disposición para iniciar un vínculo", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE}, 
                 new PdfPCell(new Phrase("laboral duradero.", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE}, 
@@ -183,7 +183,7 @@ namespace NetPdf
             {          
           
                 new PdfPCell(new Phrase("", fontColumnValue)){Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_BOTTOM, FixedHeight=180, BorderColor=BaseColor.WHITE},
-                new PdfPCell(new Phrase("Clínica San Lorenzo SRL", fontColumnValue)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15 , BorderColor=BaseColor.WHITE},
+                new PdfPCell(new Phrase(infoEmpresaPropietaria.v_Name, fontColumnValue)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15 , BorderColor=BaseColor.WHITE},
                 new PdfPCell(new Phrase("Tel. 076 340201 anexo 29", fontColumnValueBold)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15 , BorderColor=BaseColor.WHITE},
                 new PdfPCell(new Phrase("Cel. 976220538", fontColumnValueBold)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15 , BorderColor=BaseColor.WHITE},
                 new PdfPCell(new Phrase("cesar.medina@clinicasanlorenzo.com.pe", fontColumnValueBold)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = 15 , BorderColor=BaseColor.WHITE},

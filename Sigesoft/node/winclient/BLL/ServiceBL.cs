@@ -19818,7 +19818,10 @@ namespace Sigesoft.Node.WinClient.BLL
 								 where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
 								 select o).SingleOrDefault();
 
-
+                var other = (from o in dbContext.location
+                                 where o.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                                 select o).SingleOrDefault();
+                objEntity.v_SectorName = other == null ? "" : other.v_Name;
 
 				if (objEntity != null)
 					objDtoEntity = organizationAssembler.ToDTO(objEntity);
@@ -24849,7 +24852,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 			        if (ValorUSer.Count == 0)
 			        {
-                        ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, Constants.OSTEO_MUSCULAR_ID_1).ToList();
+                        ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, pstrComponentId).ToList();
 			        }
 			    }
 
