@@ -123,7 +123,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "MARCOBRE PASE MÉDICO", v_ComponentId = Constants.MARCOBRE_PASE_MEDICO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "DECLARACIÓN JURADA", v_ComponentId = Constants.DECLARACION_JURADA });
 
-                serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "ENTREGA DE EXAMEN MEDICO OCUPACIONAL", v_ComponentId = Constants.ENTREGA_DE_XAMEN_MEDICO_OCUPACIONAL }); 
+                serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "ENTREGA DE EXAMEN MEDICO OCUPACIONAL", v_ComponentId = Constants.ENTREGA_DE_XAMEN_MEDICO_OCUPACIONAL });
+
+                serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "EV. MED. SAN MARTIN - INFORME RESULTADOS", v_ComponentId = Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME }); 
 
                 //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
                 //if (datosP.Genero.ToUpper() == "FEMENINO")
@@ -1764,6 +1766,60 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             DeclaracionJurada_Encuesta.CreateDeclaracionJurada_Encuesta(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+        }
+        private void GenerateInforme_Resultados_San_Martinm(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var RecoAudio = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.AUDIOMETRIA_ID);
+            var RecoElectro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ELECTROCARDIOGRAMA_ID);
+            var RecoEspiro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ESPIROMETRIA_ID);
+            var RecoNeuro = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EVAL_NEUROLOGICA_ID);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            var RecoAltEst = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);
+            var RecoActFis = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.CUESTIONARIO_ACTIVIDAD_FISICA);
+            var RecoCustNor = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.C_N_ID);
+            var RecoAlt7D = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ALTURA_7D_ID);
+            var RecoExaFis = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EXAMEN_FISICO_ID);
+            var RecoExaFis7C = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.EXAMEN_FISICO_7C_ID);
+            var RecoOsteoMus1 = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
+            var RecoTamDer = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.TAMIZAJE_DERMATOLOGIO_ID);
+            var RecoOdon = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.ODONTOGRAMA_ID);
+            var RecoPsico = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.PSICOLOGIA_ID);
+            var RecoRx = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.RX_TORAX_ID);
+            var RecoOit = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OIT_ID);
+            var RecoOft = _serviceBL.GetListRecommendationByServiceIdAndComponent(_serviceId, Constants.OFTALMOLOGIA_ID);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+
+            var Restricciton = _serviceBL.GetRestrictionByServiceId(_serviceId);
+            var Aptitud = _serviceBL.DevolverAptitud(_serviceId);
+
+            var _listAtecedentesOcupacionalesA = _historyBL.GetHistoryReportA(_pacientId);
+            var _listAtecedentesOcupacionalesB = _historyBL.GetHistoryReportB(_pacientId);
+            var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
+            var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
+            var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacientId);
+            var anamnesis = _serviceBL.GetAnamnesisReport(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var ExamenFisico = _serviceBL.ValoresComponente(_serviceId, Constants.EXAMEN_FISICO_ID);
+            var Oftalmologia = _serviceBL.ValoresComponente(_serviceId, Constants.OFTALMOLOGIA_ID);
+            var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
+            var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
+            Informe_Resultados_San_Martinm.CreateInforme_Resultados_San_Martinm(_DataService,
+                filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
+                datosP,
+                pathFile,
+                RecoAudio,
+                RecoElectro,
+                RecoEspiro,
+                RecoNeuro, RecoAltEst, RecoActFis, RecoCustNor, RecoAlt7D, RecoExaFis, RecoExaFis7C, RecoOsteoMus1, RecoTamDer, RecoOdon,
+                RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionalesA, _listAtecedentesOcupacionalesB, _listaPatologicosFamiliares,
+                _listMedicoPersonales, _listaHabitoNocivos, anamnesis, exams, _ExamenesServicio, ExamenFisico, TestIhihara, TestEstereopsis, Oftalmologia);
         }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
