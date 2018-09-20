@@ -4834,9 +4834,11 @@ namespace NetPdf
             ServiceComponentList informeOftalmoSimple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
             ServiceComponentList informeOftalmoCompleto = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
             ServiceComponentList informeOftalmoHudbay = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+            ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             string vcscod = "", vcscoi = "", vcccod = "", vcccoi = "", vlscod = "", vlscoi = "", vlccod = "", vlccoi = "", enfermedadesOculares = "", testIshihara = "", reflejosPupilares = "", maculaOD = "", maculaOI = "",
                 nervioOpticoOD = "", nervioOpticoOI = "", retinaOD = "", retinaOI = "", presionIntraOcOD = "", presionIntraOcOI = "", flyTest = "";
+            string ValorReflejosPupilares = "", ValorEnfermedadesOculares = "", ValorFondoDeOjo = "", ValorTonometria = "";
             #region OFTAL YANACOCHA
             if (apendice2Yanacocha != null)
             {
@@ -4863,8 +4865,6 @@ namespace NetPdf
                 nervioOpticoOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_NERVIO_OPTICO_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_NERVIO_OPTICO_OI).v_Value1Name;
                 retinaOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD).v_Value1Name;
                 retinaOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI).v_Value1Name;
-
-
 
                 presionIntraOcOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD).v_Value1;
                 presionIntraOcOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI).v_Value1;
@@ -5153,6 +5153,200 @@ namespace NetPdf
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
                 document.Add(filiationWorker);
+            }
+            #endregion
+            #region AGUDEZA VISUAL
+            else if (findOftalmologia != null)
+            {
+                var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+                var Oftalmo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+
+
+                var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
+                string ValorDxOftalmologia = "";
+                string ValorOD_VC_SC = "", ValorOI_VC_SC = "", ValorOD_VC_CC = "", ValorOI_VC_CC = "";
+                string ValorOD_VL_SC = "", ValorOI_VL_SC = "", ValorOD_VL_CC = "", ValorOI_VL_CC = "";
+                string ValorDiscromatopsia = "";
+                if (findOftalmologia != null)
+                {
+
+
+                    var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
+                    if (OD_VC_SC != null)
+                    {
+                        if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
+                    }
+
+                    var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
+                    if (OI_VC_SC != null)
+                    {
+                        if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
+                    }
+
+                    var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
+                    if (OD_VC_CC != null)
+                    {
+                        if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
+                    }
+
+                    var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
+                    if (OI_VC_CC != null)
+                    {
+                        if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
+                    }
+
+                    var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
+                    if (OD_VL_SC != null)
+                    {
+                        if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
+                    }
+
+                    var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
+                    if (OI_VL_SC != null)
+                    {
+                        if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
+                    }
+
+                    var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
+                    if (OD_VL_CC != null)
+                    {
+                        if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
+                    }
+
+                    var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
+                    if (OI_VL_CC != null)
+                    {
+                        if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
+                    }
+
+                    if (DxCateodiaOftalmologia != null)
+                    {
+                        ValorDxOftalmologia = string.Join(", ", DxCateodiaOftalmologia.Select(p => p.v_DiseasesName));
+
+                    }
+
+                    //if (findOftalmologia.DiagnosticRepository != null)
+                    //{
+                    //    ValorDxOftalmologia = string.Join(", ", findOftalmologia.DiagnosticRepository.Select(p => p.v_DiseasesName));
+
+                    //}
+
+                    //var Discromatopsia = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID);
+                    //var NormalAnormal = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL);
+
+                    //if (Discromatopsia != null || NormalAnormal != null)
+                    //{
+                    //    var a = NormalAnormal.v_Value1.ToString() == "1" ? "NORMAL" : "ANORMAL";
+                    //    var b = Discromatopsia.v_Value1Name;
+
+                    //    ValorDiscromatopsia = a + " / " + b;
+                    //}
+
+                    //TEST DE ISHIHARA: Anormal, Discromatopsia: No definida.
+
+
+                    if (TestIshihara != null)
+                    {
+                        string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
+                        string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
+                        string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+
+
+                        if (TestIshiharaNormal == "1")
+                        {
+                            ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                        }
+                        else if (TestIshiharaAnormal == "1")
+                        {
+
+                            ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                        }
+                    }
+                    else
+                    {
+                        ValorDiscromatopsia = "NO APLICA";
+                    }
+
+                    if (Oftalmo != null)
+                    {
+                        ValorFondoDeOjo =
+                                Oftalmo.ServiceComponentFields.Find(
+                                    p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI) == null
+                                    ? ""
+                                    : Oftalmo.ServiceComponentFields.Find(
+                                        p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI).v_Value1;
+
+                        string od =
+                                 Oftalmo.ServiceComponentFields.Find(
+                                     p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D) == null
+                                     ? ""
+                                     : Oftalmo.ServiceComponentFields.Find(
+                                         p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D).v_Value1;
+
+                        string oi =
+                                  Oftalmo.ServiceComponentFields.Find(
+                                      p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I) == null
+                                      ? ""
+                                      : Oftalmo.ServiceComponentFields.Find(
+                                          p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I).v_Value1;
+                        ValorTonometria = "OD: " + od + " / OI: " + oi + " (mmHg)";
+                    }
+
+
+                    else
+                    {
+                        ValorFondoDeOjo = "NO APLICA";
+                        ValorTonometria = "---";
+                    }
+
+
+
+                }
+
+                cells = new List<PdfPCell>()
+                 {
+                    new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)),
+                    new PdfPCell(new Phrase(ValorEnfermedadesOculares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea 
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorReflejosPupilares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFondoDeOjo, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorTonometria, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase(ValorDiscromatopsia, fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+
+                 };
+                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 30f, 25f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+
+
             }
             #endregion
             else
@@ -9249,9 +9443,11 @@ namespace NetPdf
             ServiceComponentList informeOftalmoSimple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
             ServiceComponentList informeOftalmoCompleto = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
             ServiceComponentList informeOftalmoHudbay = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+            ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             string vcscod = "", vcscoi = "", vcccod = "", vcccoi = "", vlscod = "", vlscoi = "", vlccod = "", vlccoi = "", enfermedadesOculares = "", testIshihara = "", reflejosPupilares = "", maculaOD = "", maculaOI="",
                 nervioOpticoOD = "", nervioOpticoOI = "", retinaOD = "", retinaOI = "", presionIntraOcOD = "", presionIntraOcOI = "", flyTest="";
+            string ValorReflejosPupilares = "", ValorEnfermedadesOculares = "", ValorFondoDeOjo = "", ValorTonometria = "";
             #region OFTAL YANACOCHA
             if (apendice2Yanacocha!=null)
             {
@@ -9278,8 +9474,6 @@ namespace NetPdf
                 nervioOpticoOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_NERVIO_OPTICO_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_NERVIO_OPTICO_OI).v_Value1Name;
                 retinaOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD).v_Value1Name;
                 retinaOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI).v_Value1Name;
-
-               
 
                 presionIntraOcOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD).v_Value1;
                 presionIntraOcOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI).v_Value1;
@@ -9568,6 +9762,200 @@ namespace NetPdf
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
                 document.Add(filiationWorker);
+            }
+            #endregion
+            #region AGUDEZA VISUAL
+            else if (findOftalmologia != null)
+            {
+            var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+            var Oftalmo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+            
+
+            var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
+            string ValorDxOftalmologia = "";
+            string ValorOD_VC_SC = "", ValorOI_VC_SC = "", ValorOD_VC_CC = "", ValorOI_VC_CC = "";
+            string ValorOD_VL_SC = "", ValorOI_VL_SC = "", ValorOD_VL_CC = "", ValorOI_VL_CC = "";
+            string ValorDiscromatopsia = "";
+            if (findOftalmologia != null)
+            {
+
+
+                var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
+                if (OD_VC_SC != null)
+                {
+                    if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
+                }
+
+                var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
+                if (OI_VC_SC != null)
+                {
+                    if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
+                }
+
+                var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
+                if (OD_VC_CC != null)
+                {
+                    if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
+                }
+
+                var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
+                if (OI_VC_CC != null)
+                {
+                    if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
+                }
+
+                var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
+                if (OD_VL_SC != null)
+                {
+                    if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
+                }
+
+                var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
+                if (OI_VL_SC != null)
+                {
+                    if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
+                }
+
+                var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
+                if (OD_VL_CC != null)
+                {
+                    if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
+                }
+
+                var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
+                if (OI_VL_CC != null)
+                {
+                    if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
+                }
+
+                if (DxCateodiaOftalmologia != null)
+                {
+                    ValorDxOftalmologia = string.Join(", ", DxCateodiaOftalmologia.Select(p => p.v_DiseasesName));
+
+                }
+
+                //if (findOftalmologia.DiagnosticRepository != null)
+                //{
+                //    ValorDxOftalmologia = string.Join(", ", findOftalmologia.DiagnosticRepository.Select(p => p.v_DiseasesName));
+
+                //}
+
+                //var Discromatopsia = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID);
+                //var NormalAnormal = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL);
+
+                //if (Discromatopsia != null || NormalAnormal != null)
+                //{
+                //    var a = NormalAnormal.v_Value1.ToString() == "1" ? "NORMAL" : "ANORMAL";
+                //    var b = Discromatopsia.v_Value1Name;
+
+                //    ValorDiscromatopsia = a + " / " + b;
+                //}
+
+                //TEST DE ISHIHARA: Anormal, Discromatopsia: No definida.
+
+
+                if (TestIshihara != null)
+                {
+                    string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
+                    string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
+                    string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+                   
+
+                    if (TestIshiharaNormal == "1")
+                    {
+                        ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                    }
+                    else if (TestIshiharaAnormal == "1")
+                    {
+
+                        ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                    }
+                }
+                else
+                {
+                    ValorDiscromatopsia = "NO APLICA";
+                }
+
+                if (Oftalmo != null)
+                {
+                    ValorFondoDeOjo =
+                            Oftalmo.ServiceComponentFields.Find(
+                                p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI) == null
+                                ? ""
+                                : Oftalmo.ServiceComponentFields.Find(
+                                    p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI).v_Value1;
+                         
+                   string od=   
+                            Oftalmo.ServiceComponentFields.Find(
+                                p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D) == null
+                                ? ""
+                                : Oftalmo.ServiceComponentFields.Find(
+                                    p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D).v_Value1;
+                        
+                  string oi=   
+                            Oftalmo.ServiceComponentFields.Find(
+                                p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I) == null
+                                ? ""
+                                : Oftalmo.ServiceComponentFields.Find(
+                                    p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I).v_Value1;
+                  ValorTonometria = "OD: " + od + " / OI: " + oi + " (mmHg)";    
+                        }
+
+                   
+                else
+                {
+                    ValorFondoDeOjo = "NO APLICA";
+                    ValorTonometria = "---";
+                }
+
+
+
+            }
+
+            cells = new List<PdfPCell>()
+                 {
+                    new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)),
+                    new PdfPCell(new Phrase(ValorEnfermedadesOculares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea 
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorReflejosPupilares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFondoDeOjo, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorTonometria, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase(ValorDiscromatopsia, fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+
+                 };
+            columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 30f, 25f };
+
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+            document.Add(filiationWorker);
+
+
             }
             #endregion
             else {
@@ -10970,6 +11358,7 @@ namespace NetPdf
 
             Font fontColumnValue = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontColumnValueBold = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValue1 = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
 
             #endregion
 
@@ -12405,16 +12794,18 @@ namespace NetPdf
             ServiceComponentList informeOftalmoSimple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
             ServiceComponentList informeOftalmoCompleto = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
             ServiceComponentList informeOftalmoHudbay = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+            ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             string vcscod = "", vcscoi = "", vcccod = "", vcccoi = "", vlscod = "", vlscoi = "", vlccod = "", vlccoi = "", enfermedadesOculares = "", testIshihara = "", reflejosPupilares = "", maculaOD = "", maculaOI = "",
                 nervioOpticoOD = "", nervioOpticoOI = "", retinaOD = "", retinaOI = "", presionIntraOcOD = "", presionIntraOcOI = "", flyTest = "";
+            string ValorReflejosPupilares = "", ValorEnfermedadesOculares = "", ValorFondoDeOjo = "", ValorTonometria = "";
             #region OFTAL YANACOCHA
             if (apendice2Yanacocha != null)
             {
                 #region EXAMENES
 
                 vcscod = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOD).v_Value1Name;
-                vcscod = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOI).v_Value1Name;
+                vcscoi = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOI).v_Value1Name;
                 vcccod = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCCCOD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCCCOD).v_Value1Name;
                 vcccoi = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCCCOI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCCCOI).v_Value1Name;
 
@@ -12435,9 +12826,12 @@ namespace NetPdf
                 retinaOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD).v_Value1Name;
                 retinaOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI).v_Value1Name;
 
-               
                 presionIntraOcOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD).v_Value1;
                 presionIntraOcOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI).v_Value1;
+                string npresionIntraOcODMed = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD).v_MeasurementUnitName;
+                string presionIntraOcOIMed = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI).v_MeasurementUnitName;
+
+
                 #endregion
 
                 cells = new List<PdfPCell>()
@@ -12445,37 +12839,50 @@ namespace NetPdf
                     new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(enfermedadesOculares, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(enfermedadesOculares, fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea 
                     new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(reflejosPupilares, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(reflejosPupilares, fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcscod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcscoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcccod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcccoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("Mácula Od: "+ maculaOD + "Mácula Oi: "+ maculaOI + "\n" + "Nervio Opt Od: "+ nervioOpticoOD + "Nervio Opt Oi: "+ nervioOpticoOI + "\n" + "Retina Od: "+ retinaOD + "     Retina Oi: "+ retinaOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){Rowspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcscod, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcscoi, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcccod, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcccoi, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue1)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("Mácula", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + maculaOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + maculaOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    new PdfPCell(new Phrase("Nevio Opt", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + nervioOpticoOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + nervioOpticoOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    new PdfPCell(new Phrase("Retina", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + retinaOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + retinaOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    //new PdfPCell(new Phrase("Mácula Od: "+ maculaOD + "Mácula Oi: "+ maculaOI + "\n" + "Nervio Opt Od: "+ nervioOpticoOD + "Nervio Opt Oi: "+ nervioOpticoOI + "\n" + "Retina Od: "+ retinaOD + "     Retina Oi: "+ retinaOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
                     new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlscod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlscoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlccod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlccoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("OD: " + presionIntraOcOD + " OI: " +presionIntraOcOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                      //Linea
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + presionIntraOcOD + " "+npresionIntraOcODMed, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + presionIntraOcOI + " "+presionIntraOcOIMed, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    //Linea
                     new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},  
                     new PdfPCell(new Phrase(testIshihara, fontColumnValue)){Colspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE}, 
-                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                  };
-                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 30f, 25f };
+                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 15F, 8f, 16f, 16f };
 
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
@@ -12578,8 +12985,8 @@ namespace NetPdf
                     new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(enfermedadesOculares, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea 
                     new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
@@ -12708,6 +13115,200 @@ namespace NetPdf
                 document.Add(filiationWorker);
             }
             #endregion
+            #region AGUDEZA VISUAL
+            else if (findOftalmologia != null)
+            {
+                var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+                var Oftalmo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+
+
+                var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
+                string ValorDxOftalmologia = "";
+                string ValorOD_VC_SC = "", ValorOI_VC_SC = "", ValorOD_VC_CC = "", ValorOI_VC_CC = "";
+                string ValorOD_VL_SC = "", ValorOI_VL_SC = "", ValorOD_VL_CC = "", ValorOI_VL_CC = "";
+                string ValorDiscromatopsia = "";
+                if (findOftalmologia != null)
+                {
+
+
+                    var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
+                    if (OD_VC_SC != null)
+                    {
+                        if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
+                    }
+
+                    var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
+                    if (OI_VC_SC != null)
+                    {
+                        if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
+                    }
+
+                    var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
+                    if (OD_VC_CC != null)
+                    {
+                        if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
+                    }
+
+                    var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
+                    if (OI_VC_CC != null)
+                    {
+                        if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
+                    }
+
+                    var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
+                    if (OD_VL_SC != null)
+                    {
+                        if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
+                    }
+
+                    var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
+                    if (OI_VL_SC != null)
+                    {
+                        if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
+                    }
+
+                    var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
+                    if (OD_VL_CC != null)
+                    {
+                        if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
+                    }
+
+                    var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
+                    if (OI_VL_CC != null)
+                    {
+                        if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
+                    }
+
+                    if (DxCateodiaOftalmologia != null)
+                    {
+                        ValorDxOftalmologia = string.Join(", ", DxCateodiaOftalmologia.Select(p => p.v_DiseasesName));
+
+                    }
+
+                    //if (findOftalmologia.DiagnosticRepository != null)
+                    //{
+                    //    ValorDxOftalmologia = string.Join(", ", findOftalmologia.DiagnosticRepository.Select(p => p.v_DiseasesName));
+
+                    //}
+
+                    //var Discromatopsia = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID);
+                    //var NormalAnormal = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL);
+
+                    //if (Discromatopsia != null || NormalAnormal != null)
+                    //{
+                    //    var a = NormalAnormal.v_Value1.ToString() == "1" ? "NORMAL" : "ANORMAL";
+                    //    var b = Discromatopsia.v_Value1Name;
+
+                    //    ValorDiscromatopsia = a + " / " + b;
+                    //}
+
+                    //TEST DE ISHIHARA: Anormal, Discromatopsia: No definida.
+
+
+                    if (TestIshihara != null)
+                    {
+                        string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
+                        string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
+                        string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+
+
+                        if (TestIshiharaNormal == "1")
+                        {
+                            ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                        }
+                        else if (TestIshiharaAnormal == "1")
+                        {
+
+                            ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                        }
+                    }
+                    else
+                    {
+                        ValorDiscromatopsia = "NO APLICA";
+                    }
+
+                    if (Oftalmo != null)
+                    {
+                        ValorFondoDeOjo =
+                                Oftalmo.ServiceComponentFields.Find(
+                                    p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI) == null
+                                    ? ""
+                                    : Oftalmo.ServiceComponentFields.Find(
+                                        p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI).v_Value1;
+
+                        string od =
+                                 Oftalmo.ServiceComponentFields.Find(
+                                     p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D) == null
+                                     ? ""
+                                     : Oftalmo.ServiceComponentFields.Find(
+                                         p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D).v_Value1;
+
+                        string oi =
+                                  Oftalmo.ServiceComponentFields.Find(
+                                      p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I) == null
+                                      ? ""
+                                      : Oftalmo.ServiceComponentFields.Find(
+                                          p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I).v_Value1;
+                        ValorTonometria = "OD: " + od + " / OI: " + oi + " (mmHg)";
+                    }
+
+
+                    else
+                    {
+                        ValorFondoDeOjo = "NO APLICA";
+                        ValorTonometria = "---";
+                    }
+
+
+
+                }
+
+                cells = new List<PdfPCell>()
+                 {
+                    new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)),
+                    new PdfPCell(new Phrase(ValorEnfermedadesOculares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea 
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorReflejosPupilares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFondoDeOjo, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorTonometria, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase(ValorDiscromatopsia, fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+
+                 };
+                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 30f, 25f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+
+
+            }
+            #endregion
             else
             {
                 cells = new List<PdfPCell>()
@@ -12730,16 +13331,16 @@ namespace NetPdf
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
                     new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                       //Linea
                     new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},  
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){Colspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE}, 
@@ -14127,6 +14728,7 @@ namespace NetPdf
             Font fontColumnValue = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontColumnValue2 = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontColumnValueBold = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValue1 = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
 
             #endregion
 
@@ -15631,9 +16233,11 @@ namespace NetPdf
             ServiceComponentList informeOftalmoSimple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
             ServiceComponentList informeOftalmoCompleto = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
             ServiceComponentList informeOftalmoHudbay = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+            ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             string vcscod = "", vcscoi = "", vcccod = "", vcccoi = "", vlscod = "", vlscoi = "", vlccod = "", vlccoi = "", enfermedadesOculares = "", testIshihara = "", reflejosPupilares = "", maculaOD = "", maculaOI = "",
                 nervioOpticoOD = "", nervioOpticoOI = "", retinaOD = "", retinaOI = "", presionIntraOcOD = "", presionIntraOcOI = "", flyTest = "";
+            string  ValorTonometria = "";
             #region OFTAL YANACOCHA
             if (apendice2Yanacocha != null)
             {
@@ -15661,9 +16265,12 @@ namespace NetPdf
                 retinaOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD).v_Value1Name;
                 retinaOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI).v_Value1Name;
 
-                
                 presionIntraOcOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD).v_Value1;
                 presionIntraOcOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI).v_Value1;
+                string npresionIntraOcODMed = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD).v_MeasurementUnitName;
+                string presionIntraOcOIMed = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI).v_MeasurementUnitName;
+
+
                 #endregion
 
                 cells = new List<PdfPCell>()
@@ -15671,37 +16278,50 @@ namespace NetPdf
                     new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(enfermedadesOculares, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(enfermedadesOculares, fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea 
                     new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(reflejosPupilares, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(reflejosPupilares, fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcscod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcscoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcccod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcccoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("Mácula Od: "+ maculaOD + "Mácula Oi: "+ maculaOI + "\n" + "Nervio Opt Od: "+ nervioOpticoOD + "Nervio Opt Oi: "+ nervioOpticoOI + "\n" + "Retina Od: "+ retinaOD + "     Retina Oi: "+ retinaOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){Rowspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcscod, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcscoi, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcccod, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcccoi, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue1)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("Mácula", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + maculaOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + maculaOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    new PdfPCell(new Phrase("Nevio Opt", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + nervioOpticoOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + nervioOpticoOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    new PdfPCell(new Phrase("Retina", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + retinaOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + retinaOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    //new PdfPCell(new Phrase("Mácula Od: "+ maculaOD + "Mácula Oi: "+ maculaOI + "\n" + "Nervio Opt Od: "+ nervioOpticoOD + "Nervio Opt Oi: "+ nervioOpticoOI + "\n" + "Retina Od: "+ retinaOD + "     Retina Oi: "+ retinaOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
                     new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlscod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlscoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlccod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlccoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("OD: " + presionIntraOcOD + " OI: " +presionIntraOcOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                      //Linea
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + presionIntraOcOD + " "+npresionIntraOcODMed, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + presionIntraOcOI + " "+presionIntraOcOIMed, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    //Linea
                     new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},  
                     new PdfPCell(new Phrase(testIshihara, fontColumnValue)){Colspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE}, 
-                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                  };
-                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 30f, 25f };
+                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 15F, 8f, 16f, 16f };
 
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
@@ -15934,6 +16554,200 @@ namespace NetPdf
                 document.Add(filiationWorker);
             }
             #endregion
+            #region AGUDEZA VISUAL
+            else if (findOftalmologia != null)
+            {
+                var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+                var Oftalmo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+
+
+                var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
+                string ValorDxOftalmologia = "";
+                string ValorOD_VC_SC = "", ValorOI_VC_SC = "", ValorOD_VC_CC = "", ValorOI_VC_CC = "";
+                string ValorOD_VL_SC = "", ValorOI_VL_SC = "", ValorOD_VL_CC = "", ValorOI_VL_CC = "";
+                string ValorDiscromatopsia = "";
+                if (findOftalmologia != null)
+                {
+
+
+                    var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
+                    if (OD_VC_SC != null)
+                    {
+                        if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
+                    }
+
+                    var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
+                    if (OI_VC_SC != null)
+                    {
+                        if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
+                    }
+
+                    var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
+                    if (OD_VC_CC != null)
+                    {
+                        if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
+                    }
+
+                    var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
+                    if (OI_VC_CC != null)
+                    {
+                        if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
+                    }
+
+                    var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
+                    if (OD_VL_SC != null)
+                    {
+                        if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
+                    }
+
+                    var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
+                    if (OI_VL_SC != null)
+                    {
+                        if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
+                    }
+
+                    var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
+                    if (OD_VL_CC != null)
+                    {
+                        if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
+                    }
+
+                    var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
+                    if (OI_VL_CC != null)
+                    {
+                        if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
+                    }
+
+                    if (DxCateodiaOftalmologia != null)
+                    {
+                        ValorDxOftalmologia = string.Join(", ", DxCateodiaOftalmologia.Select(p => p.v_DiseasesName));
+
+                    }
+
+                    //if (findOftalmologia.DiagnosticRepository != null)
+                    //{
+                    //    ValorDxOftalmologia = string.Join(", ", findOftalmologia.DiagnosticRepository.Select(p => p.v_DiseasesName));
+
+                    //}
+
+                    //var Discromatopsia = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID);
+                    //var NormalAnormal = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL);
+
+                    //if (Discromatopsia != null || NormalAnormal != null)
+                    //{
+                    //    var a = NormalAnormal.v_Value1.ToString() == "1" ? "NORMAL" : "ANORMAL";
+                    //    var b = Discromatopsia.v_Value1Name;
+
+                    //    ValorDiscromatopsia = a + " / " + b;
+                    //}
+
+                    //TEST DE ISHIHARA: Anormal, Discromatopsia: No definida.
+
+
+                    if (TestIshihara != null)
+                    {
+                        string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
+                        string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
+                        string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+
+
+                        if (TestIshiharaNormal == "1")
+                        {
+                            ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                        }
+                        else if (TestIshiharaAnormal == "1")
+                        {
+
+                            ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                        }
+                    }
+                    else
+                    {
+                        ValorDiscromatopsia = "NO APLICA";
+                    }
+
+                    if (Oftalmo != null)
+                    {
+                        ValorFondoDeOjo =
+                                Oftalmo.ServiceComponentFields.Find(
+                                    p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI) == null
+                                    ? ""
+                                    : Oftalmo.ServiceComponentFields.Find(
+                                        p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI).v_Value1;
+
+                        string od =
+                                 Oftalmo.ServiceComponentFields.Find(
+                                     p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D) == null
+                                     ? ""
+                                     : Oftalmo.ServiceComponentFields.Find(
+                                         p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D).v_Value1;
+
+                        string oi =
+                                  Oftalmo.ServiceComponentFields.Find(
+                                      p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I) == null
+                                      ? ""
+                                      : Oftalmo.ServiceComponentFields.Find(
+                                          p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I).v_Value1;
+                        ValorTonometria = "OD: " + od + " / OI: " + oi + " (mmHg)";
+                    }
+
+
+                    else
+                    {
+                        ValorFondoDeOjo = "NO APLICA";
+                        ValorTonometria = "---";
+                    }
+
+
+
+                }
+
+                cells = new List<PdfPCell>()
+                 {
+                    new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)),
+                    new PdfPCell(new Phrase(ValorEnfermedadesOculares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea 
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorReflejosPupilares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFondoDeOjo, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorTonometria, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase(ValorDiscromatopsia, fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+
+                 };
+                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 30f, 25f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+
+
+            }
+            #endregion
             else
             {
                 cells = new List<PdfPCell>()
@@ -15941,8 +16755,8 @@ namespace NetPdf
                     new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea 
                     new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
@@ -15956,16 +16770,16 @@ namespace NetPdf
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("VISIÓ DE PROFUNDIDAD", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
                     new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                       //Linea
                     new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},  
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){Colspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE}, 
@@ -17531,6 +18345,7 @@ namespace NetPdf
 
             Font fontColumnValue = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontColumnValueBold = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValue1 = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
 
             #endregion
 
@@ -18956,16 +19771,18 @@ namespace NetPdf
             ServiceComponentList informeOftalmoSimple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
             ServiceComponentList informeOftalmoCompleto = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
             ServiceComponentList informeOftalmoHudbay = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+            ServiceComponentList findOftalmologia = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
 
             string vcscod = "", vcscoi = "", vcccod = "", vcccoi = "", vlscod = "", vlscoi = "", vlccod = "", vlccoi = "", enfermedadesOculares = "", testIshihara = "", reflejosPupilares = "", maculaOD = "", maculaOI = "",
                 nervioOpticoOD = "", nervioOpticoOI = "", retinaOD = "", retinaOI = "", presionIntraOcOD = "", presionIntraOcOI = "", flyTest = "";
+            string ValorReflejosPupilares = "", ValorEnfermedadesOculares = "", ValorFondoDeOjo = "", ValorTonometria = "";
             #region OFTAL YANACOCHA
             if (apendice2Yanacocha != null)
             {
                 #region EXAMENES
 
                 vcscod = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOD).v_Value1Name;
-                vcscod = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOI).v_Value1Name;
+                vcscoi = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCSCOI).v_Value1Name;
                 vcccod = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCCCOD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCCCOD).v_Value1Name;
                 vcccoi = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCCCOI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_VCCCOI).v_Value1Name;
 
@@ -18986,9 +19803,12 @@ namespace NetPdf
                 retinaOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD).v_Value1Name;
                 retinaOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI).v_Value1Name;
 
-                
                 presionIntraOcOD = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD).v_Value1;
                 presionIntraOcOI = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI).v_Value1;
+                string npresionIntraOcODMed = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OD).v_MeasurementUnitName;
+                string presionIntraOcOIMed = apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI) == null ? "FALTA LLENAR" : apendice2Yanacocha.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_PRESION_INTRAOCULAR_OI).v_MeasurementUnitName;
+
+
                 #endregion
 
                 cells = new List<PdfPCell>()
@@ -18996,37 +19816,50 @@ namespace NetPdf
                     new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(enfermedadesOculares, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(enfermedadesOculares, fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea 
                     new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(reflejosPupilares, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(reflejosPupilares, fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
-                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcscod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcscoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcccod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase(vcccoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("Mácula Od: "+ maculaOD + "Mácula Oi: "+ maculaOI + "\n" + "Nervio Opt Od: "+ nervioOpticoOD + "Nervio Opt Oi: "+ nervioOpticoOI + "\n" + "Retina Od: "+ retinaOD + "     Retina Oi: "+ retinaOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){Rowspan=3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcscod, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcscoi, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcccod, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase(vcccoi, fontColumnValue)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue1)){Rowspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("Mácula", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + maculaOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + maculaOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    new PdfPCell(new Phrase("Nevio Opt", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + nervioOpticoOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + nervioOpticoOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    new PdfPCell(new Phrase("Retina", fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + retinaOD, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + retinaOI, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+
+                    //new PdfPCell(new Phrase("Mácula Od: "+ maculaOD + "Mácula Oi: "+ maculaOI + "\n" + "Nervio Opt Od: "+ nervioOpticoOD + "Nervio Opt Oi: "+ nervioOpticoOI + "\n" + "Retina Od: "+ retinaOD + "     Retina Oi: "+ retinaOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
                     new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlscod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlscoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlccod, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase(vlccoi, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("OD: " + presionIntraOcOD + " OI: " +presionIntraOcOI, fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                      //Linea
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){Colspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OD: " + presionIntraOcOD + " "+npresionIntraOcODMed, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("OI: " + presionIntraOcOI + " "+presionIntraOcOIMed, fontColumnValue1)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    //Linea
                     new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},  
                     new PdfPCell(new Phrase(testIshihara, fontColumnValue)){Colspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE}, 
-                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                  };
-                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 30f, 25f };
+                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 15F, 8f, 16f, 16f };
 
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
@@ -19259,6 +20092,200 @@ namespace NetPdf
                 document.Add(filiationWorker);
             }
             #endregion
+            #region AGUDEZA VISUAL
+            else if (findOftalmologia != null)
+            {
+                var TestIshihara = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+                var Oftalmo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+
+
+                var DxCateodiaOftalmologia = diagnosticRepository.FindAll(p => p.i_CategoryId == 14);
+                string ValorDxOftalmologia = "";
+                string ValorOD_VC_SC = "", ValorOI_VC_SC = "", ValorOD_VC_CC = "", ValorOI_VC_CC = "";
+                string ValorOD_VL_SC = "", ValorOI_VL_SC = "", ValorOD_VL_CC = "", ValorOI_VL_CC = "";
+                string ValorDiscromatopsia = "";
+                if (findOftalmologia != null)
+                {
+
+
+                    var OD_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_CERCA_OJO_DERECHO_ID);
+                    if (OD_VC_SC != null)
+                    {
+                        if (OD_VC_SC.v_Value1Name != null) ValorOD_VC_SC = OD_VC_SC.v_Value1Name;
+                    }
+
+                    var OI_VC_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_SC_OJO_IZQUIERDO);
+                    if (OI_VC_SC != null)
+                    {
+                        if (OI_VC_SC.v_Value1Name != null) ValorOI_VC_SC = OI_VC_SC.v_Value1Name;
+                    }
+
+                    var OD_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_AGUDEZA_VISUAL_CERCA_CC_OJO_DERECHO);
+                    if (OD_VC_CC != null)
+                    {
+                        if (OD_VC_CC.v_Value1Name != null) ValorOD_VC_CC = OD_VC_CC.v_Value1Name;
+                    }
+
+                    var OI_VC_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_CERCA_OJO_IZQUIERDO_ID);
+                    if (OI_VC_CC != null)
+                    {
+                        if (OI_VC_CC.v_Value1Name != null) ValorOI_VC_CC = OI_VC_CC.v_Value1Name;
+                    }
+
+                    var OD_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_DERECHO_ID);
+                    if (OD_VL_SC != null)
+                    {
+                        if (OD_VL_SC.v_Value1Name != null) ValorOD_VL_SC = OD_VL_SC.v_Value1Name;
+                    }
+
+                    var OI_VL_SC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_SC_LEJOS_OJO_IZQUIERDO_ID);
+                    if (OI_VL_SC != null)
+                    {
+                        if (OI_VL_SC.v_Value1Name != null) ValorOI_VL_SC = OI_VL_SC.v_Value1Name;
+                    }
+
+                    var OD_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_DERECHO_ID);
+                    if (OD_VL_CC != null)
+                    {
+                        if (OD_VL_CC.v_Value1Name != null) ValorOD_VL_CC = OD_VL_CC.v_Value1Name;
+                    }
+
+                    var OI_VL_CC = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_CC_LEJOS_OJO_IZQUIERDO_ID);
+                    if (OI_VL_CC != null)
+                    {
+                        if (OI_VL_CC.v_Value1Name != null) ValorOI_VL_CC = OI_VL_CC.v_Value1Name;
+                    }
+
+                    if (DxCateodiaOftalmologia != null)
+                    {
+                        ValorDxOftalmologia = string.Join(", ", DxCateodiaOftalmologia.Select(p => p.v_DiseasesName));
+
+                    }
+
+                    //if (findOftalmologia.DiagnosticRepository != null)
+                    //{
+                    //    ValorDxOftalmologia = string.Join(", ", findOftalmologia.DiagnosticRepository.Select(p => p.v_DiseasesName));
+
+                    //}
+
+                    //var Discromatopsia = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.OFTALMOLOGIA_DICROMATOPSIA_ID);
+                    //var NormalAnormal = findOftalmologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL);
+
+                    //if (Discromatopsia != null || NormalAnormal != null)
+                    //{
+                    //    var a = NormalAnormal.v_Value1.ToString() == "1" ? "NORMAL" : "ANORMAL";
+                    //    var b = Discromatopsia.v_Value1Name;
+
+                    //    ValorDiscromatopsia = a + " / " + b;
+                    //}
+
+                    //TEST DE ISHIHARA: Anormal, Discromatopsia: No definida.
+
+
+                    if (TestIshihara != null)
+                    {
+                        string TestIshiharaNormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_NORMAL)).v_Value1;
+                        string TestIshiharaAnormal = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL).v_Value1;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_ANORMAL)).v_Value1;
+                        string Dicromatopsia = TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD) == null ? "" : TestIshihara.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OD).v_Value1Name;// TestIshihara.Count() == 0 || ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)) == null ? string.Empty : ((ServiceComponentFieldValuesList)TestIshihara.Find(p => p.v_ComponentFieldId == Sigesoft.Common.Constants.TEST_ISHIHARA_DESC)).v_Value1Name;
+
+
+                        if (TestIshiharaNormal == "1")
+                        {
+                            ValorDiscromatopsia = "NORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                        }
+                        else if (TestIshiharaAnormal == "1")
+                        {
+
+                            ValorDiscromatopsia = " ANORMAL" + " DISCRIMINACIÓN: " + Dicromatopsia;
+                        }
+                    }
+                    else
+                    {
+                        ValorDiscromatopsia = "NO APLICA";
+                    }
+
+                    if (Oftalmo != null)
+                    {
+                        ValorFondoDeOjo =
+                                Oftalmo.ServiceComponentFields.Find(
+                                    p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI) == null
+                                    ? ""
+                                    : Oftalmo.ServiceComponentFields.Find(
+                                        p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CAMPIMETRIA_OI).v_Value1;
+
+                        string od =
+                                 Oftalmo.ServiceComponentFields.Find(
+                                     p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D) == null
+                                     ? ""
+                                     : Oftalmo.ServiceComponentFields.Find(
+                                         p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_D).v_Value1;
+
+                        string oi =
+                                  Oftalmo.ServiceComponentFields.Find(
+                                      p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I) == null
+                                      ? ""
+                                      : Oftalmo.ServiceComponentFields.Find(
+                                          p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TONOMETRIA_O_I).v_Value1;
+                        ValorTonometria = "OD: " + od + " / OI: " + oi + " (mmHg)";
+                    }
+
+
+                    else
+                    {
+                        ValorFondoDeOjo = "NO APLICA";
+                        ValorTonometria = "---";
+                    }
+
+
+
+                }
+
+                cells = new List<PdfPCell>()
+                 {
+                    new PdfPCell(new Phrase("OJOS", fontColumnValue)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("SIN CORREGIR", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("CORREGIDA", fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("ENFERMEDADES OCULARES", fontColumnValue)),
+                    new PdfPCell(new Phrase(ValorEnfermedadesOculares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea 
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.D", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("O.I", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("REFLEJOS PUPILARES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorReflejosPupilares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE CERCA", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VC_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorFondoDeOjo, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorOD_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_SC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOD_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorOI_VL_CC, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase(ValorTonometria, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      //Linea
+                    new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase(ValorDiscromatopsia, fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
+
+                 };
+                columnWidths = new float[] { 15f, 10f, 10f, 10f, 10f, 30f, 25f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+
+
+            }
+            #endregion
             else
             {
                 cells = new List<PdfPCell>()
@@ -19281,16 +20308,16 @@ namespace NetPdf
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("FONDO DE OJO", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     //Linea
                     new PdfPCell(new Phrase("VISIÓN DE LEJOS", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("TONOMETRÍA (PIO)", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                    new PdfPCell(new Phrase("N/A", fontColumnValue)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
                       //Linea
                     new PdfPCell(new Phrase("VISIÓN DE COLORES", fontColumnValueBold)){HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},  
                     new PdfPCell(new Phrase("N/A", fontColumnValue)){Colspan=3,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE}, 

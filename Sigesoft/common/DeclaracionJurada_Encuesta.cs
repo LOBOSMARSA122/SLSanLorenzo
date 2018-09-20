@@ -97,7 +97,6 @@ namespace NetPdf
             document.Add(table);
             #endregion
             var tamaño_celda = 18f;
-            var tamaño_celda1 = 15f;
             ServiceComponentList examen_medico_visitantes = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.DECLARACION_JURADA_CUESTIONARIO);
 
 
