@@ -70,8 +70,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         
         private DataSet GetReportAnexo7D()
         {
-                         
-            var AscensoAlturas = new ServiceBL().ReportAscensoGrandesAlturas(_serviceId, Constants.ALTURA_7D_ID);
+            var servicesId1 = new List<string>();
+            servicesId1.Add(_serviceId);
+            var componentReportId1 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId1, 11);
+
+            var AscensoAlturas = new ServiceBL().ReportAscensoGrandesAlturas(_serviceId, Constants.ALTURA_7D_ID, componentReportId1[0].ComponentId);     
             var FuncionesVitales = new ServiceBL().ReportFuncionesVitales(_serviceId, Constants.FUNCIONES_VITALES_ID);
             var Antropometria = new ServiceBL().ReportAntropometria(_serviceId, Constants.ANTROPOMETRIA_ID);
 
@@ -96,8 +99,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private DataSet GetReportAlturaFisica()
         {
-                            
-            var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);
+            var servicesId8 = new List<string>();
+            servicesId8.Add(_serviceId);
+            var componentReportId8 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId8, 11);
+            var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID, componentReportId8[0].ComponentId);
+             
+            //var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);
 
             dsGetRepo = new DataSet();
 
@@ -633,7 +640,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             OperationResult objOperationResult = new OperationResult();
 
-            var dataListForReport = new ServiceBL().GetReportTestVertigo(_serviceId, Constants.TEST_VERTIGO_ID);
+            var dataListForReport = new ServiceBL().GetReportTestVertigo(_serviceId, Constants.TEST_VERTIGO_ID,"");
 
             dsGetRepo = new DataSet();
 

@@ -40,7 +40,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var rp = new Reports.crAlturaMayor();
 
-            var aptitudeCertificate = new PacientBL().GetAlturaEstructural(_serviceId, _ComponentId);
+            var aptitudeCertificate = new PacientBL().GetAlturaEstructural(_serviceId, _ComponentId,"");
             DataSet ds1 = new DataSet();
 
             DataTable dt = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(aptitudeCertificate);

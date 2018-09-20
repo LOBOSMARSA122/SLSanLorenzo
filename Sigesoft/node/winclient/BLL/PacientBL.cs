@@ -1718,7 +1718,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
         // Alberto
-        public List<ReportAlturaEstructural> GetAlturaEstructural(string pstrserviceId, string pstrComponentId)
+        public List<ReportAlturaEstructural> GetAlturaEstructural(string pstrserviceId, string pstrComponentId, string idComponentReport)
         {
             try
             {
@@ -1773,7 +1773,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var funcionesVitales = serviceBL.ReportFuncionesVitales(pstrserviceId, Constants.FUNCIONES_VITALES_ID);
                 var antropometria = serviceBL.ReportAntropometria(pstrserviceId, Constants.ANTROPOMETRIA_ID);
-                var valores = new ServiceBL().ValoresComponente(pstrserviceId, Constants.ALTURA_ESTRUCTURAL_ID);
+                var valores = new ServiceBL().ValoresComponente(pstrserviceId, idComponentReport);
                 var sql = (from a in objEntity.ToList()
                            select new ReportAlturaEstructural
                             {
@@ -5387,7 +5387,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
         #region Reportes
 
-        public List<OsteomuscularNuevo> ReportOsteoMuscularNuevo(string pstrserviceId, string pstrComponentId)
+        public List<OsteomuscularNuevo> ReportOsteoMuscularNuevo(string pstrserviceId, string pstrComponentId, string idComponentReport)
         {
             try
             {
@@ -5436,10 +5436,10 @@ namespace Sigesoft.Node.WinClient.BLL
                                  });
 
                 var MedicalCenter = GetInfoMedicalCenter();
-
+                var OsteoMuscular = new ServiceBL().ValoresComponente(pstrserviceId, idComponentReport);
 
                 var sql = (from a in objEntity.ToList()
-                           let OsteoMuscular = new ServiceBL().ValoresComponente(pstrserviceId, pstrComponentId)
+                          
                            select new OsteomuscularNuevo
                            {
                                IdServicio = a.IdServicio,

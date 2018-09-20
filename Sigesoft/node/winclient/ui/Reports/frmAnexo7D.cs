@@ -35,27 +35,27 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 var rp = new Reports.crAnexo7D();
 
-                var AscensoAlturas = new ServiceBL().ReportAscensoGrandesAlturas(_serviceId, Constants.ALTURA_7D_ID);
-                var FuncionesVitales = new ServiceBL().ReportFuncionesVitales(_serviceId, Constants.FUNCIONES_VITALES_ID);
-                var Antropometria = new ServiceBL().ReportAntropometria(_serviceId, Constants.ANTROPOMETRIA_ID);
+                //var AscensoAlturas = new ServiceBL().ReportAscensoGrandesAlturas(_serviceId, Constants.ALTURA_7D_ID);
+                //var FuncionesVitales = new ServiceBL().ReportFuncionesVitales(_serviceId, Constants.FUNCIONES_VITALES_ID);
+                //var Antropometria = new ServiceBL().ReportAntropometria(_serviceId, Constants.ANTROPOMETRIA_ID);
 
-                DataSet ds1 = new DataSet();
-                DataTable dt = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(AscensoAlturas);
-                dt.TableName = "dtAnexo7D";
-                ds1.Tables.Add(dt);
+                //DataSet ds1 = new DataSet();
+                //DataTable dt = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(AscensoAlturas);
+                //dt.TableName = "dtAnexo7D";
+                //ds1.Tables.Add(dt);
 
-                DataTable dt1 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(FuncionesVitales);
-                dt1.TableName = "dtFuncionesVitales";
-                ds1.Tables.Add(dt1);
+                //DataTable dt1 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(FuncionesVitales);
+                //dt1.TableName = "dtFuncionesVitales";
+                //ds1.Tables.Add(dt1);
 
-                DataTable dt2 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(Antropometria);
-                dt2.TableName = "dtAntropometria";
-                ds1.Tables.Add(dt2);
+                //DataTable dt2 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(Antropometria);
+                //dt2.TableName = "dtAntropometria";
+                //ds1.Tables.Add(dt2);
                 
-                rp.SetDataSource(ds1);
+                //rp.SetDataSource(ds1);
 
-                crystalReportViewer2.ReportSource = rp;
-                crystalReportViewer2.Show();
+                //crystalReportViewer2.ReportSource = rp;
+                //crystalReportViewer2.Show();
 
 
            
