@@ -127,7 +127,7 @@ namespace NetPdf
             {
                 TipoExamen = "PERIODICO ANUAL";
             }
-            else if (filiationData.i_EsoTypeId == 3)
+            else if (DataService.i_EsoTypeId == 3)
             {
                 TipoExamen = "RETIRO";
             }
@@ -135,7 +135,7 @@ namespace NetPdf
             {
                 TipoExamen = "PREVENTIVO";
             }
-            else if (filiationData.i_EsoTypeId == 5)
+            else if (DataService.i_EsoTypeId == 5)
             {
                 TipoExamen = "REUBICACIÓN";
             }

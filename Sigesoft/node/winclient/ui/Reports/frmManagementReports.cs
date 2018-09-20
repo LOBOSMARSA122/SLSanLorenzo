@@ -123,9 +123,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "MARCOBRE PASE MÉDICO", v_ComponentId = Constants.MARCOBRE_PASE_MEDICO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 77, v_ComponentName = "DECLARACIÓN JURADA", v_ComponentId = Constants.DECLARACION_JURADA });
 
-                serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "ENTREGA DE EXAMEN MEDICO OCUPACIONAL", v_ComponentId = Constants.ENTREGA_DE_XAMEN_MEDICO_OCUPACIONAL });
+                serviceComponents.Add(new ServiceComponentList { Orden = 78, v_ComponentName = "ENTREGA DE EXAMEN MEDICO OCUPACIONAL", v_ComponentId = Constants.ENTREGA_DE_XAMEN_MEDICO_OCUPACIONAL });
 
-                serviceComponents.Add(new ServiceComponentList { Orden = 60, v_ComponentName = "EV. MED. SAN MARTIN - INFORME RESULTADOS", v_ComponentId = Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME }); 
+                serviceComponents.Add(new ServiceComponentList { Orden = 79, v_ComponentName = "EV. MED. SAN MARTIN - INFORME RESULTADOS", v_ComponentId = Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME }); 
 
                 //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
                 //if (datosP.Genero.ToUpper() == "FEMENINO")
@@ -5157,7 +5157,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateDeclaracionJurada_Encuesta(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.DECLARACION_JURADA_CUESTIONARIO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
-                    ///
+                case Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME:
+                    GenerateInforme_Resultados_San_Martinm(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                ///GenerateInforme_Resultados_San_Martinm
                 case Constants.INFORME_EXAMENES_ESPECIALES:
                     GenerateExamenesEspecialesReport(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_EXAMENES_ESPECIALES)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
