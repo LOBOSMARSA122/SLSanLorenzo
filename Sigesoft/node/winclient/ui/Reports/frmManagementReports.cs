@@ -1756,6 +1756,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Informe_Otorrinolaringologico.CreateInforme_Otorrinolaringologico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
+        private void GenerateDeclaracionJurada_Encuesta(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            DeclaracionJurada_Encuesta.CreateDeclaracionJurada_Encuesta(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+        }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
         {
@@ -5086,6 +5095,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.INFORME_OTORRINOLARINGOLOGICO:
                     GenerateInforme_Otorrinolaringologico(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_OTORRINOLARINGOLOGICO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.DECLARACION_JURADA_CUESTIONARIO:
+                    GenerateDeclaracionJurada_Encuesta(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.DECLARACION_JURADA_CUESTIONARIO)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                     ///
