@@ -120,7 +120,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(filiationData.d_ServiceDate.Value.ToShortDateString(), fontColumnValue)){MinimumHeight=tamaño_caldas}, 
 
                     new PdfPCell(new Phrase("EDAD:", fontColumnValue)){MinimumHeight=tamaño_caldas}, 
-                    new PdfPCell(new Phrase(filiationData.i_Age.Value.ToString(), fontColumnValue)){MinimumHeight=tamaño_caldas},
+                    new PdfPCell(new Phrase(filiationData.i_Age.Value.ToString() + "AÑOS", fontColumnValue)){MinimumHeight=tamaño_caldas},
                     new PdfPCell(new Phrase("SEXO:", fontColumnValue)){MinimumHeight=tamaño_caldas}, 
                     new PdfPCell(new Phrase(filiationData.v_SexTypeName, fontColumnValue)){MinimumHeight=tamaño_caldas}, 
                     

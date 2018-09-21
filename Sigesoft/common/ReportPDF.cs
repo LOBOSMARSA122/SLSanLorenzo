@@ -5307,7 +5307,7 @@ namespace NetPdf
 
             #endregion
 
-            document.NewPage();
+            //document.NewPage();
 
             cells = new List<PdfPCell>()
                  {                   
