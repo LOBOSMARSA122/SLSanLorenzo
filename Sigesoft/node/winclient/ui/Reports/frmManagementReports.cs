@@ -1139,13 +1139,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            Informeintensidadfatiga.CreateInformeintensidadfatiga(_DataService, MedicalCenter, pathFile);
+            var _Valores = _serviceBL.ValoresComponente_ObservadoAMC(_serviceId, Constants.PSICOLOGIA_ID);
+            Informeintensidadfatiga.CreateInformeintensidadfatiga(_DataService, MedicalCenter, _Valores, pathFile);
         }
         private void GenerateInventarioMaslach(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            InformeMaslach.CreateInformeMaslach(_DataService, MedicalCenter, pathFile);
+            var _Valores = _serviceBL.ValoresComponente_ObservadoAMC(_serviceId, Constants.PSICOLOGIA_ID);
+            InformeMaslach.CreateInformeMaslach(_DataService, MedicalCenter, _Valores, pathFile);
         }
 
         private void GenerateAnexo16Coimolache(string pathFile)
