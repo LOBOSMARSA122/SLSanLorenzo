@@ -735,12 +735,14 @@ namespace Sigesoft.Node.WinClient.UI
 
                         var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
                         var ValoresDxLab = _serviceBL.ValoresComponenteAMC_(_serviceId, 1);
+                        var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+
                         FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                                   filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
                                   _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales,
                                   ExamenFisico, Oftalmologia, Psicologia, RX, RX1, Laboratorio, Audiometria, Espirometria,
-                                  _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,TestIhihara,TestEstereopsis,       
-                                  saveFileDialog2.FileName);
+                                  _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,TestIhihara,TestEstereopsis,
+                                  serviceComponents, saveFileDialog2.FileName);
 
                         this.Enabled = true;
                     }

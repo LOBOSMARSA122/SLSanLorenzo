@@ -8633,13 +8633,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
                 var TestIhihara = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ISHIHARA_ID);
                 var TestEstereopsis = _serviceBL.ValoresComponente(_serviceId, Constants.TEST_ESTEREOPSIS_ID);
+                var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
                 FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
                             filiationData, _listAtecedentesOcupacionales, _listaPatologicosFamiliares,
                             _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales,
                             ExamenFisico, Oftalmologia, Psicologia, OIT, RX, Laboratorio, Audiometria, Espirometria,
                             _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter, TestIhihara, TestEstereopsis,
-                            pathFile);
+                            serviceComponents,pathFile);
             }
         }
 

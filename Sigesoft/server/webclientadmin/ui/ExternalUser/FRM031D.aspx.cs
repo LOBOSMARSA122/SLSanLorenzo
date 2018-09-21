@@ -122,6 +122,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var TestIhihara = _serviceBL.ValoresComponente(ServicioId, Constants.TEST_ISHIHARA_ID);
             var TestEstereopsis = _serviceBL.ValoresComponente(ServicioId, Constants.TEST_ESTEREOPSIS_ID);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(ServicioId);
 
 
             FichaMedicaOcupacional312.CreateFichaMedicalOcupacional312Report(_DataService,
@@ -129,7 +130,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
                      _listMedicoPersonales, _listaHabitoNocivos, Antropometria, FuncionesVitales,
                      ExamenFisico, Oftalmologia, Psicologia, OIT, RX, Laboratorio, Audiometria, Espirometria,
                      _DiagnosticRepository, _Recomendation, _ExamenesServicio, ValoresDxLab, MedicalCenter,TestIhihara,TestEstereopsis,
-                     pathFile);
+                     serviceComponents, pathFile);
         }
 
         private void GenerateInformeMedicoTrabajador(string pathFile, string ServicioId, string PacienteId, string EmpresaCliente)
