@@ -333,7 +333,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 cbAptitudEso.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_DEFAPTITUD", _formActions);
                 btnGuardarConclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_SAVE", _formActions);
-                if (_profesionId == 31)
+                if (_profesionId == 31 || _profesionId == 30)
                 {
                     btnGuardarConclusiones.Enabled = true;
                 }
@@ -8139,7 +8139,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     {
                         componentIds.Add(Constants.INFORME_ANEXO_16_SHAHUINDO);
                     }
-                    else if (filiationData.EmpresaClienteId == "N009-OO000000590")
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000590" || filiationData.EmpresaClienteId == "N002-OO000003575")
                     {
                         componentIds.Add(Constants.INFORME_ANEXO_16_COIMOLACHE);
                     }
@@ -8362,14 +8362,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     componentIds.Add(Constants.RX_TORAX_ID);
                 }
-                if (excepciones != null)
-                {
-                    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
-                }
-                if (autorizacion != null)
-                {
-                    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
-                }
+                //if (excepciones != null)
+                //{
+                //    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
+                //}
+                //if (autorizacion != null)
+                //{
+                //    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+                //}
 
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             }

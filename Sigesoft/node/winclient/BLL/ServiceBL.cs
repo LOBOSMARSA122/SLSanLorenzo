@@ -1088,7 +1088,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var sql = (from a in objEntity.ToList()
                            let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
-                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID)
+                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID,
+                           Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID, Constants.EXCEPCIONES_LABORATORIO_ID)
 
                            select new ServiceList
                            {
@@ -1160,7 +1161,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return objEntity;
         }
-        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3, string p4, string p5)
+        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -1175,7 +1176,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 join p in dbContext.person on me.v_PersonId equals p.v_PersonId
 
 							 where E.v_ServiceId == pstrServiceId &&
-                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || E.v_ComponentId == p4 || E.v_ComponentId == p5)
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || E.v_ComponentId == p4 || E.v_ComponentId == p5|| E.v_ComponentId == p6|| E.v_ComponentId == p7|| E.v_ComponentId == p8)
 							 select new KeyValueDTO
 							 {
 								 Value5 = pme.b_SignatureImage,
@@ -26474,6 +26475,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                  from me in me_join.DefaultIfEmpty()
                                  join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
                                  from pme in pme_join.DefaultIfEmpty()
+
+                                 join E in dbContext.servicecomponent on new { a = ser.v_ServiceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+                                 join F in dbContext.systemuser on E.i_ApprovedUpdateUserId equals F.i_SystemUserId into F_join
+                                 from F in F_join.DefaultIfEmpty()
+                                 join G in dbContext.professional on F.v_PersonId equals G.v_PersonId
+
                                  where ser.v_ServiceId == pstrServiceId
                                  select new OstioCoimolache
                                  {
@@ -26497,7 +26506,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   Genero = gen.v_Value1,
                                   FirmaTrabajador = per.b_RubricImage,
                                   HuellaTrabajador = per.b_FingerPrintImage,
-                                  FirmaUsuarioGraba = pme.b_SignatureImage
+                                  FirmaUsuarioGraba = G.b_SignatureImage
                                  });
 
 
