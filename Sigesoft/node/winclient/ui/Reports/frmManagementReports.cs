@@ -2202,7 +2202,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             if (chkTodos.Checked)
             {
                 chklChekedAll(chklConsolidadoReportes, true);
-                chklConsolidadoReportes.Enabled = false;
+                chklConsolidadoReportes.Enabled = true;
                 SelectChangeConsolidadoReportes();
                 chkTodos.Text = "Deseleccionar Todos";
             }
