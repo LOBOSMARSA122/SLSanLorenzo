@@ -3715,7 +3715,7 @@ namespace Sigesoft.Node.WinClient.BLL
                            i_ServiceComponentStatusId = a.i_ServiceComponentStatusId
                        }).ToList();
 
-            return qry[0].i_ServiceComponentStatusId.Value;
+            return qry.Count == 0 ? -1 : qry[0].i_ServiceComponentStatusId.Value;
         }
 
 		public string ConcatenateRestrictionByComponentId(string pstrComponentId, string pstrServiceId)
@@ -15092,10 +15092,11 @@ namespace Sigesoft.Node.WinClient.BLL
 
 				var MedicalCenter = GetInfoMedicalCenter();
                 var ValorCampos = GetListValueComponent(pstrserviceId, pstrComponentReportId).ToList();
+                //AMC111
 				var funcionesVitales = ReportFuncionesVitales(pstrserviceId, Constants.FUNCIONES_VITALES_ID);
-				var antropometria = ReportAntropometria(pstrserviceId, Constants.ANTROPOMETRIA_ID);
+                var Antropometria = ValoresComponente(pstrserviceId, Constants.ANTROPOMETRIA_ID);
 				var FirmaMedicoMedicina = ObtenerDatosMedicoMedicina(pstrserviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
-
+                var dx = GetDiagnosticByServiceId(pstrserviceId);
 				var sql = (from a in objEntity.ToList()
 
 						   select new ServiceList
@@ -15111,7 +15112,9 @@ namespace Sigesoft.Node.WinClient.BLL
 							   d_ServiceDate = a.d_ServiceDate,
 							   v_DocNumber = a.v_DocNumber,
 							   i_SexTypeId = a.i_SexTypeId,
-
+                               DiagnosticosConcatenado = dx,
+                               talla = Antropometria.Count == 0 ? string.Empty : Antropometria.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_TALLA_ID).v_Value1,
+                               Peso = Antropometria.Count == 0 ? string.Empty : Antropometria.Find(p => p.v_ComponentFieldId == Constants.ANTROPOMETRIA_PESO_ID).v_Value1,
                                Anemia = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ALTURA_7D_ANEMIA_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ALTURA_7D_ANEMIA_ID).Valor,//
 
                                Cirugia = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_CIRUGIA_MAYOR_CRECIENTE_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ASCENSO_GRANDES_ALTURAS_CIRUGIA_MAYOR_CRECIENTE_ID).Valor,////GetServiceComponentFielValue(a.v_ServiceId, pstrComponentId, Constants.ASCENSO_GRANDES_ALTURAS_CIRUGIA_MAYOR_CRECIENTE_ID, "NOCOMBO", 0, "SI"),
@@ -15146,11 +15149,17 @@ namespace Sigesoft.Node.WinClient.BLL
 							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
 							   NombreUsuarioGraba = a.NombreUsuarioGraba,
 
-							   FirmaMedico = FirmaMedicoMedicina.FirmaMedicoMedicina,
-							   ApellidosDoctor = FirmaMedicoMedicina.ApellidosDoctor,
-							   NombreDoctor = FirmaMedicoMedicina.NombreDoctor,
-							   CMP = FirmaMedicoMedicina.CMP,
-							   DireccionDoctor = FirmaMedicoMedicina.DireccionDoctor,
+
+                               //FirmaMedico = pme.b_SignatureImage,
+                               //ApellidosDoctor = H.v_FirstLastName + " " + H.v_SecondLastName,
+                               //NombreDoctor = H.v_FirstName,
+                               //CMP = pme.v_ProfessionalCode,
+
+                               FirmaMedico = FirmaMedicoMedicina == null ? a.FirmaMedico : FirmaMedicoMedicina.FirmaMedicoMedicina,
+                               ApellidosDoctor = FirmaMedicoMedicina == null ? a.ApellidosDoctor : FirmaMedicoMedicina.ApellidosDoctor,
+                               NombreDoctor = FirmaMedicoMedicina == null ? a.NombreDoctor : FirmaMedicoMedicina.NombreDoctor,
+                               CMP = FirmaMedicoMedicina == null ? a.CMP : FirmaMedicoMedicina.CMP,
+                               DireccionDoctor = FirmaMedicoMedicina == null ? a.v_AdressLocation : FirmaMedicoMedicina.DireccionDoctor,
 
 						   }).ToList();
 

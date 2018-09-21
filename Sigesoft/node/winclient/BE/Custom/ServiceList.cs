@@ -421,6 +421,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_Categoria { get; set; }
 
         public List<DiagnosticRepositoryList> Diagnosticos { get; set; }
+        public string DiagnosticosConcatenado { get; set; }
 
         public Boolean b_FechaEntrega { get; set; }
 

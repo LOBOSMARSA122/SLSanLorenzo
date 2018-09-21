@@ -234,6 +234,10 @@
     <Compile Include="Configuration\frmProtocolPlanAseguradora.Designer.cs">
       <DependentUpon>frmProtocolPlanAseguradora.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\Anexo7D.cs">
+      <DependentUpon>Anexo7D.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Dataset\dsAudioCoimo.cs">
       <DependentUpon>dsAudioCoimo.xsd</DependentUpon>
       <SubType>Component</SubType>
