@@ -962,9 +962,15 @@ namespace Sigesoft.Node.WinClient.BLL
 							   HuellaTrabajador = a.HuellaTrabajador,
 
 							   //Datos del Doctor
-							   FirmaDoctor = a.FirmaDoctor,
+							   FirmaDoctor =  a.FirmaDoctor,
 							   NombreDoctor = DatosMedicina.Value2,
 							   CMP = DatosMedicina.Value3,
+
+
+                               //FirmaMedico = pme.b_SignatureImage,
+                               //ApellidosDoctor = H.v_FirstLastName + " " + H.v_SecondLastName,
+                               //NombreDoctor = H.v_FirstName,
+                               //CMP = pme.v_ProfessionalCode,
 
 							   d_Fur = a.d_Fur,
 							   v_CatemenialRegime = a.v_CatemenialRegime,

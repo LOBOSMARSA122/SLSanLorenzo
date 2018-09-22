@@ -154,12 +154,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             {
 
 
-                if (item.v_ComponentId == Constants.ALTURA_7D_ID)
-                {
-                    var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                    ent.Orden = 8;
-                }
-                else if (item.v_ComponentId == Constants.EVA_ERGONOMICA_ID)
+                //if (item.v_ComponentId == Constants.ALTURA_7D_ID)
+                //{
+                //    var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
+                //    ent.Orden = 8;
+                //}
+                if (item.v_ComponentId == Constants.EVA_ERGONOMICA_ID)
                 {
                     var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
                     ent.Orden = 9;
@@ -1821,6 +1821,24 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 RecoPsico, RecoRx, RecoOit, RecoOft, Restricciton, Aptitud, _listAtecedentesOcupacionalesA, _listAtecedentesOcupacionalesB, _listaPatologicosFamiliares,
                 _listMedicoPersonales, _listaHabitoNocivos, anamnesis, exams, _ExamenesServicio, ExamenFisico, TestIhihara, TestEstereopsis, Oftalmologia);
         }
+
+        private void GenerateAnexo16A(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
+
+            Anexo16A.CreateAnexo16A(_DataService,
+                filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
+                datosP,
+                pathFile,
+                _ExamenesServicio);
+        }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
         {
@@ -3146,43 +3164,43 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         }
 
                     break;
-                case Constants.ALTURA_7D_ID:
+                //case Constants.ALTURA_7D_ID:
 
-                     var servicesId1 = new List<string>();
-                    servicesId1.Add(_serviceId);
-                    var componentReportId1 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId1, 11);
+                //     var servicesId1 = new List<string>();
+                //    servicesId1.Add(_serviceId);
+                //    var componentReportId1 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId1, 11);
 
-                    var AscensoAlturas = new ServiceBL().ReportAscensoGrandesAlturas(_serviceId, componentId, componentReportId1[0].ComponentId);
-                    var FuncionesVitales = new ServiceBL().ReportFuncionesVitales(_serviceId, Constants.FUNCIONES_VITALES_ID);
-                    var Antropometria = new ServiceBL().ReportAntropometria(_serviceId, Constants.ANTROPOMETRIA_ID);
+                //    var AscensoAlturas = new ServiceBL().ReportAscensoGrandesAlturas(_serviceId, componentId, componentReportId1[0].ComponentId);
+                //    var FuncionesVitales = new ServiceBL().ReportFuncionesVitales(_serviceId, Constants.FUNCIONES_VITALES_ID);
+                //    var Antropometria = new ServiceBL().ReportAntropometria(_serviceId, Constants.ANTROPOMETRIA_ID);
 
-                    dsGetRepo = new DataSet("Anexo7D");
+                //    dsGetRepo = new DataSet("Anexo7D");
 
-                    DataTable dt = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(AscensoAlturas);
-                    dt.TableName = "dtAnexo7D";
-                    dsGetRepo.Tables.Add(dt);
+                //    DataTable dt = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(AscensoAlturas);
+                //    dt.TableName = "dtAnexo7D";
+                //    dsGetRepo.Tables.Add(dt);
 
-                    DataTable dt1 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(FuncionesVitales);
-                    dt1.TableName = "dtFuncionesVitales";
-                    dsGetRepo.Tables.Add(dt1);
+                //    DataTable dt1 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(FuncionesVitales);
+                //    dt1.TableName = "dtFuncionesVitales";
+                //    dsGetRepo.Tables.Add(dt1);
 
-                    DataTable dt2 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(Antropometria);
-                    dt2.TableName = "dtAntropometria";
-                    dsGetRepo.Tables.Add(dt2);
+                //    DataTable dt2 = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(Antropometria);
+                //    dt2.TableName = "dtAntropometria";
+                //    dsGetRepo.Tables.Add(dt2);
 
-                    rp = new Reports.crAnexo7D();
-                    rp.SetDataSource(dsGetRepo);
-                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.ALTURA_7D_ID + ".pdf";
-                    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ALTURA_7D_ID + ".pdf";
-                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    rp.ExportOptions.DestinationOptions = objDiskOpt;
-                    rp.Export();
-                    rp.Close();
+                //    rp = new Reports.crAnexo7D();
+                //    rp.SetDataSource(dsGetRepo);
+                //    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                //    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                //    objDiskOpt = new DiskFileDestinationOptions();
+                //    //objDiskOpt.DiskFileName = Application.StartupPath + @"\TempMerge\" + Constants.ALTURA_7D_ID + ".pdf";
+                //    objDiskOpt.DiskFileName = ruta + serviceId + "-" + Constants.ALTURA_7D_ID + ".pdf";
+                //    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                //    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                //    rp.Export();
+                //    rp.Close();
 
-                    break;
+                //    break;
                 case Constants.ALTURA_ESTRUCTURAL_ID:
                     var servicesId9 = new List<string>();
                     servicesId9.Add(_serviceId);
@@ -5178,6 +5196,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME:
                     GenerateInforme_Resultados_San_Martinm(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.ALTURA_7D_ID:
+                    GenerateAnexo16A(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ALTURA_7D_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 ///GenerateInforme_Resultados_San_Martinm

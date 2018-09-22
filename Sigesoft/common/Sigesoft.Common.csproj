@@ -77,6 +77,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Anexo16A.cs" />
     <Compile Include="Anexo3_Exo_Resp_Yanacocha.cs" />
     <Compile Include="Anexo8_InformeMedicoOcupacionalcs.cs" />
     <Compile Include="ApendiceN2_Evaluacion_Oftalmologica_Yanacocha.cs" />

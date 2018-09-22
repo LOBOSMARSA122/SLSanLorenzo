@@ -88,7 +88,7 @@ namespace NetPdf
            
             var cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("EXONERAXIÓN DE EXAMENES DE \n LABORATORIO", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, BorderColor=BaseColor.WHITE },
+                    new PdfPCell(new Phrase("EXONERACIÓN DE EXAMENES DE \n LABORATORIO", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, BorderColor=BaseColor.WHITE },
                 };
             columnWidths = new float[] { 100f };
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
