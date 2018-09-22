@@ -154,12 +154,12 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             {
 
 
-                //if (item.v_ComponentId == Constants.ALTURA_7D_ID)
-                //{
-                //    var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
-                //    ent.Orden = 8;
-                //}
-                if (item.v_ComponentId == Constants.EVA_ERGONOMICA_ID)
+                if (item.v_ComponentId == Constants.ALTURA_7D_ID)
+                {
+                    var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
+                    ent.Orden = 8;
+                }
+                else if (item.v_ComponentId == Constants.EVA_ERGONOMICA_ID)
                 {
                     var ent = serviceComponents.FirstOrDefault(o => o.v_ComponentId == item.v_ComponentId);
                     ent.Orden = 9;
@@ -1831,13 +1831,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-            var _ExamenesServicio = _serviceBL.GetServiceComponentsReport(_serviceId);
 
-            Anexo16A.CreateAnexo16A(_DataService,
-                filiationData, diagnosticRepository, serviceComponents, MedicalCenter,
-                datosP,
-                pathFile,
-                _ExamenesServicio);
+            Anexo16A.CreateAnexo16A(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
         }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)

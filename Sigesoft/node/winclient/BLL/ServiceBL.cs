@@ -29638,7 +29638,7 @@ namespace Sigesoft.Node.WinClient.BLL
                            {
                                
                                 FECHA = a.FECHA,
-                                HORA = a.HORA,
+                                HORA = a.FECHA.ToString().Split(' ')[1],
                                 EMP_CLIENTE = a.EMP_CLIENTE,
                                 EMP_CONTRATISTA =  a.EMP_CONTRATISTA,
                                 NOMBRE_PACIENTE = a.NOMBRE_PACIENTE,

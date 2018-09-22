@@ -116,11 +116,14 @@ namespace NetPdf
                 new PdfPCell(new Phrase(DataService.v_CustomerOrganizationName + "  /  " + DataService.EmpresaEmpleadora, fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ANCHOR, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
               
-                new PdfPCell(new Phrase("por lo cual exonero de toda responsabilidad médico legal al personal de: " + infoEmpresaPropietaria.v_Name , fontColumnValue)) 
+                new PdfPCell(new Phrase("por lo cual exonero de toda responsabilidad médico legal al personal de: " + infoEmpresaPropietaria.v_Name.Split(' ')[0] +" "+infoEmpresaPropietaria.v_Name.Split(' ')[1] , fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ANCHOR, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
               
-                new PdfPCell(new Phrase("S.R.L. así como a esta institución por mi decisión de no pasar dichos exámenes.", fontColumnValue)) 
+                new PdfPCell(new Phrase(infoEmpresaPropietaria.v_Name.Split(' ')[2] + " "+infoEmpresaPropietaria.v_Name.Split(' ')[3] + " así como a esta institución por mi decisión de no pasar dichos", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ANCHOR, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
+              
+                new PdfPCell(new Phrase("exámenes.", fontColumnValue)) 
+                { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ANCHOR, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
               
             };
 
