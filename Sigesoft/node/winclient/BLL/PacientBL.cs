@@ -1373,7 +1373,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_Story = s.v_Story,
                                      v_MainSymptom = s.v_MainSymptom,
                                      FirmaDoctor = pr1.b_SignatureImage,
-                                     v_ExaAuxResult = s.v_ExaAuxResult
+                                     v_ExaAuxResult = s.v_ExaAuxResult,
+
+                                     //FirmaDoctor = pr.b_SignatureImage,
+                                     NombreDoctor = pe.v_FirstName + " " + pe.v_FirstLastName + " " + pe.v_SecondLastName,
+                                     CMP = pr1.v_ProfessionalCode
 
                                  });
 
@@ -1383,6 +1387,8 @@ namespace Sigesoft.Node.WinClient.BLL
                            select new PacientList
                            {
                                FirmaDoctor = a.FirmaDoctor,
+                               NombreDoctor = a.NombreDoctor,
+                               CMP = a.CMP,
                                v_CurrentOccupation = a.v_CurrentOccupation,
                                v_Story = a.v_Story,
                                v_MainSymptom = a.v_MainSymptom,

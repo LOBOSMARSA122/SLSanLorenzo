@@ -176,6 +176,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string CursoEnfermedad { get; set; }
 
         public byte[] FirmaDoctor { get; set; }
+        public string NombreDoctor { get; set; }
+        public string CMP { get; set; }
 
         public string v_ExaAuxResult { get; set; }
         public string v_ProtocoloId { get; set; }

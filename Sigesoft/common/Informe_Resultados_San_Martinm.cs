@@ -535,7 +535,7 @@ namespace NetPdf
             cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            if (DataService.HuellaTrabajador != null)
+            if (DataService.FirmaMedicoMedicina != null)
                 cellfirmaMedico = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 110, 40));
             else
                 cellfirmaMedico = new PdfPCell(new Phrase(" ", fontColumnValue));

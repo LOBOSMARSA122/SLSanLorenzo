@@ -997,7 +997,164 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-		private KeyValueDTO ObtenerFirmaMedicoExamen(string pstrServiceId, string p1, string p2)
+        public ServiceList GetInformacion_OtrosExamenes(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join D in dbContext.datahierarchy on new { a = C.i_SectorTypeId.Value, b = 104 }
+                                                        equals new { a = D.i_ItemId, b = D.i_GroupId } into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
+                                 join E in dbContext.datahierarchy on new { a = C.i_DepartmentId.Value, b = 113 }
+                                                       equals new { a = E.i_ItemId, b = E.i_GroupId } into E_join
+                                 from E in E_join.DefaultIfEmpty()
+
+                                 join F in dbContext.datahierarchy on new { a = C.i_ProvinceId.Value, b = 113 }
+                                                       equals new { a = F.i_ItemId, b = F.i_GroupId } into F_join
+                                 from F in F_join.DefaultIfEmpty()
+
+                                 join G in dbContext.datahierarchy on new { a = C.i_DistrictId.Value, b = 113 }
+                                                       equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
+                                 from G in G_join.DefaultIfEmpty()
+
+                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join su in dbContext.systemuser on A.i_UpdateUserMedicalAnalystId.Value equals su.i_SystemUserId into su_join
+                                 from su in su_join.DefaultIfEmpty()
+
+                                 join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
+                                 from pr in pr_join.DefaultIfEmpty()
+
+                                 join P1 in dbContext.person on new { a = pr.v_PersonId }
+                                         equals new { a = P1.v_PersonId } into P1_join
+                                 from P1 in P1_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+
+                                 select new ServiceList
+                                 {
+                                     v_PersonId = H.v_PersonId,
+                                     v_ServiceId = A.v_ServiceId,
+                                     i_EsoTypeId = B.i_EsoTypeId.Value,
+                                     RUC = C.v_IdentificationNumber,
+                                     //---------------DATOS DE LA EMPRESA--------------------------------
+                                     EmpresaTrabajo = C.v_Name,
+                                     EmpresaEmpleadora = C1.v_Name,
+                                     RubroEmpresaTrabajo = C.v_SectorName,
+                                     DireccionEmpresaTrabajo = C.v_Address,
+                                     DepartamentoEmpresaTrabajo = E.v_Value1,
+                                     ProvinciaEmpresaTrabajo = F.v_Value1,
+                                     DistritoEmpresaTrabajo = G.v_Value1,
+                                     v_CurrentOccupation = H.v_CurrentOccupation,
+                                     b_Logo = C2.b_Image,
+                                     EmpresaClienteId = C.v_OrganizationId,
+                                     
+                                     FirmaTrabajador = H.b_RubricImage,
+                                     HuellaTrabajador = H.b_FingerPrintImage,
+
+                                     //Datos del Doctor
+                                     FirmaDoctor = pr.b_SignatureImage,
+                                     NombreDoctor = P1.v_FirstName + " " + P1.v_FirstLastName + " " + P1.v_SecondLastName,
+                                     CMP = pr.v_ProfessionalCode,
+
+                                     v_CustomerOrganizationName = C2.v_Name,
+
+                                 });
+
+
+                var sql = (from a in objEntity.ToList()
+                           let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID, string.Empty)
+
+                           select new ServiceList
+                           {
+                               //-----------------CABECERA---------------------------------
+                               v_ServiceId = a.v_ServiceId,
+                               i_EsoTypeId = a.i_EsoTypeId, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                               RUC = a.RUC,
+                               //---------------DATOS DE LA EMPRESA--------------------------------
+                               EmpresaTrabajo = a.EmpresaTrabajo,
+                               EmpresaEmpleadora = a.EmpresaEmpleadora,
+                               RubroEmpresaTrabajo = a.RubroEmpresaTrabajo,
+                               DireccionEmpresaTrabajo = a.DireccionEmpresaTrabajo,
+                               DepartamentoEmpresaTrabajo = a.DepartamentoEmpresaTrabajo,
+                               ProvinciaEmpresaTrabajo = a.ProvinciaEmpresaTrabajo,
+                               DistritoEmpresaTrabajo = a.DistritoEmpresaTrabajo,
+                               v_CurrentOccupation = a.v_CurrentOccupation,
+                               b_Logo = a.b_Logo,
+                               EmpresaClienteId = a.EmpresaClienteId,
+                               //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+                             
+                               v_OwnerOrganizationName = (from n in dbContext.organization
+                                                          where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                                                          select n.v_Name + " " + n.v_Address).SingleOrDefault<string>(),
+
+                              
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               HuellaTrabajador = a.HuellaTrabajador,
+
+                               //Datos del Doctor
+                               FirmaDoctor = a.FirmaDoctor,
+                               NombreDoctor = DatosMedicina.Value2,
+                               CMP = DatosMedicina.Value3,
+
+                               FirmaMedicoMedicina = DatosMedicina.Value5,
+                               v_CustomerOrganizationName = a.v_CustomerOrganizationName
+                           }).FirstOrDefault();
+
+                return sql;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        private KeyValueDTO ObtenerFirmaMedicoExamen(string pstrServiceId, string p1, string p2)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var objEntity = (from E in dbContext.servicecomponent
+
+                             join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+
+                             join p in dbContext.person on me.v_PersonId equals p.v_PersonId
+
+                             where E.v_ServiceId == pstrServiceId &&
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2)
+                             select new KeyValueDTO
+                             {
+                                 Value5 = pme.b_SignatureImage,
+                                 Value2 = p.v_FirstLastName + " " + p.v_SecondLastName + " " + p.v_FirstName,
+                                 Value3 = pme.v_ProfessionalCode
+
+                             }).FirstOrDefault();
+
+            return objEntity;
+        }
+        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -1012,7 +1169,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 join p in dbContext.person on me.v_PersonId equals p.v_PersonId
 
 							 where E.v_ServiceId == pstrServiceId &&
-							 (E.v_ComponentId == p1 || E.v_ComponentId == p2)
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3)
 							 select new KeyValueDTO
 							 {
 								 Value5 = pme.b_SignatureImage,

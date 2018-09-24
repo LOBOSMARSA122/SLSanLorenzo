@@ -1500,7 +1500,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateExamen_Medico_Visitantes_GoldFields(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1824,7 +1824,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateAnexo16A(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPSFirmaMedicoOcupacional(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
