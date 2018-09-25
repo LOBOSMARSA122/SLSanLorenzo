@@ -104,6 +104,7 @@
     <Compile Include="DeclaracionJuradaPsicologia_Coimolache_LaZanja.cs" />
     <Compile Include="DeclaracionJuradaRX.cs" />
     <Compile Include="DeclaracionJurada_Encuesta.cs" />
+    <Compile Include="Declaracion_Jurada_EMO_Secutiras.cs" />
     <Compile Include="Declaracion_Jurada_EMPO_YANACOCHA.cs" />
     <Compile Include="DynamicLinq.cs" />
     <Compile Include="EntregaExamenMedicoOcipacional.cs" />

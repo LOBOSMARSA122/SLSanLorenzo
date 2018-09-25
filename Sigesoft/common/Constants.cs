@@ -18,6 +18,9 @@ namespace Sigesoft.Common
         #region ENTREGA DE EXAMEN MEDICO OCUPACIONAL
         public const string EVALUACION_MEDICO_SAN_MARTIN_INFORME = "EV-MED-INF-RESULTADOS";
         #endregion
+        #region Declaracion Jurada SECURITAS
+        public const string Declaracion_Jurada_EMO_SECURITAS = "DJ-EMO_SECURITAS";
+        #endregion
 
         #region Declaracion Jurada Yanacocha
         public const string Declaracion_Jurada_EMPO_YANACOCHA = "DJ-EMPO_YANACOCHA";

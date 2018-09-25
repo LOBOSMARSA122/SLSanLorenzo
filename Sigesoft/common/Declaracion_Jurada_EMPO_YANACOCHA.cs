@@ -56,16 +56,20 @@ namespace NetPdf
             #endregion
 
             #region Fonts
-            Font fontTitle1 = FontFactory.GetFont("Calibri", 12, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
-            Font fontTitle2 = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
+            Font fontTitle1 = FontFactory.GetFont("Calibri", 13, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontTitle2 = FontFactory.GetFont("Calibri", 8, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
             Font fontTitleTable = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             Font fontTitleTableNegro = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
             Font fontSubTitle = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.White));
             Font fontSubTitleNegroNegrita = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
 
-            Font fontColumnValue = FontFactory.GetFont("Calibri", 8, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
-            Font fontColumnValueBold = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
-            Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 5, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValue = FontFactory.GetFont("Calibri", 11, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueBold = FontFactory.GetFont("Calibri", 11, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueApendice = FontFactory.GetFont("Calibri", 7, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+
+            Font fontColumnValue1 = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.NORMAL, new BaseColor(System.Drawing.Color.Black));
+            Font fontColumnValueBold1 = FontFactory.GetFont("Calibri", 6, iTextSharp.text.Font.BOLD, new BaseColor(System.Drawing.Color.Black));
+            
             #endregion
 
             #region TÍTULO
@@ -87,9 +91,12 @@ namespace NetPdf
 
             var cellsTit = new List<PdfPCell>()
                 { 
-                    new PdfPCell(new Phrase("DECLARACÓNN JURADA PARA EXAMENES MÉDICOS PRE OCUPACIONALES", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase("", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase("DECLARACIÓN JURADA PARA EXAMENES MÉDICOS \nPRE OCUPACIONALES", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase("", fontTitle1)) {HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 30f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+
                 };
-            columnWidths = new float[] { 20f, 60f, 20f };
+            columnWidths = new float[] { 5f, 90f, 5f };
             table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
@@ -105,13 +112,13 @@ namespace NetPdf
             {          
                 new PdfPCell(new Phrase("\n \n", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                 new PdfPCell(new Phrase("\n \n      YO, ", fontColumnValue)){ Colspan = 2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
-                new PdfPCell(new Phrase("\n \n" , fontColumnValue)){ Colspan = 13, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},    
-                new PdfPCell(new Phrase("\n \n identificado con", fontColumnValue)){ Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                new PdfPCell(new Phrase("\n \n" , fontColumnValue)){ Colspan = 12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},    
+                new PdfPCell(new Phrase("\n \n identificado con", fontColumnValue)){ Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                 new PdfPCell(new Phrase("\n \n", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                 //+ datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName
                 new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
-                new PdfPCell(new Phrase("DNI ( "+ tipodoc1  + ") N°  / Pasaporte ( "+ tipodoc2+" ) /cARNET DE eXTRANJERÍA ( " + tipodoc4 + " )  Nro ", fontColumnValue)){ Colspan = 11, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE}, 
-                new PdfPCell(new Phrase("" + datosPac.v_DocNumber, fontColumnValue)){ Colspan =3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE}, 
+                new PdfPCell(new Phrase("DNI( "+ tipodoc1  +" )/ Pasaporte( "+ tipodoc2+" )/CARNET DE EXTRANJERÍA( " + tipodoc4 + " ) N°", fontColumnValue)){ Colspan = 11, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED_ALL, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE}, 
+                new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE}, 
                 new PdfPCell(new Phrase("representante legal", fontColumnValue)){ Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE}, 
                 new PdfPCell(new Phrase("", fontColumnValue)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
 
@@ -196,6 +203,9 @@ namespace NetPdf
                 new PdfPCell(new Phrase("Firma", fontColumnValue)){ Colspan=20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = tamaño_celda , BorderColor=BaseColor.WHITE},
 
 
+                new PdfPCell(new Phrase("\n \n \n", fontColumnValue)){ Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 50f, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+
+
               };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
@@ -261,51 +271,81 @@ namespace NetPdf
                     Contratista = cellConCheck;
                 }
             }
-
+            float tamaño_celda1 = 12f;
             cells = new List<PdfPCell>()
                    {      
                     //fila 
-                    new PdfPCell(CellLogo){Rowspan =2, Colspan = 2, Border = PdfPCell.LEFT_BORDER, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("ANEXO N° 16", fontTitle1)){Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("EXAMEN MÉDICO", fontColumnValueBold)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_CENTER}, 
-                    new PdfPCell(new Phrase("", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER},  
+                    new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    new PdfPCell(new Phrase("", fontColumnValue1)){Rowspan =2, Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, MinimumHeight = tamaño_celda1,   UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK},
+                    new PdfPCell(new Phrase("ANEXO N° 16", fontTitle2)){Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_CENTER,  MinimumHeight = tamaño_celda1,  UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK},
+                    new PdfPCell(new Phrase("EXAMEN MÉDICO", fontColumnValueBold1)){ HorizontalAlignment=PdfPCell.ALIGN_CENTER, MinimumHeight = tamaño_celda1,   UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK}, 
+                    new PdfPCell(new Phrase("", fontColumnValue1)){UseVariableBorders=true, MinimumHeight = tamaño_celda1,  BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.BLACK },  
+                    new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+
                     //fila
-                    new PdfPCell(new Phrase("FICHA MÉDICA OCUPACIONAL", fontTitle1)){Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("PRE-OCUPACIONAL", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    new PdfPCell(new Phrase("FICHA MÉDICA OCUPACIONAL", fontTitle2)){Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders=true, MinimumHeight = tamaño_celda1,  BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},
+                    new PdfPCell(new Phrase("PRE-OCUPACIONAL", fontColumnValue1)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(PreOcupacional){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },
-                    //fila
-                    new PdfPCell(new Phrase(" ", fontColumnValue)) {Border = PdfPCell.LEFT_BORDER, Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
-                    new PdfPCell(cellPhoto1){Rowspan = 4, Border = PdfPCell.LEFT_BORDER, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(new Phrase("ANUAL", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT},   
-                    new PdfPCell(Periodica){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
-                    //fila
-                    new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER}, 
-                    new PdfPCell(Empresa){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                                   
-                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
-                    new PdfPCell(new Phrase("RETIRO", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
-                    new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
-                    //fila
-                    new PdfPCell(new Phrase("CONTRATISTA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER},     
-                    new PdfPCell(Contratista){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                               
-                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
-                    new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
-                    new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
-                    //fila
-                    new PdfPCell(new Phrase("APELLIDOS Y NOMBRES: ", fontColumnValue)){Colspan=1, Border = PdfPCell.LEFT_BORDER},                
-                    new PdfPCell(new Phrase(datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue)) { Colspan=2, Border = PdfPCell.NO_BORDER},                                        
-                    new PdfPCell(new Phrase("N° DE FICHA: " + datosPac.v_IdService , fontColumnValue)){Colspan=2,Border = PdfPCell.NO_BORDER},    
-                  
-                    new PdfPCell(new Phrase("FECHA DEL EXAMEN", fontColumnValue)){ Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},              
-                    new PdfPCell(new Phrase(datosPac.FechaServicio.ToString().Split(' ')[0], fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                    // fila                   
-                    new PdfPCell(new Phrase("MINERALES EXPLOTADOS O PROCESADOS", fontColumnValue)){Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_LEFT},                                           
-                    new PdfPCell(new Phrase(datosPac.v_ExploitedMineral, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
+                    new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                   ////fila
+                   //  new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                   // new PdfPCell(new Phrase(" ", fontColumnValue1)) {Colspan =4 ,MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},  
+                   // //new PdfPCell(new Phrase(" ", fontColumnValue1)){Rowspan = 4, Border = PdfPCell.NO_BORDER, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                   // new PdfPCell(new Phrase("ANUAL", fontColumnValue1)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT},   
+                   // new PdfPCell(Periodica){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
+                   //  new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                    
+                     //fila
+                      new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                   new PdfPCell(new Phrase("", fontColumnValue1)){Border = PdfPCell.LEFT_BORDER}, 
+                    new PdfPCell(){Border = PdfPCell.NO_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                                   
+                    new PdfPCell(new Phrase( "",fontColumnValue1)){Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase(" ", fontColumnValue1)) {Border = PdfPCell.NO_BORDER, Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("ANUAL", fontColumnValue1)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(Periodica){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
+                      new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                  
+
+                     //fila
+                      new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                   new PdfPCell(new Phrase("EMPRESA:", fontColumnValue1)){Border = PdfPCell.LEFT_BORDER}, 
+                    new PdfPCell(Empresa){Border = PdfPCell.NO_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                                   
+                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue1)){Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase(" ", fontColumnValue1)) {Border = PdfPCell.NO_BORDER, Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("RETIRO", fontColumnValue1)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
+                      new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                  //fila
+                      new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                  new PdfPCell(new Phrase("CONTRATISTA:", fontColumnValue1)){Border = PdfPCell.LEFT_BORDER},     
+                    new PdfPCell(Contratista){Border = PdfPCell.NO_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                               
+                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue1)){Border = PdfPCell.NO_BORDER},   
+                    new PdfPCell(new Phrase(" ", fontColumnValue1)) {Border = PdfPCell.NO_BORDER, Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue1)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
+                     new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                   //fila
+                    new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    new PdfPCell(new Phrase("APELLIDOS Y NOMBRES: ", fontColumnValue1)){Colspan=1, Border = PdfPCell.LEFT_BORDER},                
+                    new PdfPCell(new Phrase(datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue1)) { Colspan=2, Border = PdfPCell.NO_BORDER},                                        
+                    new PdfPCell(new Phrase(" ", fontColumnValue1)) {Border = PdfPCell.NO_BORDER, Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                    new PdfPCell(new Phrase("N° DE FICHA: " + datosPac.v_IdService , fontColumnValue1)){Colspan=2,Border = PdfPCell.RIGHT_BORDER},    
+                      new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+                    
+                     new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},                   
+                    new PdfPCell(new Phrase("FECHA DEL EXAMEN", fontColumnValue1)){ Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT,UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},              
+                    new PdfPCell(new Phrase(datosPac.FechaServicio.ToString().Split(' ')[0], fontColumnValue1)){ HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
+                    // fila                   
+                    new PdfPCell(new Phrase("MINERALES EXPLOTADOS O PROCESADOS", fontColumnValue1)){Colspan=1, HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},                                           
+                    new PdfPCell(new Phrase(datosPac.v_ExploitedMineral, fontColumnValue1)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},  
+                    new PdfPCell(new Phrase("", fontColumnValue1)){ Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
+
                    };
 
-            columnWidths = new float[] { 15f, 5f, 30f, 25f, 20f, 5f };
+            columnWidths = new float[] {5f, 15f, 5f, 25f, 20f, 20f, 5f ,5f};
 
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
 
             #endregion

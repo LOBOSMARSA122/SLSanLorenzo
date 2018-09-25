@@ -128,12 +128,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 79, v_ComponentName = "EV. MED. SAN MARTIN - INFORME RESULTADOS", v_ComponentId = Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME });
 
                 serviceComponents.Add(new ServiceComponentList { Orden = 80, v_ComponentName = "DECLARACION JURADA EMPO YANACOCHA", v_ComponentId = Constants.Declaracion_Jurada_EMPO_YANACOCHA });
+                serviceComponents.Add(new ServiceComponentList { Orden = 81, v_ComponentName = "DECLARACION JURADA EMO SECURITAS", v_ComponentId = Constants.Declaracion_Jurada_EMO_SECURITAS });
 
                 //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
-                //if (datosP.Genero.ToUpper() == "FEMENINO")
-                //{
-                //    serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
-                //}
+                if (datosP.Genero.ToUpper() == "FEMENINO")
+                {
+                    serviceComponents.Add(new ServiceComponentList { Orden = 62, v_ComponentName = "DECLARACION JURADA - RX - MUJERES", v_ComponentId = Constants.DECLARACION_JURADA_EMBARAZADAS_RX });
+                }
                 #region HUDBAY
                 serviceComponents.Add(new ServiceComponentList { Orden = 65, v_ComponentName = "CONSENTIMIENTO INFORMADO ACCESO HISTORIA CLÍNICA", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO_HUDBAY });
                 serviceComponents.Add(new ServiceComponentList { Orden = 66, v_ComponentName = "INF MÉD DE APTITUD OCUPACIONAL PARA LA EMPRESA", v_ComponentId = Constants.INFORME_MEDICO_APTITUD_OCUPACIONAL_EMPRESA_HUDBAY });
@@ -1856,6 +1857,16 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var CuadroCheck = Common.Utils.BitmapToByteArray(Resources.CuadradoCheck);
 
             Declaracion_Jurada_EMPO_YANACOCHA.CreateDeclaracion_Jurada_EMPO_YANACOCHA(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, CuadroVacio, CuadroCheck);
+        }
+        private void GenerateDeclaracion_Jurada_EMO_Secutiras(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+
+            Declaracion_Jurada_EMO_Secutiras.CreateDeclaracion_Jurada_EMO_Secutiras(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
         }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
@@ -5226,6 +5237,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.Declaracion_Jurada_EMPO_YANACOCHA:
                     GenerateDeclaracion_Jurada_EMPO_YANACOCHA(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.Declaracion_Jurada_EMPO_YANACOCHA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.Declaracion_Jurada_EMO_SECURITAS:
+                    GenerateDeclaracion_Jurada_EMO_Secutiras(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.Declaracion_Jurada_EMO_SECURITAS)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 ///GenerateInforme_Resultados_San_Martinm
