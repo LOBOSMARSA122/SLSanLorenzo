@@ -1407,7 +1407,10 @@ namespace Sigesoft.Common
 
         public const string APTITUD_YANACOCHA = "APT_YANA";
         #endregion
+        #region Nazca
 
+        public const string ANSIEDAD_ZUNG = "ANS-ZUNG";
+        #endregion
         #region DECLARACION JURADA PSICOLOGIA COIMOLACHE - LA ZANJA
         public const string D_J_PSICOLOGIA_COIMOLACHE_LA_ZANJA_ID= "N009-ME000000457";
 
