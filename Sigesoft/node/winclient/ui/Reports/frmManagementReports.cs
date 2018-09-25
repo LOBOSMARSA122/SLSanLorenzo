@@ -372,6 +372,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             ConsolidadoReportes.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "INFORME DE LABORATORIO", v_ComponentId = Constants.INFORME_LABORATORIO_CLINICO });
             ConsolidadoReportes.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "AUDIOMETRIA AUDIOMAX", v_ComponentId = Constants.AUDIOMETRIA_AUDIOMAX_ID });
             serviceComponents.Add(new ServiceComponentList { Orden = 50, v_ComponentName = "INFORME DE TRABAJADOR INTERNACIONAL", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_CI });
+            serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "ANSIEDAD DE ZUNG", v_ComponentId = Constants.ANSIEDAD_ZUNG });
 
             var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
             var ResultadoAnexo3121 = serviceComponents11.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
@@ -1123,6 +1124,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                                     _PiezasAusentes, Audiometria, diagnosticRepository, MedicalCenter,
                                     pathFile);
 
+        }
+
+        private void GenerateAnsiedadZung(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            InformeAnsiedadZung.CreateInformeAnsiedadZung(_DataService, MedicalCenter, pathFile);
         }
 
         private void GenerateAnexo16Coimolache(string pathFile)
@@ -5064,6 +5072,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.APTITUD_YANACOCHA:
                     GenerateAptitudYanacocha(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.APTITUD_YANACOCHA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.ANSIEDAD_ZUNG:
+                    GenerateAnsiedadZung(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ANSIEDAD_ZUNG)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.INFORME_ANEXO_16_COIMOLACHE:
