@@ -125,7 +125,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 serviceComponents.Add(new ServiceComponentList { Orden = 78, v_ComponentName = "ENTREGA DE EXAMEN MEDICO OCUPACIONAL", v_ComponentId = Constants.ENTREGA_DE_XAMEN_MEDICO_OCUPACIONAL });
 
-                serviceComponents.Add(new ServiceComponentList { Orden = 79, v_ComponentName = "EV. MED. SAN MARTIN - INFORME RESULTADOS", v_ComponentId = Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME }); 
+                serviceComponents.Add(new ServiceComponentList { Orden = 79, v_ComponentName = "EV. MED. SAN MARTIN - INFORME RESULTADOS", v_ComponentId = Constants.EVALUACION_MEDICO_SAN_MARTIN_INFORME });
+
+                serviceComponents.Add(new ServiceComponentList { Orden = 80, v_ComponentName = "DECLARACION JURADA EMPO YANACOCHA", v_ComponentId = Constants.Declaracion_Jurada_EMPO_YANACOCHA });
 
                 //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
                 //if (datosP.Genero.ToUpper() == "FEMENINO")
@@ -1833,6 +1835,27 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
             Anexo16A.CreateAnexo16A(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
+        }
+        private void GenerateAltura_Fisica_Shahuindo(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            Altura_Fisica_Shahuindo.CreateAltura_Fisica_Shahuindo(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+        }
+        private void GenerateDeclaracion_Jurada_EMPO_YANACOCHA(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var CuadroVacio = Common.Utils.BitmapToByteArray(Resources.CuadradoVacio);
+            var CuadroCheck = Common.Utils.BitmapToByteArray(Resources.CuadradoCheck);
+
+            Declaracion_Jurada_EMPO_YANACOCHA.CreateDeclaracion_Jurada_EMPO_YANACOCHA(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, CuadroVacio, CuadroCheck);
         }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
@@ -5195,6 +5218,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.ALTURA_7D_ID:
                     GenerateAnexo16A(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ALTURA_7D_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.ALTURA_FISICA_SHAHUINDO_ID:
+                    GenerateAltura_Fisica_Shahuindo(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ALTURA_FISICA_SHAHUINDO_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.Declaracion_Jurada_EMPO_YANACOCHA:
+                    GenerateDeclaracion_Jurada_EMPO_YANACOCHA(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.Declaracion_Jurada_EMPO_YANACOCHA)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 ///GenerateInforme_Resultados_San_Martinm

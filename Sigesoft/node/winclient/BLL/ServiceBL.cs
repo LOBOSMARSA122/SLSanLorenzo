@@ -1082,7 +1082,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
                 var sql = (from a in objEntity.ToList()
-                           let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID, string.Empty)
+                           let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID, Constants.ALTURA_FISICA_SHAHUINDO_ID)
 
                            select new ServiceList
                            {
