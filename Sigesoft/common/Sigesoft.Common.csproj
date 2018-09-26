@@ -128,6 +128,8 @@
     <Compile Include="HUDBAY\InformeMedicoDeAptitudOcupacional_Empresa.cs" />
     <Compile Include="InformeAnsiedadZung.cs" />
     <Compile Include="InformedeResultados_Autorización.cs" />
+    <Compile Include="Informeintensidadfatiga.cs" />
+    <Compile Include="InformeMaslach.cs" />
     <Compile Include="InformeMedicoOcupacional.cs" />
     <Compile Include="InformeMedicoOcupacional_Cosapi.cs" />
     <Compile Include="InformeMedicoSaludOcupacional_ExamenAnual.cs" />

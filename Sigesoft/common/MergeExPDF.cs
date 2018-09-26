@@ -42,7 +42,7 @@ namespace NetPdf
         public void RunFile()
         {
             Process proceso = Process.Start(destinationFile);
-            proceso.WaitForExit();
+            //proceso.WaitForExit();
             proceso.Close();
            
         }
