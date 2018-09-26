@@ -361,7 +361,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
 
 
-
+            //Colocar en la lista
 
             ConsolidadoReportes.Add(new ServiceComponentList { Orden = 1, v_ComponentName = "CONSENTIMIENTO INFORMADO ", v_ComponentId = Constants.CONSENTIMIENTO_INFORMADO });
             ConsolidadoReportes.Add(new ServiceComponentList { Orden = 2, v_ComponentName = "CERTIFICADO APTITUD SIN Diagnósticos ", v_ComponentId = Constants.INFORME_CERTIFICADO_APTITUD_SIN_DX });
@@ -373,6 +373,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             ConsolidadoReportes.Add(new ServiceComponentList { Orden = 27, v_ComponentName = "AUDIOMETRIA AUDIOMAX", v_ComponentId = Constants.AUDIOMETRIA_AUDIOMAX_ID });
             serviceComponents.Add(new ServiceComponentList { Orden = 50, v_ComponentName = "INFORME DE TRABAJADOR INTERNACIONAL", v_ComponentId = Constants.INFORME_FICHA_MEDICA_TRABAJADOR_CI });
             serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "ANSIEDAD DE ZUNG", v_ComponentId = Constants.ANSIEDAD_ZUNG });
+            serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INTENSIDAD DE FATIGA", v_ComponentId = Constants.ESCALA_FATIGA });
+            serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INVENTARIO DE BURNOUT DE MASLACH", v_ComponentId = Constants.INV_MASLACH });
 
             var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
             var ResultadoAnexo3121 = serviceComponents11.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
@@ -1131,6 +1133,18 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             InformeAnsiedadZung.CreateInformeAnsiedadZung(_DataService, MedicalCenter, pathFile);
+        }
+        private void GenerateEscalafatiga(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            Informeintensidadfatiga.CreateInformeintensidadfatiga(_DataService, MedicalCenter, pathFile);
+        }
+        private void GenerateInventarioMaslach(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            InformeMaslach.CreateInformeMaslach(_DataService, MedicalCenter, pathFile);
         }
 
         private void GenerateAnexo16Coimolache(string pathFile)
@@ -5081,12 +5095,22 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateAnexo7C(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_ANEXO_7C)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
+
                 case Constants.APTITUD_YANACOCHA:
                     GenerateAptitudYanacocha(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.APTITUD_YANACOCHA)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
+                    //Agregar case
                 case Constants.ANSIEDAD_ZUNG:
                     GenerateAnsiedadZung(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ANSIEDAD_ZUNG)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.ESCALA_FATIGA:
+                    GenerateEscalafatiga(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.ESCALA_FATIGA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.INV_MASLACH:
+                    GenerateInventarioMaslach(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INV_MASLACH)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.INFORME_ANEXO_16_COIMOLACHE:
