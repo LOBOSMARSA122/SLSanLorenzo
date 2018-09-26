@@ -90,6 +90,7 @@
     <Compile Include="CertificadoAptitudMedico_Cosapi.cs" />
     <Compile Include="Certificado_Psicosensometrico_Datos.cs" />
     <Compile Include="CERTIFICADO_SUFICIENCIA_MEDICA_TC.cs" />
+    <Compile Include="Certificado_Suficiencia_Medica_Trabajo_Altura_V4.cs" />
     <Compile Include="ConstantsNatclar.cs" />
     <Compile Include="ConsultaMedica.cs" />
     <Compile Include="Coprocultivo_PSeriado.cs" />
@@ -112,6 +113,7 @@
     <Compile Include="CustomDtos\KeyValueDTO.cs" />
     <Compile Include="CustomDtos\OperationResult.cs" />
     <Compile Include="ExamenesEspecialesReport.cs" />
+    <Compile Include="Examen_Dermatologico_Ocupacional.cs" />
     <Compile Include="Examen_Medico_Visitantes_GoldFields.cs" />
     <Compile Include="Examen_Oftalmologico_Completo.cs" />
     <Compile Include="Examen_Oftalmologico_Simple.cs" />
@@ -128,6 +130,8 @@
     <Compile Include="HUDBAY\InformeMedicoDeAptitudOcupacional_Empresa.cs" />
     <Compile Include="InformeAnsiedadZung.cs" />
     <Compile Include="InformedeResultados_Autorización.cs" />
+    <Compile Include="Informeintensidadfatiga.cs" />
+    <Compile Include="InformeMaslach.cs" />
     <Compile Include="InformeMedicoOcupacional.cs" />
     <Compile Include="InformeMedicoOcupacional_Cosapi.cs" />
     <Compile Include="InformeMedicoSaludOcupacional_ExamenAnual.cs" />
