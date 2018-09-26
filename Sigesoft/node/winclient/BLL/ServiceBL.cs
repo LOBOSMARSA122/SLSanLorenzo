@@ -1083,7 +1083,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var sql = (from a in objEntity.ToList()
                            let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
-                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID)
+                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID)
 
                            select new ServiceList
                            {
@@ -1155,7 +1155,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return objEntity;
         }
-        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3, string p4)
+        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3, string p4, string p5)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -1170,7 +1170,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 join p in dbContext.person on me.v_PersonId equals p.v_PersonId
 
 							 where E.v_ServiceId == pstrServiceId &&
-                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || E.v_ComponentId == p4)
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || E.v_ComponentId == p4 || E.v_ComponentId == p5)
 							 select new KeyValueDTO
 							 {
 								 Value5 = pme.b_SignatureImage,
