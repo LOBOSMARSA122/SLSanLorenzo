@@ -17688,22 +17688,22 @@ namespace NetPdf
 
             PdfPCell Apto = cellSinCheck, NoApto = cellSinCheck, AptoConRestricciones = cellSinCheck, AptoObs = cellSinCheck;
 
-            if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.Apto)
-            {
-                Apto = cellConCheck;
-            }
-            else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.NoApto)
-            {
-                NoApto = cellConCheck;
-            }
-            else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.AptRestriccion)
-            {
-                AptoConRestricciones = cellConCheck;
-            }
-            else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.AptoObs)
-            {
-                AptoObs = cellConCheck;
-            }
+            //if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.Apto)
+            //{
+            //    Apto = cellConCheck;
+            //}
+            //else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.NoApto)
+            //{
+            //    NoApto = cellConCheck;
+            //}
+            //else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.AptRestriccion)
+            //{
+            //    AptoConRestricciones = cellConCheck;
+            //}
+            //else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.AptoObs)
+            //{
+            //    AptoObs = cellConCheck;
+            //}
             var ConclusionesOITDescripcionSinNeumoconiosis = string.Empty;
             var ConclusionesOITDescripcionConNeumoconiosis = string.Empty;
             string ExposicionPolvoDescripcion = string.Empty;
@@ -21193,22 +21193,22 @@ namespace NetPdf
 
             PdfPCell Apto = cellSinCheck, NoApto = cellSinCheck, AptoConRestricciones = cellSinCheck, AptoObs = cellSinCheck;
 
-            if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.Apto)
-            {
-                Apto = cellConCheck;
-            }
-            else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.NoApto)
-            {
-                NoApto = cellConCheck;
-            }
-            else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.AptRestriccion)
-            {
-                AptoConRestricciones = cellConCheck;
-            }
-            else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.AptoObs)
-            {
-                AptoObs = cellConCheck;
-            }
+            //if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.Apto)
+            //{
+            //    Apto = cellConCheck;
+            //}
+            //else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.NoApto)
+            //{
+            //    NoApto = cellConCheck;
+            //}
+            //else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.AptRestriccion)
+            //{
+            //    AptoConRestricciones = cellConCheck;
+            //}
+            //else if (DataService.i_AptitudeStatusId == (int)Sigesoft.Common.AptitudeStatus.AptoObs)
+            //{
+            //    AptoObs = cellConCheck;
+            //}
             // Alejandro
             //string RX_CONCLUSIONES_OIT_DESCRIPCION_ID = "";
             var ConclusionesOITDescripcionSinNeumoconiosis = string.Empty;
