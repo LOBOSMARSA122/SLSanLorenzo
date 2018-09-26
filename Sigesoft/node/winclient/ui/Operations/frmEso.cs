@@ -7555,7 +7555,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             var ServiceDate = grdServiciosAnteriores.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString();
 
-            if (ServiceDate.ToString().Split(' ')[0] == datosP.FechaServicio.ToString().Split(' ')[0])
+            if (ServiceDate.ToString().Split(' ')[0] == DateTime.Now.ToString().Split(' ')[0])
             {
                 var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "", (int)MasterService.Eso);
                 frm.ShowDialog();
