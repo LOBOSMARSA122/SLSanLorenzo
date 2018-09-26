@@ -12,7 +12,7 @@ namespace NetPdf
 {
    public class InformeAnsiedadZung
     {
-       public static void CreateInformeAnsiedadZung(ServiceList DataService, organizationDto infoEmpresaPropietaria, string filePDF)
+       public static void CreateInformeAnsiedadZung(ServiceList DataService, organizationDto infoEmpresaPropietaria, List<ServiceComponentFieldValuesList> valores, string filePDF)
        {
            Document document = new Document();
            document.SetPageSize(iTextSharp.text.PageSize.A4);
@@ -22,10 +22,10 @@ namespace NetPdf
            //holaaaaaaa
            //create an instance of your PDFpage class. This is the class we generated above.
            pdfPage page = new pdfPage();
-           page.FirmaTrabajador = DataService.FirmaTrabajador;
-           page.HuellaTrabajador = DataService.HuellaTrabajador;
-           page.Dni = DataService.v_DocNumber;
-           page.EmpresaId = DataService.EmpresaClienteId;
+           //page.FirmaTrabajador = DataService.FirmaTrabajador;
+           //page.HuellaTrabajador = DataService.HuellaTrabajador;
+           //page.Dni = DataService.v_DocNumber;
+           //page.EmpresaId = DataService.EmpresaClienteId;
            //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
            writer.PageEvent = page;
 
@@ -130,6 +130,54 @@ namespace NetPdf
            #endregion
 
            #region Cuadro
+
+           #region grupo 1
+           string p1_1 = "";
+           string p1_2 = "";
+           string p1_3 = "";
+           string p1_4 = "";
+
+           if (valores.Find(p => p.v_ComponentFieldId == "N009-MF000004106") != null)
+           {
+               p1_1 = valores.Find(p => p.v_ComponentFieldId == "N009-MF000004106").v_Value1;
+           }
+           if (valores.Find(p => p.v_ComponentFieldId == "N009-MF000004107") != null)
+           {
+               p1_2 = valores.Find(p => p.v_ComponentFieldId == "N009-MF000004107").v_Value1;
+           }
+           if (valores.Find(p => p.v_ComponentFieldId == "N009-MF000004108") != null)
+           {
+               p1_3 = valores.Find(p => p.v_ComponentFieldId == "N009-MF000004108").v_Value1;
+           }
+           if (valores.Find(p => p.v_ComponentFieldId == "N009-MF000004109") != null)
+           {
+               p1_4 = valores.Find(p => p.v_ComponentFieldId == "N009-MF000004109").v_Value1;
+           }
+
+           var resultado_1 = "";
+           var resultado_2 = "";
+           var resultado_3 = "";
+           var resultado_4 = "";
+
+           if (p1_1 == "1")
+           {
+               resultado_1 = "1";
+           }
+           else if (p1_2 == "1")
+           {
+               resultado_2 = "2";
+           }
+           else if (p1_3 == "1")
+           {
+               resultado_3 = "3";
+           }
+           else if (p1_4 == "1")
+           {
+               resultado_4 = "4";
+           }
+
+           #endregion
+          
            
            cells = new List<PdfPCell>()
                    {      
@@ -144,10 +192,10 @@ namespace NetPdf
   
                     new PdfPCell(new Phrase("1", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
                     new PdfPCell(new Phrase("Me siento más intranquilo y nervioso que de costumbre", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase(resultado_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase(resultado_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    new PdfPCell(new Phrase(resultado_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
+                    new PdfPCell(new Phrase(resultado_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                     new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
 
                     new PdfPCell(new Phrase("2", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   

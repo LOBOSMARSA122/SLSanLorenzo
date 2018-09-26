@@ -1132,7 +1132,8 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            InformeAnsiedadZung.CreateInformeAnsiedadZung(_DataService, MedicalCenter, pathFile);
+            var _Valores = _serviceBL.ValoresComponente_ObservadoAMC(_serviceId, Constants.PSICOLOGIA_ID);
+            InformeAnsiedadZung.CreateInformeAnsiedadZung(_DataService, MedicalCenter, _Valores,pathFile);
         }
         private void GenerateEscalafatiga(string pathFile)
         {
