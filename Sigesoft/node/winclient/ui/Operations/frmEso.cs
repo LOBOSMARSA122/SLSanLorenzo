@@ -333,7 +333,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 cbAptitudEso.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_DEFAPTITUD", _formActions);
                 btnGuardarConclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_SAVE", _formActions);
-                if (_profesionId == 31)
+                if (_profesionId == 31 || _profesionId == 30)
                 {
                     btnGuardarConclusiones.Enabled = true;
                 }
