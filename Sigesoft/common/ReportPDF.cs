@@ -6129,11 +6129,11 @@ namespace NetPdf
 
                 if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMATOCRITO.v_MeasurementUnitName;
                 }
 
 
-                ValorHemoglobina1 = Resultado_HEMOGLOBINA + " / HTO:" + Resultado_HEMATOCRITO;
+                ValorHemoglobina1 = Resultado_HEMOGLOBINA + "   /   " + Resultado_HEMATOCRITO;
             }
 
 
@@ -14466,7 +14466,7 @@ namespace NetPdf
 
                 if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMATOCRITO.v_MeasurementUnitName;
                 }
 
 
@@ -18011,7 +18011,7 @@ namespace NetPdf
 
                 if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMATOCRITO.v_MeasurementUnitName;
                 }
 
 
@@ -21530,11 +21530,11 @@ namespace NetPdf
 
                 if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMATOCRITO.v_MeasurementUnitName;
                 }
 
 
-                ValorHemoglobina2 = Resultado_HEMOGLOBINA + " g/dl   / " + Resultado_HEMATOCRITO + " %";
+                ValorHemoglobina2 = Resultado_HEMOGLOBINA + "  / " + Resultado_HEMATOCRITO ;
             }
 
 
