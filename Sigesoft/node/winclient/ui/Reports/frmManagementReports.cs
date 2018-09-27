@@ -1430,7 +1430,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateExoneraxionLaboratorio(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -1442,7 +1442,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateExoneraxionPlacaTorax(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -1454,7 +1454,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateDeclaracionJuradaRX(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();

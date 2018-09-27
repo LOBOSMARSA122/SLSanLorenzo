@@ -8362,14 +8362,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     componentIds.Add(Constants.RX_TORAX_ID);
                 }
-                if (excepciones != null)
-                {
-                    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
-                }
-                if (autorizacion != null)
-                {
-                    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
-                }
+                //if (excepciones != null)
+                //{
+                //    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
+                //}
+                //if (autorizacion != null)
+                //{
+                //    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+                //}
 
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             }
