@@ -4995,67 +4995,67 @@ namespace NetPdf
 
             #endregion
 
-            //#region Conclusion Electrocardiografica
+            #region Conclusion Electrocardiografica
 
-            //var ListaElectrocardiografica = diagnosticRepository.FindAll(p => p.Categoria == "CARDIOLOGÍA");
-            //var ListaConclusionElectrocardiografica = string.Join(", ", ListaElectrocardiografica.Select(p => p.v_DiseasesName));
+            var ListaElectrocardiografica = diagnosticRepository.FindAll(p => p.Categoria == "CARDIOLOGÍA");
+            var ListaConclusionElectrocardiografica = string.Join(", ", ListaElectrocardiografica.Select(p => p.v_DiseasesName));
+            string result = "";
+            if (ListaElectrocardiografica != null)
+            {
+                result = ListaConclusionElectrocardiografica;
+            }
+            else
+            {
+                result = "- - -";
+            }
+
+            //ServiceComponentList info_Electroelectrocardiografico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTRO_GOLD);
+            //ServiceComponentList electrocardiografico = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000025");
+
             //string result = "";
-            //if (ListaElectrocardiografica != null)
+            //if (info_Electroelectrocardiografico != null)
             //{
-            //    result = ListaConclusionElectrocardiografica;
+            //    result = info_Electroelectrocardiografico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N009-MF000003125") == null ? "- - -" : info_Electroelectrocardiografico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N009-MF000003125").v_Value1Name;
+            //}
+            //else if (electrocardiografico != null)
+            //{
+            //    result = electrocardiografico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N009-MF000000194") == null ? "- - -" : electrocardiografico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N009-MF000000194").v_Value1Name;
             //}
             //else
             //{
-            //    result = "- - -";
+            //    resultado = "NO APLICA";
             //}
 
-            ////ServiceComponentList info_Electroelectrocardiografico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTRO_GOLD);
-            ////ServiceComponentList electrocardiografico = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000025");
 
-            ////string result = "";
-            ////if (info_Electroelectrocardiografico != null)
-            ////{
-            ////    result = info_Electroelectrocardiografico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N009-MF000003125") == null ? "- - -" : info_Electroelectrocardiografico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N009-MF000003125").v_Value1Name;
-            ////}
-            ////else if (electrocardiografico != null)
-            ////{
-            ////    result = electrocardiografico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N009-MF000000194") == null ? "- - -" : electrocardiografico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == "N009-MF000000194").v_Value1Name;
-            ////}
-            ////else
-            ////{
-            ////    resultado = "NO APLICA";
-            ////}
+            cells = new List<PdfPCell>();
+            cells.Add(new PdfPCell(new Phrase("CONCLUSIÓN ELETROCARDIAGRAFICA", fontColumnValue)));
+            cells.Add(new PdfPCell(new Phrase(result, fontColumnValue)));
 
 
-            //cells = new List<PdfPCell>();
-            //cells.Add(new PdfPCell(new Phrase("CONCLUSIÓN ELETROCARDIAGRAFICA", fontColumnValue)));
-            //cells.Add(new PdfPCell(new Phrase(result, fontColumnValue)));
+            columnWidths = new float[] { 30f, 70f };
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
+            document.Add(filiationWorker);
 
-            //columnWidths = new float[] { 30f, 70f };
-            //filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+            #endregion
+            #region Examen Orina
 
-            //document.Add(filiationWorker);
+            var ListaOrina = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000046");
+            var ListaOrinaConcatenada = string.Join(", ", ListaOrina.Select(p => p.v_DiseasesName));
 
-            //#endregion
-            //#region Examen Orina
+            cells = new List<PdfPCell>();
 
-            //var ListaOrina = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000046");
-            //var ListaOrinaConcatenada = string.Join(", ", ListaOrina.Select(p => p.v_DiseasesName));
+            if (!string.IsNullOrEmpty(ListaOrinaConcatenada))
+            {
+                cells.Add(new PdfPCell(new Phrase(ListaOrinaConcatenada, fontColumnValue)));
+            }
 
-            //cells = new List<PdfPCell>();
+            columnWidths = new float[] { 100f };
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "EXAMEN DE ORINA", fontTitleTable);
 
-            //if (!string.IsNullOrEmpty(ListaOrinaConcatenada))
-            //{
-            //    cells.Add(new PdfPCell(new Phrase(ListaOrinaConcatenada, fontColumnValue)));
-            //}
+            document.Add(filiationWorker);
 
-            //columnWidths = new float[] { 100f };
-            //filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "EXAMEN DE ORINA", fontTitleTable);
-
-            //document.Add(filiationWorker);
-
-            //#endregion
+            #endregion
             #region Conclusión Audiometría
 
             // Verificar si el examen esta contenida en el protocolo
@@ -5599,7 +5599,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOD, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -5610,7 +5610,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOI, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -5627,7 +5627,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("Sat. O2", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("%", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("DIASTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPAD + "mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -6278,39 +6278,39 @@ namespace NetPdf
 
                       new PdfPCell(cellPulmones),
                       new PdfPCell(new Phrase("VÉRTICES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                     
+                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea            
                       new PdfPCell(new Phrase("CAMPOS PULMONARES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                           
-                      //Linea                     
+                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},                      //Linea                     
+                      
                       new PdfPCell(new Phrase("HILIOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                 
+                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
                        //Linea                
                       new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                       //Linea   
                       new PdfPCell(new Phrase("N° Rx", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorNroRx, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
+                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2, Colspan=3 ,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      
                      //Linea   
                       new PdfPCell(new Phrase("FECHA", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorFechaToma, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
                         //Linea   
                       new PdfPCell(new Phrase("CALIDAD", fontColumnValueBold)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase(ValorCalidad, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
+                      new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea   
                       new PdfPCell(new Phrase("SÍMBOLOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase("", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -6341,20 +6341,27 @@ namespace NetPdf
                 {
                     if (item.v_DiseasesId == "N009-DD000000029")
                     {
-                        cell = new PdfPCell(new Phrase("")) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        cell = new PdfPCell(new Phrase("")) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
                     }
                     else
                     {
                         var dx = string.Format("{0} ({1})", item.v_DiseasesName, item.v_Dx_CIE10);
-                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+
+                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Rowspan = item.Recomendations.Count, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
+                        foreach (var item2 in item.Recomendations)
+                        {
+                            cell = new PdfPCell(new Phrase(item2.v_RecommendationName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                            cells.Add(cell);
+                        }
+                        //var tableDx = HandlingItextSharp.GenerateTableFromList(item.Recomendations, columnWidths, include, fontColumnValue, 0);
+                        //cell = new PdfPCell(tableDx);
+                        //cells.Add(cell);
                     }
 
                     // Crear tabla de recomendaciones para insertarla en la celda que corresponde
-                    var tableDx = HandlingItextSharp.GenerateTableFromList(item.Recomendations, columnWidths, include, fontColumnValue, 0);
-                    cell = new PdfPCell(tableDx);
-                    cells.Add(cell);
+
                 }
                 columnWidths = new float[] { 18f, 54f };
             }
@@ -11235,39 +11242,39 @@ namespace NetPdf
 
                       new PdfPCell(cellPulmones),
                       new PdfPCell(new Phrase("VÉRTICES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                     
+                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea            
                       new PdfPCell(new Phrase("CAMPOS PULMONARES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                           
-                      //Linea                     
+                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},                      //Linea                     
+                      
                       new PdfPCell(new Phrase("HILIOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                 
+                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
                        //Linea                
                       new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                       //Linea   
                       new PdfPCell(new Phrase("N° Rx", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorNroRx, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
+                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2, Colspan=3 ,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      
                      //Linea   
                       new PdfPCell(new Phrase("FECHA", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorFechaToma, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
                         //Linea   
                       new PdfPCell(new Phrase("CALIDAD", fontColumnValueBold)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase(ValorCalidad, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
+                      new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea   
                       new PdfPCell(new Phrase("SÍMBOLOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase("", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -11277,7 +11284,6 @@ namespace NetPdf
             filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
             document.Add(filiationWorker);
-
             #endregion
 
             #region CERO
@@ -11298,20 +11304,27 @@ namespace NetPdf
                 {
                     if (item.v_DiseasesId == "N009-DD000000029")
                     {
-                        cell = new PdfPCell(new Phrase("")) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        cell = new PdfPCell(new Phrase("")) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
                     }
                     else
                     {
                         var dx = string.Format("{0} ({1})", item.v_DiseasesName, item.v_Dx_CIE10);
-                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+
+                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Rowspan = item.Recomendations.Count, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
+                        foreach (var item2 in item.Recomendations)
+                        {
+                            cell = new PdfPCell(new Phrase(item2.v_RecommendationName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                            cells.Add(cell);
+                        }
+                        //var tableDx = HandlingItextSharp.GenerateTableFromList(item.Recomendations, columnWidths, include, fontColumnValue, 0);
+                        //cell = new PdfPCell(tableDx);
+                        //cells.Add(cell);
                     }
 
                     // Crear tabla de recomendaciones para insertarla en la celda que corresponde
-                    var tableDx = HandlingItextSharp.GenerateTableFromList(item.Recomendations, columnWidths, include, fontColumnValue, 0);
-                    cell = new PdfPCell(tableDx);
-                    cells.Add(cell);
+
                 }
                 columnWidths = new float[] { 18f, 54f };
             }
@@ -13930,7 +13943,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
                     new PdfPCell(new Phrase(ValorFRespiratoria + " ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
-                    new PdfPCell(new Phrase(" resp/min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
+                    new PdfPCell(new Phrase(" x min ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
 
@@ -13941,7 +13954,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
                     new PdfPCell(new Phrase(ValorFCardiaca + " ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
-                    new PdfPCell(new Phrase(" lat/min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
+                    new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -14446,19 +14459,18 @@ namespace NetPdf
 
                 if (Value_HEMOGLOBINA != null)
                 {
-                    Resultado_HEMOGLOBINA = Value_HEMOGLOBINA.v_Value1;
+                    Resultado_HEMOGLOBINA = Value_HEMOGLOBINA.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
-                ValorHemoglobina1 = Resultado_HEMOGLOBINA;
 
                 var Value_HEMATOCRITO = oHEMOGRAMA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO);
 
                 if (Value_HEMATOCRITO != null)
                 {
-                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMATOCRITO.v_MeasurementUnitName;
+                    Resultado_HEMATOCRITO = Value_HEMATOCRITO.v_Value1 + " " + Value_HEMOGLOBINA.v_MeasurementUnitName;
                 }
 
 
-                ValorHematocrito1 =  Resultado_HEMATOCRITO;
+                ValorHemoglobina2 = Resultado_HEMOGLOBINA  + Resultado_HEMATOCRITO ;
             }
 
 
@@ -14604,38 +14616,39 @@ namespace NetPdf
 
                       new PdfPCell(cellPulmones),
                       new PdfPCell(new Phrase("VÉRTICES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                     
+                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea            
                       new PdfPCell(new Phrase("CAMPOS PULMONARES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                           
-                      //Linea                     
+                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},                      //Linea                     
+                      
                       new PdfPCell(new Phrase("HILIOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                 
+                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
                        //Linea                
-                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                       //Linea   
                       new PdfPCell(new Phrase("N° Rx", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorNroRx, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
+                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2, Colspan=3 ,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      
                      //Linea   
                       new PdfPCell(new Phrase("FECHA", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorFechaToma, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
                         //Linea   
                       new PdfPCell(new Phrase("CALIDAD", fontColumnValueBold)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase(ValorCalidad, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
+                      new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea   
                       new PdfPCell(new Phrase("SÍMBOLOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase("", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -14645,7 +14658,6 @@ namespace NetPdf
             filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
             document.Add(filiationWorker);
-
             #endregion
 
             #region CERO
@@ -14751,7 +14763,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("AB", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (+)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (-)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("Hemoglobina "+ValorHemoglobina1 +" gr/dl" ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase( ValorHemoglobina2 ,fontColumnValue)){Rowspan=3, Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
                     new PdfPCell(SangreO){Rowspan=2, Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },                      
@@ -14760,9 +14772,9 @@ namespace NetPdf
                     new PdfPCell(SangreAB){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },   
                     new PdfPCell(rhPositivo){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },   
                     new PdfPCell(rhNegativo){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP }, 
-                    new PdfPCell(new Phrase(ValorHemoglobina2, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    //new PdfPCell(new Phrase(ValorHemoglobina2, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
-                    new PdfPCell(new Phrase("Hematocrito  " + ValorHematocrito1 , fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    //new PdfPCell(new Phrase("Hematocrito  " + ValorHematocrito1 , fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
             
 
@@ -17451,7 +17463,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOD, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -17462,7 +17474,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOI, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -17479,7 +17491,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("Sat. O2", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("%", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("DIASTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPAD + "mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -18003,7 +18015,7 @@ namespace NetPdf
                 }
 
 
-                ValorHemoglobina1 = Resultado_HEMOGLOBINA + " / HTO" + Resultado_HEMATOCRITO;
+                ValorHemoglobina2 = Resultado_HEMOGLOBINA +" /  " + Resultado_HEMATOCRITO;
             }
 
 
@@ -18148,39 +18160,39 @@ namespace NetPdf
 
                       new PdfPCell(cellPulmones),
                       new PdfPCell(new Phrase("VÉRTICES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                     
+                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea            
                       new PdfPCell(new Phrase("CAMPOS PULMONARES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                           
-                      //Linea                     
+                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},                      //Linea                     
+                      
                       new PdfPCell(new Phrase("HILIOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                 
+                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
                        //Linea                
                       new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                       //Linea   
                       new PdfPCell(new Phrase("N° Rx", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorNroRx, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
+                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2, Colspan=3 ,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      
                      //Linea   
                       new PdfPCell(new Phrase("FECHA", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorFechaToma, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
                         //Linea   
                       new PdfPCell(new Phrase("CALIDAD", fontColumnValueBold)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase(ValorCalidad, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
+                      new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea   
                       new PdfPCell(new Phrase("SÍMBOLOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase("", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -18190,7 +18202,6 @@ namespace NetPdf
             filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
             document.Add(filiationWorker);
-
             #endregion
 
             #region CERO
@@ -18312,7 +18323,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("OTROS EXAMENES", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     //Linea
                     new PdfPCell(new Phrase(ConclusionesOITDescripcionSinNeumoconiosis, fontColumnValue)){Colspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase(ExposicionPolvoDescripcion, fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("", fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ConclusionesOITDescripcionConNeumoconiosis, fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase("BK(ESPUTO): "+ ValorBk, fontColumnValue)){Rowspan = 5, Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     //Linea
@@ -18326,7 +18337,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("AB", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (+)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (-)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("HB: "+ValorHemoglobina1 ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorHemoglobina2 ,fontColumnValue)){Rowspan=3, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
                     new PdfPCell(SangreO){Rowspan=2, Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },                      
@@ -18335,9 +18346,9 @@ namespace NetPdf
                     new PdfPCell(SangreAB){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },   
                     new PdfPCell(rhPositivo){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },   
                     new PdfPCell(rhNegativo){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP }, 
-                    new PdfPCell(new Phrase(ValorHemoglobina2, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    //new PdfPCell(new Phrase(ValorHemoglobina2, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
-                    new PdfPCell(new Phrase(""+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    //new PdfPCell(new Phrase(""+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
                  };
             columnWidths = new float[] { 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, 10f, };
@@ -18785,7 +18796,7 @@ namespace NetPdf
                 //Huella 
 
                 if (DataService.HuellaTrabajador != null)
-                    cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.HuellaTrabajador, null, null, 50, 80));
+                    cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.HuellaTrabajador, null, null, 45, 70));
                 else
                     cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
@@ -20610,6 +20621,7 @@ namespace NetPdf
             }
 
             #endregion
+
             #region Audiometria
 
             #region Audiometria
@@ -20989,7 +21001,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOD, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. RESPIRATORIA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFRespiratoria + " resp/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFRespiratoria, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(new Phrase("PRESIÓN ARTERIAL SISTÉMICA", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -21000,7 +21012,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(ValorOtoscopiaOI, fontColumnValue)){Colspan=8 , Border= PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT},  
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("F. CARDIACA", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorFCardiaca + " lat/min", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorFCardiaca, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" x min", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("SISTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase( ValorPAS + " mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -21017,7 +21029,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("Sat. O2", fontColumnValue)){ Colspan=3,Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.LEFT_BORDER},  
-                    new PdfPCell(new Phrase(ValorSatO2 + " %", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
+                    new PdfPCell(new Phrase(ValorSatO2, fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     new PdfPCell(new Phrase("%", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase("DIASTÓLICA", fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(new Phrase(ValorPAD + "mmHg", fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -21042,6 +21054,7 @@ namespace NetPdf
 
             document.Add(filiationWorker);
 
+            document.NewPage();
 
             #region Pulmones
 
@@ -21521,7 +21534,7 @@ namespace NetPdf
                 }
 
 
-                ValorHemoglobina1 = Resultado_HEMOGLOBINA + " / HTO:" + Resultado_HEMATOCRITO;
+                ValorHemoglobina2 = Resultado_HEMOGLOBINA + " g/dl   / " + Resultado_HEMATOCRITO + " %";
             }
 
 
@@ -21666,39 +21679,39 @@ namespace NetPdf
 
                       new PdfPCell(cellPulmones),
                       new PdfPCell(new Phrase("VÉRTICES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){ Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                     
+                      new PdfPCell(new Phrase(ValorVertices, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea            
                       new PdfPCell(new Phrase("CAMPOS PULMONARES", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                           
-                      //Linea                     
+                      new PdfPCell(new Phrase(ValorCamposPulmonares, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},                      //Linea                     
+                      
                       new PdfPCell(new Phrase("HILIOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){Colspan=3,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                 
+                      new PdfPCell(new Phrase(ValorHilos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
+
                        //Linea                
                       new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
                       //Linea   
                       new PdfPCell(new Phrase("N° Rx", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorNroRx, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SENOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorDiafragmaticos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("MEDIASTINOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorMediastinos, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
+                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2, Colspan=3 ,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE},
+                      
                      //Linea   
                       new PdfPCell(new Phrase("FECHA", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       new PdfPCell(new Phrase(ValorFechaToma, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("CONCLUSIONES RADIOGRÁFICAS", fontColumnValueBold)){Rowspan=2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorConclusionesRx, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-                      new PdfPCell(new Phrase("SILUETA CARDIOVASCULAR", fontColumnValueBold)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                      new PdfPCell(new Phrase(ValorSiluetaCardiaca, fontColumnValue)){Rowspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
-
+                      
                         //Linea   
                       new PdfPCell(new Phrase("CALIDAD", fontColumnValueBold)){ HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase(ValorCalidad, fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_LEFT},
 
+                      new PdfPCell(new Phrase(" ", fontColumnValue)){Colspan=4, HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                       //Linea   
                       new PdfPCell(new Phrase("SÍMBOLOS", fontColumnValueBold)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                       new PdfPCell(new Phrase("", fontColumnValue)){Colspan=5,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
@@ -21729,20 +21742,27 @@ namespace NetPdf
                 {
                     if (item.v_DiseasesId == "N009-DD000000029")
                     {
-                        cell = new PdfPCell(new Phrase("")) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+                        cell = new PdfPCell(new Phrase("")) { HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
                     }
                     else
                     {
                         var dx = string.Format("{0} ({1})", item.v_DiseasesName, item.v_Dx_CIE10);
-                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Border = PdfPCell.NO_BORDER, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
+
+                        cell = new PdfPCell(new Phrase(dx, fontColumnValue)) { Rowspan = item.Recomendations.Count, HorizontalAlignment = Element.ALIGN_CENTER, VerticalAlignment = Element.ALIGN_MIDDLE };
                         cells.Add(cell);
+                        foreach (var item2 in item.Recomendations)
+                        {
+                            cell = new PdfPCell(new Phrase(item2.v_RecommendationName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE };
+                            cells.Add(cell);
+                        }
+                        //var tableDx = HandlingItextSharp.GenerateTableFromList(item.Recomendations, columnWidths, include, fontColumnValue, 0);
+                        //cell = new PdfPCell(tableDx);
+                        //cells.Add(cell);
                     }
 
                     // Crear tabla de recomendaciones para insertarla en la celda que corresponde
-                    var tableDx = HandlingItextSharp.GenerateTableFromList(item.Recomendations, columnWidths, include, fontColumnValue, 0);
-                    cell = new PdfPCell(tableDx);
-                    cells.Add(cell);
+
                 }
                 columnWidths = new float[] { 18f, 54f };
             }
@@ -21800,7 +21820,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("OTROS EXAMENES", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     //Linea
                     new PdfPCell(new Phrase(ConclusionesOITDescripcionSinNeumoconiosis, fontColumnValue)){Colspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase(ExposicionPolvoDescripcion, fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase("", fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase(ConclusionesOITDescripcionConNeumoconiosis, fontColumnValue)){Colspan=3,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     new PdfPCell(new Phrase("BK(ESPUTO): "+ ValorBk, fontColumnValue)){Rowspan = 5, Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_LEFT},
                     //Linea
@@ -21814,7 +21834,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("AB", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (+)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(new Phrase("Rh (-)", fontColumnValue)){Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("HB"+ValorHemoglobina1 ,fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(new Phrase(ValorHemoglobina2 ,fontColumnValue)){Rowspan=3 ,Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
 
                     //Linea
                     new PdfPCell(SangreO){Rowspan=2, Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },                      
@@ -21823,9 +21843,9 @@ namespace NetPdf
                     new PdfPCell(SangreAB){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },   
                     new PdfPCell(rhPositivo){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP },   
                     new PdfPCell(rhNegativo){Rowspan=2,Border = PdfPCell.LEFT_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_TOP }, 
-                    new PdfPCell(new Phrase(ValorHemoglobina2, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    //new PdfPCell(new Phrase(, fontColumnValue)){Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
-                    new PdfPCell(new Phrase(""+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    //new PdfPCell(new Phrase(""+ValorHematocrito1, fontColumnValue)){Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     
             
 

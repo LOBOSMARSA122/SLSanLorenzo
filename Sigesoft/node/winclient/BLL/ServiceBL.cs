@@ -26475,6 +26475,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                  from me in me_join.DefaultIfEmpty()
                                  join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
                                  from pme in pme_join.DefaultIfEmpty()
+
+                                 join E in dbContext.servicecomponent on new { a = ser.v_ServiceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+                                 join F in dbContext.systemuser on E.i_ApprovedUpdateUserId equals F.i_SystemUserId into F_join
+                                 from F in F_join.DefaultIfEmpty()
+                                 join G in dbContext.professional on F.v_PersonId equals G.v_PersonId
+
                                  where ser.v_ServiceId == pstrServiceId
                                  select new OstioCoimolache
                                  {
@@ -26498,7 +26506,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   Genero = gen.v_Value1,
                                   FirmaTrabajador = per.b_RubricImage,
                                   HuellaTrabajador = per.b_FingerPrintImage,
-                                  FirmaUsuarioGraba = pme.b_SignatureImage
+                                  FirmaUsuarioGraba = G.b_SignatureImage
                                  });
 
 
