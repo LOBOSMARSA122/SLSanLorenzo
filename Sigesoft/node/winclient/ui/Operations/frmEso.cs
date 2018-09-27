@@ -8139,7 +8139,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     {
                         componentIds.Add(Constants.INFORME_ANEXO_16_SHAHUINDO);
                     }
-                    else if (filiationData.EmpresaClienteId == "N009-OO000000590")
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000590" || filiationData.EmpresaClienteId == "N002-OO000003575")
                     {
                         componentIds.Add(Constants.INFORME_ANEXO_16_COIMOLACHE);
                     }
