@@ -153,6 +153,8 @@ namespace NetPdf
                 if (examenesBioquimica.Count > 0)
                 {
                     cells = new List<PdfPCell>();
+                    cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) {Colspan=4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: ENZIMÁTICO / COLORIMÉTRICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -256,10 +258,22 @@ namespace NetPdf
                         if (xPerfilLipidico.ServiceComponentFields.Count > 0)
                         {
                             cells = new List<PdfPCell>();
+
+                            cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) {BackgroundColor=BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                            cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: ENZIMÁTICO / COLORIMÉTRICO", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
+
                             cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                             cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                             cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                             cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                            var glucosa = xGlucosa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GLUCOSA_GLUCOSA_VALOR_RESULTADO_ID);
+                            var glucosaValord = xGlucosa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GLUCOSA_GLUCOSA_VALOR_DESEABLE_ID);
+
+                            cells.Add(new PdfPCell(new Phrase("GLUCOSA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                            cells.Add(new PdfPCell(new Phrase(glucosa == null ? string.Empty : glucosa.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                            cells.Add(new PdfPCell(new Phrase(glucosaValord == null ? string.Empty : glucosaValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                            cells.Add(new PdfPCell(new Phrase(glucosa == null ? string.Empty : glucosa.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                             var colesteroltotal = xPerfilLipidico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COLESTEROL_TOTAL);
                             var colesteroltotalValord = xPerfilLipidico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.COLESTEROL_TOTAL_DESEABLE);
@@ -333,6 +347,9 @@ namespace NetPdf
                         if (xPerfilHepatico.ServiceComponentFields.Count > 0)
                         {
                             cells = new List<PdfPCell>();
+                            cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                            cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: ENZIMÁTICO / COLORIMÉTRICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
+
                             cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                             cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                             cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -439,7 +456,7 @@ namespace NetPdf
 
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "BIOQUÍMICA ENZIMATICO/COLORIMETRICO AUTOMATIZADO", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);
 
                 }
@@ -552,6 +569,8 @@ namespace NetPdf
                 if (examenesHemograma.Count > 0)
                 {
                     cells = new List<PdfPCell>();
+                    cells.Add(new PdfPCell(new Phrase("HEMATOLOGÍA AUTOMATIZADA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: IMPERANCIA DE FLUJO", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -561,6 +580,7 @@ namespace NetPdf
                     var xHemograma = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HEMOGRAMA);
                     if (xHemograma != null)
                     {
+                        
                         cells.Add(new PdfPCell(new Phrase("HEMOGRAMA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                         var Hemoglobina = xHemograma.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGLOBINA);
@@ -686,6 +706,8 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(SegmentadosValord == null ? string.Empty : SegmentadosValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(Segmentados == null ? string.Empty : Segmentados.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
+                        cells.Add(new PdfPCell(new Phrase("CONSTANTES CORPUSCULARES", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
+
                         cells.Add(new PdfPCell(new Phrase("VOLUMEN CORPUSCULAR MEDIO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(VolCorpusMedio == null ? string.Empty : VolCorpusMedio.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(VolCorpusMedioValord == null ? string.Empty : VolCorpusMedioValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -706,23 +728,27 @@ namespace NetPdf
 
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "HEMOGRAMA IMPERANCIA DE FLUJO", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);
                 }
                 #endregion
+
                 #region Hemoglobina y hematocrito
 
                 ServiceComponentList hemoglobinaa = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_ID);
                 if (hemoglobinaa != null)
                 {
                     cells = new List<PdfPCell>();
+                    cells.Add(new PdfPCell(new Phrase("HEMATOLOGÍA AUTOMATIZADA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: IMPERANCIA DE FLUJO", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
+
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                    cells.Add(new PdfPCell(new Phrase("HEMOGRAMA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("HEMATOLOGÍA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     var Hemoglobina = hemoglobinaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMOGLOBINA_ID);
                     var HemoglobinaValord = hemoglobinaa.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_HEMOGLOBINA_VALOR_DESEABLE_ID);
@@ -743,19 +769,19 @@ namespace NetPdf
                 {
                     cells = new List<PdfPCell>();
 
-                    cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                    cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                    cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                    cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                    cells.Add(new PdfPCell(new Phrase("HEMOGRAMA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //cells.Add(new PdfPCell(new Phrase("HEMATOLOGÍA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     var Henmatocrito = hematocritoo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO_ID);
                     var HenmatocritoValord = hematocritoo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEMATOCRITO_HEMOGRAMA_HEMATOCRITO_DESEABLE);
 
                     cells.Add(new PdfPCell(new Phrase("HEMATOCRITO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase(Henmatocrito == null ? string.Empty : Henmatocrito.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                    cells.Add(new PdfPCell(new Phrase(HenmatocritoValord == null ? "4,500.00 - 5,900.00" : HenmatocritoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(HenmatocritoValord == null ? "H: 40.0 - 54.2 / M: 37.0 - 48.5" : HenmatocritoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase(Henmatocrito == null ? string.Empty : Henmatocrito.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                        
@@ -822,6 +848,9 @@ namespace NetPdf
                 if (examenesInmunologia.Count > 0)
                 {
                     cells = new List<PdfPCell>();
+                    cells.Add(new PdfPCell(new Phrase("INMUNOLOGÍA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: INMUNOCROMATOGRAFÍA / PRUEBA RÁPIDA (RAPITEST)", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
+
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -889,7 +918,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     }
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "INMUNOLOGIA INMUNOCROMATOGRAFIA", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);
                 }
                 #endregion
@@ -1009,6 +1038,8 @@ namespace NetPdf
                 if (examenesMicrobiologiaBacilo.Count > 0)
                 {
                     cells = new List<PdfPCell>();
+                    cells.Add(new PdfPCell(new Phrase("MICROBIOLOGIA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("BACILOSCOPIA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1043,7 +1074,7 @@ namespace NetPdf
                     var xReaaccionInfHeces = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.REACCION_INFLAMATORIA_ID);
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "MICROBIOLOGIA - BACILOSCOPIA", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);
                 }
 
@@ -1064,6 +1095,8 @@ namespace NetPdf
                 if (examenesMicrobiologiaCopro.Count > 0)
                 {
                     cells = new List<PdfPCell>();
+                    cells.Add(new PdfPCell(new Phrase("MICROBIOLOGIA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("COPROCULTIVO", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1186,7 +1219,7 @@ namespace NetPdf
                     }
                     #endregion
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "MICROBIOLOGIA - COPROCULTIVO", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);
                 }
 
@@ -1209,6 +1242,8 @@ namespace NetPdf
                     if (xExamenCompletoDeOrina != null)
                     {
                         cells = new List<PdfPCell>();
+                        cells.Add(new PdfPCell(new Phrase("MICROBIOLOGIA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("EXAMEN COMPLETO DE ORINA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
                         cells.Add(new PdfPCell(new Phrase("EXAMEN FÍSICO - QUÍMICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1416,7 +1451,7 @@ namespace NetPdf
                     }
                     #endregion
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "MICROBIOLOGIA - EXAMEN COMPLETO DE ORINA", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);
                 }
 
@@ -1578,11 +1613,14 @@ namespace NetPdf
                 #endregion
 
                 #region TOXICOLOGIA
-
+                ServiceComponentList toxicologico_todos = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T);
+                
+              
                 string[] groupToxicologia = new string[]
                  {
                     Sigesoft.Common.Constants.TOXICOLOGICO_ALCOHOLEMIA, 
                     Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID, 
+                    Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T, 
                     Sigesoft.Common.Constants.PLOMO_ID, 
                     Sigesoft.Common.Constants.CADMIO_EN_ORINA_ID, 
                     Sigesoft.Common.Constants.MAGNESIO_ID, 
@@ -1603,6 +1641,8 @@ namespace NetPdf
 
                 if (examenesToxicologia.Count > 0)
                 {
+                    cells.Add(new PdfPCell(new Phrase("TOXICOLOGIA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: INMUNOCROMATOGRAFÍA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1649,6 +1689,22 @@ namespace NetPdf
 
                     }
 
+                    if (toxicologico_todos != null)
+                    {
+                        var cocaina = toxicologico_todos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_COCAINA) == null ? "" : toxicologico_todos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_COCAINA).v_Value1Name;
+                        var marihuana = toxicologico_todos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_MARIHUANA) == null ? "" : toxicologico_todos.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_MARIHUANA).v_Value1Name;
+
+                        cells.Add(new PdfPCell(new Phrase("COCAINA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(cocaina, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                        cells.Add(new PdfPCell(new Phrase("MARIHUANA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(marihuana, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    }
 
                     var xAnfetaminas = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TOXICOLOGICO_ANFETAMINAS);
 
@@ -1815,7 +1871,7 @@ namespace NetPdf
                     }
 
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
-                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "TOXICOLOGIA", fontTitleTableNegro, null);
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);
                 }
 

@@ -443,6 +443,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var serviceComponenteStatusRx = _serviceBL.ServiceComponentStatusByCategoria(6, _serviceId);
             var serviceComponenteStatusLab = _serviceBL.ServiceComponentStatusByCategoria(1, _serviceId);
+            var datosPac = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var serviceComponenteEstado = _serviceBL.GetServiceComponentsReport(_serviceId);
+            
             if (ListaOrdenReportes.Count > 0)
             {
                 ListaOrdenada = new List<ServiceComponentList>();
@@ -450,17 +453,57 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 if (serviceComponenteStatusRx == 7)
                 {
-                    ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                    if (datosPac.Genero == "FEMENINO")
+                    {
+                        ServiceComponentList mujeres = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+
+                        var si = mujeres.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_SI) == null ? "" : mujeres.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_SI).v_Value1;
+                        var no = mujeres.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_NO) == null ? "" : mujeres.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_NO).v_Value1;
+
+                        if (si == "1")
+                        {
+                            ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                         p =>
+                             p.v_ComponenteId != "N009-ME000000302"
+                             && p.v_ComponenteId != "N009-ME000000440");
+                        }
+                        else if (no == "1")
+                        {
+                            ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                        p =>
+                            p.v_ComponenteId != "N002-ME000000032" && p.v_ComponenteId != "N009-ME000000062" &&
+                            p.v_ComponenteId != "N009-ME000000130" && p.v_ComponenteId != "N009-ME000000302");
+                        }
+                        
+                    }
+                    else {
+                        ServiceComponentList exoneracion = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
+
+                        var si = exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI).v_Value1;
+                        var no = exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO).v_Value1;
+                        if (si=="1")
+                        {
+                            ListaOrdenReportes = ListaOrdenReportes.FindAll(
                          p =>
                              p.v_ComponenteId != "N002-ME000000032" && p.v_ComponenteId != "N009-ME000000062" &&
-                             p.v_ComponenteId != "N009-ME000000440" && p.v_ComponenteId != "N009-ME000000130" &&
-                             p.v_ComponenteId != "N009-ME000000302");
+                             p.v_ComponenteId != "N009-ME000000130" && p.v_ComponenteId != "N009-ME000000302"
+                             && p.v_ComponenteId != "N009-ME000000442");
+                        }
+                        else
+                        {
+                            ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                                p =>
+                                    p.v_ComponenteId != "N009-ME000000440" && p.v_ComponenteId != "N009-ME000000442");
+                        }
+                        
+                    }
+                    
                 }
                 else
                 {
                     ListaOrdenReportes = ListaOrdenReportes.FindAll(
                        p =>
-                           p.v_ComponenteId != "EXO-RX-SL");
+                           p.v_ComponenteId != "N009-ME000000440" && p.v_ComponenteId != "N009-ME000000442");
                 }
 
                 if (serviceComponenteStatusLab == 7)
@@ -473,7 +516,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 {
                     ListaOrdenReportes = ListaOrdenReportes.FindAll(
                        p =>
-                           p.v_ComponenteId != "EXO-LAB-SL");
+                           p.v_ComponenteId != "N009-ME000000441");
                 }
 
             #endregion
