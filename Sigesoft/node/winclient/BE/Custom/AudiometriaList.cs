@@ -186,5 +186,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Distrito { get; set; }
         public string DireccionPaciente { get; set; }
         public string Telefono { get; set; }
+
+        public int MyProperty { get; set; }
     }
 }

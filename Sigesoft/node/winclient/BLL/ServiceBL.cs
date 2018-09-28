@@ -12720,6 +12720,12 @@ namespace Sigesoft.Node.WinClient.BLL
 								 join distri in dbContext.datahierarchy on new { a = B.i_DistrictId.Value, b = groupUbigeo }
 													   equals new { a = distri.i_ItemId, b = distri.i_GroupId } into distri_join
 								 from distri in distri_join.DefaultIfEmpty()
+                                 
+                                 join E1 in dbContext.protocol on A.v_ProtocolId equals E1.v_ProtocolId
+
+                                 join D in dbContext.organization on E1.v_CustomerOrganizationId equals D.v_OrganizationId into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
 								 //*********************************************************************************************
 								 let varDpto = dep.v_Value1 == null ? "" : dep.v_Value1
 								 let varProv = prov.v_Value1 == null ? "" : prov.v_Value1
