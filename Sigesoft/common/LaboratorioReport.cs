@@ -544,7 +544,7 @@ namespace NetPdf
 
                         cells.Add(new PdfPCell(new Phrase("GRUPO SANGUÍNEO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(Sanguineo == null ? string.Empty : Sanguineo.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
-                        cells.Add(new PdfPCell(new Phrase("FACTOR RH", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("FACTOR RH (D)", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(SanguineoValord == null ? string.Empty : SanguineoValord.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
 
                     }
@@ -713,12 +713,12 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(VolCorpusMedioValord == null ? string.Empty : VolCorpusMedioValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(VolCorpusMedio == null ? string.Empty : VolCorpusMedio.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        cells.Add(new PdfPCell(new Phrase("HEMOGLOBINA CORPUSCIAAR MEDIA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("HEMOGLOBINA CORPUSCULAR MEDIA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(HemoglobCorpMedia == null ? string.Empty : HemoglobCorpMedia.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(HemoglobCorpMediaValord == null ? string.Empty : HemoglobCorpMediaValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(HemoglobCorpMedia == null ? string.Empty : HemoglobCorpMedia.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        cells.Add(new PdfPCell(new Phrase("CONCENTRACION HB CORPUSCULAR", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("CONCENTRACION HEMOGLOBINA CORPUSCULAR MEDIA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(ConcHBCorp == null ? string.Empty : ConcHBCorp.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(ConcHBCorpValord == null ? string.Empty : ConcHBCorpValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(ConcHBCorp == null ? string.Empty : ConcHBCorp.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -899,7 +899,7 @@ namespace NetPdf
                     {
                         var ReaccSerol = xReaccSerol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
 
-                        cells.Add(new PdfPCell(new Phrase("REACCIONES SEROLOGICAS (LUES - VDRL)", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("LUES - VDRL", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(ReaccSerol == null ? string.Empty : ReaccSerol.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1052,7 +1052,7 @@ namespace NetPdf
                     {
                         var bk = xBK.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.BK_DIRECTO_MICROBIOLOGICO_RESULTADOS);
 
-                        cells.Add(new PdfPCell(new Phrase("BK (ESPUTO)", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("BK (ESPUTO SIMPLE)", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(bk == null ? string.Empty : bk.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1308,7 +1308,7 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(PicmentosBiliares == null ? string.Empty : PicmentosBiliares.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                         var UrobinogenoOrina = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_BIOQUIMICO_UROBILINOGENO);
-                        cells.Add(new PdfPCell(new Phrase("UROBIUNOGENO EN ORINA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("UROBILINOGENO EN ORINA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(UrobinogenoOrina == null ? string.Empty : UrobinogenoOrina.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(UrobinogenoOrina == null ? string.Empty : UrobinogenoOrina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1358,13 +1358,13 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(Germenes == null ? string.Empty : Germenes.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                         var Cristales = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_MICROSCOPICO_CRISTALES);
-                        cells.Add(new PdfPCell(new Phrase("CRISTALES DEOXALATOS DE CALCIO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("CRISTALES DE OXALATOS DE CALCIO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(Cristales == null ? string.Empty : Cristales.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(Cristales == null ? string.Empty : Cristales.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                         var CristalesDeuratos = xExamenCompletoDeOrina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_ORINA_CRISTALES_DEURATOS_AMORFOS);
-                        cells.Add(new PdfPCell(new Phrase("CRISTALES DEURATOS AMORFOS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("CRISTALES DE URATOS AMORFOS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(CristalesDeuratos == null ? string.Empty : CristalesDeuratos.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(CristalesDeuratos == null ? string.Empty : CristalesDeuratos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
