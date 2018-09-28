@@ -32,7 +32,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
 
                 foreach (var com in ListaExamenes)
                 {
-                    ChooseReport(rp, com);
+                    //ChooseReport(rp, com);
                 }
 
                 var ruta = Server.MapPath("files/CM" + ListaServicios[0].IdServicio + ".pdf");
@@ -609,203 +609,203 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser
 
         #endregion
 
-        private void ChooseReport(crConsolidatedReports rp, string componentId)
-        {
-            DataSet ds = null;
+        //private void ChooseReport(crConsolidatedReports rp, string componentId)
+        //{
+        //    DataSet ds = null;
 
-            switch (componentId)
-            {
-                //case Constants.INFORME_CERTIFICADO_APTITUD:
-                //    ds = GetReportCertificadoAptitud();
-                //    rp.Subreports["crOccupationalMedicalAptitudeCertificate.rpt"].SetDataSource(ds);
-                //    rp.SectionCertificadoAptitud.SectionFormat.EnableSuppress = false;
-                //    break;
-                case Constants.SOMNOLENCIA_ID:
-                    ds = GetReportSomnolencia();
-                    rp.Subreports["crTestEpwotrh.rpt"].SetDataSource(ds);
-                    rp.DetailSection31.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.TEST_VERTIGO_ID:
-                    ds = GetReportTestVertigo();
-                    rp.Subreports["crTestDeVertigo.rpt"].SetDataSource(ds);
-                    rp.DetailSection30.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.SINTOMATICO_ID:
-                    ds = GetReportSintomatico();
-                    rp.Subreports["crSintomaticoResp.rpt"].SetDataSource(ds);
-                    rp.DetailSection29.SectionFormat.EnableSuppress = false;
-                    break;
+        //    switch (componentId)
+        //    {
+        //        //case Constants.INFORME_CERTIFICADO_APTITUD:
+        //        //    ds = GetReportCertificadoAptitud();
+        //        //    rp.Subreports["crOccupationalMedicalAptitudeCertificate.rpt"].SetDataSource(ds);
+        //        //    rp.SectionCertificadoAptitud.SectionFormat.EnableSuppress = false;
+        //        //    break;
+        //        case Constants.SOMNOLENCIA_ID:
+        //            ds = GetReportSomnolencia();
+        //            rp.Subreports["crTestEpwotrh.rpt"].SetDataSource(ds);
+        //            rp.DetailSection31.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.TEST_VERTIGO_ID:
+        //            ds = GetReportTestVertigo();
+        //            rp.Subreports["crTestDeVertigo.rpt"].SetDataSource(ds);
+        //            rp.DetailSection30.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.SINTOMATICO_ID:
+        //            ds = GetReportSintomatico();
+        //            rp.Subreports["crSintomaticoResp.rpt"].SetDataSource(ds);
+        //            rp.DetailSection29.SectionFormat.EnableSuppress = false;
+        //            break;
 
-                case Constants.OTOSCOPIA_ID:
-                    ds = GetReportOtoscopia();
-                    rp.Subreports["crFichaOtoscopia.rpt"].SetDataSource(ds);
-                    rp.DetailSection24.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.ACUMETRIA_ID:
-                    ds = GetReportAcumetria();
-                    rp.Subreports["crFichaAcumetria.rpt"].SetDataSource(ds);
-                    rp.DetailSection23.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.EVA_NEUROLOGICA_ID:
-                    ds = GetReportEvaNeurologica();
-                    rp.Subreports["crEvaluacionNeurologica.rpt"].SetDataSource(ds);
-                    rp.DetailSection23.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.TESTOJOSECO_ID:
-                    ds = GetReportTestOjoSeco();
-                    rp.Subreports["crCuestionarioOjoSeco.rpt"].SetDataSource(ds);
-                    rp.DetailSection22.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.C_N_ID:
-                    ds = GetReportCuestionarioNordico();
-                    rp.Subreports["crCuestionarioNordico.rpt"].SetDataSource(ds);
-                    rp.DetailSection21.SectionFormat.EnableSuppress = false;
-                    break;
+        //        case Constants.OTOSCOPIA_ID:
+        //            ds = GetReportOtoscopia();
+        //            rp.Subreports["crFichaOtoscopia.rpt"].SetDataSource(ds);
+        //            rp.DetailSection24.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.ACUMETRIA_ID:
+        //            ds = GetReportAcumetria();
+        //            rp.Subreports["crFichaAcumetria.rpt"].SetDataSource(ds);
+        //            rp.DetailSection23.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.EVA_NEUROLOGICA_ID:
+        //            ds = GetReportEvaNeurologica();
+        //            rp.Subreports["crEvaluacionNeurologica.rpt"].SetDataSource(ds);
+        //            rp.DetailSection23.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.TESTOJOSECO_ID:
+        //            ds = GetReportTestOjoSeco();
+        //            rp.Subreports["crCuestionarioOjoSeco.rpt"].SetDataSource(ds);
+        //            rp.DetailSection22.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.C_N_ID:
+        //            ds = GetReportCuestionarioNordico();
+        //            rp.Subreports["crCuestionarioNordico.rpt"].SetDataSource(ds);
+        //            rp.DetailSection21.SectionFormat.EnableSuppress = false;
+        //            break;
 
-                case Constants.CONSENTIMIENTO_INFORMADO:
-                    ds = GetReportConsentimientoInformado();
-                    rp.Subreports["crConsentimiento.rpt"].SetDataSource(ds);
-                    rp.DetailSection19.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.OSTEO_MUSCULAR_ID_1:
-                    // Osteomuscular1
-                    ds = GetReportOsteomuscular1();
-                    rp.Subreports["crMuscoloEsqueletico.rpt"].SetDataSource(ds);
-                    rp.SectionOsteomuscular1.SectionFormat.EnableSuppress = false;
+        //        case Constants.CONSENTIMIENTO_INFORMADO:
+        //            ds = GetReportConsentimientoInformado();
+        //            rp.Subreports["crConsentimiento.rpt"].SetDataSource(ds);
+        //            rp.DetailSection19.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.OSTEO_MUSCULAR_ID_1:
+        //            // Osteomuscular1
+        //            ds = GetReportOsteomuscular1();
+        //            rp.Subreports["crMuscoloEsqueletico.rpt"].SetDataSource(ds);
+        //            rp.SectionOsteomuscular1.SectionFormat.EnableSuppress = false;
                   
-                    rp.Subreports["crMuscoloEsqueletico2.rpt"].SetDataSource(ds);
-                    rp.SectionOsteomuscular2.SectionFormat.EnableSuppress = false;                                     
-                    break;
+        //            rp.Subreports["crMuscoloEsqueletico2.rpt"].SetDataSource(ds);
+        //            rp.SectionOsteomuscular2.SectionFormat.EnableSuppress = false;                                     
+        //            break;
 
-                case Constants.EVA_ERGONOMICA_ID:
-                    // Osteomuscular1
-                    ds = GetReportEvaErgonomica();
-                    rp.Subreports["crEvaluacionErgonomica01.rpt"].SetDataSource(ds);
-                    rp.DetailSection25.SectionFormat.EnableSuppress = false;
+        //        case Constants.EVA_ERGONOMICA_ID:
+        //            // Osteomuscular1
+        //            ds = GetReportEvaErgonomica();
+        //            rp.Subreports["crEvaluacionErgonomica01.rpt"].SetDataSource(ds);
+        //            rp.DetailSection25.SectionFormat.EnableSuppress = false;
 
-                    rp.Subreports["crEvaluacionErgonomica02.rpt"].SetDataSource(ds);
-                    rp.DetailSection26.SectionFormat.EnableSuppress = false;
+        //            rp.Subreports["crEvaluacionErgonomica02.rpt"].SetDataSource(ds);
+        //            rp.DetailSection26.SectionFormat.EnableSuppress = false;
 
-                    rp.Subreports["crEvaluacionErgonomica03.rpt"].SetDataSource(ds);
-                    rp.DetailSection27.SectionFormat.EnableSuppress = false;
-                    break;
+        //            rp.Subreports["crEvaluacionErgonomica03.rpt"].SetDataSource(ds);
+        //            rp.DetailSection27.SectionFormat.EnableSuppress = false;
+        //            break;
 
 
-                case Constants.OSTEO_MUSCULAR_ID_2:
-                    // Osteomuscular1
-                    ds = GetReportOsteomuscular2();
-                    rp.Subreports["crEvaluacionOsteomuscular.rpt"].SetDataSource(ds);
-                    rp.DetailSection20.SectionFormat.EnableSuppress = false;
+        //        case Constants.OSTEO_MUSCULAR_ID_2:
+        //            // Osteomuscular1
+        //            ds = GetReportOsteomuscular2();
+        //            rp.Subreports["crEvaluacionOsteomuscular.rpt"].SetDataSource(ds);
+        //            rp.DetailSection20.SectionFormat.EnableSuppress = false;
                    
-                    break;
-                case Constants.INFORME_HISTORIA_OCUPACIONAL:
-                    ds = GetReportHistoriaOcupacional();
-                    rp.Subreports["crHistoriaOcupacional.rpt"].SetDataSource(ds);
-                    rp.SectionHistoriaOcupacional.SectionFormat.EnableSuppress = false;
-                    rp.SectionHistoriaOcupacional.SectionFormat.PageOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
-                    rp.SectionHistoriaOcupacional.ReportObjects["SubReportHistoriaOcupacional"].Width = 15905;
-                    break;
-                case Constants.ALTURA_7D_ID:
-                    ds = GetReportAnexo7D();
-                    rp.Subreports["crAnexo7D.rpt"].SetDataSource(ds);
-                    rp.SectionAnexo7D.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.ALTURA_ESTRUCTURAL_ID:
-                    ds = GetReportAlturaFisica();
-                    rp.Subreports["crAlturaMayor.rpt"].SetDataSource(ds);
-                    rp.SectionAlturaEstructural.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.INFORME_LABORATORIO_ID:      // Falta implementar
-                    //rp.SectionLaboratorio.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.ELECTROCARDIOGRAMA_ID:
-                    ds = GetReportElectrocardiograma();
-                    rp.Subreports["crEstudioElectrocardiografico.rpt"].SetDataSource(ds);
-                    rp.SectionElectrocardiograma.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.PRUEBA_ESFUERZO_ID:
-                    ds = GetReportPruebaEsfuerzo();
-                    rp.Subreports["crPruebaEsfuerzo.rpt"].SetDataSource(ds);
-                    rp.SectionPruebaEsfuerzo.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.ODONTOGRAMA_ID:
-                    ds = GetReportOdontologia();
-                    rp.Subreports["crOdontograma.rpt"].SetDataSource(ds);
-                    rp.SectionOdontologia.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.AUDIOMETRIA_ID:      // Falta implementar
-                    ds = GetReportAudiometria();
-                    rp.Subreports["crFichaAudiometria.rpt"].SetDataSource(ds);
-                    rp.SectionAudiometria.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.INFORME_HISTORIA_OCUPACIONAL:
+        //            ds = GetReportHistoriaOcupacional();
+        //            rp.Subreports["crHistoriaOcupacional.rpt"].SetDataSource(ds);
+        //            rp.SectionHistoriaOcupacional.SectionFormat.EnableSuppress = false;
+        //            rp.SectionHistoriaOcupacional.SectionFormat.PageOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
+        //            rp.SectionHistoriaOcupacional.ReportObjects["SubReportHistoriaOcupacional"].Width = 15905;
+        //            break;
+        //        case Constants.ALTURA_7D_ID:
+        //            ds = GetReportAnexo7D();
+        //            rp.Subreports["crAnexo7D.rpt"].SetDataSource(ds);
+        //            rp.SectionAnexo7D.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.ALTURA_ESTRUCTURAL_ID:
+        //            ds = GetReportAlturaFisica();
+        //            rp.Subreports["crAlturaMayor.rpt"].SetDataSource(ds);
+        //            rp.SectionAlturaEstructural.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.INFORME_LABORATORIO_ID:      // Falta implementar
+        //            //rp.SectionLaboratorio.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.ELECTROCARDIOGRAMA_ID:
+        //            ds = GetReportElectrocardiograma();
+        //            rp.Subreports["crEstudioElectrocardiografico.rpt"].SetDataSource(ds);
+        //            rp.SectionElectrocardiograma.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.PRUEBA_ESFUERZO_ID:
+        //            ds = GetReportPruebaEsfuerzo();
+        //            rp.Subreports["crPruebaEsfuerzo.rpt"].SetDataSource(ds);
+        //            rp.SectionPruebaEsfuerzo.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.ODONTOGRAMA_ID:
+        //            ds = GetReportOdontologia();
+        //            rp.Subreports["crOdontograma.rpt"].SetDataSource(ds);
+        //            rp.SectionOdontologia.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.AUDIOMETRIA_ID:      // Falta implementar
+        //            ds = GetReportAudiometria();
+        //            rp.Subreports["crFichaAudiometria.rpt"].SetDataSource(ds);
+        //            rp.SectionAudiometria.SectionFormat.EnableSuppress = false;
 
-                    // Historia Ocupacional Audiometria
-                    ds = GetReportHistoriaOcupacionalAudiometria();
-                    rp.Subreports["crHistoriaOcupacionalAudiometria.rpt"].SetDataSource(ds);
-                    rp.SectionHistoriaOcupacionalAudiometria.SectionFormat.EnableSuppress = false;
-                    rp.SectionHistoriaOcupacionalAudiometria.SectionFormat.PageOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
-                    rp.SectionHistoriaOcupacionalAudiometria.ReportObjects["SubReportHistoriaOcupacionalAudiometria"].Width = 15905;
-                    break;
-                case Constants.GINECOLOGIA_ID:      // Falta implementar
-                    ds = GetReportGinecologia();
-                    rp.Subreports["crEvaluacionGenecologica.rpt"].SetDataSource(ds);
-                    rp.SectionGinecologia.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.OFTALMOLOGIA_ID:
-                    var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+        //            // Historia Ocupacional Audiometria
+        //            ds = GetReportHistoriaOcupacionalAudiometria();
+        //            rp.Subreports["crHistoriaOcupacionalAudiometria.rpt"].SetDataSource(ds);
+        //            rp.SectionHistoriaOcupacionalAudiometria.SectionFormat.EnableSuppress = false;
+        //            rp.SectionHistoriaOcupacionalAudiometria.SectionFormat.PageOrientation = CrystalDecisions.Shared.PaperOrientation.Landscape;
+        //            rp.SectionHistoriaOcupacionalAudiometria.ReportObjects["SubReportHistoriaOcupacionalAudiometria"].Width = 15905;
+        //            break;
+        //        case Constants.GINECOLOGIA_ID:      // Falta implementar
+        //            ds = GetReportGinecologia();
+        //            rp.Subreports["crEvaluacionGenecologica.rpt"].SetDataSource(ds);
+        //            rp.SectionGinecologia.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.OFTALMOLOGIA_ID:
+        //            var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
 
-                    if (MedicalCenter.v_IdentificationNumber == "20550353858")
-                    {
-                        ds = GetReportOftalmologiaAntiguo();
-                        rp.Subreports["crOftalmologia_S_J.rpt"].SetDataSource(ds);
-                        rp.SectionOftalmologia.SectionFormat.EnableSuppress = false;
-                    }
-                    else
-                    {
-                        ds = GetReportOftalmologia();
-                        rp.Subreports["crOftalmologia.rpt"].SetDataSource(ds);
-                        rp.DetailSection28.SectionFormat.EnableSuppress = false;
-                    }
+        //            if (MedicalCenter.v_IdentificationNumber == "20550353858")
+        //            {
+        //                ds = GetReportOftalmologiaAntiguo();
+        //                rp.Subreports["crOftalmologia_S_J.rpt"].SetDataSource(ds);
+        //                rp.SectionOftalmologia.SectionFormat.EnableSuppress = false;
+        //            }
+        //            else
+        //            {
+        //                ds = GetReportOftalmologia();
+        //                rp.Subreports["crOftalmologia.rpt"].SetDataSource(ds);
+        //                rp.DetailSection28.SectionFormat.EnableSuppress = false;
+        //            }
                 
-                    break;
-                case Constants.PSICOLOGIA_ID:
-                    ds = GetReportPsicologia();
-                    rp.Subreports["InformePsicologicoOcupacional.rpt"].SetDataSource(ds);
-                    rp.SectionPsicologia.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.RX_TORAX_ID:
-                    ds = GetReportRX();
-                    rp.Subreports["crInformeRadiologico.rpt"].SetDataSource(ds);
-                    rp.SectionRayosX.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.INFORME_RADIOGRAFICO_OIT:
-                    ds = GetReportInformeRadiograficoOIT();
-                    rp.Subreports["crInformeRadiograficoOIT.rpt"].SetDataSource(ds);
-                    rp.SectionRayosXOIT.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.TAMIZAJE_DERMATOLOGIO_ID:
-                    ds = GetReportTamizajeDermatologico();
-                    rp.Subreports["crTamizajeDermatologico.rpt"].SetDataSource(ds);
-                    rp.SectionTamizajeDermatologico.SectionFormat.EnableSuppress = false;
-                    break;
-                case Constants.ESPIROMETRIA_ID:
-                    ds = GetReportEspirometriaCuestionario();
-                    rp.Subreports["crCuestionarioEspirometria.rpt"].SetDataSource(ds);
-                    rp.SectionEspirometriaCuestionario.SectionFormat.EnableSuppress = false;
-                    break;
-                //case Constants.ESPIROMETRIA_ID:
-                //    ds = GetReportEspirometria();
-                //    rp.Subreports["crInformeEspirometria.rpt"].SetDataSource(ds);
-                //    rp.SectionEspirometria.SectionFormat.EnableSuppress = false;
-                //    break;
-                case Constants.EVALUACION_PSICOLABORAL:
-                    ds = GetReportEvaluacionPsicolaboralPersonal();
-                    rp.Subreports["crEvaluacionPsicolaboralPersonal.rpt"].SetDataSource(ds);
-                    rp.SectionEvaluacionPsicolaboralPersonal.SectionFormat.EnableSuppress = false;
-                    break;
-                default:
-                    break;
-            }
-        }
+        //            break;
+        //        case Constants.PSICOLOGIA_ID:
+        //            ds = GetReportPsicologia();
+        //            rp.Subreports["InformePsicologicoOcupacional.rpt"].SetDataSource(ds);
+        //            rp.SectionPsicologia.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.RX_TORAX_ID:
+        //            ds = GetReportRX();
+        //            rp.Subreports["crInformeRadiologico.rpt"].SetDataSource(ds);
+        //            rp.SectionRayosX.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.INFORME_RADIOGRAFICO_OIT:
+        //            ds = GetReportInformeRadiograficoOIT();
+        //            rp.Subreports["crInformeRadiograficoOIT.rpt"].SetDataSource(ds);
+        //            rp.SectionRayosXOIT.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.TAMIZAJE_DERMATOLOGIO_ID:
+        //            ds = GetReportTamizajeDermatologico();
+        //            rp.Subreports["crTamizajeDermatologico.rpt"].SetDataSource(ds);
+        //            rp.SectionTamizajeDermatologico.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        case Constants.ESPIROMETRIA_ID:
+        //            ds = GetReportEspirometriaCuestionario();
+        //            rp.Subreports["crCuestionarioEspirometria.rpt"].SetDataSource(ds);
+        //            rp.SectionEspirometriaCuestionario.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        //case Constants.ESPIROMETRIA_ID:
+        //        //    ds = GetReportEspirometria();
+        //        //    rp.Subreports["crInformeEspirometria.rpt"].SetDataSource(ds);
+        //        //    rp.SectionEspirometria.SectionFormat.EnableSuppress = false;
+        //        //    break;
+        //        case Constants.EVALUACION_PSICOLABORAL:
+        //            ds = GetReportEvaluacionPsicolaboralPersonal();
+        //            rp.Subreports["crEvaluacionPsicolaboralPersonal.rpt"].SetDataSource(ds);
+        //            rp.SectionEvaluacionPsicolaboralPersonal.SectionFormat.EnableSuppress = false;
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
 
     }
 }
