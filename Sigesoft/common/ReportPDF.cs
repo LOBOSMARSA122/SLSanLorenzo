@@ -6145,8 +6145,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
-
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
@@ -11110,8 +11109,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
-
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
@@ -14484,8 +14482,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
-
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
@@ -18030,8 +18027,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
-
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
@@ -21550,7 +21546,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
