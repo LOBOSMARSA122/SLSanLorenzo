@@ -11608,13 +11608,21 @@ namespace NetPdf
             {
                 CellLogo = new PdfPCell(new Phrase(" ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
             }
+            //if (DataService.b_Logo != null)
+            //{
+            //    cellLogoClient = new PdfPCell(HandlingItextSharp.GetImage(DataService.b_Logo, null, null, 80, 60)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+            //}
+            //else
+            //{
+            //    cellLogoClient = new PdfPCell(new Phrase(" ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+            //}
+
             if (DataService.b_Logo != null)
             {
-                cellLogoClient = new PdfPCell(HandlingItextSharp.GetImage(DataService.b_Logo, null, null, 80, 60)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
-            }
-            else
-            {
-                cellLogoClient = new PdfPCell(new Phrase(" ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+                iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(DataService.b_Logo));
+                imagenEmpresa.ScalePercent(30);
+                imagenEmpresa.SetAbsolutePosition(310,740);
+                document.Add(imagenEmpresa);
             }
 
             PdfPCell cellConCheck = null;

@@ -108,6 +108,14 @@ namespace NetPdf
                 imagenEmpresa.SetAbsolutePosition(40, 790);
                 document.Add(imagenEmpresa);
             }
+
+            if (DataService.b_Logo != null)
+            {
+                iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(DataService.b_Logo));
+                imagenEmpresa.ScalePercent(30);
+                imagenEmpresa.SetAbsolutePosition(430, 785);
+                document.Add(imagenEmpresa);
+            }
             //iTextSharp.text.Image imagenMinsa = iTextSharp.text.Image.GetInstance("C:/Banner/Minsa.png");
             //imagenMinsa.ScalePercent(10);
             //imagenMinsa.SetAbsolutePosition(400, 785);
