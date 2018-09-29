@@ -85,7 +85,7 @@ namespace NetPdf
                    {      
                     //fila 
                     new PdfPCell(CellLogo){Rowspan =2, Colspan = 2, Border = PdfPCell.LEFT_BORDER, HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(new Phrase("000000000)", fontTitle1)){Rowspan =2,Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment = PdfPCell.ALIGN_MIDDLE},       
+                    new PdfPCell(new Phrase("FICHA TEST STRESS MASLACH", fontTitle1)){Rowspan =2,Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment = PdfPCell.ALIGN_MIDDLE},       
                   
                    };
 
@@ -96,21 +96,7 @@ namespace NetPdf
 
             #endregion
             var tamaño_celda = 24f;            
-
-            #region Cabecera
-            cells = new List<PdfPCell>()
-                   {      
-                    //fila                      
-                    new PdfPCell(new Phrase("A continuación encontrará una serie de enunciados acerca de su trabajo y de sus sentimientos en él. Le pedimos su colaboración respondiendo a ellos como lo siente. No existen respuestas mejores o peores, la respuesta correcta es aquella que expresa verídicamente su propia existencia. Los resultados de este cuestionario son estrictamente confidenciales y en ningún caso accesibles a otras personas. Su objeto es contribuir al conocimiento de las condiciones de su trabajo y mejorar su nivel de satisfacción.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
-                    new PdfPCell(new Phrase("A cada una de las frases debe responder expresando la frecuencia con que tiene ese sentimiento de la siguiente forma: ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
-                    new PdfPCell(new Phrase("(1)  Nunca - (2) Algunas veces al año - (3)  Algunas veces al mes - (4)  Algunas veces a la semana - (5) Diariamente", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },                    
-                   };
-
-            columnWidths = new float[] { 100f };
-
-            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
-            document.Add(table);
-            #endregion
+            
 
             #region Datos Personales
 
@@ -122,7 +108,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase(DataService.v_Pacient, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
                     new PdfPCell(new Phrase("DNI:", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
                     new PdfPCell(new Phrase(DataService.v_DocNumber, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                     new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                    new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
                    };
 
             columnWidths = new float[] { 15f, 35f, 15f, 35f, };
@@ -130,7 +116,21 @@ namespace NetPdf
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
             document.Add(table);
             #endregion
+            #region Cabecera
+            cells = new List<PdfPCell>()
+                   {      
+                    //fila                      
+                    new PdfPCell(new Phrase("Señale la respuesta que crea oportuna sobre la frcuencia con que usted siente los enunciados:", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                    new PdfPCell(new Phrase("(0)  Nunca - (1) Pocas veces al año o Menos - (2)  Una vez al mes o menos - (3)  Unas pocas veces al mes o menos", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                    new PdfPCell(new Phrase("(4)  Una ez a la semana - (5) Pocas veces a la semana - (6)  Todos los días", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
+                    new PdfPCell(new Phrase(" ", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
+                   };
 
+            columnWidths = new float[] { 100f };
+
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
+            document.Add(table);
+            #endregion
             #region Cuadro
             #region grupo 1
             string p1_1 = "";
@@ -399,6 +399,9 @@ namespace NetPdf
             #region grupo resultado
             var resultadofinal = int.Parse(resultado.ToString()) + int.Parse(resultado2.ToString()) + int.Parse(resultado3.ToString()) + int.Parse(resultado4.ToString()) + int.Parse(resultado5.ToString()) + int.Parse(resultado6.ToString()) + int.Parse(resultado7.ToString()) + int.Parse(resultado8.ToString()) + int.Parse(resultado9.ToString()) + int.Parse(resultado10.ToString()) + int.Parse(resultado11.ToString()) + int.Parse(resultado12.ToString()) + int.Parse(resultado13.ToString()) + int.Parse(resultado14.ToString()) + int.Parse(resultado15.ToString()) + int.Parse(resultado16.ToString()) + int.Parse(resultado17.ToString()) + int.Parse(resultado18.ToString()) + int.Parse(resultado19.ToString()) + int.Parse(resultado20.ToString()) + int.Parse(resultado21.ToString()) + int.Parse(resultado22.ToString());
             #endregion           
+
+            #region Cuadro
+
             cells = new List<PdfPCell>()
                    {      
                     //fila                     
@@ -406,182 +409,93 @@ namespace NetPdf
                     new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
                     new PdfPCell(new Phrase("1. Me siento emocionalmente defraudado en mi trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
                     new PdfPCell(new Phrase(resultado, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                   
                     new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
                     new PdfPCell(new Phrase("2. Cuando termino mi jornada de trabajo me siento agotado ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                   
                     new PdfPCell(new Phrase(resultado2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-
                     new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("3. Cuando me levanto por la mañana y me enfrento a otra jornada de trabajo me siento agotado ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(x3_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(x3_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(x3_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(x3_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(x3_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("3. Cuando me levanto por la mañana y me enfrento a otra jornada de trabajo me siento agotado ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
+                    new PdfPCell(new Phrase("4. Siento que puedo entender fácilmente a las personas que tengo que atender", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("D.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
+                    new PdfPCell(new Phrase("5. Siento que estoy tratando a algunos beneficiados de mí, como si fuesen objetos impersonales ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
+                    new PdfPCell(new Phrase("6. Siento que trabajar todo el día con la gente me cansa ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado6, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
 
                     new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("4. Siento que puedo entender fácilmente a las personas que tengo que atender", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X4_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X4_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X4_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X4_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X4_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("7. Siento que trato con mucha efectividad los problemas de las personas a las que tengo que atender  ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado7, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
+                    new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
+                    new PdfPCell(new Phrase("8. Siento que mi trabajo me está desgastando ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado8, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+
+                    new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
+                    new PdfPCell(new Phrase("9. Siento que estoy influyendo positivamente en las vidas de otras personas a través de mi trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado9, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("D.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("5. Siento que estoy tratando a algunos beneficiados de mí, como si fuesen objetos impersonales ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X5_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X5_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X5_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X5_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X5_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("10. Siento que me he hecho más duro con la gente ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado10, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
-
-                    new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("6. Siento que trabajar todo el día con la gente me cansa ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X6_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X6_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X6_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X6_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X6_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-
-
-                    new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("7. Siento que trato con mucha efectividad los problemas de las personas a las que tengo que atender  ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X7_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X7_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X7_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X7_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X7_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-
-                    new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("8. Siento que mi trabajo me está desgastando ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X8_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X8_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X8_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X8_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X8_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-
-
-                    new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("9. Siento que estoy influyendo positivamente en las vidas de otras personas a través de mi trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X9_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X9_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X9_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X9_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X9_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-
-                    new PdfPCell(new Phrase("D.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("10. Siento que me he hecho más duro con la gente ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X10_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X10_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X10_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X10_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X10_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
                     
                     new PdfPCell(new Phrase("D.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("11. Me preocupa que este trabajo me está endureciendo emocionalmente ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X11_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X11_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X11_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X11_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X11_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("11. Me preocupa que este trabajo me está endureciendo emocionalmente ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado11, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("12. Me siento muy enérgico en mi trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X12_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X12_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X12_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X12_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X12_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("12. Me siento muy enérgico en mi trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado12, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
     
                     new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("13. Me siento frustrado por el trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X13_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X13_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X13_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X13_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X13_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("13. Me siento frustrado por el trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado13, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("14. Siento que estoy demasiado tiempo en mi trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X14_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X14_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X14_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X14_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X14_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("14. Siento que estoy demasiado tiempo en mi trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado14, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("D.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("15. Siento que realmente no me importa lo que les ocurra a las personas a las que tengo que atender profesionalmente ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X15_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X15_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X15_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X15_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X15_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("15. Siento que realmente no me importa lo que les ocurra a las personas a las que tengo que atender profesionalmente ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado15, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("16. Siento que trabajar en contacto directo con la gente me cansa  ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X16_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X16_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X16_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X16_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X16_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("16. Siento que trabajar en contacto directo con la gente me cansa  ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado16, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("17. Siento que puedo crear con facilidad un clima agradable en mi trabajo  ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X17_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X17_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X17_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X17_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X17_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("17. Siento que puedo crear con facilidad un clima agradable en mi trabajo  ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado17, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("18.  Me siento estimulado después de haber trabajado íntimamente con quienes tengo que atender ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X18_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X18_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X18_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X18_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X18_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("18.  Me siento estimulado después de haber trabajado íntimamente con quienes tengo que atender ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado18, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("19. Creo que consigo muchas cosas valiosas en este trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X19_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X19_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X19_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X19_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X19_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("19. Creo que consigo muchas cosas valiosas en este trabajo ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado19, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("A.E", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("20. Me siento como si estuviera al límite de mis posibilidades ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X20_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X20_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X20_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X20_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X20_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("20. Me siento como si estuviera al límite de mis posibilidades ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado20, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("R.P.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("21. Siento que en mi trabajo los problemas emocionales son tratados de forma adecuada ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X21_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X21_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X21_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X21_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X21_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("21. Siento que en mi trabajo los problemas emocionales son tratados de forma adecuada ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado21, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
 
                     new PdfPCell(new Phrase("D.", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("22. Me parece que los beneficiarios de mi trabajo me culpan de algunos problemas ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X22_1, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X22_2, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X22_3, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(X22_4, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(X22_5, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase("22. Me parece que los beneficiarios de mi trabajo me culpan de algunos problemas ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultado22, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
                      #region pregunta resultado
-                    new PdfPCell(new Phrase("Total :   ", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT,  VerticalAlignment=PdfPCell.ALIGN_MIDDLE, Colspan=2 },   
-                    new PdfPCell(new Phrase(resultadofinal.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE, Colspan=5  },
+                    new PdfPCell(new Phrase("Total :   ", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT,  VerticalAlignment=PdfPCell.ALIGN_MIDDLE, Colspan=6 },   
+                    new PdfPCell(new Phrase(resultadofinal.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
                     #endregion
                    };
-
+            #endregion
             columnWidths = new float[] { 5f, 55f, 8f, 8f, 8f, 8f, 8f};
 
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
@@ -589,13 +503,16 @@ namespace NetPdf
             #endregion
 
             #region Texto02
+            var ae = int.Parse(resultado.ToString()) + int.Parse(resultado2.ToString()) + int.Parse(resultado3.ToString()) + int.Parse(resultado6.ToString()) + int.Parse(resultado8.ToString()) + int.Parse(resultado13.ToString()) + int.Parse(resultado14.ToString()) + int.Parse(resultado16.ToString()) + int.Parse(resultado20.ToString());
+            var d = int.Parse(resultado5.ToString()) + int.Parse(resultado10.ToString()) + int.Parse(resultado11.ToString()) + int.Parse(resultado15.ToString()) + int.Parse(resultado22.ToString());
+            var rp = int.Parse(resultado4.ToString()) + int.Parse(resultado7.ToString()) + int.Parse(resultado9.ToString()) + int.Parse(resultado12.ToString()) + int.Parse(resultado17.ToString()) + int.Parse(resultado18.ToString()) + int.Parse(resultado19.ToString()) + int.Parse(resultado21.ToString());
             cells = new List<PdfPCell>()
                    {      
                     //fila    
                     new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase("A. E.  AGOTAMIENTO EMOCIONAL", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
-                    new PdfPCell(new Phrase("D.      DESPERSONALIZAICÓN", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
-                    new PdfPCell(new Phrase("R. P.  REALIZACIÓN PERSONAL", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
+                    new PdfPCell(new Phrase("A. E.  AGOTAMIENTO EMOCIONAL: "+ae.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
+                    new PdfPCell(new Phrase("D.      DESPERSONALIZAICÓN: "+d.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
+                    new PdfPCell(new Phrase("R. P.  REALIZACIÓN PERSONAL: "+rp.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
                     
                     
                    };

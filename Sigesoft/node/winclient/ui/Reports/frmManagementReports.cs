@@ -375,6 +375,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "ANSIEDAD DE ZUNG", v_ComponentId = Constants.ANSIEDAD_ZUNG });
             serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INTENSIDAD DE FATIGA", v_ComponentId = Constants.ESCALA_FATIGA });
             serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INVENTARIO DE BURNOUT DE MASLACH", v_ComponentId = Constants.INV_MASLACH });
+            serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "TEST SOMNOLENCIA", v_ComponentId = Constants.TEST_SOMNOLENCIA });
 
             var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
             var ResultadoAnexo3121 = serviceComponents11.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
@@ -1192,7 +1193,13 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _Valores = _serviceBL.ValoresComponente_ObservadoAMC(_serviceId, Constants.PSICOLOGIA_ID);
             InformeMaslach.CreateInformeMaslach(_DataService, MedicalCenter, _Valores, pathFile);
         }
-
+        private void GenerateTestSomnolencia(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var _Valores = _serviceBL.ValoresComponente_ObservadoAMC(_serviceId, Constants.PSICOLOGIA_ID);
+            TestSomnolencia.CreateTestSomnolencia(_DataService, MedicalCenter, _Valores, pathFile);
+        }
         private void GenerateAnexo16Coimolache(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -5157,6 +5164,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.INV_MASLACH:
                     GenerateInventarioMaslach(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INV_MASLACH)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.TEST_SOMNOLENCIA:
+                    GenerateTestSomnolencia(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.TEST_SOMNOLENCIA)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.INFORME_ANEXO_16_COIMOLACHE:

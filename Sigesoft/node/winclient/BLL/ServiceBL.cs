@@ -24503,9 +24503,9 @@ namespace Sigesoft.Node.WinClient.BLL
 							   HuellaTrabajador = a.HuellaTrabajador,
 							   FirmaTrabajador = a.FirmaTrabajador,
 							   Edad = GetAge(a.FechaNacimiento.Value),
-                               
 
-							   SOMNOLENCIA_1_SENTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID).v_Value1,
+
+                               SOMNOLENCIA_1_SENTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID).v_Value1,
 							   SOMNOLENCIA_2_MIRANDO_TV_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_MIRANDO_TV_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_MIRANDO_TV_ID).v_Value1,
 							   SOMNOLENCIA_3_SENTADO_INACTIVO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_SENTADO_INACTIVO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_SENTADO_INACTIVO_ID).v_Value1,
 							   SOMNOLENCIA_4_PASAJERO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_PASAJERO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_PASAJERO_ID).v_Value1,
