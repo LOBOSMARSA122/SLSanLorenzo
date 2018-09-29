@@ -12970,7 +12970,7 @@ namespace Sigesoft.Node.WinClient.BLL
 															 equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
 							 from J2 in J2_join.DefaultIfEmpty()
 
-							 join su in dbContext.systemuser on sss.i_UpdateUserMedicalAnalystId.Value equals su.i_SystemUserId into su_join
+							 join su in dbContext.systemuser on sss.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
 							 from su in su_join.DefaultIfEmpty()
 
 							 join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
