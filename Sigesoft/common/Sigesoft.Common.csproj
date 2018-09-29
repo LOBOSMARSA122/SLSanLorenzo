@@ -123,6 +123,7 @@
     <Compile Include="FichaMedicaOcupacional312.cs" />
     <Compile Include="FichaMedicaOcupacional312_CI.cs" />
     <Compile Include="FichaPsicologicaGoldfields.cs" />
+    <Compile Include="Ficha_Evaluacion_Musculoesqueletica_GoldFields.cs" />
     <Compile Include="HandlingItextSharp.cs" />
     <Compile Include="HistoriaClinica.cs" />
     <Compile Include="HojaCotizacion.cs" />
