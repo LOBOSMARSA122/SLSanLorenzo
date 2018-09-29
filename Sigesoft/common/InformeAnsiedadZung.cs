@@ -94,8 +94,8 @@ namespace NetPdf
            document.Add(table);
 
            #endregion
-           var tamaño_celda = 27f;
-           var tamaño_celda1 = 43f;
+           var tamaño_celda = 24f;
+           var tamaño_celda1 = 40f;
            #region Datos Personales
 
            cells = new List<PdfPCell>()
@@ -576,209 +576,26 @@ namespace NetPdf
            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
            document.Add(table);
            #endregion
-           document.NewPage();
-           #region Title2     
-           cells = new List<PdfPCell>()
-                   {      
-                    //fila 
-                    new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase("TABLA PARA CONVERTIR LA PUNTUACIÓN TOTAL EN EL ÍNDICE DE ANSIEDAD", fontTitle1)){Rowspan =2,Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment = PdfPCell.ALIGN_MIDDLE},       
-                    new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 6, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                   };
-
-           columnWidths = new float[] { 15f, 5f, 30f, 25f, 20f, 5f };
-
-           table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
-           document.Add(table);
-
-           #endregion
-
-           #region Cuadro Pàgina 2
-           
-           cells = new List<PdfPCell>()
-                   {      
-                    //fila                     
-                    new PdfPCell(new Phrase("PUNTUACION", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda1, VerticalAlignment=PdfPCell.ALIGN_MIDDLE},   
-                    new PdfPCell(new Phrase("INDICE EAA", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda1, VerticalAlignment=PdfPCell.ALIGN_MIDDLE},
-                    new PdfPCell(new Phrase("PUNTUACION ", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE, FixedHeight = tamaño_celda1 },
-                    new PdfPCell(new Phrase("INDICE EAA", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE, FixedHeight = tamaño_celda1 },
-                    new PdfPCell(new Phrase("PUNTUACION ", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE, FixedHeight = tamaño_celda1 },   
-                    new PdfPCell(new Phrase("INDICE EAA", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE, FixedHeight = tamaño_celda1},
-                     
-                    new PdfPCell(new Phrase("20", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("25", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("40", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("50", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("60", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("75", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-
-                    new PdfPCell(new Phrase("21", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("26", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("41", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("51", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("61", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("76", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("22", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("28", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("42", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("53", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("62", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("78", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("24", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("30", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("44", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("55", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("64", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("80", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("25", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("31", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("45", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("56", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("65", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("81", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("26", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("33", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("46", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("58", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("66", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("83", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("27", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("34", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("47", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("59", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("67", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("84", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("28", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("35", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("48", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("60", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("68", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("85", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("29", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("36", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("49", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("61", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("69", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("86", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("30", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("38", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("50", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("63", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("70", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("88", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("31", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("39", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("51", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("64", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("71", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("89", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("32", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("40", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("52", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("65", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("72", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("90", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("33", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("41", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("53", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("66", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("73", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("91", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("34", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("43", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("54", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("68", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("74", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("92", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("35", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("44", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("55", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("69", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("75", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("94", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("36", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("45", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("56", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("70", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("76", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("95", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("37", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("47", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("57", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("71", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("77", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("96", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("38", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("48", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("58", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("73", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("78", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("98", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase("39", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("49", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("59", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("74", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("79", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("99", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight = tamaño_celda, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    new PdfPCell(new Phrase("80", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },   
-                    new PdfPCell(new Phrase("100", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
-                    
-                   };
-
-           columnWidths = new float[] { 17f, 17f, 17f, 17f, 17f, 15f };
-
-           table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
-           document.Add(table);
-           #endregion
-
            #region Puntaje
-           
+           var interpretacion = "";
+           if (int.Parse(resultadofinal.ToString()) < 50) { interpretacion = "DENTRO DE LO NORMAL"; }
+           else if (int.Parse(resultadofinal.ToString()) > 50 && int.Parse(resultadofinal.ToString()) < 59) { interpretacion = "ANSIEDAD LEVE"; }
+           else if (int.Parse(resultadofinal.ToString()) > 60 && int.Parse(resultadofinal.ToString()) < 69) { interpretacion = "ANSIEDAD MODERADA"; }
+           else if (int.Parse(resultadofinal.ToString()) > 70) { interpretacion = "ANSIEDAD INTENSA"; }
            cells = new List<PdfPCell>()
                    {      
                     //fila 
-                    new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
-                    new PdfPCell(new Phrase("ÍNDICE EEA", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                    new PdfPCell(new Phrase("INTERPRETACIÓN", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase("MENOS DE 50", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                    new PdfPCell(new Phrase("DENTRO DE LO NORMAL", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase("50 A  59", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                    new PdfPCell(new Phrase("ANSIEDAD LEVE", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase("60 A  69", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                    new PdfPCell(new Phrase("ANSIEDAD MODERADA ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
-                    new PdfPCell(new Phrase("70  A  MAS", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },   
-                    new PdfPCell(new Phrase("ANSIEDAD INTENSA", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT },
+                    
+                    new PdfPCell(new Phrase("ÍNDICE EEA", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE, FixedHeight = tamaño_celda },   
+                    new PdfPCell(new Phrase("INTERPRETACIÓN", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(resultadofinal.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE, FixedHeight = tamaño_celda },
+                    new PdfPCell(new Phrase(interpretacion, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },                 
                     
                    };
 
            columnWidths = new float[] { 20f, 80f };
 
-           table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
+           table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, null, fontTitleTable);
            document.Add(table);
            #endregion
 

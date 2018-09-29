@@ -1568,6 +1568,7 @@ namespace Sigesoft.Common
         public const string ANSIEDAD_ZUNG = "ANS-ZUNG";
         public const string ESCALA_FATIGA = "ESC-FATIGA";
         public const string INV_MASLACH = "INV-MASLACH";
+        public const string TEST_SOMNOLENCIA = "TEST-SOMNO";
         #endregion
         #region DECLARACION JURADA PSICOLOGIA COIMOLACHE - LA ZANJA
         public const string D_J_PSICOLOGIA_COIMOLACHE_LA_ZANJA_ID= "N009-ME000000457";

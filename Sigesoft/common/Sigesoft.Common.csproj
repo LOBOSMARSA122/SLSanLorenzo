@@ -166,6 +166,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ReportPDF.cs" />
+    <Compile Include="TestSomnolncia.cs" />
     <Compile Include="TOXICOLOGICO_COCAINA_MARIHUANA_TODOS.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
