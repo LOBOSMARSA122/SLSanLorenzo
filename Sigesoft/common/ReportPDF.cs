@@ -6145,8 +6145,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
-
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
@@ -11110,8 +11109,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
-
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
@@ -11608,13 +11606,21 @@ namespace NetPdf
             {
                 CellLogo = new PdfPCell(new Phrase(" ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
             }
+            //if (DataService.b_Logo != null)
+            //{
+            //    cellLogoClient = new PdfPCell(HandlingItextSharp.GetImage(DataService.b_Logo, null, null, 80, 60)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+            //}
+            //else
+            //{
+            //    cellLogoClient = new PdfPCell(new Phrase(" ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+            //}
+
             if (DataService.b_Logo != null)
             {
-                cellLogoClient = new PdfPCell(HandlingItextSharp.GetImage(DataService.b_Logo, null, null, 80, 60)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
-            }
-            else
-            {
-                cellLogoClient = new PdfPCell(new Phrase(" ", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT };
+                iTextSharp.text.Image imagenEmpresa = iTextSharp.text.Image.GetInstance(HandlingItextSharp.GetImage(DataService.b_Logo));
+                imagenEmpresa.ScalePercent(30);
+                imagenEmpresa.SetAbsolutePosition(310,740);
+                document.Add(imagenEmpresa);
             }
 
             PdfPCell cellConCheck = null;
@@ -14484,8 +14490,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
-
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
@@ -18030,8 +18035,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
-
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 
@@ -21550,7 +21554,7 @@ namespace NetPdf
 
 
 
-                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 == null ? "" : Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 == null ? "" : Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
+                ValorHemoglobina2 = Value_HEMOGLOBINA_ID.v_Value1 + " " + Value_HEMOGLOBINA_ID.v_MeasurementUnitName + " / " + Value_HEMATOCRITO_ID.v_Value1 + " " + Value_HEMATOCRITO_ID.v_MeasurementUnitName;
 
             }
 

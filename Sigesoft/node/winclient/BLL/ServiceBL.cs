@@ -1089,7 +1089,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var sql = (from a in objEntity.ToList()
                            let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
                            Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID,
-                           Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID, Constants.EXCEPCIONES_LABORATORIO_ID)
+                           Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID, Constants.EXCEPCIONES_LABORATORIO_ID, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T)
 
                            select new ServiceList
                            {
@@ -1161,7 +1161,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return objEntity;
         }
-        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8)
+        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3, string p4, string p5, string p6, string p7, string p8, string p9)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -1176,7 +1176,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 join p in dbContext.person on me.v_PersonId equals p.v_PersonId
 
 							 where E.v_ServiceId == pstrServiceId &&
-                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || E.v_ComponentId == p4 || E.v_ComponentId == p5|| E.v_ComponentId == p6|| E.v_ComponentId == p7|| E.v_ComponentId == p8)
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || E.v_ComponentId == p4 || E.v_ComponentId == p5|| E.v_ComponentId == p6|| E.v_ComponentId == p7|| E.v_ComponentId == p8 || E.v_ComponentId == p9)
 							 select new KeyValueDTO
 							 {
 								 Value5 = pme.b_SignatureImage,
@@ -12720,6 +12720,12 @@ namespace Sigesoft.Node.WinClient.BLL
 								 join distri in dbContext.datahierarchy on new { a = B.i_DistrictId.Value, b = groupUbigeo }
 													   equals new { a = distri.i_ItemId, b = distri.i_GroupId } into distri_join
 								 from distri in distri_join.DefaultIfEmpty()
+                                 
+                                 join E1 in dbContext.protocol on A.v_ProtocolId equals E1.v_ProtocolId
+
+                                 join D in dbContext.organization on E1.v_CustomerOrganizationId equals D.v_OrganizationId into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
 								 //*********************************************************************************************
 								 let varDpto = dep.v_Value1 == null ? "" : dep.v_Value1
 								 let varProv = prov.v_Value1 == null ? "" : prov.v_Value1
@@ -12964,7 +12970,7 @@ namespace Sigesoft.Node.WinClient.BLL
 															 equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
 							 from J2 in J2_join.DefaultIfEmpty()
 
-							 join su in dbContext.systemuser on sss.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
+							 join su in dbContext.systemuser on sss.i_UpdateUserMedicalAnalystId.Value equals su.i_SystemUserId into su_join
 							 from su in su_join.DefaultIfEmpty()
 
 							 join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join

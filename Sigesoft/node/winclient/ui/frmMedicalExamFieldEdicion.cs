@@ -576,7 +576,7 @@ namespace Sigesoft.Node.WinClient.UI
                         _objmedicalexamfieldDto.v_TextLabel = txtLabel.Text.Substring(0, indice);
                     }
                     else
-                    {
+                    { 
                         _objmedicalexamfieldDto.v_TextLabel = txtLabel.Text;
                     } 
                     
