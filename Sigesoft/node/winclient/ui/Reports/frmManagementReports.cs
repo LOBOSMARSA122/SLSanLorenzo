@@ -1965,6 +1965,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Certificado_Suficiencia_Medica_Trabajo_Altura_V4.CreateExamen_Dermatologico_Ocupacional(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
         }
+        private void GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            Ficha_Evaluacion_Musculoesqueletica_GoldFields.CreateFicha_Evaluacion_Musculoesqueletica_GoldFields(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
+        }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
         {
@@ -5366,7 +5377,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateCertificado_Suficiencia_Medica_Trabajo_Altura_V4(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERT_SUF_MED_ALTURA_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
-
+                case Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID:
+                    GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
                 ///GenerateInforme_Resultados_San_Martinm
                 case Constants.INFORME_EXAMENES_ESPECIALES:
                     GenerateExamenesEspecialesReport(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_EXAMENES_ESPECIALES)));
