@@ -26217,6 +26217,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
              if (ListaCirugiaList.Count == 0)
             {
+                var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(psrtServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
                 ListaCirugiaList = (from ser in dbContext.service      
                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId
                 join serCom in dbContext.servicecomponent on ser.v_ServiceId equals serCom.v_ServiceId
@@ -26247,7 +26249,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         //Genero = gen.v_Value1,
                         FirmaTrabajador = per.b_RubricImage,
                         HuellaTrabajador = per.b_FingerPrintImage,
-                        FirmaUsuarioGraba = pme.b_SignatureImage,
+                        FirmaUsuarioGraba = FirmaMedicoMedicina.Value5,
                         InicioMestrucion = ser.v_Menarquia,
                         InicioVidaSexual = ser.v_InicioVidaSexaul,
                         NumeroParejas = ser.v_NroParejasActuales,
@@ -26267,7 +26269,6 @@ namespace Sigesoft.Node.WinClient.BLL
                         //anio = ser.d_ServiceDate.Value.Year.ToString()
                     }).ToList();
 
-
                 var resultSinDx = (from A in ListaCirugiaList
                               select new CirugiaList
                               {
@@ -26286,7 +26287,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   GeneroId = A.GeneroId,
                                   FirmaTrabajador = A.FirmaTrabajador,
                                   HuellaTrabajador = A.HuellaTrabajador,
-                                  FirmaUsuarioGraba = A.FirmaUsuarioGraba,
+                                  FirmaUsuarioGraba = FirmaMedicoMedicina.Value5,
                                   InicioMestrucion = A.InicioMestrucion,
                                   InicioVidaSexual = A.InicioVidaSexual,
                                   NumeroParejas = A.NumeroParejas,
@@ -26312,6 +26313,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
             }
+             var FirmaMedicoMedicina1 = ObtenerFirmaMedicoExamen(psrtServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
 
              var result = (from A in ListaCirugiaList
 	                        select new CirugiaList
@@ -26336,7 +26338,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 GeneroId = A.GeneroId,
                                 FirmaTrabajador = A.FirmaTrabajador,
                                 HuellaTrabajador = A.HuellaTrabajador,
-                                FirmaUsuarioGraba = A.FirmaUsuarioGraba,
+                                FirmaUsuarioGraba = FirmaMedicoMedicina1.Value5,
                                 InicioMestrucion = A.InicioMestrucion,
                                 InicioVidaSexual = A.InicioVidaSexual,
                                 NumeroParejas = A.NumeroParejas,
