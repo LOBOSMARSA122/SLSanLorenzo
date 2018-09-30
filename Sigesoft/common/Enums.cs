@@ -214,7 +214,8 @@ namespace Sigesoft.Common
     public enum TipoProfesional
     {
         Evaluador = 30,
-        Auditor = 31
+        Auditor = 31,
+        Auditor_Evaluador = 32
     }
 
     public enum ServiceComponentStatus

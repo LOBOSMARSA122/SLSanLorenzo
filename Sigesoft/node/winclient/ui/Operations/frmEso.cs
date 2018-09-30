@@ -333,7 +333,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 cbAptitudEso.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_DEFAPTITUD", _formActions);
                 btnGuardarConclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_SAVE", _formActions);
-                if (_profesionId == 31 || _profesionId == 30)
+                if (_profesionId == 31 || _profesionId == 32)
                 {
                     btnGuardarConclusiones.Enabled = true;
                 }
@@ -2926,7 +2926,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
                             _EstadoComponente = (int)ServiceComponentStatus.Evaluado;
                         }
-                        else if (_profesionId == 31)//auditor
+                        else if (_profesionId == 31 || _profesionId == 32)//auditor
                         {
                             serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
                             _EstadoComponente = (int)ServiceComponentStatus.Auditado;

@@ -3061,33 +3061,40 @@ namespace Sigesoft.Node.WinClient.BLL
 
 					// El examen Necesita ser aprobado / Revisado y diagnosticado x especialista
 
-					if (isApproved == (int)SiNo.SI)
-					{
-						// Lo esta aprobando el especialista que tambien es un medico evaluador
-						if (enabledchkApproved.Value)
-						{
-							item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
-							item.d_ApprovedUpdateDate = DateTime.Now;
-							item.i_IsApprovedId = pobjDtoEntity.i_IsApprovedId;
-						}
-						else
-						{
-							// El tecnologo esta registrando los datos
-							item.i_UpdateUserTechnicalDataRegisterId = Int32.Parse(ClientSession[2]);
-							item.d_UpdateDateTechnicalDataRegister = DateTime.Now;
-						}
-					}
-					else
-					{
-						item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
-						item.d_ApprovedUpdateDate = DateTime.Now;
-					}
+                    //WALTER3009
+                    if (item.i_ApprovedUpdateUserId == null && Int32.Parse(ClientSession[12]) != (int)TipoProfesional.Auditor_Evaluador)
+                    {
+                        if (isApproved == (int)SiNo.SI)
+                        {
+                            // Lo esta aprobando el especialista que tambien es un medico evaluador
+                            if (enabledchkApproved.Value)
+                            {
+                                item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
+                                item.d_ApprovedUpdateDate = DateTime.Now;
+                                item.i_IsApprovedId = pobjDtoEntity.i_IsApprovedId;
+                            }
+                            else
+                            {
+                                // El tecnologo esta registrando los datos
+                                item.i_UpdateUserTechnicalDataRegisterId = Int32.Parse(ClientSession[2]);
+                                item.d_UpdateDateTechnicalDataRegister = DateTime.Now;
+                            }
+                        }
+                        else
+                        {
+                            item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
+                            item.d_ApprovedUpdateDate = DateTime.Now;
+                        }
 
-					// Una sola vez se graba la fecha de creacion / grabacion del examen
-					if (item.d_ApprovedInsertDate == null)
-					{
-						item.d_ApprovedInsertDate = DateTime.Now;
-					}
+                        // Una sola vez se graba la fecha de creacion / grabacion del examen
+                        if (item.d_ApprovedInsertDate == null)
+                        {
+                            item.d_ApprovedInsertDate = DateTime.Now;
+                        }
+                    }
+                   
+
+					
 
 				}
 
@@ -6317,7 +6324,7 @@ namespace Sigesoft.Node.WinClient.BLL
 					}
 
 					//hola
-					if (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)
+                    if (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador)
 					{
 						// ID usuario Médico ocupacional
 						objService.d_UpdateDateOccupationalMedical = DateTime.Now;
@@ -12974,7 +12981,7 @@ namespace Sigesoft.Node.WinClient.BLL
 															 equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
 							 from J2 in J2_join.DefaultIfEmpty()
 
-							 join su in dbContext.systemuser on sss.i_UpdateUserMedicalAnalystId.Value equals su.i_SystemUserId into su_join
+                             join su in dbContext.systemuser on sss.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
 							 from su in su_join.DefaultIfEmpty()
 
 							 join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
