@@ -15,7 +15,7 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
-        #region
+        #region EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID
         public const string EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID = "N009-ME000000468";
 
         public const string EVALUACION_OTEOMUSCULAR_GOLDFIELDS_TRABAJO_2 = "N009-MF000004108";

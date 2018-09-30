@@ -1973,7 +1973,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-
+            //var uc = _serviceBL.ReporteOsteomuscular(_serviceId, Sigesoft.Common.Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID);
             Ficha_Evaluacion_Musculoesqueletica_GoldFields.CreateFicha_Evaluacion_Musculoesqueletica_GoldFields(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
         }
         ///
@@ -2811,7 +2811,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         {
                             if (INFORME_CERTIFICADO_APTITUD[0].i_AptitudeStatusId == (int)AptitudeStatus.AptoObs)
                             {
-                                rp = new Reports.crCertficadoObservado();
+                                //midificacion por que no sale bien 
+                                //rp = new Reports.crCertficadoObservado();
+                                rp = new Reports.crOccupationalMedicalAptitudeCertificate();
                                 rp.SetDataSource(ds1);
 
                                 string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoObs").ToString();
@@ -3031,11 +3033,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.OSTEO_MUSCULAR_ID_1:
                     DataSet dsOsteomuscularNuevo = new DataSet();
-                      var servicesId7 = new List<string>();
+                    var servicesId7 = new List<string>();
                     servicesId7.Add(_serviceId);
                     var componentReportId7 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId7, 11);
                     var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, componentId, componentReportId7[0].ComponentId);
-
 
                     //var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
                     var UC_OSTEO_ID = new ServiceBL().ReporteOsteomuscular(_serviceId, componentReportId7[0].ComponentId);
