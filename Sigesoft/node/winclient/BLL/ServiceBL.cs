@@ -1011,6 +1011,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var objEntity = (from A in dbContext.service
+                                 join CCC in dbContext.servicecomponent on A.v_ServiceId equals CCC.v_ServiceId
                                  join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
                                  from B in B_join.DefaultIfEmpty()
 
@@ -1042,7 +1043,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
                                  from C1 in C1_join.DefaultIfEmpty()
 
-                                 join su in dbContext.systemuser on A.i_UpdateUserMedicalAnalystId.Value equals su.i_SystemUserId into su_join
+                                 join su in dbContext.systemuser on CCC.i_ApprovedUpdateUserId.Value equals su.i_SystemUserId into su_join
                                  from su in su_join.DefaultIfEmpty()
 
                                  join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
