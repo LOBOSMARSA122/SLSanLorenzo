@@ -7,11 +7,13 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class MatrizShauindo
     {
+        public string ServiceId { get; set; }
+        public string PersonId { get; set; }
         public string TipoEmo { get; set; }
         public string DniPasaporte { get; set; }
         public DateTime? FechaExamen { get; set; }
         public string ApellidosNombres{ get; set; }
-        public string FechaNacimiento{ get; set; }
+        public DateTime? FechaNacimiento { get; set; }
         public string TelefonoContacto{ get; set; }
         public int? edad { get; set; }
         public string Sexo{ get; set; }

@@ -4569,8 +4569,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return string.Join(", ", qry.Select(p => p.v_RestrictionsName));
         }
-
-
+        
         public string ObtenerDxOcupacionales(List<DiagnosticosRecomendacionesList> ListaDxOcupacionales, int Posicion)
         { 
 
@@ -4962,7 +4961,6 @@ namespace Sigesoft.Node.WinClient.BLL
                 throw;
             }
         }
-
        
         public List<JerarquiaServicioCamposValores> DevolverValorCampoPorServicioMejorado(List<string> ListaServicioIds)
         {
@@ -5390,6 +5388,74 @@ namespace Sigesoft.Node.WinClient.BLL
         }
 
         #endregion     
+
+        #region Matriz Multiple
+
+        public List<MatrizShauindo> ReporteMatrizShauindo(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        {
+            try
+            {
+                using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+                {
+                    List<string> ServicioIds = new List<string>();
+                    List<string> PersonIds = new List<string>();
+
+                    var objEntity = from A in dbContext.service
+                                        join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                        from B in B_join.DefaultIfEmpty()
+                                        join C in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                            equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                        from C in C_join.DefaultIfEmpty()
+                                        join D in dbContext.person on A.v_PersonId equals D.v_PersonId
+                                        where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
+                                        select new MatrizShauindo
+                                        {
+                                            ServiceId = A.v_ServiceId,
+                                            PersonId = D.v_PersonId,
+                                            TipoEmo = C.v_Value1,
+                                            DniPasaporte = D.v_DocNumber,
+                                            FechaExamen = A.d_ServiceDate.Value,
+                                            ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                            FechaNacimiento = D.d_Birthdate.Value
+                                        };
+
+                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    {
+                        objEntity = objEntity.Where(pstrFilterExpression);
+                    }
+                    
+                    foreach (var item in objEntity)
+                    {
+                        PersonIds.Add(item.PersonId);
+                        ServicioIds.Add(item.ServiceId);
+                    }
+
+                    var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var sql = (from a in objEntity.ToList()
+
+                               select new MatrizShauindo
+                               {
+                                   ServiceId = a.ServiceId,
+                                   PersonId = a.PersonId,
+                                   TipoEmo = a.TipoEmo,
+                                   DniPasaporte = a.DniPasaporte,
+                                   FechaExamen = a.FechaExamen,
+                                   ApellidosNombres = a.ApellidosNombres,
+                                   FechaNacimiento = a.FechaNacimiento
+                               }
+
+                               ).ToList();
+                    return sql;
+                }
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
+        #endregion
 
         #region Reportes
 

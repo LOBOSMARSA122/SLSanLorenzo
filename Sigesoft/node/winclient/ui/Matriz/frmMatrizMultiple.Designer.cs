@@ -406,7 +406,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpShauindo = new System.Windows.Forms.TabPage();
             this.btnExportAramark = new System.Windows.Forms.Button();
-            this.grdDataAramark = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tpMdMasterClinico = new System.Windows.Forms.TabPage();
             this.grdDataMasterClinico = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnExportclinico = new System.Windows.Forms.Button();
@@ -425,9 +425,10 @@
             this.dptDateTimeEnd = new System.Windows.Forms.DateTimePicker();
             this.sfdShauindo = new System.Windows.Forms.SaveFileDialog();
             this.ugeShauindo = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.lblRecordCount = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpShauindo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDataAramark)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.tpMdMasterClinico.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataMasterClinico)).BeginInit();
             this.tpMdDisal.SuspendLayout();
@@ -452,7 +453,7 @@
             // tpShauindo
             // 
             this.tpShauindo.Controls.Add(this.btnExportAramark);
-            this.tpShauindo.Controls.Add(this.grdDataAramark);
+            this.tpShauindo.Controls.Add(this.grdData);
             this.tpShauindo.Location = new System.Drawing.Point(4, 22);
             this.tpShauindo.Name = "tpShauindo";
             this.tpShauindo.Padding = new System.Windows.Forms.Padding(3);
@@ -475,16 +476,16 @@
             this.btnExportAramark.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExportAramark.UseVisualStyleBackColor = true;
             // 
-            // grdDataAramark
+            // grdData
             // 
-            this.grdDataAramark.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grdData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdDataAramark.CausesValidation = false;
+            this.grdData.CausesValidation = false;
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdDataAramark.DisplayLayout.Appearance = appearance1;
+            this.grdData.DisplayLayout.Appearance = appearance1;
             ultraGridColumn12.Header.VisiblePosition = 0;
             ultraGridColumn20.Header.VisiblePosition = 1;
             ultraGridColumn21.Header.VisiblePosition = 2;
@@ -1092,40 +1093,40 @@
             ultraGridColumn584,
             ultraGridColumn585,
             ultraGridColumn586});
-            this.grdDataAramark.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
-            this.grdDataAramark.DisplayLayout.InterBandSpacing = 10;
-            this.grdDataAramark.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdDataAramark.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdDataAramark.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdDataAramark.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdDataAramark.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdDataAramark.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdDataAramark.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdDataAramark.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdDataAramark.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
+            this.grdData.DisplayLayout.InterBandSpacing = 10;
+            this.grdData.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdData.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdData.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdData.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdData.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdData.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdData.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdData.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdData.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
             appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.grdDataAramark.DisplayLayout.Override.CardAreaAppearance = appearance2;
+            this.grdData.DisplayLayout.Override.CardAreaAppearance = appearance2;
             appearance3.BackColor = System.Drawing.Color.White;
             appearance3.BackColor2 = System.Drawing.Color.White;
             appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdDataAramark.DisplayLayout.Override.CellAppearance = appearance3;
-            this.grdDataAramark.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            this.grdData.DisplayLayout.Override.CellAppearance = appearance3;
+            this.grdData.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
             appearance4.BackColor = System.Drawing.Color.White;
             appearance4.BackColor2 = System.Drawing.Color.LightGray;
             appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             appearance4.BorderColor = System.Drawing.Color.DarkGray;
             appearance4.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdDataAramark.DisplayLayout.Override.HeaderAppearance = appearance4;
-            this.grdDataAramark.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            this.grdData.DisplayLayout.Override.HeaderAppearance = appearance4;
+            this.grdData.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
             appearance5.AlphaLevel = ((short)(187));
             appearance5.BackColor = System.Drawing.Color.Gainsboro;
             appearance5.BackColor2 = System.Drawing.Color.Gainsboro;
             appearance5.ForeColor = System.Drawing.Color.Black;
             appearance5.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdDataAramark.DisplayLayout.Override.RowAlternateAppearance = appearance5;
+            this.grdData.DisplayLayout.Override.RowAlternateAppearance = appearance5;
             appearance6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdDataAramark.DisplayLayout.Override.RowSelectorAppearance = appearance6;
-            this.grdDataAramark.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            this.grdData.DisplayLayout.Override.RowSelectorAppearance = appearance6;
+            this.grdData.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
             appearance7.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             appearance7.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
             appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
@@ -1133,20 +1134,20 @@
             appearance7.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
             appearance7.FontData.BoldAsString = "False";
             appearance7.ForeColor = System.Drawing.Color.Black;
-            this.grdDataAramark.DisplayLayout.Override.SelectedRowAppearance = appearance7;
-            this.grdDataAramark.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdDataAramark.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.grdDataAramark.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdDataAramark.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdDataAramark.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdDataAramark.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdDataAramark.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdDataAramark.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdDataAramark.Location = new System.Drawing.Point(5, 5);
-            this.grdDataAramark.Margin = new System.Windows.Forms.Padding(2);
-            this.grdDataAramark.Name = "grdDataAramark";
-            this.grdDataAramark.Size = new System.Drawing.Size(941, 358);
-            this.grdDataAramark.TabIndex = 48;
+            this.grdData.DisplayLayout.Override.SelectedRowAppearance = appearance7;
+            this.grdData.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdData.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.grdData.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdData.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdData.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdData.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdData.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdData.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdData.Location = new System.Drawing.Point(5, 5);
+            this.grdData.Margin = new System.Windows.Forms.Padding(2);
+            this.grdData.Name = "grdData";
+            this.grdData.Size = new System.Drawing.Size(941, 358);
+            this.grdData.TabIndex = 48;
             // 
             // tpMdMasterClinico
             // 
@@ -1467,6 +1468,7 @@
             this.btnFilter.Text = "Filtrar";
             this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // label1
             // 
@@ -1515,6 +1517,7 @@
             this.ddlCustomerOrganization.Name = "ddlCustomerOrganization";
             this.ddlCustomerOrganization.Size = new System.Drawing.Size(499, 21);
             this.ddlCustomerOrganization.TabIndex = 34;
+            this.ddlCustomerOrganization.SelectedValueChanged += new System.EventHandler(this.ddlCustomerOrganization_SelectedValueChanged);
             // 
             // label2
             // 
@@ -1560,12 +1563,26 @@
             this.dptDateTimeEnd.TabIndex = 30;
             this.dptDateTimeEnd.Value = new System.DateTime(2014, 10, 31, 15, 30, 0, 0);
             // 
+            // lblRecordCount
+            // 
+            this.lblRecordCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRecordCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCount.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblRecordCount.Location = new System.Drawing.Point(747, 94);
+            this.lblRecordCount.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCount.Name = "lblRecordCount";
+            this.lblRecordCount.Size = new System.Drawing.Size(231, 19);
+            this.lblRecordCount.TabIndex = 53;
+            this.lblRecordCount.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // frmMatrizMultiple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(989, 534);
+            this.Controls.Add(this.lblRecordCount);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmMatrizMultiple";
@@ -1575,7 +1592,7 @@
             this.Load += new System.EventHandler(this.frmMatrizMultiple_Load);
             this.tabControl1.ResumeLayout(false);
             this.tpShauindo.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdDataAramark)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
             this.tpMdMasterClinico.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataMasterClinico)).EndInit();
             this.tpMdDisal.ResumeLayout(false);
@@ -1591,7 +1608,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tpShauindo;
         private System.Windows.Forms.Button btnExportAramark;
-        private Infragistics.Win.UltraWinGrid.UltraGrid grdDataAramark;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
         private System.Windows.Forms.TabPage tpMdMasterClinico;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdDataMasterClinico;
         private System.Windows.Forms.Button btnExportclinico;
@@ -1610,5 +1627,6 @@
         private System.Windows.Forms.DateTimePicker dptDateTimeEnd;
         private System.Windows.Forms.SaveFileDialog sfdShauindo;
         private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ugeShauindo;
+        private System.Windows.Forms.Label lblRecordCount;
     }
 }
