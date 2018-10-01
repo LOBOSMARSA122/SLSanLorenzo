@@ -77,10 +77,10 @@
     <Reference Include="Controls">
       <HintPath>..\..\..\..\ExternalLibraries\Controls.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
       <Private>True</Private>
     </Reference>
@@ -1380,6 +1380,12 @@
     </Compile>
     <Compile Include="Hospitalizacion\frmLiquidacionMedicos.Designer.cs">
       <DependentUpon>frmLiquidacionMedicos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Matriz\frmMatrizMultiple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Matriz\frmMatrizMultiple.Designer.cs">
+      <DependentUpon>frmMatrizMultiple.cs</DependentUpon>
     </Compile>
     <Compile Include="MensajeAlerta.cs">
       <SubType>Form</SubType>
@@ -3599,6 +3605,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmLiquidacionMedicos.resx">
       <DependentUpon>frmLiquidacionMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Matriz\frmMatrizMultiple.resx">
+      <DependentUpon>frmMatrizMultiple.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MensajeAlerta.resx">
       <DependentUpon>MensajeAlerta.cs</DependentUpon>

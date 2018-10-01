@@ -123,6 +123,7 @@
     <Compile Include="FichaMedicaOcupacional312.cs" />
     <Compile Include="FichaMedicaOcupacional312_CI.cs" />
     <Compile Include="FichaPsicologicaGoldfields.cs" />
+    <Compile Include="Ficha_Evaluacion_Musculoesqueletica_GoldFields.cs" />
     <Compile Include="HandlingItextSharp.cs" />
     <Compile Include="HistoriaClinica.cs" />
     <Compile Include="HojaCotizacion.cs" />
@@ -166,6 +167,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ReportPDF.cs" />
+    <Compile Include="TestSomnolncia.cs" />
     <Compile Include="TOXICOLOGICO_COCAINA_MARIHUANA_TODOS.cs" />
     <Compile Include="Utils.cs" />
   </ItemGroup>
@@ -224,7 +226,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

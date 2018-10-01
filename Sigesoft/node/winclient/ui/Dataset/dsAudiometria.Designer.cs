@@ -587,6 +587,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnOtalgia1;
             
+            private global::System.Data.DataColumn columnLogoCliente;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtAudiometriaDataTable() {
@@ -1294,6 +1296,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LogoClienteColumn {
+                get {
+                    return this.columnLogoCliente;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1413,7 +1423,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         string Distrito, 
                         string DireccionPaciente, 
                         string Telefono, 
-                        string Otalgia1) {
+                        string Otalgia1, 
+                        byte[] LogoCliente) {
                 dtAudiometriaRow rowdtAudiometriaRow = ((dtAudiometriaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Puesto,
@@ -1499,7 +1510,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                         Distrito,
                         DireccionPaciente,
                         Telefono,
-                        Otalgia1};
+                        Otalgia1,
+                        LogoCliente};
                 rowdtAudiometriaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtAudiometriaRow);
                 return rowdtAudiometriaRow;
@@ -1606,6 +1618,7 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnDireccionPaciente = base.Columns["DireccionPaciente"];
                 this.columnTelefono = base.Columns["Telefono"];
                 this.columnOtalgia1 = base.Columns["Otalgia1"];
+                this.columnLogoCliente = base.Columns["LogoCliente"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1779,6 +1792,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnTelefono);
                 this.columnOtalgia1 = new global::System.Data.DataColumn("Otalgia1", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOtalgia1);
+                this.columnLogoCliente = new global::System.Data.DataColumn("LogoCliente", typeof(byte[]), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLogoCliente);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5852,6 +5867,22 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public byte[] LogoCliente {
+                get {
+                    try {
+                        return ((byte[])(this[this.tabledtAudiometria.LogoClienteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'LogoCliente\' de la tabla \'dtAudiometria\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtAudiometria.LogoClienteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsPuestoNull() {
                 return this.IsNull(this.tabledtAudiometria.PuestoColumn);
             }
@@ -6856,6 +6887,18 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetOtalgia1Null() {
                 this[this.tabledtAudiometria.Otalgia1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsLogoClienteNull() {
+                return this.IsNull(this.tabledtAudiometria.LogoClienteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetLogoClienteNull() {
+                this[this.tabledtAudiometria.LogoClienteColumn] = global::System.Convert.DBNull;
             }
         }
         

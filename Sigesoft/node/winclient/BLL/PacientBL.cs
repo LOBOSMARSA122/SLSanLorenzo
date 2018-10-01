@@ -5443,6 +5443,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var MedicalCenter = GetInfoMedicalCenter();
                 var OsteoMuscular = new ServiceBL().ValoresComponentesUserControl (pstrserviceId, idComponentReport);
+
                 var xxx = OsteoMuscular.Find(p => p.v_ComponentFieldId == "N009-MF000000838");
                 var sql = (from a in objEntity.ToList()
                           

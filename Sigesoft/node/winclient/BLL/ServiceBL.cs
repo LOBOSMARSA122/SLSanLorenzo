@@ -1088,7 +1088,9 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var sql = (from a in objEntity.ToList()
                            let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
-                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID)
+                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID,
+                           Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID, Constants.EXCEPCIONES_LABORATORIO_ID, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T,
+                           Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID)
 
                            select new ServiceList
                            {
@@ -1160,7 +1162,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return objEntity;
         }
-        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3, string p4, string p5)
+        private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3,
+            string p4, string p5, string p6, string p7, string p8, string p9, string p10)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -1175,7 +1178,9 @@ namespace Sigesoft.Node.WinClient.BLL
 							 join p in dbContext.person on me.v_PersonId equals p.v_PersonId
 
 							 where E.v_ServiceId == pstrServiceId &&
-                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || E.v_ComponentId == p4 || E.v_ComponentId == p5)
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || 
+                             E.v_ComponentId == p4 || E.v_ComponentId == p5|| E.v_ComponentId == p6||
+                             E.v_ComponentId == p7 || E.v_ComponentId == p8 || E.v_ComponentId == p9 || E.v_ComponentId == p10)
 							 select new KeyValueDTO
 							 {
 								 Value5 = pme.b_SignatureImage,
@@ -3056,33 +3061,40 @@ namespace Sigesoft.Node.WinClient.BLL
 
 					// El examen Necesita ser aprobado / Revisado y diagnosticado x especialista
 
-					if (isApproved == (int)SiNo.SI)
-					{
-						// Lo esta aprobando el especialista que tambien es un medico evaluador
-						if (enabledchkApproved.Value)
-						{
-							item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
-							item.d_ApprovedUpdateDate = DateTime.Now;
-							item.i_IsApprovedId = pobjDtoEntity.i_IsApprovedId;
-						}
-						else
-						{
-							// El tecnologo esta registrando los datos
-							item.i_UpdateUserTechnicalDataRegisterId = Int32.Parse(ClientSession[2]);
-							item.d_UpdateDateTechnicalDataRegister = DateTime.Now;
-						}
-					}
-					else
-					{
-						item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
-						item.d_ApprovedUpdateDate = DateTime.Now;
-					}
+                    //WALTER3009
+                    if (item.i_ApprovedUpdateUserId == null && Int32.Parse(ClientSession[12]) != (int)TipoProfesional.Auditor_Evaluador)
+                    {
+                        if (isApproved == (int)SiNo.SI)
+                        {
+                            // Lo esta aprobando el especialista que tambien es un medico evaluador
+                            if (enabledchkApproved.Value)
+                            {
+                                item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
+                                item.d_ApprovedUpdateDate = DateTime.Now;
+                                item.i_IsApprovedId = pobjDtoEntity.i_IsApprovedId;
+                            }
+                            else
+                            {
+                                // El tecnologo esta registrando los datos
+                                item.i_UpdateUserTechnicalDataRegisterId = Int32.Parse(ClientSession[2]);
+                                item.d_UpdateDateTechnicalDataRegister = DateTime.Now;
+                            }
+                        }
+                        else
+                        {
+                            item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
+                            item.d_ApprovedUpdateDate = DateTime.Now;
+                        }
 
-					// Una sola vez se graba la fecha de creacion / grabacion del examen
-					if (item.d_ApprovedInsertDate == null)
-					{
-						item.d_ApprovedInsertDate = DateTime.Now;
-					}
+                        // Una sola vez se graba la fecha de creacion / grabacion del examen
+                        if (item.d_ApprovedInsertDate == null)
+                        {
+                            item.d_ApprovedInsertDate = DateTime.Now;
+                        }
+                    }
+                   
+
+					
 
 				}
 
@@ -6312,7 +6324,7 @@ namespace Sigesoft.Node.WinClient.BLL
 					}
 
 					//hola
-					if (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)
+                    if (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador)
 					{
 						// ID usuario Médico ocupacional
 						objService.d_UpdateDateOccupationalMedical = DateTime.Now;
@@ -12719,6 +12731,12 @@ namespace Sigesoft.Node.WinClient.BLL
 								 join distri in dbContext.datahierarchy on new { a = B.i_DistrictId.Value, b = groupUbigeo }
 													   equals new { a = distri.i_ItemId, b = distri.i_GroupId } into distri_join
 								 from distri in distri_join.DefaultIfEmpty()
+                                 
+                                 join E1 in dbContext.protocol on A.v_ProtocolId equals E1.v_ProtocolId
+
+                                 join D in dbContext.organization on E1.v_CustomerOrganizationId equals D.v_OrganizationId into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
 								 //*********************************************************************************************
 								 let varDpto = dep.v_Value1 == null ? "" : dep.v_Value1
 								 let varProv = prov.v_Value1 == null ? "" : prov.v_Value1
@@ -12963,7 +12981,7 @@ namespace Sigesoft.Node.WinClient.BLL
 															 equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
 							 from J2 in J2_join.DefaultIfEmpty()
 
-							 join su in dbContext.systemuser on sss.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
+                             join su in dbContext.systemuser on sss.i_UpdateUserOccupationalMedicaltId.Value equals su.i_SystemUserId into su_join
 							 from su in su_join.DefaultIfEmpty()
 
 							 join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
@@ -24496,9 +24514,9 @@ namespace Sigesoft.Node.WinClient.BLL
 							   HuellaTrabajador = a.HuellaTrabajador,
 							   FirmaTrabajador = a.FirmaTrabajador,
 							   Edad = GetAge(a.FechaNacimiento.Value),
-                               
 
-							   SOMNOLENCIA_1_SENTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID).v_Value1,
+
+                               SOMNOLENCIA_1_SENTADO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_1_SENTADO_ID).v_Value1,
 							   SOMNOLENCIA_2_MIRANDO_TV_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_MIRANDO_TV_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_2_MIRANDO_TV_ID).v_Value1,
 							   SOMNOLENCIA_3_SENTADO_INACTIVO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_SENTADO_INACTIVO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_3_SENTADO_INACTIVO_ID).v_Value1,
 							   SOMNOLENCIA_4_PASAJERO_ID = ValorUSer.Count() == 0 || ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_PASAJERO_ID) == null ? string.Empty : ValorUSer.Find(p => p.v_ComponentFieldId == Constants.SOMNOLENCIA_4_PASAJERO_ID).v_Value1,
@@ -26206,6 +26224,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
              if (ListaCirugiaList.Count == 0)
             {
+                var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(psrtServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
                 ListaCirugiaList = (from ser in dbContext.service      
                 join per in dbContext.person on ser.v_PersonId equals per.v_PersonId
                 join serCom in dbContext.servicecomponent on ser.v_ServiceId equals serCom.v_ServiceId
@@ -26236,7 +26256,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         //Genero = gen.v_Value1,
                         FirmaTrabajador = per.b_RubricImage,
                         HuellaTrabajador = per.b_FingerPrintImage,
-                        FirmaUsuarioGraba = pme.b_SignatureImage,
+                        FirmaUsuarioGraba = FirmaMedicoMedicina.Value5,
                         InicioMestrucion = ser.v_Menarquia,
                         InicioVidaSexual = ser.v_InicioVidaSexaul,
                         NumeroParejas = ser.v_NroParejasActuales,
@@ -26256,7 +26276,6 @@ namespace Sigesoft.Node.WinClient.BLL
                         //anio = ser.d_ServiceDate.Value.Year.ToString()
                     }).ToList();
 
-
                 var resultSinDx = (from A in ListaCirugiaList
                               select new CirugiaList
                               {
@@ -26275,7 +26294,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   GeneroId = A.GeneroId,
                                   FirmaTrabajador = A.FirmaTrabajador,
                                   HuellaTrabajador = A.HuellaTrabajador,
-                                  FirmaUsuarioGraba = A.FirmaUsuarioGraba,
+                                  FirmaUsuarioGraba = FirmaMedicoMedicina.Value5,
                                   InicioMestrucion = A.InicioMestrucion,
                                   InicioVidaSexual = A.InicioVidaSexual,
                                   NumeroParejas = A.NumeroParejas,
@@ -26301,6 +26320,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
             }
+             var FirmaMedicoMedicina1 = ObtenerFirmaMedicoExamen(psrtServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
 
              var result = (from A in ListaCirugiaList
 	                        select new CirugiaList
@@ -26325,7 +26345,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 GeneroId = A.GeneroId,
                                 FirmaTrabajador = A.FirmaTrabajador,
                                 HuellaTrabajador = A.HuellaTrabajador,
-                                FirmaUsuarioGraba = A.FirmaUsuarioGraba,
+                                FirmaUsuarioGraba = FirmaMedicoMedicina1.Value5,
                                 InicioMestrucion = A.InicioMestrucion,
                                 InicioVidaSexual = A.InicioVidaSexual,
                                 NumeroParejas = A.NumeroParejas,
@@ -26474,6 +26494,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                  from me in me_join.DefaultIfEmpty()
                                  join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
                                  from pme in pme_join.DefaultIfEmpty()
+
+                                 join E in dbContext.servicecomponent on new { a = ser.v_ServiceId, b = pstrComponentId }
+                                                                        equals new { a = E.v_ServiceId, b = E.v_ComponentId }
+
+                                 join F in dbContext.systemuser on E.i_ApprovedUpdateUserId equals F.i_SystemUserId into F_join
+                                 from F in F_join.DefaultIfEmpty()
+                                 join G in dbContext.professional on F.v_PersonId equals G.v_PersonId
+
                                  where ser.v_ServiceId == pstrServiceId
                                  select new OstioCoimolache
                                  {
@@ -26497,7 +26525,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                   Genero = gen.v_Value1,
                                   FirmaTrabajador = per.b_RubricImage,
                                   HuellaTrabajador = per.b_FingerPrintImage,
-                                  FirmaUsuarioGraba = pme.b_SignatureImage
+                                  FirmaUsuarioGraba = G.b_SignatureImage
                                  });
 
 

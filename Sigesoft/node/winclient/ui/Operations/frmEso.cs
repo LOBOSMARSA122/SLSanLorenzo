@@ -333,7 +333,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
                 cbAptitudEso.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_DEFAPTITUD", _formActions);
                 btnGuardarConclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_SAVE", _formActions);
-                if (_profesionId == 31)
+                if (_profesionId == 31 || _profesionId == 32)
                 {
                     btnGuardarConclusiones.Enabled = true;
                 }
@@ -2926,7 +2926,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                             serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
                             _EstadoComponente = (int)ServiceComponentStatus.Evaluado;
                         }
-                        else if (_profesionId == 31)//auditor
+                        else if (_profesionId == 31 || _profesionId == 32)//auditor
                         {
                             serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
                             _EstadoComponente = (int)ServiceComponentStatus.Auditado;
@@ -7551,8 +7551,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void btnVerServicioAnterior_Click(object sender, EventArgs e)
         {
-            var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View", (int)MasterService.Eso);
-            frm.ShowDialog();
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+
+            var ServiceDate = grdServiciosAnteriores.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString();
+
+            if (ServiceDate.ToString().Split(' ')[0] == DateTime.Now.ToString().Split(' ')[0])
+            {
+                var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "", (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
+            else
+            {
+                var frm = new Operations.frmEso(_serviceIdByWiewServiceHistory, null, "View", (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
+          
             /////
         }
 
@@ -8126,7 +8139,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     {
                         componentIds.Add(Constants.INFORME_ANEXO_16_SHAHUINDO);
                     }
-                    else if (filiationData.EmpresaClienteId == "N009-OO000000590")
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000590" || filiationData.EmpresaClienteId == "N002-OO000003575")
                     {
                         componentIds.Add(Constants.INFORME_ANEXO_16_COIMOLACHE);
                     }
@@ -8349,14 +8362,14 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
                     componentIds.Add(Constants.RX_TORAX_ID);
                 }
-                if (excepciones != null)
-                {
-                    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
-                }
-                if (autorizacion != null)
-                {
-                    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
-                }
+                //if (excepciones != null)
+                //{
+                //    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
+                //}
+                //if (autorizacion != null)
+                //{
+                //    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+                //}
 
                 frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
             }

@@ -1,0 +1,67 @@
+﻿using Sigesoft.Common;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace Sigesoft.Node.WinClient.UI.Matriz
+{
+    public partial class frmMatrizMultiple : Form
+    {
+        public frmMatrizMultiple()
+        {
+            InitializeComponent();
+        }
+
+        private void frmMatrizMultiple_Load(object sender, EventArgs e)
+        {
+            DateTime fechatemp = DateTime.Today;
+            DateTime fecha1 = new DateTime(fechatemp.Year, fechatemp.Month, 1);
+
+            OperationResult objOperationResult = new OperationResult();
+            //var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
+            var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, 9);
+            Utils.LoadDropDownList(ddlCustomerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.All);
+
+            Utils.LoadDropDownList(ddlProtocolId, "Value1", "Id", BLL.Utils.GetProtocolsByOrganizationForCombo(ref objOperationResult, "-1", "-1", null), DropDownListAction.All);
+
+            dtpDateTimeStar.Value = fecha1;
+            dptDateTimeEnd.Value = DateTime.Today;
+            dtpDateTimeStar.CustomFormat = "dd/MM/yyyy";
+            dptDateTimeEnd.CustomFormat = "dd/MM/yyyy";
+        }
+
+        private void btnExportclinico_Click(object sender, EventArgs e)
+        {
+            //"Matriz de datos <Empresa Cliente> de <fecha inicio> a <fecha fin>"
+            string NombreArchivo = "";
+
+            if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
+            {
+                NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text + " de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+                //NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text;
+
+            }
+            else
+            {
+                NombreArchivo = "Matriz de datos de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+                //NombreArchivo = "Matriz de datos";
+            }
+
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            sfdShauindo.FileName = NombreArchivo;
+            sfdShauindo.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfdShauindo.ShowDialog() == DialogResult.OK)
+            {
+                this.ugeShauindo.Export(this.grdDataAramark, sfdShauindo.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+    }
+}

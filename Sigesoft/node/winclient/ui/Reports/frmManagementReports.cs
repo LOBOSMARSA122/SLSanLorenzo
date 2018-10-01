@@ -375,6 +375,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "ANSIEDAD DE ZUNG", v_ComponentId = Constants.ANSIEDAD_ZUNG });
             serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INTENSIDAD DE FATIGA", v_ComponentId = Constants.ESCALA_FATIGA });
             serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INVENTARIO DE BURNOUT DE MASLACH", v_ComponentId = Constants.INV_MASLACH });
+            serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "TEST SOMNOLENCIA", v_ComponentId = Constants.TEST_SOMNOLENCIA });
 
             var serviceComponents11 = _serviceBL.GetServiceComponentsForManagementReport(_serviceId);
             var ResultadoAnexo3121 = serviceComponents11.FindAll(p => InformeAnexo3121.Contains(p.v_ComponentId)).ToList();
@@ -443,6 +444,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var serviceComponenteStatusRx = _serviceBL.ServiceComponentStatusByCategoria(6, _serviceId);
             var serviceComponenteStatusLab = _serviceBL.ServiceComponentStatusByCategoria(1, _serviceId);
+            var datosPac = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var serviceComponenteEstado = _serviceBL.GetServiceComponentsReport(_serviceId);
+            
             if (ListaOrdenReportes.Count > 0)
             {
                 ListaOrdenada = new List<ServiceComponentList>();
@@ -450,17 +454,57 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 if (serviceComponenteStatusRx == 7)
                 {
-                    ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                    if (datosPac.Genero == "FEMENINO")
+                    {
+                        ServiceComponentList mujeres = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+
+                        var si = mujeres.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_SI) == null ? "" : mujeres.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_SI).v_Value1;
+                        var no = mujeres.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_NO) == null ? "" : mujeres.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_NO).v_Value1;
+
+                        if (si == "1")
+                        {
+                            ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                         p =>
+                             p.v_ComponenteId != "N009-ME000000302"
+                             && p.v_ComponenteId != "N009-ME000000440");
+                        }
+                        else if (no == "1")
+                        {
+                            ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                        p =>
+                            p.v_ComponenteId != "N002-ME000000032" && p.v_ComponenteId != "N009-ME000000062" &&
+                            p.v_ComponenteId != "N009-ME000000130" && p.v_ComponenteId != "N009-ME000000302");
+                        }
+                        
+                    }
+                    else {
+                        ServiceComponentList exoneracion = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
+
+                        var si = exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_SI).v_Value1;
+                        var no = exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO) == null ? "" : exoneracion.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_EXO_NO).v_Value1;
+                        if (si=="1")
+                        {
+                            ListaOrdenReportes = ListaOrdenReportes.FindAll(
                          p =>
                              p.v_ComponenteId != "N002-ME000000032" && p.v_ComponenteId != "N009-ME000000062" &&
-                             p.v_ComponenteId != "N009-ME000000440" && p.v_ComponenteId != "N009-ME000000130" &&
-                             p.v_ComponenteId != "N009-ME000000302");
+                             p.v_ComponenteId != "N009-ME000000130" && p.v_ComponenteId != "N009-ME000000302"
+                             && p.v_ComponenteId != "N009-ME000000442");
+                        }
+                        else
+                        {
+                            ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                                p =>
+                                    p.v_ComponenteId != "N009-ME000000440" && p.v_ComponenteId != "N009-ME000000442");
+                        }
+                        
+                    }
+                    
                 }
                 else
                 {
                     ListaOrdenReportes = ListaOrdenReportes.FindAll(
                        p =>
-                           p.v_ComponenteId != "EXO-RX-SL");
+                           p.v_ComponenteId != "N009-ME000000440" && p.v_ComponenteId != "N009-ME000000442");
                 }
 
                 if (serviceComponenteStatusLab == 7)
@@ -473,7 +517,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 {
                     ListaOrdenReportes = ListaOrdenReportes.FindAll(
                        p =>
-                           p.v_ComponenteId != "EXO-LAB-SL");
+                           p.v_ComponenteId != "N009-ME000000441");
                 }
 
             #endregion
@@ -1139,15 +1183,23 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            Informeintensidadfatiga.CreateInformeintensidadfatiga(_DataService, MedicalCenter, pathFile);
+            var _Valores = _serviceBL.ValoresComponente_ObservadoAMC(_serviceId, Constants.PSICOLOGIA_ID);
+            Informeintensidadfatiga.CreateInformeintensidadfatiga(_DataService, MedicalCenter, _Valores, pathFile);
         }
         private void GenerateInventarioMaslach(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-            InformeMaslach.CreateInformeMaslach(_DataService, MedicalCenter, pathFile);
+            var _Valores = _serviceBL.ValoresComponente_ObservadoAMC(_serviceId, Constants.PSICOLOGIA_ID);
+            InformeMaslach.CreateInformeMaslach(_DataService, MedicalCenter, _Valores, pathFile);
         }
-
+        private void GenerateTestSomnolencia(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var _Valores = _serviceBL.ValoresComponente_ObservadoAMC(_serviceId, Constants.PSICOLOGIA_ID);
+            TestSomnolencia.CreateTestSomnolencia(_DataService, MedicalCenter, _Valores, pathFile);
+        }
         private void GenerateAnexo16Coimolache(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -1430,7 +1482,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateExoneraxionLaboratorio(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -1442,7 +1494,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateExoneraxionPlacaTorax(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -1454,7 +1506,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateDeclaracionJuradaRX(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
@@ -1550,7 +1602,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1912,6 +1964,24 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
             Certificado_Suficiencia_Medica_Trabajo_Altura_V4.CreateExamen_Dermatologico_Ocupacional(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
+        }
+        private void GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            var servicesId7 = new List<string>();
+            servicesId7.Add(_serviceId);
+            var componentReportId7 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId7, 11);
+
+            var uc = new ServiceBL().ReporteOsteomuscular(_serviceId, componentReportId7[0].ComponentId);
+
+            //var uc = _serviceBL.ReporteOsteomuscular(_serviceId, Sigesoft.Common.Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID);
+            Ficha_Evaluacion_Musculoesqueletica_GoldFields.CreateFicha_Evaluacion_Musculoesqueletica_GoldFields(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, uc);
         }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
@@ -2748,7 +2818,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         {
                             if (INFORME_CERTIFICADO_APTITUD[0].i_AptitudeStatusId == (int)AptitudeStatus.AptoObs)
                             {
+                                //midificacion por que no sale bien 
                                 rp = new Reports.crCertficadoObservado();
+                                //rp = new Reports.crOccupationalMedicalAptitudeCertificate();
                                 rp.SetDataSource(ds1);
 
                                 string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoObs").ToString();
@@ -2968,11 +3040,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.OSTEO_MUSCULAR_ID_1:
                     DataSet dsOsteomuscularNuevo = new DataSet();
-                      var servicesId7 = new List<string>();
+                    var servicesId7 = new List<string>();
                     servicesId7.Add(_serviceId);
                     var componentReportId7 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId7, 11);
                     var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, componentId, componentReportId7[0].ComponentId);
-
 
                     //var OSTEO_MUSCULAR_ID_1 = new PacientBL().ReportOsteoMuscularNuevo(_serviceId, Constants.OSTEO_MUSCULAR_ID_1);
                     var UC_OSTEO_ID = new ServiceBL().ReporteOsteomuscular(_serviceId, componentReportId7[0].ComponentId);
@@ -5114,6 +5185,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateInventarioMaslach(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INV_MASLACH)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
+                case Constants.TEST_SOMNOLENCIA:
+                    GenerateTestSomnolencia(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.TEST_SOMNOLENCIA)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
                 case Constants.INFORME_ANEXO_16_COIMOLACHE:
                     GenerateAnexo16Coimolache(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_ANEXO_16_COIMOLACHE)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
@@ -5310,7 +5385,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     GenerateCertificado_Suficiencia_Medica_Trabajo_Altura_V4(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.CERT_SUF_MED_ALTURA_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
-
+                case Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID:
+                    GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
                 ///GenerateInforme_Resultados_San_Martinm
                 case Constants.INFORME_EXAMENES_ESPECIALES:
                     GenerateExamenesEspecialesReport(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_EXAMENES_ESPECIALES)));
