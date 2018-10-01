@@ -9,6 +9,10 @@ namespace Sigesoft.Node.WinClient.BE
     {
         public string ServiceId { get; set; }
         public string PersonId { get; set; }
+        public string v_CustomerOrganizationId { get; set; }
+        public string v_CustomerLocationId { get; set; }
+        public string ProtocolId { get; set; }
+
         public string TipoEmo { get; set; }
         public string DniPasaporte { get; set; }
         public DateTime? FechaExamen { get; set; }

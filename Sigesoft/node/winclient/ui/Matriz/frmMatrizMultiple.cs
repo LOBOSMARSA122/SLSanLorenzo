@@ -101,7 +101,7 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
                 }
 
                 if (ddlProtocolId.SelectedValue.ToString() != "-1")
-                    Filters.Add("IdProtocolId==" + "\"" + ddlProtocolId.SelectedValue + "\"");
+                    Filters.Add("ProtocolId==" + "\"" + ddlProtocolId.SelectedValue + "\"");
 
                 // Create the Filter Expression
                 strFilterExpression = null;
