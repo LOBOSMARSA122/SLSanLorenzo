@@ -336,10 +336,23 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 if (_profesionId == 31 || _profesionId == 32)
                 {
                     btnGuardarConclusiones.Enabled = true;
+                    btnAceptarDX.Enabled = true;
                 }
-                else
+                else if (_profesionId == 30)
                 {
                     btnGuardarConclusiones.Enabled = false;
+                    btnAceptarDX.Enabled = false;
+                    tcSubMain.TabPages.Remove(tpAnalisisDx);
+                    tcSubMain.TabPages.Remove(tpConclusion);
+                }
+                 else 
+                {
+                    btnGuardarConclusiones.Enabled = false;
+                    btnAceptarDX.Enabled = false;
+                    tcSubMain.TabPages.Remove(tpAnalisisDx);
+                    tcSubMain.TabPages.Remove(tpConclusion);
+                    tcSubMain.TabPages.Remove(tpAntecedentes);
+                    tcSubMain.TabPages.Remove(General);
                 }
 
 
