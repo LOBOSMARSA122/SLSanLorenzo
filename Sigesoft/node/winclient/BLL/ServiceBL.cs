@@ -3062,7 +3062,37 @@ namespace Sigesoft.Node.WinClient.BLL
 					// El examen Necesita ser aprobado / Revisado y diagnosticado x especialista
 
                     //WALTER3009
-                    if (item.i_ApprovedUpdateUserId == null && Int32.Parse(ClientSession[12]) != (int)TipoProfesional.Auditor_Evaluador)
+                    if (item.i_ApprovedUpdateUserId == null && (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor))
+                    {
+                        if (isApproved == (int)SiNo.SI)
+                        {
+                            // Lo esta aprobando el especialista que tambien es un medico evaluador
+                            if (enabledchkApproved.Value)
+                            {
+                                item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
+                                item.d_ApprovedUpdateDate = DateTime.Now;
+                                item.i_IsApprovedId = pobjDtoEntity.i_IsApprovedId;
+                            }
+                            else
+                            {
+                                // El tecnologo esta registrando los datos
+                                item.i_UpdateUserTechnicalDataRegisterId = Int32.Parse(ClientSession[2]);
+                                item.d_UpdateDateTechnicalDataRegister = DateTime.Now;
+                            }
+                        }
+                        else
+                        {
+                            item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
+                            item.d_ApprovedUpdateDate = DateTime.Now;
+                        }
+
+                        // Una sola vez se graba la fecha de creacion / grabacion del examen
+                        if (item.d_ApprovedInsertDate == null)
+                        {
+                            item.d_ApprovedInsertDate = DateTime.Now;
+                        }
+                    }
+                    else if (item.i_ApprovedUpdateUserId != null && ((Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)))
                     {
                         if (isApproved == (int)SiNo.SI)
                         {
