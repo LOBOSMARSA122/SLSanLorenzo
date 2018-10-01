@@ -119,6 +119,13 @@
             this.txtSearchNroDocument = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.gbDatosGenerales = new System.Windows.Forms.GroupBox();
+            this.txtReligion = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.txtResideAnte = new System.Windows.Forms.TextBox();
+            this.label53 = new System.Windows.Forms.Label();
+            this.txtNacionalidad = new System.Windows.Forms.TextBox();
+            this.btnSavePacient = new System.Windows.Forms.Button();
+            this.label52 = new System.Windows.Forms.Label();
             this.txtPuesto = new Infragistics.Win.UltraWinGrid.UltraCombo();
             this.txtNroHermanos = new System.Windows.Forms.TextBox();
             this.label51 = new System.Windows.Forms.Label();
@@ -130,7 +137,6 @@
             this.label39 = new System.Windows.Forms.Label();
             this.ddlRelationshipId = new System.Windows.Forms.ComboBox();
             this.Parentesco = new System.Windows.Forms.Label();
-            this.btnSavePacient = new System.Windows.Forms.Button();
             this.label37 = new System.Windows.Forms.Label();
             this.txtResidenceTimeInWorkplace = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
@@ -197,12 +203,6 @@
             this.grdDataPeopleAuthoritation = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnschedule = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.label52 = new System.Windows.Forms.Label();
-            this.txtNacionalidad = new System.Windows.Forms.TextBox();
-            this.label53 = new System.Windows.Forms.Label();
-            this.txtResideAnte = new System.Windows.Forms.TextBox();
-            this.txtReligion = new System.Windows.Forms.TextBox();
-            this.label54 = new System.Windows.Forms.Label();
             this.groupBox2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.gbDatosGenerales.SuspendLayout();
@@ -420,7 +420,7 @@
             // 
             this.txtViewOccupation.Enabled = false;
             this.txtViewOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtViewOccupation.Location = new System.Drawing.Point(-24, 37);
+            this.txtViewOccupation.Location = new System.Drawing.Point(0, 36);
             this.txtViewOccupation.Margin = new System.Windows.Forms.Padding(2);
             this.txtViewOccupation.Name = "txtViewOccupation";
             this.txtViewOccupation.ReadOnly = true;
@@ -890,6 +890,96 @@
             this.gbDatosGenerales.TabStop = false;
             this.gbDatosGenerales.Text = "Datos Generales de Paciente";
             // 
+            // txtReligion
+            // 
+            this.txtReligion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReligion.Location = new System.Drawing.Point(351, 267);
+            this.txtReligion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtReligion.MaxLength = 250;
+            this.txtReligion.Name = "txtReligion";
+            this.txtReligion.Size = new System.Drawing.Size(124, 20);
+            this.txtReligion.TabIndex = 157;
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label54.ForeColor = System.Drawing.Color.Black;
+            this.label54.Location = new System.Drawing.Point(245, 270);
+            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(45, 13);
+            this.label54.TabIndex = 156;
+            this.label54.Text = "Religión";
+            // 
+            // txtResideAnte
+            // 
+            this.txtResideAnte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResideAnte.Location = new System.Drawing.Point(351, 291);
+            this.txtResideAnte.Margin = new System.Windows.Forms.Padding(2);
+            this.txtResideAnte.MaxLength = 20;
+            this.txtResideAnte.Name = "txtResideAnte";
+            this.txtResideAnte.Size = new System.Drawing.Size(124, 20);
+            this.txtResideAnte.TabIndex = 155;
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label53.ForeColor = System.Drawing.Color.Black;
+            this.label53.Location = new System.Drawing.Point(242, 294);
+            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(99, 13);
+            this.label53.TabIndex = 153;
+            this.label53.Text = "Residencia Anterior";
+            // 
+            // txtNacionalidad
+            // 
+            this.txtNacionalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNacionalidad.Location = new System.Drawing.Point(110, 291);
+            this.txtNacionalidad.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNacionalidad.MaxLength = 50;
+            this.txtNacionalidad.Name = "txtNacionalidad";
+            this.txtNacionalidad.Size = new System.Drawing.Size(126, 20);
+            this.txtNacionalidad.TabIndex = 154;
+            // 
+            // btnSavePacient
+            // 
+            this.btnSavePacient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSavePacient.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSavePacient.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSavePacient.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSavePacient.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSavePacient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSavePacient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSavePacient.ForeColor = System.Drawing.Color.Black;
+            this.btnSavePacient.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnSavePacient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSavePacient.Location = new System.Drawing.Point(328, 315);
+            this.btnSavePacient.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSavePacient.Name = "btnSavePacient";
+            this.btnSavePacient.Size = new System.Drawing.Size(156, 21);
+            this.btnSavePacient.TabIndex = 28;
+            this.btnSavePacient.Text = "Guardar Nuevo Paciente";
+            this.btnSavePacient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSavePacient.UseVisualStyleBackColor = false;
+            this.btnSavePacient.Click += new System.EventHandler(this.btnSavePacient_Click);
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label52.ForeColor = System.Drawing.Color.Black;
+            this.label52.Location = new System.Drawing.Point(9, 291);
+            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(69, 13);
+            this.label52.TabIndex = 152;
+            this.label52.Text = "Nacionalidad";
+            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txtPuesto
             // 
             appearance1.BackColor = System.Drawing.SystemColors.Window;
@@ -1068,28 +1158,6 @@
             this.Parentesco.Size = new System.Drawing.Size(61, 13);
             this.Parentesco.TabIndex = 136;
             this.Parentesco.Text = "Parentesco";
-            // 
-            // btnSavePacient
-            // 
-            this.btnSavePacient.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSavePacient.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSavePacient.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnSavePacient.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnSavePacient.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnSavePacient.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSavePacient.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSavePacient.ForeColor = System.Drawing.Color.Black;
-            this.btnSavePacient.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
-            this.btnSavePacient.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSavePacient.Location = new System.Drawing.Point(328, 315);
-            this.btnSavePacient.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSavePacient.Name = "btnSavePacient";
-            this.btnSavePacient.Size = new System.Drawing.Size(156, 21);
-            this.btnSavePacient.TabIndex = 28;
-            this.btnSavePacient.Text = "Guardar Nuevo Paciente";
-            this.btnSavePacient.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSavePacient.UseVisualStyleBackColor = false;
-            this.btnSavePacient.Click += new System.EventHandler(this.btnSavePacient_Click);
             // 
             // label37
             // 
@@ -2081,74 +2149,6 @@
             this.btnCancel.Text = "   Salir";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label52.ForeColor = System.Drawing.Color.Black;
-            this.label52.Location = new System.Drawing.Point(9, 291);
-            this.label52.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(69, 13);
-            this.label52.TabIndex = 152;
-            this.label52.Text = "Nacionalidad";
-            this.label52.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // txtNacionalidad
-            // 
-            this.txtNacionalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNacionalidad.Location = new System.Drawing.Point(110, 291);
-            this.txtNacionalidad.Margin = new System.Windows.Forms.Padding(2);
-            this.txtNacionalidad.MaxLength = 50;
-            this.txtNacionalidad.Name = "txtNacionalidad";
-            this.txtNacionalidad.Size = new System.Drawing.Size(126, 20);
-            this.txtNacionalidad.TabIndex = 154;
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label53.ForeColor = System.Drawing.Color.Black;
-            this.label53.Location = new System.Drawing.Point(242, 294);
-            this.label53.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(99, 13);
-            this.label53.TabIndex = 153;
-            this.label53.Text = "Residencia Anterior";
-            // 
-            // txtResideAnte
-            // 
-            this.txtResideAnte.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResideAnte.Location = new System.Drawing.Point(351, 291);
-            this.txtResideAnte.Margin = new System.Windows.Forms.Padding(2);
-            this.txtResideAnte.MaxLength = 20;
-            this.txtResideAnte.Name = "txtResideAnte";
-            this.txtResideAnte.Size = new System.Drawing.Size(124, 20);
-            this.txtResideAnte.TabIndex = 155;
-            // 
-            // txtReligion
-            // 
-            this.txtReligion.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReligion.Location = new System.Drawing.Point(351, 267);
-            this.txtReligion.Margin = new System.Windows.Forms.Padding(2);
-            this.txtReligion.MaxLength = 250;
-            this.txtReligion.Name = "txtReligion";
-            this.txtReligion.Size = new System.Drawing.Size(124, 20);
-            this.txtReligion.TabIndex = 157;
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label54.ForeColor = System.Drawing.Color.Black;
-            this.label54.Location = new System.Drawing.Point(245, 270);
-            this.label54.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(45, 13);
-            this.label54.TabIndex = 156;
-            this.label54.Text = "Religión";
             // 
             // frmSchedulePerson
             // 

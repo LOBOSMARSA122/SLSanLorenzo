@@ -173,6 +173,7 @@
             this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
             this.btnAgregarExamen = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnCambiarProtocolo = new System.Windows.Forms.Button();
             this.btnGenerarXML = new System.Windows.Forms.Button();
             this.btnAdjuntar = new System.Windows.Forms.Button();
             this.btnEnviarInformes = new System.Windows.Forms.Button();
@@ -194,7 +195,6 @@
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.btnCambiarProtocolo = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -748,7 +748,7 @@
             this.toolStripMenuItem2,
             this.tsmDeclaracionDrogas});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 298);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 320);
             // 
             // mnuReagendarCita
             // 
@@ -1168,6 +1168,29 @@
             this.splitContainer1.Size = new System.Drawing.Size(1077, 452);
             this.splitContainer1.SplitterDistance = 622;
             this.splitContainer1.TabIndex = 53;
+            // 
+            // btnCambiarProtocolo
+            // 
+            this.btnCambiarProtocolo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCambiarProtocolo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCambiarProtocolo.Enabled = false;
+            this.btnCambiarProtocolo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCambiarProtocolo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCambiarProtocolo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCambiarProtocolo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCambiarProtocolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCambiarProtocolo.ForeColor = System.Drawing.Color.Black;
+            this.btnCambiarProtocolo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form_edit;
+            this.btnCambiarProtocolo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCambiarProtocolo.Location = new System.Drawing.Point(152, 414);
+            this.btnCambiarProtocolo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCambiarProtocolo.Name = "btnCambiarProtocolo";
+            this.btnCambiarProtocolo.Size = new System.Drawing.Size(125, 24);
+            this.btnCambiarProtocolo.TabIndex = 103;
+            this.btnCambiarProtocolo.Text = "Cambiar Protocolo";
+            this.btnCambiarProtocolo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnCambiarProtocolo.UseVisualStyleBackColor = false;
+            this.btnCambiarProtocolo.Click += new System.EventHandler(this.btnCambiarProtocolo_Click);
             // 
             // btnGenerarXML
             // 
@@ -1616,29 +1639,6 @@
             ultraDataColumn20,
             ultraDataColumn21,
             ultraDataColumn22});
-            // 
-            // btnCambiarProtocolo
-            // 
-            this.btnCambiarProtocolo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCambiarProtocolo.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCambiarProtocolo.Enabled = false;
-            this.btnCambiarProtocolo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnCambiarProtocolo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnCambiarProtocolo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnCambiarProtocolo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCambiarProtocolo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCambiarProtocolo.ForeColor = System.Drawing.Color.Black;
-            this.btnCambiarProtocolo.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_form_edit;
-            this.btnCambiarProtocolo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCambiarProtocolo.Location = new System.Drawing.Point(152, 414);
-            this.btnCambiarProtocolo.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCambiarProtocolo.Name = "btnCambiarProtocolo";
-            this.btnCambiarProtocolo.Size = new System.Drawing.Size(125, 24);
-            this.btnCambiarProtocolo.TabIndex = 103;
-            this.btnCambiarProtocolo.Text = "Cambiar Protocolo";
-            this.btnCambiarProtocolo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnCambiarProtocolo.UseVisualStyleBackColor = false;
-            this.btnCambiarProtocolo.Click += new System.EventHandler(this.btnCambiarProtocolo_Click);
             // 
             // frmCalendar
             // 
