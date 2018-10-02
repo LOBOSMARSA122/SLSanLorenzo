@@ -245,5 +245,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public byte[] logoCliente { get; set; }
 
+        public string empresa { get; set; }
+        public string contrata { get; set; }
     }
 }
