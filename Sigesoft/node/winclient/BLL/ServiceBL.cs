@@ -19308,7 +19308,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var objEntity = (from A in dbContext.service
                                  join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                                  join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
-                                 join D in dbContext.organization on C.v_WorkingOrganizationId equals D.v_OrganizationId
+                                 join D in dbContext.organization on C.v_EmployerOrganizationId equals D.v_OrganizationId
                                  join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
                                                                         equals new { a = E.v_ServiceId, b = E.v_ComponentId }
 
