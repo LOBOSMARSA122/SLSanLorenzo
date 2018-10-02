@@ -104,7 +104,7 @@ namespace NetPdf
                 table = HandlingItextSharp.GenerateTableFromCells(cellsTit, columnWidths, null, fontTitleTable);
                 document.Add(table);
                 #endregion
-                float tamaño_caldas = 10f;
+                float tamaño_caldas = 13f;
                 #region Datos personales del trabajador
 
                 cells = new List<PdfPCell>()
@@ -320,7 +320,28 @@ namespace NetPdf
                             cells.Add(new PdfPCell(new Phrase(colesterolvldlValord == null ? string.Empty : colesterolvldlValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                             cells.Add(new PdfPCell(new Phrase(colesterolvldl == null ? string.Empty : colesterolvldl.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
+                            if (xUrea != null)
+                            {
+                                var urea = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA);
+                                var ureaDeseable = xUrea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.UREA_BIOQUIMICA_UREA_DESEABLE);
 
+                                cells.Add(new PdfPCell(new Phrase("UREA SERICA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                                cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                                cells.Add(new PdfPCell(new Phrase(ureaDeseable == null ? string.Empty : ureaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                                cells.Add(new PdfPCell(new Phrase(urea == null ? string.Empty : urea.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                            }
+                            if (xCreatinina != null)
+                            {
+                                var creatinina = xCreatinina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CREATININA_BIOQUIMICA_CREATININA);
+                                var creatininaDeseable = xCreatinina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CREATININA_BIOQUIMICA_CREATININA_DESEABLE);
+
+                                cells.Add(new PdfPCell(new Phrase("CREATININA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                                cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                                cells.Add(new PdfPCell(new Phrase(creatininaDeseable == null ? string.Empty : creatininaDeseable.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                                cells.Add(new PdfPCell(new Phrase(creatinina == null ? string.Empty : creatinina.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                            }
                         }
                         else
                         {
@@ -1657,7 +1678,7 @@ namespace NetPdf
                         var DosajeAlcohol = xDosajeAlcohol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_ALCOHOLEMIA_RESULTADO);
                         var DosajeAlcoholValord = xDosajeAlcohol.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_ALCOHOLEMIA_DESEABLE);
 
-                        cells.Add(new PdfPCell(new Phrase("DOSAJE DE ALCOHOL", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("ALCOHOL EN SALIVA / ALIENTO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(DosajeAlcohol == null ? string.Empty : DosajeAlcohol.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(DosajeAlcohol == null ? string.Empty : DosajeAlcohol.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(DosajeAlcoholValord == null ? string.Empty : DosajeAlcoholValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1804,18 +1825,18 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     }
-                    var xAlcoholSaliva = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALCOHOL_EN_SALIVA_ID);
+                    //var xAlcoholSaliva = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALCOHOL_EN_SALIVA_ID);
 
-                    if (xAlcoholSaliva != null)
-                    {
-                        var AlcoholSaliva = xAlcoholSaliva.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ALCOHOL_EN_SALIVA_RESULTADO_ID);
+                    //if (xAlcoholSaliva != null)
+                    //{
+                    //    var AlcoholSaliva = xAlcoholSaliva.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ALCOHOL_EN_SALIVA_RESULTADO_ID);
 
-                        cells.Add(new PdfPCell(new Phrase("ALCOHOL EN SALIVA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(AlcoholSaliva == null ? string.Empty : AlcoholSaliva.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(AlcoholSaliva == null ? string.Empty : AlcoholSaliva.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("ALCOHOL EN SALIVA / ALIENTO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(AlcoholSaliva == null ? string.Empty : AlcoholSaliva.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(AlcoholSaliva == null ? string.Empty : AlcoholSaliva.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("%", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                    }
+                    //}
                     var xExtasis = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXTASIS_ID);
 
                     if (xExtasis != null)

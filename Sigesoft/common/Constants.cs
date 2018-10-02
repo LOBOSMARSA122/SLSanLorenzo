@@ -15,6 +15,18 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
+        #region
+        public const string INFORME_PSICOLOGICO_RESUMEN_ID = "N009-ME000000469";
+
+        public const string INFORME_PSICOLOGICO_RESUMEN_EVALUACION = "N009-MF000004308";
+        public const string INFORME_PSICOLOGICO_RESUMEN_PRUEBAS_APLICADAS = "N009-MF000004309";
+        public const string INFORME_PSICOLOGICO_RESUMEN_RESULTADOS = "N009-MF000004310";
+        public const string INFORME_PSICOLOGICO_RESUMEN_CONCLUSIONES = "N009-MF000004311";
+        public const string INFORME_PSICOLOGICO_RESUMEN_APTO = "N009-MF000004312";
+        public const string INFORME_PSICOLOGICO_RESUMEN_NOAPTO = "N009-MF000004313";
+        public const string INFORME_PSICOLOGICO_RESUMEN_OBSERVADO = "N009-MF000004314";
+
+        #endregion
         #region EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID
         public const string EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID = "N009-ME000000468";
 

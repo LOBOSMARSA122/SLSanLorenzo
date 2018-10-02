@@ -1602,7 +1602,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_Laboratorio(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1967,7 +1967,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -2678,7 +2678,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     {
                         if (TipoServicio == ((int)TypeESO.Retiro).ToString())
                         {
-                            rp = new Reports.crOccupationalRetirosSinFirma();
+                            rp = new Reports.crOccupationalMedicalAptitudeCertificate();
                             rp.SetDataSource(ds1);
 
                             string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoRetiro").ToString();
@@ -2800,7 +2800,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     {
                         if (TipoServicio == ((int)TypeESO.Retiro).ToString())
                         {
-                            rp = new Reports.crOccupationalMedicalAptitudeCertificateRetiros();
+                            rp = new Reports.crOccupationalMedicalAptitudeCertificate();
                             rp.SetDataSource(ds1);
 
                             string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoRetiro").ToString();

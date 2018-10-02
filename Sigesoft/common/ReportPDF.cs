@@ -15083,12 +15083,12 @@ namespace NetPdf
                     new PdfPCell(Periodica){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
                     new PdfPCell(new Phrase("UEA : ", fontColumnValue)){Colspan = 2, Border = PdfPCell.LEFT_BORDER}, 
-                    new PdfPCell(new Phrase( DataService.EmpresaEmpleadora,fontColumnValue)){Colspan=2, Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue)){Colspan=2, Border = PdfPCell.NO_BORDER}, 
                     new PdfPCell(new Phrase("RETIRO", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
                     new PdfPCell(new Phrase("EMPRESA : ", fontColumnValue)){Colspan = 2, Border = PdfPCell.LEFT_BORDER},     
-                    new PdfPCell(new Phrase(DataService.v_CustomerOrganizationName, fontColumnValue)){Colspan=2, Border = PdfPCell.NO_BORDER},    
+                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue)){Colspan=2, Border = PdfPCell.NO_BORDER},    
                     new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
@@ -19818,7 +19818,7 @@ namespace NetPdf
                     if (ResultadoABS.v_Value1 != null) ValorResultadoABS = ResultadoABS.v_Value1Name;
                 }
 
-
+               
                 var ListaEspirometriaDx = diagnosticRepository.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
                 string DiagnosticoEspirometria = "";
 
