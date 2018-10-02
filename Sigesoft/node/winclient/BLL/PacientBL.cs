@@ -1116,11 +1116,20 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join pr2 in dbContext.professional on su1.v_PersonId equals pr2.v_PersonId into pr2_join
                                  from pr2 in pr2_join.DefaultIfEmpty()
 
-
+                                 join B in dbContext.protocol on s.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
 
                                  where s.v_ServiceId == serviceId
                                  select new PacientList
                                  {
+
+                                     empresa = C2.v_Name,
+                                     contrata = C1.v_Name,
+
                                      TimeOfDisease = s.i_TimeOfDisease,
                                     v_ObsStatusService = s.v_ObsStatusService,
                                      TiempoEnfermedad = ff.v_Value1,
@@ -1170,6 +1179,9 @@ namespace Sigesoft.Node.WinClient.BLL
                          
                            select new PacientList
                             {
+                                empresa = a.empresa,
+                                contrata = a.contrata,
+
                                 FirmaDoctor =a.FirmaMedico,
                                 v_Story = a.v_Story,
                                 v_MainSymptom =a.v_MainSymptom,

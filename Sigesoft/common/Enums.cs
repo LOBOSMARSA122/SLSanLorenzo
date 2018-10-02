@@ -18,7 +18,7 @@ namespace Sigesoft.Common
         Internal = 1,
         External = 2
     }
-
+    
     public enum EmpresaDx
     {
         ConDx = 1,

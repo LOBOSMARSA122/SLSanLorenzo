@@ -9,6 +9,8 @@ using Sigesoft.Common;
 using System.Collections;
 using System.Transactions;
 using System.Data.Linq.SqlClient;
+
+
 namespace Sigesoft.Node.WinClient.BLL
 {
 	public class ServiceBL
@@ -1011,6 +1013,139 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var objEntity = (from A in dbContext.service
+                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join D in dbContext.datahierarchy on new { a = C.i_SectorTypeId.Value, b = 104 }
+                                                        equals new { a = D.i_ItemId, b = D.i_GroupId } into D_join
+                                 from D in D_join.DefaultIfEmpty()
+
+                                 join E in dbContext.datahierarchy on new { a = C.i_DepartmentId.Value, b = 113 }
+                                                       equals new { a = E.i_ItemId, b = E.i_GroupId } into E_join
+                                 from E in E_join.DefaultIfEmpty()
+
+                                 join F in dbContext.datahierarchy on new { a = C.i_ProvinceId.Value, b = 113 }
+                                                       equals new { a = F.i_ItemId, b = F.i_GroupId } into F_join
+                                 from F in F_join.DefaultIfEmpty()
+
+                                 join G in dbContext.datahierarchy on new { a = C.i_DistrictId.Value, b = 113 }
+                                                       equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
+                                 from G in G_join.DefaultIfEmpty()
+
+                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join su in dbContext.systemuser on A.i_UpdateUserMedicalAnalystId.Value equals su.i_SystemUserId into su_join
+                                 from su in su_join.DefaultIfEmpty()
+
+                                 join pr in dbContext.professional on su.v_PersonId equals pr.v_PersonId into pr_join
+                                 from pr in pr_join.DefaultIfEmpty()
+
+                                 join P1 in dbContext.person on new { a = pr.v_PersonId }
+                                         equals new { a = P1.v_PersonId } into P1_join
+                                 from P1 in P1_join.DefaultIfEmpty()
+
+                                 where A.v_ServiceId == pstrServiceId
+
+
+                                 select new ServiceList
+                                 {
+                                     v_PersonId = H.v_PersonId,
+                                     v_ServiceId = A.v_ServiceId,
+                                     i_EsoTypeId = B.i_EsoTypeId.Value,
+                                     RUC = C.v_IdentificationNumber,
+                                     //---------------DATOS DE LA EMPRESA--------------------------------
+                                     EmpresaTrabajo = C.v_Name,
+                                     EmpresaEmpleadora = C1.v_Name,
+                                     RubroEmpresaTrabajo = C.v_SectorName,
+                                     DireccionEmpresaTrabajo = C.v_Address,
+                                     DepartamentoEmpresaTrabajo = E.v_Value1,
+                                     ProvinciaEmpresaTrabajo = F.v_Value1,
+                                     DistritoEmpresaTrabajo = G.v_Value1,
+                                     v_CurrentOccupation = H.v_CurrentOccupation,
+                                     b_Logo = C2.b_Image,
+                                     EmpresaClienteId = C.v_OrganizationId,
+                                     
+                                     FirmaTrabajador = H.b_RubricImage,
+                                     HuellaTrabajador = H.b_FingerPrintImage,
+
+                                     //Datos del Doctor
+                                     FirmaDoctor = pr.b_SignatureImage,
+                                     NombreDoctor = P1.v_FirstName + " " + P1.v_FirstLastName + " " + P1.v_SecondLastName,
+                                     CMP = pr.v_ProfessionalCode,
+
+                                     v_CustomerOrganizationName = C2.v_Name,
+
+                                 });
+
+                var sql = (from a in objEntity.ToList()
+                           let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
+                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID,
+                           Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID, Constants.EXCEPCIONES_LABORATORIO_ID,
+                           Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID,Constants.ANEXO_3_EXO_RESP_YANACOCHA )
+
+                           select new ServiceList
+                           {
+                               //-----------------CABECERA---------------------------------
+                               v_ServiceId = a.v_ServiceId,
+                               i_EsoTypeId = a.i_EsoTypeId, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
+                               RUC = a.RUC,
+                               //---------------DATOS DE LA EMPRESA--------------------------------
+                               EmpresaTrabajo = a.EmpresaTrabajo,
+                               EmpresaEmpleadora = a.EmpresaEmpleadora,
+                               RubroEmpresaTrabajo = a.RubroEmpresaTrabajo,
+                               DireccionEmpresaTrabajo = a.DireccionEmpresaTrabajo,
+                               DepartamentoEmpresaTrabajo = a.DepartamentoEmpresaTrabajo,
+                               ProvinciaEmpresaTrabajo = a.ProvinciaEmpresaTrabajo,
+                               DistritoEmpresaTrabajo = a.DistritoEmpresaTrabajo,
+                               v_CurrentOccupation = a.v_CurrentOccupation,
+                               b_Logo = a.b_Logo,
+                               EmpresaClienteId = a.EmpresaClienteId,
+                               //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
+                             
+                               v_OwnerOrganizationName = (from n in dbContext.organization
+                                                          where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
+                                                          select n.v_Name + " " + n.v_Address).SingleOrDefault<string>(),
+
+                              
+                               FirmaTrabajador = a.FirmaTrabajador,
+                               HuellaTrabajador = a.HuellaTrabajador,
+
+                               //Datos del Doctor
+                               FirmaDoctor = a.FirmaDoctor,
+                               NombreDoctor = DatosMedicina.Value2,
+                               CMP = DatosMedicina.Value3,
+
+                               FirmaMedicoMedicina = DatosMedicina.Value5,
+                               v_CustomerOrganizationName = a.v_CustomerOrganizationName
+                           }).FirstOrDefault();
+
+                return sql;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public ServiceList GetInformacion_Laboratorio(string pstrServiceId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from A in dbContext.service
                                  join CCC in dbContext.servicecomponent on A.v_ServiceId equals CCC.v_ServiceId
                                  join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
                                  from B in B_join.DefaultIfEmpty()
@@ -1073,7 +1208,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      v_CurrentOccupation = H.v_CurrentOccupation,
                                      b_Logo = C2.b_Image,
                                      EmpresaClienteId = C.v_OrganizationId,
-                                     
+
                                      FirmaTrabajador = H.b_RubricImage,
                                      HuellaTrabajador = H.b_FingerPrintImage,
 
@@ -1086,12 +1221,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                  });
 
-
                 var sql = (from a in objEntity.ToList()
-                           let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
-                           Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID,
-                           Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID, Constants.EXCEPCIONES_LABORATORIO_ID, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T,
-                           Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID)
+                           let DatosMedicina = ObtenerFirmalaboratorio(pstrServiceId, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T)
 
                            select new ServiceList
                            {
@@ -1111,12 +1242,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                b_Logo = a.b_Logo,
                                EmpresaClienteId = a.EmpresaClienteId,
                                //---------------DATOS DE FILIACIÓN TRABAJADOR--------------------------------
-                             
+
                                v_OwnerOrganizationName = (from n in dbContext.organization
                                                           where n.v_OrganizationId == Constants.OWNER_ORGNIZATION_ID
                                                           select n.v_Name + " " + n.v_Address).SingleOrDefault<string>(),
 
-                              
+
                                FirmaTrabajador = a.FirmaTrabajador,
                                HuellaTrabajador = a.HuellaTrabajador,
 
@@ -1153,6 +1284,32 @@ namespace Sigesoft.Node.WinClient.BLL
 
                              where E.v_ServiceId == pstrServiceId &&
                              (E.v_ComponentId == p1 || E.v_ComponentId == p2)
+                             select new KeyValueDTO
+                             {
+                                 Value5 = pme.b_SignatureImage,
+                                 Value2 = p.v_FirstLastName + " " + p.v_SecondLastName + " " + p.v_FirstName,
+                                 Value3 = pme.v_ProfessionalCode
+
+                             }).FirstOrDefault();
+
+            return objEntity;
+        }
+        private KeyValueDTO ObtenerFirmalaboratorio(string pstrServiceId, string p1)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var objEntity = (from E in dbContext.servicecomponent
+
+                             join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+
+                             join p in dbContext.person on me.v_PersonId equals p.v_PersonId
+
+                             where E.v_ServiceId == pstrServiceId &&
+                             (E.v_ComponentId == p1)
                              select new KeyValueDTO
                              {
                                  Value5 = pme.b_SignatureImage,
@@ -3093,7 +3250,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             item.d_ApprovedInsertDate = DateTime.Now;
                         }
                     }
-                    else if (item.i_ApprovedUpdateUserId != null && ((Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)))
+                    else if (item.i_ApprovedUpdateUserId != null  && ((Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)))
                     {
                         if (isApproved == (int)SiNo.SI)
                         {
@@ -3122,6 +3279,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         {
                             item.d_ApprovedInsertDate = DateTime.Now;
                         }
+                        
                     }
                    
 
@@ -12992,6 +13150,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							 join ooo in dbContext.organization on E.v_CustomerOrganizationId equals ooo.v_OrganizationId
 
+                             join abc in dbContext.organization on E.v_EmployerOrganizationId equals abc.v_OrganizationId
+                             
 							 join lll in dbContext.location on E.v_EmployerLocationId equals lll.v_LocationId
 
 							 join H in dbContext.systemparameter on new { a = E.i_EsoTypeId.Value, b = 118 }
@@ -13072,7 +13232,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 b_Photo = D.b_PersonImage,
 								 GrupoFactorSanguineo = H1.v_Value1 + " - " + H2.v_Value1,
 								 d_FechaExpiracionServicio = sss.d_GlobalExpirationDate,
-                                 v_Cie10 =  ddd.v_CIE10Id
+                                 v_Cie10 =  ddd.v_CIE10Id,
+                                 EmpresaPropietaria = abc.v_Name
 
 							 });
 
@@ -13108,7 +13269,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 v_OccupationName = a.v_OccupationName,  // por ahora se muestra el GESO
 							 g_Image = a.g_Image,
 							 b_Logo = MedicalCenter.b_Image,
-							 EmpresaPropietaria = MedicalCenter.v_Name,
+							 EmpresaPropietaria = a.EmpresaPropietaria,
 							 EmpresaPropietariaDireccion = MedicalCenter.v_Address,
 							 EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
 							 EmpresaPropietariaEmail = MedicalCenter.v_Mail,
@@ -18978,6 +19139,8 @@ namespace Sigesoft.Node.WinClient.BLL
 									 equals new { a = M.i_ParameterId, b = M.i_GroupId } into M_join
 								 from M in M_join.DefaultIfEmpty()
 
+                                 join EE in dbContext.protocol on A.v_ProtocolId equals EE.v_ProtocolId
+                                 join abc in dbContext.organization on EE.v_EmployerOrganizationId equals abc.v_OrganizationId
 
 
 								 // Usuario Medico Evaluador / Medico Aprobador ****************************
@@ -19025,6 +19188,7 @@ namespace Sigesoft.Node.WinClient.BLL
 									 NombreUsuarioGraba = X.v_FirstLastName + " " + X.v_SecondLastName + " " + X.v_FirstName,
 									 b_Imagen = G1.b_File,
                                     HuellaPaciente = B.b_FingerPrintImage,
+                                    EmpresaPropietaria = abc.v_Name,
                                     FirmaPaciente = B.b_RubricImage
 								 });
 
@@ -19035,6 +19199,7 @@ namespace Sigesoft.Node.WinClient.BLL
 						   select new ReportEstudioElectrocardiografico
 						   {
 							   b_Imagen = a.b_Imagen,
+                               
 							   NroFicha = a.NroFicha,
 							   NroHistoria = a.NroHistoria,
 							   DatosPaciente = a.DatosPaciente,
@@ -19097,7 +19262,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   OndaT = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_ONDA_T_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_ONDA_T_ID).v_Value1Name,
 
 							   b_Logo = MedicalCenter.b_Image,
-							   EmpresaPropietaria = MedicalCenter.v_Name,
+							   EmpresaPropietaria = a.EmpresaPropietaria,
 							   EmpresaPropietariaDireccion = MedicalCenter.v_Address,
 							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
 							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
@@ -19143,7 +19308,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var objEntity = (from A in dbContext.service
                                  join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                                  join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
-                                 join D in dbContext.organization on C.v_WorkingOrganizationId equals D.v_OrganizationId
+                                 join D in dbContext.organization on C.v_EmployerOrganizationId equals D.v_OrganizationId
                                  join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
                                                                         equals new { a = E.v_ServiceId, b = E.v_ComponentId }
 
@@ -26659,6 +26824,21 @@ namespace Sigesoft.Node.WinClient.BLL
 										 equals new { a = P1.v_PersonId } into P1_join
 								 from P1 in P1_join.DefaultIfEmpty()
 
+                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
+                                 from H in H_join.DefaultIfEmpty()
+
+                                 join I in dbContext.datahierarchy on new { a = H.i_DepartmentId.Value, b = 113 }
+                                                       equals new { a = I.i_ItemId, b = I.i_GroupId } into I_join
+                                 from I in I_join.DefaultIfEmpty()
+
+                                 join J in dbContext.datahierarchy on new { a = H.i_ProvinceId.Value, b = 113 }
+                                                       equals new { a = J.i_ItemId, b = J.i_GroupId } into J_join
+                                 from J in J_join.DefaultIfEmpty()
+
+                                 join K in dbContext.datahierarchy on new { a = H.i_DistrictId.Value, b = 113 }
+                                                       equals new { a = K.i_ItemId, b = K.i_GroupId } into K_join
+                                 from K in K_join.DefaultIfEmpty()
+
 								 join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
 																	 equals new { a = E.v_ServiceId, b = E.v_ComponentId }
 
@@ -26668,6 +26848,10 @@ namespace Sigesoft.Node.WinClient.BLL
 
 								 join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
 								 from pme in pme_join.DefaultIfEmpty()
+
+                                 join CC in dbContext.protocol on A.v_ProtocolId equals CC.v_ProtocolId
+
+                                 join abc in dbContext.organization on CC.v_EmployerOrganizationId equals abc.v_OrganizationId
 
 								 where A.v_ServiceId == pstrServiceId
 
@@ -26679,18 +26863,22 @@ namespace Sigesoft.Node.WinClient.BLL
 
 									 Trabajador = P1.v_FirstName + " " + P1.v_FirstLastName + " " + P1.v_SecondLastName,
 									 Dni = P1.v_DocNumber,
-									 EmpresaTrabajador = C.v_Name,
+                                     EmpresaTrabajador = abc.v_Name,
 									 FirmaMedico = pme.b_SignatureImage,
 									 FirmaTrabajador = P1.b_RubricImage,
 									 HuellaTrabajador = P1.b_FingerPrintImage,
 									 Puesto = P1.v_CurrentOccupation,
 									 NOMBRE_EMPRESA_CLIENTE = C.v_Name,
+
+                                     v_DepartamentName = I.v_Value1,
+                                     v_ProvinceName = J.v_Value1,
+                                     v_DistrictName = K.v_Value1,
 								 });
 
 
 				var MedicalCenter = GetInfoMedicalCenter();
                 var TOXICOLOGICO_COCAINA_MARIHUANA = ValoresComponente(pstrServiceId, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
-                var Saliva = ValoresComponente(pstrServiceId, "N009-ME000000416");
+                var Saliva = ValoresComponente(pstrServiceId, "N009-ME000000041");
 
                 var Anfe = ValoresComponente(pstrServiceId, "N009-ME000000043");
                 var Barbi = ValoresComponente(pstrServiceId, "N009-ME000000417");
@@ -26721,6 +26909,10 @@ namespace Sigesoft.Node.WinClient.BLL
 							   FirmaTrabajador = a.FirmaTrabajador,
 							   HuellaTrabajador = a.HuellaTrabajador,
 							   Puesto = a.Puesto,
+                               v_DepartamentName = a.v_DepartamentName,
+                               v_ProvinceName = a.v_ProvinceName,
+                               v_DistrictName = a.v_DistrictName,
+
 							   Empresa = MedicalCenter.v_Name,
                                COCAINA = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000705") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000705").v_Value1,
                                MARIHUANA = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001294") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001294").v_Value1,
@@ -26740,13 +26932,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                _4CUANTAS_VECES = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001409") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001409").v_Value1,
                                _4CUANDO_ULTIMA_VEZ = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001405") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001405").v_Value1,
                                _5ANESTESIA = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001406") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001406").v_Value1,
-                               Lote = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002799") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002799").v_Value1,
-							   DIAGNOSTICO_EXAMEN = GetDiagnosticByServiceIdAndComponent(pstrServiceId, "N009-ME000000053"),
+                               //Lote = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002799") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002799").v_Value1,
+                               Lote = a.v_DistrictName + " - " + a.v_ProvinceName + " - " + a.v_DepartamentName,
+                               DIAGNOSTICO_EXAMEN = GetDiagnosticByServiceIdAndComponent(pstrServiceId, "N009-ME000000053"),
 							   NOMBRE_EMPRESA_CLIENTE = a.NOMBRE_EMPRESA_CLIENTE,
                                Motivo_Prueba = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001376") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001376").v_Value1Name,
                                Lote_marihuana = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002814") == null ? "" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000002814").v_Value1,
 
-                               Aliento = Saliva.Count == 0 ? "N/A" : Saliva.Find(p => p.v_ComponentFieldId == "N009-MF000003212") == null ? "N/A" : Saliva.Find(p => p.v_ComponentFieldId == "N009-MF000003212").v_Value1Name,
+                               Aliento = Saliva.Count == 0 ? "N/A" : Saliva.Find(p => p.v_ComponentFieldId == "N009-MF000000397") == null ? "N/A" : Saliva.Find(p => p.v_ComponentFieldId == "N009-MF000000397").v_Value1Name,
                                Extasis = Extasis.Count == 0 ? "N/A" : Extasis.Find(p => p.v_ComponentFieldId == "N009-MF000003218") == null ? "N/A" : Extasis.Find(p => p.v_ComponentFieldId == "N009-MF000003218").v_Value1Name,
                                Opiaceos = Opia.Count == 0 ? "N/A" : Opia.Find(p => p.v_ComponentFieldId == "N009-MF000003217") == null ? "N/A" : Opia.Find(p => p.v_ComponentFieldId == "N009-MF000003217").v_Value1Name,
                                Oxicodona = Fenci.Count == 0 ? "N/A" : Fenci.Find(p => p.v_ComponentFieldId == "N009-MF000003219") == null ? "N/A" : Fenci.Find(p => p.v_ComponentFieldId == "N009-MF000003219").v_Value1Name,
@@ -26757,6 +26950,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                Marihuana = Coca.Count == 0 ? "N/A" : Coca.Find(p => p.v_ComponentFieldId == "N009-MF000001294") == null ? "N/A" : Coca.Find(p => p.v_ComponentFieldId == "N009-MF000001294").v_Value1Name,
                                Benzodiacepinas = Benzo.Count == 0 ? "N/A" : Benzo.Find(p => p.v_ComponentFieldId == "N009-MF000000395") == null ? "N/A" : Benzo.Find(p => p.v_ComponentFieldId == "N009-MF000000395").v_Value1Name,
                                Barbituricos = Barbi.Count == 0 ? "N/A" : Barbi.Find(p => p.v_ComponentFieldId == "N009-MF000003213") == null ? "N/A" : Barbi.Find(p => p.v_ComponentFieldId == "N009-MF000003213").v_Value1Name,
+                               
+                               //NombreUsuarioGraba = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307").v_Value1Name,
+
                            }).ToList();
 
 				return sql;

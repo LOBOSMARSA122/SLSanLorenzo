@@ -9,6 +9,11 @@ namespace Sigesoft.Node.WinClient.BE
     {
         public string ServiceId { get; set; }//
         public DateTime? Fecha { get; set; }
+        public string UBIGEO { get; set; }
+        public String v_DepartamentName { get; set; }
+        public string v_ProvinceName { get; set; }
+        public string v_DistrictName { get; set; }
+      
         public string Trabajador { get; set; }
         public int Edad { get; set; }
         public DateTime? FechaNacimiento { get; set; }
