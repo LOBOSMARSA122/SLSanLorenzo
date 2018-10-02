@@ -1381,6 +1381,12 @@
     <Compile Include="Hospitalizacion\frmLiquidacionMedicos.Designer.cs">
       <DependentUpon>frmLiquidacionMedicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Matriz\frmMatrizMultiple.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Matriz\frmMatrizMultiple.Designer.cs">
+      <DependentUpon>frmMatrizMultiple.cs</DependentUpon>
+    </Compile>
     <Compile Include="MensajeAlerta.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3599,6 +3605,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Hospitalizacion\frmLiquidacionMedicos.resx">
       <DependentUpon>frmLiquidacionMedicos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Matriz\frmMatrizMultiple.resx">
+      <DependentUpon>frmMatrizMultiple.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MensajeAlerta.resx">
       <DependentUpon>MensajeAlerta.cs</DependentUpon>

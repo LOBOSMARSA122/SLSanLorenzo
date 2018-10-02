@@ -351,8 +351,10 @@
             this.btnExportAramark = new System.Windows.Forms.Button();
             this.grdDataAramark = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tpMdMasterClinico = new System.Windows.Forms.TabPage();
+            this.grdDataMasterClinico = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnExportclinico = new System.Windows.Forms.Button();
             this.tpMdDisal = new System.Windows.Forms.TabPage();
+            this.grdDataDisal = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnExportDisal = new System.Windows.Forms.Button();
             this.sfdAramark = new System.Windows.Forms.SaveFileDialog();
             this.ugeAramark = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
@@ -360,15 +362,13 @@
             this.sfdClinico = new System.Windows.Forms.SaveFileDialog();
             this.sfdDisal = new System.Windows.Forms.SaveFileDialog();
             this.ugeDisal = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.grdDataMasterClinico = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.grdDataDisal = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tpMdAramark.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataAramark)).BeginInit();
             this.tpMdMasterClinico.SuspendLayout();
-            this.tpMdDisal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataMasterClinico)).BeginInit();
+            this.tpMdDisal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataDisal)).BeginInit();
             this.SuspendLayout();
             // 
@@ -919,46 +919,6 @@
             this.tpMdMasterClinico.Text = "Master Clínico";
             this.tpMdMasterClinico.UseVisualStyleBackColor = true;
             // 
-            // btnExportclinico
-            // 
-            this.btnExportclinico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportclinico.Enabled = false;
-            this.btnExportclinico.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExportclinico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportclinico.Location = new System.Drawing.Point(6, 369);
-            this.btnExportclinico.Name = "btnExportclinico";
-            this.btnExportclinico.Size = new System.Drawing.Size(114, 24);
-            this.btnExportclinico.TabIndex = 51;
-            this.btnExportclinico.Text = "Exportar a Excel";
-            this.btnExportclinico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportclinico.UseVisualStyleBackColor = true;
-            this.btnExportclinico.Click += new System.EventHandler(this.btnExportclinico_Click);
-            // 
-            // tpMdDisal
-            // 
-            this.tpMdDisal.Controls.Add(this.grdDataDisal);
-            this.tpMdDisal.Controls.Add(this.btnExportDisal);
-            this.tpMdDisal.Location = new System.Drawing.Point(4, 22);
-            this.tpMdDisal.Name = "tpMdDisal";
-            this.tpMdDisal.Size = new System.Drawing.Size(951, 398);
-            this.tpMdDisal.TabIndex = 2;
-            this.tpMdDisal.Text = "Data Disal";
-            // 
-            // btnExportDisal
-            // 
-            this.btnExportDisal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportDisal.Enabled = false;
-            this.btnExportDisal.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExportDisal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportDisal.Location = new System.Drawing.Point(6, 369);
-            this.btnExportDisal.Name = "btnExportDisal";
-            this.btnExportDisal.Size = new System.Drawing.Size(114, 24);
-            this.btnExportDisal.TabIndex = 53;
-            this.btnExportDisal.Text = "Exportar a Excel";
-            this.btnExportDisal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportDisal.UseVisualStyleBackColor = true;
-            this.btnExportDisal.Click += new System.EventHandler(this.btnExportDisal_Click);
-            // 
             // grdDataMasterClinico
             // 
             this.grdDataMasterClinico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1244,6 +1204,31 @@
             this.grdDataMasterClinico.TabIndex = 52;
             this.grdDataMasterClinico.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataMasterClinico_AfterSelectChange);
             // 
+            // btnExportclinico
+            // 
+            this.btnExportclinico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportclinico.Enabled = false;
+            this.btnExportclinico.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportclinico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportclinico.Location = new System.Drawing.Point(6, 369);
+            this.btnExportclinico.Name = "btnExportclinico";
+            this.btnExportclinico.Size = new System.Drawing.Size(114, 24);
+            this.btnExportclinico.TabIndex = 51;
+            this.btnExportclinico.Text = "Exportar a Excel";
+            this.btnExportclinico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportclinico.UseVisualStyleBackColor = true;
+            this.btnExportclinico.Click += new System.EventHandler(this.btnExportclinico_Click);
+            // 
+            // tpMdDisal
+            // 
+            this.tpMdDisal.Controls.Add(this.grdDataDisal);
+            this.tpMdDisal.Controls.Add(this.btnExportDisal);
+            this.tpMdDisal.Location = new System.Drawing.Point(4, 22);
+            this.tpMdDisal.Name = "tpMdDisal";
+            this.tpMdDisal.Size = new System.Drawing.Size(951, 398);
+            this.tpMdDisal.TabIndex = 2;
+            this.tpMdDisal.Text = "Data Disal";
+            // 
             // grdDataDisal
             // 
             this.grdDataDisal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1411,6 +1396,21 @@
             this.grdDataDisal.TabIndex = 54;
             this.grdDataDisal.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataDisal_AfterSelectChange);
             // 
+            // btnExportDisal
+            // 
+            this.btnExportDisal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportDisal.Enabled = false;
+            this.btnExportDisal.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportDisal.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportDisal.Location = new System.Drawing.Point(6, 369);
+            this.btnExportDisal.Name = "btnExportDisal";
+            this.btnExportDisal.Size = new System.Drawing.Size(114, 24);
+            this.btnExportDisal.TabIndex = 53;
+            this.btnExportDisal.Text = "Exportar a Excel";
+            this.btnExportDisal.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportDisal.UseVisualStyleBackColor = true;
+            this.btnExportDisal.Click += new System.EventHandler(this.btnExportDisal_Click);
+            // 
             // frmReporteMatrices
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1431,8 +1431,8 @@
             this.tpMdAramark.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataAramark)).EndInit();
             this.tpMdMasterClinico.ResumeLayout(false);
-            this.tpMdDisal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataMasterClinico)).EndInit();
+            this.tpMdDisal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDataDisal)).EndInit();
             this.ResumeLayout(false);
 
