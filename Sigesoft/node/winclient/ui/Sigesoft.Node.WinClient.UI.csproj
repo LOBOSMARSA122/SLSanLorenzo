@@ -3186,6 +3186,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Service References\NatclarXML\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\AudiometriaAfterValueChangeEventArgs.cs" />
     <Compile Include="UserControls\frmFileUploadEdit.cs">
       <SubType>Form</SubType>
@@ -5766,6 +5771,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\NatclarXML\Service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NatclarXML\Service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NatclarXML\Service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\NatclarXML\Sigesoft.Node.WinClient.UI.NatclarXML.Resultado.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\NatclarXML\WSRIProveedorExterno.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\Sigesoft.Common.csproj">
@@ -5867,6 +5885,13 @@
     <Content Include="Resources\triangulorojo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Service References\NatclarXML\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\NatclarXML\configuration.svcinfo" />
+    <None Include="Service References\NatclarXML\configuration91.svcinfo" />
+    <None Include="Service References\NatclarXML\Service1.disco" />
     <None Include="Resources\R_coronatemporal.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -6628,7 +6653,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -6646,6 +6671,9 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\NatclarXML\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -38,34 +38,6 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
             dptDateTimeEnd.CustomFormat = "dd/MM/yyyy";
         }
 
-        private void btnExportclinico_Click(object sender, EventArgs e)
-        {
-            //"Matriz de datos <Empresa Cliente> de <fecha inicio> a <fecha fin>"
-            string NombreArchivo = "";
-
-            if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
-            {
-                NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text + " de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
-                //NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text;
-
-            }
-            else
-            {
-                NombreArchivo = "Matriz de datos de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
-                //NombreArchivo = "Matriz de datos";
-            }
-
-            NombreArchivo = NombreArchivo.Replace("/", "_");
-            NombreArchivo = NombreArchivo.Replace(":", "_");
-
-            sfdShauindo.FileName = NombreArchivo;
-            sfdShauindo.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
-            if (sfdShauindo.ShowDialog() == DialogResult.OK)
-            {
-                this.ugeShauindo.Export(this.grdData, sfdShauindo.FileName);
-                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
 
         private void ddlCustomerOrganization_SelectedValueChanged(object sender, EventArgs e)
         {
@@ -113,12 +85,65 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
                     }
                     strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
                 }
-               
-                var objData = new PacientBL().ReporteMatrizShauindo(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
-                grdData.DataSource = objData;
-                lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
-                
+
+                if (tabControl1.SelectedTab.Name == "tpShauindo")
+                {
+                    var objData = new PacientBL().ReporteMatrizShauindo(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
+                    grdShauindo.DataSource = objData;
+                    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                }
+                else if (tabControl1.SelectedTab.Name == "tpLaZanja")
+                {
+                    var objData = new PacientBL().ReporteMatrizLaZanja(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
+                    grdLaZanja.DataSource = objData;
+                    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                }
+                else if (tabControl1.SelectedTab.Name == "tpGoldFields")
+                {
+                    var objData = new PacientBL().ReporteMatrizGoldFields(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
+                    grdGolFields.DataSource = objData;
+                    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+
+                }
+                else if (tabControl1.SelectedTab.Name == "toSolucManteIntegra")
+                {
+                    var objData = new PacientBL().ReporteMatrizSolucManteIntegra(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
+                    grdSoluc.DataSource = objData;
+                    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                }
+                else if (tabControl1.SelectedTab.Name == "tpMiBanco")
+                {
+                    var objData = new PacientBL().ReporteMatrizMiBanco(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
+                    grdMiBanco.DataSource = objData;
+                    lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+                }
+
             }
+        }
+
+        private void btnExportLaZanja_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExportGolFields_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExportSoluc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExportMiBanco_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grdLaZanja_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+
         }
     }
 }
