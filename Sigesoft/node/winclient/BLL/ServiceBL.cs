@@ -9,6 +9,8 @@ using Sigesoft.Common;
 using System.Collections;
 using System.Transactions;
 using System.Data.Linq.SqlClient;
+
+
 namespace Sigesoft.Node.WinClient.BLL
 {
 	public class ServiceBL
@@ -3248,7 +3250,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             item.d_ApprovedInsertDate = DateTime.Now;
                         }
                     }
-                    else if (item.i_ApprovedUpdateUserId != null && ((Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)))
+                    else if (item.i_ApprovedUpdateUserId != null  && ((Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)))
                     {
                         if (isApproved == (int)SiNo.SI)
                         {
@@ -3277,6 +3279,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         {
                             item.d_ApprovedInsertDate = DateTime.Now;
                         }
+                        
                     }
                    
 
@@ -26875,7 +26878,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 				var MedicalCenter = GetInfoMedicalCenter();
                 var TOXICOLOGICO_COCAINA_MARIHUANA = ValoresComponente(pstrServiceId, Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
-                var Saliva = ValoresComponente(pstrServiceId, "N009-ME000000416");
+                var Saliva = ValoresComponente(pstrServiceId, "N009-ME000000041");
 
                 var Anfe = ValoresComponente(pstrServiceId, "N009-ME000000043");
                 var Barbi = ValoresComponente(pstrServiceId, "N009-ME000000417");
@@ -26911,7 +26914,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                v_DistrictName = a.v_DistrictName,
 
 							   Empresa = MedicalCenter.v_Name,
-                               NombreUsuarioGraba = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307").v_Value1,
                                COCAINA = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000705") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000000705").v_Value1,
                                MARIHUANA = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001294") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000001294").v_Value1,
 
@@ -26948,6 +26950,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                Marihuana = Coca.Count == 0 ? "N/A" : Coca.Find(p => p.v_ComponentFieldId == "N009-MF000001294") == null ? "N/A" : Coca.Find(p => p.v_ComponentFieldId == "N009-MF000001294").v_Value1Name,
                                Benzodiacepinas = Benzo.Count == 0 ? "N/A" : Benzo.Find(p => p.v_ComponentFieldId == "N009-MF000000395") == null ? "N/A" : Benzo.Find(p => p.v_ComponentFieldId == "N009-MF000000395").v_Value1Name,
                                Barbituricos = Barbi.Count == 0 ? "N/A" : Barbi.Find(p => p.v_ComponentFieldId == "N009-MF000003213") == null ? "N/A" : Barbi.Find(p => p.v_ComponentFieldId == "N009-MF000003213").v_Value1Name,
+                               
+                               //NombreUsuarioGraba = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307").v_Value1Name,
+
                            }).ToList();
 
 				return sql;
