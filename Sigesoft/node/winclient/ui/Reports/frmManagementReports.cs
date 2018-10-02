@@ -1558,7 +1558,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateAnexo3_Exoneracion_ResponsabilidadYanacocha(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);

@@ -1091,7 +1091,7 @@ namespace Sigesoft.Node.WinClient.BLL
                            let DatosMedicina = ObtenerFirmaMedico_2(pstrServiceId, Constants.ALTURA_7D_ID, Constants.EXAMEN_MEDICO_VISITANTES_GOLDFIELDS_ID,
                            Constants.ALTURA_FISICA_SHAHUINDO_ID, Constants.EVALUACION_DERMATOLOGICA_OC_ID, Constants.CERT_SUF_MED_ALTURA_ID,
                            Constants.EXCEPCIONES_RX_ID, Constants.EXCEPCIONES_RX_AUTORIZACION_ID, Constants.EXCEPCIONES_LABORATORIO_ID,
-                           Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID)
+                           Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID,Constants.ANEXO_3_EXO_RESP_YANACOCHA )
 
                            select new ServiceList
                            {
@@ -1321,7 +1321,7 @@ namespace Sigesoft.Node.WinClient.BLL
             return objEntity;
         }
         private KeyValueDTO ObtenerFirmaMedico_2(string pstrServiceId, string p1, string p2, string p3,
-            string p4, string p5, string p6, string p7, string p8, string p9)
+            string p4, string p5, string p6, string p7, string p8, string p9, string p10)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -1338,7 +1338,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 where E.v_ServiceId == pstrServiceId &&
                              (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3 || 
                              E.v_ComponentId == p4 || E.v_ComponentId == p5|| E.v_ComponentId == p6||
-                             E.v_ComponentId == p7 || E.v_ComponentId == p8 || E.v_ComponentId == p9)
+                             E.v_ComponentId == p7 || E.v_ComponentId == p8 || E.v_ComponentId == p9 || E.v_ComponentId == p10)
 							 select new KeyValueDTO
 							 {
 								 Value5 = pme.b_SignatureImage,
@@ -19308,7 +19308,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var objEntity = (from A in dbContext.service
                                  join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                                  join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
-                                 join D in dbContext.organization on C.v_WorkingOrganizationId equals D.v_OrganizationId
+                                 join D in dbContext.organization on C.v_EmployerOrganizationId equals D.v_OrganizationId
                                  join E in dbContext.servicecomponent on new { a = A.v_ServiceId, b = pstrComponentId }
                                                                         equals new { a = E.v_ServiceId, b = E.v_ComponentId }
 
