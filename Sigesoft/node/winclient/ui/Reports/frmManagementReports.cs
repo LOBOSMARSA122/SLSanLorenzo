@@ -1559,7 +1559,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateAnexo3_Exoneracion_ResponsabilidadYanacocha(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1603,7 +1603,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_Laboratorio(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1968,7 +1968,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
@@ -1983,6 +1983,19 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             //var uc = _serviceBL.ReporteOsteomuscular(_serviceId, Sigesoft.Common.Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID);
             Ficha_Evaluacion_Musculoesqueletica_GoldFields.CreateFicha_Evaluacion_Musculoesqueletica_GoldFields(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, uc);
+        }
+        public void GenerateInforme_Psicologico_Resumen(string pathFile)
+        {
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+
+            var _InformacionHistoriaPsico = _serviceBL.GetHistoriaClinicaPsicologica(_serviceId, Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+
+
+            Informe_Psicologico_Resumen.CreateInforme_Psicologico_Resumen(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
         }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
@@ -2679,7 +2692,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     {
                         if (TipoServicio == ((int)TypeESO.Retiro).ToString())
                         {
-                            rp = new Reports.crOccupationalRetirosSinFirma();
+                            rp = new Reports.crOccupationalMedicalAptitudeCertificate();
                             rp.SetDataSource(ds1);
 
                             string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoRetiro").ToString();
@@ -2801,7 +2814,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     {
                         if (TipoServicio == ((int)TypeESO.Retiro).ToString())
                         {
-                            rp = new Reports.crOccupationalMedicalAptitudeCertificateRetiros();
+                            rp = new Reports.crOccupationalMedicalAptitudeCertificate();
                             rp.SetDataSource(ds1);
 
                             string rutaCertificado = Common.Utils.GetApplicationConfigValue("CertificadoRetiro").ToString();
@@ -5388,6 +5401,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID:
                     GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.INFORME_PSICOLOGICO_RESUMEN_ID:
+                    GenerateInforme_Psicologico_Resumen(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_PSICOLOGICO_RESUMEN_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 ///GenerateInforme_Resultados_San_Martinm

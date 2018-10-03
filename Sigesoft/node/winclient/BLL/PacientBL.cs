@@ -1116,11 +1116,20 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join pr2 in dbContext.professional on su1.v_PersonId equals pr2.v_PersonId into pr2_join
                                  from pr2 in pr2_join.DefaultIfEmpty()
 
-
+                                 join B in dbContext.protocol on s.v_ProtocolId equals B.v_ProtocolId into B_join
+                                 from B in B_join.DefaultIfEmpty()
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
 
                                  where s.v_ServiceId == serviceId
                                  select new PacientList
                                  {
+
+                                     empresa = C2.v_Name,
+                                     contrata = C1.v_Name,
+
                                      TimeOfDisease = s.i_TimeOfDisease,
                                     v_ObsStatusService = s.v_ObsStatusService,
                                      TiempoEnfermedad = ff.v_Value1,
@@ -1170,6 +1179,9 @@ namespace Sigesoft.Node.WinClient.BLL
                          
                            select new PacientList
                             {
+                                empresa = a.empresa,
+                                contrata = a.contrata,
+
                                 FirmaDoctor =a.FirmaMedico,
                                 v_Story = a.v_Story,
                                 v_MainSymptom =a.v_MainSymptom,
@@ -5507,6 +5519,482 @@ namespace Sigesoft.Node.WinClient.BLL
             catch (Exception ex)
             {
                 
+                throw;
+            }
+        }
+
+        public List<MatrizShauindo> ReporteMatrizLaZanja(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        {
+            try
+            {
+                using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+                {
+                    List<string> ServicioIds = new List<string>();
+                    List<string> PersonIds = new List<string>();
+
+                    var objEntity = from A in dbContext.service
+
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                    from B in B_join.DefaultIfEmpty()
+
+                                    join C in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                        equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                    from C in C_join.DefaultIfEmpty()
+
+                                    join D in dbContext.person on A.v_PersonId equals D.v_PersonId
+                                    join E in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                        equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
+                                    from E in E_join.DefaultIfEmpty()
+
+                                    join F in dbContext.systemparameter on new { a = D.i_MaritalStatusId.Value, b = 101 }
+                                        equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                                    from F in F_join.DefaultIfEmpty()
+
+                                    join G in dbContext.datahierarchy on new { a = D.i_LevelOfId.Value, b = 108 }
+                                           equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
+                                    from G in G_join.DefaultIfEmpty()
+
+                                    join H in dbContext.systemparameter on new { a = D.i_LevelOfId.Value, b = 154 }
+                                          equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
+                                    from H in H_join.DefaultIfEmpty()
+
+                                    join I in dbContext.systemparameter on new { a = D.i_LevelOfId.Value, b = 155 }
+                                        equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
+                                    from I in I_join.DefaultIfEmpty()
+
+                                    join J in dbContext.organization on new { a = B.v_CustomerOrganizationId }
+                                            equals new { a = J.v_OrganizationId } into J_join
+                                    from J in J_join.DefaultIfEmpty()
+
+                                    join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
+                                    from K in K_join.DefaultIfEmpty()
+
+                                    where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
+                                    select new MatrizShauindo
+                                    {
+                                        ServiceId = A.v_ServiceId,
+                                        PersonId = D.v_PersonId,
+                                        ProtocolId = B.v_ProtocolId,
+                                        v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+                                        v_CustomerLocationId = B.v_CustomerLocationId,
+                                        TipoEmo = C.v_Value1,
+                                        DniPasaporte = D.v_DocNumber,
+                                        FechaExamen = A.d_ServiceDate.Value,
+                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                        FechaNacimiento = D.d_Birthdate.Value,
+                                        TelefonoContacto = D.v_TelephoneNumber,
+                                        Sexo = E.v_Value1,
+                                        EstadoCivil = F.v_Value1,
+                                        GradoInstruccion = G.v_Value1,
+                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
+                                        Procedencia = D.v_Procedencia,
+                                        Ocupacion = D.v_CurrentOccupation,
+                                        Empresa = J.v_Name,
+                                        Area = K.v_Name,
+
+                                    };
+
+                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    {
+                        objEntity = objEntity.Where(pstrFilterExpression);
+                    }
+
+                    foreach (var item in objEntity)
+                    {
+                        PersonIds.Add(item.PersonId);
+                        ServicioIds.Add(item.ServiceId);
+                    }
+
+                    var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var sql = (from a in objEntity.ToList()
+
+                               select new MatrizShauindo
+                               {
+                                   ServiceId = a.ServiceId,
+                                   PersonId = a.PersonId,
+                                   TipoEmo = a.TipoEmo,
+                                   DniPasaporte = a.DniPasaporte,
+                                   FechaExamen = a.FechaExamen,
+                                   ApellidosNombres = a.ApellidosNombres,
+                                   FechaNacimiento = a.FechaNacimiento,
+                                   edad = GetAge(a.FechaNacimiento.Value),
+                                   TelefonoContacto = a.TelefonoContacto,
+                                   Sexo = a.Sexo,
+                                   EstadoCivil = a.EstadoCivil,
+                                   GradoInstruccion = a.GradoInstruccion,
+                                   GrupoFactorSanguineo = a.GrupoFactorSanguineo,
+                                   Procedencia = a.Procedencia,
+                                   Ocupacion = a.Ocupacion,
+                                   Empresa = a.Empresa,
+                                   Area = a.Area,
+                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
+                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
+                               }
+
+                               ).ToList();
+                    return sql;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public List<MatrizShauindo> ReporteMatrizGoldFields(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        {
+            try
+            {
+                using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+                {
+                    List<string> ServicioIds = new List<string>();
+                    List<string> PersonIds = new List<string>();
+
+                    var objEntity = from A in dbContext.service
+
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                    from B in B_join.DefaultIfEmpty()
+
+                                    join C in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                        equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                    from C in C_join.DefaultIfEmpty()
+
+                                    join D in dbContext.person on A.v_PersonId equals D.v_PersonId
+                                    join E in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                        equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
+                                    from E in E_join.DefaultIfEmpty()
+
+                                    join F in dbContext.systemparameter on new { a = D.i_MaritalStatusId.Value, b = 101 }
+                                        equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                                    from F in F_join.DefaultIfEmpty()
+
+                                    join G in dbContext.datahierarchy on new { a = D.i_LevelOfId.Value, b = 108 }
+                                           equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
+                                    from G in G_join.DefaultIfEmpty()
+
+                                    join H in dbContext.systemparameter on new { a = D.i_LevelOfId.Value, b = 154 }
+                                          equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
+                                    from H in H_join.DefaultIfEmpty()
+
+                                    join I in dbContext.systemparameter on new { a = D.i_LevelOfId.Value, b = 155 }
+                                        equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
+                                    from I in I_join.DefaultIfEmpty()
+
+                                    join J in dbContext.organization on new { a = B.v_CustomerOrganizationId }
+                                            equals new { a = J.v_OrganizationId } into J_join
+                                    from J in J_join.DefaultIfEmpty()
+
+                                    join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
+                                    from K in K_join.DefaultIfEmpty()
+
+                                    where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
+                                    select new MatrizShauindo
+                                    {
+                                        ServiceId = A.v_ServiceId,
+                                        PersonId = D.v_PersonId,
+                                        ProtocolId = B.v_ProtocolId,
+                                        v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+                                        v_CustomerLocationId = B.v_CustomerLocationId,
+                                        TipoEmo = C.v_Value1,
+                                        DniPasaporte = D.v_DocNumber,
+                                        FechaExamen = A.d_ServiceDate.Value,
+                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                        FechaNacimiento = D.d_Birthdate.Value,
+                                        TelefonoContacto = D.v_TelephoneNumber,
+                                        Sexo = E.v_Value1,
+                                        EstadoCivil = F.v_Value1,
+                                        GradoInstruccion = G.v_Value1,
+                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
+                                        Procedencia = D.v_Procedencia,
+                                        Ocupacion = D.v_CurrentOccupation,
+                                        Empresa = J.v_Name,
+                                        Area = K.v_Name,
+
+                                    };
+
+                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    {
+                        objEntity = objEntity.Where(pstrFilterExpression);
+                    }
+
+                    foreach (var item in objEntity)
+                    {
+                        PersonIds.Add(item.PersonId);
+                        ServicioIds.Add(item.ServiceId);
+                    }
+
+                    var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var sql = (from a in objEntity.ToList()
+
+                               select new MatrizShauindo
+                               {
+                                   ServiceId = a.ServiceId,
+                                   PersonId = a.PersonId,
+                                   TipoEmo = a.TipoEmo,
+                                   DniPasaporte = a.DniPasaporte,
+                                   FechaExamen = a.FechaExamen,
+                                   ApellidosNombres = a.ApellidosNombres,
+                                   FechaNacimiento = a.FechaNacimiento,
+                                   edad = GetAge(a.FechaNacimiento.Value),
+                                   TelefonoContacto = a.TelefonoContacto,
+                                   Sexo = a.Sexo,
+                                   EstadoCivil = a.EstadoCivil,
+                                   GradoInstruccion = a.GradoInstruccion,
+                                   GrupoFactorSanguineo = a.GrupoFactorSanguineo,
+                                   Procedencia = a.Procedencia,
+                                   Ocupacion = a.Ocupacion,
+                                   Empresa = a.Empresa,
+                                   Area = a.Area,
+                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
+                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
+                               }
+
+                               ).ToList();
+                    return sql;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public List<MatrizShauindo> ReporteMatrizSolucManteIntegra(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        {
+            try
+            {
+                using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+                {
+                    List<string> ServicioIds = new List<string>();
+                    List<string> PersonIds = new List<string>();
+
+                    var objEntity = from A in dbContext.service
+
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                    from B in B_join.DefaultIfEmpty()
+
+                                    join C in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                        equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                    from C in C_join.DefaultIfEmpty()
+
+                                    join D in dbContext.person on A.v_PersonId equals D.v_PersonId
+                                    join E in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                        equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
+                                    from E in E_join.DefaultIfEmpty()
+
+                                    join F in dbContext.systemparameter on new { a = D.i_MaritalStatusId.Value, b = 101 }
+                                        equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                                    from F in F_join.DefaultIfEmpty()
+
+                                    join G in dbContext.datahierarchy on new { a = D.i_LevelOfId.Value, b = 108 }
+                                           equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
+                                    from G in G_join.DefaultIfEmpty()
+
+                                    join H in dbContext.systemparameter on new { a = D.i_LevelOfId.Value, b = 154 }
+                                          equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
+                                    from H in H_join.DefaultIfEmpty()
+
+                                    join I in dbContext.systemparameter on new { a = D.i_LevelOfId.Value, b = 155 }
+                                        equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
+                                    from I in I_join.DefaultIfEmpty()
+
+                                    join J in dbContext.organization on new { a = B.v_CustomerOrganizationId }
+                                            equals new { a = J.v_OrganizationId } into J_join
+                                    from J in J_join.DefaultIfEmpty()
+
+                                    join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
+                                    from K in K_join.DefaultIfEmpty()
+
+                                    where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
+                                    select new MatrizShauindo
+                                    {
+                                        ServiceId = A.v_ServiceId,
+                                        PersonId = D.v_PersonId,
+                                        ProtocolId = B.v_ProtocolId,
+                                        v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+                                        v_CustomerLocationId = B.v_CustomerLocationId,
+                                        TipoEmo = C.v_Value1,
+                                        DniPasaporte = D.v_DocNumber,
+                                        FechaExamen = A.d_ServiceDate.Value,
+                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                        FechaNacimiento = D.d_Birthdate.Value,
+                                        TelefonoContacto = D.v_TelephoneNumber,
+                                        Sexo = E.v_Value1,
+                                        EstadoCivil = F.v_Value1,
+                                        GradoInstruccion = G.v_Value1,
+                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
+                                        Procedencia = D.v_Procedencia,
+                                        Ocupacion = D.v_CurrentOccupation,
+                                        Empresa = J.v_Name,
+                                        Area = K.v_Name,
+
+                                    };
+
+                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    {
+                        objEntity = objEntity.Where(pstrFilterExpression);
+                    }
+
+                    foreach (var item in objEntity)
+                    {
+                        PersonIds.Add(item.PersonId);
+                        ServicioIds.Add(item.ServiceId);
+                    }
+
+                    var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var sql = (from a in objEntity.ToList()
+
+                               select new MatrizShauindo
+                               {
+                                   ServiceId = a.ServiceId,
+                                   PersonId = a.PersonId,
+                                   TipoEmo = a.TipoEmo,
+                                   DniPasaporte = a.DniPasaporte,
+                                   FechaExamen = a.FechaExamen,
+                                   ApellidosNombres = a.ApellidosNombres,
+                                   FechaNacimiento = a.FechaNacimiento,
+                                   edad = GetAge(a.FechaNacimiento.Value),
+                                   TelefonoContacto = a.TelefonoContacto,
+                                   Sexo = a.Sexo,
+                                   EstadoCivil = a.EstadoCivil,
+                                   GradoInstruccion = a.GradoInstruccion,
+                                   GrupoFactorSanguineo = a.GrupoFactorSanguineo,
+                                   Procedencia = a.Procedencia,
+                                   Ocupacion = a.Ocupacion,
+                                   Empresa = a.Empresa,
+                                   Area = a.Area,
+                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
+                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
+                               }
+
+                               ).ToList();
+                    return sql;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
+
+        public List<MatrizShauindo> ReporteMatrizMiBanco(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        {
+            try
+            {
+                using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+                {
+                    List<string> ServicioIds = new List<string>();
+                    List<string> PersonIds = new List<string>();
+
+                    var objEntity = from A in dbContext.service
+
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
+                                    from B in B_join.DefaultIfEmpty()
+
+                                    join C in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                        equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                    from C in C_join.DefaultIfEmpty()
+
+                                    join D in dbContext.person on A.v_PersonId equals D.v_PersonId
+                                    join E in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
+                                        equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
+                                    from E in E_join.DefaultIfEmpty()
+
+                                    join F in dbContext.systemparameter on new { a = D.i_MaritalStatusId.Value, b = 101 }
+                                        equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
+                                    from F in F_join.DefaultIfEmpty()
+
+                                    join G in dbContext.datahierarchy on new { a = D.i_LevelOfId.Value, b = 108 }
+                                           equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
+                                    from G in G_join.DefaultIfEmpty()
+
+                                    join H in dbContext.systemparameter on new { a = D.i_LevelOfId.Value, b = 154 }
+                                          equals new { a = H.i_ParameterId, b = H.i_GroupId } into H_join
+                                    from H in H_join.DefaultIfEmpty()
+
+                                    join I in dbContext.systemparameter on new { a = D.i_LevelOfId.Value, b = 155 }
+                                        equals new { a = I.i_ParameterId, b = I.i_GroupId } into I_join
+                                    from I in I_join.DefaultIfEmpty()
+
+                                    join J in dbContext.organization on new { a = B.v_CustomerOrganizationId }
+                                            equals new { a = J.v_OrganizationId } into J_join
+                                    from J in J_join.DefaultIfEmpty()
+
+                                    join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
+                                    from K in K_join.DefaultIfEmpty()
+
+                                    where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
+                                    select new MatrizShauindo
+                                    {
+                                        ServiceId = A.v_ServiceId,
+                                        PersonId = D.v_PersonId,
+                                        ProtocolId = B.v_ProtocolId,
+                                        v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+                                        v_CustomerLocationId = B.v_CustomerLocationId,
+                                        TipoEmo = C.v_Value1,
+                                        DniPasaporte = D.v_DocNumber,
+                                        FechaExamen = A.d_ServiceDate.Value,
+                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                        FechaNacimiento = D.d_Birthdate.Value,
+                                        TelefonoContacto = D.v_TelephoneNumber,
+                                        Sexo = E.v_Value1,
+                                        EstadoCivil = F.v_Value1,
+                                        GradoInstruccion = G.v_Value1,
+                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
+                                        Procedencia = D.v_Procedencia,
+                                        Ocupacion = D.v_CurrentOccupation,
+                                        Empresa = J.v_Name,
+                                        Area = K.v_Name,
+
+                                    };
+
+                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    {
+                        objEntity = objEntity.Where(pstrFilterExpression);
+                    }
+
+                    foreach (var item in objEntity)
+                    {
+                        PersonIds.Add(item.PersonId);
+                        ServicioIds.Add(item.ServiceId);
+                    }
+
+                    var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var sql = (from a in objEntity.ToList()
+
+                               select new MatrizShauindo
+                               {
+                                   ServiceId = a.ServiceId,
+                                   PersonId = a.PersonId,
+                                   TipoEmo = a.TipoEmo,
+                                   DniPasaporte = a.DniPasaporte,
+                                   FechaExamen = a.FechaExamen,
+                                   ApellidosNombres = a.ApellidosNombres,
+                                   FechaNacimiento = a.FechaNacimiento,
+                                   edad = GetAge(a.FechaNacimiento.Value),
+                                   TelefonoContacto = a.TelefonoContacto,
+                                   Sexo = a.Sexo,
+                                   EstadoCivil = a.EstadoCivil,
+                                   GradoInstruccion = a.GradoInstruccion,
+                                   GrupoFactorSanguineo = a.GrupoFactorSanguineo,
+                                   Procedencia = a.Procedencia,
+                                   Ocupacion = a.Ocupacion,
+                                   Empresa = a.Empresa,
+                                   Area = a.Area,
+                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
+                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
+                               }
+
+                               ).ToList();
+                    return sql;
+                }
+            }
+            catch (Exception ex)
+            {
+
                 throw;
             }
         }

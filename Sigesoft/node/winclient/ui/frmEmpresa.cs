@@ -121,7 +121,7 @@ namespace Sigesoft.Node.WinClient.UI
 
             tabControl1.TabPages.Remove(tabGES);
             tabControl1.TabPages.Remove(tabPuesto);
-            tabControl1.TabPages.Remove(tabAlmacen);
+            //tabControl1.TabPages.Remove(tabAlmacen);
 
             #region Mayusculas - Normal
             var _EsMayuscula = int.Parse(Common.Utils.GetApplicationConfigValue("EsMayuscula"));
