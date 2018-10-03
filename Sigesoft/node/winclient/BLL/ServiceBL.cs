@@ -16967,7 +16967,7 @@ namespace Sigesoft.Node.WinClient.BLL
 				List<ServiceComponentFieldValuesList> oServiceComponentFieldValuesList = new List<ServiceComponentFieldValuesList>();
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var result = (from A in dbContext.servicecomponent where A.v_ServiceId == pstrServiceId && A.v_ComponentId == pstrComponentId && A.i_IsRequiredId == 1 select A).ToList();
-                if (result.Count == 0) return "NO APLICA";
+                if (result.Count == 0) return "0";
 				oServiceComponentFieldValuesList = oServiceBL.ValoresComponenteOdontograma1(pstrServiceId, pstrComponentId);
 				var xx = oServiceComponentFieldValuesList.Count() == 0 || ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)) == null ? string.Empty : ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)).v_Value1;
              
@@ -17824,7 +17824,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 //Verificar si el componente está en el servicio
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var result = (from A in dbContext.servicecomponent where A.v_ServiceId == pstrServiceId && A.v_ComponentId == pstrComponentId && A.i_IsRequiredId == 1 select A).ToList();
-                if (result.Count == 0) return "NO APLICA";
+                if (result.Count == 0) return "0";
 
 				oServiceComponentFieldValuesList = oServiceBL.ValoresComponenteOdontograma1(pstrServiceId, pstrComponentId);
 				var xx = oServiceComponentFieldValuesList.Count() == 0 || ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)) == null ? string.Empty : ((ServiceComponentFieldValuesList)oServiceComponentFieldValuesList.Find(p => p.v_ComponentFieldId == pstrFieldId)).v_Value1;
