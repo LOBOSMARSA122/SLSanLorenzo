@@ -7,12 +7,18 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class MatrizGoldFields
     {
+        public string ServiceId { get; set; }
+        public string PersonId { get; set; }
+        public string ProtocolId { get; set; }
+        public string v_CustomerOrganizationId { get; set; }
+        public string v_CustomerLocationId { get; set; }
+
         public string Condicion { get; set; }
-        public string FechaDigitacion { get; set; }
+        public DateTime? FechaDigitacion { get; set; }
         public string Empresa { get; set; }
         public string Apellidos { get; set; }
         public string Nombres { get; set; }
-        public string FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
         public string Edad { get; set; }
         public string Sexo { get; set; }
         public string TipoDocumentoIdentidad { get; set; }
@@ -23,7 +29,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string FonoContacto { get; set; }
         public string CentroMedico { get; set; }
         public string TipoExamen { get; set; }
-        public string FechaExamenMedico { get; set; }
+        public DateTime? FechaExamenMedico { get; set; }
         public string VigenciaHasta { get; set; }
         public string _500Hz_Od { get; set; }
         public string _1000Hz_Od { get; set; }

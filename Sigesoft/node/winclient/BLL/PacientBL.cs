@@ -4987,9 +4987,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                 join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
                                 join C in dbContext.servicecomponentfields on B.v_ServiceComponentId equals C.v_ServiceComponentId
                                 join D in dbContext.servicecomponentfieldvalues on C.v_ServiceComponentFieldsId equals D.v_ServiceComponentFieldsId
-                                join F in dbContext.componentfields on C.v_ComponentFieldId equals F.v_ComponentFieldId
-                                join G in dbContext.componentfield on C.v_ComponentFieldId equals G.v_ComponentFieldId
-                                join H in dbContext.component on F.v_ComponentId equals H.v_ComponentId
+                                join F in dbContext.componentfields on C.v_ComponentFieldId equals F.v_ComponentFieldId into F_join
+                                from F in F_join.DefaultIfEmpty()
+                                join G in dbContext.componentfield on C.v_ComponentFieldId equals G.v_ComponentFieldId into G_join
+                                from G in G_join.DefaultIfEmpty()
+                                join H in dbContext.component on F.v_ComponentId equals H.v_ComponentId into H_join
+                                from H in H_join.DefaultIfEmpty()
                                 where B.i_IsDeleted == isDeleted
                                      && C.i_IsDeleted == isDeleted
                                      && ListaServicioIds.Contains(A.v_ServiceId)
@@ -5009,7 +5012,19 @@ namespace Sigesoft.Node.WinClient.BLL
 
                             );
 
-                var finalQuery = (from a in PreQuery.ToList()
+                var PreQuery2 = (from A in PreQuery
+                                select new ValorComponenteList
+                                {
+                                    ServicioId = A.ServicioId,
+                                    Valor = A.Valor,
+                                    NombreComponente = A.NombreComponente,
+                                    IdComponente = A.IdComponente,
+                                    NombreCampo = A.NombreCampo,
+                                    IdCampo = A.IdCampo,
+                                    i_GroupId = A.i_GroupId == null ? -1 : A.i_GroupId
+                                }).ToList();
+
+                var finalQuery = (from a in PreQuery2
 
                                   let value1 = int.TryParse(a.Valor, out rpta)
                                   join sp in dbContext.systemparameter on new { a = a.i_GroupId, b = rpta }
@@ -5492,6 +5507,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                {
                                    ServiceId = a.ServiceId,
                                    PersonId = a.PersonId,
+                                   v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                                   v_CustomerLocationId = a.v_CustomerLocationId,
+
                                    TipoEmo = a.TipoEmo,
                                    DniPasaporte = a.DniPasaporte,
                                    FechaExamen = a.FechaExamen,
@@ -5507,9 +5525,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                    Ocupacion = a.Ocupacion,
                                    Empresa = a.Empresa,
                                    Area = a.Area,
+<<<<<<< HEAD
+                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000667") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000667").Valor, 
+                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000668") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000668").Valor, 
+=======
                                    Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
                                    Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
                                    Temperaturas = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000669").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000669").Valor,
+>>>>>>> 66784aef48eb7b22d5e7207fa85acdd6a007a705
                                }
 
                                ).ToList();
@@ -5523,7 +5546,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<MatrizShauindo> ReporteMatrizLaZanja(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        public List<MatrizLaZanja> ReporteMatrizLaZanja(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
         {
             try
             {
@@ -5570,28 +5593,24 @@ namespace Sigesoft.Node.WinClient.BLL
                                     from K in K_join.DefaultIfEmpty()
 
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
-                                    select new MatrizShauindo
+                                    select new MatrizLaZanja
                                     {
                                         ServiceId = A.v_ServiceId,
                                         PersonId = D.v_PersonId,
                                         ProtocolId = B.v_ProtocolId,
                                         v_CustomerOrganizationId = B.v_CustomerOrganizationId,
                                         v_CustomerLocationId = B.v_CustomerLocationId,
-                                        TipoEmo = C.v_Value1,
-                                        DniPasaporte = D.v_DocNumber,
-                                        FechaExamen = A.d_ServiceDate.Value,
-                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
-                                        FechaNacimiento = D.d_Birthdate.Value,
-                                        TelefonoContacto = D.v_TelephoneNumber,
-                                        Sexo = E.v_Value1,
-                                        EstadoCivil = F.v_Value1,
-                                        GradoInstruccion = G.v_Value1,
-                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
-                                        Procedencia = D.v_Procedencia,
-                                        Ocupacion = D.v_CurrentOccupation,
-                                        Empresa = J.v_Name,
-                                        Area = K.v_Name,
 
+                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                        Procedencia = D.v_Procedencia,
+                                        Sexo = E.v_Value1,
+                                        Empresa = J.v_Name,
+                                        Dni = D.v_DocNumber,
+                                        PuestoTrabajo = D.v_CurrentOccupation,
+                                        TipoExamen = C.v_Value1,
+                                        FechaDigitacion = A.d_ServiceDate.Value,
+                                        FechaExamenOcupacional = A.d_ServiceDate.Value,
+                                        FechaNacimiento = D.d_Birthdate.Value,
                                     };
 
                     if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -5608,27 +5627,28 @@ namespace Sigesoft.Node.WinClient.BLL
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
                     var sql = (from a in objEntity.ToList()
 
-                               select new MatrizShauindo
+                               select new MatrizLaZanja
                                {
                                    ServiceId = a.ServiceId,
                                    PersonId = a.PersonId,
-                                   TipoEmo = a.TipoEmo,
-                                   DniPasaporte = a.DniPasaporte,
-                                   FechaExamen = a.FechaExamen,
+                                   ProtocolId = a.ProtocolId,
+                                   v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                                   v_CustomerLocationId = a.v_CustomerLocationId,
+
+
                                    ApellidosNombres = a.ApellidosNombres,
-                                   FechaNacimiento = a.FechaNacimiento,
-                                   edad = GetAge(a.FechaNacimiento.Value),
-                                   TelefonoContacto = a.TelefonoContacto,
-                                   Sexo = a.Sexo,
-                                   EstadoCivil = a.EstadoCivil,
-                                   GradoInstruccion = a.GradoInstruccion,
-                                   GrupoFactorSanguineo = a.GrupoFactorSanguineo,
                                    Procedencia = a.Procedencia,
-                                   Ocupacion = a.Ocupacion,
+                                   Sexo = a.Sexo,
                                    Empresa = a.Empresa,
-                                   Area = a.Area,
-                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
-                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
+                                   Dni = a.Dni,
+                                   PuestoTrabajo = a.PuestoTrabajo,
+                                   TipoExamen = a.TipoExamen,
+                                   FechaDigitacion = a.FechaDigitacion,
+                                   FechaExamenOcupacional = a.FechaExamenOcupacional,
+                                   FechaNacimiento = a.FechaNacimiento,
+                                   Edad = GetAge(a.FechaNacimiento.Value),
+                                   Peso = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_PESO_ID).Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_PESO_ID).Valor,
+                                   Talla = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_TALLA_ID).Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.ANTROPOMETRIA_ID && o.IdCampo == Constants.ANTROPOMETRIA_TALLA_ID).Valor,
                                }
 
                                ).ToList();
@@ -5642,7 +5662,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<MatrizShauindo> ReporteMatrizGoldFields(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        public List<MatrizGoldFields> ReporteMatrizGoldFields(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
         {
             try
             {
@@ -5661,6 +5681,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                     from C in C_join.DefaultIfEmpty()
 
                                     join D in dbContext.person on A.v_PersonId equals D.v_PersonId
+
                                     join E in dbContext.systemparameter on new { a = B.i_EsoTypeId.Value, b = 118 }
                                         equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
                                     from E in E_join.DefaultIfEmpty()
@@ -5688,28 +5709,31 @@ namespace Sigesoft.Node.WinClient.BLL
                                     join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
                                     from K in K_join.DefaultIfEmpty()
 
+                                    join L in dbContext.datahierarchy on new { a = D.i_DocTypeId.Value, b = 106 }
+                                    equals new { a = L.i_ItemId, b = L.i_GroupId }  // TIPO DOCUMENTO
+
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
-                                    select new MatrizShauindo
+                                    select new MatrizGoldFields
                                     {
                                         ServiceId = A.v_ServiceId,
                                         PersonId = D.v_PersonId,
                                         ProtocolId = B.v_ProtocolId,
                                         v_CustomerOrganizationId = B.v_CustomerOrganizationId,
                                         v_CustomerLocationId = B.v_CustomerLocationId,
-                                        TipoEmo = C.v_Value1,
-                                        DniPasaporte = D.v_DocNumber,
-                                        FechaExamen = A.d_ServiceDate.Value,
-                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
-                                        FechaNacimiento = D.d_Birthdate.Value,
-                                        TelefonoContacto = D.v_TelephoneNumber,
-                                        Sexo = E.v_Value1,
-                                        EstadoCivil = F.v_Value1,
-                                        GradoInstruccion = G.v_Value1,
-                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
-                                        Procedencia = D.v_Procedencia,
-                                        Ocupacion = D.v_CurrentOccupation,
+                                        Condicion = "",
+                                        FechaDigitacion = A.d_ServiceDate.Value,
                                         Empresa = J.v_Name,
-                                        Area = K.v_Name,
+                                        Apellidos = D.v_FirstLastName + " " + D.v_SecondLastName,
+                                        Nombres = D.v_FirstName ,
+                                        FechaNacimiento = D.d_Birthdate.Value,
+                                        Sexo = E.v_Value1,
+                                        TipoDocumentoIdentidad =L.v_Value1,
+                                        NumeroDocumentoIdentidad = D.v_DocNumber,
+                                        PuestoTrabajo = D.v_CurrentOccupation,
+                                        FonoContacto = "",
+                                        CentroMedico = "San Lorenzo",
+                                        TipoExamen = C.v_Value1,
+                                        FechaExamenMedico = A.d_ServiceDate.Value,
 
                                     };
 
@@ -5725,29 +5749,35 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+
+                    //var xxx = varValores.Find(p => p.ServicioId == "N009-SR000000007").CampoValores.Find(o => o.IdCampo == Constants.txt_VA_OD_500);
+                     //== null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.AUDIOMETRIA_ID && o.IdCampo == Constants.txt_VA_OD_500) == null ? "no lleva" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.AUDIOMETRIA_ID && o.IdCampo == Constants.txt_VA_OD_500).Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.AUDIOMETRIA_ID && o.IdCampo == Constants.txt_VA_OD_500).Valor;
                     var sql = (from a in objEntity.ToList()
 
-                               select new MatrizShauindo
+                               select new MatrizGoldFields
                                {
                                    ServiceId = a.ServiceId,
                                    PersonId = a.PersonId,
-                                   TipoEmo = a.TipoEmo,
-                                   DniPasaporte = a.DniPasaporte,
-                                   FechaExamen = a.FechaExamen,
-                                   ApellidosNombres = a.ApellidosNombres,
-                                   FechaNacimiento = a.FechaNacimiento,
-                                   edad = GetAge(a.FechaNacimiento.Value),
-                                   TelefonoContacto = a.TelefonoContacto,
-                                   Sexo = a.Sexo,
-                                   EstadoCivil = a.EstadoCivil,
-                                   GradoInstruccion = a.GradoInstruccion,
-                                   GrupoFactorSanguineo = a.GrupoFactorSanguineo,
-                                   Procedencia = a.Procedencia,
-                                   Ocupacion = a.Ocupacion,
+                                   ProtocolId = a.ProtocolId,
+                                   v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                                   v_CustomerLocationId = a.v_CustomerLocationId,
+                                   Condicion = "",
+                                   FechaDigitacion = a.FechaDigitacion,
                                    Empresa = a.Empresa,
-                                   Area = a.Area,
-                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
-                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
+                                   Apellidos = a.Apellidos,
+                                   Nombres = a.Nombres,
+                                   FechaNacimiento = a.FechaNacimiento,
+                                   Sexo = a.Sexo,
+                                   TipoDocumentoIdentidad = a.TipoDocumentoIdentidad,
+                                   NumeroDocumentoIdentidad = a.NumeroDocumentoIdentidad,
+                                   PuestoTrabajo = a.PuestoTrabajo,
+                                   FonoContacto = a.FonoContacto,
+                                   CentroMedico = a.CentroMedico,
+                                   TipoExamen = a.TipoExamen,
+                                   FechaExamenMedico = a.FechaExamenMedico,
+
+                                   _500Hz_Od = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == Constants.txt_VA_OD_500) == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == Constants.txt_VA_OD_500).Valor
+                                   
                                }
 
                                ).ToList();
@@ -5761,7 +5791,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<MatrizShauindo> ReporteMatrizSolucManteIntegra(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        public List<MatrizSolucionesManteIntegrales> ReporteMatrizSolucManteIntegra(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
         {
             try
             {
@@ -5807,8 +5837,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                     join K in dbContext.area on A.v_AreaId equals K.v_AreaId into K_join
                                     from K in K_join.DefaultIfEmpty()
 
+                                    join L in dbContext.systemparameter on new { a = A.i_AptitudeStatusId.Value, b = 124 }
+                                    equals new { a = L.i_ParameterId, b = L.i_GroupId }  // ESTADO APTITUD ESO     
+
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
-                                    select new MatrizShauindo
+                                    select new MatrizSolucionesManteIntegrales
                                     {
                                         ServiceId = A.v_ServiceId,
                                         PersonId = D.v_PersonId,
@@ -5816,19 +5849,20 @@ namespace Sigesoft.Node.WinClient.BLL
                                         v_CustomerOrganizationId = B.v_CustomerOrganizationId,
                                         v_CustomerLocationId = B.v_CustomerLocationId,
                                         TipoEmo = C.v_Value1,
-                                        DniPasaporte = D.v_DocNumber,
-                                        FechaExamen = A.d_ServiceDate.Value,
-                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
+                                        Dni = D.v_DocNumber,
+                                        NumCelular = D.v_TelephoneNumber,
+                                        Apellidos = D.v_FirstLastName + " " + D.v_SecondLastName,
+                                        Nombres = D.v_FirstName,
                                         FechaNacimiento = D.d_Birthdate.Value,
-                                        TelefonoContacto = D.v_TelephoneNumber,
-                                        Sexo = E.v_Value1,
-                                        EstadoCivil = F.v_Value1,
-                                        GradoInstruccion = G.v_Value1,
-                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
-                                        Procedencia = D.v_Procedencia,
-                                        Ocupacion = D.v_CurrentOccupation,
-                                        Empresa = J.v_Name,
+                                        Genero = E.v_Value1,
+                                        ClinicaProveedora = "San Lorenzo",
+                                        PuestoTrabajo = D.v_CurrentOccupation,
                                         Area = K.v_Name,
+                                        Proyecto ="",
+                                        FechaEvaluacion = A.d_ServiceDate.Value,
+                                        Aptitud = L.v_Value1,
+                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
+                                        Procedencia = D.v_Procedencia                                       
 
                                     };
 
@@ -5846,30 +5880,32 @@ namespace Sigesoft.Node.WinClient.BLL
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
                     var sql = (from a in objEntity.ToList()
 
-                               select new MatrizShauindo
-                               {
-                                   ServiceId = a.ServiceId,
-                                   PersonId = a.PersonId,
-                                   TipoEmo = a.TipoEmo,
-                                   DniPasaporte = a.DniPasaporte,
-                                   FechaExamen = a.FechaExamen,
-                                   ApellidosNombres = a.ApellidosNombres,
-                                   FechaNacimiento = a.FechaNacimiento,
-                                   edad = GetAge(a.FechaNacimiento.Value),
-                                   TelefonoContacto = a.TelefonoContacto,
-                                   Sexo = a.Sexo,
-                                   EstadoCivil = a.EstadoCivil,
-                                   GradoInstruccion = a.GradoInstruccion,
-                                   GrupoFactorSanguineo = a.GrupoFactorSanguineo,
-                                   Procedencia = a.Procedencia,
-                                   Ocupacion = a.Ocupacion,
-                                   Empresa = a.Empresa,
-                                   Area = a.Area,
-                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
-                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
-                               }
+                        select new MatrizSolucionesManteIntegrales
+                        {
+                            ServiceId = a.ServiceId,
+                            PersonId = a.PersonId,
+                            ProtocolId = a.ProtocolId,
+                            v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                            v_CustomerLocationId = a.v_CustomerLocationId,
+                            TipoEmo = a.TipoEmo,
+                            Dni = a.Dni,
+                            NumCelular = a.NumCelular,
+                            Apellidos = a.Apellidos,
+                            Nombres = a.Nombres,
+                            FechaNacimiento = a.FechaNacimiento,
+                            Edad = GetAge(a.FechaNacimiento.Value),
+                            Genero = a.Genero,
+                            ClinicaProveedora = a.ClinicaProveedora,
+                            PuestoTrabajo = a.PuestoTrabajo,
+                            Area = a.Area,
+                            Proyecto = a.Proyecto,
+                            FechaEvaluacion = a.FechaEvaluacion,
+                            Aptitud = a.Aptitud,
+                            GrupoFactorSanguineo = a.GrupoFactorSanguineo,
+                            Procedencia = a.Procedencia,
 
-                               ).ToList();
+                            Hematocrito = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
+                        }).ToList();
                     return sql;
                 }
             }
@@ -5880,7 +5916,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<MatrizShauindo> ReporteMatrizMiBanco(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        public List<MatrizMiBanco> ReporteMatrizMiBanco(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
         {
             try
             {
@@ -5927,27 +5963,27 @@ namespace Sigesoft.Node.WinClient.BLL
                                     from K in K_join.DefaultIfEmpty()
 
                                     where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
-                                    select new MatrizShauindo
+                                    select new MatrizMiBanco
                                     {
                                         ServiceId = A.v_ServiceId,
                                         PersonId = D.v_PersonId,
                                         ProtocolId = B.v_ProtocolId,
                                         v_CustomerOrganizationId = B.v_CustomerOrganizationId,
-                                        v_CustomerLocationId = B.v_CustomerLocationId,
+                                        v_CustomerLocationId = B.v_CustomerLocationId,                                        
+                                        Dni = D.v_DocNumber,
+                                        Protocolo = B.v_Name,
                                         TipoEmo = C.v_Value1,
-                                        DniPasaporte = D.v_DocNumber,
-                                        FechaExamen = A.d_ServiceDate.Value,
-                                        ApellidosNombres = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
-                                        FechaNacimiento = D.d_Birthdate.Value,
-                                        TelefonoContacto = D.v_TelephoneNumber,
-                                        Sexo = E.v_Value1,
-                                        EstadoCivil = F.v_Value1,
-                                        GradoInstruccion = G.v_Value1,
-                                        GrupoFactorSanguineo = H.v_Value1 + " " + I.v_Value1,
-                                        Procedencia = D.v_Procedencia,
-                                        Ocupacion = D.v_CurrentOccupation,
                                         Empresa = J.v_Name,
+                                        ApellidoPaterno = D.v_FirstLastName,
+                                        ApellidoMaterno = D.v_SecondLastName,
+                                        Nombre = D.v_FirstName,
+                                        Genero = E.v_Value1,
+                                        Localidad = D.v_Procedencia,
+                                        FechaNacimiento = D.d_Birthdate.Value,
+                                        FechaIngreso = A.d_ServiceDate.Value,
                                         Area = K.v_Name,
+                                        Puesto = D.v_CurrentOccupation,
+                                        GrupoSanguineo = H.v_Value1 + " " + I.v_Value1,                                        
 
                                     };
 
@@ -5965,27 +6001,30 @@ namespace Sigesoft.Node.WinClient.BLL
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
                     var sql = (from a in objEntity.ToList()
 
-                               select new MatrizShauindo
+                               select new MatrizMiBanco
                                {
                                    ServiceId = a.ServiceId,
                                    PersonId = a.PersonId,
+                                   ProtocolId = a.ProtocolId,
+                                   v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                                   v_CustomerLocationId = a.v_CustomerLocationId,
+                                   Dni = a.Dni,
+                                   Protocolo = a.Protocolo,
                                    TipoEmo = a.TipoEmo,
-                                   DniPasaporte = a.DniPasaporte,
-                                   FechaExamen = a.FechaExamen,
-                                   ApellidosNombres = a.ApellidosNombres,
-                                   FechaNacimiento = a.FechaNacimiento,
-                                   edad = GetAge(a.FechaNacimiento.Value),
-                                   TelefonoContacto = a.TelefonoContacto,
-                                   Sexo = a.Sexo,
-                                   EstadoCivil = a.EstadoCivil,
-                                   GradoInstruccion = a.GradoInstruccion,
-                                   GrupoFactorSanguineo = a.GrupoFactorSanguineo,
-                                   Procedencia = a.Procedencia,
-                                   Ocupacion = a.Ocupacion,
                                    Empresa = a.Empresa,
+                                   ApellidoPaterno = a.ApellidoPaterno,
+                                   ApellidoMaterno = a.ApellidoMaterno,
+                                   Nombre = a.Nombre,
+                                   Genero = a.Genero,
+                                   Localidad = a.Localidad,
+                                   FechaNacimiento = a.FechaNacimiento,
+                                   FechaIngreso = a.FechaIngreso,
                                    Area = a.Area,
-                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
-                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
+                                   Puesto = a.Puesto,
+                                   GrupoSanguineo = a.GrupoSanguineo,
+
+                                   Fc = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID) == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID).Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.FUNCIONES_VITALES_ID && o.IdCampo == Constants.FUNCIONES_VITALES_FREC_CARDIACA_ID).Valor,
+                                   
                                }
 
                                ).ToList();
