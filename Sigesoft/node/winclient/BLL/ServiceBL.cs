@@ -13123,7 +13123,6 @@ namespace Sigesoft.Node.WinClient.BLL
 
 		}
 
-
 		public List<DiagnosticRepositoryList> GetAptitudeCertificate(ref OperationResult pobjOperationResult, string pstrServiceId)
 		{
 			//mon.IsActive = true;
