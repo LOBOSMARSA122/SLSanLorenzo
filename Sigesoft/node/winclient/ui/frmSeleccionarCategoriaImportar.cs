@@ -198,7 +198,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                      ListaDxByComponent,
                                                      serviceComponentDto,
                                                      Globals.ClientSession.GetAsList(),
-                                                     true);
+                                                     true, null);
 
                             }
 
@@ -342,7 +342,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                             ListaDxByComponent,
                                                             serviceComponentDto,
                                                             Globals.ClientSession.GetAsList(),
-                                                            true);
+                                                            true, false);
 
 
 
@@ -793,7 +793,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                      ListaDxByComponent,
                                                      serviceComponentDto,
                                                      Globals.ClientSession.GetAsList(),
-                                                     true);
+                                                     true, false);
                             }
                         }
 
@@ -1664,7 +1664,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                      ListaDxByComponent,
                                                      serviceComponentDto,
                                                      Globals.ClientSession.GetAsList(),
-                                                     true);
+                                                     true, false);
 
                                
                             }
@@ -1821,7 +1821,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                      ListaDxByComponent,
                                                      serviceComponentDto,
                                                      Globals.ClientSession.GetAsList(),
-                                                     true);
+                                                     true, false);
 
                             }
                         }
@@ -2015,7 +2015,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                      ListaDxByComponent,
                                                      serviceComponentDto,
                                                      Globals.ClientSession.GetAsList(),
-                                                     true);
+                                                     true, false);
 
                             }
                         }

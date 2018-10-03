@@ -1313,7 +1313,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                                     packageForSave.ExamDiagnosticComponentList,
                                                     packageForSave.ServiceComponent,
                                                     Globals.ClientSession.GetAsList(),
-                                                    null);
+                                                    null, false);
 
 
                 #endregion

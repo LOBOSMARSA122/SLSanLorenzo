@@ -4349,7 +4349,12 @@ namespace NetPdf
             #endregion
 
             #region Boca, Amigdalas
-            cells = new List<PdfPCell>()
+            ServiceComponentList odontograma = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
+            ServiceComponentList odontologia_simple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTO_SIMPLE_ID);
+
+            if (odontograma != null)
+            {
+                cells = new List<PdfPCell>()
                  {
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
@@ -4361,11 +4366,37 @@ namespace NetPdf
                        new PdfPCell(new Phrase(PiezasAusentes, fontColumnValue))
 
                  };
-            columnWidths = new float[] { 65f, 25f, 10f };
+                columnWidths = new float[] { 65f, 25f, 10f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-            document.Add(filiationWorker);
+                document.Add(filiationWorker);
+            }
+            else
+            {
+                var piezas_Faltan = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTO_SIMPLE_PIEZAS_FALTANTES);
+                var piezas_mal_estado = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGO_PIEZAS_MAL_ESTADO);
+
+                cells = new List<PdfPCell>()
+                 {
+                      new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
+                       
+                       new PdfPCell(new Phrase(piezas_mal_estado.v_Value1, fontColumnValue)),
+
+                       //lINEa
+                        new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
+                       new PdfPCell(new Phrase(piezas_Faltan.v_Value1, fontColumnValue))
+
+                 };
+                columnWidths = new float[] { 65f, 25f, 10f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+            }
+
 
             #endregion
 
@@ -9620,7 +9651,12 @@ namespace NetPdf
             #endregion
 
             #region Boca, Amigdalas
-            cells = new List<PdfPCell>()
+            ServiceComponentList odontograma = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
+            ServiceComponentList odontologia_simple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTO_SIMPLE_ID);
+
+            if (odontograma != null)
+            {
+                cells = new List<PdfPCell>()
                  {
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
@@ -9632,11 +9668,37 @@ namespace NetPdf
                        new PdfPCell(new Phrase(PiezasAusentes, fontColumnValue))
 
                  };
-            columnWidths = new float[] { 65f, 25f, 10f };
+                columnWidths = new float[] { 65f, 25f, 10f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-            document.Add(filiationWorker);
+                document.Add(filiationWorker);
+            }
+            else
+            {
+                var piezas_Faltan = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTO_SIMPLE_PIEZAS_FALTANTES);
+                var piezas_mal_estado = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGO_PIEZAS_MAL_ESTADO);
+
+                cells = new List<PdfPCell>()
+                 {
+                      new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
+                       
+                       new PdfPCell(new Phrase(piezas_mal_estado.v_Value1, fontColumnValue)),
+
+                       //lINEa
+                        new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
+                       new PdfPCell(new Phrase(piezas_Faltan.v_Value1, fontColumnValue))
+
+                 };
+                columnWidths = new float[] { 65f, 25f, 10f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+            }
+
 
             #endregion
 
@@ -12985,7 +13047,12 @@ namespace NetPdf
             #endregion
 
             #region Boca, Amigdalas
-            cells = new List<PdfPCell>()
+            ServiceComponentList odontograma = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
+            ServiceComponentList odontologia_simple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTO_SIMPLE_ID);
+
+            if (odontograma != null)
+            {
+                cells = new List<PdfPCell>()
                  {
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
@@ -12997,11 +13064,37 @@ namespace NetPdf
                        new PdfPCell(new Phrase(PiezasAusentes, fontColumnValue))
 
                  };
-            columnWidths = new float[] { 65f, 25f, 10f };
+                columnWidths = new float[] { 65f, 25f, 10f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-            document.Add(filiationWorker);
+                document.Add(filiationWorker);
+            }
+            else
+            {
+                var piezas_Faltan = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTO_SIMPLE_PIEZAS_FALTANTES);
+                var piezas_mal_estado = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGO_PIEZAS_MAL_ESTADO);
+
+                cells = new List<PdfPCell>()
+                 {
+                      new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
+                       
+                       new PdfPCell(new Phrase(piezas_mal_estado.v_Value1, fontColumnValue)),
+
+                       //lINEa
+                        new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
+                       new PdfPCell(new Phrase(piezas_Faltan.v_Value1, fontColumnValue))
+
+                 };
+                columnWidths = new float[] { 65f, 25f, 10f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+            }
+
 
             #endregion
 
@@ -16465,7 +16558,12 @@ namespace NetPdf
             #endregion
 
             #region Boca, Amigdalas
-            cells = new List<PdfPCell>()
+            ServiceComponentList odontograma = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
+            ServiceComponentList odontologia_simple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTO_SIMPLE_ID);
+
+            if (odontograma != null)
+            {
+                cells = new List<PdfPCell>()
                  {
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
@@ -16477,11 +16575,37 @@ namespace NetPdf
                        new PdfPCell(new Phrase(PiezasAusentes, fontColumnValue))
 
                  };
-            columnWidths = new float[] { 65f, 25f, 10f };
+                columnWidths = new float[] { 65f, 25f, 10f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-            document.Add(filiationWorker);
+                document.Add(filiationWorker);
+            }
+            else
+            {
+                var piezas_Faltan = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTO_SIMPLE_PIEZAS_FALTANTES);
+                var piezas_mal_estado = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGO_PIEZAS_MAL_ESTADO);
+
+                cells = new List<PdfPCell>()
+                 {
+                      new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
+                       
+                       new PdfPCell(new Phrase(piezas_mal_estado.v_Value1, fontColumnValue)),
+
+                       //lINEa
+                        new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
+                       new PdfPCell(new Phrase(piezas_Faltan.v_Value1, fontColumnValue))
+
+                 };
+                columnWidths = new float[] { 65f, 25f, 10f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+            }
+
 
             #endregion
 
@@ -20057,7 +20181,12 @@ namespace NetPdf
             #endregion
 
             #region Boca, Amigdalas
-            cells = new List<PdfPCell>()
+            ServiceComponentList odontograma = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
+            ServiceComponentList odontologia_simple = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTO_SIMPLE_ID);
+
+            if (odontograma != null)
+            {
+                cells = new List<PdfPCell>()
                  {
                       new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
                        new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
@@ -20069,11 +20198,37 @@ namespace NetPdf
                        new PdfPCell(new Phrase(PiezasAusentes, fontColumnValue))
 
                  };
-            columnWidths = new float[] { 65f, 25f, 10f };
+                columnWidths = new float[] { 65f, 25f, 10f };
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-            document.Add(filiationWorker);
+                document.Add(filiationWorker);
+            }
+            else
+            {
+                var piezas_Faltan = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.ODONTO_SIMPLE_PIEZAS_FALTANTES);
+                var piezas_mal_estado = odontologia_simple.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGO_PIEZAS_MAL_ESTADO);
+
+                cells = new List<PdfPCell>()
+                 {
+                      new PdfPCell(new Phrase("BOCA, AMÍGDALAS, FARINGE, LARINGE", fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS EN MAL ESTADO", fontColumnValue)),                       
+                       
+                       new PdfPCell(new Phrase(piezas_mal_estado.v_Value1, fontColumnValue)),
+
+                       //lINEa
+                        new PdfPCell(new Phrase(ValorBoca, fontColumnValue)),
+                       new PdfPCell(new Phrase("PIEZAS QUE FALTAN", fontColumnValue)),                       
+                       new PdfPCell(new Phrase(piezas_Faltan.v_Value1, fontColumnValue))
+
+                 };
+                columnWidths = new float[] { 65f, 25f, 10f };
+
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+
+                document.Add(filiationWorker);
+            }
+            
 
             #endregion
 

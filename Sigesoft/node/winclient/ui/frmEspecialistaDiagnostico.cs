@@ -232,7 +232,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                   _tmpExamDiagnosticComponentList,
                                                    null,
                                                    Globals.ClientSession.GetAsList(),
-                                                   true);
+                                                   true,null);
 
             MessageBox.Show("se guardó correctamente.", "CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
