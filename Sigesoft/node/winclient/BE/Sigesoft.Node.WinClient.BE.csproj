@@ -69,7 +69,11 @@
     <Compile Include="Custom\LiquidacionAseguradora.cs" />
     <Compile Include="Custom\LiquidacionMedicoList.cs" />
     <Compile Include="Custom\LiquidacionServicios.cs" />
+    <Compile Include="Custom\MatrizGoldFields.cs" />
+    <Compile Include="Custom\MatrizLaZanja.cs" />
+    <Compile Include="Custom\MatrizMiBanco.cs" />
     <Compile Include="Custom\MatrizShauindo.cs" />
+    <Compile Include="Custom\MatrizSolucionesManteIntegrales.cs" />
     <Compile Include="Custom\MedicoGrid.cs" />
     <Compile Include="Custom\MedicoGridDetalle.cs" />
     <Compile Include="Custom\MedicoList.cs" />

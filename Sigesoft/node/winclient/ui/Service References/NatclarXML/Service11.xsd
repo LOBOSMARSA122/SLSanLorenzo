@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WcfServiceProveedorExterno" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="XmlDatosPaciente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DNI" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DepartamentoNacimiento" type="xs:short" />
+      <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DistritoNacimiento" type="xs:short" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstadoCivil" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaNacimiento" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HC" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimerApellido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProvinciaNacimiento" type="xs:short" />
+      <xs:element minOccurs="0" name="ResidenciaActual" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SegundoApellido" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Sexo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoDocumento" type="xs:short" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlDatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+  <xs:complexType name="Resultado">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorXML" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EstadoXML" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Resultado" nillable="true" type="tns:Resultado" />
+  <xs:complexType name="XmlDatosExamen">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FechaRegistro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDActuacion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDCentro" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDEstado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDEstructura" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IDExamen" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TipoExamen" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlDatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+  <xs:complexType name="EstructuraDatosAlergias">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Alergias" nillable="true" type="tns:XmlDatosAlergias" />
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosAlergias" nillable="true" type="tns:EstructuraDatosAlergias" />
+  <xs:complexType name="XmlDatosAlergias">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaInicio" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlDatosAlergias" nillable="true" type="tns:XmlDatosAlergias" />
+  <xs:complexType name="EstructuraDatosAPMedicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="APMEDICOS" nillable="true" type="tns:XmlAntecedentesPatologicosMedicos" />
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosAPMedicos" nillable="true" type="tns:EstructuraDatosAPMedicos" />
+  <xs:complexType name="XmlAntecedentesPatologicosMedicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AntecedenteLaboral" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoCIE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaInicio" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlAntecedentesPatologicosMedicos" nillable="true" type="tns:XmlAntecedentesPatologicosMedicos" />
+  <xs:complexType name="EstructuraDatosAPQuirurgicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="APQUIRURGICOS" nillable="true" type="tns:XmlAntecedentesPatologicosQuirurgicos" />
+      <xs:element minOccurs="0" name="DatosExamen" nillable="true" type="tns:XmlDatosExamen" />
+      <xs:element minOccurs="0" name="DatosPaciente" nillable="true" type="tns:XmlDatosPaciente" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EstructuraDatosAPQuirurgicos" nillable="true" type="tns:EstructuraDatosAPQuirurgicos" />
+  <xs:complexType name="XmlAntecedentesPatologicosQuirurgicos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AntecedenteLaboral" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CodigoCIE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaFin" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FechaInicio" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="XmlAntecedentesPatologicosQuirurgicos" nillable="true" type="tns:XmlAntecedentesPatologicosQuirurgicos" />
+</xs:schema>

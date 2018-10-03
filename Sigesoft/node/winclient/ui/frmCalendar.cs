@@ -17,6 +17,7 @@ using CrystalDecisions.CrystalReports.Engine;
 using CrystalDecisions.Shared;
 using System.IO;
 using Sigesoft.Node.WinClient.UI.Configuration;
+using Sigesoft.Node.WinClient.UI.NatclarXML;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -3215,6 +3216,10 @@ namespace Sigesoft.Node.WinClient.UI
                     #endregion
 
                     xeRoot.Save(folderBrowserDialog1.SelectedPath + @"\" + datosPaciente.Hc);
+
+                    WSRIProveedorExternoClient client = new WSRIProveedorExternoClient();
+
+                        //client.EnviarDatosAPMedicos(
                  
                     }
                 }
