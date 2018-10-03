@@ -3063,6 +3063,7 @@ namespace Sigesoft.Node.WinClient.BLL
 					// El examen Necesita ser aprobado / Revisado y diagnosticado x especialista
 
                     //WALTER3009
+                    #region Aprobacion
                     if (item.i_ApprovedUpdateUserId == null && (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor))
                     {
                         if (isApproved == (int)SiNo.SI)
@@ -3123,6 +3124,8 @@ namespace Sigesoft.Node.WinClient.BLL
                             item.d_ApprovedInsertDate = DateTime.Now;
                         }
                     }
+                    #endregion
+                    
                    
 
 					

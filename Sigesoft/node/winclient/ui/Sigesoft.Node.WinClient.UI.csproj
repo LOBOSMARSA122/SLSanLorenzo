@@ -1465,6 +1465,12 @@
     <Compile Include="ReporteDeclaracionDrogas.Designer.cs">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\crFichaAudiometriaMedico.cs">
+      <DependentUpon>crFichaAudiometriaMedico.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Reports\crEstudioElectrocardiografico_Reserva.cs">
       <DependentUpon>crEstudioElectrocardiografico_Reserva.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -1953,12 +1959,6 @@
     </Compile>
     <Compile Include="Reports\crFichaAudiometriaSinFirma.cs">
       <DependentUpon>crFichaAudiometriaSinFirma.rpt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <SubType>Component</SubType>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Reports\crFichaAudiometriaMedico.cs">
-      <DependentUpon>crFichaAudiometriaMedico.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
@@ -3648,6 +3648,10 @@
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crFichaAudiometriaMedico.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crFichaAudiometriaMedico.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\crEstudioElectrocardiografico_Reserva.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crEstudioElectrocardiografico_Reserva.cs</LastGenOutput>
@@ -3975,10 +3979,6 @@
     <EmbeddedResource Include="Reports\crFichaAudiometriaSinFirma.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crFichaAudiometriaSinFirma.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reports\crFichaAudiometriaMedico.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>crFichaAudiometriaMedico.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\crOftalmologia_S_J_Medico.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
