@@ -2978,6 +2978,7 @@
             this.btnRemoverTotalDiagnostico.TabIndex = 93;
             this.btnRemoverTotalDiagnostico.Text = "     Eliminar";
             this.btnRemoverTotalDiagnostico.UseVisualStyleBackColor = false;
+            this.btnRemoverTotalDiagnostico.Visible = false;
             this.btnRemoverTotalDiagnostico.Click += new System.EventHandler(this.btnRemoverTotalDiagnostico_Click);
             // 
             // btnAgregarTotalDiagnostico
@@ -3000,6 +3001,7 @@
             this.btnAgregarTotalDiagnostico.TabIndex = 92;
             this.btnAgregarTotalDiagnostico.Text = "      Agregar";
             this.btnAgregarTotalDiagnostico.UseVisualStyleBackColor = false;
+            this.btnAgregarTotalDiagnostico.Visible = false;
             this.btnAgregarTotalDiagnostico.Click += new System.EventHandler(this.btnAgregarTotalDiagnostico_Click);
             // 
             // btnRefrescarTotalDiagnostico
