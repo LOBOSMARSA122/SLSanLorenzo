@@ -619,6 +619,7 @@ namespace Sigesoft.Common
         Medicina = 11,
         GinecologíaExAuxiliares = 12,
         Inmunizaciones = 13,
+        Toxocologico = 24,
 
     }
     //

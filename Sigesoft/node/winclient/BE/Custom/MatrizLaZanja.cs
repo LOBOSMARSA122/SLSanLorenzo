@@ -7,6 +7,12 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class MatrizLaZanja
     {
+        public string ServiceId { get; set; }
+        public string PersonId { get; set; }
+        public string ProtocolId { get; set; }
+        public string v_CustomerOrganizationId { get; set; }
+        public string v_CustomerLocationId { get; set; }
+
         public string ApellidosNombres { get; set; }
         public string Procedencia { get; set; }
         public string Sexo { get; set; }
@@ -15,8 +21,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string PuestoTrabajo { get; set; }
         public int Edad { get; set; }
         public string TipoExamen { get; set; }
-        public string FechaDigitacion { get; set; }
-        public string FechaExamenOcupacional { get; set; }
+        public DateTime? FechaDigitacion { get; set; }
+        public DateTime? FechaExamenOcupacional { get; set; }
         public DateTime? FechaNacimiento { get; set; }
         public string Peso { get; set; }
         public string Talla { get; set; }

@@ -7,12 +7,18 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class MatrizSolucionesManteIntegrales
     {
+        public string ServiceId { get; set; }
+        public string PersonId { get; set; }
+        public string ProtocolId { get; set; }
+        public string v_CustomerOrganizationId { get; set; }
+        public string v_CustomerLocationId { get; set; }
+
         public string TipoEmo { get; set; }
         public string Dni { get; set; }
         public string NumCelular { get; set; }
         public string Apellidos { get; set; }
         public string Nombres { get; set; }
-        public string FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
         public int Edad { get; set; }
         public string Genero { get; set; }
         public string PruebaHcgb { get; set; }
@@ -22,7 +28,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string PuestoTrabajo { get; set; }
         public string Area { get; set; }
         public string Proyecto { get; set; }
-        public string FechaEvaluacion { get; set; }
+        public DateTime? FechaEvaluacion { get; set; }
         public string Aptitud { get; set; }
         public string Tabaco { get; set; }
         public string Alcohol { get; set; }

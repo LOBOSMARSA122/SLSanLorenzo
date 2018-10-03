@@ -7,6 +7,12 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class MatrizMiBanco
     {
+        public string ServiceId { get; set; }
+        public string PersonId { get; set; }
+        public string ProtocolId { get; set; }
+        public string v_CustomerOrganizationId { get; set; }
+        public string v_CustomerLocationId { get; set; }
+
         public string Dni { get; set; }
         public string Protocolo { get; set; }
         public string TipoEmo { get; set; }
@@ -17,9 +23,9 @@ namespace Sigesoft.Node.WinClient.BE
         public string Genero { get; set; }
         public string Localidad { get; set; }
 
-        public string FechaNacimiento { get; set; }
+        public DateTime? FechaNacimiento { get; set; }
         public int Edad { get; set; }
-        public string FechaIngreso { get; set; }
+        public DateTime? FechaIngreso { get; set; }
         public string Area { get; set; }
         public string Puesto { get; set; }
         public string GrupoSanguineo { get; set; }

@@ -105,7 +105,7 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
 
                 }
-                else if (tabControl1.SelectedTab.Name == "toSolucManteIntegra")
+                else if (tabControl1.SelectedTab.Name == "tpSolucManteIntegra")
                 {
                     var objData = new PacientBL().ReporteMatrizSolucManteIntegra(pdatBeginDate, pdatEndDate, ddlCustomerOrganization.SelectedValue.ToString(), strFilterExpression);
                     grdSoluc.DataSource = objData;
@@ -121,29 +121,130 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
             }
         }
 
-        private void btnExportLaZanja_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExportGolFields_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExportSoluc_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnExportMiBanco_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void grdLaZanja_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
         {
 
         }
+
+        private void btnExportShauindo_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
+            {
+                NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text + " de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+            else
+            {
+                NombreArchivo = "Matriz de datos de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            sfdShauindo.FileName = NombreArchivo;
+            sfdShauindo.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfdShauindo.ShowDialog() == DialogResult.OK)
+            {
+                this.ugeShauindo.Export(this.grdShauindo, sfdShauindo.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnExportLaZanja_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
+            {
+                NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text + " de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+            else
+            {
+                NombreArchivo = "Matriz de datos de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            sfdLaZanja.FileName = NombreArchivo;
+            sfdLaZanja.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfdLaZanja.ShowDialog() == DialogResult.OK)
+            {
+                this.ugeLaZanja.Export(this.grdLaZanja, sfdLaZanja.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnExportGolFields_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
+            {
+                NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text + " de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+            else
+            {
+                NombreArchivo = "Matriz de datos de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            sfdGoldFiels.FileName = NombreArchivo;
+            sfdGoldFiels.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfdGoldFiels.ShowDialog() == DialogResult.OK)
+            {
+                this.ugeGoldFiels.Export(this.grdGolFields, sfdGoldFiels.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnExportSoluc_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
+            {
+                NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text + " de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+            else
+            {
+                NombreArchivo = "Matriz de datos de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            sdfSoluc.FileName = NombreArchivo;
+            sdfSoluc.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sdfSoluc.ShowDialog() == DialogResult.OK)
+            {
+                this.ugeSoluc.Export(this.grdSoluc, sdfSoluc.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnExportMiBanco_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            if (ddlCustomerOrganization.SelectedValue.ToString() != "-1")
+            {
+                NombreArchivo = "Matriz de datos " + ddlCustomerOrganization.Text + " de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+            else
+            {
+                NombreArchivo = "Matriz de datos de " + dtpDateTimeStar.Text + " a " + dptDateTimeEnd.Text;
+            }
+
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            sfdMiBanco.FileName = NombreArchivo;
+            sfdMiBanco.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (sfdMiBanco.ShowDialog() == DialogResult.OK)
+            {
+                this.ugeMiBanco.Export(this.grdMiBanco, sfdMiBanco.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
     }
 }
