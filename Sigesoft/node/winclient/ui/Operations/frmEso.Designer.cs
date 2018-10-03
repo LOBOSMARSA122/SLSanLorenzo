@@ -1011,13 +1011,13 @@
             this.cmAntecedentes.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuGridAntecedent});
             this.cmAntecedentes.Name = "contextMenuStrip1";
-            this.cmAntecedentes.Size = new System.Drawing.Size(167, 26);
+            this.cmAntecedentes.Size = new System.Drawing.Size(166, 26);
             // 
             // mnuGridAntecedent
             // 
             this.mnuGridAntecedent.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridAntecedent.Image")));
             this.mnuGridAntecedent.Name = "mnuGridAntecedent";
-            this.mnuGridAntecedent.Size = new System.Drawing.Size(166, 22);
+            this.mnuGridAntecedent.Size = new System.Drawing.Size(165, 22);
             this.mnuGridAntecedent.Text = "Ver Antecedentes";
             this.mnuGridAntecedent.Click += new System.EventHandler(this.mnuGridAntecedent_Click);
             // 
@@ -1152,13 +1152,13 @@
             this.cmVerServicioAnterior.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuVerServicio});
             this.cmVerServicioAnterior.Name = "contextMenuStrip1";
-            this.cmVerServicioAnterior.Size = new System.Drawing.Size(136, 26);
+            this.cmVerServicioAnterior.Size = new System.Drawing.Size(135, 26);
             // 
             // mnuVerServicio
             // 
             this.mnuVerServicio.Image = ((System.Drawing.Image)(resources.GetObject("mnuVerServicio.Image")));
             this.mnuVerServicio.Name = "mnuVerServicio";
-            this.mnuVerServicio.Size = new System.Drawing.Size(135, 22);
+            this.mnuVerServicio.Size = new System.Drawing.Size(134, 22);
             this.mnuVerServicio.Text = "Ver Servicio";
             this.mnuVerServicio.Click += new System.EventHandler(this.mnuVerServicio_Click);
             // 
@@ -2101,7 +2101,6 @@
             this.chkUtilizarFirma.TabIndex = 59;
             this.chkUtilizarFirma.Text = "SI Utilizar Firma";
             this.chkUtilizarFirma.UseVisualStyleBackColor = true;
-            this.chkUtilizarFirma.Visible = false;
             // 
             // EXAMENES_lblEstadoComponente
             // 

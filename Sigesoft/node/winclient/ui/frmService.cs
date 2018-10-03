@@ -1206,7 +1206,7 @@ namespace Sigesoft.Node.WinClient.UI
                                                         ListaDxByComponent,
                                                         serviceComponentDto,
                                                         Globals.ClientSession.GetAsList(),
-                                                        false);
+                                                        false, false);
 
 
 

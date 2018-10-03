@@ -3107,7 +3107,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                                                     packageForSave.ExamDiagnosticComponentList,
                                                     packageForSave.ServiceComponent,
                                                     Globals.ClientSession.GetAsList(),
-                                                    _chkApprovedEnabled);
+                                                    _chkApprovedEnabled, chkUtilizarFirma.Checked);
 
 
                 #endregion
