@@ -3174,7 +3174,7 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-		public void UpdateServiceComponentFromEso(ref OperationResult pobjOperationResult, servicecomponentDto pobjDtoEntity, List<string> ClientSession, bool? enabledchkApproved)
+		public void UpdateServiceComponentFromEso(ref OperationResult pobjOperationResult, servicecomponentDto pobjDtoEntity, List<string> ClientSession, bool? enabledchkApproved, bool? enabledchkSuplant)
 		{
 			//mon.IsActive = true;
 
@@ -3220,7 +3220,9 @@ namespace Sigesoft.Node.WinClient.BLL
 					// El examen Necesita ser aprobado / Revisado y diagnosticado x especialista
 
                     //WALTER3009
-                    if (item.i_ApprovedUpdateUserId == null && (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor))
+                    #region Aprobacion
+
+                    if (item.i_ApprovedUpdateUserId == null && (Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor_Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor) && (enabledchkSuplant.Value == false))
                     {
                         if (isApproved == (int)SiNo.SI)
                         {
@@ -3250,7 +3252,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             item.d_ApprovedInsertDate = DateTime.Now;
                         }
                     }
-                    else if (item.i_ApprovedUpdateUserId != null  && ((Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)))
+                    else if (item.i_ApprovedUpdateUserId != null && ((Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Evaluador || Int32.Parse(ClientSession[12]) == (int)TipoProfesional.Auditor)) && (enabledchkSuplant.Value == false))
                     {
                         if (isApproved == (int)SiNo.SI)
                         {
@@ -3281,11 +3283,45 @@ namespace Sigesoft.Node.WinClient.BLL
                         }
                         
                     }
-                   
+                    #endregion
 
-					
 
-				}
+                    #region Suplantador
+                    if (enabledchkSuplant.Value)
+                    {
+                        if (isApproved == (int)SiNo.SI)
+                        {
+                            // Lo esta aprobando el especialista que tambien es un medico evaluador
+                            if (enabledchkApproved.Value)
+                            {
+                                item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
+                                item.d_ApprovedUpdateDate = DateTime.Now;
+                                item.i_IsApprovedId = pobjDtoEntity.i_IsApprovedId;
+                            }
+                            else
+                            {
+                                // El tecnologo esta registrando los datos
+                                item.i_UpdateUserTechnicalDataRegisterId = Int32.Parse(ClientSession[2]);
+                                item.d_UpdateDateTechnicalDataRegister = DateTime.Now;
+                            }
+                        }
+                        else
+                        {
+                            item.i_ApprovedUpdateUserId = Int32.Parse(ClientSession[2]);
+                            item.d_ApprovedUpdateDate = DateTime.Now;
+                        }
+
+                        // Una sola vez se graba la fecha de creacion / grabacion del examen
+                        if (item.d_ApprovedInsertDate == null)
+                        {
+                            item.d_ApprovedInsertDate = DateTime.Now;
+                        }
+                    }
+
+                    #endregion
+
+
+                }
 
 				// Guardar los cambios
 				dbContext.SaveChanges();
@@ -3777,7 +3813,7 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-		public void AddDiagnosticRepository(ref OperationResult pobjOperationResult, List<DiagnosticRepositoryList> pobjDiagnosticRepository, servicecomponentDto pobjServiceComponent, List<string> ClientSession, bool? enabledchkApproved)
+		public void AddDiagnosticRepository(ref OperationResult pobjOperationResult, List<DiagnosticRepositoryList> pobjDiagnosticRepository, servicecomponentDto pobjServiceComponent, List<string> ClientSession, bool? enabledchkApproved, bool? enabledchkSuplant)
 		{
 			//mon.IsActive = true;
 			string NewId0 = "(No generado)";
@@ -4014,7 +4050,7 @@ namespace Sigesoft.Node.WinClient.BLL
 			{
 				// Actualizar algunos valores de ServiceComponent
 				OperationResult objOperationResult = new OperationResult();
-				UpdateServiceComponentFromEso(ref objOperationResult, pobjServiceComponent, ClientSession, enabledchkApproved);
+				UpdateServiceComponentFromEso(ref objOperationResult, pobjServiceComponent, ClientSession, enabledchkApproved,enabledchkSuplant);
 			}
 
 		}
@@ -6533,7 +6569,7 @@ namespace Sigesoft.Node.WinClient.BLL
 				{
 					// Actualizar algunos valores de ServiceComponent
 					OperationResult objOperationResult = new OperationResult();
-					UpdateServiceComponentFromEso(ref objOperationResult, pobjServiceComponent, ClientSession, null);
+					UpdateServiceComponentFromEso(ref objOperationResult, pobjServiceComponent, ClientSession, null,null);
 				}
 
 				#endregion
@@ -6763,7 +6799,7 @@ namespace Sigesoft.Node.WinClient.BLL
 				{
 					// Actualizar algunos valores de ServiceComponent
 					OperationResult objOperationResult1 = new OperationResult();
-					UpdateServiceComponentFromEso(ref objOperationResult1, pobjServiceComponent, ClientSession, enabledchkApproved);
+					UpdateServiceComponentFromEso(ref objOperationResult1, pobjServiceComponent, ClientSession, enabledchkApproved,null);
 				}
 
 				#endregion

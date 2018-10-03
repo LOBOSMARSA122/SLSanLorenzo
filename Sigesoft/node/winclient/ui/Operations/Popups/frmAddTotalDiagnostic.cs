@@ -110,7 +110,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                                                     _tmpTotalDiagnosticList,
                                                     null,
                                                     Globals.ClientSession.GetAsList(),
-                                                    null);
+                                                    null,null);
 
                 // Analizar el resultado de la operación
                 if (objOperationResult.Success == 1)  // Operación sin error
@@ -620,7 +620,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations.Popups
                                                             _tmpTotalDiagnosticList,
                                                             null,
                                                             Globals.ClientSession.GetAsList(),
-                                                            null);
+                                                            null,false);
 
                         // Analizar el resultado de la operación
                         if (objOperationResult.Success == 1)  // Operación sin error
