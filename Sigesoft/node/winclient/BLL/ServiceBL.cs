@@ -2095,16 +2095,16 @@ namespace Sigesoft.Node.WinClient.BLL
 							 });
 
 				var objData = query.AsEnumerable()
-							 .Where(s => s.i_CategoryId != -1 && s.i_CategoryId != 1 && s.i_CategoryId != 6 && s.i_CategoryId != 14)
+							 .Where(s => s.i_CategoryId != -1)
 							 .GroupBy(x => x.i_CategoryId)
 							 .Select(group => group.First());
 
 				List<ServiceComponentList> obj = objData.ToList();
 
 				obj.AddRange(query.Where(p => p.i_CategoryId == -1));
-				obj.AddRange(query.Where(p => p.i_CategoryId == 1));
-				obj.AddRange(query.Where(p => p.i_CategoryId == 6));
-				obj.AddRange(query.Where(p => p.i_CategoryId == 14));
+                //obj.AddRange(query.Where(p => p.i_CategoryId == 1));
+                //obj.AddRange(query.Where(p => p.i_CategoryId == 6));
+                //obj.AddRange(query.Where(p => p.i_CategoryId == 14));
 				pobjOperationResult.Success = 1;
 				var orden = obj.OrderBy(o => o.i_CategoryId).ToList();
 				return orden.FindAll(p => p.i_CategoryId != 10);
