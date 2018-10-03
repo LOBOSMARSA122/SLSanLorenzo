@@ -16,6 +16,22 @@ namespace Sigesoft.Common
         public const int COLUMNAS_POR_CONTROL = 3;
 
         #region
+        public const string ODONTO_SIMPLE_ID = "N009-ME000000471";
+        public const string ODONTO_SIMPLE_PIEZAS_FALTANTES = "N009-MF000004323";
+        public const string LABORATORIO_TGO_PIEZAS_MAL_ESTADO = "N009-MF000004322";
+        #endregion
+
+        #region TGO
+        public const string LABORATORIO_TGO_ID = "N009-ME000000471";
+        public const string LABORATORIO_TGO_VALOR = "N009-MF000004318";
+        public const string LABORATORIO_TGO_VALORDESEABLE_VALOR = "N009-MF000004319";
+        #endregion
+        #region TGP
+        public const string LABORATORIO_TGP_ID = "N009-ME000000470";
+        public const string LABORATORIO_TGP_VALOR = "N009-MF000004320";
+        public const string LABORATORIO_TGP_VALORDESEABLE_VALOR = "N009-MF000004321";
+        #endregion
+        #region INFORME_PSICOLOGICO_RESUMEN_ID
         public const string INFORME_PSICOLOGICO_RESUMEN_ID = "N009-ME000000469";
 
         public const string INFORME_PSICOLOGICO_RESUMEN_EVALUACION = "N009-MF000004308";
@@ -2198,6 +2214,7 @@ namespace Sigesoft.Common
         public const string INFORME_PSICOLOGICO_GOLDFIELDS_INTERACCION_SOCIAL = "N009-MF000003522";
         public const string INFORME_PSICOLOGICO_GOLDFIELDS_ORGANIZACIONALES = "N009-MF000003523";
 
+        public const string INFORME_PSICOLOGICO_GOLDFIELDS_RIESGOS_PSICOSOCIALES = "N009-MF000004317";
         public const string INFORME_PSICOLOGICO_GOLDFIELDS_PSICOSENSOMETRICO_DESC = "N009-MF000003524";
 
         public const string INFORME_PSICOLOGICO_GOLDFIELDS_APTITUD_PSICO = "N009-MF000003525";
@@ -4357,7 +4374,7 @@ namespace Sigesoft.Common
 
         public const string PERFIL_HEPATICO_BILIRRUBINA_INDIRECTA_ID = "N009-MF000001810";
         public const string PERFIL_HEPATICO_BILIRRUBINA_INDIRECTA_DESEABLE_ID = "N009-MF000001811";
-        #endregion
+        #endregion 
 
         #region VSG
         public const string VSG_ID = "N009-ME000000137";

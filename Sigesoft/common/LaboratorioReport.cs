@@ -134,6 +134,57 @@ namespace NetPdf
 
                 #endregion
 
+                #region tgo y tgp
+
+                ServiceComponentList tgoo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_TGO_ID);
+                if (tgoo != null)
+                {
+                    cells = new List<PdfPCell>();
+                    cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: ENZIMÁTICO / COLORIMÉTRICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
+
+                    cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    //cells.Add(new PdfPCell(new Phrase("HEMATOLOGÍA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    var tgo_Val = tgoo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGO_VALOR);
+                    var tgoValord = tgoo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGO_VALORDESEABLE_VALOR);
+
+                    cells.Add(new PdfPCell(new Phrase("TRANSAMINASA PIRUVICA (TGO)", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(tgo_Val == null ? string.Empty : tgo_Val.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(tgoValord == null ? "0 - 45" : tgoValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(tgo_Val == null ? string.Empty : tgo_Val.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "", fontTitleTableNegro, null);
+                    document.Add(table);
+                }
+
+                ServiceComponentList tgpp = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LABORATORIO_TGP_ID);
+
+                if (tgpp != null)
+                {
+                    cells = new List<PdfPCell>();
+
+
+                    var tgp_val = tgpp.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGP_VALOR);
+                    var tgp_Valord = tgpp.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_TGP_VALORDESEABLE_VALOR);
+
+                    cells.Add(new PdfPCell(new Phrase("TRANSAMINASA OXALACETICA (TGP)", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(tgp_val == null ? string.Empty : tgp_val.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(tgp_Valord == null ? "0 - 45" : tgp_Valord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase(tgp_val == null ? string.Empty : tgp_val.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+
+                    columnWidths = new float[] { 25f, 25f, 25f, 25f };
+                    table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, "", fontTitleTableNegro, null);
+                    document.Add(table);
+                }
+
+
+                #endregion
                 #region Bioquimica
                 string[] groupBioquimica = new string[]
                  {
@@ -485,6 +536,7 @@ namespace NetPdf
 
                 #endregion
 
+
                 #region GRUPO SANGUINEO
 
                 string[] groupSanguineo = new string[]
@@ -815,6 +867,7 @@ namespace NetPdf
                 
                 
                 #endregion
+
 
                 #region VSG
                 string[] groupVSG = new string[]

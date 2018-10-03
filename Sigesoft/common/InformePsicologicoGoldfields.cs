@@ -246,7 +246,7 @@ namespace NetPdf
             var no_Sec = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_SEC_INCOMP) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_SEC_INCOMP).v_Value1;
             var sec = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_SEC_COMP) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_SEC_COMP).v_Value1;
             var geren = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_GERENTE) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_GERENTE).v_Value1;
-            string numeracionFP = "", numeracionPS = "", numeracionC = "", numeracionR = "";
+            string numeracionFP = "", numeracionPS = "", numeracionC = "", numeracionR = "", numeracionRP = "";
             if (no_Sec =="1")
             {
                 #region  FUNCIONES COGNITIVAS - NO SECUNDARIA
@@ -392,9 +392,10 @@ namespace NetPdf
                 #endregion
                 
                 numeracionFP = "IX";
-                numeracionPS = "X";
-                numeracionC = "XI";
-                numeracionR = "XII";
+                numeracionRP = "X";
+                numeracionPS = "XI";
+                numeracionC = "XII";
+                numeracionR = "XIII";
 
             }
             else if (sec == "1")
@@ -567,9 +568,10 @@ namespace NetPdf
                 #endregion
                 
                 numeracionFP = "X";
-                numeracionPS = "XI";
-                numeracionC = "XII";
-                numeracionR = "XIII";
+                numeracionRP = "XI";
+                numeracionPS = "XII";
+                numeracionC = "XIII";
+                numeracionR = "XIV";
             }
 
             #region  FACTORES PSICOSOCIALES
@@ -608,6 +610,18 @@ namespace NetPdf
                 new PdfPCell(new Phrase(organizaciones == "1" ?"":organizaciones=="2"?"X":organizaciones=="3"?"":organizaciones, fontColumnValue)) { Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
                 new PdfPCell(new Phrase(organizaciones == "1" ?"":organizaciones=="2"?"":organizaciones=="3"?"X":organizaciones, fontColumnValue)) { Colspan =5,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda},    
 
+            };
+
+            columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
+            document.Add(table);
+            #endregion
+            #region PSICOSENSOMETRICO
+            var riesgospsicosociales = informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RIESGOS_PSICOSOCIALES) == null ? "" : informe_psico_goldfields.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_GOLDFIELDS_RIESGOS_PSICOSOCIALES).v_Value1;
+            cells = new List<PdfPCell>()
+            {         
+                new PdfPCell(new Phrase(numeracionRP+". FACTORES PSICOSOCIALES", fontColumnValueBold)) { Colspan = 20,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda, BackgroundColor = BaseColor.GRAY },       
+                new PdfPCell(new Phrase(riesgospsicosociales, fontColumnValue)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = 20f},    
             };
 
             columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
