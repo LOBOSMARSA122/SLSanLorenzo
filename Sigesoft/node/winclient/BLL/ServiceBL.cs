@@ -1268,7 +1268,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        private KeyValueDTO ObtenerFirmaMedicoExamen(string pstrServiceId, string p1, string p2)
+        public KeyValueDTO ObtenerFirmaMedicoExamen(string pstrServiceId, string p1, string p2)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -5849,8 +5849,8 @@ namespace Sigesoft.Node.WinClient.BLL
 															 equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
 							 from J2 in J2_join.DefaultIfEmpty()
 
-							 where ccc.v_ServiceId == pstrServiceId &&
-									 ccc.i_IsDeleted == 0
+							 where ccc.v_ServiceId == pstrServiceId && sc.i_IsDeleted == 0 && bbb.i_IsDeleted == 0 &&
+									 ccc.i_IsDeleted == 0  && ddd.i_IsDeleted == 0
 							 orderby bbb.v_Name
 
 							 select new DiagnosticRepositoryList
@@ -5888,6 +5888,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 }).ToList();
 
 
+                query = query.GroupBy(p => p.v_DiagnosticRepositoryId).Select(p => p.FirstOrDefault()).ToList();
 				var q = (from a in query
 						 select new DiagnosticRepositoryList
 						 {

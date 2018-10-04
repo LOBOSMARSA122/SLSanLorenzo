@@ -348,8 +348,8 @@ namespace NetPdf
             #region antecedentes
             var cocaina = toxicologico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_COCAINA) == null ? "" : toxicologico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_COCAINA).v_Value1;
             var marihuana = toxicologico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_MARIHUANA) == null ? "" : toxicologico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_MARIHUANA).v_Value1;
-            
-            var lab = serviceComponent.Find(p => p.i_CategoryId == (int)Sigesoft.Common.Consultorio.Toxocologico);
+
+            var lab = serviceComponent.Find(p => p.i_CategoryId == (int)Sigesoft.Common.Consultorio.Toxocologico || p.i_CategoryId == (int)Sigesoft.Common.Consultorio.Laboratorio);
             table = new PdfPTable(2);
             table.HorizontalAlignment = Element.ALIGN_RIGHT;
             table.WidthPercentage = 40;
