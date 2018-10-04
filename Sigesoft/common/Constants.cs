@@ -16,7 +16,7 @@ namespace Sigesoft.Common
         public const int COLUMNAS_POR_CONTROL = 3;
 
         #region
-        public const string ODONTO_SIMPLE_ID = "N009-ME000000471";
+        public const string ODONTO_SIMPLE_ID = "N009-ME000000472";
         public const string ODONTO_SIMPLE_PIEZAS_FALTANTES = "N009-MF000004323";
         public const string LABORATORIO_TGO_PIEZAS_MAL_ESTADO = "N009-MF000004322";
         #endregion

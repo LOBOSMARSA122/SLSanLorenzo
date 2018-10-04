@@ -7,6 +7,7 @@ using Sigesoft.Node.Contasol.Integration.Contasol;
 using Sigesoft.Node.Contasol.Integration.Contasol.Models;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.DAL;
+using Sigesoft.Node.WinClient.BLL;
 
 namespace Sigesoft.Node.Contasol.Integration
 {
@@ -175,6 +176,8 @@ namespace Sigesoft.Node.Contasol.Integration
                 {
                     pobjOperationResult.Success = 1;
                     var medicamentos = MedicamentoDao.ObtenerContasolMedicamentos();
+                    var FirmaMedicoMedicina = new ServiceBL().ObtenerFirmaMedicoExamen(serviceId, Constants.ATENCION_INTEGRAL_ID, Constants.EXAMEN_FISICO_7C_ID);
+
                     var consulta = (from r in dbContext.receta
                                     join d in dbContext.diagnosticrepository on r.v_DiagnosticRepositoryId equals d.v_DiagnosticRepositoryId into dJoin
                                     from d in dJoin.DefaultIfEmpty()
@@ -184,14 +187,6 @@ namespace Sigesoft.Node.Contasol.Integration
                                     from C in C_join.DefaultIfEmpty()
                                     join p in dbContext.person on s.v_PersonId equals p.v_PersonId into pJoin
                                     from p in pJoin.DefaultIfEmpty()
-                                    join su in dbContext.systemuser on new { idDoctor = s.i_UpdateUserMedicalAnalystId ?? (s.i_InsertUserMedicalAnalystId ?? 1) }
-                                                            equals new { idDoctor = su.i_SystemUserId } into suJoin
-                                    from su in suJoin.DefaultIfEmpty()
-                                    //Aca el join no esta claro, falta explicacion.<----------------------------------------------------
-                                    //join pp in dbContext.person on su.v_PersonId equals pp.v_PersonId into ppJoin
-                                    //from pp in ppJoin.DefaultIfEmpty()
-                                    //join pr in dbContext.professional on pp.v_PersonId equals pr.v_PersonId into prJoin
-                                    //from pr in prJoin.DefaultIfEmpty()
                                     where s.v_ServiceId.Equals(serviceId)
                                     select new recetadespachoDto
                                     {
@@ -204,9 +199,9 @@ namespace Sigesoft.Node.Contasol.Integration
                                         FechaFin = r.t_FechaFin ?? DateTime.Now,
                                         Duracion = r.v_Duracion,
                                         Dosis = r.v_Posologia,
-                                        //NombreMedico = pp.v_FirstLastName + " " + pp.v_SecondLastName + " " + pp.v_FirstName,
-                                        //RubricaMedico = pr.b_SignatureImage,
-                                        //MedicoNroCmp = pr.v_ProfessionalCode,
+                                        NombreMedico = FirmaMedicoMedicina.Value2,
+                                        RubricaMedico = FirmaMedicoMedicina.Value5,
+                                        MedicoNroCmp = FirmaMedicoMedicina.Value3,
                                         NombreClinica = C.v_Name,
                                         DireccionClinica = C.v_Address,
                                         LogoClinica = C.b_Image,
@@ -214,6 +209,7 @@ namespace Sigesoft.Node.Contasol.Integration
                                         MedicinaId = r.v_IdProductoDetalle
                                     }).ToList();
 
+                    //consulta = consulta.GroupBy(p => p.RecetaId).Select(p => p.FirstOrDefault()).ToList();
                     foreach (var item in consulta)
                     {
                         var prod = medicamentos.FirstOrDefault(p => p.IdProductoDetalle.Equals(item.MedicinaId));
