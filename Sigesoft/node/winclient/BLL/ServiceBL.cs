@@ -18603,22 +18603,61 @@ namespace Sigesoft.Node.WinClient.BLL
 			return string.Join("/ ", query.Select(p => p.v_RestriccitionName));
 		}
 
+        public List<RecoRestrMatriz> ListGetRestrictionByServiceId(List<string> ListaServicioIds)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var query = (from ccc in dbContext.restriction
+                         join ddd in dbContext.masterrecommendationrestricction on ccc.v_MasterRestrictionId equals ddd.v_MasterRecommendationRestricctionId  // Diagnosticos      
+                         where ListaServicioIds.Contains(ccc.v_ServiceId) &&
+                               ccc.i_IsDeleted == 0
+                         select new RecoRestrMatriz
+                         {
+                             ServiceId = ccc.v_ServiceId,
+                             Name = ddd.v_Name
 
-		private string GetRecommendationByServiceId(string pstrServiceId)
+                         }).ToList();
+
+
+            //return string.Join("/ ", query.Select(p => p.v_RestriccitionName));
+            return query;
+        }
+
+        public class RecoRestrMatriz
+        {
+            public string ServiceId { get; set; }
+            public string Name { get; set; }
+        }
+
+        public List<RecoRestrMatriz> ListGetRecommendationByServiceId(List<string> ListaServicioIds)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var query = (from ccc in dbContext.recommendation
+                         join ddd in dbContext.masterrecommendationrestricction on ccc.v_MasterRecommendationId equals ddd.v_MasterRecommendationRestricctionId  // Diagnosticos      
+                         where ListaServicioIds.Contains(ccc.v_ServiceId) &&
+                               ccc.i_IsDeleted == 0
+                         select new RecoRestrMatriz
+                         {
+                             ServiceId = ccc.v_ServiceId,
+                             Name = ddd.v_Name
+                         }).ToList();
+
+            return query;
+        }
+
+
+        private string GetRecommendationByServiceId(string pstrServiceId)
 		{
 			SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 			var query = (from ccc in dbContext.recommendation
 						 join ddd in dbContext.masterrecommendationrestricction on ccc.v_MasterRecommendationId equals ddd.v_MasterRecommendationRestricctionId  // Diagnosticos      
-						 where ccc.v_ServiceId == pstrServiceId &&
+                         where ccc.v_ServiceId ==  pstrServiceId &&
 							   ccc.i_IsDeleted == 0
-						 select new
+                         select new 
 						 {
 							 v_Recommendation = ddd.v_Name
-
 						 }).ToList();
 
-
-			return string.Join(", ", query.Select(p => p.v_Recommendation));
+            return string.Join(", ", query.Select(p => p.v_Recommendation));
 		}
 
 		private string GetRecommendationByServiceIdAndDiagnostic(string pstrServiceId, string pstrDiagnosticRepositoryId)
@@ -18751,6 +18790,41 @@ namespace Sigesoft.Node.WinClient.BLL
 			return string.Join(", ", query.Select(p => p.v_DiseasesName));
 		}
 
+        public List<dxMatrices> ListGetDiagnosticByServiceIdAndCategoryId(List<string> ListaServicioIds)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var query = (from ccc in dbContext.diagnosticrepository
+                         join aaa in dbContext.component on ccc.v_ComponentId equals aaa.v_ComponentId
+                         join ddd in dbContext.diseases on ccc.v_DiseasesId equals ddd.v_DiseasesId into ddd_join
+                         from ddd in ddd_join.DefaultIfEmpty()
+
+                         join eee in dbContext.recommendation on new { a = ccc.v_ServiceId, b = ccc.v_ComponentId }
+                                                                    equals new { a = eee.v_ServiceId, b = eee.v_ComponentId } into eee_join
+                         from eee in eee_join.DefaultIfEmpty()
+
+                         join fff in dbContext.masterrecommendationrestricction on eee.v_MasterRecommendationId
+                                                                equals fff.v_MasterRecommendationRestricctionId into fff_join
+                         from fff in fff_join.DefaultIfEmpty()
+
+                         where ccc.i_IsDeleted == 0 &&
+                               ListaServicioIds.Contains(ccc.v_ServiceId)
+                         select new dxMatrices
+                         {
+                             CategoriaId = aaa.i_CategoryId.Value,
+                             ServiceId = ccc.v_ServiceId,
+                             v_DiseasesName = ddd.v_Name
+                         }).Distinct().ToList();
+
+            return query;
+            //return string.Join(", ", query.Select(p => p.v_DiseasesName));
+        }
+
+       public class dxMatrices
+        {
+            public int CategoriaId { get; set; }
+            public string ServiceId { get; set; } 
+            public string v_DiseasesName { get; set; }
+        }
 
 		public List<ServiceComponentFieldValuesList> ValoresComponenteAMC_(string pstrServiceId, int pintCategory)
 		{

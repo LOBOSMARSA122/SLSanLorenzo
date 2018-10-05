@@ -10,4 +10,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string ServicioId { get; set; }
         public List<ValorComponenteList> CampoValores { get; set; }
     }
+
+
 }

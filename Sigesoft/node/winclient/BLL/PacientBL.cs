@@ -5042,8 +5042,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                       ValorName = sp == null ? "" : sp.v_Value1
                                   }).ToList();
 
-
-
                 var ListaJerarquizada = (from A in dbContext.service
                                          where ListaServicioIds.Contains(A.v_ServiceId)
 
@@ -5501,6 +5499,10 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
+                    var dxs = new ServiceBL().ListGetDiagnosticByServiceIdAndCategoryId(ServicioIds).ToList();
+                    var Reco = new ServiceBL().ListGetRecommendationByServiceId(ServicioIds).ToList();
+                    var Restri = new ServiceBL().ListGetRestrictionByServiceId(ServicioIds).ToList();
                     var sql = (from a in objEntity.ToList()
 
 
@@ -5526,7 +5528,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                    Ocupacion = a.Ocupacion,
                                    Empresa = a.Empresa,
                                    Area = a.Area,
-
                                    Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000667") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000667").Valor == "1" ? "SI" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000667").Valor == "0" ? "NO" : "",
                                    Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000668") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000668").Valor == "1" ? "SI" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000668").Valor == "0" ? "NO" : "",
                                    Temperaturas = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000669") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000669").Valor == "1" ? "SI" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000669").Valor == "0" ? "NO" : "",
@@ -5753,9 +5754,15 @@ namespace Sigesoft.Node.WinClient.BLL
                                    ReaccionPH = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001045") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001045").Valor,
                                    SangreOrina = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001315") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001315").ValorName,
                                    Nitritos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001055") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001055").Valor,
-                                   Proteinas = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001053") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001053").ValorName, 
+                                   Proteinas = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001053") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001053").ValorName,
 
-
+                                   HabitosNocivosDrogas = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas) == null ? "c" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas).v_Frequency,
+                                   
+                                   //Alergias = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000633") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000633").i_Answer.ToString() == "1" ? "SI" : "NO",
+                                   ConclusionesRx = string.Join(", ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 6).Select(s => s.v_DiseasesName)),//dxs.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.v_DiseasesName).ToString(), 
+                                   RecomendacionesConcatenadas = string.Join(", ", Reco.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
+                                   RestriccionConcatenadas = string.Join(", ", Restri.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
+                                   ConclusionLabo = string.Join(", ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 1).Select(s => s.v_DiseasesName)),
                                }
 
                                ).ToList();
@@ -5848,6 +5855,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
 
                                select new MatrizLaZanja
@@ -5984,9 +5992,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
-
-                    //var xxx = varValores.Find(p => p.ServicioId == "N009-SR000000007").CampoValores.Find(o => o.IdCampo == Constants.txt_VA_OD_500);
-                     //== null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.AUDIOMETRIA_ID && o.IdCampo == Constants.txt_VA_OD_500) == null ? "no lleva" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.AUDIOMETRIA_ID && o.IdCampo == Constants.txt_VA_OD_500).Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == Constants.AUDIOMETRIA_ID && o.IdCampo == Constants.txt_VA_OD_500).Valor;
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
 
                                select new MatrizGoldFields
@@ -6148,6 +6154,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
 
                         select new MatrizSolucionesManteIntegrales
@@ -6320,6 +6327,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
 
                                select new MatrizMiBanco

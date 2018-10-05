@@ -346,5 +346,10 @@ namespace Sigesoft.Node.WinClient.BE
         public string MotivoObservacion { get; set; }
         public string VigenciaEmo { get; set; }
         public string ClinicaRealizoEmo { get; set; }
+
+        public string ConclusionesRx { get; set; }
+        public string RecomendacionesConcatenadas { get; set; }
+        public string RestriccionConcatenadas { get; set; }
+        public string ConclusionLabo { get; set; }
     }
 }
