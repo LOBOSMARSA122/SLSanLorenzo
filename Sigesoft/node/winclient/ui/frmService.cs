@@ -2069,9 +2069,18 @@ namespace Sigesoft.Node.WinClient.UI
                     Cadena.Append("\n");
                 }
 
+                var FirmaMedicoMedicina = new ServiceBL().ObtenerFirmaMedicoExamen(serviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+                if (FirmaMedicoMedicina != null )
+                {
+                    Cadena.Append("\n");
+                    Cadena.Append("MÉDICO");
+                    Cadena.Append("\n");
+                    Cadena.Append(FirmaMedicoMedicina.Value2);
+                }
+
                 _customizedToolTip.AutomaticDelay = 1;
                 _customizedToolTip.AutoPopDelay = 20000;
-                _customizedToolTip.ToolTipMessage = Cadena.ToString();
+                _customizedToolTip.ToolTipMessage = Cadena.ToString() ;
                 _customizedToolTip.StopTimerToolTip();
                 _customizedToolTip.StartTimerToolTip();
                 //}
@@ -2755,6 +2764,55 @@ namespace Sigesoft.Node.WinClient.UI
 
             // destroy the tooltip
             _customizedToolTip.DestroyToolTip(this);
+        }
+
+        private void btnEditarESO_Click(object sender, DoubleClickRowEventArgs e)
+        {
+            Form frm;
+            int TserviceId = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceId"].Value.ToString());
+            if (TserviceId == (int)MasterService.AtxMedicaParticular)
+            {
+                frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
+                frm.ShowDialog();
+            }
+            else
+            {
+                //Obtener Estado del servicio
+                var EstadoServicio = int.Parse(grdDataService.Selected.Rows[0].Cells["i_ServiceStatusId"].Value.ToString());
+
+                if (EstadoServicio == (int)ServiceStatus.Culminado)
+                {
+                    //Obtener el usuario
+                    int UserId = Globals.ClientSession.i_SystemUserId;
+                    if (UserId == 11 || UserId == 175 || UserId == 173 || UserId == 172 || UserId == 171 || UserId == 168 || UserId == 169)
+                    {
+                        this.Enabled = false;
+                        frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
+                        frm.ShowDialog();
+                        this.Enabled = true;
+                    }
+                    else
+                    {
+                        this.Enabled = false;
+                        frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
+                        frm.ShowDialog();
+                        this.Enabled = true;
+                    }
+
+                }
+                else
+                {
+                    this.Enabled = false;
+                    frm = new Operations.frmEso(_serviceId, null, "Service", (int)MasterService.Eso);
+                    frm.ShowDialog();
+                    this.Enabled = true;
+                }
+
+
+            }
+
+            btnFilter_Click(sender, e);
+                  
         }
         
         //void ProcesoSErvicio()

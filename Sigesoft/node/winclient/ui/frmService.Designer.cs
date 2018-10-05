@@ -34,12 +34,12 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroPoliza");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroFactura");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("b_FechaEntrega");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaNacimiento");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CreationUser");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_CreationDate");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_UpdateUser");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_UpdateUser", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_UpdateDate");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_MasterServiceName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceStatusName");
@@ -53,6 +53,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Liq");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Moneda");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Valor");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UsuarioMedicina");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Diagnosticos");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Diagnosticos", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
@@ -104,11 +105,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.cmService = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.CertificadoAptitud = new System.Windows.Forms.ToolStripMenuItem();
-            this.verEditarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Examenes = new System.Windows.Forms.ToolStripMenuItem();
-            this.vistaPreviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCargoFactura = new System.Windows.Forms.Button();
             this.btnCargoHistorias = new System.Windows.Forms.Button();
@@ -130,6 +126,11 @@
             this.btnFichaControl = new System.Windows.Forms.Button();
             this.btnOdontograma = new System.Windows.Forms.Button();
             this.btnInformePsicologico = new System.Windows.Forms.Button();
+            this.cmService = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CertificadoAptitud = new System.Windows.Forms.ToolStripMenuItem();
+            this.verEditarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Examenes = new System.Windows.Forms.ToolStripMenuItem();
+            this.vistaPreviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnServicios = new System.Windows.Forms.Button();
             this.btnPErson = new System.Windows.Forms.Button();
             this.btnMigrarEmpresa = new System.Windows.Forms.Button();
@@ -666,7 +667,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDataService.CausesValidation = false;
-            this.grdDataService.ContextMenuStrip = this.cmService;
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
@@ -686,46 +686,46 @@
             ultraGridColumn19.Header.VisiblePosition = 6;
             ultraGridColumn19.Hidden = true;
             ultraGridColumn20.Header.Caption = "Usuario Crea.";
-            ultraGridColumn20.Header.VisiblePosition = 18;
+            ultraGridColumn20.Header.VisiblePosition = 20;
             ultraGridColumn20.Width = 125;
             ultraGridColumn21.Format = "dd/MM/yyyy hh:mm tt";
             ultraGridColumn21.Header.Caption = "Fecha Crea.";
-            ultraGridColumn21.Header.VisiblePosition = 19;
+            ultraGridColumn21.Header.VisiblePosition = 21;
             ultraGridColumn21.Width = 150;
             ultraGridColumn6.Header.Caption = "Fecha de Atención";
             ultraGridColumn6.Header.VisiblePosition = 10;
             ultraGridColumn6.Width = 118;
             ultraGridColumn22.Header.Caption = "Usuario Act.";
-            ultraGridColumn22.Header.VisiblePosition = 20;
+            ultraGridColumn22.Header.VisiblePosition = 11;
             ultraGridColumn22.Hidden = true;
             ultraGridColumn22.Width = 125;
             ultraGridColumn23.Format = "dd/MM/yyyy hh:mm tt";
             ultraGridColumn23.Header.Caption = "Fecha Act.";
-            ultraGridColumn23.Header.VisiblePosition = 21;
+            ultraGridColumn23.Header.VisiblePosition = 22;
             ultraGridColumn23.Hidden = true;
             ultraGridColumn23.Width = 150;
             ultraGridColumn3.Header.Caption = "Servicio";
-            ultraGridColumn3.Header.VisiblePosition = 11;
+            ultraGridColumn3.Header.VisiblePosition = 12;
             ultraGridColumn3.Width = 178;
             ultraGridColumn7.Header.Caption = "Estado Servicio";
-            ultraGridColumn7.Header.VisiblePosition = 14;
+            ultraGridColumn7.Header.VisiblePosition = 15;
             ultraGridColumn8.Header.Caption = "Empresa";
-            ultraGridColumn8.Header.VisiblePosition = 15;
+            ultraGridColumn8.Header.VisiblePosition = 16;
             ultraGridColumn8.Width = 199;
             ultraGridColumn9.Header.Caption = "Sede";
-            ultraGridColumn9.Header.VisiblePosition = 16;
+            ultraGridColumn9.Header.VisiblePosition = 17;
             ultraGridColumn9.Hidden = true;
             ultraGridColumn9.Width = 137;
             ultraGridColumn10.Header.Caption = "Tipo Servicio";
-            ultraGridColumn10.Header.VisiblePosition = 12;
+            ultraGridColumn10.Header.VisiblePosition = 13;
             ultraGridColumn4.Header.Caption = "Protocolo";
-            ultraGridColumn4.Header.VisiblePosition = 17;
+            ultraGridColumn4.Header.VisiblePosition = 18;
             ultraGridColumn4.Width = 239;
             ultraGridColumn2.Header.Caption = "Paciente";
             ultraGridColumn2.Header.VisiblePosition = 5;
             ultraGridColumn2.Width = 234;
             ultraGridColumn5.Header.Caption = "Aptitud";
-            ultraGridColumn5.Header.VisiblePosition = 13;
+            ultraGridColumn5.Header.VisiblePosition = 14;
             ultraGridColumn16.Format = "dd/MM/yyyy";
             ultraGridColumn16.Header.Caption = "Fecha de Entrega";
             ultraGridColumn16.Header.VisiblePosition = 4;
@@ -737,7 +737,9 @@
             ultraGridColumn26.Hidden = true;
             ultraGridColumn27.Header.VisiblePosition = 9;
             ultraGridColumn27.Hidden = true;
-            ultraGridColumn14.Header.VisiblePosition = 22;
+            ultraGridColumn29.Header.VisiblePosition = 19;
+            ultraGridColumn29.Hidden = true;
+            ultraGridColumn14.Header.VisiblePosition = 23;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn24,
             ultraGridColumn25,
@@ -761,6 +763,7 @@
             ultraGridColumn11,
             ultraGridColumn26,
             ultraGridColumn27,
+            ultraGridColumn29,
             ultraGridColumn14});
             ultraGridColumn12.ColSpan = ((short)(3));
             ultraGridColumn12.Header.Caption = "Diagnósticos";
@@ -841,54 +844,9 @@
             this.grdDataService.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataService_InitializeRow);
             this.grdDataService.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdDataService_AfterSelectChange);
             this.grdDataService.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdDataService_ClickCell);
+            this.grdDataService.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.btnEditarESO_Click);
             this.grdDataService.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseEnterElement);
             this.grdDataService.MouseLeaveElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseLeaveElement);
-            // 
-            // cmService
-            // 
-            this.cmService.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CertificadoAptitud,
-            this.verEditarServicioToolStripMenuItem,
-            this.Examenes,
-            this.vistaPreviaToolStripMenuItem});
-            this.cmService.Name = "contextMenuStrip1";
-            this.cmService.Size = new System.Drawing.Size(354, 92);
-            this.cmService.Text = "a";
-            // 
-            // CertificadoAptitud
-            // 
-            this.CertificadoAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.application;
-            this.CertificadoAptitud.Name = "CertificadoAptitud";
-            this.CertificadoAptitud.Size = new System.Drawing.Size(353, 22);
-            this.CertificadoAptitud.Text = "Imprimir Certificado de Aptitud Medico Ocupacional";
-            this.CertificadoAptitud.Visible = false;
-            this.CertificadoAptitud.Click += new System.EventHandler(this.CertificadoAptitud_Click);
-            // 
-            // verEditarServicioToolStripMenuItem
-            // 
-            this.verEditarServicioToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.play_green;
-            this.verEditarServicioToolStripMenuItem.Name = "verEditarServicioToolStripMenuItem";
-            this.verEditarServicioToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
-            this.verEditarServicioToolStripMenuItem.Text = "Ver / Editar Servicio";
-            this.verEditarServicioToolStripMenuItem.Visible = false;
-            // 
-            // Examenes
-            // 
-            this.Examenes.Image = global::Sigesoft.Node.WinClient.UI.Resources.brick_go;
-            this.Examenes.Name = "Examenes";
-            this.Examenes.Size = new System.Drawing.Size(353, 22);
-            this.Examenes.Text = "Imprimir Examenes";
-            this.Examenes.Visible = false;
-            this.Examenes.Click += new System.EventHandler(this.Examenes_Click);
-            // 
-            // vistaPreviaToolStripMenuItem
-            // 
-            this.vistaPreviaToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_find;
-            this.vistaPreviaToolStripMenuItem.Name = "vistaPreviaToolStripMenuItem";
-            this.vistaPreviaToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
-            this.vistaPreviaToolStripMenuItem.Text = "Vista Previa";
-            this.vistaPreviaToolStripMenuItem.Visible = false;
-            this.vistaPreviaToolStripMenuItem.Click += new System.EventHandler(this.vistaPreviaToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -1352,6 +1310,52 @@
             this.btnInformePsicologico.UseVisualStyleBackColor = false;
             this.btnInformePsicologico.Visible = false;
             this.btnInformePsicologico.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cmService
+            // 
+            this.cmService.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CertificadoAptitud,
+            this.verEditarServicioToolStripMenuItem,
+            this.Examenes,
+            this.vistaPreviaToolStripMenuItem});
+            this.cmService.Name = "contextMenuStrip1";
+            this.cmService.Size = new System.Drawing.Size(354, 92);
+            this.cmService.Text = "a";
+            // 
+            // CertificadoAptitud
+            // 
+            this.CertificadoAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.application;
+            this.CertificadoAptitud.Name = "CertificadoAptitud";
+            this.CertificadoAptitud.Size = new System.Drawing.Size(353, 22);
+            this.CertificadoAptitud.Text = "Imprimir Certificado de Aptitud Medico Ocupacional";
+            this.CertificadoAptitud.Visible = false;
+            this.CertificadoAptitud.Click += new System.EventHandler(this.CertificadoAptitud_Click);
+            // 
+            // verEditarServicioToolStripMenuItem
+            // 
+            this.verEditarServicioToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.play_green;
+            this.verEditarServicioToolStripMenuItem.Name = "verEditarServicioToolStripMenuItem";
+            this.verEditarServicioToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
+            this.verEditarServicioToolStripMenuItem.Text = "Ver / Editar Servicio";
+            this.verEditarServicioToolStripMenuItem.Visible = false;
+            // 
+            // Examenes
+            // 
+            this.Examenes.Image = global::Sigesoft.Node.WinClient.UI.Resources.brick_go;
+            this.Examenes.Name = "Examenes";
+            this.Examenes.Size = new System.Drawing.Size(353, 22);
+            this.Examenes.Text = "Imprimir Examenes";
+            this.Examenes.Visible = false;
+            this.Examenes.Click += new System.EventHandler(this.Examenes_Click);
+            // 
+            // vistaPreviaToolStripMenuItem
+            // 
+            this.vistaPreviaToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_find;
+            this.vistaPreviaToolStripMenuItem.Name = "vistaPreviaToolStripMenuItem";
+            this.vistaPreviaToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
+            this.vistaPreviaToolStripMenuItem.Text = "Vista Previa";
+            this.vistaPreviaToolStripMenuItem.Visible = false;
+            this.vistaPreviaToolStripMenuItem.Click += new System.EventHandler(this.vistaPreviaToolStripMenuItem_Click);
             // 
             // btnServicios
             // 

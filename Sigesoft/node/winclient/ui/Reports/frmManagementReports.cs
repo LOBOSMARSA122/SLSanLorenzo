@@ -1444,9 +1444,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
              
             var _InformacionHistoriaPsico = _serviceBL.GetHistoriaClinicaPsicologica(_serviceId, Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
-            
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Psicologia, _serviceId);
 
-            InformePsicologicoGoldfields.CreateInformePsicologicoGoldfields(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+            InformePsicologicoGoldfields.CreateInformePsicologicoGoldfields(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
         private void GenerateCertificadoPsicosensometricoDatos(string pathFile)

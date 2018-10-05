@@ -1268,7 +1268,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        private KeyValueDTO ObtenerFirmaMedicoExamen(string pstrServiceId, string p1, string p2)
+        public KeyValueDTO ObtenerFirmaMedicoExamen(string pstrServiceId, string p1, string p2)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
@@ -2095,16 +2095,16 @@ namespace Sigesoft.Node.WinClient.BLL
 							 });
 
 				var objData = query.AsEnumerable()
-							 .Where(s => s.i_CategoryId != -1 && s.i_CategoryId != 1 && s.i_CategoryId != 6 && s.i_CategoryId != 14)
+							 .Where(s => s.i_CategoryId != -1)
 							 .GroupBy(x => x.i_CategoryId)
 							 .Select(group => group.First());
 
 				List<ServiceComponentList> obj = objData.ToList();
 
 				obj.AddRange(query.Where(p => p.i_CategoryId == -1));
-				obj.AddRange(query.Where(p => p.i_CategoryId == 1));
-				obj.AddRange(query.Where(p => p.i_CategoryId == 6));
-				obj.AddRange(query.Where(p => p.i_CategoryId == 14));
+                //obj.AddRange(query.Where(p => p.i_CategoryId == 1));
+                //obj.AddRange(query.Where(p => p.i_CategoryId == 6));
+                //obj.AddRange(query.Where(p => p.i_CategoryId == 14));
 				pobjOperationResult.Success = 1;
 				var orden = obj.OrderBy(o => o.i_CategoryId).ToList();
 				return orden.FindAll(p => p.i_CategoryId != 10);
@@ -5849,8 +5849,8 @@ namespace Sigesoft.Node.WinClient.BLL
 															 equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
 							 from J2 in J2_join.DefaultIfEmpty()
 
-							 where ccc.v_ServiceId == pstrServiceId &&
-									 ccc.i_IsDeleted == 0
+							 where ccc.v_ServiceId == pstrServiceId && sc.i_IsDeleted == 0 && bbb.i_IsDeleted == 0 &&
+									 ccc.i_IsDeleted == 0  && ddd.i_IsDeleted == 0
 							 orderby bbb.v_Name
 
 							 select new DiagnosticRepositoryList
@@ -5888,6 +5888,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 }).ToList();
 
 
+                query = query.GroupBy(p => p.v_DiagnosticRepositoryId).Select(p => p.FirstOrDefault()).ToList();
 				var q = (from a in query
 						 select new DiagnosticRepositoryList
 						 {
@@ -10900,6 +10901,7 @@ namespace Sigesoft.Node.WinClient.BLL
 			try
 			{
 				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                
 				var query = from A in dbContext.service
 
 							join B in dbContext.person on A.v_PersonId equals B.v_PersonId
@@ -10969,8 +10971,6 @@ namespace Sigesoft.Node.WinClient.BLL
 							where A.i_IsDeleted == 0
 							&& L.i_LineStatusId == (int)LineStatus.EnCircuito && A.v_ProtocolId != null
 							&& A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate
-							//&& C.i_IsDeleted == 0
-							//&& C.i_FinalQualificationId != (int)FinalQualification.Descartado
 							select new ServiceGridJerarquizadaList
 							{
 								b_FechaEntrega = false,
@@ -11060,6 +11060,9 @@ namespace Sigesoft.Node.WinClient.BLL
 					{
 						item.Valor = item.Valor;
 					}
+                    //var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(item.v_ServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
+                    //item.UsuarioMedicina = FirmaMedicoMedicina == null ? "" : FirmaMedicoMedicina.Value2;
 					item.b_FechaEntrega = item.b_FechaEntrega;
 					item.v_PersonId = item.v_PersonId;
 					item.d_FechaEntrega = item.d_FechaEntrega;
@@ -13183,7 +13186,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							 join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId
 
-							 join ooo in dbContext.organization on E.v_CustomerOrganizationId equals ooo.v_OrganizationId
+							 join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId
 
                              join abc in dbContext.organization on E.v_EmployerOrganizationId equals abc.v_OrganizationId
                              
@@ -13250,7 +13253,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_PersonId = D.v_PersonId,
 								 d_BirthDate = D.d_Birthdate,
 								 v_EsoTypeName = H.v_Value1,
-								 v_OrganizationPartialName = ooo.v_Name,
+								 v_OrganizationPartialName = abc.v_Name,
 								 v_LocationName = lll.v_Name,
 								 v_FirstName = D.v_FirstName,
 								 v_FirstLastName = D.v_FirstLastName,
@@ -13268,7 +13271,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								 GrupoFactorSanguineo = H1.v_Value1 + " - " + H2.v_Value1,
 								 d_FechaExpiracionServicio = sss.d_GlobalExpirationDate,
                                  v_Cie10 =  ddd.v_CIE10Id,
-                                 EmpresaPropietaria = abc.v_Name
+                                 EmpresaPropietaria = ooo.v_Name
 
 							 });
 

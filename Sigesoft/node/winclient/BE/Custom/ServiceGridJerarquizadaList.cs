@@ -61,5 +61,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public int i_age { get; set; }
         public DateTime? d_BirthDate { get; set; }
+
+        public string UsuarioMedicina { get; set; }
     }
 }

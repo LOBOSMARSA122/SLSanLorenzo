@@ -99,7 +99,7 @@ namespace NetPdf
 
 
             ServiceComponentList declaracion_jurada = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
-            var fecha_regla = declaracion_jurada.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_FECHA_ULTIMA_REGLA) == null ? "" : declaracion_jurada.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_FECHA_ULTIMA_REGLA).v_Value1;
+            //var fecha_regla = declaracion_jurada.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_FECHA_ULTIMA_REGLA) == null ? "" : declaracion_jurada.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_RX_FECHA_ULTIMA_REGLA).v_Value1;
             string[] fechaServicio = datosPac.FechaServicio.ToString().Split(' ');
             #region Contenido
             cells = new List<PdfPCell>()
