@@ -10901,6 +10901,7 @@ namespace Sigesoft.Node.WinClient.BLL
 			try
 			{
 				SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                
 				var query = from A in dbContext.service
 
 							join B in dbContext.person on A.v_PersonId equals B.v_PersonId
@@ -10970,8 +10971,6 @@ namespace Sigesoft.Node.WinClient.BLL
 							where A.i_IsDeleted == 0
 							&& L.i_LineStatusId == (int)LineStatus.EnCircuito && A.v_ProtocolId != null
 							&& A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate
-							//&& C.i_IsDeleted == 0
-							//&& C.i_FinalQualificationId != (int)FinalQualification.Descartado
 							select new ServiceGridJerarquizadaList
 							{
 								b_FechaEntrega = false,
@@ -11061,6 +11060,9 @@ namespace Sigesoft.Node.WinClient.BLL
 					{
 						item.Valor = item.Valor;
 					}
+                    //var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(item.v_ServiceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
+                    //item.UsuarioMedicina = FirmaMedicoMedicina == null ? "" : FirmaMedicoMedicina.Value2;
 					item.b_FechaEntrega = item.b_FechaEntrega;
 					item.v_PersonId = item.v_PersonId;
 					item.d_FechaEntrega = item.d_FechaEntrega;
