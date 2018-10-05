@@ -9,15 +9,7 @@ namespace Sigesoft.Node.WinClient.BE
     {
         public string ServicioId { get; set; }
         public List<ValorComponenteList> CampoValores { get; set; }
-        public Antecedentes Antecedentes { get; set; }
     }
 
-    public class Antecedentes
-    {
-        public string  Personales  { get; set; }
-        public string Familiares { get; set; }
-        public string Alcohol { get; set; }
-        public string Tabaco { get; set; }
-        public string Drogas { get; set; }
-    }
+
 }

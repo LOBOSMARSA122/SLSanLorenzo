@@ -5849,6 +5849,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
 
                                select new MatrizLaZanja
@@ -5985,6 +5986,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
 
                                select new MatrizGoldFields
@@ -6146,6 +6148,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
 
                         select new MatrizSolucionesManteIntegrales
@@ -6318,6 +6321,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     }
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
+                    var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
                     var sql = (from a in objEntity.ToList()
 
                                select new MatrizMiBanco
