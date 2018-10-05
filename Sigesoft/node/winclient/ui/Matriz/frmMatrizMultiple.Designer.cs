@@ -3177,6 +3177,10 @@
             this.dptDateTimeEnd.TabIndex = 30;
             this.dptDateTimeEnd.Value = new System.DateTime(2014, 10, 31, 15, 30, 0, 0);
             // 
+            // ugeShauindo
+            // 
+            this.ugeShauindo.FileLimitBehaviour = Infragistics.Win.UltraWinGrid.ExcelExport.FileLimitBehaviour.TruncateData;
+            // 
             // lblRecordCount
             // 
             this.lblRecordCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
