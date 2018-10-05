@@ -18860,6 +18860,9 @@ namespace NetPdf
                 }
             }
 
+            string mina = DataService.v_CustomerOrganizationName;
+            string contrata = DataService.EmpresaEmpleadora;
+            string subcontrata = DataService.EmpresaTrabajo;
             cells = new List<PdfPCell>()
                    {      
                     //fila 
@@ -18885,7 +18888,7 @@ namespace NetPdf
                     //fila
                     new PdfPCell(new Phrase("CONTRATISTA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER},     
                     new PdfPCell(Contratista){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                               
-                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
+                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora + " / " + DataService.EmpresaTrabajo, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
                     new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
