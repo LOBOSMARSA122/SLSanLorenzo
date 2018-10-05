@@ -5525,14 +5525,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                    Ocupacion = a.Ocupacion,
                                    Empresa = a.Empresa,
                                    Area = a.Area,
-<<<<<<< HEAD
                                    Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000667") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000667").Valor, 
                                    Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000668") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000668").Valor, 
-=======
-                                   Ruido = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000667").Valor,
-                                   Cancerigenos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000668").Valor,
-                                   Temperaturas = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052") == null ? "NO APLICA" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000669").Valor == "" ? "SIN DATOS" : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdComponente == "N009-ME000000052" && o.IdCampo == "N009-MF000000669").Valor,
->>>>>>> 66784aef48eb7b22d5e7207fa85acdd6a007a705
+
                                }
 
                                ).ToList();
