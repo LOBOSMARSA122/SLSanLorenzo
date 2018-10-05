@@ -350,5 +350,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string ConclusionesRx { get; set; }
         public string RecomendacionesConcatenadas { get; set; }
         public string RestriccionConcatenadas { get; set; }
+        public string ConclusionLabo { get; set; }
     }
 }

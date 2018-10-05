@@ -337,6 +337,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ConclusionesRx");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RecomendacionesConcatenadas");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RestriccionConcatenadas");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ConclusionLabo");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -1425,7 +1426,8 @@
             ultraGridColumn586.Header.VisiblePosition = 302;
             ultraGridColumn2.Header.VisiblePosition = 303;
             ultraGridColumn4.Header.VisiblePosition = 304;
-            ultraGridColumn5.Header.VisiblePosition = 305;
+            ultraGridColumn5.Header.VisiblePosition = 306;
+            ultraGridColumn8.Header.VisiblePosition = 305;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn12,
             ultraGridColumn20,
@@ -1732,7 +1734,8 @@
             ultraGridColumn586,
             ultraGridColumn2,
             ultraGridColumn4,
-            ultraGridColumn5});
+            ultraGridColumn5,
+            ultraGridColumn8});
             this.grdShauindo.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdShauindo.DisplayLayout.InterBandSpacing = 10;
             this.grdShauindo.DisplayLayout.MaxColScrollRegions = 1;

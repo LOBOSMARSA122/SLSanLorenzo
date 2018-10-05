@@ -829,14 +829,18 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void cbOrganizationInvoice_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbOrganizationInvoice.SelectedValue == "-1") return;
-            if (cbOrganizationInvoice.SelectedValue != null)
+            if (_mode !="Edit")
             {
-                var id1 = cbOrganizationInvoice.SelectedValue.ToString();
+                if (cbOrganizationInvoice.SelectedValue == "-1") return;
+                if (cbOrganizationInvoice.SelectedValue != null)
+                {
+                    var id1 = cbOrganizationInvoice.SelectedValue.ToString();
 
-                cbOrganization.SelectedValue = id1;
-                cbIntermediaryOrganization.SelectedValue = id1;
+                    cbOrganization.SelectedValue = id1;
+                    cbIntermediaryOrganization.SelectedValue = id1;
+                }
             }
+           
 
         }
 
