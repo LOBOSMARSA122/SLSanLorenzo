@@ -13186,7 +13186,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							 join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId
 
-							 join ooo in dbContext.organization on E.v_CustomerOrganizationId equals ooo.v_OrganizationId
+							 join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId
 
                              join abc in dbContext.organization on E.v_EmployerOrganizationId equals abc.v_OrganizationId
                              
@@ -13253,7 +13253,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_PersonId = D.v_PersonId,
 								 d_BirthDate = D.d_Birthdate,
 								 v_EsoTypeName = H.v_Value1,
-								 v_OrganizationPartialName = ooo.v_Name,
+								 v_OrganizationPartialName = abc.v_Name,
 								 v_LocationName = lll.v_Name,
 								 v_FirstName = D.v_FirstName,
 								 v_FirstLastName = D.v_FirstLastName,
@@ -13271,7 +13271,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								 GrupoFactorSanguineo = H1.v_Value1 + " - " + H2.v_Value1,
 								 d_FechaExpiracionServicio = sss.d_GlobalExpirationDate,
                                  v_Cie10 =  ddd.v_CIE10Id,
-                                 EmpresaPropietaria = abc.v_Name
+                                 EmpresaPropietaria = ooo.v_Name
 
 							 });
 

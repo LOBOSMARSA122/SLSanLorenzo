@@ -105,11 +105,6 @@
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grdDataService = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.cmService = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.CertificadoAptitud = new System.Windows.Forms.ToolStripMenuItem();
-            this.verEditarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Examenes = new System.Windows.Forms.ToolStripMenuItem();
-            this.vistaPreviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.btnCargoFactura = new System.Windows.Forms.Button();
             this.btnCargoHistorias = new System.Windows.Forms.Button();
@@ -131,6 +126,11 @@
             this.btnFichaControl = new System.Windows.Forms.Button();
             this.btnOdontograma = new System.Windows.Forms.Button();
             this.btnInformePsicologico = new System.Windows.Forms.Button();
+            this.cmService = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CertificadoAptitud = new System.Windows.Forms.ToolStripMenuItem();
+            this.verEditarServicioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Examenes = new System.Windows.Forms.ToolStripMenuItem();
+            this.vistaPreviaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnServicios = new System.Windows.Forms.Button();
             this.btnPErson = new System.Windows.Forms.Button();
             this.btnMigrarEmpresa = new System.Windows.Forms.Button();
@@ -697,6 +697,7 @@
             ultraGridColumn6.Width = 118;
             ultraGridColumn22.Header.Caption = "Usuario Act.";
             ultraGridColumn22.Header.VisiblePosition = 11;
+            ultraGridColumn22.Hidden = true;
             ultraGridColumn22.Width = 125;
             ultraGridColumn23.Format = "dd/MM/yyyy hh:mm tt";
             ultraGridColumn23.Header.Caption = "Fecha Act.";
@@ -737,6 +738,7 @@
             ultraGridColumn27.Header.VisiblePosition = 9;
             ultraGridColumn27.Hidden = true;
             ultraGridColumn29.Header.VisiblePosition = 19;
+            ultraGridColumn29.Hidden = true;
             ultraGridColumn14.Header.VisiblePosition = 23;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn24,
@@ -845,52 +847,6 @@
             this.grdDataService.DoubleClickRow += new Infragistics.Win.UltraWinGrid.DoubleClickRowEventHandler(this.btnEditarESO_Click);
             this.grdDataService.MouseEnterElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseEnterElement);
             this.grdDataService.MouseLeaveElement += new Infragistics.Win.UIElementEventHandler(this.grdDataService_MouseLeaveElement);
-            // 
-            // cmService
-            // 
-            this.cmService.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.CertificadoAptitud,
-            this.verEditarServicioToolStripMenuItem,
-            this.Examenes,
-            this.vistaPreviaToolStripMenuItem});
-            this.cmService.Name = "contextMenuStrip1";
-            this.cmService.Size = new System.Drawing.Size(354, 92);
-            this.cmService.Text = "a";
-            // 
-            // CertificadoAptitud
-            // 
-            this.CertificadoAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.application;
-            this.CertificadoAptitud.Name = "CertificadoAptitud";
-            this.CertificadoAptitud.Size = new System.Drawing.Size(353, 22);
-            this.CertificadoAptitud.Text = "Imprimir Certificado de Aptitud Medico Ocupacional";
-            this.CertificadoAptitud.Visible = false;
-            this.CertificadoAptitud.Click += new System.EventHandler(this.CertificadoAptitud_Click);
-            // 
-            // verEditarServicioToolStripMenuItem
-            // 
-            this.verEditarServicioToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.play_green;
-            this.verEditarServicioToolStripMenuItem.Name = "verEditarServicioToolStripMenuItem";
-            this.verEditarServicioToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
-            this.verEditarServicioToolStripMenuItem.Text = "Ver / Editar Servicio";
-            this.verEditarServicioToolStripMenuItem.Visible = false;
-            // 
-            // Examenes
-            // 
-            this.Examenes.Image = global::Sigesoft.Node.WinClient.UI.Resources.brick_go;
-            this.Examenes.Name = "Examenes";
-            this.Examenes.Size = new System.Drawing.Size(353, 22);
-            this.Examenes.Text = "Imprimir Examenes";
-            this.Examenes.Visible = false;
-            this.Examenes.Click += new System.EventHandler(this.Examenes_Click);
-            // 
-            // vistaPreviaToolStripMenuItem
-            // 
-            this.vistaPreviaToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_find;
-            this.vistaPreviaToolStripMenuItem.Name = "vistaPreviaToolStripMenuItem";
-            this.vistaPreviaToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
-            this.vistaPreviaToolStripMenuItem.Text = "Vista Previa";
-            this.vistaPreviaToolStripMenuItem.Visible = false;
-            this.vistaPreviaToolStripMenuItem.Click += new System.EventHandler(this.vistaPreviaToolStripMenuItem_Click);
             // 
             // button1
             // 
@@ -1354,6 +1310,52 @@
             this.btnInformePsicologico.UseVisualStyleBackColor = false;
             this.btnInformePsicologico.Visible = false;
             this.btnInformePsicologico.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // cmService
+            // 
+            this.cmService.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.CertificadoAptitud,
+            this.verEditarServicioToolStripMenuItem,
+            this.Examenes,
+            this.vistaPreviaToolStripMenuItem});
+            this.cmService.Name = "contextMenuStrip1";
+            this.cmService.Size = new System.Drawing.Size(354, 92);
+            this.cmService.Text = "a";
+            // 
+            // CertificadoAptitud
+            // 
+            this.CertificadoAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.application;
+            this.CertificadoAptitud.Name = "CertificadoAptitud";
+            this.CertificadoAptitud.Size = new System.Drawing.Size(353, 22);
+            this.CertificadoAptitud.Text = "Imprimir Certificado de Aptitud Medico Ocupacional";
+            this.CertificadoAptitud.Visible = false;
+            this.CertificadoAptitud.Click += new System.EventHandler(this.CertificadoAptitud_Click);
+            // 
+            // verEditarServicioToolStripMenuItem
+            // 
+            this.verEditarServicioToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.play_green;
+            this.verEditarServicioToolStripMenuItem.Name = "verEditarServicioToolStripMenuItem";
+            this.verEditarServicioToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
+            this.verEditarServicioToolStripMenuItem.Text = "Ver / Editar Servicio";
+            this.verEditarServicioToolStripMenuItem.Visible = false;
+            // 
+            // Examenes
+            // 
+            this.Examenes.Image = global::Sigesoft.Node.WinClient.UI.Resources.brick_go;
+            this.Examenes.Name = "Examenes";
+            this.Examenes.Size = new System.Drawing.Size(353, 22);
+            this.Examenes.Text = "Imprimir Examenes";
+            this.Examenes.Visible = false;
+            this.Examenes.Click += new System.EventHandler(this.Examenes_Click);
+            // 
+            // vistaPreviaToolStripMenuItem
+            // 
+            this.vistaPreviaToolStripMenuItem.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_find;
+            this.vistaPreviaToolStripMenuItem.Name = "vistaPreviaToolStripMenuItem";
+            this.vistaPreviaToolStripMenuItem.Size = new System.Drawing.Size(353, 22);
+            this.vistaPreviaToolStripMenuItem.Text = "Vista Previa";
+            this.vistaPreviaToolStripMenuItem.Visible = false;
+            this.vistaPreviaToolStripMenuItem.Click += new System.EventHandler(this.vistaPreviaToolStripMenuItem_Click);
             // 
             // btnServicios
             // 

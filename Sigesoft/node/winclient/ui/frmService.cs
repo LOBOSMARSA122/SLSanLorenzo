@@ -2073,6 +2073,8 @@ namespace Sigesoft.Node.WinClient.UI
                 if (FirmaMedicoMedicina != null )
                 {
                     Cadena.Append("\n");
+                    Cadena.Append("MÉDICO");
+                    Cadena.Append("\n");
                     Cadena.Append(FirmaMedicoMedicina.Value2);
                 }
 
