@@ -24,7 +24,7 @@ namespace NetPdf
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
-            string filePDF)
+            string filePDF, UsuarioGrabo DatosGrabo)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 42f, 41f);
 
@@ -686,7 +686,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("RECOMENDACIÓN: " + recomendacion == null ?"NO REFIERE RECOMENDACIONE":recomendacion, fontColumnValueBold)) { Colspan =20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = 20f},    
                 
                 new PdfPCell(new Phrase("ATENDIDO POR: ", fontColumnValue)){ Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
-                new PdfPCell(new Phrase(DataService.NombreDoctor, fontColumnValue)){ Colspan=15, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
+                new PdfPCell(new Phrase(DatosGrabo.Nombre, fontColumnValue)){ Colspan=15, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
                 //new PdfPCell(new Phrase(psico.v_CreationUser, fontColumnValue)){ Colspan=15, HorizontalAlignment = PdfPCell.ALIGN_LEFT, MinimumHeight= tamaño_celda},
      
             };
@@ -725,11 +725,9 @@ namespace NetPdf
             cellHuellaTrabajador.VerticalAlignment = Element.ALIGN_MIDDLE;
             cellHuellaTrabajador.FixedHeight = 50F;
             // Firma del doctor Auditor **************************************************
-            if (DataService != null)
-            {
-                if (psico.FirmaMedico != null)
-                    cellFirma = new PdfPCell(HandlingItextSharp.GetImage(psico.FirmaMedico, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
-            }
+            
+            if (DatosGrabo.Firma != null)
+                cellFirma = new PdfPCell(HandlingItextSharp.GetImage(DatosGrabo.Firma, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
             else
                 cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
 
