@@ -5500,6 +5500,9 @@ namespace Sigesoft.Node.WinClient.BLL
 
                     var varValores = DevolverValorCampoPorServicioMejorado(ServicioIds);
                     var Habitos_Personales = DevolverHabitos_Personales(PersonIds);
+                    var dxs = new ServiceBL().ListGetDiagnosticByServiceIdAndCategoryId(ServicioIds).ToList();
+                    var Reco = new ServiceBL().ListGetRecommendationByServiceId(ServicioIds).ToList();
+                    var Restri = new ServiceBL().ListGetRestrictionByServiceId(ServicioIds).ToList();
                     var sql = (from a in objEntity.ToList()
 
 
@@ -5756,7 +5759,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                    HabitosNocivosDrogas = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas) == null ? "c" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas).v_Frequency,
                                    
                                    //Alergias = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000633") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000633").i_Answer.ToString() == "1" ? "SI" : "NO",
-                                  
+                                   ConclusionesRx = string.Join(", ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 6).Select(s => s.v_DiseasesName)),//dxs.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.v_DiseasesName).ToString(), 
+                                   RecomendacionesConcatenadas = string.Join(", ", Reco.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
+                                   RestriccionConcatenadas = string.Join(", ", Restri.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
                                }
 
                                ).ToList();

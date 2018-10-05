@@ -334,6 +334,9 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn584 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MotivoObservacion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn585 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("VigenciaEmo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn586 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ClinicaRealizoEmo");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ConclusionesRx");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RecomendacionesConcatenadas");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("RestriccionConcatenadas");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -1420,6 +1423,9 @@
             ultraGridColumn584.Header.VisiblePosition = 300;
             ultraGridColumn585.Header.VisiblePosition = 301;
             ultraGridColumn586.Header.VisiblePosition = 302;
+            ultraGridColumn2.Header.VisiblePosition = 303;
+            ultraGridColumn4.Header.VisiblePosition = 304;
+            ultraGridColumn5.Header.VisiblePosition = 305;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn12,
             ultraGridColumn20,
@@ -1723,7 +1729,10 @@
             ultraGridColumn583,
             ultraGridColumn584,
             ultraGridColumn585,
-            ultraGridColumn586});
+            ultraGridColumn586,
+            ultraGridColumn2,
+            ultraGridColumn4,
+            ultraGridColumn5});
             this.grdShauindo.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdShauindo.DisplayLayout.InterBandSpacing = 10;
             this.grdShauindo.DisplayLayout.MaxColScrollRegions = 1;
