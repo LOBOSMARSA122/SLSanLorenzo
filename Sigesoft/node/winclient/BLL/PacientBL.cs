@@ -1768,16 +1768,31 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join G in dbContext.professional on F.v_PersonId equals G.v_PersonId
 
                                  join Z in dbContext.person on F.v_PersonId equals Z.v_PersonId
-                                 
+
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join CC in dbContext.organization on BB.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                 from CC in CC_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
 
                                  where A.v_ServiceId == pstrserviceId
                                  select new ReportAlturaEstructural
                                  {
-                                     EmpresaCliente = D1.v_Name,
+                                     EmpresaCliente = C2.v_Name, //general
+                                     EmpresaTrabajadora = C1.v_Name, //contrata
+                                     EmpresaPropietariaDireccion = CC.v_Name , //subcontrata
+                                     EmpresaPropietariaEmail = C1.v_Name + " / " + CC.v_Name,
+
                                      v_ComponentId = E.v_ServiceComponentId,
                                      v_ServiceId = A.v_ServiceId,
                                      NombrePaciente = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
-                                     EmpresaTrabajadora = D.v_Name,
+                                     
                                      Fecha = A.d_ServiceDate.Value,
                                      FechaNacimiento = B.d_Birthdate.Value,
                                      PuestoTrabajo = B.v_CurrentOccupation,
@@ -1801,11 +1816,14 @@ namespace Sigesoft.Node.WinClient.BLL
                            select new ReportAlturaEstructural
                             {
                                 EmpresaCliente = a.EmpresaCliente,
+                                EmpresaTrabajadora = a.EmpresaTrabajadora,
+                                EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+
                                 v_ComponentId = a.v_ComponentId,
                                 v_ServiceId = a.v_ServiceId,
                                ServicioId = a.ServicioId,
                                NombrePaciente = a.NombrePaciente,
-                               EmpresaTrabajadora =a.EmpresaTrabajadora,
+                               
                                Fecha = a.Fecha,
                                FechaNacimiento = a.FechaNacimiento,
                                Edad = GetAge(a.FechaNacimiento),
@@ -1899,7 +1917,6 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 b_Logo = MedicalCenter.b_Image,
                                 EmpresaPropietaria = MedicalCenter.v_Name,
-                                EmpresaPropietariaDireccion = MedicalCenter.v_Address,
                                 EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
                                 EmpresaPropietariaEmail = MedicalCenter.v_Mail,
 
@@ -2367,6 +2384,17 @@ namespace Sigesoft.Node.WinClient.BLL
                                  from distri in distri_join.DefaultIfEmpty()
                                  //*********************************************************************************************
 
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in B_join.DefaultIfEmpty()
+
+                                 join CC in dbContext.organization on BB.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                 from CC in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
                                  let varDpto = dep.v_Value1 == null ? "" : dep.v_Value1
                                  let varProv = prov.v_Value1 == null ? "" : prov.v_Value1
                                  let varDistri = distri.v_Value1 == null ? "" : distri.v_Value1
@@ -2378,13 +2406,17 @@ namespace Sigesoft.Node.WinClient.BLL
                                      NombreTrabajador = P1.v_FirstName + " " + P1.v_FirstLastName +  " " + P1.v_SecondLastName,
                                      NroDocumento = P1.v_DocNumber,
                                      Ocupacion = P1.v_CurrentOccupation,
-                                     Empresa = C.v_Name,
                                      Contratista = C1.v_Name,
                                      FirmaTrabajador = P1.b_RubricImage,
                                      HuellaTrabajador = P1.b_FingerPrintImage,
                                      LugarProcedencia = varDistri + "-" + varProv + "-" + varDpto, // Santa Anita - Lima - Lima
                                      v_AdressLocation = p.v_AdressLocation,
                                      d_ServiceDate = A.d_ServiceDate,
+
+                                     EmpresaPropietaria = C2.v_Name,
+                                     Empresa = C1.v_Name,
+                                     EmpresaPropietariaDireccion = C.v_Name,
+                                     EmpresaPropietariaEmail = C1.v_Name + " / " + C.v_Name
 
                                  });
 

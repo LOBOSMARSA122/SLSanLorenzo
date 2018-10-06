@@ -10116,6 +10116,18 @@ namespace Sigesoft.Node.WinClient.BLL
 								 join E2 in dbContext.area on A.v_AreaId equals E2.v_AreaId into E2_join
 								 from E2 in E2_join.DefaultIfEmpty()
 
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on BB.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
 								 where A.v_ServiceId == pstrserviceId
 								 select new ReportHistoriaClinicaPsicologica
 								 {
@@ -10124,16 +10136,16 @@ namespace Sigesoft.Node.WinClient.BLL
 									 LugarNacimiento = B.v_AdressLocation,
 									 EstadoCivil = M.v_Value1,
 									 GradoInstruccion = N.v_Value1,
-									 LugarResidencia = B.v_AdressLocation,
-									 PuestoTrabajo = B.v_CurrentOccupation,
 									 TipoESO = E1.i_EsoTypeId.Value,
-									 NombreEmpresa = D1.v_Name,
 									 ActividadEmpresa = D1.v_SectorName,
 									 FechaEvaluacion = A.d_ServiceDate.Value,
 									 IdServicio = A.v_ServiceId,
-									 AreaTrabajo = E2.v_Name,
 									 FirmaGraba = pme.b_SignatureImage,
 
+                                     LugarResidencia = C2.v_Name,
+                                     NombreEmpresa = C1.v_Name,
+                                     PuestoTrabajo = C.v_Name,
+                                     AreaTrabajo = C1.v_Name + " / " + C.v_Name
 
 								 });
 
@@ -12943,6 +12955,19 @@ namespace Sigesoft.Node.WinClient.BLL
 									  equals new { a = lw.v_OrganizationId, b = lw.v_LocationId } into lw_join
 								 from lw in lw_join.DefaultIfEmpty()
 
+
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on BB.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
 								 //************************************************************************************
 								 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId into Z_join
 								 from Z in Z_join.DefaultIfEmpty()
@@ -12988,11 +13013,16 @@ namespace Sigesoft.Node.WinClient.BLL
 
 									 Puesto = B.v_CurrentOccupation,
 									 v_SexType = B.i_SexTypeId == (int)Gender.MASCULINO ? "M" : "F",
+
 									 //
 									 v_EsoTypeName = H.v_Value1,
 									 v_ServiceComponentId = E.v_ServiceComponentId,
-									 v_CustomerOrganizationName = ow.v_Name,
-									 v_EmployerOrganizationName = o.v_Name,
+
+									 v_CustomerOrganizationName = C2.v_Name,
+									 v_EmployerOrganizationName = C1.v_Name,
+                                     EmpresaPropietaria = C.v_Name,
+                                     EmpresaPropietariaDireccion = C1.v_Name + " / " +  C.v_Name,
+
 									 FirmaTrabajador = B.b_RubricImage,
 									 HuellaTrabajador = B.b_FingerPrintImage,
 									 NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
@@ -13011,7 +13041,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
 						   select new AudiometriaList
 						   {
-
+                               
 							   v_PersonId = a.v_PersonId,
 							   v_FullPersonName = a.v_FullPersonName,
 							   Telefono = a.Telefono,
@@ -13070,8 +13100,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							   OidoDerecho = __sql.Count == 0 || __sql == null ? string.Empty : __sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO)==null?"":__sql.Find(p => p.v_ComponentFieldId == Constants.AUDIOMETRIA_OTOSCOPIA_OIDO_DERECHO).v_Value1,
 
 							   b_Logo = MedicalCenter.b_Image,
-							   EmpresaPropietaria = MedicalCenter.v_Name,
-							   EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+							   EmpresaPropietaria = a.EmpresaPropietaria,
+                               EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
 							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
 							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
 
@@ -19280,6 +19310,17 @@ namespace Sigesoft.Node.WinClient.BLL
 								 join G1 in dbContext.multimediafile on F1.v_MultimediaFileId equals G1.v_MultimediaFileId into G1_join
 								 from G1 in G1_join.DefaultIfEmpty()
 
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join CC in dbContext.organization on BB.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                 from CC in CC_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
 
 								 where A.v_ServiceId == pstrserviceId
 								 select new ReportEstudioElectrocardiografico
@@ -19293,15 +19334,19 @@ namespace Sigesoft.Node.WinClient.BLL
 									 FirmaMedico = pme.b_SignatureImage,
 									 FirmaTecnico = ptec.b_SignatureImage,
 									 Fecha = A.d_ServiceDate.Value,
-									 Empresa = D.v_Name,//vamos
+									 
 									 Puesto = B.v_CurrentOccupation,
 									 NombreDoctor = X.v_FirstLastName + " " + X.v_SecondLastName + " " + X.v_FirstName,
 									 NombreTecnologo = Y.v_FirstLastName + " " + Y.v_SecondLastName + " " + Y.v_FirstName,
 									 NombreUsuarioGraba = X.v_FirstLastName + " " + X.v_SecondLastName + " " + X.v_FirstName,
 									 b_Imagen = G1.b_File,
-                                    HuellaPaciente = B.b_FingerPrintImage,
-                                    EmpresaPropietaria = abc.v_Name,
-                                    FirmaPaciente = B.b_RubricImage
+                                     HuellaPaciente = B.b_FingerPrintImage,
+                                     FirmaPaciente = B.b_RubricImage,
+
+                                     EmpresaPropietaria = C2.v_Name,
+                                     Empresa = C1.v_Name,
+                                     EmpresaPropietariaDireccion = C.v_Name,
+                                     EmpresaPropietariaEmail = C1.v_Name + " / " + C.v_Name
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
@@ -19310,6 +19355,11 @@ namespace Sigesoft.Node.WinClient.BLL
                            
 						   select new ReportEstudioElectrocardiografico
 						   {
+                                EmpresaPropietaria = a.EmpresaPropietaria,
+                                Empresa = a.Empresa,
+                                EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+                                EmpresaPropietariaEmail = a.EmpresaPropietariaEmail,
+
 							   b_Imagen = a.b_Imagen,
                                
 							   NroFicha = a.NroFicha,
@@ -19320,7 +19370,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							   FirmaMedico = a.FirmaMedico,
 							   FirmaTecnico = a.FirmaTecnico,
 							   Fecha = a.Fecha,
-							   Empresa = a.Empresa,
+							   
                                TipoESO = a.TipoESO,
 							   Puesto = a.Puesto,
 							   Edad = GetAge(a.FechaNacimiento),
@@ -19374,10 +19424,10 @@ namespace Sigesoft.Node.WinClient.BLL
 							   OndaT = Valores.Count == 0 || Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_ONDA_T_ID) == null ? string.Empty : Valores.Find(p => p.v_ComponentFieldId == Constants.ELECTROCARDIOGRAMA_ONDA_T_ID).v_Value1Name,
 
 							   b_Logo = MedicalCenter.b_Image,
-							   EmpresaPropietaria = a.EmpresaPropietaria,
-							   EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+							   //EmpresaPropietaria = a.EmpresaPropietaria,
+							   //EmpresaPropietariaDireccion = MedicalCenter.v_Address,
 							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+							   //EmpresaPropietariaEmail = MedicalCenter.v_Mail,
 							   NombreUsuarioGraba = a.NombreUsuarioGraba,
 							   //Hallazgos = GetDiagnosticByServiceId(a.IdServicio),
 							   //Descripcion = GetServiceComponentFielValue(a.IdServicio, pstrComponentId, Constants.OSTEO_MUSCULAR_DESCRIPCION_ID, "NOCOMBO", 0, "SI"),
@@ -21954,12 +22004,22 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join pme in dbContext.professional on F1.v_PersonId equals pme.v_PersonId into pme_join
                                  from pme in pme_join.DefaultIfEmpty()
 
-                                
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join CC in dbContext.organization on BB.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                 from CC in CC_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
 								 where A.v_ServiceId == pstrserviceId
 								 && (G.i_IsDeleted == 0 || G.i_IsDeleted == null)
 								 select new ReportCuestionarioEspirometria
 								 {
-									 EmpresaCliente = D1.v_Name,
 									 IdServicio = A.v_ServiceId,
                                      ServiceComponentId = B.v_ServiceComponentId,
 									 Fecha = A.d_ServiceDate.Value,
@@ -21973,12 +22033,18 @@ namespace Sigesoft.Node.WinClient.BLL
 									 Dni = E.v_DocNumber,
 									 TipoExamen = I.v_Value1,
                                      TipoEso = C.i_EsoTypeId.Value,
-                                     EmpresaContratista = D2.v_Name,
+                                     
                                      RazonSocial = D.v_Name,
                                      ActividadEconomica = D2.v_SectorName,
                                      PuestoTrabajo = E.v_CurrentOccupation,
-                                     LogoCliente = D1.b_Image
+                                     LogoCliente = D1.b_Image,
+
+                                     EmpresaCliente = C2.v_Name,
+                                     EmpresaContratista = C1.v_Name,
+                                     EmpresaPropietaria = CC.v_Name,
+                                     EmpresaPropietariaDireccion = C1.v_Name + " / " + CC.v_Name,
 								 });
+
 
 				var MedicalCenter = GetInfoMedicalCenter();
 			    var Espirometria = ValoresComponente(pstrserviceId, Constants.ESPIROMETRIA_ID);
@@ -21992,6 +22058,9 @@ namespace Sigesoft.Node.WinClient.BLL
 						   {
 							   EmpresaCliente = a.EmpresaCliente,
                                EmpresaContratista = a.EmpresaContratista,
+                               EmpresaPropietaria = a.EmpresaPropietaria,
+                               EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+
 							   IdServicio = a.IdServicio,
                                ServiceComponentId = a.ServiceComponentId,
                                TipoEso = a.TipoEso,
@@ -22082,8 +22151,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							   HuellaTrabajador = a.HuellaTrabajador,
 
 							   b_Logo = MedicalCenter.b_Image,
-							   EmpresaPropietaria = MedicalCenter.v_Name,
-							   EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+                               //EmpresaPropietaria = MedicalCenter.v_Name,
+                               //EmpresaPropietariaDireccion = MedicalCenter.v_Address,
 							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
 							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
 							   NombreUsuarioGraba = a.NombreUsuarioGraba,
