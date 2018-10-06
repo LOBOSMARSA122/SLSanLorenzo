@@ -114,6 +114,17 @@ namespace NetPdf
            string conduciraXSI = "", conduciraXNO = "";
            if (conducira == "1") conduciraXSI = "X";
            else if (conducira == "0") conduciraXNO = "X";
+
+
+           string empresageneral = filiationData.empresa;
+           string empresacontrata = filiationData.contrata;
+           string empresasubcontrata = filiationData.subcontrata;
+
+           string empr_Conct = "";
+           if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+           else empr_Conct = empresacontrata;
+
+
             cells = new List<PdfPCell>()
             {         
                
@@ -140,7 +151,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase(datosPac.v_AdressLocation, fontColumnValue)) { Colspan = 15, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                 
                 new PdfPCell(new Phrase("Empresa", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
-                new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue)) { Colspan = 7, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
+                new PdfPCell(new Phrase(empr_Conct, fontColumnValue)) { Colspan = 7, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                 new PdfPCell(new Phrase("Supervisor", fontColumnValueBold)) { Colspan = 2,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                 new PdfPCell(new Phrase(supervisor, fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda},    
               

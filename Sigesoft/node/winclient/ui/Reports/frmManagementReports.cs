@@ -1451,14 +1451,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
         private void GenerateCertificadoPsicosensometricoDatos(string pathFile)
         {
-            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
 
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Psicosensometrico, _serviceId);
 
-            Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(_DataService,filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
+            Certificado_Psicosensometrico_Datos.CreateCertificadoPsicosensometricoDatos(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
         private void GenerateExamenSuficienciaMedicaOperadores(string pathFile)
@@ -1468,8 +1469,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
-            EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.CreateExamenSuficienciaMedicaOperadores(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile);
+
+            EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.CreateExamenSuficienciaMedicaOperadores(_DataService, filiationData, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
 
         private void GenerateCertificadoSuficienciaMedicaTC(string pathFile)
@@ -1479,7 +1482,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
-            CERTIFICADO_SUFICIENCIA_MEDICA_TC.CreateCertificadoSuficienciaTC(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
+
+            CERTIFICADO_SUFICIENCIA_MEDICA_TC.CreateCertificadoSuficienciaTC(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile, datosGrabo);
         }
         private void GenerateExoneraxionLaboratorio(string pathFile)
         {
@@ -1487,10 +1492,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
 
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            Exoneracion_Laboratorio.CreateExoneracionLaboratorio(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository);
+            Exoneracion_Laboratorio.CreateExoneracionLaboratorio(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, filiationData);
         }
 
         private void GenerateExoneraxionPlacaTorax(string pathFile)
@@ -1964,7 +1970,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            Certificado_Suficiencia_Medica_Trabajo_Altura_V4.CreateExamen_Dermatologico_Ocupacional(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
+            Certificado_Suficiencia_Medica_Trabajo_Altura_V4.CreateCertificado_Suficiencia_Medica_Trabajo_Altura_V4(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
         }
         private void GenerateFicha_Evaluacion_Musculoesqueletica_GoldFields(string pathFile)
         {
@@ -1981,8 +1987,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var uc = new ServiceBL().ReporteOsteomuscular(_serviceId, componentReportId7[0].ComponentId);
 
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
             //var uc = _serviceBL.ReporteOsteomuscular(_serviceId, Sigesoft.Common.Constants.EVALUACION_OTEOMUSCULAR_GOLDFIELDS_ID);
-            Ficha_Evaluacion_Musculoesqueletica_GoldFields.CreateFicha_Evaluacion_Musculoesqueletica_GoldFields(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, uc);
+            Ficha_Evaluacion_Musculoesqueletica_GoldFields.CreateFicha_Evaluacion_Musculoesqueletica_GoldFields(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, uc, datosGrabo);
         }
         public void GenerateInforme_Psicologico_Resumen(string pathFile)
         {

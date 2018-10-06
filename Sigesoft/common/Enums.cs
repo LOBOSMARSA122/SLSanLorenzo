@@ -586,6 +586,8 @@ namespace Sigesoft.Common
         RiesgoActividadCritica = 19,
         Labclinica = 20,
         Clinica = 21,
+        Psicosensometrico = 22
+
     }
 
     public enum PeligrosEnElPuesto

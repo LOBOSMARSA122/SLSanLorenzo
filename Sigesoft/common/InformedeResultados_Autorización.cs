@@ -102,6 +102,13 @@ namespace NetPdf
             else if (datosPac.i_DocTypeId == 4) { tipodoc = "Carnet de Extranjeria"; }
 
             #region Contenido
+            string empresageneral = filiationData.empresa;
+            string empresacontrata = filiationData.contrata;
+            string empresasubcontrata = filiationData.subcontrata;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
             cells = new List<PdfPCell>()
             {          
                 
@@ -110,7 +117,7 @@ namespace NetPdf
                
                 new PdfPCell(new Phrase("\nTrabajador de la empresa :    ", fontColumnValue)) 
                 { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
-                new PdfPCell(new Phrase("\n"+filiationData.v_FullWorkingOrganizationName, fontColumnValue)) 
+                new PdfPCell(new Phrase("\n"+empr_Conct, fontColumnValue)) 
                 { Colspan = 12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
 

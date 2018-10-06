@@ -24,7 +24,7 @@ namespace NetPdf
           PacientList datosPac,
           organizationDto infoEmpresa, PacientList filiationData,
           List<ServiceComponentList> serviceComponent,
-        List<DiagnosticRepositoryList> Diagnosticos, List<UcOsteo> osteo)
+        List<DiagnosticRepositoryList> Diagnosticos, List<UcOsteo> osteo, UsuarioGrabo usuariograba)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
@@ -108,6 +108,13 @@ namespace NetPdf
             #endregion
 
             #region DATOS GENERALES
+            string empresageneral = filiationData.empresa;
+            string empresacontrata = filiationData.contrata;
+            string empresasubcontrata = filiationData.subcontrata;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
 
             cells = new List<PdfPCell>()
             {        
@@ -117,7 +124,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase(": " +datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue)){ Colspan =16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},    
 
                 new PdfPCell(new Phrase("EMPRESA", fontColumnValueBold)){ Colspan =4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
-                new PdfPCell(new Phrase(": " + DataService.EmpresaEmpleadora, fontColumnValue)){ Colspan =12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},    
+                new PdfPCell(new Phrase(": " + empr_Conct, fontColumnValue)){ Colspan =12, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},    
                 new PdfPCell(new Phrase("FECHA", fontColumnValueBold)){ Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE},    
                 new PdfPCell(new Phrase(": " + datosPac.FechaServicio.ToString().Split(' ')[0], fontColumnValue)){ Colspan =2, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE},    
 
@@ -383,8 +390,8 @@ namespace NetPdf
             cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            if (DataService.FirmaMedicoMedicina != null)
-                cellfirmaMedico = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 130, 50));
+            if (usuariograba.Firma != null)
+                cellfirmaMedico = new PdfPCell(HandlingItextSharp.GetImage(usuariograba.Firma, null, null, 130, 50));
             else
                 cellfirmaMedico = new PdfPCell(new Phrase(" ", fontColumnValue));
 

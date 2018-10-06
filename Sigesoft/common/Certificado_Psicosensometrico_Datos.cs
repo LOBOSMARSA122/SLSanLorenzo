@@ -24,7 +24,7 @@ namespace NetPdf
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
-            string filePDF)
+            string filePDF,UsuarioGrabo usuariograbo)
         {
 
             Document document = new Document(PageSize.A4, 50f, 30f, 45f, 41f);
@@ -114,6 +114,15 @@ namespace NetPdf
             var segunda_ReEv = psicosensometrico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_2_RE_EVALUACION) == null ? "" : psicosensometrico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_2_RE_EVALUACION).v_Value1;
             string segunda_ReEv_1 = "";
             if (segunda_ReEv == "1") segunda_ReEv_1 = "X";
+
+            string empresageneral = filiationData.empresa;
+            string empresacontrata = filiationData.contrata;
+            string empresasubcontrata = filiationData.subcontrata;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
+
             cells = new List<PdfPCell>()
             {          
                 new PdfPCell(new Phrase("N° de Informe", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
@@ -124,10 +133,10 @@ namespace NetPdf
                 new PdfPCell(new Phrase("Fecha de Informe:", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
                 new PdfPCell(new Phrase(fechaInforme[0], fontColumnValue)) { Colspan = 6, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
 
-                 new PdfPCell(new Phrase("Compañía Minera", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
-                new PdfPCell(new Phrase(DataService.v_CustomerOrganizationName, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
-                new PdfPCell(new Phrase("Empresa", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
-                new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
+                 new PdfPCell(new Phrase("Empresa", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
+                new PdfPCell(new Phrase(empresageneral, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
+                new PdfPCell(new Phrase("Contrata", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
+                new PdfPCell(new Phrase(empr_Conct, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda }, 
 
                 new PdfPCell(new Phrase("Apellidos Y Nombres", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                 new PdfPCell(new Phrase(datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
@@ -335,16 +344,16 @@ namespace NetPdf
             PdfPCell cellFirmaTrabajador = null;
             PdfPCell cellFirmaDoctor = null;
          
-            if (DataService.FirmaTrabajador != null)
-                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaTrabajador, null, null, 100, 35));
+            if (filiationData.FirmaTrabajador != null)
+                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 100, 35));
             else
                 cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
             cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            if (DataService.FirmaMedicoMedicina != null)
-                cellFirmaDoctor = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 120, 55));
+            if (usuariograbo.Firma != null)
+                cellFirmaDoctor = new PdfPCell(HandlingItextSharp.GetImage(usuariograbo.Firma, null, null, 120, 55));
             else
                 cellFirmaDoctor = new PdfPCell(new Phrase(" ", fontColumnValue));
 
@@ -353,8 +362,7 @@ namespace NetPdf
 
 
             cells = new List<PdfPCell>
-            {          
-                
+            {
               //Linea
 
                     new PdfPCell(cellFirmaDoctor) {Rowspan = 8, Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight=100},   
@@ -363,12 +371,12 @@ namespace NetPdf
                     new PdfPCell(new Phrase("Firma del Evaluado", fontColumnValue)){ Colspan=5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = tamaño_celda},
 
                     new PdfPCell(new Phrase("Nombre", fontColumnValue)){ Colspan=1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda},
-                    new PdfPCell(new Phrase(DataService.NombreDoctor, fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(usuariograbo.Nombre, fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
                     new PdfPCell(new Phrase("Nombre", fontColumnValue)){ Colspan=1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda},
                     new PdfPCell(new Phrase(datosPac.v_FirstLastName + " " + datosPac.v_SecondLastName + " " + datosPac.v_FirstName, fontColumnValue)) { Colspan =4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
 
                     new PdfPCell(new Phrase("Registro", fontColumnValue)){ Colspan=1,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_LEFT, FixedHeight = tamaño_celda},
-                    new PdfPCell(new Phrase(DataService.CMP, fontColumnValue)) { Colspan = 9, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
+                    new PdfPCell(new Phrase(usuariograbo.CMP, fontColumnValue)) { Colspan = 9, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda },    
 
              };
 

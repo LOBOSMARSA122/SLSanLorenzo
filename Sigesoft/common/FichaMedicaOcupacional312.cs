@@ -182,6 +182,7 @@ namespace NetPdf
             string Mes = "";
             Mes = Sigesoft.Common.Utils.Getmouth(DataService.i_MesV);
 
+            
 
             cells = new List<PdfPCell>()
                  {
@@ -231,7 +232,15 @@ namespace NetPdf
             #endregion
 
             #region Datos de la Empresa
+            //string empresageneral = DataService.v_CustomerOrganizationName;
+            //string empresacontrata = DataService.EmpresaEmpleadora;
+            //string empresasubcontrata = DataService.EmpresaTrabajo;
 
+            //string empr_Conct = "";
+            //if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            //else empr_Conct = empresacontrata;
+
+            
             String PuestoPostula = "";
             if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional)
             {

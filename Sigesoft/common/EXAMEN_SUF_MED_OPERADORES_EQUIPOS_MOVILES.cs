@@ -24,7 +24,7 @@ namespace NetPdf
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
-            string filePDF)
+            string filePDF, UsuarioGrabo usuariograbo)
         {
 
             Document document = new Document(PageSize.A4, 50f, 30f, 45f, 41f);
@@ -424,8 +424,8 @@ namespace NetPdf
             cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            if (DataService.FirmaMedicoMedicina != null)
-                cellFirmaDoctor = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 120, 55));
+            if (usuariograbo.Firma != null)
+                cellFirmaDoctor = new PdfPCell(HandlingItextSharp.GetImage(usuariograbo.Firma, null, null, 120, 55));
             else
                 cellFirmaDoctor = new PdfPCell(new Phrase(" ", fontColumnValue));
 
