@@ -3031,6 +3031,14 @@ namespace NetPdf
                 }
             }
 
+            string empresageneral = DataService.v_CustomerOrganizationName;
+            string empresacontrata = DataService.EmpresaEmpleadora;
+            string empresasubcontrata = DataService.EmpresaTrabajo;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
+
             cells = new List<PdfPCell>()
                    {      
                     //fila 
@@ -3050,13 +3058,13 @@ namespace NetPdf
                     //fila
                     new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(Empresa){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                                   
-                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase(empresageneral,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
                     new PdfPCell(new Phrase("RETIRO", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
                     new PdfPCell(new Phrase("CONTRATISTA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER},     
                     new PdfPCell(Contratista){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                               
-                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
+                    new PdfPCell(new Phrase(empr_Conct, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
                     new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
@@ -8253,6 +8261,14 @@ namespace NetPdf
                 }
             }
 
+            string empresageneral = DataService.v_CustomerOrganizationName;
+            string empresacontrata = DataService.EmpresaEmpleadora;
+            string empresasubcontrata = DataService.EmpresaTrabajo;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
+
             cells = new List<PdfPCell>()
                    {      
                     //fila 
@@ -8272,13 +8288,13 @@ namespace NetPdf
                     //fila
                     new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(Empresa){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                                   
-                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase(empresageneral,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
                     new PdfPCell(new Phrase("RETIRO", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
                     new PdfPCell(new Phrase("CONTRATISTA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER},     
                     new PdfPCell(Contratista){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                               
-                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
+                    new PdfPCell(new Phrase(empr_Conct, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
                     new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
@@ -11725,6 +11741,13 @@ namespace NetPdf
                 }
             }
 
+            string empresageneral = DataService.v_CustomerOrganizationName;
+            string empresacontrata = DataService.EmpresaEmpleadora;
+            string empresasubcontrata = DataService.EmpresaTrabajo;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
             cells = new List<PdfPCell>()
                    {      
                     //fila 
@@ -11744,13 +11767,13 @@ namespace NetPdf
                     //fila
                     new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(Empresa){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                                   
-                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase(empresageneral,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
                     new PdfPCell(new Phrase("RETIRO", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
                     new PdfPCell(new Phrase("CONTRATISTA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER},     
                     new PdfPCell(Contratista){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                               
-                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
+                    new PdfPCell(new Phrase(empr_Conct, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
                     new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
@@ -15158,6 +15181,14 @@ namespace NetPdf
                 }
             }
 
+            string empresageneral = DataService.v_CustomerOrganizationName;
+            string empresacontrata = DataService.EmpresaEmpleadora;
+            string empresasubcontrata = DataService.EmpresaTrabajo;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
+
             cells = new List<PdfPCell>()
                    {      
                     //fila 
@@ -15176,12 +15207,12 @@ namespace NetPdf
                     new PdfPCell(Periodica){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
                     new PdfPCell(new Phrase("UEA : ", fontColumnValue)){Colspan = 2, Border = PdfPCell.LEFT_BORDER}, 
-                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue)){Colspan=2, Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase(empresageneral,fontColumnValue)){Colspan=2, Border = PdfPCell.NO_BORDER}, 
                     new PdfPCell(new Phrase("RETIRO", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
                     new PdfPCell(new Phrase("EMPRESA : ", fontColumnValue)){Colspan = 2, Border = PdfPCell.LEFT_BORDER},     
-                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora, fontColumnValue)){Colspan=2, Border = PdfPCell.NO_BORDER},    
+                    new PdfPCell(new Phrase(empr_Conct, fontColumnValue)){Colspan=2, Border = PdfPCell.NO_BORDER},    
                     new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
@@ -18860,9 +18891,14 @@ namespace NetPdf
                 }
             }
 
-            string mina = DataService.v_CustomerOrganizationName;
-            string contrata = DataService.EmpresaEmpleadora;
-            string subcontrata = DataService.EmpresaTrabajo;
+            string empresageneral = DataService.v_CustomerOrganizationName;
+            string empresacontrata = DataService.EmpresaEmpleadora;
+            string empresasubcontrata = DataService.EmpresaTrabajo;
+
+            string empr_Conct ="";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
+
             cells = new List<PdfPCell>()
                    {      
                     //fila 
@@ -18882,13 +18918,13 @@ namespace NetPdf
                     //fila
                     new PdfPCell(new Phrase("EMPRESA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER}, 
                     new PdfPCell(Empresa){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                                   
-                    new PdfPCell(new Phrase( DataService.v_CustomerOrganizationName,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
+                    new PdfPCell(new Phrase(empresageneral,fontColumnValue)){Border = PdfPCell.NO_BORDER}, 
                     new PdfPCell(new Phrase("RETIRO", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Retiro){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila
                     new PdfPCell(new Phrase("CONTRATISTA:", fontColumnValue)){Border = PdfPCell.LEFT_BORDER},     
                     new PdfPCell(Contratista){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_BOTTOM },                               
-                    new PdfPCell(new Phrase(DataService.EmpresaEmpleadora + " / " + DataService.EmpresaTrabajo, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
+                    new PdfPCell(new Phrase(empr_Conct, fontColumnValue)){Border = PdfPCell.NO_BORDER},    
                     new PdfPCell(new Phrase("REUBICACIÓN", fontColumnValue)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment=PdfPCell.ALIGN_LEFT}, 
                     new PdfPCell(Otros){Border = PdfPCell.RIGHT_BORDER, HorizontalAlignment=PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_CENTER },
                     //fila

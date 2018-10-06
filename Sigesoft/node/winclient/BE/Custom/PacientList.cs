@@ -247,5 +247,6 @@ namespace Sigesoft.Node.WinClient.BE
 
         public string empresa { get; set; }
         public string contrata { get; set; }
+        public string subcontrata { get; set; }
     }
 }

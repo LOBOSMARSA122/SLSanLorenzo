@@ -24,7 +24,7 @@ namespace NetPdf
             List<ServiceComponentList> serviceComponent,
             organizationDto infoEmpresa,
             PacientList datosPac,
-            string filePDF)
+            string filePDF, UsuarioGrabo usuariograbo)
         {
 
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
@@ -95,6 +95,13 @@ namespace NetPdf
             #endregion
 
             #region FILIACIÓN
+            string empresageneral = filiationData.empresa;
+            string empresacontrata = filiationData.contrata;
+            string empresasubcontrata = filiationData.subcontrata;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
 
             string[] fechaServicio = datosPac.FechaServicio.ToString().Split(' ');
             cells = new List<PdfPCell>()
@@ -107,7 +114,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase(fechaServicio[0], fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
                 
                 new PdfPCell(new Phrase("Empresa", fontColumnValue)) { Colspan = 5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
-                new PdfPCell(new Phrase(filiationData.v_FullWorkingOrganizationName, fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
+                new PdfPCell(new Phrase(empr_Conct, fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda },    
                 new PdfPCell(new Phrase("Edad", fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda}, 
                 new PdfPCell(new Phrase(datosPac.Edad.ToString() , fontColumnValue)) { Colspan = 4,HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda }, 
                 
@@ -415,19 +422,12 @@ namespace NetPdf
 
             // Firma del trabajador ***************************************************
             PdfPCell cellFirmaTrabajador = null;
-            //DirectoryInfo rutaFirma = null;
-            //rutaFirma = new DirectoryInfo(WebConfigurationManager.AppSettings["FirmaHuella"].ToString());
-            //iTextSharp.text.Image Firmajpg = iTextSharp.text.Image.GetInstance(rutaFirma +DataService.v_DocNumber + "_Firma.jpg");
-
 
             if (filiationData.FirmaTrabajador != null)
                 cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 70, 30));
             else
 
                 cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
-            //cellFirmaTrabajador = new PdfPCell(Firmajpg);
-
-            // Huella del trabajador **************************************************
             PdfPCell cellHuellaTrabajador = null;
 
             //DirectoryInfo rutaHuella = null;
@@ -444,8 +444,8 @@ namespace NetPdf
 
             PdfPCell cellFirma = null;
 
-            if (DataService.FirmaMedicoMedicina != null)
-                cellFirma = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
+            if (usuariograbo.Firma != null)
+                cellFirma = new PdfPCell(HandlingItextSharp.GetImage(usuariograbo.Firma, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
             else
                 cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
 

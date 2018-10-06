@@ -140,7 +140,7 @@ namespace NetPdf
                 if (tgoo != null)
                 {
                     cells = new List<PdfPCell>();
-                    cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: ENZIMÁTICO / COLORIMÉTRICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -204,7 +204,7 @@ namespace NetPdf
                 if (examenesBioquimica.Count > 0)
                 {
                     cells = new List<PdfPCell>();
-                    cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) {Colspan=4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) {BackgroundColor= BaseColor.GRAY, Colspan=4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                     cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: ENZIMÁTICO / COLORIMÉTRICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -419,7 +419,7 @@ namespace NetPdf
                         if (xPerfilHepatico.ServiceComponentFields.Count > 0)
                         {
                             cells = new List<PdfPCell>();
-                            cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                            cells.Add(new PdfPCell(new Phrase("BIOQUÍMICA AUTOMATIZADA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                             cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: ENZIMÁTICO / COLORIMÉTRICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
                             cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1716,7 +1716,7 @@ namespace NetPdf
                 if (examenesToxicologia.Count > 0)
                 {
                     cells.Add(new PdfPCell(new Phrase("TOXICOLOGIA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                    cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: INMUNOCROMATOGRAFÍA", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
+                    cells.Add(new PdfPCell(new Phrase("METODOLOGÍA: INMUNOCROMATOGRAFÍA DE FLUJO LATERAL", fontColumnValueBold)) { BackgroundColor = BaseColor.GRAY, Colspan = 4, HorizontalAlignment = Element.ALIGN_LEFT, MinimumHeight = tamaño_caldas });
 
 
                     cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -1733,8 +1733,8 @@ namespace NetPdf
 
                         cells.Add(new PdfPCell(new Phrase("ALCOHOL EN SALIVA / ALIENTO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(DosajeAlcohol == null ? string.Empty : DosajeAlcohol.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(DosajeAlcohol == null ? string.Empty : DosajeAlcohol.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(DosajeAlcoholValord == null ? string.Empty : DosajeAlcoholValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     }
 

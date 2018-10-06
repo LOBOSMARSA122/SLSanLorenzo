@@ -24,7 +24,7 @@ namespace NetPdf
             PacientList datosPac,
             organizationDto infoEmpresaPropietaria,
             List<ServiceComponentList> exams,
-            List<DiagnosticRepositoryList> Diagnosticos)
+            List<DiagnosticRepositoryList> Diagnosticos, PacientList filiationData)
         {
             Document document = new Document(PageSize.A4, 40f, 40f, 80f, 50f);
 
@@ -101,6 +101,14 @@ namespace NetPdf
             else if (datosPac.i_DocTypeId == 3) { tipodoc = "Licencia de Conducir"; }
             else if (datosPac.i_DocTypeId == 4) { tipodoc = "Carnet de Extranjeria"; }
             #region Contenido
+
+            string empresageneral = filiationData.empresa;
+            string empresacontrata = filiationData.contrata;
+            string empresasubcontrata = filiationData.subcontrata;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
             cells = new List<PdfPCell>()
             {          
                 
@@ -113,7 +121,7 @@ namespace NetPdf
                 new PdfPCell(new Phrase("de exámenes de Laboratorio para la empresa:", fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_JUSTIFIED, VerticalAlignment = iTextSharp.text.Element.ANCHOR, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
                 
-                new PdfPCell(new Phrase(DataService.v_CustomerOrganizationName + "  /  " + DataService.EmpresaEmpleadora, fontColumnValue)) 
+                new PdfPCell(new Phrase(empresageneral + "  /  " + empr_Conct, fontColumnValue)) 
                 { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ANCHOR, MinimumHeight = tamaño_celda , BorderColor=BaseColor.WHITE, ExtraParagraphSpace = 5.0f}, 
               
                 new PdfPCell(new Phrase("por lo cual exonero de toda responsabilidad médico legal al personal de: " + infoEmpresaPropietaria.v_Name.Split(' ')[0] +" "+infoEmpresaPropietaria.v_Name.Split(' ')[1] , fontColumnValue)) 

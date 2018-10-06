@@ -345,7 +345,7 @@ namespace NetPdf
             document.Add(table);
             #endregion
 
-            #region antecedentes
+            #region resultado de drogas
             var cocaina = toxicologico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_COCAINA) == null ? "" : toxicologico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_COCAINA).v_Value1;
             var marihuana = toxicologico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_MARIHUANA) == null ? "" : toxicologico.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T_MARIHUANA).v_Value1;
 

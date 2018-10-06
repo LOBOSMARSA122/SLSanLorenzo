@@ -131,7 +131,6 @@ namespace NetPdf
             document.Add(table);
             #endregion
 
-            
             #region DATOS GENERALES
 
             cells = new List<PdfPCell>()

@@ -1122,6 +1122,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                  from C1 in C1_join.DefaultIfEmpty()
                                  join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
                                  from C2 in C2_join.DefaultIfEmpty()
+                                 join C3 in dbContext.organization on B.v_WorkingOrganizationId equals C3.v_OrganizationId into C3_join
+                                 from C3 in C3_join.DefaultIfEmpty()
+
 
                                  where s.v_ServiceId == serviceId
                                  select new PacientList
@@ -1129,6 +1132,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                      empresa = C2.v_Name,
                                      contrata = C1.v_Name,
+                                     subcontrata = C3.v_Name,
 
                                      TimeOfDisease = s.i_TimeOfDisease,
                                     v_ObsStatusService = s.v_ObsStatusService,
@@ -1164,7 +1168,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                      v_Story = s.v_Story,
                                      v_MainSymptom = s.v_MainSymptom,
-                                     FirmaDoctor = pr1.b_SignatureImage      ,
+                                     FirmaDoctor = pr1.b_SignatureImage,
                                      v_ExaAuxResult = s.v_ExaAuxResult,
                                      FirmaDoctorAuditor = pr2.b_SignatureImage,
                                      GESO = F.v_Name,
@@ -1181,6 +1185,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             {
                                 empresa = a.empresa,
                                 contrata = a.contrata,
+                                subcontrata = a.subcontrata,
 
                                 FirmaDoctor =a.FirmaMedico,
                                 v_Story = a.v_Story,
