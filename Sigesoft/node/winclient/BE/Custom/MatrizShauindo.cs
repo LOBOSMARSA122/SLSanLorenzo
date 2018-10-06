@@ -20,7 +20,10 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? FechaNacimiento { get; set; }
         public string TelefonoContacto{ get; set; }
         public int? edad { get; set; }
-        public string Sexo{ get; set; }
+        public int? _Sexo { get; set; }
+        public int? _Grupo { get; set; }
+        public int? _Factor { get; set; }
+        public string Sexo { get; set; }
         public string EstadoCivil{ get; set; }
         public string GradoInstruccion { get; set; }
         public string GrupoFactorSanguineo{ get; set; }
@@ -55,7 +58,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string HabitosNocivosAlcohol { get; set; }
         public string HabitosNocivosTabaco { get; set; }
         public string HabitosNocivosDrogas { get; set; }
-        public string NumeroHijos { get; set; }
+        public int NumeroHijos { get; set; }
         public string Alergias { get; set; }
         public string InmunizacionTetano{ get; set; }
         public string InmunizacionInfluenza{ get; set; }
@@ -252,7 +255,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string IntervaloQTC { get; set; }
         public string EjeCardiaco { get; set; }
         public string HallazgoInformeElectricoCardiaco { get; set; }
-        public string ConclusionesRayosX { get; set; }
+        public string ConclusionesEKG { get; set; }
         public string Hemoglobina { get; set; }
         public string Hematocrito { get; set; }
         public string Hematies { get; set; }
