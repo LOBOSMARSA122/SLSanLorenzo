@@ -2795,7 +2795,7 @@ namespace NetPdf
             }
             else
             {
-                cells.Add(new PdfPCell(new Phrase("NO SE HAN REGISTRADO DATOS.", fontColumnValue)));
+                cells.Add(new PdfPCell(new Phrase("", fontColumnValue)));
                 columnWidths = new float[] { 100 };
             }
 
@@ -2878,10 +2878,10 @@ namespace NetPdf
 
             PdfPCell cellFirma = null;
 
-            if (medico.FirmaMedicoMedicina != null)
-                cellFirma = new PdfPCell(HandlingItextSharp.GetImage(medico.FirmaMedicoMedicina, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
-            else
-                cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
+            //if (medico.FirmaMedicoMedicina != null)
+            //    cellFirma = new PdfPCell(HandlingItextSharp.GetImage(medico.FirmaMedicoMedicina, null, null, 120, 50)) { HorizontalAlignment = PdfPCell.ALIGN_CENTER };
+            //else
+            //    cellFirma = new PdfPCell(new Phrase(" ", fontColumnValue));
 
             #endregion
 
@@ -2932,10 +2932,10 @@ namespace NetPdf
             cells.Add(cell);
 
             // 3 celda (Imagen)
-            cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
-            cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
-            cellFirma.FixedHeight = 40F;
-            cells.Add(cellFirma);
+            //cellFirma.HorizontalAlignment = Element.ALIGN_CENTER;
+            //cellFirma.VerticalAlignment = Element.ALIGN_MIDDLE;
+            //cellFirma.FixedHeight = 40F;
+            //cells.Add(cellFirma);
 
             cells.Add(new PdfPCell(new Phrase("CON LA CUAL DECLARA QUE LA INFORMACIÓN DECLARADA ES VERAZ", fontColumnValue)) { Colspan = 2, HorizontalAlignment = Element.ALIGN_LEFT, VerticalAlignment = Element.ALIGN_MIDDLE });
             cells.Add(new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 2 });

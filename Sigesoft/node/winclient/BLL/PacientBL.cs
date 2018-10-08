@@ -2361,8 +2361,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join C in dbContext.organization on B.v_EmployerOrganizationId equals C.v_OrganizationId into C_join
                                  from C in C_join.DefaultIfEmpty()
                                  //gaaa
-                                 join C1 in dbContext.organization on B.v_CustomerOrganizationId equals C1.v_OrganizationId into C1_join
-                                 from C1 in C1_join.DefaultIfEmpty()
+                                 join C3 in dbContext.organization on B.v_CustomerOrganizationId equals C3.v_OrganizationId into C3_join
+                                 from C3 in C3_join.DefaultIfEmpty()
                       
                                  join P1 in dbContext.person on new { a = A.v_PersonId }
                                          equals new { a = P1.v_PersonId } into P1_join
@@ -2406,7 +2406,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      NombreTrabajador = P1.v_FirstName + " " + P1.v_FirstLastName +  " " + P1.v_SecondLastName,
                                      NroDocumento = P1.v_DocNumber,
                                      Ocupacion = P1.v_CurrentOccupation,
-                                     Contratista = C1.v_Name,
+                                     Contratista = C3.v_Name,
                                      FirmaTrabajador = P1.b_RubricImage,
                                      HuellaTrabajador = P1.b_FingerPrintImage,
                                      LugarProcedencia = varDistri + "-" + varProv + "-" + varDpto, // Santa Anita - Lima - Lima
@@ -5819,14 +5819,23 @@ namespace Sigesoft.Node.WinClient.BLL
                                    HabitosNocivosAlcohol = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas) == null ? "c" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Alcohol).v_Frequency,
                                    HabitosNocivosTabaco = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? "a" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Drogas) == null ? "c" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaHabitos.Find(p => p.i_TypeHabitsId == (int)TypeHabit.Tabaco).v_Frequency,
                                    Alergias = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? " a" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical == null ? "b" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000633") == null ? "NO" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical.Find(p => p.v_DiseasesId == "N009-DD000000633").i_Answer.ToString() == "1" ? "SI" : "NO",
-                                   ConclusionesRx = string.Join(", ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 6).Select(s => s.v_DiseasesName)),//dxs.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.v_DiseasesName).ToString(), 
+                                   
                                    RecomendacionesConcatenadas = string.Join(", ", Reco.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
                                    RestriccionConcatenadas = string.Join(", ", Restri.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
-                                   ConclusionLabo = string.Join(", ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 1).Select(s => s.v_DiseasesName)),
+                                   
                                    AntecedentesFamiliares = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? " " : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaAntecedentesFamiliares == null ? " " : AntecedentesFamiliaresConcatenados(Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaAntecedentesFamiliares),
                                    AntecedentesPersonales = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? "NIEGA" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical == null ? "NIEGA" : AntecedentesPatologicosConcatenados(Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical),
-                                   ConclusionEspirometrica = string.Join(", ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 16).Select(s => s.v_DiseasesName)),
-                                   ConclusionesEKG = string.Join(", ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 5).Select(s => s.v_DiseasesName)),
+                                   ConclusionLabo = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 1).Select(s => s.v_DiseasesName)),
+                                   ConclusionRayosX = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 6).Select(s => s.v_DiseasesName)),//dxs.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.v_DiseasesName).ToString(), 
+                                   ConclusionEspirometrica = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 16).Select(s => s.v_DiseasesName)),
+                                   ConclusionesEKG = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 5).Select(s => s.v_DiseasesName)),
+                                   Dx1 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 2).Select(s => s.v_DiseasesName)),//Odonto
+                                   Dx2 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 7).Select(s => s.v_DiseasesName)),//Psico
+                                   Dx3 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 10).Select(s => s.v_DiseasesName)),//Triaje
+                                   Dx4 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 11).Select(s => s.v_DiseasesName)),//Medicina
+                                   Dx5 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 14).Select(s => s.v_DiseasesName)),//Oftalmo
+                                   ConclusionesRx = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 15).Select(s => s.v_DiseasesName)),//Audio
+                                   Dx6 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 22).Select(s => s.v_DiseasesName)),//Psicosen
                                }
 
                                ).ToList();
