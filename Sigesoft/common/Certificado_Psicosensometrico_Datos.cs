@@ -342,6 +342,7 @@ namespace NetPdf
 
             #region Firma y sello Médico
             PdfPCell cellFirmaTrabajador = null;
+            PdfPCell cellHuellaTrabajador = null;
             PdfPCell cellFirmaDoctor = null;
          
             if (filiationData.FirmaTrabajador != null)
@@ -351,6 +352,15 @@ namespace NetPdf
 
             cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+
+            if (filiationData.HuellaTrabajador != null)
+                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 45, 60));
+            else
+                cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
+
+            cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
+            cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
+
 
             if (usuariograbo.Firma != null)
                 cellFirmaDoctor = new PdfPCell(HandlingItextSharp.GetImage(usuariograbo.Firma, null, null, 120, 55));
@@ -366,7 +376,8 @@ namespace NetPdf
               //Linea
 
                     new PdfPCell(cellFirmaDoctor) {Rowspan = 8, Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight=100},   
-                    new PdfPCell(cellFirmaTrabajador) {Rowspan = 8, Colspan=5, HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight=100},   
+                    new PdfPCell(cellFirmaTrabajador) {Rowspan = 8, Colspan=3, HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight=100, UseVariableBorders=true, BorderColorLeft=BaseColor.BLACK,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
+                    new PdfPCell(cellHuellaTrabajador) {Rowspan = 8, Colspan=2, HorizontalAlignment = PdfPCell.ALIGN_CENTER, FixedHeight=100, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.BLACK,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.BLACK},
                     new PdfPCell(new Phrase("Firma del Evaluador", fontColumnValue)){ Colspan=5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda},
                     new PdfPCell(new Phrase("Firma del Evaluado", fontColumnValue)){ Colspan=5, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE,FixedHeight = tamaño_celda},
 
