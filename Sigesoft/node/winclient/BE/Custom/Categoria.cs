@@ -16,6 +16,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_ServiceComponentStatusName { get; set; }
         public string v_QueueStatusName { get; set; }
         public int i_ServiceComponentStatusId { get; set; }
+        public int i_ApprovedInsertUserId { get; set; }
+        public string ApprovedUpdateUser { get; set; }
         public List<ComponentDetailList> Componentes {get; set;}
     }
 }
