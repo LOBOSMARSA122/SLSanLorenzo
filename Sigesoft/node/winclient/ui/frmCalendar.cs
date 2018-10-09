@@ -852,10 +852,48 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnDetallado_Click(object sender, EventArgs e)
         {
-
             OperationResult objOperationResult = new OperationResult();
-            var frm = new Reports.frmRoadMapDetaail(_serviceId, _calendarId);
-            frm.ShowDialog();
+            ServiceBL objServiceBL = new ServiceBL();
+            List<CalendarDetail> Services = new List<CalendarDetail>();
+            CalendarDetail oCalendarDetail;
+
+            foreach (var item in grdDataCalendar.Rows)
+            {
+                var serviceId = item.Cells["v_ServiceId"].Value.ToString();
+                oCalendarDetail = new CalendarDetail();
+
+                oCalendarDetail.v_ServiceId = serviceId;
+                oCalendarDetail.Pacient = item.Cells["v_Pacient"].Value.ToString();
+                oCalendarDetail.EmpresaCliente = item.Cells["v_OrganizationLocationProtocol"].Value.ToString();
+                oCalendarDetail.EmpresaEmpleadora = "";
+                oCalendarDetail.EmpresaTrabajo = item.Cells["v_WorkingOrganizationName"].Value.ToString();
+                oCalendarDetail.FechaService = item.Cells["d_ServiceDate"].Value.ToString();
+                oCalendarDetail.Protocol = item.Cells["v_ProtocolName"].Value.ToString();
+
+                List<Category> oCategories = new List<Category>();
+                Category oCategory;
+                var Categories = objServiceBL.GetAllComponentsByService(ref objOperationResult, serviceId);
+                foreach (var category in Categories)
+                {
+                    oCategory = new Category();
+
+                    oCategory.CategoryName = category.v_CategoryName;
+                    oCategories.Add(oCategory);
+
+                    var components = category.Componentes;
+                    foreach (var component in components)
+                    {
+                        
+                    }
+                }
+
+                //oCalendarDetail.Detalle = oCategories;
+
+            }
+
+            
+            //var frm = new Reports.frmRoadMapDetaail(_serviceId, _calendarId);
+            //frm.ShowDialog();
 
             //DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             //DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);

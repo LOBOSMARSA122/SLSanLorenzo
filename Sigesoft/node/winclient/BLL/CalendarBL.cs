@@ -105,6 +105,7 @@ namespace Sigesoft.Node.WinClient.BLL
                            select new CalendarList
                            {
                                b_Seleccionar =false,
+                               d_ServiceDate = D.d_ServiceDate,
                                 v_CalendarId = A.v_CalendarId,
                                 d_DateTimeCalendar = A.d_DateTimeCalendar.Value,
                                 v_Pacient = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
@@ -192,6 +193,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         select new CalendarList
                         {
                             v_CalendarId =a.v_CalendarId,
+                            d_ServiceDate = a.d_ServiceDate,
                             d_DateTimeCalendar =a.d_DateTimeCalendar,
                             v_Pacient =a.v_Pacient,
                             Nombres = a.Nombres,

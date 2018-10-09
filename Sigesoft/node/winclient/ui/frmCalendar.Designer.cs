@@ -748,7 +748,7 @@
             this.toolStripMenuItem2,
             this.tsmDeclaracionDrogas});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 320);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(260, 298);
             // 
             // mnuReagendarCita
             // 
