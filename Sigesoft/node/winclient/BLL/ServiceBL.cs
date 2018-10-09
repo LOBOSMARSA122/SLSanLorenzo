@@ -29947,6 +29947,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                       equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
                              from F in F_join.DefaultIfEmpty()
 
+                             // Usuario Medico Evaluador / Medico Aprobador ****************************
+                             join me in dbContext.systemuser on A.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+                                 
+
                              where A.v_ServiceId == pstrString &&
                                    A.i_IsDeleted == isDeleted &&
                                    A.i_IsRequiredId == isRequired
@@ -29967,6 +29975,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1,
                                  v_ServiceId = E.v_ServiceId,
                                  v_ServiceComponentId = A.v_ServiceComponentId,
+                                 ApprovedUpdateUser = me.v_UserName
                              });
 
                 // acá lleno mi entidad padre con la consulta de arriba
@@ -29982,6 +29991,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oCategoria.v_ServiceComponentStatusName = item.v_ServiceComponentStatusName;
                     oCategoria.v_QueueStatusName = item.v_QueueStatusName;
                     oCategoria.i_ServiceComponentStatusId = item.i_ServiceComponentStatusId.Value;
+                    oCategoria.ApprovedUpdateUser = item.ApprovedUpdateUser;
                     xxx.Add(oCategoria);
                 }
 
@@ -30006,6 +30016,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     objCategoriaList.v_ServiceComponentStatusName = obj[i].v_ServiceComponentStatusName;
                     objCategoriaList.v_QueueStatusName = obj[i].v_QueueStatusName;
                     objCategoriaList.i_ServiceComponentStatusId = obj[i].i_ServiceComponentStatusId;
+                    objCategoriaList.ApprovedUpdateUser = obj[i].ApprovedUpdateUser;
                     // en esta variable x obtengo los hijos de un padre (cada bucle me da un padre y con ese id busco sus hijos)
                     var x = query.ToList().FindAll(p => p.i_CategoryId == obj[i].i_CategoryId.Value);
 
@@ -30020,6 +30031,9 @@ namespace Sigesoft.Node.WinClient.BLL
                         objComponentDetailList.v_ComponentId = item.v_ComponentId;
                         objComponentDetailList.v_ComponentName = item.v_ComponentName;
                         objComponentDetailList.v_ServiceComponentId = item.v_ServiceComponentId;
+                        objComponentDetailList.StatusComponentId = item.i_ServiceComponentStatusId.Value;
+                        objComponentDetailList.ApprovedUpdateUser = item.ApprovedUpdateUser;
+                        objComponentDetailList.StatusComponent = item.v_ServiceComponentStatusName;
                         ListaComponentes.Add(objComponentDetailList);
                     }
                     objCategoriaList.Componentes = ListaComponentes;

@@ -20,13 +20,16 @@ namespace Sigesoft.Node.WinClient.BE
 
     public class Category
     {
+        public int CategoryId { get; set; }
         public string CategoryName { get; set; }      
         public List<Components> Components { get; set; }
     }
 
     public class Components
     {
+        public string ComponentId { get; set; }
         public string Component { get; set; }
+        public int StatusComponentId { get; set; }
         public string StatusComponent { get; set; }
         public string User { get; set; }
     }

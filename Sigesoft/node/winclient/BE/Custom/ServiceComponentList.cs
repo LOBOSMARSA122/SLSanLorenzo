@@ -85,6 +85,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public int? i_ApprovedInsertUserId { get; set; }
         public int? i_ApprovedUpdateUserId { get; set; }
+        public string ApprovedUpdateUser { get; set; }
         public int? i_InsertUserMedicalAnalystId { get; set; }
         public int? i_InsertUserTechnicalDataRegisterId { get; set; }
         public int? i_Iscalling { get; set; }

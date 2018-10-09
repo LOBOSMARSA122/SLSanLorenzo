@@ -18,6 +18,7 @@ using CrystalDecisions.Shared;
 using System.IO;
 using Sigesoft.Node.WinClient.UI.Configuration;
 using Sigesoft.Node.WinClient.UI.NatclarXML;
+using NetPdf;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -850,8 +851,13 @@ namespace Sigesoft.Node.WinClient.UI
             frm.ShowDialog();
         }
 
+        private MergeExPDF _mergeExPDF = new MergeExPDF();
+        private List<string> _filesNameToMerge = new List<string>();
         private void btnDetallado_Click(object sender, EventArgs e)
         {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                   
             OperationResult objOperationResult = new OperationResult();
             ServiceBL objServiceBL = new ServiceBL();
             List<CalendarDetail> Services = new List<CalendarDetail>();
@@ -865,7 +871,7 @@ namespace Sigesoft.Node.WinClient.UI
                 oCalendarDetail.v_ServiceId = serviceId;
                 oCalendarDetail.Pacient = item.Cells["v_Pacient"].Value.ToString();
                 oCalendarDetail.EmpresaCliente = item.Cells["v_OrganizationLocationProtocol"].Value.ToString();
-                oCalendarDetail.EmpresaEmpleadora = "";
+                oCalendarDetail.EmpresaEmpleadora = item.Cells["v_OrganizationIntermediaryName"].Value.ToString();
                 oCalendarDetail.EmpresaTrabajo = item.Cells["v_WorkingOrganizationName"].Value.ToString();
                 oCalendarDetail.FechaService = item.Cells["d_ServiceDate"].Value.ToString();
                 oCalendarDetail.Protocol = item.Cells["v_ProtocolName"].Value.ToString();
@@ -876,30 +882,46 @@ namespace Sigesoft.Node.WinClient.UI
                 foreach (var category in Categories)
                 {
                     oCategory = new Category();
-
+                    oCategory.CategoryId = category.i_CategoryId.Value;
                     oCategory.CategoryName = category.v_CategoryName;
                     oCategories.Add(oCategory);
 
+                    List<Components> oComponents = new List<Components>();
+                    Components oComponent;
                     var components = category.Componentes;
                     foreach (var component in components)
                     {
-                        
+                        oComponent = new Components();
+                        oComponent.ComponentId = component.v_ComponentId;
+                        oComponent.Component = component.v_ComponentName;
+                        oComponent.StatusComponentId = component.StatusComponentId;
+                        oComponent.StatusComponent = component.StatusComponent;
+                        oComponent.User = component.ApprovedUpdateUser;
+                        oComponents.Add(oComponent);
                     }
+
+                    oCategory.Components = oComponents;
                 }
 
-                //oCalendarDetail.Detalle = oCategories;
+                oCalendarDetail.Categories = oCategories;
 
+                Services.Add(oCalendarDetail);
             }
-
             
-            //var frm = new Reports.frmRoadMapDetaail(_serviceId, _calendarId);
-            //frm.ShowDialog();
+            string ruta;
+            ruta = Common.Utils.GetApplicationConfigValue("rutaReportes").ToString();
+            var pathFile = string.Format("{0}.pdf", Path.Combine(ruta, "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy")));
+            AgendaDetallada.CreateAgendaDetallada(Services, pathFile);
 
-            //DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
-            //DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
-            //var frm = new Reports.frmDetallado(strFilterExpression, pdatBeginDate.Value, pdatEndDate.Value);
-            //frm.ShowDialog();
-            
+            _filesNameToMerge.Add(ruta + "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy") + ".pdf");
+
+            _mergeExPDF.FilesName = _filesNameToMerge;
+            //_mergeExPDF.DestinationFile = Application.StartupPath + @"\TempMerge\" + _serviceId + ".pdf";
+            _mergeExPDF.DestinationFile = ruta + "Agenda Detallada" + DateTime.Now.Date.ToString("dd-MM-yyy") + "1.pdf"; ;
+            _mergeExPDF.Execute();
+            _mergeExPDF.RunFile();
+
+            };
 
         }
 

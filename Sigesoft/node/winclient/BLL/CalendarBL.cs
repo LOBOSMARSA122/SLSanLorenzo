@@ -50,14 +50,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                  equals new { a = lc.v_OrganizationId, b = lc.v_LocationId } into lc_join
                            from lc in lc_join.DefaultIfEmpty()
 
-                           //// Empresa / Sede Empleadora *******************************************
-                           //join oe in dbContext.organization on new { a = J.v_EmployerOrganizationId }
-                           //      equals new { a = oe.v_OrganizationId } into oe_join
-                           //from oe in oe_join.DefaultIfEmpty()
+                           // Empresa / Sede Empleadora *******************************************
+                           join oe in dbContext.organization on new { a = J.v_EmployerOrganizationId }
+                                 equals new { a = oe.v_OrganizationId } into oe_join
+                           from oe in oe_join.DefaultIfEmpty()
 
-                           //join le in dbContext.location on new { a = J.v_EmployerOrganizationId, b = J.v_EmployerLocationId }
-                           //       equals new { a = le.v_OrganizationId, b = le.v_LocationId } into le_join
-                           //from le in le_join.DefaultIfEmpty()
+                           join le in dbContext.location on new { a = J.v_EmployerOrganizationId, b = J.v_EmployerLocationId }
+                                  equals new { a = le.v_OrganizationId, b = le.v_LocationId } into le_join
+                           from le in le_join.DefaultIfEmpty()
 
                            // Empresa / Sede Trabajo  ********************************************************
                            join ow in dbContext.organization on new { a = J.v_WorkingOrganizationId }
@@ -142,6 +142,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                 v_OrganizationLocationProtocol = oc.v_Name + " / "+ lc.v_Name,
                                 v_OrganizationLocationService = N.v_Name + " / " + O.v_Name,
+                                v_OrganizationIntermediaryName = oe.v_Name + " / " + le.v_Name,
                                 v_CreationUser = J1.v_UserName,
                                 v_UpdateUser = J2.v_UserName,
                                 d_CreationDate = A.d_InsertDate,
@@ -229,6 +230,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                             v_OrganizationLocationProtocol = a.v_OrganizationLocationProtocol,
                             v_OrganizationLocationService = a.v_OrganizationLocationService,
+                            v_OrganizationIntermediaryName = a.v_OrganizationIntermediaryName,
                             v_CreationUser = a.v_CreationUser,
                             v_UpdateUser = a.v_UpdateUser,
                             d_CreationDate = a.d_CreationDate,
