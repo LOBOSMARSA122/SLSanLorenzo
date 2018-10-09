@@ -13216,9 +13216,11 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							 join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId
 
-							 join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId
+                             join abc in dbContext.organization on E.v_CustomerOrganizationId equals abc.v_OrganizationId //GENERAL
 
-                             join abc in dbContext.organization on E.v_EmployerOrganizationId equals abc.v_OrganizationId
+							 join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId //CONTRATA
+
+                             join abcd in dbContext.organization on E.v_WorkingOrganizationId equals abcd.v_OrganizationId //SUB CONTRATA
                              
 							 join lll in dbContext.location on E.v_EmployerLocationId equals lll.v_LocationId
 
@@ -13283,7 +13285,6 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_PersonId = D.v_PersonId,
 								 d_BirthDate = D.d_Birthdate,
 								 v_EsoTypeName = H.v_Value1,
-								 v_OrganizationPartialName = abc.v_Name,
 								 v_LocationName = lll.v_Name,
 								 v_FirstName = D.v_FirstName,
 								 v_FirstLastName = D.v_FirstLastName,
@@ -13301,7 +13302,11 @@ namespace Sigesoft.Node.WinClient.BLL
 								 GrupoFactorSanguineo = H1.v_Value1 + " - " + H2.v_Value1,
 								 d_FechaExpiracionServicio = sss.d_GlobalExpirationDate,
                                  v_Cie10 =  ddd.v_CIE10Id,
-                                 EmpresaPropietaria = ooo.v_Name
+
+                                 v_OrganizationPartialName = abc.v_Name,
+                                 EmpresaPropietaria = ooo.v_Name,
+                                 EmpresaPropietariaDireccion = abcd.v_Name,
+                                 EmpresaPropietariaEmail = ooo.v_Name + " / " + abcd.v_Name
 
 							 });
 
@@ -13322,7 +13327,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 i_IsDeleted = a.i_IsDeleted,
 							 i_EsoTypeId = a.i_EsoTypeId_Old.ToString(),
 							 v_EsoTypeName = a.v_EsoTypeName,
-							 v_OrganizationName = string.Format("{0}", a.v_OrganizationPartialName),//loco aca se concatena, solo quita el 1 y el nombre
+							 
 							 v_PersonName = string.Format("{0} {1}, {2}", a.v_FirstLastName, a.v_SecondLastName, a.v_FirstName),
 							 v_DocNumber = a.v_DocNumber,
 							 i_Age = a.d_BirthDate == null ? (int?)null : DateTime.Today.AddTicks(-a.d_BirthDate.Value.Ticks).Year - 1,
@@ -13337,17 +13342,20 @@ namespace Sigesoft.Node.WinClient.BLL
 							 v_OccupationName = a.v_OccupationName,  // por ahora se muestra el GESO
 							 g_Image = a.g_Image,
 							 b_Logo = MedicalCenter.b_Image,
-							 EmpresaPropietaria = a.EmpresaPropietaria,
-							 EmpresaPropietariaDireccion = MedicalCenter.v_Address,
-							 EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-							 EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+							 EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,							 
 							 v_ServiceDate = a.d_ServiceDate == null ? string.Empty : a.d_ServiceDate.Value.ToShortDateString(),
 							 d_ServiceDate = a.d_ServiceDate,
 							 i_AptitudeStatusId = a.i_AptitudeStatusId,
 							 v_ObsStatusService = a.v_ObsStatusService,
 							 b_Photo = a.b_Photo,
 							 GrupoFactorSanguineo = a.GrupoFactorSanguineo == null ? "NOAPLICA" : a.GrupoFactorSanguineo,
-							 d_FechaExpiracionServicio = a.d_FechaExpiracionServicio
+							 d_FechaExpiracionServicio = a.d_FechaExpiracionServicio,
+
+                             v_OrganizationName = string.Format("{0}", a.v_OrganizationPartialName),//loco aca se concatena, solo quita el 1 y el nombre
+                             EmpresaPropietaria = a.EmpresaPropietaria,
+                             EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+                             EmpresaPropietariaEmail = a.EmpresaPropietariaEmail
+
 						 }).ToList();
 
 				pobjOperationResult.Success = 1;
