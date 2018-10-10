@@ -21,7 +21,7 @@ namespace NetPdf
         public static void CreateCertificado_Suficiencia_Medica_Trabajo_Altura_V4(ServiceList DataService, string filePDF,
          PacientList datosPac,
          organizationDto infoEmpresaPropietaria, PacientList filiationData,
-         List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos)
+         List<ServiceComponentList> serviceComponent, List<DiagnosticRepositoryList> Diagnosticos, UsuarioGrabo grabo)
         {
             Document document = new Document(PageSize.A4, 40f, 40f, 45f, 41f);
 
@@ -1208,24 +1208,24 @@ namespace NetPdf
             PdfPCell cellHuellaTrabajador = null;
             PdfPCell cellMedico = null;
 
-            if (DataService.FirmaTrabajador != null)
-                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaTrabajador, null, null, 110, 40));
+            if (filiationData.FirmaTrabajador != null)
+                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 110, 40));
             else
                 cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
             cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            if (DataService.HuellaTrabajador != null)
-                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.HuellaTrabajador, null, null, 40, 60));
+            if (filiationData.HuellaTrabajador != null)
+                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 40, 60));
             else
                 cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
             cellHuellaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellHuellaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            if (DataService.FirmaMedicoMedicina != null)
-                cellMedico = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaMedicoMedicina, null, null, 110, 40));
+            if (grabo.Firma != null)
+                cellMedico = new PdfPCell(HandlingItextSharp.GetImage(grabo.Firma, null, null, 110, 40));
             else
                 cellMedico = new PdfPCell(new Phrase(" ", fontColumnValue));
 
