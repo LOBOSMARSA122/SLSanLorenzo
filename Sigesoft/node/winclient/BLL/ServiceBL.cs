@@ -13216,9 +13216,11 @@ namespace Sigesoft.Node.WinClient.BLL
 
 							 join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId
 
-							 join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId
+                             join abc in dbContext.organization on E.v_CustomerOrganizationId equals abc.v_OrganizationId //GENERAL
 
-                             join abc in dbContext.organization on E.v_EmployerOrganizationId equals abc.v_OrganizationId
+							 join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId //CONTRATA
+
+                             join abcd in dbContext.organization on E.v_WorkingOrganizationId equals abcd.v_OrganizationId //SUB CONTRATA
                              
 							 join lll in dbContext.location on E.v_EmployerLocationId equals lll.v_LocationId
 
@@ -13283,7 +13285,6 @@ namespace Sigesoft.Node.WinClient.BLL
 								 v_PersonId = D.v_PersonId,
 								 d_BirthDate = D.d_Birthdate,
 								 v_EsoTypeName = H.v_Value1,
-								 v_OrganizationPartialName = abc.v_Name,
 								 v_LocationName = lll.v_Name,
 								 v_FirstName = D.v_FirstName,
 								 v_FirstLastName = D.v_FirstLastName,
@@ -13301,7 +13302,11 @@ namespace Sigesoft.Node.WinClient.BLL
 								 GrupoFactorSanguineo = H1.v_Value1 + " - " + H2.v_Value1,
 								 d_FechaExpiracionServicio = sss.d_GlobalExpirationDate,
                                  v_Cie10 =  ddd.v_CIE10Id,
-                                 EmpresaPropietaria = ooo.v_Name
+
+                                 v_OrganizationPartialName = abc.v_Name,
+                                 EmpresaPropietaria = ooo.v_Name,
+                                 EmpresaPropietariaDireccion = abcd.v_Name,
+                                 EmpresaPropietariaEmail = ooo.v_Name + " / " + abcd.v_Name
 
 							 });
 
@@ -13322,7 +13327,7 @@ namespace Sigesoft.Node.WinClient.BLL
 							 i_IsDeleted = a.i_IsDeleted,
 							 i_EsoTypeId = a.i_EsoTypeId_Old.ToString(),
 							 v_EsoTypeName = a.v_EsoTypeName,
-							 v_OrganizationName = string.Format("{0}", a.v_OrganizationPartialName),//loco aca se concatena, solo quita el 1 y el nombre
+							 
 							 v_PersonName = string.Format("{0} {1}, {2}", a.v_FirstLastName, a.v_SecondLastName, a.v_FirstName),
 							 v_DocNumber = a.v_DocNumber,
 							 i_Age = a.d_BirthDate == null ? (int?)null : DateTime.Today.AddTicks(-a.d_BirthDate.Value.Ticks).Year - 1,
@@ -13337,17 +13342,20 @@ namespace Sigesoft.Node.WinClient.BLL
 							 v_OccupationName = a.v_OccupationName,  // por ahora se muestra el GESO
 							 g_Image = a.g_Image,
 							 b_Logo = MedicalCenter.b_Image,
-							 EmpresaPropietaria = a.EmpresaPropietaria,
-							 EmpresaPropietariaDireccion = MedicalCenter.v_Address,
-							 EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-							 EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+							 EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,							 
 							 v_ServiceDate = a.d_ServiceDate == null ? string.Empty : a.d_ServiceDate.Value.ToShortDateString(),
 							 d_ServiceDate = a.d_ServiceDate,
 							 i_AptitudeStatusId = a.i_AptitudeStatusId,
 							 v_ObsStatusService = a.v_ObsStatusService,
 							 b_Photo = a.b_Photo,
 							 GrupoFactorSanguineo = a.GrupoFactorSanguineo == null ? "NOAPLICA" : a.GrupoFactorSanguineo,
-							 d_FechaExpiracionServicio = a.d_FechaExpiracionServicio
+							 d_FechaExpiracionServicio = a.d_FechaExpiracionServicio,
+
+                             v_OrganizationName = string.Format("{0}", a.v_OrganizationPartialName),//loco aca se concatena, solo quita el 1 y el nombre
+                             EmpresaPropietaria = a.EmpresaPropietaria,
+                             EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+                             EmpresaPropietariaEmail = a.EmpresaPropietariaEmail
+
 						 }).ToList();
 
 				pobjOperationResult.Success = 1;
@@ -29947,6 +29955,14 @@ namespace Sigesoft.Node.WinClient.BLL
                                       equals new { a = F.i_ParameterId, b = F.i_GroupId } into F_join
                              from F in F_join.DefaultIfEmpty()
 
+                             // Usuario Medico Evaluador / Medico Aprobador ****************************
+                             join me in dbContext.systemuser on A.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+                                 
+
                              where A.v_ServiceId == pstrString &&
                                    A.i_IsDeleted == isDeleted &&
                                    A.i_IsRequiredId == isRequired
@@ -29967,6 +29983,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  v_CategoryName = C.i_CategoryId.Value == -1 ? C.v_Name : F.v_Value1,
                                  v_ServiceId = E.v_ServiceId,
                                  v_ServiceComponentId = A.v_ServiceComponentId,
+                                 ApprovedUpdateUser = me.v_UserName
                              });
 
                 // acá lleno mi entidad padre con la consulta de arriba
@@ -29982,6 +29999,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oCategoria.v_ServiceComponentStatusName = item.v_ServiceComponentStatusName;
                     oCategoria.v_QueueStatusName = item.v_QueueStatusName;
                     oCategoria.i_ServiceComponentStatusId = item.i_ServiceComponentStatusId.Value;
+                    oCategoria.ApprovedUpdateUser = item.ApprovedUpdateUser;
                     xxx.Add(oCategoria);
                 }
 
@@ -30006,6 +30024,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     objCategoriaList.v_ServiceComponentStatusName = obj[i].v_ServiceComponentStatusName;
                     objCategoriaList.v_QueueStatusName = obj[i].v_QueueStatusName;
                     objCategoriaList.i_ServiceComponentStatusId = obj[i].i_ServiceComponentStatusId;
+                    objCategoriaList.ApprovedUpdateUser = obj[i].ApprovedUpdateUser;
                     // en esta variable x obtengo los hijos de un padre (cada bucle me da un padre y con ese id busco sus hijos)
                     var x = query.ToList().FindAll(p => p.i_CategoryId == obj[i].i_CategoryId.Value);
 
@@ -30020,6 +30039,9 @@ namespace Sigesoft.Node.WinClient.BLL
                         objComponentDetailList.v_ComponentId = item.v_ComponentId;
                         objComponentDetailList.v_ComponentName = item.v_ComponentName;
                         objComponentDetailList.v_ServiceComponentId = item.v_ServiceComponentId;
+                        objComponentDetailList.StatusComponentId = item.i_ServiceComponentStatusId.Value;
+                        objComponentDetailList.ApprovedUpdateUser = item.ApprovedUpdateUser;
+                        objComponentDetailList.StatusComponent = item.v_ServiceComponentStatusName;
                         ListaComponentes.Add(objComponentDetailList);
                     }
                     objCategoriaList.Componentes = ListaComponentes;
