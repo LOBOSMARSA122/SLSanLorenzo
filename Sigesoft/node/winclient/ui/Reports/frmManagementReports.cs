@@ -2004,6 +2004,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Informe_Psicologico_Resumen.CreateInforme_Psicologico_Resumen(filiationData, _DataService, serviceComponents, MedicalCenter, datosP, pathFile);
         }
+        private void GenerateCertificado_Suficiencia_Medica_Brigadistas(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
+            Certificado_Suficiencia_Medica_Brigadistas.CreateCertificado_Suficiencia_Medica_Brigadistas(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
         {
@@ -3371,9 +3382,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     var servicesId9 = new List<string>();
                     servicesId9.Add(_serviceId);
                     var componentReportId9 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId9, 7);
-                    var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID, componentReportId9[0].ComponentId);
+                    var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID, Constants.ALTURA_ESTRUCTURAL_ID);
 
-                    //var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);
+                    //var dataListForReport = new PacientBL().GetAlturaEstructural(_serviceId, Constants.ALTURA_ESTRUCTURAL_ID);componentReportId9[0].ComponentId
 
                     dsGetRepo = new DataSet();
 
@@ -5412,6 +5423,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.INFORME_PSICOLOGICO_RESUMEN_ID:
                     GenerateInforme_Psicologico_Resumen(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_PSICOLOGICO_RESUMEN_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.SUF_MED_BRIGADISTAS_ID:
+                    GenerateCertificado_Suficiencia_Medica_Brigadistas(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.SUF_MED_BRIGADISTAS_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 ///GenerateInforme_Resultados_San_Martinm

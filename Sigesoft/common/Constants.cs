@@ -15,6 +15,46 @@ namespace Sigesoft.Common
         public const int HEIGHT_MAX_SIZE_IMAGE = 7000;
         public const int COLUMNAS_POR_CONTROL = 3;
 
+        #region SUFICIENCIA MEDICA BRIGADISTAS
+        public const string SUF_MED_BRIGADISTAS_ID = "N009-ME000000487";
+
+        public const string SUF_MED_BRIGADISTAS_AREA = "N009-MF000004324";
+
+        public const string SUF_MED_BRIGADISTAS_PERSONAL_1 = "N009-MF000004325";
+        public const string SUF_MED_BRIGADISTAS_PERSONAL_2 = "N009-MF000004326";
+        public const string SUF_MED_BRIGADISTAS_PERSONAL_3 = "N009-MF000004327";
+        public const string SUF_MED_BRIGADISTAS_PERSONAL_4 = "N009-MF000004328";
+
+        public const string SUF_MED_BRIGADISTAS_FAMILIAR_1 = "N009-MF000004329";
+        public const string SUF_MED_BRIGADISTAS_FAMILIAR_2 = "N009-MF000004330";
+        public const string SUF_MED_BRIGADISTAS_FAMILIAR_3 = "N009-MF000004331";
+        public const string SUF_MED_BRIGADISTAS_FAMILIAR_4 = "N009-MF000004332";
+        public const string SUF_MED_BRIGADISTAS_FAMILIAR_5 = "N009-MF000004333";
+        public const string SUF_MED_BRIGADISTAS_FAMILIAR_6 = "N009-MF000004334";
+        public const string SUF_MED_BRIGADISTAS_FAMILIAR_7 = "N009-MF000004335";
+        public const string SUF_MED_BRIGADISTAS_FAMILIAR_8 = "N009-MF000004336";
+
+        public const string SUF_MED_BRIGADISTAS_PSIQUIATRICOS_1 = "N009-MF000004337";
+        public const string SUF_MED_BRIGADISTAS_PSIQUIATRICOS_2 = "N009-MF000004338";
+        public const string SUF_MED_BRIGADISTAS_PSIQUIATRICOS_3 = "N009-MF000004339";
+        public const string SUF_MED_BRIGADISTAS_PSIQUIATRICOS_4 = "N009-MF000004340";
+        public const string SUF_MED_BRIGADISTAS_PSIQUIATRICOS_5 = "N009-MF000004341";
+        public const string SUF_MED_BRIGADISTAS_PSIQUIATRICOS_6 = "N009-MF000004342";
+
+        public const string SUF_MED_BRIGADISTAS_OCUPACIONAL_1 = "N009-MF000004343";
+        public const string SUF_MED_BRIGADISTAS_OCUPACIONAL_2 = "N009-MF000004344";
+        public const string SUF_MED_BRIGADISTAS_OCUPACIONAL_3 = "N009-MF000004345";
+        public const string SUF_MED_BRIGADISTAS_OCUPACIONAL_4 = "N009-MF000004346";
+
+        public const string SUF_MED_BRIGADISTAS_PSICOLOGICO_1 = "N009-MF000004347";
+
+        public const string SUF_MED_BRIGADISTAS_APTO_SI = "N009-MF000004348";
+        public const string SUF_MED_BRIGADISTAS_APTO_NO = "N009-MF000004349";
+
+
+
+        #endregion
+
         #region
         public const string ODONTO_SIMPLE_ID = "N009-ME000000472";
         public const string ODONTO_SIMPLE_PIEZAS_FALTANTES = "N009-MF000004323";
