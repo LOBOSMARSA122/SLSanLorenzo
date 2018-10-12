@@ -16392,6 +16392,18 @@ namespace Sigesoft.Node.WinClient.BLL
 								 from pme in pme_join.DefaultIfEmpty()
 								 //**************************************************************************************
 
+                                 join BB in dbContext.protocol on A.v_ProtocolId equals BB.v_ProtocolId into BB_join
+                                 from BB in BB_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on BB.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+
+                                 join C2 in dbContext.organization on BB.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
+                                 from C2 in C2_join.DefaultIfEmpty()
+
+                                 join C1 in dbContext.organization on BB.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
 
 								 join Z in dbContext.person on me.v_PersonId equals Z.v_PersonId
 
@@ -16404,7 +16416,12 @@ namespace Sigesoft.Node.WinClient.BLL
 									 Puesto = B.v_CurrentOccupation,
 									 Ficha = E.v_ServiceComponentId,
 									 FirmaMedico = pme.b_SignatureImage,
-									 Empresa = J.v_Name,
+
+                                     EmpresaPropietaria = C2.v_Name,
+                                     Empresa = C1.v_Name,
+                                     EmpresaPropietariaEmail = C.v_Name,
+                                     EmpresaPropietariaDireccion = C1.v_Name + " / " + C.v_Name,
+
 									 NombreUsuarioGraba = Z.v_FirstLastName + " " + Z.v_SecondLastName + " " + Z.v_FirstName,
 								 });
 
@@ -16423,7 +16440,12 @@ namespace Sigesoft.Node.WinClient.BLL
 							   Puesto = a.Puesto,
 							   Ficha = a.Ficha,
 							   FirmaMedico = a.FirmaMedico,
+                               
+                               EmpresaPropietaria = a.EmpresaPropietaria,
 							   Empresa = a.Empresa,
+                               EmpresaPropietariaEmail = a.EmpresaPropietariaEmail,
+                               EmpresaPropietariaDireccion = a.EmpresaPropietariaDireccion,
+
 							   Tabaco = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TABACO_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TABACO_ID).Valor,
 							   Diabetes = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_DIABETES_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_DIABETES_ID).Valor,
 							   Tbc = ValorCampos.Count() == 0 || ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TBC_ID) == null ? string.Empty : ValorCampos.Find(p => p.IdCampo == Constants.ODONTOGRAMA_TBC_ID).Valor,
@@ -16716,10 +16738,10 @@ namespace Sigesoft.Node.WinClient.BLL
 							   PiezasCuracion = NroDientesCurados(ListaDiente),
 
 							   b_Logo = MedicalCenter.b_Image,
-							   EmpresaPropietaria = MedicalCenter.v_Name,
-							   EmpresaPropietariaDireccion = MedicalCenter.v_Address,
+							   //EmpresaPropietaria = MedicalCenter.v_Name,
+							   //EmpresaPropietariaDireccion = MedicalCenter.v_Address,
 							   EmpresaPropietariaTelefono = MedicalCenter.v_PhoneNumber,
-							   EmpresaPropietariaEmail = MedicalCenter.v_Mail,
+							   //EmpresaPropietariaEmail = MedicalCenter.v_Mail,
 							   NombreUsuarioGraba = a.NombreUsuarioGraba,
 							   Recomendaciones = GetRecommendationByServiceIdAndComponent(pstrserviceId, pstrComponentId),
 							   Otros = Test.Count() == 0 || Test.Find(p => p.v_ComponentFieldId == Constants.Otros) == null ? string.Empty : Test.Find(p => p.v_ComponentFieldId == Constants.Otros).v_Value1,
