@@ -2896,6 +2896,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         }
 
         private void SaveExamBySelectedTab(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
+        
         {
             // Desactivar el flag de hubo alguna modificacion
             _isChangeValue = false;
