@@ -351,7 +351,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     btnAceptarDX.Enabled = false;
                     tcSubMain.TabPages.Remove(tpAnalisisDx);
                     tcSubMain.TabPages.Remove(tpConclusion);
-                    tcSubMain.TabPages.Remove(tpAntecedentes);
+                    //tcSubMain.TabPages.Remove(tpAntecedentes);
                     tcSubMain.TabPages.Remove(General);
                 }
 
