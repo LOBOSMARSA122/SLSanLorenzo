@@ -27162,7 +27162,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                Benzodiacepinas = Benzo.Count == 0 ? "N/A" : Benzo.Find(p => p.v_ComponentFieldId == "N009-MF000000395") == null ? "N/A" : Benzo.Find(p => p.v_ComponentFieldId == "N009-MF000000395").v_Value1Name,
                                Barbituricos = Barbi.Count == 0 ? "N/A" : Barbi.Find(p => p.v_ComponentFieldId == "N009-MF000003213") == null ? "N/A" : Barbi.Find(p => p.v_ComponentFieldId == "N009-MF000003213").v_Value1Name,
                                
-                               //NombreUsuarioGraba = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307").v_Value1Name,
+                               NombreUsuarioGraba = TOXICOLOGICO_COCAINA_MARIHUANA.Count == 0 ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307") == null ? "N/A" : TOXICOLOGICO_COCAINA_MARIHUANA.Find(p => p.v_ComponentFieldId == "N009-MF000004307").v_Value1,
 
                            }).ToList();
 

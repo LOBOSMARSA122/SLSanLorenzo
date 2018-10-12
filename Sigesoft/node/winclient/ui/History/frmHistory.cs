@@ -1165,8 +1165,14 @@ namespace Sigesoft.Node.WinClient.UI
 
                 }
             }
+
+
             if (e.Button == MouseButtons.Right)
             {
+                //grdDataNoxiousHabits
+
+                //string habitoNoc = grdDataNoxiousHabits.Selected.Rows[0].Cells["v_NoxiousHabitsId"].Value.ToString();
+
                 Point point = new System.Drawing.Point(e.X, e.Y);
                 Infragistics.Win.UIElement uiElement = ((Infragistics.Win.UltraWinGrid.UltraGridBase)sender).DisplayLayout.UIElement.ElementFromPoint(point);
 
