@@ -1186,9 +1186,22 @@ namespace Sigesoft.Node.WinClient.UI
                     grdDataNoxiousHabits.Rows[row.Index].Selected = true;
                     contextMenuNoxiousHabits.Items["ToolStripMenuEditNoxiousHabits"].Enabled = true;
 
+                    _Comment = grdDataNoxiousHabits.Selected.Rows[0].Cells[4].Value.ToString();
+
+                    if (grdDataNoxiousHabits.Selected.Rows[0].Cells[0].Value == null)
+                    {
+                        _NoxiousHabitsName = grdDataNoxiousHabits.Selected.Rows[0].Cells["v_TypeHabitsName"].Value.ToString();
+                    }
+                    else
+                    {
+                        _NoxiousHabitsName = grdDataNoxiousHabits.Selected.Rows[0].Cells["v_TypeHabitsName"].Value.ToString();
+                    }
+
+
                     //_NoxiousHabitsName = grdDataNoxiousHabits.Selected.Rows[0].Cells[1].Value.ToString();
                     _Frecuency = grdDataNoxiousHabits.Rows[row.Index].Cells[3].Value.ToString();
-                    _Comment = grdDataNoxiousHabits.Rows[row.Index].Cells[4].Value.ToString();
+                    _NoxiousHabitsId = grdDataNoxiousHabits.Selected.Rows[0].Cells["v_NoxiousHabitsId"].Value.ToString();
+                    //_Comment = grdDataNoxiousHabits.Rows[row.Index].Cells[4].Value.ToString();
                     _objNoxiousHabitsyamc = _TempNoxiousHabitsList.FindAll(p => p.v_NoxiousHabitsId == _NoxiousHabitsId).FirstOrDefault();
                     _IndexNoxiousHabitsList = _TempNoxiousHabitsList.FindIndex(p => p.v_NoxiousHabitsId == _NoxiousHabitsId);
                 }
