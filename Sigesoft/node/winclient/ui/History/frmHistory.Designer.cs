@@ -150,6 +150,11 @@
             this.treeViewPersonMedical = new System.Windows.Forms.TreeView();
             this.btnMovePersonMedical = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textReligion = new System.Windows.Forms.TextBox();
+            this.textNacionalidad = new System.Windows.Forms.TextBox();
+            this.textHijos = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtReligión = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.txtFNac = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -184,11 +189,6 @@
             this.pbEmployee = new System.Windows.Forms.PictureBox();
             this.ZKFPEngX1 = new AxZKFPEngXControl.AxZKFPEngX();
             this.ultraToolTipManager1 = new Infragistics.Win.UltraWinToolTip.UltraToolTipManager(this.components);
-            this.txtReligión = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textHijos = new System.Windows.Forms.TextBox();
-            this.textNacionalidad = new System.Windows.Forms.TextBox();
-            this.textReligion = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1266,6 +1266,55 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos del Trabajador";
             // 
+            // textReligion
+            // 
+            this.textReligion.Enabled = false;
+            this.textReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textReligion.Location = new System.Drawing.Point(317, 114);
+            this.textReligion.Name = "textReligion";
+            this.textReligion.Size = new System.Drawing.Size(144, 20);
+            this.textReligion.TabIndex = 127;
+            // 
+            // textNacionalidad
+            // 
+            this.textNacionalidad.Enabled = false;
+            this.textNacionalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textNacionalidad.Location = new System.Drawing.Point(98, 112);
+            this.textNacionalidad.Name = "textNacionalidad";
+            this.textNacionalidad.Size = new System.Drawing.Size(144, 20);
+            this.textNacionalidad.TabIndex = 126;
+            // 
+            // textHijos
+            // 
+            this.textHijos.Enabled = false;
+            this.textHijos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textHijos.Location = new System.Drawing.Point(534, 84);
+            this.textHijos.Name = "textHijos";
+            this.textHijos.Size = new System.Drawing.Size(101, 20);
+            this.textHijos.TabIndex = 125;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(23, 115);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(69, 13);
+            this.label12.TabIndex = 124;
+            this.label12.Text = "Nacionalidad";
+            // 
+            // txtReligión
+            // 
+            this.txtReligión.AutoSize = true;
+            this.txtReligión.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReligión.ForeColor = System.Drawing.Color.Black;
+            this.txtReligión.Location = new System.Drawing.Point(266, 117);
+            this.txtReligión.Name = "txtReligión";
+            this.txtReligión.Size = new System.Drawing.Size(45, 13);
+            this.txtReligión.TabIndex = 122;
+            this.txtReligión.Text = "Religión";
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -1629,55 +1678,6 @@
             // ultraToolTipManager1
             // 
             this.ultraToolTipManager1.ContainingControl = this;
-            // 
-            // txtReligión
-            // 
-            this.txtReligión.AutoSize = true;
-            this.txtReligión.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtReligión.ForeColor = System.Drawing.Color.Black;
-            this.txtReligión.Location = new System.Drawing.Point(266, 117);
-            this.txtReligión.Name = "txtReligión";
-            this.txtReligión.Size = new System.Drawing.Size(45, 13);
-            this.txtReligión.TabIndex = 122;
-            this.txtReligión.Text = "Religión";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(23, 115);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(69, 13);
-            this.label12.TabIndex = 124;
-            this.label12.Text = "Nacionalidad";
-            // 
-            // textHijos
-            // 
-            this.textHijos.Enabled = false;
-            this.textHijos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textHijos.Location = new System.Drawing.Point(534, 84);
-            this.textHijos.Name = "textHijos";
-            this.textHijos.Size = new System.Drawing.Size(101, 20);
-            this.textHijos.TabIndex = 125;
-            // 
-            // textNacionalidad
-            // 
-            this.textNacionalidad.Enabled = false;
-            this.textNacionalidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textNacionalidad.Location = new System.Drawing.Point(98, 112);
-            this.textNacionalidad.Name = "textNacionalidad";
-            this.textNacionalidad.Size = new System.Drawing.Size(144, 20);
-            this.textNacionalidad.TabIndex = 126;
-            // 
-            // textReligion
-            // 
-            this.textReligion.Enabled = false;
-            this.textReligion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textReligion.Location = new System.Drawing.Point(317, 114);
-            this.textReligion.Name = "textReligion";
-            this.textReligion.Size = new System.Drawing.Size(144, 20);
-            this.textReligion.TabIndex = 127;
             // 
             // frmHistory
             // 

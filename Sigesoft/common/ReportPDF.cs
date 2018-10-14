@@ -11559,11 +11559,11 @@ namespace NetPdf
                     new PdfPCell(new Phrase("NO APTO", fontColumnValue)){ HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     new PdfPCell(NoApto){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
-                    new PdfPCell(new Phrase("APTO CON RESTRICCIONES", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(AptoConRestricciones){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                    //Linea
-                    new PdfPCell(new Phrase("OBSERVADO", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(AptoObs){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
+                    new PdfPCell(new Phrase("", fontColumnValue)){HorizontalAlignment = PdfPCell.ALIGN_CENTER},
+                    new PdfPCell(){ HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //line
@@ -22711,7 +22711,7 @@ namespace NetPdf
                     new PdfPCell(new Phrase("  ", fontColumnValue)){Rowspan = 8, Colspan=2,Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
-                    new PdfPCell(cellFirmaDoctor){Rowspan = 8, Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
+                    new PdfPCell(cellFirmaDoctor){Rowspan = 10, Colspan=6, HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     //Linea
@@ -22723,11 +22723,11 @@ namespace NetPdf
                     new PdfPCell(new Phrase("NO APTO", fontColumnValue2)){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                     new PdfPCell(NoApto){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                       //Linea
-                    new PdfPCell(new Phrase("APTO CON RESTRICCIONES", fontColumnValue2)){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(AptoConRestricciones){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
+                    new PdfPCell(new Phrase("", fontColumnValue2)){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                    //Linea
-                    new PdfPCell(new Phrase("OBSERVADO", fontColumnValue2)){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
-                    new PdfPCell(AptoObs){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
+                    new PdfPCell(new Phrase("", fontColumnValue2)){Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
+                    new PdfPCell(){ Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER }, 
                     //Linea
                     new PdfPCell(new Phrase("  ", fontColumnValue)){ Colspan=2,Border = PdfPCell.NO_BORDER ,HorizontalAlignment = PdfPCell.ALIGN_CENTER},
                     

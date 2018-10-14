@@ -355,6 +355,9 @@ namespace Sigesoft.Node.WinClient.BE
         public string RestriccionConcatenadas { get; set; }
         public string ConclusionLabo { get; set; }
        
+        //
+        public string VLDL { get; set; }
+        public string CoeficienteIntelectual { get; set; } //goldfields
 
     }
 }
