@@ -10950,6 +10950,12 @@ namespace Sigesoft.Node.WinClient.BLL
 							join J in dbContext.organization on I.v_EmployerOrganizationId equals J.v_OrganizationId into J_join
 							from J in J_join.DefaultIfEmpty()
 
+                            join J11 in dbContext.organization on I.v_CustomerOrganizationId equals J11.v_OrganizationId into J11_join
+                            from J11 in J11_join.DefaultIfEmpty()
+
+                            join J22 in dbContext.organization on I.v_WorkingOrganizationId equals J22.v_OrganizationId into J22_join
+                            from J22 in J22_join.DefaultIfEmpty()
+
 							join K in dbContext.location on I.v_EmployerLocationId equals K.v_LocationId into K_join
 							from K in K_join.DefaultIfEmpty()
 
@@ -11032,7 +11038,9 @@ namespace Sigesoft.Node.WinClient.BLL
 								i_IsDeleted = F1.i_IsDeleted.Value,
 								i_IsDeletedDx = C.i_IsDeleted,
 								i_IsDeletedRecomendaciones = E.i_IsDeleted,
-								i_IsDeletedRestricciones = E1.i_IsDeleted
+								i_IsDeletedRestricciones = E1.i_IsDeleted,
+                                CompMinera = J11.v_Name,
+                                Tercero = J22.v_Name
 							};
 
 				if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -11121,11 +11129,12 @@ namespace Sigesoft.Node.WinClient.BLL
 					item.i_FinalQualificationId = item.i_FinalQualificationId;
 					item.d_Deducible = item.d_Deducible;
 					item.i_IsDeleted = item.i_IsDeleted;
+                    item.CompMinera = item.CompMinera;
+                    item.Tercero = item.Tercero;
+
 
 					FacturacionConSinDeducible.Add(item);
 					//}
-
-
 				}
 
 				List<ServiceGridJerarquizadaList> objData = FacturacionConSinDeducible.ToList();
@@ -11145,6 +11154,8 @@ namespace Sigesoft.Node.WinClient.BLL
 				var ServiciosDxs2 = objData.GroupBy(g => new { g.v_ServiceId, g.v_DiagnosticRepositoryId, g.v_ComponentId })
 							   .Select(s => s.First()).ToList();
 
+
+            
 
 
 				//Cargar List<DiagnosticRepositoryJerarquizada> donde se encuentra los DX
@@ -11176,7 +11187,6 @@ namespace Sigesoft.Node.WinClient.BLL
 				{
 					a.Diagnosticos = (ListDx.FindAll(p => p.v_ServiceId == a.v_ServiceId));
 				});
-
 
 				if (componentIds != null)
 				{
