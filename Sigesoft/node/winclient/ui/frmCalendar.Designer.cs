@@ -59,6 +59,9 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn62 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombres");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn63 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ApePaterno");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn64 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ApeMaterno");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CompMinera");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tercero");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Empresa");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -564,19 +567,19 @@
             ultraGridColumn20.Hidden = true;
             ultraGridColumn20.Width = 135;
             ultraGridColumn21.Header.Caption = "Estado Servicio";
-            ultraGridColumn21.Header.VisiblePosition = 20;
+            ultraGridColumn21.Header.VisiblePosition = 23;
             ultraGridColumn21.Hidden = true;
             ultraGridColumn22.Format = "hh:mm tt";
             ultraGridColumn22.Header.Caption = "Hora Salida";
             ultraGridColumn22.Header.VisiblePosition = 3;
             ultraGridColumn22.Width = 89;
             ultraGridColumn23.Header.Caption = "Estado Aptitud";
-            ultraGridColumn23.Header.VisiblePosition = 19;
+            ultraGridColumn23.Header.VisiblePosition = 22;
             ultraGridColumn25.Header.Caption = "Tipo Servicio";
-            ultraGridColumn25.Header.VisiblePosition = 17;
+            ultraGridColumn25.Header.VisiblePosition = 20;
             ultraGridColumn25.Hidden = true;
             ultraGridColumn26.Header.Caption = "Servicio";
-            ultraGridColumn26.Header.VisiblePosition = 18;
+            ultraGridColumn26.Header.VisiblePosition = 21;
             ultraGridColumn26.Hidden = true;
             ultraGridColumn26.Width = 161;
             ultraGridColumn27.Header.Caption = "Modalidad";
@@ -584,40 +587,40 @@
             ultraGridColumn27.Hidden = true;
             ultraGridColumn27.Width = 152;
             ultraGridColumn28.Header.Caption = "Tipo de Eso";
-            ultraGridColumn28.Header.VisiblePosition = 13;
+            ultraGridColumn28.Header.VisiblePosition = 16;
             ultraGridColumn28.Width = 184;
             ultraGridColumn29.Header.Caption = "Estado Cita";
-            ultraGridColumn29.Header.VisiblePosition = 16;
+            ultraGridColumn29.Header.VisiblePosition = 19;
             ultraGridColumn30.Header.Caption = "Protocolo";
-            ultraGridColumn30.Header.VisiblePosition = 21;
+            ultraGridColumn30.Header.VisiblePosition = 24;
             ultraGridColumn30.Hidden = true;
             ultraGridColumn30.Width = 233;
             ultraGridColumn33.Header.Caption = "Es Vip";
-            ultraGridColumn33.Header.VisiblePosition = 22;
+            ultraGridColumn33.Header.VisiblePosition = 25;
             ultraGridColumn33.Hidden = true;
             ultraGridColumn34.Header.Caption = "Usuario Crea.";
-            ultraGridColumn34.Header.VisiblePosition = 24;
+            ultraGridColumn34.Header.VisiblePosition = 27;
             ultraGridColumn34.Hidden = true;
             ultraGridColumn34.Width = 125;
             ultraGridColumn35.Format = "dd/MM/yyyy hh:mm tt";
             ultraGridColumn35.Header.Caption = "Fecha Crea.";
-            ultraGridColumn35.Header.VisiblePosition = 25;
+            ultraGridColumn35.Header.VisiblePosition = 28;
             ultraGridColumn35.Hidden = true;
             ultraGridColumn35.Width = 150;
             ultraGridColumn36.Header.Caption = "Usuario Act.";
-            ultraGridColumn36.Header.VisiblePosition = 26;
+            ultraGridColumn36.Header.VisiblePosition = 29;
             ultraGridColumn36.Hidden = true;
             ultraGridColumn36.Width = 125;
             ultraGridColumn54.Format = "dd/MM/yyyy hh:mm tt";
             ultraGridColumn54.Header.Caption = "Fecha Act.";
-            ultraGridColumn54.Header.VisiblePosition = 27;
+            ultraGridColumn54.Header.VisiblePosition = 30;
             ultraGridColumn54.Hidden = true;
             ultraGridColumn54.Width = 150;
             ultraGridColumn55.Header.Caption = "Empresa / Sede de Protocolo";
-            ultraGridColumn55.Header.VisiblePosition = 12;
+            ultraGridColumn55.Header.VisiblePosition = 13;
             ultraGridColumn55.Width = 355;
             ultraGridColumn56.Header.Caption = "Empresa / Sede de Servicio";
-            ultraGridColumn56.Header.VisiblePosition = 23;
+            ultraGridColumn56.Header.VisiblePosition = 26;
             ultraGridColumn56.Hidden = true;
             ultraGridColumn56.Width = 371;
             ultraGridColumn57.Format = "hh:mm tt";
@@ -631,12 +634,17 @@
             ultraGridColumn59.Header.Caption = "Edad";
             ultraGridColumn59.Header.VisiblePosition = 9;
             ultraGridColumn60.Header.Caption = "Grupo de Riesgo";
-            ultraGridColumn60.Header.VisiblePosition = 14;
+            ultraGridColumn60.Header.VisiblePosition = 17;
             ultraGridColumn61.Header.Caption = "Puesto al que postula";
-            ultraGridColumn61.Header.VisiblePosition = 15;
+            ultraGridColumn61.Header.VisiblePosition = 18;
             ultraGridColumn62.Header.VisiblePosition = 6;
             ultraGridColumn63.Header.VisiblePosition = 4;
             ultraGridColumn64.Header.VisiblePosition = 5;
+            ultraGridColumn3.Header.VisiblePosition = 14;
+            ultraGridColumn3.Width = 167;
+            ultraGridColumn4.Header.VisiblePosition = 15;
+            ultraGridColumn4.Width = 196;
+            ultraGridColumn5.Header.VisiblePosition = 12;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn13,
             ultraGridColumn14,
@@ -665,7 +673,10 @@
             ultraGridColumn61,
             ultraGridColumn62,
             ultraGridColumn63,
-            ultraGridColumn64});
+            ultraGridColumn64,
+            ultraGridColumn3,
+            ultraGridColumn4,
+            ultraGridColumn5});
             this.grdDataCalendar.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdDataCalendar.DisplayLayout.InterBandSpacing = 10;
             this.grdDataCalendar.DisplayLayout.MaxColScrollRegions = 1;

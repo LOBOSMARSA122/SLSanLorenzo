@@ -11040,7 +11040,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								i_IsDeletedRecomendaciones = E.i_IsDeleted,
 								i_IsDeletedRestricciones = E1.i_IsDeleted,
                                 CompMinera = J11.v_Name,
-                                Tercero = J22.v_Name
+                                Tercero = J22.v_Name,
+                                i_ApprovedUpdateUserId = M.i_ApprovedUpdateUserId.Value
 							};
 
 				if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -11131,6 +11132,7 @@ namespace Sigesoft.Node.WinClient.BLL
 					item.i_IsDeleted = item.i_IsDeleted;
                     item.CompMinera = item.CompMinera;
                     item.Tercero = item.Tercero;
+                    item.i_ApprovedUpdateUserId = item.i_ApprovedUpdateUserId;
 
 
 					FacturacionConSinDeducible.Add(item);

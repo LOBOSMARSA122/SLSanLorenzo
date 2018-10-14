@@ -67,5 +67,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string CompMinera { get; set; }
         public string Tercero{ get; set; }
         public int item { get; set; }
+        public int i_ApprovedUpdateUserId { get; set; }
     }
 }

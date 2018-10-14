@@ -105,8 +105,8 @@ namespace Sigesoft.Node.WinClient.UI
              groupComponentList.AddRange(_componentListTemp.ToList().FindAll(p => p.Value4 == -1));
              // Remover los componentes que no estan asignados al rol del usuario
              var results = groupComponentList.FindAll(f => componentProfile.Any(t => t.v_ComponentId == f.Value2));
-         
 
+             Utils.LoadDropDownList(cboUserMed, "Value1", "Id", BLL.Utils.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
           
             Utils.LoadDropDownList(ddlConsultorio, "Value1", "Id", results, DropDownListAction.Select);
 
@@ -207,6 +207,8 @@ namespace Sigesoft.Node.WinClient.UI
             if (ddlEsoType.SelectedValue.ToString() != "-1") Filters.Add("i_EsoTypeId==" + ddlEsoType.SelectedValue);
             if (ddlProtocolId.SelectedValue.ToString() != "-1") Filters.Add("v_ProtocolId=="+ "\"" + ddlProtocolId.SelectedValue + "\"");
             if (ddlStatusAptitudId.SelectedValue.ToString() != "-1") Filters.Add("i_AptitudeStatusId==" + ddlStatusAptitudId.SelectedValue);
+            if (cboUserMed.SelectedValue.ToString() != "-1") Filters.Add("i_ApprovedUpdateUserId==" + cboUserMed.SelectedValue);
+            
             
             // Create the Filter Expression
             strFilterExpression = null;   
