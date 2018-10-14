@@ -16,14 +16,14 @@ namespace Sigesoft.Node.WinClient.UI.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class crDiagnosticsByAgeGroup : ReportClass {
+    public class crReporteGerencia : ReportClass {
         
-        public crDiagnosticsByAgeGroup() {
+        public crReporteGerencia() {
         }
         
         public override string ResourceName {
             get {
-                return "crDiagnosticsByAgeGroup.rpt";
+                return "crReporteGerencia.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports {
         
         public override string FullResourceName {
             get {
-                return "Sigesoft.Node.WinClient.UI.Reports.crDiagnosticsByAgeGroup.rpt";
+                return "Sigesoft.Node.WinClient.UI.Reports.crReporteGerencia.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedcrDiagnosticsByAgeGroup : Component, ICachedReport {
+    public class CachedcrReporteGerencia : Component, ICachedReport {
         
-        public CachedcrDiagnosticsByAgeGroup() {
+        public CachedcrReporteGerencia() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            crDiagnosticsByAgeGroup rpt = new crDiagnosticsByAgeGroup();
+            crReporteGerencia rpt = new crReporteGerencia();
             rpt.Site = this.Site;
             return rpt;
         }

@@ -71,6 +71,8 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmService));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cboUserMed = new System.Windows.Forms.ComboBox();
+            this.label18 = new System.Windows.Forms.Label();
             this.cboHistoriaGenerada = new System.Windows.Forms.ComboBox();
             this.label17 = new System.Windows.Forms.Label();
             this.txtDiagnostico = new System.Windows.Forms.TextBox();
@@ -158,8 +160,6 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
-            this.cboUserMed = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -212,6 +212,30 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // cboUserMed
+            // 
+            this.cboUserMed.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboUserMed.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboUserMed.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboUserMed.FormattingEnabled = true;
+            this.cboUserMed.Location = new System.Drawing.Point(720, 94);
+            this.cboUserMed.Margin = new System.Windows.Forms.Padding(2);
+            this.cboUserMed.Name = "cboUserMed";
+            this.cboUserMed.Size = new System.Drawing.Size(123, 21);
+            this.cboUserMed.TabIndex = 142;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(668, 98);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(52, 13);
+            this.label18.TabIndex = 141;
+            this.label18.Text = "User Med";
             // 
             // cboHistoriaGenerada
             // 
@@ -1897,30 +1921,6 @@
             this.btnImprimirCertificadoAptitud.UseVisualStyleBackColor = false;
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
-            // 
-            // cboUserMed
-            // 
-            this.cboUserMed.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cboUserMed.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cboUserMed.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboUserMed.FormattingEnabled = true;
-            this.cboUserMed.Location = new System.Drawing.Point(720, 94);
-            this.cboUserMed.Margin = new System.Windows.Forms.Padding(2);
-            this.cboUserMed.Name = "cboUserMed";
-            this.cboUserMed.Size = new System.Drawing.Size(123, 21);
-            this.cboUserMed.TabIndex = 142;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(668, 98);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(52, 13);
-            this.label18.TabIndex = 141;
-            this.label18.Text = "User Med";
             // 
             // frmService
             // 
