@@ -95,13 +95,13 @@
             this.rbValorizado.Name = "rbValorizado";
             this.rbValorizado.Size = new System.Drawing.Size(74, 17);
             this.rbValorizado.TabIndex = 1;
-            this.rbValorizado.TabStop = true;
             this.rbValorizado.Text = "Valorizado";
             this.rbValorizado.UseVisualStyleBackColor = true;
             // 
             // rbCantidad
             // 
             this.rbCantidad.AutoSize = true;
+            this.rbCantidad.Checked = true;
             this.rbCantidad.Location = new System.Drawing.Point(7, 10);
             this.rbCantidad.Name = "rbCantidad";
             this.rbCantidad.Size = new System.Drawing.Size(85, 17);
@@ -151,7 +151,7 @@
             this.cboTipoEmpresa.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cboTipoEmpresa.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.cboTipoEmpresa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoEmpresa.DropDownWidth = 400;
+            this.cboTipoEmpresa.DropDownWidth = 150;
             this.cboTipoEmpresa.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboTipoEmpresa.FormattingEnabled = true;
             this.cboTipoEmpresa.Items.AddRange(new object[] {

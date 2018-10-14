@@ -10914,112 +10914,142 @@ namespace Sigesoft.Node.WinClient.BLL
                
                 if (tipoEmpresa=="Cliente")
                 {
-                   var query = from A in dbContext.service
-                                join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
-                                join C in dbContext.organization on B.v_CustomerOrganizationId equals C.v_OrganizationId
-                               join D in dbContext.servicecomponent on A.v_ServiceId equals D.v_ServiceId
-                                where A.i_IsDeleted == 0
-                                    && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && D.i_IsRequiredId == 1
-                                select new ReporteGerencia
-                                {
-                                    ServiceId = A.v_ServiceId,
-                                    OrganizationId = C.v_OrganizationId,
-                                    i_ServiceTypeId = B.i_MasterServiceTypeId.Value,
-                                    i_MasterServiceId = A.i_MasterServiceId.Value,
-                                    i_EsoTypeId = B.i_EsoTypeId.Value,
-                                    Empresa = C.v_Name,
-                                    Precio = D.r_Price
-                                };
-                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    if (modo == "Cantidad")
                     {
-                        query = query.Where(pstrFilterExpression);
-                    }
-
-                    List<ReporteGerencia> objData = query.ToList();
-
-                    objData = objData.GroupBy(p => p.OrganizationId)
-                                    .Select(s => new ReporteGerencia
+                        var query = from A in dbContext.service
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
+                                    join C in dbContext.organization on B.v_CustomerOrganizationId equals C.v_OrganizationId
+                                    join D in dbContext.servicecomponent on A.v_ServiceId equals D.v_ServiceId
+                                    where A.i_IsDeleted == 0
+                                        && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && D.i_IsRequiredId == 1
+                                    select new ReporteGerencia
                                     {
-                                        Empresa = s.First().Empresa,
-                                        OrganizationId = s.First().OrganizationId,
-                                        NroTrabajadores = s.Count(),
-                                        Total = s.Sum(c => c.Precio)
-                                    }).ToList();
+                                        ServiceId = A.v_ServiceId,
+                                        OrganizationId = C.v_OrganizationId,
+                                        i_ServiceTypeId = B.i_MasterServiceTypeId.Value,
+                                        i_MasterServiceId = A.i_MasterServiceId.Value,
+                                        i_EsoTypeId = B.i_EsoTypeId.Value,
+                                        Empresa = C.v_Name,
+                                        Precio = D.r_Price,
+                                        i_IsFac = A.i_IsFac
+                                    };
+                        if (!string.IsNullOrEmpty(pstrFilterExpression))
+                        {
+                            query = query.Where(pstrFilterExpression);
+                        }
 
-                    return objData;
+                        List<ReporteGerencia> objData = query.ToList();
+
+                        objData = objData.GroupBy(p => p.OrganizationId)
+                                        .Select(s => new ReporteGerencia
+                                        {
+                                            Empresa = s.First().Empresa,
+                                            OrganizationId = s.First().OrganizationId,
+                                            NroTrabajadores = s.Count(),
+                                            Total = s.Sum(c => c.Precio),
+                                            Cancelado = s.Where(w => w.i_IsFac == 1).Sum(c => c.Precio),
+                                            Saldo = s.Where(w => w.i_IsFac == 0).Sum(c => c.Precio),
+                                        }).ToList();
+
+                        return objData;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                   
 
                 }
                 else if (tipoEmpresa == "Empleadora")
                 {
-                    var query = from A in dbContext.service
-                                join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
-                                join C in dbContext.organization on B.v_EmployerOrganizationId equals C.v_OrganizationId
-                                join D in dbContext.servicecomponent on A.v_ServiceId equals D.v_ServiceId
-                                where A.i_IsDeleted == 0
-                                    && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && D.i_IsRequiredId == 1
-                                select new ReporteGerencia
-                                {
-                                    ServiceId = A.v_ServiceId,
-                                    OrganizationId = C.v_OrganizationId,
-                                    i_ServiceTypeId = B.i_MasterServiceTypeId.Value,
-                                    i_MasterServiceId = A.i_MasterServiceId.Value,
-                                    i_EsoTypeId = B.i_EsoTypeId.Value,
-                                    Empresa = C.v_Name,
-                                    Precio = D.r_Price
-                                };
-                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    if (modo == "Cantidad")
                     {
-                        query = query.Where(pstrFilterExpression);
-                    }
-
-                    List<ReporteGerencia> objData = query.ToList();
-
-                    objData = objData.GroupBy(p => p.OrganizationId)
-                                    .Select(s => new ReporteGerencia
+                        var query = from A in dbContext.service
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
+                                    join C in dbContext.organization on B.v_EmployerOrganizationId equals C.v_OrganizationId
+                                    join D in dbContext.servicecomponent on A.v_ServiceId equals D.v_ServiceId
+                                    where A.i_IsDeleted == 0
+                                        && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && D.i_IsRequiredId == 1
+                                    select new ReporteGerencia
                                     {
-                                        Empresa = s.First().Empresa,
-                                        OrganizationId = s.First().OrganizationId,
-                                        NroTrabajadores = s.Count(),
-                                        Total = s.Sum(c => c.Precio)
-                                    }).ToList();
+                                        ServiceId = A.v_ServiceId,
+                                        OrganizationId = C.v_OrganizationId,
+                                        i_ServiceTypeId = B.i_MasterServiceTypeId.Value,
+                                        i_MasterServiceId = A.i_MasterServiceId.Value,
+                                        i_EsoTypeId = B.i_EsoTypeId.Value,
+                                        Empresa = C.v_Name,
+                                        Precio = D.r_Price
+                                    };
+                        if (!string.IsNullOrEmpty(pstrFilterExpression))
+                        {
+                            query = query.Where(pstrFilterExpression);
+                        }
 
-                    return objData;
+                        List<ReporteGerencia> objData = query.ToList();
+
+                        objData = objData.GroupBy(p => p.OrganizationId)
+                                        .Select(s => new ReporteGerencia
+                                        {
+                                            Empresa = s.First().Empresa,
+                                            OrganizationId = s.First().OrganizationId,
+                                            NroTrabajadores = s.Count(),
+                                            Total = s.Sum(c => c.Precio),
+                                            Cancelado = s.Where(w => w.i_IsFac == 1).Sum(c => c.Precio),
+                                            Saldo = s.Where(w => w.i_IsFac == 0).Sum(c => c.Precio),
+                                        }).ToList();
+
+                        return objData;
+                    }
+                    else
+                    {
+                        return null;
+                    }
                 }
                 else
                 {
-                    var query = from A in dbContext.service
-                                join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
-                                join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId
-                                join D in dbContext.servicecomponent on A.v_ServiceId equals D.v_ServiceId
-                                where A.i_IsDeleted == 0
-                                    && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && D.i_IsRequiredId == 1
-                                select new ReporteGerencia
-                                {
-                                    ServiceId = A.v_ServiceId,
-                                    OrganizationId = C.v_OrganizationId,
-                                    i_ServiceTypeId = B.i_MasterServiceTypeId.Value,
-                                    i_MasterServiceId = A.i_MasterServiceId.Value,
-                                    i_EsoTypeId = B.i_EsoTypeId.Value,
-                                    Empresa = C.v_Name,
-                                    Precio = D.r_Price
-                                };
-                    if (!string.IsNullOrEmpty(pstrFilterExpression))
+                    if (modo == "Cantidad")
                     {
-                        query = query.Where(pstrFilterExpression);
-                    }
-
-                    List<ReporteGerencia> objData = query.ToList();
-
-                    objData = objData.GroupBy(p => p.OrganizationId)
-                                    .Select(s => new ReporteGerencia
+                        var query = from A in dbContext.service
+                                    join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
+                                    join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId
+                                    join D in dbContext.servicecomponent on A.v_ServiceId equals D.v_ServiceId
+                                    where A.i_IsDeleted == 0
+                                        && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && D.i_IsRequiredId == 1
+                                    select new ReporteGerencia
                                     {
-                                        Empresa = s.First().Empresa,
-                                        OrganizationId = s.First().OrganizationId,
-                                        NroTrabajadores = s.Count(),
-                                        Total = s.Sum(c => c.Precio)
-                                    }).ToList();
+                                        ServiceId = A.v_ServiceId,
+                                        OrganizationId = C.v_OrganizationId,
+                                        i_ServiceTypeId = B.i_MasterServiceTypeId.Value,
+                                        i_MasterServiceId = A.i_MasterServiceId.Value,
+                                        i_EsoTypeId = B.i_EsoTypeId.Value,
+                                        Empresa = C.v_Name,
+                                        Precio = D.r_Price
+                                    };
+                        if (!string.IsNullOrEmpty(pstrFilterExpression))
+                        {
+                            query = query.Where(pstrFilterExpression);
+                        }
 
-                    return objData;
+                        List<ReporteGerencia> objData = query.ToList();
+
+                        objData = objData.GroupBy(p => p.OrganizationId)
+                                        .Select(s => new ReporteGerencia
+                                        {
+                                            Empresa = s.First().Empresa,
+                                            OrganizationId = s.First().OrganizationId,
+                                            NroTrabajadores = s.Count(),
+                                            Total = s.Sum(c => c.Precio),
+                                            Cancelado = s.Where(w => w.i_IsFac == 1).Sum(c => c.Precio),
+                                            Saldo = s.Where(w => w.i_IsFac == 0).Sum(c => c.Precio),
+                                        }).ToList();
+
+                        return objData;
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                    
                 }
             }
             catch (Exception)
@@ -11027,7 +11057,6 @@ namespace Sigesoft.Node.WinClient.BLL
                 
                 throw;
             }
-            return null;
         }
 		public List<ServiceGridJerarquizadaList> GetServicesPagedAndFiltered_F(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds, DateTime? pFci, DateTime? pFcf, string pstrDxs)
 		{

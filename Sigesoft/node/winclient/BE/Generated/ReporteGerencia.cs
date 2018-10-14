@@ -16,11 +16,11 @@ namespace Sigesoft.Node.WinClient.BE
         public string Empresa { get; set; }
         public int? NroTrabajadores { get; set; }
         public float? Total { get; set; }
-        public string Cancelado { get; set; }
+        public float? Cancelado { get; set; }
         public float? Saldo { get; set; }
 
         public float? Precio { get; set; }
 
-
+        public int? i_IsFac { get; set; }
     }
 }

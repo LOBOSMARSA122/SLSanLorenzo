@@ -17,7 +17,9 @@
             <xs:sequence>
               <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" type="xs:string" minOccurs="0" />
               <xs:element name="NroTrabajadores" msprop:Generator_ColumnVarNameInTable="columnNroTrabajadores" msprop:Generator_ColumnPropNameInRow="NroTrabajadores" msprop:Generator_ColumnPropNameInTable="NroTrabajadoresColumn" msprop:Generator_UserColumnName="NroTrabajadores" type="xs:short" minOccurs="0" />
-              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:string" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+              <xs:element name="Cancelado" msprop:Generator_ColumnVarNameInTable="columnCancelado" msprop:Generator_ColumnPropNameInRow="Cancelado" msprop:Generator_ColumnPropNameInTable="CanceladoColumn" msprop:Generator_UserColumnName="Cancelado" type="xs:string" minOccurs="0" />
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

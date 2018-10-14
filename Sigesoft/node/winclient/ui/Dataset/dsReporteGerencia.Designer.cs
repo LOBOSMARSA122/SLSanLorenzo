@@ -285,6 +285,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             private global::System.Data.DataColumn columnTotal;
             
+            private global::System.Data.DataColumn columnCancelado;
+            
+            private global::System.Data.DataColumn columnSaldo;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public dtReporteGerenciaDataTable() {
@@ -344,6 +348,22 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CanceladoColumn {
+                get {
+                    return this.columnCancelado;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SaldoColumn {
+                get {
+                    return this.columnSaldo;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -379,12 +399,14 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public dtReporteGerenciaRow AdddtReporteGerenciaRow(string Empresa, short NroTrabajadores, string Total) {
+            public dtReporteGerenciaRow AdddtReporteGerenciaRow(string Empresa, short NroTrabajadores, double Total, string Cancelado, string Saldo) {
                 dtReporteGerenciaRow rowdtReporteGerenciaRow = ((dtReporteGerenciaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Empresa,
                         NroTrabajadores,
-                        Total};
+                        Total,
+                        Cancelado,
+                        Saldo};
                 rowdtReporteGerenciaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdtReporteGerenciaRow);
                 return rowdtReporteGerenciaRow;
@@ -410,6 +432,8 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 this.columnEmpresa = base.Columns["Empresa"];
                 this.columnNroTrabajadores = base.Columns["NroTrabajadores"];
                 this.columnTotal = base.Columns["Total"];
+                this.columnCancelado = base.Columns["Cancelado"];
+                this.columnSaldo = base.Columns["Saldo"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -419,8 +443,12 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 base.Columns.Add(this.columnEmpresa);
                 this.columnNroTrabajadores = new global::System.Data.DataColumn("NroTrabajadores", typeof(short), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNroTrabajadores);
-                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotal);
+                this.columnCancelado = new global::System.Data.DataColumn("Cancelado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCancelado);
+                this.columnSaldo = new global::System.Data.DataColumn("Saldo", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaldo);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -595,10 +623,10 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Total {
+            public double Total {
                 get {
                     try {
-                        return ((string)(this[this.tabledtReporteGerencia.TotalColumn]));
+                        return ((double)(this[this.tabledtReporteGerencia.TotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Total\' in table \'dtReporteGerencia\' is DBNull.", e);
@@ -606,6 +634,38 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
                 }
                 set {
                     this[this.tabledtReporteGerencia.TotalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Cancelado {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtReporteGerencia.CanceladoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cancelado\' in table \'dtReporteGerencia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtReporteGerencia.CanceladoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Saldo {
+                get {
+                    try {
+                        return ((string)(this[this.tabledtReporteGerencia.SaldoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Saldo\' in table \'dtReporteGerencia\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledtReporteGerencia.SaldoColumn] = value;
                 }
             }
             
@@ -643,6 +703,30 @@ namespace Sigesoft.Node.WinClient.UI.Dataset {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotalNull() {
                 this[this.tabledtReporteGerencia.TotalColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCanceladoNull() {
+                return this.IsNull(this.tabledtReporteGerencia.CanceladoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCanceladoNull() {
+                this[this.tabledtReporteGerencia.CanceladoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSaldoNull() {
+                return this.IsNull(this.tabledtReporteGerencia.SaldoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSaldoNull() {
+                this[this.tabledtReporteGerencia.SaldoColumn] = global::System.Convert.DBNull;
             }
         }
         
