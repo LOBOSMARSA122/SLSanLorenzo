@@ -3036,7 +3036,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 {
 
 
-                    var DatosAntiguos = _oListValidacionAMC.AsEnumerable()
+                   var DatosAntiguos = _oListValidacionAMC.AsEnumerable()
                   .GroupBy(x => x.v_ServiceComponentFieldValuesId)
                   .Select(group => group.First()).ToList();
 

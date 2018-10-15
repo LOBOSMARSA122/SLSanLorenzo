@@ -140,7 +140,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 i_EsoTypeId = J.i_EsoTypeId.Value,
                                 v_EsoTypeName = K.v_Value1,
 
-                                v_OrganizationLocationProtocol = oc.v_Name + " / "+ lc.v_Name,
+                               v_OrganizationLocationProtocol = oe.v_Name + " / " + le.v_Name,
                                 v_OrganizationLocationService = N.v_Name + " / " + O.v_Name,
                                 v_OrganizationIntermediaryName = oe.v_Name + " / " + le.v_Name,
                                 v_CreationUser = J1.v_UserName,
@@ -164,6 +164,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                d_Birthdate = B.d_Birthdate.Value,
                                GESO = F1.v_Name,
                                Puesto = B.v_CurrentOccupation,
+                               CompMinera = oc.v_Name,
+                               Tercero = ow.v_Name
                            };
 
                if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -227,8 +229,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                             i_EsoTypeId = a.i_EsoTypeId,
                             v_EsoTypeName = a.v_EsoTypeName,
-
-                            v_OrganizationLocationProtocol = a.v_OrganizationLocationProtocol,
+                            
+                            
                             v_OrganizationLocationService = a.v_OrganizationLocationService,
                             v_OrganizationIntermediaryName = a.v_OrganizationIntermediaryName,
                             v_CreationUser = a.v_CreationUser,
@@ -245,7 +247,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             i_DocTypeId = a.i_DocTypeId,
                             d_EntryTimeCM = a.d_EntryTimeCM,
 
-                            v_WorkingOrganizationName = a.v_WorkingOrganizationName ,
+                            
                             Restricciones = new ServiceBL().GetRestrictionByServiceId(a.v_ServiceId),
                             Observaciones = a.Observaciones,
                             d_SalidaCM = a.d_SalidaCM,
@@ -253,8 +255,11 @@ namespace Sigesoft.Node.WinClient.BLL
                             d_Birthdate = a.d_Birthdate,
                             i_Edad = new ServiceBL().GetAge(a.d_Birthdate),
                             GESO = a.GESO,
-                            Puesto =a.Puesto
+                            Puesto =a.Puesto,
 
+                            v_OrganizationLocationProtocol = a.v_OrganizationLocationProtocol,
+                            CompMinera = a.CompMinera,
+                            Tercero = a.Tercero,
                         }).ToList();
 
 

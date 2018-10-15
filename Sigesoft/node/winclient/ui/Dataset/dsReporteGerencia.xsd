@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsReporteGerencia" targetNamespace="http://tempuri.org/dsReporteGerencia.xsd" xmlns:mstns="http://tempuri.org/dsReporteGerencia.xsd" xmlns="http://tempuri.org/dsReporteGerencia.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsReporteGerencia" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsReporteGerencia" msprop:Generator_UserDSName="dsReporteGerencia">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="dtReporteGerencia" msprop:Generator_TableClassName="dtReporteGerenciaDataTable" msprop:Generator_TableVarName="tabledtReporteGerencia" msprop:Generator_RowChangedName="dtReporteGerenciaRowChanged" msprop:Generator_TablePropName="dtReporteGerencia" msprop:Generator_RowDeletingName="dtReporteGerenciaRowDeleting" msprop:Generator_RowChangingName="dtReporteGerenciaRowChanging" msprop:Generator_RowEvHandlerName="dtReporteGerenciaRowChangeEventHandler" msprop:Generator_RowDeletedName="dtReporteGerenciaRowDeleted" msprop:Generator_RowClassName="dtReporteGerenciaRow" msprop:Generator_UserTableName="dtReporteGerencia" msprop:Generator_RowEvArgName="dtReporteGerenciaRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Empresa" msprop:Generator_ColumnVarNameInTable="columnEmpresa" msprop:Generator_ColumnPropNameInRow="Empresa" msprop:Generator_ColumnPropNameInTable="EmpresaColumn" msprop:Generator_UserColumnName="Empresa" type="xs:string" minOccurs="0" />
+              <xs:element name="NroTrabajadores" msprop:Generator_ColumnVarNameInTable="columnNroTrabajadores" msprop:Generator_ColumnPropNameInRow="NroTrabajadores" msprop:Generator_ColumnPropNameInTable="NroTrabajadoresColumn" msprop:Generator_UserColumnName="NroTrabajadores" type="xs:short" minOccurs="0" />
+              <xs:element name="Total" msprop:Generator_ColumnVarNameInTable="columnTotal" msprop:Generator_ColumnPropNameInRow="Total" msprop:Generator_ColumnPropNameInTable="TotalColumn" msprop:Generator_UserColumnName="Total" type="xs:double" minOccurs="0" />
+              <xs:element name="Cancelado" msprop:Generator_ColumnVarNameInTable="columnCancelado" msprop:Generator_ColumnPropNameInRow="Cancelado" msprop:Generator_ColumnPropNameInTable="CanceladoColumn" msprop:Generator_UserColumnName="Cancelado" type="xs:string" minOccurs="0" />
+              <xs:element name="Saldo" msprop:Generator_ColumnVarNameInTable="columnSaldo" msprop:Generator_ColumnPropNameInRow="Saldo" msprop:Generator_ColumnPropNameInTable="SaldoColumn" msprop:Generator_UserColumnName="Saldo" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -344,6 +344,7 @@
     <Compile Include="Generated\dxfrecuentedetalleDto.cs" />
     <Compile Include="Generated\emailDto.cs" />
     <Compile Include="Generated\embarzoDto.cs" />
+    <Compile Include="Generated\ReporteGerencia.cs" />
     <Compile Include="Generated\workstationdangersDto.cs" />
     <Compile Include="Generated\warehouseDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />

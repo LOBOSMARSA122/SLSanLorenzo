@@ -118,6 +118,10 @@ namespace Sigesoft.Node.WinClient.BE
         public string Nombres { get; set; }
         public string ApePaterno { get; set; }
         public string ApeMaterno { get; set; }
+
+        public string CompMinera { get; set; }
+        public string Tercero { get; set; }
+        public string Empresa { get; set; }
     }
 
   public class CalendarListEmail

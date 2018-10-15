@@ -63,5 +63,10 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? d_BirthDate { get; set; }
 
         public string UsuarioMedicina { get; set; }
+
+        public string CompMinera { get; set; }
+        public string Tercero{ get; set; }
+        public int item { get; set; }
+        public int? i_ApprovedUpdateUserId { get; set; }
     }
 }

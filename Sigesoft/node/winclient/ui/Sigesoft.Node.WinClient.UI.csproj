@@ -408,6 +408,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsReporteAsistencia.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Dataset\dsReporteGerencia.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsReporteGerencia.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\dsTestdeansiedad.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1669,6 +1674,12 @@
       <DependentUpon>crOstioCoimolache.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reports\crReporteGerencia.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>crReporteGerencia.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reports\CrystalReport1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -2040,6 +2051,12 @@
     </Compile>
     <Compile Include="Reports\frmReporteCargoFactura.Designer.cs">
       <DependentUpon>frmReporteCargoFactura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\frmReporteGerencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmReporteGerencia.Designer.cs">
+      <DependentUpon>frmReporteGerencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\frmRoadMapDetaail.cs">
       <SubType>Form</SubType>
@@ -3790,6 +3807,10 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>crOstioCoimolache.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\crReporteGerencia.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>crReporteGerencia.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\CrystalReport1.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport1.cs</LastGenOutput>
@@ -4029,6 +4050,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReporteCargoFactura.resx">
       <DependentUpon>frmReporteCargoFactura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmReporteGerencia.resx">
+      <DependentUpon>frmReporteGerencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmRoadMapDetaail.resx">
       <DependentUpon>frmRoadMapDetaail.cs</DependentUpon>
@@ -5046,6 +5070,17 @@
     </None>
     <None Include="Dataset\dsReporteAsistencia.xss">
       <DependentUpon>dsReporteAsistencia.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsReporteGerencia.xsc">
+      <DependentUpon>dsReporteGerencia.xsd</DependentUpon>
+    </None>
+    <None Include="Dataset\dsReporteGerencia.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsReporteGerencia.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Dataset\dsReporteGerencia.xss">
+      <DependentUpon>dsReporteGerencia.xsd</DependentUpon>
     </None>
     <None Include="Dataset\dsSintomaticoRes.xsc">
       <DependentUpon>dsSintomaticoRes.xsd</DependentUpon>
@@ -6654,7 +6689,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
