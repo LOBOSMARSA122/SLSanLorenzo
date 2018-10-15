@@ -30849,7 +30849,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                             where A.i_IsDeleted == 0
                             && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null
-
+                            //ARNOLD , REPORTE JUAN LIZA
                             select new Liquidacion
                             {
                                 v_ServiceId = A.v_ServiceId,
