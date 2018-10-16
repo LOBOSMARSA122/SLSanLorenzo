@@ -764,7 +764,6 @@
             ultraGridColumn10.Hidden = true;
             ultraGridColumn4.Header.Caption = "Protocolo";
             ultraGridColumn4.Header.VisiblePosition = 20;
-            ultraGridColumn4.Hidden = true;
             ultraGridColumn4.Width = 239;
             ultraGridColumn16.Format = "dd/MM/yyyy";
             ultraGridColumn16.Header.Caption = "Fecha de Entrega";
