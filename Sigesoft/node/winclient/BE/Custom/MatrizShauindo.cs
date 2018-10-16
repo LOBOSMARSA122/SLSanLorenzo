@@ -32,6 +32,12 @@ namespace Sigesoft.Node.WinClient.BE
         public string Empresa { get; set; }
         public string Area { get; set; }
 
+        public string General { get; set; }
+        public string Contrata { get; set; }
+        public string Subcontrata { get; set; }
+        public string Unida { get; set; }
+
+
         public string Ruido { get; set; }
         public string Cancerigenos { get; set; }
         public string Temperaturas { get; set; }
