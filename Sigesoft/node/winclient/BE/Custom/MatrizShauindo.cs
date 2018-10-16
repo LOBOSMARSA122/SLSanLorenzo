@@ -115,7 +115,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string EnfermedadesOculares { get; set; }
         public string ReflejosPupilares { get; set; }
         public string AptitudTrabajarSi { get; set; }
-        public string AptitudTrabajarNo { get; set; }
+        public string AptitudTrabajarNo { get; set; }//estenombre no lo cambies... solo la cabecera de la grilla
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Calibracion { get; set; }
