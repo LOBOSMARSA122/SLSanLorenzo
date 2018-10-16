@@ -152,6 +152,37 @@ namespace Sigesoft.Node.WinClient.UI
                 _serviceBL.GenerarLiquidacion(ids, Globals.ClientSession.GetAsList());
             }
 
+
+            //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            //{
+            //    OperationResult objOperationResult = new OperationResult();
+
+            //    this.Enabled = false;
+
+            //    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            //    var lista = _serviceBL.ListaLiquidacion(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+
+
+            //    //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
+            //    int doctor = 1;
+            //    hospser = _hospitBL.GetHospitServ(hospiId);
+
+            //    var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
+            //    var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
+
+            //    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+            //    ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, hospser.v_ServiceId);
+
+            //    var hospitalizacion = _hospitBL.GetHospitalizacion(ref objOperationResult, hospiId);
+            //    var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref objOperationResult, hospiId);
+
+            //    string nombre = personData.v_DocNumber + "_" + personData.v_ProtocolName + "-LiquMédico";
+            //    Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor, hospitalizacion, hospitalizacionhabitacion);
+            //    this.Enabled = true;
+            //}
+            //this.Close();
+
             MessageBox.Show("Actualizado", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnFilter_Click(sender, e);
         }

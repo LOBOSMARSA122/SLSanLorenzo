@@ -148,6 +148,7 @@
     <Compile Include="Informe_Resultados_San_Martinm.cs" />
     <Compile Include="INFORME_SAS_REPORT.cs" />
     <Compile Include="LaboratorioReport.cs" />
+    <Compile Include="Liquidacion_EMO.cs" />
     <Compile Include="Liquidacion_Hospitalizacion.cs" />
     <Compile Include="LoadingForm.cs">
       <SubType>Form</SubType>
