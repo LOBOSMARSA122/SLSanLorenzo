@@ -246,5 +246,10 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
             }
         }
 
+        private void grdShauindo_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+
+        }
+
     }
 }

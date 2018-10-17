@@ -351,8 +351,10 @@ namespace Sigesoft.Node.WinClient.BE
         public string Recomendacion5 { get; set; }
         public string Dx6 { get; set; }
         public string Recomendacion6 { get; set; }
+        public int? _AptitudFinal { get; set; }
         public string AptitudFinal { get; set; }
         public string MotivoObservacion { get; set; }
+        public DateTime? _VigenciaEmo { get; set; }
         public string VigenciaEmo { get; set; }
         public string ClinicaRealizoEmo { get; set; }
 

@@ -5546,7 +5546,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                             Contrata = C1.v_Name,
                                             Subcontrata = CC.v_Name,
                                             Unida = C1.v_Name + " / " + CC.v_Name,
-
+                                            _AptitudFinal = A.i_AptitudeStatusId,
+                                            _VigenciaEmo = A.d_GlobalExpirationDate.Value,
+                                            
                                             Area = K.v_Name,
                                             Procedencia = L1.v_Value1 + " - " + F1.v_Value1 + " - " + G1.v_Value1,
                                             NumeroHijos = D.i_NumberLivingChildren == null ? 0 : D.i_NumberLivingChildren.Value,
@@ -5585,6 +5587,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                    v_CustomerOrganizationId = a.v_CustomerOrganizationId,
                                    v_CustomerLocationId = a.v_CustomerLocationId,
 
+                                   AptitudFinal = a._AptitudFinal == 1 ? "SIN APTITUD" : a._AptitudFinal == 2 ? "APTO" : a._AptitudFinal == 3 ? "NO APTO" : a._AptitudFinal == 4 ? "OBSERVADO" : a._AptitudFinal == 5 ? "APTO CON RESTRICCIONES" : a._AptitudFinal == 6 ? "ASISTENCIAL" : a._AptitudFinal == 7 ? "EVALUADO" : a.AptitudFinal,
+                                   VigenciaEmo = a._VigenciaEmo == null ? "-" : a._VigenciaEmo.ToString().Split(' ')[0],
                                    TipoEmo = a.TipoEmo,
                                    DniPasaporte = a.DniPasaporte,
                                    FechaExamen = a.FechaExamen,
@@ -5599,7 +5603,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                    //GrupoFactorSanguineo = a.GrupoFactorSanguineo == null ? "NO LLEVA" : a.GrupoFactorSanguineo,
                                    Procedencia = a.Procedencia,
                                    Ocupacion = a.Ocupacion,
-                                   Empresa = a.General == a.Subcontrata ? a.Contrata : a.General != a.Subcontrata ? a.Unida:a.Unida,
+                                   Empresa = a.General == a.Subcontrata ? a.Contrata : a.General != a.Subcontrata ? a.Unida : a.Empresa,
                                    //Area = a.Area,
                                    NumeroHijos = a.NumeroHijos,
                                    PiezasMalEstado = GetCantidadCaries(a.ServiceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_CARIES_ID),
@@ -5663,7 +5667,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                    AntecedentesLaborales = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003541") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003541").Valor,
                                    AntecedentesPatologicos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003542") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003542").Valor,
 
-                                   
+
+                                   Cocaina = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000705" || o.IdCampo == "N009-MF000003740") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000000705" || o.IdCampo == "N009-MF000003740").ValorName,
+                                   Marihuana = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001294" || o.IdCampo == "N009-MF000003739") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001294" || o.IdCampo == "N009-MF000003739").ValorName,
+                                   Magnesio = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003230") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003230").ValorName,
+
                                    //AptitudTrabajarNo = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003547") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-editas") != null ? varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003547").ValorName : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003548") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003548").ValorName,//aqui mete un campo
                                    VisionCercaScod = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003547" || o.IdCampo == "N009-MF000003569" || o.IdCampo == "N009-MF000003614") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003547" || o.IdCampo == "N009-MF000003569" || o.IdCampo == "N009-MF000003614").ValorName,
                                    VisionCercaScoi = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003548" || o.IdCampo == "N009-MF000003570" || o.IdCampo == "N009-MF000003615") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000003548" || o.IdCampo == "N009-MF000003570" || o.IdCampo == "N009-MF000003615").ValorName,
@@ -5869,7 +5877,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                    Dx5 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 14).Select(s => s.v_DiseasesName)),//Oftalmo
                                    ConclusionesRx = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 15).Select(s => s.v_DiseasesName)),//Audio
                                    Dx6 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 22).Select(s => s.v_DiseasesName)),//Psicosen
-                               
 
                                }
 
