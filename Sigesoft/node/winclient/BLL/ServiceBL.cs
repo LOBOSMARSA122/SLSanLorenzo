@@ -18854,10 +18854,13 @@ namespace Sigesoft.Node.WinClient.BLL
 
         public List<RecoRestrMatriz> ListGetRecommendationByServiceId(List<string> ListaServicioIds)
         {
+            //var filterDiagnosticRepository = Diagnosticos.FindAll(p => p.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado);
+
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-            var query = (from ccc in dbContext.recommendation
+            var query = (from rrr in dbContext.diagnosticrepository
+                         join ccc in dbContext.recommendation on rrr.v_DiagnosticRepositoryId equals ccc.v_DiagnosticRepositoryId
                          join ddd in dbContext.masterrecommendationrestricction on ccc.v_MasterRecommendationId equals ddd.v_MasterRecommendationRestricctionId  // Diagnosticos      
-                         where ListaServicioIds.Contains(ccc.v_ServiceId) &&
+                         where ListaServicioIds.Contains(ccc.v_ServiceId) && rrr.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado &&
                                ccc.i_IsDeleted == 0
                          select new RecoRestrMatriz
                          {

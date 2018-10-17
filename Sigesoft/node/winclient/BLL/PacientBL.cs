@@ -5570,6 +5570,10 @@ namespace Sigesoft.Node.WinClient.BLL
                     var dxs = new ServiceBL().ListGetDiagnosticByServiceIdAndCategoryId(ServicioIds).ToList();
                     var Reco = new ServiceBL().ListGetRecommendationByServiceId(ServicioIds).ToList();
                     var Restri = new ServiceBL().ListGetRestrictionByServiceId(ServicioIds).ToList();
+                    //var Dxa = new ServiceBL().GetDiagnosticByServiceId(ServicioIds);
+                    //var diagnosticRepository = new ServiceBL().GetServiceComponentConclusionesDxServiceId(ServicioIds).ToList(); 
+                   
+                    //var filterDiagnosticRepository = diagnosticRepository.FindAll(p => p.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado);
 
                     var sql = (from a in objEntity.ToList()
 
@@ -5823,7 +5827,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                    GammaGlutamilTranspeptidasa = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001804") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001804").Valor,
                                    BilirrubinaTotal = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001806") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001806").Valor,
                                    BilirrubinaDirecta = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001808") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001808").Valor,
-                                   BilirrubinaIndirecta = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001810") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001810").Valor,
+                                   //BilirrubinaIndirecta = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001810") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001810").Valor,
                                    ColesterolTotal = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001904" || o.IdCampo == "N009-MF000001086") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001904" || o.IdCampo == "N009-MF000001086").Valor,
                                    Tec = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001073") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001073").Valor,
                                    Trigliceridos = varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001906" || o.IdCampo == "N009-MF000001296") == null ? " " : varValores.Find(p => p.ServicioId == a.ServiceId).CampoValores.Find(o => o.IdCampo == "N009-MF000001906" || o.IdCampo == "N009-MF000001296").Valor,
@@ -5848,7 +5852,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                    //
                                    RecomendacionesConcatenadas = string.Join(", ", Reco.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
                                    RestriccionConcatenadas = string.Join(", ", Restri.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
-                                   
+                                   BilirrubinaIndirecta = string.Join(", ", Restri.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
+
+
                                    AntecedentesFamiliares = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? " " : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaAntecedentesFamiliares == null ? " " : AntecedentesFamiliaresConcatenados(Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaAntecedentesFamiliares),
                                    AntecedentesPersonales = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? "NIEGA" : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical == null ? "NIEGA" : AntecedentesPatologicosConcatenados(Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaPersonalMedical),
                                    ConclusionLabo = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 1).Select(s => s.v_DiseasesName)),
@@ -5863,6 +5869,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                    Dx5 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 14).Select(s => s.v_DiseasesName)),//Oftalmo
                                    ConclusionesRx = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 15).Select(s => s.v_DiseasesName)),//Audio
                                    Dx6 = string.Join("/ ", dxs.FindAll(p => p.ServiceId == a.ServiceId && p.CategoriaId == 22).Select(s => s.v_DiseasesName)),//Psicosen
+                               
+
                                }
 
                                ).ToList();
