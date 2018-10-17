@@ -10921,7 +10921,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                     join C in dbContext.organization on B.v_CustomerOrganizationId equals C.v_OrganizationId
                                     join D in dbContext.servicecomponent on A.v_ServiceId equals D.v_ServiceId
                                     where A.i_IsDeleted == 0
-                                        && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && D.i_IsRequiredId == 1
+                                        && (A.d_ServiceDate >= pdatBeginDate && A.d_ServiceDate <= pdatEndDate) && D.i_IsRequiredId == 1
                                     select new ReporteGerencia
                                     {
                                         ServiceId = A.v_ServiceId,
@@ -10938,20 +10938,26 @@ namespace Sigesoft.Node.WinClient.BLL
                             query = query.Where(pstrFilterExpression);
                         }
 
-                        List<ReporteGerencia> objData = query.ToList();
+                        List<ReporteGerencia> serviceComponents = query.ToList();
 
-                        objData = objData.GroupBy(p => p.OrganizationId)
+                        List<ReporteGerencia> servicios = query.ToList().GroupBy(g => g.ServiceId).Select(s => s.First()).ToList();
+
+                        serviceComponents = serviceComponents.GroupBy(p => p.OrganizationId)
                                         .Select(s => new ReporteGerencia
                                         {
                                             Empresa = s.First().Empresa,
                                             OrganizationId = s.First().OrganizationId,
-                                            NroTrabajadores = s.Count(),
-                                            Total = s.Sum(c => c.Precio),
+                                            NroTrabajadores = servicios.Where(w => w.OrganizationId == s.First().OrganizationId).Count(),
+                                            Total = serviceComponents.Where(w => w.OrganizationId == s.First().OrganizationId).Sum(c => c.Precio),
                                             Cancelado = s.Where(w => w.i_IsFac == 1).Sum(c => c.Precio),
                                             Saldo = s.Where(w => w.i_IsFac == 0).Sum(c => c.Precio),
                                         }).ToList();
 
-                        return objData;
+                        //objData = objData.GroupBy(x => new { x.OrganizationId, x.ServiceId })
+                        //    .Select(s => s.First()).ToList();
+                        //return objData;
+
+                        return serviceComponents;
                     }
                     else
                     {
