@@ -1507,8 +1507,11 @@
             ultraGridColumn522.Header.VisiblePosition = 237;
             ultraGridColumn523.Header.VisiblePosition = 238;
             ultraGridColumn524.Header.VisiblePosition = 239;
+            ultraGridColumn524.Hidden = true;
             ultraGridColumn525.Header.VisiblePosition = 240;
+            ultraGridColumn525.Hidden = true;
             ultraGridColumn526.Header.VisiblePosition = 241;
+            ultraGridColumn526.Hidden = true;
             ultraGridColumn527.Header.VisiblePosition = 242;
             ultraGridColumn528.Header.VisiblePosition = 243;
             ultraGridColumn529.Header.VisiblePosition = 244;
