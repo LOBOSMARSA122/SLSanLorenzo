@@ -5570,7 +5570,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     var dxs = new ServiceBL().ListGetDiagnosticByServiceIdAndCategoryId(ServicioIds).ToList();
                     var Reco = new ServiceBL().ListGetRecommendationByServiceId(ServicioIds).ToList();
                     var Restri = new ServiceBL().ListGetRestrictionByServiceId(ServicioIds).ToList();
-                    //var Dxa = new ServiceBL().GetDiagnosticByServiceId(ServicioIds);
+                    var Dxa = new ServiceBL().ListGetDiagnosticByServiceId1(ServicioIds).ToList();
                     //var diagnosticRepository = new ServiceBL().GetServiceComponentConclusionesDxServiceId(ServicioIds).ToList(); 
                    
                     //var filterDiagnosticRepository = diagnosticRepository.FindAll(p => p.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado);
@@ -5852,7 +5852,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                    //
                                    RecomendacionesConcatenadas = string.Join(", ", Reco.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
                                    RestriccionConcatenadas = string.Join(", ", Restri.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
-                                   BilirrubinaIndirecta = string.Join(", ", Restri.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.Name)),
+                                   BilirrubinaIndirecta = string.Join(", ", Dxa.FindAll(p => p.ServiceId == a.ServiceId).Select(s => s.v_DiseasesName)),
 
 
                                    AntecedentesFamiliares = Habitos_Personales.Find(p => p.PersonId == a.PersonId) == null ? " " : Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaAntecedentesFamiliares == null ? " " : AntecedentesFamiliaresConcatenados(Habitos_Personales.Find(p => p.PersonId == a.PersonId).ListaAntecedentesFamiliares),

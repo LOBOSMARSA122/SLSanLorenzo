@@ -19046,6 +19046,27 @@ namespace Sigesoft.Node.WinClient.BLL
             //return string.Join(", ", query.Select(p => p.v_DiseasesName));
         }
 
+
+        public List<dxMatrices> ListGetDiagnosticByServiceId1(List<string> ListaServicioIds)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var query = (from ccc in dbContext.diagnosticrepository
+                         join aaa in dbContext.component on ccc.v_ComponentId equals aaa.v_ComponentId
+                         join ddd in dbContext.diseases on ccc.v_DiseasesId equals ddd.v_DiseasesId into ddd_join
+                         from ddd in ddd_join.DefaultIfEmpty()
+
+                         where ListaServicioIds.Contains(ccc.v_ServiceId) && ccc.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado &&
+                               ccc.i_IsDeleted == 0
+                         select new dxMatrices
+                         {
+                             CategoriaId = aaa.i_CategoryId.Value,
+                             ServiceId = ccc.v_ServiceId,
+                             v_DiseasesName = ddd.v_Name
+                         }).Distinct().ToList();
+
+            return query;
+            //return string.Join(", ", query.Select(p => p.v_DiseasesName));
+        }
        public class dxMatrices
         {
             public int CategoriaId { get; set; }
