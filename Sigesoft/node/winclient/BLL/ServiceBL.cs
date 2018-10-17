@@ -18860,10 +18860,13 @@ namespace Sigesoft.Node.WinClient.BLL
 
         public List<RecoRestrMatriz> ListGetRecommendationByServiceId(List<string> ListaServicioIds)
         {
+            //var filterDiagnosticRepository = Diagnosticos.FindAll(p => p.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado);
+
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-            var query = (from ccc in dbContext.recommendation
+            var query = (from rrr in dbContext.diagnosticrepository
+                         join ccc in dbContext.recommendation on rrr.v_DiagnosticRepositoryId equals ccc.v_DiagnosticRepositoryId
                          join ddd in dbContext.masterrecommendationrestricction on ccc.v_MasterRecommendationId equals ddd.v_MasterRecommendationRestricctionId  // Diagnosticos      
-                         where ListaServicioIds.Contains(ccc.v_ServiceId) &&
+                         where ListaServicioIds.Contains(ccc.v_ServiceId) && rrr.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado &&
                                ccc.i_IsDeleted == 0
                          select new RecoRestrMatriz
                          {
@@ -19049,6 +19052,27 @@ namespace Sigesoft.Node.WinClient.BLL
             //return string.Join(", ", query.Select(p => p.v_DiseasesName));
         }
 
+
+        public List<dxMatrices> ListGetDiagnosticByServiceId1(List<string> ListaServicioIds)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var query = (from ccc in dbContext.diagnosticrepository
+                         join aaa in dbContext.component on ccc.v_ComponentId equals aaa.v_ComponentId
+                         join ddd in dbContext.diseases on ccc.v_DiseasesId equals ddd.v_DiseasesId into ddd_join
+                         from ddd in ddd_join.DefaultIfEmpty()
+
+                         where ListaServicioIds.Contains(ccc.v_ServiceId) && ccc.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado &&
+                               ccc.i_IsDeleted == 0
+                         select new dxMatrices
+                         {
+                             CategoriaId = aaa.i_CategoryId.Value,
+                             ServiceId = ccc.v_ServiceId,
+                             v_DiseasesName = ddd.v_Name
+                         }).Distinct().ToList();
+
+            return query;
+            //return string.Join(", ", query.Select(p => p.v_DiseasesName));
+        }
        public class dxMatrices
         {
             public int CategoriaId { get; set; }
@@ -31138,7 +31162,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-	    public void GenerarLiberar(string pServiceId,List<string> ClientSession)
+        public void GenerarLiberar(string pServiceId,List<string> ClientSession)
 	    {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 	        try

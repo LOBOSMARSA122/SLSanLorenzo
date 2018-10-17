@@ -32,6 +32,12 @@ namespace Sigesoft.Node.WinClient.BE
         public string Empresa { get; set; }
         public string Area { get; set; }
 
+        public string General { get; set; }
+        public string Contrata { get; set; }
+        public string Subcontrata { get; set; }
+        public string Unida { get; set; }
+
+
         public string Ruido { get; set; }
         public string Cancerigenos { get; set; }
         public string Temperaturas { get; set; }
@@ -115,7 +121,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string EnfermedadesOculares { get; set; }
         public string ReflejosPupilares { get; set; }
         public string AptitudTrabajarSi { get; set; }
-        public string AptitudTrabajarNo { get; set; }
+        public string AptitudTrabajarNo { get; set; }//estenombre no lo cambies... solo la cabecera de la grilla
         public string Marca { get; set; }
         public string Modelo { get; set; }
         public string Calibracion { get; set; }
