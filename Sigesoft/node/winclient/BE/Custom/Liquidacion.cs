@@ -28,6 +28,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public string v_CustomerLocationId { get; set; }
         public string v_EmployerLocationId { get; set; }
+        //
 
         public List<LiquidacionDetalle> Detalle { get; set; }
     }
