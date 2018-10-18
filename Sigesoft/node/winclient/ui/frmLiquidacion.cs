@@ -11,12 +11,22 @@ using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
 
+using Infragistics.Win.UltraWinGrid;
+using Infragistics.Win;
+using Infragistics.Win.UltraWinGrid.DocumentExport;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using Sigesoft.Node.Contasol.Integration;
+using NetPdf;
+
 namespace Sigesoft.Node.WinClient.UI
 {
     public partial class frmLiquidacion : Form
     {
         string strFilterExpression;
         ServiceBL _serviceBL = new ServiceBL();
+        private OperationResult _objOperationResult = new OperationResult();
+        private PacientBL _pacientBL = new PacientBL();
         public frmLiquidacion()
         {
             InitializeComponent();
@@ -153,36 +163,6 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
 
-            //using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-            //{
-            //    OperationResult objOperationResult = new OperationResult();
-
-            //    this.Enabled = false;
-
-            //    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-
-            //    var lista = _serviceBL.ListaLiquidacion(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
-
-
-            //    //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
-            //    int doctor = 1;
-            //    hospser = _hospitBL.GetHospitServ(hospiId);
-
-            //    var _DataService = _serviceBL.GetServiceReport(hospser.v_ServiceId);
-            //    var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
-
-            //    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
-            //    ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, hospser.v_ServiceId);
-
-            //    var hospitalizacion = _hospitBL.GetHospitalizacion(ref objOperationResult, hospiId);
-            //    var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref objOperationResult, hospiId);
-
-            //    string nombre = personData.v_DocNumber + "_" + personData.v_ProtocolName + "-LiquMédico";
-            //    Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor, hospitalizacion, hospitalizacionhabitacion);
-            //    this.Enabled = true;
-            //}
-            //this.Close();
-
             MessageBox.Show("Actualizado", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnFilter_Click(sender, e);
         }
@@ -234,6 +214,38 @@ namespace Sigesoft.Node.WinClient.UI
                     e.Cell.Value = false;
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+            var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+                var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
+
+                //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
+                //hospser = _hospitBL.GetHospitServ(hospiId);
+
+                var _DataService = _serviceBL.GetServiceReport(serviceID);
+                //var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+                //ServiceList personData = _serviceBL.GetServicePersonData(ref _objOperationResult, serviceID);
+
+                //var hospitalizacion = _hospitBL.GetHospitalizacion(ref _objOperationResult, hospiId);
+                //var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref _objOperationResult, hospiId);
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = liquidacionID + " - CSL";
+                Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService);
+                this.Enabled = true;
+            }
+            this.Close();
         }
     }
 }
