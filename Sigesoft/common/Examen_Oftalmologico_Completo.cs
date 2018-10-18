@@ -333,16 +333,17 @@ namespace NetPdf
             #region RECOMENDACIÓN
             cells = new List<PdfPCell>();
             int anchoReco = 1;
+            cells.Add(new PdfPCell(new Phrase("RECOMENDACIÓN", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, Rowspan = tamañoDiag });
+
             if (diagnosticosOfatlmoCompleto.Count != 0)
             {
                 foreach (var item in diagnosticosOfatlmoCompleto)
                 {
-                    anchoReco = item.Recomendations.Count;
-                    if (item.Recomendations.Count == anchoReco)
-                    {
-                        cells.Add(new PdfPCell(new Phrase("RECOMENDACIÓN", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, Rowspan = anchoReco });
-                    }
-                    anchoReco--;
+                    //anchoReco = item.;
+                    //if (item.Recomendations.Count == anchoReco)
+                    //{
+                    //}
+                    //anchoReco--;
                     foreach (var item2 in item.Recomendations)
                     {
                         cells.Add(new PdfPCell(new Phrase(item2.v_RecommendationName == null ? "---" : item2.v_RecommendationName == "" ? "---" : item2.v_RecommendationName, fontColumnValueBold)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda });
