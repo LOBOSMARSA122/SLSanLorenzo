@@ -104,6 +104,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string v_Thirst { get; set; }
         public string v_Mac { get; set; }
         public string RUC { get; set; }
+        public string RUC2 { get; set; }
+        public string RUC3 { get; set; }
         // Antecedentes ginecologicos
         public DateTime? d_PAP { get; set; }
         public DateTime? d_Mamografia { get; set; }
@@ -149,6 +151,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string PuestoTrabajo { get; set; }
         public string EmpresaTrabajo { get; set; }
         public string DireccionEmpresaTrabajo { get; set; }
+        public string DireccionEmpresaTrabajo2 { get; set; }
+        public string DireccionEmpresaTrabajo3 { get; set; }
         public string RubroEmpresaTrabajo { get; set; }
 
         public string DepartamentoEmpresaTrabajo { get; set; }

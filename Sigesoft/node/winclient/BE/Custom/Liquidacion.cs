@@ -13,6 +13,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string Esotype { get; set; }
         public string v_CustomerOrganizationId { get; set; }
         public string v_EmployerOrganizationId { get; set; }
+        public string v_WorkingOrganizationId { get; set; }
         public string v_NroLiquidacion { get; set; }
 
         public string Trabajador { get; set; }
@@ -28,6 +29,7 @@ namespace Sigesoft.Node.WinClient.BE
 
         public string v_CustomerLocationId { get; set; }
         public string v_EmployerLocationId { get; set; }
+        public string v_WorkingLocationId { get; set; }
         //
 
         public List<LiquidacionDetalle> Detalle { get; set; }

@@ -734,7 +734,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
         public ServiceList GetInfoEmpresaLiquidacion(string pstrServiceId)
         {
-            //mon.IsActive = true;
+            //mon.IsActive = true;  
 
             try
             {
@@ -744,12 +744,15 @@ namespace Sigesoft.Node.WinClient.BLL
                                  join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
                                  from B in B_join.DefaultIfEmpty()
 
-                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
-                                 from C in C_join.DefaultIfEmpty()
-
                                  join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
                                  from C2 in C2_join.DefaultIfEmpty()
 
+                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
+                                 from C1 in C1_join.DefaultIfEmpty()
+
+                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
+                                 from C in C_join.DefaultIfEmpty()
+                                 
                                  join D in dbContext.datahierarchy on new { a = C.i_SectorTypeId.Value, b = 104 }
                                                         equals new { a = D.i_ItemId, b = D.i_GroupId } into D_join
                                  from D in D_join.DefaultIfEmpty()
@@ -768,13 +771,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                  join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
                                  from H in H_join.DefaultIfEmpty()
-
-                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
-                                 from C1 in C1_join.DefaultIfEmpty()
-
-                               
+                                 
                                  where A.v_ServiceId == pstrServiceId
-
 
                                  select new ServiceList
                                  {
@@ -786,19 +784,30 @@ namespace Sigesoft.Node.WinClient.BLL
                                      i_MesV = A.d_ServiceDate.Value.Month,
                                      i_AnioV = A.d_ServiceDate.Value.Year,
                                      i_EsoTypeId = B.i_EsoTypeId.Value, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
-                                     RUC = C.v_IdentificationNumber,
+                                     
                                      //---------------DATOS DE LA EMPRESA--------------------------------
-                                     EmpresaTrabajo = C.v_Name,
-                                     EmpresaEmpleadora = C1.v_Name,
-                                     RubroEmpresaTrabajo = C.v_SectorName,
-                                     DireccionEmpresaTrabajo = C.v_Address,
-                                     DepartamentoEmpresaTrabajo = E.v_Value1,
-                                     ProvinciaEmpresaTrabajo = F.v_Value1,
-                                     DistritoEmpresaTrabajo = G.v_Value1,
-                                     v_CurrentOccupation = H.v_CurrentOccupation,
-                                     b_Logo = C2.b_Image,
-                                     EmpresaClienteId = C.v_OrganizationId,
+                                     //GENERAL = C2.v_Name,
+                                     //CONTRATA = C1.v_Name,
+                                     //SUBCONTRATA = C.v_Name,
                                      v_CustomerOrganizationName = C2.v_Name,
+                                     EmpresaEmpleadora = C1.v_Name,
+                                     EmpresaTrabajo = C.v_Name,
+
+                                     RUC = C2.v_IdentificationNumber,
+                                     RUC2 = C1.v_IdentificationNumber,
+                                     RUC3 = C.v_IdentificationNumber,
+
+                                     DireccionEmpresaTrabajo = C2.v_Address,
+                                     DireccionEmpresaTrabajo2 = C1.v_Address,
+                                     DireccionEmpresaTrabajo3 = C.v_Address,
+
+                                     //RubroEmpresaTrabajo = C.v_SectorName,
+                                     //ProvinciaEmpresaTrabajo = F.v_Value1,
+                                     //DistritoEmpresaTrabajo = G.v_Value1,
+                                     //v_CurrentOccupation = H.v_CurrentOccupation,
+                                     //b_Logo = C2.b_Image,
+                                     //EmpresaClienteId = C.v_OrganizationId,
+                                     
                                  });
 
 
@@ -31176,6 +31185,26 @@ namespace Sigesoft.Node.WinClient.BLL
                                             equals new { a = J1.i_ParameterId, b = J1.i_GroupId } into J1_join  
                             from J1 in J1_join.DefaultIfEmpty()
 
+                            join F in dbContext.organization on B.v_CustomerOrganizationId equals F.v_OrganizationId
+                            join I in dbContext.location on B.v_CustomerLocationId equals I.v_LocationId
+
+                            join BB in dbContext.organization on B.v_EmployerOrganizationId equals BB.v_OrganizationId
+                            join CC in dbContext.location on B.v_EmployerLocationId equals CC.v_LocationId
+
+                            join G in dbContext.organization on B.v_WorkingOrganizationId equals G.v_OrganizationId into J4_join
+                            from G in J4_join.DefaultIfEmpty()
+
+                            join J in dbContext.location on B.v_WorkingLocationId equals J.v_LocationId into J6_join
+                            from J in J6_join.DefaultIfEmpty()
+
+                            join H in dbContext.systemparameter on new { a = B.i_MasterServiceId.Value, b = 119 }
+                                                                equals new { a = H.i_ParameterId, b = H.i_GroupId } into J5_join
+                            from H in J5_join.DefaultIfEmpty()
+
+                            //join J1 in dbContext.systemuser on new { i_InsertUserId = B.i_InsertUserId.Value }
+                            //                              equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                            //from J1 in J1_join.DefaultIfEmpty()
+
                             where A.i_IsDeleted == 0
                             && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null
                             //ARNOLD , REPORTE JUAN LIZA
@@ -31185,8 +31214,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_PersonId = C.v_PersonId,
                                 i_EsoTypeId = B.i_EsoTypeId.Value,
                                 Esotype =  J1.v_Value1,
-                                v_CustomerOrganizationId = B.v_CustomerOrganizationId,
-                                v_EmployerOrganizationId = B.v_EmployerOrganizationId,
+                                v_CustomerOrganizationId = F.v_OrganizationId,
+                                v_EmployerOrganizationId = BB.v_OrganizationId,
+                                v_WorkingOrganizationId = G.v_OrganizationId,
                                 v_NroLiquidacion = A.v_NroLiquidacion,
                                 CCosto = A.v_centrocosto,
                                 Trabajador = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
@@ -31194,10 +31224,11 @@ namespace Sigesoft.Node.WinClient.BLL
                                 FechaExamen = A.d_ServiceDate.Value,
                                 NroDocumemto = C.v_DocNumber,
                                 Cargo = C.v_CurrentOccupation,
-                                Perfil = D.v_Name,
+                                Perfil = B.v_Name,
                                 v_ProtocolId = B.v_ProtocolId,
                                 v_CustomerLocationId = B.v_CustomerLocationId,
-                                v_EmployerLocationId = B.v_EmployerLocationId
+                                v_EmployerLocationId = B.v_EmployerLocationId,
+                                v_WorkingLocationId = B.v_WorkingLocationId
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -31228,6 +31259,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                     Esotype = A.Esotype,
                                     v_CustomerOrganizationId = A.v_CustomerOrganizationId,
                                     v_EmployerOrganizationId = A.v_EmployerOrganizationId,
+                                    v_WorkingOrganizationId = A.v_WorkingOrganizationId,
                                     v_NroLiquidacion = A.v_NroLiquidacion,
                                     Trabajador = A.Trabajador,
                                     FechaNacimiento = A.FechaNacimiento,

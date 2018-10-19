@@ -73,7 +73,7 @@ namespace Sigesoft.Node.WinClient.UI
             if (cbbSubContratas.SelectedValue.ToString() != "-1")
             {
                 var id3 = cbbSubContratas.SelectedValue.ToString().Split('|');
-                Filters.Add("B.v_WorkingOrganizationId ==" + "\"" + id3[0] + "\"&&B.v_WorkingLocationId ==" + "\"" + id3[1] + "\"");
+                Filters.Add("v_WorkingOrganizationId ==" + "\"" + id3[0] + "\"&&v_WorkingLocationId ==" + "\"" + id3[1] + "\"");
             }
 
           

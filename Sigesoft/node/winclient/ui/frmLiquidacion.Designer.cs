@@ -53,6 +53,7 @@
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbbSubContratas = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ddlEmployerOrganization = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -77,7 +78,6 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.cbbSubContratas = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -110,6 +110,16 @@
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // cbbSubContratas
+            // 
+            this.cbbSubContratas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbbSubContratas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbbSubContratas.FormattingEnabled = true;
+            this.cbbSubContratas.Location = new System.Drawing.Point(96, 76);
+            this.cbbSubContratas.Name = "cbbSubContratas";
+            this.cbbSubContratas.Size = new System.Drawing.Size(499, 21);
+            this.cbbSubContratas.TabIndex = 142;
             // 
             // label7
             // 
@@ -515,16 +525,6 @@
             this.btnEditarServicio.Text = "Editar Servicio";
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
-            // 
-            // cbbSubContratas
-            // 
-            this.cbbSubContratas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbbSubContratas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbbSubContratas.FormattingEnabled = true;
-            this.cbbSubContratas.Location = new System.Drawing.Point(96, 76);
-            this.cbbSubContratas.Name = "cbbSubContratas";
-            this.cbbSubContratas.Size = new System.Drawing.Size(499, 21);
-            this.cbbSubContratas.TabIndex = 142;
             // 
             // frmLiquidacion
             // 
