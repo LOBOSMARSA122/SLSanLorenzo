@@ -6650,7 +6650,7 @@ namespace Sigesoft.Node.WinClient.BLL
 					}
 					else
 					{
-						objService.i_ServiceStatusId = (int)ServiceStatus.EsperandoAptitud;
+                        objService.i_ServiceStatusId = (int)ServiceStatus.Iniciado;//aqui cambia de estado
 					}
 
 					//hola
@@ -10509,6 +10509,37 @@ namespace Sigesoft.Node.WinClient.BLL
 
 
 		}
+
+        public void ActualizarPrecioComponente(float? price, string serviceComponentId)
+        {
+            try
+            {
+
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.servicecomponent
+                                       where a.v_ServiceComponentId == serviceComponentId
+                                       select a).FirstOrDefault();
+
+                objEntitySource.r_Price = price;
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                return;
+
+            }
+            catch (Exception ex)
+            {
+
+                // Llenar entidad Log
+                return;
+            }
+
+
+        }
+
 
 		public void ActualizarServicioCosto(string pstrServiceId, decimal pdecCosto)
 		{

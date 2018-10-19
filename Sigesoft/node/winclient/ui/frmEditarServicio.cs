@@ -18,6 +18,7 @@ namespace Sigesoft.Node.WinClient.UI
         private string _PersonId;
         private string _protocolId;
         private ProtocolBL _protocolBL = new ProtocolBL();
+        private ServiceBL _ServiceBL = new ServiceBL();
         private protocolDto _protocolDTO = null;
         private string _protocolName;
         string NumberDocument;
@@ -30,9 +31,10 @@ namespace Sigesoft.Node.WinClient.UI
             InitializeComponent();
 
             OperationResult objOperationResult = new OperationResult();
-            var dataListPc = _protocolBL.GetProtocolComponents(ref objOperationResult, _protocolId);
+            //var dataListPc = _protocolBL.GetProtocolComponents(ref objOperationResult, _protocolId);
+            //var dataListPc = _ServiceBL.GetServiceComponentsLiquidacion(ref objOperationResult, _serviceId);
 
-            grdProtocolComponent.DataSource = dataListPc;             
+            //grdDataLocation.DataSource = dataListPc;
         }
 
         private void frmEditarServicio_Load(object sender, EventArgs e)
@@ -62,7 +64,7 @@ namespace Sigesoft.Node.WinClient.UI
             cbService.SelectedValue = _protocolDTO.i_MasterServiceId.ToString();
 
             // Componentes del protocolo
-            var dataListPc = _protocolBL.GetProtocolComponents(ref objOperationResult, _protocolId);
+            var dataListPc = _ServiceBL.GetServiceComponentsLiquidacion(ref objOperationResult, _serviceId);
             float Total = 0;
             foreach (var item in dataListPc)
             {
@@ -70,7 +72,7 @@ namespace Sigesoft.Node.WinClient.UI
             }
             lblCostoTotal.Text = Total.ToString();
 
-            grdProtocolComponent.DataSource = dataListPc;
+            grdDataLocation.DataSource = dataListPc;
             if (objOperationResult.Success != 1)
             {
                 MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -288,6 +290,52 @@ namespace Sigesoft.Node.WinClient.UI
 
             }
 
+        private void grdProtocolComponent_DoubleClick(object sender, EventArgs e)
+        {
+           
+        }
 
+        private void grdDataLocation_DoubleClick(object sender, EventArgs e)
+        {
+        }
+            
+
+        private void grdDataLocation_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+
+        }
+
+        private void grdDataLocation_DoubleClick_1(object sender, EventArgs e)
+        {
+             OperationResult objOperationResult = new OperationResult();
+             var ServiceComponentId = grdDataLocation.Selected.Rows[0].Cells["v_ServiceComponentId"].Value.ToString();
+            var component = grdDataLocation.Selected.Rows[0].Cells["v_ComponentName"].Value.ToString();
+            var componentId = grdDataLocation.Selected.Rows[0].Cells["v_ComponentId"].Value.ToString();
+            var price = grdDataLocation.Selected.Rows[0].Cells["r_Price"].Value.ToString();
+
+            FormPrecioComponente frm = new FormPrecioComponente(component, price, "Change");
+            frm.ShowDialog();
+
+            var oservicecomponentDto = new servicecomponentDto();
+
+          var obj =  _ServiceBL.GetServiceComponentsLiquidacion(ref objOperationResult, _serviceId);
+
+          //var x = obj.Find(p => p.v_ComponentId == componentId);
+          oservicecomponentDto.v_ServiceComponentId = ServiceComponentId;
+        oservicecomponentDto.r_Price = frm.Precio;
+
+        _ServiceBL.ActualizarPrecioComponente(oservicecomponentDto.r_Price.Value, oservicecomponentDto.v_ServiceComponentId);
+
+            var dataListPc = _ServiceBL.GetServiceComponentsLiquidacion(ref objOperationResult, _serviceId);
+
+            grdDataLocation.DataSource = dataListPc;
+
+            float Total = 0;
+            foreach (var item in dataListPc)
+            {
+                Total = Total + item.r_Price.Value;
+            }
+            lblCostoTotal.Text = Total.ToString();
+        } 
     }
 }

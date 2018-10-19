@@ -55,6 +55,7 @@
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(49, 20);
             this.txtPrecio.TabIndex = 1;
+            this.txtPrecio.TextChanged += new System.EventHandler(this.txtPrecio_TextChanged);
             // 
             // btnOK
             // 

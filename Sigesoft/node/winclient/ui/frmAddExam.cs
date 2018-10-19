@@ -170,7 +170,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                     float pb = objComponentDto.r_BasePrice.Value;
                     var precio_base = pb + (pb * p1 / 100) + (pb * p2 / 100);
-                    FormPrecioComponente frm = new FormPrecioComponente(NombreComponente[0].ToString(),precio_base.ToString());        
+                    FormPrecioComponente frm = new FormPrecioComponente(NombreComponente[0].ToString(),precio_base.ToString(),"");        
                    
                     frm.ShowDialog();
                  

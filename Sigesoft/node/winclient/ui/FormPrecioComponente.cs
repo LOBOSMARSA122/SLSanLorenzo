@@ -12,11 +12,13 @@ namespace Sigesoft.Node.WinClient.UI
     public partial class FormPrecioComponente : Form
     {
         public float Precio { get; set; }
-        public FormPrecioComponente(string pstrNombreComponente, string pdecPrecio)
+        public string _mode;
+        public FormPrecioComponente(string pstrNombreComponente, string pdecPrecio, string mode)
         {          
             InitializeComponent();
             lblNombreComponente.Text = pstrNombreComponente;
             txtPrecio.Text = pdecPrecio;
+            _mode = mode;
             calcular();           
         }
 
@@ -28,8 +30,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void txtFactor_TextChanged(object sender, EventArgs e)
         {
-            calcular();            
-     
+            calcular();   
         }
 
        void calcular()
@@ -41,7 +42,15 @@ namespace Sigesoft.Node.WinClient.UI
 
        private void FormPrecioComponente_Load(object sender, EventArgs e)
        {
+           if (_mode =="Change")
+           {
+               txtPrecio.Enabled = true;
+           }
+       }
 
+       private void txtPrecio_TextChanged(object sender, EventArgs e)
+       {
+           calcular();   
        }
                 
 
