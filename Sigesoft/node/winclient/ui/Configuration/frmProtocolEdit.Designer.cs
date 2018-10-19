@@ -557,7 +557,7 @@
             this.chkIsHasVigency.AutoSize = true;
             this.chkIsHasVigency.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkIsHasVigency.ForeColor = System.Drawing.Color.Black;
-            this.chkIsHasVigency.Location = new System.Drawing.Point(587, 133);
+            this.chkIsHasVigency.Location = new System.Drawing.Point(585, 133);
             this.chkIsHasVigency.Name = "chkIsHasVigency";
             this.chkIsHasVigency.Size = new System.Drawing.Size(108, 17);
             this.chkIsHasVigency.TabIndex = 33;

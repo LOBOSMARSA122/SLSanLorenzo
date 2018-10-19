@@ -34,13 +34,18 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void frmLiquidacion_Load(object sender, EventArgs e)
         {
-            OperationResult objOperationResult = new OperationResult();
-            var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
+            int nodeId = int.Parse(Common.Utils.GetApplicationConfigValue("NodeId"));
+            OperationResult objOperationResult1 = new OperationResult();
+
+            var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
+            var clientOrganization1 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
+            var clientOrganization2 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
+
             Utils.LoadDropDownList(ddlCustomerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.All);
-
-            var clientOrganization1 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
             Utils.LoadDropDownList(ddlEmployerOrganization, "Value1", "Id", clientOrganization1, DropDownListAction.All);
+            Utils.LoadDropDownList(cbbSubContratas, "Value1", "Id", clientOrganization2, DropDownListAction.All);
 
+            
             UltraGridColumn c = grdData.DisplayLayout.Bands[1].Columns["b_Seleccionar"];
             c.CellActivation = Activation.AllowEdit;
             c.CellClickAction = CellClickAction.Edit;
@@ -63,6 +68,12 @@ namespace Sigesoft.Node.WinClient.UI
             {
                 var id3 = ddlEmployerOrganization.SelectedValue.ToString().Split('|');
                 Filters.Add("v_EmployerOrganizationId==" + "\"" + id3[0] + "\"&&v_EmployerLocationId==" + "\"" + id3[1] + "\"");
+            }
+
+            if (cbbSubContratas.SelectedValue.ToString() != "-1")
+            {
+                var id3 = cbbSubContratas.SelectedValue.ToString().Split('|');
+                Filters.Add("B.v_WorkingOrganizationId ==" + "\"" + id3[0] + "\"&&B.v_WorkingLocationId ==" + "\"" + id3[1] + "\"");
             }
 
           
