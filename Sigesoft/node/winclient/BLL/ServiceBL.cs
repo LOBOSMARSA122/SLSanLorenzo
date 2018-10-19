@@ -31329,7 +31329,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 FechaExamen = A.d_ServiceDate.Value,
                                 NroDocumemto = C.v_DocNumber,
                                 Cargo = C.v_CurrentOccupation,
-                                Perfil = D.v_Name,
+                                Perfil = B.v_Name,
                                 v_ProtocolId = B.v_ProtocolId,
                                 v_CustomerLocationId = B.v_CustomerLocationId,
                                 v_EmployerLocationId = B.v_EmployerLocationId
