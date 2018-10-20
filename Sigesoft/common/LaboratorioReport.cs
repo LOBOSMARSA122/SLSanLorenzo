@@ -1216,82 +1216,82 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
                     }
-                    #region COprocultivo
-                    var xCoprocultivo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FECATEST_ID);
+                    //#region COprocultivo
+                    //var xCoprocultivo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FECATEST_ID);
 
-                    if (xCoprocultivo != null)
-                    {
-                        cells = new List<PdfPCell>();
+                    //if (xCoprocultivo != null)
+                    //{
+                    //    cells = new List<PdfPCell>();
 
-                        cells.Add(new PdfPCell(new Phrase("EXAMEN MACROSCÓPICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("EXAMEN MACROSCÓPICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("ANÁLISIS", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("RESULTADO", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("RANGO REFERENCIAL", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("UNIDAD", fontColumnValueBold)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var Color = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_COLOR);
-                        cells.Add(new PdfPCell(new Phrase("COLOR", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Color == null ? string.Empty : Color.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Color == null ? string.Empty : Color.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var Color = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_COLOR);
+                    //    cells.Add(new PdfPCell(new Phrase("COLOR", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Color == null ? string.Empty : Color.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Color == null ? string.Empty : Color.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var Consistencia = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_CONSISTENCIA);
-                        cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Consistencia == null ? string.Empty : Consistencia.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Consistencia == null ? string.Empty : Consistencia.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var Consistencia = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_CONSISTENCIA);
+                    //    cells.Add(new PdfPCell(new Phrase("CONSISTENCIA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Consistencia == null ? string.Empty : Consistencia.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Consistencia == null ? string.Empty : Consistencia.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var moco = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_MOCO);
-                        cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var moco = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_MOCO);
+                    //    cells.Add(new PdfPCell(new Phrase("MOCO", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(moco == null ? string.Empty : moco.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        cells.Add(new PdfPCell(new Phrase("EXAMEN MICROSCOPICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("EXAMEN MICROSCOPICO", fontColumnValueBold)) { Colspan = 4, HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var hematies = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_HEMATIES);
-                        cells.Add(new PdfPCell(new Phrase("HEMATÍES", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var hematies = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_HEMATIES);
+                    //    cells.Add(new PdfPCell(new Phrase("HEMATÍES", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(hematies == null ? string.Empty : hematies.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var Levaduras = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_LEVADURAS);
-                        cells.Add(new PdfPCell(new Phrase("LEVADURAS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Levaduras == null ? string.Empty : Levaduras.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Levaduras == null ? string.Empty : Levaduras.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var Levaduras = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_LEVADURAS);
+                    //    cells.Add(new PdfPCell(new Phrase("LEVADURAS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Levaduras == null ? string.Empty : Levaduras.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Levaduras == null ? string.Empty : Levaduras.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var Grasas = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_GRASAS);
-                        cells.Add(new PdfPCell(new Phrase("GRASAS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Grasas == null ? string.Empty : Grasas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Grasas == null ? string.Empty : Grasas.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var Grasas = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_GRASAS);
+                    //    cells.Add(new PdfPCell(new Phrase("GRASAS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Grasas == null ? string.Empty : Grasas.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Grasas == null ? string.Empty : Grasas.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var Leucocitos = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_LEUCOCITOS);
-                        cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var Leucocitos = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_LEUCOCITOS);
+                    //    cells.Add(new PdfPCell(new Phrase("LEUCOCITOS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Leucocitos == null ? string.Empty : Leucocitos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var Polimorfos = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_POLIMORFO_NUCLEARES);
-                        cells.Add(new PdfPCell(new Phrase("POLIMORFO NUCLEARES", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Polimorfos == null ? string.Empty : Polimorfos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Polimorfos == null ? string.Empty : Polimorfos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var Polimorfos = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_POLIMORFO_NUCLEARES);
+                    //    cells.Add(new PdfPCell(new Phrase("POLIMORFO NUCLEARES", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Polimorfos == null ? string.Empty : Polimorfos.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Polimorfos == null ? string.Empty : Polimorfos.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var Mononucleares = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_MONONUCLEARES);
-                        cells.Add(new PdfPCell(new Phrase("MONONUCLEARES", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Mononucleares == null ? string.Empty : Mononucleares.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(Mononucleares == null ? string.Empty : Mononucleares.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    var Mononucleares = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_MONONUCLEARES);
+                    //    cells.Add(new PdfPCell(new Phrase("MONONUCLEARES", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Mononucleares == null ? string.Empty : Mononucleares.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(Mononucleares == null ? string.Empty : Mononucleares.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        var ReaccInflam = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_REACCION_INFLAMATORIA);
-                        cells.Add(new PdfPCell(new Phrase("REACCION INFLAMATORIA ", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(ReaccInflam == null ? string.Empty : ReaccInflam.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                        cells.Add(new PdfPCell(new Phrase(ReaccInflam == null ? string.Empty : ReaccInflam.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
-                    }
-                    #endregion
+                    //    var ReaccInflam = xCoprocultivo.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.FECATEST_REACCION_INFLAMATORIA);
+                    //    cells.Add(new PdfPCell(new Phrase("REACCION INFLAMATORIA ", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(ReaccInflam == null ? string.Empty : ReaccInflam.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //    cells.Add(new PdfPCell(new Phrase(ReaccInflam == null ? string.Empty : ReaccInflam.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
+                    //}
+                    //#endregion
                     columnWidths = new float[] { 25f, 25f, 25f, 25f };
                     table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                     document.Add(table);

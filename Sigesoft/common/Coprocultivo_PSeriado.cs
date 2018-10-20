@@ -169,11 +169,11 @@ namespace NetPdf
             #region DATOS PARASITOLOGICO SERIADO -MICROBIOLOGIA
             if (microbiologia !=null)
             {
-                var color = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_COLOR) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_COLOR).v_Value1;
-                var consistencia = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_CONSISTENCIA) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_CONSISTENCIA).v_Value1;
-                var moco = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_MOCO) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_MOCO).v_Value1;
-                var thevenon = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_THEVENON) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_THEVENON).v_Value1;
-                var restos_alimenticios = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_RESTOS_ALIMENTICIOS) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_RESTOS_ALIMENTICIOS).v_Value1;
+                var color = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_COLOR) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_COLOR).v_Value1Name;
+                var consistencia = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_CONSISTENCIA) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_CONSISTENCIA).v_Value1Name;
+                var moco = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_MOCO) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_MOCO).v_Value1Name;
+                var thevenon = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_THEVENON) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_THEVENON).v_Value1Name;
+                var restos_alimenticios = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_RESTOS_ALIMENTICIOS) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_RESTOS_ALIMENTICIOS).v_Value1Name;
                 var leucocitos = microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_LEUCOCITOS) == null ? "FALTA LLENAR" : microbiologia.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MICROBIOLOGIA_C_A_LEUCOCITOS).v_Value1;
 
                 cells = new List<PdfPCell>()
@@ -434,6 +434,14 @@ namespace NetPdf
             if (datosPac.Genero == "MASCULINO") sexo = "M";
             else if (datosPac.Genero == "FEMENINO") sexo = "F";
             string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
+
+            string empresageneral = filiationData.empresa;
+            string empresacontrata = filiationData.contrata;
+            string empresasubcontrata = filiationData.subcontrata;
+
+            string empr_Conct = "";
+            if (empresageneral != empresasubcontrata) empr_Conct = empresacontrata + " / " + empresasubcontrata;
+            else empr_Conct = empresacontrata;
             cells = new List<PdfPCell>()
             {
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
@@ -453,8 +461,8 @@ namespace NetPdf
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
 
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
-                new PdfPCell(new Phrase("EMPRESA : " + DataService.v_CustomerOrganizationName, fontColumnValueBold2)) { Colspan = 10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
-                new PdfPCell(new Phrase("CIA : " + DataService.EmpresaEmpleadora, fontColumnValueBold2)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
+                new PdfPCell(new Phrase("EMPRESA : " +empresageneral, fontColumnValueBold2)) { Colspan = 10, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
+                new PdfPCell(new Phrase("CIA : " + empr_Conct, fontColumnValueBold2)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
 
                 new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, FixedHeight = tamaño_celda1,  UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE },    
