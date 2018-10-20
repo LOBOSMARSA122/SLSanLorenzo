@@ -231,6 +231,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
             var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
 
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
@@ -253,10 +254,12 @@ namespace Sigesoft.Node.WinClient.UI
                 //var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref _objOperationResult, hospiId);
                 string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                 string nombre = liquidacionID + " - CSL";
-                Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService);
+
+                var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
+
+                Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas);
                 this.Enabled = true;
             }
-            this.Close();
         }
     }
 }

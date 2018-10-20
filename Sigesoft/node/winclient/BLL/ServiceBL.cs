@@ -31515,5 +31515,52 @@ namespace Sigesoft.Node.WinClient.BLL
                 throw;
             }
         }
+
+        public InformacionEmpresas ObtenerInformacionEmpresas(string v_ProtocolId)
+        {
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                int isNotDeleted = (int)SiNo.NO;
+
+                var data = (from A in dbContext.service
+                            join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId
+                            join F in dbContext.organization on B.v_CustomerOrganizationId equals F.v_OrganizationId
+                            join I in dbContext.location on B.v_CustomerLocationId equals I.v_LocationId
+
+                            join BB in dbContext.organization on B.v_EmployerOrganizationId equals BB.v_OrganizationId
+                            join CC in dbContext.location on B.v_EmployerLocationId equals CC.v_LocationId
+
+                            join G in dbContext.organization on B.v_WorkingOrganizationId equals G.v_OrganizationId into J4_join
+                            from G in J4_join.DefaultIfEmpty()
+                            
+                            where B.i_IsDeleted == isNotDeleted && A.v_ServiceId == v_ProtocolId
+
+                            select new InformacionEmpresas
+                            {
+                                EmpresaClienteNombre  =  F.v_Name,
+                                EmpresaClienteRuc  = F.v_IdentificationNumber,
+                                EmpresaClienteDireccion  = F.v_Address,
+
+                                EmpresaEmpleadoraNombre  = BB.v_Name,
+                                EmpresaEmpleadoraRuc  = BB.v_IdentificationNumber,
+                                EmpresaEmpleadoraDireccion  =  BB.v_Address,
+
+                                EmpresaTrabajoNombre = G.v_Name,
+                                EmpresaTrabajoRuc = G.v_IdentificationNumber,
+                                EmpresaTrabajoDireccion = G.v_Address,
+                            }).FirstOrDefault();
+
+
+                return data;
+            }
+            catch (Exception e)
+            {
+                return null;
+            }
+
+        }
+
 	}
 }
