@@ -69,7 +69,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnLiqd1 = new System.Windows.Forms.Button();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.btnLiberarRegistro = new System.Windows.Forms.Button();
             this.btnGenerarLiq = new System.Windows.Forms.Button();
@@ -78,6 +78,7 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.btnCarta = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -120,6 +121,7 @@
             this.cbbSubContratas.Name = "cbbSubContratas";
             this.cbbSubContratas.Size = new System.Drawing.Size(499, 21);
             this.cbbSubContratas.TabIndex = 142;
+            this.cbbSubContratas.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cbbSubContratas_KeyPress);
             // 
             // label7
             // 
@@ -145,6 +147,7 @@
             this.ddlEmployerOrganization.Name = "ddlEmployerOrganization";
             this.ddlEmployerOrganization.Size = new System.Drawing.Size(481, 21);
             this.ddlEmployerOrganization.TabIndex = 140;
+            this.ddlEmployerOrganization.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ddlEmployerOrganization_KeyPress);
             // 
             // label3
             // 
@@ -166,6 +169,7 @@
             this.txtCCosto.Name = "txtCCosto";
             this.txtCCosto.Size = new System.Drawing.Size(197, 21);
             this.txtCCosto.TabIndex = 138;
+            this.txtCCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCCosto_KeyPress);
             // 
             // label16
             // 
@@ -212,6 +216,7 @@
             this.ddlCustomerOrganization.Name = "ddlCustomerOrganization";
             this.ddlCustomerOrganization.Size = new System.Drawing.Size(499, 21);
             this.ddlCustomerOrganization.TabIndex = 26;
+            this.ddlCustomerOrganization.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ddlCustomerOrganization_KeyPress);
             // 
             // label10
             // 
@@ -233,6 +238,7 @@
             this.txtNroLiquidacion.Name = "txtNroLiquidacion";
             this.txtNroLiquidacion.Size = new System.Drawing.Size(189, 21);
             this.txtNroLiquidacion.TabIndex = 9;
+            this.txtNroLiquidacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNroLiquidacion_KeyPress);
             // 
             // label5
             // 
@@ -255,6 +261,7 @@
             this.dptDateTimeEnd.Name = "dptDateTimeEnd";
             this.dptDateTimeEnd.Size = new System.Drawing.Size(95, 21);
             this.dptDateTimeEnd.TabIndex = 3;
+            this.dptDateTimeEnd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dptDateTimeEnd_KeyPress);
             // 
             // dtpDateTimeStar
             // 
@@ -265,6 +272,7 @@
             this.dtpDateTimeStar.Name = "dtpDateTimeStar";
             this.dtpDateTimeStar.Size = new System.Drawing.Size(95, 21);
             this.dtpDateTimeStar.TabIndex = 2;
+            this.dtpDateTimeStar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dtpDateTimeStar_KeyPress);
             // 
             // label2
             // 
@@ -294,7 +302,8 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnCarta);
+            this.groupBox2.Controls.Add(this.btnLiqd1);
             this.groupBox2.Controls.Add(this.btnExportarExcel);
             this.groupBox2.Controls.Add(this.btnLiberarRegistro);
             this.groupBox2.Controls.Add(this.btnGenerarLiq);
@@ -312,27 +321,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
             // 
-            // button1
+            // btnLiqd1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1138, 480);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 53);
-            this.button1.TabIndex = 156;
-            this.button1.Text = "Imprimir Liq";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnLiqd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLiqd1.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLiqd1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnLiqd1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnLiqd1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnLiqd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLiqd1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLiqd1.ForeColor = System.Drawing.Color.Black;
+            this.btnLiqd1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.btnLiqd1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLiqd1.Location = new System.Drawing.Point(1138, 441);
+            this.btnLiqd1.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLiqd1.Name = "btnLiqd1";
+            this.btnLiqd1.Size = new System.Drawing.Size(85, 41);
+            this.btnLiqd1.TabIndex = 156;
+            this.btnLiqd1.Text = "Liquidación";
+            this.btnLiqd1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnLiqd1.UseVisualStyleBackColor = false;
+            this.btnLiqd1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnExportarExcel
             // 
@@ -491,6 +500,7 @@
             this.grdData.Name = "grdData";
             this.grdData.Size = new System.Drawing.Size(1120, 504);
             this.grdData.TabIndex = 152;
+            this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdData_AfterSelectChange);
             this.grdData.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdData_ClickCell);
             // 
             // lblRecordCountCalendar
@@ -525,6 +535,28 @@
             this.btnEditarServicio.Text = "Editar Servicio";
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
+            // 
+            // btnCarta
+            // 
+            this.btnCarta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCarta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCarta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCarta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCarta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCarta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarta.ForeColor = System.Drawing.Color.Black;
+            this.btnCarta.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
+            this.btnCarta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCarta.Location = new System.Drawing.Point(1138, 499);
+            this.btnCarta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCarta.Name = "btnCarta";
+            this.btnCarta.Size = new System.Drawing.Size(85, 38);
+            this.btnCarta.TabIndex = 157;
+            this.btnCarta.Text = "Carta";
+            this.btnCarta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCarta.UseVisualStyleBackColor = false;
+            this.btnCarta.Click += new System.EventHandler(this.btnCarta_Click);
             // 
             // frmLiquidacion
             // 
@@ -572,8 +604,9 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ultraGridExcelExporter1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnLiqd1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbbSubContratas;
+        private System.Windows.Forms.Button btnCarta;
     }
 }

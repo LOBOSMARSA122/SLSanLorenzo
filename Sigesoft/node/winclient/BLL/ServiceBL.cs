@@ -31169,7 +31169,28 @@ namespace Sigesoft.Node.WinClient.BLL
             return objEntity;
 
         }
-        
+
+        public UsuarioGrabo DevolverDatosUsuarioFirma(int systemuserId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var objEntity = (from me in dbContext.systemuser
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+
+                             join B in dbContext.person on pme.v_PersonId equals B.v_PersonId
+
+                             where me.i_SystemUserId == systemuserId 
+                             select new UsuarioGrabo
+                             {
+                                 Firma = pme.b_SignatureImage,
+                                 Nombre = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                 CMP = pme.v_ProfessionalCode
+                             }).FirstOrDefault();
+
+            return objEntity;
+
+        }
         public List<Liquidacion> ListaLiquidacion(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
         {
             try
@@ -31542,14 +31563,17 @@ namespace Sigesoft.Node.WinClient.BLL
                                 EmpresaClienteNombre  =  F.v_Name,
                                 EmpresaClienteRuc  = F.v_IdentificationNumber,
                                 EmpresaClienteDireccion  = F.v_Address,
+                                EmpresaClienteRepresentante = F.v_ContacName,
 
                                 EmpresaEmpleadoraNombre  = BB.v_Name,
                                 EmpresaEmpleadoraRuc  = BB.v_IdentificationNumber,
                                 EmpresaEmpleadoraDireccion  =  BB.v_Address,
+                                EmpresaEmpleadoraRepresentante = BB.v_ContacName,
 
                                 EmpresaTrabajoNombre = G.v_Name,
                                 EmpresaTrabajoRuc = G.v_IdentificationNumber,
                                 EmpresaTrabajoDireccion = G.v_Address,
+                                EmpresaTrabajoRepresentante =G.v_ContacName,
                             }).FirstOrDefault();
 
 

@@ -107,5 +107,9 @@ namespace Sigesoft.Node.WinClient.BE
        public String v_Religion { get; set; }
        public String v_Nacionalidad { get; set; }
        public String v_ResidenciaAnterior { get; set; }
+
+       public byte[] Firma { get; set; }
+       public string Nombre { get; set; }
+       public string CMP { get; set; }
     }
 }

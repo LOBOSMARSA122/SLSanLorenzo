@@ -25,6 +25,7 @@ namespace NetPdf
             proceso.WaitForExit();
             proceso.Close();
         }
+
         public static void CreateLiquidacion_EMO(string filePDF,
             organizationDto infoEmpresaPropietaria, List<Liquidacion> Listaliq,
            InformacionEmpresas oInformacionEmpresas)
@@ -246,7 +247,7 @@ namespace NetPdf
 
             cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
             cells.Add(cell);
-            cell = new PdfPCell(new Phrase("IGB = S/. ", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+            cell = new PdfPCell(new Phrase("IGV = S/. ", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
             cells.Add(cell);
             cell = new PdfPCell(new Phrase(IGV.ToString(), fontColumnValueBold)) { Colspan = 2, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
             cells.Add(cell);

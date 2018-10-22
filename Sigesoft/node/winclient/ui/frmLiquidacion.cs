@@ -46,6 +46,9 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(cbbSubContratas, "Value1", "Id", clientOrganization2, DropDownListAction.All);
 
             
+            //
+            btnLiqd1.Enabled = false;
+            //
             UltraGridColumn c = grdData.DisplayLayout.Bands[1].Columns["b_Seleccionar"];
             c.CellActivation = Activation.AllowEdit;
             c.CellClickAction = CellClickAction.Edit;
@@ -76,7 +79,8 @@ namespace Sigesoft.Node.WinClient.UI
                 Filters.Add("v_WorkingOrganizationId ==" + "\"" + id3[0] + "\"&&v_WorkingLocationId ==" + "\"" + id3[1] + "\"");
             }
 
-          
+
+            btnLiqd1.Enabled = false;
             // Create the Filter Expression
             strFilterExpression = null;
             if (Filters.Count > 0)
@@ -253,11 +257,125 @@ namespace Sigesoft.Node.WinClient.UI
                 //var hospitalizacion = _hospitBL.GetHospitalizacion(ref _objOperationResult, hospiId);
                 //var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref _objOperationResult, hospiId);
                 string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
-                string nombre = liquidacionID + " - CSL";
+                string nombre ="Liquidación N° "+ liquidacionID + " - CSL";
 
                 var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
 
+                
                 Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas);
+                this.Enabled = true;
+            }
+        }
+
+        private void grdData_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
+        {
+            foreach (UltraGridRow rowSelected in this.grdData.Selected.Rows)
+            {
+                if (rowSelected.Band.Index.ToString() == "0")
+                {
+                    btnLiqd1.Enabled = false;
+                }
+                else if (rowSelected.Band.Index.ToString() == "1")
+                {
+                    var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+                    if (liquidacionID == null || liquidacionID =="")
+                    {
+                        btnLiqd1.Enabled = false;
+                    }
+                    else {
+                        btnLiqd1.Enabled = true;
+                    }
+                }
+                else
+                {
+                    btnLiqd1.Enabled = false;
+                }
+
+            }
+        }
+
+        private void ddlCustomerOrganization_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null,null);
+            }
+        }
+
+        private void ddlEmployerOrganization_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
+
+        private void cbbSubContratas_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
+
+        private void txtNroLiquidacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
+
+        private void txtCCosto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
+
+        private void dtpDateTimeStar_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
+
+        private void dptDateTimeEnd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnFilter_Click(null, null);
+            }
+        }
+
+        private void btnCarta_Click(object sender, EventArgs e)
+        {
+            var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+            var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+                var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
+
+                var _DataService = _serviceBL.GetInfoEmpresaLiquidacion(serviceID);
+               
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+               
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "Carta N° "+ liquidacionID + " - CSL";
+
+                var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
+                int systemUser = 205;
+                var datosGrabo = _serviceBL.DevolverDatosUsuarioFirma(systemUser);
+
+                Liquidacion_Carta.CreateLiquidacion_Carta(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas, datosGrabo);
                 this.Enabled = true;
             }
         }
