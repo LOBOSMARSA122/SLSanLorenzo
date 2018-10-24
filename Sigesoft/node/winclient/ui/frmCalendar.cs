@@ -20,6 +20,8 @@ using Sigesoft.Node.WinClient.UI.Configuration;
 using Sigesoft.Node.WinClient.UI.NatclarXML;
 using NetPdf;
 
+using Sigesoft.Node.Contasol.Integration;
+
 namespace Sigesoft.Node.WinClient.UI
 {
     public partial class frmCalendar : Form
@@ -3545,6 +3547,34 @@ namespace Sigesoft.Node.WinClient.UI
             btnFilter_Click(sender, e);
             MessageBox.Show("Se completo correctamente", "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+        }
+
+        private void btnHistoria_Click(object sender, EventArgs e)
+        {
+            OperationResult _objOperationResult = new OperationResult();
+            //var doc = grdDataCalendar.Selected.Rows[0].Cells["v_DocDumber"].Value.ToString();
+            var serviceID = grdDataCalendar.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+
+                var datosP = new PacientBL().DevolverDatosPaciente(serviceID);
+
+                var _DataService = new ServiceBL().GetInfoEmpresaLiquidacion(serviceID);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaHistoriaClinica").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "Historia Clinica N° " + serviceID + " - CSL";
+
+                //var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
+
+                Historia_Clinica.CreateHistoria_Clinica(ruta + nombre + ".pdf", MedicalCenter, datosP, _DataService);
+                this.Enabled = true;
+            }
         }
        
     }

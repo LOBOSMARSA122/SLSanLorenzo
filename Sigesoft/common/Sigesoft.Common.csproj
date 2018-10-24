@@ -128,6 +128,7 @@
     <Compile Include="Ficha_Evaluacion_Musculoesqueletica_GoldFields.cs" />
     <Compile Include="HandlingItextSharp.cs" />
     <Compile Include="HistoriaClinica.cs" />
+    <Compile Include="Historia_Clinica.cs" />
     <Compile Include="HojaCotizacion.cs" />
     <Compile Include="HUDBAY\ConsentimientoInformadoAccesoClinica.cs" />
     <Compile Include="HUDBAY\InformeMedicoDeAptitudOcupacional_Empresa.cs" />

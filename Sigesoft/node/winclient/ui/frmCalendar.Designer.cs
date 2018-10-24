@@ -198,6 +198,7 @@
             this.ultraGridDocumentExporter1 = new Infragistics.Win.UltraWinGrid.DocumentExport.UltraGridDocumentExporter(this.components);
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.btnHistoria = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataCalendar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -1152,6 +1153,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnHistoria);
             this.splitContainer1.Panel1.Controls.Add(this.btnCambiarProtocolo);
             this.splitContainer1.Panel1.Controls.Add(this.btnGenerarXML);
             this.splitContainer1.Panel1.Controls.Add(this.btnAdjuntar);
@@ -1651,6 +1653,28 @@
             ultraDataColumn21,
             ultraDataColumn22});
             // 
+            // btnHistoria
+            // 
+            this.btnHistoria.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnHistoria.BackColor = System.Drawing.SystemColors.Control;
+            this.btnHistoria.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnHistoria.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnHistoria.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnHistoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHistoria.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHistoria.ForeColor = System.Drawing.Color.Black;
+            this.btnHistoria.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
+            this.btnHistoria.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnHistoria.Location = new System.Drawing.Point(506, 414);
+            this.btnHistoria.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHistoria.Name = "btnHistoria";
+            this.btnHistoria.Size = new System.Drawing.Size(104, 24);
+            this.btnHistoria.TabIndex = 104;
+            this.btnHistoria.Text = "Historia Clinica";
+            this.btnHistoria.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnHistoria.UseVisualStyleBackColor = false;
+            this.btnHistoria.Click += new System.EventHandler(this.btnHistoria_Click);
+            // 
             // frmCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1777,5 +1801,6 @@
         private System.Windows.Forms.Button btnGenerarXML;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button btnCambiarProtocolo;
+        private System.Windows.Forms.Button btnHistoria;
     }
 }
