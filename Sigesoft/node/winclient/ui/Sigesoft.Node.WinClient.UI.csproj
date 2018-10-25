@@ -5918,6 +5918,7 @@
     <Content Include="Resources\cuadradoazul.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\historiaclinica.png" />
     <Content Include="Resources\triangulorojo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

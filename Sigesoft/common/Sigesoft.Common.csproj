@@ -120,6 +120,7 @@
     <Compile Include="Examen_Oftalmologico_Completo.cs" />
     <Compile Include="Examen_Oftalmologico_Simple.cs" />
     <Compile Include="EXAMEN_SUF_MED_OPERADORES_EQUIPOS_MOVILES.cs" />
+    <Compile Include="ExoneracionEspirometria.cs" />
     <Compile Include="Exoneracion_Laboratorio.cs" />
     <Compile Include="Exoneracion_Placa_Torax_PA.cs" />
     <Compile Include="FichaMedicaOcupacional312.cs" />

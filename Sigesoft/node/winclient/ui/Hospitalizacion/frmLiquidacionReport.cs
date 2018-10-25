@@ -57,9 +57,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 var hospitalizacion = _hospitBL.GetHospitalizacion(ref objOperationResult, hospiId);
                 var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref objOperationResult, hospiId);
-
+                var medicoTratante = new ServiceBL().GetMedicoTratante(hospser.v_ServiceId);
                 string nombre = personData.v_DocNumber + "_" + personData.v_ProtocolName + "-LiquMédico";
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor, hospitalizacion, hospitalizacionhabitacion);
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, doctor, hospitalizacion, hospitalizacionhabitacion, medicoTratante);
                 this.Enabled = true;
             }
             this.Close();
@@ -88,9 +88,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 var hospitalizacion = _hospitBL.GetHospitalizacion(ref objOperationResult, hospiId);
                 var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref objOperationResult, hospiId);
-
+                var medicoTratante = new ServiceBL().GetMedicoTratante(hospser.v_ServiceId);
                 string nombre = personData.v_DocNumber + "_" + personData.v_ProtocolName + "-LiquPac";
-                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente, hospitalizacion, hospitalizacionhabitacion);
+                Liquidacion_Hospitalizacion.CreateLiquidacion(ruta + nombre + ".pdf", MedicalCenter, lista, _DataService, datosP, paciente, hospitalizacion, hospitalizacionhabitacion, medicoTratante);
                 this.Enabled = true;
             }
             this.Close();

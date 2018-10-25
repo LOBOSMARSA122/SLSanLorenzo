@@ -732,7 +732,7 @@ namespace Sigesoft.Node.WinClient.BLL
 			}
 		}
 
-        public ServiceList GetInfoEmpresaLiquidacion(string pstrServiceId)
+        public MedicoTratanteAtenciones GetMedicoTratante(string pstrServiceId)
         {
             //mon.IsActive = true;  
 
@@ -741,108 +741,26 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var objEntity = (from A in dbContext.service
-                                 join B in dbContext.protocol on A.v_ProtocolId equals B.v_ProtocolId into B_join
-                                 from B in B_join.DefaultIfEmpty()
-
-                                 join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
-                                 from C2 in C2_join.DefaultIfEmpty()
-
-                                 join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
-                                 from C1 in C1_join.DefaultIfEmpty()
-
-                                 join C in dbContext.organization on B.v_WorkingOrganizationId equals C.v_OrganizationId into C_join
-                                 from C in C_join.DefaultIfEmpty()
-                                 
-                                 join D in dbContext.datahierarchy on new { a = C.i_SectorTypeId.Value, b = 104 }
-                                                        equals new { a = D.i_ItemId, b = D.i_GroupId } into D_join
-                                 from D in D_join.DefaultIfEmpty()
-
-                                 join E in dbContext.datahierarchy on new { a = C.i_DepartmentId.Value, b = 113 }
-                                                       equals new { a = E.i_ItemId, b = E.i_GroupId } into E_join
-                                 from E in E_join.DefaultIfEmpty()
-
-                                 join F in dbContext.datahierarchy on new { a = C.i_ProvinceId.Value, b = 113 }
-                                                       equals new { a = F.i_ItemId, b = F.i_GroupId } into F_join
-                                 from F in F_join.DefaultIfEmpty()
-
-                                 join G in dbContext.datahierarchy on new { a = C.i_DistrictId.Value, b = 113 }
-                                                       equals new { a = G.i_ItemId, b = G.i_GroupId } into G_join
-                                 from G in G_join.DefaultIfEmpty()
-
-                                 join H in dbContext.person on A.v_PersonId equals H.v_PersonId into H_join
-                                 from H in H_join.DefaultIfEmpty()
-                                 
+                                 join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                                 join C in dbContext.systemuser on B.i_MedicoTratanteId equals C.i_SystemUserId
+                                 join D in dbContext.person on C.v_PersonId equals D.v_PersonId
+                                 join E in dbContext.professional on D.v_PersonId equals E.v_PersonId
                                  where A.v_ServiceId == pstrServiceId
 
-                                 select new ServiceList
+                                 select new MedicoTratanteAtenciones
                                  {
-                                     //-----------------CABECERA---------------------------------
-                                     v_PersonId = H.v_PersonId,
-                                     v_ServiceId = A.v_ServiceId,
-                                     d_ServiceDate = A.d_ServiceDate,
-                                     i_DiaV = A.d_ServiceDate.Value.Day,
-                                     i_MesV = A.d_ServiceDate.Value.Month,
-                                     i_AnioV = A.d_ServiceDate.Value.Year,
-                                     i_EsoTypeId = B.i_EsoTypeId.Value, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
-                                     
-                                     //---------------DATOS DE LA EMPRESA--------------------------------
-                                     //GENERAL = C2.v_Name,
-                                     //CONTRATA = C1.v_Name,
-                                     //SUBCONTRATA = C.v_Name,
-                                     v_CustomerOrganizationName = C2.v_Name,
-                                     EmpresaEmpleadora = C1.v_Name,
-                                     EmpresaTrabajo = C.v_Name,
+                                    Nombre = D.v_FirstLastName + " " + D.v_SecondLastName + ", " + D.v_FirstName,
+                                    Colegiatura = E.v_ProfessionalCode,
+                                    Direccion = D.v_AdressLocation
+                            }).FirstOrDefault();
 
-                                     RUC = C2.v_IdentificationNumber,
-                                     RUC2 = C1.v_IdentificationNumber,
-                                     RUC3 = C.v_IdentificationNumber,
-
-                                     DireccionEmpresaTrabajo = C2.v_Address,
-                                     DireccionEmpresaTrabajo2 = C1.v_Address,
-                                     DireccionEmpresaTrabajo3 = C.v_Address,
-
-                                     //RubroEmpresaTrabajo = C.v_SectorName,
-                                     //ProvinciaEmpresaTrabajo = F.v_Value1,
-                                     //DistritoEmpresaTrabajo = G.v_Value1,
-                                     //v_CurrentOccupation = H.v_CurrentOccupation,
-                                     //b_Logo = C2.b_Image,
-                                     //EmpresaClienteId = C.v_OrganizationId,
-                                     
-                                 });
-
-
-                var sql = (from a in objEntity.ToList()
-
-                           select new ServiceList
-                           {
-                               //-----------------CABECERA---------------------------------
-                               v_ServiceId = a.v_ServiceId,
-                               d_ServiceDate = a.d_ServiceDate,
-                               i_DiaV = a.d_ServiceDate.Value.Day,
-                               i_MesV = a.d_ServiceDate.Value.Month,
-                               i_AnioV = a.d_ServiceDate.Value.Year,
-                               i_EsoTypeId = a.i_EsoTypeId, // tipo de ESO : Pre-Ocupacional ,  Periodico, etc 
-                               RUC = a.RUC,
-                               //---------------DATOS DE LA EMPRESA--------------------------------
-                               EmpresaTrabajo = a.EmpresaTrabajo,
-                               EmpresaEmpleadora = a.EmpresaEmpleadora,
-                               RubroEmpresaTrabajo = a.RubroEmpresaTrabajo,
-                               DireccionEmpresaTrabajo = a.DireccionEmpresaTrabajo,
-                               DepartamentoEmpresaTrabajo = a.DepartamentoEmpresaTrabajo,
-                               ProvinciaEmpresaTrabajo = a.ProvinciaEmpresaTrabajo,
-                               DistritoEmpresaTrabajo = a.DistritoEmpresaTrabajo,
-                               v_CurrentOccupation = a.v_CurrentOccupation,
-                               b_Logo = a.b_Logo,
-                               EmpresaClienteId = a.EmpresaClienteId,
-                               v_CustomerOrganizationName = a.v_CustomerOrganizationName,
-                           }).FirstOrDefault();
-
-                return sql;
+                return objEntity;
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 return null;
             }
+
         }
 
       
@@ -1714,7 +1632,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_CentroEducativo = D.v_CentroEducativo,
                                 i_LevelOfId = D.i_LevelOfId.Value,
                                 i_MaritalStatusId = D.i_MaritalStatusId.Value,
-                                v_CustomerOrganizationId = E.v_CustomerOrganizationId
+                                v_CustomerOrganizationId = E.v_CustomerOrganizationId,
 							};
 
 				ServiceList objData = query.FirstOrDefault();

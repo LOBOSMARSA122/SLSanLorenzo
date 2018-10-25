@@ -1537,6 +1537,17 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             Exoneracion_Placa_Torax_PA.CreateExoneracionPlacaTorax(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
 
+        private void GenerateExoneracionEspirometria(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            ExoneracionEspirometria.CreateExoneracionEspirometria(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+        }
         private void GenerateDeclaracionJuradaRX(string pathFile)
         {
             var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
@@ -5319,6 +5330,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.EXCEPCIONES_RX_ID:
                     GenerateExoneraxionPlacaTorax(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXCEPCIONES_RX_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.EXCEPCIONES_ESPIROMETRIA_ID:
+                    GenerateExoneracionEspirometria(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.EXCEPCIONES_ESPIROMETRIA_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.INFORME_MEDICO_SALUD_OCUPACIONAL_EXAMEN_MEDICO_ANUAL:

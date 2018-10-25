@@ -121,6 +121,9 @@
   <data name="ABD_HOMBRO_180_OPTIMO001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ABD_HOMBRO_180_OPTIMO001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="R_ProtesisTotal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_ProtesisTotal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="logo ware" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\logo ware1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -163,8 +166,8 @@
   <data name="lumbar000" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\lumbar000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LoginRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\LoginRed.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="rodillas002" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\rodillas002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="oidoizquierdo111" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\oidoizquierdo111.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -256,9 +259,6 @@
   <data name="ABD_HOMBRO_180_MUY_LIMITADo0001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ABD_HOMBRO_180_MUY_LIMITADo0001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="information" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="curacion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\curacion.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -289,6 +289,9 @@
   <data name="ABDOMENPROMEDIO01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ABDOMENPROMEDIO01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="R_protesisfijamalo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_protesisfijamalo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bullet_orange" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\bullet_orange.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -301,6 +304,9 @@
   <data name="ab03" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ab03.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="protesisfijabueno" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\protesisfijabueno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="attach" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\attach.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -310,11 +316,8 @@
   <data name="logoWare2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\logoWare21.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\user_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ABDOMENPOBRE01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\ABDOMENPOBRE01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hombros01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\hombros01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Exodoncia" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\Exodoncia.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -324,9 +327,6 @@
   </data>
   <data name="ABD_HOMBRO_180_LIMITADO001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ABD_HOMBRO_180_LIMITADO001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="flechaAzul" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\flechaAzul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ABD_LAT_REGULAR0001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ABD_LAT_REGULAR0001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -343,11 +343,11 @@
   <data name="ab01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ab01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="abd04" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\abd04.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="rinneeeeee" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\rinneeeeee.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="hombros01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\hombros01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="printer_color" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\printer_color.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -385,9 +385,6 @@
   <data name="accept" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\accept.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\pencil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="server_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\server_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -396,6 +393,9 @@
   </data>
   <data name="rotet01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\rotet01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="coronatemporal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\coronatemporal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="stethoscope_backgrounds_wallpapers" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\stethoscope-backgrounds-wallpapers.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -406,17 +406,20 @@
   <data name="eject_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\eject_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="menorrojo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\menorrojo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="bullet_cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\bullet_cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MUSLOPROMEDIO01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\MUSLOPROMEDIO01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fototipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\fototipo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="R_protesisfijabueno" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_protesisfijabueno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="firma_doctor" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\firma doctor.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\user_cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ROTACIONEXTINT_MUY_LIMITADO001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ROTACIONEXTINT_MUY_LIMITADO001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -424,8 +427,14 @@
   <data name="nofoto" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\nofoto.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="door_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\door_out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="rodi" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\rodi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="brick_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\brick_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ad03" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ad03.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -451,6 +460,9 @@
   <data name="ABD_HOMBRO_60_LIMITADO0002" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ABD_HOMBRO_60_LIMITADO0002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cad01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\cad01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="bullet_pink" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\bullet_pink.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -466,11 +478,14 @@
   <data name="CorcheteRojo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\CorcheteRojo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ajax_loader_green_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ajax_loader_green_48.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ROTACIONEXTERNA_OPTIMO001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ROTACIONEXTERNA_OPTIMO001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cad01" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\cad01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="flechaAzul" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\flechaAzul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ad01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ad01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -481,11 +496,17 @@
   <data name="CADERaregular11011" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\CADERaregular11011.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="coronadefinitiva" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\coronadefinitiva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cuadroblanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\cuadroblanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="test" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\test.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="R_dienteausente" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_dienteausente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="play_green" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\play_green.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -523,6 +544,9 @@
   <data name="usuario_bloqueado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\usuario_bloqueado.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ProtesisTotal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ProtesisTotal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="application_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\application_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -532,11 +556,20 @@
   <data name="CADERAEXCELENTE01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\CADERAEXCELENTE01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="protesisremovible" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\protesisremovible.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="protesisfijamalo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\protesisfijamalo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="color_swatch" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\color_swatch.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rodillas001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\rodillas001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="user_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\user_add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="firma" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\firma.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -544,8 +577,8 @@
   <data name="system_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\system_save.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ad02" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\ad02.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ABDOMENPOBRE01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ABDOMENPOBRE01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="abd02" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\abd02.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -556,8 +589,11 @@
   <data name="application_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\application_edit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="abd04" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\abd04.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="R_coronadefinitiva" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_coronadefinitiva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ad02" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\ad02.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="logosalus" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\logosalus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -565,11 +601,20 @@
   <data name="note_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\note_delete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="R_remanenteredicular1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_remanenteredicular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="chart_organisation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\chart_organisation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="user_cross" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\user_cross.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="R_dienteausente1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_dienteausente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="R_remanenteredicular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_remanenteredicular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="information" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\information.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="muslo01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\muslo01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -583,11 +628,17 @@
   <data name="system_close" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\system_close.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rinne" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\rinne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="arrow_refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\arrow_refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ajax_loader_green_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\ajax_loader_green_48.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="remanenteredicular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\remanenteredicular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MUSLOPROMEDIO01" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\MUSLOPROMEDIO01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mayorazul" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\mayorazul.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -601,8 +652,8 @@
   <data name="report" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\report.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rinne" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\rinne.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LoginRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\LoginRed.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="PPR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\PPR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -625,8 +676,8 @@
   <data name="ROTACION_EXTERNA_LIMITADO0001" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\ROTACION_EXTERNA_LIMITADO0001.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="brick_go" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\brick_go.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pencil" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\pencil.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="manos0022" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\manos0022.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -634,8 +685,11 @@
   <data name="01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\01.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rodillas002" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\rodillas002.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="menorrojo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\menorrojo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="R_coronatemporal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\R_coronatemporal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="calculator" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\calculator.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -655,58 +709,7 @@
   <data name="MUSLOREGULAR01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\MUSLOREGULAR01.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="door_out" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\door_out.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fototipo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\fototipo.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="coronadefinitiva" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\coronadefinitiva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="coronatemporal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\coronatemporal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="protesisfijabueno" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\protesisfijabueno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="protesisfijamalo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\protesisfijamalo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="protesisremovible" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\protesisremovible.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ProtesisTotal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\ProtesisTotal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="remanenteredicular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\remanenteredicular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_coronadefinitiva" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_coronadefinitiva.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_coronatemporal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_coronatemporal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_dienteausente" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_dienteausente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_dienteausente1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_dienteausente.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_protesisfijabueno" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_protesisfijabueno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_protesisfijamalo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_protesisfijamalo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_ProtesisTotal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_ProtesisTotal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_remanenteredicular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_remanenteredicular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="R_remanenteredicular1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Resources\R_remanenteredicular.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="historiaclinica" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\historiaclinica.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

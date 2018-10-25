@@ -3562,8 +3562,8 @@ namespace Sigesoft.Node.WinClient.UI
                 var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
 
                 var datosP = new PacientBL().DevolverDatosPaciente(serviceID);
-
-                var _DataService = new ServiceBL().GetInfoEmpresaLiquidacion(serviceID);
+                var exams = new ServiceBL().GetServiceComponentsReport(serviceID);
+                var medicoTratante = new ServiceBL().GetMedicoTratante(serviceID);
 
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaHistoriaClinica").ToString();
 
@@ -3572,7 +3572,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 //var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
 
-                Historia_Clinica.CreateHistoria_Clinica(ruta + nombre + ".pdf", MedicalCenter, datosP, _DataService);
+                Historia_Clinica.CreateHistoria_Clinica(ruta + nombre + ".pdf", MedicalCenter, datosP, medicoTratante, exams);
                 this.Enabled = true;
             }
         }

@@ -2391,6 +2391,11 @@ namespace Sigesoft.Common
         public const string EXCEPCIONES_LABORATORIO_ID = "N009-ME000000441";
         public const string EXCEPCIONES_LABORATORIO_EXO_SI = "N009-MF000003435";
         public const string EXCEPCIONES_LABORATORIO_EXO_NO = "N009-MF000003436";
+
+        public const string EXCEPCIONES_ESPIROMETRIA_ID = "N009-ME000000513";
+        public const string EXCEPCIONES_ESPIROMETRIA_SI = "N009-MF000004351";
+        public const string EXCEPCIONES_ESPIROMETRIA_NO = "N009-MF000004352";
+        public const string EXCEPCIONES_ESPIROMETRIA_MOTIVO = "N009-MF000004353";
         #endregion
         #region EXAMEN_FISICO
 

@@ -1113,6 +1113,16 @@ namespace Sigesoft.Node.WinClient.UI {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap historiaclinica {
+            get {
+                object obj = ResourceManager.GetObject("historiaclinica", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap hombros01 {
             get {
                 object obj = ResourceManager.GetObject("hombros01", resourceCulture);

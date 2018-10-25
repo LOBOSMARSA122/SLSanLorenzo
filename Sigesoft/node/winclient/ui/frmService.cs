@@ -117,6 +117,9 @@ namespace Sigesoft.Node.WinClient.UI
 
             ddlConsultorio.SelectedValueChanged += ddlConsultorio_SelectedValueChanged;
 
+
+            btnHistoriaCl.Enabled = false;
+
           
      
         }
@@ -208,8 +211,9 @@ namespace Sigesoft.Node.WinClient.UI
             if (ddlProtocolId.SelectedValue.ToString() != "-1") Filters.Add("v_ProtocolId=="+ "\"" + ddlProtocolId.SelectedValue + "\"");
             if (ddlStatusAptitudId.SelectedValue.ToString() != "-1") Filters.Add("i_AptitudeStatusId==" + ddlStatusAptitudId.SelectedValue);
             if (cboUserMed.SelectedValue.ToString() != "-1") Filters.Add("i_ApprovedUpdateUserId==" + cboUserMed.SelectedValue);
+
             
-            
+
             // Create the Filter Expression
             strFilterExpression = null;   
             if (Filters.Count > 0)
@@ -2674,8 +2678,26 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdDataService_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
         {
+            OperationResult objOperationResult = new OperationResult();
+            List<string> Filters = new List<string>();
+            
             foreach (UltraGridRow rowSelected in this.grdDataService.Selected.Rows)
             {
+
+                if (rowSelected.Band.Index.ToString() == "0")
+                {
+                    var ServiceId = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                    ServiceList personData = _serviceBL.GetServicePersonData(ref objOperationResult, ServiceId);
+
+                    if (personData.i_ServiceTypeId == 1)
+                    {
+                        btnHistoriaCl.Enabled = false;
+                    }
+                    else
+                    {
+                        btnHistoriaCl.Enabled = true;
+                    }
+                }
                 if (rowSelected.Band.Index.ToString() == "1")
                 {
                     btnEditarESO.Enabled = false;
@@ -2815,6 +2837,36 @@ namespace Sigesoft.Node.WinClient.UI
 
             btnFilter_Click(sender, e);
                   
+        }
+
+        private void btnHistoriaCl_Click(object sender, EventArgs e)
+        {
+            OperationResult _objOperationResult = new OperationResult();
+            //var doc = grdDataCalendar.Selected.Rows[0].Cells["v_DocDumber"].Value.ToString();
+            var serviceID = grdDataService.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+
+                var exams = new ServiceBL().GetServiceComponentsReport(serviceID);
+
+                var datosP = new PacientBL().DevolverDatosPaciente(serviceID);
+
+                var _DataService = new ServiceBL().GetMedicoTratante(serviceID);
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaHistoriaClinica").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "Historia Clinica N° " + serviceID + " - CSL";
+
+                //var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
+
+                Historia_Clinica.CreateHistoria_Clinica(ruta + nombre + ".pdf", MedicalCenter, datosP, _DataService, exams);
+                this.Enabled = true;
+            }
         }
         
         //void ProcesoSErvicio()

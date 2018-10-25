@@ -247,8 +247,6 @@ namespace Sigesoft.Node.WinClient.UI
 
                 //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
                 //hospser = _hospitBL.GetHospitServ(hospiId);
-
-                var _DataService = _serviceBL.GetInfoEmpresaLiquidacion(serviceID);
                 //var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
 
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
@@ -364,7 +362,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
 
-                var _DataService = _serviceBL.GetInfoEmpresaLiquidacion(serviceID);
+                //var _DataService = _serviceBL.GetInfoEmpresaLiquidacion(serviceID);
                
                 string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
                
