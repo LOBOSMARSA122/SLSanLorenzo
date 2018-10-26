@@ -395,6 +395,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
             // Refrescar grilla
             btnFilter_Click(sender, e);
+            BindGrid();
         }
 
         private void btnEditar_Click(object sender, EventArgs e)
@@ -404,6 +405,7 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
             // Refrescar grilla
             btnFilter_Click(sender, e);
+            BindGrid();
             grdProtocolComponent.DataSource = new List<ProtocolComponentList>();
             lblCostoTotal.Text = "";
         }

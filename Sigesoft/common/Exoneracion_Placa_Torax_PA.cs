@@ -19,7 +19,7 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateExoneracionPlacaTorax(ServiceList DataService, string filePDF,
+        public static void CreateExoneracionPlacaTorax(PacientList filiationData, string filePDF,
             PacientList datosPac,
             organizationDto infoEmpresaPropietaria,
             List<ServiceComponentList> exams,
@@ -154,16 +154,16 @@ namespace NetPdf
 
             PdfPCell cellHuellaTrabajador = null;
 
-            if (DataService.FirmaTrabajador != null)
-                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaTrabajador, null, null, 100, 35));
+            if (filiationData.FirmaTrabajador != null)
+                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 120, 45));
             else
                 cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
             cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            if (DataService.HuellaTrabajador != null)
-                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.HuellaTrabajador, null, null, 60, 80));
+            if (filiationData.HuellaTrabajador != null)
+                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 60, 80));
             else
                 cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 

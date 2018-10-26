@@ -20,11 +20,11 @@ namespace NetPdf
             proceso.Close();
         }
 
-        public static void CreateExoneracionLaboratorio(ServiceList DataService, string filePDF,
+        public static void CreateExoneracionLaboratorio(PacientList filiationData, string filePDF,
             PacientList datosPac,
             organizationDto infoEmpresaPropietaria,
             List<ServiceComponentList> exams,
-            List<DiagnosticRepositoryList> Diagnosticos, PacientList filiationData)
+            List<DiagnosticRepositoryList> Diagnosticos)
         {
             Document document = new Document(PageSize.A4, 40f, 40f, 80f, 50f);
 
@@ -159,16 +159,16 @@ namespace NetPdf
 
             PdfPCell cellHuellaTrabajador = null;
 
-            if (DataService.FirmaTrabajador != null)
-                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.FirmaTrabajador, null, null, 100, 35));
+            if (filiationData.FirmaTrabajador != null)
+                cellFirmaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.FirmaTrabajador, null, null, 100, 35));
             else
                 cellFirmaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 
             cellFirmaTrabajador.HorizontalAlignment = PdfPCell.ALIGN_CENTER;
             cellFirmaTrabajador.VerticalAlignment = PdfPCell.ALIGN_MIDDLE;
 
-            if (DataService.HuellaTrabajador != null)
-                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(DataService.HuellaTrabajador, null, null, 50, 80));
+            if (filiationData.HuellaTrabajador != null)
+                cellHuellaTrabajador = new PdfPCell(HandlingItextSharp.GetImage(filiationData.HuellaTrabajador, null, null, 50, 80));
             else
                 cellHuellaTrabajador = new PdfPCell(new Phrase(" ", fontColumnValue));
 

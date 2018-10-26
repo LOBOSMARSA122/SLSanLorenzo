@@ -446,6 +446,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             var serviceComponenteStatusRx = _serviceBL.ServiceComponentStatusByCategoria(6, _serviceId);
             var serviceComponenteStatusLab = _serviceBL.ServiceComponentStatusByCategoria(1, _serviceId);
+            var serviceComponenteStatusEsp = _serviceBL.ServiceComponentStatusByCategoria(16, _serviceId);
             var datosPac = _pacientBL.DevolverDatosPaciente(_serviceId);
             var serviceComponenteEstado = _serviceBL.GetServiceComponentsReport(_serviceId);
             
@@ -500,7 +501,6 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                         }
                         
                     }
-                    
                 }
                 else
                 {
@@ -509,17 +509,59 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                            p.v_ComponenteId != "N009-ME000000440" && p.v_ComponenteId != "N009-ME000000442");
                 }
 
+
                 if (serviceComponenteStatusLab == 7)
                 {
-                    ListaOrdenReportes = ListaOrdenReportes.FindAll(
-                         p =>
-                             p.v_ComponenteId != "ILAB_CLINICO");
+                    ServiceComponentList lab = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_ID);
+
+                    var si_lab = lab.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI) == null ? "" : lab.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_SI).v_Value1;
+                    var no_lab = lab.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO) == null ? "" : lab.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_LABORATORIO_EXO_NO).v_Value1;
+
+                    if (si_lab == "1")
+                    {
+                        ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                     p =>
+                         p.v_ComponenteId != "N001-ME000000000" && p.v_ComponenteId != "N009-ME000000461" && p.v_ComponenteId != "N009-ME000000053");
+                    }
+                    else
+                    {
+                        ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                            p =>
+                                p.v_ComponenteId != "N009-ME000000441");
+                    }
                 }
                 else
                 {
                     ListaOrdenReportes = ListaOrdenReportes.FindAll(
                        p =>
                            p.v_ComponenteId != "N009-ME000000441");
+                }
+
+                if (serviceComponenteStatusEsp== 7)
+                {
+                    ServiceComponentList esp = serviceComponenteEstado.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_ID);
+
+                    var si_esp = esp.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_SI) == null ? "" : esp.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_SI).v_Value1;
+                    var no_esp = esp.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_NO) == null ? "" : esp.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXCEPCIONES_ESPIROMETRIA_NO).v_Value1;
+
+                    if (si_esp == "1")
+                    {
+                        ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                     p =>
+                         p.v_ComponenteId != "N002-ME000000031");
+                    }
+                    else
+                    {
+                        ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                            p =>
+                                p.v_ComponenteId != "N009-ME000000513");
+                    }
+                }
+                else
+                {
+                    ListaOrdenReportes = ListaOrdenReportes.FindAll(
+                       p =>
+                           p.v_ComponenteId != "N009-ME000000513");
                 }
 
             #endregion
@@ -1514,51 +1556,50 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void GenerateExoneraxionLaboratorio(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
-
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
 
-            Exoneracion_Laboratorio.CreateExoneracionLaboratorio(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, filiationData);
+            Exoneracion_Laboratorio.CreateExoneracionLaboratorio(filiationData, pathFile, datosP, MedicalCenter, exams, diagnosticRepository);
         }
 
         private void GenerateExoneraxionPlacaTorax(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-            Exoneracion_Placa_Torax_PA.CreateExoneracionPlacaTorax(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+            Exoneracion_Placa_Torax_PA.CreateExoneracionPlacaTorax(filiationData, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
 
         private void GenerateExoneracionEspirometria(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
-            ExoneracionEspirometria.CreateExoneracionEspirometria(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+            ExoneracionEspirometria.CreateExoneracionEspirometria(filiationData, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
         private void GenerateDeclaracionJuradaRX(string pathFile)
         {
-            var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
+            //var _DataService = _serviceBL.GetInformacion_OtrosExamenes(_serviceId);
             var exams = _serviceBL.GetServiceComponentsReport(_serviceId);
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
 
-            DeclaracionJuradaRX.CreateDeclaracionJurada(_DataService, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
+            DeclaracionJuradaRX.CreateDeclaracionJurada(filiationData, pathFile, datosP, MedicalCenter, exams, diagnosticRepository, serviceComponents);
         }
         private void GenerateInformeResultadosAutorizacion(string pathFile)
         {

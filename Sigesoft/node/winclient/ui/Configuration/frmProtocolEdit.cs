@@ -165,7 +165,6 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-
             OperationResult objOperationResult = new OperationResult();
 
             _protocolcomponentListDTO = new List<protocolcomponentDto>();
