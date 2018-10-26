@@ -1633,6 +1633,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 i_LevelOfId = D.i_LevelOfId.Value,
                                 i_MaritalStatusId = D.i_MaritalStatusId.Value,
                                 v_CustomerOrganizationId = E.v_CustomerOrganizationId,
+                                v_EmployerOrganizationId = E.v_EmployerOrganizationId
 							};
 
 				ServiceList objData = query.FirstOrDefault();

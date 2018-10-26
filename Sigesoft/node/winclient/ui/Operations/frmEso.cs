@@ -6068,7 +6068,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     {
                         var oEnviarSeguimiento = new EnviarSeguimientoSigesoft();
                         oEnviarSeguimiento.v_ServiceId = _datosPersona.v_ServiceId;
-                        oEnviarSeguimiento.v_CustomerOrganizationId = _datosPersona.v_CustomerOrganizationId;
+                        oEnviarSeguimiento.v_CustomerOrganizationId = _datosPersona.v_EmployerOrganizationId;// _datosPersona.v_CustomerOrganizationId;
                         oEnviarSeguimiento.v_PersonId = _datosPersona.v_PersonId;
                         oEnviarSeguimiento.Nombres = _datosPersona.v_FirstName;
                         oEnviarSeguimiento.ApellidoPaterno = _datosPersona.v_FirstLastName;

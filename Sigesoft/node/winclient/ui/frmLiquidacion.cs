@@ -172,10 +172,10 @@ namespace Sigesoft.Node.WinClient.UI
                 return;
             };
 
-            foreach (var id in ids)
-            {
+            //foreach (var id in ids)
+            //{
                 _serviceBL.GenerarLiquidacion(ids, Globals.ClientSession.GetAsList());
-            }
+            //}
 
 
             MessageBox.Show("Actualizado", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
