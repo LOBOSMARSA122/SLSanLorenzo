@@ -31148,7 +31148,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             //                              equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
                             //from J1 in J1_join.DefaultIfEmpty()
 
-                            where A.i_IsDeleted == 0 && A.i_ServiceStatusId != 3
+                            where A.i_IsDeleted == 0 && A.i_ServiceStatusId == 3
                             && A.d_ServiceDate > pdatBeginDate && A.d_ServiceDate < pdatEndDate && C.d_Birthdate != null
                             //ARNOLD , REPORTE JUAN LIZA
                             select new Liquidacion
