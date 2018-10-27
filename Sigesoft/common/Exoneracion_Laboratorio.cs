@@ -102,7 +102,7 @@ namespace NetPdf
             else if (datosPac.i_DocTypeId == 4) { tipodoc = "Carnet de Extranjeria"; }
             #region Contenido
 
-            string empresageneral = filiationData.empresa;
+            string empresageneral = filiationData.empresa_;
             string empresacontrata = filiationData.contrata;
             string empresasubcontrata = filiationData.subcontrata;
 

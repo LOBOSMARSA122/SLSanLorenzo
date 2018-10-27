@@ -1130,7 +1130,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  select new PacientList
                                  {
 
-                                     empresa = C2.v_Name,
+                                     empresa_ = C2.v_Name,
                                      contrata = C1.v_Name,
                                      subcontrata = C3.v_Name,
 
@@ -1183,7 +1183,7 @@ namespace Sigesoft.Node.WinClient.BLL
                          
                            select new PacientList
                             {
-                                empresa = a.empresa,
+                                empresa_ = a.empresa_,
                                 contrata = a.contrata,
                                 subcontrata = a.subcontrata,
 

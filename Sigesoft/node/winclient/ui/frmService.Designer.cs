@@ -57,12 +57,12 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Valor");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("UsuarioMedicina");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Diagnosticos");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Diagnosticos", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ExpirationDateDiagnostic");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecomendationsName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CIE10");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestricctionName");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Diagnosticos", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn33 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ExpirationDateDiagnostic");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecomendationsName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn35 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CIE10");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn36 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestricctionName");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -731,7 +731,7 @@
             ultraGridColumn2.Width = 234;
             ultraGridColumn6.Header.Caption = "Fecha de Atención";
             ultraGridColumn6.Header.VisiblePosition = 9;
-            ultraGridColumn6.Width = 118;
+            ultraGridColumn6.Width = 149;
             ultraGridColumn5.Header.Caption = "Aptitud";
             ultraGridColumn5.Header.VisiblePosition = 13;
             ultraGridColumn7.Header.Caption = "Estado Servicio";
@@ -795,7 +795,7 @@
             ultraGridColumn16.Hidden = true;
             ultraGridColumn11.Header.Caption = "Gen";
             ultraGridColumn11.Header.VisiblePosition = 0;
-            ultraGridColumn11.Width = 18;
+            ultraGridColumn11.Width = 132;
             ultraGridColumn26.Header.VisiblePosition = 7;
             ultraGridColumn26.Hidden = true;
             ultraGridColumn27.Header.VisiblePosition = 8;
@@ -830,26 +830,17 @@
             ultraGridColumn27,
             ultraGridColumn29,
             ultraGridColumn14});
-            ultraGridColumn12.ColSpan = ((short)(3));
-            ultraGridColumn12.Header.Caption = "Diagnósticos";
-            ultraGridColumn12.Header.VisiblePosition = 0;
-            ultraGridColumn13.Header.Caption = "Fecha Control";
-            ultraGridColumn13.Header.VisiblePosition = 2;
-            ultraGridColumn13.Hidden = true;
-            ultraGridColumn15.ColSpan = ((short)(4));
-            ultraGridColumn15.Header.Caption = "Recomendaciones";
-            ultraGridColumn15.Header.VisiblePosition = 3;
-            ultraGridColumn15.Width = 762;
-            ultraGridColumn18.Header.VisiblePosition = 1;
-            ultraGridColumn28.ColSpan = ((short)(3));
-            ultraGridColumn28.Header.Caption = "Restricciones";
-            ultraGridColumn28.Header.VisiblePosition = 4;
+            ultraGridColumn30.Header.VisiblePosition = 0;
+            ultraGridColumn33.Header.VisiblePosition = 1;
+            ultraGridColumn34.Header.VisiblePosition = 2;
+            ultraGridColumn35.Header.VisiblePosition = 3;
+            ultraGridColumn36.Header.VisiblePosition = 4;
             ultraGridBand2.Columns.AddRange(new object[] {
-            ultraGridColumn12,
-            ultraGridColumn13,
-            ultraGridColumn15,
-            ultraGridColumn18,
-            ultraGridColumn28});
+            ultraGridColumn30,
+            ultraGridColumn33,
+            ultraGridColumn34,
+            ultraGridColumn35,
+            ultraGridColumn36});
             this.grdDataService.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdDataService.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.grdDataService.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;

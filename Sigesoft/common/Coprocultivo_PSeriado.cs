@@ -119,7 +119,7 @@ namespace NetPdf
             else if (datosPac.Genero == "FEMENINO") sexo = "F";
             string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
 
-            string empresageneral = filiationData.empresa;
+            string empresageneral = filiationData.empresa_;
             string empresacontrata = filiationData.contrata;
             string empresasubcontrata = filiationData.subcontrata;
 
@@ -435,7 +435,7 @@ namespace NetPdf
             else if (datosPac.Genero == "FEMENINO") sexo = "F";
             string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
 
-            string empresageneral = filiationData.empresa;
+            string empresageneral = filiationData.empresa_;
             string empresacontrata = filiationData.contrata;
             string empresasubcontrata = filiationData.subcontrata;
 

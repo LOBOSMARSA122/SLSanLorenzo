@@ -116,7 +116,7 @@ namespace NetPdf
            else if (conducira == "0") conduciraXNO = "X";
 
 
-           string empresageneral = filiationData.empresa;
+           string empresageneral = filiationData.empresa_;
            string empresacontrata = filiationData.contrata;
            string empresasubcontrata = filiationData.subcontrata;
 
