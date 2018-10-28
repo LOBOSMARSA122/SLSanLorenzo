@@ -115,7 +115,7 @@ namespace NetPdf
             string segunda_ReEv_1 = "";
             if (segunda_ReEv == "1") segunda_ReEv_1 = "X";
 
-            string empresageneral = filiationData.empresa;
+            string empresageneral = filiationData.empresa_;
             string empresacontrata = filiationData.contrata;
             string empresasubcontrata = filiationData.subcontrata;
 

@@ -95,7 +95,7 @@ namespace NetPdf
             #endregion
 
             #region FILIACIÓN
-            string empresageneral = filiationData.empresa;
+            string empresageneral = filiationData.empresa_;
             string empresacontrata = filiationData.contrata;
             string empresasubcontrata = filiationData.subcontrata;
 

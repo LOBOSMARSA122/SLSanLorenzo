@@ -101,7 +101,7 @@ namespace NetPdf
             ServiceComponentList dermatologico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVALUACION_DERMATOLOGICA_OC_ID);
 
             #region cabecera
-            string empresageneral = filiationData.empresa;
+            string empresageneral = filiationData.empresa_;
             string empresacontrata = filiationData.contrata;
             string empresasubcontrata = filiationData.subcontrata;
 

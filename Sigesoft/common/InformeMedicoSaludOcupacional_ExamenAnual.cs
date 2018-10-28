@@ -158,7 +158,7 @@ namespace NetPdf
             string[] servicio = datosPac.FechaServicio.ToString().Split(' ');
             string[] fechaInforme = datosPac.FechaActualizacion.ToString().Split(' ');
 
-            string empresageneral = filiationData.empresa;
+            string empresageneral = filiationData.empresa_;
             string empresacontrata = filiationData.contrata;
             string empresasubcontrata = filiationData.subcontrata;
 
