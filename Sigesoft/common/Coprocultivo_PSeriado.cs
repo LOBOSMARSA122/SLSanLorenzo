@@ -217,7 +217,7 @@ namespace NetPdf
                 columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
                 table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
                 document.Add(table);
-
+            }
                 ServiceComponentList parasitologico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PARASITOLOGICO_SERIADO_CIELO_AZUL_ID);
                 if (parasitologico!=null)
                 {
@@ -287,7 +287,6 @@ namespace NetPdf
                     document.Add(table);
                 }
 
-            }
             
             
             #endregion
@@ -541,7 +540,7 @@ namespace NetPdf
             #region raspado de uñas
 
             ServiceComponentList rapado_uñas = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.RASPADO_UÑAS_ID);
-            if (inmunologia != null)
+            if (rapado_uñas != null)
             {
                 var koh = rapado_uñas.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RASPADO_UÑAS) == null ? "FALTA LLENAR" : rapado_uñas.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.RASPADO_UÑAS).v_Value1;
                
@@ -583,7 +582,7 @@ namespace NetPdf
             #region SECRESION FRINGEA
 
             ServiceComponentList secresion_faringea = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SECRECION_FARINGEA_ID);
-            if (inmunologia != null)
+            if (secresion_faringea != null)
             {
                 var muestra = secresion_faringea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MUESTRA_SECRECION_FARINGEA) == null ? "FALTA LLENAR" : secresion_faringea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.MUESTRA_SECRECION_FARINGEA).v_Value1;
                 var germen_aislado = secresion_faringea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GERMEN_AISLADO_SECRECION_FARINGEA) == null ? "FALTA LLENAR" : secresion_faringea.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.GERMEN_AISLADO_SECRECION_FARINGEA).v_Value1;
