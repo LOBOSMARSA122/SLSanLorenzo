@@ -1976,6 +1976,7 @@ namespace Sigesoft.Common
         public const string EXAMEN_OFTALMOLOGICO_SIMPLE_APTITUD_NO = "N009-MF000003559";
 
         public const string EXAMEN_OFTALMOLOGICO_SIMPLE_EXAMENES_AUXILIARES = "N009-MF000003560";
+        public const string EXAMEN_OFTALMOLOGICO_SIMPLE_CORRECTORES = "N009-MF000004357";
 
         ///
 
@@ -2008,6 +2009,8 @@ namespace Sigesoft.Common
 
         //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_DIAGNOSTICO = "N009-MF000003585";
         public const string EXAMEN_OFTALMOLOGICO_COMPLETO_RP = "N009-MF000003586";
+        public const string EXAMEN_OFTALMOLOGICO_COMPLETO_CORRECTORES = "N009-MF000004358";
+
         //public const string EXAMEN_OFTALMOLOGICO_COMPLETO_RECOMENDACION = "N009-MF000003587";
         
         ///
@@ -2040,6 +2043,9 @@ namespace Sigesoft.Common
 
         public const string EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OD = "N009-MF000003601";
         public const string EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_RETINA_OI = "N009-MF000003602";
+
+        public const string EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_CORRECTORES = "N009-MF000004359";
+
 
         //public const string EVALUACION_OFTALMOLOGICA_APENDICE_N_2_YANACOCHA_OBSERVACIONES = "N009-MF000003603";
 
@@ -2099,6 +2105,7 @@ namespace Sigesoft.Common
         public const string INFORME_OFTALMOLOGICO_HUDBAY_TEST_ISHIHARA = "N009-MF000003652";
         public const string INFORME_OFTALMOLOGICO_HUDBAY_VISION_ESTEREOSCOPICA = "N009-MF000003653";
 
+        public const string INFORME_OFTALMOLOGICO_HUDBAY_CORRECTORES = "N009-MF000004360";
         //public const string INFORME_OFTALMOLOGICO_HUDBAY_DIAGNOSTICO = "N009-MF000003654";
         //public const string INFORME_OFTALMOLOGICO_HUDBAY_INDICACIONES = "N009-MF000003655";
 
@@ -2447,6 +2454,9 @@ namespace Sigesoft.Common
         public const string EXAMEN_FISICO_ESTADO_METAL_DESCRIPCION_ID = "N009-MF000000625";
         public const string EXAMEN_FISICO_DESCRIPCION_ID = "N009-MF000000439";
 
+        public const string EXAMEN_FISICO_MEDICACION = "N009-MF000004355";
+
+
 
         #endregion
 
@@ -2699,7 +2709,7 @@ namespace Sigesoft.Common
         public const string OFTALMOLOGIA_DISMINUCION_VISION_UN_OJO = "N009-MF000002152";
         public const string OFTALMOLOGIA_DISMINUCION_VISION_BILATERAL = "N009-MF000002153";
 
-
+        public const string OFTALMOLOGIA_CORRECTORES = "N009-MF000004356";
         #region Fondo de Ojo
         public const string FONDO_OJO_ID = "N009-ME000000132";
 
@@ -3460,6 +3470,9 @@ namespace Sigesoft.Common
         public const string EXAMEN_FISICO_7C_VARICES = "N009-MF000000657";
         public const string EXAMEN_FISICO_7C_ORGANOS_GENITALES = "N009-MF000000658";
         public const string EXAMEN_FISICO_7C_GANGLIOS = "N009-MF000000659";
+
+        public const string EXAMEN_FISICO_7C_MEDICACION = "N009-MF000004354";
+
         //***
 
         public const string EXAMEN_FISICO_7C_HALLAZGOS_ID = "N009-MF000000703";

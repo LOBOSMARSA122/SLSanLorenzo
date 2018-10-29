@@ -1679,11 +1679,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
             var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
-
+            var habitosPersonales = new PacientBL().DevolverHabitos_PersonalesSolo(datosP.v_PersonId);
 
             var Restricciton = _serviceBL.GetRestrictionByServiceId(_serviceId);
 
-            Marcobre_Pase_Medico.CreateMarcobrePaseMedico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
+            Marcobre_Pase_Medico.CreateMarcobrePaseMedico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, habitosPersonales);
         }
         private void GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string pathFile)
         {

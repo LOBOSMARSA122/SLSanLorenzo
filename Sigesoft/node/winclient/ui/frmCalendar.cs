@@ -545,8 +545,8 @@ namespace Sigesoft.Node.WinClient.UI
 
                     txtTrabajador.Text = grdDataCalendar.Selected.Rows[0].Cells["v_Pacient"].Value.ToString();
 
-                    if (grdDataCalendar.Selected.Rows[0].Cells["v_WorkingOrganizationName"].Value != null)
-                        WorkingOrganization.Text = grdDataCalendar.Selected.Rows[0].Cells["v_WorkingOrganizationName"].Value.ToString();
+                    if (grdDataCalendar.Selected.Rows[0].Cells["CompMinera"].Value != null)
+                        WorkingOrganization.Text = grdDataCalendar.Selected.Rows[0].Cells["CompMinera"].Value.ToString();
                                     
                     txtProtocol.Text = grdDataCalendar.Selected.Rows[0].Cells["v_ProtocolName"].Value == null ? "" : grdDataCalendar.Selected.Rows[0].Cells["v_ProtocolName"].Value.ToString();
                     txtService.Text = grdDataCalendar.Selected.Rows[0].Cells["v_ServiceName"].Value.ToString();
@@ -648,8 +648,8 @@ namespace Sigesoft.Node.WinClient.UI
 
                 _calendarId = grdDataCalendar.Selected.Rows[0].Cells["v_CalendarId"].Value.ToString();
 
-                if (grdDataCalendar.Selected.Rows[0].Cells["v_WorkingOrganizationName"].Value != null)
-                    WorkingOrganization.Text = grdDataCalendar.Selected.Rows[0].Cells["v_WorkingOrganizationName"].Value.ToString();
+                if (grdDataCalendar.Selected.Rows[0].Cells["CompMinera"].Value != null)
+                    WorkingOrganization.Text = grdDataCalendar.Selected.Rows[0].Cells["CompMinera"].Value.ToString();
 
                 txtProtocol.Text = grdDataCalendar.Selected.Rows[0].Cells["v_ProtocolName"].Value == null ? "" : grdDataCalendar.Selected.Rows[0].Cells["v_ProtocolName"].Value.ToString();
                 txtService.Text = grdDataCalendar.Selected.Rows[0].Cells["v_ServiceName"].Value.ToString();
@@ -870,11 +870,12 @@ namespace Sigesoft.Node.WinClient.UI
                 var serviceId = item.Cells["v_ServiceId"].Value.ToString();
                 oCalendarDetail = new CalendarDetail();
 
+
                 oCalendarDetail.v_ServiceId = serviceId;
                 oCalendarDetail.Pacient = item.Cells["v_Pacient"].Value.ToString();
                 oCalendarDetail.EmpresaCliente = item.Cells["v_OrganizationLocationProtocol"].Value.ToString();
                 oCalendarDetail.EmpresaEmpleadora = item.Cells["v_OrganizationIntermediaryName"].Value.ToString();
-                oCalendarDetail.EmpresaTrabajo = item.Cells["v_WorkingOrganizationName"].Value.ToString();
+                oCalendarDetail.EmpresaTrabajo = item.Cells["CompMinera"].Value.ToString();
                 oCalendarDetail.FechaService = item.Cells["d_ServiceDate"].Value.ToString();
                 oCalendarDetail.Protocol = item.Cells["v_ProtocolName"].Value.ToString();
 
