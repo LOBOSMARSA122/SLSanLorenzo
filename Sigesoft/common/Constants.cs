@@ -74,7 +74,7 @@ namespace Sigesoft.Common
         public const string IE_GINECOLOGICO_ID = "N009-ME000000472";
 
         public const string IE_GINECOLOGICO_MOT_EXAM = "N009-MF000004283";
-        public const string IE_GINECOLOGICO_FUR = "N009-MF00000428"”;
+        public const string IE_GINECOLOGICO_FUR = "N009-MF00000428";
 
         public const string IE_GINECOLOGICO_UTERO_POSICION = "N009-MF000004285";
         public const string IE_GINECOLOGICO_UTERO_CONTORNO = "N009-MF000004286";
@@ -122,7 +122,7 @@ namespace Sigesoft.Common
         public const string IE_ADOMINAL_VESICULA_BIL_CONT_ANECOICO = "N009-MF000004320";
         public const string IE_ADOMINAL_VESICULA_BIL_BARRO_BILIAR = "N009-MF000004321";
         public const string IE_ADOMINAL_VESICULA_BIL_CALC_INTERIOR = "N009-MF000004322";
-        public const string IE_ADOMINAL_VESICULA_BIL_OTROS = "N009-MF000004323";
+        //public const string IE_ADOMINAL_VESICULA_BIL_OTROS = "N009-MF000004323";
         public const string IE_ADOMINAL_VESICULA_BIL_DIAMETRO_TRANSV = "N009-MF000004324";
 
         public const string IE_ADOMINAL_PANCREAS_MORF_ECOGENICIDAD = "N009-MF000004325";

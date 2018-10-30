@@ -92,9 +92,18 @@ namespace Sigesoft.Node.WinClient.UI
                 strFilterExpression = strFilterExpression.Substring(0, strFilterExpression.Length - 4);
             }
 
+            var selectedTab = tabControl1.SelectedTab.Name;
+
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
             {
-                this.BindGrid();
+                if (tabControl1.SelectedTab.Name == "tpESO")
+                {
+                    BindGrid();
+                }
+                else if (tabControl1.SelectedTab.Name == "tpEmpresa")
+                {
+                    BindGridEmpresa();
+                }
             };
         }
 
@@ -111,6 +120,38 @@ namespace Sigesoft.Node.WinClient.UI
             }
 
         }
+
+        private void BindGridEmpresa()
+        {
+            var objData = GetDataEmpresa(0, null, "", strFilterExpression);
+            grdEmpresa.DataSource = objData;
+            //lblRecordCountCalendar.Text = string.Format("Se encontraron {0} registros.", objData.Count());
+
+            if (grdEmpresa.Rows.Count > 0)
+            {
+                grdEmpresa.Rows[0].Selected = true;
+                //btnExportarExcel.Enabled = true;
+            }
+
+        }
+
+        private List<LiquidacionEmpresa> GetDataEmpresa(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
+            DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
+
+            var _objData = _serviceBL.ListaLiquidacionByEmpresa(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+
+            if (objOperationResult.Success != 1)
+            {
+                MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return _objData;
+        }
+
+
 
         private List<Liquidacion> GetData(int pintPageIndex, int? pintPageSize, string pstrSortExpression, string pstrFilterExpression)
         {

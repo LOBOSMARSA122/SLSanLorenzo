@@ -31224,8 +31224,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var item in tipoEsos)
                 {
                     var LiquidacionDetalle = new List<LiquidacionDetalle>();
-                    var oLiquidacion = new Liquidacion();
-                    oLiquidacion.Esotype = item.Esotype;
+                    var oLiquidacionEmpresaDetalle = new Liquidacion();
+                    oLiquidacionEmpresaDetalle.Esotype = item.Esotype;
 
                     var servicios = ListaServicios.FindAll(p => p.i_EsoTypeId == item.i_EsoTypeId);
 
@@ -31256,11 +31256,95 @@ namespace Sigesoft.Node.WinClient.BLL
                         LiquidacionDetalle.Add(oLiquidacionDetalle);
                         contador++;
                     }
-                    oLiquidacion.Detalle = LiquidacionDetalle;
+                    oLiquidacionEmpresaDetalle.Detalle = LiquidacionDetalle;
 
-                    ListaLiquidacion.Add(oLiquidacion);
+                    ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
                 }     
   
+                pobjOperationResult.Success = 1;
+                return ListaLiquidacion.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public List<LiquidacionEmpresa> ListaLiquidacionByEmpresa(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.liquidacion
+                            join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
+                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId                           
+                            where A.i_IsDeleted == 0 
+                            && B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
+                            //ARNOLD , REPORTE JUAN LIZA
+                            select new LiquidacionEmpresa
+                            {
+                                v_OrganizationName = F.v_Name,
+                                v_LiquidacionId = A.v_LiquidacionId,
+                                v_NroLiquidacion = A.v_NroLiquidacion,
+                                v_ServiceId = A.v_ServiceId,
+                                v_OrganizationId = A.v_OrganizationId,
+                                d_Monto = A.d_Monto,
+                                d_FechaVencimiento = A.d_FechaVencimiento,
+                                v_NroFactura = A.v_NroFactura,
+                            };
+
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+
+                var result = query.ToList();
+                var empresas = result.ToList().GroupBy(g => g.v_OrganizationId).Select(p => p.FirstOrDefault());
+
+
+                List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
+
+                foreach (var item in empresas)
+                {
+                    var LiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                    var oLiquidacionEmpresa = new LiquidacionEmpresa();
+                    oLiquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+
+                    var liquidaciones = result.FindAll(p => p.v_OrganizationId == item.v_OrganizationId);
+
+                    foreach (var liquidacion in liquidaciones)
+                    {
+                        var oLiquidacionDetalle = new LiquidacionEmpresaDetalle();
+                        oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
+                        oLiquidacionDetalle.d_Debe = 0;
+                        oLiquidacionDetalle.d_Pago = 0;
+                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;                  
+
+                        LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
+                    }
+                    oLiquidacionEmpresa.detalle = LiquidacionEmpresaDetalle;
+
+                    ListaLiquidacion.Add(oLiquidacionEmpresa);
+                }
+
                 pobjOperationResult.Success = 1;
                 return ListaLiquidacion.ToList();
 
@@ -31341,8 +31425,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var item in tipoEsos)
                 {
                     var LiquidacionDetalle = new List<LiquidacionDetalle>();
-                    var oLiquidacion = new Liquidacion();
-                    oLiquidacion.Esotype = item.Esotype;
+                    var oLiquidacionEmpresaDetalle = new Liquidacion();
+                    oLiquidacionEmpresaDetalle.Esotype = item.Esotype;
 
                     var servicios = ListaServicios.FindAll(p => p.i_EsoTypeId == item.i_EsoTypeId);
 
@@ -31372,9 +31456,9 @@ namespace Sigesoft.Node.WinClient.BLL
                         LiquidacionDetalle.Add(oLiquidacionDetalle);
                         contador++;
                     }
-                    oLiquidacion.Detalle = LiquidacionDetalle;
+                    oLiquidacionEmpresaDetalle.Detalle = LiquidacionDetalle;
 
-                    ListaLiquidacion.Add(oLiquidacion);
+                    ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
                 }
 
                 pobjOperationResult.Success = 1;
