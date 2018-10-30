@@ -223,6 +223,7 @@
     <Compile Include="Custom\ReporteFobiasocial01.cs" />
     <Compile Include="Custom\ReporteFobiasocial02.cs" />
     <Compile Include="Custom\ReporteFobiasocialAdmin.cs" />
+    <Compile Include="Custom\ReporteGerencia.cs" />
     <Compile Include="Custom\ReporteMaslachestres.cs" />
     <Compile Include="Custom\ReporteMasterClinico.cs" />
     <Compile Include="Custom\ReporteOftalmologiaAntiguo.cs" />
@@ -346,7 +347,6 @@
     <Compile Include="Generated\dxfrecuentedetalleDto.cs" />
     <Compile Include="Generated\emailDto.cs" />
     <Compile Include="Generated\embarzoDto.cs" />
-    <Compile Include="Generated\ReporteGerencia.cs" />
     <Compile Include="Generated\workstationdangersDto.cs" />
     <Compile Include="Generated\warehouseDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />
@@ -415,6 +415,7 @@
     <Compile Include="Generated\masterrecommendationrestricctionDto.cs" />
     <Compile Include="Generated\logDto.cs" />
     <Compile Include="Generated\locationDto.cs" />
+    <Compile Include="Generated\liquidacionDto.cs" />
     <Compile Include="Generated\hospitalizacionserviceDto.cs" />
     <Compile Include="Generated\hospitalizacionhabitacionDto.cs" />
     <Compile Include="Generated\hospitalizacionDto.cs" />

@@ -46,12 +46,20 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Perfil");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CCosto");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SubTotal");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Igv");
+            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings1 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "Precio", 10, true, "Detalle", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "Precio", 10, true);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings2 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "SubTotal", 12, true, "Detalle", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "SubTotal", 12, true);
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings3 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "Igv", 13, true, "Detalle", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "Igv", 13, true);
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbbSubContratas = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -69,6 +77,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnCarta = new System.Windows.Forms.Button();
             this.btnLiqd1 = new System.Windows.Forms.Button();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.btnLiberarRegistro = new System.Windows.Forms.Button();
@@ -78,7 +87,6 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.btnCarta = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -321,6 +329,28 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
             // 
+            // btnCarta
+            // 
+            this.btnCarta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCarta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCarta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCarta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCarta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCarta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarta.ForeColor = System.Drawing.Color.Black;
+            this.btnCarta.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
+            this.btnCarta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCarta.Location = new System.Drawing.Point(1138, 499);
+            this.btnCarta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCarta.Name = "btnCarta";
+            this.btnCarta.Size = new System.Drawing.Size(85, 38);
+            this.btnCarta.TabIndex = 157;
+            this.btnCarta.Text = "Carta";
+            this.btnCarta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCarta.UseVisualStyleBackColor = false;
+            this.btnCarta.Click += new System.EventHandler(this.btnCarta_Click);
+            // 
             // btnLiqd1
             // 
             this.btnLiqd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -429,8 +459,10 @@
             ultraGridColumn13.Header.VisiblePosition = 7;
             ultraGridColumn14.Header.VisiblePosition = 8;
             ultraGridColumn15.Header.VisiblePosition = 9;
-            ultraGridColumn16.Header.VisiblePosition = 10;
-            ultraGridColumn17.Header.VisiblePosition = 11;
+            ultraGridColumn16.Header.VisiblePosition = 12;
+            ultraGridColumn17.Header.VisiblePosition = 13;
+            ultraGridColumn1.Header.VisiblePosition = 10;
+            ultraGridColumn2.Header.VisiblePosition = 11;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn6,
             ultraGridColumn7,
@@ -443,7 +475,19 @@
             ultraGridColumn14,
             ultraGridColumn15,
             ultraGridColumn16,
-            ultraGridColumn17});
+            ultraGridColumn17,
+            ultraGridColumn1,
+            ultraGridColumn2});
+            summarySettings1.DisplayFormat = "Suma Precio = {0}";
+            summarySettings1.GroupBySummaryValueAppearance = appearance2;
+            summarySettings2.DisplayFormat = "Suma Sub Total  = {0}";
+            summarySettings2.GroupBySummaryValueAppearance = appearance3;
+            summarySettings3.DisplayFormat = "Suma Igv = {0}";
+            summarySettings3.GroupBySummaryValueAppearance = appearance4;
+            ultraGridBand2.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
+            summarySettings1,
+            summarySettings2,
+            summarySettings3});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.grdData.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
@@ -457,37 +501,37 @@
             this.grdData.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.grdData.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
             this.grdData.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.grdData.DisplayLayout.Override.CardAreaAppearance = appearance2;
-            appearance3.BackColor = System.Drawing.Color.White;
-            appearance3.BackColor2 = System.Drawing.Color.White;
-            appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdData.DisplayLayout.Override.CellAppearance = appearance3;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.grdData.DisplayLayout.Override.CardAreaAppearance = appearance5;
+            appearance6.BackColor = System.Drawing.Color.White;
+            appearance6.BackColor2 = System.Drawing.Color.White;
+            appearance6.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdData.DisplayLayout.Override.CellAppearance = appearance6;
             this.grdData.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance4.BackColor = System.Drawing.Color.White;
-            appearance4.BackColor2 = System.Drawing.Color.LightGray;
-            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance4.BorderColor = System.Drawing.Color.DarkGray;
-            appearance4.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdData.DisplayLayout.Override.HeaderAppearance = appearance4;
+            appearance7.BackColor = System.Drawing.Color.White;
+            appearance7.BackColor2 = System.Drawing.Color.LightGray;
+            appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance7.BorderColor = System.Drawing.Color.DarkGray;
+            appearance7.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdData.DisplayLayout.Override.HeaderAppearance = appearance7;
             this.grdData.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance5.AlphaLevel = ((short)(187));
-            appearance5.BackColor = System.Drawing.Color.Gainsboro;
-            appearance5.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance5.ForeColor = System.Drawing.Color.Black;
-            appearance5.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdData.DisplayLayout.Override.RowAlternateAppearance = appearance5;
-            appearance6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdData.DisplayLayout.Override.RowSelectorAppearance = appearance6;
+            appearance8.AlphaLevel = ((short)(187));
+            appearance8.BackColor = System.Drawing.Color.Gainsboro;
+            appearance8.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance8.ForeColor = System.Drawing.Color.Black;
+            appearance8.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdData.DisplayLayout.Override.RowAlternateAppearance = appearance8;
+            appearance9.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdData.DisplayLayout.Override.RowSelectorAppearance = appearance9;
             this.grdData.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance7.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance7.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance7.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance7.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance7.FontData.BoldAsString = "False";
-            appearance7.ForeColor = System.Drawing.Color.Black;
-            this.grdData.DisplayLayout.Override.SelectedRowAppearance = appearance7;
+            appearance10.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance10.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance10.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance10.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance10.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance10.FontData.BoldAsString = "False";
+            appearance10.ForeColor = System.Drawing.Color.Black;
+            this.grdData.DisplayLayout.Override.SelectedRowAppearance = appearance10;
             this.grdData.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.grdData.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grdData.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
@@ -535,28 +579,6 @@
             this.btnEditarServicio.Text = "Editar Servicio";
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
-            // 
-            // btnCarta
-            // 
-            this.btnCarta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCarta.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCarta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnCarta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnCarta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnCarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCarta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCarta.ForeColor = System.Drawing.Color.Black;
-            this.btnCarta.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
-            this.btnCarta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCarta.Location = new System.Drawing.Point(1138, 499);
-            this.btnCarta.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCarta.Name = "btnCarta";
-            this.btnCarta.Size = new System.Drawing.Size(85, 38);
-            this.btnCarta.TabIndex = 157;
-            this.btnCarta.Text = "Carta";
-            this.btnCarta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCarta.UseVisualStyleBackColor = false;
-            this.btnCarta.Click += new System.EventHandler(this.btnCarta_Click);
             // 
             // frmLiquidacion
             // 

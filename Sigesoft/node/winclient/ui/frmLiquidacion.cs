@@ -172,14 +172,13 @@ namespace Sigesoft.Node.WinClient.UI
                 return;
             };
 
-            //foreach (var id in ids)
-            //{
-                _serviceBL.GenerarLiquidacion(ids, Globals.ClientSession.GetAsList());
-            //}
-
-
-            MessageBox.Show("Actualizado", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            btnFilter_Click(sender, e);
+            var frm = new frmSelectOrganization(ids, Globals.ClientSession.GetAsList());
+            frm.ShowDialog();
+            if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
+            {
+                // Refrescar grilla
+                btnFilter_Click(sender, e);
+            }
         }
 
         private void btnLiberarRegistro_Click(object sender, EventArgs e)
@@ -275,6 +274,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
                 else if (rowSelected.Band.Index.ToString() == "1")
                 {
+                    if (grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value == null) return;
                     var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
                     if (liquidacionID == null || liquidacionID =="")
                     {

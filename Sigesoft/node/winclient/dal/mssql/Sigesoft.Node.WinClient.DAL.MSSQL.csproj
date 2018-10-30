@@ -149,6 +149,7 @@
     <Compile Include="GeneratedAssemblers\masterrecommendationrestricctionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\liquidacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionhabitacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />

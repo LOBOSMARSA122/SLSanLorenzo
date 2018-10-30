@@ -25,6 +25,23 @@ namespace Sigesoft.Node.WinClient.BLL
                return false;
            }
        }
+
+       public bool OrganizacionExisteByName(string name)
+       {
+           try
+           {
+               var nameOrganization = name.Split('/').ToArray()[0].Trim();
+               using (var dbContext = new SigesoftEntitiesModel())
+               {
+                   return dbContext.organization.Any(p => p.v_Name.Equals(nameOrganization) && p.i_IsDeleted == 0);
+               }
+           }
+           catch
+           {
+               return false;
+           }
+       }
+
        public List<OrganizationList> GetOrganizationsPagedAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression)
        {
            //mon.IsActive = true;
