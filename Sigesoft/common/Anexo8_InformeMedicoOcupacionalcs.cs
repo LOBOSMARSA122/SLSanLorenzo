@@ -809,12 +809,25 @@ namespace NetPdf
             #endregion
 
             #region OFTALMOLOGÍA
+            var xOftalmoAgudezaVisual = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
             var xOftalmoSimple = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
             var xOftalmoCompleto = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
             var xOftalmoYanacocha = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
             var xOftalmoHudbay = Diagnosticos.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
 
-            if (xOftalmoSimple != null)
+            if (xOftalmoAgudezaVisual != null && xOftalmoAgudezaVisual.Count != 0)
+            {
+                string ValorDxOft = string.Join(", ", xOftalmoAgudezaVisual.Select(p => p.v_DiseasesName));
+                cells = new List<PdfPCell>()
+                {
+                    new PdfPCell(new Phrase("Oftalmología", fontColumnValue)) { Colspan = 4, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
+                    new PdfPCell(new Phrase(ValorDxOft == "" ? "SIN RESULTADOS": ValorDxOft, fontColumnValue)) { Colspan = 16, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.BLACK, BorderColorTop=BaseColor.WHITE  }, 
+                };
+                columnWidths = new float[] { 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f, 5f };
+                filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
+                document.Add(filiationWorker);
+            }
+            else if (xOftalmoSimple != null && xOftalmoSimple.Count != 0)
             {
                 string ValorDxOft = string.Join(", ", xOftalmoSimple.Select(p => p.v_DiseasesName));
                 cells = new List<PdfPCell>()
@@ -826,7 +839,7 @@ namespace NetPdf
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                 document.Add(filiationWorker);
             }
-            else if (xOftalmoCompleto != null)
+            else if (xOftalmoCompleto != null && xOftalmoCompleto.Count !=0)
             {
                 string ValorDxOft = string.Join(", ", xOftalmoCompleto.Select(p => p.v_DiseasesName));
                 cells = new List<PdfPCell>()
@@ -838,7 +851,7 @@ namespace NetPdf
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                 document.Add(filiationWorker);
             }
-            else if (xOftalmoYanacocha != null)
+            else if (xOftalmoYanacocha != null && xOftalmoYanacocha.Count != 0)
             {
                 string ValorDxOft = string.Join(", ", xOftalmoYanacocha.Select(p => p.v_DiseasesName));
                 cells = new List<PdfPCell>()
@@ -850,7 +863,7 @@ namespace NetPdf
                 filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
                 document.Add(filiationWorker);
             }
-            else if (xOftalmoHudbay != null)
+            else if (xOftalmoHudbay != null && xOftalmoHudbay.Count != 0)
             {
                 string ValorDxOft = string.Join(", ", xOftalmoHudbay.Select(p => p.v_DiseasesName));
                 cells = new List<PdfPCell>()
@@ -1248,7 +1261,7 @@ namespace NetPdf
                 else if (alt_estruc == "4") alt_estruc_4 = "X";
                 cells = new List<PdfPCell>()
                     {
-                        new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
+                        //new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
 
                         new PdfPCell(new Phrase("Trabajos en altura estructural mayor a 1.8m:", fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
                         new PdfPCell(new Phrase("APTO", fontColumnValue)) { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
@@ -1271,7 +1284,7 @@ namespace NetPdf
             {
                 cells = new List<PdfPCell>()
                     {
-                        new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
+                        //new PdfPCell(new Phrase("", fontColumnValue)) { Colspan = 20, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
 
                         new PdfPCell(new Phrase("Trabajos en altura estructural mayor a 1.8m:", fontColumnValue)) { Colspan = 8, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda , UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
                         new PdfPCell(new Phrase("APTO", fontColumnValue)) { Colspan =1, HorizontalAlignment = iTextSharp.text.Element.ALIGN_RIGHT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_celda, UseVariableBorders=true, BorderColorLeft=BaseColor.WHITE,  BorderColorRight=BaseColor.WHITE,  BorderColorBottom=BaseColor.WHITE, BorderColorTop=BaseColor.WHITE  },    
