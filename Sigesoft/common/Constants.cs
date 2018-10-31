@@ -122,7 +122,7 @@ namespace Sigesoft.Common
         public const string IE_ADOMINAL_HIGADO_PARENQUIMA_DESC = "N009-MF000004312";
         public const string IE_ADOMINAL_HIGADO_ECOGENICIDAD = "N009-MF000004313";
         public const string IE_ADOMINAL_HIGADO_IMG_EXPANSIVAS = "N009-MF000004314";
-        public const string IE_ADOMINAL_HIGADO_DIL_BILATERAL = "N009-MF000004315";
+        public const string IE_ADOMINAL_HIGADO_DIL_BILIARES = "N009-MF000004315";
         public const string IE_ADOMINAL_HIGADO_COLEDOCO = "N009-MF000004316";
 
         public const string IE_ADOMINAL_VESICULA_BIL_FORMA = "N009-MF000004317";
