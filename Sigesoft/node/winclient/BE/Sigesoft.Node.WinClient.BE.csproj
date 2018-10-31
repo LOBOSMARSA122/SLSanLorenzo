@@ -429,6 +429,7 @@
     <Compile Include="Generated\reporteatencionmedicaResultDto.cs" />
     <Compile Include="Generated\obtenerproductoResultDto.cs" />
     <Compile Include="Generated\obtenerpreciotarifarioResultDto.cs" />
+    <Compile Include="Generated\obtenernetoporcobrarResultDto.cs" />
     <Compile Include="IRastreable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Custom\SystemParameterList.cs" />

@@ -27,6 +27,7 @@ namespace Sigesoft.Node.WinClient.BE
         public decimal? d_Debe { get; set; }
         public decimal? d_Pago { get; set; }
         public decimal? d_Total { get; set; }
+        public string v_NroFactura { get; set; }
     }
 
 }

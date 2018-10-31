@@ -31280,17 +31280,17 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.liquidacion
-                            join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
+                            //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
                             join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId                           
                             where A.i_IsDeleted == 0 
-                            && B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
+                            //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
                             //ARNOLD , REPORTE JUAN LIZA
                             select new LiquidacionEmpresa
                             {
                                 v_OrganizationName = F.v_Name,
                                 v_LiquidacionId = A.v_LiquidacionId,
                                 v_NroLiquidacion = A.v_NroLiquidacion,
-                                v_ServiceId = A.v_ServiceId,
+                                //v_ServiceId = A.v_ServiceId,
                                 v_OrganizationId = A.v_OrganizationId,
                                 d_Monto = A.d_Monto,
                                 d_FechaVencimiento = A.d_FechaVencimiento,
@@ -31334,9 +31334,20 @@ namespace Sigesoft.Node.WinClient.BLL
                     {
                         var oLiquidacionDetalle = new LiquidacionEmpresaDetalle();
                         oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
-                        oLiquidacionDetalle.d_Debe = 0;
-                        oLiquidacionDetalle.d_Pago = 0;
                         oLiquidacionDetalle.v_NroLiquidacion = liquidacion.v_NroLiquidacion;
+                        oLiquidacionDetalle.v_NroFactura = liquidacion.v_NroFactura;
+                        if (oLiquidacionDetalle.v_NroFactura != "" || oLiquidacionDetalle.v_NroFactura != null)
+                        {
+                            var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
+                            var x = dbContext.obtenernetoporcobrar(arr[0].ToString(), arr[1].ToString()).ToList();
+                            oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                        }
+                        else
+                        {
+                            oLiquidacionDetalle.d_Debe = 0;
+                        }
+                        oLiquidacionDetalle.d_Pago = liquidacion.d_Monto - oLiquidacionDetalle.d_Debe;
+                        
                         oLiquidacionDetalle.d_Total = liquidacion.d_Monto;                  
 
                         LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
@@ -31522,13 +31533,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     monto += GetServiceComponentsLiquidacion(ref objOperationResult1, serviceId).Sum(s => s.r_Price).Value;
                 }
-                
-
-                foreach (var serviceId in serviceIds)
-	            {
                     organizationId = organizationId.Split('|').ToArray()[0].ToString();
                     var oliquidacionDto = new liquidacionDto();
-                    oliquidacionDto.v_ServiceId = serviceId;
+                    //oliquidacionDto.v_ServiceId = serviceId;
                     oliquidacionDto.v_OrganizationId = organizationId;
                     oliquidacionDto.v_NroLiquidacion = nroLiquidacion;
                     oliquidacionDto.d_Monto = decimal.Parse(monto.ToString());
@@ -31536,6 +31543,8 @@ namespace Sigesoft.Node.WinClient.BLL
                     oliquidacionDto.v_NroFactura =  "";
                     var NewId = oLiquidacionBL.AddLiquidacion(ref objOperationResult1, oliquidacionDto, ClientSession);
 
+                    foreach (var serviceId in serviceIds)
+                    {
                     var objEntitySource = (from a in dbContext.service
                                            where a.v_ServiceId == serviceId
                                            select a).FirstOrDefault();
@@ -31544,7 +31553,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                     // Guardar los cambios
                     dbContext.SaveChanges();
-	            }
+                    }
 
                 objOperationResult.Success = 1;
 
