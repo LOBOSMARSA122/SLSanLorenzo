@@ -63,6 +63,7 @@
     <Compile Include="HistoryBL.cs" />
     <Compile Include="HospitalizacionBL.cs" />
     <Compile Include="HospitalizacionHabitacionBL.cs" />
+    <Compile Include="LiquidacionBL.cs" />
     <Compile Include="LocationBL.cs" />
     <Compile Include="LogBL.cs" />
     <Compile Include="MasterRecommendationRestricctionBL.cs" />

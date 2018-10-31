@@ -5121,7 +5121,6 @@
     <Content Include="Dataset\dsSintomaticoRes.xss">
       <DependentUpon>dsSintomaticoRes.xsd</DependentUpon>
     </Content>
-    <None Include="Properties\PublishProfiles\Publicado Desarrollo.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5134,6 +5133,7 @@
     <Folder Include="Consultorios\imgOdonto\" />
     <Folder Include="Estadisticas\files\" />
     <Folder Include="ExternalUser\files\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Temp\" />
     <Folder Include="Uploads\" />
     <Folder Include="upload\" />

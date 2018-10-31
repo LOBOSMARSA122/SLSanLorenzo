@@ -50,6 +50,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string NroDocumemto { get; set; }
         public string Cargo { get; set; }
         public string Perfil { get; set; }
+        public float SubTotal { get; set; }
+        public float Igv { get; set; }
         public float Precio { get; set; }
         public string CCosto { get; set; }
     }

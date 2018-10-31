@@ -1278,6 +1278,12 @@
     <Compile Include="frmSeleccionarNombreCrystal.Designer.cs">
       <DependentUpon>frmSeleccionarNombreCrystal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSelectOrganization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectOrganization.Designer.cs">
+      <DependentUpon>frmSelectOrganization.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmServicioFacturado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3573,6 +3579,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSeleccionarNombreCrystal.resx">
       <DependentUpon>frmSeleccionarNombreCrystal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectOrganization.resx">
+      <DependentUpon>frmSelectOrganization.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmServicioFacturado.resx">
       <DependentUpon>frmServicioFacturado.cs</DependentUpon>
