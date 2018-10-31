@@ -16,6 +16,9 @@ namespace Sigesoft.Common
         public const int COLUMNAS_POR_CONTROL = 3;
 
         #region EXOGRAFIAS - JUAN PABLO
+        /// <summary>
+        /// IE OBSTETRICO
+        /// </summary>
         public const string IE_OBSTETRICO_ID = "N009-ME000000471";
         public const string IE_OBSTETRICO_MOTIVO_EXAMEN = "N009-MF000004241";
         public const string IE_OBSTETRICO_FUR = "N009-MF000004233";
@@ -71,6 +74,9 @@ namespace Sigesoft.Common
         public const string IE_OBSTETRICO_OBSERVACIONES = "N009-MF000004281";
         public const string IE_OBSTETRICO_CONCLUSIONES = "N009-MF000004282";
 
+        /// <summary>
+        /// IE GINECOLOGICO
+        /// </summary>
         public const string IE_GINECOLOGICO_ID = "N009-ME000000472";
 
         public const string IE_GINECOLOGICO_MOT_EXAM = "N009-MF000004283";
@@ -100,6 +106,9 @@ namespace Sigesoft.Common
         public const string IE_GINECOLOGICO_OBSERVACIONES = "N009-MF000004302";
         public const string IE_GINECOLOGICO_CONCLUSIONES = "N009-MF000004303";
 
+        /// <summary>
+        /// IE ABDOMINAL
+        /// </summary>
         public const string IE_ADOMINAL_ID = "N009-ME000000473";
         public const string IEABDOMINAL_MOT_EXAM = "N009-MF000004304";
 
@@ -113,7 +122,7 @@ namespace Sigesoft.Common
         public const string IE_ADOMINAL_HIGADO_PARENQUIMA_DESC = "N009-MF000004312";
         public const string IE_ADOMINAL_HIGADO_ECOGENICIDAD = "N009-MF000004313";
         public const string IE_ADOMINAL_HIGADO_IMG_EXPANSIVAS = "N009-MF000004314";
-        public const string IE_ADOMINAL_HIGADO_DIL_BILATERAL = "N009-MF000004315";
+        public const string IE_ADOMINAL_HIGADO_DIL_BILIARES = "N009-MF000004315";
         public const string IE_ADOMINAL_HIGADO_COLEDOCO = "N009-MF000004316";
 
         public const string IE_ADOMINAL_VESICULA_BIL_FORMA = "N009-MF000004317";
@@ -122,7 +131,7 @@ namespace Sigesoft.Common
         public const string IE_ADOMINAL_VESICULA_BIL_CONT_ANECOICO = "N009-MF000004320";
         public const string IE_ADOMINAL_VESICULA_BIL_BARRO_BILIAR = "N009-MF000004321";
         public const string IE_ADOMINAL_VESICULA_BIL_CALC_INTERIOR = "N009-MF000004322";
-        //public const string IE_ADOMINAL_VESICULA_BIL_OTROS = "N009-MF000004323";
+        public const string IE_ADOMINAL_VESICULA_BIL_CALC_INTERIOR_DESC = "N009-MF000004323";
         public const string IE_ADOMINAL_VESICULA_BIL_DIAMETRO_TRANSV = "N009-MF000004324";
 
         public const string IE_ADOMINAL_PANCREAS_MORF_ECOGENICIDAD = "N009-MF000004325";
@@ -148,6 +157,9 @@ namespace Sigesoft.Common
         public const string IE_ADOMINAL_OBSERVACIONES = "N009-MF000004340";
         public const string IE_ADOMINAL_CONCLUSIONES = "N009-MF000004341";
  
+        /// <summary>
+        /// IE RENAL
+        /// </summary>
         public const string IE_RENAL_ID = "N009-ME000000474";
         public const string IE_RENAL_MOT_EXAM = "N009-MF000004342";
 
@@ -194,6 +206,10 @@ namespace Sigesoft.Common
 
         public const string IE_RENAL_OBSERVACIONES = "N009-MF000004383";
         public const string IE_RENAL_CONCLUSIONES = "N009-MF000004384";
+        
+        /// <summary>
+        /// IE MAMAS
+        /// </summary>
 
         public const string IE_MAMAS_ID = "N009-ME000000475";
         public const string IE_MAMAS_MOT_EXAM = "N009-MF000004385";
@@ -219,6 +235,9 @@ namespace Sigesoft.Common
         public const string IE_MAMAS_OBSERVACIONES = "N009-MF000004404";
         public const string IE_MAMAS_CONCLUSIONES = "N009-MF000004405";
 
+        /// <summary>
+        /// IE PROSTATA
+        /// </summary>
         public const string IE_PROSTATA_ID = "N009-ME000000476";
         public const string IE_PROSTATA_MOT_EXAM = "N009-MF000004406";
 
@@ -247,11 +266,17 @@ namespace Sigesoft.Common
         public const string IE_PROSTATA_OBSERVACIONES = "N009-MF000004428";
         public const string IE_PROSTATA_CONCLUSIONES = "N009-MF000004429";
 
+        /// <summary>
+        /// IE PARTES BLANDAS
+        /// </summary>
         public const string IE_PARTES_BLANDAS_ID = "N009-ME000000477";
 
         public const string IE_PARTES_BLANDAS_MOT_EXAM = "N009-MF000004430";
         public const string IE_PARTES_BLANDAS_ESPECIFICACION = "N009-MF000004431";
 
+        /// <summary>
+        /// IE OBSTETRICO PELVICO
+        /// </summary>
         public const string IE_OBSTETRICO_PELVICO_ID = "N009-ME000000478";
         public const string IE_OBSTETRICO_PELVICO_MOT_EXAM = "N009-MF000004432";
         public const string IE_OBSTETRICO_PELVICO_FUR = "N009-MF000004433";

@@ -1921,6 +1921,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
             Informe_Otorrinolaringologico.CreateInforme_Otorrinolaringologico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
+
         private void GenerateDeclaracionJurada_Encuesta(string pathFile)
         {
             var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -2094,6 +2095,104 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
             var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
             Certificado_Suficiencia_Medica_Brigadistas.CreateCertificado_Suficiencia_Medica_Brigadistas(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
+        private void Generate_Informe_Ecografico_Obstetrico(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
+
+            Ecografias_P_JP.Create_Informe_Ecografico_Obstetrico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
+        private void Generate_Informe_Ecografico_Ginecologico(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
+
+            Ecografias_P_JP.Create_Informe_Ecografico_Ginecologico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
+
+        private void Generate_Informe_Ecografico_Abdominal(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
+
+            Ecografias_P_JP.Create_Informe_Ecografico_Abdominal(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
+
+        private void Generate_Informe_Ecografico_Renal(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
+
+            Ecografias_P_JP.Create_Informe_Ecografico_Renal(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
+        private void Generate_Informe_Ecografico_Mamas(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
+
+            Ecografias_P_JP.Create_Informe_Ecografico_Mamas(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
+        private void Generate_Informe_Ecografico_Prostata(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
+
+            Ecografias_P_JP.Create_Informe_Ecografico_Prostata(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
+        private void Generate_Informe_Ecografico_Partes_Blandas(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
+
+            Ecografias_P_JP.Create_Informe_Ecografico_Partes_Blandas(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
+        }
+        private void Generate_Informe_Ecografico_Obstetrico_Pelvico(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.Ecografia, _serviceId);
+
+            Ecografias_P_JP.Create_Informe_Ecografico_Obstetrico_Pelvico(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
         ///
         private void GenerateExamenesEspecialesReport(string pathFile)
@@ -5515,6 +5614,38 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.SUF_MED_BRIGADISTAS_ID:
                     GenerateCertificado_Suficiencia_Medica_Brigadistas(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.SUF_MED_BRIGADISTAS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.IE_OBSTETRICO_ID:
+                    Generate_Informe_Ecografico_Obstetrico(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_OBSTETRICO_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.IE_GINECOLOGICO_ID:
+                    Generate_Informe_Ecografico_Ginecologico(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_GINECOLOGICO_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.IE_ADOMINAL_ID:
+                    Generate_Informe_Ecografico_Abdominal(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_ADOMINAL_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.IE_RENAL_ID:
+                    Generate_Informe_Ecografico_Renal(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_RENAL_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.IE_MAMAS_ID:
+                    Generate_Informe_Ecografico_Mamas(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_MAMAS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.IE_PROSTATA_ID:
+                    Generate_Informe_Ecografico_Prostata(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_PROSTATA_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.IE_PARTES_BLANDAS_ID:
+                    Generate_Informe_Ecografico_Partes_Blandas(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_PARTES_BLANDAS_ID)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.IE_OBSTETRICO_PELVICO_ID:
+                    Generate_Informe_Ecografico_Obstetrico_Pelvico(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.IE_OBSTETRICO_PELVICO_ID)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 ///GenerateInforme_Resultados_San_Martinm

@@ -6142,6 +6142,8 @@ namespace NetPdf
             #endregion
 
             #region Laboratorio
+            ServiceComponentList lues = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.VDRL_ID);
+
             ServiceComponentList findLaboratorio = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.VDRL_ID);
             ServiceComponentList findLaboratorioGrupoSanguineo = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.GRUPO_Y_FACTOR_SANGUINEO_ID);
 
@@ -6279,52 +6281,49 @@ namespace NetPdf
                 {
                     ValorBk = "NO REALIZADO";
                 }
+            }
+            if (lues != null)
+            {
+                var lues_val = lues.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID) == null ? "" : lues.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID).v_Value1;
 
-                if (findLaboratorio != null)
+                var ValorVDRL = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
+                if (ValorVDRL != null)
                 {
-                    var ValorVDRL = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
-                    if (ValorVDRL != null)
-                    {
 
-                        VDRLValor = ValorVDRL.v_Value1;
-                        //if (ValorVDRL.v_Value1 == "1")
-                        //{
-                        //    ReaccionPositivo = cellConCheck;
-                        //}
-                        //else if (ValorVDRL.v_Value1 == "2")
-                        //{
-                        //    ReaccionNegativo= cellConCheck;
-                        //}
-                    }
-                    else
-                    {
-                        VDRLValor = "NO REALIZADO";
-                    }
-
-                    var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
-                    if (ValorLues != null)
-                    {
-                        if (ValorLues.v_Value1 == "1")
-                        {
-                            LuesPositivo = cellConCheck;
-                        }
-                        else if (ValorLues.v_Value1 == "2")
-                        {
-                            LuesNegativo = cellConCheck;
-                        }
-                    }
-                    else
-                    {
-                        VDRLValor = "NO REALIZADO";
-                    }
+                    VDRLValor = ValorVDRL.v_Value1;
+                    //if (ValorVDRL.v_Value1 == "1")
+                    //{
+                    //    ReaccionPositivo = cellConCheck;
+                    //}
+                    //else if (ValorVDRL.v_Value1 == "2")
+                    //{
+                    //    ReaccionNegativo= cellConCheck;
+                    //}
                 }
                 else
                 {
-                    VDRLValor = "NO APLICA";
+                    VDRLValor = "NO REALIZADO";
                 }
 
-            }
+                var ValorLues = findLaboratorio.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.LABORATORIO_VDRL_ID);
 
+                if (lues_val == "1")
+                {
+                    LuesPositivo = cellConCheck;
+                }
+                else if (lues_val == "2")
+                {
+                    LuesNegativo = cellConCheck;
+                }
+                else
+                {
+                    VDRLValor = "NO REALIZADO";
+                }
+            }
+            else
+            {
+                VDRLValor = "NO APLICA";
+            }
             #endregion
 
             cells = new List<PdfPCell>()
