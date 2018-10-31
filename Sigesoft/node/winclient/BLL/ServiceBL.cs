@@ -31336,6 +31336,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
                         oLiquidacionDetalle.d_Debe = 0;
                         oLiquidacionDetalle.d_Pago = 0;
+                        oLiquidacionDetalle.v_NroLiquidacion = liquidacion.v_NroLiquidacion;
                         oLiquidacionDetalle.d_Total = liquidacion.d_Monto;                  
 
                         LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
