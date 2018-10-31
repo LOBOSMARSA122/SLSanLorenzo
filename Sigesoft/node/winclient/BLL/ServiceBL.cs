@@ -31517,6 +31517,13 @@ namespace Sigesoft.Node.WinClient.BLL
                 int intNodeId = int.Parse(ClientSession[0]);
 
                 var nroLiquidacion = ObtnerNroLiquidacion(intNodeId);
+                float monto = 0;
+                foreach (var serviceId in serviceIds)
+                {
+                    monto += GetServiceComponentsLiquidacion(ref objOperationResult1, serviceId).Sum(s => s.r_Price).Value;
+                }
+                
+
                 foreach (var serviceId in serviceIds)
 	            {
                     organizationId = organizationId.Split('|').ToArray()[0].ToString();
@@ -31524,7 +31531,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oliquidacionDto.v_ServiceId = serviceId;
                     oliquidacionDto.v_OrganizationId = organizationId;
                     oliquidacionDto.v_NroLiquidacion = nroLiquidacion;
-                    oliquidacionDto.d_Monto = 0;
+                    oliquidacionDto.d_Monto = decimal.Parse(monto.ToString());
                     oliquidacionDto.d_FechaVencimiento = null;
                     oliquidacionDto.v_NroFactura =  "";
                     var NewId = oLiquidacionBL.AddLiquidacion(ref objOperationResult1, oliquidacionDto, ClientSession);
