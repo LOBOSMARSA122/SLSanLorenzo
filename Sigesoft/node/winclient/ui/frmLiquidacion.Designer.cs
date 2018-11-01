@@ -66,6 +66,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("detalle");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("detalle", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_LiquidacionId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NroLiquidacion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Debe");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Pago");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Total");
@@ -92,27 +93,27 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tpESO = new System.Windows.Forms.TabPage();
+            this.btnExportAramark = new System.Windows.Forms.Button();
+            this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.tpEmpresa = new System.Windows.Forms.TabPage();
+            this.grdEmpresa = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnExportclinico = new System.Windows.Forms.Button();
             this.btnCarta = new System.Windows.Forms.Button();
             this.btnLiqd1 = new System.Windows.Forms.Button();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.btnLiberarRegistro = new System.Windows.Forms.Button();
             this.btnGenerarLiq = new System.Windows.Forms.Button();
-            this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCountCalendar = new System.Windows.Forms.Label();
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tpESO = new System.Windows.Forms.TabPage();
-            this.btnExportAramark = new System.Windows.Forms.Button();
-            this.tpEmpresa = new System.Windows.Forms.TabPage();
-            this.btnExportclinico = new System.Windows.Forms.Button();
-            this.grdEmpresa = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tpESO.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.tpEmpresa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEmpresa)).BeginInit();
             this.SuspendLayout();
@@ -354,110 +355,44 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Servicios";
             // 
-            // btnCarta
+            // tabControl1
             // 
-            this.btnCarta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCarta.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCarta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnCarta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnCarta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnCarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCarta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCarta.ForeColor = System.Drawing.Color.Black;
-            this.btnCarta.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
-            this.btnCarta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCarta.Location = new System.Drawing.Point(1138, 499);
-            this.btnCarta.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCarta.Name = "btnCarta";
-            this.btnCarta.Size = new System.Drawing.Size(85, 38);
-            this.btnCarta.TabIndex = 157;
-            this.btnCarta.Text = "Carta";
-            this.btnCarta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCarta.UseVisualStyleBackColor = false;
-            this.btnCarta.Click += new System.EventHandler(this.btnCarta_Click);
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tpESO);
+            this.tabControl1.Controls.Add(this.tpEmpresa);
+            this.tabControl1.Location = new System.Drawing.Point(1, 18);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(1137, 514);
+            this.tabControl1.TabIndex = 158;
             // 
-            // btnLiqd1
+            // tpESO
             // 
-            this.btnLiqd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLiqd1.BackColor = System.Drawing.SystemColors.Control;
-            this.btnLiqd1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnLiqd1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnLiqd1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnLiqd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLiqd1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLiqd1.ForeColor = System.Drawing.Color.Black;
-            this.btnLiqd1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
-            this.btnLiqd1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLiqd1.Location = new System.Drawing.Point(1138, 441);
-            this.btnLiqd1.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLiqd1.Name = "btnLiqd1";
-            this.btnLiqd1.Size = new System.Drawing.Size(85, 41);
-            this.btnLiqd1.TabIndex = 156;
-            this.btnLiqd1.Text = "Liquidación";
-            this.btnLiqd1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnLiqd1.UseVisualStyleBackColor = false;
-            this.btnLiqd1.Click += new System.EventHandler(this.button1_Click);
+            this.tpESO.Controls.Add(this.btnExportAramark);
+            this.tpESO.Controls.Add(this.grdData);
+            this.tpESO.Location = new System.Drawing.Point(4, 22);
+            this.tpESO.Name = "tpESO";
+            this.tpESO.Padding = new System.Windows.Forms.Padding(3);
+            this.tpESO.Size = new System.Drawing.Size(1129, 488);
+            this.tpESO.TabIndex = 0;
+            this.tpESO.Text = "Agrupado por ESO";
+            this.tpESO.UseVisualStyleBackColor = true;
             // 
-            // btnExportarExcel
+            // btnExportAramark
             // 
-            this.btnExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnExportarExcel.BackColor = System.Drawing.SystemColors.Control;
-            this.btnExportarExcel.Enabled = false;
-            this.btnExportarExcel.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnExportarExcel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnExportarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportarExcel.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExportarExcel.ForeColor = System.Drawing.Color.Black;
-            this.btnExportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportarExcel.Location = new System.Drawing.Point(1138, 149);
-            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(2);
-            this.btnExportarExcel.Name = "btnExportarExcel";
-            this.btnExportarExcel.Size = new System.Drawing.Size(85, 36);
-            this.btnExportarExcel.TabIndex = 155;
-            this.btnExportarExcel.Text = "Exportar Excel";
-            this.btnExportarExcel.UseVisualStyleBackColor = false;
-            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
-            // 
-            // btnLiberarRegistro
-            // 
-            this.btnLiberarRegistro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLiberarRegistro.BackColor = System.Drawing.SystemColors.Control;
-            this.btnLiberarRegistro.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnLiberarRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnLiberarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnLiberarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLiberarRegistro.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLiberarRegistro.ForeColor = System.Drawing.Color.Black;
-            this.btnLiberarRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnLiberarRegistro.Location = new System.Drawing.Point(1138, 109);
-            this.btnLiberarRegistro.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLiberarRegistro.Name = "btnLiberarRegistro";
-            this.btnLiberarRegistro.Size = new System.Drawing.Size(85, 36);
-            this.btnLiberarRegistro.TabIndex = 154;
-            this.btnLiberarRegistro.Text = "Liberar Registro(s)";
-            this.btnLiberarRegistro.UseVisualStyleBackColor = false;
-            this.btnLiberarRegistro.Click += new System.EventHandler(this.btnLiberarRegistro_Click);
-            // 
-            // btnGenerarLiq
-            // 
-            this.btnGenerarLiq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGenerarLiq.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGenerarLiq.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnGenerarLiq.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnGenerarLiq.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnGenerarLiq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenerarLiq.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenerarLiq.ForeColor = System.Drawing.Color.Black;
-            this.btnGenerarLiq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarLiq.Location = new System.Drawing.Point(1138, 69);
-            this.btnGenerarLiq.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGenerarLiq.Name = "btnGenerarLiq";
-            this.btnGenerarLiq.Size = new System.Drawing.Size(85, 36);
-            this.btnGenerarLiq.TabIndex = 153;
-            this.btnGenerarLiq.Text = "Generar Liquidación";
-            this.btnGenerarLiq.UseVisualStyleBackColor = false;
-            this.btnGenerarLiq.Click += new System.EventHandler(this.btnGenerarLiq_Click);
+            this.btnExportAramark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportAramark.Enabled = false;
+            this.btnExportAramark.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportAramark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportAramark.Location = new System.Drawing.Point(6, 458);
+            this.btnExportAramark.Name = "btnExportAramark";
+            this.btnExportAramark.Size = new System.Drawing.Size(114, 24);
+            this.btnExportAramark.TabIndex = 49;
+            this.btnExportAramark.Text = "Exportar a Excel";
+            this.btnExportAramark.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportAramark.UseVisualStyleBackColor = true;
             // 
             // grdData
             // 
@@ -572,78 +507,6 @@
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdData_AfterSelectChange);
             this.grdData.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdData_ClickCell);
             // 
-            // lblRecordCountCalendar
-            // 
-            this.lblRecordCountCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRecordCountCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountCalendar.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountCalendar.Location = new System.Drawing.Point(907, 0);
-            this.lblRecordCountCalendar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountCalendar.Name = "lblRecordCountCalendar";
-            this.lblRecordCountCalendar.Size = new System.Drawing.Size(231, 19);
-            this.lblRecordCountCalendar.TabIndex = 52;
-            this.lblRecordCountCalendar.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountCalendar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnEditarServicio
-            // 
-            this.btnEditarServicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnEditarServicio.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEditarServicio.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEditarServicio.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEditarServicio.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEditarServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarServicio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarServicio.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarServicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarServicio.Location = new System.Drawing.Point(1138, 29);
-            this.btnEditarServicio.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditarServicio.Name = "btnEditarServicio";
-            this.btnEditarServicio.Size = new System.Drawing.Size(85, 36);
-            this.btnEditarServicio.TabIndex = 50;
-            this.btnEditarServicio.Text = "Editar Servicio";
-            this.btnEditarServicio.UseVisualStyleBackColor = false;
-            this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tpESO);
-            this.tabControl1.Controls.Add(this.tpEmpresa);
-            this.tabControl1.Location = new System.Drawing.Point(1, 18);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1137, 514);
-            this.tabControl1.TabIndex = 158;
-            // 
-            // tpESO
-            // 
-            this.tpESO.Controls.Add(this.btnExportAramark);
-            this.tpESO.Controls.Add(this.grdData);
-            this.tpESO.Location = new System.Drawing.Point(4, 22);
-            this.tpESO.Name = "tpESO";
-            this.tpESO.Padding = new System.Windows.Forms.Padding(3);
-            this.tpESO.Size = new System.Drawing.Size(1129, 488);
-            this.tpESO.TabIndex = 0;
-            this.tpESO.Text = "Agrupado por ESO";
-            this.tpESO.UseVisualStyleBackColor = true;
-            // 
-            // btnExportAramark
-            // 
-            this.btnExportAramark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportAramark.Enabled = false;
-            this.btnExportAramark.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExportAramark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportAramark.Location = new System.Drawing.Point(6, 458);
-            this.btnExportAramark.Name = "btnExportAramark";
-            this.btnExportAramark.Size = new System.Drawing.Size(114, 24);
-            this.btnExportAramark.TabIndex = 49;
-            this.btnExportAramark.Text = "Exportar a Excel";
-            this.btnExportAramark.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportAramark.UseVisualStyleBackColor = true;
-            // 
             // tpEmpresa
             // 
             this.tpEmpresa.Controls.Add(this.grdEmpresa);
@@ -655,20 +518,6 @@
             this.tpEmpresa.TabIndex = 1;
             this.tpEmpresa.Text = "Agrupado por Empresa";
             this.tpEmpresa.UseVisualStyleBackColor = true;
-            // 
-            // btnExportclinico
-            // 
-            this.btnExportclinico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportclinico.Enabled = false;
-            this.btnExportclinico.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExportclinico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportclinico.Location = new System.Drawing.Point(6, 459);
-            this.btnExportclinico.Name = "btnExportclinico";
-            this.btnExportclinico.Size = new System.Drawing.Size(114, 24);
-            this.btnExportclinico.TabIndex = 51;
-            this.btnExportclinico.Text = "Exportar a Excel";
-            this.btnExportclinico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportclinico.UseVisualStyleBackColor = true;
             // 
             // grdEmpresa
             // 
@@ -687,11 +536,13 @@
             ultraGridColumn1,
             ultraGridColumn2});
             ultraGridColumn25.Header.VisiblePosition = 0;
-            ultraGridColumn26.Header.VisiblePosition = 1;
-            ultraGridColumn27.Header.VisiblePosition = 2;
-            ultraGridColumn28.Header.VisiblePosition = 3;
+            ultraGridColumn12.Header.VisiblePosition = 1;
+            ultraGridColumn26.Header.VisiblePosition = 2;
+            ultraGridColumn27.Header.VisiblePosition = 3;
+            ultraGridColumn28.Header.VisiblePosition = 4;
             ultraGridBand4.Columns.AddRange(new object[] {
             ultraGridColumn25,
+            ultraGridColumn12,
             ultraGridColumn26,
             ultraGridColumn27,
             ultraGridColumn28});
@@ -752,6 +603,158 @@
             this.grdEmpresa.Size = new System.Drawing.Size(1118, 448);
             this.grdEmpresa.TabIndex = 153;
             // 
+            // btnExportclinico
+            // 
+            this.btnExportclinico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportclinico.Enabled = false;
+            this.btnExportclinico.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportclinico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportclinico.Location = new System.Drawing.Point(6, 459);
+            this.btnExportclinico.Name = "btnExportclinico";
+            this.btnExportclinico.Size = new System.Drawing.Size(114, 24);
+            this.btnExportclinico.TabIndex = 51;
+            this.btnExportclinico.Text = "Exportar a Excel";
+            this.btnExportclinico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportclinico.UseVisualStyleBackColor = true;
+            // 
+            // btnCarta
+            // 
+            this.btnCarta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCarta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCarta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCarta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCarta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCarta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarta.ForeColor = System.Drawing.Color.Black;
+            this.btnCarta.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
+            this.btnCarta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCarta.Location = new System.Drawing.Point(1138, 499);
+            this.btnCarta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCarta.Name = "btnCarta";
+            this.btnCarta.Size = new System.Drawing.Size(85, 38);
+            this.btnCarta.TabIndex = 157;
+            this.btnCarta.Text = "Carta";
+            this.btnCarta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCarta.UseVisualStyleBackColor = false;
+            this.btnCarta.Click += new System.EventHandler(this.btnCarta_Click);
+            // 
+            // btnLiqd1
+            // 
+            this.btnLiqd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLiqd1.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLiqd1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnLiqd1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnLiqd1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnLiqd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLiqd1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLiqd1.ForeColor = System.Drawing.Color.Black;
+            this.btnLiqd1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.btnLiqd1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLiqd1.Location = new System.Drawing.Point(1138, 441);
+            this.btnLiqd1.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLiqd1.Name = "btnLiqd1";
+            this.btnLiqd1.Size = new System.Drawing.Size(85, 41);
+            this.btnLiqd1.TabIndex = 156;
+            this.btnLiqd1.Text = "Liquidación";
+            this.btnLiqd1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnLiqd1.UseVisualStyleBackColor = false;
+            this.btnLiqd1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportarExcel.BackColor = System.Drawing.SystemColors.Control;
+            this.btnExportarExcel.Enabled = false;
+            this.btnExportarExcel.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnExportarExcel.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnExportarExcel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportarExcel.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.Black;
+            this.btnExportarExcel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportarExcel.Location = new System.Drawing.Point(1138, 149);
+            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(85, 36);
+            this.btnExportarExcel.TabIndex = 155;
+            this.btnExportarExcel.Text = "Exportar Excel";
+            this.btnExportarExcel.UseVisualStyleBackColor = false;
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
+            // btnLiberarRegistro
+            // 
+            this.btnLiberarRegistro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLiberarRegistro.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLiberarRegistro.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnLiberarRegistro.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnLiberarRegistro.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnLiberarRegistro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLiberarRegistro.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLiberarRegistro.ForeColor = System.Drawing.Color.Black;
+            this.btnLiberarRegistro.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLiberarRegistro.Location = new System.Drawing.Point(1138, 109);
+            this.btnLiberarRegistro.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLiberarRegistro.Name = "btnLiberarRegistro";
+            this.btnLiberarRegistro.Size = new System.Drawing.Size(85, 36);
+            this.btnLiberarRegistro.TabIndex = 154;
+            this.btnLiberarRegistro.Text = "Liberar Registro(s)";
+            this.btnLiberarRegistro.UseVisualStyleBackColor = false;
+            this.btnLiberarRegistro.Click += new System.EventHandler(this.btnLiberarRegistro_Click);
+            // 
+            // btnGenerarLiq
+            // 
+            this.btnGenerarLiq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerarLiq.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGenerarLiq.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGenerarLiq.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnGenerarLiq.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGenerarLiq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarLiq.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarLiq.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerarLiq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerarLiq.Location = new System.Drawing.Point(1138, 69);
+            this.btnGenerarLiq.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarLiq.Name = "btnGenerarLiq";
+            this.btnGenerarLiq.Size = new System.Drawing.Size(85, 36);
+            this.btnGenerarLiq.TabIndex = 153;
+            this.btnGenerarLiq.Text = "Generar Liquidación";
+            this.btnGenerarLiq.UseVisualStyleBackColor = false;
+            this.btnGenerarLiq.Click += new System.EventHandler(this.btnGenerarLiq_Click);
+            // 
+            // lblRecordCountCalendar
+            // 
+            this.lblRecordCountCalendar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRecordCountCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountCalendar.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblRecordCountCalendar.Location = new System.Drawing.Point(907, 0);
+            this.lblRecordCountCalendar.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountCalendar.Name = "lblRecordCountCalendar";
+            this.lblRecordCountCalendar.Size = new System.Drawing.Size(231, 19);
+            this.lblRecordCountCalendar.TabIndex = 52;
+            this.lblRecordCountCalendar.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountCalendar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnEditarServicio
+            // 
+            this.btnEditarServicio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnEditarServicio.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditarServicio.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditarServicio.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditarServicio.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditarServicio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarServicio.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarServicio.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarServicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarServicio.Location = new System.Drawing.Point(1138, 29);
+            this.btnEditarServicio.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarServicio.Name = "btnEditarServicio";
+            this.btnEditarServicio.Size = new System.Drawing.Size(85, 36);
+            this.btnEditarServicio.TabIndex = 50;
+            this.btnEditarServicio.Text = "Editar Servicio";
+            this.btnEditarServicio.UseVisualStyleBackColor = false;
+            this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
+            // 
             // frmLiquidacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -768,9 +771,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tpESO.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
             this.tpEmpresa.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdEmpresa)).EndInit();
             this.ResumeLayout(false);

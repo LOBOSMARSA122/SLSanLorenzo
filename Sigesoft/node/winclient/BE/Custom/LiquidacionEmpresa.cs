@@ -23,6 +23,7 @@ namespace Sigesoft.Node.WinClient.BE
     public class LiquidacionEmpresaDetalle
     {
         public string v_LiquidacionId { get; set; }
+        public string v_NroLiquidacion { get; set; }
         public decimal? d_Debe { get; set; }
         public decimal? d_Pago { get; set; }
         public decimal? d_Total { get; set; }
