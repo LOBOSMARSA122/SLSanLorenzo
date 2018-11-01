@@ -279,7 +279,15 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
             }   
         }
-        
+        private void GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string pathFile)
+        {
+            var _DataService = _serviceBL.GetInformacion_Laboratorio(_serviceId);
+            var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+            var serviceComponents = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            TOXICOLOGICO_COCAINA_MARIHUANA_TODOS.CreateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents);
+        }
         private void GenerateAtencionIntegral(string pathFile)
         {
             //var _DataService = _serviceBL.GetServiceReport(_serviceId);
@@ -2694,6 +2702,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Close();
                     break;
 
+
                 case Constants.Testdefatiga_ID:
                     var Testdefatiga = new ServiceBL().ReporteTestdefatiga(_serviceId, Constants.Testdefatiga_ID);
 
@@ -2968,6 +2977,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 case Constants.FORMATO_ATENCION_NINIO:
                     GenerateConsultaMedicaNinio(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.FORMATO_ATENCION_NINIO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T:
+                    GenerateTOXICOLOGICO_COCAINA_MARIHUANA_TODOS(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.TOXICOLOGICO_COCAINA_MARIHUANA_T)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.ATENCION_INTEGRAL:
