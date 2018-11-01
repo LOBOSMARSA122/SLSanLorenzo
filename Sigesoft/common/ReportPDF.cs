@@ -26065,13 +26065,13 @@ namespace NetPdf
             PdfWriter writer = PdfWriter.GetInstance(document, new FileStream(filePDF, FileMode.Create));
 
             //create an instance of your PDFpage class. This is the class we generated above.
-            pdfPage page = new pdfPage();
-            page.FirmaTrabajador = DataService.FirmaTrabajador;
-            page.HuellaTrabajador = DataService.HuellaTrabajador;
-            page.Dni = DataService.v_DocNumber;
-            page.EmpresaId = DataService.EmpresaClienteId;
+            //pdfPage page = new pdfPage();
+            //page.FirmaTrabajador = DataService.FirmaTrabajador;
+            //page.HuellaTrabajador = DataService.HuellaTrabajador;
+            //page.Dni = DataService.v_DocNumber;
+            //page.EmpresaId = DataService.EmpresaClienteId;
             //set the PageEvent of the pdfWriter instance to the instance of our PDFPage class
-            writer.PageEvent = page;
+            //writer.PageEvent = page;
 
             // step 3: we open the document
             document.Open();
@@ -26141,7 +26141,7 @@ namespace NetPdf
 
             if (DataService != null)
             {
-                if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional)
+                if (DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.PreOcupacional || DataService.i_EsoTypeId == (int)Sigesoft.Common.TypeESO.Visita)
                 {
                     PreOcupacional = cellConCheck;
                 }
