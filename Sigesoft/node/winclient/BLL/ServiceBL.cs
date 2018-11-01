@@ -31336,7 +31336,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
                         oLiquidacionDetalle.v_NroLiquidacion = liquidacion.v_NroLiquidacion;
                         oLiquidacionDetalle.v_NroFactura = liquidacion.v_NroFactura;
-                        if (oLiquidacionDetalle.v_NroFactura != "" || oLiquidacionDetalle.v_NroFactura != null)
+                        if (oLiquidacionDetalle.v_NroFactura != "" && oLiquidacionDetalle.v_NroFactura != null)
                         {
                             var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
                             var x = dbContext.obtenernetoporcobrar(arr[0].ToString(), arr[1].ToString()).ToList();
