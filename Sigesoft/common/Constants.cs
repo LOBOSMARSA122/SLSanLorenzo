@@ -19,274 +19,274 @@ namespace Sigesoft.Common
         /// <summary>
         /// IE OBSTETRICO
         /// </summary>
-        public const string IE_OBSTETRICO_ID = "N009-ME000000471";
-        public const string IE_OBSTETRICO_MOTIVO_EXAMEN = "N009-MF000004241";
-        public const string IE_OBSTETRICO_FUR = "N009-MF000004233";
+        public const string IE_OBSTETRICO_ID = "N007-ME000000471";
+        public const string IE_OBSTETRICO_MOTIVO_EXAMEN = "N007-MF000004241";
+        public const string IE_OBSTETRICO_FUR = "N007-MF000004233";
 
-        public const string IE_OBSTETRICO_FETO_EMB_UNICO = "N009-MF000004234";	
-        public const string IE_OBSTETRICO_FETO_EMB_MULTIPLE = "N009-MF000004235";
-        public const string IE_OBSTETRICO_FETO_EMB_MULTIPLE_DESC = "N009-MF000004237";
-        public const string IE_OBSTETRICO_FETO_EMB_LONGITUDINAL = "N009-MF000004238";
-        public const string IE_OBSTETRICO_FETO_EMB_TRANSVERSAL = "N009-MF000004239";
-        public const string IE_OBSTETRICO_FETO_EMB_OBLICUA = "N009-MF000004240";
-        public const string IE_OBSTETRICO_FETO_EMB_OBLICUA_DESC = "N009-MF000004242";
-        public const string IE_OBSTETRICO_FETO_EMB_CEFALICO = "N009-MF000004243";
-        public const string IE_OBSTETRICO_FETO_EMB_PODALICO = "N009-MF000004244";
-        public const string IE_OBSTETRICO_FETO_EMB_OTROS = "N009-MF000004245";
-        public const string IE_OBSTETRICO_FETO_EMB_OTROS_DESC = "N009-MF000004246";
-        public const string IE_OBSTETRICO_FETO_EMB_IZQUIERDA = "N009-MF000004247";
-        public const string IE_OBSTETRICO_FETO_EMB_DERECHA = "N009-MF000004248";
-        public const string IE_OBSTETRICO_FETO_EMB_ANTERIOR = "N009-MF000004249";
-        public const string IE_OBSTETRICO_FETO_EMB_POSTERIOR = "N009-MF000004250";
-        public const string IE_OBSTETRICO_FETO_EMB_DBP = "N009-MF000004251";
-        public const string IE_OBSTETRICO_FETO_EMB_LF = "N009-MF000004252";
-        public const string IE_OBSTETRICO_FETO_EMB_CA = "N009-MF000004253";
-        public const string IE_OBSTETRICO_FETO_EMB_CC = "N009-MF000004254";
-        public const string IE_OBSTETRICO_FETO_EMB_SG = "N009-MF000004255";
-        public const string IE_OBSTETRICO_FETO_EMB_LCN = "N009-MF000004256";
-        public const string IE_OBSTETRICO_FETO_EMB_COLUMNA_VERT = "N009-MF000004257";
-        public const string IE_OBSTETRICO_FETO_EMB_CAMARA_GAST = "N009-MF000004258";
-        public const string IE_OBSTETRICO_FETO_EMB_RIÑONES = "N009-MF000004259";
-        public const string IE_OBSTETRICO_FETO_EMB_VEJIGA = "N009-MF000004260";
-        public const string IE_OBSTETRICO_FETO_EMB_ACT_CARDIACA = "N009-MF000004261";
-        public const string IE_OBSTETRICO_FETO_EMB_LCF = "N009-MF000004262";
-        public const string IE_OBSTETRICO_FETO_EMB_OTRO = "N009-MF000004263";
-        public const string IE_OBSTETRICO_FETO_EMB_OTRO_DESC = "N009-MF000004264";
-        public const string IE_OBSTETRICO_FETO_EMB_MOV_FETALES = "N009-MF000004265";
-        public const string IE_OBSTETRICO_FETO_EMB_OTRO_MOV = "N009-MF000004266";
-        public const string IE_OBSTETRICO_FETO_EMB_OTRO_MOV_DESC = "N009-MF000004267";
-        public const string IE_OBSTETRICO_FETO_EMB_DESCRIPCION = "N009-MF000004268";
+        public const string IE_OBSTETRICO_FETO_EMB_UNICO = "N007-MF000004234";	
+        public const string IE_OBSTETRICO_FETO_EMB_MULTIPLE = "N007-MF000004235";
+        public const string IE_OBSTETRICO_FETO_EMB_MULTIPLE_DESC = "N007-MF000004237";
+        public const string IE_OBSTETRICO_FETO_EMB_LONGITUDINAL = "N007-MF000004238";
+        public const string IE_OBSTETRICO_FETO_EMB_TRANSVERSAL = "N007-MF000004239";
+        public const string IE_OBSTETRICO_FETO_EMB_OBLICUA = "N007-MF000004240";
+        public const string IE_OBSTETRICO_FETO_EMB_OBLICUA_DESC = "N007-MF000004242";
+        public const string IE_OBSTETRICO_FETO_EMB_CEFALICO = "N007-MF000004243";
+        public const string IE_OBSTETRICO_FETO_EMB_PODALICO = "N007-MF000004244";
+        public const string IE_OBSTETRICO_FETO_EMB_OTROS = "N007-MF000004245";
+        public const string IE_OBSTETRICO_FETO_EMB_OTROS_DESC = "N007-MF000004246";
+        public const string IE_OBSTETRICO_FETO_EMB_IZQUIERDA = "N007-MF000004247";
+        public const string IE_OBSTETRICO_FETO_EMB_DERECHA = "N007-MF000004248";
+        public const string IE_OBSTETRICO_FETO_EMB_ANTERIOR = "N007-MF000004249";
+        public const string IE_OBSTETRICO_FETO_EMB_POSTERIOR = "N007-MF000004250";
+        public const string IE_OBSTETRICO_FETO_EMB_DBP = "N007-MF000004251";
+        public const string IE_OBSTETRICO_FETO_EMB_LF = "N007-MF000004252";
+        public const string IE_OBSTETRICO_FETO_EMB_CA = "N007-MF000004253";
+        public const string IE_OBSTETRICO_FETO_EMB_CC = "N007-MF000004254";
+        public const string IE_OBSTETRICO_FETO_EMB_SG = "N007-MF000004255";
+        public const string IE_OBSTETRICO_FETO_EMB_LCN = "N007-MF000004256";
+        public const string IE_OBSTETRICO_FETO_EMB_COLUMNA_VERT = "N007-MF000004257";
+        public const string IE_OBSTETRICO_FETO_EMB_CAMARA_GAST = "N007-MF000004258";
+        public const string IE_OBSTETRICO_FETO_EMB_RIÑONES = "N007-MF000004259";
+        public const string IE_OBSTETRICO_FETO_EMB_VEJIGA = "N007-MF000004260";
+        public const string IE_OBSTETRICO_FETO_EMB_ACT_CARDIACA = "N007-MF000004261";
+        public const string IE_OBSTETRICO_FETO_EMB_LCF = "N007-MF000004262";
+        public const string IE_OBSTETRICO_FETO_EMB_OTRO = "N007-MF000004263";
+        public const string IE_OBSTETRICO_FETO_EMB_OTRO_DESC = "N007-MF000004264";
+        public const string IE_OBSTETRICO_FETO_EMB_MOV_FETALES = "N007-MF000004265";
+        public const string IE_OBSTETRICO_FETO_EMB_OTRO_MOV = "N007-MF000004266";
+        public const string IE_OBSTETRICO_FETO_EMB_OTRO_MOV_DESC = "N007-MF000004267";
+        public const string IE_OBSTETRICO_FETO_EMB_DESCRIPCION = "N007-MF000004268";
 
-        public const string IE_OBSTETRICO_PLACENTA_LOCALIZACION = "N009-MF000004269";
-        public const string IE_OBSTETRICO_PLACENTA_OTROS = "N009-MF000004270";
-        public const string IE_OBSTETRICO_PLACENTA_GRADO = "N009-MF000004271";
-        public const string IE_OBSTETRICO_PLACENTA_ESP_PLACENTARIO = "N009-MF000004272";
-        public const string IE_OBSTETRICO_PLACENTA_DESC_OTROS = "N009-MF000004273";
+        public const string IE_OBSTETRICO_PLACENTA_LOCALIZACION = "N007-MF000004269";
+        public const string IE_OBSTETRICO_PLACENTA_OTROS = "N007-MF000004270";
+        public const string IE_OBSTETRICO_PLACENTA_GRADO = "N007-MF000004271";
+        public const string IE_OBSTETRICO_PLACENTA_ESP_PLACENTARIO = "N007-MF000004272";
+        public const string IE_OBSTETRICO_PLACENTA_DESC_OTROS = "N007-MF000004273";
 
-        public const string IE_OBSTETRICO_LIQ_AMNIOTICO_VOL = "N009-MF000004274";
-        public const string IE_OBSTETRICO_LIQ_AMNIOTICO_ESTADO = "N009-MF000004275";
-        public const string IE_OBSTETRICO_LIQ_AMNIOTICO_DESC_OTROS = "N009-MF000004276";
+        public const string IE_OBSTETRICO_LIQ_AMNIOTICO_VOL = "N007-MF000004274";
+        public const string IE_OBSTETRICO_LIQ_AMNIOTICO_ESTADO = "N007-MF000004275";
+        public const string IE_OBSTETRICO_LIQ_AMNIOTICO_DESC_OTROS = "N007-MF000004276";
 
-        public const string IE_OBSTETRICO_COR_UMBILICAL_CIRC_SI_NO = "N009-MF000004277";
-        public const string IE_OBSTETRICO_COR_UMBILICAL_CIRC_SI_DESC = "N009-MF000004278";
-        public const string IE_OBSTETRICO_COR_UMBILICAL_CIRC_ARTERIAS = "N009-MF000004279";
-        public const string IE_OBSTETRICO_COR_UMBILICAL_CIRC_VENAS = "N009-MF000004280";
-        public const string IE_OBSTETRICO_OBSERVACIONES = "N009-MF000004281";
-        public const string IE_OBSTETRICO_CONCLUSIONES = "N009-MF000004282";
+        public const string IE_OBSTETRICO_COR_UMBILICAL_CIRC_SI_NO = "N007-MF000004277";
+        public const string IE_OBSTETRICO_COR_UMBILICAL_CIRC_SI_DESC = "N007-MF000004278";
+        public const string IE_OBSTETRICO_COR_UMBILICAL_CIRC_ARTERIAS = "N007-MF000004279";
+        public const string IE_OBSTETRICO_COR_UMBILICAL_CIRC_VENAS = "N007-MF000004280";
+        public const string IE_OBSTETRICO_OBSERVACIONES = "N007-MF000004281";
+        public const string IE_OBSTETRICO_CONCLUSIONES = "N007-MF000004282";
 
         /// <summary>
         /// IE GINECOLOGICO
         /// </summary>
-        public const string IE_GINECOLOGICO_ID = "N009-ME000000472";
+        public const string IE_GINECOLOGICO_ID = "N007-ME000000472";
 
-        public const string IE_GINECOLOGICO_MOT_EXAM = "N009-MF000004283";
-        public const string IE_GINECOLOGICO_FUR = "N009-MF00000428";
+        public const string IE_GINECOLOGICO_MOT_EXAM = "N007-MF000004283";
+        public const string IE_GINECOLOGICO_FUR = "N007-MF00000428";
 
-        public const string IE_GINECOLOGICO_UTERO_POSICION = "N009-MF000004285";
-        public const string IE_GINECOLOGICO_UTERO_CONTORNO = "N009-MF000004286";
-        public const string IE_GINECOLOGICO_UTERO_ECOESTRUCTURA = "N009-MF000004287";
-        public const string IE_GINECOLOGICO_UTERO_LONGITUDINAL = "N009-MF000004288";
-        public const string IE_GINECOLOGICO_UTERO_TRANSVERSAL = "N009-MF000004289";
-        public const string IE_GINECOLOGICO_UTERO_ANTERO_POST = "N009-MF000004290";
-        public const string IE_GINECOLOGICO_UTERO_ENDOMETRIO = "N009-MF000004291”";
-        public const string IE_GINECOLOGICO_UTERO_DESCRIPCION = "N009-MF000004292";
+        public const string IE_GINECOLOGICO_UTERO_POSICION = "N007-MF000004285";
+        public const string IE_GINECOLOGICO_UTERO_CONTORNO = "N007-MF000004286";
+        public const string IE_GINECOLOGICO_UTERO_ECOESTRUCTURA = "N007-MF000004287";
+        public const string IE_GINECOLOGICO_UTERO_LONGITUDINAL = "N007-MF000004288";
+        public const string IE_GINECOLOGICO_UTERO_TRANSVERSAL = "N007-MF000004289";
+        public const string IE_GINECOLOGICO_UTERO_ANTERO_POST = "N007-MF000004290";
+        public const string IE_GINECOLOGICO_UTERO_ENDOMETRIO = "N007-MF000004291”";
+        public const string IE_GINECOLOGICO_UTERO_DESCRIPCION = "N007-MF000004292";
 
-        public const string IE_GINECOLOGICO_ANEXO_DER_MEDIDAS = "N009-MF000004293";
-        public const string IE_GINECOLOGICO_ANEXO_DER_MEDIDA_DESC = "N009-MF000004294";
-        public const string IE_GINECOLOGICO_ANEXO_DER_MASAS_OVARICO = "N009-MF000004295";
-        public const string IE_GINECOLOGICO_ANEXO_DER_DESC_OTROS = "N009-MF000004296";
+        public const string IE_GINECOLOGICO_ANEXO_DER_MEDIDAS = "N007-MF000004293";
+        public const string IE_GINECOLOGICO_ANEXO_DER_MEDIDA_DESC = "N007-MF000004294";
+        public const string IE_GINECOLOGICO_ANEXO_DER_MASAS_OVARICO = "N007-MF000004295";
+        public const string IE_GINECOLOGICO_ANEXO_DER_DESC_OTROS = "N007-MF000004296";
 
-        public const string IE_GINECOLOGICO_ANEXO_IZQ_MEDIDAS = "N009-MF000004297";
-        public const string IE_GINECOLOGICO_ANEXO_IZQ_MEDIDA_DESC = "N009-MF000004298";
-        public const string IE_GINECOLOGICO_ANEXO_IZQ_MASAS_OVARICO = "N009-MF000004299";
-        public const string IE_GINECOLOGICO_ANEXO_IZQ_DESC_OTROS = "N009-MF000004300";
+        public const string IE_GINECOLOGICO_ANEXO_IZQ_MEDIDAS = "N007-MF000004297";
+        public const string IE_GINECOLOGICO_ANEXO_IZQ_MEDIDA_DESC = "N007-MF000004298";
+        public const string IE_GINECOLOGICO_ANEXO_IZQ_MASAS_OVARICO = "N007-MF000004299";
+        public const string IE_GINECOLOGICO_ANEXO_IZQ_DESC_OTROS = "N007-MF000004300";
 
-        public const string IE_GINECOLOGICO_SACO_DOUGLAS_LIQ_LIBRE = "N009-MF000004301";
+        public const string IE_GINECOLOGICO_SACO_DOUGLAS_LIQ_LIBRE = "N007-MF000004301";
 
-        public const string IE_GINECOLOGICO_OBSERVACIONES = "N009-MF000004302";
-        public const string IE_GINECOLOGICO_CONCLUSIONES = "N009-MF000004303";
+        public const string IE_GINECOLOGICO_OBSERVACIONES = "N007-MF000004302";
+        public const string IE_GINECOLOGICO_CONCLUSIONES = "N007-MF000004303";
 
         /// <summary>
         /// IE ABDOMINAL
         /// </summary>
-        public const string IE_ADOMINAL_ID = "N009-ME000000473";
-        public const string IEABDOMINAL_MOT_EXAM = "N009-MF000004304";
+        public const string IE_ADOMINAL_ID = "N007-ME000000473";
+        public const string IEABDOMINAL_MOT_EXAM = "N007-MF000004304";
 
-        public const string IE_ADOMINAL_HIGADO_MORF_MOVILIDAD = "N009-MF000004305";
-        public const string IE_ADOMINAL_HIGADO_MORF_MOVILIDAD_DESC = "N009-MF000004306";
-        public const string IE_ADOMINAL_HIGADO_BORDES = "N009-MF000004307";
-        public const string IE_ADOMINAL_HIGADO_BORDES_DESC = "N009-MF000004308";
-        public const string IE_ADOMINAL_HIGADO_DIMENSIONES = "N009-MF000004309";
-        public const string IE_ADOMINAL_HIGADO_DIMENSIONES_DESC = "N009-MF000004310";
-        public const string IE_ADOMINAL_HIGADO_PARENQUIMA = "N009-MF000004311";
-        public const string IE_ADOMINAL_HIGADO_PARENQUIMA_DESC = "N009-MF000004312";
-        public const string IE_ADOMINAL_HIGADO_ECOGENICIDAD = "N009-MF000004313";
-        public const string IE_ADOMINAL_HIGADO_IMG_EXPANSIVAS = "N009-MF000004314";
-        public const string IE_ADOMINAL_HIGADO_DIL_BILIARES = "N009-MF000004315";
-        public const string IE_ADOMINAL_HIGADO_COLEDOCO = "N009-MF000004316";
+        public const string IE_ADOMINAL_HIGADO_MORF_MOVILIDAD = "N007-MF000004305";
+        public const string IE_ADOMINAL_HIGADO_MORF_MOVILIDAD_DESC = "N007-MF000004306";
+        public const string IE_ADOMINAL_HIGADO_BORDES = "N007-MF000004307";
+        public const string IE_ADOMINAL_HIGADO_BORDES_DESC = "N007-MF000004308";
+        public const string IE_ADOMINAL_HIGADO_DIMENSIONES = "N007-MF000004309";
+        public const string IE_ADOMINAL_HIGADO_DIMENSIONES_DESC = "N007-MF000004310";
+        public const string IE_ADOMINAL_HIGADO_PARENQUIMA = "N007-MF000004311";
+        public const string IE_ADOMINAL_HIGADO_PARENQUIMA_DESC = "N007-MF000004312";
+        public const string IE_ADOMINAL_HIGADO_ECOGENICIDAD = "N007-MF000004313";
+        public const string IE_ADOMINAL_HIGADO_IMG_EXPANSIVAS = "N007-MF000004314";
+        public const string IE_ADOMINAL_HIGADO_DIL_BILIARES = "N007-MF000004315";
+        public const string IE_ADOMINAL_HIGADO_COLEDOCO = "N007-MF000004316";
 
-        public const string IE_ADOMINAL_VESICULA_BIL_FORMA = "N009-MF000004317";
-        public const string IE_ADOMINAL_VESICULA_BIL_OTROS = "N009-MF000004318";
-        public const string IE_ADOMINAL_VESICULA_BIL_PAREDES = "N009-MF000004319";
-        public const string IE_ADOMINAL_VESICULA_BIL_CONT_ANECOICO = "N009-MF000004320";
-        public const string IE_ADOMINAL_VESICULA_BIL_BARRO_BILIAR = "N009-MF000004321";
-        public const string IE_ADOMINAL_VESICULA_BIL_CALC_INTERIOR = "N009-MF000004322";
-        public const string IE_ADOMINAL_VESICULA_BIL_CALC_INTERIOR_DESC = "N009-MF000004323";
-        public const string IE_ADOMINAL_VESICULA_BIL_DIAMETRO_TRANSV = "N009-MF000004324";
+        public const string IE_ADOMINAL_VESICULA_BIL_FORMA = "N007-MF000004317";
+        public const string IE_ADOMINAL_VESICULA_BIL_OTROS = "N007-MF000004318";
+        public const string IE_ADOMINAL_VESICULA_BIL_PAREDES = "N007-MF000004319";
+        public const string IE_ADOMINAL_VESICULA_BIL_CONT_ANECOICO = "N007-MF000004320";
+        public const string IE_ADOMINAL_VESICULA_BIL_BARRO_BILIAR = "N007-MF000004321";
+        public const string IE_ADOMINAL_VESICULA_BIL_CALC_INTERIOR = "N007-MF000004322";
+        public const string IE_ADOMINAL_VESICULA_BIL_CALC_INTERIOR_DESC = "N007-MF000004323";
+        public const string IE_ADOMINAL_VESICULA_BIL_DIAMETRO_TRANSV = "N007-MF000004324";
 
-        public const string IE_ADOMINAL_PANCREAS_MORF_ECOGENICIDAD = "N009-MF000004325";
-        public const string IE_ADOMINAL_PANCREAS_ANORMAL = "N009-MF000004326";
-        public const string IE_ADOMINAL_PANCREAS_MEDIDAS = "N009-MF000004327";
-        public const string IE_ADOMINAL_PANCREAS_OTROS = "N009-MF000004328";
-        public const string IE_ADOMINAL_PANCREAS_CABEZA = "N009-MF000004329";
-        public const string IE_ADOMINAL_PANCREAS_CUELLO = "N009-MF000004330";
-        public const string IE_ADOMINAL_PANCREAS_CUERPO = "N009-MF000004331";
-        public const string IE_ADOMINAL_PANCREAS_COLA = "N009-MF000004332";
+        public const string IE_ADOMINAL_PANCREAS_MORF_ECOGENICIDAD = "N007-MF000004325";
+        public const string IE_ADOMINAL_PANCREAS_ANORMAL = "N007-MF000004326";
+        public const string IE_ADOMINAL_PANCREAS_MEDIDAS = "N007-MF000004327";
+        public const string IE_ADOMINAL_PANCREAS_OTROS = "N007-MF000004328";
+        public const string IE_ADOMINAL_PANCREAS_CABEZA = "N007-MF000004329";
+        public const string IE_ADOMINAL_PANCREAS_CUELLO = "N007-MF000004330";
+        public const string IE_ADOMINAL_PANCREAS_CUERPO = "N007-MF000004331";
+        public const string IE_ADOMINAL_PANCREAS_COLA = "N007-MF000004332";
 
-        public const string IE_ADOMINAL_BAZO_MORF_MOV_ECO = "N009-MF000004333";
-        public const string IE_ADOMINAL_BAZO_DESCRIPCION = "N009-MF000004334";
-        public const string IE_ADOMINAL_BAZO_MEDIDAS = "N009-MF000004335";
-        public const string IE_ADOMINAL_BAZO_LONGITUD = "N009-MF000004336";
+        public const string IE_ADOMINAL_BAZO_MORF_MOV_ECO = "N007-MF000004333";
+        public const string IE_ADOMINAL_BAZO_DESCRIPCION = "N007-MF000004334";
+        public const string IE_ADOMINAL_BAZO_MEDIDAS = "N007-MF000004335";
+        public const string IE_ADOMINAL_BAZO_LONGITUD = "N007-MF000004336";
 
-        public const string IE_ADOMINAL_AORTA_CAVA_PORTA_CALIBRES = "N009-MF000004337";
-        public const string IE_ADOMINAL_AORTA_CAVA_PORTA_DESCRIPCION = "N009-MF000004338";
+        public const string IE_ADOMINAL_AORTA_CAVA_PORTA_CALIBRES = "N007-MF000004337";
+        public const string IE_ADOMINAL_AORTA_CAVA_PORTA_DESCRIPCION = "N007-MF000004338";
 
-        public const string IE_ADOMINAL_LIQ_LIBRE_ABDOMINAL_SI_NO = "N009-MF000004339";
-        public const string IE_ADOMINAL_LIQ_LIBRE_ABDOMINAL_SI_NO_DESC = "N009-MF000004440";
+        public const string IE_ADOMINAL_LIQ_LIBRE_ABDOMINAL_SI_NO = "N007-MF000004339";
+        public const string IE_ADOMINAL_LIQ_LIBRE_ABDOMINAL_SI_NO_DESC = "N007-MF000004440";
 
-        public const string IE_ADOMINAL_OBSERVACIONES = "N009-MF000004340";
-        public const string IE_ADOMINAL_CONCLUSIONES = "N009-MF000004341";
+        public const string IE_ADOMINAL_OBSERVACIONES = "N007-MF000004340";
+        public const string IE_ADOMINAL_CONCLUSIONES = "N007-MF000004341";
  
         /// <summary>
         /// IE RENAL
         /// </summary>
-        public const string IE_RENAL_ID = "N009-ME000000474";
-        public const string IE_RENAL_MOT_EXAM = "N009-MF000004342";
+        public const string IE_RENAL_ID = "N007-ME000000474";
+        public const string IE_RENAL_MOT_EXAM = "N007-MF000004342";
 
-        public const string IE_RENAL_RIÑON_DER_MORF_MOV = "N009-MF000004343";
-        public const string IE_RENAL_RIÑON_DER_MORF_MOV_DESC = "N009-MF000004344";
-        public const string IE_RENAL_RIÑON_DER_ECOGENICIDAD = "N009-MF000004345";
-        public const string IE_RENAL_RIÑON_DER_MEDIDA_LONG = "N009-MF000004347";
-        public const string IE_RENAL_RIÑON_DER_MEDIDA_PARENQUIMA = "N009-MF000004348";
-        public const string IE_RENAL_RIÑON_DER_SOLIDAS = "N009-MF000004349";
-        public const string IE_RENAL_RIÑON_DER_QUISTICAS = "N009-MF00000435";
-        public const string IE_RENAL_RIÑON_DER_HIDRONEFROSIS = "N009-MF000004351";
-        public const string IE_RENAL_RIÑON_DER_HIDRONEFROSIS_SI_DESC = "N009-MF000004352";
-        public const string IE_RENAL_RIÑON_DER_MICROLITIASES = "N009-MF000004353";
-        public const string IE_RENAL_RIÑON_DER_CALCULOS = "N009-MF000004355";
-        public const string IE_RENAL_RIÑON_DER_CALCULOS_SI_DESC = "N009-MF000004356";
-        public const string IE_RENAL_RIÑON_DER_DESC_OTROS = "N009-MF000004357";
+        public const string IE_RENAL_RIÑON_DER_MORF_MOV = "N007-MF000004343";
+        public const string IE_RENAL_RIÑON_DER_MORF_MOV_DESC = "N007-MF000004344";
+        public const string IE_RENAL_RIÑON_DER_ECOGENICIDAD = "N007-MF000004345";
+        public const string IE_RENAL_RIÑON_DER_MEDIDA_LONG = "N007-MF000004347";
+        public const string IE_RENAL_RIÑON_DER_MEDIDA_PARENQUIMA = "N007-MF000004348";
+        public const string IE_RENAL_RIÑON_DER_SOLIDAS = "N007-MF000004349";
+        public const string IE_RENAL_RIÑON_DER_QUISTICAS = "N007-MF00000435";
+        public const string IE_RENAL_RIÑON_DER_HIDRONEFROSIS = "N007-MF000004351";
+        public const string IE_RENAL_RIÑON_DER_HIDRONEFROSIS_SI_DESC = "N007-MF000004352";
+        public const string IE_RENAL_RIÑON_DER_MICROLITIASES = "N007-MF000004353";
+        public const string IE_RENAL_RIÑON_DER_CALCULOS = "N007-MF000004355";
+        public const string IE_RENAL_RIÑON_DER_CALCULOS_SI_DESC = "N007-MF000004356";
+        public const string IE_RENAL_RIÑON_DER_DESC_OTROS = "N007-MF000004357";
 
-        public const string IE_RENAL_RIÑON_IZQ_MORF_MOV = "N009-MF000004358";
-        public const string IE_RENAL_RIÑON_IZQ_MORF_MOV_DESC = "N009-MF000004359";
-        public const string IE_RENAL_RIÑON_IZQ_ECOGENICIDAD = "N009-MF000004360";
-        public const string IE_RENAL_RIÑON_IZQ_MEDIDA_LONG = "N009-MF000004361";
-        public const string IE_RENAL_RIÑON_IZQ_MEDIDA_PARENQUIMA = "N009-MF000004362";
-        public const string IE_RENAL_RIÑON_IZQ_SOLIDAS = "N009-MF000004363";
-        public const string IE_RENAL_RIÑON_IZQ_QUISTICAS = "N009-MF000004364";
-        public const string IE_RENAL_RIÑON_IZQ_HIDRONEFROSIS = "N009-MF000004365";
-        public const string IE_RENAL_RIÑON_IZQ_HIDRONEFROSIS_SI_DESC = "N009-MF000004366";
-        public const string IE_RENAL_RIÑON_IZQ_MICROLITIASES = "N009-MF000004367";
-        public const string IE_RENAL_RIÑON_IZQ_CALCULOS = "N009-MF000004368";
-        public const string IE_RENAL_RIÑON_IZQ_CALCULOS_SI_DESC = "N009-MF000004369";
-        public const string IE_RENAL_RIÑON_IZQ_DESC_OTROS = "N009-MF000004370";
+        public const string IE_RENAL_RIÑON_IZQ_MORF_MOV = "N007-MF000004358";
+        public const string IE_RENAL_RIÑON_IZQ_MORF_MOV_DESC = "N007-MF000004359";
+        public const string IE_RENAL_RIÑON_IZQ_ECOGENICIDAD = "N007-MF000004360";
+        public const string IE_RENAL_RIÑON_IZQ_MEDIDA_LONG = "N007-MF000004361";
+        public const string IE_RENAL_RIÑON_IZQ_MEDIDA_PARENQUIMA = "N007-MF000004362";
+        public const string IE_RENAL_RIÑON_IZQ_SOLIDAS = "N007-MF000004363";
+        public const string IE_RENAL_RIÑON_IZQ_QUISTICAS = "N007-MF000004364";
+        public const string IE_RENAL_RIÑON_IZQ_HIDRONEFROSIS = "N007-MF000004365";
+        public const string IE_RENAL_RIÑON_IZQ_HIDRONEFROSIS_SI_DESC = "N007-MF000004366";
+        public const string IE_RENAL_RIÑON_IZQ_MICROLITIASES = "N007-MF000004367";
+        public const string IE_RENAL_RIÑON_IZQ_CALCULOS = "N007-MF000004368";
+        public const string IE_RENAL_RIÑON_IZQ_CALCULOS_SI_DESC = "N007-MF000004369";
+        public const string IE_RENAL_RIÑON_IZQ_DESC_OTROS = "N007-MF000004370";
 
-        public const string IE_RENAL_VEJIGA_REPLECION = "N009-MF000004371";
-        public const string IE_RENAL_VEJIGA_PAREDES = "N009-MF000004372";
-        public const string IE_RENAL_VEJIGA_CONT_ANECOICO = "N009-MF000004373";
-        public const string IE_RENAL_VEJIGA_CONT_ANECOICO_DESC = "N009-MF000004374";
-        public const string IE_RENAL_VEJIGA_IMG_EXPANSIVAS = "N009-MF000004375";
-        public const string IE_RENAL_VEJIGA_IMG_EXPANSIVAS_DESC = "N009-MF000004376";
-        public const string IE_RENAL_VEJIGA_CALCULOS_INTERIOR = "N009-MF000004377";
-        public const string IE_RENAL_VEJIGA_CALCULOS_INTERIOR_DESC = "N009-MF000004378";
-        public const string IE_RENAL_VEJIGA_VOL_PRE_MICCIONAL = "N009-MF000004379";
-        public const string IE_RENAL_VEJIGA_POST_MICCIONAL = "N009-MF000004380";
-        public const string IE_RENAL_VEJIGA_RETENCION = "N009-MF000004381";
-        public const string IE_RENAL_VEJIGA_DESC_OTROS = "N009-MF000004382";
+        public const string IE_RENAL_VEJIGA_REPLECION = "N007-MF000004371";
+        public const string IE_RENAL_VEJIGA_PAREDES = "N007-MF000004372";
+        public const string IE_RENAL_VEJIGA_CONT_ANECOICO = "N007-MF000004373";
+        public const string IE_RENAL_VEJIGA_CONT_ANECOICO_DESC = "N007-MF000004374";
+        public const string IE_RENAL_VEJIGA_IMG_EXPANSIVAS = "N007-MF000004375";
+        public const string IE_RENAL_VEJIGA_IMG_EXPANSIVAS_DESC = "N007-MF000004376";
+        public const string IE_RENAL_VEJIGA_CALCULOS_INTERIOR = "N007-MF000004377";
+        public const string IE_RENAL_VEJIGA_CALCULOS_INTERIOR_DESC = "N007-MF000004378";
+        public const string IE_RENAL_VEJIGA_VOL_PRE_MICCIONAL = "N007-MF000004379";
+        public const string IE_RENAL_VEJIGA_POST_MICCIONAL = "N007-MF000004380";
+        public const string IE_RENAL_VEJIGA_RETENCION = "N007-MF000004381";
+        public const string IE_RENAL_VEJIGA_DESC_OTROS = "N007-MF000004382";
 
-        public const string IE_RENAL_OBSERVACIONES = "N009-MF000004383";
-        public const string IE_RENAL_CONCLUSIONES = "N009-MF000004384";
+        public const string IE_RENAL_OBSERVACIONES = "N007-MF000004383";
+        public const string IE_RENAL_CONCLUSIONES = "N007-MF000004384";
         
         /// <summary>
         /// IE MAMAS
         /// </summary>
 
-        public const string IE_MAMAS_ID = "N009-ME000000475";
-        public const string IE_MAMAS_MOT_EXAM = "N009-MF000004385";
+        public const string IE_MAMAS_ID = "N007-ME000000475";
+        public const string IE_MAMAS_MOT_EXAM = "N007-MF000004385";
 
-        public const string IE_MAMAS_IZQ_TEJIDO_GLANDULAR = "N009-MF000004386";
-        public const string IE_MAMAS_IZQ_BORDES = "N009-MF000004387";
-        public const string IE_MAMAS_IZQ_ECOGENICIDAD = "N009-MF000004388";
-        public const string IE_MAMAS_IZQ_TEJIDO_GRASO = "N009-MF000004389";
-        public const string IE_MAMAS_IZQ_IMG_EXPANSIVAS = "N009-MF00000439";
-        public const string IE_MAMAS_IZQ_PEZON = "N009-MF000004392";
-        public const string IE_MAMAS_IZQ_PROFUNDIDAD = "N009-MF000004393";
-        public const string IE_MAMAS_IZQ_DESC_OTROS = "N009-MF000004394";
+        public const string IE_MAMAS_IZQ_TEJIDO_GLANDULAR = "N007-MF000004386";
+        public const string IE_MAMAS_IZQ_BORDES = "N007-MF000004387";
+        public const string IE_MAMAS_IZQ_ECOGENICIDAD = "N007-MF000004388";
+        public const string IE_MAMAS_IZQ_TEJIDO_GRASO = "N007-MF000004389";
+        public const string IE_MAMAS_IZQ_IMG_EXPANSIVAS = "N007-MF00000439";
+        public const string IE_MAMAS_IZQ_PEZON = "N007-MF000004392";
+        public const string IE_MAMAS_IZQ_PROFUNDIDAD = "N007-MF000004393";
+        public const string IE_MAMAS_IZQ_DESC_OTROS = "N007-MF000004394";
 
-        public const string IE_MAMAS_DER_TEJIDO_GLANDULAR = "N009-MF000004395";
-        public const string IE_MAMAS_DER_BORDES = "N009-MF000004396";
-        public const string IE_MAMAS_DER_ECOGENICIDAD = "N009-MF000004397";
-        public const string IE_MAMAS_DER_TEJIDO_GRASO = "N009-MF000004398";
-        public const string IE_MAMAS_DER_IMG_EXPANSIVAS = "N009-MF00000439";
-        public const string IE_MAMAS_DER_PEZON = "N009-MF000004401";
-        public const string IE_MAMAS_DER_PROFUNDIDAD = "N009-MF000004402";
-        public const string IE_MAMAS_DER_DESC_OTROS = "N009-MF000004403";
+        public const string IE_MAMAS_DER_TEJIDO_GLANDULAR = "N007-MF000004395";
+        public const string IE_MAMAS_DER_BORDES = "N007-MF000004396";
+        public const string IE_MAMAS_DER_ECOGENICIDAD = "N007-MF000004397";
+        public const string IE_MAMAS_DER_TEJIDO_GRASO = "N007-MF000004398";
+        public const string IE_MAMAS_DER_IMG_EXPANSIVAS = "N007-MF00000439";
+        public const string IE_MAMAS_DER_PEZON = "N007-MF000004401";
+        public const string IE_MAMAS_DER_PROFUNDIDAD = "N007-MF000004402";
+        public const string IE_MAMAS_DER_DESC_OTROS = "N007-MF000004403";
 
-        public const string IE_MAMAS_OBSERVACIONES = "N009-MF000004404";
-        public const string IE_MAMAS_CONCLUSIONES = "N009-MF000004405";
+        public const string IE_MAMAS_OBSERVACIONES = "N007-MF000004404";
+        public const string IE_MAMAS_CONCLUSIONES = "N007-MF000004405";
 
         /// <summary>
         /// IE PROSTATA
         /// </summary>
-        public const string IE_PROSTATA_ID = "N009-ME000000476";
-        public const string IE_PROSTATA_MOT_EXAM = "N009-MF000004406";
+        public const string IE_PROSTATA_ID = "N007-ME000000476";
+        public const string IE_PROSTATA_MOT_EXAM = "N007-MF000004406";
 
-        public const string IE_PROSTATA_VEJIGA_REPLECION = "N009-MF000004407";
-        public const string IE_PROSTATA_VEJIGA_PAREDES = "N009-MF000004408";
-        public const string IE_PROSTATA_VEJIGA_CONTENIDO_ANECOICO = "N009-MF000004409";
-        public const string IE_PROSTATA_VEJIGA_CONTENIDO_ANECOICO_DESC = "N009-MF000004410";
-        public const string IE_PROSTATA_VEJIGA_IMG_EXPANSIVAS = "N009-MF000004411";
-        public const string IE_PROSTATA_VEJIGA_IMG_EXPANSIVAS_DESC = "N009-MF000004412";
-        public const string IE_PROSTATA_VEJIGA_CALC_INTERIO = "N009-MF000004413";
-        public const string IE_PROSTATA_VEJIGA_CALC_INTERIO_DESC = "N009-MF000004414";
-        public const string IE_PROSTATA_VEJIGA_VOL_PRE_MICCIONAL = "N009-MF000004415";
-        public const string IE_PROSTATA_VEJIGA_VOL_POST_MICCIONAL = "N009-MF000004416";
-        public const string IE_PROSTATA_VEJIGA_VOL_RETENCIÓN = "N009-MF000004417";
-        public const string IE_PROSTATA_VEJIGA_VOL_DESC_OTROS = "N009-MF000004418";
+        public const string IE_PROSTATA_VEJIGA_REPLECION = "N007-MF000004407";
+        public const string IE_PROSTATA_VEJIGA_PAREDES = "N007-MF000004408";
+        public const string IE_PROSTATA_VEJIGA_CONTENIDO_ANECOICO = "N007-MF000004409";
+        public const string IE_PROSTATA_VEJIGA_CONTENIDO_ANECOICO_DESC = "N007-MF000004410";
+        public const string IE_PROSTATA_VEJIGA_IMG_EXPANSIVAS = "N007-MF000004411";
+        public const string IE_PROSTATA_VEJIGA_IMG_EXPANSIVAS_DESC = "N007-MF000004412";
+        public const string IE_PROSTATA_VEJIGA_CALC_INTERIO = "N007-MF000004413";
+        public const string IE_PROSTATA_VEJIGA_CALC_INTERIO_DESC = "N007-MF000004414";
+        public const string IE_PROSTATA_VEJIGA_VOL_PRE_MICCIONAL = "N007-MF000004415";
+        public const string IE_PROSTATA_VEJIGA_VOL_POST_MICCIONAL = "N007-MF000004416";
+        public const string IE_PROSTATA_VEJIGA_VOL_RETENCIÓN = "N007-MF000004417";
+        public const string IE_PROSTATA_VEJIGA_VOL_DESC_OTROS = "N007-MF000004418";
 
-        public const string IE_PROSTATA_PROSTATA_BORDES = "N009-MF000004419";
-        public const string IE_PROSTATA_PROSTATA_BORDES_DESC = "N009-MF000004420";
-        public const string IE_PROSTATA_PROSTATA_TRANSVERSO = "N009-MF000004421";
-        public const string IE_PROSTATA_PROSTATA_ANTERO_POSTERIOR = "N009-MF000004422";
-        public const string IE_PROSTATA_PROSTATA_LONGITUDINAL = "N009-MF000004423";
-        public const string IE_PROSTATA_PROSTATA_VOLUMEN = "N009-MF000004425";
-        public const string IE_PROSTATA_PROSTATA_V_N = "N009-MF000004426";
-        public const string IE_PROSTATA_PROSTATA_ECOESTRUCTURA = "N009-MF000004427";
+        public const string IE_PROSTATA_PROSTATA_BORDES = "N007-MF000004419";
+        public const string IE_PROSTATA_PROSTATA_BORDES_DESC = "N007-MF000004420";
+        public const string IE_PROSTATA_PROSTATA_TRANSVERSO = "N007-MF000004421";
+        public const string IE_PROSTATA_PROSTATA_ANTERO_POSTERIOR = "N007-MF000004422";
+        public const string IE_PROSTATA_PROSTATA_LONGITUDINAL = "N007-MF000004423";
+        public const string IE_PROSTATA_PROSTATA_VOLUMEN = "N007-MF000004425";
+        public const string IE_PROSTATA_PROSTATA_V_N = "N007-MF000004426";
+        public const string IE_PROSTATA_PROSTATA_ECOESTRUCTURA = "N007-MF000004427";
 
-        public const string IE_PROSTATA_OBSERVACIONES = "N009-MF000004428";
-        public const string IE_PROSTATA_CONCLUSIONES = "N009-MF000004429";
+        public const string IE_PROSTATA_OBSERVACIONES = "N007-MF000004428";
+        public const string IE_PROSTATA_CONCLUSIONES = "N007-MF000004429";
 
         /// <summary>
         /// IE PARTES BLANDAS
         /// </summary>
-        public const string IE_PARTES_BLANDAS_ID = "N009-ME000000477";
+        public const string IE_PARTES_BLANDAS_ID = "N007-ME000000477";
 
-        public const string IE_PARTES_BLANDAS_MOT_EXAM = "N009-MF000004430";
-        public const string IE_PARTES_BLANDAS_ESPECIFICACION = "N009-MF000004431";
+        public const string IE_PARTES_BLANDAS_MOT_EXAM = "N007-MF000004430";
+        public const string IE_PARTES_BLANDAS_ESPECIFICACION = "N007-MF000004431";
 
         /// <summary>
         /// IE OBSTETRICO PELVICO
         /// </summary>
-        public const string IE_OBSTETRICO_PELVICO_ID = "N009-ME000000478";
-        public const string IE_OBSTETRICO_PELVICO_MOT_EXAM = "N009-MF000004432";
-        public const string IE_OBSTETRICO_PELVICO_FUR = "N009-MF000004433";
+        public const string IE_OBSTETRICO_PELVICO_ID = "N007-ME000000478";
+        public const string IE_OBSTETRICO_PELVICO_MOT_EXAM = "N007-MF000004432";
+        public const string IE_OBSTETRICO_PELVICO_FUR = "N007-MF000004433";
 
-        public const string IE_OBSTETRICO_PELVICO_EXAM_VEJIGA = "N009-MF000004434";
-        public const string IE_OBSTETRICO_PELVICO_EXAM_UTERO = "N009-MF000004435";
-        public const string IE_OBSTETRICO_PELVICO_EXAM_UTERO_CAVIDAD = "N009-MF000004436";
-        public const string IE_OBSTETRICO_PELVICO_EXAM_ANEXOS_OVARIOS = "N009-MF000004437";
-        public const string IE_OBSTETRICO_PELVICO_EXAM_SACO_DOUGLAS = "N009-MF000004438";
-        public const string IE_OBSTETRICO_PELVICO_EXAM_CONCLUSION = "N009-MF000004439";
+        public const string IE_OBSTETRICO_PELVICO_EXAM_VEJIGA = "N007-MF000004434";
+        public const string IE_OBSTETRICO_PELVICO_EXAM_UTERO = "N007-MF000004435";
+        public const string IE_OBSTETRICO_PELVICO_EXAM_UTERO_CAVIDAD = "N007-MF000004436";
+        public const string IE_OBSTETRICO_PELVICO_EXAM_ANEXOS_OVARIOS = "N007-MF000004437";
+        public const string IE_OBSTETRICO_PELVICO_EXAM_SACO_DOUGLAS = "N007-MF000004438";
+        public const string IE_OBSTETRICO_PELVICO_EXAM_CONCLUSION = "N007-MF000004439";
 
         #endregion
         #region SUFICIENCIA MEDICA BRIGADISTAS
