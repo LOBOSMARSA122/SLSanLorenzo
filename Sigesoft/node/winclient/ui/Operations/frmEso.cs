@@ -27,6 +27,7 @@ using Sigesoft.Node.WinClient.UI;
 using System.Web.Script.Serialization;
 using System.IO;
 using CrystalDecisions.Shared;
+using System.Transactions;
 
 namespace Sigesoft.Node.WinClient.UI.Operations
 {
@@ -2892,7 +2893,19 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         {
             _chkApprovedEnabled = chkApproved.Enabled;
 
-            SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+            var scope = new TransactionScope(
+                TransactionScopeOption.RequiresNew, 
+                            new TransactionOptions(){
+
+                                IsolationLevel = System.Transactions.IsolationLevel.Snapshot
+                        });
+
+            using (scope)
+            {
+                SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+            }
+
+           
         }
 
         private void SaveExamBySelectedTab(Infragistics.Win.UltraWinTabControl.UltraTabPageControl selectedTab)
