@@ -1278,6 +1278,12 @@
     <Compile Include="frmSeleccionarNombreCrystal.Designer.cs">
       <DependentUpon>frmSeleccionarNombreCrystal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSelectOrganization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSelectOrganization.Designer.cs">
+      <DependentUpon>frmSelectOrganization.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmServicioFacturado.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1386,6 +1392,12 @@
     <Compile Include="Hospitalizacion\frmLiquidacionMedicos.Designer.cs">
       <DependentUpon>frmLiquidacionMedicos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hospitalizacion\frmType.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Hospitalizacion\frmType.Designer.cs">
+      <DependentUpon>frmType.cs</DependentUpon>
+    </Compile>
     <Compile Include="Matriz\frmMatrizMultiple.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1415,6 +1427,12 @@
     </Compile>
     <Compile Include="Operations\frmEso.Designer.cs">
       <DependentUpon>frmEso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\frmEsoV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\frmEsoV2.Designer.cs">
+      <DependentUpon>frmEsoV2.cs</DependentUpon>
     </Compile>
     <Compile Include="Operations\Popups\frmAtxResultadoExamenAuxiliar.cs">
       <SubType>Form</SubType>
@@ -1463,6 +1481,12 @@
     </Compile>
     <Compile Include="Operations\Popups\frmSelectSignature.Designer.cs">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Popups\FrmWorkerData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\Popups\FrmWorkerData.designer.cs">
+      <DependentUpon>FrmWorkerData.cs</DependentUpon>
     </Compile>
     <Compile Include="ReporteDeclaracionDrogas.cs">
       <SubType>Form</SubType>
@@ -3574,6 +3598,9 @@
     <EmbeddedResource Include="frmSeleccionarNombreCrystal.resx">
       <DependentUpon>frmSeleccionarNombreCrystal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSelectOrganization.resx">
+      <DependentUpon>frmSelectOrganization.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmServicioFacturado.resx">
       <DependentUpon>frmServicioFacturado.cs</DependentUpon>
     </EmbeddedResource>
@@ -3628,6 +3655,9 @@
     <EmbeddedResource Include="Hospitalizacion\frmLiquidacionMedicos.resx">
       <DependentUpon>frmLiquidacionMedicos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Hospitalizacion\frmType.resx">
+      <DependentUpon>frmType.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Matriz\frmMatrizMultiple.resx">
       <DependentUpon>frmMatrizMultiple.cs</DependentUpon>
     </EmbeddedResource>
@@ -3643,6 +3673,9 @@
     <EmbeddedResource Include="Operations\frmEso.resx">
       <DependentUpon>frmEso.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations\frmEsoV2.resx">
+      <DependentUpon>frmEsoV2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmAtxResultadoExamenAuxiliar.resx">
       <DependentUpon>frmAtxResultadoExamenAuxiliar.cs</DependentUpon>
@@ -3667,6 +3700,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmSelectSignature.resx">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations\Popups\FrmWorkerData.resx">
+      <DependentUpon>FrmWorkerData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
@@ -6690,7 +6726,7 @@
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
       <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4 %28x86 y x64%29</ProductName>
+      <ProductName>Microsoft .NET Framework 4 %28x86 and x64%29</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

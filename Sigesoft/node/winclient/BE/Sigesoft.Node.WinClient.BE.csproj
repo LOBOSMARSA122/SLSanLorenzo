@@ -69,6 +69,7 @@
     <Compile Include="Custom\LiquiAseguradoraDetalle.cs" />
     <Compile Include="Custom\Liquidacion.cs" />
     <Compile Include="Custom\LiquidacionAseguradora.cs" />
+    <Compile Include="Custom\LiquidacionEmpresa.cs" />
     <Compile Include="Custom\LiquidacionMedicoList.cs" />
     <Compile Include="Custom\LiquidacionServicios.cs" />
     <Compile Include="Custom\MatrizGoldFields.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="Custom\ReporteFobiasocial01.cs" />
     <Compile Include="Custom\ReporteFobiasocial02.cs" />
     <Compile Include="Custom\ReporteFobiasocialAdmin.cs" />
+    <Compile Include="Custom\ReporteGerencia.cs" />
     <Compile Include="Custom\ReporteMaslachestres.cs" />
     <Compile Include="Custom\ReporteMasterClinico.cs" />
     <Compile Include="Custom\ReporteOftalmologiaAntiguo.cs" />
@@ -272,6 +274,7 @@
     <Compile Include="Custom\ServiceComponentFieldsList.cs" />
     <Compile Include="Custom\ServiceComponentFieldValuesList.cs" />
     <Compile Include="Custom\ServiceComponentList.cs" />
+    <Compile Include="Custom\ServiceData.cs" />
     <Compile Include="Custom\ServiceGridJerarquizadaList.cs" />
     <Compile Include="Custom\ServiceImportacionList.cs" />
     <Compile Include="Custom\ServiceOrderDetailList.cs" />
@@ -313,6 +316,7 @@
     <Compile Include="Custom\Valor.cs" />
     <Compile Include="Custom\ValorComponenteList.cs" />
     <Compile Include="Custom\JerarquiaServicioCamposValores.cs" />
+    <Compile Include="Custom\WorkerData.cs" />
     <Compile Include="Custom\WorkstationDangersList.cs" />
     <Compile Include="Custom\XmlNatclar.cs" />
     <Compile Include="Generated\adolescenteDto.cs" />
@@ -346,7 +350,6 @@
     <Compile Include="Generated\dxfrecuentedetalleDto.cs" />
     <Compile Include="Generated\emailDto.cs" />
     <Compile Include="Generated\embarzoDto.cs" />
-    <Compile Include="Generated\ReporteGerencia.cs" />
     <Compile Include="Generated\workstationdangersDto.cs" />
     <Compile Include="Generated\warehouseDto.cs" />
     <Compile Include="Generated\typeofeepDto.cs" />
@@ -415,6 +418,7 @@
     <Compile Include="Generated\masterrecommendationrestricctionDto.cs" />
     <Compile Include="Generated\logDto.cs" />
     <Compile Include="Generated\locationDto.cs" />
+    <Compile Include="Generated\liquidacionDto.cs" />
     <Compile Include="Generated\hospitalizacionserviceDto.cs" />
     <Compile Include="Generated\hospitalizacionhabitacionDto.cs" />
     <Compile Include="Generated\hospitalizacionDto.cs" />
@@ -427,6 +431,7 @@
     <Compile Include="Generated\reporteatencionmedicaResultDto.cs" />
     <Compile Include="Generated\obtenerproductoResultDto.cs" />
     <Compile Include="Generated\obtenerpreciotarifarioResultDto.cs" />
+    <Compile Include="Generated\obtenernetoporcobrarResultDto.cs" />
     <Compile Include="IRastreable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Custom\SystemParameterList.cs" />

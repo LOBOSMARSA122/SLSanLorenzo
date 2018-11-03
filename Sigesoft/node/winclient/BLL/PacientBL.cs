@@ -5288,6 +5288,109 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<Antecedentes> DevolverHabitos_PersonalesSolo(string PersonIds)
+        {
+            try
+            {
+
+                using (SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel())
+                {
+
+                    var ListaMedicosPersonales = (from A in dbContext.personmedicalhistory
+                                                  join B in dbContext.systemparameter on new { a = A.v_DiseasesId, b = 147 }
+                                                     equals new { a = B.v_Value1, b = B.i_GroupId } into B_join
+                                                  from B in B_join.DefaultIfEmpty()
+
+                                                  join C in dbContext.systemparameter on new { a = B.i_ParentParameterId.Value, b = 147 }
+                                                                                    equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                                  from C in C_join.DefaultIfEmpty()
+
+                                                  join D in dbContext.diseases on A.v_DiseasesId equals D.v_DiseasesId
+
+                                                  where A.i_IsDeleted == 0
+                                                  && PersonIds.Contains(A.v_PersonId)
+                                                  orderby A.v_PersonId
+                                                  select new PersonMedicalHistoryList
+                                                  {
+                                                      v_PersonId = A.v_PersonId,
+                                                      v_DiseasesId = D.v_DiseasesId,
+                                                      v_DiseasesName = D.v_Name,
+                                                      i_Answer = A.i_AnswerId.Value,
+                                                      v_GroupName = C.v_Value1 == null ? "ENFERMEDADES OTROS" : C.v_Value1,
+                                                  }).ToList();
+
+                    var ListaAntecedentesFamiliares = (from A in dbContext.familymedicalantecedents
+
+                                                       join B in dbContext.systemparameter on new { a = A.i_TypeFamilyId.Value, b = 149 }
+                                                           equals new { a = B.i_ParameterId, b = B.i_GroupId } into B_join
+                                                       from B in B_join.DefaultIfEmpty()
+
+                                                       join C in dbContext.systemparameter on new { a = B.i_ParentParameterId.Value, b = 149 }
+                                                           equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                                                       from C in C_join.DefaultIfEmpty()
+
+                                                       join D in dbContext.diseases on new { a = A.v_DiseasesId }
+                                                equals new { a = D.v_DiseasesId } into D_join
+                                                       from D in D_join.DefaultIfEmpty()
+                                                       where A.i_IsDeleted == 0
+                                                       && PersonIds.Contains(A.v_PersonId)
+                                                       orderby A.v_PersonId
+                                                       select new FamilyMedicalAntecedentsList
+                                                       {
+                                                           v_PersonId = A.v_PersonId,
+                                                           v_DiseaseName = D.v_Name,
+                                                           v_TypeFamilyName = C.v_Value1,
+                                                           v_Comment = A.v_Comment
+                                                       }).ToList();
+
+                    var ListaHabitosNoxivos = (from A in dbContext.noxioushabits
+                                               where A.i_IsDeleted == 0
+                                               && PersonIds.Contains(A.v_PersonId)
+                                               orderby A.v_PersonId
+                                               select new NoxiousHabitsList
+                                               {
+                                                   v_PersonId = A.v_PersonId,
+                                                   i_TypeHabitsId = A.i_TypeHabitsId.Value,
+                                                   v_Frequency = A.v_Frequency,
+                                                   v_Comment = A.v_Comment
+                                               }).ToList();
+
+
+                    var ListaJerarquizada = (from A in dbContext.person
+                                             where PersonIds.Contains(A.v_PersonId)
+
+                                             select new Antecedentes
+                                             {
+                                                 PersonId = A.v_PersonId
+                                             }).ToList();
+
+                    ListaJerarquizada.ForEach(a =>
+                    {
+                        a.ListaPersonalMedical = ListaMedicosPersonales.FindAll(p => p.v_PersonId == a.PersonId);
+                    });
+
+                    ListaJerarquizada.ForEach(a =>
+                    {
+                        a.ListaHabitos = ListaHabitosNoxivos.FindAll(p => p.v_PersonId == a.PersonId);
+                    });
+
+                    ListaJerarquizada.ForEach(a =>
+                    {
+                        a.ListaAntecedentesFamiliares = ListaAntecedentesFamiliares.FindAll(p => p.v_PersonId == a.PersonId);
+                    });
+
+
+                    return ListaJerarquizada;
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
         public List<ServiceComponentFieldValuesList> ValoresComponenteOdontogramaValue1(string pstrServiceId, string pstrComponentId)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -7396,7 +7499,9 @@ namespace Sigesoft.Node.WinClient.BLL
                                      i_DocTypeId = b.i_DocTypeId,
                                      v_OwnerName = b.v_OwnerName,
                                      v_Employer = z.v_Name,
-                                     
+                                     v_ContactName = b.v_ContactName,
+                                     i_Relationship = b.i_Relationship,
+                                     v_EmergencyPhone = b.v_EmergencyPhone,
                                      //
                                      Genero = c.v_Value1,
                                      i_SexTypeId = b.i_SexTypeId,
@@ -7434,6 +7539,9 @@ namespace Sigesoft.Node.WinClient.BLL
                               {
                                   Trabajador = a.Trabajador,
                                   d_Birthdate = a.d_Birthdate,
+                                  v_ContactName = a.v_ContactName,
+                                  v_EmergencyPhone = a.v_EmergencyPhone,
+                                  i_Relationship = a.i_Relationship,
                                   //
                                   v_PersonId=a.v_PersonId,
                                   v_FirstLastName = a.v_FirstLastName,

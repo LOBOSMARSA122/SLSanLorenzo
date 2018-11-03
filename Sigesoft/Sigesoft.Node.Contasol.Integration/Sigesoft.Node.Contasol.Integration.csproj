@@ -150,6 +150,7 @@
       <DependentUpon>frmSearchMedicamento.cs</DependentUpon>
     </Compile>
     <Compile Include="PlanBl.cs" />
+    <Compile Include="Sigesoft\CobranzaBl.cs" />
     <Compile Include="Sigesoft\MedicamentoBl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sigesoft\RecetaBl.cs" />

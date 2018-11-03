@@ -91,7 +91,7 @@
                                             <Rows>
                                                 <x:FormRow ColumnWidths="460px" ID="FormRow8" runat="server" >
                                                     <Items>                                                        
-                                                         <x:DropDownList ID="ddlProtocolo"  Label="Protocolo" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProtocolo_SelectedIndexChanged" />  
+                                                         <x:DropDownList ID="ddlProtocolo"  Label="Protocolo" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlProtocolo_SelectedIndexChanged" CompareType="String" ShowRedStar="true" CompareValue="-1" CompareOperator="NotEqual" CompareMessage="Campo requerido" />  
                                                     </Items>
                                                 </x:FormRow>
                                             </Rows>

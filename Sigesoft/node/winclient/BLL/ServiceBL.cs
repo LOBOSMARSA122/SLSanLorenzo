@@ -25889,7 +25889,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      TipoEso = et.v_Value1,
                                      Dni = B.v_DocNumber
                                  });
-                var ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, "N009-ME000000052").ToList();
+                var ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, pstrComponentId).ToList();
                 var MedicalCenter = GetInfoMedicalCenter();
                 var sql = (from a in objEntity.ToList()
                            select new UcOsteo
@@ -31224,8 +31224,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var item in tipoEsos)
                 {
                     var LiquidacionDetalle = new List<LiquidacionDetalle>();
-                    var oLiquidacion = new Liquidacion();
-                    oLiquidacion.Esotype = item.Esotype;
+                    var oLiquidacionEmpresaDetalle = new Liquidacion();
+                    oLiquidacionEmpresaDetalle.Esotype = item.Esotype;
 
                     var servicios = ListaServicios.FindAll(p => p.i_EsoTypeId == item.i_EsoTypeId);
 
@@ -31249,17 +31249,114 @@ namespace Sigesoft.Node.WinClient.BLL
                         oLiquidacionDetalle.Perfil = servicio.Perfil;
                         oLiquidacionDetalle.Precio =
                             GetServiceComponentsLiquidacion(ref pobjOperationResult, servicio.v_ServiceId).Sum(s => s.r_Price).Value;
-
+                        oLiquidacionDetalle.SubTotal = float.Parse((oLiquidacionDetalle.Precio / 1.18).ToString());
+                        oLiquidacionDetalle.Igv = oLiquidacionDetalle.Precio - oLiquidacionDetalle.SubTotal;
                         oLiquidacionDetalle.CCosto = servicio.CCosto;
 
                         LiquidacionDetalle.Add(oLiquidacionDetalle);
                         contador++;
                     }
-                    oLiquidacion.Detalle = LiquidacionDetalle;
+                    oLiquidacionEmpresaDetalle.Detalle = LiquidacionDetalle;
 
-                    ListaLiquidacion.Add(oLiquidacion);
+                    ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
                 }     
   
+                pobjOperationResult.Success = 1;
+                return ListaLiquidacion.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public List<LiquidacionEmpresa> ListaLiquidacionByEmpresa(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.liquidacion
+                            //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
+                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId                           
+                            where A.i_IsDeleted == 0 
+                            //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
+                            //ARNOLD , REPORTE JUAN LIZA
+                            select new LiquidacionEmpresa
+                            {
+                                v_OrganizationName = F.v_Name,
+                                v_LiquidacionId = A.v_LiquidacionId,
+                                v_NroLiquidacion = A.v_NroLiquidacion,
+                                //v_ServiceId = A.v_ServiceId,
+                                v_OrganizationId = A.v_OrganizationId,
+                                d_Monto = A.d_Monto,
+                                d_FechaVencimiento = A.d_FechaVencimiento,
+                                v_NroFactura = A.v_NroFactura,
+                            };
+
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+
+                var result = query.ToList();
+                var empresas = result.ToList().GroupBy(g => g.v_OrganizationId).Select(p => p.FirstOrDefault());
+
+
+                List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
+
+                foreach (var item in empresas)
+                {
+                    var LiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                    var oLiquidacionEmpresa = new LiquidacionEmpresa();
+                    oLiquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+
+                    var liquidaciones = result.FindAll(p => p.v_OrganizationId == item.v_OrganizationId);
+
+                    foreach (var liquidacion in liquidaciones)
+                    {
+                        var oLiquidacionDetalle = new LiquidacionEmpresaDetalle();
+                        oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
+                        oLiquidacionDetalle.v_NroLiquidacion = liquidacion.v_NroLiquidacion;
+                        oLiquidacionDetalle.v_NroFactura = liquidacion.v_NroFactura;
+                        if (oLiquidacionDetalle.v_NroFactura != "" && oLiquidacionDetalle.v_NroFactura != null)
+                        {
+                            var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
+                            var x = dbContext.obtenernetoporcobrar(arr[0].ToString(), arr[1].ToString()).ToList();
+                            oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                        }
+                        else
+                        {
+                            oLiquidacionDetalle.d_Debe = 0;
+                        }
+                        oLiquidacionDetalle.d_Pago = liquidacion.d_Monto - oLiquidacionDetalle.d_Debe;
+                        
+                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;                  
+
+                        LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
+                    }
+                    oLiquidacionEmpresa.detalle = LiquidacionEmpresaDetalle;
+
+                    ListaLiquidacion.Add(oLiquidacionEmpresa);
+                }
+
                 pobjOperationResult.Success = 1;
                 return ListaLiquidacion.ToList();
 
@@ -31340,8 +31437,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var item in tipoEsos)
                 {
                     var LiquidacionDetalle = new List<LiquidacionDetalle>();
-                    var oLiquidacion = new Liquidacion();
-                    oLiquidacion.Esotype = item.Esotype;
+                    var oLiquidacionEmpresaDetalle = new Liquidacion();
+                    oLiquidacionEmpresaDetalle.Esotype = item.Esotype;
 
                     var servicios = ListaServicios.FindAll(p => p.i_EsoTypeId == item.i_EsoTypeId);
 
@@ -31371,9 +31468,9 @@ namespace Sigesoft.Node.WinClient.BLL
                         LiquidacionDetalle.Add(oLiquidacionDetalle);
                         contador++;
                     }
-                    oLiquidacion.Detalle = LiquidacionDetalle;
+                    oLiquidacionEmpresaDetalle.Detalle = LiquidacionDetalle;
 
-                    ListaLiquidacion.Add(oLiquidacion);
+                    ListaLiquidacion.Add(oLiquidacionEmpresaDetalle);
                 }
 
                 pobjOperationResult.Success = 1;
@@ -31409,30 +31506,62 @@ namespace Sigesoft.Node.WinClient.BLL
 	        }
 	    }
 
-        public void GenerarLiquidacion(string[] serviceIds,List<string> ClientSession)
+        public string ObtnerNroLiquidacion(int nodeId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var objEntitySource = (from a in dbContext.liquidacion
+                                   select a).OrderByDescending(p => p.v_NroLiquidacion).FirstOrDefault();
+            if (objEntitySource == null) return string.Format("N{0}-{1}", nodeId.ToString("000"), "000000001"); ;
+
+            var nro = int.Parse(objEntitySource.v_NroLiquidacion.ToString().Split('-').ToArray()[1].ToString()) + 1;
+            return string.Format("N{0}-{1}", nodeId.ToString("000"), nro.ToString("000000000"));
+        }
+
+        public void GenerarLiquidacion(ref OperationResult objOperationResult, string[] serviceIds,List<string> ClientSession, string organizationId)
 	    {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            OperationResult objOperationResult1 = new OperationResult();
+            var oLiquidacionBL = new LiquidacionBL();
+           
 	        try
 	        {
                 int intNodeId = int.Parse(ClientSession[0]);
-                var NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 1000), "LQ"); 
-                
+
+                var nroLiquidacion = ObtnerNroLiquidacion(intNodeId);
+                float monto = 0;
                 foreach (var serviceId in serviceIds)
-	            {
+                {
+                    monto += GetServiceComponentsLiquidacion(ref objOperationResult1, serviceId).Sum(s => s.r_Price).Value;
+                }
+                    organizationId = organizationId.Split('|').ToArray()[0].ToString();
+                    var oliquidacionDto = new liquidacionDto();
+                    //oliquidacionDto.v_ServiceId = serviceId;
+                    oliquidacionDto.v_OrganizationId = organizationId;
+                    oliquidacionDto.v_NroLiquidacion = nroLiquidacion;
+                    oliquidacionDto.d_Monto = decimal.Parse(monto.ToString());
+                    oliquidacionDto.d_FechaVencimiento = null;
+                    oliquidacionDto.v_NroFactura =  "";
+                    var NewId = oLiquidacionBL.AddLiquidacion(ref objOperationResult1, oliquidacionDto, ClientSession);
+
+                    foreach (var serviceId in serviceIds)
+                    {
                     var objEntitySource = (from a in dbContext.service
                                            where a.v_ServiceId == serviceId
                                            select a).FirstOrDefault();
-                    objEntitySource.v_NroLiquidacion = NewId;
-                    //objEntitySource.d_UpdateDate = DateTime.Now;
-                    //objEntitySource.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+
+                    objEntitySource.v_NroLiquidacion = nroLiquidacion;
 
                     // Guardar los cambios
                     dbContext.SaveChanges();
-	            }
+                    }
+
+                objOperationResult.Success = 1;
+
 	        }
-	        catch (Exception e)
+	        catch (Exception ex)
 	        {
-	            Console.WriteLine(e);
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
 	            throw;
 	        }
 	    }
@@ -31507,6 +31636,539 @@ namespace Sigesoft.Node.WinClient.BLL
             }
 
         }
+
+
+        public List<rolenodecomponentprofileDto> GetRoleNodeComponentProfileByRoleNodeId_(int pintNodeId, int pintRoleId)
+        {
+            //mon.IsActive = true;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = (from a in dbContext.rolenodecomponentprofile
+                             where (a.i_NodeId == pintNodeId) &&
+                                   (a.i_RoleId == pintRoleId) &&
+                                   (a.i_IsDeleted == (int)SiNo.NO)
+                             select new rolenodecomponentprofileDto
+                             {
+                                 v_ComponentId = a.v_ComponentId,
+                                 v_RoleNodeComponentId = a.v_RoleNodeComponentId,
+                                 i_Read = a.i_Read.Value
+                             }).ToList();
+
+                return query;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+        #region AMC  ESO2
+        public List<ComponentList> ListMissingExamenesNames(ref OperationResult pobjOperationResult, string pstrServiceId, int pintNodeId, int pintRoleId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                List<ComponentList> components = (from aaa in dbContext.servicecomponent
+
+                                                  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+
+                                                  join fff in dbContext.systemparameter on new { a = bbb.i_CategoryId.Value, b = 116 } // CATEGORIA DEL EXAMEN
+                                                                                               equals new { a = fff.i_ParameterId, b = fff.i_GroupId } into J5_join
+                                                  from fff in J5_join.DefaultIfEmpty()
+
+                                                  join ggg in dbContext.rolenodecomponentprofile on aaa.v_ComponentId equals ggg.v_ComponentId
+
+                                                  where (aaa.v_ServiceId == pstrServiceId) &&
+                                                        (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                                        (aaa.i_IsDeleted == 0) &&
+                                                        (aaa.i_IsRequiredId == (int?)SiNo.SI) &&
+                                                        (ggg.i_NodeId == pintNodeId) &&
+                                                        (ggg.i_RoleId == pintRoleId) &&
+                                                        (ggg.i_IsDeleted == (int)SiNo.NO)
+                                                  select new ComponentList
+                                                  {
+                                                      v_CategoryName = fff.v_Value1,
+                                                      v_ComponentId = bbb.v_ComponentId,
+                                                      v_ServiceComponentId = aaa.v_ServiceComponentId,
+                                                  }).ToList();
+                var objData = components.AsEnumerable()
+                    .GroupBy(x => x.v_CategoryName)
+                    .Select(group => group.First())
+                    .OrderBy(p => p.v_ComponentId);
+
+                return objData.ToList();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        public string ConcatenateComponents(string pstrServiceId, string pstrComponentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var component = (from a in dbContext.component
+                                 where a.v_ComponentId == pstrComponentId
+                                 select a).FirstOrDefault();
+                var categoryId = component.i_CategoryId;
+
+                var servicecomponent = (from a in dbContext.servicecomponent
+                                        join b in dbContext.component on a.v_ComponentId equals b.v_ComponentId
+                                        where b.i_CategoryId == categoryId && a.v_ServiceId == pstrServiceId
+                                        select new
+                                        {
+                                            componentId = b.v_ComponentId
+                                        });
+
+                return string.Join("|", servicecomponent.Select(p => p.componentId));
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+        public List<ComponentList> ExamenByDefaultOrAssigned(ref OperationResult pobjOperationResult, string pstrServiceId, string pstrComponentId)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var isDeleted = 0;
+                int? componentTypeId = (int?)ComponentType.Examen;
+                int? isRequiredId = (int?)SiNo.SI;
+                var recomId = (int)Typifying.Recomendaciones;
+                var restricId = (int)Typifying.Restricciones;
+                int groupMeasurementUnitId = 105;
+                List<string> list = pstrComponentId.Split('|').ToList();
+
+                #region Recomendation
+
+                var _valueFieldsRecome = (from s in dbContext.service
+                                          join sc in dbContext.servicecomponent on s.v_ServiceId equals sc.v_ServiceId
+                                          join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
+                                          join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
+                                          join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
+                                          join rec in dbContext.componentfieldvaluesrecommendation on cfsv.v_ComponentFieldValuesId equals rec.v_ComponentFieldValuesId
+                                          join mrec in dbContext.masterrecommendationrestricction on rec.v_MasterRecommendationRestricctionId equals mrec.v_MasterRecommendationRestricctionId
+
+                                          where (rec.i_IsDeleted == isDeleted) &&
+                                                (mrec.i_TypifyingId == recomId) &&
+                                                (s.v_ServiceId == pstrServiceId) &&
+                                              //(sc.v_ComponentId == pstrComponentId)
+                                                (list.Contains(sc.v_ComponentId))
+
+                                          select new RecomendationList
+                                          {
+                                              v_ComponentFieldValuesRecommendationId = rec.v_ComponentFieldValuesRecommendationId,
+                                              v_ComponentFieldValuesId = rec.v_ComponentFieldValuesId,
+                                              v_MasterRecommendationId = rec.v_MasterRecommendationRestricctionId,
+                                              v_RecommendationName = mrec.v_Name,
+                                              v_ComponentId = sc.v_ComponentId,
+                                              i_RecordStatus = (int)RecordStatus.Grabado,
+                                              i_RecordType = (int)RecordType.NoTemporal,
+
+                                          }).ToList();
+
+                #endregion
+
+                #region Restriction
+
+                var _valueFieldsRestri = (from s in dbContext.service
+                                          join sc in dbContext.servicecomponent on s.v_ServiceId equals sc.v_ServiceId
+                                          join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
+                                          join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
+                                          join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
+                                          join res in dbContext.componentfieldvaluesrestriction on cfsv.v_ComponentFieldValuesId equals res.v_ComponentFieldValuesId
+                                          join mres in dbContext.masterrecommendationrestricction on res.v_MasterRecommendationRestricctionId equals mres.v_MasterRecommendationRestricctionId
+
+                                          where (res.i_IsDeleted == isDeleted) &&
+                                                (mres.i_TypifyingId == restricId) &&
+                                                (s.v_ServiceId == pstrServiceId) &&
+                                              //(sc.v_ComponentId == pstrComponentId)
+                                                (list.Contains(sc.v_ComponentId))
+                                          select new RestrictionList
+                                          {
+                                              v_ComponentFieldValuesRestrictionId = res.v_ComponentFieldValuesRestrictionId,
+                                              v_ComponentFieldValuesId = res.v_ComponentFieldValuesId,
+                                              v_MasterRestrictionId = res.v_MasterRecommendationRestricctionId,
+                                              v_RestrictionName = mres.v_Name,
+                                              v_ComponentId = sc.v_ComponentId,
+                                              i_RecordStatus = (int)RecordStatus.Grabado,
+                                              i_RecordType = (int)RecordType.NoTemporal
+                                          }).ToList();
+                #endregion
+
+                #region Values
+
+                var _valueFields = (from s in dbContext.service
+                                    join sc in dbContext.servicecomponent on s.v_ServiceId equals sc.v_ServiceId
+                                    join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
+                                    join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
+                                    join cfsv in dbContext.componentfieldvalues on cfs.v_ComponentFieldId equals cfsv.v_ComponentFieldId
+                                    join dise in dbContext.diseases on cfsv.v_Diseases equals dise.v_DiseasesId
+                                    where (cfsv.i_IsDeleted == isDeleted) &&
+                                          (s.v_ServiceId == pstrServiceId) &&
+                                        //(sc.v_ComponentId == pstrComponentId)
+                                            (list.Contains(sc.v_ComponentId))
+                                    select new ComponentFieldValues
+                                    {
+                                        v_ComponentFieldValuesId = cfsv.v_ComponentFieldValuesId,
+                                        v_ComponentFieldsId = cfsv.v_ComponentFieldId,
+                                        v_AnalyzingValue1 = cfsv.v_AnalyzingValue1,
+                                        v_AnalyzingValue2 = cfsv.v_AnalyzingValue2,
+                                        i_OperatorId = cfsv.i_OperatorId.Value,
+                                        v_LegalStandard = cfsv.v_LegalStandard,
+                                        i_IsAnormal = cfsv.i_IsAnormal,
+                                        i_ValidationMonths = cfsv.i_ValidationMonths,
+                                        v_DiseasesName = cfsv.diseases.v_Name,
+                                        v_DiseasesId = cfsv.v_Diseases,
+                                        v_ComponentId = sc.v_ComponentId,
+                                        i_GenderId = cfsv.i_GenderId,
+                                        v_CIE10 = dise.v_CIE10Id
+
+                                    }).ToList();
+
+                _valueFields.ForEach(a =>
+                {
+                    a.Recomendations = _valueFieldsRecome.FindAll(p => p.v_ComponentFieldValuesId == a.v_ComponentFieldValuesId);
+                    a.Restrictions = _valueFieldsRestri.FindAll(p => p.v_ComponentFieldValuesId == a.v_ComponentFieldValuesId);
+                });
+
+                #endregion
+
+                #region Fields
+
+                var _comFields = (from s in dbContext.service
+                                  join sc in dbContext.servicecomponent on s.v_ServiceId equals sc.v_ServiceId
+                                  join c in dbContext.component on sc.v_ComponentId equals c.v_ComponentId
+                                  join cfs in dbContext.componentfields on c.v_ComponentId equals cfs.v_ComponentId
+                                  join cf in dbContext.componentfield on cfs.v_ComponentFieldId equals cf.v_ComponentFieldId
+
+                                  let hazAutoDx = (from jjj in dbContext.diagnosticrepository
+                                                   where (jjj.v_ComponentFieldId == cfs.v_ComponentFieldId) &&
+                                                       (jjj.v_ServiceId == pstrServiceId) &&
+                                                       (jjj.i_IsDeleted == isDeleted)
+                                                   //select jjj.v_ComponentFieldId != null ? (int?)SiNo.SI : (int?)SiNo.NO)
+                                                   select new
+                                                   {
+                                                       //v_ComponentFieldId = jjj.v_ComponentFieldId
+                                                       i_HasAutomaticDxId = jjj.v_ComponentFieldId != null ? (int?)SiNo.SI : (int?)SiNo.NO
+                                                   })
+
+                                  //let measurementUnitId = cfs.componentfield.i_MeasurementUnitId.Value
+
+                                  join dh in dbContext.datahierarchy on new { a = groupMeasurementUnitId, b = cf.i_MeasurementUnitId.Value }  // UNID MEDIDA
+                                                      equals new { a = dh.i_GroupId, b = dh.i_ItemId } into dh_join
+                                  from dh in dh_join.DefaultIfEmpty()
+
+                                  where (cfs.i_IsDeleted == isDeleted) &&
+                                        (cf.i_IsDeleted == isDeleted) &&
+                                        (s.v_ServiceId == pstrServiceId) &&
+                                      //(sc.v_ComponentId == pstrComponentId)
+                                         (list.Contains(sc.v_ComponentId))
+                                  select new ComponentFieldsList
+                                  {
+                                      v_ComponentFieldId = cf.v_ComponentFieldId,
+                                      v_TextLabel = cf.v_TextLabel,
+                                      v_ComponentId = cfs.v_ComponentId,
+                                      i_LabelWidth = cf.i_LabelWidth.Value,
+                                      v_DefaultText = cf.v_DefaultText,
+                                      i_ControlId = cf.i_ControlId.Value,
+                                      i_GroupId = cf.i_GroupId.Value,
+                                      i_ItemId = cf.i_ItemId.Value,
+                                      i_ControlWidth = cf.i_WidthControl.Value,
+                                      i_HeightControl = cf.i_HeightControl.Value,
+                                      i_MaxLenght = cf.i_MaxLenght.Value,
+                                      i_IsRequired = cf.i_IsRequired.Value,
+                                      i_Column = cf.i_Column.Value,
+                                      v_MeasurementUnitName = dh.v_Value1,
+                                      i_IsCalculate = cf.i_IsCalculate.Value,
+                                      i_Order = cf.i_Order.Value,
+                                      i_MeasurementUnitId = cf.i_MeasurementUnitId.Value,
+                                      r_ValidateValue1 = cf.r_ValidateValue1.Value,
+                                      r_ValidateValue2 = cf.r_ValidateValue2.Value,
+                                      v_Group = cfs.v_Group,
+                                      v_Formula = cf.v_Formula,
+                                      i_NroDecimales = cf.i_NroDecimales.Value,
+                                      i_ReadOnly = cf.i_ReadOnly.Value,
+                                      i_Enabled = cf.i_Enabled.Value,
+                                      //i_LabelHeight = cf.i_HeightLabel, // este campo no existe
+                                      //i_HasAutomaticDxId = hazAutoDx.FirstOrDefault().v_ComponentFieldId != null ? (int?)SiNo.SI : (int?)SiNo.NO
+                                      i_HasAutomaticDxId = hazAutoDx.FirstOrDefault().i_HasAutomaticDxId,
+                                      //Values = _valueFields.Where(p => p.v_ComponentFieldsId == cfs.v_ComponentFieldId)
+                                      //Values = xcfsv
+                                  }).ToList();
+
+                // Ordenar la lista temp para hacer busquedas rapidas sobre ella (obligatorio)
+                _valueFields.Sort((x, y) => x.v_ComponentFieldsId.CompareTo(y.v_ComponentFieldsId));
+                _comFields.Sort((x, y) => x.v_ComponentFieldId.CompareTo(y.v_ComponentFieldId));
+                _comFields.ForEach(a => a.Values = _valueFields.FindAll(p => p.v_ComponentFieldsId == a.v_ComponentFieldId));
+
+
+                Formulate formu = null;
+                TargetFieldOfCalculate targetFieldOfCalculate = null;
+
+                foreach (var item in _comFields)
+                {
+                    List<Formulate> formuList = new List<Formulate>();
+                    List<TargetFieldOfCalculate> targetFieldOfCalculateList = new List<TargetFieldOfCalculate>();
+
+                    var find = _comFields.FindAll(p => p.v_Formula != null && p.v_Formula.Contains(item.v_ComponentFieldId));
+
+                    if (find.Count != 0)
+                    {
+                        item.i_IsSourceFieldToCalculate = (int)SiNo.SI;
+
+                        foreach (var f in find)
+                        {
+                            formu = new Formulate();
+                            formu.v_Formula = f.v_Formula;
+                            formu.v_TargetFieldOfCalculateId = f.v_ComponentFieldId;
+                            formuList.Add(formu);
+
+                            targetFieldOfCalculate = new TargetFieldOfCalculate();
+                            targetFieldOfCalculate.v_TargetFieldOfCalculateId = f.v_ComponentFieldId;
+                            targetFieldOfCalculateList.Add(targetFieldOfCalculate);
+                        }
+
+                        item.Formula = formuList;
+                        item.TargetFieldOfCalculateId = targetFieldOfCalculateList;
+                    }
+
+                }
+
+                // obligatorio para que los controles se dibujen en orden adecuado
+                _comFields.Sort((x, y) => x.i_Order.CompareTo(y.i_Order));
+
+                #endregion
+
+                #region Components
+
+                List<ComponentList> components = (from aaa in dbContext.servicecomponent
+                                                  join bbb in dbContext.component on aaa.v_ComponentId equals bbb.v_ComponentId
+                                                  join J1 in dbContext.systemuser on new { i_InsertUserId = aaa.i_InsertUserId.Value }
+                                                                  equals new { i_InsertUserId = J1.i_SystemUserId } into J1_join
+                                                  from J1 in J1_join.DefaultIfEmpty()
+
+                                                  join J2 in dbContext.systemuser on new { i_UpdateUserId = aaa.i_UpdateUserId.Value }
+                                                                                  equals new { i_UpdateUserId = J2.i_SystemUserId } into J2_join
+                                                  from J2 in J2_join.DefaultIfEmpty()
+
+                                                  join fff in dbContext.systemparameter on new { a = bbb.i_CategoryId.Value, b = 116 } // CATEGORIA DEL EXAMEN
+                                                                                               equals new { a = fff.i_ParameterId, b = fff.i_GroupId } into J5_join
+                                                  from fff in J5_join.DefaultIfEmpty()
+
+                                                  where (aaa.v_ServiceId == pstrServiceId) &&
+                                                        (bbb.i_ComponentTypeId == (int?)ComponentType.Examen) &&
+                                                        (aaa.i_IsDeleted == 0) &&
+                                                        (aaa.i_IsRequiredId == (int?)SiNo.SI) &&
+                                                      //(aaa.v_ComponentId == pstrComponentId)
+                                                        (list.Contains(aaa.v_ComponentId))
+                                                  //orderby aaa.v_ServiceComponentId, aaa.i_index
+                                                  select new ComponentList
+                                                  {
+                                                      v_ComponentId = bbb.v_ComponentId,
+                                                      v_Name = bbb.v_Name,
+                                                      i_UIIsVisibleId = bbb.i_UIIsVisibleId,
+                                                      i_ComponentTypeId = bbb.i_ComponentTypeId,
+                                                      v_ServiceComponentId = aaa.v_ServiceComponentId,
+                                                      v_CreationUser = J1.v_UserName,
+                                                      v_UpdateUser = J2.v_UserName,
+                                                      d_CreationDate = aaa.d_InsertDate,
+                                                      d_UpdateDate = aaa.d_UpdateDate,
+                                                      i_IsDeleted = aaa.i_IsDeleted.Value,
+                                                      i_CategoryId = bbb.i_CategoryId,
+                                                      v_CategoryName = fff.v_Value1,
+                                                      i_GroupedComponentId = bbb.i_CategoryId,
+                                                      v_GroupedComponentName = fff.v_Value1,
+                                                      v_ComponentCopyId = bbb.v_ComponentId,
+                                                      i_ServiceComponentStatusId = aaa.i_ServiceComponentStatusId.Value,
+                                                      //i_Index = aaa.i_index
+                                                      i_Index = bbb.i_UIIndex
+                                                  }).ToList();
+
+                // Ordenar la lista temp para hacer busquedas rapidas sobre ella (obligatorio)
+
+                components.Sort((x, y) => x.v_ComponentId.CompareTo(y.v_ComponentId));
+                components.ForEach(a => a.Fields = _comFields.FindAll(p => p.v_ComponentId == a.v_ComponentId));
+
+
+                // Orden obligatorio para capturar siempre el v_ServiceComponentId correcto
+                components.OrderBy(o1 => o1.v_ServiceComponentId).ThenBy(o2 => o2.i_Index).ToList();
+
+                #endregion
+
+                #region Agrupar componentes individuales en un solo examen component ejem: Laboratorio , Psicologia
+
+                List<ComponentList> groupedComponentsName = null;
+
+                var categories = components.FindAll(p => p.i_CategoryId != -1)
+                                .GroupBy(g => g.i_CategoryId)
+                                .Select(s => s.First())
+                    //.OrderBy(o => o.i_CategoryId).ToList();
+                                .OrderByDescending(o => o.v_CategoryName).ToList();
+                // Ordenar la lista temp para hacer busquedas rapidas sobre ella (obligatorio)
+                components.Sort((x, y) => x.i_CategoryId.Value.CompareTo(y.i_CategoryId.Value));
+
+                for (int i = 0; i < categories.Count; i++)
+                {
+                    var categoryId = categories[i].i_CategoryId;
+
+                    var componentsByCategory = components.FindAll(p => p.i_CategoryId == categoryId)
+                                              .OrderBy(o => o.i_Index).ToList();
+
+                    var join = string.Join("|", componentsByCategory.Select(p => p.v_ComponentId));
+                    categories[i].v_ComponentId = join;
+
+                    groupedComponentsName = new List<ComponentList>();
+
+                    for (int j = 0; j < componentsByCategory.Count; j++)
+                    {
+                        var groupedComponentName = new ComponentList();
+                        groupedComponentName.v_ComponentId = componentsByCategory[j].v_ComponentCopyId;
+                        groupedComponentName.v_GroupedComponentName = componentsByCategory[j].v_Name;
+                        groupedComponentName.i_Index = componentsByCategory[j].i_Index;
+                        groupedComponentsName.Add(groupedComponentName);
+                    }
+
+                    categories[i].GroupedComponentsName = groupedComponentsName;
+                }
+
+
+                // Buscar componentes individuales
+                var componentsToImport = components.FindAll(p => p.i_CategoryId != -1)
+                                        .OrderBy(o => o.i_CategoryId).ToList();
+
+                // Importar los campos de cada uno de los componentes individuales hacia el nuevo componente             
+                for (int i = 0; i < categories.Count; i++)
+                {
+                    var categoryId = categories[i].i_CategoryId;
+
+                    var fields = componentsToImport.FindAll(p => p.i_CategoryId == categoryId)
+                                .SelectMany(p => p.Fields).ToList();
+
+                    categories[i].i_IsGroupedComponent = (int)SiNo.SI;
+                    categories[i].v_Name = categories[i].v_CategoryName;
+                    categories[i].Fields = new List<ComponentFieldsList>();
+                    categories[i].Fields.AddRange(fields);
+                }
+
+                // Eliminar los componentes individuales ya no sirven
+                for (int i = 0; i < componentsToImport.Count; i++)
+                {
+                    components.Remove(componentsToImport[i]);
+                }
+
+                // Agregar los nuevos componentes (LAB,PSICOLOGIA) a la lista de examenes que va alimentar el ESO
+                components.AddRange(categories);
+
+                #endregion
+
+                pobjOperationResult.Success = 1;
+
+                return components;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+        public ServiceData GetServiceData(ref OperationResult pobjOperationResult, string pstrServiceId)
+        {
+            //mon.IsActive = true;
+            var isDeleted = 0;
+
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from A in dbContext.service
+                            join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                            join C in dbContext.protocol on A.v_ProtocolId equals C.v_ProtocolId
+
+                            where (A.v_ServiceId == pstrServiceId) &&
+                                  (A.i_IsDeleted == isDeleted)
+                            select new ServiceData
+                            {
+                                HasSymptomId = A.i_HasSymptomId,
+                                Story = A.v_Story,
+                                MainSymptom = A.v_MainSymptom,
+                                TimeOfDiseaseTypeId = A.i_TimeOfDiseaseTypeId,
+                                TimeOfDisease = A.i_TimeOfDisease,
+                                DreamId = A.i_DreamId,
+                                AppetiteId = A.i_AppetiteId,
+                                DepositionId = A.i_DepositionId,
+                                UrineId = A.i_UrineId,
+                                ThirstId = A.i_ThirstId,
+                                Findings = A.v_Findings,
+                                Menarquia = A.v_Menarquia,
+                                Gestapara = A.v_Gestapara,
+                                Pap = A.d_PAP.Value,
+                                Fur = A.d_Fur.Value,
+                                MacId = A.i_MacId,
+                                Mamografia = A.d_Mamografia.Value,
+                                CatemenialRegime = A.v_CatemenialRegime,
+                                CiruGine = A.v_CiruGine,
+                                SexTypeId = B.i_SexTypeId,
+                                PersonId = B.v_PersonId,
+                                ServiceId = A.v_ServiceId,
+                                Trabajador = B.v_FirstLastName + " " + B.v_SecondLastName + " " + B.v_FirstName,
+                                ProtocolName = C.v_Name,
+                                EsoTypeId = C.i_EsoTypeId.Value,
+                                FechaNacimiento = B.d_Birthdate.Value,
+                                GlobalExpirationDate = A.d_GlobalExpirationDate.Value,
+                                AptitudeStatusId = A.i_AptitudeStatusId.Value
+                            };
+
+                ServiceData objData = query.FirstOrDefault();
+                pobjOperationResult.Success = 1;
+                return objData;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+        public WorkerData GetWorkerData(string serviceId)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            var result = (from A in dbContext.service
+                          join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                          join C in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
+                              equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                          from C in C_join.DefaultIfEmpty()
+                          join D in dbContext.protocol on A.v_ProtocolId equals D.v_ProtocolId
+                          join E in dbContext.systemparameter on new { a = D.i_EsoTypeId.Value, b = 118 }
+                                          equals new { a = E.i_ParameterId, b = E.i_GroupId }
+                          join F in dbContext.groupoccupation on D.v_GroupOccupationId equals F.v_GroupOccupationId
+
+                          where A.v_ServiceId == serviceId
+                          select new WorkerData
+                          {
+                              Trabajador = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
+                              FechaNacimiento = B.d_Birthdate.Value,
+                              Genero = C.v_Value1,
+                              Puesto = B.v_CurrentOccupation,
+                              Protocolo = D.v_Name,
+                              TipoExamen = E.v_Value1,
+                              Grupo = F.v_Name,
+                              PersonId = B.v_PersonId,
+                              PersonImage = B.b_PersonImage
+                          }).FirstOrDefault();
+            return result;
+        }
+        #endregion
 
 	}
 }

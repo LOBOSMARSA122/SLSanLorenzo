@@ -2100,6 +2100,97 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public static List<GroupParameter> GetSystemParameterForComboFormEso()
+        {
+            try
+            {
+                var dbContext = new SigesoftEntitiesModel();
+
+                var query = from b in dbContext.componentfield
+                            where b.i_IsDeleted == 0 && (b.i_ControlId == 9 || b.i_ControlId == 7)
+                            select b.i_GroupId;
+
+                var groupsIds = query.AsEnumerable().GroupBy(p => p).Select(p => p.First()) as int?[] ?? query.AsEnumerable().GroupBy(p => p).Select(p => p.First()).ToArray();
+                var listCbo = from a in dbContext.systemparameter
+                              where groupsIds.Contains(a.i_GroupId) || (a.i_GroupId == 0 && groupsIds.Contains(a.i_ParameterId))
+                              select a;
+
+                var listParameters = listCbo.AsEnumerable()
+                                  .Select(x => new KeyValueDTO
+                                  {
+                                      GrupoId = 0,
+                                      Id = x.i_ParameterId.ToString(),
+                                      Value1 = x.v_Value1,
+                                      Field = x.v_Field,
+                                      ParentId = x.i_GroupId
+                                  }).ToList();
+
+                var groups = (from a in listParameters
+                              where a.GrupoId == 0
+                              select new GroupParameter
+                              {
+                                  GroupId = a.GrupoId,
+                                  Id = a.Id
+                              }).ToList();
+
+                groups.ForEach(a =>
+                {
+                    a.Items = listParameters.FindAll(p => p.ParentId == int.Parse(a.Id));
+                });
+
+                return groups;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public static List<GroupParameter> GetSystemParameterForComboForm(ref OperationResult pobjOperationResult, string form)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var query = from a in dbContext.systemparameter
+                            where a.v_Field == form && a.i_IsDeleted == 0
+                            select a;
+
+
+                var listParameters = query.AsEnumerable()
+                                  .Select(x => new KeyValueDTO
+                                  {
+                                      GrupoId = x.i_GroupId,
+                                      Id = x.i_ParameterId.ToString(),
+                                      Value1 = x.v_Value1,
+                                      Field = x.v_Field
+                                  }).ToList();
+
+                var groups = (from a in listParameters
+                              where a.Field == form && a.GrupoId == 0
+                              select new GroupParameter
+                              {
+                                  GroupId = a.GrupoId,
+                                  Id = a.Id
+                              }).ToList();
+
+                groups.ForEach(a =>
+                {
+                    a.Items = listParameters.FindAll(p => p.GrupoId == int.Parse(a.Id));
+                });
+
+                pobjOperationResult.Success = 1;
+                return groups;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = ex.Message;
+                return null;
+            }
+        }
+
+
     }
 
 
