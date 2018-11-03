@@ -25,11 +25,23 @@ namespace Sigesoft.Common
         public string Field { get; set; }
 
         public int IdI { get; set; }
+        public int GrupoId { get; set; }
+
+        public int ParameterId { get; set; }
+       
+        public int ParentId { get; set; }
     }
 
    public class KeyValueDTOCheck
    {
        public string Id { get; set; }
        public string Value1 { get; set; }
+   }
+
+   public class GroupParameter
+   {
+       public int GroupId { get; set; }
+       public string Id { get; set; }
+       public List<KeyValueDTO> Items { get; set; }
    }
 }
