@@ -1422,6 +1422,12 @@
     <Compile Include="Operations\frmEso.Designer.cs">
       <DependentUpon>frmEso.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\frmEsoV2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\frmEsoV2.Designer.cs">
+      <DependentUpon>frmEsoV2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Operations\Popups\frmAtxResultadoExamenAuxiliar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1469,6 +1475,12 @@
     </Compile>
     <Compile Include="Operations\Popups\frmSelectSignature.Designer.cs">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Operations\Popups\FrmWorkerData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operations\Popups\FrmWorkerData.designer.cs">
+      <DependentUpon>FrmWorkerData.cs</DependentUpon>
     </Compile>
     <Compile Include="ReporteDeclaracionDrogas.cs">
       <SubType>Form</SubType>
@@ -3653,6 +3665,9 @@
       <DependentUpon>frmEso.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Operations\frmEsoV2.resx">
+      <DependentUpon>frmEsoV2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmAtxResultadoExamenAuxiliar.resx">
       <DependentUpon>frmAtxResultadoExamenAuxiliar.cs</DependentUpon>
     </EmbeddedResource>
@@ -3676,6 +3691,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operations\Popups\frmSelectSignature.resx">
       <DependentUpon>frmSelectSignature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operations\Popups\FrmWorkerData.resx">
+      <DependentUpon>FrmWorkerData.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ReporteDeclaracionDrogas.resx">
       <DependentUpon>ReporteDeclaracionDrogas.cs</DependentUpon>
