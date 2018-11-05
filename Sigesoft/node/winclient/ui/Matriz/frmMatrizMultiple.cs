@@ -25,10 +25,17 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
             DateTime fechatemp = DateTime.Today;
             DateTime fecha1 = new DateTime(fechatemp.Year, fechatemp.Month, 1);
 
+            int nodeId = int.Parse(Common.Utils.GetApplicationConfigValue("NodeId"));
             OperationResult objOperationResult = new OperationResult();
             //var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, Globals.ClientSession.i_CurrentExecutionNodeId);
-            var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, 9);
+
+            var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, nodeId);
+            var clientOrganization1 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, nodeId);
+            var clientOrganization2 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, nodeId);
+
             Utils.LoadDropDownList(ddlCustomerOrganization, "Value1", "Id", clientOrganization, DropDownListAction.All);
+            Utils.LoadDropDownList(ddlEmployerOrganization, "Value1", "Id", clientOrganization1, DropDownListAction.All);
+            Utils.LoadDropDownList(ddlWorkingOrganization, "Value1", "Id", clientOrganization2, DropDownListAction.All);
 
             Utils.LoadDropDownList(ddlProtocolId, "Value1", "Id", BLL.Utils.GetProtocolsByOrganizationForCombo(ref objOperationResult, "-1", "-1", null), DropDownListAction.All);
 
@@ -70,6 +77,18 @@ namespace Sigesoft.Node.WinClient.UI.Matriz
                 {
                     var id3 = ddlCustomerOrganization.SelectedValue.ToString().Split('|');
                     Filters.Add("v_CustomerOrganizationId==" + "\"" + id3[0] + "\"&&v_CustomerLocationId==" + "\"" + id3[1] + "\"");
+                }
+
+                if (ddlEmployerOrganization.SelectedValue.ToString() != "-1")
+                {
+                    var id3 = ddlEmployerOrganization.SelectedValue.ToString().Split('|');
+                    Filters.Add("v_EmployerOrganizationId==" + "\"" + id3[0] + "\"&&v_EmployerLocationId==" + "\"" + id3[1] + "\"");
+                }
+
+                if (ddlWorkingOrganization.SelectedValue.ToString() != "-1")
+                {
+                    var id3 = ddlWorkingOrganization.SelectedValue.ToString().Split('|');
+                    Filters.Add("v_WorkingOrganizationId==" + "\"" + id3[0] + "\"&&v_WorkingLocationId==" + "\"" + id3[1] + "\"");
                 }
 
                 if (ddlProtocolId.SelectedValue.ToString() != "-1")
