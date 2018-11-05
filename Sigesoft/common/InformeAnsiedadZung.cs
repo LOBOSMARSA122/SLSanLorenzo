@@ -578,10 +578,10 @@ namespace NetPdf
            #endregion
            #region Puntaje
            var interpretacion = "";
-           if (int.Parse(resultadofinal.ToString()) < 50) { interpretacion = "DENTRO DE LO NORMAL"; }
-           else if (int.Parse(resultadofinal.ToString()) > 50 && int.Parse(resultadofinal.ToString()) < 59) { interpretacion = "ANSIEDAD LEVE"; }
-           else if (int.Parse(resultadofinal.ToString()) > 60 && int.Parse(resultadofinal.ToString()) < 69) { interpretacion = "ANSIEDAD MODERADA"; }
-           else if (int.Parse(resultadofinal.ToString()) > 70) { interpretacion = "ANSIEDAD INTENSA"; }
+           if (int.Parse(resultadofinal.ToString()) <= 50) { interpretacion = "DENTRO DE LO NORMAL"; }
+           else if (int.Parse(resultadofinal.ToString()) >= 51 && int.Parse(resultadofinal.ToString()) <= 60) { interpretacion = "ANSIEDAD LEVE"; }
+           else if (int.Parse(resultadofinal.ToString()) >= 61 && int.Parse(resultadofinal.ToString()) <= 70) { interpretacion = "ANSIEDAD MODERADA"; }
+           else if (int.Parse(resultadofinal.ToString()) >= 71) { interpretacion = "ANSIEDAD INTENSA"; }
            cells = new List<PdfPCell>()
                    {      
                     //fila 
