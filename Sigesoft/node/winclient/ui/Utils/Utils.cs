@@ -6,6 +6,7 @@ using System.Configuration;
 using Sigesoft.Common;
 using System.Windows.Forms;
 using Infragistics.Win.UltraWinGrid;
+using Sigesoft.Node.WinClient.UI.Operations;
 
 namespace Sigesoft.Node.WinClient.UI
 {
@@ -79,6 +80,66 @@ namespace Sigesoft.Node.WinClient.UI
                     prmDropDownList.DisplayMember = prmDataTextField;
                     prmDropDownList.ValueMember = prmDataValueField;
                     prmDropDownList.DataSource = prmDataSource;                                
+                }
+            }
+
+        }
+
+        public static void LoadDropDownList(ComboBox prmDropDownList, string prmDataTextField = null, string prmDataValueField = null, List<Sigesoft.Node.WinClient.UI.Operations.FrmEsoV2.StructKeyDto> prmDataSource = null, DropDownListAction? prmDropDownListAction = null)
+        {
+
+            prmDropDownList.DataSource = null;
+            prmDropDownList.Items.Clear();
+            var firstItem = new FrmEsoV2.StructKeyDto();
+
+            if (prmDropDownListAction != null)
+            {
+                //prmDropDownList. AppendDataBoundItems = true;
+
+                switch (prmDropDownListAction)
+                {
+                    case DropDownListAction.All:
+                        if (prmDataTextField == "Value1")
+                        {
+                            firstItem = new FrmEsoV2.StructKeyDto() { Id = Constants.AllValue, Value1 = Constants.All };
+                        }
+                        else if (prmDataTextField == "Value2")
+                        {
+                            firstItem = new FrmEsoV2.StructKeyDto() { Id = Constants.AllValue, Value2 = Constants.All };
+                        }
+                        else if (prmDataTextField == "Value3")
+                        {
+                            firstItem = new FrmEsoV2.StructKeyDto() { Id = Constants.AllValue, Value3 = Constants.All };
+                        }
+                        break;
+                    case DropDownListAction.Select:
+                        if (prmDataTextField == "Value1")
+                        {
+                            firstItem = new FrmEsoV2.StructKeyDto() { Id = Constants.SelectValue, Value1 = Constants.Select };
+                        }
+                        else if (prmDataTextField == "Value2")
+                        {
+                            firstItem = new FrmEsoV2.StructKeyDto() { Id = Constants.SelectValue, Value2 = Constants.Select };
+                        }
+                        else if (prmDataTextField == "Value3")
+                        {
+                            firstItem = new FrmEsoV2.StructKeyDto() { Id = Constants.SelectValue, Value3 = Constants.Select };
+                        }
+                        break;
+                }
+            }
+            if (firstItem.Id != null)
+            {
+                if (prmDataSource != null) prmDataSource.Insert(0, firstItem);
+            }
+
+            if (prmDataSource != null)
+            {
+                if (prmDataSource.Count != 0)
+                {
+                    prmDropDownList.DisplayMember = prmDataTextField;
+                    prmDropDownList.ValueMember = prmDataValueField;
+                    prmDropDownList.DataSource = prmDataSource;
                 }
             }
 

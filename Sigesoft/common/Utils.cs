@@ -1335,6 +1335,11 @@ namespace Sigesoft.Common
 
         #endregion
 
+        public static int GetAge(DateTime FechaNacimiento)
+        {
+            return int.Parse((DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1).ToString());
+        }
+
         public static string Getmouth(int pintMes)
         {
             string Mes="";

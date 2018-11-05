@@ -2883,7 +2883,7 @@ namespace NetPdf
                                         organizationDto infoEmpresaPropietaria,
                                         string filePDF)
         {
-            Document document = new Document();
+            Document document = new Document(PageSize.A4, 30f, 30f, 20f, 40f);
             document.SetPageSize(iTextSharp.text.PageSize.A4);
 
             // step 2: we create a writer that listens to the document
@@ -2957,6 +2957,7 @@ namespace NetPdf
             var subTitleBackGroundColor = new BaseColor(System.Drawing.Color.White);
             string include = string.Empty;
             List<PdfPCell> cells = null;
+            List<PdfPCell> cells1 = null;
             float[] columnWidths = null;
             //string[] columnValues = null;
             string[] columnHeaders = null;
@@ -5015,57 +5016,21 @@ namespace NetPdf
 
             #endregion
 
-            #region Examen Orina
-
-            //var ListaOrina = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000046");
-            //var ListaOrinaConcatenada = string.Join(", ", ListaOrina.Select(p => p.v_DiseasesName));
-
-            ServiceComponentList orina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_ID);
-            string patologico = "", nopatologico = "", resultado = "";
-            if (orina != null)
-            {
-                patologico = orina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADOS_ID) == null ? "SIN RESULTADOS" : orina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADOS_ID).v_Value1;
-                nopatologico = orina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADO_ID) == null ? "SIN RESULTADOS" : orina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADO_ID).v_Value1;
-                if (patologico == "1")
-                {
-                    resultado = "PATOLOGICO";
-                }
-                else if (nopatologico == "1")
-                {
-                    resultado = "NO PATOLOGICO";
-                }
-            }
-            else
-            {
-                resultado = "NO APLICA";
-            }
-            cells = new List<PdfPCell>();
-
-
-            cells.Add(new PdfPCell(new Phrase("EXAMEN DE ORINA", fontColumnValue)));
-            cells.Add(new PdfPCell(new Phrase(resultado, fontColumnValue)));
-
-
-            columnWidths = new float[] { 30f, 70f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
-
-            document.Add(filiationWorker);
-
-            #endregion
+           
 
             #region Conclusion Electrocardiografica
 
-            var ListaElectrocardiografica = diagnosticRepository.FindAll(p => p.Categoria == "CARDIOLOGÍA");
-            var ListaConclusionElectrocardiografica = string.Join(", ", ListaElectrocardiografica.Select(p => p.v_DiseasesName));
-            string result = "";
-            if (ListaElectrocardiografica != null)
-            {
-                result = ListaConclusionElectrocardiografica;
-            }
-            else
-            {
-                result = "- - -";
-            }
+            //var ListaElectrocardiografica = diagnosticRepository.FindAll(p => p.Categoria == "CARDIOLOGÍA");
+            //var ListaConclusionElectrocardiografica = string.Join(", ", ListaElectrocardiografica.Select(p => p.v_DiseasesName));
+            //string result = "";
+            //if (ListaElectrocardiografica != null)
+            //{
+            //    result = ListaConclusionElectrocardiografica;
+            //}
+            //else
+            //{
+            //    result = "- - -";
+            //}
 
             //ServiceComponentList info_Electroelectrocardiografico = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTRO_GOLD);
             //ServiceComponentList electrocardiografico = serviceComponent.Find(p => p.v_ComponentId == "N002-ME000000025");
@@ -5085,71 +5050,37 @@ namespace NetPdf
             //}
 
 
-            cells = new List<PdfPCell>();
-            cells.Add(new PdfPCell(new Phrase("CONCLUSIÓN ELETROCARDIAGRAFICA", fontColumnValue)));
-            cells.Add(new PdfPCell(new Phrase(result, fontColumnValue)));
+            //cells = new List<PdfPCell>();
+            //cells.Add(new PdfPCell(new Phrase("CONCLUSIÓN ELETROCARDIAGRAFICA", fontColumnValue)));
+            //cells.Add(new PdfPCell(new Phrase(result, fontColumnValue)));
 
 
-            columnWidths = new float[] { 30f, 70f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+            //columnWidths = new float[] { 30f, 70f };
+            //filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
-            document.Add(filiationWorker);
+            //document.Add(filiationWorker);
 
             #endregion
             #region Examen Orina
 
-            var ListaOrina = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000046");
-            var ListaOrinaConcatenada = string.Join(", ", ListaOrina.Select(p => p.v_DiseasesName));
+            //var ListaOrina = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000046");
+            //var ListaOrinaConcatenada = string.Join(", ", ListaOrina.Select(p => p.v_DiseasesName));
 
-            cells = new List<PdfPCell>();
+            //cells = new List<PdfPCell>();
 
-            if (!string.IsNullOrEmpty(ListaOrinaConcatenada))
-            {
-                cells.Add(new PdfPCell(new Phrase(ListaOrinaConcatenada, fontColumnValue)));
-            }
+            //if (!string.IsNullOrEmpty(ListaOrinaConcatenada))
+            //{
+            //    cells.Add(new PdfPCell(new Phrase(ListaOrinaConcatenada, fontColumnValue)));
+            //}
 
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "EXAMEN DE ORINA", fontTitleTable);
+            //columnWidths = new float[] { 100f };
+            //filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "EXAMEN DE ORINA", fontTitleTable);
 
-            document.Add(filiationWorker);
-
-            #endregion
-            #region Conclusión Audiometría
-
-            // Verificar si el examen esta contenida en el protocolo
-            var existeAudio = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID || p.v_ComponentId == "N005-ME000000005");
-            cells = new List<PdfPCell>();
-
-            if (existeAudio != null) // El examen esta contemplado en el protocolo del paciente
-            {
-                //Audiometria
-                var ListaDxAudiometria = diagnosticRepository.FindAll(p => p.v_ComponentId == "");//
-                string ConclusionesAudiometria = string.Join(", ", ListaDxAudiometria.Select(p => p.v_DiseasesName));
-                var ListaAudioMetriaDx = diagnosticRepository.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID || p.v_ComponentId == "N005-ME000000005");
-                string DiagnosticoAudiometria = "";
-
-                foreach (var item in ListaAudioMetriaDx)
-                {
-                    DiagnosticoAudiometria += item.v_DiseasesName + ";";
-                }
-                cells = new List<PdfPCell>()
-                        {
-                            //fila
-                            new PdfPCell(new Phrase(DiagnosticoAudiometria, fontColumnValue)), 
-                        };
-
-                columnWidths = new float[] { 100f };
-            }
-            else
-            {
-                cells.Add(new PdfPCell(new Phrase("NO APLICA.", fontColumnValue)));
-            }
-
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "CONCLUSIONES AUDIOMETRÍA", fontTitleTable);
-
-            document.Add(filiationWorker);
+            //document.Add(filiationWorker);
+          
 
             #endregion
+          
 
             #region Conclusión Espirometría
 
@@ -5191,12 +5122,12 @@ namespace NetPdf
                                //fila
                              };
 
-                    columnWidths = new float[] { 100f };
+                    columnWidths = new float[] { 70f };
                 }
                 else
                 {
                     cells.Add(new PdfPCell(new Phrase("NO SE HAN REGISTRADO DATOS.", fontColumnValue)));
-                    columnWidths = new float[] { 100f };
+                    columnWidths = new float[] { 70f };
                 }
             }
             else
@@ -5204,8 +5135,9 @@ namespace NetPdf
                 cells.Add(new PdfPCell(new Phrase("ESTE EXAMEN NO APLICA AL PROTOCOLO DE ATENCIÓN.", fontColumnValue)));
             }
 
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "CONCLUSIONES DE ESPIROMETRÍA", fontTitleTable);
 
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "CONCLUSIONES DE ESPIROMETRÍA", fontTitleTable);
+            
             document.Add(filiationWorker);
             #endregion
 
@@ -5213,22 +5145,22 @@ namespace NetPdf
 
             #region Examen Inmunizaciones
 
-            //var ListaInmunizaciones = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000069" || p.v_ComponentId == "N009-ME000000065" || p.v_ComponentId == "N009-ME000000063");
-            var ListaInmunizaciones = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000407");
+            ////var ListaInmunizaciones = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000069" || p.v_ComponentId == "N009-ME000000065" || p.v_ComponentId == "N009-ME000000063");
+            //var ListaInmunizaciones = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000407");
 
-            var ListaInmunizacionesConcatenada = string.Join(", ", ListaInmunizaciones.Select(p => p.v_DiseasesName));
+            //var ListaInmunizacionesConcatenada = string.Join(", ", ListaInmunizaciones.Select(p => p.v_DiseasesName));
 
-            cells = new List<PdfPCell>();
+            //cells = new List<PdfPCell>();
 
-            if (!string.IsNullOrEmpty(ListaInmunizacionesConcatenada))
-            {
-                cells.Add(new PdfPCell(new Phrase(ListaInmunizacionesConcatenada, fontColumnValue)));
-            }
+            //if (!string.IsNullOrEmpty(ListaInmunizacionesConcatenada))
+            //{
+            //    cells.Add(new PdfPCell(new Phrase(ListaInmunizacionesConcatenada, fontColumnValue)));
+            //}
 
-            columnWidths = new float[] { 100f };
-            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "INMUNIZACIONES", fontTitleTable);
+            //columnWidths = new float[] { 100f };
+            //filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "INMUNIZACIONES", fontTitleTable);
 
-            document.Add(filiationWorker);
+            //document.Add(filiationWorker);
 
             #endregion
 
@@ -5448,7 +5380,7 @@ namespace NetPdf
             #endregion
 
             //document.NewPage();
-
+            #region Audio01
             cells = new List<PdfPCell>()
                  {                   
                     //Linea
@@ -5651,6 +5583,10 @@ namespace NetPdf
                     new PdfPCell(new Phrase("", fontColumnValue)){Colspan=4, Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_CENTER}, 
                     new PdfPCell(new Phrase(" ", fontColumnValue)){Border = PdfPCell.RIGHT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
                     
+                   
+                                                
+                  
+                    
                     //linea                     
                     new PdfPCell(new Phrase("OTOSCOPIA", fontColumnValue)){Colspan=2, Border = PdfPCell.LEFT_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT},
                     new PdfPCell(new Phrase("OD", fontColumnValue)){Border = PdfPCell.NO_BORDER,HorizontalAlignment = PdfPCell.ALIGN_RIGHT}, 
@@ -5693,8 +5629,86 @@ namespace NetPdf
 
                  };
             columnWidths = new float[] { 4.5f, 6f, 4.5f, 4.5f, 4.5f, 4.5f, 4.5f, 4.5f, 4.5f, 3.5f, 3.5f, 3.5f, 6f, 4.5f, 4.5f, 4.5f, 5.5f, 4.5f, 4.5f, 4.5f, 4.5f, 6.5f, 4.5f };
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
+            #endregion
 
 
+          
+           
+
+            document.Add(filiationWorker);
+
+            #endregion
+
+            #region Conclusión Audiometría
+
+            // Verificar si el examen esta contenida en el protocolo
+            var existeAudio = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID || p.v_ComponentId == "N005-ME000000005");
+            cells = new List<PdfPCell>();
+
+            if (existeAudio != null) // El examen esta contemplado en el protocolo del paciente
+            {
+                //Audiometria
+                var ListaDxAudiometria = diagnosticRepository.FindAll(p => p.v_ComponentId == "");//
+                string ConclusionesAudiometria = string.Join(", ", ListaDxAudiometria.Select(p => p.v_DiseasesName));
+                var ListaAudioMetriaDx = diagnosticRepository.FindAll(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID || p.v_ComponentId == "N005-ME000000005");
+                string DiagnosticoAudiometria = "";
+
+                foreach (var item in ListaAudioMetriaDx)
+                {
+                    DiagnosticoAudiometria += item.v_DiseasesName + ";";
+                }
+                cells = new List<PdfPCell>()
+                        {
+                            //fila
+                            new PdfPCell(new Phrase(DiagnosticoAudiometria, fontColumnValue)), 
+                        };
+
+                columnWidths = new float[] { 100f };
+            }
+            else
+            {
+                cells.Add(new PdfPCell(new Phrase("NO APLICA.", fontColumnValue)));
+            }
+
+            filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "CONCLUSIONES AUDIOMETRÍA", fontTitleTable);
+
+            document.Add(filiationWorker);
+
+            #endregion
+
+            #region Examen Orina
+
+            //var ListaOrina = diagnosticRepository.FindAll(p => p.v_ComponentId == "N009-ME000000046");
+            //var ListaOrinaConcatenada = string.Join(", ", ListaOrina.Select(p => p.v_DiseasesName));
+
+            ServiceComponentList orina = serviceComponent.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_ID);
+            string patologico = "", nopatologico = "", resultado = "";
+            if (orina != null)
+            {
+                patologico = orina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADOS_ID) == null ? "SIN RESULTADOS" : orina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADOS_ID).v_Value1;
+                nopatologico = orina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADO_ID) == null ? "SIN RESULTADOS" : orina.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.EXAMEN_COMPLETO_DE_ORINA_RESULTADO_ID).v_Value1;
+                if (patologico == "1")
+                {
+                    resultado = "PATOLOGICO";
+                }
+                else if (nopatologico == "1")
+                {
+                    resultado = "NO PATOLOGICO";
+                }
+            }
+            else
+            {
+                resultado = "NO APLICA";
+            }
+            cells = new List<PdfPCell>();
+
+
+            cells.Add(new PdfPCell(new Phrase("EXAMEN DE ORINA", fontTitleTable)));
+            cells.Add(new PdfPCell(new Phrase(resultado, fontColumnValue)));
+
+
+            columnWidths = new float[] { 30f, 70f };
             filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, "", fontTitleTable);
 
             document.Add(filiationWorker);
