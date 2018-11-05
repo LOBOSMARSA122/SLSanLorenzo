@@ -3132,7 +3132,11 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     rp.Export();
                     rp.Close();
 
-                    var UC_OSTEO_COIMA_ID = new ServiceBL().ReporteUCOsteoCoimalache(_serviceId, Constants.OSTEO_COIMO);
+                     var servicesId88 = new List<string>();
+                    servicesId88.Add(_serviceId);
+                    var componentReport88 = new ServiceBL().ObtenerIdsParaImportacionExcel(servicesId88, 11);
+
+                    var UC_OSTEO_COIMA_ID = new ServiceBL().ReporteUCOsteoCoimalache(_serviceId, componentReport88[0].ComponentId);
                     DataSet dsOsteomuscularCoima = new DataSet();
                     DataTable dt_UC_OSTEO_COIMA_ID = BLL.Utils.ConvertToDatatable(UC_OSTEO_COIMA_ID);
                     dt_UC_OSTEO_COIMA_ID.TableName = "dtUCOsteoMus";

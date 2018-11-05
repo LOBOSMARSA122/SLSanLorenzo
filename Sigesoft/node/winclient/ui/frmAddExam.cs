@@ -1,6 +1,7 @@
 ﻿using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BE;
 using Sigesoft.Node.WinClient.BLL;
+using Sigesoft.Node.WinClient.UI.Hospitalizacion;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,6 +21,7 @@ namespace Sigesoft.Node.WinClient.UI
         public string _serviceId;
         private string _modo;
         private string _protocolId;
+        private string _type;
 
         List<string> _ListaComponentes = null;
         #endregion
@@ -33,11 +35,12 @@ namespace Sigesoft.Node.WinClient.UI
 
         #endregion
 
-        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId)
+        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId, string type)
         {
             _ListaComponentes = ListaComponentes;
             _modo = modo;
             _protocolId = protocolId;
+            _type = type;
             InitializeComponent();
 
         }
@@ -157,6 +160,22 @@ namespace Sigesoft.Node.WinClient.UI
                 OperationResult objOperationResult = new OperationResult();
                 foreach (var scid in serviceComponentConcatId)
                 {
+                    var conCargoA = -1;
+                    if (_type == "Hospi")
+                    {
+                        var oFrmType = new frmType();
+                        oFrmType.ShowDialog();
+
+                        if (oFrmType._conCargoA == "Médico")
+                        {
+                            conCargoA = 1;
+                        }
+                        else
+                        {
+                            conCargoA = 2;
+                        }
+                    }
+
                     objComponentDto = objComponentBL.GetMedicalExam(ref objOperationResult, scid);
                     SystemParameterBL oSp = new SystemParameterBL();
                     var o = oSp.GetSystemParameter(ref objOperationResult, 116, int.Parse(objComponentDto.i_CategoryId.ToString()));
@@ -182,6 +201,7 @@ namespace Sigesoft.Node.WinClient.UI
                     ServiceBL _ObjServiceBL = new ServiceBL();
                     TicketBL oTicketBL = new TicketBL();
 
+                    objServiceComponentDto.i_ConCargoA = conCargoA;
                     objServiceComponentDto.v_ServiceId = _serviceId;
                     objServiceComponentDto.i_ExternalInternalId = (int)Common.ComponenteProcedencia.Interno;
                     objServiceComponentDto.i_ServiceComponentTypeId = 1;
