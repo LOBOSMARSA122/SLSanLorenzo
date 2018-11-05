@@ -5614,23 +5614,31 @@ namespace Sigesoft.Node.WinClient.BLL
                                                           equals new { a = G1.i_ItemId, b = G1.i_GroupId } into G1_join
                                         from G1 in G1_join.DefaultIfEmpty()
 
-                                        join CC in dbContext.organization on B.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
-                                        from CC in CC_join.DefaultIfEmpty()
-
                                         join C2 in dbContext.organization on B.v_CustomerOrganizationId equals C2.v_OrganizationId into C2_join
                                         from C2 in C2_join.DefaultIfEmpty()
 
                                         join C1 in dbContext.organization on B.v_EmployerOrganizationId equals C1.v_OrganizationId into C1_join
                                         from C1 in C1_join.DefaultIfEmpty()
 
+                                        join CC in dbContext.organization on B.v_WorkingOrganizationId equals CC.v_OrganizationId into CC_join
+                                        from CC in CC_join.DefaultIfEmpty()
+
+                                        
                                         where A.d_ServiceDate >= FechaInicio && A.d_ServiceDate <= FechaFin
                                         select new MatrizShauindo
                                         {
                                             ServiceId = A.v_ServiceId,
                                             PersonId = D.v_PersonId,
                                             ProtocolId = B.v_ProtocolId,
-                                            v_CustomerOrganizationId = B.v_CustomerOrganizationId,
+
+                                            v_CustomerOrganizationId = C2.v_OrganizationId,
+                                            v_EmployerOrganizationId = C1.v_OrganizationId,
+                                            v_WorkingOrganizationId = CC.v_OrganizationId,
+
                                             v_CustomerLocationId = B.v_CustomerLocationId,
+                                            v_WorkingLocationId = B.v_WorkingLocationId,
+                                            v_EmployerLocationId = B.v_EmployerLocationId,
+                                
                                             TipoEmo = C.v_Value1,
                                             DniPasaporte = D.v_DocNumber,
                                             FechaExamen = A.d_ServiceDate.Value,
@@ -5688,7 +5696,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                    ServiceId = a.ServiceId,
                                    PersonId = a.PersonId,
                                    v_CustomerOrganizationId = a.v_CustomerOrganizationId,
+                                   v_EmployerOrganizationId = a.v_EmployerOrganizationId,
+                                   v_WorkingOrganizationId = a.v_WorkingOrganizationId,
+
                                    v_CustomerLocationId = a.v_CustomerLocationId,
+                                   v_EmployerLocationId = a.v_EmployerLocationId,
+                                   v_WorkingLocationId = a.v_WorkingLocationId,
 
                                    AptitudFinal = a._AptitudFinal == 1 ? "SIN APTITUD" : a._AptitudFinal == 2 ? "APTO" : a._AptitudFinal == 3 ? "NO APTO" : a._AptitudFinal == 4 ? "OBSERVADO" : a._AptitudFinal == 5 ? "APTO CON RESTRICCIONES" : a._AptitudFinal == 6 ? "ASISTENCIAL" : a._AptitudFinal == 7 ? "EVALUADO" : a.AptitudFinal,
                                    VigenciaEmo = a._VigenciaEmo == null ? "-" : a._VigenciaEmo.ToString().Split(' ')[0],
