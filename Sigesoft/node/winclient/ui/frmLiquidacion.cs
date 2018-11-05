@@ -192,9 +192,15 @@ namespace Sigesoft.Node.WinClient.UI
                 MessageBox.Show("Solo puede seleccionar un registro a la vez", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
+            if (ids.Length == 0 )
+            {
+                MessageBox.Show("Seleccione un registro", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             var frm = new frmEditarServicio(ids[0], idProtocolId, personId);
             frm.ShowDialog();
+            
+            
 
 
         }
