@@ -239,50 +239,50 @@ namespace Sigesoft.Node.WinClient.UI.Configuration
 
                     if (_tmpListProtocolSystemUser.Find(p => p.i_ApplicationHierarchyId == 3003).i_ApplicationHierarchyId != null)
                     {
-                        #region API TRACKING
+                    //    #region API TRACKING
 
 
-                        var oUsuarioExternoSeguimientoNew = new UsuarioExternoSeguimiento();
+                    //    var oUsuarioExternoSeguimientoNew = new UsuarioExternoSeguimiento();
 
-                        oUsuarioExternoSeguimientoNew.v_PersonId = _personId;
-                        oUsuarioExternoSeguimientoNew.Nombres = txtName.Text.Trim();
-                        oUsuarioExternoSeguimientoNew.ApellidoPaterno = txtFirstLastName.Text.Trim();
-                        oUsuarioExternoSeguimientoNew.ApellidoMaterno = txtSecondLastName.Text.Trim();
-                        oUsuarioExternoSeguimientoNew.TipoDocumentoId = Convert.ToInt32(ddlDocType.SelectedValue);
-                        oUsuarioExternoSeguimientoNew.GeneroId = Convert.ToInt32(ddlSexType.SelectedValue);
-                        oUsuarioExternoSeguimientoNew.EstadoCivilId = Convert.ToInt32(ddlMaritalStatus.SelectedValue);
-                        oUsuarioExternoSeguimientoNew.GradoInstruccionId = Convert.ToInt32(ddlLevelOfId.SelectedValue);
-                        oUsuarioExternoSeguimientoNew.NroDocumento = txtDocNumber.Text.Trim();
-                        oUsuarioExternoSeguimientoNew.FechaNacimiento = dtpBirthdate.Value;
-                        oUsuarioExternoSeguimientoNew.LugarNacimiento = txtBirthPlace.Text.Trim();
-                        oUsuarioExternoSeguimientoNew.Telefono = txtTelephoneNumber.Text.Trim();
-                        oUsuarioExternoSeguimientoNew.Direccion = txtAdressLocation.Text.Trim();
-                        oUsuarioExternoSeguimientoNew.Correo = txtMail.Text.Trim();
+                    //    oUsuarioExternoSeguimientoNew.v_PersonId = _personId;
+                    //    oUsuarioExternoSeguimientoNew.Nombres = txtName.Text.Trim();
+                    //    oUsuarioExternoSeguimientoNew.ApellidoPaterno = txtFirstLastName.Text.Trim();
+                    //    oUsuarioExternoSeguimientoNew.ApellidoMaterno = txtSecondLastName.Text.Trim();
+                    //    oUsuarioExternoSeguimientoNew.TipoDocumentoId = Convert.ToInt32(ddlDocType.SelectedValue);
+                    //    oUsuarioExternoSeguimientoNew.GeneroId = Convert.ToInt32(ddlSexType.SelectedValue);
+                    //    oUsuarioExternoSeguimientoNew.EstadoCivilId = Convert.ToInt32(ddlMaritalStatus.SelectedValue);
+                    //    oUsuarioExternoSeguimientoNew.GradoInstruccionId = Convert.ToInt32(ddlLevelOfId.SelectedValue);
+                    //    oUsuarioExternoSeguimientoNew.NroDocumento = txtDocNumber.Text.Trim();
+                    //    oUsuarioExternoSeguimientoNew.FechaNacimiento = dtpBirthdate.Value;
+                    //    oUsuarioExternoSeguimientoNew.LugarNacimiento = txtBirthPlace.Text.Trim();
+                    //    oUsuarioExternoSeguimientoNew.Telefono = txtTelephoneNumber.Text.Trim();
+                    //    oUsuarioExternoSeguimientoNew.Direccion = txtAdressLocation.Text.Trim();
+                    //    oUsuarioExternoSeguimientoNew.Correo = txtMail.Text.Trim();
 
-                        var jsonPersonNew = new JavaScriptSerializer().Serialize(oUsuarioExternoSeguimientoNew);
+                    //    var jsonPersonNew = new JavaScriptSerializer().Serialize(oUsuarioExternoSeguimientoNew);
 
-                        var oUsuarioTrackingNew = new UsuarioTracking();
-                        oUsuarioTrackingNew.NombreUsuario = txtUserName.Text;
-                        oUsuarioTrackingNew.Contrasenia = txtPassword1.Text;
-                        oUsuarioTrackingNew.RolId = 2;
-                        oUsuarioTrackingNew.EmpresaId = 1;
-                        oUsuarioTrackingNew.FechaCaduca = dtpExpiredDate.Value;
-                        var jsonUsuarioNew = new JavaScriptSerializer().Serialize(oUsuarioTrackingNew);
+                    //    var oUsuarioTrackingNew = new UsuarioTracking();
+                    //    oUsuarioTrackingNew.NombreUsuario = txtUserName.Text;
+                    //    oUsuarioTrackingNew.Contrasenia = txtPassword1.Text;
+                    //    oUsuarioTrackingNew.RolId = 2;
+                    //    oUsuarioTrackingNew.EmpresaId = 1;
+                    //    oUsuarioTrackingNew.FechaCaduca = dtpExpiredDate.Value;
+                    //    var jsonUsuarioNew = new JavaScriptSerializer().Serialize(oUsuarioTrackingNew);
 
-                        Dictionary<string, string> arg1New = new Dictionary<string, string>()
-                    {
-                        { "String1", jsonPersonNew },
-                        { "String2", jsonUsuarioNew },
-                          { "Int1", "2" }
-                    };
-                        var resultNew = API.Post<bool>("Persona/InsertNewPersona", arg1New);
+                    //    Dictionary<string, string> arg1New = new Dictionary<string, string>()
+                    //{
+                    //    { "String1", jsonPersonNew },
+                    //    { "String2", jsonUsuarioNew },
+                    //      { "Int1", "2" }
+                    //};
+                    //    var resultNew = API.Post<bool>("Persona/InsertNewPersona", arg1New);
 
-                        //if (!result)
-                        //{
-                        //    MessageBox.Show("Error al grabar usuario en Seguimiento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        //}
+                    //    //if (!result)
+                    //    //{
+                    //    //    MessageBox.Show("Error al grabar usuario en Seguimiento", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    //    //}
 
-                        #endregion
+                    //    #endregion
                     }
 
                     if (personId == "-1")

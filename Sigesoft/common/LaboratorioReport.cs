@@ -726,6 +726,7 @@ namespace NetPdf
                         var ConcHBCorpValord = xHemograma.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.CE_HB_MEDIO_DESEABLE);
 
 
+                        var hemograma_otros = xHemograma.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.Hemograma_Otros) == null ? "-" : xHemograma.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.Hemograma_Otros).v_Value1;
 
                         cells.Add(new PdfPCell(new Phrase("HEMOGLOBINA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(Hemoglobina == null ? string.Empty : Hemoglobina.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
@@ -809,11 +810,14 @@ namespace NetPdf
                         cells.Add(new PdfPCell(new Phrase(HemoglobCorpMediaValord == null ? string.Empty : HemoglobCorpMediaValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(HemoglobCorpMedia == null ? string.Empty : HemoglobCorpMedia.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
-                        cells.Add(new PdfPCell(new Phrase("CONCENTRACION HEMOGLOBINA CORPUSCULAR MEDIA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("CONCENTRACION DE HEMOGLOBINA CORPUSCULAR MEDIA", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(ConcHBCorp == null ? string.Empty : ConcHBCorp.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(ConcHBCorpValord == null ? string.Empty : ConcHBCorpValord.v_Value1, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(ConcHBCorp == null ? string.Empty : ConcHBCorp.v_MeasurementUnitName, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
 
+                        cells.Add(new PdfPCell(new Phrase("OTROS", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase(hemograma_otros, fontColumnValue)) { Colspan = 3, HorizontalAlignment = iTextSharp.text.Element.ALIGN_LEFT, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, MinimumHeight = tamaño_caldas });
+                      
 
                     }
 
@@ -979,7 +983,7 @@ namespace NetPdf
                     {
                         var HepatitisA = xHepatitisA.ServiceComponentFields.Find(p => p.v_ComponentFieldsId == Sigesoft.Common.Constants.HEPATITIS_A_REACTIVOS_HEPATITIS_A);
 
-                        cells.Add(new PdfPCell(new Phrase("HBSAG (HEPATITS A ANTIGENO DE SUPERFICIE)", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
+                        cells.Add(new PdfPCell(new Phrase("HEPATITS A - (IgM)", fontColumnValueBold)) { MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase(HepatitisA == null ? string.Empty : HepatitisA.v_Value1Name, fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });
                         cells.Add(new PdfPCell(new Phrase("---", fontColumnValue)) { HorizontalAlignment = Element.ALIGN_CENTER, MinimumHeight = tamaño_caldas });

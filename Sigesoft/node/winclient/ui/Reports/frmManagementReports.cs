@@ -130,10 +130,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
 
                 serviceComponents.Add(new ServiceComponentList { Orden = 80, v_ComponentName = "DECLARACION JURADA EMPO YANACOCHA", v_ComponentId = Constants.Declaracion_Jurada_EMPO_YANACOCHA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 81, v_ComponentName = "DECLARACION JURADA EMO SECURITAS", v_ComponentId = Constants.Declaracion_Jurada_EMO_SECURITAS });
-                serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "ANSIEDAD DE ZUNG", v_ComponentId = Constants.ANSIEDAD_ZUNG });
-                serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INTENSIDAD DE FATIGA", v_ComponentId = Constants.ESCALA_FATIGA });
-                serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INVENTARIO DE BURNOUT DE MASLACH", v_ComponentId = Constants.INV_MASLACH });
-                serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "TEST SOMNOLENCIA", v_ComponentId = Constants.TEST_SOMNOLENCIA });
+                //serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "ANSIEDAD DE ZUNG", v_ComponentId = Constants.ANSIEDAD_ZUNG });
+                //serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INTENSIDAD DE FATIGA", v_ComponentId = Constants.ESCALA_FATIGA });
+                //serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "INVENTARIO DE BURNOUT DE MASLACH", v_ComponentId = Constants.INV_MASLACH });
+                //serviceComponents.Add(new ServiceComponentList { Orden = 61, v_ComponentName = "TEST SOMNOLENCIA", v_ComponentId = Constants.TEST_SOMNOLENCIA });
 
                 //public const string INFORME_RESULTADOS_EVALUACION_MEDICA = "INFRES-EVALUACION-MED-AUT";
                 if (datosP.Genero.ToUpper() == "FEMENINO")
