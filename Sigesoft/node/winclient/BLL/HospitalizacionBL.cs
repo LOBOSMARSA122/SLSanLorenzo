@@ -303,7 +303,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     //cantidadDias = int.Parse((DateTime.Today.AddTicks(-fechaIni.Value.Ticks).Day + 1).ToString());
             }
 
-            return precioHabitacion * cantidadDias;
+            return precioHabitacion * (cantidadDias-1);
         }
 
         private List<HospitalizacionHabitacionList> BuscarHospitalizacionHabitaciones(string hospitalizacionId)
