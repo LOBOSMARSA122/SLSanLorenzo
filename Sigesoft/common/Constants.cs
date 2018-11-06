@@ -2115,6 +2115,21 @@ namespace Sigesoft.Common
         public const string D_J_P_COIMOLACHE_LA_ZANJA_SI_DESCRIPCION = "N009-MF000003676";
         public const string D_J_P_COIMOLACHE_LA_ZANJA_OTRAS_ENFERMEDADES= "N009-MF000003677";
         #endregion
+
+        #region TOTTUS
+        public const string REACCION_INFLAMATORIA_ID_T = "N009-ME000000525";
+
+        public const string REACCION_INFLAMATORIA_HEMATIES = "N009-ME000004442";
+        public const string REACCION_INFLAMATORIA_LEVADURAS = "N009-ME000004443";
+        public const string REACCION_INFLAMATORIA_GRASAS = "N009-ME000004444";
+        public const string REACCION_INFLAMATORIA_LEUCOCITOS = "N009-ME000004445";
+        public const string REACCION_INFLAMATORIA_POLIMORFONUCLEARES = "N009-ME000004446";
+        public const string REACCION_INFLAMATORIA_MONONUCLEARES = "N009-ME000004447";
+        public const string REACCION_INFLAMATORIA_RESULTADO = "N009-ME000004448";
+        public const string REACCION_INFLAMATORIA_OBSERVACION = "N009-ME000004449";
+
+        #endregion
+
         #region ADICIONALES CIELO AZUL
 
         public const string PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL = "PAR-COP-CIELO_AZUL";
@@ -4768,6 +4783,8 @@ namespace Sigesoft.Common
 
         public const string NEUTROFILOS_10_9 = "N009-MF000001902";
         public const string NEUTROFILOS_10_9_DESEABLE = "N009-MF000001903";
+
+        public const string Hemograma_Otros = "N009-MF000004441";
         #endregion
 
         #region OSTEO_MUSCULAR
