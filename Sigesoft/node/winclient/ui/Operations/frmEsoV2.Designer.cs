@@ -29,7 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
@@ -65,7 +66,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn55 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseasesName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn58 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_AutoManualName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionsName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn60 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecomendationsName");
@@ -179,7 +180,33 @@
             Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
+            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn81 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn109 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn110 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Observacion");
+            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance71 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance72 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance73 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance74 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand11 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn101 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn102 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_EsControlado", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn111 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Observacion");
+            Infragistics.Win.Appearance appearance75 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance76 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance77 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance78 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance79 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance80 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance81 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance82 = new Infragistics.Win.Appearance();
             this.lblTrabajador = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblProtocolName = new System.Windows.Forms.Label();
@@ -202,24 +229,29 @@
             this.bgwSaveExamen = new System.ComponentModel.BackgroundWorker();
             this.btnCerrarESO = new System.Windows.Forms.Button();
             this.tpConclusion = new System.Windows.Forms.TabPage();
+            this.btn7C = new System.Windows.Forms.Button();
+            this.btn312 = new System.Windows.Forms.Button();
+            this.btnCertificadoAptitud = new System.Windows.Forms.Button();
+            this.btnSubirInterconsulta = new System.Windows.Forms.Button();
+            this.btnInterConsulta = new System.Windows.Forms.Button();
+            this.dptDateGlobalExp = new System.Windows.Forms.DateTimePicker();
             this.dtpFecVctoGlobal = new System.Windows.Forms.DateTimePicker();
-            this.chkinterconsulta = new System.Windows.Forms.CheckBox();
             this.label34 = new System.Windows.Forms.Label();
             this.txtFecVctoGlobal = new System.Windows.Forms.TextBox();
             this.txtComentarioAptitud = new System.Windows.Forms.TextBox();
-            this.chkUtilizaFirmaAptitud = new System.Windows.Forms.CheckBox();
             this.gbRecomendaciones_Conclusiones = new System.Windows.Forms.GroupBox();
             this.grdRecomendaciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCountRecomendaciones_Conclusiones = new System.Windows.Forms.Label();
             this.btnAgregarRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
             this.btnRemoverRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
+            this.chkinterconsulta = new System.Windows.Forms.CheckBox();
             this.gbRestricciones_Conclusiones = new System.Windows.Forms.GroupBox();
             this.grdRestricciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCountRestricciones_Conclusiones = new System.Windows.Forms.Label();
             this.btnAgregarRestriccion_ConclusionesTratamiento = new System.Windows.Forms.Button();
             this.btnRemoverRestricciones_ConclusionesTratamiento = new System.Windows.Forms.Button();
+            this.chkUtilizaFirmaAptitud = new System.Windows.Forms.CheckBox();
             this.gbConclusionesDiagnosticas = new System.Windows.Forms.GroupBox();
-            this.dptDateGlobalExp = new System.Windows.Forms.DateTimePicker();
             this.grdConclusionesDiagnosticas = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.lblRecordCountConclusionesDiagnosticas = new System.Windows.Forms.Label();
             this.cbAptitudEso = new System.Windows.Forms.ComboBox();
@@ -230,6 +262,7 @@
             this.btnGuardarConclusiones = new System.Windows.Forms.Button();
             this.tpAnalisisDx = new System.Windows.Forms.TabPage();
             this.gbEdicionDiagnosticoTotal = new System.Windows.Forms.GroupBox();
+            this.btnAceptarDX = new System.Windows.Forms.Button();
             this.chkUtilizaFirmaControlAuditoria = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grdRestricciones_AnalisisDiagnostico = new Infragistics.Win.UltraWinGrid.UltraGrid();
@@ -335,16 +368,31 @@
             this.btnGuardarAnamnesis = new System.Windows.Forms.Button();
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label37 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblUsuAct = new System.Windows.Forms.Label();
             this.lblUsuGraba = new System.Windows.Forms.Label();
-            this.btnAceptarDX = new System.Windows.Forms.Button();
-            this.btnInterConsulta = new System.Windows.Forms.Button();
-            this.btnSubirInterconsulta = new System.Windows.Forms.Button();
-            this.btnCertificadoAptitud = new System.Windows.Forms.Button();
-            this.btn312 = new System.Windows.Forms.Button();
-            this.btn7C = new System.Windows.Forms.Button();
+            this.ultraFlowLayoutManager1 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
+            this.btnEliminarAgudo = new System.Windows.Forms.Button();
+            this.btnEditarAgudo = new System.Windows.Forms.Button();
+            this.btnNuevoAgudo = new System.Windows.Forms.Button();
+            this.grdAgudos = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label26 = new System.Windows.Forms.Label();
+            this.grdCronicos = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnNuevoCronico = new System.Windows.Forms.Button();
+            this.btnEditarCronico = new System.Windows.Forms.Button();
+            this.btnEliminarCronico = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -384,6 +432,19 @@
             this.gbFuncionesBiologicas.SuspendLayout();
             this.gbSintomasySignos.SuspendLayout();
             this.tcSubMain.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            this.tableLayoutPanel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdAgudos)).BeginInit();
+            this.tableLayoutPanel5.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCronicos)).BeginInit();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTrabajador
@@ -455,14 +516,14 @@
             // 
             // uvExamen
             // 
-            appearance68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance68.BackColor2 = System.Drawing.Color.Transparent;
-            appearance68.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance68.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance68.BorderColor = System.Drawing.Color.Red;
-            appearance68.BorderColor2 = System.Drawing.Color.Red;
-            appearance68.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance68;
+            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance1.BackColor2 = System.Drawing.Color.Transparent;
+            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance1.BorderColor = System.Drawing.Color.Red;
+            appearance1.BorderColor2 = System.Drawing.Color.Red;
+            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance1;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -663,6 +724,127 @@
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
             this.tpConclusion.UseVisualStyleBackColor = true;
             // 
+            // btn7C
+            // 
+            this.btn7C.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn7C.BackColor = System.Drawing.SystemColors.Control;
+            this.btn7C.Enabled = false;
+            this.btn7C.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn7C.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btn7C.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn7C.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn7C.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn7C.ForeColor = System.Drawing.Color.Black;
+            this.btn7C.Image = ((System.Drawing.Image)(resources.GetObject("btn7C.Image")));
+            this.btn7C.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn7C.Location = new System.Drawing.Point(673, 600);
+            this.btn7C.Margin = new System.Windows.Forms.Padding(2);
+            this.btn7C.Name = "btn7C";
+            this.btn7C.Size = new System.Drawing.Size(159, 24);
+            this.btn7C.TabIndex = 110;
+            this.btn7C.Text = "7 C";
+            this.btn7C.UseVisualStyleBackColor = false;
+            this.btn7C.Visible = false;
+            this.btn7C.Click += new System.EventHandler(this.btn7C_Click);
+            // 
+            // btn312
+            // 
+            this.btn312.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn312.BackColor = System.Drawing.SystemColors.Control;
+            this.btn312.Enabled = false;
+            this.btn312.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn312.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btn312.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn312.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn312.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn312.ForeColor = System.Drawing.Color.Black;
+            this.btn312.Image = ((System.Drawing.Image)(resources.GetObject("btn312.Image")));
+            this.btn312.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn312.Location = new System.Drawing.Point(510, 600);
+            this.btn312.Margin = new System.Windows.Forms.Padding(2);
+            this.btn312.Name = "btn312";
+            this.btn312.Size = new System.Drawing.Size(159, 24);
+            this.btn312.TabIndex = 109;
+            this.btn312.Text = "Anexo 312";
+            this.btn312.UseVisualStyleBackColor = false;
+            this.btn312.Visible = false;
+            this.btn312.Click += new System.EventHandler(this.btn312_Click);
+            // 
+            // btnCertificadoAptitud
+            // 
+            this.btnCertificadoAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCertificadoAptitud.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCertificadoAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCertificadoAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCertificadoAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCertificadoAptitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCertificadoAptitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCertificadoAptitud.ForeColor = System.Drawing.Color.Black;
+            this.btnCertificadoAptitud.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificadoAptitud.Image")));
+            this.btnCertificadoAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCertificadoAptitud.Location = new System.Drawing.Point(347, 600);
+            this.btnCertificadoAptitud.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCertificadoAptitud.Name = "btnCertificadoAptitud";
+            this.btnCertificadoAptitud.Size = new System.Drawing.Size(159, 24);
+            this.btnCertificadoAptitud.TabIndex = 108;
+            this.btnCertificadoAptitud.Text = "Certificado de Aptitud";
+            this.btnCertificadoAptitud.UseVisualStyleBackColor = false;
+            this.btnCertificadoAptitud.Click += new System.EventHandler(this.btnCertificadoAptitud_Click);
+            // 
+            // btnSubirInterconsulta
+            // 
+            this.btnSubirInterconsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSubirInterconsulta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSubirInterconsulta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSubirInterconsulta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSubirInterconsulta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSubirInterconsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubirInterconsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirInterconsulta.ForeColor = System.Drawing.Color.Black;
+            this.btnSubirInterconsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirInterconsulta.Image")));
+            this.btnSubirInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubirInterconsulta.Location = new System.Drawing.Point(185, 600);
+            this.btnSubirInterconsulta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubirInterconsulta.Name = "btnSubirInterconsulta";
+            this.btnSubirInterconsulta.Size = new System.Drawing.Size(158, 24);
+            this.btnSubirInterconsulta.TabIndex = 107;
+            this.btnSubirInterconsulta.Text = "Subir Interconsulta";
+            this.btnSubirInterconsulta.UseVisualStyleBackColor = false;
+            this.btnSubirInterconsulta.Click += new System.EventHandler(this.btnSubirInterconsulta_Click);
+            // 
+            // btnInterConsulta
+            // 
+            this.btnInterConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnInterConsulta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnInterConsulta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnInterConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnInterConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnInterConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInterConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInterConsulta.ForeColor = System.Drawing.Color.Black;
+            this.btnInterConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnInterConsulta.Image")));
+            this.btnInterConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInterConsulta.Location = new System.Drawing.Point(23, 600);
+            this.btnInterConsulta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInterConsulta.Name = "btnInterConsulta";
+            this.btnInterConsulta.Size = new System.Drawing.Size(158, 24);
+            this.btnInterConsulta.TabIndex = 106;
+            this.btnInterConsulta.Text = "Interconsulta";
+            this.btnInterConsulta.UseVisualStyleBackColor = false;
+            this.btnInterConsulta.Click += new System.EventHandler(this.btnInterConsulta_Click);
+            // 
+            // dptDateGlobalExp
+            // 
+            this.dptDateGlobalExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dptDateGlobalExp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dptDateGlobalExp.Location = new System.Drawing.Point(284, 12);
+            this.dptDateGlobalExp.Margin = new System.Windows.Forms.Padding(2);
+            this.dptDateGlobalExp.Name = "dptDateGlobalExp";
+            this.dptDateGlobalExp.Size = new System.Drawing.Size(95, 20);
+            this.dptDateGlobalExp.TabIndex = 100;
+            this.dptDateGlobalExp.Value = new System.DateTime(2019, 1, 5, 1, 24, 0, 0);
+            this.dptDateGlobalExp.Visible = false;
+            // 
             // dtpFecVctoGlobal
             // 
             this.dtpFecVctoGlobal.CalendarMonthBackground = System.Drawing.Color.Lavender;
@@ -671,17 +853,6 @@
             this.dtpFecVctoGlobal.Name = "dtpFecVctoGlobal";
             this.dtpFecVctoGlobal.Size = new System.Drawing.Size(98, 20);
             this.dtpFecVctoGlobal.TabIndex = 102;
-            // 
-            // chkinterconsulta
-            // 
-            this.chkinterconsulta.AutoSize = true;
-            this.chkinterconsulta.Location = new System.Drawing.Point(528, 218);
-            this.chkinterconsulta.Name = "chkinterconsulta";
-            this.chkinterconsulta.Size = new System.Drawing.Size(100, 17);
-            this.chkinterconsulta.TabIndex = 105;
-            this.chkinterconsulta.Text = "Interconsulta";
-            this.chkinterconsulta.UseVisualStyleBackColor = true;
-            this.chkinterconsulta.Visible = false;
             // 
             // label34
             // 
@@ -714,17 +885,6 @@
             this.txtComentarioAptitud.TabIndex = 98;
             this.txtComentarioAptitud.Text = "NINGUNA";
             this.txtComentarioAptitud.Visible = false;
-            // 
-            // chkUtilizaFirmaAptitud
-            // 
-            this.chkUtilizaFirmaAptitud.AutoSize = true;
-            this.chkUtilizaFirmaAptitud.Enabled = false;
-            this.chkUtilizaFirmaAptitud.Location = new System.Drawing.Point(233, 218);
-            this.chkUtilizaFirmaAptitud.Name = "chkUtilizaFirmaAptitud";
-            this.chkUtilizaFirmaAptitud.Size = new System.Drawing.Size(115, 17);
-            this.chkUtilizaFirmaAptitud.TabIndex = 95;
-            this.chkUtilizaFirmaAptitud.Text = "SI Utilizar Firma";
-            this.chkUtilizaFirmaAptitud.UseVisualStyleBackColor = true;
             // 
             // gbRecomendaciones_Conclusiones
             // 
@@ -884,6 +1044,17 @@
             this.btnRemoverRecomendaciones_Conclusiones.Text = "     Eliminar";
             this.btnRemoverRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
             // 
+            // chkinterconsulta
+            // 
+            this.chkinterconsulta.AutoSize = true;
+            this.chkinterconsulta.Location = new System.Drawing.Point(528, 218);
+            this.chkinterconsulta.Name = "chkinterconsulta";
+            this.chkinterconsulta.Size = new System.Drawing.Size(100, 17);
+            this.chkinterconsulta.TabIndex = 105;
+            this.chkinterconsulta.Text = "Interconsulta";
+            this.chkinterconsulta.UseVisualStyleBackColor = true;
+            this.chkinterconsulta.Visible = false;
+            // 
             // gbRestricciones_Conclusiones
             // 
             this.gbRestricciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -1040,6 +1211,17 @@
             this.btnRemoverRestricciones_ConclusionesTratamiento.UseVisualStyleBackColor = false;
             this.btnRemoverRestricciones_ConclusionesTratamiento.Visible = false;
             // 
+            // chkUtilizaFirmaAptitud
+            // 
+            this.chkUtilizaFirmaAptitud.AutoSize = true;
+            this.chkUtilizaFirmaAptitud.Enabled = false;
+            this.chkUtilizaFirmaAptitud.Location = new System.Drawing.Point(233, 218);
+            this.chkUtilizaFirmaAptitud.Name = "chkUtilizaFirmaAptitud";
+            this.chkUtilizaFirmaAptitud.Size = new System.Drawing.Size(115, 17);
+            this.chkUtilizaFirmaAptitud.TabIndex = 95;
+            this.chkUtilizaFirmaAptitud.Text = "SI Utilizar Firma";
+            this.chkUtilizaFirmaAptitud.UseVisualStyleBackColor = true;
+            // 
             // gbConclusionesDiagnosticas
             // 
             this.gbConclusionesDiagnosticas.Controls.Add(this.grdConclusionesDiagnosticas);
@@ -1052,18 +1234,6 @@
             this.gbConclusionesDiagnosticas.TabIndex = 51;
             this.gbConclusionesDiagnosticas.TabStop = false;
             this.gbConclusionesDiagnosticas.Text = "Conclusiones Diagnósticas";
-            // 
-            // dptDateGlobalExp
-            // 
-            this.dptDateGlobalExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dptDateGlobalExp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dptDateGlobalExp.Location = new System.Drawing.Point(284, 12);
-            this.dptDateGlobalExp.Margin = new System.Windows.Forms.Padding(2);
-            this.dptDateGlobalExp.Name = "dptDateGlobalExp";
-            this.dptDateGlobalExp.Size = new System.Drawing.Size(95, 20);
-            this.dptDateGlobalExp.TabIndex = 100;
-            this.dptDateGlobalExp.Value = new System.DateTime(2019, 1, 5, 1, 24, 0, 0);
-            this.dptDateGlobalExp.Visible = false;
             // 
             // grdConclusionesDiagnosticas
             // 
@@ -1082,9 +1252,9 @@
             ultraGridColumn56.Header.Caption = "Consultorio";
             ultraGridColumn56.Header.VisiblePosition = 2;
             ultraGridColumn56.Width = 257;
-            ultraGridColumn57.Header.Caption = "Diagnóstico";
-            ultraGridColumn57.Header.VisiblePosition = 3;
-            ultraGridColumn57.Width = 403;
+            ultraGridColumn40.Header.Caption = "Diagnóstico";
+            ultraGridColumn40.Header.VisiblePosition = 3;
+            ultraGridColumn40.Width = 403;
             ultraGridColumn58.Header.Caption = "Automatico?";
             ultraGridColumn58.Header.VisiblePosition = 4;
             ultraGridColumn58.Width = 141;
@@ -1120,7 +1290,7 @@
             ultraGridColumn54,
             ultraGridColumn55,
             ultraGridColumn56,
-            ultraGridColumn57,
+            ultraGridColumn40,
             ultraGridColumn58,
             ultraGridColumn59,
             ultraGridColumn60,
@@ -1308,6 +1478,25 @@
             this.gbEdicionDiagnosticoTotal.TabIndex = 51;
             this.gbEdicionDiagnosticoTotal.TabStop = false;
             this.gbEdicionDiagnosticoTotal.Text = "Edición del Diagnóstico";
+            // 
+            // btnAceptarDX
+            // 
+            this.btnAceptarDX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAceptarDX.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAceptarDX.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAceptarDX.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAceptarDX.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAceptarDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarDX.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnAceptarDX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAceptarDX.Location = new System.Drawing.Point(1083, 283);
+            this.btnAceptarDX.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAceptarDX.Name = "btnAceptarDX";
+            this.btnAceptarDX.Size = new System.Drawing.Size(152, 24);
+            this.btnAceptarDX.TabIndex = 85;
+            this.btnAceptarDX.Text = "      Guardar Diagnóstico";
+            this.btnAceptarDX.UseVisualStyleBackColor = false;
+            this.btnAceptarDX.Click += new System.EventHandler(this.btnAceptarDX_Click_1);
             // 
             // chkUtilizaFirmaControlAuditoria
             // 
@@ -3246,6 +3435,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.tableLayoutPanel1);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -3253,6 +3443,100 @@
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "FORMATO DE ATENCIÓN INTEGRAL";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.6875F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.3125F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1286, 638);
+            this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // panel4
+            // 
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(3, 320);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1280, 315);
+            this.panel4.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 0, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1280, 311);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1274, 305);
+            this.tableLayoutPanel3.TabIndex = 0;
+            // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.ColumnCount = 1;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.panel3, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.panel5, 0, 1);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(640, 3);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 2;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.66666F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.33333F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(631, 299);
+            this.tableLayoutPanel4.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.btnEliminarAgudo);
+            this.panel5.Controls.Add(this.btnEditarAgudo);
+            this.panel5.Controls.Add(this.btnNuevoAgudo);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(3, 265);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(625, 31);
+            this.panel5.TabIndex = 1;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.grdAgudos);
+            this.panel3.Controls.Add(this.label37);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(625, 256);
+            this.panel3.TabIndex = 0;
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(3, 2);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(157, 19);
+            this.label37.TabIndex = 49;
+            this.label37.Text = "PROBLEMAS AGUDOS";
             // 
             // tabPage2
             // 
@@ -3299,133 +3583,360 @@
             this.lblUsuGraba.TabIndex = 69;
             this.lblUsuGraba.Text = "lblUsuGraba";
             // 
-            // btnAceptarDX
+            // btnEliminarAgudo
             // 
-            this.btnAceptarDX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAceptarDX.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAceptarDX.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAceptarDX.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAceptarDX.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAceptarDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptarDX.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
-            this.btnAceptarDX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptarDX.Location = new System.Drawing.Point(1083, 283);
-            this.btnAceptarDX.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAceptarDX.Name = "btnAceptarDX";
-            this.btnAceptarDX.Size = new System.Drawing.Size(152, 24);
-            this.btnAceptarDX.TabIndex = 85;
-            this.btnAceptarDX.Text = "      Guardar Diagnóstico";
-            this.btnAceptarDX.UseVisualStyleBackColor = false;
-            this.btnAceptarDX.Click += new System.EventHandler(this.btnAceptarDX_Click_1);
+            this.btnEliminarAgudo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEliminarAgudo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEliminarAgudo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEliminarAgudo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEliminarAgudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarAgudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarAgudo.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarAgudo.Image")));
+            this.btnEliminarAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminarAgudo.Location = new System.Drawing.Point(541, 3);
+            this.btnEliminarAgudo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarAgudo.Name = "btnEliminarAgudo";
+            this.btnEliminarAgudo.Size = new System.Drawing.Size(75, 24);
+            this.btnEliminarAgudo.TabIndex = 54;
+            this.btnEliminarAgudo.Text = "Eliminar";
+            this.btnEliminarAgudo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminarAgudo.UseVisualStyleBackColor = false;
             // 
-            // btnInterConsulta
+            // btnEditarAgudo
             // 
-            this.btnInterConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnInterConsulta.BackColor = System.Drawing.SystemColors.Control;
-            this.btnInterConsulta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnInterConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnInterConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnInterConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInterConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInterConsulta.ForeColor = System.Drawing.Color.Black;
-            this.btnInterConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnInterConsulta.Image")));
-            this.btnInterConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInterConsulta.Location = new System.Drawing.Point(23, 600);
-            this.btnInterConsulta.Margin = new System.Windows.Forms.Padding(2);
-            this.btnInterConsulta.Name = "btnInterConsulta";
-            this.btnInterConsulta.Size = new System.Drawing.Size(158, 24);
-            this.btnInterConsulta.TabIndex = 106;
-            this.btnInterConsulta.Text = "Interconsulta";
-            this.btnInterConsulta.UseVisualStyleBackColor = false;
-            this.btnInterConsulta.Click += new System.EventHandler(this.btnInterConsulta_Click);
+            this.btnEditarAgudo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditarAgudo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditarAgudo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditarAgudo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditarAgudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarAgudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarAgudo.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarAgudo.Image")));
+            this.btnEditarAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarAgudo.Location = new System.Drawing.Point(462, 3);
+            this.btnEditarAgudo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarAgudo.Name = "btnEditarAgudo";
+            this.btnEditarAgudo.Size = new System.Drawing.Size(75, 24);
+            this.btnEditarAgudo.TabIndex = 52;
+            this.btnEditarAgudo.Text = "   Editar";
+            this.btnEditarAgudo.UseVisualStyleBackColor = false;
             // 
-            // btnSubirInterconsulta
+            // btnNuevoAgudo
             // 
-            this.btnSubirInterconsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSubirInterconsulta.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSubirInterconsulta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnSubirInterconsulta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnSubirInterconsulta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnSubirInterconsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSubirInterconsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSubirInterconsulta.ForeColor = System.Drawing.Color.Black;
-            this.btnSubirInterconsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirInterconsulta.Image")));
-            this.btnSubirInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSubirInterconsulta.Location = new System.Drawing.Point(185, 600);
-            this.btnSubirInterconsulta.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSubirInterconsulta.Name = "btnSubirInterconsulta";
-            this.btnSubirInterconsulta.Size = new System.Drawing.Size(158, 24);
-            this.btnSubirInterconsulta.TabIndex = 107;
-            this.btnSubirInterconsulta.Text = "Subir Interconsulta";
-            this.btnSubirInterconsulta.UseVisualStyleBackColor = false;
-            this.btnSubirInterconsulta.Click += new System.EventHandler(this.btnSubirInterconsulta_Click);
+            this.btnNuevoAgudo.BackColor = System.Drawing.SystemColors.Control;
+            this.btnNuevoAgudo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnNuevoAgudo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnNuevoAgudo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnNuevoAgudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoAgudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoAgudo.ForeColor = System.Drawing.Color.Black;
+            this.btnNuevoAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoAgudo.Image")));
+            this.btnNuevoAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNuevoAgudo.Location = new System.Drawing.Point(383, 3);
+            this.btnNuevoAgudo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevoAgudo.Name = "btnNuevoAgudo";
+            this.btnNuevoAgudo.Size = new System.Drawing.Size(75, 24);
+            this.btnNuevoAgudo.TabIndex = 53;
+            this.btnNuevoAgudo.Text = "     Nuevo";
+            this.btnNuevoAgudo.UseVisualStyleBackColor = false;
             // 
-            // btnCertificadoAptitud
+            // grdAgudos
             // 
-            this.btnCertificadoAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCertificadoAptitud.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCertificadoAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnCertificadoAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnCertificadoAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnCertificadoAptitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCertificadoAptitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCertificadoAptitud.ForeColor = System.Drawing.Color.Black;
-            this.btnCertificadoAptitud.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificadoAptitud.Image")));
-            this.btnCertificadoAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCertificadoAptitud.Location = new System.Drawing.Point(347, 600);
-            this.btnCertificadoAptitud.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCertificadoAptitud.Name = "btnCertificadoAptitud";
-            this.btnCertificadoAptitud.Size = new System.Drawing.Size(159, 24);
-            this.btnCertificadoAptitud.TabIndex = 108;
-            this.btnCertificadoAptitud.Text = "Certificado de Aptitud";
-            this.btnCertificadoAptitud.UseVisualStyleBackColor = false;
-            this.btnCertificadoAptitud.Click += new System.EventHandler(this.btnCertificadoAptitud_Click);
+            this.grdAgudos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdAgudos.CausesValidation = false;
+            appearance65.BackColor2 = System.Drawing.Color.White;
+            appearance65.BorderColor = System.Drawing.Color.DarkGray;
+            appearance65.ForeColor = System.Drawing.Color.Black;
+            this.grdAgudos.DisplayLayout.Appearance = appearance65;
+            ultraGridColumn81.Header.Caption = "Fecha";
+            ultraGridColumn81.Header.VisiblePosition = 1;
+            ultraGridColumn81.Width = 82;
+            ultraGridColumn109.Header.Caption = "Problema Agudo";
+            ultraGridColumn109.Header.VisiblePosition = 0;
+            ultraGridColumn109.Width = 174;
+            ultraGridColumn110.Header.Caption = "Observación";
+            ultraGridColumn110.Header.VisiblePosition = 2;
+            ultraGridColumn110.Width = 350;
+            ultraGridBand10.Columns.AddRange(new object[] {
+            ultraGridColumn81,
+            ultraGridColumn109,
+            ultraGridColumn110});
+            appearance66.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance66.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance66.FontData.SizeInPoints = 8F;
+            appearance66.ForeColor = System.Drawing.Color.DarkBlue;
+            appearance66.TextHAlignAsString = "Left";
+            ultraGridBand10.Header.Appearance = appearance66;
+            this.grdAgudos.DisplayLayout.BandsSerializer.Add(ultraGridBand10);
+            this.grdAgudos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdAgudos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
+            this.grdAgudos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
+            appearance67.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance67;
+            appearance68.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
+            appearance68.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
+            appearance68.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance68;
+            this.grdAgudos.DisplayLayout.InterBandSpacing = 10;
+            this.grdAgudos.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdAgudos.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdAgudos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdAgudos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
+            this.grdAgudos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdAgudos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdAgudos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdAgudos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdAgudos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdAgudos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance69.BackColor = System.Drawing.Color.Transparent;
+            this.grdAgudos.DisplayLayout.Override.CardAreaAppearance = appearance69;
+            appearance70.BackColor = System.Drawing.Color.White;
+            appearance70.BackColor2 = System.Drawing.Color.White;
+            appearance70.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance70.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdAgudos.DisplayLayout.Override.CellAppearance = appearance70;
+            this.grdAgudos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance71.BackColor = System.Drawing.Color.White;
+            appearance71.BackColor2 = System.Drawing.Color.LightGray;
+            appearance71.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance71.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance71.BorderColor = System.Drawing.Color.DarkGray;
+            appearance71.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdAgudos.DisplayLayout.Override.HeaderAppearance = appearance71;
+            this.grdAgudos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance72.AlphaLevel = ((short)(187));
+            appearance72.BackColor = System.Drawing.Color.Gainsboro;
+            appearance72.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance72.ForeColor = System.Drawing.Color.Black;
+            appearance72.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.Override.RowAlternateAppearance = appearance72;
+            this.grdAgudos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance73.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance73.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance73.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            appearance73.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance73.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance73.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance73.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance73.FontData.BoldAsString = "False";
+            appearance73.ForeColor = System.Drawing.Color.Black;
+            this.grdAgudos.DisplayLayout.Override.SelectedRowAppearance = appearance73;
+            this.grdAgudos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdAgudos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdAgudos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdAgudos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdAgudos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdAgudos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdAgudos.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdAgudos.Location = new System.Drawing.Point(2, 18);
+            this.grdAgudos.Margin = new System.Windows.Forms.Padding(2);
+            this.grdAgudos.Name = "grdAgudos";
+            this.grdAgudos.Size = new System.Drawing.Size(621, 233);
+            this.grdAgudos.TabIndex = 50;
             // 
-            // btn312
+            // tableLayoutPanel5
             // 
-            this.btn312.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn312.BackColor = System.Drawing.SystemColors.Control;
-            this.btn312.Enabled = false;
-            this.btn312.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btn312.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btn312.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn312.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn312.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn312.ForeColor = System.Drawing.Color.Black;
-            this.btn312.Image = ((System.Drawing.Image)(resources.GetObject("btn312.Image")));
-            this.btn312.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn312.Location = new System.Drawing.Point(510, 600);
-            this.btn312.Margin = new System.Windows.Forms.Padding(2);
-            this.btn312.Name = "btn312";
-            this.btn312.Size = new System.Drawing.Size(159, 24);
-            this.btn312.TabIndex = 109;
-            this.btn312.Text = "Anexo 312";
-            this.btn312.UseVisualStyleBackColor = false;
-            this.btn312.Visible = false;
-            this.btn312.Click += new System.EventHandler(this.btn312_Click);
+            this.tableLayoutPanel5.ColumnCount = 1;
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.Controls.Add(this.panel2, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.panel6, 0, 1);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Name = "tableLayoutPanel5";
+            this.tableLayoutPanel5.RowCount = 2;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.33334F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.66667F));
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(631, 299);
+            this.tableLayoutPanel5.TabIndex = 2;
             // 
-            // btn7C
+            // panel2
             // 
-            this.btn7C.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btn7C.BackColor = System.Drawing.SystemColors.Control;
-            this.btn7C.Enabled = false;
-            this.btn7C.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btn7C.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btn7C.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btn7C.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn7C.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn7C.ForeColor = System.Drawing.Color.Black;
-            this.btn7C.Image = ((System.Drawing.Image)(resources.GetObject("btn7C.Image")));
-            this.btn7C.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn7C.Location = new System.Drawing.Point(673, 600);
-            this.btn7C.Margin = new System.Windows.Forms.Padding(2);
-            this.btn7C.Name = "btn7C";
-            this.btn7C.Size = new System.Drawing.Size(159, 24);
-            this.btn7C.TabIndex = 110;
-            this.btn7C.Text = "7 C";
-            this.btn7C.UseVisualStyleBackColor = false;
-            this.btn7C.Visible = false;
-            this.btn7C.Click += new System.EventHandler(this.btn7C_Click);
+            this.panel2.Controls.Add(this.grdCronicos);
+            this.panel2.Controls.Add(this.label26);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(625, 255);
+            this.panel2.TabIndex = 0;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(3, 2);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(168, 19);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "PROBLEMAS CRÓNICOS";
+            // 
+            // grdCronicos
+            // 
+            this.grdCronicos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdCronicos.CausesValidation = false;
+            appearance74.BackColor2 = System.Drawing.Color.White;
+            appearance74.BorderColor = System.Drawing.Color.DarkGray;
+            appearance74.ForeColor = System.Drawing.Color.Black;
+            this.grdCronicos.DisplayLayout.Appearance = appearance74;
+            ultraGridColumn57.Header.Caption = "Fecha";
+            ultraGridColumn57.Header.VisiblePosition = 0;
+            ultraGridColumn57.Width = 99;
+            ultraGridColumn101.Header.Caption = "Problema Crónico";
+            ultraGridColumn101.Header.VisiblePosition = 1;
+            ultraGridColumn101.Width = 212;
+            ultraGridColumn102.Header.Caption = "¿Es controlado?";
+            ultraGridColumn102.Header.VisiblePosition = 2;
+            ultraGridColumn102.Width = 133;
+            ultraGridColumn111.Header.Caption = "Observación";
+            ultraGridColumn111.Header.VisiblePosition = 3;
+            ultraGridColumn111.Width = 151;
+            ultraGridBand11.Columns.AddRange(new object[] {
+            ultraGridColumn57,
+            ultraGridColumn101,
+            ultraGridColumn102,
+            ultraGridColumn111});
+            appearance75.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance75.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance75.FontData.SizeInPoints = 8F;
+            appearance75.ForeColor = System.Drawing.Color.DarkBlue;
+            appearance75.TextHAlignAsString = "Left";
+            ultraGridBand11.Header.Appearance = appearance75;
+            this.grdCronicos.DisplayLayout.BandsSerializer.Add(ultraGridBand11);
+            this.grdCronicos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdCronicos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
+            this.grdCronicos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
+            appearance76.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance76;
+            appearance77.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
+            appearance77.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
+            appearance77.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance77;
+            this.grdCronicos.DisplayLayout.InterBandSpacing = 10;
+            this.grdCronicos.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdCronicos.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdCronicos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdCronicos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
+            this.grdCronicos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdCronicos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdCronicos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdCronicos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdCronicos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdCronicos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance78.BackColor = System.Drawing.Color.Transparent;
+            this.grdCronicos.DisplayLayout.Override.CardAreaAppearance = appearance78;
+            appearance79.BackColor = System.Drawing.Color.White;
+            appearance79.BackColor2 = System.Drawing.Color.White;
+            appearance79.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance79.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdCronicos.DisplayLayout.Override.CellAppearance = appearance79;
+            this.grdCronicos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance80.BackColor = System.Drawing.Color.White;
+            appearance80.BackColor2 = System.Drawing.Color.LightGray;
+            appearance80.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance80.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance80.BorderColor = System.Drawing.Color.DarkGray;
+            appearance80.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdCronicos.DisplayLayout.Override.HeaderAppearance = appearance80;
+            this.grdCronicos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance81.AlphaLevel = ((short)(187));
+            appearance81.BackColor = System.Drawing.Color.Gainsboro;
+            appearance81.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance81.ForeColor = System.Drawing.Color.Black;
+            appearance81.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.Override.RowAlternateAppearance = appearance81;
+            this.grdCronicos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance82.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance82.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance82.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            appearance82.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance82.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance82.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance82.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance82.FontData.BoldAsString = "False";
+            appearance82.ForeColor = System.Drawing.Color.Black;
+            this.grdCronicos.DisplayLayout.Override.SelectedRowAppearance = appearance82;
+            this.grdCronicos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdCronicos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdCronicos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdCronicos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdCronicos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdCronicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdCronicos.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdCronicos.Location = new System.Drawing.Point(2, 18);
+            this.grdCronicos.Margin = new System.Windows.Forms.Padding(2);
+            this.grdCronicos.Name = "grdCronicos";
+            this.grdCronicos.Size = new System.Drawing.Size(622, 233);
+            this.grdCronicos.TabIndex = 46;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.btnNuevoCronico);
+            this.panel6.Controls.Add(this.btnEditarCronico);
+            this.panel6.Controls.Add(this.btnEliminarCronico);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(3, 264);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(625, 32);
+            this.panel6.TabIndex = 1;
+            // 
+            // btnNuevoCronico
+            // 
+            this.btnNuevoCronico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnNuevoCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnNuevoCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnNuevoCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnNuevoCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoCronico.ForeColor = System.Drawing.Color.Black;
+            this.btnNuevoCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoCronico.Image")));
+            this.btnNuevoCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNuevoCronico.Location = new System.Drawing.Point(393, 3);
+            this.btnNuevoCronico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevoCronico.Name = "btnNuevoCronico";
+            this.btnNuevoCronico.Size = new System.Drawing.Size(75, 24);
+            this.btnNuevoCronico.TabIndex = 50;
+            this.btnNuevoCronico.Text = "     Nuevo";
+            this.btnNuevoCronico.UseVisualStyleBackColor = false;
+            // 
+            // btnEditarCronico
+            // 
+            this.btnEditarCronico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditarCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditarCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditarCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditarCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarCronico.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarCronico.Image")));
+            this.btnEditarCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarCronico.Location = new System.Drawing.Point(472, 3);
+            this.btnEditarCronico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarCronico.Name = "btnEditarCronico";
+            this.btnEditarCronico.Size = new System.Drawing.Size(75, 24);
+            this.btnEditarCronico.TabIndex = 51;
+            this.btnEditarCronico.Text = "   Editar";
+            this.btnEditarCronico.UseVisualStyleBackColor = false;
+            // 
+            // btnEliminarCronico
+            // 
+            this.btnEliminarCronico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEliminarCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEliminarCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEliminarCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEliminarCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarCronico.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarCronico.Image")));
+            this.btnEliminarCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminarCronico.Location = new System.Drawing.Point(551, 3);
+            this.btnEliminarCronico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarCronico.Name = "btnEliminarCronico";
+            this.btnEliminarCronico.Size = new System.Drawing.Size(75, 24);
+            this.btnEliminarCronico.TabIndex = 52;
+            this.btnEliminarCronico.Text = "Eliminar";
+            this.btnEliminarCronico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminarCronico.UseVisualStyleBackColor = false;
             // 
             // FrmEsoV2
             // 
@@ -3453,7 +3964,6 @@
             this.Controls.Add(this.tcSubMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
-            this.MaximizeBox = false;
             this.Name = "FrmEsoV2";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -3507,6 +4017,21 @@
             this.gbSintomasySignos.ResumeLayout(false);
             this.gbSintomasySignos.PerformLayout();
             this.tcSubMain.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.tableLayoutPanel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.grdAgudos)).EndInit();
+            this.tableLayoutPanel5.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCronicos)).EndInit();
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3679,5 +4204,26 @@
         private System.Windows.Forms.Button btnCertificadoAptitud;
         private System.Windows.Forms.Button btn312;
         private System.Windows.Forms.Button btn7C;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private Infragistics.Win.Misc.UltraFlowLayoutManager ultraFlowLayoutManager1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Button btnEliminarAgudo;
+        private System.Windows.Forms.Button btnEditarAgudo;
+        private System.Windows.Forms.Button btnNuevoAgudo;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdAgudos;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+        private System.Windows.Forms.Panel panel2;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdCronicos;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnNuevoCronico;
+        private System.Windows.Forms.Button btnEditarCronico;
+        private System.Windows.Forms.Button btnEliminarCronico;
     }
 }
