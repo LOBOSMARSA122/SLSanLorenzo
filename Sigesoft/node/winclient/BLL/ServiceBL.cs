@@ -25889,7 +25889,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                      TipoEso = et.v_Value1,
                                      Dni = B.v_DocNumber
                                  });
-                var ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, "N009-ME000000052").ToList();
+                var ValorUSer = ValoresComponenteOdontogramaValue1(pstrserviceId, pstrComponentId).ToList();
                 var MedicalCenter = GetInfoMedicalCenter();
                 var sql = (from a in objEntity.ToList()
                            select new UcOsteo

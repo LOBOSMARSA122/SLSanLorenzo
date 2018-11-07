@@ -23,6 +23,8 @@ using Sigesoft.Node.WinClient.UI.Reports;
 using System.Data;
 using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
+using Sigesoft.Node.Contasol.Integration;
+
 
 namespace Sigesoft.Node.WinClient.UI.Operations
 {
@@ -93,9 +95,19 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private bool flagValueChange = false;
         private bool _chkApprovedEnabled;
         private string _oldValue;
+
+        private string _serviceIdByWiewServiceHistory;
+        private int _tipo;
+        private string _ProtocolId;
+        serviceDto idPerson = new serviceDto();
+        string PacientId;
+        private string _examName;
+        private ServiceComponentList _serviceComponentsInfo = null;
+        private string _Dni;
+        string _personName;
         #endregion
       
-        public FrmEsoV2(string serviceId, string componentIdDefault, string action, int roleId, int nodeId, int userId)
+        public FrmEsoV2(string serviceId, string componentIdDefault, string action, int roleId, int nodeId, int userId, int tipo)
         {
             _serviceId = serviceId;
             _componentIdDefault = componentIdDefault;
@@ -103,9 +115,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             _roleId = roleId;
             _nodeId = nodeId;
             _userId = userId;
+            _tipo = tipo;
             InitializeComponent();
         }
-
         private void FrmEsoV2_Load(object sender, EventArgs e)
         {
             InitializeForm();
@@ -1396,15 +1408,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void FormActions()
         {
-            _formActions = BLL.Utils.SetFormActionsInSession("frmEso", _nodeId, _roleId, _userId);
-            btnGuardarExamen.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_SAVE", _formActions);
-            btnAgregarTotalDiagnostico.Enabled = BLL.Utils.IsActionEnabled("frmEso_ANADX_ADDDX", _formActions);
-            _removerTotalDiagnostico = BLL.Utils.IsActionEnabled("frmEso_ANADX_REMOVEDX", _formActions);
+            _formActions = BLL.Utils.SetFormActionsInSession("frmEsoV2", _nodeId, _roleId, _userId);
+            btnGuardarExamen.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_SAVE", _formActions);
+            btnAgregarTotalDiagnostico.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_ADDDX", _formActions);
+            _removerTotalDiagnostico = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVEDX", _formActions);
             btnAgregarRecomendaciones_AnalisisDx.Enabled = BLL.Utils.IsActionEnabled("frmEso_ANADX_ADDRECOME", _formActions);
-            _removerRecomendacionAnalisisDx = BLL.Utils.IsActionEnabled("frmEso_ANADX_REMOVERECOME", _formActions);
-            btnAgregarRestriccion_Analisis.Enabled = BLL.Utils.IsActionEnabled("frmEso_ANADX_ADDRESTRIC", _formActions);
-            _removerRestriccionAnalisis = BLL.Utils.IsActionEnabled("frmEso_ANADX_REMOVERESTRIC", _formActions);
-            btnAceptarDX.Enabled = BLL.Utils.IsActionEnabled("frmEso_ANADX_SAVE", _formActions);
+            _removerRecomendacionAnalisisDx = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVERECOME", _formActions);
+            btnAgregarRestriccion_Analisis.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_ADDRESTRIC", _formActions);
+            _removerRestriccionAnalisis = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVERESTRIC", _formActions);
+            btnAceptarDX.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_SAVE", _formActions);
 
             if (btnAceptarDX.Enabled) return;
             cbCalificacionFinal.Enabled = false;
@@ -1422,6 +1434,13 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             LoadTabExamenes(dataService);
             LoadTabControlCalidad();
             LoadTabAptitud();
+
+            OperationResult objOperationResult = new OperationResult();
+
+            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+
+            _ProtocolId = personData.v_ProtocolId;
+            _personName = string.Format("{0} {1} {2}", personData.v_FirstLastName, personData.v_SecondLastName, personData.v_FirstName);
         }
 
         private static void LoadTabAptitud()
@@ -2127,9 +2146,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void tcExamList_SelectedTabChanged(object sender, SelectedTabChangedEventArgs e)
         {
-            EXAMENES_lblComentarios.Text = string.Format("Comentarios de {0}", e.Tab.Text);
-            EXAMENES_lblEstadoComponente.Text = string.Format("Estado del exámen ({0})", e.Tab.Text);
-            btnGuardarExamen.Text = string.Format("&Guardar ({0})", e.Tab.Text);
+            _examName = e.Tab.Text;
+
+            EXAMENES_lblComentarios.Text = string.Format("Comentarios de {0}", _examName);
+            EXAMENES_lblEstadoComponente.Text = string.Format("Estado del exámen ({0})", _examName);
+            btnGuardarExamen.Text = string.Format("&Guardar ({0})", _examName);
             _componentId = e.Tab.Key;
             _serviceComponentId = e.Tab.Tag.ToString();
             LoadDataBySelectedComponent(_componentId, _serviceComponentId);
@@ -2137,7 +2158,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void LoadDataBySelectedComponent(string componentId, string serviceComponentId)
         {
-            SetSecurityByComponent(componentId);
+            SetSecurityByComponentC(componentId);
             PopulateGridDiagnostic(componentId);
             PaintGrdDiagnosticoPorExamenComponente();
             PopulateDataExam(serviceComponentId);
@@ -2232,11 +2253,592 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
         }
 
-        private void SetSecurityByComponent(string componentId)
+        private void SetSecurityByComponent()
         {
+            OperationResult objOperationResult = new OperationResult();
+
+            var nodeId = Globals.ClientSession.i_CurrentExecutionNodeId;
+            var roleId = Globals.ClientSession.i_RoleId.Value;
+
+            bool isReadOnly = false;
+            bool isWriteOnly = false;
+
+            // Obtener campos de un componente especifico
+            var componentFields = _tmpServiceComponentsForBuildMenuList.Find(p => p.v_ComponentId == _componentId).Fields;
+            // Obtener permisos de cada examen de un rol especifico
+            var componentProfile = new ServiceBL().GetRoleNodeComponentProfile(ref objOperationResult, nodeId, roleId, _componentId);
+
+            if (componentProfile != null)
+            {
+                if (componentProfile.i_Read == (int)SiNo.SI && componentProfile.i_Write == (int)SiNo.SI)
+                {
+                    isReadOnly = false;
+                    btnGuardarExamen.Enabled = true;
+                }
+                else
+                {
+                    isReadOnly = true;
+                    btnGuardarExamen.Enabled = false;
+                }
+
+                if (componentProfile.i_Write == (int)SiNo.SI)
+                {
+                    isWriteOnly = true;
+                    btnGuardarExamen.Enabled = true;
+                }
+                else
+                {
+                    isWriteOnly = false;
+                    btnGuardarExamen.Enabled = false;
+                }
+
+                #region Establecer permisos Lectura / escritura a cada campo de un examen componente
+
+                foreach (ComponentFieldsList cf in componentFields)
+                {
+                    var ctrl__ = tcExamList.SelectedTab.TabPage.Controls.Find(cf.v_ComponentFieldId, true);
+
+                    if (ctrl__.Length != 0)
+                    {
+                        #region Setear valor
+
+                        switch ((ControlType)cf.i_ControlId)
+                        {
+                            case ControlType.CadenaTextual:
+                                TextBox txtt = (TextBox)ctrl__[0];
+                                txtt.CreateControl();
+                                txtt.ReadOnly = isReadOnly;
+                                if (_action == "View")
+                                {
+                                    txtt.ReadOnly = true;
+                                }
+                                break;
+                            case ControlType.CadenaMultilinea:
+                                TextBox txtm = (TextBox)ctrl__[0];
+                                txtm.CreateControl();
+                                txtm.ReadOnly = isReadOnly;
+                                if (_action == "View")
+                                {
+                                    txtm.ReadOnly = true;
+                                }
+                                break;
+                            case ControlType.NumeroEntero:
+                                UltraNumericEditor uni = (UltraNumericEditor)ctrl__[0];
+                                uni.CreateControl();
+                                uni.ReadOnly = isReadOnly;
+                                if (_action == "View")
+                                {
+                                    uni.ReadOnly = true;
+                                }
+                                break;
+                            case ControlType.NumeroDecimal:
+                                UltraNumericEditor und = (UltraNumericEditor)ctrl__[0];
+                                und.CreateControl();
+                                und.ReadOnly = isReadOnly;
+                                if (_action == "View")
+                                {
+                                    und.ReadOnly = true;
+                                }
+                                break;
+                            case ControlType.SiNoCheck:
+                                CheckBox chkSiNo = (CheckBox)ctrl__[0];
+                                chkSiNo.CreateControl();
+                                chkSiNo.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    chkSiNo.Enabled = false;
+                                }
+                                break;
+                            case ControlType.SiNoRadioButton:
+                                RadioButton rbSiNo = (RadioButton)ctrl__[0];
+                                rbSiNo.CreateControl();
+                                rbSiNo.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    rbSiNo.Enabled = false;
+                                }
+                                break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)ctrl__[0];
+                                rb.CreateControl();
+                                rb.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    rb.Enabled = false;
+                                }
+                                break;
+                            case ControlType.SiNoCombo:
+                                ComboBox cbSiNo = (ComboBox)ctrl__[0];
+                                cbSiNo.CreateControl();
+                                cbSiNo.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    cbSiNo.Enabled = false;
+                                }
+                                break;
+                            case ControlType.UcFileUpload:
+                                break;
+                            case ControlType.Lista:
+                                ComboBox cbList = (ComboBox)ctrl__[0];
+                                cbList.CreateControl();
+                                cbList.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    cbList.Enabled = false;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+
+                        #endregion
+                    }
+                }
+
+                #endregion
+
+                #region Es Diagnosticable
+
+                if (componentProfile.i_Dx == (int)SiNo.SI)
+                {
+                    btnAgregarDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_ADDDX", _formActions);
+                    btnEditarDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_EDITDX", _formActions);
+                    btnRemoverDxExamen.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_REMOVEDX", _formActions);
+
+                }
+
+                if (componentProfile.i_Dx == (int)SiNo.NO)
+                {
+                    btnAgregarDxExamen.Enabled = false;
+                    btnEditarDxExamen.Enabled = false;
+                    btnRemoverDxExamen.Enabled = false;
+                }
+
+                #endregion
+
+                #region Es Aprobable?
+
+                if (componentProfile.i_Approved == (int)SiNo.NO)
+                {
+                    chkApproved.Enabled = false;
+                }
+                else if (componentProfile.i_Approved == (int)SiNo.SI)
+                {
+                    chkApproved.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_APPROVED", _formActions);
+                }
+
+                #endregion
+
+            }
+            else
+            {
+                #region Establecer permisos Lectura / escritura a cada campo de un examen componente
+
+                foreach (ComponentFieldsList cf in componentFields)
+                {
+                    var ctrl__ = tcExamList.SelectedTab.TabPage.Controls.Find(cf.v_ComponentFieldId, true);
+
+                    if (ctrl__.Length != 0)
+                    {
+                        #region Setear valor
+
+                        switch ((ControlType)cf.i_ControlId)
+                        {
+                            case ControlType.CadenaTextual:
+                                TextBox txtt = (TextBox)ctrl__[0];
+                                txtt.CreateControl();
+                                txtt.ReadOnly = true;
+                                if (_action == "View")
+                                {
+                                    txtt.ReadOnly = true;
+                                }
+                                break;
+                            case ControlType.CadenaMultilinea:
+                                TextBox txtm = (TextBox)ctrl__[0];
+                                txtm.CreateControl();
+                                txtm.ReadOnly = true;
+                                if (_action == "View")
+                                {
+                                    txtm.ReadOnly = true;
+                                }
+                                break;
+                            case ControlType.NumeroEntero:
+                                UltraNumericEditor uni = (UltraNumericEditor)ctrl__[0];
+                                uni.CreateControl();
+                                uni.ReadOnly = true;
+                                if (_action == "View")
+                                {
+                                    uni.ReadOnly = true;
+                                }
+                                break;
+                            case ControlType.NumeroDecimal:
+                                UltraNumericEditor und = (UltraNumericEditor)ctrl__[0];
+                                und.CreateControl();
+                                und.ReadOnly = true;
+                                if (_action == "View")
+                                {
+                                    und.ReadOnly = true;
+                                }
+                                break;
+                            case ControlType.SiNoCheck:
+                                CheckBox chkSiNo = (CheckBox)ctrl__[0];
+                                chkSiNo.CreateControl();
+                                chkSiNo.Enabled = false;
+                                if (_action == "View")
+                                {
+                                    chkSiNo.Enabled = false;
+                                }
+                                break;
+                            case ControlType.SiNoRadioButton:
+                                RadioButton rbSiNo = (RadioButton)ctrl__[0];
+                                rbSiNo.CreateControl();
+                                rbSiNo.Enabled = false;
+                                if (_action == "View")
+                                {
+                                    rbSiNo.Enabled = false;
+                                }
+                                break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)ctrl__[0];
+                                rb.CreateControl();
+                                rb.Enabled = isWriteOnly;
+                                if (_action == "View")
+                                {
+                                    rb.Enabled = false;
+                                }
+                                break;
+                            case ControlType.SiNoCombo:
+                                ComboBox cbSiNo = (ComboBox)ctrl__[0];
+                                cbSiNo.CreateControl();
+                                cbSiNo.Enabled = false;
+                                if (_action == "View")
+                                {
+                                    cbSiNo.Enabled = false;
+                                }
+                                break;
+                            case ControlType.UcFileUpload:
+                                break;
+                            case ControlType.Lista:
+                                ComboBox cbList = (ComboBox)ctrl__[0];
+                                cbList.CreateControl();
+                                cbList.Enabled = false;
+                                if (_action == "View")
+                                {
+                                    cbList.Enabled = false;
+                                }
+                                break;
+                            default:
+                                break;
+                        }
+
+                        #endregion
+                    }
+                }
+
+                #endregion
+
+                btnGuardarExamen.Enabled = false;
+                btnAgregarDxExamen.Enabled = false;
+                btnEditarDxExamen.Enabled = false;
+                btnRemoverDxExamen.Enabled = false;
+
+                // el check se activa o desactiva dependiendo del rol
+                chkApproved.Enabled = false;
+            }
+
+            if (cbEstadoComponente.SelectedValue.ToString() == ((int)ServiceComponentStatus.Iniciado).ToString())
+            {
+                btnGuardarExamen.Enabled = false;
+                btnVisorReporteExamen.Enabled = false;
+            }
+            else
+            {
+                btnGuardarExamen.Enabled = true;
+                btnVisorReporteExamen.Enabled = true;
+            }
+
+
+        }
+        private void SetSecurityByComponentC(string componentId)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action<string>(SetSecurityByComponentC), componentId);
+            }
+            else
+            {
+                var arrComponentId = _componentId.Split('|');
+
+                if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)//audiometría
+                    || arrComponentId.Contains("N009-ME000000337")
+                    || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE)
+
+                    || arrComponentId.Contains(Constants.APENDICE_ID)//cardiologia
+                    || arrComponentId.Contains(Constants.ELECTROCARDIOGRAMA_ID)
+                    || arrComponentId.Contains(Constants.ELECTRO_GOLD)
+                    || arrComponentId.Contains(Constants.PRUEBA_ESFUERZO_ID)
+
+                    || arrComponentId.Contains(Constants.ESPIROMETRIA_ID)//espirometría
+
+                    || arrComponentId.Contains(Constants.INFORME_LABORATORIO_ID)//laboratorio
+                    || arrComponentId.Contains(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID)
+
+                    || arrComponentId.Contains(Constants.EXAMEN_FISICO_7C_ID)//medicina
+                    || arrComponentId.Contains(Constants.EXAMEN_FISICO_ID)
+                    || arrComponentId.Contains(Constants.ATENCION_INTEGRAL_ID)
+                    || arrComponentId.Contains(Constants.C_N_ID)//cuestionario nordico
+                    || arrComponentId.Contains(Constants.FICHA_SAS_ID)
+                    || arrComponentId.Contains(Constants.EVA_ERGONOMICA_ID)
+                    || arrComponentId.Contains(Constants.EVA_NEUROLOGICA_ID)
+                    || arrComponentId.Contains(Constants.ALTURA_7D_ID)
+                    || arrComponentId.Contains(Constants.ALTURA_ESTRUCTURAL_ID)
+                    || arrComponentId.Contains(Constants.EXAMEN_SUF_MED__OPERADORES_ID)
+                    || arrComponentId.Contains(Constants.OSTEO_MUSCULAR_ID_1)
+                    || arrComponentId.Contains(Constants.FOTO_TIPO_ID)
+                    || arrComponentId.Contains(Constants.OSTEO_COIMO)
+                    || arrComponentId.Contains(Constants.SINTOMATICO_ID)
+                    || arrComponentId.Contains(Constants.FICHA_SUFICIENCIA_MEDICA_ID)
+                    || arrComponentId.Contains(Constants.TAMIZAJE_DERMATOLOGIO_ID)
+                    || arrComponentId.Contains(Constants.TEST_VERTIGO_ID)
+                    || arrComponentId.Contains(Constants.EVA_OSTEO_ID)
+
+                    || arrComponentId.Contains(Constants.ODONTOGRAMA_ID)//odontologia
+
+                    || arrComponentId.Contains(Constants.OFTALMOLOGIA_ID)//oftalmologia
+                    || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                    || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                    || arrComponentId.Contains(Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                    || arrComponentId.Contains(Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID)
+                    || arrComponentId.Contains(Constants.PETRINOVIC_ID)
+                    || arrComponentId.Contains(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)
+                    || arrComponentId.Contains("N009-ME000000437")
+
+                    || arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
+                    || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
+                    || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
+                    || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
+                    || arrComponentId.Contains(Constants.SOMNOLENCIA_ID)
+
+                    || arrComponentId.Contains(Constants.OIT_ID)//rayos x
+                    || arrComponentId.Contains(Constants.RX_TORAX_ID)
+                    || arrComponentId.Contains(Constants.EXCEPCIONES_RX_ID)
+                    || arrComponentId.Contains(Constants.EXCEPCIONES_RX_AUTORIZACION_ID)
+
+                    || arrComponentId.Contains(Constants.LUMBOSACRA_ID)
+                    || arrComponentId.Contains(Constants.ELECTROENCEFALOGRAMA_ID)
+                    || arrComponentId.Contains("N009-ME000000302")
+                    )
+                {
+                    btnVisorReporteExamen.Text = string.Format("&Ver Reporte de ({0})", _examName);
+                    btnVisorReporteExamen.Visible = true;
+                }
+                else
+                {
+                    btnVisorReporteExamen.Visible = false;
+                }
+
+
+                OperationResult objOperationResult = new OperationResult();
+
+                if (_serviceComponentsInfo != null)
+                    _serviceComponentsInfo = null;
+
+                // Mostrar data de serviceComponent
+                _serviceComponentsInfo = new ServiceBL().GetServiceComponentsInfo(ref objOperationResult, _serviceComponentId, _serviceId);
+
+                
+                if (_serviceComponentsInfo != null)
+                {
+                    txtComentario.Text = _serviceComponentsInfo.v_Comment;
+                    cbEstadoComponente.SelectedValue = _serviceComponentsInfo.i_ServiceComponentStatusId == (int)ServiceComponentStatus.PorIniciar ? ((int)ServiceComponentStatus.Iniciado).ToString() : _serviceComponentsInfo.i_ServiceComponentStatusId.ToString();
+                    //_EstadoComponente = _serviceComponentsInfo.i_ServiceComponentStatusId == (int)ServiceComponentStatus.PorIniciar ? ((int)ServiceComponentStatus.Iniciado) : _serviceComponentsInfo.i_ServiceComponentStatusId;
+                    cbTipoProcedenciaExamen.SelectedValue = _serviceComponentsInfo.i_ExternalInternalId == null ? "1" : _serviceComponentsInfo.i_ExternalInternalId.ToString();
+                    chkApproved.Checked = Convert.ToBoolean(_serviceComponentsInfo.i_IsApprovedId);
+
+
+                    #region Permisos de lectura / Escritura x componente de acuerdo al rol del usuario
+
+                    SetSecurityByComponent();
+
+                    #endregion
+
+                    if (_serviceComponentsInfo.ServiceComponentFields.Count != 0)
+                    {
+                        _cancelEventSelectedIndexChange = true;
+                        SearchControlAndSetValue(tcExamList.SelectedTab.TabPage, _serviceComponentsInfo);
+
+                        _cancelEventSelectedIndexChange = false;
+                    }
+                    else
+                    {        
+                        SetDefaultValueBySelectedTab();
+                    }
+
+                    lblUsuGraba.Text = string.Format("Usuario Crea : {0}", _serviceComponentsInfo.v_CreationUser);
+                    lblFechaGraba.Text = string.Format("Fecha Crea : {0} {1}", _serviceComponentsInfo.d_CreationDate.Value.ToShortDateString(), _serviceComponentsInfo.d_CreationDate.Value.ToShortTimeString());
+                }
+
+                var diagnosticList = new ServiceBL().GetServiceComponentDisgnosticsForGridView(ref objOperationResult,
+                                                                                        _serviceId,
+                                                                                        componentId);
+
+                if (_tmpExamDiagnosticComponentList != null)
+                    _tmpExamDiagnosticComponentList = null;
+
+                if (diagnosticList != null && diagnosticList.Count != 0)
+                {
+                    grdDiagnosticoPorExamenComponente.DataSource = diagnosticList;
+                    lblRecordCountDiagnosticoPorExamenCom.Text = string.Format("Se encontraron {0} registros.", diagnosticList.Count());
+
+                   _tmpExamDiagnosticComponentList = diagnosticList;
+
+                    if (objOperationResult.Success != 1)
+                    {
+                        MessageBox.Show(Constants.GenericErrorMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    // Limpiar la grilla de DX con una entidad vacia
+                    grdDiagnosticoPorExamenComponente.DataSource = new DiagnosticRepositoryList();
+                    lblRecordCountDiagnosticoPorExamenCom.Text = string.Format("Se encontraron {0} registros.", 0);
+
+                }
+
+            }
             ExamConfiguration(componentId);
         }
 
+        private void SetDefaultValueBySelectedTab()
+        {
+            try
+            {
+                var component = _tmpServiceComponentsForBuildMenuList.Find(p => p.v_ComponentId == _componentId);
+
+                foreach (ComponentFieldsList cf in component.Fields)
+                {
+                    var field = tcExamList.SelectedTab.TabPage.Controls.Find(cf.v_ComponentFieldId, true);
+
+                    if (field.Length != 0)
+                    {
+                        #region Setear valor x defecto del control
+
+                        switch ((ControlType)cf.i_ControlId)
+                        {
+                            case ControlType.CadenaTextual:
+
+                                TextBox txtt = (TextBox)field[0];
+                                txtt.CreateControl();
+                                //AMC15
+                                if (cf.v_ComponentFieldId == "N009-MF000001788" || cf.v_ComponentFieldId == "N002-MF000000211")
+                                {
+                                    txtt.Text = _Dni;
+                                }
+                                else if (cf.v_ComponentFieldId == "N009-MF000000588" || cf.v_ComponentFieldId == "N009-MF000000587")
+                                {
+                                    txtt.Text = DateTime.Now.ToShortDateString();
+                                }
+                                else
+                                {
+                                    txtt.Text = cf.v_DefaultText;
+                                }
+
+
+                                txtt.BackColor = Color.White;
+                                break;
+
+                            case ControlType.CadenaMultilinea:
+                                TextBox txtm = (TextBox)field[0];
+                                txtm.CreateControl();
+                                txtm.Text = cf.v_DefaultText;
+                                txtm.BackColor = Color.White;
+                                break;
+                            case ControlType.NumeroEntero:
+                                UltraNumericEditor uni = (UltraNumericEditor)field[0];
+                                uni.CreateControl();
+                                uni.Value = string.IsNullOrEmpty(cf.v_DefaultText) ? 0 : int.Parse(cf.v_DefaultText);
+                                uni.BackColor = Color.White;
+                                break;
+                            case ControlType.NumeroDecimal:
+                                UltraNumericEditor und = (UltraNumericEditor)field[0];
+                                und.CreateControl();
+                                und.Value = string.IsNullOrEmpty(cf.v_DefaultText) ? 0 : double.Parse(cf.v_DefaultText);
+                                und.BackColor = Color.White;
+                                break;
+                            case ControlType.SiNoCheck:
+                                CheckBox chkSiNo = (CheckBox)field[0];
+                                chkSiNo.CreateControl();
+                                chkSiNo.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
+                                break;
+                            case ControlType.SiNoRadioButton:
+                                RadioButton rbSiNo = (RadioButton)field[0];
+                                rbSiNo.CreateControl();
+                                rbSiNo.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
+                                break;
+                            case ControlType.Radiobutton:
+                                RadioButton rb = (RadioButton)field[0];
+                                rb.CreateControl();
+                                rb.Checked = string.IsNullOrEmpty(cf.v_DefaultText) ? false : Convert.ToBoolean(int.Parse(cf.v_DefaultText));
+                                break;
+                            case ControlType.SiNoCombo:
+                                ComboBox cbSiNo = (ComboBox)field[0];
+                                cbSiNo.CreateControl();
+                                cbSiNo.SelectedValue = string.IsNullOrEmpty(cf.v_DefaultText) ? "-1" : cf.v_DefaultText;
+                                break;
+                            case ControlType.UcFileUpload:
+                                break;
+                            case ControlType.Lista:
+                                ComboBox cbList = (ComboBox)field[0];
+                                cbList.CreateControl();
+                                cbList.SelectedValue = string.IsNullOrEmpty(cf.v_DefaultText) ? "-1" : cf.v_DefaultText;
+                                break;
+                            case ControlType.UcOdontograma:
+                                ((UserControls.ucOdontograma)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcAudiometria:
+                                ((UserControls.ucAudiometria)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcSomnolencia:
+                                ((UserControls.ucSomnolencia)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcAcumetria:
+                                ((UserControls.ucAcumetria)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcFototipo:
+                                ((UserControls.ucFotoTipo)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcSintomaticoRespi:
+                                ((UserControls.ucSintomaticoResp)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcRxLumboSacra:
+                                ((UserControls.ucRXLumboSacra)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcOtoscopia:
+                                ((UserControls.ucOtoscopia)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcEvaluacionErgonomica:
+                                ((UserControls.ucEvaluacionErgonomica)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcOsteoMuscular:
+                                ((UserControls.ucOsteoMuscular)field[0]).ClearValueControl();
+                                break;
+                            case ControlType.UcOjoSeco:
+                                ((UserControls.ucOjoSeco)field[0]).ClearValueControl();
+                                break;
+                            default:
+                                break;
+                        }
+
+                        #endregion
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
         private void ExamConfiguration(string componentId)
         {
             var objOperationResult = new OperationResult();
@@ -2256,7 +2858,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     break;
                 case (int)SiNo.SI:
                     // el check se activa o desactiva dependiendo del rol
-                    chkApproved.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_APPROVED", _formActions);
+                    chkApproved.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_APPROVED", _formActions);
                     break;
             }
         }
@@ -2267,9 +2869,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             {
                 case (int)SiNo.SI:
                     //la sección se activa o desactiva dependiendo del PERMISO. Los diagnósticos automáticos deben seguir funcionando y reportándose.
-                    btnAgregarDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_ADDDX", _formActions);
-                    btnEditarDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_EDITDX", _formActions);
-                    btnRemoverDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEso_EXAMENES_REMOVEDX", _formActions);
+                    btnAgregarDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_ADDDX", _formActions);
+                    btnEditarDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_EDITDX", _formActions);
+                    btnRemoverDxExamen.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_EXAMENES_REMOVEDX", _formActions);
                     break;
                 case (int)SiNo.NO:
                     // toda la sección esta desactivada, pero los diagnósticos automáticos deben seguir funcionando y reportándose.
@@ -2711,7 +3313,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
         }
 
-        private void btnAceptarDX_Click(object sender, EventArgs e)
+        private void btnAceptarDX_Click_1(object sender, EventArgs e)
         {
             var califiFinalId = (FinalQualification)int.Parse(cbCalificacionFinal.SelectedValue.ToString());
             if (califiFinalId == FinalQualification.Descartado || califiFinalId == FinalQualification.SinCalificar)
@@ -4181,6 +4783,598 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         {
             Close();
         }
+        private void mnuVerServicio_Click(object sender, EventArgs e)
+        {
+            var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "View", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+            frm.ShowDialog();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var datosP = new PacientBL().DevolverDatosPaciente(_serviceId);
+
+            var ServiceDate = grdServiciosAnteriores.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString();
+
+            if (ServiceDate.ToString().Split(' ')[0] == DateTime.Now.ToString().Split(' ')[0])
+            {
+                var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
+            else
+            {
+                var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "View", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
+        }
+
+        private void btnPerson_Click(object sender, EventArgs e)
+        {
+            var frm = new frmPacient(_personId);
+            frm.ShowDialog();
+        }
+
+        private void btnReceta_Click(object sender, EventArgs e)
+        {
+            //grdTotalDiagnosticos.DataSource = _tmpTotalDiagnosticByServiceIdList;
+            frmRecetaMedica frm = new frmRecetaMedica(_tmpTotalDiagnosticByServiceIdList, _serviceId, _ProtocolId);
+            frm.ShowDialog();
+        }
+
+        private void btnVisorReporteExamen_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+
+            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+
+            ServiceList _DataService = new ServiceBL().GetServiceReport(_serviceId);
+
+
+            PacientList filiationData = new PacientBL().GetPacientReportEPS(_serviceId);
+
+            idPerson = new AtencionesIntegralesBL().GetService(_serviceId);
+            PacientId = idPerson.v_PersonId.ToString();
+
+            frmManagementReports frmManagmentReport = new frmManagementReports();
+            DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
+
+            List<ServiceComponentList> serviceComponents = new ServiceBL().GetServiceComponentsReport(_serviceId);
+
+            var arrComponentId = _componentId.Split('|');
+            #region audiometria
+            if (arrComponentId.Contains(Constants.AUDIOMETRIA_ID)
+                || arrComponentId.Contains("N009-ME000000337")
+                || arrComponentId.Contains(Constants.AUDIO_COIMOLACHE))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList audiometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIOMETRIA_ID);
+                ServiceComponentList cuestionarioEspCoimolache = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000337");
+                ServiceComponentList audioCoimolache = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.AUDIO_COIMOLACHE);
+
+                if (audiometria != null)
+                {
+                    //    componentIds.Add(Constants.AUDIOMETRIA_ID);
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.AUDIOMETRIA_ID + "|40");
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.AUDIOMETRIA_ID);
+                    }
+                }
+                if (cuestionarioEspCoimolache != null)
+                {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000591")
+                    //{
+                    componentIds.Add("N009-ME000000337");
+                    //}
+                }
+                if (audioCoimolache != null)
+                {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000590")
+                    //{
+                    componentIds.Add(Constants.AUDIO_COIMOLACHE);
+                    //}
+                }
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region cardiologia
+            else if (arrComponentId.Contains(Constants.APENDICE_ID)//cardiologia
+                    || arrComponentId.Contains(Constants.ELECTROCARDIOGRAMA_ID)
+                    || arrComponentId.Contains(Constants.ELECTRO_GOLD)
+                    || arrComponentId.Contains(Constants.PRUEBA_ESFUERZO_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList apendice = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_ID);
+                ServiceComponentList electrocardiograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROCARDIOGRAMA_ID);
+                ServiceComponentList electroGold = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTRO_GOLD);
+                ServiceComponentList pruebaEsfuerzo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PRUEBA_ESFUERZO_ID);
+
+                if (apendice != null)
+                {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    //{
+                    componentIds.Add(Constants.APENDICE_ID + "|43");
+                    //}
+                }
+                if (electrocardiograma != null)
+                {
+                    componentIds.Add(Constants.ELECTROCARDIOGRAMA_ID);
+                }
+                if (electroGold != null)
+                {
+                    //if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000590"
+                    //    || filiationData.EmpresaClienteId == "N009-OO000000591")
+                    //{
+                    componentIds.Add(Constants.ELECTRO_GOLD);
+                    //}
+                }
+                if (pruebaEsfuerzo != null)
+                {
+                    componentIds.Add(Constants.PRUEBA_ESFUERZO_ID);
+                }
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region espirometria
+            else if (arrComponentId.Contains(Constants.ESPIROMETRIA_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList espirometria = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ESPIROMETRIA_ID);
+
+                if (espirometria != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.ESPIROMETRIA_ID + "|35");
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000589"
+                        || filiationData.EmpresaClienteId == "N009-OO000000590"
+                        || filiationData.EmpresaClienteId == "N002-OO000003575")
+                    {
+                        componentIds.Add(Constants.ESPIROMETRIA_ID + "|54");
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000591")
+                    {
+                        componentIds.Add(Constants.ESPIROMETRIA_ID + "|58");
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.INFORME_ESPIROMETRIA + "|46");
+                    }
+                }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region laboratorio
+            else if (arrComponentId.Contains(Constants.INFORME_LABORATORIO_ID)//laboratorio
+                    || arrComponentId.Contains(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList informeLab = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_LABORATORIO_ID);
+                ServiceComponentList toxCocaMarihuana = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
+
+                if (informeLab != null)
+                {
+                    componentIds.Add(Constants.INFORME_LABORATORIO_CLINICO);
+                }
+                if (toxCocaMarihuana != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID + "|48");
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000589")
+                    {
+                        componentIds.Add(Constants.TOXICOLOGICO_COCAINA_MARIHUANA_ID);
+                    }
+                }
+
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region medicina
+            else if (arrComponentId.Contains(Constants.EXAMEN_FISICO_7C_ID)//medicina
+                    || arrComponentId.Contains(Constants.EXAMEN_FISICO_ID)
+                    || arrComponentId.Contains(Constants.ATENCION_INTEGRAL_ID)
+                    || arrComponentId.Contains(Constants.C_N_ID)//cuestionario nordico
+                    || arrComponentId.Contains(Constants.FICHA_SAS_ID)
+                    || arrComponentId.Contains(Constants.EVA_ERGONOMICA_ID)
+                    || arrComponentId.Contains(Constants.EVA_NEUROLOGICA_ID)
+                    || arrComponentId.Contains(Constants.ALTURA_7D_ID)
+                    || arrComponentId.Contains(Constants.ALTURA_ESTRUCTURAL_ID)
+                    || arrComponentId.Contains(Constants.EXAMEN_SUF_MED__OPERADORES_ID)
+                    || arrComponentId.Contains(Constants.OSTEO_MUSCULAR_ID_1)
+                    || arrComponentId.Contains(Constants.FOTO_TIPO_ID)
+                    || arrComponentId.Contains(Constants.OSTEO_COIMO)
+                    || arrComponentId.Contains(Constants.SINTOMATICO_ID)
+                    || arrComponentId.Contains(Constants.FICHA_SUFICIENCIA_MEDICA_ID)
+                    || arrComponentId.Contains(Constants.TAMIZAJE_DERMATOLOGIO_ID)
+                    || arrComponentId.Contains(Constants.TEST_VERTIGO_ID)
+                    || arrComponentId.Contains(Constants.EVA_OSTEO_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList anexo16 = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_FISICO_7C_ID);
+                ServiceComponentList anexo312 = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ID);
+                ServiceComponentList atencionIntegral = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ATENCION_INTEGRAL_ID);
+                ServiceComponentList cuestionarioNordico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.C_N_ID);
+                ServiceComponentList sas = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SAS_ID);
+                ServiceComponentList evaluacionErgonomica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_ERGONOMICA_ID);
+                ServiceComponentList evaluacionNeurologica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_NEUROLOGICA_ID);
+                ServiceComponentList alturageografica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALTURA_7D_ID);
+                ServiceComponentList alturaestructural = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ALTURA_ESTRUCTURAL_ID);
+                ServiceComponentList suficienciamedica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_SUF_MED__OPERADORES_ID);
+                ServiceComponentList osteoMuscular = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_MUSCULAR_ID_1);
+                ServiceComponentList fotoTipo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FOTO_TIPO_ID);
+                ServiceComponentList osteoCoimo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OSTEO_COIMO);
+                ServiceComponentList sintomatico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SINTOMATICO_ID);
+                ServiceComponentList fichaSufcMedica = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_SUFICIENCIA_MEDICA_ID);
+                ServiceComponentList TamizajeDermat = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TAMIZAJE_DERMATOLOGIO_ID);
+                ServiceComponentList testVertigo = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.TEST_VERTIGO_ID);
+                ServiceComponentList evaluacionOsteomuscular = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EVA_OSTEO_ID);
+
+                if (anexo16 != null)
+                {
+                    //componentIds.Add(Constants.EXAMEN_FISICO_7C_ID);
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_16_YANACOCHA);
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000589")
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_16_GOLD_FIELD);
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000591")
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_16_SHAHUINDO);
+                    }
+                    else if (filiationData.EmpresaClienteId == "N009-OO000000590" || filiationData.EmpresaClienteId == "N002-OO000003575")
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_16_COIMOLACHE);
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.INFORME_ANEXO_7C);
+                    }
+                }
+                if (anexo312 != null)
+                {
+                    componentIds.Add(Constants.EXAMEN_FISICO_ID);
+                }
+                if (atencionIntegral != null)
+                {
+                    componentIds.Add(Constants.ATENCION_INTEGRAL_ID);
+                }
+                if (cuestionarioNordico != null)
+                {
+                    componentIds.Add(Constants.C_N_ID);
+                }
+                if (sas != null)
+                {
+                    componentIds.Add(Constants.FICHA_SAS_ID);
+                }
+                if (evaluacionErgonomica != null)
+                {
+                    componentIds.Add(Constants.EVA_ERGONOMICA_ID);
+                }
+                if (evaluacionNeurologica != null)
+                {
+                    componentIds.Add(Constants.EVA_NEUROLOGICA_ID);
+                }
+                if (alturageografica != null)
+                {
+                    componentIds.Add(Constants.ALTURA_7D_ID);
+                }
+                if (alturaestructural != null)
+                {
+                    componentIds.Add(Constants.ALTURA_ESTRUCTURAL_ID);
+                }
+                if (suficienciamedica != null)
+                {
+                    componentIds.Add(Constants.EXAMEN_SUF_MED__OPERADORES_ID);
+                }
+                if (osteoMuscular != null)
+                {
+                    componentIds.Add(Constants.OSTEO_MUSCULAR_ID_1);
+                }
+                if (fotoTipo != null)
+                {
+                    componentIds.Add(Constants.FOTO_TIPO_ID);
+                }
+                if (osteoCoimo != null)
+                {
+                    componentIds.Add(Constants.OSTEO_COIMO);
+                }
+                if (sintomatico != null)
+                {
+                    componentIds.Add(Constants.SINTOMATICO_ID);
+                }
+                if (fichaSufcMedica != null)
+                {
+                    componentIds.Add(Constants.FICHA_SUFICIENCIA_MEDICA_ID);
+                }
+                if (TamizajeDermat != null)
+                {
+                    componentIds.Add(Constants.TAMIZAJE_DERMATOLOGIO_ID);
+                }
+                if (testVertigo != null)
+                {
+                    componentIds.Add(Constants.TEST_VERTIGO_ID);
+                }
+                if (evaluacionOsteomuscular != null)
+                {
+                    componentIds.Add(Constants.EVA_OSTEO_ID);
+                }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region odontologia
+            else if (arrComponentId.Contains(Constants.ODONTOGRAMA_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList odontograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ODONTOGRAMA_ID);
+
+                if (odontograma != null)
+                {
+                    componentIds.Add(Constants.ODONTOGRAMA_ID);
+                }
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region oftalmologia
+            else if (arrComponentId.Contains(Constants.OFTALMOLOGIA_ID)//oftalmologia
+                    || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID)
+                    || arrComponentId.Contains(Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID)
+                    || arrComponentId.Contains(Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID)
+                    || arrComponentId.Contains(Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID)
+                    || arrComponentId.Contains(Constants.PETRINOVIC_ID)
+                    || arrComponentId.Contains(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)
+                    || arrComponentId.Contains("N009-ME000000437"))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList agudezavisual = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OFTALMOLOGIA_ID);
+                ServiceComponentList oftsimple = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+                ServiceComponentList oftcompleto = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
+                ServiceComponentList oftYanacocha = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
+                ServiceComponentList oftHudbay = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+                ServiceComponentList petrinovic = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PETRINOVIC_ID);
+                ServiceComponentList certificadoPsico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
+                ServiceComponentList oftalmoPsico = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000437");
+
+                if (agudezavisual != null)
+                {
+                    componentIds.Add(Constants.OFTALMOLOGIA_ID);
+                }
+                if (oftsimple != null)
+                {
+                    componentIds.Add(Constants.EXAMEN_OFTALMOLOGICO_SIMPLE_ID);
+                }
+                if (oftcompleto != null)
+                {
+                    componentIds.Add(Constants.EXAMEN_OFTALMOLOGICO_COMPLETO_ID);
+                }
+                if (oftYanacocha != null)
+                {
+                    componentIds.Add(Constants.APENDICE_N_2_EVALUACION_OFTALMOLOGICA_YANACOCHA_ID);
+                }
+                if (oftHudbay != null)
+                {
+                    componentIds.Add(Constants.INFORME_OFTALMOLOGICO_HUDBAY_ID);
+                }
+                if (petrinovic != null)
+                {
+                    componentIds.Add(Constants.PETRINOVIC_ID);
+                }
+                if (certificadoPsico != null)
+                {
+                    componentIds.Add(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID);
+                }
+                if (oftalmoPsico != null)
+                {
+                    componentIds.Add("N009-ME000000437");
+                }
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region psicologia
+            else if (arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
+                    || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
+                    || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
+                    || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
+                    || arrComponentId.Contains(Constants.SOMNOLENCIA_ID))
+            {
+                List<string> componentIds = new List<string>();
+
+                ServiceComponentList psico = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.PSICOLOGIA_ID);
+                ServiceComponentList psicoHist = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+                ServiceComponentList psicoGoldHis = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+                ServiceComponentList psicoGolFich = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+                ServiceComponentList somnolencia = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.SOMNOLENCIA_ID);
+
+
+                if (psico != null)
+                {
+                    componentIds.Add(Constants.PSICOLOGIA_ID);
+                }
+                if (psicoHist != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID + "|42");
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID);
+                    }
+                }
+                if (psicoGoldHis != null)
+                {
+                    componentIds.Add(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS);
+                }
+                if (psicoGolFich != null)
+                {
+                    componentIds.Add(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS);
+                }
+                if (somnolencia != null)
+                {
+                    componentIds.Add(Constants.SOMNOLENCIA_ID);
+                }
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region rayosx
+            else if (arrComponentId.Contains(Constants.OIT_ID)//rayos x
+                    || arrComponentId.Contains(Constants.RX_TORAX_ID)
+                    || arrComponentId.Contains(Constants.EXCEPCIONES_RX_ID)
+                    || arrComponentId.Contains(Constants.EXCEPCIONES_RX_AUTORIZACION_ID))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList oit = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.OIT_ID);
+                ServiceComponentList torax = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.RX_TORAX_ID);
+                ServiceComponentList excepciones = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_ID);
+                ServiceComponentList autorizacion = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+
+                if (oit != null)
+                {
+                    if (filiationData.EmpresaClienteId == "N009-OO000000587")
+                    {
+                        componentIds.Add(Constants.OIT_ID + "|45");
+                    }
+                    else
+                    {
+                        componentIds.Add(Constants.OIT_ID);
+                    }
+                }
+                if (torax != null)
+                {
+                    componentIds.Add(Constants.RX_TORAX_ID);
+                }
+                //if (excepciones != null)
+                //{
+                //    componentIds.Add(Constants.EXCEPCIONES_RX_ID);
+                //}
+                //if (autorizacion != null)
+                //{
+                //    componentIds.Add(Constants.EXCEPCIONES_RX_AUTORIZACION_ID);
+                //}
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+            #region lumbar
+            else if (arrComponentId.Contains(Constants.LUMBOSACRA_ID)
+                    || arrComponentId.Contains(Constants.ELECTROENCEFALOGRAMA_ID)
+                    || arrComponentId.Contains("N009-ME000000302"))
+            {
+                List<string> componentIds = new List<string>();
+                ServiceComponentList lumbosacra = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.LUMBOSACRA_ID);
+                ServiceComponentList electroencefalograma = serviceComponents.Find(p => p.v_ComponentId == Sigesoft.Common.Constants.ELECTROENCEFALOGRAMA_ID);
+                ServiceComponentList columnaCervicoDorso = serviceComponents.Find(p => p.v_ComponentId == "N009-ME000000302");
+
+                if (lumbosacra != null)
+                {
+                    componentIds.Add(Constants.LUMBOSACRA_ID);
+                }
+                if (electroencefalograma != null)
+                {
+                    componentIds.Add(Constants.ELECTROENCEFALOGRAMA_ID);
+                }
+
+                if (columnaCervicoDorso != null)
+                {
+                    componentIds.Add("N009-ME000000302");
+                }
+
+                frmManagmentReport.reportSolo(componentIds, PacientId, _serviceId);
+            }
+            #endregion
+        }
+
+        private void btn7C_Click(object sender, EventArgs e)
+        {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                // Elegir la ruta para guardar el PDF combinado
+                //saveFileDialog1.FileName = string.Format("{0} Ficha Médica 7 C", _personName);
+
+                //saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
+
+                //GenerateAnexo7C(saveFileDialog1.FileName);
+
+                //RunFile(saveFileDialog1.FileName);
+                return;
+            }
+        }
+
+        private void btn312_Click(object sender, EventArgs e)
+        {
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                // Elegir la ruta para guardar el PDF combinado
+                //saveFileDialog1.FileName = string.Format("{0} Ficha Médica", _personName);
+
+                //saveFileDialog1.Filter = "Files (*.pdf;)|*.pdf;";
+
+                //GenerateAnexo312(saveFileDialog1.FileName);
+
+                //RunFile(saveFileDialog1.FileName);
+                return;
+            }
+        }
+
+        private void btnInterConsulta_Click(object sender, EventArgs e)
+        {
+            frmInterconsulta frm = new frmInterconsulta(_serviceId);
+            frm.ShowDialog();
+        }
+
+        private void btnSubirInterconsulta_Click(object sender, EventArgs e)
+        {
+            frmSubirInterconsulta frm = new frmSubirInterconsulta(_serviceId, _personName);
+            frm.ShowDialog();
+        }
+
+        private void btnCertificadoAptitud_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+
+            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+
+            ServiceList _DataService = new ServiceBL().GetServiceReport(_serviceId);
+
+
+            PacientList filiationData = new PacientBL().GetPacientReportEPS(_serviceId);
+
+            idPerson = new AtencionesIntegralesBL().GetService(_serviceId);
+            PacientId = idPerson.v_PersonId.ToString();
+
+            frmManagementReports frmManagmentReport = new frmManagementReports();
+            DiskFileDestinationOptions objDiskOpt = new DiskFileDestinationOptions();
+
+            List<ServiceComponentList> serviceComponents = new ServiceBL().GetServiceComponentsReport(_serviceId);
+
+            var arrComponentId = _componentId.Split('|');
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                Form frm = null;
+
+                frm = new Reports.frmOccupationalMedicalAptitudeCertificate(_serviceId);
+                frm.ShowDialog();
+            }
+        }
+
+        //private void btnAceptarDX_Click_1(object sender, EventArgs e)
+        //{
+
+        //}
              
     }
 }
