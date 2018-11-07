@@ -29,7 +29,37 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn71 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn72 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn73 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecommendationId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn74 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn75 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn76 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordStatus");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn77 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordType");
+            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_ItemId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionByDiagnosticId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RestrictionId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
@@ -53,37 +83,34 @@
             Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance21 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance22 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_ItemId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionByDiagnosticId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RestrictionId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
-            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
-            Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn71 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn72 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn73 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecommendationId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn74 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn75 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn76 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordStatus");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn77 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordType");
-            Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Item");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionByDiagnosticId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RestrictionId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecommendationId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordStatus");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordType");
+            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance37 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand6 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
@@ -109,34 +136,6 @@
             Infragistics.Win.Appearance appearance41 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance42 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance43 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance30 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand5 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecommendationId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordStatus");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordType");
-            Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance32 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance33 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance34 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance35 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance36 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance23 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Item");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionByDiagnosticId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RestrictionId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionName");
-            Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance27 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance28 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance29 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance44 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand7 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
@@ -156,18 +155,6 @@
             Infragistics.Win.Appearance appearance48 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance49 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance50 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance58 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand9 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn94 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn95 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_MasterServiceName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn96 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn97 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseaseName");
-            Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance51 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand8 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn90 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_AntecedentTypeName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
@@ -180,6 +167,19 @@
             Infragistics.Win.Appearance appearance55 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance56 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance57 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance58 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand9 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn94 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn95 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_MasterServiceName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn96 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_ServiceDate");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn97 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiseaseName");
+            Infragistics.Win.Appearance appearance59 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance60 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance61 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             this.lblTrabajador = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblProtocolName = new System.Windows.Forms.Label();
@@ -192,9 +192,7 @@
             this.uvAnamnesis = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TsmverMas = new System.Windows.Forms.ToolStripMenuItem();
-            this.lblUsuAct = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.lblUsuGraba = new System.Windows.Forms.Label();
             this.lblFechaGraba = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -204,176 +202,187 @@
             this.bgwSaveExamen = new System.ComponentModel.BackgroundWorker();
             this.btnCerrarESO = new System.Windows.Forms.Button();
             this.tpConclusion = new System.Windows.Forms.TabPage();
-            this.btnGuardarConclusiones = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.lbl3333 = new System.Windows.Forms.Label();
-            this.lbl4553 = new System.Windows.Forms.Label();
-            this.lblFecVctoObs = new System.Windows.Forms.Label();
-            this.cbAptitudEso = new System.Windows.Forms.ComboBox();
-            this.gbConclusionesDiagnosticas = new System.Windows.Forms.GroupBox();
-            this.lblRecordCountConclusionesDiagnosticas = new System.Windows.Forms.Label();
-            this.grdConclusionesDiagnosticas = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.dptDateGlobalExp = new System.Windows.Forms.DateTimePicker();
-            this.gbRestricciones_Conclusiones = new System.Windows.Forms.GroupBox();
-            this.btnRemoverRestricciones_ConclusionesTratamiento = new System.Windows.Forms.Button();
-            this.btnAgregarRestriccion_ConclusionesTratamiento = new System.Windows.Forms.Button();
-            this.lblRecordCountRestricciones_Conclusiones = new System.Windows.Forms.Label();
-            this.grdRestricciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.gbRecomendaciones_Conclusiones = new System.Windows.Forms.GroupBox();
-            this.btnRemoverRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
-            this.btnAgregarRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
-            this.lblRecordCountRecomendaciones_Conclusiones = new System.Windows.Forms.Label();
-            this.grdRecomendaciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.chkUtilizaFirmaAptitud = new System.Windows.Forms.CheckBox();
-            this.txtComentarioAptitud = new System.Windows.Forms.TextBox();
-            this.txtFecVctoGlobal = new System.Windows.Forms.TextBox();
-            this.label34 = new System.Windows.Forms.Label();
-            this.chkinterconsulta = new System.Windows.Forms.CheckBox();
             this.dtpFecVctoGlobal = new System.Windows.Forms.DateTimePicker();
+            this.chkinterconsulta = new System.Windows.Forms.CheckBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.txtFecVctoGlobal = new System.Windows.Forms.TextBox();
+            this.txtComentarioAptitud = new System.Windows.Forms.TextBox();
+            this.chkUtilizaFirmaAptitud = new System.Windows.Forms.CheckBox();
+            this.gbRecomendaciones_Conclusiones = new System.Windows.Forms.GroupBox();
+            this.grdRecomendaciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.lblRecordCountRecomendaciones_Conclusiones = new System.Windows.Forms.Label();
+            this.btnAgregarRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
+            this.btnRemoverRecomendaciones_Conclusiones = new System.Windows.Forms.Button();
+            this.gbRestricciones_Conclusiones = new System.Windows.Forms.GroupBox();
+            this.grdRestricciones_Conclusiones = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.lblRecordCountRestricciones_Conclusiones = new System.Windows.Forms.Label();
+            this.btnAgregarRestriccion_ConclusionesTratamiento = new System.Windows.Forms.Button();
+            this.btnRemoverRestricciones_ConclusionesTratamiento = new System.Windows.Forms.Button();
+            this.gbConclusionesDiagnosticas = new System.Windows.Forms.GroupBox();
+            this.dptDateGlobalExp = new System.Windows.Forms.DateTimePicker();
+            this.grdConclusionesDiagnosticas = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.lblRecordCountConclusionesDiagnosticas = new System.Windows.Forms.Label();
+            this.cbAptitudEso = new System.Windows.Forms.ComboBox();
+            this.lblFecVctoObs = new System.Windows.Forms.Label();
+            this.lbl4553 = new System.Windows.Forms.Label();
+            this.lbl3333 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.btnGuardarConclusiones = new System.Windows.Forms.Button();
             this.tpAnalisisDx = new System.Windows.Forms.TabPage();
-            this.btnAceptarDX = new System.Windows.Forms.Button();
-            this.gbTotalDiagnostico = new System.Windows.Forms.GroupBox();
-            this.lblRecordCountTotalDiagnosticos = new System.Windows.Forms.Label();
-            this.btnRefrescarTotalDiagnostico = new System.Windows.Forms.Button();
-            this.btnAgregarTotalDiagnostico = new System.Windows.Forms.Button();
-            this.btnRemoverTotalDiagnostico = new System.Windows.Forms.Button();
-            this.grdTotalDiagnosticos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.gbEdicionDiagnosticoTotal = new System.Windows.Forms.GroupBox();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.cbCalificacionFinal = new System.Windows.Forms.ComboBox();
-            this.lblDiagnostico = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.cbTipoDx = new System.Windows.Forms.ComboBox();
-            this.label32 = new System.Windows.Forms.Label();
-            this.cbEnviarAntecedentes = new System.Windows.Forms.ComboBox();
-            this.label33 = new System.Windows.Forms.Label();
-            this.dtpFechaVcto = new System.Windows.Forms.DateTimePicker();
-            this.label15 = new System.Windows.Forms.Label();
-            this.btnAgregarDX = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblRecordCountRecomendaciones_AnalisisDx = new System.Windows.Forms.Label();
-            this.btnAgregarRecomendaciones_AnalisisDx = new System.Windows.Forms.Button();
-            this.btnRemoverRecomendacion_AnalisisDx = new System.Windows.Forms.Button();
-            this.grdRecomendaciones_AnalisisDiagnostico = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lblRecordCountRestricciones_AnalisisDx = new System.Windows.Forms.Label();
-            this.btnAgregarRestriccion_Analisis = new System.Windows.Forms.Button();
-            this.btnRemoverRestriccion_Analisis = new System.Windows.Forms.Button();
-            this.grdRestricciones_AnalisisDiagnostico = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.chkUtilizaFirmaControlAuditoria = new System.Windows.Forms.CheckBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.grdRestricciones_AnalisisDiagnostico = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnRemoverRestriccion_Analisis = new System.Windows.Forms.Button();
+            this.btnAgregarRestriccion_Analisis = new System.Windows.Forms.Button();
+            this.lblRecordCountRestricciones_AnalisisDx = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grdRecomendaciones_AnalisisDiagnostico = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnRemoverRecomendacion_AnalisisDx = new System.Windows.Forms.Button();
+            this.btnAgregarRecomendaciones_AnalisisDx = new System.Windows.Forms.Button();
+            this.lblRecordCountRecomendaciones_AnalisisDx = new System.Windows.Forms.Label();
+            this.btnAgregarDX = new System.Windows.Forms.Button();
+            this.label15 = new System.Windows.Forms.Label();
+            this.dtpFechaVcto = new System.Windows.Forms.DateTimePicker();
+            this.label33 = new System.Windows.Forms.Label();
+            this.cbEnviarAntecedentes = new System.Windows.Forms.ComboBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.cbTipoDx = new System.Windows.Forms.ComboBox();
+            this.label31 = new System.Windows.Forms.Label();
+            this.lblDiagnostico = new System.Windows.Forms.Label();
+            this.cbCalificacionFinal = new System.Windows.Forms.ComboBox();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.gbTotalDiagnostico = new System.Windows.Forms.GroupBox();
+            this.grdTotalDiagnosticos = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnRemoverTotalDiagnostico = new System.Windows.Forms.Button();
+            this.btnAgregarTotalDiagnostico = new System.Windows.Forms.Button();
+            this.btnRefrescarTotalDiagnostico = new System.Windows.Forms.Button();
+            this.lblRecordCountTotalDiagnosticos = new System.Windows.Forms.Label();
             this.tpExam = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.gbDiagnosticoExamen = new System.Windows.Forms.GroupBox();
-            this.lblRecordCountDiagnosticoPorExamenCom = new System.Windows.Forms.Label();
-            this.btnAgregarDxExamen = new System.Windows.Forms.Button();
-            this.btnEditarDxExamen = new System.Windows.Forms.Button();
-            this.btnRemoverDxExamen = new System.Windows.Forms.Button();
-            this.grdDiagnosticoPorExamenComponente = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.txtComentario = new System.Windows.Forms.TextBox();
-            this.cbTipoProcedenciaExamen = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.EXAMENES_lblComentarios = new System.Windows.Forms.Label();
-            this.cbEstadoComponente = new System.Windows.Forms.ComboBox();
-            this.chkApproved = new System.Windows.Forms.CheckBox();
-            this.EXAMENES_lblEstadoComponente = new System.Windows.Forms.Label();
-            this.chkUtilizarFirma = new System.Windows.Forms.CheckBox();
-            this.btnGuardarExamen = new System.Windows.Forms.Button();
             this.tcExamList = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnVisorReporteExamen = new System.Windows.Forms.Button();
+            this.btnReceta = new System.Windows.Forms.Button();
+            this.btnPerson = new System.Windows.Forms.Button();
+            this.btnGuardarExamen = new System.Windows.Forms.Button();
+            this.chkUtilizarFirma = new System.Windows.Forms.CheckBox();
+            this.EXAMENES_lblEstadoComponente = new System.Windows.Forms.Label();
+            this.chkApproved = new System.Windows.Forms.CheckBox();
+            this.cbEstadoComponente = new System.Windows.Forms.ComboBox();
+            this.EXAMENES_lblComentarios = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.cbTipoProcedenciaExamen = new System.Windows.Forms.ComboBox();
+            this.txtComentario = new System.Windows.Forms.TextBox();
+            this.gbDiagnosticoExamen = new System.Windows.Forms.GroupBox();
+            this.grdDiagnosticoPorExamenComponente = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnRemoverDxExamen = new System.Windows.Forms.Button();
+            this.btnEditarDxExamen = new System.Windows.Forms.Button();
+            this.btnAgregarDxExamen = new System.Windows.Forms.Button();
+            this.lblRecordCountDiagnosticoPorExamenCom = new System.Windows.Forms.Label();
             this.General = new System.Windows.Forms.TabPage();
-            this.btnGuardarAnamnesis = new System.Windows.Forms.Button();
-            this.gbSintomasySignos = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtValorTiempoEnfermedad = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtRelato = new System.Windows.Forms.TextBox();
-            this.cbCalendario = new System.Windows.Forms.ComboBox();
-            this.txtSintomaPrincipal = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.chkPresentaSisntomas = new System.Windows.Forms.CheckBox();
-            this.gbFuncionesBiologicas = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.cbSueño = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbOrina = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbDeposiciones = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbApetito = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtHallazgos = new System.Windows.Forms.TextBox();
-            this.cbSed = new System.Windows.Forms.ComboBox();
-            this.gbAntGinecologicos = new System.Windows.Forms.GroupBox();
-            this.txtRegimenCatamenial = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.cbMac = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.dtpFur = new System.Windows.Forms.DateTimePicker();
-            this.txtCiruGine = new System.Windows.Forms.TextBox();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.dtpPAP = new System.Windows.Forms.DateTimePicker();
-            this.txtMenarquia = new System.Windows.Forms.TextBox();
-            this.txtGestapara = new System.Windows.Forms.TextBox();
-            this.dtpMamografia = new System.Windows.Forms.DateTimePicker();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.gbServiciosAnteriores = new System.Windows.Forms.GroupBox();
-            this.btnVerServicioAnterior = new System.Windows.Forms.Button();
-            this.grdServiciosAnteriores = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.gbAntecedentes = new System.Windows.Forms.GroupBox();
-            this.btnVerEditarAntecedentes = new System.Windows.Forms.Button();
-            this.grdAntecedentes = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.button1 = new System.Windows.Forms.Button();
+            this.grdAntecedentes = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnVerEditarAntecedentes = new System.Windows.Forms.Button();
+            this.gbServiciosAnteriores = new System.Windows.Forms.GroupBox();
+            this.btnServicioAnterior = new System.Windows.Forms.Button();
+            this.grdServiciosAnteriores = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnVerServicioAnterior = new System.Windows.Forms.Button();
+            this.gbAntGinecologicos = new System.Windows.Forms.GroupBox();
+            this.dtpMamografia = new System.Windows.Forms.DateTimePicker();
+            this.txtGestapara = new System.Windows.Forms.TextBox();
+            this.txtMenarquia = new System.Windows.Forms.TextBox();
+            this.dtpPAP = new System.Windows.Forms.DateTimePicker();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.txtCiruGine = new System.Windows.Forms.TextBox();
+            this.dtpFur = new System.Windows.Forms.DateTimePicker();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cbMac = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtRegimenCatamenial = new System.Windows.Forms.TextBox();
+            this.gbFuncionesBiologicas = new System.Windows.Forms.GroupBox();
+            this.cbSed = new System.Windows.Forms.ComboBox();
+            this.txtHallazgos = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.cbApetito = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbDeposiciones = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbOrina = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbSueño = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.gbSintomasySignos = new System.Windows.Forms.GroupBox();
+            this.chkPresentaSisntomas = new System.Windows.Forms.CheckBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtSintomaPrincipal = new System.Windows.Forms.TextBox();
+            this.cbCalendario = new System.Windows.Forms.ComboBox();
+            this.txtRelato = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtValorTiempoEnfermedad = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnGuardarAnamnesis = new System.Windows.Forms.Button();
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.lblUsuAct = new System.Windows.Forms.Label();
+            this.lblUsuGraba = new System.Windows.Forms.Label();
+            this.btnAceptarDX = new System.Windows.Forms.Button();
+            this.btnInterConsulta = new System.Windows.Forms.Button();
+            this.btnSubirInterconsulta = new System.Windows.Forms.Button();
+            this.btnCertificadoAptitud = new System.Windows.Forms.Button();
+            this.btn312 = new System.Windows.Forms.Button();
+            this.btn7C = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnalisisDx)).BeginInit();
             this.tpConclusion.SuspendLayout();
-            this.gbConclusionesDiagnosticas.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdConclusionesDiagnosticas)).BeginInit();
-            this.gbRestricciones_Conclusiones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_Conclusiones)).BeginInit();
             this.gbRecomendaciones_Conclusiones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).BeginInit();
+            this.gbRestricciones_Conclusiones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_Conclusiones)).BeginInit();
+            this.gbConclusionesDiagnosticas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdConclusionesDiagnosticas)).BeginInit();
             this.tpAnalisisDx.SuspendLayout();
-            this.gbTotalDiagnostico.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdTotalDiagnosticos)).BeginInit();
             this.gbEdicionDiagnosticoTotal.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_AnalisisDiagnostico)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_AnalisisDiagnostico)).BeginInit();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_AnalisisDiagnostico)).BeginInit();
+            this.gbTotalDiagnostico.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdTotalDiagnosticos)).BeginInit();
             this.tpExam.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.gbDiagnosticoExamen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdDiagnosticoPorExamenComponente)).BeginInit();
-            this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcExamList)).BeginInit();
             this.tcExamList.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.gbDiagnosticoExamen.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdDiagnosticoPorExamenComponente)).BeginInit();
             this.General.SuspendLayout();
-            this.gbSintomasySignos.SuspendLayout();
-            this.gbFuncionesBiologicas.SuspendLayout();
-            this.gbAntGinecologicos.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.gbServiciosAnteriores.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdServiciosAnteriores)).BeginInit();
             this.gbAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdAntecedentes)).BeginInit();
+            this.gbServiciosAnteriores.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdServiciosAnteriores)).BeginInit();
+            this.gbAntGinecologicos.SuspendLayout();
+            this.gbFuncionesBiologicas.SuspendLayout();
+            this.gbSintomasySignos.SuspendLayout();
             this.tcSubMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -383,7 +392,7 @@
             this.lblTrabajador.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblTrabajador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrabajador.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTrabajador.Location = new System.Drawing.Point(300, 712);
+            this.lblTrabajador.Location = new System.Drawing.Point(300, 666);
             this.lblTrabajador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTrabajador.Name = "lblTrabajador";
             this.lblTrabajador.Size = new System.Drawing.Size(237, 15);
@@ -396,7 +405,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(228, 712);
+            this.label1.Location = new System.Drawing.Point(228, 666);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 13);
@@ -410,7 +419,7 @@
             this.lblProtocolName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblProtocolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblProtocolName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblProtocolName.Location = new System.Drawing.Point(300, 736);
+            this.lblProtocolName.Location = new System.Drawing.Point(300, 690);
             this.lblProtocolName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblProtocolName.Name = "lblProtocolName";
             this.lblProtocolName.Size = new System.Drawing.Size(268, 15);
@@ -423,7 +432,7 @@
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(228, 737);
+            this.label16.Location = new System.Drawing.Point(228, 691);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(65, 13);
@@ -437,7 +446,7 @@
             this.lblView.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.lblView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblView.ForeColor = System.Drawing.Color.Blue;
-            this.lblView.Location = new System.Drawing.Point(789, 712);
+            this.lblView.Location = new System.Drawing.Point(795, 679);
             this.lblView.Name = "lblView";
             this.lblView.Size = new System.Drawing.Size(67, 13);
             this.lblView.TabIndex = 65;
@@ -446,14 +455,14 @@
             // 
             // uvExamen
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance1.BackColor2 = System.Drawing.Color.Transparent;
-            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance1.BorderColor = System.Drawing.Color.Red;
-            appearance1.BorderColor2 = System.Drawing.Color.Red;
-            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance1;
+            appearance68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance68.BackColor2 = System.Drawing.Color.Transparent;
+            appearance68.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance68.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance68.BorderColor = System.Drawing.Color.Red;
+            appearance68.BorderColor2 = System.Drawing.Color.Red;
+            appearance68.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance68;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -461,7 +470,6 @@
             // 
             // btnViewWorker
             // 
-            this.btnViewWorker.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnViewWorker.BackColor = System.Drawing.SystemColors.Control;
             this.btnViewWorker.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnViewWorker.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -469,7 +477,7 @@
             this.btnViewWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnViewWorker.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_suit;
             this.btnViewWorker.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewWorker.Location = new System.Drawing.Point(541, 708);
+            this.btnViewWorker.Location = new System.Drawing.Point(541, 663);
             this.btnViewWorker.Margin = new System.Windows.Forms.Padding(2);
             this.btnViewWorker.Name = "btnViewWorker";
             this.btnViewWorker.Size = new System.Drawing.Size(28, 23);
@@ -482,14 +490,14 @@
             // 
             this.statusStripFooter.AutoSize = false;
             this.statusStripFooter.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.statusStripFooter.Location = new System.Drawing.Point(0, 705);
+            this.statusStripFooter.Location = new System.Drawing.Point(0, 660);
             this.statusStripFooter.Name = "statusStripFooter";
-            this.statusStripFooter.Size = new System.Drawing.Size(1300, 55);
+            this.statusStripFooter.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStripFooter.Size = new System.Drawing.Size(1300, 51);
             this.statusStripFooter.TabIndex = 5;
             // 
             // btnSalir
             // 
-            this.btnSalir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnSalir.BackColor = System.Drawing.SystemColors.Control;
             this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -499,7 +507,7 @@
             this.btnSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(1118, 725);
+            this.btnSalir.Location = new System.Drawing.Point(1111, 672);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(161, 24);
@@ -523,25 +531,12 @@
             this.TsmverMas.Text = "Ver Mas..";
             this.TsmverMas.Click += new System.EventHandler(this.TsmverMas_Click);
             // 
-            // lblUsuAct
-            // 
-            this.lblUsuAct.AutoSize = true;
-            this.lblUsuAct.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblUsuAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuAct.Location = new System.Drawing.Point(6, 711);
-            this.lblUsuAct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsuAct.Name = "lblUsuAct";
-            this.lblUsuAct.Size = new System.Drawing.Size(92, 13);
-            this.lblUsuAct.TabIndex = 67;
-            this.lblUsuAct.Text = "Usuario Graba:";
-            this.lblUsuAct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(6, 738);
+            this.label17.Location = new System.Drawing.Point(6, 692);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(84, 13);
@@ -549,26 +544,13 @@
             this.label17.Text = "Fecha Graba:";
             this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // lblUsuGraba
-            // 
-            this.lblUsuGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblUsuGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblUsuGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblUsuGraba.Location = new System.Drawing.Point(94, 712);
-            this.lblUsuGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsuGraba.Name = "lblUsuGraba";
-            this.lblUsuGraba.Size = new System.Drawing.Size(130, 15);
-            this.lblUsuGraba.TabIndex = 69;
-            this.lblUsuGraba.Text = "lblUsuGraba";
-            // 
             // lblFechaGraba
             // 
             this.lblFechaGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.lblFechaGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblFechaGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblFechaGraba.Location = new System.Drawing.Point(94, 736);
+            this.lblFechaGraba.Location = new System.Drawing.Point(94, 690);
             this.lblFechaGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaGraba.Name = "lblFechaGraba";
             this.lblFechaGraba.Size = new System.Drawing.Size(130, 15);
@@ -581,7 +563,7 @@
             this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(645, 735);
+            this.label18.Location = new System.Drawing.Point(645, 689);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(139, 15);
@@ -594,7 +576,7 @@
             this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label20.Location = new System.Drawing.Point(645, 711);
+            this.label20.Location = new System.Drawing.Point(645, 665);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(139, 15);
@@ -606,7 +588,7 @@
             this.label21.AutoSize = true;
             this.label21.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(573, 736);
+            this.label21.Location = new System.Drawing.Point(573, 690);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(57, 13);
@@ -619,7 +601,7 @@
             this.label24.AutoSize = true;
             this.label24.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(573, 711);
+            this.label24.Location = new System.Drawing.Point(573, 665);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(61, 13);
@@ -644,7 +626,7 @@
             this.btnCerrarESO.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCerrarESO.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnCerrarESO.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarESO.Location = new System.Drawing.Point(1262, 5);
+            this.btnCerrarESO.Location = new System.Drawing.Point(170, 6);
             this.btnCerrarESO.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarESO.Name = "btnCerrarESO";
             this.btnCerrarESO.Size = new System.Drawing.Size(27, 24);
@@ -654,12 +636,16 @@
             // 
             // tpConclusion
             // 
+            this.tpConclusion.Controls.Add(this.btn7C);
+            this.tpConclusion.Controls.Add(this.btn312);
+            this.tpConclusion.Controls.Add(this.btnCertificadoAptitud);
+            this.tpConclusion.Controls.Add(this.btnSubirInterconsulta);
+            this.tpConclusion.Controls.Add(this.btnInterConsulta);
+            this.tpConclusion.Controls.Add(this.dptDateGlobalExp);
             this.tpConclusion.Controls.Add(this.dtpFecVctoGlobal);
-            this.tpConclusion.Controls.Add(this.chkinterconsulta);
             this.tpConclusion.Controls.Add(this.label34);
             this.tpConclusion.Controls.Add(this.txtFecVctoGlobal);
             this.tpConclusion.Controls.Add(this.txtComentarioAptitud);
-            this.tpConclusion.Controls.Add(this.chkUtilizaFirmaAptitud);
             this.tpConclusion.Controls.Add(this.gbRecomendaciones_Conclusiones);
             this.tpConclusion.Controls.Add(this.gbRestricciones_Conclusiones);
             this.tpConclusion.Controls.Add(this.gbConclusionesDiagnosticas);
@@ -671,110 +657,413 @@
             this.tpConclusion.Controls.Add(this.btnGuardarConclusiones);
             this.tpConclusion.Location = new System.Drawing.Point(4, 22);
             this.tpConclusion.Name = "tpConclusion";
-            this.tpConclusion.Size = new System.Drawing.Size(1267, 693);
+            this.tpConclusion.Size = new System.Drawing.Size(1292, 685);
             this.tpConclusion.TabIndex = 2;
             this.tpConclusion.Text = "APTITUD";
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
             this.tpConclusion.UseVisualStyleBackColor = true;
             // 
-            // btnGuardarConclusiones
+            // dtpFecVctoGlobal
             // 
-            this.btnGuardarConclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGuardarConclusiones.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGuardarConclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnGuardarConclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnGuardarConclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnGuardarConclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarConclusiones.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
-            this.btnGuardarConclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1101, 637);
-            this.btnGuardarConclusiones.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardarConclusiones.Name = "btnGuardarConclusiones";
-            this.btnGuardarConclusiones.Size = new System.Drawing.Size(152, 24);
-            this.btnGuardarConclusiones.TabIndex = 96;
-            this.btnGuardarConclusiones.Text = "      Guardar Conclusiones";
-            this.btnGuardarConclusiones.UseVisualStyleBackColor = false;
-            this.btnGuardarConclusiones.Click += new System.EventHandler(this.btnGuardarConclusiones_Click);
+            this.dtpFecVctoGlobal.CalendarMonthBackground = System.Drawing.Color.Lavender;
+            this.dtpFecVctoGlobal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFecVctoGlobal.Location = new System.Drawing.Point(393, 13);
+            this.dtpFecVctoGlobal.Name = "dtpFecVctoGlobal";
+            this.dtpFecVctoGlobal.Size = new System.Drawing.Size(98, 20);
+            this.dtpFecVctoGlobal.TabIndex = 102;
             // 
-            // label19
+            // chkinterconsulta
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(576, 13);
-            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(40, 13);
-            this.label19.TabIndex = 14;
-            this.label19.Text = "Aptitud";
+            this.chkinterconsulta.AutoSize = true;
+            this.chkinterconsulta.Location = new System.Drawing.Point(528, 218);
+            this.chkinterconsulta.Name = "chkinterconsulta";
+            this.chkinterconsulta.Size = new System.Drawing.Size(100, 17);
+            this.chkinterconsulta.TabIndex = 105;
+            this.chkinterconsulta.Text = "Interconsulta";
+            this.chkinterconsulta.UseVisualStyleBackColor = true;
+            this.chkinterconsulta.Visible = false;
             // 
-            // lbl3333
+            // label34
             // 
-            this.lbl3333.AutoSize = true;
-            this.lbl3333.Location = new System.Drawing.Point(15, 15);
-            this.lbl3333.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl3333.Name = "lbl3333";
-            this.lbl3333.Size = new System.Drawing.Size(81, 13);
-            this.lbl3333.TabIndex = 29;
-            this.lbl3333.Text = "Fec. Vcto OBS.";
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(763, 13);
+            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(60, 13);
+            this.label34.TabIndex = 99;
+            this.label34.Text = "Comentario";
+            this.label34.Visible = false;
             // 
-            // lbl4553
+            // txtFecVctoGlobal
             // 
-            this.lbl4553.AutoSize = true;
-            this.lbl4553.Location = new System.Drawing.Point(193, 16);
-            this.lbl4553.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lbl4553.Name = "lbl4553";
-            this.lbl4553.Size = new System.Drawing.Size(86, 13);
-            this.lbl4553.TabIndex = 7;
-            this.lbl4553.Text = "Fec. Vcto Global";
+            this.txtFecVctoGlobal.BackColor = System.Drawing.Color.Lavender;
+            this.txtFecVctoGlobal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtFecVctoGlobal.Location = new System.Drawing.Point(285, 12);
+            this.txtFecVctoGlobal.Name = "txtFecVctoGlobal";
+            this.txtFecVctoGlobal.ReadOnly = true;
+            this.txtFecVctoGlobal.Size = new System.Drawing.Size(94, 20);
+            this.txtFecVctoGlobal.TabIndex = 101;
             // 
-            // lblFecVctoObs
+            // txtComentarioAptitud
             // 
-            this.lblFecVctoObs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.lblFecVctoObs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblFecVctoObs.Location = new System.Drawing.Point(100, 12);
-            this.lblFecVctoObs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFecVctoObs.Name = "lblFecVctoObs";
-            this.lblFecVctoObs.Size = new System.Drawing.Size(89, 20);
-            this.lblFecVctoObs.TabIndex = 30;
-            this.lblFecVctoObs.Text = "lblFecVctoObs";
+            this.txtComentarioAptitud.Location = new System.Drawing.Point(824, 3);
+            this.txtComentarioAptitud.Multiline = true;
+            this.txtComentarioAptitud.Name = "txtComentarioAptitud";
+            this.txtComentarioAptitud.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtComentarioAptitud.Size = new System.Drawing.Size(465, 36);
+            this.txtComentarioAptitud.TabIndex = 98;
+            this.txtComentarioAptitud.Text = "NINGUNA";
+            this.txtComentarioAptitud.Visible = false;
             // 
-            // cbAptitudEso
+            // chkUtilizaFirmaAptitud
             // 
-            this.cbAptitudEso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbAptitudEso.FormattingEnabled = true;
-            this.cbAptitudEso.Location = new System.Drawing.Point(621, 8);
-            this.cbAptitudEso.Name = "cbAptitudEso";
-            this.cbAptitudEso.Size = new System.Drawing.Size(137, 21);
-            this.cbAptitudEso.TabIndex = 31;
+            this.chkUtilizaFirmaAptitud.AutoSize = true;
+            this.chkUtilizaFirmaAptitud.Enabled = false;
+            this.chkUtilizaFirmaAptitud.Location = new System.Drawing.Point(233, 218);
+            this.chkUtilizaFirmaAptitud.Name = "chkUtilizaFirmaAptitud";
+            this.chkUtilizaFirmaAptitud.Size = new System.Drawing.Size(115, 17);
+            this.chkUtilizaFirmaAptitud.TabIndex = 95;
+            this.chkUtilizaFirmaAptitud.Text = "SI Utilizar Firma";
+            this.chkUtilizaFirmaAptitud.UseVisualStyleBackColor = true;
+            // 
+            // gbRecomendaciones_Conclusiones
+            // 
+            this.gbRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.grdRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.lblRecordCountRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnAgregarRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnRemoverRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.chkinterconsulta);
+            this.gbRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(18, 339);
+            this.gbRecomendaciones_Conclusiones.Name = "gbRecomendaciones_Conclusiones";
+            this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(634, 242);
+            this.gbRecomendaciones_Conclusiones.TabIndex = 95;
+            this.gbRecomendaciones_Conclusiones.TabStop = false;
+            this.gbRecomendaciones_Conclusiones.Text = "Recomendaciones";
+            // 
+            // grdRecomendaciones_Conclusiones
+            // 
+            this.grdRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grdRecomendaciones_Conclusiones.CausesValidation = false;
+            appearance2.BackColor = System.Drawing.Color.White;
+            appearance2.BackColor2 = System.Drawing.Color.Silver;
+            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Appearance = appearance2;
+            ultraGridColumn70.Header.VisiblePosition = 0;
+            ultraGridColumn70.Hidden = true;
+            ultraGridColumn71.Header.VisiblePosition = 1;
+            ultraGridColumn71.Hidden = true;
+            ultraGridColumn72.Header.VisiblePosition = 2;
+            ultraGridColumn72.Hidden = true;
+            ultraGridColumn73.Header.VisiblePosition = 3;
+            ultraGridColumn73.Hidden = true;
+            ultraGridColumn74.Header.Caption = "Recomendaciones";
+            ultraGridColumn74.Header.VisiblePosition = 4;
+            ultraGridColumn74.Width = 602;
+            ultraGridColumn75.Header.VisiblePosition = 5;
+            ultraGridColumn75.Hidden = true;
+            ultraGridColumn76.Header.VisiblePosition = 6;
+            ultraGridColumn76.Hidden = true;
+            ultraGridColumn77.Header.VisiblePosition = 7;
+            ultraGridColumn77.Hidden = true;
+            ultraGridBand1.Columns.AddRange(new object[] {
+            ultraGridColumn70,
+            ultraGridColumn71,
+            ultraGridColumn72,
+            ultraGridColumn73,
+            ultraGridColumn74,
+            ultraGridColumn75,
+            ultraGridColumn76,
+            ultraGridColumn77});
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.InterBandSpacing = 10;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance3.BackColor = System.Drawing.Color.Transparent;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CardAreaAppearance = appearance3;
+            appearance4.BackColor = System.Drawing.Color.White;
+            appearance4.BackColor2 = System.Drawing.Color.White;
+            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CellAppearance = appearance4;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance5.BackColor = System.Drawing.Color.White;
+            appearance5.BackColor2 = System.Drawing.Color.LightGray;
+            appearance5.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance5.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.HeaderAppearance = appearance5;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance6.AlphaLevel = ((short)(187));
+            appearance6.BackColor = System.Drawing.Color.Gainsboro;
+            appearance6.BackColor2 = System.Drawing.Color.LightGray;
+            appearance6.ForeColor = System.Drawing.Color.Black;
+            appearance6.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowAlternateAppearance = appearance6;
+            appearance7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowSelectorAppearance = appearance7;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance8.BackColor = System.Drawing.Color.Gainsboro;
+            appearance8.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance8.FontData.BoldAsString = "False";
+            appearance8.ForeColor = System.Drawing.Color.Black;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.SelectedRowAppearance = appearance8;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdRecomendaciones_Conclusiones.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdRecomendaciones_Conclusiones.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdRecomendaciones_Conclusiones.Location = new System.Drawing.Point(5, 31);
+            this.grdRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
+            this.grdRecomendaciones_Conclusiones.Name = "grdRecomendaciones_Conclusiones";
+            this.grdRecomendaciones_Conclusiones.Size = new System.Drawing.Size(624, 182);
+            this.grdRecomendaciones_Conclusiones.TabIndex = 98;
+            // 
+            // lblRecordCountRecomendaciones_Conclusiones
+            // 
+            this.lblRecordCountRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblRecordCountRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountRecomendaciones_Conclusiones.Location = new System.Drawing.Point(418, 10);
+            this.lblRecordCountRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountRecomendaciones_Conclusiones.Name = "lblRecordCountRecomendaciones_Conclusiones";
+            this.lblRecordCountRecomendaciones_Conclusiones.Size = new System.Drawing.Size(211, 19);
+            this.lblRecordCountRecomendaciones_Conclusiones.TabIndex = 85;
+            this.lblRecordCountRecomendaciones_Conclusiones.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountRecomendaciones_Conclusiones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnAgregarRecomendaciones_Conclusiones
+            // 
+            this.btnAgregarRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarRecomendaciones_Conclusiones.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarRecomendaciones_Conclusiones.Enabled = false;
+            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarRecomendaciones_Conclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendaciones_Conclusiones.Image")));
+            this.btnAgregarRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarRecomendaciones_Conclusiones.Location = new System.Drawing.Point(5, 213);
+            this.btnAgregarRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarRecomendaciones_Conclusiones.Name = "btnAgregarRecomendaciones_Conclusiones";
+            this.btnAgregarRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
+            this.btnAgregarRecomendaciones_Conclusiones.TabIndex = 96;
+            this.btnAgregarRecomendaciones_Conclusiones.Text = "      Agregar";
+            this.btnAgregarRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
+            // 
+            // btnRemoverRecomendaciones_Conclusiones
+            // 
+            this.btnRemoverRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoverRecomendaciones_Conclusiones.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemoverRecomendaciones_Conclusiones.Enabled = false;
+            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemoverRecomendaciones_Conclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendaciones_Conclusiones.Image")));
+            this.btnRemoverRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverRecomendaciones_Conclusiones.Location = new System.Drawing.Point(105, 213);
+            this.btnRemoverRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverRecomendaciones_Conclusiones.Name = "btnRemoverRecomendaciones_Conclusiones";
+            this.btnRemoverRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
+            this.btnRemoverRecomendaciones_Conclusiones.TabIndex = 97;
+            this.btnRemoverRecomendaciones_Conclusiones.Text = "     Eliminar";
+            this.btnRemoverRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
+            // 
+            // gbRestricciones_Conclusiones
+            // 
+            this.gbRestricciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbRestricciones_Conclusiones.Controls.Add(this.grdRestricciones_Conclusiones);
+            this.gbRestricciones_Conclusiones.Controls.Add(this.lblRecordCountRestricciones_Conclusiones);
+            this.gbRestricciones_Conclusiones.Controls.Add(this.btnAgregarRestriccion_ConclusionesTratamiento);
+            this.gbRestricciones_Conclusiones.Controls.Add(this.btnRemoverRestricciones_ConclusionesTratamiento);
+            this.gbRestricciones_Conclusiones.Controls.Add(this.chkUtilizaFirmaAptitud);
+            this.gbRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbRestricciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbRestricciones_Conclusiones.Location = new System.Drawing.Point(658, 339);
+            this.gbRestricciones_Conclusiones.Name = "gbRestricciones_Conclusiones";
+            this.gbRestricciones_Conclusiones.Size = new System.Drawing.Size(626, 242);
+            this.gbRestricciones_Conclusiones.TabIndex = 94;
+            this.gbRestricciones_Conclusiones.TabStop = false;
+            this.gbRestricciones_Conclusiones.Text = "Restricciones";
+            // 
+            // grdRestricciones_Conclusiones
+            // 
+            this.grdRestricciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grdRestricciones_Conclusiones.CausesValidation = false;
+            appearance9.BackColor = System.Drawing.Color.White;
+            appearance9.BackColor2 = System.Drawing.Color.Silver;
+            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Appearance = appearance9;
+            ultraGridColumn48.Header.Caption = "#";
+            ultraGridColumn48.Header.VisiblePosition = 0;
+            ultraGridColumn48.Hidden = true;
+            ultraGridColumn48.Width = 41;
+            ultraGridColumn49.Header.VisiblePosition = 1;
+            ultraGridColumn49.Hidden = true;
+            ultraGridColumn50.Header.VisiblePosition = 2;
+            ultraGridColumn50.Hidden = true;
+            ultraGridColumn51.Header.VisiblePosition = 3;
+            ultraGridColumn51.Hidden = true;
+            ultraGridColumn52.Header.VisiblePosition = 4;
+            ultraGridColumn52.Hidden = true;
+            ultraGridColumn53.Header.Caption = "Restricción";
+            ultraGridColumn53.Header.VisiblePosition = 5;
+            ultraGridColumn53.Width = 594;
+            ultraGridBand2.Columns.AddRange(new object[] {
+            ultraGridColumn48,
+            ultraGridColumn49,
+            ultraGridColumn50,
+            ultraGridColumn51,
+            ultraGridColumn52,
+            ultraGridColumn53});
+            this.grdRestricciones_Conclusiones.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
+            this.grdRestricciones_Conclusiones.DisplayLayout.InterBandSpacing = 10;
+            this.grdRestricciones_Conclusiones.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdRestricciones_Conclusiones.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdRestricciones_Conclusiones.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance10.BackColor = System.Drawing.Color.Transparent;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.CardAreaAppearance = appearance10;
+            appearance11.BackColor = System.Drawing.Color.White;
+            appearance11.BackColor2 = System.Drawing.Color.White;
+            appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.CellAppearance = appearance11;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance12.BackColor = System.Drawing.Color.White;
+            appearance12.BackColor2 = System.Drawing.Color.LightGray;
+            appearance12.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance12.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.HeaderAppearance = appearance12;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance13.AlphaLevel = ((short)(187));
+            appearance13.BackColor = System.Drawing.Color.Gainsboro;
+            appearance13.BackColor2 = System.Drawing.Color.LightGray;
+            appearance13.ForeColor = System.Drawing.Color.Black;
+            appearance13.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.RowAlternateAppearance = appearance13;
+            appearance14.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.RowSelectorAppearance = appearance14;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance15.BackColor = System.Drawing.Color.Gainsboro;
+            appearance15.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance15.FontData.BoldAsString = "False";
+            appearance15.ForeColor = System.Drawing.Color.Black;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.SelectedRowAppearance = appearance15;
+            this.grdRestricciones_Conclusiones.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdRestricciones_Conclusiones.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.grdRestricciones_Conclusiones.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdRestricciones_Conclusiones.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdRestricciones_Conclusiones.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdRestricciones_Conclusiones.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdRestricciones_Conclusiones.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdRestricciones_Conclusiones.Location = new System.Drawing.Point(5, 31);
+            this.grdRestricciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
+            this.grdRestricciones_Conclusiones.Name = "grdRestricciones_Conclusiones";
+            this.grdRestricciones_Conclusiones.Size = new System.Drawing.Size(616, 182);
+            this.grdRestricciones_Conclusiones.TabIndex = 98;
+            // 
+            // lblRecordCountRestricciones_Conclusiones
+            // 
+            this.lblRecordCountRestricciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblRecordCountRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountRestricciones_Conclusiones.Location = new System.Drawing.Point(424, 10);
+            this.lblRecordCountRestricciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountRestricciones_Conclusiones.Name = "lblRecordCountRestricciones_Conclusiones";
+            this.lblRecordCountRestricciones_Conclusiones.Size = new System.Drawing.Size(197, 19);
+            this.lblRecordCountRestricciones_Conclusiones.TabIndex = 51;
+            this.lblRecordCountRestricciones_Conclusiones.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountRestricciones_Conclusiones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnAgregarRestriccion_ConclusionesTratamiento
+            // 
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarRestriccion_ConclusionesTratamiento.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Enabled = false;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarRestriccion_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion_ConclusionesTratamiento.Image")));
+            this.btnAgregarRestriccion_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Location = new System.Drawing.Point(5, 213);
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Name = "btnAgregarRestriccion_ConclusionesTratamiento";
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Size = new System.Drawing.Size(76, 24);
+            this.btnAgregarRestriccion_ConclusionesTratamiento.TabIndex = 96;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Text = "      Agregar";
+            this.btnAgregarRestriccion_ConclusionesTratamiento.UseVisualStyleBackColor = false;
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Visible = false;
+            // 
+            // btnRemoverRestricciones_ConclusionesTratamiento
+            // 
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoverRestricciones_ConclusionesTratamiento.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Enabled = false;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverRestricciones_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestricciones_ConclusionesTratamiento.Image")));
+            this.btnRemoverRestricciones_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Location = new System.Drawing.Point(108, 213);
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Name = "btnRemoverRestricciones_ConclusionesTratamiento";
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Size = new System.Drawing.Size(77, 24);
+            this.btnRemoverRestricciones_ConclusionesTratamiento.TabIndex = 97;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Text = "     Eliminar";
+            this.btnRemoverRestricciones_ConclusionesTratamiento.UseVisualStyleBackColor = false;
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Visible = false;
             // 
             // gbConclusionesDiagnosticas
             // 
-            this.gbConclusionesDiagnosticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbConclusionesDiagnosticas.Controls.Add(this.dptDateGlobalExp);
             this.gbConclusionesDiagnosticas.Controls.Add(this.grdConclusionesDiagnosticas);
             this.gbConclusionesDiagnosticas.Controls.Add(this.lblRecordCountConclusionesDiagnosticas);
             this.gbConclusionesDiagnosticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbConclusionesDiagnosticas.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbConclusionesDiagnosticas.Location = new System.Drawing.Point(10, 37);
             this.gbConclusionesDiagnosticas.Name = "gbConclusionesDiagnosticas";
-            this.gbConclusionesDiagnosticas.Size = new System.Drawing.Size(1243, 354);
+            this.gbConclusionesDiagnosticas.Size = new System.Drawing.Size(1274, 292);
             this.gbConclusionesDiagnosticas.TabIndex = 51;
             this.gbConclusionesDiagnosticas.TabStop = false;
             this.gbConclusionesDiagnosticas.Text = "Conclusiones Diagnósticas";
             // 
-            // lblRecordCountConclusionesDiagnosticas
+            // dptDateGlobalExp
             // 
-            this.lblRecordCountConclusionesDiagnosticas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRecordCountConclusionesDiagnosticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountConclusionesDiagnosticas.Location = new System.Drawing.Point(878, 46);
-            this.lblRecordCountConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountConclusionesDiagnosticas.Name = "lblRecordCountConclusionesDiagnosticas";
-            this.lblRecordCountConclusionesDiagnosticas.Size = new System.Drawing.Size(360, 19);
-            this.lblRecordCountConclusionesDiagnosticas.TabIndex = 52;
-            this.lblRecordCountConclusionesDiagnosticas.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountConclusionesDiagnosticas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.dptDateGlobalExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dptDateGlobalExp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dptDateGlobalExp.Location = new System.Drawing.Point(284, 12);
+            this.dptDateGlobalExp.Margin = new System.Windows.Forms.Padding(2);
+            this.dptDateGlobalExp.Name = "dptDateGlobalExp";
+            this.dptDateGlobalExp.Size = new System.Drawing.Size(95, 20);
+            this.dptDateGlobalExp.TabIndex = 100;
+            this.dptDateGlobalExp.Value = new System.DateTime(2019, 1, 5, 1, 24, 0, 0);
+            this.dptDateGlobalExp.Visible = false;
             // 
             // grdConclusionesDiagnosticas
             // 
@@ -890,433 +1179,583 @@
             this.grdConclusionesDiagnosticas.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdConclusionesDiagnosticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdConclusionesDiagnosticas.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdConclusionesDiagnosticas.Location = new System.Drawing.Point(8, 37);
+            this.grdConclusionesDiagnosticas.Location = new System.Drawing.Point(8, 18);
             this.grdConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2);
             this.grdConclusionesDiagnosticas.Name = "grdConclusionesDiagnosticas";
-            this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1230, 312);
+            this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1261, 269);
             this.grdConclusionesDiagnosticas.TabIndex = 53;
             this.grdConclusionesDiagnosticas.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdConclusionesDiagnosticas_ClickCell);
             // 
-            // dptDateGlobalExp
+            // lblRecordCountConclusionesDiagnosticas
             // 
-            this.dptDateGlobalExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dptDateGlobalExp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dptDateGlobalExp.Location = new System.Drawing.Point(172, 16);
-            this.dptDateGlobalExp.Margin = new System.Windows.Forms.Padding(2);
-            this.dptDateGlobalExp.Name = "dptDateGlobalExp";
-            this.dptDateGlobalExp.Size = new System.Drawing.Size(95, 20);
-            this.dptDateGlobalExp.TabIndex = 100;
-            this.dptDateGlobalExp.Value = new System.DateTime(2019, 1, 5, 1, 24, 0, 0);
-            this.dptDateGlobalExp.Visible = false;
+            this.lblRecordCountConclusionesDiagnosticas.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRecordCountConclusionesDiagnosticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountConclusionesDiagnosticas.Location = new System.Drawing.Point(878, -16);
+            this.lblRecordCountConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountConclusionesDiagnosticas.Name = "lblRecordCountConclusionesDiagnosticas";
+            this.lblRecordCountConclusionesDiagnosticas.Size = new System.Drawing.Size(391, 19);
+            this.lblRecordCountConclusionesDiagnosticas.TabIndex = 52;
+            this.lblRecordCountConclusionesDiagnosticas.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountConclusionesDiagnosticas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // gbRestricciones_Conclusiones
+            // cbAptitudEso
             // 
-            this.gbRestricciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbRestricciones_Conclusiones.Controls.Add(this.grdRestricciones_Conclusiones);
-            this.gbRestricciones_Conclusiones.Controls.Add(this.lblRecordCountRestricciones_Conclusiones);
-            this.gbRestricciones_Conclusiones.Controls.Add(this.btnAgregarRestriccion_ConclusionesTratamiento);
-            this.gbRestricciones_Conclusiones.Controls.Add(this.btnRemoverRestricciones_ConclusionesTratamiento);
-            this.gbRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbRestricciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbRestricciones_Conclusiones.Location = new System.Drawing.Point(647, 401);
-            this.gbRestricciones_Conclusiones.Name = "gbRestricciones_Conclusiones";
-            this.gbRestricciones_Conclusiones.Size = new System.Drawing.Size(606, 228);
-            this.gbRestricciones_Conclusiones.TabIndex = 94;
-            this.gbRestricciones_Conclusiones.TabStop = false;
-            this.gbRestricciones_Conclusiones.Text = "Restricciones";
+            this.cbAptitudEso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbAptitudEso.FormattingEnabled = true;
+            this.cbAptitudEso.Location = new System.Drawing.Point(559, 13);
+            this.cbAptitudEso.Name = "cbAptitudEso";
+            this.cbAptitudEso.Size = new System.Drawing.Size(199, 21);
+            this.cbAptitudEso.TabIndex = 31;
             // 
-            // btnRemoverRestricciones_ConclusionesTratamiento
+            // lblFecVctoObs
             // 
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoverRestricciones_ConclusionesTratamiento.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Enabled = false;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverRestricciones_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestricciones_ConclusionesTratamiento.Image")));
-            this.btnRemoverRestricciones_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Location = new System.Drawing.Point(106, 191);
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Name = "btnRemoverRestricciones_ConclusionesTratamiento";
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Size = new System.Drawing.Size(80, 24);
-            this.btnRemoverRestricciones_ConclusionesTratamiento.TabIndex = 97;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Text = "     Eliminar";
-            this.btnRemoverRestricciones_ConclusionesTratamiento.UseVisualStyleBackColor = false;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Visible = false;
+            this.lblFecVctoObs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.lblFecVctoObs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblFecVctoObs.Location = new System.Drawing.Point(98, 12);
+            this.lblFecVctoObs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFecVctoObs.Name = "lblFecVctoObs";
+            this.lblFecVctoObs.Size = new System.Drawing.Size(89, 20);
+            this.lblFecVctoObs.TabIndex = 30;
+            this.lblFecVctoObs.Text = "lblFecVctoObs";
             // 
-            // btnAgregarRestriccion_ConclusionesTratamiento
+            // lbl4553
             // 
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregarRestriccion_ConclusionesTratamiento.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Enabled = false;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarRestriccion_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion_ConclusionesTratamiento.Image")));
-            this.btnAgregarRestriccion_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Location = new System.Drawing.Point(10, 191);
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Name = "btnAgregarRestriccion_ConclusionesTratamiento";
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Size = new System.Drawing.Size(80, 24);
-            this.btnAgregarRestriccion_ConclusionesTratamiento.TabIndex = 96;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Text = "      Agregar";
-            this.btnAgregarRestriccion_ConclusionesTratamiento.UseVisualStyleBackColor = false;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Visible = false;
+            this.lbl4553.AutoSize = true;
+            this.lbl4553.Location = new System.Drawing.Point(190, 16);
+            this.lbl4553.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl4553.Name = "lbl4553";
+            this.lbl4553.Size = new System.Drawing.Size(86, 13);
+            this.lbl4553.TabIndex = 7;
+            this.lbl4553.Text = "Fec. Vcto Global";
             // 
-            // lblRecordCountRestricciones_Conclusiones
+            // lbl3333
             // 
-            this.lblRecordCountRestricciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblRecordCountRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRestricciones_Conclusiones.Location = new System.Drawing.Point(351, 10);
-            this.lblRecordCountRestricciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountRestricciones_Conclusiones.Name = "lblRecordCountRestricciones_Conclusiones";
-            this.lblRecordCountRestricciones_Conclusiones.Size = new System.Drawing.Size(197, 19);
-            this.lblRecordCountRestricciones_Conclusiones.TabIndex = 51;
-            this.lblRecordCountRestricciones_Conclusiones.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountRestricciones_Conclusiones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbl3333.AutoSize = true;
+            this.lbl3333.Location = new System.Drawing.Point(15, 15);
+            this.lbl3333.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbl3333.Name = "lbl3333";
+            this.lbl3333.Size = new System.Drawing.Size(81, 13);
+            this.lbl3333.TabIndex = 29;
+            this.lbl3333.Text = "Fec. Vcto OBS.";
             // 
-            // grdRestricciones_Conclusiones
+            // label19
             // 
-            this.grdRestricciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.grdRestricciones_Conclusiones.CausesValidation = false;
-            appearance9.BackColor = System.Drawing.Color.White;
-            appearance9.BackColor2 = System.Drawing.Color.Silver;
-            appearance9.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Appearance = appearance9;
-            ultraGridColumn48.Header.Caption = "#";
-            ultraGridColumn48.Header.VisiblePosition = 0;
-            ultraGridColumn48.Hidden = true;
-            ultraGridColumn48.Width = 41;
-            ultraGridColumn49.Header.VisiblePosition = 1;
-            ultraGridColumn49.Hidden = true;
-            ultraGridColumn50.Header.VisiblePosition = 2;
-            ultraGridColumn50.Hidden = true;
-            ultraGridColumn51.Header.VisiblePosition = 3;
-            ultraGridColumn51.Hidden = true;
-            ultraGridColumn52.Header.VisiblePosition = 4;
-            ultraGridColumn52.Hidden = true;
-            ultraGridColumn53.Header.Caption = "Restricción";
-            ultraGridColumn53.Header.VisiblePosition = 5;
-            ultraGridColumn53.Width = 580;
-            ultraGridBand2.Columns.AddRange(new object[] {
-            ultraGridColumn48,
-            ultraGridColumn49,
-            ultraGridColumn50,
-            ultraGridColumn51,
-            ultraGridColumn52,
-            ultraGridColumn53});
-            this.grdRestricciones_Conclusiones.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
-            this.grdRestricciones_Conclusiones.DisplayLayout.InterBandSpacing = 10;
-            this.grdRestricciones_Conclusiones.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdRestricciones_Conclusiones.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdRestricciones_Conclusiones.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance10.BackColor = System.Drawing.Color.Transparent;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.CardAreaAppearance = appearance10;
-            appearance11.BackColor = System.Drawing.Color.White;
-            appearance11.BackColor2 = System.Drawing.Color.White;
-            appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.CellAppearance = appearance11;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance12.BackColor = System.Drawing.Color.White;
-            appearance12.BackColor2 = System.Drawing.Color.LightGray;
-            appearance12.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance12.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.HeaderAppearance = appearance12;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance13.AlphaLevel = ((short)(187));
-            appearance13.BackColor = System.Drawing.Color.Gainsboro;
-            appearance13.BackColor2 = System.Drawing.Color.LightGray;
-            appearance13.ForeColor = System.Drawing.Color.Black;
-            appearance13.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.RowAlternateAppearance = appearance13;
-            appearance14.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.RowSelectorAppearance = appearance14;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance15.BackColor = System.Drawing.Color.Gainsboro;
-            appearance15.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance15.FontData.BoldAsString = "False";
-            appearance15.ForeColor = System.Drawing.Color.Black;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.SelectedRowAppearance = appearance15;
-            this.grdRestricciones_Conclusiones.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdRestricciones_Conclusiones.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.grdRestricciones_Conclusiones.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdRestricciones_Conclusiones.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdRestricciones_Conclusiones.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdRestricciones_Conclusiones.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdRestricciones_Conclusiones.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdRestricciones_Conclusiones.Location = new System.Drawing.Point(5, 32);
-            this.grdRestricciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
-            this.grdRestricciones_Conclusiones.Name = "grdRestricciones_Conclusiones";
-            this.grdRestricciones_Conclusiones.Size = new System.Drawing.Size(592, 151);
-            this.grdRestricciones_Conclusiones.TabIndex = 98;
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(514, 16);
+            this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(40, 13);
+            this.label19.TabIndex = 14;
+            this.label19.Text = "Aptitud";
             // 
-            // gbRecomendaciones_Conclusiones
+            // btnGuardarConclusiones
             // 
-            this.gbRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.grdRecomendaciones_Conclusiones);
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.lblRecordCountRecomendaciones_Conclusiones);
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnAgregarRecomendaciones_Conclusiones);
-            this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnRemoverRecomendaciones_Conclusiones);
-            this.gbRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(10, 382);
-            this.gbRecomendaciones_Conclusiones.Name = "gbRecomendaciones_Conclusiones";
-            this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(608, 228);
-            this.gbRecomendaciones_Conclusiones.TabIndex = 95;
-            this.gbRecomendaciones_Conclusiones.TabStop = false;
-            this.gbRecomendaciones_Conclusiones.Text = "Recomendaciones";
-            // 
-            // btnRemoverRecomendaciones_Conclusiones
-            // 
-            this.btnRemoverRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoverRecomendaciones_Conclusiones.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemoverRecomendaciones_Conclusiones.Enabled = false;
-            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemoverRecomendaciones_Conclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemoverRecomendaciones_Conclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoverRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendaciones_Conclusiones.Image")));
-            this.btnRemoverRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRecomendaciones_Conclusiones.Location = new System.Drawing.Point(105, 191);
-            this.btnRemoverRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoverRecomendaciones_Conclusiones.Name = "btnRemoverRecomendaciones_Conclusiones";
-            this.btnRemoverRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
-            this.btnRemoverRecomendaciones_Conclusiones.TabIndex = 97;
-            this.btnRemoverRecomendaciones_Conclusiones.Text = "     Eliminar";
-            this.btnRemoverRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
-            this.btnRemoverRecomendaciones_Conclusiones.Visible = false;
-            // 
-            // btnAgregarRecomendaciones_Conclusiones
-            // 
-            this.btnAgregarRecomendaciones_Conclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregarRecomendaciones_Conclusiones.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarRecomendaciones_Conclusiones.Enabled = false;
-            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarRecomendaciones_Conclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarRecomendaciones_Conclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendaciones_Conclusiones.Image")));
-            this.btnAgregarRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRecomendaciones_Conclusiones.Location = new System.Drawing.Point(21, 191);
-            this.btnAgregarRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarRecomendaciones_Conclusiones.Name = "btnAgregarRecomendaciones_Conclusiones";
-            this.btnAgregarRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
-            this.btnAgregarRecomendaciones_Conclusiones.TabIndex = 96;
-            this.btnAgregarRecomendaciones_Conclusiones.Text = "      Agregar";
-            this.btnAgregarRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
-            this.btnAgregarRecomendaciones_Conclusiones.Visible = false;
-            // 
-            // lblRecordCountRecomendaciones_Conclusiones
-            // 
-            this.lblRecordCountRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblRecordCountRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRecomendaciones_Conclusiones.Location = new System.Drawing.Point(340, 10);
-            this.lblRecordCountRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountRecomendaciones_Conclusiones.Name = "lblRecordCountRecomendaciones_Conclusiones";
-            this.lblRecordCountRecomendaciones_Conclusiones.Size = new System.Drawing.Size(211, 19);
-            this.lblRecordCountRecomendaciones_Conclusiones.TabIndex = 85;
-            this.lblRecordCountRecomendaciones_Conclusiones.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountRecomendaciones_Conclusiones.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // grdRecomendaciones_Conclusiones
-            // 
-            this.grdRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.grdRecomendaciones_Conclusiones.CausesValidation = false;
-            appearance2.BackColor = System.Drawing.Color.White;
-            appearance2.BackColor2 = System.Drawing.Color.Silver;
-            appearance2.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Appearance = appearance2;
-            ultraGridColumn70.Header.VisiblePosition = 0;
-            ultraGridColumn70.Hidden = true;
-            ultraGridColumn71.Header.VisiblePosition = 1;
-            ultraGridColumn71.Hidden = true;
-            ultraGridColumn72.Header.VisiblePosition = 2;
-            ultraGridColumn72.Hidden = true;
-            ultraGridColumn73.Header.VisiblePosition = 3;
-            ultraGridColumn73.Hidden = true;
-            ultraGridColumn74.Header.Caption = "Recomendaciones";
-            ultraGridColumn74.Header.VisiblePosition = 4;
-            ultraGridColumn74.Width = 569;
-            ultraGridColumn75.Header.VisiblePosition = 5;
-            ultraGridColumn75.Hidden = true;
-            ultraGridColumn76.Header.VisiblePosition = 6;
-            ultraGridColumn76.Hidden = true;
-            ultraGridColumn77.Header.VisiblePosition = 7;
-            ultraGridColumn77.Hidden = true;
-            ultraGridBand1.Columns.AddRange(new object[] {
-            ultraGridColumn70,
-            ultraGridColumn71,
-            ultraGridColumn72,
-            ultraGridColumn73,
-            ultraGridColumn74,
-            ultraGridColumn75,
-            ultraGridColumn76,
-            ultraGridColumn77});
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.InterBandSpacing = 10;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance3.BackColor = System.Drawing.Color.Transparent;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CardAreaAppearance = appearance3;
-            appearance4.BackColor = System.Drawing.Color.White;
-            appearance4.BackColor2 = System.Drawing.Color.White;
-            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CellAppearance = appearance4;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance5.BackColor = System.Drawing.Color.White;
-            appearance5.BackColor2 = System.Drawing.Color.LightGray;
-            appearance5.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance5.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.HeaderAppearance = appearance5;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance6.AlphaLevel = ((short)(187));
-            appearance6.BackColor = System.Drawing.Color.Gainsboro;
-            appearance6.BackColor2 = System.Drawing.Color.LightGray;
-            appearance6.ForeColor = System.Drawing.Color.Black;
-            appearance6.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowAlternateAppearance = appearance6;
-            appearance7.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowSelectorAppearance = appearance7;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance8.BackColor = System.Drawing.Color.Gainsboro;
-            appearance8.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance8.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance8.FontData.BoldAsString = "False";
-            appearance8.ForeColor = System.Drawing.Color.Black;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.SelectedRowAppearance = appearance8;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdRecomendaciones_Conclusiones.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdRecomendaciones_Conclusiones.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdRecomendaciones_Conclusiones.Location = new System.Drawing.Point(8, 36);
-            this.grdRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
-            this.grdRecomendaciones_Conclusiones.Name = "grdRecomendaciones_Conclusiones";
-            this.grdRecomendaciones_Conclusiones.Size = new System.Drawing.Size(592, 151);
-            this.grdRecomendaciones_Conclusiones.TabIndex = 98;
-            // 
-            // chkUtilizaFirmaAptitud
-            // 
-            this.chkUtilizaFirmaAptitud.AutoSize = true;
-            this.chkUtilizaFirmaAptitud.Enabled = false;
-            this.chkUtilizaFirmaAptitud.Location = new System.Drawing.Point(766, 607);
-            this.chkUtilizaFirmaAptitud.Name = "chkUtilizaFirmaAptitud";
-            this.chkUtilizaFirmaAptitud.Size = new System.Drawing.Size(98, 17);
-            this.chkUtilizaFirmaAptitud.TabIndex = 95;
-            this.chkUtilizaFirmaAptitud.Text = "SI Utilizar Firma";
-            this.chkUtilizaFirmaAptitud.UseVisualStyleBackColor = true;
-            // 
-            // txtComentarioAptitud
-            // 
-            this.txtComentarioAptitud.Location = new System.Drawing.Point(824, 3);
-            this.txtComentarioAptitud.Multiline = true;
-            this.txtComentarioAptitud.Name = "txtComentarioAptitud";
-            this.txtComentarioAptitud.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtComentarioAptitud.Size = new System.Drawing.Size(424, 36);
-            this.txtComentarioAptitud.TabIndex = 98;
-            this.txtComentarioAptitud.Text = "NINGUNA";
-            this.txtComentarioAptitud.Visible = false;
-            // 
-            // txtFecVctoGlobal
-            // 
-            this.txtFecVctoGlobal.BackColor = System.Drawing.Color.Lavender;
-            this.txtFecVctoGlobal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFecVctoGlobal.Location = new System.Drawing.Point(284, 13);
-            this.txtFecVctoGlobal.Name = "txtFecVctoGlobal";
-            this.txtFecVctoGlobal.ReadOnly = true;
-            this.txtFecVctoGlobal.Size = new System.Drawing.Size(87, 20);
-            this.txtFecVctoGlobal.TabIndex = 101;
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(763, 13);
-            this.label34.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(60, 13);
-            this.label34.TabIndex = 99;
-            this.label34.Text = "Comentario";
-            this.label34.Visible = false;
-            // 
-            // chkinterconsulta
-            // 
-            this.chkinterconsulta.AutoSize = true;
-            this.chkinterconsulta.Location = new System.Drawing.Point(647, 607);
-            this.chkinterconsulta.Name = "chkinterconsulta";
-            this.chkinterconsulta.Size = new System.Drawing.Size(87, 17);
-            this.chkinterconsulta.TabIndex = 105;
-            this.chkinterconsulta.Text = "Interconsulta";
-            this.chkinterconsulta.UseVisualStyleBackColor = true;
-            // 
-            // dtpFecVctoGlobal
-            // 
-            this.dtpFecVctoGlobal.CalendarMonthBackground = System.Drawing.Color.Lavender;
-            this.dtpFecVctoGlobal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecVctoGlobal.Location = new System.Drawing.Point(377, 13);
-            this.dtpFecVctoGlobal.Name = "dtpFecVctoGlobal";
-            this.dtpFecVctoGlobal.Size = new System.Drawing.Size(98, 20);
-            this.dtpFecVctoGlobal.TabIndex = 102;
+            this.btnGuardarConclusiones.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGuardarConclusiones.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardarConclusiones.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGuardarConclusiones.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnGuardarConclusiones.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGuardarConclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarConclusiones.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardarConclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1039, 607);
+            this.btnGuardarConclusiones.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarConclusiones.Name = "btnGuardarConclusiones";
+            this.btnGuardarConclusiones.Size = new System.Drawing.Size(152, 24);
+            this.btnGuardarConclusiones.TabIndex = 96;
+            this.btnGuardarConclusiones.Text = "      Guardar Conclusiones";
+            this.btnGuardarConclusiones.UseVisualStyleBackColor = false;
+            this.btnGuardarConclusiones.Click += new System.EventHandler(this.btnGuardarConclusiones_Click);
             // 
             // tpAnalisisDx
             // 
-            this.tpAnalisisDx.Controls.Add(this.chkUtilizaFirmaControlAuditoria);
             this.tpAnalisisDx.Controls.Add(this.gbEdicionDiagnosticoTotal);
             this.tpAnalisisDx.Controls.Add(this.gbTotalDiagnostico);
-            this.tpAnalisisDx.Controls.Add(this.btnAceptarDX);
             this.tpAnalisisDx.Location = new System.Drawing.Point(4, 22);
             this.tpAnalisisDx.Name = "tpAnalisisDx";
-            this.tpAnalisisDx.Size = new System.Drawing.Size(1267, 693);
+            this.tpAnalisisDx.Size = new System.Drawing.Size(1292, 685);
             this.tpAnalisisDx.TabIndex = 3;
             this.tpAnalisisDx.Text = "CONTROL DE CALIDAD";
             this.tpAnalisisDx.ToolTipText = "ANÁLISIS DE DIAGNÓSTICOS";
             this.tpAnalisisDx.UseVisualStyleBackColor = true;
             // 
-            // btnAceptarDX
+            // gbEdicionDiagnosticoTotal
             // 
-            this.btnAceptarDX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAceptarDX.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAceptarDX.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAceptarDX.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAceptarDX.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAceptarDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptarDX.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
-            this.btnAceptarDX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptarDX.Location = new System.Drawing.Point(1099, 646);
-            this.btnAceptarDX.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAceptarDX.Name = "btnAceptarDX";
-            this.btnAceptarDX.Size = new System.Drawing.Size(152, 24);
-            this.btnAceptarDX.TabIndex = 61;
-            this.btnAceptarDX.Text = "      Guardar Diagnóstico";
-            this.btnAceptarDX.UseVisualStyleBackColor = false;
-            this.btnAceptarDX.Click += new System.EventHandler(this.btnAceptarDX_Click);
+            this.gbEdicionDiagnosticoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.btnAceptarDX);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.chkUtilizaFirmaControlAuditoria);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.groupBox2);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.groupBox1);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.btnAgregarDX);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label15);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.dtpFechaVcto);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label33);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.cbEnviarAntecedentes);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label32);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.cbTipoDx);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label31);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.lblDiagnostico);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.cbCalificacionFinal);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label29);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label30);
+            this.gbEdicionDiagnosticoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbEdicionDiagnosticoTotal.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbEdicionDiagnosticoTotal.Location = new System.Drawing.Point(10, 320);
+            this.gbEdicionDiagnosticoTotal.Name = "gbEdicionDiagnosticoTotal";
+            this.gbEdicionDiagnosticoTotal.Size = new System.Drawing.Size(1252, 316);
+            this.gbEdicionDiagnosticoTotal.TabIndex = 51;
+            this.gbEdicionDiagnosticoTotal.TabStop = false;
+            this.gbEdicionDiagnosticoTotal.Text = "Edición del Diagnóstico";
+            // 
+            // chkUtilizaFirmaControlAuditoria
+            // 
+            this.chkUtilizaFirmaControlAuditoria.AutoSize = true;
+            this.chkUtilizaFirmaControlAuditoria.Location = new System.Drawing.Point(950, 290);
+            this.chkUtilizaFirmaControlAuditoria.Name = "chkUtilizaFirmaControlAuditoria";
+            this.chkUtilizaFirmaControlAuditoria.Size = new System.Drawing.Size(115, 17);
+            this.chkUtilizaFirmaControlAuditoria.TabIndex = 62;
+            this.chkUtilizaFirmaControlAuditoria.Text = "SI Utilizar Firma";
+            this.chkUtilizaFirmaControlAuditoria.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.grdRestricciones_AnalisisDiagnostico);
+            this.groupBox2.Controls.Add(this.btnRemoverRestriccion_Analisis);
+            this.groupBox2.Controls.Add(this.btnAgregarRestriccion_Analisis);
+            this.groupBox2.Controls.Add(this.lblRecordCountRestricciones_AnalisisDx);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
+            this.groupBox2.Location = new System.Drawing.Point(654, 70);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(581, 210);
+            this.groupBox2.TabIndex = 84;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Restricciones";
+            // 
+            // grdRestricciones_AnalisisDiagnostico
+            // 
+            this.grdRestricciones_AnalisisDiagnostico.CausesValidation = false;
+            appearance23.BackColor = System.Drawing.Color.White;
+            appearance23.BackColor2 = System.Drawing.Color.Silver;
+            appearance23.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Appearance = appearance23;
+            ultraGridColumn12.Header.Caption = "#";
+            ultraGridColumn12.Header.VisiblePosition = 0;
+            ultraGridColumn12.Hidden = true;
+            ultraGridColumn12.Width = 52;
+            ultraGridColumn13.Header.VisiblePosition = 1;
+            ultraGridColumn13.Hidden = true;
+            ultraGridColumn14.Header.VisiblePosition = 2;
+            ultraGridColumn14.Hidden = true;
+            ultraGridColumn15.Header.VisiblePosition = 3;
+            ultraGridColumn15.Hidden = true;
+            ultraGridColumn16.Header.Caption = "Restricciones";
+            ultraGridColumn16.Header.VisiblePosition = 4;
+            ultraGridColumn16.Width = 607;
+            ultraGridBand4.Columns.AddRange(new object[] {
+            ultraGridColumn12,
+            ultraGridColumn13,
+            ultraGridColumn14,
+            ultraGridColumn15,
+            ultraGridColumn16});
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.BandsSerializer.Add(ultraGridBand4);
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.InterBandSpacing = 10;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance24.BackColor = System.Drawing.Color.Transparent;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.CardAreaAppearance = appearance24;
+            appearance25.BackColor = System.Drawing.Color.White;
+            appearance25.BackColor2 = System.Drawing.Color.White;
+            appearance25.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.CellAppearance = appearance25;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance26.BackColor = System.Drawing.Color.White;
+            appearance26.BackColor2 = System.Drawing.Color.LightGray;
+            appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance26.BorderColor = System.Drawing.Color.DarkGray;
+            appearance26.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.HeaderAppearance = appearance26;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance27.AlphaLevel = ((short)(187));
+            appearance27.BackColor = System.Drawing.Color.Gainsboro;
+            appearance27.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance27.ForeColor = System.Drawing.Color.Black;
+            appearance27.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.RowAlternateAppearance = appearance27;
+            appearance28.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.RowSelectorAppearance = appearance28;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance29.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance29.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance29.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance29.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance29.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance29.FontData.BoldAsString = "False";
+            appearance29.ForeColor = System.Drawing.Color.Black;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.SelectedRowAppearance = appearance29;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdRestricciones_AnalisisDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdRestricciones_AnalisisDiagnostico.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdRestricciones_AnalisisDiagnostico.Location = new System.Drawing.Point(7, 35);
+            this.grdRestricciones_AnalisisDiagnostico.Margin = new System.Windows.Forms.Padding(2);
+            this.grdRestricciones_AnalisisDiagnostico.Name = "grdRestricciones_AnalisisDiagnostico";
+            this.grdRestricciones_AnalisisDiagnostico.Size = new System.Drawing.Size(535, 170);
+            this.grdRestricciones_AnalisisDiagnostico.TabIndex = 96;
+            this.grdRestricciones_AnalisisDiagnostico.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdRestricciones_AnalisisDiagnostico_AfterSelectChange);
+            // 
+            // btnRemoverRestriccion_Analisis
+            // 
+            this.btnRemoverRestriccion_Analisis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoverRestriccion_Analisis.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemoverRestriccion_Analisis.Enabled = false;
+            this.btnRemoverRestriccion_Analisis.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemoverRestriccion_Analisis.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemoverRestriccion_Analisis.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemoverRestriccion_Analisis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverRestriccion_Analisis.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverRestriccion_Analisis.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverRestriccion_Analisis.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestriccion_Analisis.Image")));
+            this.btnRemoverRestriccion_Analisis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverRestriccion_Analisis.Location = new System.Drawing.Point(546, 92);
+            this.btnRemoverRestriccion_Analisis.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverRestriccion_Analisis.Name = "btnRemoverRestriccion_Analisis";
+            this.btnRemoverRestriccion_Analisis.Size = new System.Drawing.Size(30, 24);
+            this.btnRemoverRestriccion_Analisis.TabIndex = 95;
+            this.btnRemoverRestriccion_Analisis.UseVisualStyleBackColor = false;
+            this.btnRemoverRestriccion_Analisis.Click += new System.EventHandler(this.btnRemoverRestriccion_Analisis_Click);
+            // 
+            // btnAgregarRestriccion_Analisis
+            // 
+            this.btnAgregarRestriccion_Analisis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarRestriccion_Analisis.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarRestriccion_Analisis.Enabled = false;
+            this.btnAgregarRestriccion_Analisis.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarRestriccion_Analisis.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarRestriccion_Analisis.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarRestriccion_Analisis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarRestriccion_Analisis.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarRestriccion_Analisis.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarRestriccion_Analisis.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion_Analisis.Image")));
+            this.btnAgregarRestriccion_Analisis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarRestriccion_Analisis.Location = new System.Drawing.Point(546, 64);
+            this.btnAgregarRestriccion_Analisis.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarRestriccion_Analisis.Name = "btnAgregarRestriccion_Analisis";
+            this.btnAgregarRestriccion_Analisis.Size = new System.Drawing.Size(30, 24);
+            this.btnAgregarRestriccion_Analisis.TabIndex = 94;
+            this.btnAgregarRestriccion_Analisis.UseVisualStyleBackColor = false;
+            this.btnAgregarRestriccion_Analisis.Click += new System.EventHandler(this.btnAgregarRestriccion_Analisis_Click);
+            // 
+            // lblRecordCountRestricciones_AnalisisDx
+            // 
+            this.lblRecordCountRestricciones_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountRestricciones_AnalisisDx.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblRecordCountRestricciones_AnalisisDx.Location = new System.Drawing.Point(388, 13);
+            this.lblRecordCountRestricciones_AnalisisDx.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountRestricciones_AnalisisDx.Name = "lblRecordCountRestricciones_AnalisisDx";
+            this.lblRecordCountRestricciones_AnalisisDx.Size = new System.Drawing.Size(188, 20);
+            this.lblRecordCountRestricciones_AnalisisDx.TabIndex = 50;
+            this.lblRecordCountRestricciones_AnalisisDx.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountRestricciones_AnalisisDx.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.grdRecomendaciones_AnalisisDiagnostico);
+            this.groupBox1.Controls.Add(this.btnRemoverRecomendacion_AnalisisDx);
+            this.groupBox1.Controls.Add(this.btnAgregarRecomendaciones_AnalisisDx);
+            this.groupBox1.Controls.Add(this.lblRecordCountRecomendaciones_AnalisisDx);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
+            this.groupBox1.Location = new System.Drawing.Point(11, 71);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(634, 209);
+            this.groupBox1.TabIndex = 83;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Recomendaciones";
+            // 
+            // grdRecomendaciones_AnalisisDiagnostico
+            // 
+            this.grdRecomendaciones_AnalisisDiagnostico.CausesValidation = false;
+            appearance30.BackColor = System.Drawing.Color.White;
+            appearance30.BackColor2 = System.Drawing.Color.Silver;
+            appearance30.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Appearance = appearance30;
+            ultraGridColumn17.Header.VisiblePosition = 0;
+            ultraGridColumn17.Hidden = true;
+            ultraGridColumn18.Header.VisiblePosition = 1;
+            ultraGridColumn18.Hidden = true;
+            ultraGridColumn19.Header.VisiblePosition = 2;
+            ultraGridColumn19.Hidden = true;
+            ultraGridColumn20.Header.VisiblePosition = 3;
+            ultraGridColumn20.Hidden = true;
+            ultraGridColumn21.Header.Caption = "Recomendaciones";
+            ultraGridColumn21.Header.VisiblePosition = 4;
+            ultraGridColumn21.Width = 612;
+            ultraGridColumn22.Header.VisiblePosition = 5;
+            ultraGridColumn22.Hidden = true;
+            ultraGridColumn23.Header.VisiblePosition = 6;
+            ultraGridColumn23.Hidden = true;
+            ultraGridBand5.Columns.AddRange(new object[] {
+            ultraGridColumn17,
+            ultraGridColumn18,
+            ultraGridColumn19,
+            ultraGridColumn20,
+            ultraGridColumn21,
+            ultraGridColumn22,
+            ultraGridColumn23});
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.BandsSerializer.Add(ultraGridBand5);
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.InterBandSpacing = 10;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance31.BackColor = System.Drawing.Color.Transparent;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.CardAreaAppearance = appearance31;
+            appearance32.BackColor = System.Drawing.Color.White;
+            appearance32.BackColor2 = System.Drawing.Color.White;
+            appearance32.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.CellAppearance = appearance32;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance33.BackColor = System.Drawing.Color.White;
+            appearance33.BackColor2 = System.Drawing.Color.LightGray;
+            appearance33.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance33.BorderColor = System.Drawing.Color.DarkGray;
+            appearance33.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.HeaderAppearance = appearance33;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance34.AlphaLevel = ((short)(187));
+            appearance34.BackColor = System.Drawing.Color.Gainsboro;
+            appearance34.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance34.ForeColor = System.Drawing.Color.Black;
+            appearance34.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.RowAlternateAppearance = appearance34;
+            appearance35.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.RowSelectorAppearance = appearance35;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance36.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance36.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance36.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance36.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance36.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance36.FontData.BoldAsString = "False";
+            appearance36.ForeColor = System.Drawing.Color.Black;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.SelectedRowAppearance = appearance36;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdRecomendaciones_AnalisisDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdRecomendaciones_AnalisisDiagnostico.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdRecomendaciones_AnalisisDiagnostico.Location = new System.Drawing.Point(10, 34);
+            this.grdRecomendaciones_AnalisisDiagnostico.Margin = new System.Windows.Forms.Padding(2);
+            this.grdRecomendaciones_AnalisisDiagnostico.Name = "grdRecomendaciones_AnalisisDiagnostico";
+            this.grdRecomendaciones_AnalisisDiagnostico.Size = new System.Drawing.Size(585, 155);
+            this.grdRecomendaciones_AnalisisDiagnostico.TabIndex = 96;
+            this.grdRecomendaciones_AnalisisDiagnostico.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdRecomendaciones_AnalisisDiagnostico_AfterSelectChange);
+            // 
+            // btnRemoverRecomendacion_AnalisisDx
+            // 
+            this.btnRemoverRecomendacion_AnalisisDx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoverRecomendacion_AnalisisDx.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemoverRecomendacion_AnalisisDx.Enabled = false;
+            this.btnRemoverRecomendacion_AnalisisDx.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemoverRecomendacion_AnalisisDx.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemoverRecomendacion_AnalisisDx.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemoverRecomendacion_AnalisisDx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverRecomendacion_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverRecomendacion_AnalisisDx.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverRecomendacion_AnalisisDx.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendacion_AnalisisDx.Image")));
+            this.btnRemoverRecomendacion_AnalisisDx.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverRecomendacion_AnalisisDx.Location = new System.Drawing.Point(599, 91);
+            this.btnRemoverRecomendacion_AnalisisDx.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverRecomendacion_AnalisisDx.Name = "btnRemoverRecomendacion_AnalisisDx";
+            this.btnRemoverRecomendacion_AnalisisDx.Size = new System.Drawing.Size(30, 24);
+            this.btnRemoverRecomendacion_AnalisisDx.TabIndex = 95;
+            this.btnRemoverRecomendacion_AnalisisDx.UseVisualStyleBackColor = false;
+            this.btnRemoverRecomendacion_AnalisisDx.Click += new System.EventHandler(this.btnRemoverRecomendacion_AnalisisDx_Click);
+            // 
+            // btnAgregarRecomendaciones_AnalisisDx
+            // 
+            this.btnAgregarRecomendaciones_AnalisisDx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarRecomendaciones_AnalisisDx.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarRecomendaciones_AnalisisDx.Enabled = false;
+            this.btnAgregarRecomendaciones_AnalisisDx.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarRecomendaciones_AnalisisDx.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarRecomendaciones_AnalisisDx.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarRecomendaciones_AnalisisDx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarRecomendaciones_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarRecomendaciones_AnalisisDx.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarRecomendaciones_AnalisisDx.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendaciones_AnalisisDx.Image")));
+            this.btnAgregarRecomendaciones_AnalisisDx.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarRecomendaciones_AnalisisDx.Location = new System.Drawing.Point(599, 63);
+            this.btnAgregarRecomendaciones_AnalisisDx.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarRecomendaciones_AnalisisDx.Name = "btnAgregarRecomendaciones_AnalisisDx";
+            this.btnAgregarRecomendaciones_AnalisisDx.Size = new System.Drawing.Size(30, 24);
+            this.btnAgregarRecomendaciones_AnalisisDx.TabIndex = 94;
+            this.btnAgregarRecomendaciones_AnalisisDx.UseVisualStyleBackColor = false;
+            this.btnAgregarRecomendaciones_AnalisisDx.Click += new System.EventHandler(this.btnAgregarRecomendaciones_AnalisisDx_Click);
+            // 
+            // lblRecordCountRecomendaciones_AnalisisDx
+            // 
+            this.lblRecordCountRecomendaciones_AnalisisDx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblRecordCountRecomendaciones_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountRecomendaciones_AnalisisDx.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblRecordCountRecomendaciones_AnalisisDx.Location = new System.Drawing.Point(445, 11);
+            this.lblRecordCountRecomendaciones_AnalisisDx.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountRecomendaciones_AnalisisDx.Name = "lblRecordCountRecomendaciones_AnalisisDx";
+            this.lblRecordCountRecomendaciones_AnalisisDx.Size = new System.Drawing.Size(184, 19);
+            this.lblRecordCountRecomendaciones_AnalisisDx.TabIndex = 80;
+            this.lblRecordCountRecomendaciones_AnalisisDx.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountRecomendaciones_AnalisisDx.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnAgregarDX
+            // 
+            this.btnAgregarDX.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
+            this.btnAgregarDX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarDX.Location = new System.Drawing.Point(1204, 17);
+            this.btnAgregarDX.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarDX.Name = "btnAgregarDX";
+            this.btnAgregarDX.Size = new System.Drawing.Size(26, 24);
+            this.btnAgregarDX.TabIndex = 82;
+            this.btnAgregarDX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnAgregarDX.UseVisualStyleBackColor = true;
+            this.btnAgregarDX.Click += new System.EventHandler(this.btnAgregarDX_Click);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(96, -12);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(111, 13);
+            this.label15.TabIndex = 69;
+            this.label15.Text = "Recomendaciones";
+            // 
+            // dtpFechaVcto
+            // 
+            this.dtpFechaVcto.Checked = false;
+            this.dtpFechaVcto.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaVcto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFechaVcto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpFechaVcto.Location = new System.Drawing.Point(1106, 46);
+            this.dtpFechaVcto.Name = "dtpFechaVcto";
+            this.dtpFechaVcto.ShowCheckBox = true;
+            this.dtpFechaVcto.Size = new System.Drawing.Size(124, 20);
+            this.dtpFechaVcto.TabIndex = 23;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.Black;
+            this.label33.Location = new System.Drawing.Point(1014, 49);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(88, 13);
+            this.label33.TabIndex = 22;
+            this.label33.Text = "Fecha de Control";
+            // 
+            // cbEnviarAntecedentes
+            // 
+            this.cbEnviarAntecedentes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEnviarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEnviarAntecedentes.FormattingEnabled = true;
+            this.cbEnviarAntecedentes.Location = new System.Drawing.Point(427, 42);
+            this.cbEnviarAntecedentes.Name = "cbEnviarAntecedentes";
+            this.cbEnviarAntecedentes.Size = new System.Drawing.Size(213, 21);
+            this.cbEnviarAntecedentes.TabIndex = 21;
+            // 
+            // label32
+            // 
+            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.Black;
+            this.label32.Location = new System.Drawing.Point(309, 46);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(123, 20);
+            this.label32.TabIndex = 20;
+            this.label32.Text = "Enviar a Antecedentes";
+            // 
+            // cbTipoDx
+            // 
+            this.cbTipoDx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTipoDx.FormattingEnabled = true;
+            this.cbTipoDx.Location = new System.Drawing.Point(725, 42);
+            this.cbTipoDx.Name = "cbTipoDx";
+            this.cbTipoDx.Size = new System.Drawing.Size(270, 21);
+            this.cbTipoDx.TabIndex = 19;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.Black;
+            this.label31.Location = new System.Drawing.Point(658, 45);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(61, 13);
+            this.label31.TabIndex = 18;
+            this.label31.Text = "Tipo de DX";
+            // 
+            // lblDiagnostico
+            // 
+            this.lblDiagnostico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.lblDiagnostico.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDiagnostico.Location = new System.Drawing.Point(105, 16);
+            this.lblDiagnostico.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDiagnostico.Name = "lblDiagnostico";
+            this.lblDiagnostico.Size = new System.Drawing.Size(1091, 23);
+            this.lblDiagnostico.TabIndex = 17;
+            // 
+            // cbCalificacionFinal
+            // 
+            this.cbCalificacionFinal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCalificacionFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCalificacionFinal.FormattingEnabled = true;
+            this.cbCalificacionFinal.Location = new System.Drawing.Point(105, 42);
+            this.cbCalificacionFinal.Name = "cbCalificacionFinal";
+            this.cbCalificacionFinal.Size = new System.Drawing.Size(184, 21);
+            this.cbCalificacionFinal.TabIndex = 8;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.Black;
+            this.label29.Location = new System.Drawing.Point(18, 20);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(63, 13);
+            this.label29.TabIndex = 2;
+            this.label29.Text = "Diagnóstico";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.Black;
+            this.label30.Location = new System.Drawing.Point(18, 44);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(86, 13);
+            this.label30.TabIndex = 0;
+            this.label30.Text = "Calificación Final";
             // 
             // gbTotalDiagnostico
             // 
@@ -1332,89 +1771,10 @@
             this.gbTotalDiagnostico.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbTotalDiagnostico.Location = new System.Drawing.Point(10, 4);
             this.gbTotalDiagnostico.Name = "gbTotalDiagnostico";
-            this.gbTotalDiagnostico.Size = new System.Drawing.Size(1241, 372);
+            this.gbTotalDiagnostico.Size = new System.Drawing.Size(1252, 310);
             this.gbTotalDiagnostico.TabIndex = 50;
             this.gbTotalDiagnostico.TabStop = false;
             this.gbTotalDiagnostico.Text = "TOTAL DE DIAGNÓSTICOS";
-            // 
-            // lblRecordCountTotalDiagnosticos
-            // 
-            this.lblRecordCountTotalDiagnosticos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRecordCountTotalDiagnosticos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountTotalDiagnosticos.Location = new System.Drawing.Point(1010, 80);
-            this.lblRecordCountTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountTotalDiagnosticos.Name = "lblRecordCountTotalDiagnosticos";
-            this.lblRecordCountTotalDiagnosticos.Size = new System.Drawing.Size(225, 19);
-            this.lblRecordCountTotalDiagnosticos.TabIndex = 49;
-            this.lblRecordCountTotalDiagnosticos.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountTotalDiagnosticos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnRefrescarTotalDiagnostico
-            // 
-            this.btnRefrescarTotalDiagnostico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRefrescarTotalDiagnostico.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRefrescarTotalDiagnostico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRefrescarTotalDiagnostico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRefrescarTotalDiagnostico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRefrescarTotalDiagnostico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefrescarTotalDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefrescarTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
-            this.btnRefrescarTotalDiagnostico.Image = global::Sigesoft.Node.WinClient.UI.Resources.arrow_refresh;
-            this.btnRefrescarTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefrescarTotalDiagnostico.Location = new System.Drawing.Point(179, 339);
-            this.btnRefrescarTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRefrescarTotalDiagnostico.Name = "btnRefrescarTotalDiagnostico";
-            this.btnRefrescarTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
-            this.btnRefrescarTotalDiagnostico.TabIndex = 89;
-            this.btnRefrescarTotalDiagnostico.Text = "Refrescar";
-            this.btnRefrescarTotalDiagnostico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnRefrescarTotalDiagnostico.UseVisualStyleBackColor = false;
-            this.btnRefrescarTotalDiagnostico.Click += new System.EventHandler(this.btnRefrescarTotalDiagnostico_Click);
-            // 
-            // btnAgregarTotalDiagnostico
-            // 
-            this.btnAgregarTotalDiagnostico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregarTotalDiagnostico.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarTotalDiagnostico.Enabled = false;
-            this.btnAgregarTotalDiagnostico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarTotalDiagnostico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarTotalDiagnostico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarTotalDiagnostico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarTotalDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarTotalDiagnostico.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarTotalDiagnostico.Image")));
-            this.btnAgregarTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarTotalDiagnostico.Location = new System.Drawing.Point(11, 339);
-            this.btnAgregarTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarTotalDiagnostico.Name = "btnAgregarTotalDiagnostico";
-            this.btnAgregarTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
-            this.btnAgregarTotalDiagnostico.TabIndex = 92;
-            this.btnAgregarTotalDiagnostico.Text = "      Agregar";
-            this.btnAgregarTotalDiagnostico.UseVisualStyleBackColor = false;
-            this.btnAgregarTotalDiagnostico.Click += new System.EventHandler(this.btnAgregarTotalDiagnostico_Click);
-            // 
-            // btnRemoverTotalDiagnostico
-            // 
-            this.btnRemoverTotalDiagnostico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoverTotalDiagnostico.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemoverTotalDiagnostico.Enabled = false;
-            this.btnRemoverTotalDiagnostico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemoverTotalDiagnostico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemoverTotalDiagnostico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemoverTotalDiagnostico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverTotalDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoverTotalDiagnostico.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverTotalDiagnostico.Image")));
-            this.btnRemoverTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverTotalDiagnostico.Location = new System.Drawing.Point(95, 339);
-            this.btnRemoverTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoverTotalDiagnostico.Name = "btnRemoverTotalDiagnostico";
-            this.btnRemoverTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
-            this.btnRemoverTotalDiagnostico.TabIndex = 93;
-            this.btnRemoverTotalDiagnostico.Text = "     Eliminar";
-            this.btnRemoverTotalDiagnostico.UseVisualStyleBackColor = false;
-            this.btnRemoverTotalDiagnostico.Click += new System.EventHandler(this.btnRemoverTotalDiagnostico_Click);
             // 
             // grdTotalDiagnosticos
             // 
@@ -1534,10 +1894,10 @@
             this.grdTotalDiagnosticos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdTotalDiagnosticos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdTotalDiagnosticos.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdTotalDiagnosticos.Location = new System.Drawing.Point(11, 26);
+            this.grdTotalDiagnosticos.Location = new System.Drawing.Point(11, 39);
             this.grdTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2);
             this.grdTotalDiagnosticos.Name = "grdTotalDiagnosticos";
-            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1206, 309);
+            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1217, 234);
             this.grdTotalDiagnosticos.TabIndex = 94;
             this.grdTotalDiagnosticos.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdTotalDiagnosticos_InitializeRow);
             this.grdTotalDiagnosticos.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdTotalDiagnosticos_AfterSelectChange);
@@ -1545,480 +1905,86 @@
             this.grdTotalDiagnosticos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdTotalDiagnosticos_KeyDown);
             this.grdTotalDiagnosticos.KeyUp += new System.Windows.Forms.KeyEventHandler(this.grdTotalDiagnosticos_KeyUp);
             // 
-            // gbEdicionDiagnosticoTotal
+            // btnRemoverTotalDiagnostico
             // 
-            this.gbEdicionDiagnosticoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnRemoverTotalDiagnostico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoverTotalDiagnostico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemoverTotalDiagnostico.Enabled = false;
+            this.btnRemoverTotalDiagnostico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemoverTotalDiagnostico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemoverTotalDiagnostico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemoverTotalDiagnostico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverTotalDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverTotalDiagnostico.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverTotalDiagnostico.Image")));
+            this.btnRemoverTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverTotalDiagnostico.Location = new System.Drawing.Point(95, 277);
+            this.btnRemoverTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverTotalDiagnostico.Name = "btnRemoverTotalDiagnostico";
+            this.btnRemoverTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
+            this.btnRemoverTotalDiagnostico.TabIndex = 93;
+            this.btnRemoverTotalDiagnostico.Text = "     Eliminar";
+            this.btnRemoverTotalDiagnostico.UseVisualStyleBackColor = false;
+            this.btnRemoverTotalDiagnostico.Visible = false;
+            this.btnRemoverTotalDiagnostico.Click += new System.EventHandler(this.btnRemoverTotalDiagnostico_Click);
+            // 
+            // btnAgregarTotalDiagnostico
+            // 
+            this.btnAgregarTotalDiagnostico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarTotalDiagnostico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarTotalDiagnostico.Enabled = false;
+            this.btnAgregarTotalDiagnostico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarTotalDiagnostico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarTotalDiagnostico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarTotalDiagnostico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarTotalDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarTotalDiagnostico.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarTotalDiagnostico.Image")));
+            this.btnAgregarTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarTotalDiagnostico.Location = new System.Drawing.Point(11, 277);
+            this.btnAgregarTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarTotalDiagnostico.Name = "btnAgregarTotalDiagnostico";
+            this.btnAgregarTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
+            this.btnAgregarTotalDiagnostico.TabIndex = 92;
+            this.btnAgregarTotalDiagnostico.Text = "      Agregar";
+            this.btnAgregarTotalDiagnostico.UseVisualStyleBackColor = false;
+            this.btnAgregarTotalDiagnostico.Visible = false;
+            this.btnAgregarTotalDiagnostico.Click += new System.EventHandler(this.btnAgregarTotalDiagnostico_Click);
+            // 
+            // btnRefrescarTotalDiagnostico
+            // 
+            this.btnRefrescarTotalDiagnostico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRefrescarTotalDiagnostico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRefrescarTotalDiagnostico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRefrescarTotalDiagnostico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRefrescarTotalDiagnostico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRefrescarTotalDiagnostico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRefrescarTotalDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefrescarTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
+            this.btnRefrescarTotalDiagnostico.Image = global::Sigesoft.Node.WinClient.UI.Resources.arrow_refresh;
+            this.btnRefrescarTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRefrescarTotalDiagnostico.Location = new System.Drawing.Point(179, 277);
+            this.btnRefrescarTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRefrescarTotalDiagnostico.Name = "btnRefrescarTotalDiagnostico";
+            this.btnRefrescarTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
+            this.btnRefrescarTotalDiagnostico.TabIndex = 89;
+            this.btnRefrescarTotalDiagnostico.Text = "Refrescar";
+            this.btnRefrescarTotalDiagnostico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnRefrescarTotalDiagnostico.UseVisualStyleBackColor = false;
+            this.btnRefrescarTotalDiagnostico.Click += new System.EventHandler(this.btnRefrescarTotalDiagnostico_Click);
+            // 
+            // lblRecordCountTotalDiagnosticos
+            // 
+            this.lblRecordCountTotalDiagnosticos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.groupBox2);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.groupBox1);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.btnAgregarDX);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label15);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.dtpFechaVcto);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label33);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.cbEnviarAntecedentes);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label32);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.cbTipoDx);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label31);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.lblDiagnostico);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.cbCalificacionFinal);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label29);
-            this.gbEdicionDiagnosticoTotal.Controls.Add(this.label30);
-            this.gbEdicionDiagnosticoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbEdicionDiagnosticoTotal.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbEdicionDiagnosticoTotal.Location = new System.Drawing.Point(10, 382);
-            this.gbEdicionDiagnosticoTotal.Name = "gbEdicionDiagnosticoTotal";
-            this.gbEdicionDiagnosticoTotal.Size = new System.Drawing.Size(1241, 259);
-            this.gbEdicionDiagnosticoTotal.TabIndex = 51;
-            this.gbEdicionDiagnosticoTotal.TabStop = false;
-            this.gbEdicionDiagnosticoTotal.Text = "Edición del Diagnóstico";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.Black;
-            this.label30.Location = new System.Drawing.Point(18, 44);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(86, 13);
-            this.label30.TabIndex = 0;
-            this.label30.Text = "Calificación Final";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(18, 20);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(63, 13);
-            this.label29.TabIndex = 2;
-            this.label29.Text = "Diagnóstico";
-            // 
-            // cbCalificacionFinal
-            // 
-            this.cbCalificacionFinal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCalificacionFinal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCalificacionFinal.FormattingEnabled = true;
-            this.cbCalificacionFinal.Location = new System.Drawing.Point(105, 42);
-            this.cbCalificacionFinal.Name = "cbCalificacionFinal";
-            this.cbCalificacionFinal.Size = new System.Drawing.Size(184, 21);
-            this.cbCalificacionFinal.TabIndex = 8;
-            // 
-            // lblDiagnostico
-            // 
-            this.lblDiagnostico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.lblDiagnostico.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDiagnostico.Location = new System.Drawing.Point(105, 16);
-            this.lblDiagnostico.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDiagnostico.Name = "lblDiagnostico";
-            this.lblDiagnostico.Size = new System.Drawing.Size(1091, 23);
-            this.lblDiagnostico.TabIndex = 17;
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label31.ForeColor = System.Drawing.Color.Black;
-            this.label31.Location = new System.Drawing.Point(658, 45);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(61, 13);
-            this.label31.TabIndex = 18;
-            this.label31.Text = "Tipo de DX";
-            // 
-            // cbTipoDx
-            // 
-            this.cbTipoDx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTipoDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTipoDx.FormattingEnabled = true;
-            this.cbTipoDx.Location = new System.Drawing.Point(725, 42);
-            this.cbTipoDx.Name = "cbTipoDx";
-            this.cbTipoDx.Size = new System.Drawing.Size(270, 21);
-            this.cbTipoDx.TabIndex = 19;
-            // 
-            // label32
-            // 
-            this.label32.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label32.ForeColor = System.Drawing.Color.Black;
-            this.label32.Location = new System.Drawing.Point(309, 46);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(123, 20);
-            this.label32.TabIndex = 20;
-            this.label32.Text = "Enviar a Antecedentes";
-            // 
-            // cbEnviarAntecedentes
-            // 
-            this.cbEnviarAntecedentes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEnviarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEnviarAntecedentes.FormattingEnabled = true;
-            this.cbEnviarAntecedentes.Location = new System.Drawing.Point(427, 42);
-            this.cbEnviarAntecedentes.Name = "cbEnviarAntecedentes";
-            this.cbEnviarAntecedentes.Size = new System.Drawing.Size(213, 21);
-            this.cbEnviarAntecedentes.TabIndex = 21;
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.ForeColor = System.Drawing.Color.Black;
-            this.label33.Location = new System.Drawing.Point(1014, 49);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(88, 13);
-            this.label33.TabIndex = 22;
-            this.label33.Text = "Fecha de Control";
-            // 
-            // dtpFechaVcto
-            // 
-            this.dtpFechaVcto.Checked = false;
-            this.dtpFechaVcto.CustomFormat = "dd/MM/yyyy";
-            this.dtpFechaVcto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFechaVcto.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpFechaVcto.Location = new System.Drawing.Point(1106, 46);
-            this.dtpFechaVcto.Name = "dtpFechaVcto";
-            this.dtpFechaVcto.ShowCheckBox = true;
-            this.dtpFechaVcto.Size = new System.Drawing.Size(124, 20);
-            this.dtpFechaVcto.TabIndex = 23;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(96, -12);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(111, 13);
-            this.label15.TabIndex = 69;
-            this.label15.Text = "Recomendaciones";
-            // 
-            // btnAgregarDX
-            // 
-            this.btnAgregarDX.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_search;
-            this.btnAgregarDX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarDX.Location = new System.Drawing.Point(1204, 17);
-            this.btnAgregarDX.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarDX.Name = "btnAgregarDX";
-            this.btnAgregarDX.Size = new System.Drawing.Size(26, 24);
-            this.btnAgregarDX.TabIndex = 82;
-            this.btnAgregarDX.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnAgregarDX.UseVisualStyleBackColor = true;
-            this.btnAgregarDX.Click += new System.EventHandler(this.btnAgregarDX_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.grdRecomendaciones_AnalisisDiagnostico);
-            this.groupBox1.Controls.Add(this.btnRemoverRecomendacion_AnalisisDx);
-            this.groupBox1.Controls.Add(this.btnAgregarRecomendaciones_AnalisisDx);
-            this.groupBox1.Controls.Add(this.lblRecordCountRecomendaciones_AnalisisDx);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.Black;
-            this.groupBox1.Location = new System.Drawing.Point(11, 71);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(634, 180);
-            this.groupBox1.TabIndex = 83;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Recomendaciones";
-            // 
-            // lblRecordCountRecomendaciones_AnalisisDx
-            // 
-            this.lblRecordCountRecomendaciones_AnalisisDx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblRecordCountRecomendaciones_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRecomendaciones_AnalisisDx.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountRecomendaciones_AnalisisDx.Location = new System.Drawing.Point(445, 13);
-            this.lblRecordCountRecomendaciones_AnalisisDx.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountRecomendaciones_AnalisisDx.Name = "lblRecordCountRecomendaciones_AnalisisDx";
-            this.lblRecordCountRecomendaciones_AnalisisDx.Size = new System.Drawing.Size(184, 19);
-            this.lblRecordCountRecomendaciones_AnalisisDx.TabIndex = 80;
-            this.lblRecordCountRecomendaciones_AnalisisDx.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountRecomendaciones_AnalisisDx.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnAgregarRecomendaciones_AnalisisDx
-            // 
-            this.btnAgregarRecomendaciones_AnalisisDx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregarRecomendaciones_AnalisisDx.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarRecomendaciones_AnalisisDx.Enabled = false;
-            this.btnAgregarRecomendaciones_AnalisisDx.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarRecomendaciones_AnalisisDx.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarRecomendaciones_AnalisisDx.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarRecomendaciones_AnalisisDx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRecomendaciones_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarRecomendaciones_AnalisisDx.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarRecomendaciones_AnalisisDx.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendaciones_AnalisisDx.Image")));
-            this.btnAgregarRecomendaciones_AnalisisDx.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRecomendaciones_AnalisisDx.Location = new System.Drawing.Point(599, 34);
-            this.btnAgregarRecomendaciones_AnalisisDx.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarRecomendaciones_AnalisisDx.Name = "btnAgregarRecomendaciones_AnalisisDx";
-            this.btnAgregarRecomendaciones_AnalisisDx.Size = new System.Drawing.Size(30, 24);
-            this.btnAgregarRecomendaciones_AnalisisDx.TabIndex = 94;
-            this.btnAgregarRecomendaciones_AnalisisDx.UseVisualStyleBackColor = false;
-            this.btnAgregarRecomendaciones_AnalisisDx.Click += new System.EventHandler(this.btnAgregarRecomendaciones_AnalisisDx_Click);
-            // 
-            // btnRemoverRecomendacion_AnalisisDx
-            // 
-            this.btnRemoverRecomendacion_AnalisisDx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoverRecomendacion_AnalisisDx.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemoverRecomendacion_AnalisisDx.Enabled = false;
-            this.btnRemoverRecomendacion_AnalisisDx.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemoverRecomendacion_AnalisisDx.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemoverRecomendacion_AnalisisDx.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemoverRecomendacion_AnalisisDx.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverRecomendacion_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverRecomendacion_AnalisisDx.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoverRecomendacion_AnalisisDx.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendacion_AnalisisDx.Image")));
-            this.btnRemoverRecomendacion_AnalisisDx.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRecomendacion_AnalisisDx.Location = new System.Drawing.Point(599, 62);
-            this.btnRemoverRecomendacion_AnalisisDx.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoverRecomendacion_AnalisisDx.Name = "btnRemoverRecomendacion_AnalisisDx";
-            this.btnRemoverRecomendacion_AnalisisDx.Size = new System.Drawing.Size(30, 24);
-            this.btnRemoverRecomendacion_AnalisisDx.TabIndex = 95;
-            this.btnRemoverRecomendacion_AnalisisDx.UseVisualStyleBackColor = false;
-            this.btnRemoverRecomendacion_AnalisisDx.Click += new System.EventHandler(this.btnRemoverRecomendacion_AnalisisDx_Click);
-            // 
-            // grdRecomendaciones_AnalisisDiagnostico
-            // 
-            this.grdRecomendaciones_AnalisisDiagnostico.CausesValidation = false;
-            appearance30.BackColor = System.Drawing.Color.White;
-            appearance30.BackColor2 = System.Drawing.Color.Silver;
-            appearance30.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Appearance = appearance30;
-            ultraGridColumn17.Header.VisiblePosition = 0;
-            ultraGridColumn17.Hidden = true;
-            ultraGridColumn18.Header.VisiblePosition = 1;
-            ultraGridColumn18.Hidden = true;
-            ultraGridColumn19.Header.VisiblePosition = 2;
-            ultraGridColumn19.Hidden = true;
-            ultraGridColumn20.Header.VisiblePosition = 3;
-            ultraGridColumn20.Hidden = true;
-            ultraGridColumn21.Header.Caption = "Recomendaciones";
-            ultraGridColumn21.Header.VisiblePosition = 4;
-            ultraGridColumn21.Width = 612;
-            ultraGridColumn22.Header.VisiblePosition = 5;
-            ultraGridColumn22.Hidden = true;
-            ultraGridColumn23.Header.VisiblePosition = 6;
-            ultraGridColumn23.Hidden = true;
-            ultraGridBand5.Columns.AddRange(new object[] {
-            ultraGridColumn17,
-            ultraGridColumn18,
-            ultraGridColumn19,
-            ultraGridColumn20,
-            ultraGridColumn21,
-            ultraGridColumn22,
-            ultraGridColumn23});
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.BandsSerializer.Add(ultraGridBand5);
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.InterBandSpacing = 10;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance31.BackColor = System.Drawing.Color.Transparent;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.CardAreaAppearance = appearance31;
-            appearance32.BackColor = System.Drawing.Color.White;
-            appearance32.BackColor2 = System.Drawing.Color.White;
-            appearance32.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.CellAppearance = appearance32;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance33.BackColor = System.Drawing.Color.White;
-            appearance33.BackColor2 = System.Drawing.Color.LightGray;
-            appearance33.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance33.BorderColor = System.Drawing.Color.DarkGray;
-            appearance33.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.HeaderAppearance = appearance33;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance34.AlphaLevel = ((short)(187));
-            appearance34.BackColor = System.Drawing.Color.Gainsboro;
-            appearance34.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance34.ForeColor = System.Drawing.Color.Black;
-            appearance34.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.RowAlternateAppearance = appearance34;
-            appearance35.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.RowSelectorAppearance = appearance35;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance36.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance36.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance36.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance36.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance36.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance36.FontData.BoldAsString = "False";
-            appearance36.ForeColor = System.Drawing.Color.Black;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.SelectedRowAppearance = appearance36;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdRecomendaciones_AnalisisDiagnostico.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdRecomendaciones_AnalisisDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdRecomendaciones_AnalisisDiagnostico.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdRecomendaciones_AnalisisDiagnostico.Location = new System.Drawing.Point(10, 34);
-            this.grdRecomendaciones_AnalisisDiagnostico.Margin = new System.Windows.Forms.Padding(2);
-            this.grdRecomendaciones_AnalisisDiagnostico.Name = "grdRecomendaciones_AnalisisDiagnostico";
-            this.grdRecomendaciones_AnalisisDiagnostico.Size = new System.Drawing.Size(585, 141);
-            this.grdRecomendaciones_AnalisisDiagnostico.TabIndex = 96;
-            this.grdRecomendaciones_AnalisisDiagnostico.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdRecomendaciones_AnalisisDiagnostico_AfterSelectChange);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.grdRestricciones_AnalisisDiagnostico);
-            this.groupBox2.Controls.Add(this.btnRemoverRestriccion_Analisis);
-            this.groupBox2.Controls.Add(this.btnAgregarRestriccion_Analisis);
-            this.groupBox2.Controls.Add(this.lblRecordCountRestricciones_AnalisisDx);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(654, 70);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(581, 181);
-            this.groupBox2.TabIndex = 84;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Restricciones";
-            // 
-            // lblRecordCountRestricciones_AnalisisDx
-            // 
-            this.lblRecordCountRestricciones_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRestricciones_AnalisisDx.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountRestricciones_AnalisisDx.Location = new System.Drawing.Point(388, 13);
-            this.lblRecordCountRestricciones_AnalisisDx.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountRestricciones_AnalisisDx.Name = "lblRecordCountRestricciones_AnalisisDx";
-            this.lblRecordCountRestricciones_AnalisisDx.Size = new System.Drawing.Size(188, 20);
-            this.lblRecordCountRestricciones_AnalisisDx.TabIndex = 50;
-            this.lblRecordCountRestricciones_AnalisisDx.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountRestricciones_AnalisisDx.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnAgregarRestriccion_Analisis
-            // 
-            this.btnAgregarRestriccion_Analisis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregarRestriccion_Analisis.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarRestriccion_Analisis.Enabled = false;
-            this.btnAgregarRestriccion_Analisis.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarRestriccion_Analisis.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarRestriccion_Analisis.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarRestriccion_Analisis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarRestriccion_Analisis.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarRestriccion_Analisis.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarRestriccion_Analisis.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion_Analisis.Image")));
-            this.btnAgregarRestriccion_Analisis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRestriccion_Analisis.Location = new System.Drawing.Point(546, 35);
-            this.btnAgregarRestriccion_Analisis.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarRestriccion_Analisis.Name = "btnAgregarRestriccion_Analisis";
-            this.btnAgregarRestriccion_Analisis.Size = new System.Drawing.Size(30, 24);
-            this.btnAgregarRestriccion_Analisis.TabIndex = 94;
-            this.btnAgregarRestriccion_Analisis.UseVisualStyleBackColor = false;
-            this.btnAgregarRestriccion_Analisis.Click += new System.EventHandler(this.btnAgregarRestriccion_Analisis_Click);
-            // 
-            // btnRemoverRestriccion_Analisis
-            // 
-            this.btnRemoverRestriccion_Analisis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoverRestriccion_Analisis.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemoverRestriccion_Analisis.Enabled = false;
-            this.btnRemoverRestriccion_Analisis.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemoverRestriccion_Analisis.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemoverRestriccion_Analisis.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemoverRestriccion_Analisis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverRestriccion_Analisis.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverRestriccion_Analisis.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoverRestriccion_Analisis.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestriccion_Analisis.Image")));
-            this.btnRemoverRestriccion_Analisis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRestriccion_Analisis.Location = new System.Drawing.Point(546, 63);
-            this.btnRemoverRestriccion_Analisis.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoverRestriccion_Analisis.Name = "btnRemoverRestriccion_Analisis";
-            this.btnRemoverRestriccion_Analisis.Size = new System.Drawing.Size(30, 24);
-            this.btnRemoverRestriccion_Analisis.TabIndex = 95;
-            this.btnRemoverRestriccion_Analisis.UseVisualStyleBackColor = false;
-            this.btnRemoverRestriccion_Analisis.Click += new System.EventHandler(this.btnRemoverRestriccion_Analisis_Click);
-            // 
-            // grdRestricciones_AnalisisDiagnostico
-            // 
-            this.grdRestricciones_AnalisisDiagnostico.CausesValidation = false;
-            appearance23.BackColor = System.Drawing.Color.White;
-            appearance23.BackColor2 = System.Drawing.Color.Silver;
-            appearance23.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Appearance = appearance23;
-            ultraGridColumn12.Header.Caption = "#";
-            ultraGridColumn12.Header.VisiblePosition = 0;
-            ultraGridColumn12.Hidden = true;
-            ultraGridColumn12.Width = 52;
-            ultraGridColumn13.Header.VisiblePosition = 1;
-            ultraGridColumn13.Hidden = true;
-            ultraGridColumn14.Header.VisiblePosition = 2;
-            ultraGridColumn14.Hidden = true;
-            ultraGridColumn15.Header.VisiblePosition = 3;
-            ultraGridColumn15.Hidden = true;
-            ultraGridColumn16.Header.Caption = "Restricciones";
-            ultraGridColumn16.Header.VisiblePosition = 4;
-            ultraGridColumn16.Width = 607;
-            ultraGridBand4.Columns.AddRange(new object[] {
-            ultraGridColumn12,
-            ultraGridColumn13,
-            ultraGridColumn14,
-            ultraGridColumn15,
-            ultraGridColumn16});
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.BandsSerializer.Add(ultraGridBand4);
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.InterBandSpacing = 10;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance24.BackColor = System.Drawing.Color.Transparent;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.CardAreaAppearance = appearance24;
-            appearance25.BackColor = System.Drawing.Color.White;
-            appearance25.BackColor2 = System.Drawing.Color.White;
-            appearance25.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.CellAppearance = appearance25;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance26.BackColor = System.Drawing.Color.White;
-            appearance26.BackColor2 = System.Drawing.Color.LightGray;
-            appearance26.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance26.BorderColor = System.Drawing.Color.DarkGray;
-            appearance26.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.HeaderAppearance = appearance26;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance27.AlphaLevel = ((short)(187));
-            appearance27.BackColor = System.Drawing.Color.Gainsboro;
-            appearance27.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance27.ForeColor = System.Drawing.Color.Black;
-            appearance27.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.RowAlternateAppearance = appearance27;
-            appearance28.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.RowSelectorAppearance = appearance28;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance29.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance29.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance29.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance29.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance29.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance29.FontData.BoldAsString = "False";
-            appearance29.ForeColor = System.Drawing.Color.Black;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.SelectedRowAppearance = appearance29;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdRestricciones_AnalisisDiagnostico.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdRestricciones_AnalisisDiagnostico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdRestricciones_AnalisisDiagnostico.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdRestricciones_AnalisisDiagnostico.Location = new System.Drawing.Point(7, 35);
-            this.grdRestricciones_AnalisisDiagnostico.Margin = new System.Windows.Forms.Padding(2);
-            this.grdRestricciones_AnalisisDiagnostico.Name = "grdRestricciones_AnalisisDiagnostico";
-            this.grdRestricciones_AnalisisDiagnostico.Size = new System.Drawing.Size(535, 141);
-            this.grdRestricciones_AnalisisDiagnostico.TabIndex = 96;
-            this.grdRestricciones_AnalisisDiagnostico.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdRestricciones_AnalisisDiagnostico_AfterSelectChange);
-            // 
-            // chkUtilizaFirmaControlAuditoria
-            // 
-            this.chkUtilizaFirmaControlAuditoria.AutoSize = true;
-            this.chkUtilizaFirmaControlAuditoria.Location = new System.Drawing.Point(10, 617);
-            this.chkUtilizaFirmaControlAuditoria.Name = "chkUtilizaFirmaControlAuditoria";
-            this.chkUtilizaFirmaControlAuditoria.Size = new System.Drawing.Size(98, 17);
-            this.chkUtilizaFirmaControlAuditoria.TabIndex = 62;
-            this.chkUtilizaFirmaControlAuditoria.Text = "SI Utilizar Firma";
-            this.chkUtilizaFirmaControlAuditoria.UseVisualStyleBackColor = true;
+            this.lblRecordCountTotalDiagnosticos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountTotalDiagnosticos.Location = new System.Drawing.Point(994, 16);
+            this.lblRecordCountTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountTotalDiagnosticos.Name = "lblRecordCountTotalDiagnosticos";
+            this.lblRecordCountTotalDiagnosticos.Size = new System.Drawing.Size(236, 19);
+            this.lblRecordCountTotalDiagnosticos.TabIndex = 49;
+            this.lblRecordCountTotalDiagnosticos.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountTotalDiagnosticos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tpExam
             // 
@@ -2026,7 +1992,7 @@
             this.tpExam.Location = new System.Drawing.Point(4, 22);
             this.tpExam.Name = "tpExam";
             this.tpExam.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExam.Size = new System.Drawing.Size(1267, 693);
+            this.tpExam.Size = new System.Drawing.Size(1292, 685);
             this.tpExam.TabIndex = 1;
             this.tpExam.Text = "EXÁMENES";
             this.tpExam.ToolTipText = "EXAMENES";
@@ -2034,6 +2000,9 @@
             // 
             // splitContainer2
             // 
+            this.splitContainer2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer2.Location = new System.Drawing.Point(6, 6);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -2046,9 +2015,222 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel2.Controls.Add(this.gbDiagnosticoExamen);
-            this.splitContainer2.Size = new System.Drawing.Size(1246, 651);
-            this.splitContainer2.SplitterDistance = 454;
+            this.splitContainer2.Size = new System.Drawing.Size(1278, 646);
+            this.splitContainer2.SplitterDistance = 450;
             this.splitContainer2.TabIndex = 59;
+            // 
+            // tcExamList
+            // 
+            this.tcExamList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tcExamList.Controls.Add(this.ultraTabSharedControlsPage1);
+            this.tcExamList.Location = new System.Drawing.Point(0, 0);
+            this.tcExamList.Name = "tcExamList";
+            this.tcExamList.SharedControlsPage = this.ultraTabSharedControlsPage1;
+            this.tcExamList.Size = new System.Drawing.Size(1278, 447);
+            this.tcExamList.TabIndex = 1;
+            this.tcExamList.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
+            this.tcExamList.TextOrientation = Infragistics.Win.UltraWinTabs.TextOrientation.Horizontal;
+            this.tcExamList.ViewStyle = Infragistics.Win.UltraWinTabControl.ViewStyle.Office2007;
+            this.tcExamList.SelectedTabChanging += new Infragistics.Win.UltraWinTabControl.SelectedTabChangingEventHandler(this.tcExamList_SelectedTabChanging);
+            this.tcExamList.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.tcExamList_SelectedTabChanged);
+            // 
+            // ultraTabSharedControlsPage1
+            // 
+            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(20, 1);
+            this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1257, 445);
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnVisorReporteExamen);
+            this.groupBox4.Controls.Add(this.btnReceta);
+            this.groupBox4.Controls.Add(this.btnPerson);
+            this.groupBox4.Controls.Add(this.btnGuardarExamen);
+            this.groupBox4.Controls.Add(this.btnCerrarESO);
+            this.groupBox4.Controls.Add(this.chkUtilizarFirma);
+            this.groupBox4.Controls.Add(this.EXAMENES_lblEstadoComponente);
+            this.groupBox4.Controls.Add(this.chkApproved);
+            this.groupBox4.Controls.Add(this.cbEstadoComponente);
+            this.groupBox4.Controls.Add(this.EXAMENES_lblComentarios);
+            this.groupBox4.Controls.Add(this.label23);
+            this.groupBox4.Controls.Add(this.cbTipoProcedenciaExamen);
+            this.groupBox4.Controls.Add(this.txtComentario);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.MediumBlue;
+            this.groupBox4.Location = new System.Drawing.Point(655, 4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(620, 171);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Grabar Examen";
+            // 
+            // btnVisorReporteExamen
+            // 
+            this.btnVisorReporteExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnVisorReporteExamen.BackColor = System.Drawing.SystemColors.Control;
+            this.btnVisorReporteExamen.Enabled = false;
+            this.btnVisorReporteExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnVisorReporteExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnVisorReporteExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnVisorReporteExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVisorReporteExamen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisorReporteExamen.ForeColor = System.Drawing.Color.Black;
+            this.btnVisorReporteExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnVisorReporteExamen.Image")));
+            this.btnVisorReporteExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVisorReporteExamen.Location = new System.Drawing.Point(335, 41);
+            this.btnVisorReporteExamen.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVisorReporteExamen.Name = "btnVisorReporteExamen";
+            this.btnVisorReporteExamen.Size = new System.Drawing.Size(280, 36);
+            this.btnVisorReporteExamen.TabIndex = 101;
+            this.btnVisorReporteExamen.Text = "Ver Reporte de";
+            this.btnVisorReporteExamen.UseVisualStyleBackColor = false;
+            this.btnVisorReporteExamen.Visible = false;
+            this.btnVisorReporteExamen.Click += new System.EventHandler(this.btnVisorReporteExamen_Click);
+            // 
+            // btnReceta
+            // 
+            this.btnReceta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReceta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReceta.Enabled = false;
+            this.btnReceta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnReceta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReceta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnReceta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReceta.ForeColor = System.Drawing.Color.Black;
+            this.btnReceta.Image = ((System.Drawing.Image)(resources.GetObject("btnReceta.Image")));
+            this.btnReceta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReceta.Location = new System.Drawing.Point(335, 9);
+            this.btnReceta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReceta.Name = "btnReceta";
+            this.btnReceta.Size = new System.Drawing.Size(280, 28);
+            this.btnReceta.TabIndex = 100;
+            this.btnReceta.Text = "Receta";
+            this.btnReceta.UseVisualStyleBackColor = false;
+            this.btnReceta.Click += new System.EventHandler(this.btnReceta_Click);
+            // 
+            // btnPerson
+            // 
+            this.btnPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPerson.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerson.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerson.Location = new System.Drawing.Point(9, 138);
+            this.btnPerson.Name = "btnPerson";
+            this.btnPerson.Size = new System.Drawing.Size(302, 26);
+            this.btnPerson.TabIndex = 99;
+            this.btnPerson.Text = "Ver Datos Generales";
+            this.btnPerson.UseVisualStyleBackColor = false;
+            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
+            // 
+            // btnGuardarExamen
+            // 
+            this.btnGuardarExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnGuardarExamen.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardarExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGuardarExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnGuardarExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGuardarExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarExamen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnGuardarExamen.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardarExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardarExamen.Location = new System.Drawing.Point(335, 138);
+            this.btnGuardarExamen.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarExamen.Name = "btnGuardarExamen";
+            this.btnGuardarExamen.Size = new System.Drawing.Size(283, 26);
+            this.btnGuardarExamen.TabIndex = 64;
+            this.btnGuardarExamen.Text = "      Guardar";
+            this.btnGuardarExamen.UseVisualStyleBackColor = false;
+            this.btnGuardarExamen.Click += new System.EventHandler(this.btnGuardarExamen_Click);
+            // 
+            // chkUtilizarFirma
+            // 
+            this.chkUtilizarFirma.AutoSize = true;
+            this.chkUtilizarFirma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkUtilizarFirma.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.chkUtilizarFirma.Location = new System.Drawing.Point(335, 117);
+            this.chkUtilizarFirma.Name = "chkUtilizarFirma";
+            this.chkUtilizarFirma.Size = new System.Drawing.Size(98, 17);
+            this.chkUtilizarFirma.TabIndex = 59;
+            this.chkUtilizarFirma.Text = "SI Utilizar Firma";
+            this.chkUtilizarFirma.UseVisualStyleBackColor = true;
+            // 
+            // EXAMENES_lblEstadoComponente
+            // 
+            this.EXAMENES_lblEstadoComponente.AutoSize = true;
+            this.EXAMENES_lblEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EXAMENES_lblEstadoComponente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.EXAMENES_lblEstadoComponente.Location = new System.Drawing.Point(332, 79);
+            this.EXAMENES_lblEstadoComponente.Name = "EXAMENES_lblEstadoComponente";
+            this.EXAMENES_lblEstadoComponente.Size = new System.Drawing.Size(120, 13);
+            this.EXAMENES_lblEstadoComponente.TabIndex = 51;
+            this.EXAMENES_lblEstadoComponente.Text = "Estado del examen ({0})";
+            // 
+            // chkApproved
+            // 
+            this.chkApproved.AutoSize = true;
+            this.chkApproved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkApproved.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.chkApproved.Location = new System.Drawing.Point(474, 119);
+            this.chkApproved.Name = "chkApproved";
+            this.chkApproved.Size = new System.Drawing.Size(140, 17);
+            this.chkApproved.TabIndex = 58;
+            this.chkApproved.Text = "Aprobar por Especialista";
+            this.chkApproved.UseVisualStyleBackColor = true;
+            // 
+            // cbEstadoComponente
+            // 
+            this.cbEstadoComponente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEstadoComponente.FormattingEnabled = true;
+            this.cbEstadoComponente.Location = new System.Drawing.Point(335, 95);
+            this.cbEstadoComponente.Name = "cbEstadoComponente";
+            this.cbEstadoComponente.Size = new System.Drawing.Size(283, 21);
+            this.cbEstadoComponente.TabIndex = 0;
+            // 
+            // EXAMENES_lblComentarios
+            // 
+            this.EXAMENES_lblComentarios.AutoSize = true;
+            this.EXAMENES_lblComentarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EXAMENES_lblComentarios.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.EXAMENES_lblComentarios.Location = new System.Drawing.Point(6, 17);
+            this.EXAMENES_lblComentarios.Name = "EXAMENES_lblComentarios";
+            this.EXAMENES_lblComentarios.Size = new System.Drawing.Size(97, 13);
+            this.EXAMENES_lblComentarios.TabIndex = 49;
+            this.EXAMENES_lblComentarios.Text = "Comentarios de {0}";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label23.Location = new System.Drawing.Point(6, 96);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(84, 13);
+            this.label23.TabIndex = 52;
+            this.label23.Text = "Tipo de Exámen";
+            // 
+            // cbTipoProcedenciaExamen
+            // 
+            this.cbTipoProcedenciaExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoProcedenciaExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTipoProcedenciaExamen.FormattingEnabled = true;
+            this.cbTipoProcedenciaExamen.Location = new System.Drawing.Point(9, 112);
+            this.cbTipoProcedenciaExamen.Name = "cbTipoProcedenciaExamen";
+            this.cbTipoProcedenciaExamen.Size = new System.Drawing.Size(302, 21);
+            this.cbTipoProcedenciaExamen.TabIndex = 53;
+            // 
+            // txtComentario
+            // 
+            this.txtComentario.Location = new System.Drawing.Point(6, 33);
+            this.txtComentario.Multiline = true;
+            this.txtComentario.Name = "txtComentario";
+            this.txtComentario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtComentario.Size = new System.Drawing.Size(305, 60);
+            this.txtComentario.TabIndex = 50;
             // 
             // gbDiagnosticoExamen
             // 
@@ -2059,94 +2241,17 @@
             this.gbDiagnosticoExamen.Controls.Add(this.lblRecordCountDiagnosticoPorExamenCom);
             this.gbDiagnosticoExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDiagnosticoExamen.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbDiagnosticoExamen.Location = new System.Drawing.Point(3, -2);
+            this.gbDiagnosticoExamen.Location = new System.Drawing.Point(2, 4);
             this.gbDiagnosticoExamen.Name = "gbDiagnosticoExamen";
-            this.gbDiagnosticoExamen.Size = new System.Drawing.Size(600, 176);
+            this.gbDiagnosticoExamen.Size = new System.Drawing.Size(647, 171);
             this.gbDiagnosticoExamen.TabIndex = 49;
             this.gbDiagnosticoExamen.TabStop = false;
             this.gbDiagnosticoExamen.Text = "Diagnosticos del Examen";
             // 
-            // lblRecordCountDiagnosticoPorExamenCom
-            // 
-            this.lblRecordCountDiagnosticoPorExamenCom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblRecordCountDiagnosticoPorExamenCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountDiagnosticoPorExamenCom.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountDiagnosticoPorExamenCom.Location = new System.Drawing.Point(402, 143);
-            this.lblRecordCountDiagnosticoPorExamenCom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblRecordCountDiagnosticoPorExamenCom.Name = "lblRecordCountDiagnosticoPorExamenCom";
-            this.lblRecordCountDiagnosticoPorExamenCom.Size = new System.Drawing.Size(189, 19);
-            this.lblRecordCountDiagnosticoPorExamenCom.TabIndex = 49;
-            this.lblRecordCountDiagnosticoPorExamenCom.Text = "No se ha realizado la búsqueda aún.";
-            this.lblRecordCountDiagnosticoPorExamenCom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnAgregarDxExamen
-            // 
-            this.btnAgregarDxExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAgregarDxExamen.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAgregarDxExamen.Enabled = false;
-            this.btnAgregarDxExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAgregarDxExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAgregarDxExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAgregarDxExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarDxExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregarDxExamen.ForeColor = System.Drawing.Color.Black;
-            this.btnAgregarDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarDxExamen.Image")));
-            this.btnAgregarDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarDxExamen.Location = new System.Drawing.Point(8, 143);
-            this.btnAgregarDxExamen.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAgregarDxExamen.Name = "btnAgregarDxExamen";
-            this.btnAgregarDxExamen.Size = new System.Drawing.Size(80, 24);
-            this.btnAgregarDxExamen.TabIndex = 89;
-            this.btnAgregarDxExamen.Text = "      Agregar";
-            this.btnAgregarDxExamen.UseVisualStyleBackColor = false;
-            this.btnAgregarDxExamen.Click += new System.EventHandler(this.btnAgregarDxExamen_Click);
-            // 
-            // btnEditarDxExamen
-            // 
-            this.btnEditarDxExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEditarDxExamen.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEditarDxExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEditarDxExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEditarDxExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEditarDxExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarDxExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarDxExamen.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarDxExamen.Image")));
-            this.btnEditarDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarDxExamen.Location = new System.Drawing.Point(92, 143);
-            this.btnEditarDxExamen.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditarDxExamen.Name = "btnEditarDxExamen";
-            this.btnEditarDxExamen.Size = new System.Drawing.Size(80, 24);
-            this.btnEditarDxExamen.TabIndex = 90;
-            this.btnEditarDxExamen.Text = "Modificar";
-            this.btnEditarDxExamen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEditarDxExamen.UseVisualStyleBackColor = false;
-            this.btnEditarDxExamen.Click += new System.EventHandler(this.btnEditarDxExamen_Click);
-            // 
-            // btnRemoverDxExamen
-            // 
-            this.btnRemoverDxExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnRemoverDxExamen.BackColor = System.Drawing.SystemColors.Control;
-            this.btnRemoverDxExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnRemoverDxExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnRemoverDxExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnRemoverDxExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRemoverDxExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoverDxExamen.ForeColor = System.Drawing.Color.Black;
-            this.btnRemoverDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverDxExamen.Image")));
-            this.btnRemoverDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverDxExamen.Location = new System.Drawing.Point(176, 143);
-            this.btnRemoverDxExamen.Margin = new System.Windows.Forms.Padding(2);
-            this.btnRemoverDxExamen.Name = "btnRemoverDxExamen";
-            this.btnRemoverDxExamen.Size = new System.Drawing.Size(80, 24);
-            this.btnRemoverDxExamen.TabIndex = 91;
-            this.btnRemoverDxExamen.Text = "     Eliminar";
-            this.btnRemoverDxExamen.UseVisualStyleBackColor = false;
-            this.btnRemoverDxExamen.Click += new System.EventHandler(this.btnRemoverDxExamen_Click);
-            // 
             // grdDiagnosticoPorExamenComponente
             // 
-            this.grdDiagnosticoPorExamenComponente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.grdDiagnosticoPorExamenComponente.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdDiagnosticoPorExamenComponente.CausesValidation = false;
             appearance44.BackColor = System.Drawing.Color.White;
             appearance44.BackColor2 = System.Drawing.Color.Silver;
@@ -2239,166 +2344,92 @@
             this.grdDiagnosticoPorExamenComponente.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdDiagnosticoPorExamenComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdDiagnosticoPorExamenComponente.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdDiagnosticoPorExamenComponente.Location = new System.Drawing.Point(5, 23);
+            this.grdDiagnosticoPorExamenComponente.Location = new System.Drawing.Point(5, 18);
             this.grdDiagnosticoPorExamenComponente.Margin = new System.Windows.Forms.Padding(2);
             this.grdDiagnosticoPorExamenComponente.Name = "grdDiagnosticoPorExamenComponente";
-            this.grdDiagnosticoPorExamenComponente.Size = new System.Drawing.Size(584, 116);
+            this.grdDiagnosticoPorExamenComponente.Size = new System.Drawing.Size(637, 118);
             this.grdDiagnosticoPorExamenComponente.TabIndex = 92;
             this.grdDiagnosticoPorExamenComponente.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDiagnosticoPorExamenComponente_InitializeRow);
             this.grdDiagnosticoPorExamenComponente.AfterPerformAction += new Infragistics.Win.UltraWinGrid.AfterUltraGridPerformActionEventHandler(this.grdDiagnosticoPorExamenComponente_AfterPerformAction);
             this.grdDiagnosticoPorExamenComponente.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdDiagnosticoPorExamenComponente_ClickCell);
             // 
-            // groupBox4
+            // btnRemoverDxExamen
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox4.Controls.Add(this.btnGuardarExamen);
-            this.groupBox4.Controls.Add(this.chkUtilizarFirma);
-            this.groupBox4.Controls.Add(this.EXAMENES_lblEstadoComponente);
-            this.groupBox4.Controls.Add(this.chkApproved);
-            this.groupBox4.Controls.Add(this.cbEstadoComponente);
-            this.groupBox4.Controls.Add(this.EXAMENES_lblComentarios);
-            this.groupBox4.Controls.Add(this.label23);
-            this.groupBox4.Controls.Add(this.cbTipoProcedenciaExamen);
-            this.groupBox4.Controls.Add(this.txtComentario);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.ForeColor = System.Drawing.Color.MediumBlue;
-            this.groupBox4.Location = new System.Drawing.Point(609, -2);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(624, 176);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Grabar Examen";
+            this.btnRemoverDxExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnRemoverDxExamen.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRemoverDxExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRemoverDxExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRemoverDxExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRemoverDxExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoverDxExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoverDxExamen.ForeColor = System.Drawing.Color.Black;
+            this.btnRemoverDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverDxExamen.Image")));
+            this.btnRemoverDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverDxExamen.Location = new System.Drawing.Point(176, 140);
+            this.btnRemoverDxExamen.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRemoverDxExamen.Name = "btnRemoverDxExamen";
+            this.btnRemoverDxExamen.Size = new System.Drawing.Size(80, 24);
+            this.btnRemoverDxExamen.TabIndex = 91;
+            this.btnRemoverDxExamen.Text = "     Eliminar";
+            this.btnRemoverDxExamen.UseVisualStyleBackColor = false;
+            this.btnRemoverDxExamen.Click += new System.EventHandler(this.btnRemoverDxExamen_Click);
             // 
-            // txtComentario
+            // btnEditarDxExamen
             // 
-            this.txtComentario.Location = new System.Drawing.Point(6, 41);
-            this.txtComentario.Multiline = true;
-            this.txtComentario.Name = "txtComentario";
-            this.txtComentario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtComentario.Size = new System.Drawing.Size(305, 34);
-            this.txtComentario.TabIndex = 50;
+            this.btnEditarDxExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnEditarDxExamen.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditarDxExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditarDxExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditarDxExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditarDxExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarDxExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarDxExamen.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarDxExamen.Image")));
+            this.btnEditarDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarDxExamen.Location = new System.Drawing.Point(92, 140);
+            this.btnEditarDxExamen.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarDxExamen.Name = "btnEditarDxExamen";
+            this.btnEditarDxExamen.Size = new System.Drawing.Size(80, 24);
+            this.btnEditarDxExamen.TabIndex = 90;
+            this.btnEditarDxExamen.Text = "Modificar";
+            this.btnEditarDxExamen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEditarDxExamen.UseVisualStyleBackColor = false;
+            this.btnEditarDxExamen.Click += new System.EventHandler(this.btnEditarDxExamen_Click);
             // 
-            // cbTipoProcedenciaExamen
+            // btnAgregarDxExamen
             // 
-            this.cbTipoProcedenciaExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTipoProcedenciaExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbTipoProcedenciaExamen.FormattingEnabled = true;
-            this.cbTipoProcedenciaExamen.Location = new System.Drawing.Point(9, 94);
-            this.cbTipoProcedenciaExamen.Name = "cbTipoProcedenciaExamen";
-            this.cbTipoProcedenciaExamen.Size = new System.Drawing.Size(302, 21);
-            this.cbTipoProcedenciaExamen.TabIndex = 53;
+            this.btnAgregarDxExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAgregarDxExamen.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAgregarDxExamen.Enabled = false;
+            this.btnAgregarDxExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAgregarDxExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAgregarDxExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAgregarDxExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarDxExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarDxExamen.ForeColor = System.Drawing.Color.Black;
+            this.btnAgregarDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarDxExamen.Image")));
+            this.btnAgregarDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAgregarDxExamen.Location = new System.Drawing.Point(8, 140);
+            this.btnAgregarDxExamen.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAgregarDxExamen.Name = "btnAgregarDxExamen";
+            this.btnAgregarDxExamen.Size = new System.Drawing.Size(80, 24);
+            this.btnAgregarDxExamen.TabIndex = 89;
+            this.btnAgregarDxExamen.Text = "      Agregar";
+            this.btnAgregarDxExamen.UseVisualStyleBackColor = false;
+            this.btnAgregarDxExamen.Click += new System.EventHandler(this.btnAgregarDxExamen_Click);
             // 
-            // label23
+            // lblRecordCountDiagnosticoPorExamenCom
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label23.Location = new System.Drawing.Point(6, 78);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(84, 13);
-            this.label23.TabIndex = 52;
-            this.label23.Text = "Tipo de Exámen";
-            // 
-            // EXAMENES_lblComentarios
-            // 
-            this.EXAMENES_lblComentarios.AutoSize = true;
-            this.EXAMENES_lblComentarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EXAMENES_lblComentarios.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EXAMENES_lblComentarios.Location = new System.Drawing.Point(6, 25);
-            this.EXAMENES_lblComentarios.Name = "EXAMENES_lblComentarios";
-            this.EXAMENES_lblComentarios.Size = new System.Drawing.Size(97, 13);
-            this.EXAMENES_lblComentarios.TabIndex = 49;
-            this.EXAMENES_lblComentarios.Text = "Comentarios de {0}";
-            // 
-            // cbEstadoComponente
-            // 
-            this.cbEstadoComponente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEstadoComponente.FormattingEnabled = true;
-            this.cbEstadoComponente.Location = new System.Drawing.Point(335, 47);
-            this.cbEstadoComponente.Name = "cbEstadoComponente";
-            this.cbEstadoComponente.Size = new System.Drawing.Size(283, 21);
-            this.cbEstadoComponente.TabIndex = 0;
-            // 
-            // chkApproved
-            // 
-            this.chkApproved.AutoSize = true;
-            this.chkApproved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkApproved.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.chkApproved.Location = new System.Drawing.Point(472, 96);
-            this.chkApproved.Name = "chkApproved";
-            this.chkApproved.Size = new System.Drawing.Size(140, 17);
-            this.chkApproved.TabIndex = 58;
-            this.chkApproved.Text = "Aprobar por Especialista";
-            this.chkApproved.UseVisualStyleBackColor = true;
-            // 
-            // EXAMENES_lblEstadoComponente
-            // 
-            this.EXAMENES_lblEstadoComponente.AutoSize = true;
-            this.EXAMENES_lblEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.EXAMENES_lblEstadoComponente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EXAMENES_lblEstadoComponente.Location = new System.Drawing.Point(332, 28);
-            this.EXAMENES_lblEstadoComponente.Name = "EXAMENES_lblEstadoComponente";
-            this.EXAMENES_lblEstadoComponente.Size = new System.Drawing.Size(120, 13);
-            this.EXAMENES_lblEstadoComponente.TabIndex = 51;
-            this.EXAMENES_lblEstadoComponente.Text = "Estado del examen ({0})";
-            // 
-            // chkUtilizarFirma
-            // 
-            this.chkUtilizarFirma.AutoSize = true;
-            this.chkUtilizarFirma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkUtilizarFirma.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.chkUtilizarFirma.Location = new System.Drawing.Point(335, 96);
-            this.chkUtilizarFirma.Name = "chkUtilizarFirma";
-            this.chkUtilizarFirma.Size = new System.Drawing.Size(98, 17);
-            this.chkUtilizarFirma.TabIndex = 59;
-            this.chkUtilizarFirma.Text = "SI Utilizar Firma";
-            this.chkUtilizarFirma.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardarExamen
-            // 
-            this.btnGuardarExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGuardarExamen.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGuardarExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnGuardarExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnGuardarExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnGuardarExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarExamen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnGuardarExamen.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
-            this.btnGuardarExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarExamen.Location = new System.Drawing.Point(346, 143);
-            this.btnGuardarExamen.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardarExamen.Name = "btnGuardarExamen";
-            this.btnGuardarExamen.Size = new System.Drawing.Size(272, 24);
-            this.btnGuardarExamen.TabIndex = 64;
-            this.btnGuardarExamen.Text = "      Guardar";
-            this.btnGuardarExamen.UseVisualStyleBackColor = false;
-            this.btnGuardarExamen.Click += new System.EventHandler(this.btnGuardarExamen_Click);
-            // 
-            // tcExamList
-            // 
-            this.tcExamList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tcExamList.Controls.Add(this.ultraTabSharedControlsPage1);
-            this.tcExamList.Location = new System.Drawing.Point(6, 3);
-            this.tcExamList.Name = "tcExamList";
-            this.tcExamList.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tcExamList.Size = new System.Drawing.Size(1227, 447);
-            this.tcExamList.TabIndex = 1;
-            this.tcExamList.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
-            this.tcExamList.TextOrientation = Infragistics.Win.UltraWinTabs.TextOrientation.Horizontal;
-            this.tcExamList.ViewStyle = Infragistics.Win.UltraWinTabControl.ViewStyle.Office2007;
-            this.tcExamList.SelectedTabChanging += new Infragistics.Win.UltraWinTabControl.SelectedTabChangingEventHandler(this.tcExamList_SelectedTabChanging);
-            this.tcExamList.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.tcExamList_SelectedTabChanged);
-            // 
-            // ultraTabSharedControlsPage1
-            // 
-            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(20, 1);
-            this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1206, 445);
+            this.lblRecordCountDiagnosticoPorExamenCom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblRecordCountDiagnosticoPorExamenCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRecordCountDiagnosticoPorExamenCom.ForeColor = System.Drawing.Color.MediumBlue;
+            this.lblRecordCountDiagnosticoPorExamenCom.Location = new System.Drawing.Point(402, 138);
+            this.lblRecordCountDiagnosticoPorExamenCom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblRecordCountDiagnosticoPorExamenCom.Name = "lblRecordCountDiagnosticoPorExamenCom";
+            this.lblRecordCountDiagnosticoPorExamenCom.Size = new System.Drawing.Size(189, 19);
+            this.lblRecordCountDiagnosticoPorExamenCom.TabIndex = 49;
+            this.lblRecordCountDiagnosticoPorExamenCom.Text = "No se ha realizado la búsqueda aún.";
+            this.lblRecordCountDiagnosticoPorExamenCom.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // General
             // 
@@ -2410,500 +2441,10 @@
             this.General.Location = new System.Drawing.Point(4, 22);
             this.General.Name = "General";
             this.General.Padding = new System.Windows.Forms.Padding(3);
-            this.General.Size = new System.Drawing.Size(1267, 693);
+            this.General.Size = new System.Drawing.Size(1292, 685);
             this.General.TabIndex = 0;
             this.General.Text = "ANAMNESIS - ANTECEDENTES";
             this.General.UseVisualStyleBackColor = true;
-            // 
-            // btnGuardarAnamnesis
-            // 
-            this.btnGuardarAnamnesis.BackColor = System.Drawing.SystemColors.Control;
-            this.btnGuardarAnamnesis.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnGuardarAnamnesis.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnGuardarAnamnesis.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnGuardarAnamnesis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGuardarAnamnesis.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
-            this.btnGuardarAnamnesis.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnGuardarAnamnesis.Location = new System.Drawing.Point(1164, 247);
-            this.btnGuardarAnamnesis.Margin = new System.Windows.Forms.Padding(2);
-            this.btnGuardarAnamnesis.Name = "btnGuardarAnamnesis";
-            this.btnGuardarAnamnesis.Size = new System.Drawing.Size(87, 24);
-            this.btnGuardarAnamnesis.TabIndex = 58;
-            this.btnGuardarAnamnesis.Text = "&Guardar";
-            this.btnGuardarAnamnesis.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnGuardarAnamnesis.UseVisualStyleBackColor = false;
-            this.btnGuardarAnamnesis.Click += new System.EventHandler(this.btnGuardarAnamnesis_Click);
-            // 
-            // gbSintomasySignos
-            // 
-            this.gbSintomasySignos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbSintomasySignos.Controls.Add(this.chkPresentaSisntomas);
-            this.gbSintomasySignos.Controls.Add(this.label13);
-            this.gbSintomasySignos.Controls.Add(this.txtSintomaPrincipal);
-            this.gbSintomasySignos.Controls.Add(this.cbCalendario);
-            this.gbSintomasySignos.Controls.Add(this.txtRelato);
-            this.gbSintomasySignos.Controls.Add(this.label3);
-            this.gbSintomasySignos.Controls.Add(this.label2);
-            this.gbSintomasySignos.Controls.Add(this.txtValorTiempoEnfermedad);
-            this.gbSintomasySignos.Controls.Add(this.label4);
-            this.gbSintomasySignos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbSintomasySignos.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbSintomasySignos.Location = new System.Drawing.Point(7, 6);
-            this.gbSintomasySignos.Name = "gbSintomasySignos";
-            this.gbSintomasySignos.Size = new System.Drawing.Size(486, 154);
-            this.gbSintomasySignos.TabIndex = 0;
-            this.gbSintomasySignos.TabStop = false;
-            this.gbSintomasySignos.Text = "Sintomas y Signos";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(6, 73);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(117, 13);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Tiempo de Enfermedad";
-            // 
-            // txtValorTiempoEnfermedad
-            // 
-            this.txtValorTiempoEnfermedad.Enabled = false;
-            this.txtValorTiempoEnfermedad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorTiempoEnfermedad.Location = new System.Drawing.Point(126, 70);
-            this.txtValorTiempoEnfermedad.Name = "txtValorTiempoEnfermedad";
-            this.txtValorTiempoEnfermedad.Size = new System.Drawing.Size(96, 20);
-            this.txtValorTiempoEnfermedad.TabIndex = 1;
-            this.txtValorTiempoEnfermedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(8, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(104, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Sintomas Principales";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(82, 98);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Relato";
-            // 
-            // txtRelato
-            // 
-            this.txtRelato.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRelato.Location = new System.Drawing.Point(126, 98);
-            this.txtRelato.Multiline = true;
-            this.txtRelato.Name = "txtRelato";
-            this.txtRelato.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtRelato.Size = new System.Drawing.Size(354, 41);
-            this.txtRelato.TabIndex = 5;
-            this.txtRelato.Text = "Paciente Asintomático";
-            // 
-            // cbCalendario
-            // 
-            this.cbCalendario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCalendario.Enabled = false;
-            this.cbCalendario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCalendario.FormattingEnabled = true;
-            this.cbCalendario.Location = new System.Drawing.Point(228, 70);
-            this.cbCalendario.Name = "cbCalendario";
-            this.cbCalendario.Size = new System.Drawing.Size(252, 21);
-            this.cbCalendario.TabIndex = 8;
-            // 
-            // txtSintomaPrincipal
-            // 
-            this.txtSintomaPrincipal.Enabled = false;
-            this.txtSintomaPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSintomaPrincipal.Location = new System.Drawing.Point(126, 44);
-            this.txtSintomaPrincipal.MaxLength = 100;
-            this.txtSintomaPrincipal.Name = "txtSintomaPrincipal";
-            this.txtSintomaPrincipal.Size = new System.Drawing.Size(354, 20);
-            this.txtSintomaPrincipal.TabIndex = 58;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(8, 22);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(112, 13);
-            this.label13.TabIndex = 59;
-            this.label13.Text = "¿Presenta Síntomas ?";
-            // 
-            // chkPresentaSisntomas
-            // 
-            this.chkPresentaSisntomas.AutoSize = true;
-            this.chkPresentaSisntomas.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.chkPresentaSisntomas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkPresentaSisntomas.Location = new System.Drawing.Point(126, 21);
-            this.chkPresentaSisntomas.Name = "chkPresentaSisntomas";
-            this.chkPresentaSisntomas.Size = new System.Drawing.Size(15, 14);
-            this.chkPresentaSisntomas.TabIndex = 60;
-            this.chkPresentaSisntomas.UseVisualStyleBackColor = true;
-            this.chkPresentaSisntomas.CheckedChanged += new System.EventHandler(this.chkPresentaSisntomas_CheckedChanged);
-            // 
-            // gbFuncionesBiologicas
-            // 
-            this.gbFuncionesBiologicas.Controls.Add(this.cbSed);
-            this.gbFuncionesBiologicas.Controls.Add(this.txtHallazgos);
-            this.gbFuncionesBiologicas.Controls.Add(this.label9);
-            this.gbFuncionesBiologicas.Controls.Add(this.label14);
-            this.gbFuncionesBiologicas.Controls.Add(this.cbApetito);
-            this.gbFuncionesBiologicas.Controls.Add(this.label8);
-            this.gbFuncionesBiologicas.Controls.Add(this.cbDeposiciones);
-            this.gbFuncionesBiologicas.Controls.Add(this.label7);
-            this.gbFuncionesBiologicas.Controls.Add(this.cbOrina);
-            this.gbFuncionesBiologicas.Controls.Add(this.label6);
-            this.gbFuncionesBiologicas.Controls.Add(this.cbSueño);
-            this.gbFuncionesBiologicas.Controls.Add(this.label5);
-            this.gbFuncionesBiologicas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbFuncionesBiologicas.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbFuncionesBiologicas.Location = new System.Drawing.Point(514, 6);
-            this.gbFuncionesBiologicas.Name = "gbFuncionesBiologicas";
-            this.gbFuncionesBiologicas.Size = new System.Drawing.Size(743, 154);
-            this.gbFuncionesBiologicas.TabIndex = 1;
-            this.gbFuncionesBiologicas.TabStop = false;
-            this.gbFuncionesBiologicas.Text = "Funciones Biológicas";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(16, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 13);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "Sueño";
-            // 
-            // cbSueño
-            // 
-            this.cbSueño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSueño.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSueño.FormattingEnabled = true;
-            this.cbSueño.Location = new System.Drawing.Point(60, 19);
-            this.cbSueño.Name = "cbSueño";
-            this.cbSueño.Size = new System.Drawing.Size(194, 21);
-            this.cbSueño.TabIndex = 2;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(22, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Orina";
-            // 
-            // cbOrina
-            // 
-            this.cbOrina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbOrina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbOrina.FormattingEnabled = true;
-            this.cbOrina.Location = new System.Drawing.Point(60, 43);
-            this.cbOrina.Name = "cbOrina";
-            this.cbOrina.Size = new System.Drawing.Size(194, 21);
-            this.cbOrina.TabIndex = 4;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(513, 22);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(71, 13);
-            this.label7.TabIndex = 5;
-            this.label7.Text = "Deposiciones";
-            // 
-            // cbDeposiciones
-            // 
-            this.cbDeposiciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbDeposiciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDeposiciones.FormattingEnabled = true;
-            this.cbDeposiciones.Location = new System.Drawing.Point(590, 19);
-            this.cbDeposiciones.Name = "cbDeposiciones";
-            this.cbDeposiciones.Size = new System.Drawing.Size(147, 21);
-            this.cbDeposiciones.TabIndex = 6;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(266, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(40, 13);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "Apetito";
-            // 
-            // cbApetito
-            // 
-            this.cbApetito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbApetito.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbApetito.FormattingEnabled = true;
-            this.cbApetito.Location = new System.Drawing.Point(312, 19);
-            this.cbApetito.Name = "cbApetito";
-            this.cbApetito.Size = new System.Drawing.Size(194, 21);
-            this.cbApetito.TabIndex = 8;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(6, 76);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(53, 13);
-            this.label14.TabIndex = 61;
-            this.label14.Text = "Hallazgos";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(280, 49);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(26, 13);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Sed";
-            // 
-            // txtHallazgos
-            // 
-            this.txtHallazgos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHallazgos.Location = new System.Drawing.Point(60, 73);
-            this.txtHallazgos.Multiline = true;
-            this.txtHallazgos.Name = "txtHallazgos";
-            this.txtHallazgos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtHallazgos.Size = new System.Drawing.Size(677, 66);
-            this.txtHallazgos.TabIndex = 62;
-            // 
-            // cbSed
-            // 
-            this.cbSed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbSed.FormattingEnabled = true;
-            this.cbSed.Location = new System.Drawing.Point(312, 46);
-            this.cbSed.Name = "cbSed";
-            this.cbSed.Size = new System.Drawing.Size(194, 21);
-            this.cbSed.TabIndex = 10;
-            // 
-            // gbAntGinecologicos
-            // 
-            this.gbAntGinecologicos.Controls.Add(this.dtpMamografia);
-            this.gbAntGinecologicos.Controls.Add(this.txtGestapara);
-            this.gbAntGinecologicos.Controls.Add(this.txtMenarquia);
-            this.gbAntGinecologicos.Controls.Add(this.dtpPAP);
-            this.gbAntGinecologicos.Controls.Add(this.label35);
-            this.gbAntGinecologicos.Controls.Add(this.label36);
-            this.gbAntGinecologicos.Controls.Add(this.label22);
-            this.gbAntGinecologicos.Controls.Add(this.label25);
-            this.gbAntGinecologicos.Controls.Add(this.label28);
-            this.gbAntGinecologicos.Controls.Add(this.txtCiruGine);
-            this.gbAntGinecologicos.Controls.Add(this.dtpFur);
-            this.gbAntGinecologicos.Controls.Add(this.label11);
-            this.gbAntGinecologicos.Controls.Add(this.cbMac);
-            this.gbAntGinecologicos.Controls.Add(this.label10);
-            this.gbAntGinecologicos.Controls.Add(this.label12);
-            this.gbAntGinecologicos.Controls.Add(this.txtRegimenCatamenial);
-            this.gbAntGinecologicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAntGinecologicos.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbAntGinecologicos.Location = new System.Drawing.Point(7, 166);
-            this.gbAntGinecologicos.Name = "gbAntGinecologicos";
-            this.gbAntGinecologicos.Size = new System.Drawing.Size(1244, 76);
-            this.gbAntGinecologicos.TabIndex = 61;
-            this.gbAntGinecologicos.TabStop = false;
-            this.gbAntGinecologicos.Text = "Antecedentes Ginecológicos";
-            // 
-            // txtRegimenCatamenial
-            // 
-            this.txtRegimenCatamenial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtRegimenCatamenial.Location = new System.Drawing.Point(393, 44);
-            this.txtRegimenCatamenial.Name = "txtRegimenCatamenial";
-            this.txtRegimenCatamenial.Size = new System.Drawing.Size(192, 20);
-            this.txtRegimenCatamenial.TabIndex = 14;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(992, 22);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(30, 13);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "MAC";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(826, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(30, 13);
-            this.label10.TabIndex = 11;
-            this.label10.Text = "FUM";
-            // 
-            // cbMac
-            // 
-            this.cbMac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMac.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMac.FormattingEnabled = true;
-            this.cbMac.Location = new System.Drawing.Point(1028, 19);
-            this.cbMac.Name = "cbMac";
-            this.cbMac.Size = new System.Drawing.Size(210, 21);
-            this.cbMac.TabIndex = 16;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(285, 50);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(104, 13);
-            this.label11.TabIndex = 13;
-            this.label11.Text = "Régimen Catamenial";
-            // 
-            // dtpFur
-            // 
-            this.dtpFur.Checked = false;
-            this.dtpFur.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpFur.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFur.Location = new System.Drawing.Point(872, 19);
-            this.dtpFur.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpFur.Name = "dtpFur";
-            this.dtpFur.ShowCheckBox = true;
-            this.dtpFur.Size = new System.Drawing.Size(115, 20);
-            this.dtpFur.TabIndex = 17;
-            // 
-            // txtCiruGine
-            // 
-            this.txtCiruGine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCiruGine.Location = new System.Drawing.Point(707, 44);
-            this.txtCiruGine.Name = "txtCiruGine";
-            this.txtCiruGine.Size = new System.Drawing.Size(280, 20);
-            this.txtCiruGine.TabIndex = 20;
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(8, 22);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(59, 13);
-            this.label28.TabIndex = 21;
-            this.label28.Text = "Menarquía";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(285, 22);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(102, 13);
-            this.label25.TabIndex = 18;
-            this.label25.Text = "Gestación y Paridad";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.Black;
-            this.label22.Location = new System.Drawing.Point(600, 50);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(106, 13);
-            this.label22.TabIndex = 19;
-            this.label22.Text = "Cirugía Ginecológica";
-            // 
-            // label36
-            // 
-            this.label36.AutoSize = true;
-            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.ForeColor = System.Drawing.Color.Black;
-            this.label36.Location = new System.Drawing.Point(9, 50);
-            this.label36.Name = "label36";
-            this.label36.Size = new System.Drawing.Size(96, 13);
-            this.label36.TabIndex = 27;
-            this.label36.Text = "Última Mamografía";
-            this.label36.Visible = false;
-            // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label35.ForeColor = System.Drawing.Color.Black;
-            this.label35.Location = new System.Drawing.Point(600, 22);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(101, 13);
-            this.label35.TabIndex = 24;
-            this.label35.Text = "Último Examen PAP";
-            this.label35.Visible = false;
-            // 
-            // dtpPAP
-            // 
-            this.dtpPAP.Checked = false;
-            this.dtpPAP.CustomFormat = "MM/yyyy";
-            this.dtpPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpPAP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpPAP.Location = new System.Drawing.Point(707, 19);
-            this.dtpPAP.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpPAP.Name = "dtpPAP";
-            this.dtpPAP.ShowCheckBox = true;
-            this.dtpPAP.ShowUpDown = true;
-            this.dtpPAP.Size = new System.Drawing.Size(115, 20);
-            this.dtpPAP.TabIndex = 29;
-            this.dtpPAP.Visible = false;
-            // 
-            // txtMenarquia
-            // 
-            this.txtMenarquia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMenarquia.Location = new System.Drawing.Point(110, 19);
-            this.txtMenarquia.Name = "txtMenarquia";
-            this.txtMenarquia.Size = new System.Drawing.Size(169, 20);
-            this.txtMenarquia.TabIndex = 30;
-            // 
-            // txtGestapara
-            // 
-            this.txtGestapara.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGestapara.Location = new System.Drawing.Point(393, 19);
-            this.txtGestapara.Name = "txtGestapara";
-            this.txtGestapara.Size = new System.Drawing.Size(194, 20);
-            this.txtGestapara.TabIndex = 31;
-            this.txtGestapara.Text = "G:   P:";
-            // 
-            // dtpMamografia
-            // 
-            this.dtpMamografia.Checked = false;
-            this.dtpMamografia.CustomFormat = "MM/yyyy";
-            this.dtpMamografia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpMamografia.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpMamografia.Location = new System.Drawing.Point(110, 44);
-            this.dtpMamografia.Margin = new System.Windows.Forms.Padding(2);
-            this.dtpMamografia.Name = "dtpMamografia";
-            this.dtpMamografia.ShowCheckBox = true;
-            this.dtpMamografia.ShowUpDown = true;
-            this.dtpMamografia.Size = new System.Drawing.Size(115, 20);
-            this.dtpMamografia.TabIndex = 32;
-            this.dtpMamografia.Visible = false;
             // 
             // panel1
             // 
@@ -2913,47 +2454,188 @@
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.gbAntecedentes);
             this.panel1.Controls.Add(this.gbServiciosAnteriores);
-            this.panel1.Location = new System.Drawing.Point(7, 276);
+            this.panel1.Location = new System.Drawing.Point(7, 248);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1250, 411);
+            this.panel1.Size = new System.Drawing.Size(1264, 383);
             this.panel1.TabIndex = 64;
+            // 
+            // gbAntecedentes
+            // 
+            this.gbAntecedentes.Controls.Add(this.button1);
+            this.gbAntecedentes.Controls.Add(this.grdAntecedentes);
+            this.gbAntecedentes.Controls.Add(this.btnVerEditarAntecedentes);
+            this.gbAntecedentes.Dock = System.Windows.Forms.DockStyle.Left;
+            this.gbAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbAntecedentes.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbAntecedentes.Location = new System.Drawing.Point(0, 0);
+            this.gbAntecedentes.Name = "gbAntecedentes";
+            this.gbAntecedentes.Size = new System.Drawing.Size(634, 383);
+            this.gbAntecedentes.TabIndex = 62;
+            this.gbAntecedentes.TabStop = false;
+            this.gbAntecedentes.Text = "Antecedentes";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(457, 354);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(172, 24);
+            this.button1.TabIndex = 93;
+            this.button1.Text = "&Ver / Editar Antecedentes";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // grdAntecedentes
+            // 
+            this.grdAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grdAntecedentes.CausesValidation = false;
+            appearance51.BackColor = System.Drawing.Color.White;
+            appearance51.BackColor2 = System.Drawing.Color.Silver;
+            appearance51.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.grdAntecedentes.DisplayLayout.Appearance = appearance51;
+            ultraGridColumn90.Header.Caption = "Tipo de Ant.";
+            ultraGridColumn90.Header.VisiblePosition = 1;
+            ultraGridColumn90.Width = 143;
+            ultraGridColumn91.Header.Caption = "Fecha / Grupo";
+            ultraGridColumn91.Header.VisiblePosition = 0;
+            ultraGridColumn91.Width = 91;
+            ultraGridColumn92.Header.VisiblePosition = 2;
+            ultraGridColumn92.Hidden = true;
+            ultraGridColumn93.Header.Caption = "Descripción";
+            ultraGridColumn93.Header.VisiblePosition = 3;
+            ultraGridColumn93.Width = 364;
+            ultraGridBand8.Columns.AddRange(new object[] {
+            ultraGridColumn90,
+            ultraGridColumn91,
+            ultraGridColumn92,
+            ultraGridColumn93});
+            this.grdAntecedentes.DisplayLayout.BandsSerializer.Add(ultraGridBand8);
+            this.grdAntecedentes.DisplayLayout.InterBandSpacing = 10;
+            this.grdAntecedentes.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdAntecedentes.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdAntecedentes.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdAntecedentes.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdAntecedentes.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdAntecedentes.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdAntecedentes.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdAntecedentes.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdAntecedentes.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance52.BackColor = System.Drawing.Color.Transparent;
+            this.grdAntecedentes.DisplayLayout.Override.CardAreaAppearance = appearance52;
+            appearance53.BackColor = System.Drawing.Color.White;
+            appearance53.BackColor2 = System.Drawing.Color.White;
+            appearance53.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdAntecedentes.DisplayLayout.Override.CellAppearance = appearance53;
+            this.grdAntecedentes.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance54.BackColor = System.Drawing.Color.White;
+            appearance54.BackColor2 = System.Drawing.Color.LightGray;
+            appearance54.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance54.BorderColor = System.Drawing.Color.DarkGray;
+            appearance54.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdAntecedentes.DisplayLayout.Override.HeaderAppearance = appearance54;
+            this.grdAntecedentes.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance55.AlphaLevel = ((short)(187));
+            appearance55.BackColor = System.Drawing.Color.Gainsboro;
+            appearance55.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance55.ForeColor = System.Drawing.Color.Black;
+            appearance55.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAntecedentes.DisplayLayout.Override.RowAlternateAppearance = appearance55;
+            appearance56.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdAntecedentes.DisplayLayout.Override.RowSelectorAppearance = appearance56;
+            this.grdAntecedentes.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance57.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance57.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance57.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance57.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance57.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance57.FontData.BoldAsString = "False";
+            appearance57.ForeColor = System.Drawing.Color.Black;
+            this.grdAntecedentes.DisplayLayout.Override.SelectedRowAppearance = appearance57;
+            this.grdAntecedentes.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdAntecedentes.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.grdAntecedentes.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdAntecedentes.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdAntecedentes.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdAntecedentes.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdAntecedentes.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdAntecedentes.Location = new System.Drawing.Point(8, 18);
+            this.grdAntecedentes.Margin = new System.Windows.Forms.Padding(2);
+            this.grdAntecedentes.Name = "grdAntecedentes";
+            this.grdAntecedentes.Size = new System.Drawing.Size(621, 332);
+            this.grdAntecedentes.TabIndex = 93;
+            // 
+            // btnVerEditarAntecedentes
+            // 
+            this.btnVerEditarAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnVerEditarAntecedentes.BackColor = System.Drawing.SystemColors.Control;
+            this.btnVerEditarAntecedentes.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnVerEditarAntecedentes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnVerEditarAntecedentes.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnVerEditarAntecedentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerEditarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerEditarAntecedentes.ForeColor = System.Drawing.Color.Black;
+            this.btnVerEditarAntecedentes.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
+            this.btnVerEditarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(450, -127);
+            this.btnVerEditarAntecedentes.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVerEditarAntecedentes.Name = "btnVerEditarAntecedentes";
+            this.btnVerEditarAntecedentes.Size = new System.Drawing.Size(162, 24);
+            this.btnVerEditarAntecedentes.TabIndex = 92;
+            this.btnVerEditarAntecedentes.Text = "&Ver / Editar Antecedentes";
+            this.btnVerEditarAntecedentes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVerEditarAntecedentes.UseVisualStyleBackColor = false;
             // 
             // gbServiciosAnteriores
             // 
-            this.gbServiciosAnteriores.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbServiciosAnteriores.Controls.Add(this.btnServicioAnterior);
             this.gbServiciosAnteriores.Controls.Add(this.grdServiciosAnteriores);
             this.gbServiciosAnteriores.Controls.Add(this.btnVerServicioAnterior);
+            this.gbServiciosAnteriores.Dock = System.Windows.Forms.DockStyle.Right;
             this.gbServiciosAnteriores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbServiciosAnteriores.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbServiciosAnteriores.Location = new System.Drawing.Point(641, 3);
+            this.gbServiciosAnteriores.Location = new System.Drawing.Point(634, 0);
             this.gbServiciosAnteriores.Name = "gbServiciosAnteriores";
-            this.gbServiciosAnteriores.Size = new System.Drawing.Size(602, 400);
+            this.gbServiciosAnteriores.Size = new System.Drawing.Size(630, 383);
             this.gbServiciosAnteriores.TabIndex = 63;
             this.gbServiciosAnteriores.TabStop = false;
             this.gbServiciosAnteriores.Text = "Servicios Anteriores";
             // 
-            // btnVerServicioAnterior
+            // btnServicioAnterior
             // 
-            this.btnVerServicioAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnVerServicioAnterior.BackColor = System.Drawing.SystemColors.Control;
-            this.btnVerServicioAnterior.Enabled = false;
-            this.btnVerServicioAnterior.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnVerServicioAnterior.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnVerServicioAnterior.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnVerServicioAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerServicioAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerServicioAnterior.ForeColor = System.Drawing.Color.Black;
-            this.btnVerServicioAnterior.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
-            this.btnVerServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerServicioAnterior.Location = new System.Drawing.Point(404, -110);
-            this.btnVerServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVerServicioAnterior.Name = "btnVerServicioAnterior";
-            this.btnVerServicioAnterior.Size = new System.Drawing.Size(134, 24);
-            this.btnVerServicioAnterior.TabIndex = 93;
-            this.btnVerServicioAnterior.Text = "Ver servicio Anterior";
-            this.btnVerServicioAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVerServicioAnterior.UseVisualStyleBackColor = false;
+            this.btnServicioAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnServicioAnterior.BackColor = System.Drawing.SystemColors.Control;
+            this.btnServicioAnterior.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnServicioAnterior.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnServicioAnterior.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnServicioAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServicioAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServicioAnterior.ForeColor = System.Drawing.Color.Black;
+            this.btnServicioAnterior.Image = ((System.Drawing.Image)(resources.GetObject("btnServicioAnterior.Image")));
+            this.btnServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServicioAnterior.Location = new System.Drawing.Point(475, 354);
+            this.btnServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
+            this.btnServicioAnterior.Name = "btnServicioAnterior";
+            this.btnServicioAnterior.Size = new System.Drawing.Size(134, 24);
+            this.btnServicioAnterior.TabIndex = 95;
+            this.btnServicioAnterior.Text = "Ver servicio Anterior";
+            this.btnServicioAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnServicioAnterior.UseVisualStyleBackColor = false;
+            this.btnServicioAnterior.Click += new System.EventHandler(this.button2_Click);
             // 
             // grdServiciosAnteriores
             // 
@@ -3034,150 +2716,514 @@
             this.grdServiciosAnteriores.Location = new System.Drawing.Point(5, 18);
             this.grdServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.grdServiciosAnteriores.Name = "grdServiciosAnteriores";
-            this.grdServiciosAnteriores.Size = new System.Drawing.Size(592, 342);
+            this.grdServiciosAnteriores.Size = new System.Drawing.Size(620, 332);
             this.grdServiciosAnteriores.TabIndex = 94;
             // 
-            // gbAntecedentes
+            // btnVerServicioAnterior
             // 
-            this.gbAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.gbAntecedentes.Controls.Add(this.button1);
-            this.gbAntecedentes.Controls.Add(this.grdAntecedentes);
-            this.gbAntecedentes.Controls.Add(this.btnVerEditarAntecedentes);
-            this.gbAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAntecedentes.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbAntecedentes.Location = new System.Drawing.Point(3, 3);
-            this.gbAntecedentes.Name = "gbAntecedentes";
-            this.gbAntecedentes.Size = new System.Drawing.Size(622, 405);
-            this.gbAntecedentes.TabIndex = 62;
-            this.gbAntecedentes.TabStop = false;
-            this.gbAntecedentes.Text = "Antecedentes";
+            this.btnVerServicioAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnVerServicioAnterior.BackColor = System.Drawing.SystemColors.Control;
+            this.btnVerServicioAnterior.Enabled = false;
+            this.btnVerServicioAnterior.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnVerServicioAnterior.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnVerServicioAnterior.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnVerServicioAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVerServicioAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerServicioAnterior.ForeColor = System.Drawing.Color.Black;
+            this.btnVerServicioAnterior.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
+            this.btnVerServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVerServicioAnterior.Location = new System.Drawing.Point(404, -127);
+            this.btnVerServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVerServicioAnterior.Name = "btnVerServicioAnterior";
+            this.btnVerServicioAnterior.Size = new System.Drawing.Size(134, 24);
+            this.btnVerServicioAnterior.TabIndex = 93;
+            this.btnVerServicioAnterior.Text = "Ver servicio Anterior";
+            this.btnVerServicioAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnVerServicioAnterior.UseVisualStyleBackColor = false;
             // 
-            // btnVerEditarAntecedentes
+            // gbAntGinecologicos
             // 
-            this.btnVerEditarAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnVerEditarAntecedentes.BackColor = System.Drawing.SystemColors.Control;
-            this.btnVerEditarAntecedentes.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnVerEditarAntecedentes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnVerEditarAntecedentes.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnVerEditarAntecedentes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVerEditarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVerEditarAntecedentes.ForeColor = System.Drawing.Color.Black;
-            this.btnVerEditarAntecedentes.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
-            this.btnVerEditarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(450, -105);
-            this.btnVerEditarAntecedentes.Margin = new System.Windows.Forms.Padding(2);
-            this.btnVerEditarAntecedentes.Name = "btnVerEditarAntecedentes";
-            this.btnVerEditarAntecedentes.Size = new System.Drawing.Size(162, 24);
-            this.btnVerEditarAntecedentes.TabIndex = 92;
-            this.btnVerEditarAntecedentes.Text = "&Ver / Editar Antecedentes";
-            this.btnVerEditarAntecedentes.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnVerEditarAntecedentes.UseVisualStyleBackColor = false;
+            this.gbAntGinecologicos.Controls.Add(this.dtpMamografia);
+            this.gbAntGinecologicos.Controls.Add(this.txtGestapara);
+            this.gbAntGinecologicos.Controls.Add(this.txtMenarquia);
+            this.gbAntGinecologicos.Controls.Add(this.dtpPAP);
+            this.gbAntGinecologicos.Controls.Add(this.label35);
+            this.gbAntGinecologicos.Controls.Add(this.label36);
+            this.gbAntGinecologicos.Controls.Add(this.label22);
+            this.gbAntGinecologicos.Controls.Add(this.label25);
+            this.gbAntGinecologicos.Controls.Add(this.label28);
+            this.gbAntGinecologicos.Controls.Add(this.txtCiruGine);
+            this.gbAntGinecologicos.Controls.Add(this.dtpFur);
+            this.gbAntGinecologicos.Controls.Add(this.label11);
+            this.gbAntGinecologicos.Controls.Add(this.cbMac);
+            this.gbAntGinecologicos.Controls.Add(this.label10);
+            this.gbAntGinecologicos.Controls.Add(this.label12);
+            this.gbAntGinecologicos.Controls.Add(this.txtRegimenCatamenial);
+            this.gbAntGinecologicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbAntGinecologicos.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbAntGinecologicos.Location = new System.Drawing.Point(7, 166);
+            this.gbAntGinecologicos.Name = "gbAntGinecologicos";
+            this.gbAntGinecologicos.Size = new System.Drawing.Size(1157, 76);
+            this.gbAntGinecologicos.TabIndex = 61;
+            this.gbAntGinecologicos.TabStop = false;
+            this.gbAntGinecologicos.Text = "Antecedentes Ginecológicos";
             // 
-            // grdAntecedentes
+            // dtpMamografia
             // 
-            this.grdAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdAntecedentes.CausesValidation = false;
-            appearance51.BackColor = System.Drawing.Color.White;
-            appearance51.BackColor2 = System.Drawing.Color.Silver;
-            appearance51.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.grdAntecedentes.DisplayLayout.Appearance = appearance51;
-            ultraGridColumn90.Header.Caption = "Tipo de Ant.";
-            ultraGridColumn90.Header.VisiblePosition = 1;
-            ultraGridColumn90.Width = 196;
-            ultraGridColumn91.Header.Caption = "Fecha / Grupo";
-            ultraGridColumn91.Header.VisiblePosition = 0;
-            ultraGridColumn91.Width = 113;
-            ultraGridColumn92.Header.VisiblePosition = 2;
-            ultraGridColumn92.Hidden = true;
-            ultraGridColumn93.Header.Caption = "Descripción";
-            ultraGridColumn93.Header.VisiblePosition = 3;
-            ultraGridColumn93.Width = 646;
-            ultraGridBand8.Columns.AddRange(new object[] {
-            ultraGridColumn90,
-            ultraGridColumn91,
-            ultraGridColumn92,
-            ultraGridColumn93});
-            this.grdAntecedentes.DisplayLayout.BandsSerializer.Add(ultraGridBand8);
-            this.grdAntecedentes.DisplayLayout.InterBandSpacing = 10;
-            this.grdAntecedentes.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdAntecedentes.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdAntecedentes.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdAntecedentes.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdAntecedentes.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdAntecedentes.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdAntecedentes.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdAntecedentes.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdAntecedentes.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance52.BackColor = System.Drawing.Color.Transparent;
-            this.grdAntecedentes.DisplayLayout.Override.CardAreaAppearance = appearance52;
-            appearance53.BackColor = System.Drawing.Color.White;
-            appearance53.BackColor2 = System.Drawing.Color.White;
-            appearance53.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdAntecedentes.DisplayLayout.Override.CellAppearance = appearance53;
-            this.grdAntecedentes.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance54.BackColor = System.Drawing.Color.White;
-            appearance54.BackColor2 = System.Drawing.Color.LightGray;
-            appearance54.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance54.BorderColor = System.Drawing.Color.DarkGray;
-            appearance54.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdAntecedentes.DisplayLayout.Override.HeaderAppearance = appearance54;
-            this.grdAntecedentes.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance55.AlphaLevel = ((short)(187));
-            appearance55.BackColor = System.Drawing.Color.Gainsboro;
-            appearance55.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance55.ForeColor = System.Drawing.Color.Black;
-            appearance55.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdAntecedentes.DisplayLayout.Override.RowAlternateAppearance = appearance55;
-            appearance56.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdAntecedentes.DisplayLayout.Override.RowSelectorAppearance = appearance56;
-            this.grdAntecedentes.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance57.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance57.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance57.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance57.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance57.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance57.FontData.BoldAsString = "False";
-            appearance57.ForeColor = System.Drawing.Color.Black;
-            this.grdAntecedentes.DisplayLayout.Override.SelectedRowAppearance = appearance57;
-            this.grdAntecedentes.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdAntecedentes.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.grdAntecedentes.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdAntecedentes.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdAntecedentes.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdAntecedentes.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdAntecedentes.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdAntecedentes.Location = new System.Drawing.Point(8, 18);
-            this.grdAntecedentes.Margin = new System.Windows.Forms.Padding(2);
-            this.grdAntecedentes.Name = "grdAntecedentes";
-            this.grdAntecedentes.Size = new System.Drawing.Size(609, 342);
-            this.grdAntecedentes.TabIndex = 93;
+            this.dtpMamografia.Checked = false;
+            this.dtpMamografia.CustomFormat = "MM/yyyy";
+            this.dtpMamografia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpMamografia.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMamografia.Location = new System.Drawing.Point(110, 45);
+            this.dtpMamografia.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpMamografia.Name = "dtpMamografia";
+            this.dtpMamografia.ShowCheckBox = true;
+            this.dtpMamografia.ShowUpDown = true;
+            this.dtpMamografia.Size = new System.Drawing.Size(112, 20);
+            this.dtpMamografia.TabIndex = 32;
             // 
-            // button1
+            // txtGestapara
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.SystemColors.Control;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(457, 364);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(160, 24);
-            this.button1.TabIndex = 93;
-            this.button1.Text = "&Ver / Editar Antecedentes";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.txtGestapara.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGestapara.Location = new System.Drawing.Point(343, 18);
+            this.txtGestapara.Name = "txtGestapara";
+            this.txtGestapara.Size = new System.Drawing.Size(143, 20);
+            this.txtGestapara.TabIndex = 31;
+            this.txtGestapara.Text = "G:   P:";
+            // 
+            // txtMenarquia
+            // 
+            this.txtMenarquia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMenarquia.Location = new System.Drawing.Point(110, 19);
+            this.txtMenarquia.Name = "txtMenarquia";
+            this.txtMenarquia.Size = new System.Drawing.Size(112, 20);
+            this.txtMenarquia.TabIndex = 30;
+            // 
+            // dtpPAP
+            // 
+            this.dtpPAP.Checked = false;
+            this.dtpPAP.CustomFormat = "MM/yyyy";
+            this.dtpPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPAP.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPAP.Location = new System.Drawing.Point(610, 16);
+            this.dtpPAP.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpPAP.Name = "dtpPAP";
+            this.dtpPAP.ShowCheckBox = true;
+            this.dtpPAP.ShowUpDown = true;
+            this.dtpPAP.Size = new System.Drawing.Size(115, 20);
+            this.dtpPAP.TabIndex = 29;
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label35.ForeColor = System.Drawing.Color.Black;
+            this.label35.Location = new System.Drawing.Point(504, 22);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(101, 13);
+            this.label35.TabIndex = 24;
+            this.label35.Text = "Último Examen PAP";
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.ForeColor = System.Drawing.Color.Black;
+            this.label36.Location = new System.Drawing.Point(8, 50);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(96, 13);
+            this.label36.TabIndex = 27;
+            this.label36.Text = "Última Mamografía";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(501, 50);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(106, 13);
+            this.label22.TabIndex = 19;
+            this.label22.Text = "Cirugía Ginecológica";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(235, 22);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(102, 13);
+            this.label25.TabIndex = 18;
+            this.label25.Text = "Gestación y Paridad";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(8, 22);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(59, 13);
+            this.label28.TabIndex = 21;
+            this.label28.Text = "Menarquía";
+            // 
+            // txtCiruGine
+            // 
+            this.txtCiruGine.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCiruGine.Location = new System.Drawing.Point(610, 45);
+            this.txtCiruGine.Name = "txtCiruGine";
+            this.txtCiruGine.Size = new System.Drawing.Size(280, 20);
+            this.txtCiruGine.TabIndex = 20;
+            // 
+            // dtpFur
+            // 
+            this.dtpFur.Checked = false;
+            this.dtpFur.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpFur.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFur.Location = new System.Drawing.Point(775, 15);
+            this.dtpFur.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpFur.Name = "dtpFur";
+            this.dtpFur.ShowCheckBox = true;
+            this.dtpFur.Size = new System.Drawing.Size(115, 20);
+            this.dtpFur.TabIndex = 17;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(235, 50);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(104, 13);
+            this.label11.TabIndex = 13;
+            this.label11.Text = "Régimen Catamenial";
+            // 
+            // cbMac
+            // 
+            this.cbMac.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMac.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMac.FormattingEnabled = true;
+            this.cbMac.Location = new System.Drawing.Point(940, 13);
+            this.cbMac.Name = "cbMac";
+            this.cbMac.Size = new System.Drawing.Size(210, 21);
+            this.cbMac.TabIndex = 16;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(730, 21);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(30, 13);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "FUM";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(904, 18);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(30, 13);
+            this.label12.TabIndex = 15;
+            this.label12.Text = "MAC";
+            // 
+            // txtRegimenCatamenial
+            // 
+            this.txtRegimenCatamenial.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRegimenCatamenial.Location = new System.Drawing.Point(343, 45);
+            this.txtRegimenCatamenial.Name = "txtRegimenCatamenial";
+            this.txtRegimenCatamenial.Size = new System.Drawing.Size(143, 20);
+            this.txtRegimenCatamenial.TabIndex = 14;
+            // 
+            // gbFuncionesBiologicas
+            // 
+            this.gbFuncionesBiologicas.Controls.Add(this.cbSed);
+            this.gbFuncionesBiologicas.Controls.Add(this.txtHallazgos);
+            this.gbFuncionesBiologicas.Controls.Add(this.label9);
+            this.gbFuncionesBiologicas.Controls.Add(this.label14);
+            this.gbFuncionesBiologicas.Controls.Add(this.cbApetito);
+            this.gbFuncionesBiologicas.Controls.Add(this.label8);
+            this.gbFuncionesBiologicas.Controls.Add(this.cbDeposiciones);
+            this.gbFuncionesBiologicas.Controls.Add(this.label7);
+            this.gbFuncionesBiologicas.Controls.Add(this.cbOrina);
+            this.gbFuncionesBiologicas.Controls.Add(this.label6);
+            this.gbFuncionesBiologicas.Controls.Add(this.cbSueño);
+            this.gbFuncionesBiologicas.Controls.Add(this.label5);
+            this.gbFuncionesBiologicas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbFuncionesBiologicas.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbFuncionesBiologicas.Location = new System.Drawing.Point(514, 6);
+            this.gbFuncionesBiologicas.Name = "gbFuncionesBiologicas";
+            this.gbFuncionesBiologicas.Size = new System.Drawing.Size(743, 154);
+            this.gbFuncionesBiologicas.TabIndex = 1;
+            this.gbFuncionesBiologicas.TabStop = false;
+            this.gbFuncionesBiologicas.Text = "Funciones Biológicas";
+            // 
+            // cbSed
+            // 
+            this.cbSed.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSed.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSed.FormattingEnabled = true;
+            this.cbSed.Location = new System.Drawing.Point(312, 46);
+            this.cbSed.Name = "cbSed";
+            this.cbSed.Size = new System.Drawing.Size(194, 21);
+            this.cbSed.TabIndex = 10;
+            // 
+            // txtHallazgos
+            // 
+            this.txtHallazgos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHallazgos.Location = new System.Drawing.Point(60, 73);
+            this.txtHallazgos.Multiline = true;
+            this.txtHallazgos.Name = "txtHallazgos";
+            this.txtHallazgos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtHallazgos.Size = new System.Drawing.Size(677, 66);
+            this.txtHallazgos.TabIndex = 62;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(280, 49);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(26, 13);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Sed";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(6, 76);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(53, 13);
+            this.label14.TabIndex = 61;
+            this.label14.Text = "Hallazgos";
+            // 
+            // cbApetito
+            // 
+            this.cbApetito.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbApetito.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbApetito.FormattingEnabled = true;
+            this.cbApetito.Location = new System.Drawing.Point(312, 19);
+            this.cbApetito.Name = "cbApetito";
+            this.cbApetito.Size = new System.Drawing.Size(194, 21);
+            this.cbApetito.TabIndex = 8;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(266, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(40, 13);
+            this.label8.TabIndex = 7;
+            this.label8.Text = "Apetito";
+            // 
+            // cbDeposiciones
+            // 
+            this.cbDeposiciones.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbDeposiciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDeposiciones.FormattingEnabled = true;
+            this.cbDeposiciones.Location = new System.Drawing.Point(590, 19);
+            this.cbDeposiciones.Name = "cbDeposiciones";
+            this.cbDeposiciones.Size = new System.Drawing.Size(147, 21);
+            this.cbDeposiciones.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(513, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(71, 13);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Deposiciones";
+            // 
+            // cbOrina
+            // 
+            this.cbOrina.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbOrina.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbOrina.FormattingEnabled = true;
+            this.cbOrina.Location = new System.Drawing.Point(60, 43);
+            this.cbOrina.Name = "cbOrina";
+            this.cbOrina.Size = new System.Drawing.Size(194, 21);
+            this.cbOrina.TabIndex = 4;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(22, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Orina";
+            // 
+            // cbSueño
+            // 
+            this.cbSueño.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSueño.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbSueño.FormattingEnabled = true;
+            this.cbSueño.Location = new System.Drawing.Point(60, 19);
+            this.cbSueño.Name = "cbSueño";
+            this.cbSueño.Size = new System.Drawing.Size(194, 21);
+            this.cbSueño.TabIndex = 2;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(16, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 13);
+            this.label5.TabIndex = 1;
+            this.label5.Text = "Sueño";
+            // 
+            // gbSintomasySignos
+            // 
+            this.gbSintomasySignos.Controls.Add(this.chkPresentaSisntomas);
+            this.gbSintomasySignos.Controls.Add(this.label13);
+            this.gbSintomasySignos.Controls.Add(this.txtSintomaPrincipal);
+            this.gbSintomasySignos.Controls.Add(this.cbCalendario);
+            this.gbSintomasySignos.Controls.Add(this.txtRelato);
+            this.gbSintomasySignos.Controls.Add(this.label3);
+            this.gbSintomasySignos.Controls.Add(this.label2);
+            this.gbSintomasySignos.Controls.Add(this.txtValorTiempoEnfermedad);
+            this.gbSintomasySignos.Controls.Add(this.label4);
+            this.gbSintomasySignos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbSintomasySignos.ForeColor = System.Drawing.Color.MediumBlue;
+            this.gbSintomasySignos.Location = new System.Drawing.Point(7, 6);
+            this.gbSintomasySignos.Name = "gbSintomasySignos";
+            this.gbSintomasySignos.Size = new System.Drawing.Size(501, 154);
+            this.gbSintomasySignos.TabIndex = 0;
+            this.gbSintomasySignos.TabStop = false;
+            this.gbSintomasySignos.Text = "Sintomas y Signos";
+            // 
+            // chkPresentaSisntomas
+            // 
+            this.chkPresentaSisntomas.AutoSize = true;
+            this.chkPresentaSisntomas.CheckAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.chkPresentaSisntomas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkPresentaSisntomas.Location = new System.Drawing.Point(126, 21);
+            this.chkPresentaSisntomas.Name = "chkPresentaSisntomas";
+            this.chkPresentaSisntomas.Size = new System.Drawing.Size(15, 14);
+            this.chkPresentaSisntomas.TabIndex = 60;
+            this.chkPresentaSisntomas.UseVisualStyleBackColor = true;
+            this.chkPresentaSisntomas.CheckedChanged += new System.EventHandler(this.chkPresentaSisntomas_CheckedChanged);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(8, 22);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(112, 13);
+            this.label13.TabIndex = 59;
+            this.label13.Text = "¿Presenta Síntomas ?";
+            // 
+            // txtSintomaPrincipal
+            // 
+            this.txtSintomaPrincipal.Enabled = false;
+            this.txtSintomaPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSintomaPrincipal.Location = new System.Drawing.Point(126, 44);
+            this.txtSintomaPrincipal.MaxLength = 100;
+            this.txtSintomaPrincipal.Name = "txtSintomaPrincipal";
+            this.txtSintomaPrincipal.Size = new System.Drawing.Size(354, 20);
+            this.txtSintomaPrincipal.TabIndex = 58;
+            // 
+            // cbCalendario
+            // 
+            this.cbCalendario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCalendario.Enabled = false;
+            this.cbCalendario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCalendario.FormattingEnabled = true;
+            this.cbCalendario.Location = new System.Drawing.Point(228, 70);
+            this.cbCalendario.Name = "cbCalendario";
+            this.cbCalendario.Size = new System.Drawing.Size(252, 21);
+            this.cbCalendario.TabIndex = 8;
+            // 
+            // txtRelato
+            // 
+            this.txtRelato.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRelato.Location = new System.Drawing.Point(126, 98);
+            this.txtRelato.Multiline = true;
+            this.txtRelato.Name = "txtRelato";
+            this.txtRelato.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtRelato.Size = new System.Drawing.Size(354, 41);
+            this.txtRelato.TabIndex = 5;
+            this.txtRelato.Text = "Paciente Asintomático";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(82, 98);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 13);
+            this.label3.TabIndex = 4;
+            this.label3.Text = "Relato";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(8, 46);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Sintomas Principales";
+            // 
+            // txtValorTiempoEnfermedad
+            // 
+            this.txtValorTiempoEnfermedad.Enabled = false;
+            this.txtValorTiempoEnfermedad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorTiempoEnfermedad.Location = new System.Drawing.Point(126, 70);
+            this.txtValorTiempoEnfermedad.Name = "txtValorTiempoEnfermedad";
+            this.txtValorTiempoEnfermedad.Size = new System.Drawing.Size(96, 20);
+            this.txtValorTiempoEnfermedad.TabIndex = 1;
+            this.txtValorTiempoEnfermedad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(6, 73);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 13);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Tiempo de Enfermedad";
+            // 
+            // btnGuardarAnamnesis
+            // 
+            this.btnGuardarAnamnesis.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGuardarAnamnesis.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGuardarAnamnesis.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnGuardarAnamnesis.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGuardarAnamnesis.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGuardarAnamnesis.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnGuardarAnamnesis.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnGuardarAnamnesis.Location = new System.Drawing.Point(1170, 187);
+            this.btnGuardarAnamnesis.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGuardarAnamnesis.Name = "btnGuardarAnamnesis";
+            this.btnGuardarAnamnesis.Size = new System.Drawing.Size(87, 42);
+            this.btnGuardarAnamnesis.TabIndex = 58;
+            this.btnGuardarAnamnesis.Text = "Guardar";
+            this.btnGuardarAnamnesis.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnGuardarAnamnesis.UseVisualStyleBackColor = false;
+            this.btnGuardarAnamnesis.Click += new System.EventHandler(this.btnGuardarAnamnesis_Click);
             // 
             // tcSubMain
             // 
@@ -3191,10 +3237,10 @@
             this.tcSubMain.Controls.Add(this.tabPage1);
             this.tcSubMain.Controls.Add(this.tabPage2);
             this.tcSubMain.Controls.Add(this.tabPage3);
-            this.tcSubMain.Location = new System.Drawing.Point(12, 12);
+            this.tcSubMain.Location = new System.Drawing.Point(0, 0);
             this.tcSubMain.Name = "tcSubMain";
             this.tcSubMain.SelectedIndex = 0;
-            this.tcSubMain.Size = new System.Drawing.Size(1275, 719);
+            this.tcSubMain.Size = new System.Drawing.Size(1300, 711);
             this.tcSubMain.TabIndex = 4;
             this.tcSubMain.Tag = "";
             // 
@@ -3203,7 +3249,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1267, 693);
+            this.tabPage1.Size = new System.Drawing.Size(1292, 685);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "FORMATO DE ATENCIÓN INTEGRAL";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -3213,7 +3259,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1267, 693);
+            this.tabPage2.Size = new System.Drawing.Size(1292, 685);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "DATOS GENERALES Y ANTECEDENTES";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -3222,18 +3268,173 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1267, 693);
+            this.tabPage3.Size = new System.Drawing.Size(1292, 685);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "CUIDADOS PREVENTIVOS";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lblUsuAct
+            // 
+            this.lblUsuAct.AutoSize = true;
+            this.lblUsuAct.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUsuAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuAct.Location = new System.Drawing.Point(6, 665);
+            this.lblUsuAct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsuAct.Name = "lblUsuAct";
+            this.lblUsuAct.Size = new System.Drawing.Size(92, 13);
+            this.lblUsuAct.TabIndex = 67;
+            this.lblUsuAct.Text = "Usuario Graba:";
+            this.lblUsuAct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblUsuGraba
+            // 
+            this.lblUsuGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUsuGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblUsuGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblUsuGraba.Location = new System.Drawing.Point(94, 666);
+            this.lblUsuGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsuGraba.Name = "lblUsuGraba";
+            this.lblUsuGraba.Size = new System.Drawing.Size(130, 15);
+            this.lblUsuGraba.TabIndex = 69;
+            this.lblUsuGraba.Text = "lblUsuGraba";
+            // 
+            // btnAceptarDX
+            // 
+            this.btnAceptarDX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAceptarDX.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAceptarDX.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAceptarDX.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAceptarDX.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAceptarDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarDX.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnAceptarDX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAceptarDX.Location = new System.Drawing.Point(1083, 283);
+            this.btnAceptarDX.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAceptarDX.Name = "btnAceptarDX";
+            this.btnAceptarDX.Size = new System.Drawing.Size(152, 24);
+            this.btnAceptarDX.TabIndex = 85;
+            this.btnAceptarDX.Text = "      Guardar Diagnóstico";
+            this.btnAceptarDX.UseVisualStyleBackColor = false;
+            this.btnAceptarDX.Click += new System.EventHandler(this.btnAceptarDX_Click_1);
+            // 
+            // btnInterConsulta
+            // 
+            this.btnInterConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnInterConsulta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnInterConsulta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnInterConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnInterConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnInterConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInterConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInterConsulta.ForeColor = System.Drawing.Color.Black;
+            this.btnInterConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnInterConsulta.Image")));
+            this.btnInterConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInterConsulta.Location = new System.Drawing.Point(23, 600);
+            this.btnInterConsulta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInterConsulta.Name = "btnInterConsulta";
+            this.btnInterConsulta.Size = new System.Drawing.Size(158, 24);
+            this.btnInterConsulta.TabIndex = 106;
+            this.btnInterConsulta.Text = "Interconsulta";
+            this.btnInterConsulta.UseVisualStyleBackColor = false;
+            this.btnInterConsulta.Click += new System.EventHandler(this.btnInterConsulta_Click);
+            // 
+            // btnSubirInterconsulta
+            // 
+            this.btnSubirInterconsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSubirInterconsulta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSubirInterconsulta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSubirInterconsulta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSubirInterconsulta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSubirInterconsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubirInterconsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirInterconsulta.ForeColor = System.Drawing.Color.Black;
+            this.btnSubirInterconsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirInterconsulta.Image")));
+            this.btnSubirInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubirInterconsulta.Location = new System.Drawing.Point(185, 600);
+            this.btnSubirInterconsulta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubirInterconsulta.Name = "btnSubirInterconsulta";
+            this.btnSubirInterconsulta.Size = new System.Drawing.Size(158, 24);
+            this.btnSubirInterconsulta.TabIndex = 107;
+            this.btnSubirInterconsulta.Text = "Subir Interconsulta";
+            this.btnSubirInterconsulta.UseVisualStyleBackColor = false;
+            this.btnSubirInterconsulta.Click += new System.EventHandler(this.btnSubirInterconsulta_Click);
+            // 
+            // btnCertificadoAptitud
+            // 
+            this.btnCertificadoAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCertificadoAptitud.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCertificadoAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCertificadoAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCertificadoAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCertificadoAptitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCertificadoAptitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCertificadoAptitud.ForeColor = System.Drawing.Color.Black;
+            this.btnCertificadoAptitud.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificadoAptitud.Image")));
+            this.btnCertificadoAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCertificadoAptitud.Location = new System.Drawing.Point(347, 600);
+            this.btnCertificadoAptitud.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCertificadoAptitud.Name = "btnCertificadoAptitud";
+            this.btnCertificadoAptitud.Size = new System.Drawing.Size(159, 24);
+            this.btnCertificadoAptitud.TabIndex = 108;
+            this.btnCertificadoAptitud.Text = "Certificado de Aptitud";
+            this.btnCertificadoAptitud.UseVisualStyleBackColor = false;
+            this.btnCertificadoAptitud.Click += new System.EventHandler(this.btnCertificadoAptitud_Click);
+            // 
+            // btn312
+            // 
+            this.btn312.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn312.BackColor = System.Drawing.SystemColors.Control;
+            this.btn312.Enabled = false;
+            this.btn312.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn312.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btn312.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn312.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn312.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn312.ForeColor = System.Drawing.Color.Black;
+            this.btn312.Image = ((System.Drawing.Image)(resources.GetObject("btn312.Image")));
+            this.btn312.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn312.Location = new System.Drawing.Point(510, 600);
+            this.btn312.Margin = new System.Windows.Forms.Padding(2);
+            this.btn312.Name = "btn312";
+            this.btn312.Size = new System.Drawing.Size(159, 24);
+            this.btn312.TabIndex = 109;
+            this.btn312.Text = "Anexo 312";
+            this.btn312.UseVisualStyleBackColor = false;
+            this.btn312.Visible = false;
+            this.btn312.Click += new System.EventHandler(this.btn312_Click);
+            // 
+            // btn7C
+            // 
+            this.btn7C.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn7C.BackColor = System.Drawing.SystemColors.Control;
+            this.btn7C.Enabled = false;
+            this.btn7C.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn7C.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btn7C.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn7C.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn7C.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn7C.ForeColor = System.Drawing.Color.Black;
+            this.btn7C.Image = ((System.Drawing.Image)(resources.GetObject("btn7C.Image")));
+            this.btn7C.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn7C.Location = new System.Drawing.Point(673, 600);
+            this.btn7C.Margin = new System.Windows.Forms.Padding(2);
+            this.btn7C.Name = "btn7C";
+            this.btn7C.Size = new System.Drawing.Size(159, 24);
+            this.btn7C.TabIndex = 110;
+            this.btn7C.Text = "7 C";
+            this.btn7C.UseVisualStyleBackColor = false;
+            this.btn7C.Visible = false;
+            this.btn7C.Click += new System.EventHandler(this.btn7C_Click);
             // 
             // FrmEsoV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1300, 760);
-            this.Controls.Add(this.btnCerrarESO);
+            this.ClientSize = new System.Drawing.Size(1300, 711);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
@@ -3243,7 +3444,6 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.lblUsuAct);
             this.Controls.Add(this.btnViewWorker);
-            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblView);
             this.Controls.Add(this.lblProtocolName);
             this.Controls.Add(this.lblTrabajador);
@@ -3251,15 +3451,14 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.statusStripFooter);
             this.Controls.Add(this.tcSubMain);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "FrmEsoV2";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmEsoV2";
+            this.Text = "EXAMENES MÉDICOS";
             this.Load += new System.EventHandler(this.FrmEsoV2_Load);
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).EndInit();
@@ -3267,45 +3466,46 @@
             ((System.ComponentModel.ISupportInitialize)(this.uvAnalisisDx)).EndInit();
             this.tpConclusion.ResumeLayout(false);
             this.tpConclusion.PerformLayout();
+            this.gbRecomendaciones_Conclusiones.ResumeLayout(false);
+            this.gbRecomendaciones_Conclusiones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).EndInit();
+            this.gbRestricciones_Conclusiones.ResumeLayout(false);
+            this.gbRestricciones_Conclusiones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_Conclusiones)).EndInit();
             this.gbConclusionesDiagnosticas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdConclusionesDiagnosticas)).EndInit();
-            this.gbRestricciones_Conclusiones.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_Conclusiones)).EndInit();
-            this.gbRecomendaciones_Conclusiones.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).EndInit();
             this.tpAnalisisDx.ResumeLayout(false);
-            this.tpAnalisisDx.PerformLayout();
-            this.gbTotalDiagnostico.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdTotalDiagnosticos)).EndInit();
             this.gbEdicionDiagnosticoTotal.ResumeLayout(false);
             this.gbEdicionDiagnosticoTotal.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_AnalisisDiagnostico)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_AnalisisDiagnostico)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_AnalisisDiagnostico)).EndInit();
+            this.gbTotalDiagnostico.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdTotalDiagnosticos)).EndInit();
             this.tpExam.ResumeLayout(false);
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
-            this.gbDiagnosticoExamen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdDiagnosticoPorExamenComponente)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tcExamList)).EndInit();
             this.tcExamList.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.gbDiagnosticoExamen.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdDiagnosticoPorExamenComponente)).EndInit();
             this.General.ResumeLayout(false);
-            this.gbSintomasySignos.ResumeLayout(false);
-            this.gbSintomasySignos.PerformLayout();
-            this.gbFuncionesBiologicas.ResumeLayout(false);
-            this.gbFuncionesBiologicas.PerformLayout();
-            this.gbAntGinecologicos.ResumeLayout(false);
-            this.gbAntGinecologicos.PerformLayout();
             this.panel1.ResumeLayout(false);
-            this.gbServiciosAnteriores.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdServiciosAnteriores)).EndInit();
             this.gbAntecedentes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdAntecedentes)).EndInit();
+            this.gbServiciosAnteriores.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdServiciosAnteriores)).EndInit();
+            this.gbAntGinecologicos.ResumeLayout(false);
+            this.gbAntGinecologicos.PerformLayout();
+            this.gbFuncionesBiologicas.ResumeLayout(false);
+            this.gbFuncionesBiologicas.PerformLayout();
+            this.gbSintomasySignos.ResumeLayout(false);
+            this.gbSintomasySignos.PerformLayout();
             this.tcSubMain.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -3326,9 +3526,7 @@
         private Infragistics.Win.Misc.UltraValidator uvAnamnesis;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem TsmverMas;
-        private System.Windows.Forms.Label lblUsuAct;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label lblUsuGraba;
         private System.Windows.Forms.Label lblFechaGraba;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label20;
@@ -3395,7 +3593,6 @@
         private System.Windows.Forms.Button btnAgregarTotalDiagnostico;
         private System.Windows.Forms.Button btnRefrescarTotalDiagnostico;
         private System.Windows.Forms.Label lblRecordCountTotalDiagnosticos;
-        private System.Windows.Forms.Button btnAceptarDX;
         private System.Windows.Forms.TabPage tpExam;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private Infragistics.Win.UltraWinTabControl.UltraTabControl tcExamList;
@@ -3470,5 +3667,17 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label lblUsuAct;
+        private System.Windows.Forms.Label lblUsuGraba;
+        private System.Windows.Forms.Button btnServicioAnterior;
+        private System.Windows.Forms.Button btnPerson;
+        private System.Windows.Forms.Button btnReceta;
+        private System.Windows.Forms.Button btnVisorReporteExamen;
+        private System.Windows.Forms.Button btnAceptarDX;
+        private System.Windows.Forms.Button btnInterConsulta;
+        private System.Windows.Forms.Button btnSubirInterconsulta;
+        private System.Windows.Forms.Button btnCertificadoAptitud;
+        private System.Windows.Forms.Button btn312;
+        private System.Windows.Forms.Button btn7C;
     }
 }
