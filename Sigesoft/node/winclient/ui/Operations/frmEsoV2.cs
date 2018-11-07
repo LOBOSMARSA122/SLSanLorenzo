@@ -93,9 +93,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private bool flagValueChange = false;
         private bool _chkApprovedEnabled;
         private string _oldValue;
+
+        private string _serviceIdByWiewServiceHistory;
+        private int _tipo;
         #endregion
       
-        public FrmEsoV2(string serviceId, string componentIdDefault, string action, int roleId, int nodeId, int userId)
+        public FrmEsoV2(string serviceId, string componentIdDefault, string action, int roleId, int nodeId, int userId, int tipo)
         {
             _serviceId = serviceId;
             _componentIdDefault = componentIdDefault;
@@ -103,9 +106,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             _roleId = roleId;
             _nodeId = nodeId;
             _userId = userId;
+            _tipo = tipo;
             InitializeComponent();
         }
-
         private void FrmEsoV2_Load(object sender, EventArgs e)
         {
             InitializeForm();
@@ -4172,6 +4175,28 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private void btnCerrarESO_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void mnuVerServicio_Click(object sender, EventArgs e)
+        {
+            var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "View", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+            frm.ShowDialog();
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var datosP = new PacientBL().DevolverDatosPaciente(_serviceId);
+
+            var ServiceDate = grdServiciosAnteriores.Selected.Rows[0].Cells["d_ServiceDate"].Value.ToString();
+
+            if (ServiceDate.ToString().Split(' ')[0] == DateTime.Now.ToString().Split(' ')[0])
+            {
+                var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
+            else
+            {
+                var frm = new Operations.FrmEsoV2(_serviceIdByWiewServiceHistory, null, "View", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, (int)MasterService.Eso);
+                frm.ShowDialog();
+            }
         }
              
     }
