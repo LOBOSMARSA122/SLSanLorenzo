@@ -31704,7 +31704,9 @@ namespace Sigesoft.Node.WinClient.BLL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                // Llenar entidad Log
+                LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "ListMissingExamenesNames", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
                 throw;
             }
         }
@@ -31730,7 +31732,9 @@ namespace Sigesoft.Node.WinClient.BLL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                // Llenar entidad Log
+                //LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "ConcatenateComponents", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
                 throw;
             }
         }
@@ -32079,6 +32083,9 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 pobjOperationResult.Success = 0;
                 pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "ExamenByDefaultOrAssigned", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
                 return null;
             }
         }
@@ -32137,36 +32144,50 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 pobjOperationResult.Success = 0;
                 pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "GetServiceData", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
                 return null;
             }
         }
         public WorkerData GetWorkerData(string serviceId)
         {
-            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-            var result = (from A in dbContext.service
-                          join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-                          join C in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
-                              equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
-                          from C in C_join.DefaultIfEmpty()
-                          join D in dbContext.protocol on A.v_ProtocolId equals D.v_ProtocolId
-                          join E in dbContext.systemparameter on new { a = D.i_EsoTypeId.Value, b = 118 }
-                                          equals new { a = E.i_ParameterId, b = E.i_GroupId }
-                          join F in dbContext.groupoccupation on D.v_GroupOccupationId equals F.v_GroupOccupationId
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var result = (from A in dbContext.service
+                              join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                              join C in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
+                                  equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                              from C in C_join.DefaultIfEmpty()
+                              join D in dbContext.protocol on A.v_ProtocolId equals D.v_ProtocolId
+                              join E in dbContext.systemparameter on new { a = D.i_EsoTypeId.Value, b = 118 }
+                                              equals new { a = E.i_ParameterId, b = E.i_GroupId }
+                              join F in dbContext.groupoccupation on D.v_GroupOccupationId equals F.v_GroupOccupationId
 
-                          where A.v_ServiceId == serviceId
-                          select new WorkerData
-                          {
-                              Trabajador = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
-                              FechaNacimiento = B.d_Birthdate.Value,
-                              Genero = C.v_Value1,
-                              Puesto = B.v_CurrentOccupation,
-                              Protocolo = D.v_Name,
-                              TipoExamen = E.v_Value1,
-                              Grupo = F.v_Name,
-                              PersonId = B.v_PersonId,
-                              PersonImage = B.b_PersonImage
-                          }).FirstOrDefault();
-            return result;
+                              where A.v_ServiceId == serviceId
+                              select new WorkerData
+                              {
+                                  Trabajador = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
+                                  FechaNacimiento = B.d_Birthdate.Value,
+                                  Genero = C.v_Value1,
+                                  Puesto = B.v_CurrentOccupation,
+                                  Protocolo = D.v_Name,
+                                  TipoExamen = E.v_Value1,
+                                  Grupo = F.v_Name,
+                                  PersonId = B.v_PersonId,
+                                  PersonImage = B.b_PersonImage
+                              }).FirstOrDefault();
+                return result;
+            }
+            catch (Exception)
+            {
+                //// Llenar entidad Log
+                //LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "GetWorkerData", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
+                throw;
+            }
+           
         }
         #endregion
 
