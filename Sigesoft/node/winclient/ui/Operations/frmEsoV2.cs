@@ -2194,9 +2194,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 cbTipoProcedenciaExamen.SelectedValue = serviceComponentsInfo.i_ExternalInternalId == null ? "1" : serviceComponentsInfo.i_ExternalInternalId.ToString();
                 chkApproved.Checked = Convert.ToBoolean(serviceComponentsInfo.i_IsApprovedId);
                 if (serviceComponentsInfo.d_UpdateDate != null)
-                   lblUsuGraba.Text = serviceComponentsInfo.v_UpdateUser.ToUpper();
+                    lblUsuGraba.Text = serviceComponentsInfo.v_UpdateUser == null ? "" : serviceComponentsInfo.v_UpdateUser.ToUpper();
                 if (serviceComponentsInfo.d_UpdateDate != null)
-                    lblFechaGraba.Text = serviceComponentsInfo.d_UpdateDate.Value.ToString("dd-MMMM-yyyy (hh:mm) ");
+                    lblFechaGraba.Text = serviceComponentsInfo.d_UpdateDate == null ? "": serviceComponentsInfo.d_UpdateDate.Value.ToString("dd-MMMM-yyyy (hh:mm) ");
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
