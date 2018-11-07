@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn70 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Item");
@@ -46,7 +46,6 @@
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_ItemId");
@@ -90,7 +89,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionByDiagnosticId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RestrictionId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.Appearance appearance24 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance25 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
@@ -103,7 +102,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecommendationId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RecommendationName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordStatus");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RecordType");
             Infragistics.Win.Appearance appearance31 = new Infragistics.Win.Appearance();
@@ -180,6 +179,7 @@
             Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             this.lblTrabajador = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblProtocolName = new System.Windows.Forms.Label();
@@ -229,8 +229,8 @@
             this.label19 = new System.Windows.Forms.Label();
             this.btnGuardarConclusiones = new System.Windows.Forms.Button();
             this.tpAnalisisDx = new System.Windows.Forms.TabPage();
-            this.chkUtilizaFirmaControlAuditoria = new System.Windows.Forms.CheckBox();
             this.gbEdicionDiagnosticoTotal = new System.Windows.Forms.GroupBox();
+            this.chkUtilizaFirmaControlAuditoria = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grdRestricciones_AnalisisDiagnostico = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnRemoverRestriccion_Analisis = new System.Windows.Forms.Button();
@@ -259,12 +259,14 @@
             this.btnAgregarTotalDiagnostico = new System.Windows.Forms.Button();
             this.btnRefrescarTotalDiagnostico = new System.Windows.Forms.Button();
             this.lblRecordCountTotalDiagnosticos = new System.Windows.Forms.Label();
-            this.btnAceptarDX = new System.Windows.Forms.Button();
             this.tpExam = new System.Windows.Forms.TabPage();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tcExamList = new Infragistics.Win.UltraWinTabControl.UltraTabControl();
             this.ultraTabSharedControlsPage1 = new Infragistics.Win.UltraWinTabControl.UltraTabSharedControlsPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnVisorReporteExamen = new System.Windows.Forms.Button();
+            this.btnReceta = new System.Windows.Forms.Button();
+            this.btnPerson = new System.Windows.Forms.Button();
             this.btnGuardarExamen = new System.Windows.Forms.Button();
             this.chkUtilizarFirma = new System.Windows.Forms.CheckBox();
             this.EXAMENES_lblEstadoComponente = new System.Windows.Forms.Label();
@@ -287,6 +289,7 @@
             this.grdAntecedentes = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnVerEditarAntecedentes = new System.Windows.Forms.Button();
             this.gbServiciosAnteriores = new System.Windows.Forms.GroupBox();
+            this.btnServicioAnterior = new System.Windows.Forms.Button();
             this.grdServiciosAnteriores = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnVerServicioAnterior = new System.Windows.Forms.Button();
             this.gbAntGinecologicos = new System.Windows.Forms.GroupBox();
@@ -336,7 +339,12 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.lblUsuAct = new System.Windows.Forms.Label();
             this.lblUsuGraba = new System.Windows.Forms.Label();
-            this.btnServicioAnterior = new System.Windows.Forms.Button();
+            this.btnAceptarDX = new System.Windows.Forms.Button();
+            this.btnInterConsulta = new System.Windows.Forms.Button();
+            this.btnSubirInterconsulta = new System.Windows.Forms.Button();
+            this.btnCertificadoAptitud = new System.Windows.Forms.Button();
+            this.btn312 = new System.Windows.Forms.Button();
+            this.btn7C = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -447,14 +455,14 @@
             // 
             // uvExamen
             // 
-            appearance66.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance66.BackColor2 = System.Drawing.Color.Transparent;
-            appearance66.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance66.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance66.BorderColor = System.Drawing.Color.Red;
-            appearance66.BorderColor2 = System.Drawing.Color.Red;
-            appearance66.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance66;
+            appearance68.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance68.BackColor2 = System.Drawing.Color.Transparent;
+            appearance68.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance68.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance68.BorderColor = System.Drawing.Color.Red;
+            appearance68.BorderColor2 = System.Drawing.Color.Red;
+            appearance68.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance68;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -482,9 +490,10 @@
             // 
             this.statusStripFooter.AutoSize = false;
             this.statusStripFooter.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.statusStripFooter.Location = new System.Drawing.Point(0, 656);
+            this.statusStripFooter.Location = new System.Drawing.Point(0, 660);
             this.statusStripFooter.Name = "statusStripFooter";
-            this.statusStripFooter.Size = new System.Drawing.Size(1300, 55);
+            this.statusStripFooter.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.statusStripFooter.Size = new System.Drawing.Size(1300, 51);
             this.statusStripFooter.TabIndex = 5;
             // 
             // btnSalir
@@ -498,7 +507,7 @@
             this.btnSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(1119, 677);
+            this.btnSalir.Location = new System.Drawing.Point(1111, 672);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(161, 24);
@@ -617,7 +626,7 @@
             this.btnCerrarESO.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCerrarESO.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnCerrarESO.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarESO.Location = new System.Drawing.Point(1262, -97);
+            this.btnCerrarESO.Location = new System.Drawing.Point(170, 6);
             this.btnCerrarESO.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarESO.Name = "btnCerrarESO";
             this.btnCerrarESO.Size = new System.Drawing.Size(27, 24);
@@ -627,12 +636,16 @@
             // 
             // tpConclusion
             // 
+            this.tpConclusion.Controls.Add(this.btn7C);
+            this.tpConclusion.Controls.Add(this.btn312);
+            this.tpConclusion.Controls.Add(this.btnCertificadoAptitud);
+            this.tpConclusion.Controls.Add(this.btnSubirInterconsulta);
+            this.tpConclusion.Controls.Add(this.btnInterConsulta);
+            this.tpConclusion.Controls.Add(this.dptDateGlobalExp);
             this.tpConclusion.Controls.Add(this.dtpFecVctoGlobal);
-            this.tpConclusion.Controls.Add(this.chkinterconsulta);
             this.tpConclusion.Controls.Add(this.label34);
             this.tpConclusion.Controls.Add(this.txtFecVctoGlobal);
             this.tpConclusion.Controls.Add(this.txtComentarioAptitud);
-            this.tpConclusion.Controls.Add(this.chkUtilizaFirmaAptitud);
             this.tpConclusion.Controls.Add(this.gbRecomendaciones_Conclusiones);
             this.tpConclusion.Controls.Add(this.gbRestricciones_Conclusiones);
             this.tpConclusion.Controls.Add(this.gbConclusionesDiagnosticas);
@@ -644,7 +657,7 @@
             this.tpConclusion.Controls.Add(this.btnGuardarConclusiones);
             this.tpConclusion.Location = new System.Drawing.Point(4, 22);
             this.tpConclusion.Name = "tpConclusion";
-            this.tpConclusion.Size = new System.Drawing.Size(1278, 628);
+            this.tpConclusion.Size = new System.Drawing.Size(1292, 685);
             this.tpConclusion.TabIndex = 2;
             this.tpConclusion.Text = "APTITUD";
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
@@ -654,7 +667,7 @@
             // 
             this.dtpFecVctoGlobal.CalendarMonthBackground = System.Drawing.Color.Lavender;
             this.dtpFecVctoGlobal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecVctoGlobal.Location = new System.Drawing.Point(377, 13);
+            this.dtpFecVctoGlobal.Location = new System.Drawing.Point(393, 13);
             this.dtpFecVctoGlobal.Name = "dtpFecVctoGlobal";
             this.dtpFecVctoGlobal.Size = new System.Drawing.Size(98, 20);
             this.dtpFecVctoGlobal.TabIndex = 102;
@@ -662,12 +675,13 @@
             // chkinterconsulta
             // 
             this.chkinterconsulta.AutoSize = true;
-            this.chkinterconsulta.Location = new System.Drawing.Point(647, 607);
+            this.chkinterconsulta.Location = new System.Drawing.Point(528, 218);
             this.chkinterconsulta.Name = "chkinterconsulta";
-            this.chkinterconsulta.Size = new System.Drawing.Size(87, 17);
+            this.chkinterconsulta.Size = new System.Drawing.Size(100, 17);
             this.chkinterconsulta.TabIndex = 105;
             this.chkinterconsulta.Text = "Interconsulta";
             this.chkinterconsulta.UseVisualStyleBackColor = true;
+            this.chkinterconsulta.Visible = false;
             // 
             // label34
             // 
@@ -684,10 +698,10 @@
             // 
             this.txtFecVctoGlobal.BackColor = System.Drawing.Color.Lavender;
             this.txtFecVctoGlobal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtFecVctoGlobal.Location = new System.Drawing.Point(284, 13);
+            this.txtFecVctoGlobal.Location = new System.Drawing.Point(285, 12);
             this.txtFecVctoGlobal.Name = "txtFecVctoGlobal";
             this.txtFecVctoGlobal.ReadOnly = true;
-            this.txtFecVctoGlobal.Size = new System.Drawing.Size(87, 20);
+            this.txtFecVctoGlobal.Size = new System.Drawing.Size(94, 20);
             this.txtFecVctoGlobal.TabIndex = 101;
             // 
             // txtComentarioAptitud
@@ -696,7 +710,7 @@
             this.txtComentarioAptitud.Multiline = true;
             this.txtComentarioAptitud.Name = "txtComentarioAptitud";
             this.txtComentarioAptitud.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtComentarioAptitud.Size = new System.Drawing.Size(424, 36);
+            this.txtComentarioAptitud.Size = new System.Drawing.Size(465, 36);
             this.txtComentarioAptitud.TabIndex = 98;
             this.txtComentarioAptitud.Text = "NINGUNA";
             this.txtComentarioAptitud.Visible = false;
@@ -705,9 +719,9 @@
             // 
             this.chkUtilizaFirmaAptitud.AutoSize = true;
             this.chkUtilizaFirmaAptitud.Enabled = false;
-            this.chkUtilizaFirmaAptitud.Location = new System.Drawing.Point(766, 607);
+            this.chkUtilizaFirmaAptitud.Location = new System.Drawing.Point(233, 218);
             this.chkUtilizaFirmaAptitud.Name = "chkUtilizaFirmaAptitud";
-            this.chkUtilizaFirmaAptitud.Size = new System.Drawing.Size(98, 17);
+            this.chkUtilizaFirmaAptitud.Size = new System.Drawing.Size(115, 17);
             this.chkUtilizaFirmaAptitud.TabIndex = 95;
             this.chkUtilizaFirmaAptitud.Text = "SI Utilizar Firma";
             this.chkUtilizaFirmaAptitud.UseVisualStyleBackColor = true;
@@ -719,11 +733,12 @@
             this.gbRecomendaciones_Conclusiones.Controls.Add(this.lblRecordCountRecomendaciones_Conclusiones);
             this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnAgregarRecomendaciones_Conclusiones);
             this.gbRecomendaciones_Conclusiones.Controls.Add(this.btnRemoverRecomendaciones_Conclusiones);
+            this.gbRecomendaciones_Conclusiones.Controls.Add(this.chkinterconsulta);
             this.gbRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(16, 351);
+            this.gbRecomendaciones_Conclusiones.Location = new System.Drawing.Point(18, 339);
             this.gbRecomendaciones_Conclusiones.Name = "gbRecomendaciones_Conclusiones";
-            this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(608, 228);
+            this.gbRecomendaciones_Conclusiones.Size = new System.Drawing.Size(634, 242);
             this.gbRecomendaciones_Conclusiones.TabIndex = 95;
             this.gbRecomendaciones_Conclusiones.TabStop = false;
             this.gbRecomendaciones_Conclusiones.Text = "Recomendaciones";
@@ -746,7 +761,7 @@
             ultraGridColumn73.Hidden = true;
             ultraGridColumn74.Header.Caption = "Recomendaciones";
             ultraGridColumn74.Header.VisiblePosition = 4;
-            ultraGridColumn74.Width = 569;
+            ultraGridColumn74.Width = 602;
             ultraGridColumn75.Header.VisiblePosition = 5;
             ultraGridColumn75.Hidden = true;
             ultraGridColumn76.Header.VisiblePosition = 6;
@@ -809,17 +824,17 @@
             this.grdRecomendaciones_Conclusiones.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdRecomendaciones_Conclusiones.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdRecomendaciones_Conclusiones.Location = new System.Drawing.Point(8, 36);
+            this.grdRecomendaciones_Conclusiones.Location = new System.Drawing.Point(5, 31);
             this.grdRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.grdRecomendaciones_Conclusiones.Name = "grdRecomendaciones_Conclusiones";
-            this.grdRecomendaciones_Conclusiones.Size = new System.Drawing.Size(592, 151);
+            this.grdRecomendaciones_Conclusiones.Size = new System.Drawing.Size(624, 182);
             this.grdRecomendaciones_Conclusiones.TabIndex = 98;
             // 
             // lblRecordCountRecomendaciones_Conclusiones
             // 
             this.lblRecordCountRecomendaciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRecordCountRecomendaciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRecomendaciones_Conclusiones.Location = new System.Drawing.Point(340, 10);
+            this.lblRecordCountRecomendaciones_Conclusiones.Location = new System.Drawing.Point(418, 10);
             this.lblRecordCountRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountRecomendaciones_Conclusiones.Name = "lblRecordCountRecomendaciones_Conclusiones";
             this.lblRecordCountRecomendaciones_Conclusiones.Size = new System.Drawing.Size(211, 19);
@@ -840,14 +855,13 @@
             this.btnAgregarRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendaciones_Conclusiones.Image")));
             this.btnAgregarRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRecomendaciones_Conclusiones.Location = new System.Drawing.Point(21, 191);
+            this.btnAgregarRecomendaciones_Conclusiones.Location = new System.Drawing.Point(5, 213);
             this.btnAgregarRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarRecomendaciones_Conclusiones.Name = "btnAgregarRecomendaciones_Conclusiones";
             this.btnAgregarRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
             this.btnAgregarRecomendaciones_Conclusiones.TabIndex = 96;
             this.btnAgregarRecomendaciones_Conclusiones.Text = "      Agregar";
             this.btnAgregarRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
-            this.btnAgregarRecomendaciones_Conclusiones.Visible = false;
             // 
             // btnRemoverRecomendaciones_Conclusiones
             // 
@@ -862,14 +876,13 @@
             this.btnRemoverRecomendaciones_Conclusiones.ForeColor = System.Drawing.Color.Black;
             this.btnRemoverRecomendaciones_Conclusiones.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendaciones_Conclusiones.Image")));
             this.btnRemoverRecomendaciones_Conclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRecomendaciones_Conclusiones.Location = new System.Drawing.Point(105, 191);
+            this.btnRemoverRecomendaciones_Conclusiones.Location = new System.Drawing.Point(105, 213);
             this.btnRemoverRecomendaciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoverRecomendaciones_Conclusiones.Name = "btnRemoverRecomendaciones_Conclusiones";
             this.btnRemoverRecomendaciones_Conclusiones.Size = new System.Drawing.Size(80, 24);
             this.btnRemoverRecomendaciones_Conclusiones.TabIndex = 97;
             this.btnRemoverRecomendaciones_Conclusiones.Text = "     Eliminar";
             this.btnRemoverRecomendaciones_Conclusiones.UseVisualStyleBackColor = false;
-            this.btnRemoverRecomendaciones_Conclusiones.Visible = false;
             // 
             // gbRestricciones_Conclusiones
             // 
@@ -878,11 +891,12 @@
             this.gbRestricciones_Conclusiones.Controls.Add(this.lblRecordCountRestricciones_Conclusiones);
             this.gbRestricciones_Conclusiones.Controls.Add(this.btnAgregarRestriccion_ConclusionesTratamiento);
             this.gbRestricciones_Conclusiones.Controls.Add(this.btnRemoverRestricciones_ConclusionesTratamiento);
+            this.gbRestricciones_Conclusiones.Controls.Add(this.chkUtilizaFirmaAptitud);
             this.gbRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbRestricciones_Conclusiones.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbRestricciones_Conclusiones.Location = new System.Drawing.Point(658, 339);
             this.gbRestricciones_Conclusiones.Name = "gbRestricciones_Conclusiones";
-            this.gbRestricciones_Conclusiones.Size = new System.Drawing.Size(606, 228);
+            this.gbRestricciones_Conclusiones.Size = new System.Drawing.Size(626, 242);
             this.gbRestricciones_Conclusiones.TabIndex = 94;
             this.gbRestricciones_Conclusiones.TabStop = false;
             this.gbRestricciones_Conclusiones.Text = "Restricciones";
@@ -909,7 +923,7 @@
             ultraGridColumn52.Hidden = true;
             ultraGridColumn53.Header.Caption = "Restricción";
             ultraGridColumn53.Header.VisiblePosition = 5;
-            ultraGridColumn53.Width = 580;
+            ultraGridColumn53.Width = 594;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn48,
             ultraGridColumn49,
@@ -964,17 +978,17 @@
             this.grdRestricciones_Conclusiones.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdRestricciones_Conclusiones.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdRestricciones_Conclusiones.Location = new System.Drawing.Point(5, 32);
+            this.grdRestricciones_Conclusiones.Location = new System.Drawing.Point(5, 31);
             this.grdRestricciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.grdRestricciones_Conclusiones.Name = "grdRestricciones_Conclusiones";
-            this.grdRestricciones_Conclusiones.Size = new System.Drawing.Size(592, 151);
+            this.grdRestricciones_Conclusiones.Size = new System.Drawing.Size(616, 182);
             this.grdRestricciones_Conclusiones.TabIndex = 98;
             // 
             // lblRecordCountRestricciones_Conclusiones
             // 
             this.lblRecordCountRestricciones_Conclusiones.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRecordCountRestricciones_Conclusiones.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountRestricciones_Conclusiones.Location = new System.Drawing.Point(351, 10);
+            this.lblRecordCountRestricciones_Conclusiones.Location = new System.Drawing.Point(424, 10);
             this.lblRecordCountRestricciones_Conclusiones.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountRestricciones_Conclusiones.Name = "lblRecordCountRestricciones_Conclusiones";
             this.lblRecordCountRestricciones_Conclusiones.Size = new System.Drawing.Size(197, 19);
@@ -995,10 +1009,10 @@
             this.btnAgregarRestriccion_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarRestriccion_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion_ConclusionesTratamiento.Image")));
             this.btnAgregarRestriccion_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Location = new System.Drawing.Point(10, 191);
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Location = new System.Drawing.Point(5, 213);
             this.btnAgregarRestriccion_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarRestriccion_ConclusionesTratamiento.Name = "btnAgregarRestriccion_ConclusionesTratamiento";
-            this.btnAgregarRestriccion_ConclusionesTratamiento.Size = new System.Drawing.Size(80, 24);
+            this.btnAgregarRestriccion_ConclusionesTratamiento.Size = new System.Drawing.Size(76, 24);
             this.btnAgregarRestriccion_ConclusionesTratamiento.TabIndex = 96;
             this.btnAgregarRestriccion_ConclusionesTratamiento.Text = "      Agregar";
             this.btnAgregarRestriccion_ConclusionesTratamiento.UseVisualStyleBackColor = false;
@@ -1017,10 +1031,10 @@
             this.btnRemoverRestricciones_ConclusionesTratamiento.ForeColor = System.Drawing.Color.Black;
             this.btnRemoverRestricciones_ConclusionesTratamiento.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestricciones_ConclusionesTratamiento.Image")));
             this.btnRemoverRestricciones_ConclusionesTratamiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Location = new System.Drawing.Point(106, 191);
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Location = new System.Drawing.Point(108, 213);
             this.btnRemoverRestricciones_ConclusionesTratamiento.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoverRestricciones_ConclusionesTratamiento.Name = "btnRemoverRestricciones_ConclusionesTratamiento";
-            this.btnRemoverRestricciones_ConclusionesTratamiento.Size = new System.Drawing.Size(80, 24);
+            this.btnRemoverRestricciones_ConclusionesTratamiento.Size = new System.Drawing.Size(77, 24);
             this.btnRemoverRestricciones_ConclusionesTratamiento.TabIndex = 97;
             this.btnRemoverRestricciones_ConclusionesTratamiento.Text = "     Eliminar";
             this.btnRemoverRestricciones_ConclusionesTratamiento.UseVisualStyleBackColor = false;
@@ -1028,17 +1042,13 @@
             // 
             // gbConclusionesDiagnosticas
             // 
-            this.gbConclusionesDiagnosticas.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gbConclusionesDiagnosticas.Controls.Add(this.dptDateGlobalExp);
             this.gbConclusionesDiagnosticas.Controls.Add(this.grdConclusionesDiagnosticas);
             this.gbConclusionesDiagnosticas.Controls.Add(this.lblRecordCountConclusionesDiagnosticas);
             this.gbConclusionesDiagnosticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbConclusionesDiagnosticas.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbConclusionesDiagnosticas.Location = new System.Drawing.Point(10, 37);
             this.gbConclusionesDiagnosticas.Name = "gbConclusionesDiagnosticas";
-            this.gbConclusionesDiagnosticas.Size = new System.Drawing.Size(1254, 292);
+            this.gbConclusionesDiagnosticas.Size = new System.Drawing.Size(1274, 292);
             this.gbConclusionesDiagnosticas.TabIndex = 51;
             this.gbConclusionesDiagnosticas.TabStop = false;
             this.gbConclusionesDiagnosticas.Text = "Conclusiones Diagnósticas";
@@ -1047,7 +1057,7 @@
             // 
             this.dptDateGlobalExp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dptDateGlobalExp.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dptDateGlobalExp.Location = new System.Drawing.Point(172, 16);
+            this.dptDateGlobalExp.Location = new System.Drawing.Point(284, 12);
             this.dptDateGlobalExp.Margin = new System.Windows.Forms.Padding(2);
             this.dptDateGlobalExp.Name = "dptDateGlobalExp";
             this.dptDateGlobalExp.Size = new System.Drawing.Size(95, 20);
@@ -1169,10 +1179,10 @@
             this.grdConclusionesDiagnosticas.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdConclusionesDiagnosticas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdConclusionesDiagnosticas.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdConclusionesDiagnosticas.Location = new System.Drawing.Point(8, 37);
+            this.grdConclusionesDiagnosticas.Location = new System.Drawing.Point(8, 18);
             this.grdConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2);
             this.grdConclusionesDiagnosticas.Name = "grdConclusionesDiagnosticas";
-            this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1241, 250);
+            this.grdConclusionesDiagnosticas.Size = new System.Drawing.Size(1261, 269);
             this.grdConclusionesDiagnosticas.TabIndex = 53;
             this.grdConclusionesDiagnosticas.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdConclusionesDiagnosticas_ClickCell);
             // 
@@ -1184,7 +1194,7 @@
             this.lblRecordCountConclusionesDiagnosticas.Location = new System.Drawing.Point(878, -16);
             this.lblRecordCountConclusionesDiagnosticas.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountConclusionesDiagnosticas.Name = "lblRecordCountConclusionesDiagnosticas";
-            this.lblRecordCountConclusionesDiagnosticas.Size = new System.Drawing.Size(371, 19);
+            this.lblRecordCountConclusionesDiagnosticas.Size = new System.Drawing.Size(391, 19);
             this.lblRecordCountConclusionesDiagnosticas.TabIndex = 52;
             this.lblRecordCountConclusionesDiagnosticas.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountConclusionesDiagnosticas.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1193,16 +1203,16 @@
             // 
             this.cbAptitudEso.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAptitudEso.FormattingEnabled = true;
-            this.cbAptitudEso.Location = new System.Drawing.Point(621, 8);
+            this.cbAptitudEso.Location = new System.Drawing.Point(559, 13);
             this.cbAptitudEso.Name = "cbAptitudEso";
-            this.cbAptitudEso.Size = new System.Drawing.Size(137, 21);
+            this.cbAptitudEso.Size = new System.Drawing.Size(199, 21);
             this.cbAptitudEso.TabIndex = 31;
             // 
             // lblFecVctoObs
             // 
             this.lblFecVctoObs.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.lblFecVctoObs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblFecVctoObs.Location = new System.Drawing.Point(100, 12);
+            this.lblFecVctoObs.Location = new System.Drawing.Point(98, 12);
             this.lblFecVctoObs.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFecVctoObs.Name = "lblFecVctoObs";
             this.lblFecVctoObs.Size = new System.Drawing.Size(89, 20);
@@ -1212,7 +1222,7 @@
             // lbl4553
             // 
             this.lbl4553.AutoSize = true;
-            this.lbl4553.Location = new System.Drawing.Point(193, 16);
+            this.lbl4553.Location = new System.Drawing.Point(190, 16);
             this.lbl4553.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbl4553.Name = "lbl4553";
             this.lbl4553.Size = new System.Drawing.Size(86, 13);
@@ -1232,7 +1242,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(576, 13);
+            this.label19.Location = new System.Drawing.Point(514, 16);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(40, 13);
@@ -1249,7 +1259,7 @@
             this.btnGuardarConclusiones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardarConclusiones.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnGuardarConclusiones.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1101, 575);
+            this.btnGuardarConclusiones.Location = new System.Drawing.Point(1039, 607);
             this.btnGuardarConclusiones.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarConclusiones.Name = "btnGuardarConclusiones";
             this.btnGuardarConclusiones.Size = new System.Drawing.Size(152, 24);
@@ -1260,32 +1270,22 @@
             // 
             // tpAnalisisDx
             // 
-            this.tpAnalisisDx.Controls.Add(this.chkUtilizaFirmaControlAuditoria);
             this.tpAnalisisDx.Controls.Add(this.gbEdicionDiagnosticoTotal);
             this.tpAnalisisDx.Controls.Add(this.gbTotalDiagnostico);
-            this.tpAnalisisDx.Controls.Add(this.btnAceptarDX);
             this.tpAnalisisDx.Location = new System.Drawing.Point(4, 22);
             this.tpAnalisisDx.Name = "tpAnalisisDx";
-            this.tpAnalisisDx.Size = new System.Drawing.Size(1278, 628);
+            this.tpAnalisisDx.Size = new System.Drawing.Size(1292, 685);
             this.tpAnalisisDx.TabIndex = 3;
             this.tpAnalisisDx.Text = "CONTROL DE CALIDAD";
             this.tpAnalisisDx.ToolTipText = "ANÁLISIS DE DIAGNÓSTICOS";
             this.tpAnalisisDx.UseVisualStyleBackColor = true;
             // 
-            // chkUtilizaFirmaControlAuditoria
-            // 
-            this.chkUtilizaFirmaControlAuditoria.AutoSize = true;
-            this.chkUtilizaFirmaControlAuditoria.Location = new System.Drawing.Point(10, 617);
-            this.chkUtilizaFirmaControlAuditoria.Name = "chkUtilizaFirmaControlAuditoria";
-            this.chkUtilizaFirmaControlAuditoria.Size = new System.Drawing.Size(98, 17);
-            this.chkUtilizaFirmaControlAuditoria.TabIndex = 62;
-            this.chkUtilizaFirmaControlAuditoria.Text = "SI Utilizar Firma";
-            this.chkUtilizaFirmaControlAuditoria.UseVisualStyleBackColor = true;
-            // 
             // gbEdicionDiagnosticoTotal
             // 
             this.gbEdicionDiagnosticoTotal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.btnAceptarDX);
+            this.gbEdicionDiagnosticoTotal.Controls.Add(this.chkUtilizaFirmaControlAuditoria);
             this.gbEdicionDiagnosticoTotal.Controls.Add(this.groupBox2);
             this.gbEdicionDiagnosticoTotal.Controls.Add(this.groupBox1);
             this.gbEdicionDiagnosticoTotal.Controls.Add(this.btnAgregarDX);
@@ -1304,10 +1304,20 @@
             this.gbEdicionDiagnosticoTotal.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbEdicionDiagnosticoTotal.Location = new System.Drawing.Point(10, 320);
             this.gbEdicionDiagnosticoTotal.Name = "gbEdicionDiagnosticoTotal";
-            this.gbEdicionDiagnosticoTotal.Size = new System.Drawing.Size(1252, 259);
+            this.gbEdicionDiagnosticoTotal.Size = new System.Drawing.Size(1252, 316);
             this.gbEdicionDiagnosticoTotal.TabIndex = 51;
             this.gbEdicionDiagnosticoTotal.TabStop = false;
             this.gbEdicionDiagnosticoTotal.Text = "Edición del Diagnóstico";
+            // 
+            // chkUtilizaFirmaControlAuditoria
+            // 
+            this.chkUtilizaFirmaControlAuditoria.AutoSize = true;
+            this.chkUtilizaFirmaControlAuditoria.Location = new System.Drawing.Point(950, 290);
+            this.chkUtilizaFirmaControlAuditoria.Name = "chkUtilizaFirmaControlAuditoria";
+            this.chkUtilizaFirmaControlAuditoria.Size = new System.Drawing.Size(115, 17);
+            this.chkUtilizaFirmaControlAuditoria.TabIndex = 62;
+            this.chkUtilizaFirmaControlAuditoria.Text = "SI Utilizar Firma";
+            this.chkUtilizaFirmaControlAuditoria.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -1319,7 +1329,7 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(654, 70);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(581, 181);
+            this.groupBox2.Size = new System.Drawing.Size(581, 210);
             this.groupBox2.TabIndex = 84;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Restricciones";
@@ -1403,7 +1413,7 @@
             this.grdRestricciones_AnalisisDiagnostico.Location = new System.Drawing.Point(7, 35);
             this.grdRestricciones_AnalisisDiagnostico.Margin = new System.Windows.Forms.Padding(2);
             this.grdRestricciones_AnalisisDiagnostico.Name = "grdRestricciones_AnalisisDiagnostico";
-            this.grdRestricciones_AnalisisDiagnostico.Size = new System.Drawing.Size(535, 141);
+            this.grdRestricciones_AnalisisDiagnostico.Size = new System.Drawing.Size(535, 170);
             this.grdRestricciones_AnalisisDiagnostico.TabIndex = 96;
             this.grdRestricciones_AnalisisDiagnostico.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdRestricciones_AnalisisDiagnostico_AfterSelectChange);
             // 
@@ -1420,7 +1430,7 @@
             this.btnRemoverRestriccion_Analisis.ForeColor = System.Drawing.Color.Black;
             this.btnRemoverRestriccion_Analisis.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRestriccion_Analisis.Image")));
             this.btnRemoverRestriccion_Analisis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRestriccion_Analisis.Location = new System.Drawing.Point(546, 63);
+            this.btnRemoverRestriccion_Analisis.Location = new System.Drawing.Point(546, 92);
             this.btnRemoverRestriccion_Analisis.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoverRestriccion_Analisis.Name = "btnRemoverRestriccion_Analisis";
             this.btnRemoverRestriccion_Analisis.Size = new System.Drawing.Size(30, 24);
@@ -1441,7 +1451,7 @@
             this.btnAgregarRestriccion_Analisis.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarRestriccion_Analisis.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRestriccion_Analisis.Image")));
             this.btnAgregarRestriccion_Analisis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRestriccion_Analisis.Location = new System.Drawing.Point(546, 35);
+            this.btnAgregarRestriccion_Analisis.Location = new System.Drawing.Point(546, 64);
             this.btnAgregarRestriccion_Analisis.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarRestriccion_Analisis.Name = "btnAgregarRestriccion_Analisis";
             this.btnAgregarRestriccion_Analisis.Size = new System.Drawing.Size(30, 24);
@@ -1471,7 +1481,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(11, 71);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(634, 180);
+            this.groupBox1.Size = new System.Drawing.Size(634, 209);
             this.groupBox1.TabIndex = 83;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Recomendaciones";
@@ -1559,7 +1569,7 @@
             this.grdRecomendaciones_AnalisisDiagnostico.Location = new System.Drawing.Point(10, 34);
             this.grdRecomendaciones_AnalisisDiagnostico.Margin = new System.Windows.Forms.Padding(2);
             this.grdRecomendaciones_AnalisisDiagnostico.Name = "grdRecomendaciones_AnalisisDiagnostico";
-            this.grdRecomendaciones_AnalisisDiagnostico.Size = new System.Drawing.Size(585, 141);
+            this.grdRecomendaciones_AnalisisDiagnostico.Size = new System.Drawing.Size(585, 155);
             this.grdRecomendaciones_AnalisisDiagnostico.TabIndex = 96;
             this.grdRecomendaciones_AnalisisDiagnostico.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdRecomendaciones_AnalisisDiagnostico_AfterSelectChange);
             // 
@@ -1576,7 +1586,7 @@
             this.btnRemoverRecomendacion_AnalisisDx.ForeColor = System.Drawing.Color.Black;
             this.btnRemoverRecomendacion_AnalisisDx.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverRecomendacion_AnalisisDx.Image")));
             this.btnRemoverRecomendacion_AnalisisDx.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverRecomendacion_AnalisisDx.Location = new System.Drawing.Point(599, 62);
+            this.btnRemoverRecomendacion_AnalisisDx.Location = new System.Drawing.Point(599, 91);
             this.btnRemoverRecomendacion_AnalisisDx.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoverRecomendacion_AnalisisDx.Name = "btnRemoverRecomendacion_AnalisisDx";
             this.btnRemoverRecomendacion_AnalisisDx.Size = new System.Drawing.Size(30, 24);
@@ -1597,7 +1607,7 @@
             this.btnAgregarRecomendaciones_AnalisisDx.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarRecomendaciones_AnalisisDx.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarRecomendaciones_AnalisisDx.Image")));
             this.btnAgregarRecomendaciones_AnalisisDx.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarRecomendaciones_AnalisisDx.Location = new System.Drawing.Point(599, 34);
+            this.btnAgregarRecomendaciones_AnalisisDx.Location = new System.Drawing.Point(599, 63);
             this.btnAgregarRecomendaciones_AnalisisDx.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarRecomendaciones_AnalisisDx.Name = "btnAgregarRecomendaciones_AnalisisDx";
             this.btnAgregarRecomendaciones_AnalisisDx.Size = new System.Drawing.Size(30, 24);
@@ -1610,7 +1620,7 @@
             this.lblRecordCountRecomendaciones_AnalisisDx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCountRecomendaciones_AnalisisDx.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCountRecomendaciones_AnalisisDx.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountRecomendaciones_AnalisisDx.Location = new System.Drawing.Point(445, 13);
+            this.lblRecordCountRecomendaciones_AnalisisDx.Location = new System.Drawing.Point(445, 11);
             this.lblRecordCountRecomendaciones_AnalisisDx.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountRecomendaciones_AnalisisDx.Name = "lblRecordCountRecomendaciones_AnalisisDx";
             this.lblRecordCountRecomendaciones_AnalisisDx.Size = new System.Drawing.Size(184, 19);
@@ -1884,10 +1894,10 @@
             this.grdTotalDiagnosticos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdTotalDiagnosticos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdTotalDiagnosticos.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdTotalDiagnosticos.Location = new System.Drawing.Point(11, 26);
+            this.grdTotalDiagnosticos.Location = new System.Drawing.Point(11, 39);
             this.grdTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2);
             this.grdTotalDiagnosticos.Name = "grdTotalDiagnosticos";
-            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1217, 247);
+            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1217, 234);
             this.grdTotalDiagnosticos.TabIndex = 94;
             this.grdTotalDiagnosticos.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdTotalDiagnosticos_InitializeRow);
             this.grdTotalDiagnosticos.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdTotalDiagnosticos_AfterSelectChange);
@@ -1915,6 +1925,7 @@
             this.btnRemoverTotalDiagnostico.TabIndex = 93;
             this.btnRemoverTotalDiagnostico.Text = "     Eliminar";
             this.btnRemoverTotalDiagnostico.UseVisualStyleBackColor = false;
+            this.btnRemoverTotalDiagnostico.Visible = false;
             this.btnRemoverTotalDiagnostico.Click += new System.EventHandler(this.btnRemoverTotalDiagnostico_Click);
             // 
             // btnAgregarTotalDiagnostico
@@ -1937,6 +1948,7 @@
             this.btnAgregarTotalDiagnostico.TabIndex = 92;
             this.btnAgregarTotalDiagnostico.Text = "      Agregar";
             this.btnAgregarTotalDiagnostico.UseVisualStyleBackColor = false;
+            this.btnAgregarTotalDiagnostico.Visible = false;
             this.btnAgregarTotalDiagnostico.Click += new System.EventHandler(this.btnAgregarTotalDiagnostico_Click);
             // 
             // btnRefrescarTotalDiagnostico
@@ -1966,32 +1978,13 @@
             this.lblRecordCountTotalDiagnosticos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCountTotalDiagnosticos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountTotalDiagnosticos.Location = new System.Drawing.Point(1010, 18);
+            this.lblRecordCountTotalDiagnosticos.Location = new System.Drawing.Point(994, 16);
             this.lblRecordCountTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountTotalDiagnosticos.Name = "lblRecordCountTotalDiagnosticos";
             this.lblRecordCountTotalDiagnosticos.Size = new System.Drawing.Size(236, 19);
             this.lblRecordCountTotalDiagnosticos.TabIndex = 49;
             this.lblRecordCountTotalDiagnosticos.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountTotalDiagnosticos.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // btnAceptarDX
-            // 
-            this.btnAceptarDX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnAceptarDX.BackColor = System.Drawing.SystemColors.Control;
-            this.btnAceptarDX.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnAceptarDX.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnAceptarDX.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnAceptarDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAceptarDX.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
-            this.btnAceptarDX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAceptarDX.Location = new System.Drawing.Point(1099, 584);
-            this.btnAceptarDX.Margin = new System.Windows.Forms.Padding(2);
-            this.btnAceptarDX.Name = "btnAceptarDX";
-            this.btnAceptarDX.Size = new System.Drawing.Size(152, 24);
-            this.btnAceptarDX.TabIndex = 61;
-            this.btnAceptarDX.Text = "      Guardar Diagnóstico";
-            this.btnAceptarDX.UseVisualStyleBackColor = false;
-            this.btnAceptarDX.Click += new System.EventHandler(this.btnAceptarDX_Click);
             // 
             // tpExam
             // 
@@ -2031,29 +2024,31 @@
             this.tcExamList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tcExamList.CloseButtonLocation = Infragistics.Win.UltraWinTabs.TabCloseButtonLocation.HeaderArea;
             this.tcExamList.Controls.Add(this.ultraTabSharedControlsPage1);
             this.tcExamList.Location = new System.Drawing.Point(0, 0);
             this.tcExamList.Name = "tcExamList";
             this.tcExamList.SharedControlsPage = this.ultraTabSharedControlsPage1;
             this.tcExamList.Size = new System.Drawing.Size(1278, 447);
-            this.tcExamList.Style = Infragistics.Win.UltraWinTabControl.UltraTabControlStyle.PropertyPageSelected;
             this.tcExamList.TabIndex = 1;
             this.tcExamList.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
             this.tcExamList.TextOrientation = Infragistics.Win.UltraWinTabs.TextOrientation.Horizontal;
-            this.tcExamList.ViewStyle = Infragistics.Win.UltraWinTabControl.ViewStyle.VisualStudio2005;
+            this.tcExamList.ViewStyle = Infragistics.Win.UltraWinTabControl.ViewStyle.Office2007;
             this.tcExamList.SelectedTabChanging += new Infragistics.Win.UltraWinTabControl.SelectedTabChangingEventHandler(this.tcExamList_SelectedTabChanging);
             this.tcExamList.SelectedTabChanged += new Infragistics.Win.UltraWinTabControl.SelectedTabChangedEventHandler(this.tcExamList_SelectedTabChanged);
             // 
             // ultraTabSharedControlsPage1
             // 
-            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(21, 2);
+            this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(20, 1);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1255, 443);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1257, 445);
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.btnVisorReporteExamen);
+            this.groupBox4.Controls.Add(this.btnReceta);
+            this.groupBox4.Controls.Add(this.btnPerson);
             this.groupBox4.Controls.Add(this.btnGuardarExamen);
+            this.groupBox4.Controls.Add(this.btnCerrarESO);
             this.groupBox4.Controls.Add(this.chkUtilizarFirma);
             this.groupBox4.Controls.Add(this.EXAMENES_lblEstadoComponente);
             this.groupBox4.Controls.Add(this.chkApproved);
@@ -2071,6 +2066,65 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Grabar Examen";
             // 
+            // btnVisorReporteExamen
+            // 
+            this.btnVisorReporteExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnVisorReporteExamen.BackColor = System.Drawing.SystemColors.Control;
+            this.btnVisorReporteExamen.Enabled = false;
+            this.btnVisorReporteExamen.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnVisorReporteExamen.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnVisorReporteExamen.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnVisorReporteExamen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVisorReporteExamen.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisorReporteExamen.ForeColor = System.Drawing.Color.Black;
+            this.btnVisorReporteExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnVisorReporteExamen.Image")));
+            this.btnVisorReporteExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnVisorReporteExamen.Location = new System.Drawing.Point(335, 41);
+            this.btnVisorReporteExamen.Margin = new System.Windows.Forms.Padding(2);
+            this.btnVisorReporteExamen.Name = "btnVisorReporteExamen";
+            this.btnVisorReporteExamen.Size = new System.Drawing.Size(280, 36);
+            this.btnVisorReporteExamen.TabIndex = 101;
+            this.btnVisorReporteExamen.Text = "Ver Reporte de";
+            this.btnVisorReporteExamen.UseVisualStyleBackColor = false;
+            this.btnVisorReporteExamen.Visible = false;
+            this.btnVisorReporteExamen.Click += new System.EventHandler(this.btnVisorReporteExamen_Click);
+            // 
+            // btnReceta
+            // 
+            this.btnReceta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReceta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReceta.Enabled = false;
+            this.btnReceta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnReceta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReceta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnReceta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReceta.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReceta.ForeColor = System.Drawing.Color.Black;
+            this.btnReceta.Image = ((System.Drawing.Image)(resources.GetObject("btnReceta.Image")));
+            this.btnReceta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReceta.Location = new System.Drawing.Point(335, 9);
+            this.btnReceta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReceta.Name = "btnReceta";
+            this.btnReceta.Size = new System.Drawing.Size(280, 28);
+            this.btnReceta.TabIndex = 100;
+            this.btnReceta.Text = "Receta";
+            this.btnReceta.UseVisualStyleBackColor = false;
+            this.btnReceta.Click += new System.EventHandler(this.btnReceta_Click);
+            // 
+            // btnPerson
+            // 
+            this.btnPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPerson.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerson.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerson.Location = new System.Drawing.Point(9, 138);
+            this.btnPerson.Name = "btnPerson";
+            this.btnPerson.Size = new System.Drawing.Size(302, 26);
+            this.btnPerson.TabIndex = 99;
+            this.btnPerson.Text = "Ver Datos Generales";
+            this.btnPerson.UseVisualStyleBackColor = false;
+            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
+            // 
             // btnGuardarExamen
             // 
             this.btnGuardarExamen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -2083,10 +2137,10 @@
             this.btnGuardarExamen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnGuardarExamen.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnGuardarExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarExamen.Location = new System.Drawing.Point(346, 138);
+            this.btnGuardarExamen.Location = new System.Drawing.Point(335, 138);
             this.btnGuardarExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarExamen.Name = "btnGuardarExamen";
-            this.btnGuardarExamen.Size = new System.Drawing.Size(272, 24);
+            this.btnGuardarExamen.Size = new System.Drawing.Size(283, 26);
             this.btnGuardarExamen.TabIndex = 64;
             this.btnGuardarExamen.Text = "      Guardar";
             this.btnGuardarExamen.UseVisualStyleBackColor = false;
@@ -2097,7 +2151,7 @@
             this.chkUtilizarFirma.AutoSize = true;
             this.chkUtilizarFirma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkUtilizarFirma.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.chkUtilizarFirma.Location = new System.Drawing.Point(335, 96);
+            this.chkUtilizarFirma.Location = new System.Drawing.Point(335, 117);
             this.chkUtilizarFirma.Name = "chkUtilizarFirma";
             this.chkUtilizarFirma.Size = new System.Drawing.Size(98, 17);
             this.chkUtilizarFirma.TabIndex = 59;
@@ -2109,7 +2163,7 @@
             this.EXAMENES_lblEstadoComponente.AutoSize = true;
             this.EXAMENES_lblEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EXAMENES_lblEstadoComponente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EXAMENES_lblEstadoComponente.Location = new System.Drawing.Point(332, 28);
+            this.EXAMENES_lblEstadoComponente.Location = new System.Drawing.Point(332, 79);
             this.EXAMENES_lblEstadoComponente.Name = "EXAMENES_lblEstadoComponente";
             this.EXAMENES_lblEstadoComponente.Size = new System.Drawing.Size(120, 13);
             this.EXAMENES_lblEstadoComponente.TabIndex = 51;
@@ -2120,7 +2174,7 @@
             this.chkApproved.AutoSize = true;
             this.chkApproved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkApproved.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.chkApproved.Location = new System.Drawing.Point(472, 96);
+            this.chkApproved.Location = new System.Drawing.Point(474, 119);
             this.chkApproved.Name = "chkApproved";
             this.chkApproved.Size = new System.Drawing.Size(140, 17);
             this.chkApproved.TabIndex = 58;
@@ -2132,7 +2186,7 @@
             this.cbEstadoComponente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstadoComponente.FormattingEnabled = true;
-            this.cbEstadoComponente.Location = new System.Drawing.Point(335, 47);
+            this.cbEstadoComponente.Location = new System.Drawing.Point(335, 95);
             this.cbEstadoComponente.Name = "cbEstadoComponente";
             this.cbEstadoComponente.Size = new System.Drawing.Size(283, 21);
             this.cbEstadoComponente.TabIndex = 0;
@@ -2142,7 +2196,7 @@
             this.EXAMENES_lblComentarios.AutoSize = true;
             this.EXAMENES_lblComentarios.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EXAMENES_lblComentarios.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EXAMENES_lblComentarios.Location = new System.Drawing.Point(6, 25);
+            this.EXAMENES_lblComentarios.Location = new System.Drawing.Point(6, 17);
             this.EXAMENES_lblComentarios.Name = "EXAMENES_lblComentarios";
             this.EXAMENES_lblComentarios.Size = new System.Drawing.Size(97, 13);
             this.EXAMENES_lblComentarios.TabIndex = 49;
@@ -2153,7 +2207,7 @@
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label23.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label23.Location = new System.Drawing.Point(6, 78);
+            this.label23.Location = new System.Drawing.Point(6, 96);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(84, 13);
             this.label23.TabIndex = 52;
@@ -2164,18 +2218,18 @@
             this.cbTipoProcedenciaExamen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTipoProcedenciaExamen.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTipoProcedenciaExamen.FormattingEnabled = true;
-            this.cbTipoProcedenciaExamen.Location = new System.Drawing.Point(9, 94);
+            this.cbTipoProcedenciaExamen.Location = new System.Drawing.Point(9, 112);
             this.cbTipoProcedenciaExamen.Name = "cbTipoProcedenciaExamen";
             this.cbTipoProcedenciaExamen.Size = new System.Drawing.Size(302, 21);
             this.cbTipoProcedenciaExamen.TabIndex = 53;
             // 
             // txtComentario
             // 
-            this.txtComentario.Location = new System.Drawing.Point(6, 41);
+            this.txtComentario.Location = new System.Drawing.Point(6, 33);
             this.txtComentario.Multiline = true;
             this.txtComentario.Name = "txtComentario";
             this.txtComentario.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtComentario.Size = new System.Drawing.Size(305, 34);
+            this.txtComentario.Size = new System.Drawing.Size(305, 60);
             this.txtComentario.TabIndex = 50;
             // 
             // gbDiagnosticoExamen
@@ -2422,7 +2476,7 @@
             // 
             // button1
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.SystemColors.Control;
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
@@ -2560,6 +2614,28 @@
             this.gbServiciosAnteriores.TabIndex = 63;
             this.gbServiciosAnteriores.TabStop = false;
             this.gbServiciosAnteriores.Text = "Servicios Anteriores";
+            // 
+            // btnServicioAnterior
+            // 
+            this.btnServicioAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnServicioAnterior.BackColor = System.Drawing.SystemColors.Control;
+            this.btnServicioAnterior.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnServicioAnterior.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnServicioAnterior.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnServicioAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnServicioAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnServicioAnterior.ForeColor = System.Drawing.Color.Black;
+            this.btnServicioAnterior.Image = ((System.Drawing.Image)(resources.GetObject("btnServicioAnterior.Image")));
+            this.btnServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnServicioAnterior.Location = new System.Drawing.Point(475, 354);
+            this.btnServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
+            this.btnServicioAnterior.Name = "btnServicioAnterior";
+            this.btnServicioAnterior.Size = new System.Drawing.Size(134, 24);
+            this.btnServicioAnterior.TabIndex = 95;
+            this.btnServicioAnterior.Text = "Ver servicio Anterior";
+            this.btnServicioAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnServicioAnterior.UseVisualStyleBackColor = false;
+            this.btnServicioAnterior.Click += new System.EventHandler(this.button2_Click);
             // 
             // grdServiciosAnteriores
             // 
@@ -3173,7 +3249,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1278, 628);
+            this.tabPage1.Size = new System.Drawing.Size(1292, 685);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "FORMATO DE ATENCIÓN INTEGRAL";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -3183,7 +3259,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1278, 628);
+            this.tabPage2.Size = new System.Drawing.Size(1292, 685);
             this.tabPage2.TabIndex = 5;
             this.tabPage2.Text = "DATOS GENERALES Y ANTECEDENTES";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -3192,7 +3268,7 @@
             // 
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1278, 628);
+            this.tabPage3.Size = new System.Drawing.Size(1292, 685);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "CUIDADOS PREVENTIVOS";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -3223,27 +3299,133 @@
             this.lblUsuGraba.TabIndex = 69;
             this.lblUsuGraba.Text = "lblUsuGraba";
             // 
-            // btnServicioAnterior
+            // btnAceptarDX
             // 
-            this.btnServicioAnterior.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnServicioAnterior.BackColor = System.Drawing.SystemColors.Control;
-            this.btnServicioAnterior.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnServicioAnterior.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnServicioAnterior.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnServicioAnterior.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnServicioAnterior.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnServicioAnterior.ForeColor = System.Drawing.Color.Black;
-            this.btnServicioAnterior.Image = ((System.Drawing.Image)(resources.GetObject("btnServicioAnterior.Image")));
-            this.btnServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicioAnterior.Location = new System.Drawing.Point(475, 354);
-            this.btnServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
-            this.btnServicioAnterior.Name = "btnServicioAnterior";
-            this.btnServicioAnterior.Size = new System.Drawing.Size(134, 24);
-            this.btnServicioAnterior.TabIndex = 95;
-            this.btnServicioAnterior.Text = "Ver servicio Anterior";
-            this.btnServicioAnterior.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnServicioAnterior.UseVisualStyleBackColor = false;
-            this.btnServicioAnterior.Click += new System.EventHandler(this.button2_Click);
+            this.btnAceptarDX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAceptarDX.BackColor = System.Drawing.SystemColors.Control;
+            this.btnAceptarDX.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnAceptarDX.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnAceptarDX.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnAceptarDX.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAceptarDX.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
+            this.btnAceptarDX.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAceptarDX.Location = new System.Drawing.Point(1083, 283);
+            this.btnAceptarDX.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAceptarDX.Name = "btnAceptarDX";
+            this.btnAceptarDX.Size = new System.Drawing.Size(152, 24);
+            this.btnAceptarDX.TabIndex = 85;
+            this.btnAceptarDX.Text = "      Guardar Diagnóstico";
+            this.btnAceptarDX.UseVisualStyleBackColor = false;
+            this.btnAceptarDX.Click += new System.EventHandler(this.btnAceptarDX_Click_1);
+            // 
+            // btnInterConsulta
+            // 
+            this.btnInterConsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnInterConsulta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnInterConsulta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnInterConsulta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnInterConsulta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnInterConsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInterConsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInterConsulta.ForeColor = System.Drawing.Color.Black;
+            this.btnInterConsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnInterConsulta.Image")));
+            this.btnInterConsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInterConsulta.Location = new System.Drawing.Point(23, 600);
+            this.btnInterConsulta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnInterConsulta.Name = "btnInterConsulta";
+            this.btnInterConsulta.Size = new System.Drawing.Size(158, 24);
+            this.btnInterConsulta.TabIndex = 106;
+            this.btnInterConsulta.Text = "Interconsulta";
+            this.btnInterConsulta.UseVisualStyleBackColor = false;
+            this.btnInterConsulta.Click += new System.EventHandler(this.btnInterConsulta_Click);
+            // 
+            // btnSubirInterconsulta
+            // 
+            this.btnSubirInterconsulta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSubirInterconsulta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSubirInterconsulta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSubirInterconsulta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSubirInterconsulta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSubirInterconsulta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSubirInterconsulta.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSubirInterconsulta.ForeColor = System.Drawing.Color.Black;
+            this.btnSubirInterconsulta.Image = ((System.Drawing.Image)(resources.GetObject("btnSubirInterconsulta.Image")));
+            this.btnSubirInterconsulta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSubirInterconsulta.Location = new System.Drawing.Point(185, 600);
+            this.btnSubirInterconsulta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSubirInterconsulta.Name = "btnSubirInterconsulta";
+            this.btnSubirInterconsulta.Size = new System.Drawing.Size(158, 24);
+            this.btnSubirInterconsulta.TabIndex = 107;
+            this.btnSubirInterconsulta.Text = "Subir Interconsulta";
+            this.btnSubirInterconsulta.UseVisualStyleBackColor = false;
+            this.btnSubirInterconsulta.Click += new System.EventHandler(this.btnSubirInterconsulta_Click);
+            // 
+            // btnCertificadoAptitud
+            // 
+            this.btnCertificadoAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnCertificadoAptitud.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCertificadoAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCertificadoAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCertificadoAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCertificadoAptitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCertificadoAptitud.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCertificadoAptitud.ForeColor = System.Drawing.Color.Black;
+            this.btnCertificadoAptitud.Image = ((System.Drawing.Image)(resources.GetObject("btnCertificadoAptitud.Image")));
+            this.btnCertificadoAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCertificadoAptitud.Location = new System.Drawing.Point(347, 600);
+            this.btnCertificadoAptitud.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCertificadoAptitud.Name = "btnCertificadoAptitud";
+            this.btnCertificadoAptitud.Size = new System.Drawing.Size(159, 24);
+            this.btnCertificadoAptitud.TabIndex = 108;
+            this.btnCertificadoAptitud.Text = "Certificado de Aptitud";
+            this.btnCertificadoAptitud.UseVisualStyleBackColor = false;
+            this.btnCertificadoAptitud.Click += new System.EventHandler(this.btnCertificadoAptitud_Click);
+            // 
+            // btn312
+            // 
+            this.btn312.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn312.BackColor = System.Drawing.SystemColors.Control;
+            this.btn312.Enabled = false;
+            this.btn312.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn312.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btn312.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn312.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn312.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn312.ForeColor = System.Drawing.Color.Black;
+            this.btn312.Image = ((System.Drawing.Image)(resources.GetObject("btn312.Image")));
+            this.btn312.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn312.Location = new System.Drawing.Point(510, 600);
+            this.btn312.Margin = new System.Windows.Forms.Padding(2);
+            this.btn312.Name = "btn312";
+            this.btn312.Size = new System.Drawing.Size(159, 24);
+            this.btn312.TabIndex = 109;
+            this.btn312.Text = "Anexo 312";
+            this.btn312.UseVisualStyleBackColor = false;
+            this.btn312.Visible = false;
+            this.btn312.Click += new System.EventHandler(this.btn312_Click);
+            // 
+            // btn7C
+            // 
+            this.btn7C.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btn7C.BackColor = System.Drawing.SystemColors.Control;
+            this.btn7C.Enabled = false;
+            this.btn7C.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btn7C.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btn7C.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btn7C.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn7C.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn7C.ForeColor = System.Drawing.Color.Black;
+            this.btn7C.Image = ((System.Drawing.Image)(resources.GetObject("btn7C.Image")));
+            this.btn7C.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn7C.Location = new System.Drawing.Point(673, 600);
+            this.btn7C.Margin = new System.Windows.Forms.Padding(2);
+            this.btn7C.Name = "btn7C";
+            this.btn7C.Size = new System.Drawing.Size(159, 24);
+            this.btn7C.TabIndex = 110;
+            this.btn7C.Text = "7 C";
+            this.btn7C.UseVisualStyleBackColor = false;
+            this.btn7C.Visible = false;
+            this.btn7C.Click += new System.EventHandler(this.btn7C_Click);
             // 
             // FrmEsoV2
             // 
@@ -3252,7 +3434,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1300, 711);
-            this.Controls.Add(this.btnCerrarESO);
+            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label21);
@@ -3262,7 +3444,6 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.lblUsuAct);
             this.Controls.Add(this.btnViewWorker);
-            this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lblView);
             this.Controls.Add(this.lblProtocolName);
             this.Controls.Add(this.lblTrabajador);
@@ -3272,6 +3453,7 @@
             this.Controls.Add(this.tcSubMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.MaximizeBox = false;
             this.Name = "FrmEsoV2";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -3285,13 +3467,14 @@
             this.tpConclusion.ResumeLayout(false);
             this.tpConclusion.PerformLayout();
             this.gbRecomendaciones_Conclusiones.ResumeLayout(false);
+            this.gbRecomendaciones_Conclusiones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRecomendaciones_Conclusiones)).EndInit();
             this.gbRestricciones_Conclusiones.ResumeLayout(false);
+            this.gbRestricciones_Conclusiones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdRestricciones_Conclusiones)).EndInit();
             this.gbConclusionesDiagnosticas.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdConclusionesDiagnosticas)).EndInit();
             this.tpAnalisisDx.ResumeLayout(false);
-            this.tpAnalisisDx.PerformLayout();
             this.gbEdicionDiagnosticoTotal.ResumeLayout(false);
             this.gbEdicionDiagnosticoTotal.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -3410,7 +3593,6 @@
         private System.Windows.Forms.Button btnAgregarTotalDiagnostico;
         private System.Windows.Forms.Button btnRefrescarTotalDiagnostico;
         private System.Windows.Forms.Label lblRecordCountTotalDiagnosticos;
-        private System.Windows.Forms.Button btnAceptarDX;
         private System.Windows.Forms.TabPage tpExam;
         private System.Windows.Forms.SplitContainer splitContainer2;
         private Infragistics.Win.UltraWinTabControl.UltraTabControl tcExamList;
@@ -3488,5 +3670,14 @@
         private System.Windows.Forms.Label lblUsuAct;
         private System.Windows.Forms.Label lblUsuGraba;
         private System.Windows.Forms.Button btnServicioAnterior;
+        private System.Windows.Forms.Button btnPerson;
+        private System.Windows.Forms.Button btnReceta;
+        private System.Windows.Forms.Button btnVisorReporteExamen;
+        private System.Windows.Forms.Button btnAceptarDX;
+        private System.Windows.Forms.Button btnInterConsulta;
+        private System.Windows.Forms.Button btnSubirInterconsulta;
+        private System.Windows.Forms.Button btnCertificadoAptitud;
+        private System.Windows.Forms.Button btn312;
+        private System.Windows.Forms.Button btn7C;
     }
 }
