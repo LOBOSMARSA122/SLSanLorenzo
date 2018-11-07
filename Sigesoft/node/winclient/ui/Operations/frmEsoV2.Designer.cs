@@ -3658,7 +3658,7 @@
             ultraGridColumn109.Width = 174;
             ultraGridColumn110.Header.Caption = "Observación";
             ultraGridColumn110.Header.VisiblePosition = 2;
-            ultraGridColumn110.Width = 350;
+            ultraGridColumn110.Width = 342;
             ultraGridBand10.Columns.AddRange(new object[] {
             ultraGridColumn81,
             ultraGridColumn109,
@@ -3733,7 +3733,7 @@
             this.grdAgudos.Location = new System.Drawing.Point(2, 18);
             this.grdAgudos.Margin = new System.Windows.Forms.Padding(2);
             this.grdAgudos.Name = "grdAgudos";
-            this.grdAgudos.Size = new System.Drawing.Size(621, 233);
+            this.grdAgudos.Size = new System.Drawing.Size(621, 236);
             this.grdAgudos.TabIndex = 50;
             // 
             // tableLayoutPanel5
@@ -3866,7 +3866,7 @@
             this.grdCronicos.Location = new System.Drawing.Point(2, 18);
             this.grdCronicos.Margin = new System.Windows.Forms.Padding(2);
             this.grdCronicos.Name = "grdCronicos";
-            this.grdCronicos.Size = new System.Drawing.Size(622, 233);
+            this.grdCronicos.Size = new System.Drawing.Size(622, 236);
             this.grdCronicos.TabIndex = 46;
             // 
             // panel6
