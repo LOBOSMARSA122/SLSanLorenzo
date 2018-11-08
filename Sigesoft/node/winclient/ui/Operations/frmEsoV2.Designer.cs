@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -709,6 +709,7 @@
             this.panel18 = new System.Windows.Forms.Panel();
             this.ultraAntAnteriores = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
             this.ultraFlowLayoutManager1 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -852,6 +853,7 @@
             this.panel16.SuspendLayout();
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraAntAnteriores)).BeginInit();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -862,14 +864,14 @@
             // 
             // uvExamen
             // 
-            appearance106.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance106.BackColor2 = System.Drawing.Color.Transparent;
-            appearance106.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance106.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance106.BorderColor = System.Drawing.Color.Red;
-            appearance106.BorderColor2 = System.Drawing.Color.Red;
-            appearance106.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance106;
+            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance1.BackColor2 = System.Drawing.Color.Transparent;
+            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance1.BorderColor = System.Drawing.Color.Red;
+            appearance1.BorderColor2 = System.Drawing.Color.Red;
+            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance1;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -4822,6 +4824,7 @@
             // 
             // textFlujoVaginalPatológico
             // 
+            this.textFlujoVaginalPatológico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textFlujoVaginalPatológico.Location = new System.Drawing.Point(349, 61);
             this.textFlujoVaginalPatológico.Multiline = true;
             this.textFlujoVaginalPatológico.Name = "textFlujoVaginalPatológico";
@@ -4830,6 +4833,8 @@
             // 
             // textOtroAntecedentesFamiliares
             // 
+            this.textOtroAntecedentesFamiliares.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textOtroAntecedentesFamiliares.Location = new System.Drawing.Point(6, 61);
             this.textOtroAntecedentesFamiliares.Multiline = true;
             this.textOtroAntecedentesFamiliares.Name = "textOtroAntecedentesFamiliares";
@@ -4838,6 +4843,7 @@
             // 
             // textReaccionAlergicaMedicamentos
             // 
+            this.textReaccionAlergicaMedicamentos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.textReaccionAlergicaMedicamentos.Location = new System.Drawing.Point(349, 104);
             this.textReaccionAlergicaMedicamentos.Multiline = true;
             this.textReaccionAlergicaMedicamentos.Name = "textReaccionAlergicaMedicamentos";
@@ -4846,6 +4852,8 @@
             // 
             // textMedicamentoFrecuenteDosis
             // 
+            this.textMedicamentoFrecuenteDosis.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textMedicamentoFrecuenteDosis.Location = new System.Drawing.Point(6, 104);
             this.textMedicamentoFrecuenteDosis.Multiline = true;
             this.textMedicamentoFrecuenteDosis.Name = "textMedicamentoFrecuenteDosis";
@@ -4874,6 +4882,9 @@
             // 
             // pnlSexualidad
             // 
+            this.pnlSexualidad.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlSexualidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlSexualidad.Controls.Add(this.label56);
             this.pnlSexualidad.Controls.Add(this.txtAmInicioRs);
@@ -4886,6 +4897,7 @@
             // 
             // label56
             // 
+            this.label56.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label56.AutoSize = true;
             this.label56.Location = new System.Drawing.Point(3, 6);
             this.label56.Name = "label56";
@@ -4895,6 +4907,8 @@
             // 
             // txtAmInicioRs
             // 
+            this.txtAmInicioRs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmInicioRs.Location = new System.Drawing.Point(55, 3);
             this.txtAmInicioRs.Name = "txtAmInicioRs";
             this.txtAmInicioRs.Size = new System.Drawing.Size(63, 20);
@@ -4902,6 +4916,7 @@
             // 
             // label59
             // 
+            this.label59.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label59.AutoSize = true;
             this.label59.Location = new System.Drawing.Point(124, 7);
             this.label59.Name = "label59";
@@ -4911,6 +4926,8 @@
             // 
             // txtAmNroPs
             // 
+            this.txtAmNroPs.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmNroPs.Location = new System.Drawing.Point(217, 3);
             this.txtAmNroPs.Name = "txtAmNroPs";
             this.txtAmNroPs.Size = new System.Drawing.Size(65, 20);
@@ -5119,6 +5136,7 @@
             // 
             // txtAmAborto
             // 
+            this.txtAmAborto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmAborto.Location = new System.Drawing.Point(489, 3);
             this.txtAmAborto.Name = "txtAmAborto";
             this.txtAmAborto.Size = new System.Drawing.Size(92, 20);
@@ -5135,6 +5153,7 @@
             // 
             // txtAmPrematuro
             // 
+            this.txtAmPrematuro.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmPrematuro.Location = new System.Drawing.Point(301, 3);
             this.txtAmPrematuro.Name = "txtAmPrematuro";
             this.txtAmPrematuro.Size = new System.Drawing.Size(89, 20);
@@ -5151,6 +5170,7 @@
             // 
             // txtAmNroParto
             // 
+            this.txtAmNroParto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmNroParto.Location = new System.Drawing.Point(71, 3);
             this.txtAmNroParto.Name = "txtAmNroParto";
             this.txtAmNroParto.Size = new System.Drawing.Size(101, 20);
@@ -5167,6 +5187,8 @@
             // 
             // txtAmCuidador
             // 
+            this.txtAmCuidador.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmCuidador.Location = new System.Drawing.Point(5, 19);
             this.txtAmCuidador.Name = "txtAmCuidador";
             this.txtAmCuidador.Size = new System.Drawing.Size(333, 20);
@@ -5174,6 +5196,7 @@
             // 
             // label63
             // 
+            this.label63.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label63.Location = new System.Drawing.Point(317, 144);
@@ -5213,6 +5236,8 @@
             // 
             // pnlMenarquia
             // 
+            this.pnlMenarquia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlMenarquia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMenarquia.Controls.Add(this.label64);
             this.pnlMenarquia.Controls.Add(this.txtAmFechaUR);
@@ -5225,6 +5250,7 @@
             // 
             // label64
             // 
+            this.label64.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label64.AutoSize = true;
             this.label64.Location = new System.Drawing.Point(7, 7);
             this.label64.Name = "label64";
@@ -5234,6 +5260,8 @@
             // 
             // txtAmFechaUR
             // 
+            this.txtAmFechaUR.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmFechaUR.Location = new System.Drawing.Point(69, 3);
             this.txtAmFechaUR.Name = "txtAmFechaUR";
             this.txtAmFechaUR.Size = new System.Drawing.Size(66, 20);
@@ -5241,6 +5269,7 @@
             // 
             // label65
             // 
+            this.label65.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.label65.AutoSize = true;
             this.label65.Location = new System.Drawing.Point(141, 7);
             this.label65.Name = "label65";
@@ -5250,6 +5279,8 @@
             // 
             // txtAmRC
             // 
+            this.txtAmRC.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmRC.Location = new System.Drawing.Point(179, 3);
             this.txtAmRC.Name = "txtAmRC";
             this.txtAmRC.Size = new System.Drawing.Size(73, 20);
@@ -5257,6 +5288,7 @@
             // 
             // txtAmCuidadorEdad
             // 
+            this.txtAmCuidadorEdad.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmCuidadorEdad.Location = new System.Drawing.Point(348, 19);
             this.txtAmCuidadorEdad.Name = "txtAmCuidadorEdad";
             this.txtAmCuidadorEdad.Size = new System.Drawing.Size(73, 20);
@@ -5273,6 +5305,7 @@
             // 
             // txtAmCuidadorDni
             // 
+            this.txtAmCuidadorDni.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.txtAmCuidadorDni.Location = new System.Drawing.Point(429, 20);
             this.txtAmCuidadorDni.Name = "txtAmCuidadorDni";
             this.txtAmCuidadorDni.Size = new System.Drawing.Size(158, 20);
@@ -5620,7 +5653,7 @@
             this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(604, 172);
             this.ultgrboxVivienda.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxVivienda.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 395);
+            this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 104);
             this.ultgrboxVivienda.Name = "ultgrboxVivienda";
             this.ultgrboxVivienda.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxVivienda.TabIndex = 158;
@@ -5644,7 +5677,7 @@
             this.textDesague.Location = new System.Drawing.Point(3, 90);
             this.textDesague.Multiline = true;
             this.textDesague.Name = "textDesague";
-            this.textDesague.Size = new System.Drawing.Size(513, 40);
+            this.textDesague.Size = new System.Drawing.Size(582, 40);
             this.textDesague.TabIndex = 147;
             // 
             // label136
@@ -5661,7 +5694,7 @@
             this.textAguaPotable.Location = new System.Drawing.Point(3, 23);
             this.textAguaPotable.Multiline = true;
             this.textAguaPotable.Name = "textAguaPotable";
-            this.textAguaPotable.Size = new System.Drawing.Size(513, 40);
+            this.textAguaPotable.Size = new System.Drawing.Size(582, 40);
             this.textAguaPotable.TabIndex = 145;
             // 
             // label135
@@ -5682,7 +5715,7 @@
             this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(604, 380);
             this.ultgrboxFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxFamiliares.Location = new System.Drawing.Point(0, 369);
+            this.ultgrboxFamiliares.Location = new System.Drawing.Point(0, 78);
             this.ultgrboxFamiliares.Name = "ultgrboxFamiliares";
             this.ultgrboxFamiliares.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxFamiliares.TabIndex = 157;
@@ -5726,7 +5759,7 @@
             this.groupBox11.Controls.Add(this.label134);
             this.groupBox11.Location = new System.Drawing.Point(9, 295);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(500, 31);
+            this.groupBox11.Size = new System.Drawing.Size(550, 31);
             this.groupBox11.TabIndex = 182;
             this.groupBox11.TabStop = false;
             // 
@@ -5735,13 +5768,13 @@
             this.textQuienHepatitisB.Enabled = false;
             this.textQuienHepatitisB.Location = new System.Drawing.Point(175, 8);
             this.textQuienHepatitisB.Name = "textQuienHepatitisB";
-            this.textQuienHepatitisB.Size = new System.Drawing.Size(170, 20);
+            this.textQuienHepatitisB.Size = new System.Drawing.Size(225, 20);
             this.textQuienHepatitisB.TabIndex = 177;
             // 
             // rbNoHepatitis
             // 
             this.rbNoHepatitis.AutoSize = true;
-            this.rbNoHepatitis.Location = new System.Drawing.Point(425, 9);
+            this.rbNoHepatitis.Location = new System.Drawing.Point(471, 9);
             this.rbNoHepatitis.Name = "rbNoHepatitis";
             this.rbNoHepatitis.Size = new System.Drawing.Size(39, 17);
             this.rbNoHepatitis.TabIndex = 176;
@@ -5752,7 +5785,7 @@
             // rbSiHepatitis
             // 
             this.rbSiHepatitis.AutoSize = true;
-            this.rbSiHepatitis.Location = new System.Drawing.Point(369, 9);
+            this.rbSiHepatitis.Location = new System.Drawing.Point(415, 9);
             this.rbSiHepatitis.Name = "rbSiHepatitis";
             this.rbSiHepatitis.Size = new System.Drawing.Size(34, 17);
             this.rbSiHepatitis.TabIndex = 175;
@@ -5777,7 +5810,7 @@
             this.groupBox14.Controls.Add(this.label133);
             this.groupBox14.Location = new System.Drawing.Point(9, 265);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Size = new System.Drawing.Size(500, 31);
+            this.groupBox14.Size = new System.Drawing.Size(550, 31);
             this.groupBox14.TabIndex = 185;
             this.groupBox14.TabStop = false;
             // 
@@ -5786,13 +5819,13 @@
             this.textQuienDrogadiccion.Enabled = false;
             this.textQuienDrogadiccion.Location = new System.Drawing.Point(175, 8);
             this.textQuienDrogadiccion.Name = "textQuienDrogadiccion";
-            this.textQuienDrogadiccion.Size = new System.Drawing.Size(170, 20);
+            this.textQuienDrogadiccion.Size = new System.Drawing.Size(225, 20);
             this.textQuienDrogadiccion.TabIndex = 173;
             // 
             // rbNoDrogadiccion
             // 
             this.rbNoDrogadiccion.AutoSize = true;
-            this.rbNoDrogadiccion.Location = new System.Drawing.Point(425, 9);
+            this.rbNoDrogadiccion.Location = new System.Drawing.Point(471, 9);
             this.rbNoDrogadiccion.Name = "rbNoDrogadiccion";
             this.rbNoDrogadiccion.Size = new System.Drawing.Size(39, 17);
             this.rbNoDrogadiccion.TabIndex = 172;
@@ -5803,7 +5836,7 @@
             // rbSiDrogadiccion
             // 
             this.rbSiDrogadiccion.AutoSize = true;
-            this.rbSiDrogadiccion.Location = new System.Drawing.Point(369, 9);
+            this.rbSiDrogadiccion.Location = new System.Drawing.Point(415, 9);
             this.rbSiDrogadiccion.Name = "rbSiDrogadiccion";
             this.rbSiDrogadiccion.Size = new System.Drawing.Size(34, 17);
             this.rbSiDrogadiccion.TabIndex = 171;
@@ -5828,7 +5861,7 @@
             this.groupBox13.Controls.Add(this.label132);
             this.groupBox13.Location = new System.Drawing.Point(9, 235);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(500, 31);
+            this.groupBox13.Size = new System.Drawing.Size(550, 31);
             this.groupBox13.TabIndex = 184;
             this.groupBox13.TabStop = false;
             // 
@@ -5837,13 +5870,13 @@
             this.textQuienAlcoholismo.Enabled = false;
             this.textQuienAlcoholismo.Location = new System.Drawing.Point(175, 8);
             this.textQuienAlcoholismo.Name = "textQuienAlcoholismo";
-            this.textQuienAlcoholismo.Size = new System.Drawing.Size(170, 20);
+            this.textQuienAlcoholismo.Size = new System.Drawing.Size(225, 20);
             this.textQuienAlcoholismo.TabIndex = 169;
             // 
             // rbNoAlcoholismo
             // 
             this.rbNoAlcoholismo.AutoSize = true;
-            this.rbNoAlcoholismo.Location = new System.Drawing.Point(425, 9);
+            this.rbNoAlcoholismo.Location = new System.Drawing.Point(471, 8);
             this.rbNoAlcoholismo.Name = "rbNoAlcoholismo";
             this.rbNoAlcoholismo.Size = new System.Drawing.Size(39, 17);
             this.rbNoAlcoholismo.TabIndex = 168;
@@ -5854,7 +5887,7 @@
             // rbSiAlcoholismo
             // 
             this.rbSiAlcoholismo.AutoSize = true;
-            this.rbSiAlcoholismo.Location = new System.Drawing.Point(369, 9);
+            this.rbSiAlcoholismo.Location = new System.Drawing.Point(415, 8);
             this.rbSiAlcoholismo.Name = "rbSiAlcoholismo";
             this.rbSiAlcoholismo.Size = new System.Drawing.Size(34, 17);
             this.rbSiAlcoholismo.TabIndex = 167;
@@ -5879,7 +5912,7 @@
             this.groupBox12.Controls.Add(this.label131);
             this.groupBox12.Location = new System.Drawing.Point(9, 205);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(500, 31);
+            this.groupBox12.Size = new System.Drawing.Size(550, 31);
             this.groupBox12.TabIndex = 183;
             this.groupBox12.TabStop = false;
             // 
@@ -5888,13 +5921,13 @@
             this.textQuienViolenciaFamiliar.Enabled = false;
             this.textQuienViolenciaFamiliar.Location = new System.Drawing.Point(175, 8);
             this.textQuienViolenciaFamiliar.Name = "textQuienViolenciaFamiliar";
-            this.textQuienViolenciaFamiliar.Size = new System.Drawing.Size(170, 20);
+            this.textQuienViolenciaFamiliar.Size = new System.Drawing.Size(225, 20);
             this.textQuienViolenciaFamiliar.TabIndex = 165;
             // 
             // rbNoViolencia
             // 
             this.rbNoViolencia.AutoSize = true;
-            this.rbNoViolencia.Location = new System.Drawing.Point(425, 9);
+            this.rbNoViolencia.Location = new System.Drawing.Point(471, 9);
             this.rbNoViolencia.Name = "rbNoViolencia";
             this.rbNoViolencia.Size = new System.Drawing.Size(39, 17);
             this.rbNoViolencia.TabIndex = 164;
@@ -5905,7 +5938,7 @@
             // rbSiViolencia
             // 
             this.rbSiViolencia.AutoSize = true;
-            this.rbSiViolencia.Location = new System.Drawing.Point(369, 9);
+            this.rbSiViolencia.Location = new System.Drawing.Point(415, 9);
             this.rbSiViolencia.Name = "rbSiViolencia";
             this.rbSiViolencia.Size = new System.Drawing.Size(34, 17);
             this.rbSiViolencia.TabIndex = 163;
@@ -5930,7 +5963,7 @@
             this.groupBox10.Controls.Add(this.label130);
             this.groupBox10.Location = new System.Drawing.Point(9, 175);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(500, 31);
+            this.groupBox10.Size = new System.Drawing.Size(550, 31);
             this.groupBox10.TabIndex = 179;
             this.groupBox10.TabStop = false;
             // 
@@ -5939,13 +5972,13 @@
             this.textQuienAlergias.Enabled = false;
             this.textQuienAlergias.Location = new System.Drawing.Point(175, 8);
             this.textQuienAlergias.Name = "textQuienAlergias";
-            this.textQuienAlergias.Size = new System.Drawing.Size(170, 20);
+            this.textQuienAlergias.Size = new System.Drawing.Size(225, 20);
             this.textQuienAlergias.TabIndex = 161;
             // 
             // rbNoAlergia
             // 
             this.rbNoAlergia.AutoSize = true;
-            this.rbNoAlergia.Location = new System.Drawing.Point(425, 9);
+            this.rbNoAlergia.Location = new System.Drawing.Point(471, 9);
             this.rbNoAlergia.Name = "rbNoAlergia";
             this.rbNoAlergia.Size = new System.Drawing.Size(39, 17);
             this.rbNoAlergia.TabIndex = 160;
@@ -5956,7 +5989,7 @@
             // rbSiAlergia
             // 
             this.rbSiAlergia.AutoSize = true;
-            this.rbSiAlergia.Location = new System.Drawing.Point(369, 9);
+            this.rbSiAlergia.Location = new System.Drawing.Point(415, 9);
             this.rbSiAlergia.Name = "rbSiAlergia";
             this.rbSiAlergia.Size = new System.Drawing.Size(34, 17);
             this.rbSiAlergia.TabIndex = 159;
@@ -5981,7 +6014,7 @@
             this.groupBox9.Controls.Add(this.label129);
             this.groupBox9.Location = new System.Drawing.Point(9, 145);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(500, 31);
+            this.groupBox9.Size = new System.Drawing.Size(550, 31);
             this.groupBox9.TabIndex = 178;
             this.groupBox9.TabStop = false;
             // 
@@ -5990,13 +6023,13 @@
             this.textQuienEpilepsia.Enabled = false;
             this.textQuienEpilepsia.Location = new System.Drawing.Point(175, 8);
             this.textQuienEpilepsia.Name = "textQuienEpilepsia";
-            this.textQuienEpilepsia.Size = new System.Drawing.Size(170, 20);
+            this.textQuienEpilepsia.Size = new System.Drawing.Size(225, 20);
             this.textQuienEpilepsia.TabIndex = 157;
             // 
             // rbNoEpilepsia
             // 
             this.rbNoEpilepsia.AutoSize = true;
-            this.rbNoEpilepsia.Location = new System.Drawing.Point(425, 10);
+            this.rbNoEpilepsia.Location = new System.Drawing.Point(471, 9);
             this.rbNoEpilepsia.Name = "rbNoEpilepsia";
             this.rbNoEpilepsia.Size = new System.Drawing.Size(39, 17);
             this.rbNoEpilepsia.TabIndex = 156;
@@ -6007,7 +6040,7 @@
             // rbSiEpilepsia
             // 
             this.rbSiEpilepsia.AutoSize = true;
-            this.rbSiEpilepsia.Location = new System.Drawing.Point(369, 10);
+            this.rbSiEpilepsia.Location = new System.Drawing.Point(415, 9);
             this.rbSiEpilepsia.Name = "rbSiEpilepsia";
             this.rbSiEpilepsia.Size = new System.Drawing.Size(34, 17);
             this.rbSiEpilepsia.TabIndex = 155;
@@ -6032,7 +6065,7 @@
             this.groupBox8.Controls.Add(this.label128);
             this.groupBox8.Location = new System.Drawing.Point(9, 115);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(500, 31);
+            this.groupBox8.Size = new System.Drawing.Size(550, 31);
             this.groupBox8.TabIndex = 177;
             this.groupBox8.TabStop = false;
             // 
@@ -6041,13 +6074,13 @@
             this.textQuienDiabetes.Enabled = false;
             this.textQuienDiabetes.Location = new System.Drawing.Point(175, 8);
             this.textQuienDiabetes.Name = "textQuienDiabetes";
-            this.textQuienDiabetes.Size = new System.Drawing.Size(170, 20);
+            this.textQuienDiabetes.Size = new System.Drawing.Size(225, 20);
             this.textQuienDiabetes.TabIndex = 153;
             // 
             // rbNoDiabetes
             // 
             this.rbNoDiabetes.AutoSize = true;
-            this.rbNoDiabetes.Location = new System.Drawing.Point(425, 9);
+            this.rbNoDiabetes.Location = new System.Drawing.Point(471, 9);
             this.rbNoDiabetes.Name = "rbNoDiabetes";
             this.rbNoDiabetes.Size = new System.Drawing.Size(39, 17);
             this.rbNoDiabetes.TabIndex = 152;
@@ -6058,7 +6091,7 @@
             // rbSiDiabetes
             // 
             this.rbSiDiabetes.AutoSize = true;
-            this.rbSiDiabetes.Location = new System.Drawing.Point(369, 9);
+            this.rbSiDiabetes.Location = new System.Drawing.Point(415, 9);
             this.rbSiDiabetes.Name = "rbSiDiabetes";
             this.rbSiDiabetes.Size = new System.Drawing.Size(34, 17);
             this.rbSiDiabetes.TabIndex = 151;
@@ -6083,7 +6116,7 @@
             this.groupBox7.Controls.Add(this.label127);
             this.groupBox7.Location = new System.Drawing.Point(9, 85);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(500, 31);
+            this.groupBox7.Size = new System.Drawing.Size(550, 31);
             this.groupBox7.TabIndex = 176;
             this.groupBox7.TabStop = false;
             // 
@@ -6092,13 +6125,13 @@
             this.textQuienVIH.Enabled = false;
             this.textQuienVIH.Location = new System.Drawing.Point(175, 7);
             this.textQuienVIH.Name = "textQuienVIH";
-            this.textQuienVIH.Size = new System.Drawing.Size(170, 20);
+            this.textQuienVIH.Size = new System.Drawing.Size(225, 20);
             this.textQuienVIH.TabIndex = 149;
             // 
             // rbNoVih
             // 
             this.rbNoVih.AutoSize = true;
-            this.rbNoVih.Location = new System.Drawing.Point(425, 10);
+            this.rbNoVih.Location = new System.Drawing.Point(471, 10);
             this.rbNoVih.Name = "rbNoVih";
             this.rbNoVih.Size = new System.Drawing.Size(39, 17);
             this.rbNoVih.TabIndex = 148;
@@ -6109,7 +6142,7 @@
             // rbSiVih
             // 
             this.rbSiVih.AutoSize = true;
-            this.rbSiVih.Location = new System.Drawing.Point(369, 10);
+            this.rbSiVih.Location = new System.Drawing.Point(415, 10);
             this.rbSiVih.Name = "rbSiVih";
             this.rbSiVih.Size = new System.Drawing.Size(34, 17);
             this.rbSiVih.TabIndex = 147;
@@ -6134,7 +6167,7 @@
             this.groupBox6.Controls.Add(this.label95);
             this.groupBox6.Location = new System.Drawing.Point(9, 55);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(500, 31);
+            this.groupBox6.Size = new System.Drawing.Size(550, 31);
             this.groupBox6.TabIndex = 175;
             this.groupBox6.TabStop = false;
             // 
@@ -6143,13 +6176,13 @@
             this.textQuienASMA.Enabled = false;
             this.textQuienASMA.Location = new System.Drawing.Point(175, 8);
             this.textQuienASMA.Name = "textQuienASMA";
-            this.textQuienASMA.Size = new System.Drawing.Size(170, 20);
+            this.textQuienASMA.Size = new System.Drawing.Size(225, 20);
             this.textQuienASMA.TabIndex = 149;
             // 
             // rbNoAsma
             // 
             this.rbNoAsma.AutoSize = true;
-            this.rbNoAsma.Location = new System.Drawing.Point(425, 9);
+            this.rbNoAsma.Location = new System.Drawing.Point(471, 9);
             this.rbNoAsma.Name = "rbNoAsma";
             this.rbNoAsma.Size = new System.Drawing.Size(39, 17);
             this.rbNoAsma.TabIndex = 148;
@@ -6160,7 +6193,7 @@
             // rbSiAsma
             // 
             this.rbSiAsma.AutoSize = true;
-            this.rbSiAsma.Location = new System.Drawing.Point(369, 9);
+            this.rbSiAsma.Location = new System.Drawing.Point(415, 9);
             this.rbSiAsma.Name = "rbSiAsma";
             this.rbSiAsma.Size = new System.Drawing.Size(34, 17);
             this.rbSiAsma.TabIndex = 147;
@@ -6185,7 +6218,7 @@
             this.groupBox5.Controls.Add(this.label162);
             this.groupBox5.Location = new System.Drawing.Point(9, 22);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(500, 31);
+            this.groupBox5.Size = new System.Drawing.Size(550, 31);
             this.groupBox5.TabIndex = 174;
             this.groupBox5.TabStop = false;
             // 
@@ -6194,13 +6227,13 @@
             this.textQuienTuberculosis.Enabled = false;
             this.textQuienTuberculosis.Location = new System.Drawing.Point(175, 8);
             this.textQuienTuberculosis.Name = "textQuienTuberculosis";
-            this.textQuienTuberculosis.Size = new System.Drawing.Size(170, 20);
+            this.textQuienTuberculosis.Size = new System.Drawing.Size(225, 20);
             this.textQuienTuberculosis.TabIndex = 140;
             // 
             // rbNoTuberculosis
             // 
             this.rbNoTuberculosis.AutoSize = true;
-            this.rbNoTuberculosis.Location = new System.Drawing.Point(425, 10);
+            this.rbNoTuberculosis.Location = new System.Drawing.Point(471, 10);
             this.rbNoTuberculosis.Name = "rbNoTuberculosis";
             this.rbNoTuberculosis.Size = new System.Drawing.Size(39, 17);
             this.rbNoTuberculosis.TabIndex = 139;
@@ -6211,7 +6244,7 @@
             // rbSiTuberculosis
             // 
             this.rbSiTuberculosis.AutoSize = true;
-            this.rbSiTuberculosis.Location = new System.Drawing.Point(369, 10);
+            this.rbSiTuberculosis.Location = new System.Drawing.Point(415, 10);
             this.rbSiTuberculosis.Name = "rbSiTuberculosis";
             this.rbSiTuberculosis.Size = new System.Drawing.Size(34, 17);
             this.rbSiTuberculosis.TabIndex = 138;
@@ -6246,7 +6279,7 @@
             this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(604, 339);
             this.ultgrboxNacimiento.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxNacimiento.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxNacimiento.Location = new System.Drawing.Point(0, 343);
+            this.ultgrboxNacimiento.Location = new System.Drawing.Point(0, 52);
             this.ultgrboxNacimiento.Name = "ultgrboxNacimiento";
             this.ultgrboxNacimiento.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxNacimiento.TabIndex = 156;
@@ -6287,7 +6320,7 @@
             this.textOtrosAntecedentes.Location = new System.Drawing.Point(3, 268);
             this.textOtrosAntecedentes.Multiline = true;
             this.textOtrosAntecedentes.Name = "textOtrosAntecedentes";
-            this.textOtrosAntecedentes.Size = new System.Drawing.Size(513, 40);
+            this.textOtrosAntecedentes.Size = new System.Drawing.Size(560, 40);
             this.textOtrosAntecedentes.TabIndex = 171;
             // 
             // label93
@@ -6304,7 +6337,7 @@
             this.textAlergiaMedicamentos.Location = new System.Drawing.Point(4, 207);
             this.textAlergiaMedicamentos.Multiline = true;
             this.textAlergiaMedicamentos.Name = "textAlergiaMedicamentos";
-            this.textAlergiaMedicamentos.Size = new System.Drawing.Size(513, 40);
+            this.textAlergiaMedicamentos.Size = new System.Drawing.Size(559, 40);
             this.textAlergiaMedicamentos.TabIndex = 169;
             // 
             // label92
@@ -6320,7 +6353,7 @@
             // 
             this.textPerimetroToracico.Location = new System.Drawing.Point(301, 65);
             this.textPerimetroToracico.Name = "textPerimetroToracico";
-            this.textPerimetroToracico.Size = new System.Drawing.Size(84, 20);
+            this.textPerimetroToracico.Size = new System.Drawing.Size(123, 20);
             this.textPerimetroToracico.TabIndex = 167;
             // 
             // label91
@@ -6334,15 +6367,15 @@
             // 
             // textPerimetroCefalico
             // 
-            this.textPerimetroCefalico.Location = new System.Drawing.Point(432, 25);
+            this.textPerimetroCefalico.Location = new System.Drawing.Point(466, 25);
             this.textPerimetroCefalico.Name = "textPerimetroCefalico";
-            this.textPerimetroCefalico.Size = new System.Drawing.Size(84, 20);
+            this.textPerimetroCefalico.Size = new System.Drawing.Size(97, 20);
             this.textPerimetroCefalico.TabIndex = 165;
             // 
             // label90
             // 
             this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(429, 5);
+            this.label90.Location = new System.Drawing.Point(463, 5);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(93, 13);
             this.label90.TabIndex = 164;
@@ -6352,7 +6385,7 @@
             // 
             this.textTallaNacer.Location = new System.Drawing.Point(301, 25);
             this.textTallaNacer.Name = "textTallaNacer";
-            this.textTallaNacer.Size = new System.Drawing.Size(84, 20);
+            this.textTallaNacer.Size = new System.Drawing.Size(123, 20);
             this.textTallaNacer.TabIndex = 163;
             // 
             // label89
@@ -6366,15 +6399,15 @@
             // 
             // textPesoNacer
             // 
-            this.textPesoNacer.Location = new System.Drawing.Point(172, 25);
+            this.textPesoNacer.Location = new System.Drawing.Point(162, 25);
             this.textPesoNacer.Name = "textPesoNacer";
-            this.textPesoNacer.Size = new System.Drawing.Size(84, 20);
+            this.textPesoNacer.Size = new System.Drawing.Size(113, 20);
             this.textPesoNacer.TabIndex = 161;
             // 
             // label87
             // 
             this.label87.AutoSize = true;
-            this.label87.Location = new System.Drawing.Point(169, 5);
+            this.label87.Location = new System.Drawing.Point(159, 5);
             this.label87.Name = "label87";
             this.label87.Size = new System.Drawing.Size(90, 13);
             this.label87.TabIndex = 160;
@@ -6384,7 +6417,7 @@
             // 
             this.textEdadNacer.Location = new System.Drawing.Point(3, 25);
             this.textEdadNacer.Name = "textEdadNacer";
-            this.textEdadNacer.Size = new System.Drawing.Size(124, 20);
+            this.textEdadNacer.Size = new System.Drawing.Size(142, 20);
             this.textEdadNacer.TabIndex = 159;
             // 
             // label88
@@ -6400,7 +6433,7 @@
             // 
             this.txtInicioAlimentación.Location = new System.Drawing.Point(200, 159);
             this.txtInicioAlimentación.Name = "txtInicioAlimentación";
-            this.txtInicioAlimentación.Size = new System.Drawing.Size(316, 20);
+            this.txtInicioAlimentación.Size = new System.Drawing.Size(363, 20);
             this.txtInicioAlimentación.TabIndex = 157;
             // 
             // label86
@@ -6416,7 +6449,7 @@
             // 
             this.textTiempoHospit.Location = new System.Drawing.Point(3, 65);
             this.textTiempoHospit.Name = "textTiempoHospit";
-            this.textTiempoHospit.Size = new System.Drawing.Size(196, 20);
+            this.textTiempoHospit.Size = new System.Drawing.Size(272, 20);
             this.textTiempoHospit.TabIndex = 154;
             // 
             // label85
@@ -6433,7 +6466,7 @@
             this.textEspecificacionesNacer.Location = new System.Drawing.Point(4, 104);
             this.textEspecificacionesNacer.Multiline = true;
             this.textEspecificacionesNacer.Name = "textEspecificacionesNacer";
-            this.textEspecificacionesNacer.Size = new System.Drawing.Size(513, 40);
+            this.textEspecificacionesNacer.Size = new System.Drawing.Size(559, 40);
             this.textEspecificacionesNacer.TabIndex = 152;
             // 
             // label84
@@ -6459,17 +6492,23 @@
             // 
             // lineShape3
             // 
+            this.lineShape3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lineShape3.Name = "lineShape3";
             this.lineShape3.X1 = 5;
-            this.lineShape3.X2 = 508;
+            this.lineShape3.X2 = 565;
             this.lineShape3.Y1 = 186;
             this.lineShape3.Y2 = 186;
             // 
             // lineShape2
             // 
+            this.lineShape2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lineShape2.Name = "lineShape2";
             this.lineShape2.X1 = 7;
-            this.lineShape2.X2 = 510;
+            this.lineShape2.X2 = 567;
             this.lineShape2.Y1 = 151;
             this.lineShape2.Y2 = 151;
             // 
@@ -6482,7 +6521,7 @@
             this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(604, 214);
             this.ultgrboxEmbarazo.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxEmbarazo.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxEmbarazo.Location = new System.Drawing.Point(0, 317);
+            this.ultgrboxEmbarazo.Location = new System.Drawing.Point(0, 26);
             this.ultgrboxEmbarazo.Name = "ultgrboxEmbarazo";
             this.ultgrboxEmbarazo.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxEmbarazo.TabIndex = 155;
@@ -6513,7 +6552,7 @@
             // 
             this.textQuienAtendio.Location = new System.Drawing.Point(173, 162);
             this.textQuienAtendio.Name = "textQuienAtendio";
-            this.textQuienAtendio.Size = new System.Drawing.Size(343, 20);
+            this.textQuienAtendio.Size = new System.Drawing.Size(412, 20);
             this.textQuienAtendio.TabIndex = 152;
             // 
             // label83
@@ -6530,7 +6569,7 @@
             this.textComplicacionesParto.Location = new System.Drawing.Point(3, 114);
             this.textComplicacionesParto.Multiline = true;
             this.textComplicacionesParto.Name = "textComplicacionesParto";
-            this.textComplicacionesParto.Size = new System.Drawing.Size(513, 40);
+            this.textComplicacionesParto.Size = new System.Drawing.Size(582, 40);
             this.textComplicacionesParto.TabIndex = 150;
             // 
             // label82
@@ -6544,15 +6583,15 @@
             // 
             // textLugarAPN
             // 
-            this.textLugarAPN.Location = new System.Drawing.Point(323, 70);
+            this.textLugarAPN.Location = new System.Drawing.Point(375, 70);
             this.textLugarAPN.Name = "textLugarAPN";
-            this.textLugarAPN.Size = new System.Drawing.Size(196, 20);
+            this.textLugarAPN.Size = new System.Drawing.Size(210, 20);
             this.textLugarAPN.TabIndex = 148;
             // 
             // label81
             // 
             this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(257, 73);
+            this.label81.Location = new System.Drawing.Point(295, 73);
             this.label81.Name = "label81";
             this.label81.Size = new System.Drawing.Size(74, 13);
             this.label81.TabIndex = 147;
@@ -6560,15 +6599,15 @@
             // 
             // txtAPN
             // 
-            this.txtAPN.Location = new System.Drawing.Point(200, 68);
+            this.txtAPN.Location = new System.Drawing.Point(220, 70);
             this.txtAPN.Name = "txtAPN";
-            this.txtAPN.Size = new System.Drawing.Size(39, 20);
+            this.txtAPN.Size = new System.Drawing.Size(60, 20);
             this.txtAPN.TabIndex = 146;
             // 
             // label80
             // 
             this.label80.AutoSize = true;
-            this.label80.Location = new System.Drawing.Point(155, 73);
+            this.label80.Location = new System.Drawing.Point(170, 73);
             this.label80.Name = "label80";
             this.label80.Size = new System.Drawing.Size(44, 13);
             this.label80.TabIndex = 145;
@@ -6576,9 +6615,9 @@
             // 
             // txtNEmbarazo
             // 
-            this.txtNEmbarazo.Location = new System.Drawing.Point(92, 68);
+            this.txtNEmbarazo.Location = new System.Drawing.Point(96, 70);
             this.txtNEmbarazo.Name = "txtNEmbarazo";
-            this.txtNEmbarazo.Size = new System.Drawing.Size(39, 20);
+            this.txtNEmbarazo.Size = new System.Drawing.Size(66, 20);
             this.txtNEmbarazo.TabIndex = 144;
             // 
             // textPatologiasGestacion
@@ -6586,7 +6625,7 @@
             this.textPatologiasGestacion.Location = new System.Drawing.Point(6, 20);
             this.textPatologiasGestacion.Multiline = true;
             this.textPatologiasGestacion.Name = "textPatologiasGestacion";
-            this.textPatologiasGestacion.Size = new System.Drawing.Size(513, 40);
+            this.textPatologiasGestacion.Size = new System.Drawing.Size(579, 40);
             this.textPatologiasGestacion.TabIndex = 143;
             // 
             // label96
@@ -6612,12 +6651,13 @@
             this.ultgrboxDatosFamiliares.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxDatosFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel2);
             this.ultgrboxDatosFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
+            this.ultgrboxDatosFamiliares.Expanded = false;
             this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(604, 317);
             this.ultgrboxDatosFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxDatosFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxDatosFamiliares.Location = new System.Drawing.Point(0, 0);
             this.ultgrboxDatosFamiliares.Name = "ultgrboxDatosFamiliares";
-            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(604, 317);
+            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxDatosFamiliares.TabIndex = 154;
             this.ultgrboxDatosFamiliares.Text = "DATOS GENERALES - FAMILIARES";
             this.ultgrboxDatosFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6668,11 +6708,11 @@
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.label126);
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.txtNombreMadreTutor);
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.shapeContainer3);
-            this.ultraExpandableGroupBoxPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraExpandableGroupBoxPanel2.Location = new System.Drawing.Point(2, 24);
+            this.ultraExpandableGroupBoxPanel2.Location = new System.Drawing.Point(-10000, -10000);
             this.ultraExpandableGroupBoxPanel2.Name = "ultraExpandableGroupBoxPanel2";
-            this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(600, 291);
+            this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(522, 291);
             this.ultraExpandableGroupBoxPanel2.TabIndex = 0;
+            this.ultraExpandableGroupBoxPanel2.Visible = false;
             // 
             // label140
             // 
@@ -7056,7 +7096,7 @@
             this.shapeContainer3.Name = "shapeContainer3";
             this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape4});
-            this.shapeContainer3.Size = new System.Drawing.Size(600, 291);
+            this.shapeContainer3.Size = new System.Drawing.Size(522, 291);
             this.shapeContainer3.TabIndex = 185;
             this.shapeContainer3.TabStop = false;
             // 
@@ -7323,12 +7363,25 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.tableLayoutPanel13);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1292, 631);
             this.tabPage3.TabIndex = 6;
             this.tabPage3.Text = "CUIDADOS PREVENTIVOS";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel13
+            // 
+            this.tableLayoutPanel13.ColumnCount = 1;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel13.Name = "tableLayoutPanel13";
+            this.tableLayoutPanel13.RowCount = 1;
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(1292, 631);
+            this.tableLayoutPanel13.TabIndex = 0;
             // 
             // tableLayoutPanel6
             // 
@@ -7797,6 +7850,7 @@
             this.panel16.PerformLayout();
             this.panel18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraAntAnteriores)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -8287,5 +8341,6 @@
         private System.Windows.Forms.TextBox txtNombreMadreTutor;
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer3;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
     }
 }
