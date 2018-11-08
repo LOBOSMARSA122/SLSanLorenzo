@@ -31281,8 +31281,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.liquidacion
                             //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
-                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId                           
-                            where A.i_IsDeleted == 0 
+                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
                             //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
                             //ARNOLD , REPORTE JUAN LIZA
                             select new LiquidacionEmpresa
@@ -31295,6 +31295,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 d_Monto = A.d_Monto,
                                 d_FechaVencimiento = A.d_FechaVencimiento,
                                 v_NroFactura = A.v_NroFactura,
+                                Creacion_Liquidacion = A.d_InsertDate
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -31369,7 +31370,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa(ref OperationResult pobjOperationResult)
+        public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa(ref OperationResult pobjOperationResult, DateTime? pdatBeginDate, DateTime? pdatEndDate)
         {
             try
             {
@@ -31378,7 +31379,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var query = from A in dbContext.liquidacion
                             //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
                             join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
-                            where A.i_IsDeleted == 0
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
                             //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
                             //ARNOLD , REPORTE JUAN LIZA
                             select new LiquidacionEmpresa
@@ -31391,11 +31392,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                 d_Monto = A.d_Monto,
                                 d_FechaVencimiento = A.d_FechaVencimiento,
                                 v_NroFactura = A.v_NroFactura,
+                                Creacion_Liquidacion = A.d_InsertDate
                             };
 
-               
                 var result = query.ToList();
                 var empresas = result.ToList().GroupBy(g => g.v_OrganizationId).Select(p => p.FirstOrDefault());
+
 
                 List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
 
@@ -31445,6 +31447,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        
+
         public List<Liquidacion> GetListaLiquidacion(ref OperationResult pobjOperationResult, string liquidacionId)
         {
             try

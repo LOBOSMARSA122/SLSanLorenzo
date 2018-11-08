@@ -312,8 +312,14 @@ namespace Sigesoft.Node.WinClient.UI
                     this.Enabled = false;
 
                     var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+                    OperationResult objOperationResult = new OperationResult();
 
-                    var lista = _serviceBL.GetListaLiquidacionByEmpresa(ref _objOperationResult);
+                    DateTime? fechaInicio = dtpDateTimeStar.Value.Date;
+                    DateTime? fechaFin = dptDateTimeEnd.Value.Date.AddDays(1);
+
+                    string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
+                    string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
+                    var lista = _serviceBL.GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
 
                     string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
@@ -322,7 +328,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                     //var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
 
-                    Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, lista);
+                    Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1);
                     this.Enabled = true;
                 }
             }
