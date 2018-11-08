@@ -651,7 +651,7 @@
             this.btnLiqd1.ForeColor = System.Drawing.Color.Black;
             this.btnLiqd1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
             this.btnLiqd1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLiqd1.Location = new System.Drawing.Point(1138, 441);
+            this.btnLiqd1.Location = new System.Drawing.Point(1138, 453);
             this.btnLiqd1.Margin = new System.Windows.Forms.Padding(2);
             this.btnLiqd1.Name = "btnLiqd1";
             this.btnLiqd1.Size = new System.Drawing.Size(85, 41);
