@@ -602,6 +602,7 @@
             this.grdEmpresa.Name = "grdEmpresa";
             this.grdEmpresa.Size = new System.Drawing.Size(1118, 448);
             this.grdEmpresa.TabIndex = 153;
+            this.grdEmpresa.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdEmpresa_AfterSelectChange);
             // 
             // btnExportclinico
             // 

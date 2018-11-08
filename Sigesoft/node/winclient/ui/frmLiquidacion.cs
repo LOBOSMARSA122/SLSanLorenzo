@@ -361,12 +361,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
 
             }
-            foreach (UltraGridRow rowSelected in this.grdEmpresa.Selected.Rows)
-            {
-                
-                    btnLiqd1.Enabled = true;
-                
-            }
+            
         }
 
         private void ddlCustomerOrganization_KeyPress(object sender, KeyPressEventArgs e)
@@ -452,6 +447,16 @@ namespace Sigesoft.Node.WinClient.UI
 
                 Liquidacion_Carta.CreateLiquidacion_Carta(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas, datosGrabo);
                 this.Enabled = true;
+            }
+        }
+
+        private void grdEmpresa_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
+        {
+            foreach (UltraGridRow rowSelected in this.grdEmpresa.Selected.Rows)
+            {
+
+                btnLiqd1.Enabled = true;
+
             }
         }
     }
