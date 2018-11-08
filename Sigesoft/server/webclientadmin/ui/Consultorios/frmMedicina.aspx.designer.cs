@@ -10363,22 +10363,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label343;
         
         /// <summary>
-        /// chkColumnaCervicalApofisis control.
+        /// ddlColumnaCervicalApofisis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkColumnaCervicalApofisis;
+        protected global::FineUI.DropDownList ddlColumnaCervicalApofisis;
         
         /// <summary>
-        /// chkColumnaCervicalContractura control.
+        /// ddlColumnaCervicalContractura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkColumnaCervicalContractura;
+        protected global::FineUI.DropDownList ddlColumnaCervicalContractura;
         
         /// <summary>
         /// FormRow111 control.
@@ -10399,22 +10399,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label344;
         
         /// <summary>
-        /// chkColumnaDorsalApofisis control.
+        /// ddlColumnaDorsalApofisis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkColumnaDorsalApofisis;
+        protected global::FineUI.DropDownList ddlColumnaDorsalApofisis;
         
         /// <summary>
-        /// chkColumnaDorsalContractura control.
+        /// ddlColumnaDorsalContractura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkColumnaDorsalContractura;
+        protected global::FineUI.DropDownList ddlColumnaDorsalContractura;
         
         /// <summary>
         /// FormRow112 control.
@@ -10435,22 +10435,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label345;
         
         /// <summary>
-        /// chkColumnaLumbarApofisis control.
+        /// ddlColumnaLumbarApofisis control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkColumnaLumbarApofisis;
+        protected global::FineUI.DropDownList ddlColumnaLumbarApofisis;
         
         /// <summary>
-        /// chkColumnaLumbarContractura control.
+        /// ddlColumnaLumbarContractura control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkColumnaLumbarContractura;
+        protected global::FineUI.DropDownList ddlColumnaLumbarContractura;
         
         /// <summary>
         /// Panel51 control.
