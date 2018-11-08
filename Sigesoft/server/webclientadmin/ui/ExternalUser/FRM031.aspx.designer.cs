@@ -310,6 +310,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.ExternalUser {
         protected global::FineUI.Button btnExAltura;
         
         /// <summary>
+        /// Control btnPsico.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::FineUI.Button btnPsico;
+        
+        /// <summary>
         /// Control btnToxi.
         /// </summary>
         /// <remarks>

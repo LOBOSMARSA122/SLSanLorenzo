@@ -663,12 +663,12 @@
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnCargoFactura);
             this.groupBox2.Controls.Add(this.btnCargoHistorias);
-            this.groupBox2.Controls.Add(this.btnActualizarCulminado);
-            this.groupBox2.Controls.Add(this.btnActualizarAptitud);
             this.groupBox2.Controls.Add(this.btnExport);
             this.groupBox2.Controls.Add(this.btnQuitarChek);
+            this.groupBox2.Controls.Add(this.btnActualizarCulminado);
             this.groupBox2.Controls.Add(this.btnActualizarPerson);
             this.groupBox2.Controls.Add(this.lblRecordCountCalendar);
+            this.groupBox2.Controls.Add(this.btnActualizarAptitud);
             this.groupBox2.Controls.Add(this.btnGeneracionMasivaReportes);
             this.groupBox2.Controls.Add(this.btnImprimirExamenes);
             this.groupBox2.Controls.Add(this.btnTiempos);
@@ -706,7 +706,7 @@
             this.btnHistoriaCl.ForeColor = System.Drawing.Color.Black;
             this.btnHistoriaCl.Image = global::Sigesoft.Node.WinClient.UI.Resources.historiaclinica;
             this.btnHistoriaCl.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnHistoriaCl.Location = new System.Drawing.Point(1136, 483);
+            this.btnHistoriaCl.Location = new System.Drawing.Point(1137, 363);
             this.btnHistoriaCl.Margin = new System.Windows.Forms.Padding(2);
             this.btnHistoriaCl.Name = "btnHistoriaCl";
             this.btnHistoriaCl.Size = new System.Drawing.Size(86, 37);
@@ -919,7 +919,7 @@
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_edit;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(1137, 444);
+            this.button1.Location = new System.Drawing.Point(1138, 324);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 36);
@@ -933,6 +933,7 @@
             // 
             this.btnCargoFactura.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCargoFactura.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCargoFactura.Enabled = false;
             this.btnCargoFactura.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnCargoFactura.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnCargoFactura.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -940,7 +941,7 @@
             this.btnCargoFactura.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCargoFactura.ForeColor = System.Drawing.Color.Black;
             this.btnCargoFactura.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCargoFactura.Location = new System.Drawing.Point(1137, 404);
+            this.btnCargoFactura.Location = new System.Drawing.Point(1136, 495);
             this.btnCargoFactura.Margin = new System.Windows.Forms.Padding(2);
             this.btnCargoFactura.Name = "btnCargoFactura";
             this.btnCargoFactura.Size = new System.Drawing.Size(85, 36);
@@ -948,6 +949,7 @@
             this.btnCargoFactura.Text = "Cargo Factura";
             this.btnCargoFactura.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnCargoFactura.UseVisualStyleBackColor = false;
+            this.btnCargoFactura.Visible = false;
             this.btnCargoFactura.Click += new System.EventHandler(this.btnCargoFactura_Click);
             // 
             // btnCargoHistorias
@@ -976,6 +978,7 @@
             // 
             this.btnActualizarCulminado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizarCulminado.BackColor = System.Drawing.SystemColors.Control;
+            this.btnActualizarCulminado.Enabled = false;
             this.btnActualizarCulminado.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnActualizarCulminado.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnActualizarCulminado.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -984,7 +987,7 @@
             this.btnActualizarCulminado.ForeColor = System.Drawing.Color.Black;
             this.btnActualizarCulminado.Image = global::Sigesoft.Node.WinClient.UI.Resources.eject_green;
             this.btnActualizarCulminado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarCulminado.Location = new System.Drawing.Point(1137, 364);
+            this.btnActualizarCulminado.Location = new System.Drawing.Point(1136, 455);
             this.btnActualizarCulminado.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizarCulminado.Name = "btnActualizarCulminado";
             this.btnActualizarCulminado.Size = new System.Drawing.Size(85, 36);
@@ -992,12 +995,14 @@
             this.btnActualizarCulminado.Text = "Actualizar Culminado";
             this.btnActualizarCulminado.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnActualizarCulminado.UseVisualStyleBackColor = false;
+            this.btnActualizarCulminado.Visible = false;
             this.btnActualizarCulminado.Click += new System.EventHandler(this.btnActualizarCulminado_Click);
             // 
             // btnActualizarAptitud
             // 
             this.btnActualizarAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnActualizarAptitud.BackColor = System.Drawing.SystemColors.Control;
+            this.btnActualizarAptitud.Enabled = false;
             this.btnActualizarAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnActualizarAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnActualizarAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
@@ -1006,7 +1011,7 @@
             this.btnActualizarAptitud.ForeColor = System.Drawing.Color.Black;
             this.btnActualizarAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_earth;
             this.btnActualizarAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarAptitud.Location = new System.Drawing.Point(1138, 324);
+            this.btnActualizarAptitud.Location = new System.Drawing.Point(1137, 415);
             this.btnActualizarAptitud.Margin = new System.Windows.Forms.Padding(2);
             this.btnActualizarAptitud.Name = "btnActualizarAptitud";
             this.btnActualizarAptitud.Size = new System.Drawing.Size(85, 36);
@@ -1014,6 +1019,7 @@
             this.btnActualizarAptitud.Text = "Actualizar Aptitud";
             this.btnActualizarAptitud.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnActualizarAptitud.UseVisualStyleBackColor = false;
+            this.btnActualizarAptitud.Visible = false;
             this.btnActualizarAptitud.Click += new System.EventHandler(this.btnActualizarAptitud_Click);
             // 
             // btnExport

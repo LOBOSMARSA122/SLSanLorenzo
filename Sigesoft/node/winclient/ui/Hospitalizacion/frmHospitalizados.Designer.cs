@@ -33,6 +33,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HopitalizacionId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Paciente");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DocNumber");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Years");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaIngreso");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_FechaAlta");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_PrecioTotal");
@@ -278,18 +280,24 @@
             ultraGridColumn17.Header.Caption = "Nombre de Paciente";
             ultraGridColumn17.Header.VisiblePosition = 1;
             ultraGridColumn17.Width = 146;
+            ultraGridColumn2.Header.Caption = "N° Doc";
+            ultraGridColumn2.Header.VisiblePosition = 2;
+            ultraGridColumn3.Header.Caption = "Edad";
+            ultraGridColumn3.Header.VisiblePosition = 3;
             ultraGridColumn18.Header.Caption = "Fecha Ingreso";
-            ultraGridColumn18.Header.VisiblePosition = 2;
+            ultraGridColumn18.Header.VisiblePosition = 4;
             ultraGridColumn19.Header.Caption = "Fecha Alta";
-            ultraGridColumn19.Header.VisiblePosition = 3;
+            ultraGridColumn19.Header.VisiblePosition = 5;
             ultraGridColumn20.Header.Caption = "Precio Total";
-            ultraGridColumn20.Header.VisiblePosition = 4;
-            ultraGridColumn1.Header.VisiblePosition = 5;
-            ultraGridColumn21.Header.VisiblePosition = 6;
-            ultraGridColumn22.Header.VisiblePosition = 7;
+            ultraGridColumn20.Header.VisiblePosition = 6;
+            ultraGridColumn1.Header.VisiblePosition = 7;
+            ultraGridColumn21.Header.VisiblePosition = 8;
+            ultraGridColumn22.Header.VisiblePosition = 9;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn16,
             ultraGridColumn17,
+            ultraGridColumn2,
+            ultraGridColumn3,
             ultraGridColumn18,
             ultraGridColumn19,
             ultraGridColumn20,
