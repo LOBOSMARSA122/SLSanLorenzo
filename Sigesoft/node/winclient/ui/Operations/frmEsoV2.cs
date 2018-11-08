@@ -1617,18 +1617,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             btnAceptarDX.Enabled = false;
         }
 
-        private void btnViewWorker_Click(object sender, EventArgs e)
+        private void btnViewWorker_Click_1(object sender, EventArgs e)
         {
             var frmWorkerData = new FrmWorkerData(_serviceId);
             frmWorkerData.ShowDialog();
         }
 
-        private void lblView_Click(object sender, EventArgs e)
+        private void lblView_Click_1(object sender, EventArgs e)
         {
             var lbl = sender as Label;
             if (lbl != null && lbl.Text == "Ver Diagnósticos ...")
             {
-                splitContainer2.SplitterDistance = splitContainer2.Height - 190;
+                splitContainer2.SplitterDistance = splitContainer2.Height - 200;
                 lbl.Text = string.Format("{0}", "Ver menos");
                 lbl.ForeColor = Color.Blue;
             }
@@ -2202,7 +2202,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void TsmverMas_Click(object sender, EventArgs e)
         {
-            lblView_Click(sender, e);
+            lblView_Click_1(sender, e);
         }
 
         private void lblTrabajador_Click(object sender, EventArgs e)
@@ -4798,7 +4798,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
         }
 
-        private void btnPerson_Click(object sender, EventArgs e)
+        private void btnPerson_Click_1(object sender, EventArgs e)
         {
             var frm = new frmPacient(_personId);
             frm.ShowDialog();
@@ -5363,10 +5363,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
         }
 
-        //private void btnAceptarDX_Click_1(object sender, EventArgs e)
-        //{
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
 
-        //}
-             
+        }
     }
 }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance94 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -50,7 +50,7 @@
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn48 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_ItemId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionByDiagnosticId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn41 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_RestrictionByDiagnosticId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn50 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_RestrictionId");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn52 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ComponentId");
@@ -180,25 +180,11 @@
             Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.Appearance appearance74 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand11 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn81 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn109 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn110 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Observacion");
-            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance71 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance72 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance73 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance74 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand11 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn101 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn102 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_EsControlado", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn111 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Observacion");
             Infragistics.Win.Appearance appearance75 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance76 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance77 = new Infragistics.Win.Appearance();
@@ -207,24 +193,38 @@
             Infragistics.Win.Appearance appearance80 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance81 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance82 = new Infragistics.Win.Appearance();
-            this.lblTrabajador = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblProtocolName = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.lblView = new System.Windows.Forms.Label();
+            Infragistics.Win.Appearance appearance83 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand12 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn57 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn101 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn102 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_EsControlado", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn111 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Observacion");
+            Infragistics.Win.Appearance appearance84 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance85 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance86 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance87 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance88 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance89 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Tipo", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn112 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn113 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn114 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Lugar");
+            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance71 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance72 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance73 = new Infragistics.Win.Appearance();
             this.uvExamen = new Infragistics.Win.Misc.UltraValidator(this.components);
-            this.btnViewWorker = new System.Windows.Forms.Button();
-            this.statusStripFooter = new System.Windows.Forms.StatusStrip();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.uvAnamnesis = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.TsmverMas = new System.Windows.Forms.ToolStripMenuItem();
-            this.label17 = new System.Windows.Forms.Label();
-            this.lblFechaGraba = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
             this.uvAnalisisDx = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.bgwSaveExamen = new System.ComponentModel.BackgroundWorker();
             this.btnCerrarESO = new System.Windows.Forms.Button();
@@ -299,7 +299,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnVisorReporteExamen = new System.Windows.Forms.Button();
             this.btnReceta = new System.Windows.Forms.Button();
-            this.btnPerson = new System.Windows.Forms.Button();
             this.btnGuardarExamen = new System.Windows.Forms.Button();
             this.chkUtilizarFirma = new System.Windows.Forms.CheckBox();
             this.EXAMENES_lblEstadoComponente = new System.Windows.Forms.Label();
@@ -370,29 +369,57 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.grdAgudos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.label37 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.lblUsuAct = new System.Windows.Forms.Label();
-            this.lblUsuGraba = new System.Windows.Forms.Label();
-            this.ultraFlowLayoutManager1 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
+            this.panel5 = new System.Windows.Forms.Panel();
             this.btnEliminarAgudo = new System.Windows.Forms.Button();
             this.btnEditarAgudo = new System.Windows.Forms.Button();
             this.btnNuevoAgudo = new System.Windows.Forms.Button();
-            this.grdAgudos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
             this.grdCronicos = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.label26 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnNuevoCronico = new System.Windows.Forms.Button();
             this.btnEditarCronico = new System.Windows.Forms.Button();
             this.btnEliminarCronico = new System.Windows.Forms.Button();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ultraFlowLayoutManager1 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblTrabajador = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblProtocolName = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lblView = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.btnViewWorker = new System.Windows.Forms.Button();
+            this.lblFechaGraba = new System.Windows.Forms.Label();
+            this.lblUsuAct = new System.Windows.Forms.Label();
+            this.lblUsuGraba = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnPerson = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.label38 = new System.Windows.Forms.Label();
+            this.grdPlanIntegral = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnEliminarPlan = new System.Windows.Forms.Button();
+            this.btnEditarPlan = new System.Windows.Forms.Button();
+            this.btnNuevoPlan = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -434,149 +461,44 @@
             this.tcSubMain.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdAgudos)).BeginInit();
+            this.panel5.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCronicos)).BeginInit();
             this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.tableLayoutPanel8.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdPlanIntegral)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblTrabajador
-            // 
-            this.lblTrabajador.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblTrabajador.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTrabajador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrabajador.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTrabajador.Location = new System.Drawing.Point(300, 666);
-            this.lblTrabajador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTrabajador.Name = "lblTrabajador";
-            this.lblTrabajador.Size = new System.Drawing.Size(237, 15);
-            this.lblTrabajador.TabIndex = 22;
-            this.lblTrabajador.Text = "lblTrabajador";
-            this.lblTrabajador.Click += new System.EventHandler(this.lblTrabajador_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(228, 666);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 13);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Trabajador:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblProtocolName
-            // 
-            this.lblProtocolName.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblProtocolName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblProtocolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProtocolName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblProtocolName.Location = new System.Drawing.Point(300, 690);
-            this.lblProtocolName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblProtocolName.Name = "lblProtocolName";
-            this.lblProtocolName.Size = new System.Drawing.Size(268, 15);
-            this.lblProtocolName.TabIndex = 20;
-            this.lblProtocolName.Text = "lblProtocolName";
-            this.lblProtocolName.Click += new System.EventHandler(this.lblProtocolName_Click);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(228, 691);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 13);
-            this.label16.TabIndex = 19;
-            this.label16.Text = "Protocolo:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblView
-            // 
-            this.lblView.AutoSize = true;
-            this.lblView.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblView.ForeColor = System.Drawing.Color.Blue;
-            this.lblView.Location = new System.Drawing.Point(795, 679);
-            this.lblView.Name = "lblView";
-            this.lblView.Size = new System.Drawing.Size(67, 13);
-            this.lblView.TabIndex = 65;
-            this.lblView.Text = "Ver Menos";
-            this.lblView.Click += new System.EventHandler(this.lblView_Click);
             // 
             // uvExamen
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance1.BackColor2 = System.Drawing.Color.Transparent;
-            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance1.BorderColor = System.Drawing.Color.Red;
-            appearance1.BorderColor2 = System.Drawing.Color.Red;
-            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance1;
+            appearance94.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance94.BackColor2 = System.Drawing.Color.Transparent;
+            appearance94.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance94.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance94.BorderColor = System.Drawing.Color.Red;
+            appearance94.BorderColor2 = System.Drawing.Color.Red;
+            appearance94.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance94;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
             this.uvExamen.NotificationSettings.Action = Infragistics.Win.Misc.NotificationAction.MessageBox;
-            // 
-            // btnViewWorker
-            // 
-            this.btnViewWorker.BackColor = System.Drawing.SystemColors.Control;
-            this.btnViewWorker.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnViewWorker.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnViewWorker.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnViewWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewWorker.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_suit;
-            this.btnViewWorker.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewWorker.Location = new System.Drawing.Point(541, 663);
-            this.btnViewWorker.Margin = new System.Windows.Forms.Padding(2);
-            this.btnViewWorker.Name = "btnViewWorker";
-            this.btnViewWorker.Size = new System.Drawing.Size(28, 23);
-            this.btnViewWorker.TabIndex = 64;
-            this.btnViewWorker.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnViewWorker.UseVisualStyleBackColor = false;
-            this.btnViewWorker.Click += new System.EventHandler(this.btnViewWorker_Click);
-            // 
-            // statusStripFooter
-            // 
-            this.statusStripFooter.AutoSize = false;
-            this.statusStripFooter.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.statusStripFooter.Location = new System.Drawing.Point(0, 660);
-            this.statusStripFooter.Name = "statusStripFooter";
-            this.statusStripFooter.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.statusStripFooter.Size = new System.Drawing.Size(1300, 51);
-            this.statusStripFooter.TabIndex = 5;
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
-            this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(1111, 672);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(161, 24);
-            this.btnSalir.TabIndex = 66;
-            this.btnSalir.Text = "Salir de Evaluación Medica";
-            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // contextMenuStrip1
             // 
@@ -591,84 +513,6 @@
             this.TsmverMas.Size = new System.Drawing.Size(121, 22);
             this.TsmverMas.Text = "Ver Mas..";
             this.TsmverMas.Click += new System.EventHandler(this.TsmverMas_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(6, 692);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(84, 13);
-            this.label17.TabIndex = 68;
-            this.label17.Text = "Fecha Graba:";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblFechaGraba
-            // 
-            this.lblFechaGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblFechaGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblFechaGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblFechaGraba.Location = new System.Drawing.Point(94, 690);
-            this.lblFechaGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFechaGraba.Name = "lblFechaGraba";
-            this.lblFechaGraba.Size = new System.Drawing.Size(130, 15);
-            this.lblFechaGraba.TabIndex = 70;
-            this.lblFechaGraba.Text = "lblFechaGraba";
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(645, 689);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(139, 15);
-            this.label18.TabIndex = 72;
-            this.label18.Text = "lblServicio";
-            // 
-            // label20
-            // 
-            this.label20.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label20.Location = new System.Drawing.Point(645, 665);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(139, 15);
-            this.label20.TabIndex = 73;
-            this.label20.Text = "lblTipoEso";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(573, 690);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 13);
-            this.label21.TabIndex = 71;
-            this.label21.Text = "Servicio:";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(573, 665);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(61, 13);
-            this.label24.TabIndex = 74;
-            this.label24.Text = "Tipo Eso:";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // bgwSaveExamen
             // 
@@ -687,7 +531,7 @@
             this.btnCerrarESO.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCerrarESO.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnCerrarESO.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCerrarESO.Location = new System.Drawing.Point(170, 6);
+            this.btnCerrarESO.Location = new System.Drawing.Point(165, 7);
             this.btnCerrarESO.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrarESO.Name = "btnCerrarESO";
             this.btnCerrarESO.Size = new System.Drawing.Size(27, 24);
@@ -718,7 +562,7 @@
             this.tpConclusion.Controls.Add(this.btnGuardarConclusiones);
             this.tpConclusion.Location = new System.Drawing.Point(4, 22);
             this.tpConclusion.Name = "tpConclusion";
-            this.tpConclusion.Size = new System.Drawing.Size(1292, 685);
+            this.tpConclusion.Size = new System.Drawing.Size(1292, 631);
             this.tpConclusion.TabIndex = 2;
             this.tpConclusion.Text = "APTITUD";
             this.tpConclusion.ToolTipText = "CONCLUSIONES";
@@ -1084,8 +928,8 @@
             ultraGridColumn48.Header.VisiblePosition = 0;
             ultraGridColumn48.Hidden = true;
             ultraGridColumn48.Width = 41;
-            ultraGridColumn49.Header.VisiblePosition = 1;
-            ultraGridColumn49.Hidden = true;
+            ultraGridColumn41.Header.VisiblePosition = 1;
+            ultraGridColumn41.Hidden = true;
             ultraGridColumn50.Header.VisiblePosition = 2;
             ultraGridColumn50.Hidden = true;
             ultraGridColumn51.Header.VisiblePosition = 3;
@@ -1097,7 +941,7 @@
             ultraGridColumn53.Width = 594;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn48,
-            ultraGridColumn49,
+            ultraGridColumn41,
             ultraGridColumn50,
             ultraGridColumn51,
             ultraGridColumn52,
@@ -1444,7 +1288,7 @@
             this.tpAnalisisDx.Controls.Add(this.gbTotalDiagnostico);
             this.tpAnalisisDx.Location = new System.Drawing.Point(4, 22);
             this.tpAnalisisDx.Name = "tpAnalisisDx";
-            this.tpAnalisisDx.Size = new System.Drawing.Size(1292, 685);
+            this.tpAnalisisDx.Size = new System.Drawing.Size(1292, 631);
             this.tpAnalisisDx.TabIndex = 3;
             this.tpAnalisisDx.Text = "CONTROL DE CALIDAD";
             this.tpAnalisisDx.ToolTipText = "ANÁLISIS DE DIAGNÓSTICOS";
@@ -1472,7 +1316,7 @@
             this.gbEdicionDiagnosticoTotal.Controls.Add(this.label30);
             this.gbEdicionDiagnosticoTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbEdicionDiagnosticoTotal.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbEdicionDiagnosticoTotal.Location = new System.Drawing.Point(10, 320);
+            this.gbEdicionDiagnosticoTotal.Location = new System.Drawing.Point(10, 272);
             this.gbEdicionDiagnosticoTotal.Name = "gbEdicionDiagnosticoTotal";
             this.gbEdicionDiagnosticoTotal.Size = new System.Drawing.Size(1252, 316);
             this.gbEdicionDiagnosticoTotal.TabIndex = 51;
@@ -1960,7 +1804,7 @@
             this.gbTotalDiagnostico.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbTotalDiagnostico.Location = new System.Drawing.Point(10, 4);
             this.gbTotalDiagnostico.Name = "gbTotalDiagnostico";
-            this.gbTotalDiagnostico.Size = new System.Drawing.Size(1252, 310);
+            this.gbTotalDiagnostico.Size = new System.Drawing.Size(1252, 262);
             this.gbTotalDiagnostico.TabIndex = 50;
             this.gbTotalDiagnostico.TabStop = false;
             this.gbTotalDiagnostico.Text = "TOTAL DE DIAGNÓSTICOS";
@@ -2086,7 +1930,7 @@
             this.grdTotalDiagnosticos.Location = new System.Drawing.Point(11, 39);
             this.grdTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2);
             this.grdTotalDiagnosticos.Name = "grdTotalDiagnosticos";
-            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1217, 234);
+            this.grdTotalDiagnosticos.Size = new System.Drawing.Size(1217, 186);
             this.grdTotalDiagnosticos.TabIndex = 94;
             this.grdTotalDiagnosticos.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdTotalDiagnosticos_InitializeRow);
             this.grdTotalDiagnosticos.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdTotalDiagnosticos_AfterSelectChange);
@@ -2107,7 +1951,7 @@
             this.btnRemoverTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
             this.btnRemoverTotalDiagnostico.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverTotalDiagnostico.Image")));
             this.btnRemoverTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverTotalDiagnostico.Location = new System.Drawing.Point(95, 277);
+            this.btnRemoverTotalDiagnostico.Location = new System.Drawing.Point(95, 229);
             this.btnRemoverTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoverTotalDiagnostico.Name = "btnRemoverTotalDiagnostico";
             this.btnRemoverTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
@@ -2130,7 +1974,7 @@
             this.btnAgregarTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarTotalDiagnostico.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarTotalDiagnostico.Image")));
             this.btnAgregarTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarTotalDiagnostico.Location = new System.Drawing.Point(11, 277);
+            this.btnAgregarTotalDiagnostico.Location = new System.Drawing.Point(11, 229);
             this.btnAgregarTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarTotalDiagnostico.Name = "btnAgregarTotalDiagnostico";
             this.btnAgregarTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
@@ -2152,7 +1996,7 @@
             this.btnRefrescarTotalDiagnostico.ForeColor = System.Drawing.Color.Black;
             this.btnRefrescarTotalDiagnostico.Image = global::Sigesoft.Node.WinClient.UI.Resources.arrow_refresh;
             this.btnRefrescarTotalDiagnostico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRefrescarTotalDiagnostico.Location = new System.Drawing.Point(179, 277);
+            this.btnRefrescarTotalDiagnostico.Location = new System.Drawing.Point(179, 229);
             this.btnRefrescarTotalDiagnostico.Margin = new System.Windows.Forms.Padding(2);
             this.btnRefrescarTotalDiagnostico.Name = "btnRefrescarTotalDiagnostico";
             this.btnRefrescarTotalDiagnostico.Size = new System.Drawing.Size(80, 24);
@@ -2167,7 +2011,7 @@
             this.lblRecordCountTotalDiagnosticos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRecordCountTotalDiagnosticos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRecordCountTotalDiagnosticos.Location = new System.Drawing.Point(994, 16);
+            this.lblRecordCountTotalDiagnosticos.Location = new System.Drawing.Point(994, -32);
             this.lblRecordCountTotalDiagnosticos.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountTotalDiagnosticos.Name = "lblRecordCountTotalDiagnosticos";
             this.lblRecordCountTotalDiagnosticos.Size = new System.Drawing.Size(236, 19);
@@ -2181,7 +2025,7 @@
             this.tpExam.Location = new System.Drawing.Point(4, 22);
             this.tpExam.Name = "tpExam";
             this.tpExam.Padding = new System.Windows.Forms.Padding(3);
-            this.tpExam.Size = new System.Drawing.Size(1292, 685);
+            this.tpExam.Size = new System.Drawing.Size(1292, 631);
             this.tpExam.TabIndex = 1;
             this.tpExam.Text = "EXÁMENES";
             this.tpExam.ToolTipText = "EXAMENES";
@@ -2204,8 +2048,8 @@
             // 
             this.splitContainer2.Panel2.Controls.Add(this.groupBox4);
             this.splitContainer2.Panel2.Controls.Add(this.gbDiagnosticoExamen);
-            this.splitContainer2.Size = new System.Drawing.Size(1278, 646);
-            this.splitContainer2.SplitterDistance = 450;
+            this.splitContainer2.Size = new System.Drawing.Size(1278, 625);
+            this.splitContainer2.SplitterDistance = 434;
             this.splitContainer2.TabIndex = 59;
             // 
             // tcExamList
@@ -2217,7 +2061,7 @@
             this.tcExamList.Location = new System.Drawing.Point(0, 0);
             this.tcExamList.Name = "tcExamList";
             this.tcExamList.SharedControlsPage = this.ultraTabSharedControlsPage1;
-            this.tcExamList.Size = new System.Drawing.Size(1278, 447);
+            this.tcExamList.Size = new System.Drawing.Size(1278, 431);
             this.tcExamList.TabIndex = 1;
             this.tcExamList.TabOrientation = Infragistics.Win.UltraWinTabs.TabOrientation.LeftTop;
             this.tcExamList.TextOrientation = Infragistics.Win.UltraWinTabs.TextOrientation.Horizontal;
@@ -2229,13 +2073,12 @@
             // 
             this.ultraTabSharedControlsPage1.Location = new System.Drawing.Point(20, 1);
             this.ultraTabSharedControlsPage1.Name = "ultraTabSharedControlsPage1";
-            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1257, 445);
+            this.ultraTabSharedControlsPage1.Size = new System.Drawing.Size(1257, 429);
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnVisorReporteExamen);
             this.groupBox4.Controls.Add(this.btnReceta);
-            this.groupBox4.Controls.Add(this.btnPerson);
             this.groupBox4.Controls.Add(this.btnGuardarExamen);
             this.groupBox4.Controls.Add(this.btnCerrarESO);
             this.groupBox4.Controls.Add(this.chkUtilizarFirma);
@@ -2250,7 +2093,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox4.Location = new System.Drawing.Point(655, 4);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(620, 171);
+            this.groupBox4.Size = new System.Drawing.Size(620, 180);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Grabar Examen";
@@ -2268,7 +2111,7 @@
             this.btnVisorReporteExamen.ForeColor = System.Drawing.Color.Black;
             this.btnVisorReporteExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnVisorReporteExamen.Image")));
             this.btnVisorReporteExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVisorReporteExamen.Location = new System.Drawing.Point(335, 41);
+            this.btnVisorReporteExamen.Location = new System.Drawing.Point(334, 33);
             this.btnVisorReporteExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnVisorReporteExamen.Name = "btnVisorReporteExamen";
             this.btnVisorReporteExamen.Size = new System.Drawing.Size(280, 36);
@@ -2291,28 +2134,14 @@
             this.btnReceta.ForeColor = System.Drawing.Color.Black;
             this.btnReceta.Image = ((System.Drawing.Image)(resources.GetObject("btnReceta.Image")));
             this.btnReceta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReceta.Location = new System.Drawing.Point(335, 9);
+            this.btnReceta.Location = new System.Drawing.Point(9, 147);
             this.btnReceta.Margin = new System.Windows.Forms.Padding(2);
             this.btnReceta.Name = "btnReceta";
-            this.btnReceta.Size = new System.Drawing.Size(280, 28);
+            this.btnReceta.Size = new System.Drawing.Size(302, 26);
             this.btnReceta.TabIndex = 100;
             this.btnReceta.Text = "Receta";
             this.btnReceta.UseVisualStyleBackColor = false;
             this.btnReceta.Click += new System.EventHandler(this.btnReceta_Click);
-            // 
-            // btnPerson
-            // 
-            this.btnPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPerson.BackColor = System.Drawing.SystemColors.Control;
-            this.btnPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPerson.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPerson.Location = new System.Drawing.Point(9, 138);
-            this.btnPerson.Name = "btnPerson";
-            this.btnPerson.Size = new System.Drawing.Size(302, 26);
-            this.btnPerson.TabIndex = 99;
-            this.btnPerson.Text = "Ver Datos Generales";
-            this.btnPerson.UseVisualStyleBackColor = false;
-            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click);
             // 
             // btnGuardarExamen
             // 
@@ -2326,10 +2155,10 @@
             this.btnGuardarExamen.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnGuardarExamen.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnGuardarExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarExamen.Location = new System.Drawing.Point(335, 138);
+            this.btnGuardarExamen.Location = new System.Drawing.Point(336, 147);
             this.btnGuardarExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnGuardarExamen.Name = "btnGuardarExamen";
-            this.btnGuardarExamen.Size = new System.Drawing.Size(283, 26);
+            this.btnGuardarExamen.Size = new System.Drawing.Size(279, 26);
             this.btnGuardarExamen.TabIndex = 64;
             this.btnGuardarExamen.Text = "      Guardar";
             this.btnGuardarExamen.UseVisualStyleBackColor = false;
@@ -2340,7 +2169,7 @@
             this.chkUtilizarFirma.AutoSize = true;
             this.chkUtilizarFirma.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkUtilizarFirma.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.chkUtilizarFirma.Location = new System.Drawing.Point(335, 117);
+            this.chkUtilizarFirma.Location = new System.Drawing.Point(335, 122);
             this.chkUtilizarFirma.Name = "chkUtilizarFirma";
             this.chkUtilizarFirma.Size = new System.Drawing.Size(98, 17);
             this.chkUtilizarFirma.TabIndex = 59;
@@ -2352,7 +2181,7 @@
             this.EXAMENES_lblEstadoComponente.AutoSize = true;
             this.EXAMENES_lblEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.EXAMENES_lblEstadoComponente.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.EXAMENES_lblEstadoComponente.Location = new System.Drawing.Point(332, 79);
+            this.EXAMENES_lblEstadoComponente.Location = new System.Drawing.Point(332, 76);
             this.EXAMENES_lblEstadoComponente.Name = "EXAMENES_lblEstadoComponente";
             this.EXAMENES_lblEstadoComponente.Size = new System.Drawing.Size(120, 13);
             this.EXAMENES_lblEstadoComponente.TabIndex = 51;
@@ -2363,7 +2192,7 @@
             this.chkApproved.AutoSize = true;
             this.chkApproved.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkApproved.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.chkApproved.Location = new System.Drawing.Point(474, 119);
+            this.chkApproved.Location = new System.Drawing.Point(474, 122);
             this.chkApproved.Name = "chkApproved";
             this.chkApproved.Size = new System.Drawing.Size(140, 17);
             this.chkApproved.TabIndex = 58;
@@ -2375,9 +2204,9 @@
             this.cbEstadoComponente.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbEstadoComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbEstadoComponente.FormattingEnabled = true;
-            this.cbEstadoComponente.Location = new System.Drawing.Point(335, 95);
+            this.cbEstadoComponente.Location = new System.Drawing.Point(335, 92);
             this.cbEstadoComponente.Name = "cbEstadoComponente";
-            this.cbEstadoComponente.Size = new System.Drawing.Size(283, 21);
+            this.cbEstadoComponente.Size = new System.Drawing.Size(279, 21);
             this.cbEstadoComponente.TabIndex = 0;
             // 
             // EXAMENES_lblComentarios
@@ -2432,7 +2261,7 @@
             this.gbDiagnosticoExamen.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbDiagnosticoExamen.Location = new System.Drawing.Point(2, 4);
             this.gbDiagnosticoExamen.Name = "gbDiagnosticoExamen";
-            this.gbDiagnosticoExamen.Size = new System.Drawing.Size(647, 171);
+            this.gbDiagnosticoExamen.Size = new System.Drawing.Size(647, 180);
             this.gbDiagnosticoExamen.TabIndex = 49;
             this.gbDiagnosticoExamen.TabStop = false;
             this.gbDiagnosticoExamen.Text = "Diagnosticos del Examen";
@@ -2533,7 +2362,7 @@
             this.grdDiagnosticoPorExamenComponente.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdDiagnosticoPorExamenComponente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdDiagnosticoPorExamenComponente.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdDiagnosticoPorExamenComponente.Location = new System.Drawing.Point(5, 18);
+            this.grdDiagnosticoPorExamenComponente.Location = new System.Drawing.Point(5, 27);
             this.grdDiagnosticoPorExamenComponente.Margin = new System.Windows.Forms.Padding(2);
             this.grdDiagnosticoPorExamenComponente.Name = "grdDiagnosticoPorExamenComponente";
             this.grdDiagnosticoPorExamenComponente.Size = new System.Drawing.Size(637, 118);
@@ -2554,7 +2383,7 @@
             this.btnRemoverDxExamen.ForeColor = System.Drawing.Color.Black;
             this.btnRemoverDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverDxExamen.Image")));
             this.btnRemoverDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemoverDxExamen.Location = new System.Drawing.Point(176, 140);
+            this.btnRemoverDxExamen.Location = new System.Drawing.Point(176, 149);
             this.btnRemoverDxExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnRemoverDxExamen.Name = "btnRemoverDxExamen";
             this.btnRemoverDxExamen.Size = new System.Drawing.Size(80, 24);
@@ -2575,7 +2404,7 @@
             this.btnEditarDxExamen.ForeColor = System.Drawing.Color.Black;
             this.btnEditarDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarDxExamen.Image")));
             this.btnEditarDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarDxExamen.Location = new System.Drawing.Point(92, 140);
+            this.btnEditarDxExamen.Location = new System.Drawing.Point(92, 149);
             this.btnEditarDxExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarDxExamen.Name = "btnEditarDxExamen";
             this.btnEditarDxExamen.Size = new System.Drawing.Size(80, 24);
@@ -2598,7 +2427,7 @@
             this.btnAgregarDxExamen.ForeColor = System.Drawing.Color.Black;
             this.btnAgregarDxExamen.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarDxExamen.Image")));
             this.btnAgregarDxExamen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregarDxExamen.Location = new System.Drawing.Point(8, 140);
+            this.btnAgregarDxExamen.Location = new System.Drawing.Point(8, 149);
             this.btnAgregarDxExamen.Margin = new System.Windows.Forms.Padding(2);
             this.btnAgregarDxExamen.Name = "btnAgregarDxExamen";
             this.btnAgregarDxExamen.Size = new System.Drawing.Size(80, 24);
@@ -2612,7 +2441,7 @@
             this.lblRecordCountDiagnosticoPorExamenCom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lblRecordCountDiagnosticoPorExamenCom.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRecordCountDiagnosticoPorExamenCom.ForeColor = System.Drawing.Color.MediumBlue;
-            this.lblRecordCountDiagnosticoPorExamenCom.Location = new System.Drawing.Point(402, 138);
+            this.lblRecordCountDiagnosticoPorExamenCom.Location = new System.Drawing.Point(402, 147);
             this.lblRecordCountDiagnosticoPorExamenCom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblRecordCountDiagnosticoPorExamenCom.Name = "lblRecordCountDiagnosticoPorExamenCom";
             this.lblRecordCountDiagnosticoPorExamenCom.Size = new System.Drawing.Size(189, 19);
@@ -2630,7 +2459,7 @@
             this.General.Location = new System.Drawing.Point(4, 22);
             this.General.Name = "General";
             this.General.Padding = new System.Windows.Forms.Padding(3);
-            this.General.Size = new System.Drawing.Size(1292, 685);
+            this.General.Size = new System.Drawing.Size(1292, 631);
             this.General.TabIndex = 0;
             this.General.Text = "ANAMNESIS - ANTECEDENTES";
             this.General.UseVisualStyleBackColor = true;
@@ -2645,7 +2474,7 @@
             this.panel1.Controls.Add(this.gbServiciosAnteriores);
             this.panel1.Location = new System.Drawing.Point(7, 248);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1264, 383);
+            this.panel1.Size = new System.Drawing.Size(1282, 377);
             this.panel1.TabIndex = 64;
             // 
             // gbAntecedentes
@@ -2658,7 +2487,7 @@
             this.gbAntecedentes.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbAntecedentes.Location = new System.Drawing.Point(0, 0);
             this.gbAntecedentes.Name = "gbAntecedentes";
-            this.gbAntecedentes.Size = new System.Drawing.Size(634, 383);
+            this.gbAntecedentes.Size = new System.Drawing.Size(631, 377);
             this.gbAntecedentes.TabIndex = 62;
             this.gbAntecedentes.TabStop = false;
             this.gbAntecedentes.Text = "Antecedentes";
@@ -2676,10 +2505,10 @@
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(457, 354);
+            this.button1.Location = new System.Drawing.Point(436, 348);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 24);
+            this.button1.Size = new System.Drawing.Size(190, 24);
             this.button1.TabIndex = 93;
             this.button1.Text = "&Ver / Editar Antecedentes";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2765,7 +2594,7 @@
             this.grdAntecedentes.Location = new System.Drawing.Point(8, 18);
             this.grdAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.grdAntecedentes.Name = "grdAntecedentes";
-            this.grdAntecedentes.Size = new System.Drawing.Size(621, 332);
+            this.grdAntecedentes.Size = new System.Drawing.Size(618, 326);
             this.grdAntecedentes.TabIndex = 93;
             // 
             // btnVerEditarAntecedentes
@@ -2780,7 +2609,7 @@
             this.btnVerEditarAntecedentes.ForeColor = System.Drawing.Color.Black;
             this.btnVerEditarAntecedentes.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.btnVerEditarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(450, -127);
+            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(450, -133);
             this.btnVerEditarAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerEditarAntecedentes.Name = "btnVerEditarAntecedentes";
             this.btnVerEditarAntecedentes.Size = new System.Drawing.Size(162, 24);
@@ -2797,9 +2626,9 @@
             this.gbServiciosAnteriores.Dock = System.Windows.Forms.DockStyle.Right;
             this.gbServiciosAnteriores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbServiciosAnteriores.ForeColor = System.Drawing.Color.MediumBlue;
-            this.gbServiciosAnteriores.Location = new System.Drawing.Point(634, 0);
+            this.gbServiciosAnteriores.Location = new System.Drawing.Point(652, 0);
             this.gbServiciosAnteriores.Name = "gbServiciosAnteriores";
-            this.gbServiciosAnteriores.Size = new System.Drawing.Size(630, 383);
+            this.gbServiciosAnteriores.Size = new System.Drawing.Size(630, 377);
             this.gbServiciosAnteriores.TabIndex = 63;
             this.gbServiciosAnteriores.TabStop = false;
             this.gbServiciosAnteriores.Text = "Servicios Anteriores";
@@ -2816,7 +2645,7 @@
             this.btnServicioAnterior.ForeColor = System.Drawing.Color.Black;
             this.btnServicioAnterior.Image = ((System.Drawing.Image)(resources.GetObject("btnServicioAnterior.Image")));
             this.btnServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicioAnterior.Location = new System.Drawing.Point(475, 354);
+            this.btnServicioAnterior.Location = new System.Drawing.Point(475, 348);
             this.btnServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.btnServicioAnterior.Name = "btnServicioAnterior";
             this.btnServicioAnterior.Size = new System.Drawing.Size(134, 24);
@@ -2905,7 +2734,7 @@
             this.grdServiciosAnteriores.Location = new System.Drawing.Point(5, 18);
             this.grdServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.grdServiciosAnteriores.Name = "grdServiciosAnteriores";
-            this.grdServiciosAnteriores.Size = new System.Drawing.Size(620, 332);
+            this.grdServiciosAnteriores.Size = new System.Drawing.Size(620, 326);
             this.grdServiciosAnteriores.TabIndex = 94;
             // 
             // btnVerServicioAnterior
@@ -2921,7 +2750,7 @@
             this.btnVerServicioAnterior.ForeColor = System.Drawing.Color.Black;
             this.btnVerServicioAnterior.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
             this.btnVerServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerServicioAnterior.Location = new System.Drawing.Point(404, -127);
+            this.btnVerServicioAnterior.Location = new System.Drawing.Point(404, -133);
             this.btnVerServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerServicioAnterior.Name = "btnVerServicioAnterior";
             this.btnVerServicioAnterior.Size = new System.Drawing.Size(134, 24);
@@ -3429,7 +3258,7 @@
             this.tcSubMain.Location = new System.Drawing.Point(0, 0);
             this.tcSubMain.Name = "tcSubMain";
             this.tcSubMain.SelectedIndex = 0;
-            this.tcSubMain.Size = new System.Drawing.Size(1300, 711);
+            this.tcSubMain.Size = new System.Drawing.Size(1300, 657);
             this.tcSubMain.TabIndex = 4;
             this.tcSubMain.Tag = "";
             // 
@@ -3439,10 +3268,11 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1292, 685);
+            this.tabPage1.Size = new System.Drawing.Size(1292, 631);
             this.tabPage1.TabIndex = 4;
             this.tabPage1.Text = "FORMATO DE ATENCIÓN INTEGRAL";
             this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPage1.Click += new System.EventHandler(this.tabPage1_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -3450,22 +3280,33 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.6875F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.3125F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1286, 638);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1286, 633);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel4
             // 
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(3, 320);
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.Controls.Add(this.panel9);
+            this.panel4.Location = new System.Drawing.Point(3, 317);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1280, 315);
+            this.panel4.Size = new System.Drawing.Size(1280, 313);
             this.panel4.TabIndex = 1;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.tableLayoutPanel8);
+            this.panel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel9.Location = new System.Drawing.Point(0, 0);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1280, 313);
+            this.panel9.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -3476,7 +3317,7 @@
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1280, 311);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1280, 308);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -3490,7 +3331,7 @@
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1274, 305);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1274, 302);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -3504,29 +3345,110 @@
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.66666F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.33333F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(631, 299);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(631, 296);
             this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.btnEliminarAgudo);
-            this.panel5.Controls.Add(this.btnEditarAgudo);
-            this.panel5.Controls.Add(this.btnNuevoAgudo);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(3, 265);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(625, 31);
-            this.panel5.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.grdAgudos);
             this.panel3.Controls.Add(this.label37);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 3);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(625, 256);
+            this.panel3.Size = new System.Drawing.Size(625, 253);
             this.panel3.TabIndex = 0;
+            // 
+            // grdAgudos
+            // 
+            this.grdAgudos.CausesValidation = false;
+            appearance74.BackColor2 = System.Drawing.Color.White;
+            appearance74.BorderColor = System.Drawing.Color.DarkGray;
+            appearance74.ForeColor = System.Drawing.Color.Black;
+            this.grdAgudos.DisplayLayout.Appearance = appearance74;
+            ultraGridColumn81.Header.Caption = "Fecha";
+            ultraGridColumn81.Header.VisiblePosition = 1;
+            ultraGridColumn81.Width = 82;
+            ultraGridColumn109.Header.Caption = "Problema Agudo";
+            ultraGridColumn109.Header.VisiblePosition = 0;
+            ultraGridColumn109.Width = 174;
+            ultraGridColumn110.Header.Caption = "Observación";
+            ultraGridColumn110.Header.VisiblePosition = 2;
+            ultraGridColumn110.Width = 342;
+            ultraGridBand11.Columns.AddRange(new object[] {
+            ultraGridColumn81,
+            ultraGridColumn109,
+            ultraGridColumn110});
+            appearance75.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance75.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance75.FontData.SizeInPoints = 8F;
+            appearance75.ForeColor = System.Drawing.Color.DarkBlue;
+            appearance75.TextHAlignAsString = "Left";
+            ultraGridBand11.Header.Appearance = appearance75;
+            this.grdAgudos.DisplayLayout.BandsSerializer.Add(ultraGridBand11);
+            this.grdAgudos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdAgudos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
+            this.grdAgudos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
+            appearance76.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance76;
+            appearance77.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
+            appearance77.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
+            appearance77.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance77;
+            this.grdAgudos.DisplayLayout.InterBandSpacing = 10;
+            this.grdAgudos.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdAgudos.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdAgudos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdAgudos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
+            this.grdAgudos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdAgudos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdAgudos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdAgudos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdAgudos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdAgudos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance78.BackColor = System.Drawing.Color.Transparent;
+            this.grdAgudos.DisplayLayout.Override.CardAreaAppearance = appearance78;
+            appearance79.BackColor = System.Drawing.Color.White;
+            appearance79.BackColor2 = System.Drawing.Color.White;
+            appearance79.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance79.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdAgudos.DisplayLayout.Override.CellAppearance = appearance79;
+            this.grdAgudos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance80.BackColor = System.Drawing.Color.White;
+            appearance80.BackColor2 = System.Drawing.Color.LightGray;
+            appearance80.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance80.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance80.BorderColor = System.Drawing.Color.DarkGray;
+            appearance80.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdAgudos.DisplayLayout.Override.HeaderAppearance = appearance80;
+            this.grdAgudos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance81.AlphaLevel = ((short)(187));
+            appearance81.BackColor = System.Drawing.Color.Gainsboro;
+            appearance81.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance81.ForeColor = System.Drawing.Color.Black;
+            appearance81.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.Override.RowAlternateAppearance = appearance81;
+            this.grdAgudos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance82.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance82.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance82.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            appearance82.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance82.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance82.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance82.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance82.FontData.BoldAsString = "False";
+            appearance82.ForeColor = System.Drawing.Color.Black;
+            this.grdAgudos.DisplayLayout.Override.SelectedRowAppearance = appearance82;
+            this.grdAgudos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdAgudos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdAgudos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdAgudos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdAgudos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdAgudos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdAgudos.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdAgudos.Location = new System.Drawing.Point(2, 22);
+            this.grdAgudos.Margin = new System.Windows.Forms.Padding(2);
+            this.grdAgudos.Name = "grdAgudos";
+            this.grdAgudos.Size = new System.Drawing.Size(621, 229);
+            this.grdAgudos.TabIndex = 50;
             // 
             // label37
             // 
@@ -3538,50 +3460,16 @@
             this.label37.TabIndex = 49;
             this.label37.Text = "PROBLEMAS AGUDOS";
             // 
-            // tabPage2
+            // panel5
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1292, 685);
-            this.tabPage2.TabIndex = 5;
-            this.tabPage2.Text = "DATOS GENERALES Y ANTECEDENTES";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1292, 685);
-            this.tabPage3.TabIndex = 6;
-            this.tabPage3.Text = "CUIDADOS PREVENTIVOS";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // lblUsuAct
-            // 
-            this.lblUsuAct.AutoSize = true;
-            this.lblUsuAct.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblUsuAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuAct.Location = new System.Drawing.Point(6, 665);
-            this.lblUsuAct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsuAct.Name = "lblUsuAct";
-            this.lblUsuAct.Size = new System.Drawing.Size(92, 13);
-            this.lblUsuAct.TabIndex = 67;
-            this.lblUsuAct.Text = "Usuario Graba:";
-            this.lblUsuAct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblUsuGraba
-            // 
-            this.lblUsuGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblUsuGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblUsuGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblUsuGraba.Location = new System.Drawing.Point(94, 666);
-            this.lblUsuGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsuGraba.Name = "lblUsuGraba";
-            this.lblUsuGraba.Size = new System.Drawing.Size(130, 15);
-            this.lblUsuGraba.TabIndex = 69;
-            this.lblUsuGraba.Text = "lblUsuGraba";
+            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.btnEliminarAgudo);
+            this.panel5.Controls.Add(this.btnEditarAgudo);
+            this.panel5.Controls.Add(this.btnNuevoAgudo);
+            this.panel5.Location = new System.Drawing.Point(3, 262);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(625, 31);
+            this.panel5.TabIndex = 1;
             // 
             // btnEliminarAgudo
             // 
@@ -3594,7 +3482,7 @@
             this.btnEliminarAgudo.ForeColor = System.Drawing.Color.Black;
             this.btnEliminarAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarAgudo.Image")));
             this.btnEliminarAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarAgudo.Location = new System.Drawing.Point(541, 3);
+            this.btnEliminarAgudo.Location = new System.Drawing.Point(541, 2);
             this.btnEliminarAgudo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarAgudo.Name = "btnEliminarAgudo";
             this.btnEliminarAgudo.Size = new System.Drawing.Size(75, 24);
@@ -3614,7 +3502,7 @@
             this.btnEditarAgudo.ForeColor = System.Drawing.Color.Black;
             this.btnEditarAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarAgudo.Image")));
             this.btnEditarAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarAgudo.Location = new System.Drawing.Point(462, 3);
+            this.btnEditarAgudo.Location = new System.Drawing.Point(462, 2);
             this.btnEditarAgudo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarAgudo.Name = "btnEditarAgudo";
             this.btnEditarAgudo.Size = new System.Drawing.Size(75, 24);
@@ -3633,108 +3521,13 @@
             this.btnNuevoAgudo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevoAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoAgudo.Image")));
             this.btnNuevoAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevoAgudo.Location = new System.Drawing.Point(383, 3);
+            this.btnNuevoAgudo.Location = new System.Drawing.Point(383, 2);
             this.btnNuevoAgudo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoAgudo.Name = "btnNuevoAgudo";
             this.btnNuevoAgudo.Size = new System.Drawing.Size(75, 24);
             this.btnNuevoAgudo.TabIndex = 53;
             this.btnNuevoAgudo.Text = "     Nuevo";
             this.btnNuevoAgudo.UseVisualStyleBackColor = false;
-            // 
-            // grdAgudos
-            // 
-            this.grdAgudos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdAgudos.CausesValidation = false;
-            appearance65.BackColor2 = System.Drawing.Color.White;
-            appearance65.BorderColor = System.Drawing.Color.DarkGray;
-            appearance65.ForeColor = System.Drawing.Color.Black;
-            this.grdAgudos.DisplayLayout.Appearance = appearance65;
-            ultraGridColumn81.Header.Caption = "Fecha";
-            ultraGridColumn81.Header.VisiblePosition = 1;
-            ultraGridColumn81.Width = 82;
-            ultraGridColumn109.Header.Caption = "Problema Agudo";
-            ultraGridColumn109.Header.VisiblePosition = 0;
-            ultraGridColumn109.Width = 174;
-            ultraGridColumn110.Header.Caption = "Observación";
-            ultraGridColumn110.Header.VisiblePosition = 2;
-            ultraGridColumn110.Width = 342;
-            ultraGridBand10.Columns.AddRange(new object[] {
-            ultraGridColumn81,
-            ultraGridColumn109,
-            ultraGridColumn110});
-            appearance66.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance66.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance66.FontData.SizeInPoints = 8F;
-            appearance66.ForeColor = System.Drawing.Color.DarkBlue;
-            appearance66.TextHAlignAsString = "Left";
-            ultraGridBand10.Header.Appearance = appearance66;
-            this.grdAgudos.DisplayLayout.BandsSerializer.Add(ultraGridBand10);
-            this.grdAgudos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.grdAgudos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
-            this.grdAgudos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
-            appearance67.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdAgudos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance67;
-            appearance68.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
-            appearance68.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
-            appearance68.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdAgudos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance68;
-            this.grdAgudos.DisplayLayout.InterBandSpacing = 10;
-            this.grdAgudos.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdAgudos.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdAgudos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdAgudos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
-            this.grdAgudos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdAgudos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdAgudos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdAgudos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdAgudos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdAgudos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance69.BackColor = System.Drawing.Color.Transparent;
-            this.grdAgudos.DisplayLayout.Override.CardAreaAppearance = appearance69;
-            appearance70.BackColor = System.Drawing.Color.White;
-            appearance70.BackColor2 = System.Drawing.Color.White;
-            appearance70.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance70.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdAgudos.DisplayLayout.Override.CellAppearance = appearance70;
-            this.grdAgudos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance71.BackColor = System.Drawing.Color.White;
-            appearance71.BackColor2 = System.Drawing.Color.LightGray;
-            appearance71.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance71.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance71.BorderColor = System.Drawing.Color.DarkGray;
-            appearance71.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdAgudos.DisplayLayout.Override.HeaderAppearance = appearance71;
-            this.grdAgudos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance72.AlphaLevel = ((short)(187));
-            appearance72.BackColor = System.Drawing.Color.Gainsboro;
-            appearance72.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance72.ForeColor = System.Drawing.Color.Black;
-            appearance72.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdAgudos.DisplayLayout.Override.RowAlternateAppearance = appearance72;
-            this.grdAgudos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance73.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance73.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance73.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
-            appearance73.BackGradientStyle = Infragistics.Win.GradientStyle.None;
-            appearance73.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            appearance73.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance73.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance73.FontData.BoldAsString = "False";
-            appearance73.ForeColor = System.Drawing.Color.Black;
-            this.grdAgudos.DisplayLayout.Override.SelectedRowAppearance = appearance73;
-            this.grdAgudos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdAgudos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdAgudos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdAgudos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdAgudos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdAgudos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdAgudos.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdAgudos.Location = new System.Drawing.Point(2, 18);
-            this.grdAgudos.Margin = new System.Windows.Forms.Padding(2);
-            this.grdAgudos.Name = "grdAgudos";
-            this.grdAgudos.Size = new System.Drawing.Size(621, 236);
-            this.grdAgudos.TabIndex = 50;
             // 
             // tableLayoutPanel5
             // 
@@ -3747,38 +3540,25 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.33334F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.66667F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(631, 299);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(631, 296);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.grdCronicos);
             this.panel2.Controls.Add(this.label26);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(625, 255);
+            this.panel2.Size = new System.Drawing.Size(625, 252);
             this.panel2.TabIndex = 0;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(3, 2);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(168, 19);
-            this.label26.TabIndex = 2;
-            this.label26.Text = "PROBLEMAS CRÓNICOS";
             // 
             // grdCronicos
             // 
-            this.grdCronicos.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdCronicos.CausesValidation = false;
-            appearance74.BackColor2 = System.Drawing.Color.White;
-            appearance74.BorderColor = System.Drawing.Color.DarkGray;
-            appearance74.ForeColor = System.Drawing.Color.Black;
-            this.grdCronicos.DisplayLayout.Appearance = appearance74;
+            appearance83.BackColor2 = System.Drawing.Color.White;
+            appearance83.BorderColor = System.Drawing.Color.DarkGray;
+            appearance83.ForeColor = System.Drawing.Color.Black;
+            this.grdCronicos.DisplayLayout.Appearance = appearance83;
             ultraGridColumn57.Header.Caption = "Fecha";
             ultraGridColumn57.Header.VisiblePosition = 0;
             ultraGridColumn57.Width = 99;
@@ -3791,27 +3571,27 @@
             ultraGridColumn111.Header.Caption = "Observación";
             ultraGridColumn111.Header.VisiblePosition = 3;
             ultraGridColumn111.Width = 151;
-            ultraGridBand11.Columns.AddRange(new object[] {
+            ultraGridBand12.Columns.AddRange(new object[] {
             ultraGridColumn57,
             ultraGridColumn101,
             ultraGridColumn102,
             ultraGridColumn111});
-            appearance75.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance75.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance75.FontData.SizeInPoints = 8F;
-            appearance75.ForeColor = System.Drawing.Color.DarkBlue;
-            appearance75.TextHAlignAsString = "Left";
-            ultraGridBand11.Header.Appearance = appearance75;
-            this.grdCronicos.DisplayLayout.BandsSerializer.Add(ultraGridBand11);
+            appearance84.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance84.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance84.FontData.SizeInPoints = 8F;
+            appearance84.ForeColor = System.Drawing.Color.DarkBlue;
+            appearance84.TextHAlignAsString = "Left";
+            ultraGridBand12.Header.Appearance = appearance84;
+            this.grdCronicos.DisplayLayout.BandsSerializer.Add(ultraGridBand12);
             this.grdCronicos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
             this.grdCronicos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
             this.grdCronicos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
-            appearance76.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdCronicos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance76;
-            appearance77.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
-            appearance77.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
-            appearance77.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdCronicos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance77;
+            appearance85.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance85;
+            appearance86.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
+            appearance86.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
+            appearance86.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance86;
             this.grdCronicos.DisplayLayout.InterBandSpacing = 10;
             this.grdCronicos.DisplayLayout.MaxColScrollRegions = 1;
             this.grdCronicos.DisplayLayout.MaxRowScrollRegions = 1;
@@ -3823,39 +3603,39 @@
             this.grdCronicos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.grdCronicos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
             this.grdCronicos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance78.BackColor = System.Drawing.Color.Transparent;
-            this.grdCronicos.DisplayLayout.Override.CardAreaAppearance = appearance78;
-            appearance79.BackColor = System.Drawing.Color.White;
-            appearance79.BackColor2 = System.Drawing.Color.White;
-            appearance79.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance79.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdCronicos.DisplayLayout.Override.CellAppearance = appearance79;
+            appearance87.BackColor = System.Drawing.Color.Transparent;
+            this.grdCronicos.DisplayLayout.Override.CardAreaAppearance = appearance87;
+            appearance88.BackColor = System.Drawing.Color.White;
+            appearance88.BackColor2 = System.Drawing.Color.White;
+            appearance88.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance88.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdCronicos.DisplayLayout.Override.CellAppearance = appearance88;
             this.grdCronicos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance80.BackColor = System.Drawing.Color.White;
-            appearance80.BackColor2 = System.Drawing.Color.LightGray;
-            appearance80.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance80.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance80.BorderColor = System.Drawing.Color.DarkGray;
-            appearance80.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdCronicos.DisplayLayout.Override.HeaderAppearance = appearance80;
+            appearance89.BackColor = System.Drawing.Color.White;
+            appearance89.BackColor2 = System.Drawing.Color.LightGray;
+            appearance89.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance89.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance89.BorderColor = System.Drawing.Color.DarkGray;
+            appearance89.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdCronicos.DisplayLayout.Override.HeaderAppearance = appearance89;
             this.grdCronicos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance81.AlphaLevel = ((short)(187));
-            appearance81.BackColor = System.Drawing.Color.Gainsboro;
-            appearance81.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance81.ForeColor = System.Drawing.Color.Black;
-            appearance81.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdCronicos.DisplayLayout.Override.RowAlternateAppearance = appearance81;
+            appearance90.AlphaLevel = ((short)(187));
+            appearance90.BackColor = System.Drawing.Color.Gainsboro;
+            appearance90.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance90.ForeColor = System.Drawing.Color.Black;
+            appearance90.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.Override.RowAlternateAppearance = appearance90;
             this.grdCronicos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance82.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance82.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance82.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
-            appearance82.BackGradientStyle = Infragistics.Win.GradientStyle.None;
-            appearance82.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            appearance82.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance82.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance82.FontData.BoldAsString = "False";
-            appearance82.ForeColor = System.Drawing.Color.Black;
-            this.grdCronicos.DisplayLayout.Override.SelectedRowAppearance = appearance82;
+            appearance91.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance91.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance91.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            appearance91.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance91.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance91.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance91.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance91.FontData.BoldAsString = "False";
+            appearance91.ForeColor = System.Drawing.Color.Black;
+            this.grdCronicos.DisplayLayout.Override.SelectedRowAppearance = appearance91;
             this.grdCronicos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.grdCronicos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
             this.grdCronicos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
@@ -3863,19 +3643,29 @@
             this.grdCronicos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
             this.grdCronicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdCronicos.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdCronicos.Location = new System.Drawing.Point(2, 18);
+            this.grdCronicos.Location = new System.Drawing.Point(2, 22);
             this.grdCronicos.Margin = new System.Windows.Forms.Padding(2);
             this.grdCronicos.Name = "grdCronicos";
-            this.grdCronicos.Size = new System.Drawing.Size(622, 236);
+            this.grdCronicos.Size = new System.Drawing.Size(622, 229);
             this.grdCronicos.TabIndex = 46;
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.Location = new System.Drawing.Point(3, 2);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(168, 19);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "PROBLEMAS CRÓNICOS";
             // 
             // panel6
             // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.Controls.Add(this.btnNuevoCronico);
             this.panel6.Controls.Add(this.btnEditarCronico);
             this.panel6.Controls.Add(this.btnEliminarCronico);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(3, 264);
+            this.panel6.Location = new System.Drawing.Point(3, 261);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(625, 32);
             this.panel6.TabIndex = 1;
@@ -3891,7 +3681,7 @@
             this.btnNuevoCronico.ForeColor = System.Drawing.Color.Black;
             this.btnNuevoCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoCronico.Image")));
             this.btnNuevoCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevoCronico.Location = new System.Drawing.Point(393, 3);
+            this.btnNuevoCronico.Location = new System.Drawing.Point(382, 3);
             this.btnNuevoCronico.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoCronico.Name = "btnNuevoCronico";
             this.btnNuevoCronico.Size = new System.Drawing.Size(75, 24);
@@ -3910,7 +3700,7 @@
             this.btnEditarCronico.ForeColor = System.Drawing.Color.Black;
             this.btnEditarCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarCronico.Image")));
             this.btnEditarCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarCronico.Location = new System.Drawing.Point(472, 3);
+            this.btnEditarCronico.Location = new System.Drawing.Point(461, 3);
             this.btnEditarCronico.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarCronico.Name = "btnEditarCronico";
             this.btnEditarCronico.Size = new System.Drawing.Size(75, 24);
@@ -3929,7 +3719,7 @@
             this.btnEliminarCronico.ForeColor = System.Drawing.Color.Black;
             this.btnEliminarCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarCronico.Image")));
             this.btnEliminarCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarCronico.Location = new System.Drawing.Point(551, 3);
+            this.btnEliminarCronico.Location = new System.Drawing.Point(540, 3);
             this.btnEliminarCronico.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarCronico.Name = "btnEliminarCronico";
             this.btnEliminarCronico.Size = new System.Drawing.Size(75, 24);
@@ -3938,6 +3728,525 @@
             this.btnEliminarCronico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminarCronico.UseVisualStyleBackColor = false;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1292, 631);
+            this.tabPage2.TabIndex = 5;
+            this.tabPage2.Text = "DATOS GENERALES Y ANTECEDENTES";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1292, 631);
+            this.tabPage3.TabIndex = 6;
+            this.tabPage3.Text = "CUIDADOS PREVENTIVOS";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 656);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1300, 55);
+            this.tableLayoutPanel6.TabIndex = 5;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel7.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.12983F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.87017F));
+            this.tableLayoutPanel7.Controls.Add(this.panel7, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.panel8, 1, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1294, 49);
+            this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Controls.Add(this.lblTrabajador);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Controls.Add(this.label18);
+            this.panel7.Controls.Add(this.label16);
+            this.panel7.Controls.Add(this.label20);
+            this.panel7.Controls.Add(this.lblProtocolName);
+            this.panel7.Controls.Add(this.label21);
+            this.panel7.Controls.Add(this.lblView);
+            this.panel7.Controls.Add(this.label24);
+            this.panel7.Controls.Add(this.btnViewWorker);
+            this.panel7.Controls.Add(this.lblFechaGraba);
+            this.panel7.Controls.Add(this.lblUsuAct);
+            this.panel7.Controls.Add(this.lblUsuGraba);
+            this.panel7.Controls.Add(this.label17);
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1004, 43);
+            this.panel7.TabIndex = 0;
+            // 
+            // lblTrabajador
+            // 
+            this.lblTrabajador.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblTrabajador.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTrabajador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrabajador.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTrabajador.Location = new System.Drawing.Point(368, 3);
+            this.lblTrabajador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTrabajador.Name = "lblTrabajador";
+            this.lblTrabajador.Size = new System.Drawing.Size(237, 15);
+            this.lblTrabajador.TabIndex = 77;
+            this.lblTrabajador.Text = "lblTrabajador";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(307, 4);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 78;
+            this.label1.Text = "Pciente:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label18.Location = new System.Drawing.Point(712, 24);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(139, 15);
+            this.label18.TabIndex = 86;
+            this.label18.Text = "lblServicio";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(296, 25);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 13);
+            this.label16.TabIndex = 75;
+            this.label16.Text = "Protocolo:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label20.Location = new System.Drawing.Point(712, 4);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(139, 15);
+            this.label20.TabIndex = 87;
+            this.label20.Text = "lblTipoEso";
+            // 
+            // lblProtocolName
+            // 
+            this.lblProtocolName.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblProtocolName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblProtocolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProtocolName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblProtocolName.Location = new System.Drawing.Point(368, 24);
+            this.lblProtocolName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProtocolName.Name = "lblProtocolName";
+            this.lblProtocolName.Size = new System.Drawing.Size(268, 15);
+            this.lblProtocolName.TabIndex = 76;
+            this.lblProtocolName.Text = "lblProtocolName";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(651, 25);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(57, 13);
+            this.label21.TabIndex = 85;
+            this.label21.Text = "Servicio:";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblView
+            // 
+            this.lblView.AutoSize = true;
+            this.lblView.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblView.ForeColor = System.Drawing.Color.Blue;
+            this.lblView.Location = new System.Drawing.Point(856, 16);
+            this.lblView.Name = "lblView";
+            this.lblView.Size = new System.Drawing.Size(67, 13);
+            this.lblView.TabIndex = 80;
+            this.lblView.Text = "Ver Menos";
+            this.lblView.Click += new System.EventHandler(this.lblView_Click_1);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(647, 4);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(61, 13);
+            this.label24.TabIndex = 88;
+            this.label24.Text = "Tipo Eso:";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnViewWorker
+            // 
+            this.btnViewWorker.BackColor = System.Drawing.SystemColors.Control;
+            this.btnViewWorker.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnViewWorker.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnViewWorker.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnViewWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewWorker.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_suit;
+            this.btnViewWorker.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnViewWorker.Location = new System.Drawing.Point(608, 1);
+            this.btnViewWorker.Margin = new System.Windows.Forms.Padding(2);
+            this.btnViewWorker.Name = "btnViewWorker";
+            this.btnViewWorker.Size = new System.Drawing.Size(28, 21);
+            this.btnViewWorker.TabIndex = 79;
+            this.btnViewWorker.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnViewWorker.UseVisualStyleBackColor = false;
+            this.btnViewWorker.Click += new System.EventHandler(this.btnViewWorker_Click_1);
+            // 
+            // lblFechaGraba
+            // 
+            this.lblFechaGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblFechaGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblFechaGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblFechaGraba.Location = new System.Drawing.Point(108, 24);
+            this.lblFechaGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFechaGraba.Name = "lblFechaGraba";
+            this.lblFechaGraba.Size = new System.Drawing.Size(169, 15);
+            this.lblFechaGraba.TabIndex = 84;
+            this.lblFechaGraba.Text = "lblFechaGraba";
+            // 
+            // lblUsuAct
+            // 
+            this.lblUsuAct.AutoSize = true;
+            this.lblUsuAct.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUsuAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuAct.Location = new System.Drawing.Point(12, 3);
+            this.lblUsuAct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsuAct.Name = "lblUsuAct";
+            this.lblUsuAct.Size = new System.Drawing.Size(92, 13);
+            this.lblUsuAct.TabIndex = 81;
+            this.lblUsuAct.Text = "Usuario Graba:";
+            this.lblUsuAct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblUsuGraba
+            // 
+            this.lblUsuGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUsuGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblUsuGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblUsuGraba.Location = new System.Drawing.Point(108, 3);
+            this.lblUsuGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsuGraba.Name = "lblUsuGraba";
+            this.lblUsuGraba.Size = new System.Drawing.Size(169, 15);
+            this.lblUsuGraba.TabIndex = 83;
+            this.lblUsuGraba.Text = "lblUsuGraba";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(20, 26);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(84, 13);
+            this.label17.TabIndex = 82;
+            this.label17.Text = "Fecha Graba:";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.Controls.Add(this.btnPerson);
+            this.panel8.Controls.Add(this.btnSalir);
+            this.panel8.Location = new System.Drawing.Point(1013, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(278, 43);
+            this.panel8.TabIndex = 1;
+            // 
+            // btnPerson
+            // 
+            this.btnPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPerson.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerson.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerson.Location = new System.Drawing.Point(39, 4);
+            this.btnPerson.Name = "btnPerson";
+            this.btnPerson.Size = new System.Drawing.Size(224, 30);
+            this.btnPerson.TabIndex = 100;
+            this.btnPerson.Text = "Ver Datos Generales";
+            this.btnPerson.UseVisualStyleBackColor = false;
+            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click_1);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
+            this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalir.Location = new System.Drawing.Point(2, 2);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(161, 24);
+            this.btnSalir.TabIndex = 68;
+            this.btnSalir.Text = "Salir de Evaluación Medica";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Visible = false;
+            // 
+            // tableLayoutPanel8
+            // 
+            this.tableLayoutPanel8.ColumnCount = 3;
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 0.703125F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 98.28125F));
+            this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1.015625F));
+            this.tableLayoutPanel8.Controls.Add(this.panel10, 1, 0);
+            this.tableLayoutPanel8.Controls.Add(this.panel11, 1, 1);
+            this.tableLayoutPanel8.Controls.Add(this.panel12, 1, 2);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel8.Name = "tableLayoutPanel8";
+            this.tableLayoutPanel8.RowCount = 3;
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.0687F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 88.9313F));
+            this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(1280, 313);
+            this.tableLayoutPanel8.TabIndex = 0;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.label38);
+            this.panel10.Location = new System.Drawing.Point(12, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(1252, 25);
+            this.panel10.TabIndex = 0;
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.grdPlanIntegral);
+            this.panel11.Location = new System.Drawing.Point(12, 34);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(1252, 244);
+            this.panel11.TabIndex = 1;
+            // 
+            // panel12
+            // 
+            this.panel12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel12.Controls.Add(this.btnEliminarPlan);
+            this.panel12.Controls.Add(this.btnEditarPlan);
+            this.panel12.Controls.Add(this.btnNuevoPlan);
+            this.panel12.Location = new System.Drawing.Point(12, 284);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(1252, 26);
+            this.panel12.TabIndex = 2;
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(4, 2);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(213, 19);
+            this.label38.TabIndex = 53;
+            this.label38.Text = "PLAN DE ATENCIÓN INTEGRAL";
+            // 
+            // grdPlanIntegral
+            // 
+            this.grdPlanIntegral.CausesValidation = false;
+            appearance65.BackColor2 = System.Drawing.Color.White;
+            appearance65.BorderColor = System.Drawing.Color.DarkGray;
+            appearance65.ForeColor = System.Drawing.Color.Black;
+            this.grdPlanIntegral.DisplayLayout.Appearance = appearance65;
+            ultraGridColumn49.Header.Caption = "Tipo";
+            ultraGridColumn49.Header.VisiblePosition = 0;
+            ultraGridColumn49.Width = 172;
+            ultraGridColumn112.Header.Caption = "Fecha";
+            ultraGridColumn112.Header.VisiblePosition = 1;
+            ultraGridColumn112.Width = 194;
+            ultraGridColumn113.Header.Caption = "Descripción";
+            ultraGridColumn113.Header.VisiblePosition = 2;
+            ultraGridColumn113.Width = 386;
+            ultraGridColumn114.Header.Caption = "Lugar";
+            ultraGridColumn114.Header.VisiblePosition = 3;
+            ultraGridColumn114.Width = 326;
+            ultraGridBand10.Columns.AddRange(new object[] {
+            ultraGridColumn49,
+            ultraGridColumn112,
+            ultraGridColumn113,
+            ultraGridColumn114});
+            appearance66.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance66.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance66.FontData.SizeInPoints = 8F;
+            appearance66.ForeColor = System.Drawing.Color.DarkBlue;
+            appearance66.TextHAlignAsString = "Left";
+            ultraGridBand10.Header.Appearance = appearance66;
+            this.grdPlanIntegral.DisplayLayout.BandsSerializer.Add(ultraGridBand10);
+            this.grdPlanIntegral.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdPlanIntegral.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
+            this.grdPlanIntegral.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
+            appearance67.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdPlanIntegral.DisplayLayout.EmptyRowSettings.CellAppearance = appearance67;
+            appearance68.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
+            appearance68.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
+            appearance68.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdPlanIntegral.DisplayLayout.EmptyRowSettings.RowAppearance = appearance68;
+            this.grdPlanIntegral.DisplayLayout.InterBandSpacing = 10;
+            this.grdPlanIntegral.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdPlanIntegral.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdPlanIntegral.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdPlanIntegral.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
+            this.grdPlanIntegral.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdPlanIntegral.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdPlanIntegral.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdPlanIntegral.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdPlanIntegral.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdPlanIntegral.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance69.BackColor = System.Drawing.Color.Transparent;
+            this.grdPlanIntegral.DisplayLayout.Override.CardAreaAppearance = appearance69;
+            appearance70.BackColor = System.Drawing.Color.White;
+            appearance70.BackColor2 = System.Drawing.Color.White;
+            appearance70.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance70.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdPlanIntegral.DisplayLayout.Override.CellAppearance = appearance70;
+            this.grdPlanIntegral.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance71.BackColor = System.Drawing.Color.White;
+            appearance71.BackColor2 = System.Drawing.Color.LightGray;
+            appearance71.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance71.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance71.BorderColor = System.Drawing.Color.DarkGray;
+            appearance71.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdPlanIntegral.DisplayLayout.Override.HeaderAppearance = appearance71;
+            this.grdPlanIntegral.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance72.AlphaLevel = ((short)(187));
+            appearance72.BackColor = System.Drawing.Color.Gainsboro;
+            appearance72.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance72.ForeColor = System.Drawing.Color.Black;
+            appearance72.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdPlanIntegral.DisplayLayout.Override.RowAlternateAppearance = appearance72;
+            this.grdPlanIntegral.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance73.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance73.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance73.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            appearance73.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance73.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance73.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance73.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance73.FontData.BoldAsString = "False";
+            appearance73.ForeColor = System.Drawing.Color.Black;
+            this.grdPlanIntegral.DisplayLayout.Override.SelectedRowAppearance = appearance73;
+            this.grdPlanIntegral.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdPlanIntegral.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdPlanIntegral.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdPlanIntegral.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdPlanIntegral.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdPlanIntegral.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdPlanIntegral.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdPlanIntegral.Location = new System.Drawing.Point(0, 2);
+            this.grdPlanIntegral.Margin = new System.Windows.Forms.Padding(2);
+            this.grdPlanIntegral.Name = "grdPlanIntegral";
+            this.grdPlanIntegral.Size = new System.Drawing.Size(1250, 240);
+            this.grdPlanIntegral.TabIndex = 63;
+            // 
+            // btnEliminarPlan
+            // 
+            this.btnEliminarPlan.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEliminarPlan.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEliminarPlan.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEliminarPlan.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEliminarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarPlan.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarPlan.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarPlan.Image")));
+            this.btnEliminarPlan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminarPlan.Location = new System.Drawing.Point(1176, 1);
+            this.btnEliminarPlan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarPlan.Name = "btnEliminarPlan";
+            this.btnEliminarPlan.Size = new System.Drawing.Size(75, 24);
+            this.btnEliminarPlan.TabIndex = 68;
+            this.btnEliminarPlan.Text = "Eliminar";
+            this.btnEliminarPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminarPlan.UseVisualStyleBackColor = false;
+            // 
+            // btnEditarPlan
+            // 
+            this.btnEditarPlan.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditarPlan.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditarPlan.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditarPlan.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditarPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarPlan.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarPlan.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarPlan.Image")));
+            this.btnEditarPlan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarPlan.Location = new System.Drawing.Point(1097, 1);
+            this.btnEditarPlan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarPlan.Name = "btnEditarPlan";
+            this.btnEditarPlan.Size = new System.Drawing.Size(75, 24);
+            this.btnEditarPlan.TabIndex = 66;
+            this.btnEditarPlan.Text = "   Editar";
+            this.btnEditarPlan.UseVisualStyleBackColor = false;
+            // 
+            // btnNuevoPlan
+            // 
+            this.btnNuevoPlan.BackColor = System.Drawing.SystemColors.Control;
+            this.btnNuevoPlan.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnNuevoPlan.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnNuevoPlan.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnNuevoPlan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoPlan.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoPlan.ForeColor = System.Drawing.Color.Black;
+            this.btnNuevoPlan.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoPlan.Image")));
+            this.btnNuevoPlan.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNuevoPlan.Location = new System.Drawing.Point(1018, 1);
+            this.btnNuevoPlan.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevoPlan.Name = "btnNuevoPlan";
+            this.btnNuevoPlan.Size = new System.Drawing.Size(75, 24);
+            this.btnNuevoPlan.TabIndex = 67;
+            this.btnNuevoPlan.Text = "     Nuevo";
+            this.btnNuevoPlan.UseVisualStyleBackColor = false;
+            // 
             // FrmEsoV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3945,22 +4254,7 @@
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1300, 711);
-            this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label21);
-            this.Controls.Add(this.label24);
-            this.Controls.Add(this.lblFechaGraba);
-            this.Controls.Add(this.lblUsuGraba);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.lblUsuAct);
-            this.Controls.Add(this.btnViewWorker);
-            this.Controls.Add(this.lblView);
-            this.Controls.Add(this.lblProtocolName);
-            this.Controls.Add(this.lblTrabajador);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.statusStripFooter);
+            this.Controls.Add(this.tableLayoutPanel6);
             this.Controls.Add(this.tcSubMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
@@ -4019,44 +4313,42 @@
             this.tcSubMain.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdAgudos)).EndInit();
+            this.panel5.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdCronicos)).EndInit();
             this.panel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).EndInit();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.tableLayoutPanel8.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel12.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdPlanIntegral)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblProtocolName;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label lblTrabajador;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblView;
         private Infragistics.Win.Misc.UltraValidator uvExamen;
-        private System.Windows.Forms.Button btnViewWorker;
-        private System.Windows.Forms.StatusStrip statusStripFooter;
-        private System.Windows.Forms.Button btnSalir;
         private Infragistics.Win.Misc.UltraValidator uvAnamnesis;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem TsmverMas;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label lblFechaGraba;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Label label24;
         private Infragistics.Win.Misc.UltraValidator uvAnalisisDx;
         private System.ComponentModel.BackgroundWorker bgwSaveExamen;
         private System.Windows.Forms.Button btnCerrarESO;
@@ -4192,10 +4484,7 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Label lblUsuAct;
-        private System.Windows.Forms.Label lblUsuGraba;
         private System.Windows.Forms.Button btnServicioAnterior;
-        private System.Windows.Forms.Button btnPerson;
         private System.Windows.Forms.Button btnReceta;
         private System.Windows.Forms.Button btnVisorReporteExamen;
         private System.Windows.Forms.Button btnAceptarDX;
@@ -4208,7 +4497,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private Infragistics.Win.Misc.UltraFlowLayoutManager ultraFlowLayoutManager1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel5;
@@ -4225,5 +4513,36 @@
         private System.Windows.Forms.Button btnNuevoCronico;
         private System.Windows.Forms.Button btnEditarCronico;
         private System.Windows.Forms.Button btnEliminarCronico;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label lblTrabajador;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label lblProtocolName;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label lblView;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Button btnViewWorker;
+        private System.Windows.Forms.Label lblFechaGraba;
+        private System.Windows.Forms.Label lblUsuAct;
+        private System.Windows.Forms.Label lblUsuGraba;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.Button btnPerson;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Label label38;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdPlanIntegral;
+        private System.Windows.Forms.Button btnEliminarPlan;
+        private System.Windows.Forms.Button btnEditarPlan;
+        private System.Windows.Forms.Button btnNuevoPlan;
     }
 }
