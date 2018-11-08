@@ -209,10 +209,10 @@
             Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Tipo", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Tipo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn112 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn113 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn114 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Lugar");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn114 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Lugar", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
@@ -4133,7 +4133,7 @@
             ultraGridColumn112.Width = 194;
             ultraGridColumn113.Header.Caption = "Descripción";
             ultraGridColumn113.Header.VisiblePosition = 2;
-            ultraGridColumn113.Width = 386;
+            ultraGridColumn113.Width = 456;
             ultraGridColumn114.Header.Caption = "Lugar";
             ultraGridColumn114.Header.VisiblePosition = 3;
             ultraGridColumn114.Width = 326;
