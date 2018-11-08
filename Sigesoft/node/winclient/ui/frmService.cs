@@ -371,7 +371,7 @@ namespace Sigesoft.Node.WinClient.UI
                //frm = new Operations.frmEso(_serviceId, null, null, TserviceId);
                //frm.ShowDialog();
 
-               frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId);
+               frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                frm.ShowDialog();
            }
            else
@@ -388,7 +388,7 @@ namespace Sigesoft.Node.WinClient.UI
                         this.Enabled = false;
                         //frm = new Operations.frmEso(_serviceId, null, "Service", TserviceId);
                         //frm.ShowDialog();
-                        frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId);
+                        frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                         frm.ShowDialog();
                         this.Enabled = true;
 	                }
@@ -397,7 +397,7 @@ namespace Sigesoft.Node.WinClient.UI
                         this.Enabled = false;
                         //frm = new Operations.frmEso(_serviceId, null, "View", TserviceId);
                         //frm.ShowDialog();
-                        frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId);
+                        frm = new Operations.FrmEsoV2(_serviceId, "TRIAJE", "Service", Globals.ClientSession.i_RoleId.Value, Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_SystemUserId, TserviceId);
                         frm.ShowDialog();
                         this.Enabled = true;                   
                    }

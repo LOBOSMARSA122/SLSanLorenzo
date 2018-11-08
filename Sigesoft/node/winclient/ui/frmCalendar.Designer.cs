@@ -907,7 +907,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.MediumBlue;
             this.groupBox4.Location = new System.Drawing.Point(14, 6);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(422, 185);
+            this.groupBox4.Size = new System.Drawing.Size(405, 185);
             this.groupBox4.TabIndex = 52;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Datos Generales";
@@ -917,7 +917,7 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.txtExisteFirma);
             this.panel1.Controls.Add(this.label19);
-            this.panel1.Location = new System.Drawing.Point(214, 154);
+            this.panel1.Location = new System.Drawing.Point(197, 154);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(201, 25);
             this.panel1.TabIndex = 100;
@@ -957,7 +957,7 @@
             this.txtExisteHuella.Margin = new System.Windows.Forms.Padding(2);
             this.txtExisteHuella.Name = "txtExisteHuella";
             this.txtExisteHuella.ReadOnly = true;
-            this.txtExisteHuella.Size = new System.Drawing.Size(120, 20);
+            this.txtExisteHuella.Size = new System.Drawing.Size(103, 20);
             this.txtExisteHuella.TabIndex = 97;
             // 
             // label16
@@ -978,7 +978,7 @@
             this.pbImage.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.pbImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pbImage.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbImage.Location = new System.Drawing.Point(255, 23);
+            this.pbImage.Location = new System.Drawing.Point(238, 23);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(160, 128);
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -995,7 +995,7 @@
             this.txtTrabajador.Margin = new System.Windows.Forms.Padding(2);
             this.txtTrabajador.Name = "txtTrabajador";
             this.txtTrabajador.ReadOnly = true;
-            this.txtTrabajador.Size = new System.Drawing.Size(159, 20);
+            this.txtTrabajador.Size = new System.Drawing.Size(142, 20);
             this.txtTrabajador.TabIndex = 94;
             // 
             // label15
@@ -1043,7 +1043,7 @@
             this.txtProtocol.Margin = new System.Windows.Forms.Padding(2);
             this.txtProtocol.Name = "txtProtocol";
             this.txtProtocol.ReadOnly = true;
-            this.txtProtocol.Size = new System.Drawing.Size(159, 20);
+            this.txtProtocol.Size = new System.Drawing.Size(142, 20);
             this.txtProtocol.TabIndex = 88;
             // 
             // txtTypeESO
@@ -1055,7 +1055,7 @@
             this.txtTypeESO.Margin = new System.Windows.Forms.Padding(2);
             this.txtTypeESO.Name = "txtTypeESO";
             this.txtTypeESO.ReadOnly = true;
-            this.txtTypeESO.Size = new System.Drawing.Size(159, 20);
+            this.txtTypeESO.Size = new System.Drawing.Size(142, 20);
             this.txtTypeESO.TabIndex = 93;
             // 
             // txtService
@@ -1067,7 +1067,7 @@
             this.txtService.Margin = new System.Windows.Forms.Padding(2);
             this.txtService.Name = "txtService";
             this.txtService.ReadOnly = true;
-            this.txtService.Size = new System.Drawing.Size(159, 20);
+            this.txtService.Size = new System.Drawing.Size(142, 20);
             this.txtService.TabIndex = 91;
             // 
             // WorkingOrganization
@@ -1079,7 +1079,7 @@
             this.WorkingOrganization.Margin = new System.Windows.Forms.Padding(2);
             this.WorkingOrganization.Name = "WorkingOrganization";
             this.WorkingOrganization.ReadOnly = true;
-            this.WorkingOrganization.Size = new System.Drawing.Size(159, 20);
+            this.WorkingOrganization.Size = new System.Drawing.Size(142, 20);
             this.WorkingOrganization.TabIndex = 85;
             // 
             // label11
@@ -1569,7 +1569,7 @@
             this.ugComponentes.Location = new System.Drawing.Point(14, 196);
             this.ugComponentes.Margin = new System.Windows.Forms.Padding(2);
             this.ugComponentes.Name = "ugComponentes";
-            this.ugComponentes.Size = new System.Drawing.Size(422, 218);
+            this.ugComponentes.Size = new System.Drawing.Size(405, 218);
             this.ugComponentes.TabIndex = 100;
             this.ugComponentes.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.ugComponentes_InitializeLayout);
             this.ugComponentes.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.ugComponentes_InitializeRow);
@@ -1589,7 +1589,7 @@
             this.btnDetallado.ForeColor = System.Drawing.Color.Black;
             this.btnDetallado.Image = global::Sigesoft.Node.WinClient.UI.Resources.printer_go;
             this.btnDetallado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDetallado.Location = new System.Drawing.Point(14, 418);
+            this.btnDetallado.Location = new System.Drawing.Point(-3, 418);
             this.btnDetallado.Margin = new System.Windows.Forms.Padding(2);
             this.btnDetallado.Name = "btnDetallado";
             this.btnDetallado.Size = new System.Drawing.Size(83, 24);
@@ -1612,7 +1612,7 @@
             this.btnConsentimiento.ForeColor = System.Drawing.Color.Black;
             this.btnConsentimiento.Image = global::Sigesoft.Node.WinClient.UI.Resources.printer_mono;
             this.btnConsentimiento.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnConsentimiento.Location = new System.Drawing.Point(137, 418);
+            this.btnConsentimiento.Location = new System.Drawing.Point(120, 418);
             this.btnConsentimiento.Margin = new System.Windows.Forms.Padding(2);
             this.btnConsentimiento.Name = "btnConsentimiento";
             this.btnConsentimiento.Size = new System.Drawing.Size(157, 24);
@@ -1635,7 +1635,7 @@
             this.btnImprimirHojaRuta.ForeColor = System.Drawing.Color.Black;
             this.btnImprimirHojaRuta.Image = global::Sigesoft.Node.WinClient.UI.Resources.printer_go;
             this.btnImprimirHojaRuta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImprimirHojaRuta.Location = new System.Drawing.Point(298, 418);
+            this.btnImprimirHojaRuta.Location = new System.Drawing.Point(281, 418);
             this.btnImprimirHojaRuta.Margin = new System.Windows.Forms.Padding(2);
             this.btnImprimirHojaRuta.Name = "btnImprimirHojaRuta";
             this.btnImprimirHojaRuta.Size = new System.Drawing.Size(138, 24);
