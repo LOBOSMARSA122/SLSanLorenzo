@@ -4248,18 +4248,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 if (ctrl is CheckBox)
                 {
-                    if ("N009-OTS00000015" == ((CheckBox)ctrl).Attributes.GetValue("Tag").ToString())
-                    {
-                        var x = ListaValores.Find(p => p.v_ComponentFieldsId == "N009-OTS00000015");
-                        var y = x.ServiceComponentFieldValues;
-                        var z = y[0].v_Value1;
-                    }
+                    //if ("N009-OTS00000015" == ((CheckBox)ctrl).Attributes.GetValue("Tag").ToString())
+                    //{
+                    //    var x = ListaValores.Find(p => p.v_ComponentFieldsId == "N009-OTS00000015");
+                    //    var y = x.ServiceComponentFieldValues;
+                    //    var z = y[0].v_Value1;
+                    //}
 
                     if (((CheckBox)ctrl).Attributes.GetValue("Tag") != null)
                     {
                         string ComponentFieldId = ((CheckBox)ctrl).Attributes.GetValue("Tag").ToString();
 
-                        ((CheckBox)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "2" ? false : true;
+                        ((CheckBox)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                     }
                 }
 
