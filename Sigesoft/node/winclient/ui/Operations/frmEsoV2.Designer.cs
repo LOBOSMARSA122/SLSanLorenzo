@@ -180,6 +180,20 @@
             Infragistics.Win.Appearance appearance62 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance63 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance64 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Tipo");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn112 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn113 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn114 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Lugar", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance71 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance72 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance73 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance74 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand11 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn81 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
@@ -207,20 +221,6 @@
             Infragistics.Win.Appearance appearance89 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance65 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand10 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Tipo");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn112 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Fecha");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn113 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Descripcion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn114 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Lugar", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.Appearance appearance66 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance67 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance68 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance69 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance70 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance71 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance72 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance73 = new Infragistics.Win.Appearance();
             this.uvExamen = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.uvAnamnesis = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -373,8 +373,6 @@
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.grdAgudos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.label37 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.btnEliminarAgudo = new System.Windows.Forms.Button();
@@ -382,12 +380,7 @@
             this.btnNuevoAgudo = new System.Windows.Forms.Button();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.grdCronicos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.label26 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.btnNuevoCronico = new System.Windows.Forms.Button();
-            this.btnEditarCronico = new System.Windows.Forms.Button();
-            this.btnEliminarCronico = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.ultraFlowLayoutManager1 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
@@ -420,6 +413,15 @@
             this.btnEliminarPlan = new System.Windows.Forms.Button();
             this.btnEditarPlan = new System.Windows.Forms.Button();
             this.btnNuevoPlan = new System.Windows.Forms.Button();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.grdAgudos = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.btnNuevoCronico = new System.Windows.Forms.Button();
+            this.btnEditarCronico = new System.Windows.Forms.Button();
+            this.btnEliminarCronico = new System.Windows.Forms.Button();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.grdCronicos = new Infragistics.Win.UltraWinGrid.UltraGrid();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -466,13 +468,9 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdAgudos)).BeginInit();
             this.panel5.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdCronicos)).BeginInit();
-            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
@@ -483,6 +481,12 @@
             this.panel11.SuspendLayout();
             this.panel12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdPlanIntegral)).BeginInit();
+            this.panel13.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdAgudos)).BeginInit();
+            this.panel6.SuspendLayout();
+            this.panel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdCronicos)).BeginInit();
             this.SuspendLayout();
             // 
             // uvExamen
@@ -3349,127 +3353,24 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel4.ColumnCount = 1;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Controls.Add(this.panel5, 0, 2);
+            this.tableLayoutPanel4.Controls.Add(this.panel13, 0, 1);
             this.tableLayoutPanel4.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.panel5, 0, 1);
             this.tableLayoutPanel4.Location = new System.Drawing.Point(640, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 2;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.66666F));
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.33333F));
+            this.tableLayoutPanel4.RowCount = 3;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.81081F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.68919F));
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.16216F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(631, 296);
             this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.Controls.Add(this.grdAgudos);
-            this.panel3.Controls.Add(this.label37);
-            this.panel3.Location = new System.Drawing.Point(3, 3);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(625, 253);
-            this.panel3.TabIndex = 0;
-            // 
-            // grdAgudos
-            // 
-            this.grdAgudos.CausesValidation = false;
-            appearance74.BackColor2 = System.Drawing.Color.White;
-            appearance74.BorderColor = System.Drawing.Color.DarkGray;
-            appearance74.ForeColor = System.Drawing.Color.Black;
-            this.grdAgudos.DisplayLayout.Appearance = appearance74;
-            ultraGridColumn81.Header.Caption = "Fecha";
-            ultraGridColumn81.Header.VisiblePosition = 1;
-            ultraGridColumn81.Width = 82;
-            ultraGridColumn109.Header.Caption = "Problema Agudo";
-            ultraGridColumn109.Header.VisiblePosition = 0;
-            ultraGridColumn109.Width = 174;
-            ultraGridColumn110.Header.Caption = "Observación";
-            ultraGridColumn110.Header.VisiblePosition = 2;
-            ultraGridColumn110.Width = 342;
-            ultraGridBand11.Columns.AddRange(new object[] {
-            ultraGridColumn81,
-            ultraGridColumn109,
-            ultraGridColumn110});
-            appearance75.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance75.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance75.FontData.SizeInPoints = 8F;
-            appearance75.ForeColor = System.Drawing.Color.DarkBlue;
-            appearance75.TextHAlignAsString = "Left";
-            ultraGridBand11.Header.Appearance = appearance75;
-            this.grdAgudos.DisplayLayout.BandsSerializer.Add(ultraGridBand11);
-            this.grdAgudos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.grdAgudos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
-            this.grdAgudos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
-            appearance76.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdAgudos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance76;
-            appearance77.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
-            appearance77.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
-            appearance77.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdAgudos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance77;
-            this.grdAgudos.DisplayLayout.InterBandSpacing = 10;
-            this.grdAgudos.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdAgudos.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdAgudos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdAgudos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
-            this.grdAgudos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdAgudos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdAgudos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdAgudos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdAgudos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdAgudos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance78.BackColor = System.Drawing.Color.Transparent;
-            this.grdAgudos.DisplayLayout.Override.CardAreaAppearance = appearance78;
-            appearance79.BackColor = System.Drawing.Color.White;
-            appearance79.BackColor2 = System.Drawing.Color.White;
-            appearance79.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance79.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdAgudos.DisplayLayout.Override.CellAppearance = appearance79;
-            this.grdAgudos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance80.BackColor = System.Drawing.Color.White;
-            appearance80.BackColor2 = System.Drawing.Color.LightGray;
-            appearance80.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance80.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance80.BorderColor = System.Drawing.Color.DarkGray;
-            appearance80.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdAgudos.DisplayLayout.Override.HeaderAppearance = appearance80;
-            this.grdAgudos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance81.AlphaLevel = ((short)(187));
-            appearance81.BackColor = System.Drawing.Color.Gainsboro;
-            appearance81.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance81.ForeColor = System.Drawing.Color.Black;
-            appearance81.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdAgudos.DisplayLayout.Override.RowAlternateAppearance = appearance81;
-            this.grdAgudos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance82.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance82.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance82.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
-            appearance82.BackGradientStyle = Infragistics.Win.GradientStyle.None;
-            appearance82.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            appearance82.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance82.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance82.FontData.BoldAsString = "False";
-            appearance82.ForeColor = System.Drawing.Color.Black;
-            this.grdAgudos.DisplayLayout.Override.SelectedRowAppearance = appearance82;
-            this.grdAgudos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdAgudos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdAgudos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdAgudos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdAgudos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdAgudos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdAgudos.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdAgudos.Location = new System.Drawing.Point(2, 22);
-            this.grdAgudos.Margin = new System.Windows.Forms.Padding(2);
-            this.grdAgudos.Name = "grdAgudos";
-            this.grdAgudos.Size = new System.Drawing.Size(621, 229);
-            this.grdAgudos.TabIndex = 50;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
             this.label37.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label37.Location = new System.Drawing.Point(3, 2);
+            this.label37.Location = new System.Drawing.Point(3, 3);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(157, 19);
             this.label37.TabIndex = 49;
@@ -3477,10 +3378,10 @@
             // 
             // panel5
             // 
-            this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel5.Controls.Add(this.btnEliminarAgudo);
             this.panel5.Controls.Add(this.btnEditarAgudo);
             this.panel5.Controls.Add(this.btnNuevoAgudo);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 262);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(625, 31);
@@ -3550,14 +3451,16 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel5.ColumnCount = 1;
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel5.Controls.Add(this.panel6, 0, 2);
             this.tableLayoutPanel5.Controls.Add(this.panel2, 0, 0);
-            this.tableLayoutPanel5.Controls.Add(this.panel6, 0, 1);
+            this.tableLayoutPanel5.Controls.Add(this.panel14, 0, 1);
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
-            this.tableLayoutPanel5.RowCount = 2;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.33334F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.66667F));
+            this.tableLayoutPanel5.RowCount = 3;
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.35521F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 87.64479F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(631, 296);
             this.tableLayoutPanel5.TabIndex = 2;
             // 
@@ -3566,188 +3469,21 @@
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.Controls.Add(this.grdCronicos);
             this.panel2.Controls.Add(this.label26);
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(625, 252);
+            this.panel2.Size = new System.Drawing.Size(625, 26);
             this.panel2.TabIndex = 0;
-            // 
-            // grdCronicos
-            // 
-            this.grdCronicos.CausesValidation = false;
-            appearance83.BackColor2 = System.Drawing.Color.White;
-            appearance83.BorderColor = System.Drawing.Color.DarkGray;
-            appearance83.ForeColor = System.Drawing.Color.Black;
-            this.grdCronicos.DisplayLayout.Appearance = appearance83;
-            ultraGridColumn57.Header.Caption = "Fecha";
-            ultraGridColumn57.Header.VisiblePosition = 0;
-            ultraGridColumn57.Width = 99;
-            ultraGridColumn101.Header.Caption = "Problema Crónico";
-            ultraGridColumn101.Header.VisiblePosition = 1;
-            ultraGridColumn101.Width = 212;
-            ultraGridColumn102.Header.Caption = "¿Es controlado?";
-            ultraGridColumn102.Header.VisiblePosition = 2;
-            ultraGridColumn102.Width = 133;
-            ultraGridColumn111.Header.Caption = "Observación";
-            ultraGridColumn111.Header.VisiblePosition = 3;
-            ultraGridColumn111.Width = 151;
-            ultraGridBand12.Columns.AddRange(new object[] {
-            ultraGridColumn57,
-            ultraGridColumn101,
-            ultraGridColumn102,
-            ultraGridColumn111});
-            appearance84.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance84.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance84.FontData.SizeInPoints = 8F;
-            appearance84.ForeColor = System.Drawing.Color.DarkBlue;
-            appearance84.TextHAlignAsString = "Left";
-            ultraGridBand12.Header.Appearance = appearance84;
-            this.grdCronicos.DisplayLayout.BandsSerializer.Add(ultraGridBand12);
-            this.grdCronicos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
-            this.grdCronicos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
-            this.grdCronicos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
-            appearance85.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdCronicos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance85;
-            appearance86.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
-            appearance86.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
-            appearance86.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdCronicos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance86;
-            this.grdCronicos.DisplayLayout.InterBandSpacing = 10;
-            this.grdCronicos.DisplayLayout.MaxColScrollRegions = 1;
-            this.grdCronicos.DisplayLayout.MaxRowScrollRegions = 1;
-            this.grdCronicos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.grdCronicos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
-            this.grdCronicos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
-            this.grdCronicos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
-            this.grdCronicos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
-            this.grdCronicos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
-            this.grdCronicos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.grdCronicos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance87.BackColor = System.Drawing.Color.Transparent;
-            this.grdCronicos.DisplayLayout.Override.CardAreaAppearance = appearance87;
-            appearance88.BackColor = System.Drawing.Color.White;
-            appearance88.BackColor2 = System.Drawing.Color.White;
-            appearance88.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance88.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdCronicos.DisplayLayout.Override.CellAppearance = appearance88;
-            this.grdCronicos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance89.BackColor = System.Drawing.Color.White;
-            appearance89.BackColor2 = System.Drawing.Color.LightGray;
-            appearance89.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance89.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance89.BorderColor = System.Drawing.Color.DarkGray;
-            appearance89.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdCronicos.DisplayLayout.Override.HeaderAppearance = appearance89;
-            this.grdCronicos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance90.AlphaLevel = ((short)(187));
-            appearance90.BackColor = System.Drawing.Color.Gainsboro;
-            appearance90.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance90.ForeColor = System.Drawing.Color.Black;
-            appearance90.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdCronicos.DisplayLayout.Override.RowAlternateAppearance = appearance90;
-            this.grdCronicos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance91.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance91.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance91.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
-            appearance91.BackGradientStyle = Infragistics.Win.GradientStyle.None;
-            appearance91.BorderAlpha = Infragistics.Win.Alpha.Transparent;
-            appearance91.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance91.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance91.FontData.BoldAsString = "False";
-            appearance91.ForeColor = System.Drawing.Color.Black;
-            this.grdCronicos.DisplayLayout.Override.SelectedRowAppearance = appearance91;
-            this.grdCronicos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.grdCronicos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.grdCronicos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.grdCronicos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.grdCronicos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
-            this.grdCronicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdCronicos.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.grdCronicos.Location = new System.Drawing.Point(2, 22);
-            this.grdCronicos.Margin = new System.Windows.Forms.Padding(2);
-            this.grdCronicos.Name = "grdCronicos";
-            this.grdCronicos.Size = new System.Drawing.Size(622, 229);
-            this.grdCronicos.TabIndex = 46;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(3, 2);
+            this.label26.Location = new System.Drawing.Point(3, 3);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(168, 19);
             this.label26.TabIndex = 2;
             this.label26.Text = "PROBLEMAS CRÓNICOS";
-            // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.Controls.Add(this.btnNuevoCronico);
-            this.panel6.Controls.Add(this.btnEditarCronico);
-            this.panel6.Controls.Add(this.btnEliminarCronico);
-            this.panel6.Location = new System.Drawing.Point(3, 261);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(625, 32);
-            this.panel6.TabIndex = 1;
-            // 
-            // btnNuevoCronico
-            // 
-            this.btnNuevoCronico.BackColor = System.Drawing.SystemColors.Control;
-            this.btnNuevoCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnNuevoCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnNuevoCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnNuevoCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNuevoCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevoCronico.ForeColor = System.Drawing.Color.Black;
-            this.btnNuevoCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoCronico.Image")));
-            this.btnNuevoCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevoCronico.Location = new System.Drawing.Point(382, 3);
-            this.btnNuevoCronico.Margin = new System.Windows.Forms.Padding(2);
-            this.btnNuevoCronico.Name = "btnNuevoCronico";
-            this.btnNuevoCronico.Size = new System.Drawing.Size(75, 24);
-            this.btnNuevoCronico.TabIndex = 50;
-            this.btnNuevoCronico.Text = "     Nuevo";
-            this.btnNuevoCronico.UseVisualStyleBackColor = false;
-            // 
-            // btnEditarCronico
-            // 
-            this.btnEditarCronico.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEditarCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEditarCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEditarCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEditarCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditarCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditarCronico.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarCronico.Image")));
-            this.btnEditarCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarCronico.Location = new System.Drawing.Point(461, 3);
-            this.btnEditarCronico.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEditarCronico.Name = "btnEditarCronico";
-            this.btnEditarCronico.Size = new System.Drawing.Size(75, 24);
-            this.btnEditarCronico.TabIndex = 51;
-            this.btnEditarCronico.Text = "   Editar";
-            this.btnEditarCronico.UseVisualStyleBackColor = false;
-            // 
-            // btnEliminarCronico
-            // 
-            this.btnEliminarCronico.BackColor = System.Drawing.SystemColors.Control;
-            this.btnEliminarCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnEliminarCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnEliminarCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnEliminarCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEliminarCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminarCronico.ForeColor = System.Drawing.Color.Black;
-            this.btnEliminarCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarCronico.Image")));
-            this.btnEliminarCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarCronico.Location = new System.Drawing.Point(540, 3);
-            this.btnEliminarCronico.Margin = new System.Windows.Forms.Padding(2);
-            this.btnEliminarCronico.Name = "btnEliminarCronico";
-            this.btnEliminarCronico.Size = new System.Drawing.Size(75, 24);
-            this.btnEliminarCronico.TabIndex = 52;
-            this.btnEliminarCronico.Text = "Eliminar";
-            this.btnEliminarCronico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnEliminarCronico.UseVisualStyleBackColor = false;
             // 
             // tabPage2
             // 
@@ -4274,6 +4010,294 @@
             this.btnNuevoPlan.Text = "     Nuevo";
             this.btnNuevoPlan.UseVisualStyleBackColor = false;
             // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.grdAgudos);
+            this.panel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel13.Location = new System.Drawing.Point(3, 35);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(625, 221);
+            this.panel13.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label37);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(625, 26);
+            this.panel3.TabIndex = 3;
+            // 
+            // grdAgudos
+            // 
+            this.grdAgudos.CausesValidation = false;
+            appearance74.BackColor2 = System.Drawing.Color.White;
+            appearance74.BorderColor = System.Drawing.Color.DarkGray;
+            appearance74.ForeColor = System.Drawing.Color.Black;
+            this.grdAgudos.DisplayLayout.Appearance = appearance74;
+            ultraGridColumn81.Header.Caption = "Fecha";
+            ultraGridColumn81.Header.VisiblePosition = 1;
+            ultraGridColumn81.Width = 86;
+            ultraGridColumn109.Header.Caption = "Problema Agudo";
+            ultraGridColumn109.Header.VisiblePosition = 0;
+            ultraGridColumn109.Width = 174;
+            ultraGridColumn110.Header.Caption = "Observación";
+            ultraGridColumn110.Header.VisiblePosition = 2;
+            ultraGridColumn110.Width = 342;
+            ultraGridBand11.Columns.AddRange(new object[] {
+            ultraGridColumn81,
+            ultraGridColumn109,
+            ultraGridColumn110});
+            appearance75.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance75.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance75.FontData.SizeInPoints = 8F;
+            appearance75.ForeColor = System.Drawing.Color.DarkBlue;
+            appearance75.TextHAlignAsString = "Left";
+            ultraGridBand11.Header.Appearance = appearance75;
+            this.grdAgudos.DisplayLayout.BandsSerializer.Add(ultraGridBand11);
+            this.grdAgudos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdAgudos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
+            this.grdAgudos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
+            appearance76.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance76;
+            appearance77.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
+            appearance77.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
+            appearance77.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance77;
+            this.grdAgudos.DisplayLayout.InterBandSpacing = 10;
+            this.grdAgudos.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdAgudos.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdAgudos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdAgudos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
+            this.grdAgudos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdAgudos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdAgudos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdAgudos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdAgudos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdAgudos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance78.BackColor = System.Drawing.Color.Transparent;
+            this.grdAgudos.DisplayLayout.Override.CardAreaAppearance = appearance78;
+            appearance79.BackColor = System.Drawing.Color.White;
+            appearance79.BackColor2 = System.Drawing.Color.White;
+            appearance79.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance79.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdAgudos.DisplayLayout.Override.CellAppearance = appearance79;
+            this.grdAgudos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance80.BackColor = System.Drawing.Color.White;
+            appearance80.BackColor2 = System.Drawing.Color.LightGray;
+            appearance80.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance80.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance80.BorderColor = System.Drawing.Color.DarkGray;
+            appearance80.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdAgudos.DisplayLayout.Override.HeaderAppearance = appearance80;
+            this.grdAgudos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance81.AlphaLevel = ((short)(187));
+            appearance81.BackColor = System.Drawing.Color.Gainsboro;
+            appearance81.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance81.ForeColor = System.Drawing.Color.Black;
+            appearance81.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdAgudos.DisplayLayout.Override.RowAlternateAppearance = appearance81;
+            this.grdAgudos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance82.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance82.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance82.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            appearance82.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance82.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance82.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance82.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance82.FontData.BoldAsString = "False";
+            appearance82.ForeColor = System.Drawing.Color.Black;
+            this.grdAgudos.DisplayLayout.Override.SelectedRowAppearance = appearance82;
+            this.grdAgudos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdAgudos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdAgudos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdAgudos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdAgudos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdAgudos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdAgudos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdAgudos.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdAgudos.Location = new System.Drawing.Point(0, 0);
+            this.grdAgudos.Margin = new System.Windows.Forms.Padding(2);
+            this.grdAgudos.Name = "grdAgudos";
+            this.grdAgudos.Size = new System.Drawing.Size(625, 221);
+            this.grdAgudos.TabIndex = 51;
+            // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.Controls.Add(this.btnNuevoCronico);
+            this.panel6.Controls.Add(this.btnEditarCronico);
+            this.panel6.Controls.Add(this.btnEliminarCronico);
+            this.panel6.Location = new System.Drawing.Point(3, 262);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(625, 31);
+            this.panel6.TabIndex = 2;
+            // 
+            // btnNuevoCronico
+            // 
+            this.btnNuevoCronico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnNuevoCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnNuevoCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnNuevoCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnNuevoCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNuevoCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNuevoCronico.ForeColor = System.Drawing.Color.Black;
+            this.btnNuevoCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoCronico.Image")));
+            this.btnNuevoCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnNuevoCronico.Location = new System.Drawing.Point(382, 3);
+            this.btnNuevoCronico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnNuevoCronico.Name = "btnNuevoCronico";
+            this.btnNuevoCronico.Size = new System.Drawing.Size(75, 24);
+            this.btnNuevoCronico.TabIndex = 50;
+            this.btnNuevoCronico.Text = "     Nuevo";
+            this.btnNuevoCronico.UseVisualStyleBackColor = false;
+            // 
+            // btnEditarCronico
+            // 
+            this.btnEditarCronico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEditarCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEditarCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEditarCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEditarCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditarCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditarCronico.ForeColor = System.Drawing.Color.Black;
+            this.btnEditarCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarCronico.Image")));
+            this.btnEditarCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarCronico.Location = new System.Drawing.Point(461, 3);
+            this.btnEditarCronico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEditarCronico.Name = "btnEditarCronico";
+            this.btnEditarCronico.Size = new System.Drawing.Size(75, 24);
+            this.btnEditarCronico.TabIndex = 51;
+            this.btnEditarCronico.Text = "   Editar";
+            this.btnEditarCronico.UseVisualStyleBackColor = false;
+            // 
+            // btnEliminarCronico
+            // 
+            this.btnEliminarCronico.BackColor = System.Drawing.SystemColors.Control;
+            this.btnEliminarCronico.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnEliminarCronico.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnEliminarCronico.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnEliminarCronico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEliminarCronico.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEliminarCronico.ForeColor = System.Drawing.Color.Black;
+            this.btnEliminarCronico.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarCronico.Image")));
+            this.btnEliminarCronico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEliminarCronico.Location = new System.Drawing.Point(540, 3);
+            this.btnEliminarCronico.Margin = new System.Windows.Forms.Padding(2);
+            this.btnEliminarCronico.Name = "btnEliminarCronico";
+            this.btnEliminarCronico.Size = new System.Drawing.Size(75, 24);
+            this.btnEliminarCronico.TabIndex = 52;
+            this.btnEliminarCronico.Text = "Eliminar";
+            this.btnEliminarCronico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnEliminarCronico.UseVisualStyleBackColor = false;
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.grdCronicos);
+            this.panel14.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel14.Location = new System.Drawing.Point(3, 35);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(625, 221);
+            this.panel14.TabIndex = 3;
+            // 
+            // grdCronicos
+            // 
+            this.grdCronicos.CausesValidation = false;
+            appearance83.BackColor2 = System.Drawing.Color.White;
+            appearance83.BorderColor = System.Drawing.Color.DarkGray;
+            appearance83.ForeColor = System.Drawing.Color.Black;
+            this.grdCronicos.DisplayLayout.Appearance = appearance83;
+            ultraGridColumn57.Header.Caption = "Fecha";
+            ultraGridColumn57.Header.VisiblePosition = 0;
+            ultraGridColumn57.Width = 99;
+            ultraGridColumn101.Header.Caption = "Problema Crónico";
+            ultraGridColumn101.Header.VisiblePosition = 1;
+            ultraGridColumn101.Width = 212;
+            ultraGridColumn102.Header.Caption = "¿Es controlado?";
+            ultraGridColumn102.Header.VisiblePosition = 2;
+            ultraGridColumn102.Width = 133;
+            ultraGridColumn111.Header.Caption = "Observación";
+            ultraGridColumn111.Header.VisiblePosition = 3;
+            ultraGridColumn111.Width = 151;
+            ultraGridBand12.Columns.AddRange(new object[] {
+            ultraGridColumn57,
+            ultraGridColumn101,
+            ultraGridColumn102,
+            ultraGridColumn111});
+            appearance84.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance84.BackColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance84.FontData.SizeInPoints = 8F;
+            appearance84.ForeColor = System.Drawing.Color.DarkBlue;
+            appearance84.TextHAlignAsString = "Left";
+            ultraGridBand12.Header.Appearance = appearance84;
+            this.grdCronicos.DisplayLayout.BandsSerializer.Add(ultraGridBand12);
+            this.grdCronicos.DisplayLayout.BorderStyle = Infragistics.Win.UIElementBorderStyle.Solid;
+            this.grdCronicos.DisplayLayout.DefaultSelectedBackColor = System.Drawing.Color.Empty;
+            this.grdCronicos.DisplayLayout.DefaultSelectedForeColor = System.Drawing.Color.White;
+            appearance85.BackColorAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.EmptyRowSettings.CellAppearance = appearance85;
+            appearance86.BackGradientAlignment = Infragistics.Win.GradientAlignment.Container;
+            appearance86.BackHatchStyle = Infragistics.Win.BackHatchStyle.None;
+            appearance86.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.EmptyRowSettings.RowAppearance = appearance86;
+            this.grdCronicos.DisplayLayout.InterBandSpacing = 10;
+            this.grdCronicos.DisplayLayout.MaxColScrollRegions = 1;
+            this.grdCronicos.DisplayLayout.MaxRowScrollRegions = 1;
+            this.grdCronicos.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.grdCronicos.DisplayLayout.Override.ActiveAppearancesEnabled = Infragistics.Win.DefaultableBoolean.True;
+            this.grdCronicos.DisplayLayout.Override.AllowAddNew = Infragistics.Win.UltraWinGrid.AllowAddNew.No;
+            this.grdCronicos.DisplayLayout.Override.AllowDelete = Infragistics.Win.DefaultableBoolean.False;
+            this.grdCronicos.DisplayLayout.Override.AllowRowFiltering = Infragistics.Win.DefaultableBoolean.True;
+            this.grdCronicos.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
+            this.grdCronicos.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.grdCronicos.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
+            appearance87.BackColor = System.Drawing.Color.Transparent;
+            this.grdCronicos.DisplayLayout.Override.CardAreaAppearance = appearance87;
+            appearance88.BackColor = System.Drawing.Color.White;
+            appearance88.BackColor2 = System.Drawing.Color.White;
+            appearance88.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance88.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdCronicos.DisplayLayout.Override.CellAppearance = appearance88;
+            this.grdCronicos.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
+            appearance89.BackColor = System.Drawing.Color.White;
+            appearance89.BackColor2 = System.Drawing.Color.LightGray;
+            appearance89.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance89.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance89.BorderColor = System.Drawing.Color.DarkGray;
+            appearance89.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdCronicos.DisplayLayout.Override.HeaderAppearance = appearance89;
+            this.grdCronicos.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
+            appearance90.AlphaLevel = ((short)(187));
+            appearance90.BackColor = System.Drawing.Color.Gainsboro;
+            appearance90.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance90.ForeColor = System.Drawing.Color.Black;
+            appearance90.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdCronicos.DisplayLayout.Override.RowAlternateAppearance = appearance90;
+            this.grdCronicos.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            appearance91.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance91.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance91.BackColorAlpha = Infragistics.Win.Alpha.UseAlphaLevel;
+            appearance91.BackGradientStyle = Infragistics.Win.GradientStyle.None;
+            appearance91.BorderAlpha = Infragistics.Win.Alpha.Transparent;
+            appearance91.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance91.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance91.FontData.BoldAsString = "False";
+            appearance91.ForeColor = System.Drawing.Color.Black;
+            this.grdCronicos.DisplayLayout.Override.SelectedRowAppearance = appearance91;
+            this.grdCronicos.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.grdCronicos.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.grdCronicos.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.grdCronicos.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.grdCronicos.DisplayLayout.ViewStyle = Infragistics.Win.UltraWinGrid.ViewStyle.SingleBand;
+            this.grdCronicos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdCronicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdCronicos.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.grdCronicos.Location = new System.Drawing.Point(0, 0);
+            this.grdCronicos.Margin = new System.Windows.Forms.Padding(2);
+            this.grdCronicos.Name = "grdCronicos";
+            this.grdCronicos.Size = new System.Drawing.Size(625, 221);
+            this.grdCronicos.TabIndex = 47;
+            // 
             // FrmEsoV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4345,15 +4369,10 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdAgudos)).EndInit();
             this.panel5.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdCronicos)).EndInit();
-            this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -4366,6 +4385,13 @@
             this.panel11.ResumeLayout(false);
             this.panel12.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdPlanIntegral)).EndInit();
+            this.panel13.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdAgudos)).EndInit();
+            this.panel6.ResumeLayout(false);
+            this.panel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdCronicos)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -4527,19 +4553,12 @@
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnEliminarAgudo;
         private System.Windows.Forms.Button btnEditarAgudo;
         private System.Windows.Forms.Button btnNuevoAgudo;
-        private Infragistics.Win.UltraWinGrid.UltraGrid grdAgudos;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Panel panel2;
-        private Infragistics.Win.UltraWinGrid.UltraGrid grdCronicos;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button btnNuevoCronico;
-        private System.Windows.Forms.Button btnEditarCronico;
-        private System.Windows.Forms.Button btnEliminarCronico;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Panel panel7;
@@ -4571,5 +4590,14 @@
         private System.Windows.Forms.Button btnEliminarPlan;
         private System.Windows.Forms.Button btnEditarPlan;
         private System.Windows.Forms.Button btnNuevoPlan;
+        private System.Windows.Forms.Panel panel13;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdAgudos;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btnNuevoCronico;
+        private System.Windows.Forms.Button btnEditarCronico;
+        private System.Windows.Forms.Button btnEliminarCronico;
+        private System.Windows.Forms.Panel panel14;
+        private Infragistics.Win.UltraWinGrid.UltraGrid grdCronicos;
     }
 }
