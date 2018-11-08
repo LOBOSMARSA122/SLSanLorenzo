@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance101 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -491,14 +491,14 @@
             // 
             // uvExamen
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance1.BackColor2 = System.Drawing.Color.Transparent;
-            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance1.BorderColor = System.Drawing.Color.Red;
-            appearance1.BorderColor2 = System.Drawing.Color.Red;
-            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance1;
+            appearance101.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance101.BackColor2 = System.Drawing.Color.Transparent;
+            appearance101.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance101.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance101.BorderColor = System.Drawing.Color.Red;
+            appearance101.BorderColor2 = System.Drawing.Color.Red;
+            appearance101.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance101;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -3398,7 +3398,7 @@
             this.btnEliminarAgudo.ForeColor = System.Drawing.Color.Black;
             this.btnEliminarAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarAgudo.Image")));
             this.btnEliminarAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarAgudo.Location = new System.Drawing.Point(541, 2);
+            this.btnEliminarAgudo.Location = new System.Drawing.Point(542, 3);
             this.btnEliminarAgudo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarAgudo.Name = "btnEliminarAgudo";
             this.btnEliminarAgudo.Size = new System.Drawing.Size(75, 24);
@@ -3406,6 +3406,7 @@
             this.btnEliminarAgudo.Text = "Eliminar";
             this.btnEliminarAgudo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminarAgudo.UseVisualStyleBackColor = false;
+            this.btnEliminarAgudo.Click += new System.EventHandler(this.btnEliminarAgudo_Click);
             // 
             // btnEditarAgudo
             // 
@@ -3418,13 +3419,14 @@
             this.btnEditarAgudo.ForeColor = System.Drawing.Color.Black;
             this.btnEditarAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarAgudo.Image")));
             this.btnEditarAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarAgudo.Location = new System.Drawing.Point(462, 2);
+            this.btnEditarAgudo.Location = new System.Drawing.Point(463, 3);
             this.btnEditarAgudo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarAgudo.Name = "btnEditarAgudo";
             this.btnEditarAgudo.Size = new System.Drawing.Size(75, 24);
             this.btnEditarAgudo.TabIndex = 52;
             this.btnEditarAgudo.Text = "   Editar";
             this.btnEditarAgudo.UseVisualStyleBackColor = false;
+            this.btnEditarAgudo.Click += new System.EventHandler(this.btnEditarAgudo_Click);
             // 
             // btnNuevoAgudo
             // 
@@ -3437,13 +3439,14 @@
             this.btnNuevoAgudo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevoAgudo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoAgudo.Image")));
             this.btnNuevoAgudo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevoAgudo.Location = new System.Drawing.Point(383, 2);
+            this.btnNuevoAgudo.Location = new System.Drawing.Point(384, 3);
             this.btnNuevoAgudo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoAgudo.Name = "btnNuevoAgudo";
             this.btnNuevoAgudo.Size = new System.Drawing.Size(75, 24);
             this.btnNuevoAgudo.TabIndex = 53;
             this.btnNuevoAgudo.Text = "     Nuevo";
             this.btnNuevoAgudo.UseVisualStyleBackColor = false;
+            this.btnNuevoAgudo.Click += new System.EventHandler(this.btnNuevoAgudo_Click);
             // 
             // tableLayoutPanel5
             // 
@@ -3971,6 +3974,7 @@
             this.btnEliminarPlan.Text = "Eliminar";
             this.btnEliminarPlan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminarPlan.UseVisualStyleBackColor = false;
+            this.btnEliminarPlan.Click += new System.EventHandler(this.btnEliminarPlan_Click);
             // 
             // btnEditarPlan
             // 
@@ -3990,6 +3994,7 @@
             this.btnEditarPlan.TabIndex = 66;
             this.btnEditarPlan.Text = "   Editar";
             this.btnEditarPlan.UseVisualStyleBackColor = false;
+            this.btnEditarPlan.Click += new System.EventHandler(this.btnEditarPlan_Click);
             // 
             // btnNuevoPlan
             // 
@@ -4009,6 +4014,7 @@
             this.btnNuevoPlan.TabIndex = 67;
             this.btnNuevoPlan.Text = "     Nuevo";
             this.btnNuevoPlan.UseVisualStyleBackColor = false;
+            this.btnNuevoPlan.Click += new System.EventHandler(this.btnNuevoPlan_Click);
             // 
             // panel13
             // 
@@ -4151,6 +4157,7 @@
             this.btnNuevoCronico.TabIndex = 50;
             this.btnNuevoCronico.Text = "     Nuevo";
             this.btnNuevoCronico.UseVisualStyleBackColor = false;
+            this.btnNuevoCronico.Click += new System.EventHandler(this.btnNuevoCronico_Click);
             // 
             // btnEditarCronico
             // 
@@ -4170,6 +4177,7 @@
             this.btnEditarCronico.TabIndex = 51;
             this.btnEditarCronico.Text = "   Editar";
             this.btnEditarCronico.UseVisualStyleBackColor = false;
+            this.btnEditarCronico.Click += new System.EventHandler(this.btnEditarCronico_Click);
             // 
             // btnEliminarCronico
             // 
@@ -4190,6 +4198,7 @@
             this.btnEliminarCronico.Text = "Eliminar";
             this.btnEliminarCronico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminarCronico.UseVisualStyleBackColor = false;
+            this.btnEliminarCronico.Click += new System.EventHandler(this.btnEliminarCronico_Click);
             // 
             // panel14
             // 
