@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance106 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -221,22 +221,6 @@
             Infragistics.Win.Appearance appearance89 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance90 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance91 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance101 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand14 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hijos");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand15 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Hijos", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance102 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand16 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hijos");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand17 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Hijos", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn79 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
             Infragistics.Win.Appearance appearance92 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand13 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn34 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_EmbarazoId");
@@ -254,6 +238,22 @@
             Infragistics.Win.Appearance appearance98 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance99 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance100 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance101 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand14 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hijos");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand15 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Hijos", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
+            Infragistics.Win.Appearance appearance102 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand16 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn59 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Hijos");
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand17 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Hijos", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn79 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn51 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn56 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
             this.uvExamen = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.uvAnamnesis = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -436,45 +436,6 @@
             this.splitGeneral = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.panel20 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel19 = new System.Windows.Forms.Panel();
-            this.btnGuardarAntecedentes = new System.Windows.Forms.Button();
-            this.label60 = new System.Windows.Forms.Label();
-            this.txtDescripcionAntecedentes = new System.Windows.Forms.TextBox();
-            this.splitAntecedentes = new System.Windows.Forms.SplitContainer();
-            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel15 = new System.Windows.Forms.Panel();
-            this.label58 = new System.Windows.Forms.Label();
-            this.panel17 = new System.Windows.Forms.Panel();
-            this.ultraAntActuales = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel16 = new System.Windows.Forms.Panel();
-            this.label39 = new System.Windows.Forms.Label();
-            this.panel18 = new System.Windows.Forms.Panel();
-            this.ultraAntAnteriores = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.ultraFlowLayoutManager1 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.lblTrabajador = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.lblProtocolName = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.lblView = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.btnViewWorker = new System.Windows.Forms.Button();
-            this.lblFechaGraba = new System.Windows.Forms.Label();
-            this.lblUsuAct = new System.Windows.Forms.Label();
-            this.lblUsuGraba = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
-            this.btnPerson = new System.Windows.Forms.Button();
-            this.btnSalir = new System.Windows.Forms.Button();
-            this.ultraFlowLayoutManager2 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblDni = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
@@ -731,6 +692,45 @@
             this.txtNombreMadreTutor = new System.Windows.Forms.TextBox();
             this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel19 = new System.Windows.Forms.Panel();
+            this.btnGuardarAntecedentes = new System.Windows.Forms.Button();
+            this.label60 = new System.Windows.Forms.Label();
+            this.txtDescripcionAntecedentes = new System.Windows.Forms.TextBox();
+            this.splitAntecedentes = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.label58 = new System.Windows.Forms.Label();
+            this.panel17 = new System.Windows.Forms.Panel();
+            this.ultraAntActuales = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.panel18 = new System.Windows.Forms.Panel();
+            this.ultraAntAnteriores = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ultraFlowLayoutManager1 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.lblTrabajador = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.lblProtocolName = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.lblView = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.btnViewWorker = new System.Windows.Forms.Button();
+            this.lblFechaGraba = new System.Windows.Forms.Label();
+            this.lblUsuAct = new System.Windows.Forms.Label();
+            this.lblUsuGraba = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.btnPerson = new System.Windows.Forms.Button();
+            this.btnSalir = new System.Windows.Forms.Button();
+            this.ultraFlowLayoutManager2 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -798,26 +798,6 @@
             this.splitGeneral.SuspendLayout();
             this.tableLayoutPanel12.SuspendLayout();
             this.panel20.SuspendLayout();
-            this.tableLayoutPanel11.SuspendLayout();
-            this.panel19.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitAntecedentes)).BeginInit();
-            this.splitAntecedentes.Panel1.SuspendLayout();
-            this.splitAntecedentes.Panel2.SuspendLayout();
-            this.splitAntecedentes.SuspendLayout();
-            this.tableLayoutPanel9.SuspendLayout();
-            this.panel15.SuspendLayout();
-            this.panel17.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraAntActuales)).BeginInit();
-            this.tableLayoutPanel10.SuspendLayout();
-            this.panel16.SuspendLayout();
-            this.panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraAntAnteriores)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).BeginInit();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager2)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.panel21.SuspendLayout();
             this.tbcDatos.SuspendLayout();
@@ -858,18 +838,38 @@
             ((System.ComponentModel.ISupportInitialize)(this.ultgrboxDatosFamiliares)).BeginInit();
             this.ultgrboxDatosFamiliares.SuspendLayout();
             this.ultraExpandableGroupBoxPanel2.SuspendLayout();
+            this.tableLayoutPanel11.SuspendLayout();
+            this.panel19.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitAntecedentes)).BeginInit();
+            this.splitAntecedentes.Panel1.SuspendLayout();
+            this.splitAntecedentes.Panel2.SuspendLayout();
+            this.splitAntecedentes.SuspendLayout();
+            this.tableLayoutPanel9.SuspendLayout();
+            this.panel15.SuspendLayout();
+            this.panel17.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraAntActuales)).BeginInit();
+            this.tableLayoutPanel10.SuspendLayout();
+            this.panel16.SuspendLayout();
+            this.panel18.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraAntAnteriores)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager2)).BeginInit();
             this.SuspendLayout();
             // 
             // uvExamen
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance1.BackColor2 = System.Drawing.Color.Transparent;
-            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance1.BorderColor = System.Drawing.Color.Red;
-            appearance1.BorderColor2 = System.Drawing.Color.Red;
-            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance1;
+            appearance106.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance106.BackColor2 = System.Drawing.Color.Transparent;
+            appearance106.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance106.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance106.BorderColor = System.Drawing.Color.Red;
+            appearance106.BorderColor2 = System.Drawing.Color.Red;
+            appearance106.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance106;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -4421,554 +4421,6 @@
             this.panel20.Size = new System.Drawing.Size(612, 161);
             this.panel20.TabIndex = 0;
             // 
-            // tableLayoutPanel11
-            // 
-            this.tableLayoutPanel11.ColumnCount = 1;
-            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Controls.Add(this.panel19, 0, 0);
-            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 542);
-            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
-            this.tableLayoutPanel11.RowCount = 1;
-            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel11.Size = new System.Drawing.Size(664, 83);
-            this.tableLayoutPanel11.TabIndex = 1;
-            // 
-            // panel19
-            // 
-            this.panel19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel19.Controls.Add(this.btnGuardarAntecedentes);
-            this.panel19.Controls.Add(this.label60);
-            this.panel19.Controls.Add(this.txtDescripcionAntecedentes);
-            this.panel19.Location = new System.Drawing.Point(3, 3);
-            this.panel19.Name = "panel19";
-            this.panel19.Size = new System.Drawing.Size(658, 77);
-            this.panel19.TabIndex = 0;
-            // 
-            // btnGuardarAntecedentes
-            // 
-            this.btnGuardarAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGuardarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardarAntecedentes.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarAntecedentes.Image")));
-            this.btnGuardarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarAntecedentes.Location = new System.Drawing.Point(555, 16);
-            this.btnGuardarAntecedentes.Name = "btnGuardarAntecedentes";
-            this.btnGuardarAntecedentes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnGuardarAntecedentes.Size = new System.Drawing.Size(92, 38);
-            this.btnGuardarAntecedentes.TabIndex = 112;
-            this.btnGuardarAntecedentes.Text = "   Guardar";
-            this.btnGuardarAntecedentes.UseVisualStyleBackColor = true;
-            // 
-            // label60
-            // 
-            this.label60.AutoSize = true;
-            this.label60.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label60.Location = new System.Drawing.Point(3, 0);
-            this.label60.Name = "label60";
-            this.label60.Size = new System.Drawing.Size(191, 14);
-            this.label60.TabIndex = 109;
-            this.label60.Text = "Descripción de antecedentes y otros: ";
-            // 
-            // txtDescripcionAntecedentes
-            // 
-            this.txtDescripcionAntecedentes.Location = new System.Drawing.Point(3, 16);
-            this.txtDescripcionAntecedentes.Multiline = true;
-            this.txtDescripcionAntecedentes.Name = "txtDescripcionAntecedentes";
-            this.txtDescripcionAntecedentes.Size = new System.Drawing.Size(365, 52);
-            this.txtDescripcionAntecedentes.TabIndex = 110;
-            // 
-            // splitAntecedentes
-            // 
-            this.splitAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.splitAntecedentes.Location = new System.Drawing.Point(0, 0);
-            this.splitAntecedentes.Name = "splitAntecedentes";
-            // 
-            // splitAntecedentes.Panel1
-            // 
-            this.splitAntecedentes.Panel1.Controls.Add(this.tableLayoutPanel9);
-            // 
-            // splitAntecedentes.Panel2
-            // 
-            this.splitAntecedentes.Panel2.Controls.Add(this.tableLayoutPanel10);
-            this.splitAntecedentes.Size = new System.Drawing.Size(664, 539);
-            this.splitAntecedentes.SplitterDistance = 338;
-            this.splitAntecedentes.TabIndex = 0;
-            // 
-            // tableLayoutPanel9
-            // 
-            this.tableLayoutPanel9.ColumnCount = 1;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Controls.Add(this.panel15, 0, 0);
-            this.tableLayoutPanel9.Controls.Add(this.panel17, 0, 1);
-            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
-            this.tableLayoutPanel9.RowCount = 2;
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.583774F));
-            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.41623F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(338, 539);
-            this.tableLayoutPanel9.TabIndex = 0;
-            // 
-            // panel15
-            // 
-            this.panel15.Controls.Add(this.label58);
-            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel15.Location = new System.Drawing.Point(3, 3);
-            this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(332, 34);
-            this.panel15.TabIndex = 0;
-            // 
-            // label58
-            // 
-            this.label58.AutoSize = true;
-            this.label58.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label58.Location = new System.Drawing.Point(63, 9);
-            this.label58.Name = "label58";
-            this.label58.Size = new System.Drawing.Size(188, 19);
-            this.label58.TabIndex = 87;
-            this.label58.Text = "ANTECEDENTES ACTUALES";
-            // 
-            // panel17
-            // 
-            this.panel17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel17.Controls.Add(this.ultraAntActuales);
-            this.panel17.Location = new System.Drawing.Point(3, 43);
-            this.panel17.Name = "panel17";
-            this.panel17.Size = new System.Drawing.Size(332, 493);
-            this.panel17.TabIndex = 1;
-            // 
-            // ultraAntActuales
-            // 
-            appearance101.BackColor = System.Drawing.SystemColors.ControlLight;
-            appearance101.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance101.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.ultraAntActuales.DisplayLayout.Appearance = appearance101;
-            ultraGridColumn1.Header.Caption = "Enfermedades";
-            ultraGridColumn1.Header.VisiblePosition = 0;
-            ultraGridColumn1.Width = 256;
-            ultraGridColumn2.Header.VisiblePosition = 1;
-            ultraGridBand14.Columns.AddRange(new object[] {
-            ultraGridColumn1,
-            ultraGridColumn2});
-            ultraGridColumn19.Header.VisiblePosition = 0;
-            ultraGridColumn27.Header.VisiblePosition = 1;
-            ultraGridColumn28.Header.VisiblePosition = 2;
-            ultraGridBand15.Columns.AddRange(new object[] {
-            ultraGridColumn19,
-            ultraGridColumn27,
-            ultraGridColumn28});
-            ultraGridBand15.Expandable = false;
-            this.ultraAntActuales.DisplayLayout.BandsSerializer.Add(ultraGridBand14);
-            this.ultraAntActuales.DisplayLayout.BandsSerializer.Add(ultraGridBand15);
-            this.ultraAntActuales.DisplayLayout.GroupByBox.Hidden = true;
-            this.ultraAntActuales.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.ultraAntActuales.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            this.ultraAntActuales.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
-            this.ultraAntActuales.DisplayLayout.Override.SelectTypeCol = Infragistics.Win.UltraWinGrid.SelectType.None;
-            this.ultraAntActuales.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.ultraAntActuales.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ultraAntActuales.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.ultraAntActuales.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.ultraAntActuales.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.ultraAntActuales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraAntActuales.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraAntActuales.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.ultraAntActuales.Location = new System.Drawing.Point(0, 0);
-            this.ultraAntActuales.Name = "ultraAntActuales";
-            this.ultraAntActuales.Size = new System.Drawing.Size(332, 493);
-            this.ultraAntActuales.TabIndex = 111;
-            // 
-            // tableLayoutPanel10
-            // 
-            this.tableLayoutPanel10.ColumnCount = 1;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Controls.Add(this.panel16, 0, 0);
-            this.tableLayoutPanel10.Controls.Add(this.panel18, 0, 1);
-            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
-            this.tableLayoutPanel10.RowCount = 2;
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.583774F));
-            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.41623F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(322, 539);
-            this.tableLayoutPanel10.TabIndex = 1;
-            // 
-            // panel16
-            // 
-            this.panel16.Controls.Add(this.label39);
-            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel16.Location = new System.Drawing.Point(3, 3);
-            this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(316, 34);
-            this.panel16.TabIndex = 0;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(46, 9);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(205, 19);
-            this.label39.TabIndex = 87;
-            this.label39.Text = "ANTECEDENTES ANTERIORES";
-            // 
-            // panel18
-            // 
-            this.panel18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel18.Controls.Add(this.ultraAntAnteriores);
-            this.panel18.Location = new System.Drawing.Point(3, 43);
-            this.panel18.Name = "panel18";
-            this.panel18.Size = new System.Drawing.Size(316, 493);
-            this.panel18.TabIndex = 1;
-            // 
-            // ultraAntAnteriores
-            // 
-            appearance102.BackColor = System.Drawing.SystemColors.ControlLight;
-            appearance102.BackColor2 = System.Drawing.SystemColors.ControlDark;
-            appearance102.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            this.ultraAntAnteriores.DisplayLayout.Appearance = appearance102;
-            ultraGridColumn26.Header.Caption = "Enfermedades";
-            ultraGridColumn26.Header.VisiblePosition = 0;
-            ultraGridColumn26.Width = 256;
-            ultraGridColumn59.Header.VisiblePosition = 1;
-            ultraGridBand16.Columns.AddRange(new object[] {
-            ultraGridColumn26,
-            ultraGridColumn59});
-            ultraGridColumn79.Header.VisiblePosition = 0;
-            ultraGridColumn51.Header.VisiblePosition = 1;
-            ultraGridColumn56.Header.VisiblePosition = 2;
-            ultraGridBand17.Columns.AddRange(new object[] {
-            ultraGridColumn79,
-            ultraGridColumn51,
-            ultraGridColumn56});
-            ultraGridBand17.Expandable = false;
-            this.ultraAntAnteriores.DisplayLayout.BandsSerializer.Add(ultraGridBand16);
-            this.ultraAntAnteriores.DisplayLayout.BandsSerializer.Add(ultraGridBand17);
-            this.ultraAntAnteriores.DisplayLayout.GroupByBox.Hidden = true;
-            this.ultraAntAnteriores.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
-            this.ultraAntAnteriores.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
-            this.ultraAntAnteriores.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            this.ultraAntAnteriores.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
-            this.ultraAntAnteriores.DisplayLayout.Override.SelectTypeCol = Infragistics.Win.UltraWinGrid.SelectType.None;
-            this.ultraAntAnteriores.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
-            this.ultraAntAnteriores.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ultraAntAnteriores.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
-            this.ultraAntAnteriores.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
-            this.ultraAntAnteriores.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
-            this.ultraAntAnteriores.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ultraAntAnteriores.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ultraAntAnteriores.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.ultraAntAnteriores.Location = new System.Drawing.Point(0, 0);
-            this.ultraAntAnteriores.Name = "ultraAntAnteriores";
-            this.ultraAntAnteriores.Size = new System.Drawing.Size(316, 493);
-            this.ultraAntAnteriores.TabIndex = 111;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1292, 631);
-            this.tabPage3.TabIndex = 6;
-            this.tabPage3.Text = "CUIDADOS PREVENTIVOS";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel6
-            // 
-            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel6.ColumnCount = 1;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 656);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1300, 55);
-            this.tableLayoutPanel6.TabIndex = 5;
-            // 
-            // tableLayoutPanel7
-            // 
-            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel7.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.12983F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.87017F));
-            this.tableLayoutPanel7.Controls.Add(this.panel7, 0, 0);
-            this.tableLayoutPanel7.Controls.Add(this.panel8, 1, 0);
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1294, 49);
-            this.tableLayoutPanel7.TabIndex = 0;
-            // 
-            // panel7
-            // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.Controls.Add(this.lblTrabajador);
-            this.panel7.Controls.Add(this.label1);
-            this.panel7.Controls.Add(this.label18);
-            this.panel7.Controls.Add(this.label16);
-            this.panel7.Controls.Add(this.label20);
-            this.panel7.Controls.Add(this.lblProtocolName);
-            this.panel7.Controls.Add(this.label21);
-            this.panel7.Controls.Add(this.lblView);
-            this.panel7.Controls.Add(this.label24);
-            this.panel7.Controls.Add(this.btnViewWorker);
-            this.panel7.Controls.Add(this.lblFechaGraba);
-            this.panel7.Controls.Add(this.lblUsuAct);
-            this.panel7.Controls.Add(this.lblUsuGraba);
-            this.panel7.Controls.Add(this.label17);
-            this.panel7.Location = new System.Drawing.Point(3, 3);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1004, 43);
-            this.panel7.TabIndex = 0;
-            // 
-            // lblTrabajador
-            // 
-            this.lblTrabajador.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblTrabajador.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblTrabajador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTrabajador.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblTrabajador.Location = new System.Drawing.Point(368, 3);
-            this.lblTrabajador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblTrabajador.Name = "lblTrabajador";
-            this.lblTrabajador.Size = new System.Drawing.Size(237, 15);
-            this.lblTrabajador.TabIndex = 77;
-            this.lblTrabajador.Text = "lblTrabajador";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(307, 4);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 78;
-            this.label1.Text = "Pciente:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label18.Location = new System.Drawing.Point(712, 24);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(139, 15);
-            this.label18.TabIndex = 86;
-            this.label18.Text = "lblServicio";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(296, 25);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(65, 13);
-            this.label16.TabIndex = 75;
-            this.label16.Text = "Protocolo:";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label20
-            // 
-            this.label20.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label20.Location = new System.Drawing.Point(712, 4);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(139, 15);
-            this.label20.TabIndex = 87;
-            this.label20.Text = "lblTipoEso";
-            // 
-            // lblProtocolName
-            // 
-            this.lblProtocolName.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblProtocolName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblProtocolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProtocolName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblProtocolName.Location = new System.Drawing.Point(368, 24);
-            this.lblProtocolName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblProtocolName.Name = "lblProtocolName";
-            this.lblProtocolName.Size = new System.Drawing.Size(268, 15);
-            this.lblProtocolName.TabIndex = 76;
-            this.lblProtocolName.Text = "lblProtocolName";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(651, 25);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(57, 13);
-            this.label21.TabIndex = 85;
-            this.label21.Text = "Servicio:";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblView
-            // 
-            this.lblView.AutoSize = true;
-            this.lblView.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblView.ForeColor = System.Drawing.Color.Blue;
-            this.lblView.Location = new System.Drawing.Point(856, 16);
-            this.lblView.Name = "lblView";
-            this.lblView.Size = new System.Drawing.Size(67, 13);
-            this.lblView.TabIndex = 80;
-            this.lblView.Text = "Ver Menos";
-            this.lblView.Click += new System.EventHandler(this.lblView_Click_1);
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(647, 4);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(61, 13);
-            this.label24.TabIndex = 88;
-            this.label24.Text = "Tipo Eso:";
-            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnViewWorker
-            // 
-            this.btnViewWorker.BackColor = System.Drawing.SystemColors.Control;
-            this.btnViewWorker.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnViewWorker.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnViewWorker.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnViewWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnViewWorker.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_suit;
-            this.btnViewWorker.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnViewWorker.Location = new System.Drawing.Point(608, 1);
-            this.btnViewWorker.Margin = new System.Windows.Forms.Padding(2);
-            this.btnViewWorker.Name = "btnViewWorker";
-            this.btnViewWorker.Size = new System.Drawing.Size(28, 21);
-            this.btnViewWorker.TabIndex = 79;
-            this.btnViewWorker.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnViewWorker.UseVisualStyleBackColor = false;
-            this.btnViewWorker.Click += new System.EventHandler(this.btnViewWorker_Click_1);
-            // 
-            // lblFechaGraba
-            // 
-            this.lblFechaGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblFechaGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblFechaGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblFechaGraba.Location = new System.Drawing.Point(108, 24);
-            this.lblFechaGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblFechaGraba.Name = "lblFechaGraba";
-            this.lblFechaGraba.Size = new System.Drawing.Size(169, 15);
-            this.lblFechaGraba.TabIndex = 84;
-            this.lblFechaGraba.Text = "lblFechaGraba";
-            // 
-            // lblUsuAct
-            // 
-            this.lblUsuAct.AutoSize = true;
-            this.lblUsuAct.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblUsuAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuAct.Location = new System.Drawing.Point(12, 3);
-            this.lblUsuAct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsuAct.Name = "lblUsuAct";
-            this.lblUsuAct.Size = new System.Drawing.Size(92, 13);
-            this.lblUsuAct.TabIndex = 81;
-            this.lblUsuAct.Text = "Usuario Graba:";
-            this.lblUsuAct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblUsuGraba
-            // 
-            this.lblUsuGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.lblUsuGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblUsuGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUsuGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lblUsuGraba.Location = new System.Drawing.Point(108, 3);
-            this.lblUsuGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblUsuGraba.Name = "lblUsuGraba";
-            this.lblUsuGraba.Size = new System.Drawing.Size(169, 15);
-            this.lblUsuGraba.TabIndex = 83;
-            this.lblUsuGraba.Text = "lblUsuGraba";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(20, 26);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(84, 13);
-            this.label17.TabIndex = 82;
-            this.label17.Text = "Fecha Graba:";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel8
-            // 
-            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel8.Controls.Add(this.btnPerson);
-            this.panel8.Controls.Add(this.btnSalir);
-            this.panel8.Location = new System.Drawing.Point(1013, 3);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(278, 43);
-            this.panel8.TabIndex = 1;
-            // 
-            // btnPerson
-            // 
-            this.btnPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnPerson.BackColor = System.Drawing.SystemColors.Control;
-            this.btnPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPerson.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPerson.Location = new System.Drawing.Point(39, 4);
-            this.btnPerson.Name = "btnPerson";
-            this.btnPerson.Size = new System.Drawing.Size(224, 30);
-            this.btnPerson.TabIndex = 100;
-            this.btnPerson.Text = "Ver Datos Generales";
-            this.btnPerson.UseVisualStyleBackColor = false;
-            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click_1);
-            // 
-            // btnSalir
-            // 
-            this.btnSalir.BackColor = System.Drawing.SystemColors.Control;
-            this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
-            this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(2, 2);
-            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(161, 24);
-            this.btnSalir.TabIndex = 68;
-            this.btnSalir.Text = "Salir de Evaluación Medica";
-            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSalir.UseVisualStyleBackColor = false;
-            this.btnSalir.Visible = false;
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.lblDni);
@@ -5373,7 +4825,7 @@
             this.textFlujoVaginalPatológico.Location = new System.Drawing.Point(349, 61);
             this.textFlujoVaginalPatológico.Multiline = true;
             this.textFlujoVaginalPatológico.Name = "textFlujoVaginalPatológico";
-            this.textFlujoVaginalPatológico.Size = new System.Drawing.Size(176, 23);
+            this.textFlujoVaginalPatológico.Size = new System.Drawing.Size(236, 23);
             this.textFlujoVaginalPatológico.TabIndex = 139;
             // 
             // textOtroAntecedentesFamiliares
@@ -5389,7 +4841,7 @@
             this.textReaccionAlergicaMedicamentos.Location = new System.Drawing.Point(349, 104);
             this.textReaccionAlergicaMedicamentos.Multiline = true;
             this.textReaccionAlergicaMedicamentos.Name = "textReaccionAlergicaMedicamentos";
-            this.textReaccionAlergicaMedicamentos.Size = new System.Drawing.Size(176, 37);
+            this.textReaccionAlergicaMedicamentos.Size = new System.Drawing.Size(236, 37);
             this.textReaccionAlergicaMedicamentos.TabIndex = 135;
             // 
             // textMedicamentoFrecuenteDosis
@@ -5429,7 +4881,7 @@
             this.pnlSexualidad.Controls.Add(this.txtAmNroPs);
             this.pnlSexualidad.Location = new System.Drawing.Point(6, 161);
             this.pnlSexualidad.Name = "pnlSexualidad";
-            this.pnlSexualidad.Size = new System.Drawing.Size(252, 28);
+            this.pnlSexualidad.Size = new System.Drawing.Size(294, 28);
             this.pnlSexualidad.TabIndex = 126;
             // 
             // label56
@@ -5445,13 +4897,13 @@
             // 
             this.txtAmInicioRs.Location = new System.Drawing.Point(55, 3);
             this.txtAmInicioRs.Name = "txtAmInicioRs";
-            this.txtAmInicioRs.Size = new System.Drawing.Size(39, 20);
+            this.txtAmInicioRs.Size = new System.Drawing.Size(63, 20);
             this.txtAmInicioRs.TabIndex = 121;
             // 
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(116, 6);
+            this.label59.Location = new System.Drawing.Point(124, 7);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(92, 13);
             this.label59.TabIndex = 122;
@@ -5459,9 +4911,9 @@
             // 
             // txtAmNroPs
             // 
-            this.txtAmNroPs.Location = new System.Drawing.Point(208, 3);
+            this.txtAmNroPs.Location = new System.Drawing.Point(217, 3);
             this.txtAmNroPs.Name = "txtAmNroPs";
-            this.txtAmNroPs.Size = new System.Drawing.Size(39, 20);
+            this.txtAmNroPs.Size = new System.Drawing.Size(65, 20);
             this.txtAmNroPs.TabIndex = 123;
             // 
             // pnlEmbarazo
@@ -5479,13 +4931,15 @@
             this.pnlEmbarazo.Controls.Add(this.label68);
             this.pnlEmbarazo.Controls.Add(this.txtAmNroParto);
             this.pnlEmbarazo.Controls.Add(this.label67);
-            this.pnlEmbarazo.Location = new System.Drawing.Point(6, 207);
+            this.pnlEmbarazo.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlEmbarazo.Location = new System.Drawing.Point(3, 211);
             this.pnlEmbarazo.Name = "pnlEmbarazo";
-            this.pnlEmbarazo.Size = new System.Drawing.Size(531, 212);
+            this.pnlEmbarazo.Size = new System.Drawing.Size(598, 212);
             this.pnlEmbarazo.TabIndex = 130;
             // 
             // btnEditarEmbarazo
             // 
+            this.btnEditarEmbarazo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEditarEmbarazo.BackColor = System.Drawing.SystemColors.Control;
             this.btnEditarEmbarazo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnEditarEmbarazo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -5495,7 +4949,7 @@
             this.btnEditarEmbarazo.ForeColor = System.Drawing.Color.Black;
             this.btnEditarEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarEmbarazo.Image")));
             this.btnEditarEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEditarEmbarazo.Location = new System.Drawing.Point(452, 78);
+            this.btnEditarEmbarazo.Location = new System.Drawing.Point(508, 76);
             this.btnEditarEmbarazo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEditarEmbarazo.Name = "btnEditarEmbarazo";
             this.btnEditarEmbarazo.Size = new System.Drawing.Size(75, 24);
@@ -5505,6 +4959,9 @@
             // 
             // grdEmbarazos
             // 
+            this.grdEmbarazos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.grdEmbarazos.CausesValidation = false;
             appearance92.BackColor2 = System.Drawing.Color.White;
             appearance92.BorderColor = System.Drawing.Color.DarkGray;
@@ -5596,7 +5053,7 @@
             this.grdEmbarazos.Location = new System.Drawing.Point(6, 36);
             this.grdEmbarazos.Margin = new System.Windows.Forms.Padding(2);
             this.grdEmbarazos.Name = "grdEmbarazos";
-            this.grdEmbarazos.Size = new System.Drawing.Size(442, 113);
+            this.grdEmbarazos.Size = new System.Drawing.Size(492, 113);
             this.grdEmbarazos.TabIndex = 136;
             // 
             // label105
@@ -5610,14 +5067,18 @@
             // 
             // textObservacionesEmbarazo
             // 
+            this.textObservacionesEmbarazo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textObservacionesEmbarazo.Location = new System.Drawing.Point(2, 167);
             this.textObservacionesEmbarazo.Multiline = true;
             this.textObservacionesEmbarazo.Name = "textObservacionesEmbarazo";
-            this.textObservacionesEmbarazo.Size = new System.Drawing.Size(524, 39);
+            this.textObservacionesEmbarazo.Size = new System.Drawing.Size(591, 39);
             this.textObservacionesEmbarazo.TabIndex = 134;
             // 
             // btnNuevoEmbarazo
             // 
+            this.btnNuevoEmbarazo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNuevoEmbarazo.BackColor = System.Drawing.SystemColors.Control;
             this.btnNuevoEmbarazo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnNuevoEmbarazo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -5627,7 +5088,7 @@
             this.btnNuevoEmbarazo.ForeColor = System.Drawing.Color.Black;
             this.btnNuevoEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoEmbarazo.Image")));
             this.btnNuevoEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnNuevoEmbarazo.Location = new System.Drawing.Point(452, 48);
+            this.btnNuevoEmbarazo.Location = new System.Drawing.Point(508, 46);
             this.btnNuevoEmbarazo.Margin = new System.Windows.Forms.Padding(2);
             this.btnNuevoEmbarazo.Name = "btnNuevoEmbarazo";
             this.btnNuevoEmbarazo.Size = new System.Drawing.Size(75, 24);
@@ -5637,6 +5098,7 @@
             // 
             // btnEliminarEmbarazo
             // 
+            this.btnEliminarEmbarazo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnEliminarEmbarazo.BackColor = System.Drawing.SystemColors.Control;
             this.btnEliminarEmbarazo.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
             this.btnEliminarEmbarazo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
@@ -5646,7 +5108,7 @@
             this.btnEliminarEmbarazo.ForeColor = System.Drawing.Color.Black;
             this.btnEliminarEmbarazo.Image = ((System.Drawing.Image)(resources.GetObject("btnEliminarEmbarazo.Image")));
             this.btnEliminarEmbarazo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminarEmbarazo.Location = new System.Drawing.Point(452, 106);
+            this.btnEliminarEmbarazo.Location = new System.Drawing.Point(508, 104);
             this.btnEliminarEmbarazo.Margin = new System.Windows.Forms.Padding(2);
             this.btnEliminarEmbarazo.Name = "btnEliminarEmbarazo";
             this.btnEliminarEmbarazo.Size = new System.Drawing.Size(75, 24);
@@ -5657,15 +5119,15 @@
             // 
             // txtAmAborto
             // 
-            this.txtAmAborto.Location = new System.Drawing.Point(325, 2);
+            this.txtAmAborto.Location = new System.Drawing.Point(489, 3);
             this.txtAmAborto.Name = "txtAmAborto";
-            this.txtAmAborto.Size = new System.Drawing.Size(39, 20);
+            this.txtAmAborto.Size = new System.Drawing.Size(92, 20);
             this.txtAmAborto.TabIndex = 128;
             // 
             // label69
             // 
             this.label69.AutoSize = true;
-            this.label69.Location = new System.Drawing.Point(258, 9);
+            this.label69.Location = new System.Drawing.Point(422, 6);
             this.label69.Name = "label69";
             this.label69.Size = new System.Drawing.Size(61, 13);
             this.label69.TabIndex = 127;
@@ -5673,15 +5135,15 @@
             // 
             // txtAmPrematuro
             // 
-            this.txtAmPrematuro.Location = new System.Drawing.Point(203, 2);
+            this.txtAmPrematuro.Location = new System.Drawing.Point(301, 3);
             this.txtAmPrematuro.Name = "txtAmPrematuro";
-            this.txtAmPrematuro.Size = new System.Drawing.Size(39, 20);
+            this.txtAmPrematuro.Size = new System.Drawing.Size(89, 20);
             this.txtAmPrematuro.TabIndex = 126;
             // 
             // label68
             // 
             this.label68.AutoSize = true;
-            this.label68.Location = new System.Drawing.Point(123, 9);
+            this.label68.Location = new System.Drawing.Point(217, 9);
             this.label68.Name = "label68";
             this.label68.Size = new System.Drawing.Size(78, 13);
             this.label68.TabIndex = 125;
@@ -5691,7 +5153,7 @@
             // 
             this.txtAmNroParto.Location = new System.Drawing.Point(71, 3);
             this.txtAmNroParto.Name = "txtAmNroParto";
-            this.txtAmNroParto.Size = new System.Drawing.Size(39, 20);
+            this.txtAmNroParto.Size = new System.Drawing.Size(101, 20);
             this.txtAmNroParto.TabIndex = 124;
             // 
             // label67
@@ -5714,7 +5176,7 @@
             // 
             this.label63.AutoSize = true;
             this.label63.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label63.Location = new System.Drawing.Point(266, 144);
+            this.label63.Location = new System.Drawing.Point(317, 144);
             this.label63.Name = "label63";
             this.label63.Size = new System.Drawing.Size(60, 14);
             this.label63.TabIndex = 129;
@@ -5756,9 +5218,9 @@
             this.pnlMenarquia.Controls.Add(this.txtAmFechaUR);
             this.pnlMenarquia.Controls.Add(this.label65);
             this.pnlMenarquia.Controls.Add(this.txtAmRC);
-            this.pnlMenarquia.Location = new System.Drawing.Point(268, 161);
+            this.pnlMenarquia.Location = new System.Drawing.Point(319, 161);
             this.pnlMenarquia.Name = "pnlMenarquia";
-            this.pnlMenarquia.Size = new System.Drawing.Size(253, 28);
+            this.pnlMenarquia.Size = new System.Drawing.Size(268, 28);
             this.pnlMenarquia.TabIndex = 128;
             // 
             // label64
@@ -5772,9 +5234,9 @@
             // 
             // txtAmFechaUR
             // 
-            this.txtAmFechaUR.Location = new System.Drawing.Point(79, 3);
+            this.txtAmFechaUR.Location = new System.Drawing.Point(69, 3);
             this.txtAmFechaUR.Name = "txtAmFechaUR";
-            this.txtAmFechaUR.Size = new System.Drawing.Size(39, 20);
+            this.txtAmFechaUR.Size = new System.Drawing.Size(66, 20);
             this.txtAmFechaUR.TabIndex = 121;
             // 
             // label65
@@ -5790,20 +5252,20 @@
             // 
             this.txtAmRC.Location = new System.Drawing.Point(179, 3);
             this.txtAmRC.Name = "txtAmRC";
-            this.txtAmRC.Size = new System.Drawing.Size(39, 20);
+            this.txtAmRC.Size = new System.Drawing.Size(73, 20);
             this.txtAmRC.TabIndex = 123;
             // 
             // txtAmCuidadorEdad
             // 
             this.txtAmCuidadorEdad.Location = new System.Drawing.Point(348, 19);
             this.txtAmCuidadorEdad.Name = "txtAmCuidadorEdad";
-            this.txtAmCuidadorEdad.Size = new System.Drawing.Size(39, 20);
+            this.txtAmCuidadorEdad.Size = new System.Drawing.Size(73, 20);
             this.txtAmCuidadorEdad.TabIndex = 115;
             // 
             // label42
             // 
             this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(391, 3);
+            this.label42.Location = new System.Drawing.Point(426, 3);
             this.label42.Name = "label42";
             this.label42.Size = new System.Drawing.Size(98, 13);
             this.label42.TabIndex = 116;
@@ -5811,9 +5273,9 @@
             // 
             // txtAmCuidadorDni
             // 
-            this.txtAmCuidadorDni.Location = new System.Drawing.Point(393, 19);
+            this.txtAmCuidadorDni.Location = new System.Drawing.Point(429, 20);
             this.txtAmCuidadorDni.Name = "txtAmCuidadorDni";
-            this.txtAmCuidadorDni.Size = new System.Drawing.Size(131, 20);
+            this.txtAmCuidadorDni.Size = new System.Drawing.Size(158, 20);
             this.txtAmCuidadorDni.TabIndex = 117;
             // 
             // label43
@@ -5837,7 +5299,7 @@
             this.tbpAdolescente.Location = new System.Drawing.Point(4, 22);
             this.tbpAdolescente.Name = "tbpAdolescente";
             this.tbpAdolescente.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpAdolescente.Size = new System.Drawing.Size(543, 419);
+            this.tbpAdolescente.Size = new System.Drawing.Size(604, 426);
             this.tbpAdolescente.TabIndex = 1;
             this.tbpAdolescente.Text = "Adolescente";
             // 
@@ -5849,7 +5311,7 @@
             this.panel22.Controls.Add(this.textViveConAdol);
             this.panel22.Location = new System.Drawing.Point(9, 99);
             this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(512, 55);
+            this.panel22.Size = new System.Drawing.Size(578, 55);
             this.panel22.TabIndex = 136;
             // 
             // label107
@@ -5875,7 +5337,7 @@
             // 
             this.textViveConAdol.Location = new System.Drawing.Point(124, 26);
             this.textViveConAdol.Name = "textViveConAdol";
-            this.textViveConAdol.Size = new System.Drawing.Size(377, 20);
+            this.textViveConAdol.Size = new System.Drawing.Size(449, 20);
             this.textViveConAdol.TabIndex = 121;
             // 
             // panel23
@@ -5889,12 +5351,12 @@
             this.panel23.Controls.Add(this.label100);
             this.panel23.Location = new System.Drawing.Point(9, 32);
             this.panel23.Name = "panel23";
-            this.panel23.Size = new System.Drawing.Size(512, 53);
+            this.panel23.Size = new System.Drawing.Size(578, 53);
             this.panel23.TabIndex = 134;
             // 
             // textEdadAdol
             // 
-            this.textEdadAdol.Location = new System.Drawing.Point(365, 21);
+            this.textEdadAdol.Location = new System.Drawing.Point(452, 21);
             this.textEdadAdol.Name = "textEdadAdol";
             this.textEdadAdol.Size = new System.Drawing.Size(121, 20);
             this.textEdadAdol.TabIndex = 123;
@@ -5902,7 +5364,7 @@
             // label103
             // 
             this.label103.AutoSize = true;
-            this.label103.Location = new System.Drawing.Point(362, 5);
+            this.label103.Location = new System.Drawing.Point(449, 5);
             this.label103.Name = "label103";
             this.label103.Size = new System.Drawing.Size(32, 13);
             this.label103.TabIndex = 122;
@@ -5921,12 +5383,12 @@
             // 
             this.textNombreCuidadorAdol.Location = new System.Drawing.Point(3, 21);
             this.textNombreCuidadorAdol.Name = "textNombreCuidadorAdol";
-            this.textNombreCuidadorAdol.Size = new System.Drawing.Size(213, 20);
+            this.textNombreCuidadorAdol.Size = new System.Drawing.Size(294, 20);
             this.textNombreCuidadorAdol.TabIndex = 117;
             // 
             // textDniCuidadorAdol
             // 
-            this.textDniCuidadorAdol.Location = new System.Drawing.Point(230, 21);
+            this.textDniCuidadorAdol.Location = new System.Drawing.Point(317, 21);
             this.textDniCuidadorAdol.Name = "textDniCuidadorAdol";
             this.textDniCuidadorAdol.Size = new System.Drawing.Size(121, 20);
             this.textDniCuidadorAdol.TabIndex = 119;
@@ -5934,7 +5396,7 @@
             // label100
             // 
             this.label100.AutoSize = true;
-            this.label100.Location = new System.Drawing.Point(227, 5);
+            this.label100.Location = new System.Drawing.Point(314, 5);
             this.label100.Name = "label100";
             this.label100.Size = new System.Drawing.Size(26, 13);
             this.label100.TabIndex = 118;
@@ -5960,7 +5422,7 @@
             this.panel24.Controls.Add(this.label74);
             this.panel24.Location = new System.Drawing.Point(9, 238);
             this.panel24.Name = "panel24";
-            this.panel24.Size = new System.Drawing.Size(512, 55);
+            this.panel24.Size = new System.Drawing.Size(578, 55);
             this.panel24.TabIndex = 132;
             // 
             // label73
@@ -5976,12 +5438,12 @@
             // 
             this.txtAdoNroTv.Location = new System.Drawing.Point(121, 28);
             this.txtAdoNroTv.Name = "txtAdoNroTv";
-            this.txtAdoNroTv.Size = new System.Drawing.Size(95, 20);
+            this.txtAdoNroTv.Size = new System.Drawing.Size(176, 20);
             this.txtAdoNroTv.TabIndex = 121;
             // 
             // txtAdoNroJuegos
             // 
-            this.txtAdoNroJuegos.Location = new System.Drawing.Point(243, 28);
+            this.txtAdoNroJuegos.Location = new System.Drawing.Point(315, 28);
             this.txtAdoNroJuegos.Name = "txtAdoNroJuegos";
             this.txtAdoNroJuegos.Size = new System.Drawing.Size(258, 20);
             this.txtAdoNroJuegos.TabIndex = 123;
@@ -5999,7 +5461,7 @@
             // label74
             // 
             this.label74.AutoSize = true;
-            this.label74.Location = new System.Drawing.Point(241, 12);
+            this.label74.Location = new System.Drawing.Point(313, 12);
             this.label74.Name = "label74";
             this.label74.Size = new System.Drawing.Size(125, 13);
             this.label74.TabIndex = 122;
@@ -6017,7 +5479,7 @@
             this.panel25.Controls.Add(this.label75);
             this.panel25.Location = new System.Drawing.Point(9, 302);
             this.panel25.Name = "panel25";
-            this.panel25.Size = new System.Drawing.Size(512, 109);
+            this.panel25.Size = new System.Drawing.Size(578, 109);
             this.panel25.TabIndex = 130;
             // 
             // textObservacionesSexualidadAdol
@@ -6025,7 +5487,7 @@
             this.textObservacionesSexualidadAdol.Location = new System.Drawing.Point(192, 52);
             this.textObservacionesSexualidadAdol.Multiline = true;
             this.textObservacionesSexualidadAdol.Name = "textObservacionesSexualidadAdol";
-            this.textObservacionesSexualidadAdol.Size = new System.Drawing.Size(309, 52);
+            this.textObservacionesSexualidadAdol.Size = new System.Drawing.Size(381, 52);
             this.textObservacionesSexualidadAdol.TabIndex = 133;
             // 
             // label104
@@ -6050,20 +5512,20 @@
             // 
             this.txtAdoMenarquia.Location = new System.Drawing.Point(192, 27);
             this.txtAdoMenarquia.Name = "txtAdoMenarquia";
-            this.txtAdoMenarquia.Size = new System.Drawing.Size(127, 20);
+            this.txtAdoMenarquia.Size = new System.Drawing.Size(174, 20);
             this.txtAdoMenarquia.TabIndex = 121;
             // 
             // txtAdoEdadRS
             // 
-            this.txtAdoEdadRS.Location = new System.Drawing.Point(351, 27);
+            this.txtAdoEdadRS.Location = new System.Drawing.Point(380, 27);
             this.txtAdoEdadRS.Name = "txtAdoEdadRS";
-            this.txtAdoEdadRS.Size = new System.Drawing.Size(150, 20);
+            this.txtAdoEdadRS.Size = new System.Drawing.Size(193, 20);
             this.txtAdoEdadRS.TabIndex = 123;
             // 
             // label79
             // 
             this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(348, 11);
+            this.label79.Location = new System.Drawing.Point(384, 11);
             this.label79.Name = "label79";
             this.label79.Size = new System.Drawing.Size(140, 13);
             this.label79.TabIndex = 122;
@@ -6089,7 +5551,7 @@
             this.panel26.Controls.Add(this.label77);
             this.panel26.Location = new System.Drawing.Point(9, 166);
             this.panel26.Name = "panel26";
-            this.panel26.Size = new System.Drawing.Size(512, 55);
+            this.panel26.Size = new System.Drawing.Size(578, 55);
             this.panel26.TabIndex = 128;
             // 
             // label71
@@ -6105,12 +5567,12 @@
             // 
             this.txtAdoEdadIniTrab.Location = new System.Drawing.Point(121, 28);
             this.txtAdoEdadIniTrab.Name = "txtAdoEdadIniTrab";
-            this.txtAdoEdadIniTrab.Size = new System.Drawing.Size(95, 20);
+            this.txtAdoEdadIniTrab.Size = new System.Drawing.Size(176, 20);
             this.txtAdoEdadIniTrab.TabIndex = 117;
             // 
             // txtAdoTipoTrab
             // 
-            this.txtAdoTipoTrab.Location = new System.Drawing.Point(244, 28);
+            this.txtAdoTipoTrab.Location = new System.Drawing.Point(316, 28);
             this.txtAdoTipoTrab.Name = "txtAdoTipoTrab";
             this.txtAdoTipoTrab.Size = new System.Drawing.Size(257, 20);
             this.txtAdoTipoTrab.TabIndex = 119;
@@ -6118,7 +5580,7 @@
             // label72
             // 
             this.label72.AutoSize = true;
-            this.label72.Location = new System.Drawing.Point(240, 12);
+            this.label72.Location = new System.Drawing.Point(312, 12);
             this.label72.Name = "label72";
             this.label72.Size = new System.Drawing.Size(82, 13);
             this.label72.TabIndex = 118;
@@ -6144,7 +5606,7 @@
             this.tbpNinio.Controls.Add(this.ultgrboxDatosFamiliares);
             this.tbpNinio.Location = new System.Drawing.Point(4, 22);
             this.tbpNinio.Name = "tbpNinio";
-            this.tbpNinio.Size = new System.Drawing.Size(543, 419);
+            this.tbpNinio.Size = new System.Drawing.Size(604, 426);
             this.tbpNinio.TabIndex = 2;
             this.tbpNinio.Text = "Niño";
             this.tbpNinio.UseVisualStyleBackColor = true;
@@ -6155,12 +5617,12 @@
             this.ultgrboxVivienda.Controls.Add(this.ultraExpandableGroupBoxPanel5);
             this.ultgrboxVivienda.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxVivienda.Expanded = false;
-            this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(543, 172);
+            this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(604, 172);
             this.ultgrboxVivienda.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxVivienda.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 104);
+            this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 395);
             this.ultgrboxVivienda.Name = "ultgrboxVivienda";
-            this.ultgrboxVivienda.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxVivienda.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxVivienda.TabIndex = 158;
             this.ultgrboxVivienda.Text = "ANT. VIVIENDA / SANEAMIENTO BÁSICO";
             this.ultgrboxVivienda.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6217,12 +5679,12 @@
             this.ultgrboxFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel4);
             this.ultgrboxFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxFamiliares.Expanded = false;
-            this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(543, 380);
+            this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(604, 380);
             this.ultgrboxFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxFamiliares.Location = new System.Drawing.Point(0, 78);
+            this.ultgrboxFamiliares.Location = new System.Drawing.Point(0, 369);
             this.ultgrboxFamiliares.Name = "ultgrboxFamiliares";
-            this.ultgrboxFamiliares.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxFamiliares.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxFamiliares.TabIndex = 157;
             this.ultgrboxFamiliares.Text = "ANT. FAMILIARES";
             this.ultgrboxFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6781,12 +6243,12 @@
             this.ultgrboxNacimiento.Controls.Add(this.ultraExpandableGroupBoxPanel3);
             this.ultgrboxNacimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxNacimiento.Expanded = false;
-            this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(543, 339);
+            this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(604, 339);
             this.ultgrboxNacimiento.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxNacimiento.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxNacimiento.Location = new System.Drawing.Point(0, 52);
+            this.ultgrboxNacimiento.Location = new System.Drawing.Point(0, 343);
             this.ultgrboxNacimiento.Name = "ultgrboxNacimiento";
-            this.ultgrboxNacimiento.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxNacimiento.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxNacimiento.TabIndex = 156;
             this.ultgrboxNacimiento.Text = "ANT. PERSONALES - NACIMIENTO - ALIMENTACIÓN - PATOLOGÍAS ";
             this.ultgrboxNacimiento.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -7017,12 +6479,12 @@
             this.ultgrboxEmbarazo.Controls.Add(this.ultraExpandableGroupBoxPanel1);
             this.ultgrboxEmbarazo.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxEmbarazo.Expanded = false;
-            this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(543, 214);
+            this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(604, 214);
             this.ultgrboxEmbarazo.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxEmbarazo.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxEmbarazo.Location = new System.Drawing.Point(0, 26);
+            this.ultgrboxEmbarazo.Location = new System.Drawing.Point(0, 317);
             this.ultgrboxEmbarazo.Name = "ultgrboxEmbarazo";
-            this.ultgrboxEmbarazo.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxEmbarazo.Size = new System.Drawing.Size(604, 26);
             this.ultgrboxEmbarazo.TabIndex = 155;
             this.ultgrboxEmbarazo.Text = "ANT. PERSONALES - EMBARAZO - PARTO";
             this.ultgrboxEmbarazo.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -7150,13 +6612,12 @@
             this.ultgrboxDatosFamiliares.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxDatosFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel2);
             this.ultgrboxDatosFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxDatosFamiliares.Expanded = false;
-            this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(543, 317);
+            this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(604, 317);
             this.ultgrboxDatosFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxDatosFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxDatosFamiliares.Location = new System.Drawing.Point(0, 0);
             this.ultgrboxDatosFamiliares.Name = "ultgrboxDatosFamiliares";
-            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(604, 317);
             this.ultgrboxDatosFamiliares.TabIndex = 154;
             this.ultgrboxDatosFamiliares.Text = "DATOS GENERALES - FAMILIARES";
             this.ultgrboxDatosFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -7207,11 +6668,11 @@
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.label126);
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.txtNombreMadreTutor);
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.shapeContainer3);
-            this.ultraExpandableGroupBoxPanel2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraExpandableGroupBoxPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraExpandableGroupBoxPanel2.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel2.Name = "ultraExpandableGroupBoxPanel2";
-            this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(522, 291);
+            this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(600, 291);
             this.ultraExpandableGroupBoxPanel2.TabIndex = 0;
-            this.ultraExpandableGroupBoxPanel2.Visible = false;
             // 
             // label140
             // 
@@ -7224,15 +6685,15 @@
             // 
             // txtDNIMadrePadreResponsable
             // 
-            this.txtDNIMadrePadreResponsable.Location = new System.Drawing.Point(411, 22);
+            this.txtDNIMadrePadreResponsable.Location = new System.Drawing.Point(478, 22);
             this.txtDNIMadrePadreResponsable.Name = "txtDNIMadrePadreResponsable";
-            this.txtDNIMadrePadreResponsable.Size = new System.Drawing.Size(84, 20);
+            this.txtDNIMadrePadreResponsable.Size = new System.Drawing.Size(107, 20);
             this.txtDNIMadrePadreResponsable.TabIndex = 191;
             // 
             // label137
             // 
             this.label137.AutoSize = true;
-            this.label137.Location = new System.Drawing.Point(413, 5);
+            this.label137.Location = new System.Drawing.Point(480, 5);
             this.label137.Name = "label137";
             this.label137.Size = new System.Drawing.Size(26, 13);
             this.label137.TabIndex = 190;
@@ -7240,15 +6701,15 @@
             // 
             // txtEdadMadrePadreResponsable
             // 
-            this.txtEdadMadrePadreResponsable.Location = new System.Drawing.Point(352, 22);
+            this.txtEdadMadrePadreResponsable.Location = new System.Drawing.Point(384, 22);
             this.txtEdadMadrePadreResponsable.Name = "txtEdadMadrePadreResponsable";
-            this.txtEdadMadrePadreResponsable.Size = new System.Drawing.Size(30, 20);
+            this.txtEdadMadrePadreResponsable.Size = new System.Drawing.Size(78, 20);
             this.txtEdadMadrePadreResponsable.TabIndex = 189;
             // 
             // label138
             // 
             this.label138.AutoSize = true;
-            this.label138.Location = new System.Drawing.Point(352, 5);
+            this.label138.Location = new System.Drawing.Point(385, 5);
             this.label138.Name = "label138";
             this.label138.Size = new System.Drawing.Size(32, 13);
             this.label138.TabIndex = 188;
@@ -7267,7 +6728,7 @@
             // 
             this.txtNombreMadrePadreResponsable.Location = new System.Drawing.Point(7, 21);
             this.txtNombreMadrePadreResponsable.Name = "txtNombreMadrePadreResponsable";
-            this.txtNombreMadrePadreResponsable.Size = new System.Drawing.Size(312, 20);
+            this.txtNombreMadrePadreResponsable.Size = new System.Drawing.Size(363, 20);
             this.txtNombreMadrePadreResponsable.TabIndex = 187;
             // 
             // listaEstadoCivilHombre
@@ -7276,10 +6737,10 @@
             this.listaEstadoCivilHombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.listaEstadoCivilHombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaEstadoCivilHombre.FormattingEnabled = true;
-            this.listaEstadoCivilHombre.Location = new System.Drawing.Point(320, 257);
+            this.listaEstadoCivilHombre.Location = new System.Drawing.Point(358, 256);
             this.listaEstadoCivilHombre.Margin = new System.Windows.Forms.Padding(2);
             this.listaEstadoCivilHombre.Name = "listaEstadoCivilHombre";
-            this.listaEstadoCivilHombre.Size = new System.Drawing.Size(89, 21);
+            this.listaEstadoCivilHombre.Size = new System.Drawing.Size(104, 21);
             this.listaEstadoCivilHombre.TabIndex = 184;
             // 
             // listaEstadoCivilMujer
@@ -7288,10 +6749,10 @@
             this.listaEstadoCivilMujer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.listaEstadoCivilMujer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaEstadoCivilMujer.FormattingEnabled = true;
-            this.listaEstadoCivilMujer.Location = new System.Drawing.Point(320, 164);
+            this.listaEstadoCivilMujer.Location = new System.Drawing.Point(358, 152);
             this.listaEstadoCivilMujer.Margin = new System.Windows.Forms.Padding(2);
             this.listaEstadoCivilMujer.Name = "listaEstadoCivilMujer";
-            this.listaEstadoCivilMujer.Size = new System.Drawing.Size(91, 21);
+            this.listaEstadoCivilMujer.Size = new System.Drawing.Size(104, 21);
             this.listaEstadoCivilMujer.TabIndex = 183;
             // 
             // listaGradoInstruccionHombre
@@ -7300,10 +6761,10 @@
             this.listaGradoInstruccionHombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.listaGradoInstruccionHombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaGradoInstruccionHombre.FormattingEnabled = true;
-            this.listaGradoInstruccionHombre.Location = new System.Drawing.Point(0, 257);
+            this.listaGradoInstruccionHombre.Location = new System.Drawing.Point(3, 257);
             this.listaGradoInstruccionHombre.Margin = new System.Windows.Forms.Padding(2);
             this.listaGradoInstruccionHombre.Name = "listaGradoInstruccionHombre";
-            this.listaGradoInstruccionHombre.Size = new System.Drawing.Size(118, 21);
+            this.listaGradoInstruccionHombre.Size = new System.Drawing.Size(143, 21);
             this.listaGradoInstruccionHombre.TabIndex = 182;
             // 
             // listaGradoInstruccionMujer
@@ -7312,10 +6773,10 @@
             this.listaGradoInstruccionMujer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.listaGradoInstruccionMujer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listaGradoInstruccionMujer.FormattingEnabled = true;
-            this.listaGradoInstruccionMujer.Location = new System.Drawing.Point(-1, 164);
+            this.listaGradoInstruccionMujer.Location = new System.Drawing.Point(3, 153);
             this.listaGradoInstruccionMujer.Margin = new System.Windows.Forms.Padding(2);
             this.listaGradoInstruccionMujer.Name = "listaGradoInstruccionMujer";
-            this.listaGradoInstruccionMujer.Size = new System.Drawing.Size(119, 21);
+            this.listaGradoInstruccionMujer.Size = new System.Drawing.Size(143, 21);
             this.listaGradoInstruccionMujer.TabIndex = 181;
             // 
             // listTipoAfiliacionHombre
@@ -7324,7 +6785,7 @@
             this.listTipoAfiliacionHombre.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.listTipoAfiliacionHombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listTipoAfiliacionHombre.FormattingEnabled = true;
-            this.listTipoAfiliacionHombre.Location = new System.Drawing.Point(344, 219);
+            this.listTipoAfiliacionHombre.Location = new System.Drawing.Point(388, 205);
             this.listTipoAfiliacionHombre.Margin = new System.Windows.Forms.Padding(2);
             this.listTipoAfiliacionHombre.Name = "listTipoAfiliacionHombre";
             this.listTipoAfiliacionHombre.Size = new System.Drawing.Size(86, 21);
@@ -7336,7 +6797,7 @@
             this.listTipoAfiliacionMujer.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.listTipoAfiliacionMujer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.listTipoAfiliacionMujer.FormattingEnabled = true;
-            this.listTipoAfiliacionMujer.Location = new System.Drawing.Point(344, 112);
+            this.listTipoAfiliacionMujer.Location = new System.Drawing.Point(388, 103);
             this.listTipoAfiliacionMujer.Margin = new System.Windows.Forms.Padding(2);
             this.listTipoAfiliacionMujer.Name = "listTipoAfiliacionMujer";
             this.listTipoAfiliacionMujer.Size = new System.Drawing.Size(86, 21);
@@ -7344,15 +6805,15 @@
             // 
             // txtReligionPadre
             // 
-            this.txtReligionPadre.Location = new System.Drawing.Point(417, 259);
+            this.txtReligionPadre.Location = new System.Drawing.Point(472, 257);
             this.txtReligionPadre.Name = "txtReligionPadre";
-            this.txtReligionPadre.Size = new System.Drawing.Size(102, 20);
+            this.txtReligionPadre.Size = new System.Drawing.Size(113, 20);
             this.txtReligionPadre.TabIndex = 178;
             // 
             // label109
             // 
             this.label109.AutoSize = true;
-            this.label109.Location = new System.Drawing.Point(417, 242);
+            this.label109.Location = new System.Drawing.Point(469, 242);
             this.label109.Name = "label109";
             this.label109.Size = new System.Drawing.Size(45, 13);
             this.label109.TabIndex = 177;
@@ -7360,7 +6821,7 @@
             // 
             // txtOcupacionPadre
             // 
-            this.txtOcupacionPadre.Location = new System.Drawing.Point(123, 258);
+            this.txtOcupacionPadre.Location = new System.Drawing.Point(159, 256);
             this.txtOcupacionPadre.Name = "txtOcupacionPadre";
             this.txtOcupacionPadre.Size = new System.Drawing.Size(191, 20);
             this.txtOcupacionPadre.TabIndex = 171;
@@ -7368,7 +6829,7 @@
             // label110
             // 
             this.label110.AutoSize = true;
-            this.label110.Location = new System.Drawing.Point(321, 242);
+            this.label110.Location = new System.Drawing.Point(355, 242);
             this.label110.Name = "label110";
             this.label110.Size = new System.Drawing.Size(62, 13);
             this.label110.TabIndex = 167;
@@ -7377,7 +6838,7 @@
             // label111
             // 
             this.label111.AutoSize = true;
-            this.label111.Location = new System.Drawing.Point(104, 242);
+            this.label111.Location = new System.Drawing.Point(156, 242);
             this.label111.Name = "label111";
             this.label111.Size = new System.Drawing.Size(59, 13);
             this.label111.TabIndex = 165;
@@ -7395,7 +6856,7 @@
             // label113
             // 
             this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(321, 201);
+            this.label113.Location = new System.Drawing.Point(388, 189);
             this.label113.Name = "label113";
             this.label113.Size = new System.Drawing.Size(49, 13);
             this.label113.TabIndex = 176;
@@ -7403,15 +6864,15 @@
             // 
             // txtAfiliacionPadre
             // 
-            this.txtAfiliacionPadre.Location = new System.Drawing.Point(441, 217);
+            this.txtAfiliacionPadre.Location = new System.Drawing.Point(494, 206);
             this.txtAfiliacionPadre.Name = "txtAfiliacionPadre";
-            this.txtAfiliacionPadre.Size = new System.Drawing.Size(78, 20);
+            this.txtAfiliacionPadre.Size = new System.Drawing.Size(91, 20);
             this.txtAfiliacionPadre.TabIndex = 175;
             // 
             // label114
             // 
             this.label114.AutoSize = true;
-            this.label114.Location = new System.Drawing.Point(417, 201);
+            this.label114.Location = new System.Drawing.Point(491, 189);
             this.label114.Name = "label114";
             this.label114.Size = new System.Drawing.Size(74, 13);
             this.label114.TabIndex = 174;
@@ -7419,7 +6880,7 @@
             // 
             // txtDNIPadre
             // 
-            this.txtDNIPadre.Location = new System.Drawing.Point(258, 217);
+            this.txtDNIPadre.Location = new System.Drawing.Point(295, 205);
             this.txtDNIPadre.Name = "txtDNIPadre";
             this.txtDNIPadre.Size = new System.Drawing.Size(81, 20);
             this.txtDNIPadre.TabIndex = 173;
@@ -7427,7 +6888,7 @@
             // label115
             // 
             this.label115.AutoSize = true;
-            this.label115.Location = new System.Drawing.Point(273, 201);
+            this.label115.Location = new System.Drawing.Point(289, 189);
             this.label115.Name = "label115";
             this.label115.Size = new System.Drawing.Size(26, 13);
             this.label115.TabIndex = 172;
@@ -7435,7 +6896,7 @@
             // 
             // txtEdadPadre
             // 
-            this.txtEdadPadre.Location = new System.Drawing.Point(219, 217);
+            this.txtEdadPadre.Location = new System.Drawing.Point(252, 206);
             this.txtEdadPadre.Name = "txtEdadPadre";
             this.txtEdadPadre.Size = new System.Drawing.Size(30, 20);
             this.txtEdadPadre.TabIndex = 170;
@@ -7443,7 +6904,7 @@
             // label116
             // 
             this.label116.AutoSize = true;
-            this.label116.Location = new System.Drawing.Point(219, 201);
+            this.label116.Location = new System.Drawing.Point(249, 189);
             this.label116.Name = "label116";
             this.label116.Size = new System.Drawing.Size(32, 13);
             this.label116.TabIndex = 163;
@@ -7452,7 +6913,7 @@
             // label117
             // 
             this.label117.AutoSize = true;
-            this.label117.Location = new System.Drawing.Point(1, 201);
+            this.label117.Location = new System.Drawing.Point(3, 189);
             this.label117.Name = "label117";
             this.label117.Size = new System.Drawing.Size(170, 13);
             this.label117.TabIndex = 161;
@@ -7460,22 +6921,22 @@
             // 
             // txtNombrePadreTutor
             // 
-            this.txtNombrePadreTutor.Location = new System.Drawing.Point(1, 217);
+            this.txtNombrePadreTutor.Location = new System.Drawing.Point(3, 206);
             this.txtNombrePadreTutor.Name = "txtNombrePadreTutor";
-            this.txtNombrePadreTutor.Size = new System.Drawing.Size(213, 20);
+            this.txtNombrePadreTutor.Size = new System.Drawing.Size(243, 20);
             this.txtNombrePadreTutor.TabIndex = 162;
             // 
             // txtReligionMadre
             // 
-            this.txtReligionMadre.Location = new System.Drawing.Point(417, 164);
+            this.txtReligionMadre.Location = new System.Drawing.Point(472, 153);
             this.txtReligionMadre.Name = "txtReligionMadre";
-            this.txtReligionMadre.Size = new System.Drawing.Size(102, 20);
+            this.txtReligionMadre.Size = new System.Drawing.Size(113, 20);
             this.txtReligionMadre.TabIndex = 160;
             // 
             // label118
             // 
             this.label118.AutoSize = true;
-            this.label118.Location = new System.Drawing.Point(417, 147);
+            this.label118.Location = new System.Drawing.Point(469, 134);
             this.label118.Name = "label118";
             this.label118.Size = new System.Drawing.Size(45, 13);
             this.label118.TabIndex = 159;
@@ -7484,7 +6945,7 @@
             // label119
             // 
             this.label119.AutoSize = true;
-            this.label119.Location = new System.Drawing.Point(321, 147);
+            this.label119.Location = new System.Drawing.Point(355, 134);
             this.label119.Name = "label119";
             this.label119.Size = new System.Drawing.Size(62, 13);
             this.label119.TabIndex = 155;
@@ -7492,7 +6953,7 @@
             // 
             // txtOcupacionMadre
             // 
-            this.txtOcupacionMadre.Location = new System.Drawing.Point(123, 164);
+            this.txtOcupacionMadre.Location = new System.Drawing.Point(159, 153);
             this.txtOcupacionMadre.Name = "txtOcupacionMadre";
             this.txtOcupacionMadre.Size = new System.Drawing.Size(192, 20);
             this.txtOcupacionMadre.TabIndex = 158;
@@ -7500,7 +6961,7 @@
             // label120
             // 
             this.label120.AutoSize = true;
-            this.label120.Location = new System.Drawing.Point(104, 147);
+            this.label120.Location = new System.Drawing.Point(162, 134);
             this.label120.Name = "label120";
             this.label120.Size = new System.Drawing.Size(59, 13);
             this.label120.TabIndex = 154;
@@ -7509,7 +6970,7 @@
             // label121
             // 
             this.label121.AutoSize = true;
-            this.label121.Location = new System.Drawing.Point(4, 147);
+            this.label121.Location = new System.Drawing.Point(4, 134);
             this.label121.Name = "label121";
             this.label121.Size = new System.Drawing.Size(91, 13);
             this.label121.TabIndex = 153;
@@ -7518,7 +6979,7 @@
             // label122
             // 
             this.label122.AutoSize = true;
-            this.label122.Location = new System.Drawing.Point(341, 97);
+            this.label122.Location = new System.Drawing.Point(388, 88);
             this.label122.Name = "label122";
             this.label122.Size = new System.Drawing.Size(49, 13);
             this.label122.TabIndex = 142;
@@ -7526,15 +6987,15 @@
             // 
             // txtAfiliacionMadre
             // 
-            this.txtAfiliacionMadre.Location = new System.Drawing.Point(441, 113);
+            this.txtAfiliacionMadre.Location = new System.Drawing.Point(494, 104);
             this.txtAfiliacionMadre.Name = "txtAfiliacionMadre";
-            this.txtAfiliacionMadre.Size = new System.Drawing.Size(77, 20);
+            this.txtAfiliacionMadre.Size = new System.Drawing.Size(91, 20);
             this.txtAfiliacionMadre.TabIndex = 141;
             // 
             // label123
             // 
             this.label123.AutoSize = true;
-            this.label123.Location = new System.Drawing.Point(438, 97);
+            this.label123.Location = new System.Drawing.Point(491, 88);
             this.label123.Name = "label123";
             this.label123.Size = new System.Drawing.Size(74, 13);
             this.label123.TabIndex = 140;
@@ -7542,7 +7003,7 @@
             // 
             // txtDNIMadre
             // 
-            this.txtDNIMadre.Location = new System.Drawing.Point(255, 113);
+            this.txtDNIMadre.Location = new System.Drawing.Point(292, 103);
             this.txtDNIMadre.Name = "txtDNIMadre";
             this.txtDNIMadre.Size = new System.Drawing.Size(84, 20);
             this.txtDNIMadre.TabIndex = 139;
@@ -7550,7 +7011,7 @@
             // label124
             // 
             this.label124.AutoSize = true;
-            this.label124.Location = new System.Drawing.Point(255, 97);
+            this.label124.Location = new System.Drawing.Point(289, 88);
             this.label124.Name = "label124";
             this.label124.Size = new System.Drawing.Size(26, 13);
             this.label124.TabIndex = 138;
@@ -7558,7 +7019,7 @@
             // 
             // txtEdadMadre
             // 
-            this.txtEdadMadre.Location = new System.Drawing.Point(219, 113);
+            this.txtEdadMadre.Location = new System.Drawing.Point(252, 103);
             this.txtEdadMadre.Name = "txtEdadMadre";
             this.txtEdadMadre.Size = new System.Drawing.Size(30, 20);
             this.txtEdadMadre.TabIndex = 137;
@@ -7566,7 +7027,7 @@
             // label125
             // 
             this.label125.AutoSize = true;
-            this.label125.Location = new System.Drawing.Point(219, 97);
+            this.label125.Location = new System.Drawing.Point(251, 88);
             this.label125.Name = "label125";
             this.label125.Size = new System.Drawing.Size(32, 13);
             this.label125.TabIndex = 136;
@@ -7575,7 +7036,7 @@
             // label126
             // 
             this.label126.AutoSize = true;
-            this.label126.Location = new System.Drawing.Point(0, 97);
+            this.label126.Location = new System.Drawing.Point(2, 88);
             this.label126.Name = "label126";
             this.label126.Size = new System.Drawing.Size(178, 13);
             this.label126.TabIndex = 133;
@@ -7583,9 +7044,9 @@
             // 
             // txtNombreMadreTutor
             // 
-            this.txtNombreMadreTutor.Location = new System.Drawing.Point(0, 113);
+            this.txtNombreMadreTutor.Location = new System.Drawing.Point(3, 104);
             this.txtNombreMadreTutor.Name = "txtNombreMadreTutor";
-            this.txtNombreMadreTutor.Size = new System.Drawing.Size(214, 20);
+            this.txtNombreMadreTutor.Size = new System.Drawing.Size(243, 20);
             this.txtNombreMadreTutor.TabIndex = 134;
             // 
             // shapeContainer3
@@ -7595,17 +7056,568 @@
             this.shapeContainer3.Name = "shapeContainer3";
             this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
             this.lineShape4});
-            this.shapeContainer3.Size = new System.Drawing.Size(522, 291);
+            this.shapeContainer3.Size = new System.Drawing.Size(600, 291);
             this.shapeContainer3.TabIndex = 185;
             this.shapeContainer3.TabStop = false;
             // 
             // lineShape4
             // 
+            this.lineShape4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lineShape4.Name = "lineShape4";
             this.lineShape4.X1 = 2;
-            this.lineShape4.X2 = 517;
+            this.lineShape4.X2 = 598;
             this.lineShape4.Y1 = 70;
             this.lineShape4.Y2 = 70;
+            // 
+            // tableLayoutPanel11
+            // 
+            this.tableLayoutPanel11.ColumnCount = 1;
+            this.tableLayoutPanel11.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Controls.Add(this.panel19, 0, 0);
+            this.tableLayoutPanel11.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tableLayoutPanel11.Location = new System.Drawing.Point(0, 542);
+            this.tableLayoutPanel11.Name = "tableLayoutPanel11";
+            this.tableLayoutPanel11.RowCount = 1;
+            this.tableLayoutPanel11.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel11.Size = new System.Drawing.Size(664, 83);
+            this.tableLayoutPanel11.TabIndex = 1;
+            // 
+            // panel19
+            // 
+            this.panel19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel19.Controls.Add(this.btnGuardarAntecedentes);
+            this.panel19.Controls.Add(this.label60);
+            this.panel19.Controls.Add(this.txtDescripcionAntecedentes);
+            this.panel19.Location = new System.Drawing.Point(3, 3);
+            this.panel19.Name = "panel19";
+            this.panel19.Size = new System.Drawing.Size(658, 77);
+            this.panel19.TabIndex = 0;
+            // 
+            // btnGuardarAntecedentes
+            // 
+            this.btnGuardarAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarAntecedentes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarAntecedentes.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarAntecedentes.Image")));
+            this.btnGuardarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardarAntecedentes.Location = new System.Drawing.Point(555, 16);
+            this.btnGuardarAntecedentes.Name = "btnGuardarAntecedentes";
+            this.btnGuardarAntecedentes.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnGuardarAntecedentes.Size = new System.Drawing.Size(92, 38);
+            this.btnGuardarAntecedentes.TabIndex = 112;
+            this.btnGuardarAntecedentes.Text = "   Guardar";
+            this.btnGuardarAntecedentes.UseVisualStyleBackColor = true;
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label60.Location = new System.Drawing.Point(3, 0);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(191, 14);
+            this.label60.TabIndex = 109;
+            this.label60.Text = "Descripción de antecedentes y otros: ";
+            // 
+            // txtDescripcionAntecedentes
+            // 
+            this.txtDescripcionAntecedentes.Location = new System.Drawing.Point(3, 16);
+            this.txtDescripcionAntecedentes.Multiline = true;
+            this.txtDescripcionAntecedentes.Name = "txtDescripcionAntecedentes";
+            this.txtDescripcionAntecedentes.Size = new System.Drawing.Size(365, 52);
+            this.txtDescripcionAntecedentes.TabIndex = 110;
+            // 
+            // splitAntecedentes
+            // 
+            this.splitAntecedentes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitAntecedentes.Location = new System.Drawing.Point(0, 0);
+            this.splitAntecedentes.Name = "splitAntecedentes";
+            // 
+            // splitAntecedentes.Panel1
+            // 
+            this.splitAntecedentes.Panel1.Controls.Add(this.tableLayoutPanel9);
+            // 
+            // splitAntecedentes.Panel2
+            // 
+            this.splitAntecedentes.Panel2.Controls.Add(this.tableLayoutPanel10);
+            this.splitAntecedentes.Size = new System.Drawing.Size(664, 539);
+            this.splitAntecedentes.SplitterDistance = 338;
+            this.splitAntecedentes.TabIndex = 0;
+            // 
+            // tableLayoutPanel9
+            // 
+            this.tableLayoutPanel9.ColumnCount = 1;
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel9.Controls.Add(this.panel15, 0, 0);
+            this.tableLayoutPanel9.Controls.Add(this.panel17, 0, 1);
+            this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel9.Name = "tableLayoutPanel9";
+            this.tableLayoutPanel9.RowCount = 2;
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.583774F));
+            this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.41623F));
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(338, 539);
+            this.tableLayoutPanel9.TabIndex = 0;
+            // 
+            // panel15
+            // 
+            this.panel15.Controls.Add(this.label58);
+            this.panel15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel15.Location = new System.Drawing.Point(3, 3);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(332, 34);
+            this.panel15.TabIndex = 0;
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label58.Location = new System.Drawing.Point(63, 9);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(188, 19);
+            this.label58.TabIndex = 87;
+            this.label58.Text = "ANTECEDENTES ACTUALES";
+            // 
+            // panel17
+            // 
+            this.panel17.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel17.Controls.Add(this.ultraAntActuales);
+            this.panel17.Location = new System.Drawing.Point(3, 43);
+            this.panel17.Name = "panel17";
+            this.panel17.Size = new System.Drawing.Size(332, 493);
+            this.panel17.TabIndex = 1;
+            // 
+            // ultraAntActuales
+            // 
+            appearance101.BackColor = System.Drawing.SystemColors.ControlLight;
+            appearance101.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance101.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.ultraAntActuales.DisplayLayout.Appearance = appearance101;
+            ultraGridColumn1.Header.Caption = "Enfermedades";
+            ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn1.Width = 256;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridBand14.Columns.AddRange(new object[] {
+            ultraGridColumn1,
+            ultraGridColumn2});
+            ultraGridColumn19.Header.VisiblePosition = 0;
+            ultraGridColumn27.Header.VisiblePosition = 1;
+            ultraGridColumn28.Header.VisiblePosition = 2;
+            ultraGridBand15.Columns.AddRange(new object[] {
+            ultraGridColumn19,
+            ultraGridColumn27,
+            ultraGridColumn28});
+            ultraGridBand15.Expandable = false;
+            this.ultraAntActuales.DisplayLayout.BandsSerializer.Add(ultraGridBand14);
+            this.ultraAntActuales.DisplayLayout.BandsSerializer.Add(ultraGridBand15);
+            this.ultraAntActuales.DisplayLayout.GroupByBox.Hidden = true;
+            this.ultraAntActuales.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.ultraAntActuales.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraAntActuales.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
+            this.ultraAntActuales.DisplayLayout.Override.SelectTypeCol = Infragistics.Win.UltraWinGrid.SelectType.None;
+            this.ultraAntActuales.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.ultraAntActuales.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ultraAntActuales.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.ultraAntActuales.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.ultraAntActuales.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.ultraAntActuales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraAntActuales.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraAntActuales.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.ultraAntActuales.Location = new System.Drawing.Point(0, 0);
+            this.ultraAntActuales.Name = "ultraAntActuales";
+            this.ultraAntActuales.Size = new System.Drawing.Size(332, 493);
+            this.ultraAntActuales.TabIndex = 111;
+            // 
+            // tableLayoutPanel10
+            // 
+            this.tableLayoutPanel10.ColumnCount = 1;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel10.Controls.Add(this.panel16, 0, 0);
+            this.tableLayoutPanel10.Controls.Add(this.panel18, 0, 1);
+            this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel10.Name = "tableLayoutPanel10";
+            this.tableLayoutPanel10.RowCount = 2;
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.583774F));
+            this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 92.41623F));
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(322, 539);
+            this.tableLayoutPanel10.TabIndex = 1;
+            // 
+            // panel16
+            // 
+            this.panel16.Controls.Add(this.label39);
+            this.panel16.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel16.Location = new System.Drawing.Point(3, 3);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(316, 34);
+            this.panel16.TabIndex = 0;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Calibri", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(46, 9);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(205, 19);
+            this.label39.TabIndex = 87;
+            this.label39.Text = "ANTECEDENTES ANTERIORES";
+            // 
+            // panel18
+            // 
+            this.panel18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel18.Controls.Add(this.ultraAntAnteriores);
+            this.panel18.Location = new System.Drawing.Point(3, 43);
+            this.panel18.Name = "panel18";
+            this.panel18.Size = new System.Drawing.Size(316, 493);
+            this.panel18.TabIndex = 1;
+            // 
+            // ultraAntAnteriores
+            // 
+            appearance102.BackColor = System.Drawing.SystemColors.ControlLight;
+            appearance102.BackColor2 = System.Drawing.SystemColors.ControlDark;
+            appearance102.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            this.ultraAntAnteriores.DisplayLayout.Appearance = appearance102;
+            ultraGridColumn26.Header.Caption = "Enfermedades";
+            ultraGridColumn26.Header.VisiblePosition = 0;
+            ultraGridColumn26.Width = 256;
+            ultraGridColumn59.Header.VisiblePosition = 1;
+            ultraGridBand16.Columns.AddRange(new object[] {
+            ultraGridColumn26,
+            ultraGridColumn59});
+            ultraGridColumn79.Header.VisiblePosition = 0;
+            ultraGridColumn51.Header.VisiblePosition = 1;
+            ultraGridColumn56.Header.VisiblePosition = 2;
+            ultraGridBand17.Columns.AddRange(new object[] {
+            ultraGridColumn79,
+            ultraGridColumn51,
+            ultraGridColumn56});
+            ultraGridBand17.Expandable = false;
+            this.ultraAntAnteriores.DisplayLayout.BandsSerializer.Add(ultraGridBand16);
+            this.ultraAntAnteriores.DisplayLayout.BandsSerializer.Add(ultraGridBand17);
+            this.ultraAntAnteriores.DisplayLayout.GroupByBox.Hidden = true;
+            this.ultraAntAnteriores.DisplayLayout.NewColumnLoadStyle = Infragistics.Win.UltraWinGrid.NewColumnLoadStyle.Hide;
+            this.ultraAntAnteriores.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
+            this.ultraAntAnteriores.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
+            this.ultraAntAnteriores.DisplayLayout.Override.SelectTypeCell = Infragistics.Win.UltraWinGrid.SelectType.None;
+            this.ultraAntAnteriores.DisplayLayout.Override.SelectTypeCol = Infragistics.Win.UltraWinGrid.SelectType.None;
+            this.ultraAntAnteriores.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
+            this.ultraAntAnteriores.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.ultraAntAnteriores.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
+            this.ultraAntAnteriores.DisplayLayout.ScrollBounds = Infragistics.Win.UltraWinGrid.ScrollBounds.ScrollToFill;
+            this.ultraAntAnteriores.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
+            this.ultraAntAnteriores.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraAntAnteriores.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ultraAntAnteriores.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.ultraAntAnteriores.Location = new System.Drawing.Point(0, 0);
+            this.ultraAntAnteriores.Name = "ultraAntAnteriores";
+            this.ultraAntAnteriores.Size = new System.Drawing.Size(316, 493);
+            this.ultraAntAnteriores.TabIndex = 111;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1292, 631);
+            this.tabPage3.TabIndex = 6;
+            this.tabPage3.Text = "CUIDADOS PREVENTIVOS";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(0, 656);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1300, 55);
+            this.tableLayoutPanel6.TabIndex = 5;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel7.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 78.12983F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 21.87017F));
+            this.tableLayoutPanel7.Controls.Add(this.panel7, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.panel8, 1, 0);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1294, 49);
+            this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // panel7
+            // 
+            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel7.Controls.Add(this.lblTrabajador);
+            this.panel7.Controls.Add(this.label1);
+            this.panel7.Controls.Add(this.label18);
+            this.panel7.Controls.Add(this.label16);
+            this.panel7.Controls.Add(this.label20);
+            this.panel7.Controls.Add(this.lblProtocolName);
+            this.panel7.Controls.Add(this.label21);
+            this.panel7.Controls.Add(this.lblView);
+            this.panel7.Controls.Add(this.label24);
+            this.panel7.Controls.Add(this.btnViewWorker);
+            this.panel7.Controls.Add(this.lblFechaGraba);
+            this.panel7.Controls.Add(this.lblUsuAct);
+            this.panel7.Controls.Add(this.lblUsuGraba);
+            this.panel7.Controls.Add(this.label17);
+            this.panel7.Location = new System.Drawing.Point(3, 3);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(1004, 43);
+            this.panel7.TabIndex = 0;
+            // 
+            // lblTrabajador
+            // 
+            this.lblTrabajador.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblTrabajador.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblTrabajador.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrabajador.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblTrabajador.Location = new System.Drawing.Point(368, 3);
+            this.lblTrabajador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTrabajador.Name = "lblTrabajador";
+            this.lblTrabajador.Size = new System.Drawing.Size(237, 15);
+            this.lblTrabajador.TabIndex = 77;
+            this.lblTrabajador.Text = "lblTrabajador";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(307, 4);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.TabIndex = 78;
+            this.label1.Text = "Pciente:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label18
+            // 
+            this.label18.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label18.Location = new System.Drawing.Point(712, 24);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(139, 15);
+            this.label18.TabIndex = 86;
+            this.label18.Text = "lblServicio";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(296, 25);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 13);
+            this.label16.TabIndex = 75;
+            this.label16.Text = "Protocolo:";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label20
+            // 
+            this.label20.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label20.Location = new System.Drawing.Point(712, 4);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(139, 15);
+            this.label20.TabIndex = 87;
+            this.label20.Text = "lblTipoEso";
+            // 
+            // lblProtocolName
+            // 
+            this.lblProtocolName.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblProtocolName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblProtocolName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProtocolName.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblProtocolName.Location = new System.Drawing.Point(368, 24);
+            this.lblProtocolName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblProtocolName.Name = "lblProtocolName";
+            this.lblProtocolName.Size = new System.Drawing.Size(268, 15);
+            this.lblProtocolName.TabIndex = 76;
+            this.lblProtocolName.Text = "lblProtocolName";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(651, 25);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(57, 13);
+            this.label21.TabIndex = 85;
+            this.label21.Text = "Servicio:";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblView
+            // 
+            this.lblView.AutoSize = true;
+            this.lblView.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblView.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblView.ForeColor = System.Drawing.Color.Blue;
+            this.lblView.Location = new System.Drawing.Point(856, 16);
+            this.lblView.Name = "lblView";
+            this.lblView.Size = new System.Drawing.Size(67, 13);
+            this.lblView.TabIndex = 80;
+            this.lblView.Text = "Ver Menos";
+            this.lblView.Click += new System.EventHandler(this.lblView_Click_1);
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(647, 4);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(61, 13);
+            this.label24.TabIndex = 88;
+            this.label24.Text = "Tipo Eso:";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnViewWorker
+            // 
+            this.btnViewWorker.BackColor = System.Drawing.SystemColors.Control;
+            this.btnViewWorker.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnViewWorker.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnViewWorker.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnViewWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnViewWorker.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_suit;
+            this.btnViewWorker.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnViewWorker.Location = new System.Drawing.Point(608, 1);
+            this.btnViewWorker.Margin = new System.Windows.Forms.Padding(2);
+            this.btnViewWorker.Name = "btnViewWorker";
+            this.btnViewWorker.Size = new System.Drawing.Size(28, 21);
+            this.btnViewWorker.TabIndex = 79;
+            this.btnViewWorker.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnViewWorker.UseVisualStyleBackColor = false;
+            this.btnViewWorker.Click += new System.EventHandler(this.btnViewWorker_Click_1);
+            // 
+            // lblFechaGraba
+            // 
+            this.lblFechaGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblFechaGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblFechaGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblFechaGraba.Location = new System.Drawing.Point(108, 24);
+            this.lblFechaGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFechaGraba.Name = "lblFechaGraba";
+            this.lblFechaGraba.Size = new System.Drawing.Size(169, 15);
+            this.lblFechaGraba.TabIndex = 84;
+            this.lblFechaGraba.Text = "lblFechaGraba";
+            // 
+            // lblUsuAct
+            // 
+            this.lblUsuAct.AutoSize = true;
+            this.lblUsuAct.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUsuAct.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuAct.Location = new System.Drawing.Point(12, 3);
+            this.lblUsuAct.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsuAct.Name = "lblUsuAct";
+            this.lblUsuAct.Size = new System.Drawing.Size(92, 13);
+            this.lblUsuAct.TabIndex = 81;
+            this.lblUsuAct.Text = "Usuario Graba:";
+            this.lblUsuAct.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblUsuGraba
+            // 
+            this.lblUsuGraba.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.lblUsuGraba.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblUsuGraba.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsuGraba.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblUsuGraba.Location = new System.Drawing.Point(108, 3);
+            this.lblUsuGraba.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblUsuGraba.Name = "lblUsuGraba";
+            this.lblUsuGraba.Size = new System.Drawing.Size(169, 15);
+            this.lblUsuGraba.TabIndex = 83;
+            this.lblUsuGraba.Text = "lblUsuGraba";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(20, 26);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(84, 13);
+            this.label17.TabIndex = 82;
+            this.label17.Text = "Fecha Graba:";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // panel8
+            // 
+            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel8.Controls.Add(this.btnPerson);
+            this.panel8.Controls.Add(this.btnSalir);
+            this.panel8.Location = new System.Drawing.Point(1013, 3);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(278, 43);
+            this.panel8.TabIndex = 1;
+            // 
+            // btnPerson
+            // 
+            this.btnPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnPerson.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPerson.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPerson.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPerson.Location = new System.Drawing.Point(39, 4);
+            this.btnPerson.Name = "btnPerson";
+            this.btnPerson.Size = new System.Drawing.Size(224, 30);
+            this.btnPerson.TabIndex = 100;
+            this.btnPerson.Text = "Ver Datos Generales";
+            this.btnPerson.UseVisualStyleBackColor = false;
+            this.btnPerson.Click += new System.EventHandler(this.btnPerson_Click_1);
+            // 
+            // btnSalir
+            // 
+            this.btnSalir.BackColor = System.Drawing.SystemColors.Control;
+            this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnSalir.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnSalir.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
+            this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnSalir.Location = new System.Drawing.Point(2, 2);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSalir.Name = "btnSalir";
+            this.btnSalir.Size = new System.Drawing.Size(161, 24);
+            this.btnSalir.TabIndex = 68;
+            this.btnSalir.Text = "Salir de Evaluación Medica";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSalir.UseVisualStyleBackColor = false;
+            this.btnSalir.Visible = false;
             // 
             // FrmEsoV2
             // 
@@ -7702,30 +7714,6 @@
             this.splitGeneral.ResumeLayout(false);
             this.tableLayoutPanel12.ResumeLayout(false);
             this.panel20.ResumeLayout(false);
-            this.tableLayoutPanel11.ResumeLayout(false);
-            this.panel19.ResumeLayout(false);
-            this.panel19.PerformLayout();
-            this.splitAntecedentes.Panel1.ResumeLayout(false);
-            this.splitAntecedentes.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitAntecedentes)).EndInit();
-            this.splitAntecedentes.ResumeLayout(false);
-            this.tableLayoutPanel9.ResumeLayout(false);
-            this.panel15.ResumeLayout(false);
-            this.panel15.PerformLayout();
-            this.panel17.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraAntActuales)).EndInit();
-            this.tableLayoutPanel10.ResumeLayout(false);
-            this.panel16.ResumeLayout(false);
-            this.panel16.PerformLayout();
-            this.panel18.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraAntAnteriores)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).EndInit();
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.tableLayoutPanel7.ResumeLayout(false);
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager2)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.panel21.ResumeLayout(false);
@@ -7792,6 +7780,30 @@
             this.ultgrboxDatosFamiliares.ResumeLayout(false);
             this.ultraExpandableGroupBoxPanel2.ResumeLayout(false);
             this.ultraExpandableGroupBoxPanel2.PerformLayout();
+            this.tableLayoutPanel11.ResumeLayout(false);
+            this.panel19.ResumeLayout(false);
+            this.panel19.PerformLayout();
+            this.splitAntecedentes.Panel1.ResumeLayout(false);
+            this.splitAntecedentes.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitAntecedentes)).EndInit();
+            this.splitAntecedentes.ResumeLayout(false);
+            this.tableLayoutPanel9.ResumeLayout(false);
+            this.panel15.ResumeLayout(false);
+            this.panel15.PerformLayout();
+            this.panel17.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraAntActuales)).EndInit();
+            this.tableLayoutPanel10.ResumeLayout(false);
+            this.panel16.ResumeLayout(false);
+            this.panel16.PerformLayout();
+            this.panel18.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraAntAnteriores)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).EndInit();
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager2)).EndInit();
             this.ResumeLayout(false);
 
         }
