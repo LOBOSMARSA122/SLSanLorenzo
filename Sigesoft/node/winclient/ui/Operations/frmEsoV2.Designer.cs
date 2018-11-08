@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -732,6 +732,10 @@
             this.btnPerson = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.ultraFlowLayoutManager2 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
+            this.ultraPanel1 = new Infragistics.Win.Misc.UltraPanel();
+            this.panel27 = new System.Windows.Forms.Panel();
+            this.btnGuardarCuidadosPreventivos = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -854,24 +858,29 @@
             this.panel18.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraAntAnteriores)).BeginInit();
             this.tabPage3.SuspendLayout();
+            this.tableLayoutPanel13.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager2)).BeginInit();
+            this.ultraPanel1.ClientArea.SuspendLayout();
+            this.ultraPanel1.SuspendLayout();
+            this.panel27.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // uvExamen
             // 
-            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance1.BackColor2 = System.Drawing.Color.Transparent;
-            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance1.BorderColor = System.Drawing.Color.Red;
-            appearance1.BorderColor2 = System.Drawing.Color.Red;
-            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance1;
+            appearance103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance103.BackColor2 = System.Drawing.Color.Transparent;
+            appearance103.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance103.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance103.BorderColor = System.Drawing.Color.Red;
+            appearance103.BorderColor2 = System.Drawing.Color.Red;
+            appearance103.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance103;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -7373,13 +7382,18 @@
             // 
             // tableLayoutPanel13
             // 
+            this.tableLayoutPanel13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel13.ColumnCount = 1;
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel13.Controls.Add(this.ultraPanel1, 0, 0);
+            this.tableLayoutPanel13.Controls.Add(this.panel27, 0, 1);
             this.tableLayoutPanel13.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
-            this.tableLayoutPanel13.RowCount = 1;
+            this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 53F));
             this.tableLayoutPanel13.Size = new System.Drawing.Size(1292, 631);
             this.tableLayoutPanel13.TabIndex = 0;
             // 
@@ -7672,6 +7686,55 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Visible = false;
             // 
+            // ultraPanel1
+            // 
+            this.ultraPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            // 
+            // ultraPanel1.ClientArea
+            // 
+            this.ultraPanel1.ClientArea.Controls.Add(this.dataGridView1);
+            this.ultraPanel1.Location = new System.Drawing.Point(3, 3);
+            this.ultraPanel1.Name = "ultraPanel1";
+            this.ultraPanel1.Size = new System.Drawing.Size(1286, 572);
+            this.ultraPanel1.TabIndex = 0;
+            // 
+            // panel27
+            // 
+            this.panel27.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel27.Controls.Add(this.btnGuardarCuidadosPreventivos);
+            this.panel27.Location = new System.Drawing.Point(3, 581);
+            this.panel27.Name = "panel27";
+            this.panel27.Size = new System.Drawing.Size(1286, 47);
+            this.panel27.TabIndex = 1;
+            // 
+            // btnGuardarCuidadosPreventivos
+            // 
+            this.btnGuardarCuidadosPreventivos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGuardarCuidadosPreventivos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGuardarCuidadosPreventivos.Image = ((System.Drawing.Image)(resources.GetObject("btnGuardarCuidadosPreventivos.Image")));
+            this.btnGuardarCuidadosPreventivos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGuardarCuidadosPreventivos.Location = new System.Drawing.Point(1171, 3);
+            this.btnGuardarCuidadosPreventivos.Name = "btnGuardarCuidadosPreventivos";
+            this.btnGuardarCuidadosPreventivos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnGuardarCuidadosPreventivos.Size = new System.Drawing.Size(92, 38);
+            this.btnGuardarCuidadosPreventivos.TabIndex = 113;
+            this.btnGuardarCuidadosPreventivos.Text = "   Guardar";
+            this.btnGuardarCuidadosPreventivos.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(10, 12);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1266, 549);
+            this.dataGridView1.TabIndex = 1;
+            // 
             // FrmEsoV2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -7851,6 +7914,7 @@
             this.panel18.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraAntAnteriores)).EndInit();
             this.tabPage3.ResumeLayout(false);
+            this.tableLayoutPanel13.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager1)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel7.ResumeLayout(false);
@@ -7858,6 +7922,10 @@
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager2)).EndInit();
+            this.ultraPanel1.ClientArea.ResumeLayout(false);
+            this.ultraPanel1.ResumeLayout(false);
+            this.panel27.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -8342,5 +8410,9 @@
         private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer3;
         private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
+        private Infragistics.Win.Misc.UltraPanel ultraPanel1;
+        private System.Windows.Forms.Panel panel27;
+        private System.Windows.Forms.Button btnGuardarCuidadosPreventivos;
+        private System.Windows.Forms.DataGridView dataGridView1;
     }
 }
