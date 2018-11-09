@@ -31351,6 +31351,10 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
 
+                decimal? debe = 0;
+                decimal? pago = 0;
+                decimal? total = 0;
+
                 foreach (var item in empresas)
                 {
                     var LiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
@@ -31375,16 +31379,33 @@ namespace Sigesoft.Node.WinClient.BLL
                         {
                             oLiquidacionDetalle.d_Debe = 0;
                         }
+
+                       
                         oLiquidacionDetalle.d_Pago = liquidacion.d_Monto - oLiquidacionDetalle.d_Debe;
                         
-                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;                  
+                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;      
+            
+
+                        //summary calc
+
+                        debe += oLiquidacionDetalle.d_Debe;
+                        pago += oLiquidacionDetalle.d_Pago;
+                        total += oLiquidacionDetalle.d_Total;
 
                         LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
                     }
                     oLiquidacionEmpresa.detalle = LiquidacionEmpresaDetalle;
-
+                   
                     ListaLiquidacion.Add(oLiquidacionEmpresa);
                 }
+
+                if (ListaLiquidacion.Count > 0)
+                {
+                    ListaLiquidacion[0].Total_Debe = debe.Value.ToString();
+                    ListaLiquidacion[0].Total_Pago = pago.Value.ToString();
+                    ListaLiquidacion[0].Total_Total = total.Value.ToString();
+                }
+
 
                 pobjOperationResult.Success = 1;
                 return ListaLiquidacion.ToList();
