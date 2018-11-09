@@ -125,10 +125,14 @@ namespace Sigesoft.Node.WinClient.UI
         {
             var objData = GetDataEmpresa(0, null, "", strFilterExpression);
             grdEmpresa.DataSource = objData;
+
             //lblRecordCountCalendar.Text = string.Format("Se encontraron {0} registros.", objData.Count());
 
             if (grdEmpresa.Rows.Count > 0)
             {
+                txtDebe.Text = objData[0].Total_Debe;
+                txtPago.Text = objData[0].Total_Pago;
+                txtTotal.Text = objData[0].Total_Total;
                 grdEmpresa.Rows[0].Selected = true;
                 //btnExportarExcel.Enabled = true;
             }
@@ -462,30 +466,17 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdEmpresa_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
         {
-            Infragistics.Win.UltraWinCalcManager.UltraCalcManager calcManager;
-            calcManager = new Infragistics.Win.UltraWinCalcManager.UltraCalcManager(this.Container);
-            e.Layout.Grid.CalcManager = calcManager;
+          
+        }
 
-            // You can set formula on a column.
-            //e.Layout.Bands[0].Columns["v_OrganizationName"].Formula = "10 * [d_Debe]";
+        private void btnExportclinico_Click(object sender, EventArgs e)
+        {
 
-            // You can create a formula summary. Following summary calculates the sum of
-            // Col1 column.
-            e.Layout.Bands[1].Summaries.Add("Summary1", "sum( [d_Debe] )");
+        }
 
-            // FormulaErrorAppearance specifies the appearance of cells and summaries that
-            // contain formula errors.
-            e.Layout.Override.FormulaErrorAppearance.BackColor = Color.Red;
+        private void btnExportAramark_Click(object sender, EventArgs e)
+        {
 
-            // FormulaRowIndexSource specifies which rows to use for calculations, all
-            // rows or just the visible rows. For example, if you have a summary "sum(
-            // [Column1] )" which sums up the values of Column1, VisibleIndex specifies
-            // that the values from only the visible rows should be used for calculating
-            // the sum.
-            e.Layout.Override.FormulaRowIndexSource = FormulaRowIndexSource.ListIndex;
-
-
-            //this.grdEmpresa.DisplayLayout.Bands[1].Summaries.Add("GrandTotal", "sum( [d_Debe] )");
         }
     }
 }
