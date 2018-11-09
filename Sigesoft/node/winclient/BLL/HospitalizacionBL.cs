@@ -33,6 +33,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_Paciente = B.v_FirstName +" " +  B.v_FirstLastName + " " + B.v_SecondLastName ,
                                 v_HopitalizacionId = A.v_HopitalizacionId,
                                 v_PersonId = A.v_PersonId,
+                                v_DocNumber = B.v_DocNumber,
+                                d_Birthdate = B.d_Birthdate.Value,
                                 i_IsDeleted = A.i_IsDeleted.Value,
                                 v_Comentario = A.v_Comentario
                             };
@@ -70,6 +72,8 @@ namespace Sigesoft.Node.WinClient.BLL
                              d_FechaAlta = a.d_FechaAlta,
                              v_HopitalizacionId = a.v_HopitalizacionId,
                              v_PersonId = a.v_PersonId,
+                             v_DocNumber = a.v_DocNumber,
+                             i_Years = GetAge(a.d_Birthdate),
                              v_Comentario = a.v_Comentario
                          }).ToList();
 
@@ -90,6 +94,8 @@ namespace Sigesoft.Node.WinClient.BLL
                     hospit.v_HopitalizacionId = item.v_HopitalizacionId;
                     hospit.v_PersonId = item.v_PersonId;
                     hospit.v_Paciente = item.v_Paciente;
+                    hospit.v_DocNumber = item.v_DocNumber;
+                    hospit.i_Years = item.i_Years;
                     hospit.d_FechaIngreso = item.d_FechaIngreso;
                     hospit.d_FechaAlta = item.d_FechaAlta;
                     hospit.v_Comentario = item.v_Comentario;
@@ -156,7 +162,11 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+        public int GetAge(DateTime FechaNacimiento)
+        {
+            return int.Parse((DateTime.Today.AddTicks(-FechaNacimiento.Ticks).Year - 1).ToString());
 
+        }
         public List<HospitalizacionList> GetHospitalizcion(ref OperationResult pobjOperationResult, string hospitalizacionId)
         {
 
@@ -283,8 +293,15 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 if (fechaIni != null)
                 {
-                    TimeSpan ts = fechafin.Value.Date.AddDays(1) - fechaIni.Value.Date;
-                    cantidadDias = ts.Days;
+                    TimeSpan ts = fechafin.Value.Date - fechaIni.Value.Date;
+                    if (ts.Days == 0)
+                    {
+                        cantidadDias = ts.Days + 1;
+                    }
+                    else
+                    {
+                        cantidadDias = ts.Days;
+                    }
                 }
             }
             else
@@ -298,12 +315,19 @@ namespace Sigesoft.Node.WinClient.BLL
                     TimeSpan ts = newDate - oldDate;
 
                     // Difference in days.
-                    cantidadDias = ts.Days;
+                    if (ts.Days == 0)
+                    {
+                        cantidadDias = ts.Days + 1;
+                    }
+                    else
+                    {
+                        cantidadDias = ts.Days;
+                    }
                 }
                     //cantidadDias = int.Parse((DateTime.Today.AddTicks(-fechaIni.Value.Ticks).Day + 1).ToString());
             }
 
-            return precioHabitacion * cantidadDias;
+            return precioHabitacion * (cantidadDias);
         }
 
         private List<HospitalizacionHabitacionList> BuscarHospitalizacionHabitaciones(string hospitalizacionId)

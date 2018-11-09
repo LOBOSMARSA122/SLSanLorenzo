@@ -2091,6 +2091,7 @@ namespace Sigesoft.Common
         public const string FORMATO_ATENCION_NINIO = "FA_NINIO";
         public const string INFORME_ANEXO_16_COIMOLACHE = "7C-COIMOLACHE";
         public const string INFORME_ANEXO_16_PACASMAYO = "7C-PACASMAYO";
+        public const string INFORME_ANEXO_16_MINSURSANRAFAEL = "7C-MINSURSANRAFAEL";
         public const string INFORME_ANEXO_16_YANACOCHA = "7C-YANACOCHA";
         public const string INFORME_ANEXO_16_SHAHUINDO = "7C-SHAHUINDO";
         public const string INFORME_ANEXO_16_GOLD_FIELD = "7C-GOLD_FIELD";
@@ -2115,6 +2116,21 @@ namespace Sigesoft.Common
         public const string D_J_P_COIMOLACHE_LA_ZANJA_SI_DESCRIPCION = "N009-MF000003676";
         public const string D_J_P_COIMOLACHE_LA_ZANJA_OTRAS_ENFERMEDADES= "N009-MF000003677";
         #endregion
+
+        #region TOTTUS
+        public const string REACCION_INFLAMATORIA_ID_T = "N009-ME000000525";
+
+        public const string REACCION_INFLAMATORIA_HEMATIES = "N009-MF000004442";
+        public const string REACCION_INFLAMATORIA_LEVADURAS = "N009-MF000004443";
+        public const string REACCION_INFLAMATORIA_GRASAS = "N009-MF000004444";
+        public const string REACCION_INFLAMATORIA_LEUCOCITOS = "N009-MF000004445";
+        public const string REACCION_INFLAMATORIA_POLIMORFONUCLEARES = "N009-MF000004446";
+        public const string REACCION_INFLAMATORIA_MONONUCLEARES = "N009-MF000004447";
+        public const string REACCION_INFLAMATORIA_RESULTADO = "N009-MF000004448";
+        public const string REACCION_INFLAMATORIA_OBSERVACION = "N009-MF000004449";
+
+        #endregion
+
         #region ADICIONALES CIELO AZUL
 
         public const string PARASITOLOGICO_COPROCULTIVO_CIELO_AZUL = "PAR-COP-CIELO_AZUL";
@@ -4768,6 +4784,8 @@ namespace Sigesoft.Common
 
         public const string NEUTROFILOS_10_9 = "N009-MF000001902";
         public const string NEUTROFILOS_10_9_DESEABLE = "N009-MF000001903";
+
+        public const string Hemograma_Otros = "N009-MF000004441";
         #endregion
 
         #region OSTEO_MUSCULAR

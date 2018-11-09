@@ -341,7 +341,16 @@ namespace NetPdf
                         
                         TimeSpan tSpan = fin - inicio;
 
-                        int dias = tSpan.Days + 1;
+                        //+ 1
+                        int dias = 0;
+                        if (tSpan.Days == 0)
+                        {
+                            dias = tSpan.Days + 1;
+                        }
+                        else
+                        {
+                            dias = tSpan.Days;
+                        }
 
                         cell = new PdfPCell(new Phrase("-", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                         cells.Add(cell);
