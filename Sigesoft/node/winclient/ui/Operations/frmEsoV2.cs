@@ -151,15 +151,23 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void CreateMissingExamens()
         {
-            var listExamenes = new ServiceBL().ListMissingExamenesNames(ref _objOperationResult, _serviceId, _nodeId, _roleId).ToList();
-            foreach (var examen in listExamenes)
-            {
-                //if (examen.v_ComponentId == "N002-ME000000145")
-                //{
-                    var componentsId = new ServiceBL().ConcatenateComponents(_serviceId, examen.v_ComponentId);
-                    AsyncCreateNextExamen(componentsId, examen.v_CategoryName);
-                //}
+            try
+            {          
+                var listExamenes = new ServiceBL().ListMissingExamenesNames(ref _objOperationResult, _serviceId, _nodeId, _roleId).ToList();
+                foreach (var examen in listExamenes)
+                {
+                    //if (examen.v_ComponentId == "N002-ME000000145")
+                    //{
+                        var componentsId = new ServiceBL().ConcatenateComponents(_serviceId, examen.v_ComponentId);
+                        AsyncCreateNextExamen(componentsId, examen.v_CategoryName);
+                    //}
               
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
 
