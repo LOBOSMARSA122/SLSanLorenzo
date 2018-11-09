@@ -279,36 +279,60 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
-            var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
-            var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-
-            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            if (tabControl1.SelectedTab.Name == "tpESO")
             {
-                this.Enabled = false;
+                var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+                var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
 
-                var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    this.Enabled = false;
 
-                var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
+                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
-                //var serviceId = lista.SelectMany(p => p.Servicios.Select(q=>q.v_ServiceId));
-                //hospser = _hospitBL.GetHospitServ(hospiId);
-                //var datosP = _pacientBL.DevolverDatosPaciente(hospser.v_ServiceId);
+                    var lista = _serviceBL.GetListaLiquidacion(ref _objOperationResult, liquidacionID);
+                    
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
 
-                string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
-                //ServiceList personData = _serviceBL.GetServicePersonData(ref _objOperationResult, serviceID);
+                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                    string nombre = "Liquidación N° " + liquidacionID + " - CSL";
 
-                //var hospitalizacion = _hospitBL.GetHospitalizacion(ref _objOperationResult, hospiId);
-                //var hospitalizacionhabitacion = _hospitBL.GetHospitalizacionHabitacion(ref _objOperationResult, hospiId);
-                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
-                string nombre ="Liquidación N° "+ liquidacionID + " - CSL";
+                    var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
 
-                var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
 
-                
-                Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas);
-                this.Enabled = true;
+                    Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas);
+                    this.Enabled = true;
+                }
             }
+            else if (tabControl1.SelectedTab.Name == "tpEmpresa")
+            {
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    this.Enabled = false;
+
+                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+                    OperationResult objOperationResult = new OperationResult();
+
+                    DateTime? fechaInicio = dtpDateTimeStar.Value.Date;
+                    DateTime? fechaFin = dptDateTimeEnd.Value.Date.AddDays(1);
+
+                    string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
+                    string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
+                    var lista = _serviceBL.GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
+
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                    string nombre = "Liquidaciones de EMPRESA - CSL";
+
+                    //var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
+
+                    Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1);
+                    this.Enabled = true;
+                }
+            }
+            
         }
 
         private void grdData_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
@@ -337,6 +361,7 @@ namespace Sigesoft.Node.WinClient.UI
                 }
 
             }
+            
         }
 
         private void ddlCustomerOrganization_KeyPress(object sender, KeyPressEventArgs e)
@@ -422,6 +447,16 @@ namespace Sigesoft.Node.WinClient.UI
 
                 Liquidacion_Carta.CreateLiquidacion_Carta(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas, datosGrabo);
                 this.Enabled = true;
+            }
+        }
+
+        private void grdEmpresa_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
+        {
+            foreach (UltraGridRow rowSelected in this.grdEmpresa.Selected.Rows)
+            {
+
+                btnLiqd1.Enabled = true;
+
             }
         }
     }

@@ -17,6 +17,8 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? d_FechaVencimiento { get; set; }
         public string v_NroFactura { get; set; }
 
+        public DateTime? Creacion_Liquidacion { get; set; }
+
         public List<LiquidacionEmpresaDetalle> detalle { get; set; }
     }
 

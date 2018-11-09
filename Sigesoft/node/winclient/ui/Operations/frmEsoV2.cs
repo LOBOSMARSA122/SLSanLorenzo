@@ -77,6 +77,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private bool _removerTotalDiagnostico;
         private bool _removerRecomendacionAnalisisDx;
         private bool _removerRestriccionAnalisis;
+
+        private bool _removerRecomendaciones_Conclusiones;
+        private bool _removerRestricciones_ConclusionesTratamiento;
+
         private List<DiagnosticRepositoryList> _tmpTotalConclusionesDxByServiceIdList;
         private readonly List<DiagnosticRepositoryList> _tmpTotalDiagnosticList = null;
         private List<DiagnosticRepositoryList> _tmpTotalDiagnosticByServiceIdList;
@@ -105,6 +109,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private ServiceComponentList _serviceComponentsInfo = null;
         private string _Dni;
         string _personName;
+        int GrupoEtario;
+        private int _AMCGenero;
         #endregion
       
         public FrmEsoV2(string serviceId, string componentIdDefault, string action, int roleId, int nodeId, int userId, int tipo)
@@ -1410,6 +1416,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             _removerRestriccionAnalisis = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVERESTRIC", _formActions);
             btnAceptarDX.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_SAVE", _formActions);
 
+            btnAgregarRecomendaciones_Conclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_ADDRECOME", _formActions);
+            btnAgregarRestriccion_ConclusionesTratamiento.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_ADDRESTRIC", _formActions);
+
+            _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERECOME", _formActions);
+            _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERESTRIC", _formActions);
+
             if (btnAceptarDX.Enabled) return;
             cbCalificacionFinal.Enabled = false;
             cbTipoDx.Enabled = false;
@@ -1419,6 +1431,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void LoadData()
         {
+            //revisar
+            OperationResult objOperationResult = new OperationResult();
+            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+            
             var dataService = GetServiceData(_serviceId);
             _cancelEventSelectedIndexChange = true;
             LoadTabAnamnesis(dataService);
@@ -1426,10 +1442,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             LoadTabExamenes(dataService);
             LoadTabControlCalidad();
             LoadTabAptitud();
-
-            OperationResult objOperationResult = new OperationResult();
-
-            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
 
             _ProtocolId = personData.v_ProtocolId;
             _personName = string.Format("{0} {1} {2}", personData.v_FirstLastName, personData.v_SecondLastName, personData.v_FirstName);
@@ -1479,7 +1491,6 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void LoadTabAnamnesis(ServiceData dataAnamnesis)
         {
-            _personId = dataAnamnesis.PersonId;
             chkPresentaSisntomas.Checked = Convert.ToBoolean(dataAnamnesis.HasSymptomId);
             txtSintomaPrincipal.Text = string.IsNullOrEmpty(dataAnamnesis.MainSymptom) ? "No Refiere" : dataAnamnesis.MainSymptom;
             txtValorTiempoEnfermedad.Enabled = chkPresentaSisntomas.Checked;
@@ -1487,12 +1498,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             cbCalendario.Enabled = chkPresentaSisntomas.Checked;
             cbCalendario.SelectedValue = dataAnamnesis.TimeOfDiseaseTypeId == null ? "1" : dataAnamnesis.TimeOfDiseaseTypeId.ToString();
             txtRelato.Text = string.IsNullOrEmpty(dataAnamnesis.Story) ? "Paciente Asintomático" : dataAnamnesis.Story;
+            _cancelEventSelectedIndexChange = true;
             cbSueño.SelectedValue = dataAnamnesis.DreamId == null ? "1" : dataAnamnesis.DreamId.ToString();
             cbApetito.SelectedValue = dataAnamnesis.AppetiteId == null ? "1" : dataAnamnesis.AppetiteId.ToString();
             cbDeposiciones.SelectedValue = dataAnamnesis.DepositionId == null ? "1" : dataAnamnesis.DepositionId.ToString();
             cbOrina.SelectedValue = dataAnamnesis.UrineId == null ? "1" : dataAnamnesis.UrineId.ToString();
             cbSed.SelectedValue = dataAnamnesis.ThirstId == null ? "1" : dataAnamnesis.ThirstId.ToString();
+            _cancelEventSelectedIndexChange = false;
             txtHallazgos.Text = string.IsNullOrEmpty(dataAnamnesis.Findings) ? "Sin Alteración" : dataAnamnesis.Findings;
+            //txtFechaUltimoPAP.Text = string.IsNullOrEmpty(personData.v_FechaUltimoPAP) ? "" : personData.v_FechaUltimoPAP;
             txtMenarquia.Text = dataAnamnesis.Menarquia;
             txtGestapara.Text = string.IsNullOrEmpty(dataAnamnesis.Gestapara) ? "G ( )  P ( ) ( ) ( ) ( ) " : dataAnamnesis.Gestapara;
             cbMac.SelectedValue = dataAnamnesis.MacId == null ? "1" : dataAnamnesis.MacId.ToString();
@@ -1589,17 +1603,280 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void ViewMode(string mode)
         {
-            if ("View" == mode)
+            if (_tipo == (int)MasterService.AtxMedicaParticular)
             {
-                OnlyRead();
+                //tcSubMain.TabPages.Remove(tp);
+                tcSubMain.TabPages.Remove(General);
+                tcSubMain.TabPages.Remove(tpConclusion);
             }
-            else if ("Service" == mode)
+            else
             {
-                 tcSubMain.SelectedIndex = 3;
+                tcSubMain.TabPages.Remove(tpAtencionIntegral);
+                tcSubMain.TabPages.Remove(tpDatosGeneralesAntecedentes);
+                tcSubMain.TabPages.Remove(tpCuidadosPreventivos);
+                tcSubMain.SelectedIndex = 0;
             }
+
+            // Setear por default un examen componente desde consusltorio
+            //#region Set Tab x default
+
+            //if (!string.IsNullOrEmpty(_componentIdByDefault))
+            //{
+            //    var comp = _componentIdByDefault.Split('|');
+
+            //    foreach (var tab in tcExamList.Tabs)
+            //    {
+            //        var arrfind = Array.FindAll(comp, p => tab.Key.Contains(p));
+
+            //        if (arrfind.Length > 0)
+            //        {
+            //            tab.Selected = true;
+            //            break;
+            //        }
+            //    }
+            //}
+            //else
+            //{
+            //    tcExamList.Tabs[0].Selected = true;
+            //}
+
+            //#endregion
+
+            // Setear pestaña de Aptitud x default
+            if (mode == "Service")
+                tcSubMain.SelectedIndex = 2;
+
+            // Información para grillas
+            GetTotalDiagnosticsForGridView();
+            GetConclusionesDiagnosticasForGridView();
+            ConclusionesyTratamiento_LoadAllGrid();
+            gbEdicionDiagnosticoTotal.Enabled = false;
+            if (_tipo == (int)MasterService.AtxMedicaParticular)
+            {
+                ConstruirFormularioAntecedentes();
+                ConstruirFormularioCuidadosPreventivos();
+            }
+
+
+            if (mode == "View")
+            {
+                gbAntecedentes.Enabled = false;
+                gbServiciosAnteriores.Enabled = false;
+                cbAptitudEso.Enabled = false;
+                gbConclusionesDiagnosticas.Enabled = false;
+                gbRecomendaciones_Conclusiones.Enabled = false;
+                gbRestricciones_Conclusiones.Enabled = false;
+                btnGuardarConclusiones.Enabled = false;
+                btnAceptarDX.Enabled = false;
+                cbAptitudEso.Enabled = false;
+                btnGuardarExamen.Enabled = false;
+            }
+
+            //if (mode == "View")
+            //{
+            //    OnlyRead();
+            //}
+            //else if (mode == "Service")
+            //{
+            //    tcSubMain.SelectedIndex = 3;
+            //}
                 
         }
+        private void ConstruirFormularioAntecedentes()
+        {
+            int GrupoBase = 282; //Antecedentes
+            GrupoEtario = new ServiceBL().ObtenerIdGrupoEtarioDePaciente(_age);
+            int Grupo = int.Parse(GrupoBase.ToString() + GrupoEtario.ToString());
 
+            List<frmEsoAntecedentesPadre> AntecedentesActuales = new ServiceBL().ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtario, _personId);
+
+            if (AntecedentesActuales.Count == 0)
+            {
+                btnGuardarAntecedentes.Visible = false;
+                label58.Visible = false;
+                ultraAntActuales.Visible = false;
+            }
+            else
+            {
+                ultraAntActuales.DataSource = AntecedentesActuales;
+                ultraAntActuales.DisplayLayout.Bands[0].Columns[0].CellActivation = Infragistics.Win.UltraWinGrid.Activation.Disabled;
+            }
+
+            int GrupoEtarioAnterior = 0;
+
+            switch (GrupoEtario)
+            {
+                case 1:
+                    {
+                        GrupoEtarioAnterior = 1;
+                        break;
+                    }
+                case 2:
+                    {
+                        GrupoEtarioAnterior = 2;
+                        break;
+                    }
+                case 3:
+                    {
+                        GrupoEtarioAnterior = 3;
+                        break;
+                    }
+                case 4:
+                    {
+                        GrupoEtarioAnterior = 4;
+                        break;
+                    }
+                default:
+                    {
+                        GrupoEtarioAnterior = 0;
+                        break;
+                    }
+            }
+            Grupo = int.Parse(GrupoBase.ToString() + GrupoEtarioAnterior.ToString());
+            List<frmEsoAntecedentesPadre> AntecedentesAnteriores = new ServiceBL().ObtenerEsoAntecedentesPorGrupoId(Grupo, GrupoEtarioAnterior, _personId);
+
+            if (AntecedentesAnteriores.Count == 0)
+            {
+                label39.Visible = false;
+                ultraAntAnteriores.Visible = false;
+            }
+            else
+            {
+                ultraAntAnteriores.DataSource = AntecedentesAnteriores;
+            }
+        }
+
+        private void ConstruirFormularioCuidadosPreventivos()
+        {
+            int GrupoBase = 0;
+            switch (GrupoEtario)
+            {
+                case (int)Sigesoft.Common.GrupoEtario.Ninio:
+                    {
+                        GrupoBase = 292;
+                        break;
+                    }
+                case (int)Sigesoft.Common.GrupoEtario.Adolecente:
+                    {
+                        GrupoBase = 285;
+                        break;
+                    }
+                case (int)Sigesoft.Common.GrupoEtario.Adulto:
+                    {
+                        if (_AMCGenero == 1)
+                        {
+                            GrupoBase = 284;
+                            break;
+                        }
+                        else
+                        {
+                            GrupoBase = 283;
+                            break;
+                        }
+                    }
+                case (int)Sigesoft.Common.GrupoEtario.AdultoMayor:
+                    {
+                        GrupoBase = 286;
+                        break;
+                    }
+                default:
+                    {
+                        GrupoBase = 0;
+                        break;
+                    }
+            }
+
+            if (GrupoBase == 0)
+            {
+                dataGridView1.Visible = false;
+                btnGuardarCuidadosPreventivos.Visible = false;
+                return;
+            }
+
+            List<frmEsoCuidadosPreventivosFechas> Fechas = new ServiceBL().ObtenerFechasCuidadosPreventivos(GrupoBase, _personId);
+            List<frmEsoCuidadosPreventivosComentarios> Comentarios = new ServiceBL().ObtenerComentariosCuidadosPreventivos(_personId);
+
+            if (Fechas.Count == 0)
+            {
+                dataGridView1.Visible = false;
+            }
+            else
+            {
+                dataGridView1.Columns.Add("GrupoId", "GrupoId");
+                dataGridView1.Columns[0].Visible = false;
+                dataGridView1.Columns.Add("ParameterId", "ParameterId");
+                dataGridView1.Columns[1].Visible = false;
+                dataGridView1.Columns.Add("Nombre", "Nombre");
+                dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+                dataGridView1.Columns[2].ReadOnly = true;
+                dataGridView1.Columns[2].SortMode = DataGridViewColumnSortMode.NotSortable;
+                int ContadorColumna = 2;
+                bool AgregarTitulos = true;
+                foreach (var F in Fechas)
+                {
+                    ContadorColumna++;
+                    dataGridView1.Columns.Add("Fecha" + (ContadorColumna - 2), F.FechaServicio.ToShortDateString());
+                    dataGridView1.Columns[ContadorColumna].SortMode = DataGridViewColumnSortMode.NotSortable;
+                    dataGridView1.Columns[ContadorColumna].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+                    if (ContadorColumna != (Fechas.Count + 2))
+                        dataGridView1.Columns[ContadorColumna].ReadOnly = true;
+
+                    int ContadorFila = -1;
+                    foreach (var L in F.Listado)
+                    {
+                        ContadorFila++;
+                        if (AgregarTitulos)
+                        {
+                            dataGridView1.Rows.Add();
+                            dataGridView1.Rows[ContadorFila].Cells[0].Value = L.GrupoId;
+                            dataGridView1.Rows[ContadorFila].Cells[1].Value = L.ParameterId;
+                            dataGridView1.Rows[ContadorFila].Cells[2].Value = L.Nombre;
+
+                            if (L.Hijos != null)
+                                dataGridView1.Rows[ContadorFila].Cells[2].Style.Font = new Font(FontFamily.GenericSansSerif, 10f, FontStyle.Bold);
+                        }
+
+                        if (L.Hijos != null)
+                        {
+                            dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].ReadOnly = true;
+                            ContadorFila = AgregarHijosDeTablaRecursivo(L, AgregarTitulos, F.FechaServicio, ContadorColumna, ContadorFila);
+                        }
+                        else
+                        {
+
+                            DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
+                            cell.Value = L.Valor;
+                            dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
+                            if (ContadorColumna != Fechas.Count)
+                                dataGridView1.Rows[ContadorFila].Cells[ContadorColumna].ReadOnly = true;
+                        }
+                    }
+                    AgregarTitulos = false;
+                }
+
+                ContadorColumna++;
+                dataGridView1.Columns.Add("Comentarios", "Comentarios");
+                dataGridView1.Columns[ContadorColumna].SortMode = DataGridViewColumnSortMode.NotSortable;
+
+
+                foreach (DataGridViewRow D in dataGridView1.Rows)
+                {
+                    int CelIndex = D.Cells.Count - 2;
+
+                    DataGridViewCheckBoxCell cell = D.Cells[CelIndex] as DataGridViewCheckBoxCell;
+
+                    if (cell != null)
+                    {
+                        D.Cells["Comentarios"].Value = Comentarios.Where(x => x.GrupoId == int.Parse(D.Cells["GrupoId"].Value.ToString()) && x.ParametroId == int.Parse(D.Cells["ParameterId"].Value.ToString())).FirstOrDefault() == null ? "" : Comentarios.Where(x => x.GrupoId == int.Parse(D.Cells["GrupoId"].Value.ToString()) && x.ParametroId == int.Parse(D.Cells["ParameterId"].Value.ToString())).FirstOrDefault().Comentario;
+                    }
+                    else
+                    {
+                        D.Cells["Comentarios"].ReadOnly = true;
+                    }
+                }
+            }
+        }
         private void OnlyRead()
         {
             //Anamnesis
@@ -1747,6 +2024,37 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 if (_componentId.Contains(Constants.EXAMEN_FISICO_ID))
                 { }
             }
+        }
+        private int AgregarHijosDeTablaRecursivo(frmEsoCuidadosPreventivos Lista, bool AgregarTitulos, DateTime FechaServicio, int ContadorColumna, int ContadorFila)
+        {
+            foreach (var L in Lista.Hijos)
+            {
+                ContadorFila++;
+                if (AgregarTitulos)
+                {
+                    dataGridView1.Rows.Add();
+                    dataGridView1.Rows[ContadorFila].Cells[0].Value = L.GrupoId;
+                    dataGridView1.Rows[ContadorFila].Cells[1].Value = L.ParameterId;
+                    dataGridView1.Rows[ContadorFila].Cells[2].Value = L.Nombre;
+
+                    if (L.Hijos != null)
+                        dataGridView1.Rows[ContadorFila].Cells[2].Style.Font = new Font(FontFamily.GenericSansSerif, 10f, FontStyle.Bold);
+                }
+
+                if (L.Hijos != null)
+                {
+                    ContadorFila = AgregarHijosDeTablaRecursivo(L, AgregarTitulos, FechaServicio, ContadorColumna, ContadorFila);
+                }
+                else
+                {
+
+                    DataGridViewCheckBoxCell cell = new DataGridViewCheckBoxCell(false);
+                    cell.Value = L.Valor;
+                    dataGridView1.Rows[ContadorFila].Cells[ContadorColumna] = cell;
+                }
+            }
+
+            return ContadorFila;
         }
 
         private void txt_Leave(object sender, System.EventArgs e)

@@ -1990,10 +1990,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 lblPuesto.Text = personData.v_CurrentOccupation;
 
                 // cargar datos INICIALES de ANAMNESIS
-                chkPresentaSisntomas.Checked = Convert.ToBoolean(personData.i_HasSymptomId);
+                chkPresentaSisntomas.Checked = Convert.ToBoolean(personData.i_HasSymptomId); //
                 // Activar / Desactivar segun check presenta sintomas
-                txtSintomaPrincipal.Enabled = chkPresentaSisntomas.Checked;
-                txtValorTiempoEnfermedad.Enabled = chkPresentaSisntomas.Checked;
+                txtSintomaPrincipal.Enabled = chkPresentaSisntomas.Checked;//
+                txtValorTiempoEnfermedad.Enabled = chkPresentaSisntomas.Checked;//
                 cbCalendario.Enabled = chkPresentaSisntomas.Checked;
 
                 txtSintomaPrincipal.Text = string.IsNullOrEmpty(personData.v_MainSymptom) ? "No Refiere" : personData.v_MainSymptom;

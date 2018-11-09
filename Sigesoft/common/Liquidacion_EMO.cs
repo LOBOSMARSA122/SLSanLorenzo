@@ -78,12 +78,6 @@ namespace NetPdf
             
             #endregion
 
-            var estatico_1 = 15f;
-            var alto_Celda_1 = 15f;
-            var alto_Celda_2 = 30f;
-            var alto_Celda_3 = 45f;
-            var alto_Celda_4 = 60f;
-            var alto_Celda_6 = 90f;
             #region TÍTULO
 
             cells = new List<PdfPCell>();
