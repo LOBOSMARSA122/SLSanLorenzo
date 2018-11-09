@@ -2858,9 +2858,9 @@
             this.panel1.BackColor = System.Drawing.Color.LightGray;
             this.panel1.Controls.Add(this.gbAntecedentes);
             this.panel1.Controls.Add(this.gbServiciosAnteriores);
-            this.panel1.Location = new System.Drawing.Point(7, 248);
+            this.panel1.Location = new System.Drawing.Point(7, 275);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1282, 377);
+            this.panel1.Size = new System.Drawing.Size(1282, 350);
             this.panel1.TabIndex = 64;
             // 
             // gbAntecedentes
@@ -2873,7 +2873,7 @@
             this.gbAntecedentes.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbAntecedentes.Location = new System.Drawing.Point(0, 0);
             this.gbAntecedentes.Name = "gbAntecedentes";
-            this.gbAntecedentes.Size = new System.Drawing.Size(631, 377);
+            this.gbAntecedentes.Size = new System.Drawing.Size(631, 350);
             this.gbAntecedentes.TabIndex = 62;
             this.gbAntecedentes.TabStop = false;
             this.gbAntecedentes.Text = "Antecedentes";
@@ -2891,7 +2891,7 @@
             this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(436, 348);
+            this.button1.Location = new System.Drawing.Point(436, 321);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(190, 24);
@@ -2980,7 +2980,7 @@
             this.grdAntecedentes.Location = new System.Drawing.Point(8, 18);
             this.grdAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.grdAntecedentes.Name = "grdAntecedentes";
-            this.grdAntecedentes.Size = new System.Drawing.Size(618, 326);
+            this.grdAntecedentes.Size = new System.Drawing.Size(618, 299);
             this.grdAntecedentes.TabIndex = 93;
             // 
             // btnVerEditarAntecedentes
@@ -2995,7 +2995,7 @@
             this.btnVerEditarAntecedentes.ForeColor = System.Drawing.Color.Black;
             this.btnVerEditarAntecedentes.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
             this.btnVerEditarAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(450, -133);
+            this.btnVerEditarAntecedentes.Location = new System.Drawing.Point(450, -160);
             this.btnVerEditarAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerEditarAntecedentes.Name = "btnVerEditarAntecedentes";
             this.btnVerEditarAntecedentes.Size = new System.Drawing.Size(162, 24);
@@ -3014,7 +3014,7 @@
             this.gbServiciosAnteriores.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbServiciosAnteriores.Location = new System.Drawing.Point(652, 0);
             this.gbServiciosAnteriores.Name = "gbServiciosAnteriores";
-            this.gbServiciosAnteriores.Size = new System.Drawing.Size(630, 377);
+            this.gbServiciosAnteriores.Size = new System.Drawing.Size(630, 350);
             this.gbServiciosAnteriores.TabIndex = 63;
             this.gbServiciosAnteriores.TabStop = false;
             this.gbServiciosAnteriores.Text = "Servicios Anteriores";
@@ -3031,7 +3031,7 @@
             this.btnServicioAnterior.ForeColor = System.Drawing.Color.Black;
             this.btnServicioAnterior.Image = ((System.Drawing.Image)(resources.GetObject("btnServicioAnterior.Image")));
             this.btnServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServicioAnterior.Location = new System.Drawing.Point(475, 348);
+            this.btnServicioAnterior.Location = new System.Drawing.Point(475, 321);
             this.btnServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.btnServicioAnterior.Name = "btnServicioAnterior";
             this.btnServicioAnterior.Size = new System.Drawing.Size(134, 24);
@@ -3120,7 +3120,7 @@
             this.grdServiciosAnteriores.Location = new System.Drawing.Point(5, 18);
             this.grdServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.grdServiciosAnteriores.Name = "grdServiciosAnteriores";
-            this.grdServiciosAnteriores.Size = new System.Drawing.Size(620, 326);
+            this.grdServiciosAnteriores.Size = new System.Drawing.Size(620, 299);
             this.grdServiciosAnteriores.TabIndex = 94;
             // 
             // btnVerServicioAnterior
@@ -3136,7 +3136,7 @@
             this.btnVerServicioAnterior.ForeColor = System.Drawing.Color.Black;
             this.btnVerServicioAnterior.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
             this.btnVerServicioAnterior.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnVerServicioAnterior.Location = new System.Drawing.Point(404, -133);
+            this.btnVerServicioAnterior.Location = new System.Drawing.Point(404, -160);
             this.btnVerServicioAnterior.Margin = new System.Windows.Forms.Padding(2);
             this.btnVerServicioAnterior.Name = "btnVerServicioAnterior";
             this.btnVerServicioAnterior.Size = new System.Drawing.Size(134, 24);
@@ -3167,7 +3167,7 @@
             this.gbAntGinecologicos.ForeColor = System.Drawing.Color.MediumBlue;
             this.gbAntGinecologicos.Location = new System.Drawing.Point(7, 166);
             this.gbAntGinecologicos.Name = "gbAntGinecologicos";
-            this.gbAntGinecologicos.Size = new System.Drawing.Size(1157, 76);
+            this.gbAntGinecologicos.Size = new System.Drawing.Size(1157, 103);
             this.gbAntGinecologicos.TabIndex = 61;
             this.gbAntGinecologicos.TabStop = false;
             this.gbAntGinecologicos.Text = "Antecedentes Ginecológicos";
@@ -3539,7 +3539,7 @@
             // 
             this.txtSintomaPrincipal.Enabled = false;
             this.txtSintomaPrincipal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSintomaPrincipal.Location = new System.Drawing.Point(126, 44);
+            this.txtSintomaPrincipal.Location = new System.Drawing.Point(126, 43);
             this.txtSintomaPrincipal.MaxLength = 100;
             this.txtSintomaPrincipal.Name = "txtSintomaPrincipal";
             this.txtSintomaPrincipal.Size = new System.Drawing.Size(354, 20);
@@ -3583,7 +3583,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(8, 46);
+            this.label2.Location = new System.Drawing.Point(8, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(104, 13);
             this.label2.TabIndex = 2;
