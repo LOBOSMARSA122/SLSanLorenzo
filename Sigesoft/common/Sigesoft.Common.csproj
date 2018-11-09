@@ -153,6 +153,7 @@
     <Compile Include="LaboratorioReport.cs" />
     <Compile Include="Liquidacion_Carta.cs" />
     <Compile Include="Liquidacion_EMO.cs" />
+    <Compile Include="Liquidacion_EMO_EMPRESAS.cs" />
     <Compile Include="Liquidacion_Hospitalizacion.cs" />
     <Compile Include="LoadingForm.cs">
       <SubType>Form</SubType>
