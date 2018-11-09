@@ -1325,6 +1325,33 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return objEntity;
         }
+
+        public KeyValueDTO ObtenerFirmaMedicoExamen_1(string pstrServiceId, string p1, string p2, string p3)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var objEntity = (from E in dbContext.servicecomponent
+
+                             join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+
+                             join p in dbContext.person on me.v_PersonId equals p.v_PersonId
+
+                             where E.v_ServiceId == pstrServiceId &&
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3)
+                             select new KeyValueDTO
+                             {
+                                 Value5 = pme.b_SignatureImage,
+                                 Value2 = p.v_FirstLastName + " " + p.v_SecondLastName + " " + p.v_FirstName,
+                                 Value3 = pme.v_ProfessionalCode
+
+                             }).FirstOrDefault();
+
+            return objEntity;
+        }
         private KeyValueDTO ObtenerFirmalaboratorio(string pstrServiceId, string p1)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -11530,7 +11557,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-				var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(pstrserviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
+                var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen_1(pstrserviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID, Constants.ALTURA_7D_ID);
 
 				var sql = (from a in objEntity.ToList()
 						   let Osteo = ValoresComponente(pstrserviceId, Constants.OSTEO_MUSCULAR_ID_1)

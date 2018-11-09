@@ -1615,29 +1615,29 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
 
             // Setear por default un examen componente desde consusltorio
-            //    #region Set Tab x default
+            //#region Set Tab x default
 
-            //    if (!string.IsNullOrEmpty(_componentIdByDefault))
+            //if (!string.IsNullOrEmpty(_componentIdByDefault))
+            //{
+            //    var comp = _componentIdByDefault.Split('|');
+
+            //    foreach (var tab in tcExamList.Tabs)
             //    {
-            //        var comp = _componentIdByDefault.Split('|');
+            //        var arrfind = Array.FindAll(comp, p => tab.Key.Contains(p));
 
-            //        foreach (var tab in tcExamList.Tabs)
+            //        if (arrfind.Length > 0)
             //        {
-            //            var arrfind = Array.FindAll(comp, p => tab.Key.Contains(p));
-
-            //            if (arrfind.Length > 0)
-            //            {
-            //                tab.Selected = true;
-            //                break;
-            //            }
+            //            tab.Selected = true;
+            //            break;
             //        }
             //    }
-            //    else
-            //    {
-            //        tcExamList.Tabs[0].Selected = true;
-            //    }
+            //}
+            //else
+            //{
+            //    tcExamList.Tabs[0].Selected = true;
+            //}
 
-            //    #endregion
+            //#endregion
 
             // Setear pestaña de Aptitud x default
             if (mode == "Service")
