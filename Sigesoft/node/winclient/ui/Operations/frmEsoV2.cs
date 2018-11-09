@@ -95,6 +95,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private List<ServiceComponentFieldValuesList> _tmpListValuesOdontograma = null;
 
         private bool _isChangeValue = false;
+        private int? _sexTypeId;
         private Gender _sexType;
         private bool flagValueChange = false;
         private bool _chkApprovedEnabled;
@@ -111,6 +112,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         string _personName;
         int GrupoEtario;
         private int _AMCGenero;
+        private int _masterServiceId;
         #endregion
       
         public FrmEsoV2(string serviceId, string componentIdDefault, string action, int roleId, int nodeId, int userId, int tipo)
@@ -1445,6 +1447,18 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             _ProtocolId = personData.v_ProtocolId;
             _personName = string.Format("{0} {1} {2}", personData.v_FirstLastName, personData.v_SecondLastName, personData.v_FirstName);
+            _personId = personData.v_PersonId;
+            _masterServiceId = personData.i_MasterServiceId.Value;
+            if (_masterServiceId == 2) btnReceta.Enabled = false;
+            else btnReceta.Enabled = true;
+
+            cbAptitudEso.SelectedValue = personData.i_AptitudeStatusId.ToString();
+            txtComentarioAptitud.Text = personData.v_ObsStatusService;
+
+            DateTime? FechaActual = DateTime.Now;
+            dptDateGlobalExp.Value = personData.d_GlobalExpirationDate == null ? FechaActual.Value.Date.AddYears(1) : personData.d_GlobalExpirationDate.Value;
+            //cbNuevoControl.SelectedValue = personData.i_IsNewControl;
+
         }
 
         private static void LoadTabAptitud()
@@ -1491,6 +1505,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void LoadTabAnamnesis(ServiceData dataAnamnesis)
         {
+            OperationResult objOperationResult = new OperationResult();
+            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+            
             chkPresentaSisntomas.Checked = Convert.ToBoolean(dataAnamnesis.HasSymptomId);
             txtSintomaPrincipal.Text = string.IsNullOrEmpty(dataAnamnesis.MainSymptom) ? "No Refiere" : dataAnamnesis.MainSymptom;
             txtValorTiempoEnfermedad.Enabled = chkPresentaSisntomas.Checked;
@@ -1513,8 +1530,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             txtRegimenCatamenial.Text = dataAnamnesis.CatemenialRegime;
             txtCiruGine.Text = dataAnamnesis.CiruGine;
             txtFecVctoGlobal.Text = dataAnamnesis.GlobalExpirationDate == null ? "NO REQUIERE" : dataAnamnesis.GlobalExpirationDate.Value.ToShortDateString();
-            cbAptitudEso.SelectedValue = dataAnamnesis.AptitudeStatusId.ToString();
-              
+            
+            
             if (dataAnamnesis.Pap != null) dtpPAP.Value = dataAnamnesis.Pap.Value;
             if (dataAnamnesis.Pap != null) dtpPAP.Checked = true;
             if (dataAnamnesis.Fur != null) dtpFur.Value = dataAnamnesis.Fur.Value;
@@ -1525,6 +1542,34 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             BlockControlsByGender(dataAnamnesis.SexTypeId);
             ConsolidadoAntecedentes(dataAnamnesis.PersonId);
             HistorialServiciosAnteriores(dataAnamnesis.PersonId, dataAnamnesis.ServiceId);
+            ///
+            txtResultadoPAP.Text = string.IsNullOrEmpty(personData.v_ResultadosPAP) ? "" : personData.v_ResultadosPAP;
+            txtResultadoMamo.Text = string.IsNullOrEmpty(personData.v_ResultadoMamo) ? "" : personData.v_ResultadoMamo;
+
+            txtVidaSexual.Text = string.IsNullOrEmpty(personData.v_InicioVidaSexaul) ? "" : personData.v_InicioVidaSexaul;
+            txtNroParejasActuales.Text = string.IsNullOrEmpty(personData.v_NroParejasActuales) ? "" : personData.v_NroParejasActuales;
+            txtNroAbortos.Text = string.IsNullOrEmpty(personData.v_NroAbortos) ? "" : personData.v_NroAbortos;
+            txtNroCausa.Text = string.IsNullOrEmpty(personData.v_PrecisarCausas) ? "" : personData.v_PrecisarCausas;
+            ///
+            _AMCGenero = personData.i_SexTypeId.Value;
+            _sexType = (Gender)personData.i_SexTypeId;
+            _sexTypeId = personData.i_SexTypeId;
+            switch (_sexType)
+            {
+                case Gender.MASCULINO:
+                    gbAntGinecologicos.Enabled = false;
+                    dtpFur.Enabled = false;
+                    txtRegimenCatamenial.Enabled = false;
+                    break;
+                case Gender.FEMENINO:
+                    gbAntGinecologicos.Enabled = true;
+                    dtpFur.Enabled = true;
+                    txtRegimenCatamenial.Enabled = true;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void HistorialServiciosAnteriores(string personId, string serviceId)
