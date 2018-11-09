@@ -1506,12 +1506,15 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             cbCalendario.Enabled = chkPresentaSisntomas.Checked;
             cbCalendario.SelectedValue = dataAnamnesis.TimeOfDiseaseTypeId == null ? "1" : dataAnamnesis.TimeOfDiseaseTypeId.ToString();
             txtRelato.Text = string.IsNullOrEmpty(dataAnamnesis.Story) ? "Paciente Asintomático" : dataAnamnesis.Story;
+            _cancelEventSelectedIndexChange = true;
             cbSueño.SelectedValue = dataAnamnesis.DreamId == null ? "1" : dataAnamnesis.DreamId.ToString();
             cbApetito.SelectedValue = dataAnamnesis.AppetiteId == null ? "1" : dataAnamnesis.AppetiteId.ToString();
             cbDeposiciones.SelectedValue = dataAnamnesis.DepositionId == null ? "1" : dataAnamnesis.DepositionId.ToString();
             cbOrina.SelectedValue = dataAnamnesis.UrineId == null ? "1" : dataAnamnesis.UrineId.ToString();
             cbSed.SelectedValue = dataAnamnesis.ThirstId == null ? "1" : dataAnamnesis.ThirstId.ToString();
+            _cancelEventSelectedIndexChange = false;
             txtHallazgos.Text = string.IsNullOrEmpty(dataAnamnesis.Findings) ? "Sin Alteración" : dataAnamnesis.Findings;
+            //txtFechaUltimoPAP.Text = string.IsNullOrEmpty(personData.v_FechaUltimoPAP) ? "" : personData.v_FechaUltimoPAP;
             txtMenarquia.Text = dataAnamnesis.Menarquia;
             txtGestapara.Text = string.IsNullOrEmpty(dataAnamnesis.Gestapara) ? "G ( )  P ( ) ( ) ( ) ( ) " : dataAnamnesis.Gestapara;
             cbMac.SelectedValue = dataAnamnesis.MacId == null ? "1" : dataAnamnesis.MacId.ToString();
@@ -1623,29 +1626,29 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             }
 
             // Setear por default un examen componente desde consusltorio
-            //    #region Set Tab x default
+            //#region Set Tab x default
 
-            //    if (!string.IsNullOrEmpty(_componentIdByDefault))
+            //if (!string.IsNullOrEmpty(_componentIdByDefault))
+            //{
+            //    var comp = _componentIdByDefault.Split('|');
+
+            //    foreach (var tab in tcExamList.Tabs)
             //    {
-            //        var comp = _componentIdByDefault.Split('|');
+            //        var arrfind = Array.FindAll(comp, p => tab.Key.Contains(p));
 
-            //        foreach (var tab in tcExamList.Tabs)
+            //        if (arrfind.Length > 0)
             //        {
-            //            var arrfind = Array.FindAll(comp, p => tab.Key.Contains(p));
-
-            //            if (arrfind.Length > 0)
-            //            {
-            //                tab.Selected = true;
-            //                break;
-            //            }
+            //            tab.Selected = true;
+            //            break;
             //        }
             //    }
-            //    else
-            //    {
-            //        tcExamList.Tabs[0].Selected = true;
-            //    }
+            //}
+            //else
+            //{
+            //    tcExamList.Tabs[0].Selected = true;
+            //}
 
-            //    #endregion
+            //#endregion
 
             // Setear pestaña de Aptitud x default
             if (mode == "Service")
