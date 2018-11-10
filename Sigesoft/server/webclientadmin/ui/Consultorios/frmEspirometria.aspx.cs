@@ -70,29 +70,29 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
 
-                ddlPre1.Attributes.Add("Tag", "N002-MF000000199");
-                ddlPre2.Attributes.Add("Tag", "N002-MF000000200");
-                ddlPre3.Attributes.Add("Tag", "N002-MF000000201");
-                ddlPre4.Attributes.Add("Tag", "N002-MF000000202");
-                ddlPre5.Attributes.Add("Tag", "N002-MF000000203");
-                ddlhemoptisis.Attributes.Add("Tag","N009-MF000000112");
-                ddlinfarto_reciente.Attributes.Add("Tag","N009-MF000000116");
-                ddlpneumotorax.Attributes.Add("Tag","N009-MF000000113");
-                ddlinestabilidad_cv.Attributes.Add("Tag","N009-MF000000574");
-                ddltraqueostomia.Attributes.Add("Tag","N009-MF000000114");
-                ddlfiebre_nausea.Attributes.Add("Tag","N009-MF000000117");
-                ddlsonda_pleural.Attributes.Add("Tag","N009-MF000000115");
-                ddlembarazo_avanzado.Attributes.Add("Tag","N009-MF000000120");
-                ddlaneurisma_cerebral.Attributes.Add("Tag","N009-MF000000118");
-                ddlembarazo_complicado.Attributes.Add("Tag","N009-MF000000121");
-                ddlembolia_pulmonar.Attributes.Add("Tag","N009-MF000000119");
-                ddl1_tuvo_una_infeccion.Attributes.Add("Tag","N002-MF000000207");
-                ddl2_tuvo_infeccion.Attributes.Add("Tag","N002-MF000000284");
-                ddl3_uso_aerosoles.Attributes.Add("Tag","N002-MF000000204");
-                ddl4_ha_usado_algun_medicamento.Attributes.Add("Tag","N002-MF000000206");
-                ddl5_ha_fumado_cualquier.Attributes.Add("Tag","N002-MF000000208");
-                ddl6_realizo_algun_ejercicio.Attributes.Add("Tag", "N002-MF000000205");
-                ddl7_ingirio_alimentos.Attributes.Add("Tag", "N002-MF000000285");
+                chkPre1.Attributes.Add("Tag", "N002-MF000000199");
+                chkPre2.Attributes.Add("Tag", "N002-MF000000200");
+                chkPre3.Attributes.Add("Tag", "N002-MF000000201");
+                chkPre4.Attributes.Add("Tag", "N002-MF000000202");
+                chkPre5.Attributes.Add("Tag", "N002-MF000000203");
+                chkhemoptisis.Attributes.Add("Tag","N009-MF000000112");
+                chkinfarto_reciente.Attributes.Add("Tag","N009-MF000000116");
+                chkpneumotorax.Attributes.Add("Tag", "N009-MF000000113");
+                chkinestabilidad_cv.Attributes.Add("Tag", "N009-MF000000574");
+                chktraqueostomia.Attributes.Add("Tag", "N009-MF000000114");
+                chkfiebre_nausea.Attributes.Add("Tag", "N009-MF000000117");
+                chksonda_pleural.Attributes.Add("Tag", "N009-MF000000115");
+                chkembarazo_avanzado.Attributes.Add("Tag", "N009-MF000000120");
+                chkaneurisma_cerebral.Attributes.Add("Tag", "N009-MF000000118");
+                chkembarazo_complicado.Attributes.Add("Tag", "N009-MF000000121");
+                chkembolia_pulmonar.Attributes.Add("Tag", "N009-MF000000119");
+                chk1_tuvo_una_infeccion.Attributes.Add("Tag", "N002-MF000000207");
+                chk2_tuvo_infeccion.Attributes.Add("Tag", "N002-MF000000284");
+                chk3_uso_aerosoles.Attributes.Add("Tag", "N002-MF000000204");
+                chk4_ha_usado_algun_medicamento.Attributes.Add("Tag", "N002-MF000000206");
+                chk5_ha_fumado_cualquier.Attributes.Add("Tag", "N002-MF000000208");
+                chk6_realizo_algun_ejercicio.Attributes.Add("Tag", "N002-MF000000205");
+                chk7_ingirio_alimentos.Attributes.Add("Tag", "N002-MF000000285");
                 //ddlorigen_etnico.Attributes.Add("Tag","N009-MF000000622");
                 //ddltabaquismo.Attributes.Add("Tag","N009-MF000000623");
                 //txttiempo_de_trabajo.Attributes.Add("Tag","N009-MF000001038");
@@ -1238,37 +1238,37 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             OperationResult objOperationResult = new OperationResult();
             var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 111);
-            Utils.LoadDropDownList(ddlPre1, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlPre2, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlPre3, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlPre4, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlPre5, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlPre1, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlPre2, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlPre3, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlPre4, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlPre5, "Value1", "Id", Combo111, DropDownListAction.Select);
 
-            Utils.LoadDropDownList(ddlhemoptisis, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlpneumotorax, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddltraqueostomia, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlsonda_pleural, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlaneurisma_cerebral, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlembolia_pulmonar, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlhemoptisis, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlpneumotorax, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddltraqueostomia, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlsonda_pleural, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlaneurisma_cerebral, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlembolia_pulmonar, "Value1", "Id", Combo111, DropDownListAction.Select);
 
-            Utils.LoadDropDownList(ddlinfarto_reciente, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlinestabilidad_cv, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlfiebre_nausea, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlembarazo_avanzado, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlembarazo_complicado, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlinfarto_reciente, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlinestabilidad_cv, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlfiebre_nausea, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlembarazo_avanzado, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlembarazo_complicado, "Value1", "Id", Combo111, DropDownListAction.Select);
 
-            Utils.LoadDropDownList(ddl1_tuvo_una_infeccion, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddl2_tuvo_infeccion, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddl3_uso_aerosoles, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddl4_ha_usado_algun_medicamento, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddl5_ha_fumado_cualquier, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddl6_realizo_algun_ejercicio, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddl7_ingirio_alimentos, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddl1_tuvo_una_infeccion, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddl2_tuvo_infeccion, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddl3_uso_aerosoles, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddl4_ha_usado_algun_medicamento, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddl5_ha_fumado_cualquier, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddl6_realizo_algun_ejercicio, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddl7_ingirio_alimentos, "Value1", "Id", Combo111, DropDownListAction.Select);
 
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
-            //Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
-             
+            Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+
         }
 
         private void ObtenerDatosEspirometria(string pServiceId, string pPersonId)

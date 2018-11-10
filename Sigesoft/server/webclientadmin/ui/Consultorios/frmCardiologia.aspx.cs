@@ -145,7 +145,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             // Remover los componentes que no estan asignados al rol del usuario
             var results = groupComponentList.FindAll(f => componentProfile.Any(t => t.v_ComponentId == f.Value2));
 
-
+            
             Utils.LoadDropDownList(ddlConsultorio, "Value1", "Value4", results, DropDownListAction.Select);
             ddlConsultorio.SelectedValue = "5";
             Utils.LoadDropDownList(ddlAptitud, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 124), DropDownListAction.All);
@@ -1243,7 +1243,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         private void LoadCombosElectroYana()
         {
             OperationResult objOperationResult = new OperationResult();
-        
+            
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
             Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);

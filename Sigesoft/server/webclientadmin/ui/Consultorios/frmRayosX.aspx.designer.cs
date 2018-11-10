@@ -2791,7 +2791,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chkAnormalidadesSI;
+        protected global::FineUI.RadioButton rdoAnormalidadesSI;
         
         /// <summary>
         /// Control chkAnormalidadesNO.
@@ -2800,7 +2800,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.CheckBox chkAnormalidadesNO;
+        protected global::FineUI.RadioButton rdoAnormalidadesNO;
         
         /// <summary>
         /// Control Panel38.

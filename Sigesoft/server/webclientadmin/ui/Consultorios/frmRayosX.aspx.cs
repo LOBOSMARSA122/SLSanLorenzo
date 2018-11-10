@@ -168,8 +168,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkOITOpacidadesA.Attributes.Add("Tag", "N009-MF000000757");
                 chkOITOpacidadesB.Attributes.Add("Tag", "N009-MF000000758");
                 chkOITOpacidadesC.Attributes.Add("Tag", "N009-MF000000759");
-                chkAnormalidadesSI.Attributes.Add("Tag", "N009-MF000003194");
-                chkAnormalidadesNO.Attributes.Add("Tag", "N009-MF000000761");
+                rdoAnormalidadesSI.Attributes.Add("Tag", "N009-MF000003194");
+                rdoAnormalidadesNO.Attributes.Add("Tag", "N009-MF000000761");
                 chkOITaa.Attributes.Add("Tag", "N009-MF000000762");
                 chkOITat.Attributes.Add("Tag", "N009-MF000000763");
                 chkOITax.Attributes.Add("Tag", "N009-MF000000764");
