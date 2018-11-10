@@ -339,7 +339,9 @@
                                                  <x:FormRow ID="FormRow8" ColumnWidths="100px 480px  " runat="server" >
                                                     <Items>
                                                         <x:Label ID="label26" runat="server" Text="DESCRIPCION:" ShowLabel="false"></x:Label>
-                                                        <x:TextArea ID="txtYanacocha_OtrasAlter" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>  
+                                                        <x:TextArea ID="txtYanacocha_OtrasAlter" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>
+                                                        <x:Label ID="label22" runat="server" Text="CONCLUSIONES:" ShowLabel="false"></x:Label>  
+                                                        <x:DropDownList ID="ddlYanacocha_Conclusiones" runat="server" ShowLabel="true" ></x:DropDownList>  
                                                     </Items>
                                                 </x:FormRow>
                                              </Rows>

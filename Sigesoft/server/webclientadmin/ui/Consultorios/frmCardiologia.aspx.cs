@@ -106,7 +106,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtYanacocha_Eje.Attributes.Add("Tag", "N009-MF000000143");
                 txtYanacocha_ST.Attributes.Add("Tag", "N009-MF000001006");
                 txtYanacocha_OtrasAlter.Attributes.Add("Tag", "N009-MF000000227");
-                txtYanacocha_Hallazgos.Attributes.Add("Tag", "N009-MF000002133");                
+                txtYanacocha_Hallazgos.Attributes.Add("Tag", "N009-MF000002133");
+                ddlYanacocha_Conclusiones.Attributes.Add("Tag", "N002-MF000000194");
                 #endregion
 
                 int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
@@ -1232,22 +1233,24 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             var Combo197 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);
             var Combo291 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 291);
+            Utils.LoadDropDownList(ddlYanacocha_Conclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlRitmo, "Value1", "Id", Combo197, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlConclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
-      
-            Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+
+            Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
               
         }
 
         private void LoadCombosElectroYana()
         {
             OperationResult objOperationResult = new OperationResult();
+            var Combo197 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);         
+            
             
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
-
-            //Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
 
         }
 

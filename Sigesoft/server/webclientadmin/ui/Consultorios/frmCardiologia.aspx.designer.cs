@@ -940,6 +940,24 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextArea txtYanacocha_OtrasAlter;
         
         /// <summary>
+        /// label22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label22;
+        
+        /// <summary>
+        /// ddlYanacocha_Conclusiones control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.DropDownList ddlYanacocha_Conclusiones;
+        
+        /// <summary>
         /// panel9 control.
         /// </summary>
         /// <remarks>
