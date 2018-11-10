@@ -89,8 +89,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlconsumio_alcohol.Attributes.Add("Tag", "N009-MF000001303");
 
                 txttiempo_de_trabajo.Attributes.Add("Tag", "N009-MF000001378");
-                ddlRinitis.Attributes.Add("Tag", "N009-MF000000089");
-                ddlOtitis.Attributes.Add("Tag", "N009-MF000000091");
+                chkRinitisa.Attributes.Add("Tag", "N009-MF000000089");
+                chkOtitisa.Attributes.Add("Tag", "N009-MF000000091");
                 //ddlMedicamentos.Attributes.Add("Tag", "N009-MF000000087");
                 chkuso_de_medicamentos.Attributes.Add("Tag", "N009-MF000000090");
                 ddlDiabetes.Attributes.Add("Tag", "N009-MF000000095");
@@ -100,8 +100,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 //ddlSordera.Attributes.Add("Tag", "N009-MF000000101");
                 ddlTiroida.Attributes.Add("Tag", "N009-MF000001304");
                 //ddlTec.Attributes.Add("Tag", "N009-MF000001305");
-                ddlSorderaFamiliar.Attributes.Add("Tag", "N009-MF000001306");
-                ddlSustQuimicas.Attributes.Add("Tag", "N009-MF000001307");
+                chkSorderaFamiliara.Attributes.Add("Tag", "N009-MF000001306");
+                chkSustQuimicasa.Attributes.Add("Tag", "N009-MF000001307");
                 chkUsoMP3.Attributes.Add("Tag", "N009-MF000001308");
                 chkTiro.Attributes.Add("Tag", "N009-MF000001309");
                 //chkotros.Attributes.Add("Tag", "N009-MF000001310");
@@ -402,7 +402,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
 
                 chkVertigo.Attributes.Add("Tag", "N005-MF000000090");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000090") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000090").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
-                chkOtitis.Attributes.Add("Tag", "N005-MF000000091");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000091") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000091").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
+                //ddlOtitis.Attributes.Add("Tag", "N005-MF000000091");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000091") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000091").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkParatodiditis.Attributes.Add("Tag", "N005-MF000000092");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000092") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000092").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkMeningitis.Attributes.Add("Tag", "N005-MF000000093");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000093") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000093").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkGolpesCefalicos.Attributes.Add("Tag", "N005-MF000000094");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000094") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000094").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
@@ -1468,8 +1468,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var Combo253 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 253);
             var Combo191 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 191);
 
-            Utils.LoadDropDownList(ddlsi_hizo_cambios, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlestuvo_expuesto, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlsi_hizo_cambios, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlestuvo_expuesto, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlpresenta_algun, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddldurmio_mal_la_noche, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlconsumio_alcohol, "Value1", "Id", Combo111, DropDownListAction.Select);
