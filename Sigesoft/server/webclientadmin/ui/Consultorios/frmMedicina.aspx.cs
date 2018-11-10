@@ -414,12 +414,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddldorsallumbar_roacion_izquierda.Attributes.Add("Tag", "N009-MF000000833");
                 ddldorsallumbar_irradiacion.Attributes.Add("Tag", "N009-MF000000174");
 
-                chkColumnaCervicalApofisis.Attributes.Add("Tag", "N009-MF000000832");
-                chkColumnaCervicalContractura.Attributes.Add("Tag", "N009-MF000000166");
-                chkColumnaDorsalApofisis.Attributes.Add("Tag", "N009-MF000000171");
-                chkColumnaDorsalContractura.Attributes.Add("Tag", "N009-MF000000169");
-                chkColumnaLumbarApofisis.Attributes.Add("Tag", "N009-MF000000167");
-                chkColumnaLumbarContractura.Attributes.Add("Tag", "N009-MF000000170"); 
+                //chkColumnaCervicalApofisis.Attributes.Add("Tag", "N009-MF000000832");
+               ddlColumnaCervicalApofisis.Attributes.Add("Tag", "N009-MF000000832");
+                //chkColumnaCervicalContractura.Attributes.Add("Tag", "N009-MF000000166");
+               ddlColumnaCervicalContractura.Attributes.Add("Tag", "N009-MF000000166");
+                //chkColumnaDorsalApofisis.Attributes.Add("Tag", "N009-MF000000171");
+               ddlColumnaDorsalApofisis.Attributes.Add("Tag", "N009-MF000000171");
+                //chkColumnaDorsalContractura.Attributes.Add("Tag", "N009-MF000000169");
+               ddlColumnaDorsalContractura.Attributes.Add("Tag", "N009-MF000000169");
+                //chkColumnaLumbarApofisis.Attributes.Add("Tag", "N009-MF000000167");
+               ddlColumnaLumbarApofisis.Attributes.Add("Tag", "N009-MF000000167");
+               // chkColumnaLumbarContractura.Attributes.Add("Tag", "N009-MF000000170"); 
+               ddlColumnaLumbarContractura.Attributes.Add("Tag", "N009-MF000000170"); 
                 ddlaptitudOsteo.Attributes.Add("Tag", "N009-MF000000621");
 
                 chkevaluacion_normal.Attributes.Add("Tag", "N009-MF000002136");
@@ -1082,7 +1088,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             LoadCombos312();
             ObtenerDatosAnexo312(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-            TabAnexo312.Hidden = false;
+            //TabAnexo312.Hidden = false;
 
             if (ProfesionId == (int)TipoProfesional.Auditor)
             {
@@ -2484,6 +2490,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
              Utils.LoadDropDownList(ddlaptitudOsteo, "Value1", "Id", Combo163, DropDownListAction.Select);
 
+             Utils.LoadDropDownList(ddlColumnaCervicalApofisis, "Value1", "Id", Combo111, DropDownListAction.Select);
+             Utils.LoadDropDownList(ddlColumnaCervicalContractura, "Value1", "Id", Combo111, DropDownListAction.Select);
+
+             Utils.LoadDropDownList(ddlColumnaDorsalApofisis, "Value1", "Id", Combo111, DropDownListAction.Select);
+             Utils.LoadDropDownList(ddlColumnaDorsalContractura, "Value1", "Id", Combo111, DropDownListAction.Select);
+             Utils.LoadDropDownList(ddlColumnaLumbarApofisis, "Value1", "Id", Combo111, DropDownListAction.Select);
+             Utils.LoadDropDownList(ddlColumnaLumbarContractura, "Value1", "Id", Combo111, DropDownListAction.Select);
+
             
                 
         }
@@ -3860,6 +3874,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             serviceDTO.i_AptitudeStatusId = int.Parse(Session["i_AptitudeStatusId"].ToString());
             _serviceBL.UpdateAnamnesis(ref objOperationResult, serviceDTO, ((ClientSession)Session["objClientSession"]).GetAsList());
 
+            SearchControlAndSetValues(Panel21, Session["ServicioComponentIdTriaje"].ToString());
+
+            var oTriaje = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
+                                                       (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
+                                                      ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                       Session["PersonId"].ToString(),
+                                                      Session["ServicioComponentIdTriaje"].ToString());
+
+
             SearchControlAndSetValues(TabAnexo16, Session["ServicioComponentIdMedicina"].ToString());
 
             var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
@@ -4180,6 +4203,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             foreach (Control ctrl in ctrlContainer.Controls)
             {
+               
+
                 if (ctrl is DropDownList)
                 {
                     if (((DropDownList)ctrl).Attributes.GetValue("Tag") != null)
@@ -4223,9 +4248,17 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 if (ctrl is CheckBox)
                 {
+                    //if ("N009-OTS00000015" == ((CheckBox)ctrl).Attributes.GetValue("Tag").ToString())
+                    //{
+                    //    var x = ListaValores.Find(p => p.v_ComponentFieldsId == "N009-OTS00000015");
+                    //    var y = x.ServiceComponentFieldValues;
+                    //    var z = y[0].v_Value1;
+                    //}
+
                     if (((CheckBox)ctrl).Attributes.GetValue("Tag") != null)
                     {
                         string ComponentFieldId = ((CheckBox)ctrl).Attributes.GetValue("Tag").ToString();
+
                         ((CheckBox)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                     }
                 }
@@ -4410,7 +4443,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             int Contador = 0;
             foreach (Control ctrl in ctrlContainer.Controls)
-            {
+            {          
                 Contador++;
                 if (ctrl is TextBox)
                 {
@@ -4522,6 +4555,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 if (ctrl is CheckBox)
                 {
+                    if ("N009-OTS00000015" == ((CheckBox)ctrl).Attributes.GetValue("Tag").ToString())
+                    {
+                    }
+
                     if (((CheckBox)ctrl).Attributes.GetValue("Tag") != null)
                     {
                         var y = ((CheckBox)ctrl).Attributes.GetValue("Tag");

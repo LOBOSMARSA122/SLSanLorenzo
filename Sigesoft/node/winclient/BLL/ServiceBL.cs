@@ -1325,6 +1325,33 @@ namespace Sigesoft.Node.WinClient.BLL
 
             return objEntity;
         }
+
+        public KeyValueDTO ObtenerFirmaMedicoExamen_1(string pstrServiceId, string p1, string p2, string p3)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+            var objEntity = (from E in dbContext.servicecomponent
+
+                             join me in dbContext.systemuser on E.i_ApprovedUpdateUserId equals me.i_SystemUserId into me_join
+                             from me in me_join.DefaultIfEmpty()
+
+                             join pme in dbContext.professional on me.v_PersonId equals pme.v_PersonId into pme_join
+                             from pme in pme_join.DefaultIfEmpty()
+
+                             join p in dbContext.person on me.v_PersonId equals p.v_PersonId
+
+                             where E.v_ServiceId == pstrServiceId &&
+                             (E.v_ComponentId == p1 || E.v_ComponentId == p2 || E.v_ComponentId == p3)
+                             select new KeyValueDTO
+                             {
+                                 Value5 = pme.b_SignatureImage,
+                                 Value2 = p.v_FirstLastName + " " + p.v_SecondLastName + " " + p.v_FirstName,
+                                 Value3 = pme.v_ProfessionalCode
+
+                             }).FirstOrDefault();
+
+            return objEntity;
+        }
         private KeyValueDTO ObtenerFirmalaboratorio(string pstrServiceId, string p1)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -11530,7 +11557,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								 });
 
 				var MedicalCenter = GetInfoMedicalCenter();
-				var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen(pstrserviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID);
+
+                var FirmaMedicoMedicina = ObtenerFirmaMedicoExamen_1(pstrserviceId, Constants.EXAMEN_FISICO_ID, Constants.EXAMEN_FISICO_7C_ID, Constants.ALTURA_7D_ID);
 
 				var sql = (from a in objEntity.ToList()
 						   let Osteo = ValoresComponente(pstrserviceId, Constants.OSTEO_MUSCULAR_ID_1)
@@ -31281,8 +31309,8 @@ namespace Sigesoft.Node.WinClient.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.liquidacion
                             //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
-                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId                           
-                            where A.i_IsDeleted == 0 
+                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
                             //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
                             //ARNOLD , REPORTE JUAN LIZA
                             select new LiquidacionEmpresa
@@ -31295,6 +31323,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                 d_Monto = A.d_Monto,
                                 d_FechaVencimiento = A.d_FechaVencimiento,
                                 v_NroFactura = A.v_NroFactura,
+                                Creacion_Liquidacion = A.d_InsertDate
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -31322,6 +31351,10 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
 
+                decimal? debe = 0;
+                decimal? pago = 0;
+                decimal? total = 0;
+
                 foreach (var item in empresas)
                 {
                     var LiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
@@ -31346,16 +31379,33 @@ namespace Sigesoft.Node.WinClient.BLL
                         {
                             oLiquidacionDetalle.d_Debe = 0;
                         }
+
+                       
                         oLiquidacionDetalle.d_Pago = liquidacion.d_Monto - oLiquidacionDetalle.d_Debe;
                         
-                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;                  
+                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;      
+            
+
+                        //summary calc
+
+                        debe += oLiquidacionDetalle.d_Debe;
+                        pago += oLiquidacionDetalle.d_Pago;
+                        total += oLiquidacionDetalle.d_Total;
 
                         LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
                     }
                     oLiquidacionEmpresa.detalle = LiquidacionEmpresaDetalle;
-
+                   
                     ListaLiquidacion.Add(oLiquidacionEmpresa);
                 }
+
+                if (ListaLiquidacion.Count > 0)
+                {
+                    ListaLiquidacion[0].Total_Debe = debe.Value.ToString();
+                    ListaLiquidacion[0].Total_Pago = pago.Value.ToString();
+                    ListaLiquidacion[0].Total_Total = total.Value.ToString();
+                }
+
 
                 pobjOperationResult.Success = 1;
                 return ListaLiquidacion.ToList();
@@ -31369,7 +31419,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa(ref OperationResult pobjOperationResult)
+        public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa(ref OperationResult pobjOperationResult, DateTime? pdatBeginDate, DateTime? pdatEndDate)
         {
             try
             {
@@ -31378,7 +31428,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 var query = from A in dbContext.liquidacion
                             //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
                             join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
-                            where A.i_IsDeleted == 0
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
                             //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
                             //ARNOLD , REPORTE JUAN LIZA
                             select new LiquidacionEmpresa
@@ -31391,11 +31441,12 @@ namespace Sigesoft.Node.WinClient.BLL
                                 d_Monto = A.d_Monto,
                                 d_FechaVencimiento = A.d_FechaVencimiento,
                                 v_NroFactura = A.v_NroFactura,
+                                Creacion_Liquidacion = A.d_InsertDate
                             };
 
-               
                 var result = query.ToList();
                 var empresas = result.ToList().GroupBy(g => g.v_OrganizationId).Select(p => p.FirstOrDefault());
+
 
                 List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
 
@@ -31445,6 +31496,9 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        
+
         public List<Liquidacion> GetListaLiquidacion(ref OperationResult pobjOperationResult, string liquidacionId)
         {
             try
@@ -31780,7 +31834,9 @@ namespace Sigesoft.Node.WinClient.BLL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                // Llenar entidad Log
+                LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "ListMissingExamenesNames", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
                 throw;
             }
         }
@@ -31806,7 +31862,9 @@ namespace Sigesoft.Node.WinClient.BLL
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                // Llenar entidad Log
+                //LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "ConcatenateComponents", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
                 throw;
             }
         }
@@ -32155,6 +32213,9 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 pobjOperationResult.Success = 0;
                 pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "ExamenByDefaultOrAssigned", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
                 return null;
             }
         }
@@ -32213,36 +32274,50 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 pobjOperationResult.Success = 0;
                 pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "GetServiceData", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
                 return null;
             }
         }
         public WorkerData GetWorkerData(string serviceId)
         {
-            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
-            var result = (from A in dbContext.service
-                          join B in dbContext.person on A.v_PersonId equals B.v_PersonId
-                          join C in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
-                              equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
-                          from C in C_join.DefaultIfEmpty()
-                          join D in dbContext.protocol on A.v_ProtocolId equals D.v_ProtocolId
-                          join E in dbContext.systemparameter on new { a = D.i_EsoTypeId.Value, b = 118 }
-                                          equals new { a = E.i_ParameterId, b = E.i_GroupId }
-                          join F in dbContext.groupoccupation on D.v_GroupOccupationId equals F.v_GroupOccupationId
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var result = (from A in dbContext.service
+                              join B in dbContext.person on A.v_PersonId equals B.v_PersonId
+                              join C in dbContext.systemparameter on new { a = B.i_SexTypeId.Value, b = 100 }
+                                  equals new { a = C.i_ParameterId, b = C.i_GroupId } into C_join
+                              from C in C_join.DefaultIfEmpty()
+                              join D in dbContext.protocol on A.v_ProtocolId equals D.v_ProtocolId
+                              join E in dbContext.systemparameter on new { a = D.i_EsoTypeId.Value, b = 118 }
+                                              equals new { a = E.i_ParameterId, b = E.i_GroupId }
+                              join F in dbContext.groupoccupation on D.v_GroupOccupationId equals F.v_GroupOccupationId
 
-                          where A.v_ServiceId == serviceId
-                          select new WorkerData
-                          {
-                              Trabajador = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
-                              FechaNacimiento = B.d_Birthdate.Value,
-                              Genero = C.v_Value1,
-                              Puesto = B.v_CurrentOccupation,
-                              Protocolo = D.v_Name,
-                              TipoExamen = E.v_Value1,
-                              Grupo = F.v_Name,
-                              PersonId = B.v_PersonId,
-                              PersonImage = B.b_PersonImage
-                          }).FirstOrDefault();
-            return result;
+                              where A.v_ServiceId == serviceId
+                              select new WorkerData
+                              {
+                                  Trabajador = B.v_FirstName + " " + B.v_FirstLastName + " " + B.v_SecondLastName,
+                                  FechaNacimiento = B.d_Birthdate.Value,
+                                  Genero = C.v_Value1,
+                                  Puesto = B.v_CurrentOccupation,
+                                  Protocolo = D.v_Name,
+                                  TipoExamen = E.v_Value1,
+                                  Grupo = F.v_Name,
+                                  PersonId = B.v_PersonId,
+                                  PersonImage = B.b_PersonImage
+                              }).FirstOrDefault();
+                return result;
+            }
+            catch (Exception)
+            {
+                //// Llenar entidad Log
+                //LogBL.SaveLog("1", "1", "1", LogEventType.CREACION, "GetWorkerData", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+              
+                throw;
+            }
+           
         }
         #endregion
 
