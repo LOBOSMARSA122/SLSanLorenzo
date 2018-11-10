@@ -2228,7 +2228,7 @@
                                                 <x:FormRow ID="FormRow60" ColumnWidths="590px 160px 30px 70px 100px" runat="server">
                                                     <Items>
                                                         <x:TextArea ID="txtdescripcion" ShowLabel="false" CssClass="mright" runat="server" Width="580" Height="40"></x:TextArea>
-                                                        <x:Label ID="label346" runat="server" Text="EXAMEN NORMAL" ShowLabel="false"></x:Label>
+                                                        <x:Label ID="label346" runat="server" Text="EXAMEN NORMAL" BoxMargin="0px" ShowLabel="false" OffsetRight="5px"></x:Label>
                                                         <x:CheckBox ID="chkevaluacion_normal" runat="server" Text="" ShowLabel="false"></x:CheckBox>
                                                         <x:Label ID="Label347" runat="server" Text="APTITUD" ShowLabel="false"></x:Label>
                                                         <x:DropDownList ID="ddlaptitudOsteo" runat="server" Width="100" ShowLabel="false"></x:DropDownList>

@@ -16,6 +16,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
+using System.Web.UI.HtmlControls;
 
 namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 {
@@ -1015,6 +1016,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             }
         }
+
+        
 
         private void LoadCombos()
         {

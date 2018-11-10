@@ -315,7 +315,8 @@
                                         <x:Panel ID="Panel11" Width="160px" EnableBackgroundColor="true" runat="server"
                                             BodyPadding="5px" ShowBorder="true" ShowHeader="true" Height="200px" Title="SI / NO">
                                             <Items>
-                                                <x:DropDownList ID="ddlPre1" runat="server" Width="150" Enabled="False"></x:DropDownList>                                               
+                                                <%--<x:DropDownList ID="ddlPre1" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
+                                                <x:CheckBox ID="chkPre1" runat="server"></x:CheckBox>                                               
                                                 <x:Label ID="Label41" runat="server" Text="."></x:Label>
                                                  <x:DropDownList ID="ddlPre2" runat="server" Width="150" Enabled="False"></x:DropDownList>                                               
                                                 <x:Label ID="Label4" runat="server" Text="."></x:Label>

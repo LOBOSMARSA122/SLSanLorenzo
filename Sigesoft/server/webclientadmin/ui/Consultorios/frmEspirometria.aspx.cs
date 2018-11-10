@@ -70,7 +70,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
 
-                ddlPre1.Attributes.Add("Tag", "N002-MF000000199");
+                chkPre1.Attributes.Add("Tag", "N002-MF000000199");
                 ddlPre2.Attributes.Add("Tag", "N002-MF000000200");
                 ddlPre3.Attributes.Add("Tag", "N002-MF000000201");
                 ddlPre4.Attributes.Add("Tag", "N002-MF000000202");
@@ -1238,7 +1238,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             OperationResult objOperationResult = new OperationResult();
             var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 111);
-            Utils.LoadDropDownList(ddlPre1, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlPre1, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlPre2, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlPre3, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlPre4, "Value1", "Id", Combo111, DropDownListAction.Select);

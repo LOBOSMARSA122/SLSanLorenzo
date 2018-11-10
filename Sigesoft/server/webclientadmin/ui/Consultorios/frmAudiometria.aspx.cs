@@ -1473,19 +1473,19 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             //Utils.LoadDropDownList(ddlpresenta_algun, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddldurmio_mal_la_noche, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlconsumio_alcohol, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlRinitis, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlRinitis, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSarampion, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlOtitis, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(chkuso_de_medicamentos, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlOtitis, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(chkuso_de_medicamentos, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlSordera, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlMedicamentos, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlTec, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlDiabetes, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlSorderaFamiliar, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlSorderaFamiliar, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlMeningitis, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlDislipidemia, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlTiroida, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlSustQuimicas, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlSustQuimicas, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(chkRuidoExtra, "Value1", "Id", Combo253, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSarampion, "Value1", "Id", Combo191, DropDownListAction.Select);
            

@@ -847,7 +847,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlPre1;
+        protected global::FineUI.CheckBox chkPre1;
         
         /// <summary>
         /// Control Label41.

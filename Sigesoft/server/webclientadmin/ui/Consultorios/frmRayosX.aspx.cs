@@ -75,8 +75,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 dpFechaInicio.SelectedDate = DateTime.Now.AddDays(-1);  //  DateTime.Parse("12/11/2016");
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
-
-               
+                
                 //rx                   
                 txtRXNroPlaca.Attributes.Add("Tag", "N009-MF000001788");
                 txtRXVertices.Attributes.Add("Tag", "N009-MF000000590");
