@@ -4290,22 +4290,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             if (pstrComponentFieldId == "N009-MF000000660" )
             {
-                if (pstrValue == "0")
-                {
-                    rdoPulmonNormal.Checked = false;
-                }
-                else
+                if (pstrValue != "0")
                 {
                     rdoPulmonNormal.Checked = true;
                 }
             }
             if (pstrComponentFieldId == "N009-MF000000661")
             {
-                if (pstrValue == "0")
-                {
-                    rdoPulmonAnormal.Checked = false;
-                }
-                else
+                if (pstrValue != "0")
                 {
                     rdoPulmonAnormal.Checked = true;
                 }
@@ -4313,31 +4305,19 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             switch (pstrComponentFieldId)
             {
                 case "N009-MF000000663":
-                    if (pstrValue == "0")
-                    {
-                        rdoTactoRectalNormal.Checked = false;
-                    }
-                    else
+                    if (pstrValue != "0")
                     {
                         rdoTactoRectalNormal.Checked = true;
                     }
                     break;
                 case "N009-MF000000664":
-                    if (pstrValue == "0")
-                    {
-                        rdoTactoRectalAnormal.Checked = false;
-                    }
-                    else
+                    if (pstrValue != "0")
                     {
                         rdoTactoRectalAnormal.Checked = true;
                     }
                     break;
                 case "N009-MF000000666":
-                    if (pstrValue == "0")
-                    {
-                        rdoTactoRectalNoRealizo.Checked = false;
-                    }
-                    else
+                    if (pstrValue != "0")
                     {
                         rdoTactoRectalNoRealizo.Checked = true;
                     }
