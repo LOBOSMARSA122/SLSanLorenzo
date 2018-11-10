@@ -293,8 +293,15 @@ namespace Sigesoft.Node.WinClient.BLL
             {
                 if (fechaIni != null)
                 {
-                    TimeSpan ts = fechafin.Value.Date.AddDays(1) - fechaIni.Value.Date;
-                    cantidadDias = ts.Days;
+                    TimeSpan ts = fechafin.Value.Date - fechaIni.Value.Date;
+                    if (ts.Days == 0)
+                    {
+                        cantidadDias = ts.Days + 1;
+                    }
+                    else
+                    {
+                        cantidadDias = ts.Days;
+                    }
                 }
             }
             else
@@ -308,12 +315,19 @@ namespace Sigesoft.Node.WinClient.BLL
                     TimeSpan ts = newDate - oldDate;
 
                     // Difference in days.
-                    cantidadDias = ts.Days;
+                    if (ts.Days == 0)
+                    {
+                        cantidadDias = ts.Days + 1;
+                    }
+                    else
+                    {
+                        cantidadDias = ts.Days;
+                    }
                 }
                     //cantidadDias = int.Parse((DateTime.Today.AddTicks(-fechaIni.Value.Ticks).Day + 1).ToString());
             }
 
-            return precioHabitacion * (cantidadDias-1);
+            return precioHabitacion * (cantidadDias);
         }
 
         private List<HospitalizacionHabitacionList> BuscarHospitalizacionHabitaciones(string hospitalizacionId)

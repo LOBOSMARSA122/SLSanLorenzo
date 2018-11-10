@@ -100,7 +100,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 #region Electro Yanacocha
                 txtYanacocha_Frecuencia.Attributes.Add("Tag", "N009-MF000003128");
-                txtYanacocha_Ritmo.Attributes.Add("Tag", "N009-MF000003129");
+                ddlYanacocha_Ritmo.Attributes.Add("Tag", "N009-MF000003129");
                 txtYanacocha_PR.Attributes.Add("Tag", "N009-MF000003130");
                 txtYanacocha_QT.Attributes.Add("Tag", "N009-MF000003131");
                 txtYanacocha_Eje.Attributes.Add("Tag", "N009-MF000003132");
@@ -145,7 +145,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             // Remover los componentes que no estan asignados al rol del usuario
             var results = groupComponentList.FindAll(f => componentProfile.Any(t => t.v_ComponentId == f.Value2));
 
-
+            
             Utils.LoadDropDownList(ddlConsultorio, "Value1", "Value4", results, DropDownListAction.Select);
             ddlConsultorio.SelectedValue = "5";
             Utils.LoadDropDownList(ddlAptitud, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 124), DropDownListAction.All);
@@ -1233,7 +1233,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var Combo291 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 291);
             Utils.LoadDropDownList(ddlRitmo, "Value1", "Id", Combo197, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlConclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
-            Utils.LoadDropDownList(txtYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
       
             Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
@@ -1243,7 +1243,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         private void LoadCombosElectroYana()
         {
             OperationResult objOperationResult = new OperationResult();
-        
+            
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
             Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);

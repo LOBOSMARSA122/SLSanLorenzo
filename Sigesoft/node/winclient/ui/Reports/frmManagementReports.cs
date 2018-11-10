@@ -108,6 +108,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 Coimolache", v_ComponentId = Constants.INFORME_ANEXO_16_COIMOLACHE });
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 Yanacocha", v_ComponentId = Constants.INFORME_ANEXO_16_YANACOCHA });
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 Pacasmayo", v_ComponentId = Constants.INFORME_ANEXO_16_PACASMAYO });
+                serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 MINSUR SAN RAFAEL", v_ComponentId = Constants.INFORME_ANEXO_16_MINSURSANRAFAEL });
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 Shahuindo", v_ComponentId = Constants.INFORME_ANEXO_16_SHAHUINDO });
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANEXO 16 Gold Field", v_ComponentId = Constants.INFORME_ANEXO_16_GOLD_FIELD });
                 serviceComponents.Add(new ServiceComponentList { Orden = 6, v_ComponentName = "ANTECEDENTE PATOLOGICO", v_ComponentId = Constants.INFORME_ANTECEDENTE_PATOLOGICO });
@@ -1289,6 +1290,31 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
 
             ReportPDF.CreateAnexo16Pacasmayo(_DataService, filiationData, _Valores, _listMedicoPersonales,
+                                    _listaPatologicosFamiliares, _listaHabitoNocivos,
+                                    CuadroVacio, CuadroCheck, Pulmones, _PiezasCaries,
+                                    _PiezasAusentes, Audiometria, diagnosticRepository, MedicalCenter,
+                                    pathFile);
+
+        }
+        private void GenerateAnexo16MinsurSanRafael(string pathFile)
+        {
+            var _DataService = _serviceBL.GetServiceReport(_serviceId);
+            var filiationData = _pacientBL.GetPacientReportEPS(_serviceId);
+            var _listMedicoPersonales = _historyBL.GetPersonMedicalHistoryReport(_pacientId);
+            var _listaPatologicosFamiliares = _historyBL.GetFamilyMedicalAntecedentsReport(_pacientId);
+            var _Valores = _serviceBL.GetServiceComponentsReport(_serviceId);
+            var _listaHabitoNocivos = _historyBL.GetNoxiousHabitsReport(_pacientId);
+            var _PiezasCaries = _serviceBL.GetCantidadCaries(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_CARIES_ID);
+            var _PiezasAusentes = _serviceBL.GetCantidadAusentes(_serviceId, Constants.ODONTOGRAMA_ID, Constants.ODONTOGRAMA_PIEZAS_AUSENTES_ID);
+            var CuadroVacio = Common.Utils.BitmapToByteArray(Resources.CuadradoVacio);
+            var CuadroCheck = Common.Utils.BitmapToByteArray(Resources.CuadradoCheck);
+            var Pulmones = Common.Utils.BitmapToByteArray(Resources.MisPulmones);
+            var Audiometria = _serviceBL.ValoresComponenteOdontogramaValue1(_serviceId, Constants.AUDIOMETRIA_ID);
+            var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+
+            var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
+
+            ReportPDF.CreateAnexo16MinsurSanRafael(_DataService, filiationData, _Valores, _listMedicoPersonales,
                                     _listaPatologicosFamiliares, _listaHabitoNocivos,
                                     CuadroVacio, CuadroCheck, Pulmones, _PiezasCaries,
                                     _PiezasAusentes, Audiometria, diagnosticRepository, MedicalCenter,
@@ -5410,6 +5436,10 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     break;
                 case Constants.INFORME_ANEXO_16_PACASMAYO:
                     GenerateAnexo16Pacasmayo(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_ANEXO_16_PACASMAYO)));
+                    _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
+                    break;
+                case Constants.INFORME_ANEXO_16_MINSURSANRAFAEL:
+                    GenerateAnexo16MinsurSanRafael(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + Constants.INFORME_ANEXO_16_MINSURSANRAFAEL)));
                     _filesNameToMerge.Add(string.Format("{0}.pdf", Path.Combine(ruta, _serviceId + "-" + componentId)));
                     break;
                 case Constants.INFORME_ANEXO_16_YANACOCHA:

@@ -2091,6 +2091,7 @@ namespace Sigesoft.Common
         public const string FORMATO_ATENCION_NINIO = "FA_NINIO";
         public const string INFORME_ANEXO_16_COIMOLACHE = "7C-COIMOLACHE";
         public const string INFORME_ANEXO_16_PACASMAYO = "7C-PACASMAYO";
+        public const string INFORME_ANEXO_16_MINSURSANRAFAEL = "7C-MINSURSANRAFAEL";
         public const string INFORME_ANEXO_16_YANACOCHA = "7C-YANACOCHA";
         public const string INFORME_ANEXO_16_SHAHUINDO = "7C-SHAHUINDO";
         public const string INFORME_ANEXO_16_GOLD_FIELD = "7C-GOLD_FIELD";

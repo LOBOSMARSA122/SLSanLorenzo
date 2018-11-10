@@ -2785,22 +2785,30 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label444;
         
         /// <summary>
+
         /// chkAnormalidadesSI control.
+
+        /// rdoAnormalidadesSI control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkAnormalidadesSI;
+        protected global::FineUI.RadioButton rdoAnormalidadesSI;
         
         /// <summary>
+
         /// chkAnormalidadesNO control.
+
+        /// rdoAnormalidadesNO control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkAnormalidadesNO;
+        protected global::FineUI.RadioButton rdoAnormalidadesNO;
         
         /// <summary>
         /// Panel38 control.
@@ -4666,22 +4674,30 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label538;
         
         /// <summary>
+
         /// CheckBox82 control.
+
+        /// rdoSimboloSi control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox CheckBox82;
+        protected global::FineUI.RadioButton rdoSimboloSi;
         
         /// <summary>
+
         /// CheckBox83 control.
+
+        /// rdoSimboloNo control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox CheckBox83;
+        protected global::FineUI.RadioButton rdoSimboloNo;
         
         /// <summary>
         /// Panel43 control.

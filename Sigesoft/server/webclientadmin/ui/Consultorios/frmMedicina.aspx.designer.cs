@@ -5665,13 +5665,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label138;
         
         /// <summary>
-        /// chkPulmonNormal control.
+        /// rdoPulmonNormal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkPulmonNormal;
+        protected global::FineUI.RadioButton rdoPulmonNormal;
         
         /// <summary>
         /// label140 control.
@@ -5683,13 +5683,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label140;
         
         /// <summary>
-        /// chkPulmonAnormal control.
+        /// rdoPulmonAnormal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkPulmonAnormal;
+        protected global::FineUI.RadioButton rdoPulmonAnormal;
         
         /// <summary>
         /// label143 control.
@@ -5737,13 +5737,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label145;
         
         /// <summary>
-        /// chkTactoRectalNormal control.
+        /// rdoTactoRectalNormal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkTactoRectalNormal;
+        protected global::FineUI.RadioButton rdoTactoRectalNormal;
         
         /// <summary>
         /// label159 control.
@@ -5755,13 +5755,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label159;
         
         /// <summary>
-        /// chkTactoRectalAnormal control.
+        /// rdoTactoRectalAnormal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkTactoRectalAnormal;
+        protected global::FineUI.RadioButton rdoTactoRectalAnormal;
         
         /// <summary>
         /// label164 control.
@@ -5773,13 +5773,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label164;
         
         /// <summary>
-        /// chkTactoRectalNoRealizo control.
+        /// rdoTactoRectalNoRealizo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox chkTactoRectalNoRealizo;
+        protected global::FineUI.RadioButton rdoTactoRectalNoRealizo;
         
         /// <summary>
         /// label160 control.

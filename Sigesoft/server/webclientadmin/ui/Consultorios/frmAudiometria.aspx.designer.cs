@@ -2056,106 +2056,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_VO_8000;
         
         /// <summary>
+ 
         /// FormRow84 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow84;
-        
-        /// <summary>
-        /// TextBox64 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox TextBox64;
-        
-        /// <summary>
-        /// txtOD_EM_125 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_125;
-        
-        /// <summary>
-        /// txtOD_EM_250 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_250;
-        
-        /// <summary>
-        /// txtOD_EM_500 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_500;
-        
-        /// <summary>
-        /// txtOD_EM_1000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_1000;
-        
-        /// <summary>
-        /// txtOD_EM_2000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_2000;
-        
-        /// <summary>
-        /// txtOD_EM_3000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_3000;
-        
-        /// <summary>
-        /// txtOD_EM_4000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_4000;
-        
-        /// <summary>
-        /// txtOD_EM_6000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_6000;
-        
-        /// <summary>
-        /// txtOD_EM_8000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOD_EM_8000;
-        
-        /// <summary>
+ 
         /// FormRow4 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2164,7 +2069,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.FormRow FormRow4;
         
         /// <summary>
+ 
+        /// TextBox64 control.
+ 
         /// TextBox6488 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2173,7 +2082,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox TextBox6488;
         
         /// <summary>
+
         /// txtOD_AN_125 control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2182,7 +2093,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_AN_125;
         
         /// <summary>
+
+        /// txtOD_EM_250 control.
+ 
         /// txtOD_AN_250 control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2191,7 +2106,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_AN_250;
         
         /// <summary>
+
+        /// txtOD_EM_500 control.
+
         /// txtOD_AN_500 control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2200,7 +2119,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_AN_500;
         
         /// <summary>
+
+        /// txtOD_EM_1000 control.
+
         /// txtOD_AN_1000 control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2209,7 +2132,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_AN_1000;
         
         /// <summary>
+
+        /// txtOD_EM_2000 control.
+
         /// txtOD_AN_2000 control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2218,7 +2145,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_AN_2000;
         
         /// <summary>
+
+        /// txtOD_EM_3000 control.
+
         /// txtOD_AN_3000 control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2227,7 +2158,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_AN_3000;
         
         /// <summary>
+
+        /// txtOD_EM_4000 control.
+
         /// txtOD_AN_4000 control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2236,6 +2171,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_AN_4000;
         
         /// <summary>
+
+        /// txtOD_EM_6000 control.
+
         /// txtOD_AN_6000 control.
         /// </summary>
         /// <remarks>
@@ -2245,6 +2183,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOD_AN_6000;
         
         /// <summary>
+        /// txtOD_EM_8000 control.
         /// txtOD_AN_8000 control.
         /// </summary>
         /// <remarks>
@@ -2252,6 +2191,149 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.TextBox txtOD_AN_8000;
+        
+        /// <summary>
+ 
+        /// FormRow4 control.
+ 
+        /// FormRow84 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow84;
+        
+        /// <summary>
+ 
+        /// TextBox6488 control.
+ 
+        /// TextBox64 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox TextBox64;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_125 control.
+ 
+        /// txtOD_EM_125 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_125;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_250 control.
+ 
+        /// txtOD_EM_250 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_250;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_500 control.
+ 
+        /// txtOD_EM_500 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_500;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_1000 control.
+ 
+        /// txtOD_EM_1000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_1000;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_2000 control.
+ 
+        /// txtOD_EM_2000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_2000;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_3000 control.
+ 
+        /// txtOD_EM_3000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_3000;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_4000 control.
+ 
+        /// txtOD_EM_4000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_4000;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_6000 control.
+ 
+        /// txtOD_EM_6000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_6000;
+        
+        /// <summary>
+ 
+        /// txtOD_AN_8000 control.
+ 
+        /// txtOD_EM_8000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOD_EM_8000;
         
         /// <summary>
         /// GroupPanel10 control.
@@ -2569,106 +2651,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_VO_8000;
         
         /// <summary>
+ 
         /// FormRow89 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow89;
-        
-        /// <summary>
-        /// TextBox104 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox TextBox104;
-        
-        /// <summary>
-        /// txtOI_EM_125 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_125;
-        
-        /// <summary>
-        /// txtOI_EM_250 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_250;
-        
-        /// <summary>
-        /// txtOI_EM_500 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_500;
-        
-        /// <summary>
-        /// txtOI_EM_1000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_1000;
-        
-        /// <summary>
-        /// txtOI_EM_2000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_2000;
-        
-        /// <summary>
-        /// txtOI_EM_3000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_3000;
-        
-        /// <summary>
-        /// txtOI_EM_4000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_4000;
-        
-        /// <summary>
-        /// txtOI_EM_6000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_6000;
-        
-        /// <summary>
-        /// txtOI_EM_8000 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtOI_EM_8000;
-        
-        /// <summary>
+ 
         /// FormRow5 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2677,7 +2664,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.FormRow FormRow5;
         
         /// <summary>
+ 
+        /// TextBox104 control.
+ 
         /// TextBox27 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2686,7 +2677,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox TextBox27;
         
         /// <summary>
+ 
+        /// txtOI_EM_125 control.
+ 
         /// txtOI_AN_125 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2695,7 +2690,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_AN_125;
         
         /// <summary>
+ 
+        /// txtOI_EM_250 control.
+ 
         /// txtOI_AN_250 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2704,7 +2703,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_AN_250;
         
         /// <summary>
+ 
+        /// txtOI_EM_500 control.
+ 
         /// txtOI_AN_500 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2713,7 +2716,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_AN_500;
         
         /// <summary>
+ 
+        /// txtOI_EM_1000 control.
+ 
         /// txtOI_AN_1000 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2722,7 +2729,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_AN_1000;
         
         /// <summary>
+ 
+        /// txtOI_EM_2000 control.
+ 
         /// txtOI_AN_2000 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2731,7 +2742,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_AN_2000;
         
         /// <summary>
+ 
+        /// txtOI_EM_3000 control.
+ 
         /// txtOI_AN_3000 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2740,7 +2755,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_AN_3000;
         
         /// <summary>
+ 
+        /// txtOI_EM_4000 control.
+ 
         /// txtOI_AN_4000 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2749,7 +2768,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_AN_4000;
         
         /// <summary>
+ 
+        /// txtOI_EM_6000 control.
+ 
         /// txtOI_AN_6000 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2758,13 +2781,160 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtOI_AN_6000;
         
         /// <summary>
+ 
+        /// txtOI_EM_8000 control.
+ 
         /// txtOI_AN_8000 control.
+ 
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.TextBox txtOI_AN_8000;
+        
+        /// <summary>
+ 
+        /// FormRow5 control.
+ 
+        /// FormRow89 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow89;
+        
+        /// <summary>
+ 
+        /// TextBox27 control.
+ 
+        /// TextBox104 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox TextBox104;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_125 control.
+ 
+        /// txtOI_EM_125 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_125;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_250 control.
+ 
+        /// txtOI_EM_250 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_250;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_500 control.
+ 
+        /// txtOI_EM_500 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_500;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_1000 control.
+ 
+        /// txtOI_EM_1000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_1000;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_2000 control.
+ 
+        /// txtOI_EM_2000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_2000;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_3000 control.
+ 
+        /// txtOI_EM_3000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_3000;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_4000 control.
+ 
+        /// txtOI_EM_4000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_4000;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_6000 control.
+ 
+        /// txtOI_EM_6000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_6000;
+        
+        /// <summary>
+ 
+        /// txtOI_AN_8000 control.
+ 
+        /// txtOI_EM_8000 control.
+ 
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtOI_EM_8000;
         
         /// <summary>
         /// GroupPanel4 control.
@@ -5242,6 +5412,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtAudiometriaAuditorActualizacion;
         
         /// <summary>
+ 
         /// FormRow620 control.
         /// </summary>
         /// <remarks>
@@ -5251,6 +5422,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.FormRow FormRow620;
         
         /// <summary>
+ 
+ 
         /// txtAudiometriaEvaluador control.
         /// </summary>
         /// <remarks>
@@ -5278,6 +5451,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtAudiometriaEvaluadorEvaluacion;
         
         /// <summary>
+ 
         /// FormRow208 control.
         /// </summary>
         /// <remarks>
@@ -5287,6 +5461,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.FormRow FormRow208;
         
         /// <summary>
+ 
+ 
         /// txtAudiometriaInformador control.
         /// </summary>
         /// <remarks>

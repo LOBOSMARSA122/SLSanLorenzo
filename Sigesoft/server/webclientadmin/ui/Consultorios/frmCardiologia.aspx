@@ -483,7 +483,7 @@
                                                         <x:TextBox ID="txtYanacocha_Frecuencia" runat="server" Text="" ShowLabel="false" ></x:TextBox>  
 
                                                          <x:Label ID="label211" runat="server" Text="RITMO CARDIACO:" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="txtYanacocha_Ritmo" runat="server" Text="" ShowLabel="false" Width="180"></x:DropDownList>  
+                                                        <x:DropDownList ID="ddlYanacocha_Ritmo" runat="server" Text="" ShowLabel="false" Width="180"></x:DropDownList>  
 
                                                          <x:Label ID="label221" runat="server" Text="INTERVALO PR:" ShowLabel="false"></x:Label>
                                                         <x:TextBox ID="txtYanacocha_PR" runat="server" Text="" ShowLabel="false" ></x:TextBox> 
