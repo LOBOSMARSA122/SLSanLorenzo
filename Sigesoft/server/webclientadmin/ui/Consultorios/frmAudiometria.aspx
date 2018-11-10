@@ -404,13 +404,14 @@
                                         <x:Panel ID="Panel5" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>
-                                                <x:DropDownList ID="ddlOtitis" runat="server" Width="100" Enabled="False"></x:DropDownList>                                                                                               
+                                                
+                                                <x:CheckBox ID="ddlOtitis" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                                                                                                    
                                                 <x:Label ID="Label10" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlRinitis" runat="server" Width="100" Enabled="False"></x:DropDownList>                                               
-                                                <x:Label ID="Label14" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlSustQuimicas" runat="server" Width="100" Enabled="False"></x:DropDownList>                                             
+                                                <x:CheckBox ID="ddlRinitis" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                    
+                                                <x:Label ID="Label14" runat="server" Text="."></x:Label> 
+                                                <x:CheckBox ID="ddlSustQuimicas" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                  
                                                 <x:Label ID="Label15" runat="server" Text="."></x:Label>
-                                                <x:DropDownList ID="ddlSorderaFamiliar" runat="server" Width="100" Enabled="False"></x:DropDownList>   
+                                                <x:CheckBox ID="ddlSorderaFamiliar" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                    
                                             </Items>
                                         </x:Panel>
                                          <x:Panel ID="Panel6" Width="250px" Height="150px" EnableBackgroundColor="true"
@@ -427,8 +428,8 @@
                                         </x:Panel>
                                         <x:Panel ID="Panel7" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
-                                            <Items>
-                                                 <x:DropDownList ID="chkuso_de_medicamentos" runat="server" Width="100" Enabled="False"></x:DropDownList>                                               
+                                            <Items>                        
+                                                <x:CheckBox ID="chkuso_de_medicamentos" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                               
                                                 <x:Label ID="Label25" runat="server" Text="."></x:Label>
                                                 <x:Label ID="Label78" runat="server" Text="."></x:Label>                                         
                                                 <x:Label ID="Label26" runat="server" Text="."></x:Label>

@@ -2785,7 +2785,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label444;
         
         /// <summary>
+
+        /// chkAnormalidadesSI control.
+
         /// rdoAnormalidadesSI control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -2794,7 +2798,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.RadioButton rdoAnormalidadesSI;
         
         /// <summary>
+
+        /// chkAnormalidadesNO control.
+
         /// rdoAnormalidadesNO control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -4666,7 +4674,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label538;
         
         /// <summary>
+
+        /// CheckBox82 control.
+
         /// rdoSimboloSi control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -4675,7 +4687,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.RadioButton rdoSimboloSi;
         
         /// <summary>
+
+        /// CheckBox83 control.
+
         /// rdoSimboloNo control.
+
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
