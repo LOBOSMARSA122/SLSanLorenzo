@@ -319,18 +319,6 @@
                                         <x:Panel ID="Panel11" Width="160px" EnableBackgroundColor="true" runat="server"
                                             BodyPadding="5px" ShowBorder="true" ShowHeader="true" Height="200px" Title="SI">
                                             <Items>
-<<<<<<< HEAD
-                                                <%--<x:DropDownList ID="ddlPre1" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkPre1" runat="server"></x:CheckBox>                                               
-                                                <x:Label ID="Label41" runat="server" Text="."></x:Label>
-                                                 <x:DropDownList ID="ddlPre2" runat="server" Width="150" Enabled="False"></x:DropDownList>                                               
-                                                <x:Label ID="Label4" runat="server" Text="."></x:Label>
-                                                 <x:DropDownList ID="ddlPre3" runat="server" Width="150" Enabled="False"></x:DropDownList>                                               
-                                                <x:Label ID="Label5" runat="server" Text="."></x:Label>
-                                                 <x:DropDownList ID="ddlPre4" runat="server" Width="150" Enabled="False"></x:DropDownList>                                               
-                                                <x:Label ID="Label6" runat="server" Text="."></x:Label>
-                                                 <x:DropDownList ID="ddlPre5" runat="server" Width="150" Enabled="False"></x:DropDownList>                  
-=======
                                                 <%--<x:DropDownList ID="ddlPre1" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>  
                                                 <x:CheckBox ID="chkPre1" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox> 
                                                 <x:Label ID="Label4" runat="server" Text=" "></x:Label>                                             
@@ -345,8 +333,7 @@
                                                 <x:Label ID="Label41" runat="server" Text=" "></x:Label>                                                 
                                                 <%--<x:DropDownList ID="ddlPre5" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
                                                 <x:CheckBox ID="chkPre5" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
-                                                                    
->>>>>>> 27585a68ace3d42511fd66b63c0b0951efae965c
+
                                             </Items>
                                         </x:Panel>
                                     </Items>

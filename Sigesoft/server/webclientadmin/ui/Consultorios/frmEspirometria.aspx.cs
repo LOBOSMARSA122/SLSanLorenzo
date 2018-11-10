@@ -352,6 +352,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         private void SearchControlAndLoadData(Control ctrlContainer, string ServiceComponentId, List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList> ListaValores)
         {
+            
             foreach (Control ctrl in ctrlContainer.Controls)
             {
                 if (ctrl is DropDownList)
@@ -383,7 +384,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                     }
                 }
-
+                //("Tag", "N002-MF000000200");
                 if (ctrl is CheckBox)
                 {
                     if (((CheckBox)ctrl).Attributes.GetValue("Tag") != null)
