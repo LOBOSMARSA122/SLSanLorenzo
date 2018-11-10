@@ -802,7 +802,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlsi_hizo_cambios;
+        protected global::FineUI.CheckBox ddlsi_hizo_cambios;
         
         /// <summary>
         /// Label41 control.
@@ -820,7 +820,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.DropDownList ddlestuvo_expuesto;
+        protected global::FineUI.CheckBox ddlestuvo_expuesto;
         
         /// <summary>
         /// Label5 control.
@@ -1216,7 +1216,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox ddlOtitis;
+        protected global::FineUI.CheckBox chkOtitisa;
         
         /// <summary>
         /// Label10 control.
@@ -1234,7 +1234,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox ddlRinitis;
+        protected global::FineUI.CheckBox chkRinitisa;
         
         /// <summary>
         /// Label14 control.
@@ -1252,7 +1252,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox ddlSustQuimicas;
+        protected global::FineUI.CheckBox chkSustQuimicasa;
         
         /// <summary>
         /// Label15 control.
@@ -1270,7 +1270,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.CheckBox ddlSorderaFamiliar;
+        protected global::FineUI.CheckBox chkSorderaFamiliara;
         
         /// <summary>
         /// Panel6 control.
