@@ -2342,5 +2342,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::FineUI.HiddenField highlightRows;
+
+
+
     }
 }

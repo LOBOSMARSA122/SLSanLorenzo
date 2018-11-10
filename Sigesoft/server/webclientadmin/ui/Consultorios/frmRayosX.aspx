@@ -1406,9 +1406,10 @@
                                            <x:FormRow ID="FormRow430" ColumnWidths="320px 160px 160px " runat="server" >
                                                 <Items>
                                                      <x:Label ID="label538" runat="server" Text="" ShowLabel="false"></x:Label>
-                                                     <x:CheckBox ID="chkSimboloSi" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>
-                                                     <%--<Ext:RadioButton ID="CheckBox82" runat="server" Text="SI" ShowLabel="true"></Ext:RadioButton>--%>
-                                                    <x:CheckBox ID="chkSimboloNo" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>  
+                                                     <%--<x:CheckBox ID="chkSimboloSi" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>--%>
+                                                     <Ext:RadioButton ID="rdoSimboloSi" runat="server" Text="SI" ShowLabel="true"></Ext:RadioButton>
+                                                    <%--<x:CheckBox ID="chkSimboloNo" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>--%>  
+                                                    <Ext:RadioButton ID="rdoSimboloNo" runat="server" Text="NO" ShowLabel="true"></Ext:RadioButton>
                                                     
                                                 </Items>
                                             </x:FormRow>

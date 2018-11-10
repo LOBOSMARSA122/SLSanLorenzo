@@ -100,7 +100,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 #region Electro Yanacocha
                 txtYanacocha_Frecuencia.Attributes.Add("Tag", "N009-MF000003128");
-                txtYanacocha_Ritmo.Attributes.Add("Tag", "N009-MF000003129");
+                ddlYanacocha_Ritmo.Attributes.Add("Tag", "N009-MF000003129");
                 txtYanacocha_PR.Attributes.Add("Tag", "N009-MF000003130");
                 txtYanacocha_QT.Attributes.Add("Tag", "N009-MF000003131");
                 txtYanacocha_Eje.Attributes.Add("Tag", "N009-MF000003132");
@@ -1233,7 +1233,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var Combo291 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 291);
             Utils.LoadDropDownList(ddlRitmo, "Value1", "Id", Combo197, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlConclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
-            Utils.LoadDropDownList(txtYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
       
             Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);

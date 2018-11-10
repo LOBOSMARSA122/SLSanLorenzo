@@ -170,6 +170,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkOITOpacidadesC.Attributes.Add("Tag", "N009-MF000000759");
                 rdoAnormalidadesSI.Attributes.Add("Tag", "N009-MF000003194");
                 rdoAnormalidadesNO.Attributes.Add("Tag", "N009-MF000000761");
+                rdoSimboloSi.Attributes.Add("Tag", "N009-MF000003195");
+                rdoSimboloNo.Attributes.Add("Tag", "N009-MF000000760");
                 chkOITaa.Attributes.Add("Tag", "N009-MF000000762");
                 chkOITat.Attributes.Add("Tag", "N009-MF000000763");
                 chkOITax.Attributes.Add("Tag", "N009-MF000000764");
@@ -507,6 +509,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         string ComponentFieldId = ((CheckBox)ctrl).Attributes.GetValue("Tag").ToString();
                         ((CheckBox)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
+                    }
+                }
+
+                if (ctrl is RadioButton)
+                {
+                    if (((RadioButton)ctrl).Attributes.GetValue("Tag") != null)
+                    {
+                        string ComponentFieldId = ((RadioButton)ctrl).Attributes.GetValue("Tag").ToString();
+                        ((RadioButton)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                     }
                 }
 

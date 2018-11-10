@@ -1390,9 +1390,11 @@
                                                     <Items>
                                                         <x:Label ID="label186" runat="server" Text="PULMONES" ShowLabel="false"></x:Label>
                                                         <x:Label ID="label138" runat="server" Text="NORMAL" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkPulmonNormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                        <%--<x:CheckBox ID="chkPulmonNormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
+                                                        <x:RadioButton ID="rdoPulmonNormal" runat="server" Text="" ShowLabel="false"></x:RadioButton>
                                                         <x:Label ID="label140" runat="server" Text="ANORMAL" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkPulmonAnormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                        <%--<x:CheckBox ID="chkPulmonAnormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
+                                                        <x:RadioButton ID="rdoPulmonAnormal" runat="server" Text="" ShowLabel="false"></x:RadioButton>
                                                         <x:Label ID="label143" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>
                                                         <x:TextBox ID="txtPulmonDescripcion" runat="server" Text="" Width="490" ShowLabel="false"></x:TextBox>
                                                     </Items>
@@ -1401,11 +1403,14 @@
                                                     <Items>
                                                         <x:Label ID="label144" runat="server" Text="TACTO RECTAL" ShowLabel="false"></x:Label>
                                                         <x:Label ID="label145" runat="server" Text="NORMAL" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkTactoRectalNormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                        <%--<x:CheckBox ID="chkTactoRectalNormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
+                                                        <x:RadioButton ID="rdoTactoRectalNormal" runat="server" Text="" ShowLabel="false"></x:RadioButton>
                                                         <x:Label ID="label159" runat="server" Text="ANORMAL" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkTactoRectalAnormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                        <%--<x:CheckBox ID="chkTactoRectalAnormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
+                                                        <x:RadioButton ID="rdoTactoRectalAnormal" runat="server" Text="" ShowLabel="false"></x:RadioButton>
                                                         <x:Label ID="label164" runat="server" Text="NO SE REALIZÓ" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkTactoRectalNoRealizo" runat="server" Text="" ShowLabel="false"></x:CheckBox>
+                                                        <%--<x:CheckBox ID="chkTactoRectalNoRealizo" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
+                                                        <x:RadioButton ID="rdoTactoRectalNoRealizo" runat="server" Text="" ShowLabel="false"></x:RadioButton>
                                                         <x:Label ID="label160" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>
                                                         <x:TextBox ID="txtTactoRectalDescripcion" runat="server" Text="" Width="340" ShowLabel="false"></x:TextBox>
                                                     </Items>
