@@ -294,6 +294,58 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public void DeleteTicket( string ticketId, List<string> ClientSession)
+        {
+             OperationResult objOperationResult = new OperationResult();
+             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            try
+            {
+
+                var objEntitySource1 = (from a in dbContext.ticket
+                                        where a.v_TicketId == ticketId
+                                        select a).FirstOrDefault();
+
+                objEntitySource1.d_UpdateDate = DateTime.Now;
+                objEntitySource1.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                objEntitySource1.i_IsDeleted = 1;
+                dbContext.SaveChanges();
+
+
+                var ticketDetail = GetTicketDetails(ref objOperationResult, ticketId);
+
+                foreach (var detail in ticketDetail)
+                {
+                    DeleteTicketDetail(detail.v_TicketDetalleId, ClientSession);
+                }
+            }
+            catch (Exception ex)
+            {                
+                throw;
+            }
+        }
+
+        public void DeleteTicketDetail(string ticketDetailId, List<string> ClientSession)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            try
+            {
+                var objEntitySource1 = (from a in dbContext.ticketdetalle
+                                        where a.v_TicketDetalleId == ticketDetailId
+                                        select a).FirstOrDefault();
+
+                objEntitySource1.d_UpdateDate = DateTime.Now;
+                objEntitySource1.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                objEntitySource1.i_IsDeleted = 1;
+                dbContext.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
+
         public decimal ObtenerPrecioTarifario(string serviceId, string productoDetalleId)
         {
             SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();

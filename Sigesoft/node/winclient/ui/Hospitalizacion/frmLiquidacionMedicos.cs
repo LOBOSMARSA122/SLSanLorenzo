@@ -65,11 +65,17 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void btnPagar_Click(object sender, EventArgs e)
         {
             UltraGridBand band = this.grdData.DisplayLayout.Bands[1];
-
+            HospitalizacionBL o = new HospitalizacionBL();
             foreach (UltraGridRow row in band.GetRowEnumerator(GridRowType.DataRow))
             {
-                var x = row.Cells["Select"].Value;
+                if ((bool)row.Cells["Select"].Value)
+                {
+                    string serviceId = row.Cells["v_ServiceId"].Value.ToString();
+                    o.ActualizarPagoMedico(serviceId);
+                }
             }
+
+            btnFilter_Click(sender, e);
         }
 
         private void grdData_ClickCell(object sender, ClickCellEventArgs e)
@@ -82,6 +88,22 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     e.Cell.Value = false;
             }
 
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            string NombreArchivo = "";
+            NombreArchivo = "Liquidación de Médicos del " + dtpDateTimeStar.Text + " al " + dptDateTimeEnd.Text;
+            NombreArchivo = NombreArchivo.Replace("/", "_");
+            NombreArchivo = NombreArchivo.Replace(":", "_");
+
+            saveFileDialog1.FileName = NombreArchivo;
+            saveFileDialog1.Filter = "Files (*.xls;*.xlsx;*)|*.xls;*.xlsx;*";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
+                MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

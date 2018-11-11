@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MedicoTratante");
@@ -66,6 +67,9 @@
             this.chkPagados = new System.Windows.Forms.CheckBox();
             this.btnPagar = new System.Windows.Forms.Button();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.SuspendLayout();
@@ -160,7 +164,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chkPagados);
-            this.groupBox1.Controls.Add(this.btnPagar);
             this.groupBox1.Controls.Add(this.ddlUsuario);
             this.groupBox1.Controls.Add(this.btnFilter);
             this.groupBox1.Controls.Add(this.label3);
@@ -195,7 +198,7 @@
             this.btnPagar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPagar.ForeColor = System.Drawing.Color.ForestGreen;
             this.btnPagar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPagar.Location = new System.Drawing.Point(782, 44);
+            this.btnPagar.Location = new System.Drawing.Point(794, 112);
             this.btnPagar.Margin = new System.Windows.Forms.Padding(2);
             this.btnPagar.Name = "btnPagar";
             this.btnPagar.Size = new System.Drawing.Size(75, 31);
@@ -313,17 +316,33 @@
             this.grdData.Location = new System.Drawing.Point(6, 112);
             this.grdData.Margin = new System.Windows.Forms.Padding(2);
             this.grdData.Name = "grdData";
-            this.grdData.Size = new System.Drawing.Size(857, 504);
+            this.grdData.Size = new System.Drawing.Size(778, 504);
             this.grdData.TabIndex = 115;
             this.grdData.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdData_ClickCell);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(794, 148);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 49);
+            this.btnExport.TabIndex = 116;
+            this.btnExport.Text = "Exportar a Excel";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // frmLiquidacionMedicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 627);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.grdData);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnPagar);
             this.Name = "frmLiquidacionMedicos";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -350,5 +369,8 @@
         private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
         private System.Windows.Forms.CheckBox chkPagados;
         private System.Windows.Forms.Button btnPagar;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ultraGridExcelExporter1;
     }
 }

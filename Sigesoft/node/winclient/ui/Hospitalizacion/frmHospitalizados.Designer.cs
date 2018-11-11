@@ -612,7 +612,6 @@
             this.btnEliminarTicket.Text = "Eliminar Ticket";
             this.btnEliminarTicket.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminarTicket.UseVisualStyleBackColor = false;
-            this.btnEliminarTicket.Visible = false;
             this.btnEliminarTicket.Click += new System.EventHandler(this.btnEliminarTicket_Click);
             // 
             // btnEditarTicket

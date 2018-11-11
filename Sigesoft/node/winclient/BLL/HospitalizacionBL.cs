@@ -974,6 +974,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
         public hospitalizacionhabitacionDto GetHospitalizacionHabitacion(ref OperationResult pobjOperationResult, string v_HopitalizacionId)
         {
             //mon.IsActive = true;
@@ -1000,5 +1001,31 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        public void ActualizarPagoMedico(string serviceId)
+        {
+            try
+            {
+                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                // Obtener la entidad fuente
+                var objEntitySource = (from a in dbContext.service
+                                       where a.v_ServiceId == serviceId
+                                       select a).FirstOrDefault();
+
+                objEntitySource.i_MedicoPagado = 1;
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                return;
+            }
+            catch (Exception ex)
+            {
+                
+                throw;
+            }
+        }
+
     }
 }
