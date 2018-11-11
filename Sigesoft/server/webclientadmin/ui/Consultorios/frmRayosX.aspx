@@ -602,6 +602,7 @@
                                             </x:Form>
                                         </Items>             
                                     </x:GroupPanel>
+                                        
                                     <x:GroupPanel runat="server" Title="2.2. Profusión  (opacidades pequeñas)" ID="GroupPanel39" BoxFlex="1" Height="125"  Width="280">
                                          <Items>
                                             <x:Form ID="Form103" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
@@ -609,6 +610,7 @@
                                                  <x:FormRow ID="FormRow368" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label413" runat="server" Text="0/-" ShowLabel="false"></x:Label>
+
                                                     <x:CheckBox ID="chkOIT0_" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label414" runat="server" Text="0/0" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="chkOIT0_0" runat="server" Label="" ShowLabel="false"></x:CheckBox>
@@ -616,12 +618,12 @@
                                                     <x:CheckBox ID="chkOIT0_1" runat="server" Label="" ShowLabel="false"></x:CheckBox>  
                                                 </Items>
                                                   </x:FormRow>
-                                                  <x:FormRow ID="FormRow369" ColumnWidths="85px 85px 85px" runat="server" >
+                                                  <x:FormRow ID="FormRow369" ColumnWidths="85px 85px 85px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label4" runat="server" Text="" ShowLabel="false"></x:Label> 
                                                 </Items>
                                             </x:FormRow>
-                                                  <x:FormRow ID="FormRow370" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server" >
+                                                  <x:FormRow ID="FormRow370" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label5" runat="server" Text="1/0" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="chkOIT1_0" runat="server" Label="" ShowLabel="false"></x:CheckBox>
@@ -631,9 +633,9 @@
                                                     <x:CheckBox ID="chkOIT1_2" runat="server" Label="" ShowLabel="false"></x:CheckBox> 
                                                 </Items>
                                             </x:FormRow>
-                                                    <x:FormRow ID="FormRow371" ColumnWidths="85px 85px 85px" runat="server" >
+                                                    <x:FormRow ID="FormRow371" ColumnWidths="85px 85px 85px" runat="server">
                                                 <Items>
-                                                    <x:Label ID="label8" runat="server" Text="" ShowLabel="false"></x:Label> 
+                                                    <x:Label ID="label8" runat="server" Text="" ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
                                                     <x:FormRow ID="FormRow372" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server" >
@@ -651,14 +653,14 @@
                                                     <x:Label ID="label12" runat="server" Text="" ShowLabel="false"></x:Label> 
                                                 </Items>
                                             </x:FormRow>
-                                                     <x:FormRow ID="FormRow374" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server" >
+                                                     <x:FormRow ID="FormRow374" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label425" runat="server" Text="3/2" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="chOIT3_2" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label426" runat="server" Text="3/3" ShowLabel="false"></x:Label>
                                                     <x:CheckBox ID="chOIT3_3" runat="server" Label="" ShowLabel="false"></x:CheckBox>
                                                     <x:Label ID="label427" runat="server" Text="3/+" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chOIT3_" runat="server" Label="" ShowLabel="false"></x:CheckBox>  
+                                                    <x:CheckBox ID="chOIT3_" runat="server" Label="" ShowLabel="false"></x:CheckBox>                                            
                                                 </Items>
                                             </x:FormRow>   
                                                 </Rows>
@@ -763,8 +765,11 @@
                                                <x:FormRow ID="FormRow381" ColumnWidths="320px 160px 160px " runat="server" >
                                                     <Items>
                                                          <x:Label ID="label444" runat="server" Text="(si NO hay anormalidades pase a símbolos *)" ShowLabel="false"></x:Label>
-                                                         <x:CheckBox ID="chkAnormalidadesSI" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>
-                                                         <x:CheckBox ID="chkAnormalidadesNO" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>  
+                                                        
+                                                        <%--<x:CheckBox ID="chkAnormalidadesSI" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>--%>
+                                                        <x:RadioButton ID="rdoAnormalidadesSI" runat="server" Text="SI" ShowLabel="true"></x:RadioButton>
+                                                        <%--<x:CheckBox ID="chkAnormalidadesNO" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>--%> 
+                                                        <x:RadioButton ID="rdoAnormalidadesNO" runat="server" Text="NO" ShowLabel="true"></x:RadioButton> 
                                                         </Items>
                                                 </x:FormRow>
                                             </Rows>
@@ -1403,9 +1408,12 @@
                                            <x:FormRow ID="FormRow430" ColumnWidths="320px 160px 160px " runat="server" >
                                                 <Items>
                                                      <x:Label ID="label538" runat="server" Text="" ShowLabel="false"></x:Label>
-                                                     <x:CheckBox ID="CheckBox82" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>
-                                                     <x:CheckBox ID="CheckBox83" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>  
-                                                    </Items>
+                                                     <%--<x:CheckBox ID="chkSimboloSi" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>--%>
+                                                     <Ext:RadioButton ID="rdoSimboloSi" runat="server" Text="SI" ShowLabel="true"></Ext:RadioButton>
+                                                    <%--<x:CheckBox ID="chkSimboloNo" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>--%>  
+                                                    <Ext:RadioButton ID="rdoSimboloNo" runat="server" Text="NO" ShowLabel="true"></Ext:RadioButton>
+                                                    
+                                                </Items>
                                             </x:FormRow>
                                         </Rows>
                                         </x:Form>
@@ -1631,10 +1639,9 @@
                      });
                  }
 
-
                  function onAjaxReady() {
                      highlightRows();
-                 }
+                 }                 
     </script>
 </body>
 </html>

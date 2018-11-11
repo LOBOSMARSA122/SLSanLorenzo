@@ -16,6 +16,7 @@ using System.Web;
 using System.Web.Configuration;
 using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
+using System.Web.UI.HtmlControls;
 
 namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 {
@@ -206,13 +207,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtOrganosGenitales_16.Attributes.Add("Tag", "N009-MF000000701");
                 ddlGanglios_16.Attributes.Add("Tag", "N009-MF000000659");
                 txtGanglios_16.Attributes.Add("Tag", "N009-MF000000702");
-                chkPulmonNormal.Attributes.Add("Tag", "N009-MF000000660");
-                chkPulmonAnormal.Attributes.Add("Tag", "N009-MF000000661");
+                rdoPulmonNormal.Attributes.Add("Tag", "N009-MF000000660");
+                rdoPulmonAnormal.Attributes.Add("Tag", "N009-MF000000661");
                 txtPulmonDescripcion.Attributes.Add("Tag", "N009-MF000000662");
-                chkTactoRectalNormal.Attributes.Add("Tag", "N009-MF000000663");
-                chkTactoRectalAnormal.Attributes.Add("Tag", "N009-MF000000664");
+                rdoTactoRectalNormal.Attributes.Add("Tag", "N009-MF000000663");
+                rdoTactoRectalAnormal.Attributes.Add("Tag", "N009-MF000000664");
                 txtTactoRectalDescripcion.Attributes.Add("Tag", "N009-MF000000665");
-                chkTactoRectalNoRealizo.Attributes.Add("Tag", "N009-MF000000666");
+                rdoTactoRectalNoRealizo.Attributes.Add("Tag", "N009-MF000000666");
                 txtResumen_16.Attributes.Add("Tag", "N009-MF000000703");
                 chkPersonaSana_16.Attributes.Add("Tag", "N009-MF000002137");
                 //chkruido.Attributes.Add("Tag", "N009-MF000000667");
@@ -1015,6 +1016,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             }
         }
+
+        
 
         private void LoadCombos()
         {
@@ -4268,11 +4271,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                      if (((RadioButton)ctrl).Attributes.GetValue("Tag") != null)
                     {
                         string ComponentFieldId = ((RadioButton)ctrl).Attributes.GetValue("Tag").ToString();
-                        string Value = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? "" : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1;
+                        string Value = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? "" : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1;                        
                         if (Value != null)
                         {
                             SetearRadioButtonEvaluacionMusculo(ComponentFieldId, Value);
                         }
+                        //((RadioButton)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                     }
                 }
 
@@ -4284,6 +4288,45 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         private void SetearRadioButtonEvaluacionMusculo(string pstrComponentFieldId, string pstrValue)
         {
+            if (pstrComponentFieldId == "N009-MF000000660" )
+            {
+                if (pstrValue != "0")
+                {
+                    rdoPulmonNormal.Checked = true;
+                }
+            }
+            if (pstrComponentFieldId == "N009-MF000000661")
+            {
+                if (pstrValue != "0")
+                {
+                    rdoPulmonAnormal.Checked = true;
+                }
+            }
+            switch (pstrComponentFieldId)
+            {
+                case "N009-MF000000663":
+                    if (pstrValue != "0")
+                    {
+                        rdoTactoRectalNormal.Checked = true;
+                    }
+                    break;
+                case "N009-MF000000664":
+                    if (pstrValue != "0")
+                    {
+                        rdoTactoRectalAnormal.Checked = true;
+                    }
+                    break;
+                case "N009-MF000000666":
+                    if (pstrValue != "0")
+                    {
+                        rdoTactoRectalNoRealizo.Checked = true;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            
+
             if (pstrComponentFieldId == Constants.UC_OSTEO_FLEXIBILIDAD)
             {
                 if (pstrValue.ToString() == "1")

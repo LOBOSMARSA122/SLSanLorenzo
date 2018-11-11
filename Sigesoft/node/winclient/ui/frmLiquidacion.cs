@@ -125,10 +125,14 @@ namespace Sigesoft.Node.WinClient.UI
         {
             var objData = GetDataEmpresa(0, null, "", strFilterExpression);
             grdEmpresa.DataSource = objData;
+
             //lblRecordCountCalendar.Text = string.Format("Se encontraron {0} registros.", objData.Count());
 
             if (grdEmpresa.Rows.Count > 0)
             {
+                txtDebe.Text = objData[0].Total_Debe;
+                txtPago.Text = objData[0].Total_Pago;
+                txtTotal.Text = objData[0].Total_Total;
                 grdEmpresa.Rows[0].Selected = true;
                 //btnExportarExcel.Enabled = true;
             }
@@ -458,6 +462,21 @@ namespace Sigesoft.Node.WinClient.UI
                 btnLiqd1.Enabled = true;
 
             }
+        }
+
+        private void grdEmpresa_InitializeLayout(object sender, Infragistics.Win.UltraWinGrid.InitializeLayoutEventArgs e)
+        {
+          
+        }
+
+        private void btnExportclinico_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExportAramark_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
