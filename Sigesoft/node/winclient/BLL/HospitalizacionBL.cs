@@ -677,16 +677,15 @@ namespace Sigesoft.Node.WinClient.BLL
                 var query = from A in dbContext.medico
                             join B in dbContext.systemuser on A.i_SystemUserId equals B.i_SystemUserId
                             join C in dbContext.person on B.v_PersonId equals C.v_PersonId
-                             join D in dbContext.systemparameter on new { a = A.i_GrupoId.Value, b = 119 } equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
-                             from D in D_join.DefaultIfEmpty()
+                             //join D in dbContext.systemparameter on new { a = A.i_GrupoId.Value, b = 119 } equals new { a = D.i_ParameterId, b = D.i_GroupId } into D_join
+                             //from D in D_join.DefaultIfEmpty()
                             where A.i_IsDeleted == 0
                             select new MedicoList
                             {
-                                i_SystemUserId = B.i_SystemUserId,
                                 v_MedicoId = A.v_MedicoId,
                                 Medico = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
-                                i_GrupoId = A.i_GrupoId.Value,
-                                Grupo = D.v_Value1,
+                                //i_GrupoId = A.i_GrupoId.Value,
+                                //Grupo = D.v_Value1,
                                 r_Clinica = A.r_Clinica.Value,
                                 r_Medico = A.r_Medico.Value,
                                 Usuario = B.v_UserName
@@ -843,7 +842,7 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-        public List<LiquidacionMedicoList> LiquidacionMedicos(string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        public List<LiquidacionMedicoList> LiquidacionMedicos(string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, int? pagados)
         {
             try
             {
@@ -858,7 +857,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             from E in E_join.DefaultIfEmpty()
                             join F in dbContext.component on A.v_ComponentId equals F.v_ComponentId
 
-                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && ( A.r_Price != 0.00 || A.r_Price != 0)
+                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && ( A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados
 
                             select new LiquidacionMedicoList
                             {
