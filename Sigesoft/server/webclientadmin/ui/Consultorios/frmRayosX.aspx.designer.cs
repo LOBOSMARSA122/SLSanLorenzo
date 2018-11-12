@@ -5537,5 +5537,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.HiddenField highlightRows;
+
     }
 }

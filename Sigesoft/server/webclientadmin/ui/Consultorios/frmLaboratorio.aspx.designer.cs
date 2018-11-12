@@ -859,13 +859,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1310;
         
         /// <summary>
-        /// txtCOLOR_EX_ORINA control.
+        /// ddlCOLOR_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtCOLOR_EX_ORINA;
+        protected global::FineUI.DropDownList ddlCOLOR_EX_ORINA;
         
         /// <summary>
         /// label1311 control.
@@ -886,33 +886,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1314;
         
         /// <summary>
-        /// label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label2;
-        
-        /// <summary>
-        /// txtCOLOR_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCOLOR_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label1312 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1312;
-        
-        /// <summary>
         /// FormRow1 control.
         /// </summary>
         /// <remarks>
@@ -931,13 +904,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1;
         
         /// <summary>
-        /// txtASPECTO_EX_ORINA control.
+        /// ddlASPECTO_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtASPECTO_EX_ORINA;
+        protected global::FineUI.DropDownList ddlASPECTO_EX_ORINA;
         
         /// <summary>
         /// label1313 control.
@@ -956,33 +929,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label3;
-        
-        /// <summary>
-        /// label6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label6;
-        
-        /// <summary>
-        /// txtASPECTO_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtASPECTO_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label5;
         
         /// <summary>
         /// FormRow702 control.
@@ -1030,33 +976,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1320;
         
         /// <summary>
-        /// label7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label7;
-        
-        /// <summary>
-        /// txtDENSIDAD_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtDENSIDAD_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label12;
-        
-        /// <summary>
         /// FormRow2 control.
         /// </summary>
         /// <remarks>
@@ -1100,33 +1019,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label8;
-        
-        /// <summary>
-        /// label11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label11;
-        
-        /// <summary>
-        /// txtPH_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtPH_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label10;
         
         /// <summary>
         /// GroupPanel62 control.
@@ -1192,33 +1084,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1343;
         
         /// <summary>
-        /// label9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label9;
-        
-        /// <summary>
-        /// txtCELULAS_EPITELIALES_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCELULAS_EPITELIALES_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label13;
-        
-        /// <summary>
         /// FormRow3 control.
         /// </summary>
         /// <remarks>
@@ -1262,33 +1127,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label14;
-        
-        /// <summary>
-        /// label15 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label15;
-        
-        /// <summary>
-        /// txtLEUCOCITOS_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtLEUCOCITOS_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label16;
         
         /// <summary>
         /// FormRow711 control.
@@ -1336,33 +1174,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1349;
         
         /// <summary>
-        /// label17 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label17;
-        
-        /// <summary>
-        /// txtHEMATIES_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtHEMATIES_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label18 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label18;
-        
-        /// <summary>
         /// FormRow4 control.
         /// </summary>
         /// <remarks>
@@ -1381,13 +1192,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1347;
         
         /// <summary>
-        /// txtCRISTALES_EX_ORINA control.
+        /// ddlCRISTALES_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtCRISTALES_EX_ORINA;
+        protected global::FineUI.DropDownList ddlCRISTALES_EX_ORINA;
         
         /// <summary>
         /// label1348 control.
@@ -1408,33 +1219,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label19;
         
         /// <summary>
-        /// label20 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label20;
-        
-        /// <summary>
-        /// txtCRISTALES_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCRISTALES_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label21 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label21;
-        
-        /// <summary>
         /// FormRow713 control.
         /// </summary>
         /// <remarks>
@@ -1453,13 +1237,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1351;
         
         /// <summary>
-        /// txtGERMENES_EX_ORINA control.
+        /// ddlGERMENES_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtGERMENES_EX_ORINA;
+        protected global::FineUI.DropDownList ddlGERMENES_EX_ORINA;
         
         /// <summary>
         /// label1352 control.
@@ -1478,33 +1262,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label1355;
-        
-        /// <summary>
-        /// label22 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label22;
-        
-        /// <summary>
-        /// txtGERMENES_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtGERMENES_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label23 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label23;
         
         /// <summary>
         /// FormRow5 control.
@@ -1552,33 +1309,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label24;
         
         /// <summary>
-        /// label25 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label25;
-        
-        /// <summary>
-        /// txtCILINDROS_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCILINDROS_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label26 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label26;
-        
-        /// <summary>
         /// FormRow705 control.
         /// </summary>
         /// <remarks>
@@ -1597,13 +1327,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1323;
         
         /// <summary>
-        /// txtFILAMENTO_MUCOIDE_EX_ORINA control.
+        /// ddlFILAMENTO_MUCOIDE_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtFILAMENTO_MUCOIDE_EX_ORINA;
+        protected global::FineUI.DropDownList ddlFILAMENTO_MUCOIDE_EX_ORINA;
         
         /// <summary>
         /// label1324 control.
@@ -1622,33 +1352,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label1327;
-        
-        /// <summary>
-        /// label32 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label32;
-        
-        /// <summary>
-        /// txtFILAMENTO_MUCOIDE_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtFILAMENTO_MUCOIDE_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label33 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label33;
         
         /// <summary>
         /// GroupPanel63 control.
@@ -1687,13 +1390,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1356;
         
         /// <summary>
-        /// txtSANGRE_EX_ORINA control.
+        /// ddlSANGRE_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtSANGRE_EX_ORINA;
+        protected global::FineUI.DropDownList ddlSANGRE_EX_ORINA;
         
         /// <summary>
         /// label1357 control.
@@ -1714,33 +1417,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1360;
         
         /// <summary>
-        /// label27 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label27;
-        
-        /// <summary>
-        /// txtSANGRE_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtSANGRE_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label28 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label28;
-        
-        /// <summary>
         /// FormRow6 control.
         /// </summary>
         /// <remarks>
@@ -1759,13 +1435,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1358;
         
         /// <summary>
-        /// txtUROBILINOGENO_EX_ORINA control.
+        /// ddlUROBILINOGENO_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtUROBILINOGENO_EX_ORINA;
+        protected global::FineUI.DropDownList ddlUROBILINOGENO_EX_ORINA;
         
         /// <summary>
         /// label1359 control.
@@ -1784,33 +1460,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label29;
-        
-        /// <summary>
-        /// label30 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label30;
-        
-        /// <summary>
-        /// txtUROBILINOGENO_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtUROBILINOGENO_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label31 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label31;
         
         /// <summary>
         /// FormRow716 control.
@@ -1858,33 +1507,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1366;
         
         /// <summary>
-        /// label34 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label34;
-        
-        /// <summary>
-        /// txtBILIRRUBINA_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtBILIRRUBINA_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label35 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label35;
-        
-        /// <summary>
         /// FormRow7 control.
         /// </summary>
         /// <remarks>
@@ -1903,13 +1525,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1364;
         
         /// <summary>
-        /// txtPROTEINAS_EX_ORINA control.
+        /// ddlPROTEINAS_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtPROTEINAS_EX_ORINA;
+        protected global::FineUI.DropDownList ddlPROTEINAS_EX_ORINA;
         
         /// <summary>
         /// label1365 control.
@@ -1928,33 +1550,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label36;
-        
-        /// <summary>
-        /// label37 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label37;
-        
-        /// <summary>
-        /// txtPROTEINAS_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtPROTEINAS_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label38 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label38;
         
         /// <summary>
         /// FormRow718 control.
@@ -2002,33 +1597,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1372;
         
         /// <summary>
-        /// label39 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label39;
-        
-        /// <summary>
-        /// txtNITRITOS_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtNITRITOS_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label40 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label40;
-        
-        /// <summary>
         /// FormRow8 control.
         /// </summary>
         /// <remarks>
@@ -2072,33 +1640,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label41;
-        
-        /// <summary>
-        /// label42 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label42;
-        
-        /// <summary>
-        /// txtC_CETONICOS_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtC_CETONICOS_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label43 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label43;
         
         /// <summary>
         /// FormRow720 control.
@@ -2146,33 +1687,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1378;
         
         /// <summary>
-        /// label44 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label44;
-        
-        /// <summary>
-        /// txtGLUCOSA_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtGLUCOSA_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label45 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label45;
-        
-        /// <summary>
         /// FormRow9 control.
         /// </summary>
         /// <remarks>
@@ -2216,33 +1730,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label46;
-        
-        /// <summary>
-        /// label47 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label47;
-        
-        /// <summary>
-        /// txtHEMOGLOBINA_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtHEMOGLOBINA_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label48 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label48;
         
         /// <summary>
         /// PanelHemograma control.
@@ -7159,13 +6646,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1285;
         
         /// <summary>
-        /// txt_VDRL control.
+        /// ddl_VDRL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txt_VDRL;
+        protected global::FineUI.DropDownList ddl_VDRL;
         
         /// <summary>
         /// label1286 control.
@@ -7195,13 +6682,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1287;
         
         /// <summary>
-        /// txtVDRL_DESEABLE control.
+        /// ddlVDRL_DESEABLE control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtVDRL_DESEABLE;
+        protected global::FineUI.DropDownList ddlVDRL_DESEABLE;
         
         /// <summary>
         /// label1288 control.

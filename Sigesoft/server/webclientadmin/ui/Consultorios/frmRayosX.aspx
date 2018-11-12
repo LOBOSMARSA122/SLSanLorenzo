@@ -667,7 +667,7 @@
                                         </Items>                
                                     </x:GroupPanel>
                                     <x:GroupPanel runat="server" Title="2.3.  Forma y Tamaño : " ID="GroupPanel40" BoxFlex="1" Height="125"  Width="280">      
-                                         <Items>
+                                         <Items >
                                              <x:Form ID="Form104" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                                 <Rows>
                                                  <x:FormRow ID="FormRow375" ColumnWidths="120px 120px" runat="server" >
