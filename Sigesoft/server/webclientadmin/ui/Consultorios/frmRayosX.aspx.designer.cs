@@ -2053,7 +2053,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT0_;
+        protected global::FineUI.CheckBox chkOIT0_;
         
         /// <summary>
         /// label414 control.
@@ -2071,7 +2071,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT0_0;
+        protected global::FineUI.CheckBox chkOIT0_0;
         
         /// <summary>
         /// label415 control.
@@ -2089,7 +2089,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT0_1;
+        protected global::FineUI.CheckBox chkOIT0_1;
         
         /// <summary>
         /// FormRow369 control.
@@ -2134,7 +2134,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT1_0;
+        protected global::FineUI.CheckBox chkOIT1_0;
         
         /// <summary>
         /// label6 control.
@@ -2152,7 +2152,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT1_1;
+        protected global::FineUI.CheckBox chkOIT1_1;
         
         /// <summary>
         /// label7 control.
@@ -2170,7 +2170,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT1_2;
+        protected global::FineUI.CheckBox chkOIT1_2;
         
         /// <summary>
         /// FormRow371 control.
@@ -2215,7 +2215,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT2_1;
+        protected global::FineUI.CheckBox chkOIT2_1;
         
         /// <summary>
         /// label10 control.
@@ -2233,7 +2233,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT2_2;
+        protected global::FineUI.CheckBox chkOIT2_2;
         
         /// <summary>
         /// label11 control.
@@ -2251,7 +2251,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chkOIT2_3;
+        protected global::FineUI.CheckBox chkOIT2_3;
         
         /// <summary>
         /// FormRow373 control.
@@ -2296,7 +2296,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chOIT3_2;
+        protected global::FineUI.CheckBox chOIT3_2;
         
         /// <summary>
         /// label426 control.
@@ -2314,7 +2314,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chOIT3_3;
+        protected global::FineUI.CheckBox chOIT3_3;
         
         /// <summary>
         /// label427 control.
@@ -2332,7 +2332,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.RadioButton chOIT3_;
+        protected global::FineUI.CheckBox chOIT3_;
         
         /// <summary>
         /// GroupPanel40 control.
