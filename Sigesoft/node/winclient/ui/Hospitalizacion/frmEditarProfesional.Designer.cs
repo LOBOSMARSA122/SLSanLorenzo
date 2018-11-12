@@ -32,7 +32,7 @@
             this.ddlUsuario = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblNombreProfesional = new System.Windows.Forms.Label();
-            this.cboGrupo = new System.Windows.Forms.ComboBox();
+            this.ddlServiceTypeId = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtMedico = new System.Windows.Forms.TextBox();
@@ -42,6 +42,8 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnGrabar = new System.Windows.Forms.Button();
             this.uvPacient = new Infragistics.Win.Misc.UltraValidator(this.components);
+            this.ddlMasterServiceId = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uvPacient)).BeginInit();
             this.SuspendLayout();
@@ -83,18 +85,19 @@
             this.lblNombreProfesional.TabIndex = 33;
             this.lblNombreProfesional.Text = "Nombres y Apellidos del Profesional";
             // 
-            // cboGrupo
+            // ddlServiceTypeId
             // 
-            this.cboGrupo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboGrupo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboGrupo.FormattingEnabled = true;
-            this.cboGrupo.Location = new System.Drawing.Point(92, 69);
-            this.cboGrupo.Margin = new System.Windows.Forms.Padding(2);
-            this.cboGrupo.Name = "cboGrupo";
-            this.cboGrupo.Size = new System.Drawing.Size(274, 21);
-            this.cboGrupo.TabIndex = 35;
-            this.uvPacient.GetValidationSettings(this.cboGrupo).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
-            this.uvPacient.GetValidationSettings(this.cboGrupo).IsRequired = true;
+            this.ddlServiceTypeId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlServiceTypeId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlServiceTypeId.FormattingEnabled = true;
+            this.ddlServiceTypeId.Location = new System.Drawing.Point(92, 69);
+            this.ddlServiceTypeId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlServiceTypeId.Name = "ddlServiceTypeId";
+            this.ddlServiceTypeId.Size = new System.Drawing.Size(274, 21);
+            this.ddlServiceTypeId.TabIndex = 35;
+            this.uvPacient.GetValidationSettings(this.ddlServiceTypeId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvPacient.GetValidationSettings(this.ddlServiceTypeId).IsRequired = true;
+            this.ddlServiceTypeId.SelectedIndexChanged += new System.EventHandler(this.cboTipoServicio_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -104,9 +107,9 @@
             this.label1.Location = new System.Drawing.Point(19, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(69, 13);
             this.label1.TabIndex = 34;
-            this.label1.Text = "Grupo";
+            this.label1.Text = "Tipo Servicio";
             // 
             // groupBox1
             // 
@@ -114,7 +117,7 @@
             this.groupBox1.Controls.Add(this.txtClinica);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(22, 105);
+            this.groupBox1.Location = new System.Drawing.Point(22, 135);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(343, 93);
             this.groupBox1.TabIndex = 36;
@@ -177,7 +180,7 @@
             this.btnSalir.ForeColor = System.Drawing.Color.Black;
             this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(25, 203);
+            this.btnSalir.Location = new System.Drawing.Point(25, 233);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(76, 28);
@@ -199,7 +202,7 @@
             this.btnGrabar.ForeColor = System.Drawing.Color.Black;
             this.btnGrabar.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnGrabar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGrabar.Location = new System.Drawing.Point(290, 203);
+            this.btnGrabar.Location = new System.Drawing.Point(290, 233);
             this.btnGrabar.Margin = new System.Windows.Forms.Padding(2);
             this.btnGrabar.Name = "btnGrabar";
             this.btnGrabar.Size = new System.Drawing.Size(76, 28);
@@ -209,15 +212,42 @@
             this.btnGrabar.UseVisualStyleBackColor = false;
             this.btnGrabar.Click += new System.EventHandler(this.btnGrabar_Click);
             // 
+            // ddlMasterServiceId
+            // 
+            this.ddlMasterServiceId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlMasterServiceId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlMasterServiceId.FormattingEnabled = true;
+            this.ddlMasterServiceId.Location = new System.Drawing.Point(91, 94);
+            this.ddlMasterServiceId.Margin = new System.Windows.Forms.Padding(2);
+            this.ddlMasterServiceId.Name = "ddlMasterServiceId";
+            this.ddlMasterServiceId.Size = new System.Drawing.Size(274, 21);
+            this.ddlMasterServiceId.TabIndex = 108;
+            this.uvPacient.GetValidationSettings(this.ddlMasterServiceId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
+            this.uvPacient.GetValidationSettings(this.ddlMasterServiceId).IsRequired = true;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(18, 98);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 13);
+            this.label5.TabIndex = 107;
+            this.label5.Text = "Servicio";
+            // 
             // frmEditarProfesional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(377, 244);
+            this.ClientSize = new System.Drawing.Size(377, 272);
+            this.Controls.Add(this.ddlMasterServiceId);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnGrabar);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.cboGrupo);
+            this.Controls.Add(this.ddlServiceTypeId);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblNombreProfesional);
             this.Controls.Add(this.ddlUsuario);
@@ -243,7 +273,7 @@
         private System.Windows.Forms.ComboBox ddlUsuario;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblNombreProfesional;
-        private System.Windows.Forms.ComboBox cboGrupo;
+        private System.Windows.Forms.ComboBox ddlServiceTypeId;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtMedico;
@@ -253,5 +283,7 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.Button btnGrabar;
         private Infragistics.Win.Misc.UltraValidator uvPacient;
+        private System.Windows.Forms.ComboBox ddlMasterServiceId;
+        private System.Windows.Forms.Label label5;
     }
 }

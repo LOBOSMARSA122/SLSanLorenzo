@@ -321,19 +321,20 @@
                                             <Items>
                                                 <%--<x:DropDownList ID="ddlPre1" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>  
                                                 <x:CheckBox ID="chkPre1" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox> 
-                                                <x:Label ID="Label4" runat="server" Text=" "></x:Label>                                             
+                                                <x:Label ID="Label62" runat="server" Text=" "></x:Label>                                             
                                                  <%--<x:DropDownList ID="ddlPre2" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>  
                                                 <x:CheckBox ID="chkPre2" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
-                                                <x:Label ID="Label5" runat="server" Text=" "></x:Label>                                              
+                                                <x:Label ID="Label63" runat="server" Text=" "></x:Label>                                              
                                                 <%--<x:DropDownList ID="ddlPre3" runat="server" Width="150" Enabled="False"></x:DropDownList>  --%>         
                                                 <x:CheckBox ID="chkPre3" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
-                                                <x:Label ID="Label6" runat="server" Text=" "></x:Label>                                                                        
+                                                <x:Label ID="Label64" runat="server" Text=" "></x:Label>                                                                        
                                                  <%--<x:DropDownList ID="ddlPre4" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
                                                 <x:CheckBox ID="chkPre4" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
-                                                <x:Label ID="Label41" runat="server" Text=" "></x:Label>                                                 
+                                                <x:Label ID="Label65" runat="server" Text=" "></x:Label>                                                 
                                                 <%--<x:DropDownList ID="ddlPre5" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
                                                 <x:CheckBox ID="chkPre5" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
-                                                                    
+                                                <x:Label ID="Label4" runat="server" Text=" "></x:Label>                                                 
+                                                <%--<x:DropDownList ID="ddlPre5" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
                                             </Items>
                                         </x:Panel>
                                     </Items>
@@ -642,7 +643,6 @@
                   });
 
               }
-
 
               function onReady() {
                   var grid = X(gridClientID);

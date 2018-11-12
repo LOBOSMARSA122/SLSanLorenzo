@@ -93,6 +93,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chk5_ha_fumado_cualquier.Attributes.Add("Tag", "N002-MF000000208");
                 chk6_realizo_algun_ejercicio.Attributes.Add("Tag", "N002-MF000000205");
                 chk7_ingirio_alimentos.Attributes.Add("Tag", "N002-MF000000285");
+
                 //ddlorigen_etnico.Attributes.Add("Tag","N009-MF000000622");
                 //ddltabaquismo.Attributes.Add("Tag","N009-MF000000623");
                 //txttiempo_de_trabajo.Attributes.Add("Tag","N009-MF000001038");
@@ -351,6 +352,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
         private void SearchControlAndLoadData(Control ctrlContainer, string ServiceComponentId, List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList> ListaValores)
         {
+            
             foreach (Control ctrl in ctrlContainer.Controls)
             {
                 if (ctrl is DropDownList)
@@ -382,7 +384,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                     }
                 }
-
+                //("Tag", "N002-MF000000200");
                 if (ctrl is CheckBox)
                 {
                     if (((CheckBox)ctrl).Attributes.GetValue("Tag") != null)
@@ -1239,6 +1241,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             var Combo111 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 111);
             //Utils.LoadDropDownList(ddlPre1, "Value1", "Id", Combo111, DropDownListAction.Select);
+ 
+
+ 
             //Utils.LoadDropDownList(ddlPre2, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlPre3, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlPre4, "Value1", "Id", Combo111, DropDownListAction.Select);
@@ -1264,6 +1269,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             //Utils.LoadDropDownList(ddl5_ha_fumado_cualquier, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddl6_realizo_algun_ejercicio, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddl7_ingirio_alimentos, "Value1", "Id", Combo111, DropDownListAction.Select);
+ 
 
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 

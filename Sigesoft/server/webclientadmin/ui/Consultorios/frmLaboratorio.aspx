@@ -1060,7 +1060,7 @@
                                 <x:Panel ID="ParasitoSimple" Title="PARASIITOLÓGICO SIMPLE" EnableBackgroundColor="true" Height="190px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table" Visible ="true">
                                 <Items>
-                                    <x:GroupPanel runat="server" Title="." ID="GroupPanel6" BoxFlex="1" Height="150" Width="960" >                
+                                    <x:GroupPanel runat="server" Title=" " ID="GroupPanel6" BoxFlex="1" Height="150" Width="960" >                
                                         <Items>
                                              <x:Form ID="Form4" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                                 <Rows>
@@ -1364,7 +1364,7 @@
                                 <x:Panel ID="PerfilHepatico" Title="PERFIL HEPÁTICO" EnableBackgroundColor="true" Height="300px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table" Visible ="true">
                                 <Items>
-                                    <x:GroupPanel runat="server" Title="." ID="GroupPanel4" BoxFlex="1" Height="280" Width="960" >                
+                                    <x:GroupPanel runat="server" Title=" " ID="GroupPanel4" BoxFlex="1" Height="280" Width="960" >                
                                         <Items>
                                              <x:Form ID="Form2" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                                 <Rows>
@@ -1579,7 +1579,7 @@
                                 <x:Panel ID="PerfilLipidico" Title="PERFIL LIPÍDICO" EnableBackgroundColor="true" Height="200px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table" Visible ="true">
                                 <Items>
-                                    <x:GroupPanel runat="server" Title="." ID="GroupPanel5" BoxFlex="1" Height="150" Width="960" >                
+                                    <x:GroupPanel runat="server" Title=" " ID="GroupPanel5" BoxFlex="1" Height="150" Width="960" >                
                                         <Items>
                                              <x:Form ID="Form3" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                                 <Rows>

@@ -73,40 +73,41 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
 
-                #region Electro
-                chkObesidad.Attributes.Add("Tag", "N009-MF000000130");
-                chkDiabetes.Attributes.Add("Tag", "N009-MF000000132");
-                chkTabaco.Attributes.Add("Tag", "N009-MF000000131");
-                txtDisplidemia.Attributes.Add("Tag", "N009-MF000000133");
-                txtInfarto.Attributes.Add("Tag", "N009-MF000000128");
-                chkHipertension.Attributes.Add("Tag", "N009-MF000000124");
-                chkAlcoholismo.Attributes.Add("Tag", "N009-MF000000122");
-                chkIsquemia.Attributes.Add("Tag", "N009-MF000000126");
-                chkAnemia.Attributes.Add("Tag", "N009-MF000000123");
-                chkDrogas.Attributes.Add("Tag", "N009-MF000000125");
-                chkArritmias.Attributes.Add("Tag", "N009-MF000000127");
-                chkTto.Attributes.Add("Tag", "N009-MF000000129");
-                txtFrecuenciaCardiaca.Attributes.Add("Tag", "N002-MF000000186");
-                ddlRitmo.Attributes.Add("Tag", "N002-MF000000190");
-                txtIntervPR.Attributes.Add("Tag", "N002-MF000000187");
-                txtInterQRS.Attributes.Add("Tag", "N009-MF000000225");
-                txtInterQT.Attributes.Add("Tag", "N002-MF000000189");
-                txtEjeST.Attributes.Add("Tag", "N009-MF000001006");
-                txtEjeQRS.Attributes.Add("Tag", "N009-MF000000143");
-                ddlConclusiones.Attributes.Add("Tag", "N002-MF000000194");
-                txtDescripcionLectNormal.Attributes.Add("Tag", "N009-MF000000227");
-                chkLecturaNormal.Attributes.Add("Tag", "N009-MF000002133");
-                #endregion
+                //#region Electro
+                //chkObesidad.Attributes.Add("Tag", "N009-MF000000130");
+                //chkDiabetes.Attributes.Add("Tag", "N009-MF000000132");
+                //chkTabaco.Attributes.Add("Tag", "N009-MF000000131");
+                //txtDisplidemia.Attributes.Add("Tag", "N009-MF000000133");
+                //txtInfarto.Attributes.Add("Tag", "N009-MF000000128");
+                //chkHipertension.Attributes.Add("Tag", "N009-MF000000124");
+                //chkAlcoholismo.Attributes.Add("Tag", "N009-MF000000122");
+                //chkIsquemia.Attributes.Add("Tag", "N009-MF000000126");
+                //chkAnemia.Attributes.Add("Tag", "N009-MF000000123");
+                //chkDrogas.Attributes.Add("Tag", "N009-MF000000125");
+                //chkArritmias.Attributes.Add("Tag", "N009-MF000000127");
+                //chkTto.Attributes.Add("Tag", "N009-MF000000129");
+                //txtFrecuenciaCardiaca.Attributes.Add("Tag", "N002-MF000000186");
+                //ddlRitmo.Attributes.Add("Tag", "N002-MF000000190");
+                //txtIntervPR.Attributes.Add("Tag", "N002-MF000000187");
+                //txtInterQRS.Attributes.Add("Tag", "N009-MF000000225");
+                //txtInterQT.Attributes.Add("Tag", "N002-MF000000189");
+                //txtEjeST.Attributes.Add("Tag", "N009-MF000001006");
+                //txtEjeQRS.Attributes.Add("Tag", "N009-MF000000143");
+                //ddlConclusiones.Attributes.Add("Tag", "N002-MF000000194");
+                //txtDescripcionLectNormal.Attributes.Add("Tag", "N009-MF000000227");
+                //chkLecturaNormal.Attributes.Add("Tag", "N009-MF000002133");
+                //#endregion
 
                 #region Electro Yanacocha
-                txtYanacocha_Frecuencia.Attributes.Add("Tag", "N009-MF000003128");
-                txtYanacocha_Ritmo.Attributes.Add("Tag", "N009-MF000003129");
-                txtYanacocha_PR.Attributes.Add("Tag", "N009-MF000003130");
-                txtYanacocha_QT.Attributes.Add("Tag", "N009-MF000003131");
-                txtYanacocha_Eje.Attributes.Add("Tag", "N009-MF000003132");
-                txtYanacocha_ST.Attributes.Add("Tag", "N009-MF000003133");
-                txtYanacocha_OtrasAlter.Attributes.Add("Tag", "N009-MF000003134");
-                txtYanacocha_Hallazgos.Attributes.Add("Tag", "N009-MF000003263");                
+                txtYanacocha_Frecuencia.Attributes.Add("Tag", "N002-MF000000186");
+                ddlYanacocha_Ritmo.Attributes.Add("Tag", "N002-MF000000190");
+                txtYanacocha_PR.Attributes.Add("Tag", "N002-MF000000187");
+                txtYanacocha_QT.Attributes.Add("Tag", "N002-MF000000189");
+                txtYanacocha_Eje.Attributes.Add("Tag", "N009-MF000000143");
+                txtYanacocha_ST.Attributes.Add("Tag", "N009-MF000001006");
+                txtYanacocha_OtrasAlter.Attributes.Add("Tag", "N009-MF000000227");
+                txtYanacocha_Hallazgos.Attributes.Add("Tag", "N009-MF000002133");
+                ddlYanacocha_Conclusiones.Attributes.Add("Tag", "N002-MF000000194");
                 #endregion
 
                 int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
@@ -186,6 +187,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             OperationResult objOperationResult = new OperationResult();
             TabElectrocardiograma.Hidden = true;
+            TabElectroYanacocha.Hidden = true;
             int index = e.RowIndex;
             var dataKeys = grdData.DataKeys[index];
             Session["ServiceId"] = dataKeys[0] == null ? "" : dataKeys[0].ToString();
@@ -228,7 +230,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         LoadCombosElectro();
                         ObtenerDatosElctro(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                        TabElectrocardiograma.Hidden = true;
+                        TabElectrocardiograma.Hidden = false;
                     }
                      if (item.ComponentId == TabElectroYanacocha.Attributes.GetValue("Tag").ToString())
                     {
@@ -1194,17 +1196,17 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
              var datosAuditoria = HistoryBL.CamposAuditoria(scId);
             if (datosAuditoria != null)
             {
-                txtCardiologiaAuditor.Text = datosAuditoria.UserNameAuditoriaInsert;
-                txtCardiologiaAuditorInsercion.Text = datosAuditoria.FechaHoraAuditoriaInsert;
-                txtCardiologiaAuditorModificacion.Text = datosAuditoria.FechaHoraAuditoriaEdit;
+                //txtCardiologiaAuditor.Text = datosAuditoria.UserNameAuditoriaInsert;
+                //txtCardiologiaAuditorInsercion.Text = datosAuditoria.FechaHoraAuditoriaInsert;
+                //txtCardiologiaAuditorModificacion.Text = datosAuditoria.FechaHoraAuditoriaEdit;
 
-                txtCardiologiaEvaluador.Text = datosAuditoria.UserNameEvaluadorInsert;
-                txtCardiologiaEvaluadorInsercion.Text = datosAuditoria.FechaHoraEvaluadorInsert;
-                txtCardiologiaEvaluadorModificacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+                //txtCardiologiaEvaluador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                //txtCardiologiaEvaluadorInsercion.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                //txtCardiologiaEvaluadorModificacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
 
-                txtCardiologiaInformador.Text = datosAuditoria.UserNameEvaluadorInsert;
-                txtCardiologiaInformadorInserta.Text = datosAuditoria.FechaHoraEvaluadorInsert;
-                txtCardiologiaInformadorActualizacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+                //txtCardiologiaInformador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                //txtCardiologiaInformadorInserta.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                //txtCardiologiaInformadorActualizacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
             }
 
             //Analizar el resultado de la operación
@@ -1231,21 +1233,23 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             var Combo197 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);
             var Combo291 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 291);
-            Utils.LoadDropDownList(ddlRitmo, "Value1", "Id", Combo197, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlConclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
-            Utils.LoadDropDownList(txtYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlYanacocha_Conclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlRitmo, "Value1", "Id", Combo197, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlConclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
-      
-            Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+
+            Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
               
         }
 
         private void LoadCombosElectroYana()
         {
             OperationResult objOperationResult = new OperationResult();
+            var Combo197 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);         
+            
             
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
-
             Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
 
         }
