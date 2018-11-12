@@ -2070,6 +2070,12 @@
     <Compile Include="Reports\frmMatrizDatosAbreviada.Designer.cs">
       <DependentUpon>frmMatrizDatosAbreviada.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\frmProduccionCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reports\frmProduccionCategoria.Designer.cs">
+      <DependentUpon>frmProduccionCategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\frmReporteCargoFactura.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -4083,6 +4089,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmMatrizDatosAbreviada.resx">
       <DependentUpon>frmMatrizDatosAbreviada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\frmProduccionCategoria.resx">
+      <DependentUpon>frmProduccionCategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\frmReporteCargoFactura.resx">
       <DependentUpon>frmReporteCargoFactura.cs</DependentUpon>

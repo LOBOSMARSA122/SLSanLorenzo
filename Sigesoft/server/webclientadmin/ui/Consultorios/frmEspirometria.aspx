@@ -335,7 +335,6 @@
                                                 <x:CheckBox ID="chkPre5" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
                                                 <x:Label ID="Label4" runat="server" Text=" "></x:Label>                                                 
                                                 <%--<x:DropDownList ID="ddlPre5" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
-
                                             </Items>
                                         </x:Panel>
                                     </Items>
@@ -644,7 +643,6 @@
                   });
 
               }
-
 
               function onReady() {
                   var grid = X(gridClientID);

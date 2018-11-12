@@ -13858,8 +13858,16 @@ namespace Sigesoft.Node.WinClient.BLL
 							 v_ServiceId = sc.v_ServiceId,
 							 CostoProtocolo = sc.r_Price.Value
 						 });
+            if (query.ToList().Count > 0)
+            {
+                return string.Format("{0:0,0.00}", query.Sum(o => o.CostoProtocolo));
+            }
+            else
+            {
+                return string.Format("{0:0,0.00}", 0);
+            }
 
-			return string.Format("{0:0,0.00}", query.Sum(o => o.CostoProtocolo));
+			
 
 		}
 
@@ -23702,6 +23710,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									join D in dbContext.organization on C.v_WorkingOrganizationId equals D.v_OrganizationId into D_join
 									from D in D_join.DefaultIfEmpty()
 
+                                    join D1 in dbContext.location on C.v_WorkingLocationId equals D1.v_LocationId into D1_join
+                                    from D1 in D1_join.DefaultIfEmpty()
+
 									join E in dbContext.servicecomponent on A.v_ServiceId equals E.v_ServiceId into E_join
 									from E in E_join.DefaultIfEmpty()
 
@@ -23715,12 +23726,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									join H in dbContext.systemuser on E.i_ApprovedUpdateUserId equals H.i_SystemUserId into H_join
 									from H in H_join.DefaultIfEmpty()
 
-
-
 									join lc in dbContext.location on new { a = C.v_CustomerOrganizationId, b = C.v_CustomerLocationId }
 									equals new { a = lc.v_OrganizationId, b = lc.v_LocationId } into lc_join
 									from lc in lc_join.DefaultIfEmpty()
-
 
 									join J1 in dbContext.systemparameter on new { a = B.i_Relationship.Value, b = 207 }
 											  equals new { a = J1.i_ParameterId, b = J1.i_GroupId } into J1_join
@@ -23742,11 +23750,19 @@ namespace Sigesoft.Node.WinClient.BLL
 										  equals new { a = J5.i_ParameterId, b = J5.i_GroupId } into J5_join
 									from J5 in J5_join.DefaultIfEmpty()
 
+                                    join B1 in dbContext.organization on C.v_EmployerOrganizationId equals B1.v_OrganizationId
+                                    join C1 in dbContext.location on C.v_EmployerLocationId equals C1.v_LocationId
+                          
 									where E.d_ApprovedUpdateDate >= FechaInicio && E.d_ApprovedUpdateDate <= FechaFin
 
 									select new ReportProduccionProfesional
 									{
-										v_CustomerOrganizationId = G.v_OrganizationId,
+                                        v_OrganizationId = B1.v_OrganizationId,
+                                        v_LocationId = C.v_EmployerLocationId,
+                                        v_WorkingOrganizationId = D.v_OrganizationId,
+                                        v_WorkingLocationId = C.v_WorkingLocationId,
+                                        v_OrganizationInvoiceId = G.v_OrganizationId,
+                                        v_CustomerLocationId = C.v_CustomerLocationId,
 										NroAtencion = A.v_ServiceId,
 										Fecha = A.d_ServiceDate.Value,
 										FechaNacimiento = B.d_Birthdate.Value,
@@ -23762,10 +23778,10 @@ namespace Sigesoft.Node.WinClient.BLL
 										FechaInicio = FechaInicio.Value,
 										FechaFin = FechaFin.Value,
 										Parentesco = J4.v_Value1,
-										v_CustomerLocationId = lc.v_LocationId,
 										NombreComponente = F.v_Name,
 										Consultorio = J5.v_Value1,
-										Usuario = H.v_UserName
+										Usuario = H.v_UserName,
+                                        i_EsoTypeId = C.i_EsoTypeId.Value,
 									};
 
 					if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -23776,8 +23792,8 @@ namespace Sigesoft.Node.WinClient.BLL
 					#endregion
 
 					var sql = (from a in objEntity.ToList()
-							   let age = GetAge(a.FechaNacimiento.Value)
-							   let CostoProtocolo = GetServiceCost(a.NroAtencion)
+                               let age = GetAge(a.FechaNacimiento.Value)
+                               let CostoProtocolo = GetServiceCost(a.NroAtencion)
 							   select new ReportProduccionProfesional
 							   {
 								   Usuario = a.Usuario,
@@ -23786,14 +23802,14 @@ namespace Sigesoft.Node.WinClient.BLL
 								   NroAtencion = a.NroAtencion,
 								   Fecha = a.Fecha,
 								   FechaNacimiento = a.FechaNacimiento,
-								   Edad = age,
+                                   Edad = age,
 								   Dni = a.Dni,
 								   Paciente = a.Paciente,
 								   Parentesco = a.Parentesco,
 								   Titular = a.Titular,
 								   EmpresaCliente = a.EmpresaCliente,
 								   EmpresaTrabajo = a.EmpresaTrabajo,
-								   CostoProtocolo = CostoProtocolo,
+                                   CostoProtocolo = CostoProtocolo,
 
 
 								   FechaInicio = a.FechaInicio,
@@ -23841,8 +23857,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								obj2.Fecha = item2.Fecha;
 								obj2.NroAtencion = item2.NroAtencion;
 								obj2.Paciente = item2.Paciente;
-								obj2.CostoProtocolo = item2.CostoProtocolo;
-								obj2.Edad = GetAge(item2.FechaNacimiento.Value);
+                                obj2.CostoProtocolo = item2.CostoProtocolo;
+                                obj2.Edad = GetAge(item2.FechaNacimiento.Value);
 
 								obj2.Parentesco = item2.Parentesco;
 								obj2.Titular = item2.Titular;

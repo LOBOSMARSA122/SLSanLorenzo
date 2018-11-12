@@ -38,7 +38,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 var o =oHospitalizacionBL.GetMedico(ref objOperationResult1, _medicoId);
 
                 ddlUsuario.SelectedValue = o.i_SystemUserId.ToString();
-                cboGrupo.SelectedValue = o.i_GrupoId.ToString();
+                ddlServiceTypeId.SelectedValue = o.i_MasterServiceTypeId.ToString();
+                ddlMasterServiceId.SelectedValue = o.i_MasterServiceId.ToString();
                 txtClinica.Text = o.r_Clinica.ToString();
                 txtMedico.Text = o.r_Medico.ToString();
             }
@@ -48,7 +49,11 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             OperationResult objOperationResult1 = new OperationResult();
             Utils.LoadDropDownList(ddlUsuario, "Value1", "Id", BLL.Utils.GetProfessional(ref objOperationResult1, ""), DropDownListAction.Select);
-            Utils.LoadDropDownList(cboGrupo, "Value1", "Id", BLL.Utils.GetSystemParameterForComboGrupo(ref objOperationResult1, 119, null), DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetSystemParameterForComboGrupo(ref objOperationResult1, 119, null), DropDownListAction.Select);
+
+            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult1, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+           
 
         }
 
@@ -79,7 +84,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 OperationResult objOperationResult = new OperationResult();
                 medicoDto OmedicoDto = new medicoDto();
                 OmedicoDto.i_SystemUserId = int.Parse(ddlUsuario.SelectedValue.ToString());
-                OmedicoDto.i_GrupoId = int.Parse(cboGrupo.SelectedValue.ToString());
+                OmedicoDto.i_MasterServiceTypeId = int.Parse(ddlServiceTypeId.SelectedValue.ToString());
+                OmedicoDto.i_MasterServiceId = int.Parse(ddlMasterServiceId.SelectedValue.ToString());
                 OmedicoDto.r_Clinica = decimal.Parse(txtClinica.Text);
                 OmedicoDto.r_Medico = decimal.Parse(txtMedico.Text);
                 if (_mode == "New")
@@ -100,6 +106,21 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         private void btnSalir_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void cboTipoServicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlServiceTypeId.SelectedValue.ToString() == "-1")
+            {
+                ddlMasterServiceId.SelectedValue = "-1";
+                ddlMasterServiceId.Enabled = false;
+                return;
+            }
+
+            ddlMasterServiceId.Enabled = true;
+            OperationResult objOperationResult = new OperationResult();
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, int.Parse(ddlServiceTypeId.SelectedValue.ToString()), Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+          
         }
     }
 }

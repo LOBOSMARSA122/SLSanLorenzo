@@ -36,18 +36,33 @@ namespace Sigesoft.Node.WinClient.UI.Reports
         }
         private void LoadComboBox()
         {
-            OperationResult objOperationResult1 = new OperationResult();
+            OperationResult objOperationResult = new OperationResult();
             int nodeId = int.Parse(Common.Utils.GetApplicationConfigValue("NodeId"));
-            var dataListOrganization2 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
+            var dataListOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, nodeId);
+            var dataListOrganization1 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, nodeId);
+            var dataListOrganization2 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, nodeId);
 
-            Utils.LoadDropDownList(cbOrganizationInvoice,
+            Utils.LoadDropDownList(cbOrganization,
              "Value1",
              "Id",
-             dataListOrganization2,
+             dataListOrganization,
              DropDownListAction.All);
 
+            Utils.LoadDropDownList(cbIntermediaryOrganization,
+               "Value1",
+               "Id",
+               dataListOrganization1,
+               DropDownListAction.All);
 
-            OperationResult objOperationResult = new OperationResult();
+            Utils.LoadDropDownList(cbOrganizationInvoice,
+              "Value1",
+              "Id",
+              dataListOrganization2,
+              DropDownListAction.All);
+
+            Utils.LoadDropDownList(cbEsoType, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 118, null), DropDownListAction.All);
+
+            
 
             _componentListTemp = BLL.Utils.GetAllComponents(ref objOperationResult);
 
@@ -98,10 +113,23 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
                     DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
 
+                    if (cbEsoType.SelectedValue.ToString() != "-1") Filters.Add("i_EsoTypeId==" + int.Parse(cbEsoType.SelectedValue.ToString()));
+          
+                    if (cbOrganization.SelectedValue.ToString() != "-1")
+                    {
+                        var id1 = cbOrganization.SelectedValue.ToString().Split('|');
+                        Filters.Add("v_OrganizationId==" + "\"" + id1[0] + "\"&&v_LocationId==" + "\"" + id1[1] + "\"");
+                    }
+
+                    if (cbIntermediaryOrganization.SelectedValue.ToString() != "-1")
+                    {
+                        var id2 = cbIntermediaryOrganization.SelectedValue.ToString().Split('|');
+                        Filters.Add("v_WorkingOrganizationId==" + "\"" + id2[0] + "\"&&v_WorkingLocationId==" + "\"" + id2[1] + "\"");
+                    }
                     if (cbOrganizationInvoice.SelectedValue.ToString() != "-1")
                     {
                         var id3 = cbOrganizationInvoice.SelectedValue.ToString().Split('|');
-                        Filters.Add("v_CustomerOrganizationId==" + "\"" + id3[0] + "\"&&v_CustomerLocationId==" + "\"" + id3[1] + "\"");
+                        Filters.Add("v_OrganizationInvoiceId==" + "\"" + id3[0] + "\"&&v_CustomerLocationId==" + "\"" + id3[1] + "\"");
                     }
 
                     if (ddlUsuario.SelectedValue.ToString() != "-1")
