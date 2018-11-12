@@ -53,8 +53,7 @@
                                                                 <x:DatePicker ID="dpFechaFin" Label="F.F" runat="server" Width="90px" DateFormatString="dd/MM/yyyy" />        
                                                                 <x:Button ID="btnFilter" Text="Filtrar" Icon="Find" IconAlign="Left" runat="server" AjaxLoadingType="Mask" CssClass="inline" OnClick="btnFilter_Click"></x:Button>                                                      
                                                                 <x:DropDownList ID="ddlConsultorio" runat="server" Label="Consul." Width="240px"></x:DropDownList>
-                                                                <x:TextBox runat="server" Label="Trabaj." Text="" Width="240px" ID="txtTrabajador"></x:TextBox>
-                                                                
+                                                                <x:TextBox runat="server" Label="Trabaj." Text="" Width="240px" ID="txtTrabajador"></x:TextBox>                                                                
                                                             </Items>
                                                         </x:FormRow>
                                                     </Rows>
@@ -407,8 +406,7 @@
                                         </x:Panel>
                                         <x:Panel ID="Panel5" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
-                                            <Items>
-                                                
+                                            <Items>                                                
                                                 <x:CheckBox ID="chkOtitisa" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                                                                                                    
                                                 <x:Label ID="Label10" runat="server" Text=" "></x:Label>
                                                 <x:CheckBox ID="chkRinitisa" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                    

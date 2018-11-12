@@ -1475,7 +1475,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             //Utils.LoadDropDownList(ddlconsumio_alcohol, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlRinitis, "Value1", "Id", Combo111, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSarampion, "Value1", "Id", Combo111, DropDownListAction.Select);
-            //Utils.LoadDropDownList(ddlOtitis, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(chkOtitisa, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(chkuso_de_medicamentos, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlSordera, "Value1", "Id", Combo111, DropDownListAction.Select);
             //Utils.LoadDropDownList(ddlMedicamentos, "Value1", "Id", Combo111, DropDownListAction.Select);
@@ -1507,11 +1507,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Utils.LoadDropDownList(ddlOrejeras, "Value1", "Id", Combo269, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlAmbos, "Value1", "Id", Combo269, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlAU_Condicion, "Value1", "Id", Combo266, DropDownListAction.Select);
-            
-      
-          
-                
-
         }
 
         private void ObtenerDatosAudiometria(string pServiceId, string pPersonId)
