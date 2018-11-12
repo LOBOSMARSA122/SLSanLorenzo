@@ -312,11 +312,11 @@
                                         <x:Panel ID="Panel1" Width="110px" Height="200px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>
-                                                <x:CheckBox ID="ddlsi_hizo_cambios" runat="server" Width="100" Enabled="False"></x:CheckBox>                                               
+                                                <x:CheckBox ID="ddlsi_hizo_cambios" runat="server" Width="100"></x:CheckBox>                                               
                                                 <x:Label ID="Label41" runat="server" Text=" "></x:Label>
-                                                <x:CheckBox ID="ddlestuvo_expuesto" runat="server" Width="100" Enabled="False"></x:CheckBox>                                               
+                                                <x:CheckBox ID="ddlestuvo_expuesto" runat="server" Width="100"></x:CheckBox>                                               
                                                 <x:Label ID="Label5" runat="server" Text=" "></x:Label>
-                                                <x:TextBox ID="ddldurmio_mal_la_noche" runat="server" Text="" Width="100" Label="" Enabled="False"></x:TextBox> 
+                                                <x:TextBox ID="ddldurmio_mal_la_noche" runat="server" Text="" Width="100" Label=""></x:TextBox> 
                                                 <%--<x:DropDownList ID="ddlpresenta_algun" runat="server" Width="100"></x:DropDownList>--%>                                               
                                                 <x:Label ID="Label6" runat="server" Text="." Enabled="False"></x:Label>
                                                 <%--<x:DropDownList ID="ddldurmio_mal_la_noche" runat="server" Width="100"></x:DropDownList>--%>                                               
@@ -362,10 +362,10 @@
                                             <Rows>
                                                 <x:FormRow ID="FormRow1" ColumnWidths="240px 240px 240px 240px" runat="server">
                                                     <Items>  
-                                                        <x:CheckBox ID="chksordera" runat="server" Text="SORDERA-DISM. AUD." ShowLabel="true" Enabled="False"></x:CheckBox>
-                                                        <x:CheckBox ID="chkacuferos" runat="server" Text="ZUMBIDO" ShowLabel="true" Enabled="False"></x:CheckBox>
-                                                        <x:CheckBox ID="chkvertigos" runat="server" Text="VÉRTIGOS - MAREOS" ShowLabel="true" Enabled="False"></x:CheckBox>
-                                                        <x:CheckBox ID="chkotalgia" runat="server" Text="OTALGIA - DOLOR OÍDO" ShowLabel="true" Enabled="False"></x:CheckBox>                                                          
+                                                        <x:CheckBox ID="chksordera" runat="server" Text="SORDERA-DISM. AUD." ShowLabel="true"></x:CheckBox>
+                                                        <x:CheckBox ID="chkacuferos" runat="server" Text="ZUMBIDO" ShowLabel="true"></x:CheckBox>
+                                                        <x:CheckBox ID="chkvertigos" runat="server" Text="VÉRTIGOS - MAREOS" ShowLabel="true"></x:CheckBox>
+                                                        <x:CheckBox ID="chkotalgia" runat="server" Text="OTALGIA - DOLOR OÍDO" ShowLabel="true"></x:CheckBox>                                                          
                                                     </Items>
                                                 </x:FormRow>
                                                 <x:FormRow ID="FormRow26" ColumnWidths="240px 240px 240px 240px" runat="server">
@@ -378,8 +378,8 @@
                                                 </x:FormRow>
                                                   <x:FormRow ID="FormRow2" ColumnWidths="240px 240px 240px 240px" runat="server">
                                                     <Items>  
-                                                        <x:CheckBox ID="chksecrecion_otica" runat="server" Text="SECRECIÓN ÓTICA" ShowLabel="true" Enabled="False"></x:CheckBox>
-                                                        <x:CheckBox ID="ddlpresenta_algun" runat="server" Text="OTROS SINT." ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="chksecrecion_otica" runat="server" Text="SECRECIÓN ÓTICA" ShowLabel="true"></x:CheckBox>
+                                                        <x:CheckBox ID="ddlpresenta_algun" runat="server" Text="OTROS SINT." ShowLabel="true"></x:CheckBox>
                                                         <x:Label ID="Label73" runat="server" Text=""></x:Label>
                                                         <x:Label ID="Label74" runat="server" Text=""></x:Label>
                                                     </Items>
@@ -407,13 +407,13 @@
                                         <x:Panel ID="Panel5" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>                                                
-                                                <x:CheckBox ID="chkOtitisa" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                                                                                                    
+                                                <x:CheckBox ID="chkOtitisa" runat="server" Text="" ShowLabel="true"></x:CheckBox>                                                                                                                                                    
                                                 <x:Label ID="Label10" runat="server" Text=" "></x:Label>
-                                                <x:CheckBox ID="chkRinitisa" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                    
+                                                <x:CheckBox ID="chkRinitisa" runat="server" Text="" ShowLabel="true"></x:CheckBox>                                                                    
                                                 <x:Label ID="Label14" runat="server" Text=" "></x:Label> 
-                                                <x:CheckBox ID="chkSustQuimicasa" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                  
+                                                <x:CheckBox ID="chkSustQuimicasa" runat="server" Text="" ShowLabel="true"></x:CheckBox>                                                                  
                                                 <x:Label ID="Label15" runat="server" Text=" "></x:Label>
-                                                <x:CheckBox ID="chkSorderaFamiliara" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                    
+                                                <x:CheckBox ID="chkSorderaFamiliara" runat="server" Text="" ShowLabel="true"></x:CheckBox>                                                    
                                             </Items>
                                         </x:Panel>
                                          <x:Panel ID="Panel6" Width="250px" Height="150px" EnableBackgroundColor="true"
@@ -472,9 +472,9 @@
                                             <Rows>
                                                 <x:FormRow ID="FormRow17" ColumnWidths="240px 240px 240px" runat="server">
                                                     <Items>  
-                                                        <x:CheckBox ID="ddlDiabetes" runat="server" Text="CONSUMO DE TABACO" ShowLabel="true" Enabled="False"></x:CheckBox>
-                                                        <x:CheckBox ID="chkTiro" runat="server" Text="SERVICIO MILITAR" ShowLabel="true" Enabled="False"></x:CheckBox>
-                                                        <x:CheckBox ID="chkUsoMP3" runat="server" Text="HOBBIES C. EXPOS. A RUIDO" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="ddlDiabetes" runat="server" Text="CONSUMO DE TABACO" ShowLabel="true"></x:CheckBox>
+                                                        <x:CheckBox ID="chkTiro" runat="server" Text="SERVICIO MILITAR" ShowLabel="true"></x:CheckBox>
+                                                        <x:CheckBox ID="chkUsoMP3" runat="server" Text="HOBBIES C. EXPOS. A RUIDO" ShowLabel="true"></x:CheckBox>
                                                     </Items>
                                                 </x:FormRow>
                                                  <x:FormRow ID="FormRow28" ColumnWidths="240px 240px 240px 240px" runat="server">

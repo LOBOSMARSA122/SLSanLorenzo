@@ -1210,7 +1210,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Panel Panel5;
         
         /// <summary>
-        /// ddlOtitis control.
+        /// chkOtitisa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -1228,7 +1228,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label10;
         
         /// <summary>
-        /// ddlRinitis control.
+        /// chkRinitisa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -1246,7 +1246,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label14;
         
         /// <summary>
-        /// ddlSustQuimicas control.
+        /// chkSustQuimicasa control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
@@ -1264,7 +1264,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label Label15;
         
         /// <summary>
-        /// ddlSorderaFamiliar control.
+        /// chkSorderaFamiliara control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
