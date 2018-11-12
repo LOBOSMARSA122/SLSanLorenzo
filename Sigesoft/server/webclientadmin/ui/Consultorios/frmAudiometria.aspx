@@ -431,7 +431,7 @@
                                         <x:Panel ID="Panel7" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>                        
-                                                <x:CheckBox ID="chkuso_de_medicamentos" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                               
+                                                <x:CheckBox ID="chkuso_de_medicamentos" runat="server" Text="" ShowLabel="true"></x:CheckBox>                                               
                                                 <x:Label ID="Label25" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label78" runat="server" Text=" "></x:Label>                                         
                                                 <x:Label ID="Label26" runat="server" Text=" "></x:Label>
@@ -487,7 +487,7 @@
                                                 </x:FormRow>
                                                 <x:FormRow ID="FormRow27" ColumnWidths="240px 240px 240px" runat="server">
                                                     <Items>  
-                                                        <x:CheckBox ID="ddlMeningitis" runat="server" Text="EXPOS. LABORAL A QUÍMICOS" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="ddlMeningitis" runat="server" Text="EXPOS. LABORAL A QUÍMICOS" ShowLabel="true"></x:CheckBox>
                                                         <x:Label ID="Label80" runat="server" Text=""></x:Label>
                                                         <x:Label ID="Label81" runat="server" Text=""></x:Label>
                                                     </Items>
