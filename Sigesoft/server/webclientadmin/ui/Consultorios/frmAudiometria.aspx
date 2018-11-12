@@ -407,7 +407,7 @@
                                         <x:Panel ID="Panel5" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>                                                
-                                                <x:CheckBox ID="chkOtitisa" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                                                                                                    
+                                                <x:CheckBox ID="chkOtitisa" runat="server" Text="" ShowLabel="true"></x:CheckBox>                                                                                                                                                    
                                                 <x:Label ID="Label10" runat="server" Text=" "></x:Label>
                                                 <x:CheckBox ID="chkRinitisa" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                                                    
                                                 <x:Label ID="Label14" runat="server" Text=" "></x:Label> 
