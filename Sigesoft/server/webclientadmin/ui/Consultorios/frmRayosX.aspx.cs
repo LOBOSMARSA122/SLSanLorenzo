@@ -224,10 +224,62 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlUsuarioGrabar.Enabled = false;
 
                 ddlUsuarioGrabaOIT.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
-                ddlUsuarioGrabaOIT.Enabled = false;
-
-                
+                ddlUsuarioGrabaOIT.Enabled = false;               
             }
+            if (chkOIT0_0.Checked == true)
+            {
+                BlockFormAndSize(false);
+            }
+            else
+            {
+                BlockFormAndSize(true);
+            }
+        }
+
+        protected void radioButton_OnCheckedChanged(object sender, EventArgs e)
+        {
+            if (IsPostBack)
+            {
+                RadioButton rbn = (RadioButton)sender;
+                if (rbn.Checked == true)
+                {
+                    chkOIT0_.Checked = false;
+                    chkOIT0_0.Checked = false;
+                    chkOIT0_1.Checked = false;
+                    chkOIT1_0.Checked = false;
+                    chkOIT1_1.Checked = false;
+                    chkOIT1_2.Checked = false;
+                    chkOIT2_1.Checked = false;
+                    chkOIT2_2.Checked = false;
+                    chkOIT2_3.Checked = false;
+                    chOIT3_2.Checked = false;
+                    chOIT3_3.Checked = false;
+                    chOIT3_.Checked = false;
+                    rbn.Checked = true;
+                }
+                if (chkOIT0_0.Checked == true)
+                {
+                    BlockFormAndSize(false);
+                }
+                else
+                {
+                    BlockFormAndSize(true);
+                }
+            }        
+        }
+        protected void BlockFormAndSize(bool condition) {
+            chkOITPrimariap.Enabled = condition;
+            chkOITPrimarias.Enabled = condition;
+            chkSecundariap.Enabled = condition;
+            chkSecundarias.Enabled = condition;
+            chkOITPrimariaq.Enabled = condition;
+            chkOITPrimariat.Enabled = condition;
+            chkOITSecundariaq.Enabled = condition;
+            chkOITSecundariat.Enabled = condition;
+            chkOITPrimariar.Enabled = condition;
+            chkOITPrimariau.Enabled = condition;
+            chkOITSecundariar.Enabled = condition;
+            chkOITSecundariau.Enabled = condition;
         }
 
         private void LoadCombos()
