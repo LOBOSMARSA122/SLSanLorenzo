@@ -316,7 +316,7 @@
                                                 <x:Label ID="Label41" runat="server" Text=" "></x:Label>
                                                 <x:CheckBox ID="ddlestuvo_expuesto" runat="server" Width="100"></x:CheckBox>                                               
                                                 <x:Label ID="Label5" runat="server" Text=" "></x:Label>
-                                                <x:TextBox ID="ddldurmio_mal_la_noche" runat="server" Text="" Width="100" Label=""></x:TextBox> 
+                                                <x:TextBox ID="ddldurmio_mal_la_noche" runat="server" Text="" Width="100" Label="" Enabled="False"></x:TextBox> 
                                                 <%--<x:DropDownList ID="ddlpresenta_algun" runat="server" Width="100"></x:DropDownList>--%>                                               
                                                 <x:Label ID="Label6" runat="server" Text="." Enabled="False"></x:Label>
                                                 <%--<x:DropDownList ID="ddldurmio_mal_la_noche" runat="server" Width="100"></x:DropDownList>--%>                                               
@@ -431,7 +431,7 @@
                                         <x:Panel ID="Panel7" Width="110px" Height="150px" EnableBackgroundColor="true"
                                             runat="server" BodyPadding="5px" ShowBorder="true" ShowHeader="true" Title="SI">
                                             <Items>                        
-                                                <x:CheckBox ID="chkuso_de_medicamentos" runat="server" Text="" ShowLabel="true" Enabled="False"></x:CheckBox>                                               
+                                                <x:CheckBox ID="chkuso_de_medicamentos" runat="server" Text="" ShowLabel="true"></x:CheckBox>                                               
                                                 <x:Label ID="Label25" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label78" runat="server" Text=" "></x:Label>                                         
                                                 <x:Label ID="Label26" runat="server" Text=" "></x:Label>
@@ -487,7 +487,7 @@
                                                 </x:FormRow>
                                                 <x:FormRow ID="FormRow27" ColumnWidths="240px 240px 240px" runat="server">
                                                     <Items>  
-                                                        <x:CheckBox ID="ddlMeningitis" runat="server" Text="EXPOS. LABORAL A QUÍMICOS" ShowLabel="true" Enabled="False"></x:CheckBox>
+                                                        <x:CheckBox ID="ddlMeningitis" runat="server" Text="EXPOS. LABORAL A QUÍMICOS" ShowLabel="true"></x:CheckBox>
                                                         <x:Label ID="Label80" runat="server" Text=""></x:Label>
                                                         <x:Label ID="Label81" runat="server" Text=""></x:Label>
                                                     </Items>
