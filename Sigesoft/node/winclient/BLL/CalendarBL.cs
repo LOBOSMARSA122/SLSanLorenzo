@@ -1224,7 +1224,7 @@ namespace Sigesoft.Node.WinClient.BLL
                objServiceDto.i_FlagAgentId = 1;
                objServiceDto.v_Motive = string.Empty;
                objServiceDto.i_IsFac = 0;
-
+               objServiceDto.i_MedicoPagado = 0;
                if (pstrNuevoContinuacion == "Nuevo")
                {
                    // Es un nuevo Servicio

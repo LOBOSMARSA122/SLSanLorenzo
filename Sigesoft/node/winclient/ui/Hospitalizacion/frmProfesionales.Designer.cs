@@ -31,7 +31,6 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Medico");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn18 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Grupo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("r_Clinica");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("r_Medico");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Usuario");
@@ -64,16 +63,13 @@
             this.grdData.DisplayLayout.Appearance = appearance1;
             ultraGridColumn17.Header.VisiblePosition = 1;
             ultraGridColumn17.Width = 307;
-            ultraGridColumn18.Header.VisiblePosition = 2;
-            ultraGridColumn18.Width = 189;
             ultraGridColumn19.Header.Caption = "% Clínica";
-            ultraGridColumn19.Header.VisiblePosition = 3;
+            ultraGridColumn19.Header.VisiblePosition = 2;
             ultraGridColumn20.Header.Caption = "% Médico";
-            ultraGridColumn20.Header.VisiblePosition = 4;
+            ultraGridColumn20.Header.VisiblePosition = 3;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn17,
-            ultraGridColumn18,
             ultraGridColumn19,
             ultraGridColumn20,
             ultraGridColumn1});

@@ -331,8 +331,19 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
         private void btnEliminarTicket_Click(object sender, EventArgs e)
         {
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar el ticket?", "ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-        }
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                OperationResult objOperationResult = new OperationResult();
+                TicketBL oTicketBL = new TicketBL();
+
+                var ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+                var ticketId = grdData.Selected.Rows[0].Cells["v_TicketId"].Value.ToString();
+                oTicketBL.DeleteTicket(ticketId, Globals.ClientSession.GetAsList());
+
+            }
+        }           
 
     }
 }
