@@ -1400,5 +1400,59 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
             }
         }
 
+        #region Mayquel
+
+        public List<OrdenReportes> GetAllOrdenReporteNuevo(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression)
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.systemparameter
+                            where A.i_IsDeleted == 0 && A.i_GroupId == 250
+                            select new OrdenReportes
+                            {
+                                b_Seleccionar = false,
+                                v_ComponenteId = A.v_Value2,
+                                v_NombreReporte = A.v_Value1,
+                                i_Orden = A.i_Sort.Value,
+                                //v_NombreCrystal = "",
+                                //i_NombreCrystalId = -1
+
+                            };
+
+                if (!string.IsNullOrEmpty(pstrFilterExpression))
+                {
+                    query = query.Where(pstrFilterExpression);
+                }
+                if (!string.IsNullOrEmpty(pstrSortExpression))
+                {
+                    query = query.OrderBy(pstrSortExpression);
+                }
+                if (pintPageIndex.HasValue && pintResultsPerPage.HasValue)
+                {
+                    int intStartRowIndex = pintPageIndex.Value * pintResultsPerPage.Value;
+                    query = query.Skip(intStartRowIndex);
+                }
+                if (pintResultsPerPage.HasValue)
+                {
+                    query = query.Take(pintResultsPerPage.Value);
+                }
+
+                List<OrdenReportes> objData = query.ToList();
+                pobjOperationResult.Success = 1;
+                return objData;
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+
+        #endregion
+
     }
 }
