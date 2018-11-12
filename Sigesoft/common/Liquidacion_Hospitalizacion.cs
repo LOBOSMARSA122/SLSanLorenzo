@@ -330,6 +330,7 @@ namespace NetPdf
                         cells.Add(cell);
                         DateTime inicio = habitacion.d_StartDate.Value;
                         DateTime fin;
+
                         if (habitacion.d_EndDate != null || habitacion.d_EndDate.ToString()=="00/00/0000 0:0:0")
                         {
                             fin = habitacion.d_EndDate.Value;
@@ -339,17 +340,17 @@ namespace NetPdf
                             
                         }
                         
-                        TimeSpan tSpan = fin - inicio;
+                        int tSpan = fin.Day - inicio.Day;
 
                         //+ 1
                         int dias = 0;
-                        if (tSpan.Days == 0)
+                        if (tSpan== 0)
                         {
-                            dias = tSpan.Days + 1;
+                            dias = tSpan + 1;
                         }
                         else
                         {
-                            dias = tSpan.Days;
+                            dias = tSpan;
                         }
 
                         cell = new PdfPCell(new Phrase("-", fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };

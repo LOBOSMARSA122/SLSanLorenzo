@@ -767,9 +767,9 @@
                                                          <x:Label ID="label444" runat="server" Text="(si NO hay anormalidades pase a símbolos *)" ShowLabel="false"></x:Label>
                                                         
                                                         <%--<x:CheckBox ID="chkAnormalidadesSI" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>--%>
-                                                        <x:RadioButton ID="rdoAnormalidadesSI" runat="server" Text="SI" ShowLabel="true"></x:RadioButton>
+                                                        <x:RadioButton ID="rdoAnormalidadesSI" GroupName="anormalidades" runat="server" Text="SI" ShowLabel="true"></x:RadioButton>
                                                         <%--<x:CheckBox ID="chkAnormalidadesNO" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>--%> 
-                                                        <x:RadioButton ID="rdoAnormalidadesNO" runat="server" Text="NO" ShowLabel="true"></x:RadioButton> 
+                                                        <x:RadioButton ID="rdoAnormalidadesNO" GroupName="anormalidades" runat="server" Text="NO" ShowLabel="true"></x:RadioButton> 
                                                         </Items>
                                                 </x:FormRow>
                                             </Rows>
@@ -1409,9 +1409,9 @@
                                                 <Items>
                                                      <x:Label ID="label538" runat="server" Text="" ShowLabel="false"></x:Label>
                                                      <%--<x:CheckBox ID="chkSimboloSi" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>--%>
-                                                     <Ext:RadioButton ID="rdoSimboloSi" runat="server" Text="SI" ShowLabel="true"></Ext:RadioButton>
+                                                     <x:RadioButton ID="rdoSimboloSi" GroupName="simbolos" runat="server" Text="SI" ShowLabel="true"></x:RadioButton>
                                                     <%--<x:CheckBox ID="chkSimboloNo" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>--%>  
-                                                    <Ext:RadioButton ID="rdoSimboloNo" runat="server" Text="NO" ShowLabel="true"></Ext:RadioButton>
+                                                    <x:RadioButton ID="rdoSimboloNo" GroupName="simbolos" runat="server" Text="NO" ShowLabel="true"></x:RadioButton>
                                                     
                                                 </Items>
                                             </x:FormRow>
