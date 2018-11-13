@@ -5130,6 +5130,7 @@
       <DependentUpon>dsSintomaticoRes.xsd</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\SLPublicado.pubxml" />
+    <None Include="Properties\PublishProfiles\SLSanlorenzoPublish.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
