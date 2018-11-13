@@ -78,6 +78,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
            btnReportePDF.Enabled = false;
            btnReportePDF.Enabled = false;
            btnDarAlta.Enabled = false;
+           btnGenerarLiq.Enabled = false;
 
         }
         //
@@ -186,11 +187,18 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                     btnTicket.Enabled = false;
                     btnAgregarExamenes.Enabled = false;
                     btnEditarHabitacion.Enabled = false;
+                    
                     //btnReportePDF.Enabled = false;
+
+                    if (rowSelected.Band.Index.ToString() == "0")
+                        btnGenerarLiq.Enabled = true;
+                    else
+                        btnGenerarLiq.Enabled = false;
                 }
                 else
                 {
                     btnTicket.Enabled = true;
+                    btnGenerarLiq.Enabled = false;
                     btnAgregarExamenes.Enabled = true;
                     //btnReportePDF.Enabled = true;
                     btnEditarHabitacion.Enabled = false;
@@ -343,6 +351,17 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 oTicketBL.DeleteTicket(ticketId, Globals.ClientSession.GetAsList());
 
             }
+        }
+
+        private void btnGenerarLiq_Click(object sender, EventArgs e)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var HopitalizacionId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            
+            _serviceBL.GenerarLiquidacionHospitalizacion(ref objOperationResult, HopitalizacionId, Globals.ClientSession.GetAsList());
+
+            btnFilter_Click(sender, e);
+
         }           
 
     }

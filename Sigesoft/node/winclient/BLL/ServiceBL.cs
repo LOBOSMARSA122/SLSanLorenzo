@@ -32337,5 +32337,47 @@ namespace Sigesoft.Node.WinClient.BLL
         }
         #endregion
 
+
+        public void GenerarLiquidacionHospitalizacion(ref OperationResult objOperationResult, string HopitalizacionId, List<string> ClientSession)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            OperationResult objOperationResult1 = new OperationResult();
+            var oLiquidacionBL = new LiquidacionBL();
+
+            try
+            {
+                int intNodeId = int.Parse(ClientSession[0]);
+                var nroLiquidacion = ObtnerNroLiquidacion(intNodeId);
+                float monto = 0;
+               
+                var oliquidacionDto = new liquidacionDto();
+                oliquidacionDto.v_NroLiquidacion = nroLiquidacion;
+                oliquidacionDto.d_Monto = decimal.Parse(monto.ToString());
+                oliquidacionDto.d_FechaVencimiento = null;
+                oliquidacionDto.v_NroFactura = "";
+              var newId =  oLiquidacionBL.AddLiquidacion(ref objOperationResult1, oliquidacionDto, ClientSession);
+
+
+                var objEntitySource = (from a in dbContext.hospitalizacion
+                                       where a.v_HopitalizacionId == HopitalizacionId
+                                       select a).FirstOrDefault();
+
+                objEntitySource.v_NroLiquidacion = nroLiquidacion;
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                objOperationResult.Success = 1;
+
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                throw;
+            }
+        }
+
+
 	}
 }

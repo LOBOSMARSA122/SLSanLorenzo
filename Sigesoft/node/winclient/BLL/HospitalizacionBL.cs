@@ -36,7 +36,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_DocNumber = B.v_DocNumber,
                                 d_Birthdate = B.d_Birthdate.Value,
                                 i_IsDeleted = A.i_IsDeleted.Value,
-                                v_Comentario = A.v_Comentario
+                                v_Comentario = A.v_Comentario,
+                                v_NroLiquidacion = A.v_NroLiquidacion
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -74,7 +75,8 @@ namespace Sigesoft.Node.WinClient.BLL
                              v_PersonId = a.v_PersonId,
                              v_DocNumber = a.v_DocNumber,
                              i_Years = GetAge(a.d_Birthdate),
-                             v_Comentario = a.v_Comentario
+                             v_Comentario = a.v_Comentario,
+                             v_NroLiquidacion = a.v_NroLiquidacion
                          }).ToList();
 
                 var objtData = hospitalizaciones.AsEnumerable()
@@ -99,6 +101,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     hospit.d_FechaIngreso = item.d_FechaIngreso;
                     hospit.d_FechaAlta = item.d_FechaAlta;
                     hospit.v_Comentario = item.v_Comentario;
+                    hospit.v_NroLiquidacion = item.v_NroLiquidacion;
                     // estos son los hijos de 1 hopitalización
                     var servicios = BuscarServiciosHospitalizacion(item.v_HopitalizacionId).ToList();
                     
