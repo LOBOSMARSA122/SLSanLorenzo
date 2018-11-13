@@ -66,6 +66,11 @@
                                 DataIFrameUrlFields="v_OrganizationId,v_Name" DataIFrameUrlFormatString="FRM035C.aspx?Mode=Edit&v_OrganizationId={0}&v_Name={1}" 
                                 DataWindowTitleField="v_Name" DataWindowTitleFormatString="Editar GESO de Empresa {0}" />
 
+                      <x:WindowField ColumnID="myWindowOrdenReporte" Width="25px" WindowID="winEditOrdenReporte" HeaderText=""
+                                Icon="Outline" ToolTip="Orden de Reporte" DataTextFormatString="{0}" 
+                                DataIFrameUrlFields="v_OrganizationId,v_Name" DataIFrameUrlFormatString="FRMOrdenReporte.aspx?Mode=Edit&v_OrganizationId={0}&v_Name={1}" 
+                                DataWindowTitleField="v_Name" DataWindowTitleFormatString="Orden de Reporte de la Empresa {0}" />
+
                     <x:boundfield Width="250px" DataField="v_Name" DataFormatString="{0}" HeaderText="Razón Social" />
                     <x:boundfield Width="90px" DataField="v_IdentificationNumber" DataFormatString="{0}" HeaderText="RUC" />    
                     <x:boundfield Width="100px" DataField="v_CreationUser" DataFormatString="{0}" HeaderText="Usuario Crea." />
@@ -95,6 +100,11 @@
         Target="Top" OnClose="winEditGESO_Close" IsModal="True" Width="450px" Height="400px" >
     </x:Window>
 
+
+     <x:Window ID="winEditOrdenReporte" Title="Orden de Reporte" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"
+        CloseAction="HidePostBack" EnableConfirmOnClose="true" IFrameUrl="about:blank" EnableMaximize="false" EnableResize="false" 
+        Target="Top" OnClose="winEditOrdenReporte_Close" IsModal="True" Width="450px" Height="400px" >
+    </x:Window>
     </form>
 </body>
 </html>

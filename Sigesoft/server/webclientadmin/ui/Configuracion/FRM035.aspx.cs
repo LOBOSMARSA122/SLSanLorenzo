@@ -123,5 +123,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Configuracion
         {
 
         }
+
+        protected void winEditOrdenReporte_Close(object sender, WindowCloseEventArgs e)
+        {
+
+        }
     }
 }
