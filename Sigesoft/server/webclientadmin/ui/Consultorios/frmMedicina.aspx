@@ -1387,8 +1387,7 @@
                                         <x:Form ID="Form17" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="90px" LabelAlign="Left">
                                             <Rows>
                                                 <x:FormRow ID="FormRow44" ColumnWidths="200px 60px 30px 60px 30px 80px 490px" runat="server">
-                                                    <Items>
-                                                        
+                                                    <Items>                                                       
                                                         <x:Label ID="label186" runat="server" Text="PULMONES" ShowLabel="false"></x:Label>
                                                         <x:Label ID="label138" runat="server" Text="NORMAL" ShowLabel="false"></x:Label>
                                                         <%--<x:CheckBox ID="chkPulmonNormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>--%>
