@@ -75,8 +75,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 dpFechaInicio.SelectedDate = DateTime.Now.AddDays(-1);  //  DateTime.Parse("12/11/2016");
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
-
-               
+                
                 //rx                   
                 txtRXNroPlaca.Attributes.Add("Tag", "N009-MF000001788");
                 txtRXVertices.Attributes.Add("Tag", "N009-MF000000590");
@@ -168,8 +167,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 chkOITOpacidadesA.Attributes.Add("Tag", "N009-MF000000757");
                 chkOITOpacidadesB.Attributes.Add("Tag", "N009-MF000000758");
                 chkOITOpacidadesC.Attributes.Add("Tag", "N009-MF000000759");
-                chkAnormalidadesSI.Attributes.Add("Tag", "N009-MF000003194");
-                chkAnormalidadesNO.Attributes.Add("Tag", "N009-MF000000761");
+                rdoAnormalidadesSI.Attributes.Add("Tag", "N009-MF000003194");
+                rdoAnormalidadesNO.Attributes.Add("Tag", "N009-MF000000761");
+                rdoSimboloSi.Attributes.Add("Tag", "N009-MF000003195");
+                rdoSimboloNo.Attributes.Add("Tag", "N009-MF000000760");
                 chkOITaa.Attributes.Add("Tag", "N009-MF000000762");
                 chkOITat.Attributes.Add("Tag", "N009-MF000000763");
                 chkOITax.Attributes.Add("Tag", "N009-MF000000764");
@@ -223,10 +224,155 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlUsuarioGrabar.Enabled = false;
 
                 ddlUsuarioGrabaOIT.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
-                ddlUsuarioGrabaOIT.Enabled = false;
-
-                
+                ddlUsuarioGrabaOIT.Enabled = false;               
             }
+            if (chkOIT0_0.Checked == true)
+            {
+                BlockFormayTamaño(false);
+            }
+            else
+            {
+                BlockFormayTamaño(true);
+            }
+        }
+
+        protected void ChkProfusion_OnCheckedChanged(object sender, EventArgs e)
+        {       
+                CheckBox chk = (CheckBox)sender;
+                if (chk.Checked == true)
+                {         
+                    chkOIT0_.Checked = false;
+                    chkOIT0_0.Checked = false;
+                    chkOIT0_1.Checked = false;
+                    chkOIT1_0.Checked = false;
+                    chkOIT1_1.Checked = false;                           
+                    chkOIT1_2.Checked = false;                            
+                    chkOIT2_1.Checked = false;                            
+                    chkOIT2_2.Checked = false;                            
+                    chkOIT2_3.Checked = false;                            
+                    chOIT3_2.Checked = false;                           
+                    chOIT3_3.Checked = false;                           
+                    chOIT3_.Checked = false;                           
+                    chk.Checked = true;             
+                }                      
+            if (chkOIT0_0.Checked == true)                        
+            {                           
+                BlockFormayTamaño(false);                      
+            }                       
+            else                       
+            {                           
+                BlockFormayTamaño(true);                       
+            }                         
+        }
+
+        protected void BlockFormayTamaño(bool condition) {
+            chkOITPrimariap.Enabled = condition;
+            chkOITPrimarias.Enabled = condition;
+            chkSecundariap.Enabled = condition;
+            chkSecundarias.Enabled = condition;
+            chkOITPrimariaq.Enabled = condition;
+            chkOITPrimariat.Enabled = condition;
+            chkOITSecundariaq.Enabled = condition;
+            chkOITSecundariat.Enabled = condition;
+            chkOITPrimariar.Enabled = condition;
+            chkOITPrimariau.Enabled = condition;
+            chkOITSecundariar.Enabled = condition;
+            chkOITSecundariau.Enabled = condition;
+        }
+
+        protected void RbnAnormalidadesPleurales_OnCheckedChanged(object sender, EventArgs e) {
+                RadioButton rbn = (RadioButton)sender;
+                if (rbn.Checked == true)
+                {
+                    rdoAnormalidadesSI.Checked = false;
+                    rdoAnormalidadesSI.Checked = false;
+                    rbn.Checked = true;
+                }
+
+                if (rdoAnormalidadesSI.Checked == true)
+                {
+                    BlockPlacasPleurales(true);
+                }
+                else if (rdoAnormalidadesNO.Checked == true) 
+                {
+                    BlockPlacasPleurales(false);
+                }                
+        }
+
+        protected void BlockPlacasPleurales(bool condition) {
+            ddlPerfilPlacaPleurales.Enabled = condition;
+            ddlFrentePlacaPleurales.Enabled = condition;
+            ddlDiafragmaPlacaPleurales.Enabled = condition;
+            ddlOtrosPlacaPleurales.Enabled = condition;
+            ddlPerfilCalcifica.Enabled = condition;
+            ddlFrenteCalcifica.Enabled = condition;
+            ddlDiafragmaCalcifica.Enabled = condition;
+            ddlOtrosCalcifica.Enabled = condition;
+            ddlExtensionDerPlacas.Enabled = condition;
+            ddlExtensionIzqPlacas.Enabled = condition;
+            ddlObliAngulo.Enabled = condition;
+            ddlAnchoDerPlacas.Enabled = condition;
+            ddlAnchoIzqPlacas.Enabled = condition;
+
+            ddlPerfilEngrosa.Enabled = condition;
+            ddlFrenteEngrosa.Enabled = condition;
+            ddlPerfilCalcificaEngrosa.Enabled = condition;
+            ddlFrenteCalcificaEngrosa.Enabled = condition;
+            ddlExtensionEngrosaDer.Enabled = condition;
+            ddlExtensionEngrosaIzq.Enabled = condition;
+            ddlAnchoEngrosaDer.Enabled = condition;
+            ddlAnchoEngrosaIzq.Enabled = condition;
+        }
+
+        protected void RbnSimbolos_OnCheckedChanged(object sender, EventArgs e) {
+            RadioButton rbn = (RadioButton)sender;
+            if (rbn.Checked == true)
+            {
+                rdoSimboloSi.Checked = false;
+                rdoSimboloNo.Checked = false;
+                rbn.Checked = true;
+            }
+            if (rdoSimboloSi.Checked==true)
+            {
+                BlockSimbolos(true);
+            }
+            else if (rdoSimboloNo.Checked==true)
+            {
+                BlockSimbolos(false);
+            }
+        }
+
+        protected void BlockSimbolos(bool condition)
+        {
+            chkOITaa.Enabled = condition;
+            chkOITat.Enabled = condition;
+            chkOITax.Enabled = condition;
+            chkOITbu.Enabled = condition;
+            chkOITca.Enabled = condition;
+            chkOITcg.Enabled = condition;
+            chkOITcn.Enabled = condition;
+            chkOITco.Enabled = condition;
+            chkOITcp.Enabled = condition;
+            chkOITcv.Enabled = condition;
+            chkOITdi.Enabled = condition;
+            chkOITef.Enabled = condition;
+            chkOITem.Enabled = condition;
+            chkOITes.Enabled = condition;
+            chkOITfr.Enabled = condition;
+            chkOIThi.Enabled = condition;
+            chkOITho.Enabled = condition;
+            chkOITid.Enabled = condition;
+            chkOITih.Enabled = condition;
+            chkOITkl.Enabled = condition;
+            chkOITme.Enabled = condition;
+            chkOITpa.Enabled = condition;
+            chkOITpb.Enabled = condition;
+            chkOITpi.Enabled = condition;
+            chkOITpx.Enabled = condition;
+            chkOITra.Enabled = condition;
+            chkOITrp.Enabled = condition;
+            chkOITtb.Enabled = condition;
+            chkOITod.Enabled = condition;           
         }
 
         private void LoadCombos()
@@ -507,6 +653,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     {
                         string ComponentFieldId = ((CheckBox)ctrl).Attributes.GetValue("Tag").ToString();
                         ((CheckBox)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
+                    }
+                }
+
+                if (ctrl is RadioButton)
+                {
+                    if (((RadioButton)ctrl).Attributes.GetValue("Tag") != null)
+                    {
+                        string ComponentFieldId = ((RadioButton)ctrl).Attributes.GetValue("Tag").ToString();
+                        ((RadioButton)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                     }
                 }
 

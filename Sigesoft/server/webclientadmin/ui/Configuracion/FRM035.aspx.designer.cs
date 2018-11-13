@@ -200,5 +200,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Configuracion {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Window winEditGESO;
+        
+        /// <summary>
+        /// winEditOrdenReporte control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Window winEditOrdenReporte;
     }
 }

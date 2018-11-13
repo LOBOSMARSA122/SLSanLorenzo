@@ -19,8 +19,14 @@ namespace Sigesoft.Node.WinClient.BE
       public string EmpresaTrabajo { get; set; }
       public string CostoProtocolo { get; set; }
 
- 
-    
+
+      public string v_OrganizationId { get; set; }
+      public string v_LocationId { get; set; }
+      public string v_WorkingOrganizationId { get; set; }
+      public string v_WorkingLocationId { get; set; }
+      public string v_OrganizationInvoiceId { get; set; }
+      public int i_EsoTypeId { get; set; }
+
 
       public int i_ApprovedUpdateUserId { get; set; }
       public int i_CategoryId { get; set; }

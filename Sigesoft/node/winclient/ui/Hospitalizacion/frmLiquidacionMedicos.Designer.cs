@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("MedicoTratante");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Servicios");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Servicios", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Select");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Paciente");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Tipo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
@@ -42,12 +44,18 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("r_Total", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Descending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Aseguradora");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Componente");
+            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings1 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "r_Total", 7, true, "Servicios", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "r_Total", 7, true);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings2 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "r_Comision", 6, true, "Servicios", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "r_Comision", 6, true);
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings3 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "r_costo", 5, true, "Servicios", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "r_costo", 5, true);
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance5 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance6 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             this.ddlUsuario = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.dptDateTimeEnd = new System.Windows.Forms.DateTimePicker();
@@ -56,7 +64,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkPagados = new System.Windows.Forms.CheckBox();
+            this.btnPagar = new System.Windows.Forms.Button();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             this.SuspendLayout();
@@ -150,6 +163,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkPagados);
             this.groupBox1.Controls.Add(this.ddlUsuario);
             this.groupBox1.Controls.Add(this.btnFilter);
             this.groupBox1.Controls.Add(this.label3);
@@ -159,10 +173,40 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(6, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(862, 65);
+            this.groupBox1.Size = new System.Drawing.Size(862, 80);
             this.groupBox1.TabIndex = 114;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // chkPagados
+            // 
+            this.chkPagados.AutoSize = true;
+            this.chkPagados.Location = new System.Drawing.Point(505, 57);
+            this.chkPagados.Name = "chkPagados";
+            this.chkPagados.Size = new System.Drawing.Size(106, 17);
+            this.chkPagados.TabIndex = 115;
+            this.chkPagados.Text = "Mostrar Pagados";
+            this.chkPagados.UseVisualStyleBackColor = true;
+            // 
+            // btnPagar
+            // 
+            this.btnPagar.BackColor = System.Drawing.SystemColors.Control;
+            this.btnPagar.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnPagar.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnPagar.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnPagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPagar.Font = new System.Drawing.Font("Calibri", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPagar.ForeColor = System.Drawing.Color.ForestGreen;
+            this.btnPagar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPagar.Location = new System.Drawing.Point(794, 112);
+            this.btnPagar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPagar.Name = "btnPagar";
+            this.btnPagar.Size = new System.Drawing.Size(75, 31);
+            this.btnPagar.TabIndex = 114;
+            this.btnPagar.Text = "$$ Pagar";
+            this.btnPagar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPagar.UseVisualStyleBackColor = false;
+            this.btnPagar.Click += new System.EventHandler(this.btnPagar_Click);
             // 
             // grdData
             // 
@@ -180,23 +224,25 @@
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn1,
             ultraGridColumn2});
-            ultraGridColumn9.Header.VisiblePosition = 0;
+            ultraGridColumn12.Header.VisiblePosition = 0;
+            ultraGridColumn9.Header.VisiblePosition = 1;
             ultraGridColumn9.Width = 206;
-            ultraGridColumn10.Header.VisiblePosition = 1;
+            ultraGridColumn10.Header.VisiblePosition = 2;
             ultraGridColumn3.Header.Caption = "Nro. Historia";
-            ultraGridColumn3.Header.VisiblePosition = 3;
+            ultraGridColumn3.Header.VisiblePosition = 4;
             ultraGridColumn4.Header.Caption = "Fecha Servicio";
-            ultraGridColumn4.Header.VisiblePosition = 4;
+            ultraGridColumn4.Header.VisiblePosition = 5;
             ultraGridColumn5.Header.Caption = "Costo";
-            ultraGridColumn5.Header.VisiblePosition = 6;
+            ultraGridColumn5.Header.VisiblePosition = 7;
             ultraGridColumn6.Header.Caption = "% Comision";
-            ultraGridColumn6.Header.VisiblePosition = 7;
+            ultraGridColumn6.Header.VisiblePosition = 8;
             ultraGridColumn7.Header.Caption = "% Clínica";
-            ultraGridColumn7.Header.VisiblePosition = 8;
+            ultraGridColumn7.Header.VisiblePosition = 9;
             ultraGridColumn8.Header.Caption = "Aseguradora";
-            ultraGridColumn8.Header.VisiblePosition = 2;
-            ultraGridColumn11.Header.VisiblePosition = 5;
+            ultraGridColumn8.Header.VisiblePosition = 3;
+            ultraGridColumn11.Header.VisiblePosition = 6;
             ultraGridBand2.Columns.AddRange(new object[] {
+            ultraGridColumn12,
             ultraGridColumn9,
             ultraGridColumn10,
             ultraGridColumn3,
@@ -206,6 +252,16 @@
             ultraGridColumn7,
             ultraGridColumn8,
             ultraGridColumn11});
+            summarySettings1.DisplayFormat = "Suma % Clinica = {0}";
+            summarySettings1.GroupBySummaryValueAppearance = appearance2;
+            summarySettings2.DisplayFormat = "Suma % Comisión = {0}";
+            summarySettings2.GroupBySummaryValueAppearance = appearance3;
+            summarySettings3.DisplayFormat = "Suma Costo = {0}";
+            summarySettings3.GroupBySummaryValueAppearance = appearance4;
+            ultraGridBand2.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
+            summarySettings1,
+            summarySettings2,
+            summarySettings3});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.grdData.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
@@ -219,37 +275,37 @@
             this.grdData.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.grdData.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
             this.grdData.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance2.BackColor = System.Drawing.Color.Transparent;
-            this.grdData.DisplayLayout.Override.CardAreaAppearance = appearance2;
-            appearance3.BackColor = System.Drawing.Color.White;
-            appearance3.BackColor2 = System.Drawing.Color.White;
-            appearance3.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdData.DisplayLayout.Override.CellAppearance = appearance3;
+            appearance5.BackColor = System.Drawing.Color.Transparent;
+            this.grdData.DisplayLayout.Override.CardAreaAppearance = appearance5;
+            appearance6.BackColor = System.Drawing.Color.White;
+            appearance6.BackColor2 = System.Drawing.Color.White;
+            appearance6.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdData.DisplayLayout.Override.CellAppearance = appearance6;
             this.grdData.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance4.BackColor = System.Drawing.Color.White;
-            appearance4.BackColor2 = System.Drawing.Color.LightGray;
-            appearance4.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance4.BorderColor = System.Drawing.Color.DarkGray;
-            appearance4.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdData.DisplayLayout.Override.HeaderAppearance = appearance4;
+            appearance7.BackColor = System.Drawing.Color.White;
+            appearance7.BackColor2 = System.Drawing.Color.LightGray;
+            appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance7.BorderColor = System.Drawing.Color.DarkGray;
+            appearance7.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdData.DisplayLayout.Override.HeaderAppearance = appearance7;
             this.grdData.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance5.AlphaLevel = ((short)(187));
-            appearance5.BackColor = System.Drawing.Color.Gainsboro;
-            appearance5.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance5.ForeColor = System.Drawing.Color.Black;
-            appearance5.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdData.DisplayLayout.Override.RowAlternateAppearance = appearance5;
-            appearance6.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdData.DisplayLayout.Override.RowSelectorAppearance = appearance6;
+            appearance8.AlphaLevel = ((short)(187));
+            appearance8.BackColor = System.Drawing.Color.Gainsboro;
+            appearance8.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance8.ForeColor = System.Drawing.Color.Black;
+            appearance8.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdData.DisplayLayout.Override.RowAlternateAppearance = appearance8;
+            appearance9.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdData.DisplayLayout.Override.RowSelectorAppearance = appearance9;
             this.grdData.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance7.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance7.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance7.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance7.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance7.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance7.FontData.BoldAsString = "False";
-            appearance7.ForeColor = System.Drawing.Color.Black;
-            this.grdData.DisplayLayout.Override.SelectedRowAppearance = appearance7;
+            appearance10.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance10.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance10.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance10.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance10.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance10.FontData.BoldAsString = "False";
+            appearance10.ForeColor = System.Drawing.Color.Black;
+            this.grdData.DisplayLayout.Override.SelectedRowAppearance = appearance10;
             this.grdData.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.ExtendedAutoDrag;
             this.grdData.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grdData.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
@@ -257,19 +313,36 @@
             this.grdData.DisplayLayout.ScrollStyle = Infragistics.Win.UltraWinGrid.ScrollStyle.Immediate;
             this.grdData.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grdData.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.grdData.Location = new System.Drawing.Point(6, 82);
+            this.grdData.Location = new System.Drawing.Point(6, 112);
             this.grdData.Margin = new System.Windows.Forms.Padding(2);
             this.grdData.Name = "grdData";
-            this.grdData.Size = new System.Drawing.Size(857, 534);
+            this.grdData.Size = new System.Drawing.Size(778, 504);
             this.grdData.TabIndex = 115;
+            this.grdData.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdData_ClickCell);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExport.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(794, 148);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(75, 49);
+            this.btnExport.TabIndex = 116;
+            this.btnExport.Text = "Exportar a Excel";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // frmLiquidacionMedicos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(880, 627);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.grdData);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnPagar);
             this.Name = "frmLiquidacionMedicos";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -294,5 +367,10 @@
         private System.Windows.Forms.Button btnFilter;
         private System.Windows.Forms.GroupBox groupBox1;
         private Infragistics.Win.UltraWinGrid.UltraGrid grdData;
+        private System.Windows.Forms.CheckBox chkPagados;
+        private System.Windows.Forms.Button btnPagar;
+        private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter ultraGridExcelExporter1;
     }
 }

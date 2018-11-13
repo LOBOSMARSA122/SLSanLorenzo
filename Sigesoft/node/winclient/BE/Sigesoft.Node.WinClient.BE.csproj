@@ -189,6 +189,7 @@
     <Compile Include="Custom\PlanIntegralList.cs" />
     <Compile Include="Custom\ProblemaList.cs" />
     <Compile Include="Custom\ProcedureByServiceList.cs" />
+    <Compile Include="Custom\ProduccionCategoria.cs" />
     <Compile Include="Custom\ProduccionProfesional.cs" />
     <Compile Include="Custom\ProtocolComponentList.cs" />
     <Compile Include="Custom\ProtocolList.cs" />

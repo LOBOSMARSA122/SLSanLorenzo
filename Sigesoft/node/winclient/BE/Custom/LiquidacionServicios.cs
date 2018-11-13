@@ -7,6 +7,7 @@ namespace Sigesoft.Node.WinClient.BE
 {
     public class LiquidacionServicios
     {
+        public bool Select { get; set; }
         public string Paciente { get; set; }
         public string Tipo { get; set; }
         public string Aseguradora { get; set; }

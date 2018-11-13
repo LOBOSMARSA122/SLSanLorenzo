@@ -555,7 +555,7 @@
                                         <Items>
                                             <x:Form ID="Form105" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                                 <Rows>
-                                                 <x:FormRow ID="FormRow361" ColumnWidths="110px 73px 73px" runat="server" >
+                                                 <x:FormRow ID="FormRow361" ColumnWidths="110px 73px 73px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label403" runat="server" Text="" ShowLabel="false"></x:Label>
                                                     <x:Label ID="label404" runat="server" Text="DER." ShowLabel="false"></x:Label>
@@ -602,6 +602,7 @@
                                             </x:Form>
                                         </Items>             
                                     </x:GroupPanel>
+                                        
                                     <x:GroupPanel runat="server" Title="2.2. Profusión  (opacidades pequeñas)" ID="GroupPanel39" BoxFlex="1" Height="125"  Width="280">
                                          <Items>
                                             <x:Form ID="Form103" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
@@ -609,56 +610,56 @@
                                                  <x:FormRow ID="FormRow368" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label413" runat="server" Text="0/-" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT0_" runat="server" Label="" ShowLabel="false"></x:CheckBox>
-                                                    <x:Label ID="label414" runat="server" Text="0/0" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT0_0" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="chkOIT0_" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>
+                                                    <x:Label ID="label414" runat="server" Text="0/0" ShowLabel="false" ></x:Label>
+                                                    <x:CheckBox ID="chkOIT0_0" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>
                                                     <x:Label ID="label415" runat="server" Text="0/1" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT0_1" runat="server" Label="" ShowLabel="false"></x:CheckBox>  
+                                                    <x:CheckBox ID="chkOIT0_1" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>  
                                                 </Items>
                                                   </x:FormRow>
-                                                  <x:FormRow ID="FormRow369" ColumnWidths="85px 85px 85px" runat="server" >
+                                                  <x:FormRow ID="FormRow369" ColumnWidths="85px 85px 85px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label4" runat="server" Text="" ShowLabel="false"></x:Label> 
                                                 </Items>
                                             </x:FormRow>
-                                                  <x:FormRow ID="FormRow370" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server" >
+                                                  <x:FormRow ID="FormRow370" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label5" runat="server" Text="1/0" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT1_0" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="chkOIT1_0" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>
                                                     <x:Label ID="label6" runat="server" Text="1/1" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT1_1" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="chkOIT1_1" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>
                                                     <x:Label ID="label7" runat="server" Text="1/2" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT1_2" runat="server" Label="" ShowLabel="false"></x:CheckBox> 
+                                                    <x:CheckBox ID="chkOIT1_2" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox> 
                                                 </Items>
                                             </x:FormRow>
-                                                    <x:FormRow ID="FormRow371" ColumnWidths="85px 85px 85px" runat="server" >
+                                                    <x:FormRow ID="FormRow371" ColumnWidths="85px 85px 85px" runat="server">
                                                 <Items>
-                                                    <x:Label ID="label8" runat="server" Text="" ShowLabel="false"></x:Label> 
+                                                    <x:Label ID="label8" runat="server" Text="" ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
-                                                    <x:FormRow ID="FormRow372" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server" >
+                                                    <x:FormRow ID="FormRow372" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label9" runat="server" Text="2/1" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT2_1" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="chkOIT2_1" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>
                                                     <x:Label ID="label10" runat="server" Text="2/2" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT2_2" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="chkOIT2_2" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>
                                                     <x:Label ID="label11" runat="server" Text="2/3" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chkOIT2_3" runat="server" Label="" ShowLabel="false"></x:CheckBox>  
+                                                    <x:CheckBox ID="chkOIT2_3" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>  
                                                 </Items>
                                             </x:FormRow> 
-                                                    <x:FormRow ID="FormRow373" ColumnWidths="85px 85px 85px" runat="server" >
+                                                    <x:FormRow ID="FormRow373" ColumnWidths="85px 85px 85px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label12" runat="server" Text="" ShowLabel="false"></x:Label> 
                                                 </Items>
                                             </x:FormRow>
-                                                     <x:FormRow ID="FormRow374" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server" >
+                                                     <x:FormRow ID="FormRow374" ColumnWidths="30px 55px 30px 55px 30px 55px" runat="server">
                                                 <Items>
                                                     <x:Label ID="label425" runat="server" Text="3/2" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chOIT3_2" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="chOIT3_2" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>
                                                     <x:Label ID="label426" runat="server" Text="3/3" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chOIT3_3" runat="server" Label="" ShowLabel="false"></x:CheckBox>
+                                                    <x:CheckBox ID="chOIT3_3" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>
                                                     <x:Label ID="label427" runat="server" Text="3/+" ShowLabel="false"></x:Label>
-                                                    <x:CheckBox ID="chOIT3_" runat="server" Label="" ShowLabel="false"></x:CheckBox>  
+                                                    <x:CheckBox ID="chOIT3_" runat="server" Label="" ShowLabel="false" OnCheckedChanged="ChkProfusion_OnCheckedChanged" AutoPostBack="true"></x:CheckBox>                                            
                                                 </Items>
                                             </x:FormRow>   
                                                 </Rows>
@@ -666,7 +667,7 @@
                                         </Items>                
                                     </x:GroupPanel>
                                     <x:GroupPanel runat="server" Title="2.3.  Forma y Tamaño : " ID="GroupPanel40" BoxFlex="1" Height="125"  Width="280">      
-                                         <Items>
+                                         <Items >
                                              <x:Form ID="Form104" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left">
                                                 <Rows>
                                                  <x:FormRow ID="FormRow375" ColumnWidths="120px 120px" runat="server" >
@@ -763,8 +764,11 @@
                                                <x:FormRow ID="FormRow381" ColumnWidths="320px 160px 160px " runat="server" >
                                                     <Items>
                                                          <x:Label ID="label444" runat="server" Text="(si NO hay anormalidades pase a símbolos *)" ShowLabel="false"></x:Label>
-                                                         <x:CheckBox ID="chkAnormalidadesSI" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>
-                                                         <x:CheckBox ID="chkAnormalidadesNO" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>  
+                                                        
+                                                        <%--<x:CheckBox ID="chkAnormalidadesSI" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>--%>
+                                                        <x:RadioButton ID="rdoAnormalidadesSI" GroupName="anormalidades" runat="server" Text="SI" ShowLabel="true" OnCheckedChanged="RbnAnormalidadesPleurales_OnCheckedChanged" AutoPostBack="true"></x:RadioButton>
+                                                        <%--<x:CheckBox ID="chkAnormalidadesNO" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>--%> 
+                                                        <x:RadioButton ID="rdoAnormalidadesNO" GroupName="anormalidades" runat="server" Text="NO" ShowLabel="true" OnCheckedChanged="RbnAnormalidadesPleurales_OnCheckedChanged" AutoPostBack="true"></x:RadioButton> 
                                                         </Items>
                                                 </x:FormRow>
                                             </Rows>
@@ -1403,9 +1407,11 @@
                                            <x:FormRow ID="FormRow430" ColumnWidths="320px 160px 160px " runat="server" >
                                                 <Items>
                                                      <x:Label ID="label538" runat="server" Text="" ShowLabel="false"></x:Label>
-                                                     <x:CheckBox ID="CheckBox82" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>
-                                                     <x:CheckBox ID="CheckBox83" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>  
-                                                    </Items>
+                                                     <%--<x:CheckBox ID="chkSimboloSi" runat="server" Text="SI" ShowLabel="true"></x:CheckBox>--%>
+                                                     <x:RadioButton ID="rdoSimboloSi" GroupName="simbolos" runat="server" Text="SI" ShowLabel="true" OnCheckedChanged="RbnSimbolos_OnCheckedChanged" AutoPostBack="true"></x:RadioButton>
+                                                    <%--<x:CheckBox ID="chkSimboloNo" runat="server" Text="NO" ShowLabel="true"></x:CheckBox>--%>  
+                                                    <x:RadioButton ID="rdoSimboloNo" GroupName="simbolos" runat="server" Text="NO" ShowLabel="true" OnCheckedChanged="RbnSimbolos_OnCheckedChanged" AutoPostBack="true"></x:RadioButton>                                                   
+                                                </Items>
                                             </x:FormRow>
                                         </Rows>
                                         </x:Form>
@@ -1631,10 +1637,9 @@
                      });
                  }
 
-
                  function onAjaxReady() {
                      highlightRows();
-                 }
+                 }                 
     </script>
 </body>
 </html>

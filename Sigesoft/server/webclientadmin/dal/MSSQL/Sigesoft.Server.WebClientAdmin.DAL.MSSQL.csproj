@@ -149,6 +149,7 @@
     <Compile Include="GeneratedAssemblers\masterrecommendationrestricctionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\logAssembler.cs" />
     <Compile Include="GeneratedAssemblers\locationAssembler.cs" />
+    <Compile Include="GeneratedAssemblers\liquidacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionserviceAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionhabitacionAssembler.cs" />
     <Compile Include="GeneratedAssemblers\hospitalizacionAssembler.cs" />
@@ -158,9 +159,6 @@
     <Compile Include="GeneratedAssemblers\familymedicalantecedentsAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturaciondetalleAssembler.cs" />
     <Compile Include="GeneratedAssemblers\facturacionAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\reporteatencionmedicaResultAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\obtenerproductoResultAssembler.cs" />
-    <Compile Include="GeneratedAssemblers\obtenerpreciotarifarioResultAssembler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

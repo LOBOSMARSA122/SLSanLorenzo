@@ -71,6 +71,7 @@
     <Compile Include="Custom\NodeServiceProfileList.cs" />
     <Compile Include="Custom\NoxiousHabitsList.cs" />
     <Compile Include="Custom\ObtenerIdsImporacion.cs" />
+    <Compile Include="Custom\OrdenReportes.cs" />
     <Compile Include="Custom\OrganizationList.cs" />
     <Compile Include="Custom\PacientList.cs" />
     <Compile Include="Custom\PersonList.cs" />
@@ -199,6 +200,7 @@
     <Compile Include="Generated\masterrecommendationrestricctionDto.cs" />
     <Compile Include="Generated\logDto.cs" />
     <Compile Include="Generated\locationDto.cs" />
+    <Compile Include="Generated\liquidacionDto.cs" />
     <Compile Include="Generated\hospitalizacionserviceDto.cs" />
     <Compile Include="Generated\hospitalizacionhabitacionDto.cs" />
     <Compile Include="Generated\hospitalizacionDto.cs" />
@@ -208,9 +210,6 @@
     <Compile Include="Generated\familymedicalantecedentsDto.cs" />
     <Compile Include="Generated\facturaciondetalleDto.cs" />
     <Compile Include="Generated\facturacionDto.cs" />
-    <Compile Include="Generated\reporteatencionmedicaResultDto.cs" />
-    <Compile Include="Generated\obtenerproductoResultDto.cs" />
-    <Compile Include="Generated\obtenerpreciotarifarioResultDto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
