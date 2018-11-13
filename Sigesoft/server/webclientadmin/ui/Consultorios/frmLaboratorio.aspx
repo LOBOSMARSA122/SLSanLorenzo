@@ -24,6 +24,14 @@
         {
             background-image: none;
         }
+          .x-form-element{
+              width: 100px;
+              margin:0;
+          }
+          .x-form-item {
+              width: 100px;
+
+          }
     </style>
 </head>
 <body>
@@ -340,24 +348,19 @@
                                                 <Rows>
                                                     <x:FormRow ID="FormRow700" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
                                                         <Items>
-                                                            <x:Label ID="label1310" runat="server" Text="Color" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:TextBox ID="txtCOLOR_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                            <x:Label ID="label1310" runat="server" Text="Color" ShowLabel="false" Hidden="false"></x:Label>                                                       
+                                                            <x:DropDownList ID="ddlCOLOR_EX_ORINA" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList>
                                                             <x:Label ID="label1311" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                            <x:Label ID="label1314" runat="server" Text=" " ShowLabel="false"></x:Label>                                                           
-                                                            <x:Label ID="label2" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:TextBox ID="txtCOLOR_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label1312" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label1314" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                         </Items>
                                                     </x:FormRow>  
                                                     <x:FormRow ID="FormRow1" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
                                                         <Items>
                                                             <x:Label ID="label1" runat="server" Text="Aspecto" ShowLabel="false" Hidden="false"></x:Label>
-                                                             <x:TextBox ID="txtASPECTO_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <%--<x:TextBox ID="txtASPECTO_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                            <x:DropDownList ID="ddlASPECTO_EX_ORINA" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList>
                                                             <x:Label ID="label1313" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
                                                             <x:Label ID="label3" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>                                                        
-                                                            <x:Label ID="label6" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:TextBox ID="txtASPECTO_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label5" runat="server" Text="" ShowLabel="false"></x:Label>
                                                         </Items>
                                                     </x:FormRow> 
                                                     <x:FormRow ID="FormRow702" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
@@ -366,9 +369,7 @@
                                                              <x:TextBox ID="txtDENSIDAD_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                              <x:Label ID="label1317" runat="server" Text="g/L" ShowLabel="false" CssClass="red"></x:Label>
                                                              <x:Label ID="label1320" runat="server" Text=" " ShowLabel="false"></x:Label>                                                              
-                                                             <x:Label ID="label7" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                             <x:TextBox ID="txtDENSIDAD_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label12" runat="server" Text="" ShowLabel="false"></x:Label>
+
                                                         </Items>
                                                     </x:FormRow>
                                                   
@@ -377,10 +378,7 @@
                                                             <x:Label ID="label1318" runat="server" Text="Potencial Hidrógeno" ShowLabel="false"></x:Label>
                                                             <x:TextBox ID="txtPH_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                             <x:Label ID="label4" runat="server" Text="pH" ShowLabel="false" CssClass="red"></x:Label>
-                                                            <x:Label ID="label8" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>                                                            
-                                                            <x:Label ID="label11" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:TextBox ID="txtPH_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                            <x:Label ID="label10" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label8" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow> 
                                                 </Rows>
@@ -396,10 +394,7 @@
                                                      <x:Label ID="label1339" runat="server" Text="Células Epiteliales" ShowLabel="false"></x:Label>
                                                      <x:TextBox ID="txtCELULAS_EPITELIALES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                      <x:Label ID="label1340" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label1343" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                     <x:Label ID="label9" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtCELULAS_EPITELIALES_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label13" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                     <x:Label ID="label1343" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                     </Items>
                                             </x:FormRow>   
                                             <x:FormRow ID="FormRow3" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
@@ -407,10 +402,7 @@
                                                         <x:Label ID="label1341" runat="server" Text="Leucocitos" ShowLabel="false"></x:Label>
                                                         <x:TextBox ID="txtLEUCOCITOS_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                         <x:Label ID="label1342" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label> 
-                                                        <x:Label ID="label14" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>                                                            
-                                                        <x:Label ID="label15" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                        <x:TextBox ID="txtLEUCOCITOS_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                        <x:Label ID="label16" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                        <x:Label ID="label14" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label> 
                                                 </Items>
                                             </x:FormRow>                                    
                                              <x:FormRow ID="FormRow711" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
@@ -418,32 +410,25 @@
                                                     <x:Label ID="label1345" runat="server" Text="Hematíes" ShowLabel="false"></x:Label>
                                                     <x:TextBox ID="txtHEMATIES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                     <x:Label ID="label1346" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label1349" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                    <x:Label ID="label17" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtHEMATIES_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label18" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                    <x:Label ID="label1349" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                     </Items>
                                             </x:FormRow>   
                                               <x:FormRow ID="FormRow4" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
                                                         <Items>
                                                             <x:Label ID="label1347" runat="server" Text="Cristales" ShowLabel="false"></x:Label>
-                                                            <x:TextBox ID="txtCRISTALES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                            <%--<x:TextBox ID="txtCRISTALES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                            <x:DropDownList ID="ddlCRISTALES_EX_ORINA" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList>
                                                             <x:Label ID="label1348" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                            <x:Label ID="label19" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>                                                            
-                                                            <x:Label ID="label20" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:TextBox ID="txtCRISTALES_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                            <x:Label ID="label21" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label19" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow>                                      
                                             <x:FormRow ID="FormRow713" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                      <x:Label ID="label1351" runat="server" Text="Gérmenes" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtGERMENES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label1352" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label1355" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                    <x:Label ID="label22" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtGERMENES_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label23" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                     <%--<x:TextBox ID="txtGERMENES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                     <x:DropDownList ID="ddlGERMENES_EX_ORINA" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList>
+                                                    <x:Label ID="label1352" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label1355" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                     </Items>
                                             </x:FormRow>  
                                               <x:FormRow ID="FormRow5" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
@@ -451,21 +436,16 @@
                                                             <x:Label ID="label1353" runat="server" Text="Cilindros" ShowLabel="false"></x:Label>
                                                             <x:TextBox ID="txtCILINDROS_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                             <x:Label ID="label1354" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>                                                     
-                                                            <x:Label ID="label24" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>                                                            
-                                                            <x:Label ID="label25" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:TextBox ID="txtCILINDROS_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                            <x:Label ID="label26" runat="server" Text="" ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label24" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow>                                   
                                               <x:FormRow ID="FormRow705" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label1323" runat="server" Text="Filamento Mucoide" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtFILAMENTO_MUCOIDE_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                    <%--<x:TextBox ID="txtFILAMENTO_MUCOIDE_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                    <x:DropDownList ID="ddlFILAMENTO_MUCOIDE_EX_ORINA" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList>
                                                     <x:Label ID="label1324" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label1327" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                    <x:Label ID="label32" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtFILAMENTO_MUCOIDE_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label33" runat="server" Text="" ShowLabel="false"></x:Label>                                                     
+                                                    <x:Label ID="label1327" runat="server" Text=" " ShowLabel="false"></x:Label>                                                    
                                                     </Items>
                                             </x:FormRow>
                                             </Rows>
@@ -479,45 +459,36 @@
                                            <x:FormRow ID="FormRow714" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                      <x:Label ID="label1356" runat="server" Text="Sangre" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtSANGRE_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label1357" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <%--<x:TextBox ID="txtSANGRE_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                    <x:DropDownList ID="ddlSANGRE_EX_ORINA" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList> 
+                                                    <x:Label ID="label1357" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
                                                      <x:Label ID="label1360" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                    <x:Label ID="label27" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtSANGRE_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label28" runat="server" Text="" ShowLabel="false"></x:Label>    
                                                     </Items>
                                             </x:FormRow>  
                                              <x:FormRow ID="FormRow6" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                      <x:Label ID="label1358" runat="server" Text="Urobilinogeno" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtUROBILINOGENO_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label1359" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>     
-                                                     <x:Label ID="label29" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                    <x:Label ID="label30" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtUROBILINOGENO_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label31" runat="server" Text="" ShowLabel="false"></x:Label>                                                  
+                                                     <%--<x:TextBox ID="txtUROBILINOGENO_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                     <x:DropDownList ID="ddlUROBILINOGENO_EX_ORINA" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList> 
+                                                    <x:Label ID="label1359" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>     
+                                                     <x:Label ID="label29" runat="server" Text=" " ShowLabel="false"></x:Label>                                                
                                                     </Items>
                                             </x:FormRow>                                               
                                              <x:FormRow ID="FormRow716" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                      <x:Label ID="label1362" runat="server" Text="Bilirrubina" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtBILIRRUBINA_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label1363" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label1366" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label34" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtBILIRRUBINA_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label35" runat="server" Text="" ShowLabel="false"></x:Label>                                     
+                                                     <x:TextBox ID="txtBILIRRUBINA_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>                                                  
+                                                    <x:Label ID="label1363" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label1366" runat="server" Text=" " ShowLabel="false"></x:Label>                                  
                                                     </Items>
                                             </x:FormRow>    
                                              <x:FormRow ID="FormRow7" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label1364" runat="server" Text="Proteínas" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtPROTEINAS_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <%--<x:TextBox ID="txtPROTEINAS_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                     <x:DropDownList ID="ddlPROTEINAS_EX_ORINA" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList> 
                                                      <x:Label ID="label1365" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>            
-                                                     <x:Label ID="label36" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                     <x:Label ID="label37" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtPROTEINAS_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label38" runat="server" Text="" ShowLabel="false"></x:Label>                                                    
+                                                     <x:Label ID="label36" runat="server" Text=" " ShowLabel="false"></x:Label>                                                  
                                                     </Items>
                                             </x:FormRow>                                           
                                               <x:FormRow ID="FormRow718" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
@@ -525,10 +496,7 @@
                                                      <x:Label ID="label1368" runat="server" Text="Nitritos" ShowLabel="false"></x:Label>
                                                      <x:TextBox ID="txtNITRITOS_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                      <x:Label ID="label1369" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label1372" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label39" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtNITRITOS_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label40" runat="server" Text="" ShowLabel="false"></x:Label>                                               
+                                                     <x:Label ID="label1372" runat="server" Text=" " ShowLabel="false"></x:Label>                                            
                                                     </Items>
                                             </x:FormRow>    
                                              <x:FormRow ID="FormRow8" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" >
@@ -536,10 +504,7 @@
                                                    <x:Label ID="label1370" runat="server" Text="C. Cetonicos" ShowLabel="false"></x:Label>
                                                      <x:TextBox ID="txtC_CETONICOS_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                      <x:Label ID="label1371" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label> 
-                                                     <x:Label ID="label41" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                     <x:Label ID="label42" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtC_CETONICOS_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label43" runat="server" Text="" ShowLabel="false"></x:Label>                                                       
+                                                     <x:Label ID="label41" runat="server" Text=" " ShowLabel="false"></x:Label>                                                     
                                                     </Items>
                                             </x:FormRow>                                         
                                               <x:FormRow ID="FormRow720" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
@@ -547,10 +512,7 @@
                                                      <x:Label ID="label1374" runat="server" Text="Glucosa" ShowLabel="false"></x:Label>
                                                      <x:TextBox ID="txtGLUCOSA_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                      <x:Label ID="label1375" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label1378" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                    <x:Label ID="label44" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtGLUCOSA_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label45" runat="server" Text="" ShowLabel="false"></x:Label>                                          
+                                                     <x:Label ID="label1378" runat="server" Text=" " ShowLabel="false"></x:Label>                                      
                                                     </Items>
                                             </x:FormRow>
                                              <x:FormRow ID="FormRow9" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" >
@@ -558,10 +520,7 @@
                                                     <x:Label ID="label1376" runat="server" Text="Hemoglobina " ShowLabel="false"></x:Label>
                                                      <x:TextBox ID="txtHEMOGLOBINA_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                      <x:Label ID="label1377" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>       
-                                                     <x:Label ID="label46" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                    <x:Label ID="label47" runat="server" Text="Valor Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                    <x:TextBox ID="txtHEMOGLOBINA_EX_ORINA_Deseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                    <x:Label ID="label48" runat="server" Text="" ShowLabel="false"></x:Label>                                                      
+                                                     <x:Label ID="label46" runat="server" Text=" " ShowLabel="false"></x:Label>                                                   
                                                     </Items>
                                             </x:FormRow>       
                                             </Rows>
@@ -1766,16 +1725,16 @@
 
                                                      <x:Label ID="label1285" runat="server" Text="VDRL" ShowLabel="false"></x:Label>
 
-                                                     <x:TextBox ID="txt_VDRL" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
+                                                     <%--<x:TextBox ID="txt_VDRL" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                     <x:DropDownList ID="ddl_VDRL" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList>
                                                      <x:Label ID="label1286" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
 
                                                     <x:Label ID="label1289" runat="server" Text=" " ShowLabel="false"></x:Label>  
 
                                                      <x:Label ID="label1287" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
 
-                                                     <x:TextBox ID="txtVDRL_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
+                                                     <%--<x:TextBox ID="txtVDRL_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>--%>
+                                                    <x:DropDownList ID="ddlVDRL_DESEABLE" runat="server"   Width="100px" ShowLabel="false"></x:DropDownList>
                                                      <x:Label ID="label1288" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
 
                                                     </Items>

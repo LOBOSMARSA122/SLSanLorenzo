@@ -320,19 +320,19 @@
                                             BodyPadding="5px" ShowBorder="true" ShowHeader="true" Height="200px" Title="SI">
                                             <Items>
                                                 <%--<x:DropDownList ID="ddlPre1" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>  
-                                                <x:CheckBox ID="chkPre1" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox> 
+                                                <x:CheckBox ID="chkPre1" runat="server" ShowLabel="true"></x:CheckBox> 
                                                 <x:Label ID="Label62" runat="server" Text=" "></x:Label>                                             
                                                  <%--<x:DropDownList ID="ddlPre2" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>  
-                                                <x:CheckBox ID="chkPre2" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
+                                                <x:CheckBox ID="chkPre2" runat="server" ShowLabel="true"></x:CheckBox>
                                                 <x:Label ID="Label63" runat="server" Text=" "></x:Label>                                              
                                                 <%--<x:DropDownList ID="ddlPre3" runat="server" Width="150" Enabled="False"></x:DropDownList>  --%>         
-                                                <x:CheckBox ID="chkPre3" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
+                                                <x:CheckBox ID="chkPre3" runat="server" ShowLabel="true"></x:CheckBox>
                                                 <x:Label ID="Label64" runat="server" Text=" "></x:Label>                                                                        
                                                  <%--<x:DropDownList ID="ddlPre4" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkPre4" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
+                                                <x:CheckBox ID="chkPre4" runat="server" ShowLabel="true"></x:CheckBox>
                                                 <x:Label ID="Label65" runat="server" Text=" "></x:Label>                                                 
                                                 <%--<x:DropDownList ID="ddlPre5" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkPre5" runat="server" Enabled="False" ShowLabel="true"></x:CheckBox>
+                                                <x:CheckBox ID="chkPre5" runat="server" ShowLabel="true"></x:CheckBox>
                                                 <x:Label ID="Label4" runat="server" Text=" "></x:Label>                                                 
                                                 <%--<x:DropDownList ID="ddlPre5" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
                                             </Items>
@@ -362,22 +362,22 @@
                                             BodyPadding="5px" ShowBorder="true" ShowHeader="true" Height="230px" Title="SI">
                                             <Items>
                                                 <%--<x:DropDownList ID="ddlhemoptisis" runat="server" Width="120" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkhemoptisis" runat="server" Enabled="False"></x:CheckBox>                                              
+                                                <x:CheckBox ID="chkhemoptisis" runat="server"></x:CheckBox>                                              
                                                 <x:Label ID="Label7" runat="server" Text=" "></x:Label>
                                                 <%--<x:DropDownList ID="ddlpneumotorax" runat="server" Width="120" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkpneumotorax" runat="server" Enabled="False"></x:CheckBox>                                                  
+                                                <x:CheckBox ID="chkpneumotorax" runat="server"></x:CheckBox>                                                  
                                                 <x:Label ID="Label8" runat="server" Text=" "></x:Label>
                                                 <%--<x:DropDownList ID="ddltraqueostomia" runat="server" Width="120" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chktraqueostomia" runat="server" Enabled="False"></x:CheckBox>                                                  
+                                                <x:CheckBox ID="chktraqueostomia" runat="server"></x:CheckBox>                                                  
                                                 <x:Label ID="Label9" runat="server" Text=" "></x:Label>
                                                 <%--<x:DropDownList ID="ddlsonda_pleural" runat="server" Width="120" Enabled="False"></x:DropDownList>--%> 
-                                                <x:CheckBox ID="chksonda_pleural" runat="server" Enabled="False"></x:CheckBox>                                                 
+                                                <x:CheckBox ID="chksonda_pleural" runat="server"></x:CheckBox>                                                 
                                                 <x:Label ID="Label10" runat="server" Text=" "></x:Label>
                                                 <%--<x:DropDownList ID="ddlaneurisma_cerebral" runat="server" Width="120" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkaneurisma_cerebral" runat="server" Enabled="False"></x:CheckBox>      
+                                                <x:CheckBox ID="chkaneurisma_cerebral" runat="server"></x:CheckBox>      
                                                 <x:Label ID="Label20" runat="server" Text=" "></x:Label>
                                                 <%--<x:DropDownList ID="ddlembolia_pulmonar" runat="server" Width="120" Enabled="False"></x:DropDownList>--%> 
-                                                <x:CheckBox ID="chkembolia_pulmonar" runat="server" Enabled="False"></x:CheckBox>                  
+                                                <x:CheckBox ID="chkembolia_pulmonar" runat="server"></x:CheckBox>                  
                                             </Items>
                                         </x:Panel>
                                         <x:Panel ID="Panel5" Width="350px" Height="230px" EnableBackgroundColor="true"
@@ -398,19 +398,19 @@
                                             BodyPadding="5px" ShowBorder="true" ShowHeader="true" Height="230px" Title="SI">
                                             <Items>
                                                 <%--<x:DropDownList ID="ddlinfarto_reciente" runat="server" Width="120" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkinfarto_reciente" runat="server" Enabled="False"></x:CheckBox>                                                
+                                                <x:CheckBox ID="chkinfarto_reciente" runat="server"></x:CheckBox>                                                
                                                 <x:Label ID="Label11" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddlinestabilidad_cv" runat="server" Width="120" Enabled="False"></x:DropDownList>--%> 
-                                                <x:CheckBox ID="chkinestabilidad_cv" runat="server" Enabled="False"></x:CheckBox>                                               
+                                                <x:CheckBox ID="chkinestabilidad_cv" runat="server"></x:CheckBox>                                               
                                                 <x:Label ID="Label12" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddlfiebre_nausea" runat="server" Width="120" Enabled="False"></x:DropDownList>--%> 
-                                                <x:CheckBox ID="chkfiebre_nausea" runat="server" Enabled="False"></x:CheckBox>                                               
+                                                <x:CheckBox ID="chkfiebre_nausea" runat="server"></x:CheckBox>                                               
                                                 <x:Label ID="Label13" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddlembarazo_avanzado" runat="server" Width="120" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkembarazo_avanzado" runat="server" Enabled="False"></x:CheckBox>                                                
+                                                <x:CheckBox ID="chkembarazo_avanzado" runat="server"></x:CheckBox>                                                
                                                 <x:Label ID="Label14" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddlembarazo_complicado" runat="server" Width="120" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chkembarazo_complicado" runat="server" Enabled="False"></x:CheckBox>                   
+                                                <x:CheckBox ID="chkembarazo_complicado" runat="server"></x:CheckBox>                   
                                             </Items>
                                         </x:Panel>
                                     </Items>
@@ -440,25 +440,25 @@
                                             BodyPadding="5px" ShowBorder="true" ShowHeader="true" Height="300px" Title="SI">
                                             <Items>
                                                 <%--<x:DropDownList ID="ddl1_tuvo_una_infeccion" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>  
-                                                <x:CheckBox ID="chk1_tuvo_una_infeccion" runat="server" Enabled="False"></x:CheckBox>                                                 
+                                                <x:CheckBox ID="chk1_tuvo_una_infeccion" runat="server"></x:CheckBox>                                                 
                                                 <x:Label ID="Label29" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddl2_tuvo_infeccion" runat="server" Width="150" Enabled="False"></x:DropDownList>--%> 
-                                                <x:CheckBox ID="chk2_tuvo_infeccion" runat="server" Enabled="False"></x:CheckBox>                                                  
+                                                <x:CheckBox ID="chk2_tuvo_infeccion" runat="server"></x:CheckBox>                                                  
                                                 <x:Label ID="Label30" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddl3_uso_aerosoles" runat="server" Width="150" Enabled="False"></x:DropDownList>--%> 
-                                                <x:CheckBox ID="chk3_uso_aerosoles" runat="server" Enabled="False"></x:CheckBox>                                                  
+                                                <x:CheckBox ID="chk3_uso_aerosoles" runat="server"></x:CheckBox>                                                  
                                                 <x:Label ID="Label31" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddl4_ha_usado_algun_medicamento" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>
-                                                <x:CheckBox ID="chk4_ha_usado_algun_medicamento" runat="server" Enabled="False"></x:CheckBox>                                                   
+                                                <x:CheckBox ID="chk4_ha_usado_algun_medicamento" runat="server"></x:CheckBox>                                                   
                                                 <x:Label ID="Label32" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddl5_ha_fumado_cualquier" runat="server" Width="150" Enabled="False"></x:DropDownList>--%> 
-                                                <x:CheckBox ID="chk5_ha_fumado_cualquier" runat="server" Enabled="False"></x:CheckBox>       
+                                                <x:CheckBox ID="chk5_ha_fumado_cualquier" runat="server"></x:CheckBox>       
                                                  <x:Label ID="Label60" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddl6_realizo_algun_ejercicio" runat="server" Width="150" Enabled="False"></x:DropDownList>--%> 
-                                                <x:CheckBox ID="chk6_realizo_algun_ejercicio" runat="server" Enabled="False"></x:CheckBox>    
+                                                <x:CheckBox ID="chk6_realizo_algun_ejercicio" runat="server"></x:CheckBox>    
                                                  <x:Label ID="Label61" runat="server" Text=" "></x:Label>
                                                  <%--<x:DropDownList ID="ddl7_ingirio_alimentos" runat="server" Width="150" Enabled="False"></x:DropDownList>--%>  
-                                                <x:CheckBox ID="chk7_ingirio_alimentos" runat="server" Enabled="False"></x:CheckBox>                 
+                                                <x:CheckBox ID="chk7_ingirio_alimentos" runat="server"></x:CheckBox>                 
                                             </Items>
                                         </x:Panel>
                                     </Items>

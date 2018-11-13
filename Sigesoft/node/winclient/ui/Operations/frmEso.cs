@@ -172,9 +172,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private AtencionesIntegralesBL _objAtencionesIntegralesBl = new AtencionesIntegralesBL();
         private PacientBL _objPacienteBl = new PacientBL();
-
-        string adolId = string.Empty;
+        
         serviceDto idPerson = new serviceDto();
+        string adolId = string.Empty;
         private adolescenteDto objAdolDto = null;
 
         string adulId = string.Empty;

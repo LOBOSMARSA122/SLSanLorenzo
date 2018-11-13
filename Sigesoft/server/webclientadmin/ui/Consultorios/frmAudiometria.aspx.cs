@@ -90,7 +90,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 txttiempo_de_trabajo.Attributes.Add("Tag", "N009-MF000001378");
                 chkRinitisa.Attributes.Add("Tag", "N009-MF000000089");
-                chkOtitisa.Attributes.Add("Tag", "N009-MF000000091");
+                //chkOtitisa.Attributes.Add("Tag", "N009-MF000000091");
                 //ddlMedicamentos.Attributes.Add("Tag", "N009-MF000000087");
                 chkuso_de_medicamentos.Attributes.Add("Tag", "N009-MF000000090");
                 ddlDiabetes.Attributes.Add("Tag", "N009-MF000000095");
@@ -402,7 +402,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
 
                 chkVertigo.Attributes.Add("Tag", "N005-MF000000090");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000090") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000090").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
-                //ddlOtitis.Attributes.Add("Tag", "N005-MF000000091");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000091") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000091").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
+                chkOtitisa.Attributes.Add("Tag", "N009-MF000000091");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000091") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000091").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkParatodiditis.Attributes.Add("Tag", "N005-MF000000092");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000092") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000092").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkMeningitis.Attributes.Add("Tag", "N005-MF000000093");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000093") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000093").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
                 chkGolpesCefalicos.Attributes.Add("Tag", "N005-MF000000094");//.Checked = objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000094") == null ? false : objAudiometria.Find(p => p.v_ComponentFieldsId == "N005-MF000000094").ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;

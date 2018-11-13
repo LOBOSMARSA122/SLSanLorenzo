@@ -1728,6 +1728,7 @@
                                                 <x:RadioButton ID="rbHombro90_1" runat="server" GroupName="grupoHombro90" OnCheckedChanged="rbHombro90_1_CheckedChanged" AutoPostBack="true"></x:RadioButton>
                                                 <x:Image ID="Image20" runat="server" ImageWidth="70" ImageHeight="70" ImageCssStyle="border:solid 1px #ccc;padding:5px;" ImageUrl="../images/Osteo/rotet01.jpg">
                                                 </x:Image>
+
                                                 <x:RadioButton ID="rbHombroInternal_1" runat="server" GroupName="grupoHombroInternal" OnCheckedChanged="rbHombroInternal_1_CheckedChanged" AutoPostBack="true"></x:RadioButton>
                                             </Items>
                                         </x:Panel>
@@ -1797,12 +1798,16 @@
                                                 <x:Label ID="Label349" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label348" runat="server" Text=" "></x:Label>
                                                 <x:CheckBox ID="chkHombro180SI" runat="server" Text="SI"></x:CheckBox>
+                                                <%--<x:RadioButton ID="rbHombro180SI" GroupName="hombro180" runat="server" Text="SI"></x:RadioButton>--%>
+                                                <%--<x:RadioButton ID="rbHombro180NO" GroupName="hombro180" runat="server" Text="NO"></x:RadioButton>--%>
                                                 <x:Label ID="Label284" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label350" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label285" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label286" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label361" runat="server" Text=" "></x:Label>
                                                 <x:CheckBox ID="chkHombro60SI" runat="server" Text="SI"></x:CheckBox>
+                                                <%--<x:RadioButton ID="rbHombro60SI" GroupName="hombro60" runat="server" Text="SI"></x:RadioButton>--%>
+                                                <%--<x:RadioButton ID="rbHombro60NO" GroupName="hombro60" runat="server" Text="NO"></x:RadioButton>--%>
                                                 <x:Label ID="Label351" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label352" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label353" runat="server" Text=" "></x:Label>
@@ -1810,12 +1815,16 @@
                                                 <x:Label ID="Label362" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label364" runat="server" Text=" "></x:Label>
                                                 <x:CheckBox ID="chkHombro90SI" runat="server" Text="SI"></x:CheckBox>
+                                                <%--<x:RadioButton ID="rbHombro90SI" GroupName="hombro90" runat="server" Text="SI"></x:RadioButton>--%>
+                                                <%--<x:RadioButton ID="rbHombro90NO" GroupName="hombro90" runat="server" Text="NO"></x:RadioButton>--%>
                                                 <x:Label ID="Label355" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label356" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label357" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label358" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label363" runat="server" Text=" "></x:Label>
                                                 <x:CheckBox ID="chkHombroInternoSI" runat="server" Text="SI"></x:CheckBox>
+                                                <%--<x:RadioButton ID="rbHombroInternoSI" GroupName="hombrointerno" runat="server" Text="SI"></x:RadioButton>--%>
+                                                <%--<x:RadioButton ID="rbHombroInternoNO" GroupName="hombrointerno" runat="server" Text="NO"></x:RadioButton>--%>
                                                 <x:Label ID="Label359" runat="server" Text=" "></x:Label>
                                                 <x:Label ID="Label360" runat="server" Text=" "></x:Label>
                                             </Items>

@@ -2023,8 +2023,9 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             var datosP = _pacientBL.DevolverDatosPaciente(_serviceId);
 
             var diagnosticRepository = _serviceBL.GetServiceComponentConclusionesDxServiceIdReport(_serviceId);
+            var datosGrabo = _serviceBL.DevolverDatosUsuarioGraboExamen((int)CategoryTypeExam.ExamenFisico, _serviceId);
 
-            Anexo16A.CreateAnexo16A(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository);
+            Anexo16A.CreateAnexo16A(_DataService, pathFile, datosP, MedicalCenter, filiationData, serviceComponents, diagnosticRepository, datosGrabo);
         }
         private void GenerateAltura_Fisica_Shahuindo(string pathFile)
         {
