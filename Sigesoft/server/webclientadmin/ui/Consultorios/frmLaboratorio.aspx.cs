@@ -70,7 +70,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlASPECTO_EX_ORINA.Attributes.Add("Tag", "N009-MF000001041");
 
                 txtDENSIDAD_EX_ORINA.Attributes.Add("Tag", "N009-MF000001043");
-
+                txtDENSIDAD_EX_ORINA_DESEABLE.Attributes.Add("Tag", "N009-MF000003224");
+                txtPH_EX_ORINA_DESEABLE.Attributes.Add("Tag", "N009-MF000003225");
                 txtPH_EX_ORINA.Attributes.Add("Tag", "N009-MF000001045");
 
                 txtCELULAS_EPITELIALES_EX_ORINA.Attributes.Add("Tag", "N009-MF000001059");
@@ -78,32 +79,40 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
 
                 txtLEUCOCITOS_EX_ORINA.Attributes.Add("Tag", "N009-MF000001061");
-
                 txtHEMATIES_EX_ORINA.Attributes.Add("Tag", "N009-MF000001063");
-
-                ddlCRISTALES_EX_ORINA.Attributes.Add("Tag", "N009-MF000001065");
-
+                ddlCRISTALES_DEOX_CALCIO.Attributes.Add("Tag", "N009-MF000001065");
+                ddlCRISTALES_DEUR_AMORFOS.Attributes.Add("Tag", "N009-MF000003242");
+                ddlCRISTALES_FOSF_AMORFOS.Attributes.Add("Tag", "N009-MF000003243");
+                ddlCRISTALES_FOSF_TRIPLES.Attributes.Add("Tag", "N009-MF000003244");
                 ddlGERMENES_EX_ORINA.Attributes.Add("Tag", "N009-MF000001067");
 
-                txtCILINDROS_EX_ORINA.Attributes.Add("Tag", "N009-MF000001069");
+                txtCILINDROS_HILAINOS.Attributes.Add("Tag", "N009-MF000001069");
+                txtCILINDROS_GRANULOSOS.Attributes.Add("Tag", "N009-MF000003245");
+                txtCILINDROS_LEUCOCITARIOS.Attributes.Add("Tag", "N009-MF000003246");
+                txtCILINDROS_HEMATICOS.Attributes.Add("Tag", "N009-MF000003247");
+
+                txtPIOCITOS.Attributes.Add("Tag", "N009-MF000001047");
 
                 ddlFILAMENTO_MUCOIDE_EX_ORINA.Attributes.Add("Tag", "N009-MF000001071");
-
-                ddlSANGRE_EX_ORINA.Attributes.Add("Tag", "N009-MF000001047");
-
+                ddlSANGRE_EX_ORINA.Attributes.Add("Tag", "N009-MF000001315");
                 ddlUROBILINOGENO_EX_ORINA.Attributes.Add("Tag", "N009-MF000001049");
-
-                txtBILIRRUBINA_EX_ORINA.Attributes.Add("Tag", "N009-MF000001051");
-
+                txtBILIRRUBINA_EX_ORINA.Attributes.Add("Tag", "N009-MF000003439");
+                txtLEUCOCITOS_EX_ORINA_QUIMICO.Attributes.Add("Tag", "N009-MF000003438");
                 ddlPROTEINAS_EX_ORINA.Attributes.Add("Tag", "N009-MF000001053");
+                ddlNITRITOS_EX_ORINA.Attributes.Add("Tag", "N009-MF000001055");
+                ddlC_CETONICOS_EX_ORINA.Attributes.Add("Tag", "N009-MF000001057");
+                ddlGLUCOSA_EX_ORINA.Attributes.Add("Tag", "N009-MF000001313");
+                ddlPIGMENTOS_EX_ORINA.Attributes.Add("Tag", "N009-MF000001051");
+                ddlACIDO_ASCORBIC_EX_ORINA.Attributes.Add("Tag", "N009-MF000001071");
 
-                txtNITRITOS_EX_ORINA.Attributes.Add("Tag", "N009-MF000001055");
+                rbPatologico.Attributes.Add("Tag", "N009-MF000003210");
+                rbNoPatologico.Attributes.Add("Tag", "N009-MF000003211");
 
-                txtC_CETONICOS_EX_ORINA.Attributes.Add("Tag", "N009-MF000001057");
 
-                txtGLUCOSA_EX_ORINA.Attributes.Add("Tag", "N009-MF000001313");
-
-                txtHEMOGLOBINA_EX_ORINA.Attributes.Add("Tag", "N009-MF000001315");
+                PanelCadmio.Hidden= true;
+                PanelCadmio.Attributes.Add("Tag", "N009-ME00000409");    
+                txtCadmio.Attributes.Add("Tag", "N009-MF00003106");                 
+                txtCadmioDeseable.Attributes.Add("Tag","N009-MF000003107");
 
                 PanelHemograma.Hidden = true;
                 PanelHemograma.Attributes.Add("Tag", "N009-ME00000113");                 
@@ -190,15 +199,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 PanelAglutinacionesenlamina.Hidden = true;
                 PanelAglutinacionesenlamina.Attributes.Add("Tag", "N009-ME000000025");
                 txtTIFICO_O.Attributes.Add("Tag", "N009-MF000001318");
-                txtTIFICO_O_DESEABLE.Attributes.Add("Tag", "N009-MF000001319");
                 txtTIFICO_H.Attributes.Add("Tag", "N009-MF000001320");
-                txtTIFICO_H_DESEABLE.Attributes.Add("Tag", "N009-MF000001321");
                 txtPARATIFICO_A.Attributes.Add("Tag", "N009-MF000000445");
-                txtPARATIFICO_A_DESEABLE.Attributes.Add("Tag", "N009-MF000001322");
                 txtPARATIFICO_B.Attributes.Add("Tag", "N009-MF000001323");
-                txtPARATIFICO_B_DESEABLE.Attributes.Add("Tag", "N009-MF000001324");
                 txtBRUCELLA.Attributes.Add("Tag", "N009-MF000001431");
-                txtBRUCELLA_DESEABLE.Attributes.Add("Tag", "N009-MF000001432");
 
                 PanelToxiCocaMari.Hidden = true;
                 PanelToxiCocaMari.Attributes.Add("Tag", "N009-ME000000053");
@@ -208,18 +212,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 MARIHUANA_COC_MAR.Attributes.Add("Tag", "N009-MF000001294");
                 LOTE_COCAINA.Attributes.Add("Tag", "N009-MF000002799");
                 LOTE_MARIHUANA.Attributes.Add("Tag", "N009-MF000002814");
-                ////1SUFRE_DE_ALGUNA_ENFERMEDAD.Attributes.Add("Tag","N009-MF000001407");
-                ////DIGA__CUAL.Attributes.Add("Tag","N009-MF000001408");
-                ////2CONSUME_ALGUN_MEDICAMENTO.Attributes.Add("Tag","N009-MF000001398");
-                ////DIGA_CUAL.Attributes.Add("Tag","N009-MF000001399");
-                ////3_TOMA_USTED_MATE_DE_COCA.Attributes.Add("Tag","N009-MF000001400");
-                ////CUANTAS_VECES_A_LA_SEMANA.Attributes.Add("Tag","N009-MF000001401");
-                ////CUANDO_TOMO_POR_ULTIMA_VEZ.Attributes.Add("Tag","N009-MF000001403");
-                ////4CONSUME_HABITUALMENTE_ALGUN_PRODUCTO_A_BASE_DE_COCA.Attributes.Add("Tag","N009-MF000001404");
-                ////CUANTAS__VECES_A_LA_SEMANA.Attributes.Add("Tag","N009-MF000001409");
-                ////CUANDO_CONSUMIO_POR_ULTIMA_VEZ.Attributes.Add("Tag","N009-MF000001405");
-                ////5HA_RECIBIDO_ALGUN_TRATAMIENTO_BAJO_ANESTESIA_LOCAL.Attributes.Add("Tag","N009-MF000001406");
-
+                
                 PerfilHepatico.Hidden = true;
                 PerfilHepatico.Attributes.Add("Tag", "N009-ME000000096");
                 PROTEINAS_TOTALES_PERF_HEP.Attributes.Add("Tag", "N009-MF000001792");
@@ -272,7 +265,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 PanelVdrl.Hidden = true;
                 PanelVdrl.Attributes.Add("Tag", "N009-ME000000003");
                 ddl_VDRL.Attributes.Add("Tag", "N009-MF000000269");
-                ddlVDRL_DESEABLE.Attributes.Add("Tag", "N009-MF000001295");
 
 
                 PanelHavigmhepatitisa.Hidden = true;
@@ -452,150 +444,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     ddlUsuarioGrabar.SelectedValue = "-1";
                 }
 
-////                txtCARBOXIHEMOGLOBINA.Attributes.Add("Tag","N009-MF000000201");
-////txtDESEABLE_CARBOXIHEMOGLOBINA.Attributes.Add("Tag","N009-MF000002062");
-
-
-
-
-
-
-
-
-
-////txtOBSERVACION_HEPATITIS_A.Attributes.Add("Tag","N009-MF000001434");
-
-
-
-
-
                 GLUCOSA_POSTPANDRIAL.Attributes.Add("Tag", "N009-MF000002059");
                 POSTPANDRIAL_DESEABLE.Attributes.Add("Tag", "N009-MF000002060");
-
-
-
-
-
-
-
-
-
-
-////txtOBSERVACION.Attributes.Add("Tag","N009-MF000001437");
-
-
-////txtOBSERVACION_EXAMEN_DE_ELISA.Attributes.Add("Tag","N009-MF000001433");
-////txtBENZODIACEPINAS.Attributes.Add("Tag","N009-MF000000395");
-////txtBENZODIACEPINAS_DESEABLE.Attributes.Add("Tag","N009-MF000000396");
-////txtCOLINESTERASA_SERICA.Attributes.Add("Tag","N009-MF000000393");
-////txtCOLINESTERASA_DESEABLE.Attributes.Add("Tag","N009-MF000000394");
-////txtANFETAMINAS.Attributes.Add("Tag","N009-MF000000391");
-////txtDESEABLE_ANFETAMINAS.Attributes.Add("Tag","N009-MF000000392");
                 txtHEMATOCRITO_HEM_COM.Attributes.Add("Tag", "N009-MF000001280");
                 txtHEMATOCRITO_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000001281");
-
-
-
-////txtCOLOR_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001040");
-
-////txtASPECTO_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001042");
-
-////txtDENSIDAD_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001044");
-
-////txtPH_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001046");
-
-////txtC_EPITELIALES_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001060");
-
-////txtLEUCOCITOS_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001062");
-
-////txtHEMATIES_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001064");
-
-////txtCRISTALES_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001066");
-////txtGERMENES_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001068");
-
-////txtCILINDROS_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001070");
-
-////txtF_MUCOIDE_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001072");
-
-////SANGRE_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001048");
-
-////UROBILINOGENO_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001050");
-
-////BILIRRUBINA_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001052");
-
-////PROTEINAS_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001054");
-
-////NITRITOS_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001056");
-
-////C_CETONICOS_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001058");
-
-////GLUCOSA_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001314");
-
-                //HEMOGLOBINA_DESEABLE_EX_ORINA.Attributes.Add("Tag","N009-MF000001316");
-            
-
-
-
-
-
-
-
-////PLOMO_EN_SANGRE.Attributes.Add("Tag","N009-MF000001158");
-////PLOMO_DESEABLE.Attributes.Add("Tag","N009-MF000001291");
-
-
-
-
-
-
-
-////RESULTADOS_FECATEST.Attributes.Add("Tag","N009-MF000001812");
-////DESABLE_FECATEST.Attributes.Add("Tag","N009-MF000002069");
-////OBSERVACION_FECATEST.Attributes.Add("Tag","N009-MF000002070");
-
-
-
-
-
-
-
-
-
-
-////TIPO_DE_MUESTRA_HISOP_NASO.Attributes.Add("Tag","N009-MF000002029");
-////LEVADURAS_HISOP_NASO.Attributes.Add("Tag","N009-MF000002031");
-////ANTIBIOGRAMA_HISOP_NASO.Attributes.Add("Tag","N009-MF000002032");
-////FROTIS_GRAM_HISOP_NASO.Attributes.Add("Tag","N009-MF000002030");
-////COLOR_REACC_INF.Attributes.Add("Tag","N009-MF000002033");
-////PH_REACC_INF.Attributes.Add("Tag","N009-MF000002034");
-////CONSISTENCIA_REACC_INF.Attributes.Add("Tag","N009-MF000002035");
-////SANGRE_REACC_INF.Attributes.Add("Tag","N009-MF000002036");
-////CELULAS_REACC_INF.Attributes.Add("Tag","N009-MF000002037");
-////FIBRAS_MUSCULARES_REACC_INF.Attributes.Add("Tag","N009-MF000002038");
-////LEUCOCITOS_REACC_INF.Attributes.Add("Tag","N009-MF000002039");
-////LEVADURAS_DE_HONGOS_REACC_INF.Attributes.Add("Tag","N009-MF000002040");
-////PIOCITOS_REACC_INF.Attributes.Add("Tag","N009-MF000002041");
-////FIBRAS_VEGETALES_REACC_INF.Attributes.Add("Tag","N009-MF000002042");
-////HEMATIES_REACC_INF.Attributes.Add("Tag","N009-MF000002043");
-////CRISTALES_REACC_INF.Attributes.Add("Tag","N009-MF000002044");
-////GOTAS_DE_GRASA_REACC_INF.Attributes.Add("Tag","N009-MF000002045");
-////FIBRAS_DE_ALGODON_REACC_INF.Attributes.Add("Tag","N009-MF000002046");
-////GRANULOS_DE_ALMIDON_REACC_INF.Attributes.Add("Tag","N009-MF000002047");
-
-
-
-////TIEMPO_SANGRIA.Attributes.Add("Tag","N009-MF000002063");
-////DESEABLE_TIEMPO_SANGRIA.Attributes.Add("Tag","N009-MF000002064");
-////TIEMPO_COAGULACION.Attributes.Add("Tag","N009-MF000002065");
-////DESEABLE_TIEMPO_COAGULACION.Attributes.Add("Tag","N009-MF000002066");
-
-
-
-        
-        //PanelHemogramaCompleto.Hidden = true;
-        //PanelHemograma.Hidden = true;
-        //PanelTiempodecoagulacion.Hidden = true;
-        //PanelTiempodesangria.Hidden = true;
             }
         }
 
@@ -614,19 +466,29 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             // Remover los componentes que no estan asignados al rol del usuario
             var results = groupComponentList.FindAll(f => componentProfile.Any(t => t.v_ComponentId == f.Value2));
 
-
             Utils.LoadDropDownList(ddlConsultorio, "Value1", "Value4", results, DropDownListAction.Select);
             ddlConsultorio.SelectedValue = "1";
             Utils.LoadDropDownList(ddlAptitud, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 124), DropDownListAction.All);
             Utils.LoadDropDownList(ddlCOLOR_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 257), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlASPECTO_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 258), DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlCRISTALES_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 268), DropDownListAction.Select);
+            
+            Utils.LoadDropDownList(ddlCRISTALES_DEOX_CALCIO, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 268), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCRISTALES_DEUR_AMORFOS, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 268), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCRISTALES_FOSF_AMORFOS, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 268), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCRISTALES_FOSF_TRIPLES, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 268), DropDownListAction.Select);
+                      
             Utils.LoadDropDownList(ddlGERMENES_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 268), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlFILAMENTO_MUCOIDE_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 268), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlSANGRE_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 259), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlUROBILINOGENO_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 264), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlPROTEINAS_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 261), DropDownListAction.Select);
             Utils.LoadDropDownList(ddl_VDRL, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 196), DropDownListAction.Select);
+
+            Utils.LoadDropDownList(ddlNITRITOS_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 260), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlC_CETONICOS_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 265), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlGLUCOSA_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 262), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlPIGMENTOS_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 263), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlACIDO_ASCORBIC_EX_ORINA, "Value1", "Id", _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 266), DropDownListAction.Select);
            
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
@@ -711,9 +573,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 {
                     if (item.ComponentId == TabLaboratorio.Attributes.GetValue("Tag").ToString())
                     {
+                        
                         LoadCombosLaboratorio();
                         ObtenerDatosLaboratorio(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabLaboratorio.Hidden = false;
+                        
                     }
                 }
             }
@@ -940,12 +804,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 {
                     if (((DropDownList)ctrl).Attributes.GetValue("Tag") != null)
                     {
-                        bool llego = false;
                         string ComponentFieldId = ((DropDownList)ctrl).Attributes.GetValue("Tag").ToString();
-                        if (ComponentFieldId == "N009-MF000001040" || ComponentFieldId == "N009-MF000001042" || ComponentFieldId == "N009-MF000001066" || ComponentFieldId == "N009-MF000001068" || ComponentFieldId == "N009-MF000001072" || ComponentFieldId == "N009-MF000001048" || ComponentFieldId == "N009-MF000001295")
-                        {
-                            llego = true;
-                        }
                         ((DropDownList)ctrl).SelectedValue = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? "" : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1;
                     }
                 }
@@ -965,13 +824,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     if (((TextBox)ctrl).Attributes.GetValue("Tag") != null)
                     {
                         //AMC
-                        bool llego = false;
                         string ComponentFieldId = ((TextBox)ctrl).Attributes.GetValue("Tag").ToString();                       
                         ((TextBox)ctrl).Text = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? "" : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1;
-                        if (ComponentFieldId == "N009-MF000001318" || ComponentFieldId == "N009-MF000001320" || ComponentFieldId == "N009-MF000001323" || ComponentFieldId == "N009-MF000000445" || ComponentFieldId == "N009-MF000001431")
-                        {
-                            llego = true;
-                        }
                     }
                 }
 
@@ -984,6 +838,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     }
                 }
 
+                if (ctrl is RadioButton)
+                {
+                    if (((RadioButton)ctrl).Attributes.GetValue("Tag") != null)
+                    {
+                        string ComponentFieldId = ((RadioButton)ctrl).Attributes.GetValue("Tag").ToString();
+                        ((RadioButton)ctrl).Checked = ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId) == null ? false : ListaValores.Find(p => p.v_ComponentFieldsId == ComponentFieldId).ServiceComponentFieldValues[0].v_Value1 == "0" ? false : true;
+                    }
+                }
                 if (ctrl.HasControls())
                     SearchControlAndLoadData(ctrl, ServiceComponentId, ListaValores);
 
@@ -1492,10 +1354,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             {
                 if (ctrl is Panel)
                 {
-                    //if (((Panel)ctrl).ID == "PanelRecoyRestricLaboratorio" || ((Panel)ctrl).ID == "PanelAuditoriaLaboratorio")
-                    //{
-                    //    ((Panel)ctrl).Hidden = true;
-                    //}
+                    
                     if (((Panel)ctrl).Attributes.GetValue("Tag") != null)
                     {
                         //AMC
