@@ -194,22 +194,24 @@ namespace Sigesoft.Node.Contasol.Integration
 
         public FacturaCobranza ObtnerNroFacturaCobranza(string nroFactura)
         {
-            var obj = nroFactura.Split('-');
-            var serie = obj[0].ToString();
-            var correlativo = obj[1].ToString();
+            //var obj = nroFactura.Split('-');
+            //var serie = obj[0].ToString();
+            //var correlativo = obj[1].ToString();
 
-                using (var cnx = ConnectionHelper.GetConnection)
-                {
-                    if (cnx.State != ConnectionState.Open) cnx.Open();
+            //    using (var cnx = ConnectionHelper.GetConnection)
+            //    {
+            //        if (cnx.State != ConnectionState.Open) cnx.Open();
 
-                    var query = "select cd.v_DocumentoRef , cd.v_IdCobranzaDetalle " +
-                       " from venta vt " +
-                       " inner join cobranzadetalle cd on cd.v_IdVenta = vt.v_IdVenta " +
-                       " where vt.v_SerieDocumento='" + serie + "' and vt.v_CorrelativoDocumento='" + correlativo + "'";
+            //        var query = "select cd.v_DocumentoRef , cd.v_IdCobranzaDetalle " +
+            //           " from venta vt " +
+            //           " inner join cobranzadetalle cd on cd.v_IdVenta = vt.v_IdVenta " +
+            //           " where vt.v_SerieDocumento='" + serie + "' and vt.v_CorrelativoDocumento='" + correlativo + "'";
 
-                    var result = cnx.Query<FacturaCobranza>(query).FirstOrDefault();
-                    return result.v_DocumentoRef;
-                }
+            //        var result = cnx.Query<FacturaCobranza>(query).FirstOrDefault();
+            //        return result;
+            //    }
+
+            return null;
            
         }
     }
