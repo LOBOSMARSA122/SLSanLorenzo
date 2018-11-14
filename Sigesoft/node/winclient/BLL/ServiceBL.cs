@@ -31451,6 +31451,10 @@ namespace Sigesoft.Node.WinClient.BLL
                             {
                                 v_OrganizationName = F.v_Name,
                                 v_LiquidacionId = A.v_LiquidacionId,
+                                v_Ruc= F.v_IdentificationNumber,
+                                v_AddressLocation= F.v_Address,
+                                v_TelephoneNumber = F.v_PhoneNumber,
+                                v_ContactName = F.v_ContacName,
                                 v_NroLiquidacion = A.v_NroLiquidacion,
                                 //v_ServiceId = A.v_ServiceId,
                                 v_OrganizationId = A.v_OrganizationId,
@@ -31471,6 +31475,10 @@ namespace Sigesoft.Node.WinClient.BLL
                     var LiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
                     var oLiquidacionEmpresa = new LiquidacionEmpresa();
                     oLiquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                    oLiquidacionEmpresa.v_Ruc = item.v_Ruc;
+                    oLiquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                    oLiquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                    oLiquidacionEmpresa.v_ContactName = item.v_ContactName;
 
                     var liquidaciones = result.FindAll(p => p.v_OrganizationId == item.v_OrganizationId);
 
