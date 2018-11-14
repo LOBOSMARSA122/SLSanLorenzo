@@ -25,7 +25,7 @@ namespace NetPdf
         }
 
         public static void CreatePagoMedicoAsitencial(string filePDF,
-            organizationDto infoEmpresaPropietaria, List<LiquidacionMedicoList> Listaliq, string fechaInicio, string fechaFin, SystemUserList medico)
+            organizationDto infoEmpresaPropietaria, List<LiquidacionServicios> Listaliq, string fechaInicio, string fechaFin, SystemUserList medico)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
@@ -165,10 +165,10 @@ namespace NetPdf
             decimal comision = 0;
             decimal comision_1 = 0;
 
-
-            foreach (var liq in Listaliq)
-            {               
-                foreach (var item in liq.Servicios)
+           
+            //foreach (var liq in Listaliq)
+            //{
+                foreach (var item in Listaliq)
                 {
                     cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                     cells.Add(cell);
@@ -209,7 +209,7 @@ namespace NetPdf
                 comision = 0;
                 comision_1 = 0;
                 
-            }
+            //}
 
             cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 9, HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 30f };
             cells.Add(cell);

@@ -186,5 +186,31 @@ namespace Sigesoft.Node.Contasol.Integration
         //        return null;
         //    }
         //}
+
+       public class FacturaCobranza
+        {
+            public string v_DocumentoRef { get; set; }
+        }
+
+        public FacturaCobranza ObtnerNroFacturaCobranza(string nroFactura)
+        {
+            var obj = nroFactura.Split('-');
+            var serie = obj[0].ToString();
+            var correlativo = obj[1].ToString();
+
+                using (var cnx = ConnectionHelper.GetConnection)
+                {
+                    if (cnx.State != ConnectionState.Open) cnx.Open();
+
+                    var query = "select cd.v_DocumentoRef , cd.v_IdCobranzaDetalle " +
+                       " from venta vt " +
+                       " inner join cobranzadetalle cd on cd.v_IdVenta = vt.v_IdVenta " +
+                       " where vt.v_SerieDocumento='" + serie + "' and vt.v_CorrelativoDocumento='" + correlativo + "'";
+
+                    var result = cnx.Query<FacturaCobranza>(query).FirstOrDefault();
+                    return result.v_DocumentoRef;
+                }
+           
+        }
     }
 }

@@ -25,7 +25,7 @@ namespace NetPdf
         }
 
         public static void CreateLiquidacion_EMPRESAS_DETALLE(string filePDF,
-            organizationDto infoEmpresaPropietaria, List<LiquidacionEmpresa> Listaliq, string fechaInicio, string fechaFin, organizationDto empresa)
+            organizationDto infoEmpresaPropietaria, List<LiquidacionEmpresa> Listaliq, string fechaInicio, string fechaFin, organizationDto empresa, string nroFactura, string nroCobranza)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 

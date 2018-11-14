@@ -54,9 +54,12 @@ namespace Sigesoft.Node.WinClient.UI
                         string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                         string nombre = "Liquidaciones de EMPRESA - CSL";
 
+                        MedicamentoBl oMedicamentoBl = new MedicamentoBl();
+                        var obj =  oMedicamentoBl.ObtnerNroFacturaCobranza("").Split('|');
                         var empresa_info = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, _empresa);
 
-                        Liquidacion_EMPRESA_DETALLE.CreateLiquidacion_EMPRESAS_DETALLE(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1,empresa_info);
+
+                        Liquidacion_EMPRESA_DETALLE.CreateLiquidacion_EMPRESAS_DETALLE(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1,empresa_info, obj[0].ToString(), obj[1].ToString());
                         this.Enabled = true;
                     }
                 }
