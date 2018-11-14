@@ -8,6 +8,10 @@ namespace Sigesoft.Node.WinClient.BE
     public class LiquidacionEmpresa
     {
         public string v_OrganizationName { get; set; }
+        public string v_Ruc { get; set; }
+        public string v_AddressLocation { get; set; }
+        public string v_TelephoneNumber { get; set; }
+        public string v_ContactName { get; set; }
 
         public string v_LiquidacionId { get; set; }
         public string v_NroLiquidacion { get; set; }
