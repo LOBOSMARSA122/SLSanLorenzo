@@ -1417,7 +1417,6 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                 i_Orden = A.i_Sort.Value,
                                 //v_NombreCrystal = "",
                                 //i_NombreCrystalId = -1
-
                             };
 
                 if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -1450,8 +1449,61 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 return null;
             }
         }
+               
+        public void InsertOrderReport(ref OperationResult pobjOperationResult, List<systemparameterDto> ListReport, List<string> ClientSession)
+        {
+            try
+            {
+                
+                foreach (systemparameterDto value in ListReport) {
+                    
+                    systemparameterDto pobjDtoEntity = new systemparameterDto();
+                    pobjDtoEntity = value;
 
+                    SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
+                   // systemparameterDto idcomponent = new systemparameterDto();
+
+                    var idcomponente = (from a in dbContext.systemparameter
+                                           where a.v_Value2 == pobjDtoEntity.v_Value2 && a.v_Value1 == pobjDtoEntity.v_Value1
+                                           select a).FirstOrDefault();
+
+                    // Obtener la entidad fuente
+                    var objEntitySource = (from a in dbContext.systemparameter
+                                           where a.v_Value2 == pobjDtoEntity.v_Value2 && a.i_ParameterId == idcomponente.i_ParameterId
+                                           select a).FirstOrDefault();
+                    
+                    // Crear la entidad con los datos actualizados
+                    pobjDtoEntity.d_UpdateDate = DateTime.Now;
+                    pobjDtoEntity.i_IsDeleted = 0;
+                    pobjDtoEntity.i_ParameterId = idcomponente.i_ParameterId;
+                    pobjDtoEntity.i_UpdateUserId = Int32.Parse(ClientSession[2]);
+                    systemparameter objEntity = systemparameterAssembler.ToEntity(pobjDtoEntity);
+
+                    // Copiar los valores desde la entidad actualizada a la Entidad Fuente
+                    dbContext.systemparameter.ApplyCurrentValues(objEntity);
+
+                    // Guardar los cambios
+                    dbContext.SaveChanges();
+
+                    pobjOperationResult.Success = 1;
+                    // Llenar entidad Log
+                    //LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "GESO", "" , Success.Ok, null);
+                    
+                    }
+                return;
+                }
+                
+            catch (Exception ex)
+            {
+                ex.Message.ToString();
+                //pobjOperationResult.Success = 0;
+                //pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                // Llenar entidad Log
+                //LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.ACTUALIZACION, "GESO", "", Success.Failed, pobjOperationResult.ExceptionMessage);
+                return;
+            }
+        }
         #endregion
 
     }

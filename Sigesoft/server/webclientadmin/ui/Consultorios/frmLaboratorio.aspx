@@ -25,20 +25,23 @@
             background-image: none;
         }
 
-          #x561_row1_column0, #x561_row0_column0, #x561_row2_column0, #x561_row3_column0, #x561_row4_column0 {
+          /*#x561_row1_column0, #x561_row0_column0, #x561_row2_column0, #x561_row3_column0, #x561_row4_column0 {
             max-width:234px;
             margin-left:10px;
           }
 
-          #ext-gen974 > .x-form-item ,#ext-gen980> .x-form-item, #ext-gen1004 > .x-form-item, #ext-gen1010 > .x-form-item, #ext-gen1040 > .x-form-item, #ext-gen1046 > .x-form-item, #ext-gen1190 > .x-form-item {
+          #ext-gen1199 > .x-form-item, #ext-gen1037 > .x-form-item ,#ext-gen971> .x-form-item, #ext-gen1043 > .x-form-item, #ext-gen1001 > .x-form-item, #ext-gen1187 > .x-form-item, #ext-gen977 > .x-form-item, #ext-gen1007 > .x-form-item {
             margin-bottom:10px;
           }
-          /*#x148_row3_column1, #x148_row5_column1 {
-            max-width:145px;
-          }*/
           #x173_row13_column1, #x148_row3_column1, #x148_row5_column1 {
             width:145px !important;
           }
+          #x230_row4_column3 {
+            max-width: 200px !important;          
+          }
+          #x230_row4_column1, #x230_row4_column5, #ext-gen1190, #ext-gen1202 {
+            width: 145px !important;
+          }*/
     </style>
 </head>
 <body>
@@ -307,31 +310,7 @@
                                 </x:Toolbar>
                             </Toolbars>
                             <Items>
-                                <x:Panel ID="PanelCadmio" Title="CADMIO (METALES)" EnableBackgroundColor="true" Height="530px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
-                                    <Items>
-                                        <x:GroupPanel Title="METALES PESADOS CADMIO" ID="GrupoPanelCadmio" runat="server" BoxFlex="1" Height="150" Width="960" >
-                                            <Items>
-                                                <x:Form ID="formCadmio" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
-                                                    <Rows>
-                                                        <x:FormRow ID="FormRowCadmio" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                            <Items>
-                                                                <x:Label ID="labelCadmio" runat="server" Text="CADMIO" ShowLabel="false"></x:Label>
-                                                                <x:TextBox ID="txtCadmio" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                                <x:Label ID="label289" runat="server" Text="ug/dl" ShowLabel="false"></x:Label>
-                                                                <x:Label ID="label44" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                                <x:Label ID="label46" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                                <x:Label ID="labelCadmioDeseable" runat="server" Text="CADMIO DESEABLE" ShowLabel="false"></x:Label>
-                                                                <x:TextBox ID="txtCadmioDeseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                                <x:Label ID="label290" runat="server" Text="ug/dl" ShowLabel="false"></x:Label>
-                                                            </Items>
-                                                        </x:FormRow>
-                                                    </Rows>
-                                                </x:Form>
-                                            </Items>
-                                        </x:GroupPanel>
-                                    </Items>
-                                </x:Panel>
+                                
                                  <x:Panel ID="PanelGrupoyfactorsanguineo" Title="GRUPO Y FACTOR SANGUÍNEO" EnableBackgroundColor="true" Height="40px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
                                 <Items>
@@ -352,275 +331,273 @@
                                         </x:Form>
                                     </Items>
                                  </x:Panel>
-                                <x:Panel ID="PanelExamencompletodeorina" Title="EXAMEN COMPLETO DE ORINA" EnableBackgroundColor="true" Height="1020" runat="server"
+                                <x:Panel ID="PanelExamencompletodeorina" Title="EXAMEN COMPLETO DE ORINA" EnableBackgroundColor="true" Height="650" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table"  Visible ="true">
                                 <Items>
-                                    <x:GroupPanel runat="server" Title=" EXAMEN MACROSCÓPICO" ID="GroupPanel61" BoxFlex="1" Height="180" Width="960"  Hidden="false">                
+                                    <x:GroupPanel runat="server" Title="EXAMEN MACROSCÓPICO" ID="GroupPanel27" BoxFlex="1" Height="120" Width="960" >                
                                         <Items>
-                                             <x:Form ID="Form261" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" Hidden="false" >
+                                             <x:Form ID="Form47" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                                 <Rows>
-                                                    <x:FormRow ID="FormRow700" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
+                                                    <x:FormRow ID="FormRow91" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
                                                         <Items>
-                                                            <x:Label ID="label1310" runat="server" Text="Color" ShowLabel="false" Hidden="false"></x:Label>                                                       
-                                                            <x:DropDownList ID="ddlCOLOR_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                            <x:Label ID="label1311" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                            <x:Label ID="label1314" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label1" runat="server" Text="Color" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlCOLOR_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label2" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label4" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label8" runat="server" Text="Aspecto" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlASPECTO_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList> 
+                                                             <x:Label ID="label11" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
-                                                    </x:FormRow>  
-                                                    <x:FormRow ID="FormRow1" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow94" ColumnWidths="110px" runat="server" Hidden="false" >
                                                         <Items>
-                                                            <x:Label ID="label1" runat="server" Text="Aspecto" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:DropDownList ID="ddlASPECTO_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                            <x:Label ID="label1313" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                            <x:Label ID="label3" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>                                                        
+                                                            <x:Label ID="label41" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
                                                         </Items>
-                                                    </x:FormRow> 
-                                                    <x:FormRow ID="FormRow702" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow96" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
                                                         <Items>
-                                                             <x:Label ID="label1316" runat="server" Text="Densidad" ShowLabel="false" Hidden="false"></x:Label>
+                                                             <x:Label ID="label42" runat="server" Text="Densidad" ShowLabel="false"></x:Label>
                                                              <x:TextBox ID="txtDENSIDAD_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                             <x:Label ID="label1317" runat="server" Text="g/L" ShowLabel="false" CssClass="red"></x:Label>
-                                                             <x:Label ID="label1320" runat="server" Text=" " ShowLabel="false"></x:Label>                                                              
-
-                                                        </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow2" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                        <Items>
-                                                             <x:Label ID="label41" runat="server" Text="Densidad Deseable" ShowLabel="false" Hidden="false"></x:Label>
+                                                             <x:Label ID="label474" runat="server" Text="g/L" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label475" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label476" runat="server" Text="Densidad Deseable" ShowLabel="false"></x:Label>
                                                              <x:TextBox ID="txtDENSIDAD_EX_ORINA_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                             <x:Label ID="label42" runat="server" Text="g/L" ShowLabel="false" CssClass="red"></x:Label>
-                                                             <x:Label ID="label43" runat="server" Text=" " ShowLabel="false"></x:Label>                                                              
-
+                                                             <x:Label ID="label477" runat="server" Text="g/L" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow703" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
+                                                    <x:FormRow ID="FormRow98" ColumnWidths="110px" runat="server" Hidden="false" >
                                                         <Items>
-                                                            <x:Label ID="label1318" runat="server" Text="Potencial Hidrógeno" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:TextBox ID="txtPH_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                            <x:Label ID="label4" runat="server" Text="pH" ShowLabel="false" CssClass="red"></x:Label>
-                                                            <x:Label ID="label8" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
+                                                            <x:Label ID="label478" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
                                                         </Items>
-                                                    </x:FormRow> 
-                                                    <x:FormRow ID="FormRow32" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow100" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
                                                         <Items>
-                                                            <x:Label ID="label2" runat="server" Text="Potencial Hidrógeno Deseable" ShowLabel="false" Hidden="false"></x:Label>
-                                                            <x:TextBox ID="txtPH_EX_ORINA_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                            <x:Label ID="label11" runat="server" Text="pH" ShowLabel="false" CssClass="red"></x:Label>
-                                                            <x:Label ID="label15" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label479" runat="server" Text="Potencial Hidrógeno" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtPH_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label480" runat="server" Text="pH" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label481" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label482" runat="server" Text="Potencial Hidrógeno Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtPH_EX_ORINA_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label483" runat="server" Text="pH" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
-                                                    </x:FormRow> 
-                                                </Rows>
-                                            </x:Form>                                 
+                                                    </x:FormRow>
+                                                  </Rows>
+                                            </x:Form>                
                                         </Items>
                                     </x:GroupPanel>
-                                    <x:GroupPanel runat="server" Title="EXAMEN MICROSCÓPICO" ID="GroupPanel62" BoxFlex="1" Height="400" Width="960" >                
+                                    <x:GroupPanel runat="server" Title="EXAMEN MICROSCÓPICO" ID="GroupPanel26" BoxFlex="1" Height="280" Width="960" >                
                                         <Items>
-                                             <x:Form ID="Form270" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" Hidden="false">
-                                        <Rows>
-                                            <x:FormRow ID="FormRow3" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label7" runat="server" Text="Leucocitos" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtLEUCOCITOS_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                    <x:Label ID="label1342" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label> 
-                                                    <x:Label ID="label14" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label> 
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow4" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label30" runat="server" Text="Hematíes" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtHEMATIES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                    <x:Label ID="label1346" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label1349" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow5" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label31" runat="server" Text="Gérmenes" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlGERMENES_EX_ORINA" runat="server"  Width="140px" ShowLabel="false"></x:DropDownList>
-                                                    <x:Label ID="label1352" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label1355" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow25" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label32" runat="server" Text="Cirst. Deoxalatos Calcio" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlCRISTALES_DEOX_CALCIO" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                    <x:Label ID="label1348" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label19" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow26" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label33" runat="server" Text="Cirst. Deur Amorfos" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlCRISTALES_DEUR_AMORFOS" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                    <x:Label ID="label5" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label6" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow27" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label34" runat="server" Text="Cirst. Fosf. Amorfos" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlCRISTALES_FOSF_AMORFOS" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                    <x:Label ID="label9" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label10" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow28" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label35" runat="server" Text="Cirst. Fosf. Triples" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlCRISTALES_FOSF_TRIPLES" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                    <x:Label ID="label16" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label17" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow29" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label37" runat="server" Text="Células Epiteliales" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtCELULAS_EPITELIALES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                    <x:Label ID="label1340" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label1343" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow30" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label38" runat="server" Text="Cilindros Hialinos" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtCILINDROS_HILAINOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                    <x:Label ID="label1354" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>                                                     
-                                                    <x:Label ID="label24" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow31" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label39" runat="server" Text="Cilindros Granulosos" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtCILINDROS_GRANULOSOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                    <x:Label ID="label12" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>                                                     
-                                                    <x:Label ID="label13" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow59" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label40" runat="server" Text="Cilindros Leucocitarios" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtCILINDROS_LEUCOCITARIOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                    <x:Label ID="label20" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>                                                     
-                                                    <x:Label ID="label21" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow62" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label47" runat="server" Text="Cilindros Hematicos" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtCILINDROS_HEMATICOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                    <x:Label ID="label23" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>                                                     
-                                                    <x:Label ID="label25" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow64" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label48" runat="server" Text="Picocitos" ShowLabel="false"></x:Label>
-                                                    <x:TextBox ID="txtPIOCITOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
-                                                    <x:Label ID="label27" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>                                                     
-                                                    <x:Label ID="label28" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                </Items>
-                                            </x:FormRow> 
-                                            <x:FormRow ID="FormRow66" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false" >
-                                                <Items>
-                                                    <x:Label ID="label245" runat="server" Text="Filamento Mucoide" ShowLabel="false"></x:Label>
-                                                    <x:DropDownList ID="ddlFILAMENTO_MUCOIDE_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                    <x:Label ID="label1324" runat="server" Text="xcampo" ShowLabel="false" CssClass="red"></x:Label>
-                                                    <x:Label ID="label1327" runat="server" Text=" " ShowLabel="false"></x:Label>                                                    
-                                                </Items>
-                                            </x:FormRow> 
-                                            </Rows>
-                                        </x:Form>                               
-                                    </Items>
-                                    </x:GroupPanel>
-                                    <x:GroupPanel runat="server" Title="EXAMEN QUÍMICO" ID="GroupPanel63" BoxFlex="1" Height="280" Width="960" >                
-                                        <Items>
-                                             <x:Form ID="Form1000" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" Hidden="false">
+                                             <x:Form ID="Form46" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                                 <Rows>
-                                                    <x:FormRow ID="FormRow1000" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" Hidden="false">
+                                                    <x:FormRow ID="FormRow3" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
                                                         <Items>
-                                                            <x:Label ID="Label1000" runat="server" Text="Sangre" ShowLabel="false"></x:Label>
-                                                            <x:DropDownList ID="ddlSANGRE_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList> 
-                                                            <x:Label ID="Label1001" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1002" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label5" runat="server" Text="Leucocitos" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtLEUCOCITOS_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label6" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label7" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label9" runat="server" Text="Hematíes" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHEMATIES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox> 
+                                                             <x:Label ID="label10" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1001" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow5" ColumnWidths="110px" runat="server" Hidden="false" >
                                                         <Items>
-                                                            <x:Label ID="Label1003" runat="server" Text="Urobilinogeno" ShowLabel="false"></x:Label>
-                                                            <x:DropDownList ID="ddlUROBILINOGENO_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList> 
-                                                            <x:Label ID="Label1004" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1005" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label12" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1002" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow26" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
                                                         <Items>
-                                                            <x:Label ID="Label1006" runat="server" Text="Bilirrubina" ShowLabel="false"></x:Label>
-                                                            <x:TextBox ID="txtBILIRRUBINA_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>                                                  
-                                                            <x:Label ID="Label1007" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1008" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label13" runat="server" Text="Gérmenes" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlGERMENES_EX_ORINA" runat="server"  Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label14" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label16" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label17" runat="server" Text="Cirst. Deoxalatos Calcio" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlCRISTALES_DEOX_CALCIO" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label18" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1003" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow28" ColumnWidths="110px" runat="server" Hidden="false" >
                                                         <Items>
-                                                            <x:Label ID="Label1009" runat="server" Text="Proteínas" ShowLabel="false"></x:Label>
-                                                            <x:DropDownList ID="ddlPROTEINAS_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                            <x:Label ID="Label1010" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1011" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label19" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1004" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow30" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
                                                         <Items>
-                                                            <x:Label ID="Label1012" runat="server" Text="Nitritos" ShowLabel="false"></x:Label>
-                                                            <x:DropDownList ID="ddlNITRITOS_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList> 
-                                                            <x:Label ID="Label1013" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1014" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label20" runat="server" Text="Cirst. Deur Amorfos" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlCRISTALES_DEUR_AMORFOS" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label21" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label22" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label23" runat="server" Text="Cirst. Fosf. Amorfos" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlCRISTALES_FOSF_AMORFOS" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label24" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1005" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow59" ColumnWidths="110px" runat="server" Hidden="false" >
                                                         <Items>
-                                                            <x:Label ID="Label1015" runat="server" Text="Cetonas" ShowLabel="false"></x:Label>
-                                                            <x:DropDownList ID="ddlC_CETONICOS_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                            <x:Label ID="Label1016" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1017" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label27" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1006" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow64" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
                                                         <Items>
-                                                            <x:Label ID="Label1018" runat="server" Text="Glucosa" ShowLabel="false"></x:Label>
-                                                            <x:DropDownList ID="ddlGLUCOSA_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                            <x:Label ID="Label1019" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1020" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label28" runat="server" Text="Cirst. Fosf. Triples" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlCRISTALES_FOSF_TRIPLES" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label30" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label31" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label32" runat="server" Text="Células Epiteliales" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtCELULAS_EPITELIALES_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label33" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1007" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow66" ColumnWidths="110px" runat="server" Hidden="false" >
                                                         <Items>
-                                                            <x:Label ID="Label1021" runat="server" Text="Pigmentos Biliares" ShowLabel="false"></x:Label>
-                                                            <x:DropDownList ID="ddlPIGMENTOS_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                            <x:Label ID="Label1022" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1023" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label34" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1008" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow73" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
                                                         <Items>
-                                                            <x:Label ID="Label1024" runat="server" Text="Ácido Ascórbico" ShowLabel="false"></x:Label>
-                                                            <x:DropDownList ID="ddlACIDO_ASCORBIC_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
-                                                            <x:Label ID="Label1025" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1026" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label35" runat="server" Text="Cilindros Hialinos" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtCILINDROS_HILAINOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label37" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label38" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label39" runat="server" Text="Cilindros Granulosos" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtCILINDROS_GRANULOSOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label40" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                    <x:FormRow ID="FormRow1009" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server"  Hidden="false">
+                                                    <x:FormRow ID="FormRow78" ColumnWidths="110px" runat="server" Hidden="false" >
                                                         <Items>
-                                                            <x:Label ID="Label1027" runat="server" Text="Leucocitos" ShowLabel="false"></x:Label>
-                                                            <x:TextBox ID="txtLEUCOCITOS_EX_ORINA_QUIMICO"  Label="" ShowLabel="false" CssClass="mright"  runat="server"   Width="140"></x:TextBox>
-                                                            <x:Label ID="Label1028" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:Label ID="Label1029" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                            <x:Label ID="label47" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
                                                         </Items>
                                                     </x:FormRow>
-                                                </Rows>
-
-                                        </x:Form>
-                                    </Items>
+                                                    <x:FormRow ID="FormRow80" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label48" runat="server" Text="Cilindros Leucocitarios" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtCILINDROS_LEUCOCITARIOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label245" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label458" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label459" runat="server" Text="Cilindros Hematicos" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtCILINDROS_HEMATICOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label460" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow82" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label461" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow85" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label462" runat="server" Text="Picocitos" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtPIOCITOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label463" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label464" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label465" runat="server" Text="Filamento Mucoide" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlFILAMENTO_MUCOIDE_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label466" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow87" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label467" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow89" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label468" runat="server" Text="Levaduras" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlLEVADURAS" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label469" runat="server" Text="xCampo" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label470" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label471" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label472" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label473" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                   </Rows>
+                                            </x:Form>                
+                                        </Items>
+                                    </x:GroupPanel>
+                                    <x:GroupPanel runat="server" Title="EXAMEN QUÍMICO" ID="GroupPanel25" BoxFlex="1" Height="180" Width="960" >                
+                                        <Items>
+                                             <x:Form ID="Form45" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                                <Rows>
+                                                    <x:FormRow ID="FormRow47" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label429" runat="server" Text="Sangre" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlSANGRE_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList> 
+                                                             <x:Label ID="label430" runat="server" Text= "" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label431" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label432" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlUROBILINOGENO_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList> 
+                                                             <x:Label ID="label433" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow49" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label434" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow51" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label435" runat="server" Text="Bilirrubina" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtBILIRRUBINA_EX_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                             <x:Label ID="label436" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label437" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label438" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlPROTEINAS_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label439" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow53" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label440" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow55" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label441" runat="server" Text="Nitritos" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlNITRITOS_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList> 
+                                                             <x:Label ID="label442" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label443" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label444" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlC_CETONICOS_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label445" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow57" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label446" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow62" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label447" runat="server" Text="Glucosa" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlGLUCOSA_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label448" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label449" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label450" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlPIGMENTOS_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label451" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow68" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label452" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow71" ColumnWidths="160px 145px 60px 180px 160px 145px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label453" runat="server" Text="Ácido Ascórbico" ShowLabel="false"></x:Label>
+                                                             <x:DropDownList ID="ddlACIDO_ASCORBIC_EX_ORINA" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                             <x:Label ID="label454" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label455" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label456" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtLEUCOCITOS_EX_ORINA_QUIMICO"  Label="" ShowLabel="false" CssClass="mright"  runat="server"   Width="140"></x:TextBox>
+                                                             <x:Label ID="label457" runat="server" Text=" " ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                   </Rows>
+                                            </x:Form>                
+                                        </Items>
                                     </x:GroupPanel>
                                     <x:GroupPanel ID="GroupPanelResultado" runat="server" Title="RESULTADO" BoxFlex="1" Height="50" Width="960">
                                         <Items>
@@ -643,7 +620,7 @@
                                 </Items>
                                 </x:Panel>
                                 
-                                <x:Panel ID="PanelHemograma" Title="HEMOGRAMA AUTOMATIZADO" EnableBackgroundColor="true" Height="530px" runat="server"
+                                <%--<x:Panel ID="PanelHemograma" Title="HEMOGRAMA AUTOMATIZADO" EnableBackgroundColor="true" Height="530px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table" Visible ="true">
                                 <Items>
                                     <x:GroupPanel runat="server" Title="HEMOGRAMA" ID="GroupPanel57" BoxFlex="1" Height="250" Width="960" >                
@@ -879,7 +856,7 @@
                                     </Items>
                                     </x:GroupPanel>
                                 </Items>
-                                </x:Panel>
+                                </x:Panel>--%>
 
                                 <x:Panel ID="ParasitoSeriado" Title="PARASITOLÓGICO SERIADO" EnableBackgroundColor="true" Height="530px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table" Visible ="true">
@@ -1221,19 +1198,28 @@
                                            <x:FormRow ID="FormRow546" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                   <x:Label ID="label744" runat="server" Text="TIFICO 'O'" ShowLabel="false"></x:Label>
-                                                  <x:TextBox  ID="txtTIFICO_O" runat="server"  ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>                                                     
+                                                  <x:TextBox  ID="txtTIFICO_O" runat="server"  ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                    <x:Label ID="label370" runat="server" Text=" " ShowLabel="false"></x:Label>    
+                                                    <x:Label ID="label371" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                    <x:Label ID="label384" runat="server" Text=" " ShowLabel="false"></x:Label>                                                        
                                                 </Items>
                                             </x:FormRow>                                
                                             <x:FormRow ID="FormRow547" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                      <x:Label ID="label749" Width="200px" runat="server" Text="TIFICO 'H'" ShowLabel="false"></x:Label>
                                                      <x:TextBox ID="txtTIFICO_H" runat="server"  ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                    <x:Label ID="label372" runat="server" Text=" " ShowLabel="false"></x:Label>    
+                                                    <x:Label ID="label373" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                    <x:Label ID="label383" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>                                       
                                             <x:FormRow ID="FormRow548" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                      <x:Label ID="label754" runat="server" Text="PARATIFICO 'A'" ShowLabel="false"></x:Label>
                                                      <x:TextBox ID="txtPARATIFICO_A" runat="server"  ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                    <x:Label ID="label374" runat="server" Text=" " ShowLabel="false"></x:Label>    
+                                                    <x:Label ID="label375" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                    <x:Label ID="label382" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
                                    
@@ -1241,19 +1227,553 @@
                                                 <Items>
                                                     <x:Label ID="label759" runat="server" Text="PARATIFICO 'B'" ShowLabel="false"></x:Label>
                                                     <x:TextBox ID="txtPARATIFICO_B" runat="server"  ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                 </Items>
+                                                    <x:Label ID="label376" runat="server" Text=" " ShowLabel="false"></x:Label>    
+                                                    <x:Label ID="label377" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                    <x:Label ID="label381" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                </Items>
                                             </x:FormRow>
 
                                              <x:FormRow ID="FormRow550" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                 <Items>
                                                     <x:Label ID="label764" runat="server" Text="BRUCELLA" ShowLabel="false"></x:Label>
                                                     <x:TextBox ID="txtBRUCELLA" runat="server"  ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>                                               
+                                                    <x:Label ID="label378" runat="server" Text=" " ShowLabel="false"></x:Label>    
+                                                    <x:Label ID="label379" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                    <x:Label ID="label380" runat="server" Text=" " ShowLabel="false"></x:Label>
                                                 </Items>
                                             </x:FormRow>
                                             </Rows>
                                         </x:Form>
                                     </Items>
                                  </x:Panel>
+                                 <x:Panel ID="PanelHemograma" Title="HEMOGRAMA COMPLETO" EnableBackgroundColor="true" Height="580px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table" Visible ="true">
+                                <Items>
+                                    <x:GroupPanel runat="server" Title="HEMOGRAMA" ID="GroupPanel59" BoxFlex="1" Height="180" Width="960" >                
+                                        <Items>
+                                             <x:Form ID="Form148" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                                <Rows>
+                                                    <x:FormRow ID="FormRow565" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label860" runat="server" Text="Hemoglobina" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHEMOGLOBINA_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label861" runat="server" Text="gr/dl" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label864" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label862" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHEMOGLOBINA_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label863" runat="server" Text="gr/dl" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow10" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label127" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow567" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label865" runat="server" Text="Hematocrito" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHEMATOCRITO_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label866" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label869" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label867" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHEMATOCRITO_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label868" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow11" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label138" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow570" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label870" runat="server" Text="Hematíes" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHEMATIES_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label871" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label874" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label872" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHEMATIES_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label873" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow12" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label144" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow571" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label875" runat="server" Text="Leucocitos" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtLEUCOCITOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label876" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label879" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label877" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtLEUCOCITOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label878" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow13" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label150" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow572" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label880" runat="server" Text="Recuento de Plaquetas" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtRECUENTO_DE_PLAQUETAS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label881" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label884" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label882" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtPLAQUETAS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label883" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                   </Rows>
+                                            </x:Form>
+                 
+                                        </Items>
+                                    </x:GroupPanel>
+                                    <x:GroupPanel runat="server" Title="FÓRMULA LEUCOCITARIA" ID="GroupPanel60" BoxFlex="1" Height="210" Width="960" >                
+                                    <Items>
+                                    <x:Form ID="Form151" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow576" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label905" runat="server" Text="Abastonados" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtABASTONADO_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label906" runat="server" Text="um3" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label909" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                     <x:Label ID="label907" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtABASTONADOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label908" runat="server" Text="um3" ShowLabel="false" CssClass="red"></x:Label>
+                                                </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow14" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                <Items>
+                                                    <x:Label ID="label156" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                </Items>
+                                            </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                              
+                                    <x:Form ID="Form152" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow577" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label910" runat="server" Text="Segmentados" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtSEGMENTADOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label911" runat="server" Text="pg" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label914" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                     <x:Label ID="label912" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtSEGMENTADOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label913" runat="server" Text="pg" ShowLabel="false" CssClass="red"></x:Label>
+                                                      
+                                                    </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow15" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label162" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                 
+                                    <x:Form ID="Form153" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow578" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label915" runat="server" Text="Eosinòfilos" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtEOSINOFILOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label916" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label924" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                     <x:Label ID="label917" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtEOSINOFILOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label918" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                      
+                                                    </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow16" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label174" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                        <x:Form ID="Form154" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow579" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label925" runat="server" Text="Basófilos" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtBASOFILOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label926" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label929" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                     <x:Label ID="label927" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtBASOFILOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label928" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     
+                                                    </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow17" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label180" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                        <x:Form ID="Form155" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow581" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label930" runat="server" Text="Monocitos" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtMONOCITOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label931" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label934" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                     <x:Label ID="label932" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtMONOCITOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label933" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     
+                                                    </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow18" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label186" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                        <x:Form ID="Form156" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow582" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label935" runat="server" Text="Linfocitos" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtLINFOCITOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label936" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label939" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                     <x:Label ID="label937" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtLINFOCITOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label938" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     
+                                                    </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow21" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label192" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                        <x:Form ID="Form41" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow29" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label385" runat="server" Text="Neutrófilos Segmentados" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtNEUTROFILOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label386" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label387" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                     <x:Label ID="label388" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtNEUTROFILOS_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label389" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     
+                                                    </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow31" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label390" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                        <x:Form ID="Form42" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow32" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label391" runat="server" Text="Mielocitos" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtMIELOCITOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label392" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label393" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                     <x:Label ID="label394" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtMIELOCITOS_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label395" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     
+                                                    </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow34" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label396" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                        <x:Form ID="Form43" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                        <Rows>
+                                           <x:FormRow ID="FormRow35" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                <Items>
+                                                     <x:Label ID="label397" runat="server" Text="Juveniles" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtJUVENILES" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label398" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     <x:Label ID="label399" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                     <x:Label ID="label400" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                     <x:TextBox ID="txtJUVENILES_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                     <x:Label ID="label401" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                     
+                                                    </Items>
+                                            </x:FormRow>
+                                            <x:FormRow ID="FormRow36" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label402" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                            </Rows>
+                                        </x:Form>
+                                    </Items>
+                                    </x:GroupPanel>
+                                    <x:GroupPanel runat="server" Title="VOLUMEN CORPUSCULAR" ID="GroupPanel24" BoxFlex="1" Height="115" Width="960" >                
+                                        <Items>
+                                             <x:Form ID="Form44" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
+                                                <Rows>
+                                                    <x:FormRow ID="FormRow37" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label403" runat="server" Text="Vol. Corpuscular" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtVOL_CORPUSCULAR" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label404" runat="server" Text="gr/dl" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label405" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label406" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtVOL_CORPUSCULAR_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label407" runat="server" Text="gr/dl" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow38" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label408" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow41" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label409" runat="server" Text="Hb. Corpuscular Medio" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHB_CORPPUSCULAR_MEDIO" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label410" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label411" runat="server" Text=" " ShowLabel="false"></x:Label> 
+                                                             <x:Label ID="label412" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtHB_CORPPUSCULAR_MEDIO_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label413" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow43" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label414" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow45" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                        <Items>
+                                                             <x:Label ID="label415" runat="server" Text="CC HB Corpuscular" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtCC_CORPUSCULAR" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label425" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
+                                                             <x:Label ID="label426" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                             <x:Label ID="label427" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
+                                                             <x:TextBox ID="txtCC_CORPUSCULAR_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                             <x:Label ID="label428" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                   </Rows>
+                                            </x:Form>                
+                                        </Items>
+                                    </x:GroupPanel>
+                                </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelCadmio" Title="CADMIO (METALES)" EnableBackgroundColor="true" Height="77px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="METALES PESADOS CADMIO" ID="GrupoPanelCadmio" runat="server" BoxFlex="1" Height="52" Width="960" >
+                                            <Items>
+                                                <x:Form ID="formCadmio" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRowCadmio" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="labelCadmio" runat="server" Text="CADMIO" ShowLabel="false"></x:Label>
+                                                                <x:TextBox ID="txtCadmio" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                                <x:Label ID="label289" runat="server" Text="ug/dl" ShowLabel="false"></x:Label>
+                                                                <x:Label ID="label44" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                                <x:Label ID="label46" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                                <x:Label ID="labelCadmioDeseable" runat="server" Text="CADMIO DESEABLE" ShowLabel="false"></x:Label>
+                                                                <x:TextBox ID="txtCadmioDeseable" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                                <x:Label ID="label290" runat="server" Text="ug/dl" ShowLabel="false"></x:Label>
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelCadmiOOrina" Title="CADMIO EN ORINA" EnableBackgroundColor="true" Height="77px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="CADMIO" ID="GroupPanel23" runat="server" BoxFlex="1" Height="52" Width="960" >
+                                            <Items>
+                                                <x:Form ID="form40" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow27" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label364" runat="server" Text="CADMIO" ShowLabel="false"></x:Label>
+                                                                <x:TextBox ID="txtCADMIO_ORINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                                <x:Label ID="label365" runat="server" Text="ug/dl" ShowLabel="false"></x:Label>
+                                                                <x:Label ID="label366" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                                <x:Label ID="label367" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                                <x:Label ID="label368" runat="server" Text="CADMIO DESEABLE" ShowLabel="false"></x:Label>
+                                                                <x:TextBox ID="txtCADMIO_ORINA_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
+                                                                <x:Label ID="label369" runat="server" Text="ug/dl" ShowLabel="false"></x:Label>
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelReaccionesSerologicas" Title="REACCIONES SEROLÓGICAS (LUE-VDRL)" EnableBackgroundColor="true" Height="77px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="INMUNOLOGÍA" ID="GroupPanel13" runat="server" BoxFlex="1" Height="52" Width="960" >
+                                            <Items>
+                                                <x:Form ID="form22" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow1" ColumnWidths="160px 145px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label3" runat="server" Text="LUES - VDRL" ShowLabel="false"></x:Label>
+                                                                <x:DropDownList ID="ddlREACCIONES_SEROLOGICAS" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelFactorRematoideo" Title="FACTOR REMATOIDEO (FR)" EnableBackgroundColor="true" Height="77px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="INMUNOLOGÍA" ID="GroupPanel14" runat="server" BoxFlex="1" Height="52" Width="960" >
+                                            <Items>
+                                                <x:Form ID="form23" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow2" ColumnWidths="160px 145px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label45" runat="server" Text="F. REMATOIDEO" ShowLabel="false"></x:Label>
+                                                                <x:DropDownList ID="ddlFACTOR_REMATOIDEO" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelCultivoHeces" Title="CULTIVO DE HECES PARA SALMONELLA TYPHI" EnableBackgroundColor="true" Height="77px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="MICROBIOLOGÍA-COPROCULTIVO" ID="GroupPanel15" runat="server" BoxFlex="1" Height="52" Width="960" >
+                                            <Items>
+                                                <x:Form ID="form27" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow4" ColumnWidths="160px 145px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label239" runat="server" Text="SALMONELLA TYPHI" ShowLabel="false"></x:Label>
+                                                                <x:DropDownList ID="ddlSALMONELA_TYPHI" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelExamenSereadoHeces" Title="EXAMEN SEREADO EN HECES" EnableBackgroundColor="true" Height="77px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="MICROBIOLOGÍA-COPROCULTIVO" ID="GroupPanel19" runat="server" BoxFlex="1" Height="52" Width="960" >
+                                            <Items>
+                                                <x:Form ID="form36" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow6" ColumnWidths="160px 145px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label283" runat="server" Text="EXAMEN SEREADO EN HECES" ShowLabel="false"></x:Label>
+                                                                <x:TextBox ID="txtEXAM_SEREADO_HECES" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelDatoCieloAzul" Title="ADICIONALES - DATOS CIELO AZUL" EnableBackgroundColor="true" Height="110px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="I. DATOS GENERALES" ID="GroupPanel20" runat="server" BoxFlex="1" Height="85" Width="960" >
+                                            <Items>
+                                                <x:Form ID="form37" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow7" ColumnWidths="160px 145px 180px 115px 145px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label293" runat="server" Text="IDENTIFICACIÓN" ShowLabel="false"></x:Label>
+                                                                <x:TextBox ID="txtIDENTIFICACION" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                                <x:Label ID="label313" runat="server" Text=" " ShowLabel="false"></x:Label>
+                                                                <x:Label ID="label312" runat="server" Text="FECHA DE EMISION:" ShowLabel="false"></x:Label>
+                                                                <x:DatePicker ID="dpFECH_EMISION" Label="" runat="server" Width="140px" DateFormatString="dd/MM/yyyy"/>
+                                                                                       
+                                                            </Items>
+                                                        </x:FormRow>
+                                                        <x:FormRow ID="FormRow8" ColumnWidths="160px 145px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label316" runat="server" Text="MEDICO" ShowLabel="false"></x:Label>
+                                                                <x:TextBox ID="txtMEDICO" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="140"></x:TextBox>
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelCoprocultCieloAzul" Title="COPROCULTIVO - CIELO AZUL" EnableBackgroundColor="true" Height="110px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="I.COPROCULTIVO" ID="GroupPanel21" runat="server" BoxFlex="1" Height="85" Width="960" >
+                                            <Items>
+                                                <x:Form ID="form38" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow9" ColumnWidths="160px 425px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label314" runat="server" Width="140" BoxMargin="0" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>
+                                                                <x:TextArea ID="txtDESCRIPCION" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="420" Height="60"></x:TextArea>
+                                                                
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
+                                <x:Panel ID="PanelDosajeAlcohol" Title="DOSAJE DE ALCOHOL" EnableBackgroundColor="true" Height="77px" runat="server"
+                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
+                                    <Items>
+                                        <x:GroupPanel Title="DOSAJE DE ALCOHOL" ID="GroupPanel22" runat="server" BoxFlex="1" Height="52" Width="960" >
+                                            <Items>
+                                                <x:Form ID="form39" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow25" ColumnWidths="160px 145px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label357" runat="server" Text="DOSAJE DE ALCOHOL" ShowLabel="false"></x:Label>
+                                                                <x:DropDownList ID="ddlDOSAJE_ALCOHOL" runat="server"   Width="140px" ShowLabel="false"></x:DropDownList>
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                    </Items>
+                                </x:Panel>
                                 <x:Panel ID="PanelToxiCocaMari" Title="TOXICOLÓGICO COCAÍNA-MARIHUANA" EnableBackgroundColor="true" Height="240px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table" Visible ="true">
                                 <Items>
@@ -1613,66 +2133,36 @@
 
 
                                  <x:Panel ID="PanelHemoglobinaHematocrito" Title="HEMOGLOBINA Y HEMATOCRITO" EnableBackgroundColor="true" Height="70px" runat="server"
-
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
-
                                 <Items>
-
                                     <x:Form ID="Form269" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                         <Rows>
-
                                            <x:FormRow ID="FrmHemoglobina" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-
                                                 <Items>
-
                                                      <x:Label ID="label1381" runat="server" Text="Hemoglobina " ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtHEMOGLOBINA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label1382" runat="server" Text="gr/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     <x:Label ID="label1385" runat="server" Text=" " ShowLabel="false"></x:Label>  
-
                                                     <x:Label ID="label1383" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtHEMOGLOBINA_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label1384" runat="server" Text="gr/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     </Items>
-
-                                            </x:FormRow>
-                                      
+                                            </x:FormRow>                                    
                                              <x:FormRow ID="FrmHematocrito" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" >
-
                                                 <Items>
-
                                                      <x:Label ID="label1386" runat="server" Text="Hematocrito " ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtHEMATOCRITO" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label1387" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     <x:Label ID="label1390" runat="server" Text=" " ShowLabel="false"></x:Label>  
-
                                                     <x:Label ID="label1388" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtHEMATOCRITO_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label1389" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     </Items>
-
                                             </x:FormRow>
-
                                             </Rows>
-
                                         </x:Form>
-
                                     </Items>
-
                                  </x:Panel>
-
                                 <x:Panel ID="PanelVdrl" Title="VDRL" EnableBackgroundColor="true" Height="40px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
                                 <Items>
@@ -1736,270 +2226,128 @@
                               <x:Panel ID="PanelAcidourico" Title="ÁCIDO ÚRICO" EnableBackgroundColor="true" Height="40px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
                                 <Items>
-
                                     <x:Form ID="Form135" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-
                                         <Rows>
-
                                            <x:FormRow ID="FormRow545" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-
                                                 <Items>
-
                                                      <x:Label ID="label739" runat="server" Text="Acido Urico" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtACIDO_URICO" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label740" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     <x:Label ID="label743" runat="server" Text=" " ShowLabel="false"></x:Label>  
-
                                                     <x:Label ID="label741" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtACIDO_URICO_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label742" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     </Items>
-
                                             </x:FormRow>
-
                                             </Rows>
-
                                         </x:Form>
-
                                     </Items>
-
                                  </x:Panel>
-
                               <x:Panel ID="PanelAntigenoprostatico" Title="ANTÍGENO PROSTÁTICO" EnableBackgroundColor="true" Height="40px" runat="server"
-
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
-
                                 <Items>
-
                                     <x:Form ID="Form137" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-
                                         <Rows>
-
                                            <x:FormRow ID="FormRow556" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-
                                                 <Items>
-
                                                      <x:Label ID="label774" runat="server" Text="Antígeno Prostático" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtANTIGENO_PROSTATICO" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label775" runat="server" Text="ng/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     <x:Label ID="label778" runat="server" Text=" " ShowLabel="false"></x:Label>  
-
                                                     <x:Label ID="label776" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtPAS_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label777" runat="server" Text="ng/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     </Items>
-
                                             </x:FormRow>
-
                                             </Rows>
-
                                         </x:Form>
-
                                     </Items>
-
                                  </x:Panel>
-
                               <x:Panel ID="PanelColesteroltotal" Title="COLESTEROL TOTAL" EnableBackgroundColor="true" Height="40px" runat="server"
-
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
-
                                 <Items>
-
                                     <x:Form ID="Form138" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-
                                         <Rows>
-
                                            <x:FormRow ID="FormRow557" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-
                                                 <Items>
-
                                                      <x:Label ID="label779" runat="server" Text="Colesterol Total " ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtCOLESTEROL_TOTAL" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label780" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     <x:Label ID="label783" runat="server" Text=" " ShowLabel="false"></x:Label>  
-
                                                     <x:Label ID="label781" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtCOLESTEROL_TOTAL_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label782" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     </Items>
-
                                             </x:FormRow>
-
                                             </Rows>
-
                                         </x:Form>
-
                                     </Items>
-
                                  </x:Panel>
-
                               <x:Panel ID="PanelTrigliceridos" Title="TRIGLCÉRIDOS" EnableBackgroundColor="true" Height="40px" runat="server"
-
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
-
                                 <Items>
-
                                     <x:Form ID="Form147" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-
                                         <Rows>
-
                                            <x:FormRow ID="FormRow566" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-
                                                 <Items>
-
                                                      <x:Label ID="label824" runat="server" Text="Triglicéridos" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtTRIGLICERIDOS" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label825" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     <x:Label ID="label828" runat="server" Text=" " ShowLabel="false"></x:Label>  
-
                                                     <x:Label ID="label826" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtTRIGLICERIDOS_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label827" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     </Items>
-
                                             </x:FormRow>
-
                                             </Rows>
-
                                         </x:Form>
-
                                     </Items>
-
                                  </x:Panel>
-
-                              <x:Panel ID="PanelGlucosa" Title="GLUCOSA EN AYUNAS" EnableBackgroundColor="true" Height="70px" runat="server"
-
+                              <x:Panel ID="PanelGlucosa" Title="GLUCOSA EN AYUNAS" EnableBackgroundColor="true" Height="40px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
-
                                 <Items>
-
                                     <x:Form ID="Form140" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-
                                         <Rows>
-
                                            <x:FormRow ID="FormRow559" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-
                                                 <Items>
-
                                                      <x:Label ID="label789" runat="server" Text="Glucosa" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtGLUCOSA" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label790" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     <x:Label ID="label793" runat="server" Text=" " ShowLabel="false"></x:Label>  
-
                                                     <x:Label ID="label791" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtGLUCOSA_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label792" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     </Items>
-
                                             </x:FormRow>
-                                                 <x:FormRow ID="FormRow40" ColumnWidths="110px" runat="server" Hidden="false" >
-
+                                                <x:FormRow ID="FormRow40" ColumnWidths="110px" runat="server" Hidden="false" >
                                                         <Items>
-
                                                             <x:Label ID="label78" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-
                                                         </Items>
-
                                                     </x:FormRow>
-                                          <x:FormRow ID="FormRow41" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-
-                                                <Items>
-                                                    <x:Label ID="label84" runat="server" Text="Glucosa PostPandrial"  ShowLabel="false"></x:Label>
-
-                                                    <x:TextBox ID="GLUCOSA_POSTPANDRIAL" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
-                                                    <x:Label ID="label90" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
-                                                    <x:Label ID="label96" runat="server" Text=" " ShowLabel="false"></x:Label>
-
-                                                    <x:Label ID="label102" runat="server" Text="Valor Deseable"  ShowLabel="false"></x:Label>
-
-                                                    <x:TextBox ID="POSTPANDRIAL_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
-                                                    <x:Label ID="label109" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-                                                    </Items>
-
-                                            </x:FormRow>
-
-
                                             </Rows>
-
                                         </x:Form>
-
                                     </Items>
-
                                  </x:Panel>
-
                               <x:Panel ID="PanelCreatinina" Title="CREATININA EN SUERO" EnableBackgroundColor="true" Height="40px" runat="server"
-
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
-
                                 <Items>
-
                                     <x:Form ID="Form139" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-
                                         <Rows>
-
                                            <x:FormRow ID="FormRow558" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-
                                                 <Items>
-
                                                      <x:Label ID="label784" runat="server" Text="Creatinina" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtCREATININA_EN_SUERO" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label785" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     <x:Label ID="label788" runat="server" Text=" " ShowLabel="false"></x:Label>  
-
                                                     <x:Label ID="label786" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-
                                                      <x:TextBox ID="txtCREATININA_DESEABLE" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                      <x:Label ID="label787" runat="server" Text="mg/dL" ShowLabel="false" CssClass="red"></x:Label>
-
                                                     </Items>
-
                                             </x:FormRow>
-
                                             </Rows>
-
                                         </x:Form>
-
                                     </Items>
-
                                  </x:Panel>
-
                               <x:Panel ID="PanelUrea" Title="ÙREA" EnableBackgroundColor="true" Height="40px" runat="server"
 
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
@@ -2684,248 +3032,7 @@
                                     </Items>
                                 </x:Panel>
 
-                                  <x:Panel ID="PanelHemogramaCompleto" Title="HEMOGRAMA COMPLETO" EnableBackgroundColor="true" Height="450px" runat="server"
-                                BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table" Visible ="true">
-                                <Items>
-                                    <x:GroupPanel runat="server" Title="HEMOGRAMA" ID="GroupPanel59" BoxFlex="1" Height="150" Width="960" >                
-                                        <Items>
-                                             <x:Form ID="Form148" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-                                                <Rows>
-                                                    <x:FormRow ID="FormRow565" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                        <Items>
-                                                             <x:Label ID="label860" runat="server" Text="Hemoglobina" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtHEMOGLOBINA_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label861" runat="server" Text="gr/dl" ShowLabel="false" CssClass="red"></x:Label>
-                                                             <x:Label ID="label864" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                             <x:Label ID="label862" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtHEMOGLOBINA_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label863" runat="server" Text="gr/dl" ShowLabel="false" CssClass="red"></x:Label>
-                                                             
-                                                            </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow10" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label127" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow567" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                        <Items>
-                                                             <x:Label ID="label865" runat="server" Text="Hematocrito" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtHEMATOCRITO_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label866" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                             <x:Label ID="label869" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                             <x:Label ID="label867" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtHEMATOCRITO_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label868" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                             
-                                                            </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow11" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label138" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow570" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                        <Items>
-                                                             <x:Label ID="label870" runat="server" Text="Hematíes" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtHEMATIES_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label871" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
-                                                             <x:Label ID="label874" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                             <x:Label ID="label872" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtHEMATIES_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label873" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
-                                                              
-                                                            </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow12" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label144" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow571" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                        <Items>
-                                                             <x:Label ID="label875" runat="server" Text="Leucocitos" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtLEUCOCITOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label876" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
-                                                             <x:Label ID="label879" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                             <x:Label ID="label877" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtLEUCOCITOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label878" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
-                                                              
-                                                            </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow13" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label150" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                                    <x:FormRow ID="FormRow572" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                        <Items>
-                                                             <x:Label ID="label880" runat="server" Text="Recuento de Plaquetas" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtRECUENTO_DE_PLAQUETAS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label881" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
-                                                             <x:Label ID="label884" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                             <x:Label ID="label882" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                             <x:TextBox ID="txtPLAQUETAS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                             <x:Label ID="label883" runat="server" Text="mm3" ShowLabel="false" CssClass="red"></x:Label>
-                                                             
-                                                            </Items>
-                                                    </x:FormRow>
-                                                   </Rows>
-                                            </x:Form>
-                 
-                                        </Items>
-                                    </x:GroupPanel>
-                                    <x:GroupPanel runat="server" Title="FÓRMULA LEUCOCITARIA" ID="GroupPanel60" BoxFlex="1" Height="240" Width="960" >                
-                                    <Items>
-                                    <x:Form ID="Form151" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-                                        <Rows>
-                                           <x:FormRow ID="FormRow576" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                <Items>
-                                                     <x:Label ID="label905" runat="server" Text="Abastonados" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtABASTONADO_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label906" runat="server" Text="um3" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label909" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                     <x:Label ID="label907" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtABASTONADOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label908" runat="server" Text="um3" ShowLabel="false" CssClass="red"></x:Label>
-                                                      
-                                                    </Items>
-                                            </x:FormRow>
-                                            <x:FormRow ID="FormRow14" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label156" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                              
-                                    <x:Form ID="Form152" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-                                        <Rows>
-                                           <x:FormRow ID="FormRow577" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                <Items>
-                                                     <x:Label ID="label910" runat="server" Text="Segmentados" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtSEGMENTADOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label911" runat="server" Text="pg" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label914" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                     <x:Label ID="label912" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtSEGMENTADOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label913" runat="server" Text="pg" ShowLabel="false" CssClass="red"></x:Label>
-                                                      
-                                                    </Items>
-                                            </x:FormRow>
-                                            <x:FormRow ID="FormRow15" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label162" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
                                  
-                                    <x:Form ID="Form153" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-                                        <Rows>
-                                           <x:FormRow ID="FormRow578" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                <Items>
-                                                     <x:Label ID="label915" runat="server" Text="Eosinòfilos" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtEOSINOFILOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label916" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label924" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                     <x:Label ID="label917" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtEOSINOFILOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label918" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                      
-                                                    </Items>
-                                            </x:FormRow>
-                                            <x:FormRow ID="FormRow16" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label174" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                                        <x:Form ID="Form154" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-                                        <Rows>
-                                           <x:FormRow ID="FormRow579" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                <Items>
-                                                     <x:Label ID="label925" runat="server" Text="Basófilos" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtBASOFILOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label926" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label929" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                     <x:Label ID="label927" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtBASOFILOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label928" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                     
-                                                    </Items>
-                                            </x:FormRow>
-                                            <x:FormRow ID="FormRow17" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label180" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                                        <x:Form ID="Form155" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-                                        <Rows>
-                                           <x:FormRow ID="FormRow581" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                <Items>
-                                                     <x:Label ID="label930" runat="server" Text="Monocitos" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtMONOCITOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label931" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label934" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                     <x:Label ID="label932" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtMONOCITOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label933" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                     
-                                                    </Items>
-                                            </x:FormRow>
-                                            <x:FormRow ID="FormRow18" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label186" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                                        <x:Form ID="Form156" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-                                        <Rows>
-                                           <x:FormRow ID="FormRow582" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
-                                                <Items>
-                                                     <x:Label ID="label935" runat="server" Text="Linfocitos" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtLINFOCITOS_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label936" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label939" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                     <x:Label ID="label937" runat="server" Text="Valor Deseable" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtLINFOCITOS_DESEABLE_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-                                                     <x:Label ID="label938" runat="server" Text="%" ShowLabel="false" CssClass="red"></x:Label>
-                                                     
-                                                    </Items>
-                                            </x:FormRow>
-                                            <x:FormRow ID="FormRow21" ColumnWidths="110px" runat="server" Hidden="false" >
-                                                        <Items>
-                                                            <x:Label ID="label192" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
-                                                        </Items>
-                                                    </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                                        <x:Form ID="Form157" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
-                                        <Rows>
-                                           <x:FormRow ID="FormRow583" ColumnWidths="160px 420px 0px 0px 160px 110px 60px" runat="server" >
-                                                <Items>
-                                                     <x:Label ID="label940" runat="server" Text="Conclusiones" ShowLabel="false"></x:Label>
-                                                     <x:TextBox ID="txtCONCLUCIONES_HEM_COM" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="410"></x:TextBox>
-                                                     <x:Label ID="label941" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                     <x:Label ID="label944" runat="server" Text=" " ShowLabel="false"></x:Label> 
-                                                     <x:Label ID="label942" runat="server" Text="" ShowLabel="false"></x:Label>
-                                                     <x:Label ID="label885" runat="server" Text="" ShowLabel="false"></x:Label>
-                                                     <x:Label ID="label943" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                     
-                                                    </Items>
-                                            </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                                    </Items>
-                                    </x:GroupPanel>
-                                </Items>
-                                </x:Panel>
 
                                 
                                  <x:Panel ID="PanelInformeLaboratorio" Title="INFORME DE LABORATORIO" EnableBackgroundColor="true" Height="70px" runat="server"
