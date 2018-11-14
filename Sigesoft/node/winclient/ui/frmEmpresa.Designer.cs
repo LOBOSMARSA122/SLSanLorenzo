@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpresa));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_OrganizationId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn45 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Name");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn45 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Name", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn46 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_IdentificationNumber");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn47 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_OrganizationTypeIdName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn47 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_OrganizationTypeIdName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn53 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_SectorName");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn54 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_SectorCodigo");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn49 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_CreationUser");
@@ -56,7 +57,6 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEmpresa));
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_LocationId");
@@ -416,7 +416,7 @@
             // 
             // mnuGridNuevo
             // 
-            this.mnuGridNuevo.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.mnuGridNuevo.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridNuevo.Image")));
             this.mnuGridNuevo.Name = "mnuGridNuevo";
             this.mnuGridNuevo.Size = new System.Drawing.Size(125, 22);
             this.mnuGridNuevo.Text = "Nuevo";
@@ -424,7 +424,7 @@
             // 
             // mnuGridModificar
             // 
-            this.mnuGridModificar.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridModificar.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridModificar.Image")));
             this.mnuGridModificar.Name = "mnuGridModificar";
             this.mnuGridModificar.Size = new System.Drawing.Size(125, 22);
             this.mnuGridModificar.Text = "Modificar";
@@ -955,7 +955,7 @@
             // 
             // btnClear
             // 
-            this.btnClear.Image = global::Sigesoft.Node.WinClient.UI.Resources.delete;
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
             this.btnClear.Location = new System.Drawing.Point(238, 169);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(27, 26);
@@ -1359,7 +1359,7 @@
             // 
             // mnuGridLocationEdit
             // 
-            this.mnuGridLocationEdit.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridLocationEdit.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridLocationEdit.Image")));
             this.mnuGridLocationEdit.Name = "mnuGridLocationEdit";
             this.mnuGridLocationEdit.Size = new System.Drawing.Size(125, 22);
             this.mnuGridLocationEdit.Text = "Modificar";
@@ -1386,7 +1386,7 @@
             this.btnEditarSede.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditarSede.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarSede.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarSede.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditarSede.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarSede.Image")));
             this.btnEditarSede.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditarSede.Location = new System.Drawing.Point(502, 11);
             this.btnEditarSede.Margin = new System.Windows.Forms.Padding(2);
@@ -1411,7 +1411,7 @@
             // btnInsertLocation
             // 
             this.btnInsertLocation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertLocation.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnInsertLocation.Image = ((System.Drawing.Image)(resources.GetObject("btnInsertLocation.Image")));
             this.btnInsertLocation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInsertLocation.Location = new System.Drawing.Point(326, 11);
             this.btnInsertLocation.Margin = new System.Windows.Forms.Padding(2);
@@ -1568,7 +1568,7 @@
             // 
             // mnuGridGroupOccupationEdit
             // 
-            this.mnuGridGroupOccupationEdit.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridGroupOccupationEdit.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridGroupOccupationEdit.Image")));
             this.mnuGridGroupOccupationEdit.Name = "mnuGridGroupOccupationEdit";
             this.mnuGridGroupOccupationEdit.Size = new System.Drawing.Size(125, 22);
             this.mnuGridGroupOccupationEdit.Text = "Modificar";
@@ -1668,7 +1668,7 @@
             this.btnEditarGESO.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditarGESO.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarGESO.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarGESO.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditarGESO.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarGESO.Image")));
             this.btnEditarGESO.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditarGESO.Location = new System.Drawing.Point(270, 44);
             this.btnEditarGESO.Margin = new System.Windows.Forms.Padding(2);
@@ -1706,7 +1706,7 @@
             // btnInsertGeso
             // 
             this.btnInsertGeso.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertGeso.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnInsertGeso.Image = ((System.Drawing.Image)(resources.GetObject("btnInsertGeso.Image")));
             this.btnInsertGeso.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInsertGeso.Location = new System.Drawing.Point(270, 17);
             this.btnInsertGeso.Margin = new System.Windows.Forms.Padding(2);
@@ -1871,7 +1871,7 @@
             // 
             // mnuGridAreaEdit
             // 
-            this.mnuGridAreaEdit.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridAreaEdit.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridAreaEdit.Image")));
             this.mnuGridAreaEdit.Name = "mnuGridAreaEdit";
             this.mnuGridAreaEdit.Size = new System.Drawing.Size(125, 22);
             this.mnuGridAreaEdit.Text = "Modificar";
@@ -1900,7 +1900,7 @@
             this.btnEditarArea.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditarArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarArea.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarArea.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditarArea.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarArea.Image")));
             this.btnEditarArea.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditarArea.Location = new System.Drawing.Point(628, 17);
             this.btnEditarArea.Margin = new System.Windows.Forms.Padding(2);
@@ -1935,7 +1935,7 @@
             // btnInsertArea
             // 
             this.btnInsertArea.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertArea.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnInsertArea.Image = ((System.Drawing.Image)(resources.GetObject("btnInsertArea.Image")));
             this.btnInsertArea.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInsertArea.Location = new System.Drawing.Point(449, 17);
             this.btnInsertArea.Margin = new System.Windows.Forms.Padding(2);
@@ -2100,7 +2100,7 @@
             // 
             // mnuGridGESEdit
             // 
-            this.mnuGridGESEdit.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridGESEdit.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridGESEdit.Image")));
             this.mnuGridGESEdit.Name = "mnuGridGESEdit";
             this.mnuGridGESEdit.Size = new System.Drawing.Size(125, 22);
             this.mnuGridGESEdit.Text = "Modificar";
@@ -2212,7 +2212,7 @@
             this.btnEditarGES.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditarGES.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarGES.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarGES.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditarGES.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarGES.Image")));
             this.btnEditarGES.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditarGES.Location = new System.Drawing.Point(254, 42);
             this.btnEditarGES.Margin = new System.Windows.Forms.Padding(2);
@@ -2246,7 +2246,7 @@
             // btnInsertGES
             // 
             this.btnInsertGES.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertGES.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnInsertGES.Image = ((System.Drawing.Image)(resources.GetObject("btnInsertGES.Image")));
             this.btnInsertGES.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInsertGES.Location = new System.Drawing.Point(254, 15);
             this.btnInsertGES.Margin = new System.Windows.Forms.Padding(2);
@@ -2405,7 +2405,7 @@
             // 
             // mnuGridOccupationEdit
             // 
-            this.mnuGridOccupationEdit.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridOccupationEdit.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridOccupationEdit.Image")));
             this.mnuGridOccupationEdit.Name = "mnuGridOccupationEdit";
             this.mnuGridOccupationEdit.Size = new System.Drawing.Size(125, 22);
             this.mnuGridOccupationEdit.Text = "Modificar";
@@ -2553,7 +2553,7 @@
             this.btnEditarPuesto.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditarPuesto.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarPuesto.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarPuesto.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditarPuesto.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarPuesto.Image")));
             this.btnEditarPuesto.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditarPuesto.Location = new System.Drawing.Point(341, 46);
             this.btnEditarPuesto.Margin = new System.Windows.Forms.Padding(2);
@@ -2638,7 +2638,7 @@
             // btnInsertOccupation
             // 
             this.btnInsertOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertOccupation.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnInsertOccupation.Image = ((System.Drawing.Image)(resources.GetObject("btnInsertOccupation.Image")));
             this.btnInsertOccupation.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInsertOccupation.Location = new System.Drawing.Point(341, 18);
             this.btnInsertOccupation.Margin = new System.Windows.Forms.Padding(2);
@@ -2800,7 +2800,7 @@
             // 
             // mnuGridWarehouseEdit
             // 
-            this.mnuGridWarehouseEdit.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.mnuGridWarehouseEdit.Image = ((System.Drawing.Image)(resources.GetObject("mnuGridWarehouseEdit.Image")));
             this.mnuGridWarehouseEdit.Name = "mnuGridWarehouseEdit";
             this.mnuGridWarehouseEdit.Size = new System.Drawing.Size(125, 22);
             this.mnuGridWarehouseEdit.Text = "Modificar";
@@ -2902,7 +2902,7 @@
             this.btnEditarAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEditarAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditarAlmacen.ForeColor = System.Drawing.Color.Black;
-            this.btnEditarAlmacen.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditarAlmacen.Image = ((System.Drawing.Image)(resources.GetObject("btnEditarAlmacen.Image")));
             this.btnEditarAlmacen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditarAlmacen.Location = new System.Drawing.Point(315, 46);
             this.btnEditarAlmacen.Margin = new System.Windows.Forms.Padding(2);
@@ -2947,7 +2947,7 @@
             // btnInsertWarehouse
             // 
             this.btnInsertWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInsertWarehouse.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnInsertWarehouse.Image = ((System.Drawing.Image)(resources.GetObject("btnInsertWarehouse.Image")));
             this.btnInsertWarehouse.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInsertWarehouse.Location = new System.Drawing.Point(315, 18);
             this.btnInsertWarehouse.Margin = new System.Windows.Forms.Padding(2);
@@ -3065,7 +3065,7 @@
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditar.ForeColor = System.Drawing.Color.Black;
-            this.btnEditar.Image = global::Sigesoft.Node.WinClient.UI.Resources.pencil;
+            this.btnEditar.Image = ((System.Drawing.Image)(resources.GetObject("btnEditar.Image")));
             this.btnEditar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEditar.Location = new System.Drawing.Point(1074, 324);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(2);
@@ -3106,7 +3106,7 @@
             this.btnAgregarSector.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.btnAgregarSector.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.btnAgregarSector.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAgregarSector.Image = global::Sigesoft.Node.WinClient.UI.Resources.add;
+            this.btnAgregarSector.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregarSector.Image")));
             this.btnAgregarSector.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregarSector.Location = new System.Drawing.Point(1074, 380);
             this.btnAgregarSector.Margin = new System.Windows.Forms.Padding(2);
