@@ -52,5 +52,48 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+        public List<ProduccionCategoria> GetFilterProduccionCategoria(DateTime? pdatBeginDate, DateTime? pdatEndDate) 
+        {
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = (from A in dbContext.service
+                             join B in dbContext.servicecomponent on A.v_ServiceId equals B.v_ServiceId
+                             join bbb in dbContext.component on B.v_ComponentId equals bbb.v_ComponentId 
+                             join cat in dbContext.systemparameter on new { a = bbb.i_CategoryId.Value, b = 116 }
+                                                                  equals new { a = cat.i_ParameterId, b = cat.i_GroupId } into cat_join
+                             from cat in cat_join.DefaultIfEmpty()
+                            where pdatBeginDate.Value <= A.d_ServiceDate && pdatEndDate.Value >= A.d_ServiceDate
+                                && B.i_IsRequiredId == 1
+                                && B.i_IsDeleted == 0
+                                && A.i_IsDeleted == 0
+                            select new ProduccionCategoria
+                            {
+                                serviceId = A.v_ServiceId,
+                                Categoria = cat.v_Value1,
+                                Costo = B.r_Price.Value
+                            }).ToList();
+
+                query = query
+                        .GroupBy(g => g.Categoria)
+                        .Select(s => new ProduccionCategoria
+                        {
+                            Categoria = s.First().Categoria,
+                            Cantidad = s.Count(),
+                            Costo = s.Sum(sum => sum.Costo)
+
+                        }).ToList();
+
+
+                return query;
+
+            }
+            catch (Exception ex)
+            {                
+                throw;
+            }
+           
+        }
+
     }
 }

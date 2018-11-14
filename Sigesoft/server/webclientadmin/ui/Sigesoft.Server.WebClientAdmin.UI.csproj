@@ -1294,6 +1294,7 @@
     <Content Include="Configuracion\FRM035C_1.aspx" />
     <Content Include="Configuracion\FRM036.aspx" />
     <Content Include="Configuracion\FRM036A.aspx" />
+    <Content Include="Configuracion\FRMOrdenReporte.aspx" />
     <Content Include="Configuracion\FRMUSUARIOSEXTERNOS.aspx" />
     <Content Include="Configuracion\FRMUSUARIOSEXTERNOS_ADD.aspx" />
     <Content Include="Consultorios\canvas1.aspx" />
@@ -3782,6 +3783,13 @@
     <Compile Include="Configuracion\FRM036A.aspx.designer.cs">
       <DependentUpon>FRM036A.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Configuracion\FRMOrdenReporte.aspx.cs">
+      <DependentUpon>FRMOrdenReporte.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Configuracion\FRMOrdenReporte.aspx.designer.cs">
+      <DependentUpon>FRMOrdenReporte.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Configuracion\FRMUSUARIOSEXTERNOS.aspx.cs">
       <DependentUpon>FRMUSUARIOSEXTERNOS.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5129,6 +5137,8 @@
     <Content Include="Dataset\dsSintomaticoRes.xss">
       <DependentUpon>dsSintomaticoRes.xsd</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\SLPublicado.pubxml" />
+    <None Include="Properties\PublishProfiles\SLSanlorenzoPublish.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -5141,7 +5151,6 @@
     <Folder Include="Consultorios\imgOdonto\" />
     <Folder Include="Estadisticas\files\" />
     <Folder Include="ExternalUser\files\" />
-    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="Temp\" />
     <Folder Include="Uploads\" />
     <Folder Include="upload\" />

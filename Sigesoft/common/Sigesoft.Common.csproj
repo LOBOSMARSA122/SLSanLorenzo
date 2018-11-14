@@ -154,6 +154,7 @@
     <Compile Include="Liquidacion_Carta.cs" />
     <Compile Include="Liquidacion_EMO.cs" />
     <Compile Include="Liquidacion_EMO_EMPRESAS.cs" />
+    <Compile Include="Liquidacion_EMPRESA_DETALLE.cs" />
     <Compile Include="Liquidacion_Hospitalizacion.cs" />
     <Compile Include="LoadingForm.cs">
       <SubType>Form</SubType>
@@ -167,6 +168,7 @@
     <Compile Include="Ninio.cs" />
     <Compile Include="OrdenServicio.cs" />
     <Compile Include="OrdenServicioPromocion.cs" />
+    <Compile Include="PagoMedicoAsitencial.cs" />
     <Compile Include="pdfPage.cs" />
     <Compile Include="PleaseWait.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

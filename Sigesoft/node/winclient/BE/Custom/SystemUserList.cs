@@ -57,5 +57,10 @@ namespace Sigesoft.Node.WinClient.BE
         public int? i_ProfesionId { get; set; }
 
         public string Profesion { get; set; }
+
+        public string MedicoTratante { get; set; }
+        public string Direccion { get; set; }
+        public string CMP { get; set; }
+        public string Telefono { get; set; }
     }
 }

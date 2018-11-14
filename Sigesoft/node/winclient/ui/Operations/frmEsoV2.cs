@@ -95,6 +95,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         private List<ServiceComponentFieldValuesList> _tmpListValuesOdontograma = null;
 
         private bool _isChangeValue = false;
+        private int? _sexTypeId;
         private Gender _sexType;
         private bool flagValueChange = false;
         private bool _chkApprovedEnabled;
@@ -111,6 +112,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
         string _personName;
         int GrupoEtario;
         private int _AMCGenero;
+        private int _masterServiceId;
+
+        string adolId = string.Empty;
+        private adolescenteDto objAdolDto = null;
+
+        string adulId = string.Empty;
+        private adultoDto objAdultoDto = null;
+
+        string adulmayId = string.Empty;
+        private adultomayorDto objAdultoMAyorDto = null;
+
+        string ninioId = string.Empty;
+        private ninioDto objNinioDto = null;
+        private DateTime? _FechaServico;
         #endregion
       
         public FrmEsoV2(string serviceId, string componentIdDefault, string action, int roleId, int nodeId, int userId, int tipo)
@@ -1453,8 +1468,313 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
             _ProtocolId = personData.v_ProtocolId;
             _personName = string.Format("{0} {1} {2}", personData.v_FirstLastName, personData.v_SecondLastName, personData.v_FirstName);
+            _personId = personData.v_PersonId;
+            _masterServiceId = personData.i_MasterServiceId.Value;
+            if (_masterServiceId == 2) btnReceta.Enabled = false;
+            else btnReceta.Enabled = true;
+
+            cbAptitudEso.SelectedValue = personData.i_AptitudeStatusId.ToString();
+            txtComentarioAptitud.Text = personData.v_ObsStatusService;
+
+            DateTime? FechaActual = DateTime.Now;
+            dptDateGlobalExp.Value = personData.d_GlobalExpirationDate == null ? FechaActual.Value.Date.AddYears(1) : personData.d_GlobalExpirationDate.Value;
+            //cbNuevoControl.SelectedValue = personData.i_IsNewControl;
+
+            _FechaServico = personData.d_ServiceDate;
+            LoadTabGenericDataandAntecedent(personData);
+
         }
 
+        private void LoadTabGenericDataandAntecedent(ServiceList genericDataAntecedent)
+        {
+            OperationResult objOperationResult = new OperationResult();
+
+            Utils.LoadDropDownList(cboGenero, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 100, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(cboEstadoCivil, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(cboGradoInstruccion, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlBloodGroupId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 154, null), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlBloodFactorId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 155, null), DropDownListAction.Select);
+
+            txtApellidoPaterno.Text = genericDataAntecedent.v_FirstLastName;
+            txtApellidoMaterno.Text = genericDataAntecedent.v_SecondLastName;
+            txtNombres.Text = genericDataAntecedent.v_FirstName;
+            cboGenero.SelectedValue = genericDataAntecedent.i_SexTypeId.ToString();
+            txtEdad.Text = _age.ToString();
+            dtpFechaNacimiento.Value = genericDataAntecedent.d_BirthDate.Value;
+            txtLugarNacimiento.Text = genericDataAntecedent.v_BirthPlace;
+            txtProcedencia.Text = genericDataAntecedent.v_Procedencia;
+            ddlBloodFactorId.SelectedValue = genericDataAntecedent.i_BloodFactorId.ToString();
+            ddlBloodGroupId.SelectedValue = genericDataAntecedent.i_BloodGroupId.ToString();
+            cboGradoInstruccion.SelectedValue = genericDataAntecedent.i_LevelOfId.ToString();
+            cboEstadoCivil.SelectedValue = genericDataAntecedent.i_MaritalStatusId.ToString();
+            txtOcupacion.Text = genericDataAntecedent.v_CurrentOccupation;
+            txtDomicilio.Text = genericDataAntecedent.v_AdressLocation;
+            txtCentroEducativo.Text = genericDataAntecedent.v_CentroEducativo;
+            txtHijosVivos.Text = genericDataAntecedent.TotalHijos.ToString();
+            lblDni.Text = genericDataAntecedent.v_DocNumber.ToString();
+
+            idPerson = new AtencionesIntegralesBL().GetService(_serviceId);
+
+            if (_age <= 12)
+            {
+                Utils.LoadDropDownList(listaEstadoCivilMujer, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(listaGradoInstruccionMujer, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(listTipoAfiliacionMujer, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 188, null), DropDownListAction.Select);
+
+                Utils.LoadDropDownList(listaEstadoCivilHombre, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 101, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(listaGradoInstruccionHombre, "Value1", "Id", BLL.Utils.GetDataHierarchyForCombo(ref objOperationResult, 108, null), DropDownListAction.Select);
+                Utils.LoadDropDownList(listTipoAfiliacionHombre, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 188, null), DropDownListAction.Select);
+
+
+                tbcDatos.TabPages.Remove(tbpAdultoMayor);
+                tbcDatos.TabPages.Remove(tbpAdolescente);
+
+                objNinioDto = new AtencionesIntegralesBL().GetNinio(ref objOperationResult, idPerson.v_PersonId);
+
+                if (objNinioDto != null)
+                {
+                    txtNombreMadrePadreResponsable.Text = objNinioDto.v_NombreCuidador;
+                    txtEdadMadrePadreResponsable.Text = objNinioDto.v_EdadCuidador;
+                    txtDNIMadrePadreResponsable.Text = objNinioDto.v_DniCuidador;
+
+                    txtNombrePadreTutor.Text = objNinioDto.v_NombrePadre;
+                    txtEdadPadre.Text = objNinioDto.v_EdadPadre;
+                    txtDNIPadre.Text = objNinioDto.v_DniPadre;
+                    listTipoAfiliacionHombre.SelectedValue = objNinioDto.i_TipoAfiliacionPadre.ToString();
+                    txtAfiliacionPadre.Text = objNinioDto.v_CodigoAfiliacionPadre;
+                    listaGradoInstruccionHombre.SelectedValue = objNinioDto.i_GradoInstruccionPadre.ToString();
+                    txtOcupacionPadre.Text = objNinioDto.v_OcupacionPadre;
+                    listaEstadoCivilHombre.SelectedValue = objNinioDto.i_EstadoCivilIdPadre.ToString();
+                    txtReligionPadre.Text = objNinioDto.v_ReligionPadre;
+
+                    txtNombreMadreTutor.Text = objNinioDto.v_NombreMadre;
+                    txtEdadMadre.Text = objNinioDto.v_EdadMadre;
+                    txtDNIMadre.Text = objNinioDto.v_DniMadre;
+                    listTipoAfiliacionMujer.SelectedValue = objNinioDto.i_TipoAfiliacionMadre.ToString();
+                    txtAfiliacionMadre.Text = objNinioDto.v_CodigoAfiliacionMadre;
+                    listaGradoInstruccionMujer.SelectedValue = objNinioDto.i_GradoInstruccionMadre.ToString();
+                    txtOcupacionMadre.Text = objNinioDto.v_OcupacionMadre;
+                    listaEstadoCivilMujer.SelectedValue = objNinioDto.i_EstadoCivilIdMadre1.ToString();
+                    txtReligionMadre.Text = objNinioDto.v_ReligionMadre;
+
+                    textPatologiasGestacion.Text = objNinioDto.v_PatologiasGestacion;
+                    txtNEmbarazo.Text = objNinioDto.v_nEmbarazos;
+                    txtAPN.Text = objNinioDto.v_nAPN;
+                    textLugarAPN.Text = objNinioDto.v_LugarAPN;
+                    textComplicacionesParto.Text = objNinioDto.v_ComplicacionesParto;
+                    textQuienAtendio.Text = objNinioDto.v_Atencion;
+
+                    textEdadNacer.Text = objNinioDto.v_EdadGestacion;
+                    textPesoNacer.Text = objNinioDto.v_Peso;
+                    textTallaNacer.Text = objNinioDto.v_Talla;
+                    textPerimetroCefalico.Text = objNinioDto.v_PerimetroCefalico;
+                    textTiempoHospit.Text = objNinioDto.v_TiempoHospitalizacion;
+                    textPerimetroToracico.Text = objNinioDto.v_PerimetroToracico;
+                    textEspecificacionesNacer.Text = objNinioDto.v_EspecificacionesNac;
+                    txtInicioAlimentación.Text = objNinioDto.v_InicioAlimentacionComp;
+                    textAlergiaMedicamentos.Text = objNinioDto.v_AlergiasMedicamentos;
+                    textOtrosAntecedentes.Text = objNinioDto.v_OtrosAntecedentes;
+
+                    textQuienTuberculosis.Text = objNinioDto.v_QuienTuberculosis;
+                    if (objNinioDto.i_QuienTuberculosis == (int)Enfermedad.Si)
+                        rbSiTuberculosis.Checked = true;
+                    else
+                        rbNoTuberculosis.Checked = true;
+
+                    textQuienASMA.Text = objNinioDto.v_QuienAsma;
+                    if (objNinioDto.i_QuienAsma == (int)Enfermedad.Si)
+                        rbSiAsma.Checked = true;
+                    else
+                        rbNoAsma.Checked = true;
+
+                    textQuienVIH.Text = objNinioDto.v_QuienVIH;
+                    if (objNinioDto.i_QuienVIH == (int)Enfermedad.Si)
+                        rbSiVih.Checked = true;
+                    else
+                        rbNoVih.Checked = true;
+
+                    textQuienDiabetes.Text = objNinioDto.v_QuienDiabetes;
+                    if (objNinioDto.i_QuienDiabetes == (int)Enfermedad.Si)
+                        rbSiDiabetes.Checked = true;
+                    else
+                        rbNoDiabetes.Checked = true;
+
+                    textQuienEpilepsia.Text = objNinioDto.v_QuienEpilepsia;
+                    if (objNinioDto.i_QuienEpilepsia == (int)Enfermedad.Si)
+                        rbSiEpilepsia.Checked = true;
+                    else
+                        rbNoEpilepsia.Checked = true;
+
+                    textQuienAlergias.Text = objNinioDto.v_QuienAlergias;
+                    if (objNinioDto.i_QuienAlergias == (int)Enfermedad.Si)
+                        rbSiAlergia.Checked = true;
+                    else
+                        rbNoAlergia.Checked = true;
+
+                    textQuienViolenciaFamiliar.Text = objNinioDto.v_QuienViolenciaFamiliar;
+                    if (objNinioDto.i_QuienViolenciaFamiliar == (int)Enfermedad.Si)
+                        rbSiViolencia.Checked = true;
+                    else
+                        rbNoViolencia.Checked = true;
+
+                    textQuienAlcoholismo.Text = objNinioDto.v_QuienAlcoholismo;
+                    if (objNinioDto.i_QuienAlcoholismo == (int)Enfermedad.Si)
+                        rbSiAlcoholismo.Checked = true;
+                    else
+                        rbNoAlcoholismo.Checked = true;
+
+                    textQuienDrogadiccion.Text = objNinioDto.v_QuienDrogadiccion;
+                    if (objNinioDto.i_QuienDrogadiccion == (int)Enfermedad.Si)
+                        rbSiDrogadiccion.Checked = true;
+                    else
+                        rbNoDrogadiccion.Checked = true;
+
+                    textQuienHepatitisB.Text = objNinioDto.v_QuienHeptitisB;
+                    if (objNinioDto.i_QuienHeptitisB == (int)Enfermedad.Si)
+                        rbSiHepatitis.Checked = true;
+                    else
+                        rbNoHepatitis.Checked = true;
+
+                    textAguaPotable.Text = objNinioDto.v_EspecificacionesAgua;
+                    textDesague.Text = objNinioDto.v_EspecificacionesDesague;
+                }
+            }
+            else if (13 <= _age && _age <= 17)
+            {
+                tbcDatos.TabPages.Remove(tbpNinio);
+                tbcDatos.TabPages.Remove(tbpAdultoMayor);
+
+                objAdolDto = new AtencionesIntegralesBL().GetAdolescente(ref objOperationResult, idPerson.v_PersonId);
+
+                if (objAdolDto != null)
+                {
+                    textNombreCuidadorAdol.Text = objAdolDto.v_NombreCuidador;
+                    textDniCuidadorAdol.Text = objAdolDto.v_DniCuidador;
+                    textEdadAdol.Text = objAdolDto.v_EdadCuidador;
+                    textViveConAdol.Text = objAdolDto.v_ViveCon;
+                    txtAdoEdadIniTrab.Text = objAdolDto.v_EdadInicioTrabajo;
+                    txtAdoTipoTrab.Text = objAdolDto.v_TipoTrabajo;
+                    txtAdoNroTv.Text = objAdolDto.v_NroHorasTv;
+                    txtAdoNroJuegos.Text = objAdolDto.v_NroHorasJuegos;
+                    txtAdoMenarquia.Text = objAdolDto.v_MenarquiaEspermarquia;
+                    txtAdoEdadRS.Text = objAdolDto.v_EdadInicioRS;
+                    textObservacionesSexualidadAdol.Text = objAdolDto.v_Observaciones;
+                }
+            }
+            else if (18 <= _age && _age <= 64)
+            {
+                tbcDatos.TabPages.Remove(tbpNinio);
+                tbcDatos.TabPages.Remove(tbpAdolescente);
+                CargarGrillaEmbarazos(idPerson.v_PersonId);
+
+                if (genericDataAntecedent.i_SexTypeId == (int)Gender.MASCULINO)
+                {
+                    pnlMenarquia.Enabled = false;
+                    pnlEmbarazo.Enabled = false;
+
+                    objAdultoDto = new AtencionesIntegralesBL().GetAdulto(ref objOperationResult, idPerson.v_PersonId);
+
+                    if (objAdultoDto != null)
+                    {
+                        txtAmCuidador.Text = objAdultoDto.v_NombreCuidador;
+                        txtAmCuidadorEdad.Text = objAdultoDto.v_EdadCuidador;
+                        txtAmCuidadorDni.Text = objAdultoDto.v_DniCuidador;
+                        textOtroAntecedentesFamiliares.Text = objAdultoDto.v_OtrosAntecedentes;
+                        textFlujoVaginalPatológico.Text = objAdultoDto.v_FlujoVaginal;
+                        textMedicamentoFrecuenteDosis.Text = objAdultoDto.v_MedicamentoFrecuente;
+                        textReaccionAlergicaMedicamentos.Text = objAdultoDto.v_ReaccionAlergica;
+                        txtAmInicioRs.Text = objAdultoDto.v_InicioRS;
+                        txtAmNroPs.Text = objAdultoDto.v_NroPs;
+                        txtAmFechaUR.Text = objAdultoDto.v_FechaUR;
+                    }
+                }
+                else
+                {
+                    pnlMenarquia.Enabled = true;
+                    pnlEmbarazo.Enabled = true;
+
+                    objAdultoDto = new AtencionesIntegralesBL().GetAdulto(ref objOperationResult, idPerson.v_PersonId);
+
+                    if (objAdultoDto != null)
+                    {
+                        txtAmCuidador.Text = objAdultoDto.v_NombreCuidador;
+                        txtAmCuidadorEdad.Text = objAdultoDto.v_EdadCuidador;
+                        txtAmCuidadorDni.Text = objAdultoDto.v_DniCuidador;
+                        textOtroAntecedentesFamiliares.Text = objAdultoDto.v_OtrosAntecedentes;
+                        textFlujoVaginalPatológico.Text = objAdultoDto.v_FlujoVaginal;
+                        textMedicamentoFrecuenteDosis.Text = objAdultoDto.v_MedicamentoFrecuente;
+                        textReaccionAlergicaMedicamentos.Text = objAdultoDto.v_ReaccionAlergica;
+                        txtAmInicioRs.Text = objAdultoDto.v_InicioRS;
+                        txtAmNroPs.Text = objAdultoDto.v_NroPs;
+                        txtAmFechaUR.Text = objAdultoDto.v_FechaUR;
+                        txtAmRC.Text = objAdultoDto.v_RC;
+                        txtAmNroParto.Text = objAdultoDto.v_Parto;
+                        txtAmPrematuro.Text = objAdultoDto.v_Prematuro;
+                        txtAmAborto.Text = objAdultoDto.v_Aborto;
+                        textObservacionesEmbarazo.Text = objAdultoDto.v_ObservacionesEmbarazo;
+                    }
+                }
+            }
+            else
+            {
+                tbcDatos.TabPages.Remove(tbpNinio);
+                tbcDatos.TabPages.Remove(tbpAdolescente);
+
+                if (genericDataAntecedent.i_SexTypeId == (int)Gender.MASCULINO)
+                {
+                    pnlMenarquia.Enabled = false;
+                    pnlEmbarazo.Enabled = false;
+
+                    objAdultoMAyorDto = new AtencionesIntegralesBL().GetAdultoMayor(ref objOperationResult, idPerson.v_PersonId);
+
+                    if (objAdultoMAyorDto != null)
+                    {
+                        txtAmCuidador.Text = objAdultoMAyorDto.v_NombreCuidador;
+                        txtAmCuidadorEdad.Text = objAdultoMAyorDto.v_EdadCuidador;
+                        txtAmCuidadorDni.Text = objAdultoMAyorDto.v_DniCuidador;
+                        textFlujoVaginalPatológico.Text = objAdultoMAyorDto.v_FlujoVaginal;
+                        textMedicamentoFrecuenteDosis.Text = objAdultoMAyorDto.v_MedicamentoFrecuente;
+                        textReaccionAlergicaMedicamentos.Text = objAdultoMAyorDto.v_ReaccionAlergica;
+                        txtAmInicioRs.Text = objAdultoMAyorDto.v_InicioRS;
+                        txtAmNroPs.Text = objAdultoMAyorDto.v_NroPs;
+                        txtAmFechaUR.Text = objAdultoMAyorDto.v_FechaUR;
+                    }
+                }
+                else
+                {
+                    pnlMenarquia.Enabled = true;
+                    pnlEmbarazo.Enabled = true;
+
+                    objAdultoMAyorDto = new AtencionesIntegralesBL().GetAdultoMayor(ref objOperationResult, idPerson.v_PersonId);
+
+                    if (objAdultoMAyorDto != null)
+                    {
+                        txtAmCuidador.Text = objAdultoMAyorDto.v_NombreCuidador;
+                        txtAmCuidadorEdad.Text = objAdultoMAyorDto.v_EdadCuidador;
+                        txtAmCuidadorDni.Text = objAdultoMAyorDto.v_DniCuidador;
+                        textFlujoVaginalPatológico.Text = objAdultoMAyorDto.v_FlujoVaginal;
+                        textMedicamentoFrecuenteDosis.Text = objAdultoMAyorDto.v_MedicamentoFrecuente;
+                        textReaccionAlergicaMedicamentos.Text = objAdultoMAyorDto.v_ReaccionAlergica;
+                        txtAmInicioRs.Text = objAdultoMAyorDto.v_InicioRS;
+                        txtAmNroPs.Text = objAdultoMAyorDto.v_NroPs;
+                        txtAmFechaUR.Text = objAdultoMAyorDto.v_FechaUR;
+                        txtAmRC.Text = objAdultoMAyorDto.v_RC;
+                        txtAmNroParto.Text = objAdultoMAyorDto.v_Parto;
+                        txtAmPrematuro.Text = objAdultoMAyorDto.v_Prematuro;
+                        txtAmAborto.Text = objAdultoMAyorDto.v_Aborto;
+                        textObservacionesEmbarazo.Text = objAdultoMAyorDto.v_ObservacionesEmbarazo;
+                    }
+                }
+            }
+        }
+
+        private void CargarGrillaEmbarazos(string personId)
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var objData = new EmbarazoBL().GetEmbarazoFiltered(ref objOperationResult, 0, null, "", "", personId);
+
+            grdEmbarazos.DataSource = objData;
+        }
         private static void LoadTabAptitud()
         {
             //throw new NotImplementedException();
@@ -1499,6 +1819,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private void LoadTabAnamnesis(ServiceData dataAnamnesis)
         {
+            OperationResult objOperationResult = new OperationResult();
+            ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+            
             chkPresentaSisntomas.Checked = Convert.ToBoolean(dataAnamnesis.HasSymptomId);
             txtSintomaPrincipal.Text = string.IsNullOrEmpty(dataAnamnesis.MainSymptom) ? "No Refiere" : dataAnamnesis.MainSymptom;
             txtValorTiempoEnfermedad.Enabled = chkPresentaSisntomas.Checked;
@@ -1521,8 +1844,8 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             txtRegimenCatamenial.Text = dataAnamnesis.CatemenialRegime;
             txtCiruGine.Text = dataAnamnesis.CiruGine;
             txtFecVctoGlobal.Text = dataAnamnesis.GlobalExpirationDate == null ? "NO REQUIERE" : dataAnamnesis.GlobalExpirationDate.Value.ToShortDateString();
-            cbAptitudEso.SelectedValue = dataAnamnesis.AptitudeStatusId.ToString();
-              
+            
+            
             if (dataAnamnesis.Pap != null) dtpPAP.Value = dataAnamnesis.Pap.Value;
             if (dataAnamnesis.Pap != null) dtpPAP.Checked = true;
             if (dataAnamnesis.Fur != null) dtpFur.Value = dataAnamnesis.Fur.Value;
@@ -1533,6 +1856,34 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             BlockControlsByGender(dataAnamnesis.SexTypeId);
             ConsolidadoAntecedentes(dataAnamnesis.PersonId);
             HistorialServiciosAnteriores(dataAnamnesis.PersonId, dataAnamnesis.ServiceId);
+            ///
+            txtResultadoPAP.Text = string.IsNullOrEmpty(personData.v_ResultadosPAP) ? "" : personData.v_ResultadosPAP;
+            txtResultadoMamo.Text = string.IsNullOrEmpty(personData.v_ResultadoMamo) ? "" : personData.v_ResultadoMamo;
+
+            txtVidaSexual.Text = string.IsNullOrEmpty(personData.v_InicioVidaSexaul) ? "" : personData.v_InicioVidaSexaul;
+            txtNroParejasActuales.Text = string.IsNullOrEmpty(personData.v_NroParejasActuales) ? "" : personData.v_NroParejasActuales;
+            txtNroAbortos.Text = string.IsNullOrEmpty(personData.v_NroAbortos) ? "" : personData.v_NroAbortos;
+            txtNroCausa.Text = string.IsNullOrEmpty(personData.v_PrecisarCausas) ? "" : personData.v_PrecisarCausas;
+            ///
+            _AMCGenero = personData.i_SexTypeId.Value;
+            _sexType = (Gender)personData.i_SexTypeId;
+            _sexTypeId = personData.i_SexTypeId;
+            switch (_sexType)
+            {
+                case Gender.MASCULINO:
+                    gbAntGinecologicos.Enabled = false;
+                    dtpFur.Enabled = false;
+                    txtRegimenCatamenial.Enabled = false;
+                    break;
+                case Gender.FEMENINO:
+                    gbAntGinecologicos.Enabled = true;
+                    dtpFur.Enabled = true;
+                    txtRegimenCatamenial.Enabled = true;
+                    break;
+                default:
+                    break;
+            }
+
         }
 
         private void HistorialServiciosAnteriores(string personId, string serviceId)
@@ -5777,6 +6128,572 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 string id = grdPlanIntegral.Selected.Rows[0].Cells["v_PlanIntegral"].Value.ToString();
                 new PlanIntegralBL().DeletePlanIntegral(ref objOperationResult, id, Globals.ClientSession.GetAsList());
                 CargarGrillaPlanAtencionIntegral(_personId);
+            }
+        }
+
+        private void btnNuevoEmbarazo_Click(object sender, EventArgs e)
+        {
+            idPerson = new AtencionesIntegralesBL().GetService(_serviceId);
+            PacientId = idPerson.v_PersonId.ToString();
+            frmEmbarazo frm = new frmEmbarazo("New", PacientId, "");
+
+            frm.ShowDialog();
+            CargarGrillaEmbarazos(idPerson.v_PersonId);
+        }
+
+        private void btnEditarEmbarazo_Click(object sender, EventArgs e)
+        {
+            idPerson = new AtencionesIntegralesBL().GetService(_serviceId);
+            PacientId = idPerson.v_PersonId.ToString();
+            string id = grdEmbarazos.Selected.Rows[0].Cells["v_EmbarazoId"].Value.ToString();
+
+            frmEmbarazo frm = new frmEmbarazo("Edit", PacientId, id);
+            frm.ShowDialog();
+            CargarGrillaEmbarazos(idPerson.v_PersonId);
+        }
+
+        private void btnEliminarEmbarazo_Click(object sender, EventArgs e)
+        {
+            idPerson = new AtencionesIntegralesBL().GetService(_serviceId);
+            PacientId = idPerson.v_PersonId.ToString();
+            OperationResult objOperationResult = new OperationResult();
+            string id = grdEmbarazos.Selected.Rows[0].Cells["v_EmbarazoId"].Value.ToString();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "¡ADVERTENCIA!", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (Result == System.Windows.Forms.DialogResult.Yes)
+            {
+                new EmbarazoBL().DeleteEmbarazo(ref objOperationResult, id, Globals.ClientSession.GetAsList());
+                CargarGrillaEmbarazos(idPerson.v_PersonId);
+            }
+            else
+            {
+                this.Close();
+            }
+        }
+
+        private void btnGuardarAntecedentes_Click(object sender, EventArgs e)
+        {
+            List<frmEsoAntecedentesPadre> Listado = new List<frmEsoAntecedentesPadre>();
+
+            foreach (var G in ultraAntActuales.Rows)
+            {
+                List<frmEsoAntecedentesHijo> ListadoHijos = new List<frmEsoAntecedentesHijo>();
+                foreach (var H in G.ChildBands[0].Rows)
+                {
+                    frmEsoAntecedentesHijo Hijo = new frmEsoAntecedentesHijo()
+                    {
+                        Nombre = H.Cells["Nombre"].Text,
+                        SI = bool.Parse(H.Cells[1].Text),
+                        NO = bool.Parse(H.Cells[2].Text),
+                        GrupoId = int.Parse(H.Cells["GrupoId"].Text),
+                        ParametroId = int.Parse(H.Cells["ParametroId"].Text)
+                    };
+
+                    ListadoHijos.Add(Hijo);
+                }
+
+                frmEsoAntecedentesPadre Padre = new frmEsoAntecedentesPadre()
+                {
+                    GrupoId = int.Parse(G.Cells["GrupoId"].Text),
+                    Nombre = G.Cells["Nombre"].Text,
+                    ParametroId = int.Parse(G.Cells["ParametroId"].Text),
+                    Hijos = ListadoHijos
+                };
+
+                Listado.Add(Padre);
+            }
+
+            bool response = false;
+
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                OperationResult objOperationResult = new OperationResult();
+                personDto oDatosPersonales = new personDto();
+                idPerson = new AtencionesIntegralesBL().GetService(_serviceId);
+                PacientId = idPerson.v_PersonId.ToString();
+                oDatosPersonales = new PacientBL().GetPerson(ref objOperationResult, PacientId);
+
+
+
+                oDatosPersonales.v_PersonId = PacientId;
+                oDatosPersonales.v_FirstName = txtNombres.Text.Trim();
+                oDatosPersonales.v_FirstLastName = txtApellidoPaterno.Text.Trim();
+                oDatosPersonales.v_SecondLastName = txtApellidoMaterno.Text.Trim();
+
+                oDatosPersonales.i_SexTypeId = int.Parse(cboGenero.SelectedValue.ToString());
+                oDatosPersonales.v_BirthPlace = txtLugarNacimiento.Text.Trim();
+                oDatosPersonales.v_Procedencia = txtProcedencia.Text.Trim();
+                oDatosPersonales.i_LevelOfId = int.Parse(cboGradoInstruccion.SelectedValue.ToString());
+                oDatosPersonales.i_MaritalStatusId = int.Parse(cboEstadoCivil.SelectedValue.ToString());
+                oDatosPersonales.v_CurrentOccupation = txtOcupacion.Text.Trim();
+                oDatosPersonales.v_AdressLocation = txtDomicilio.Text.Trim();
+                oDatosPersonales.v_CentroEducativo = txtCentroEducativo.Text.Trim();
+                oDatosPersonales.i_NumberLivingChildren = int.Parse(txtHijosVivos.Text);
+                _Dni = lblDni.Text;
+
+                PacientId = new PacientBL().UpdatePacient(ref objOperationResult, oDatosPersonales, Globals.ClientSession.GetAsList(), _Dni, lblDni.Text);
+
+                ServiceList personData = new ServiceBL().GetServicePersonData(ref objOperationResult, _serviceId);
+
+                _sexType = (Gender)personData.i_SexTypeId;
+                _sexTypeId = personData.i_SexTypeId;
+
+                if (_age <= 12)
+                {
+                    if (objNinioDto == null)
+                    {
+                        objNinioDto = new ninioDto();
+                    }
+
+                    if (objNinioDto.v_NinioId == null)
+                    {
+                        objNinioDto.v_PersonId = idPerson.v_PersonId.ToString();
+
+                        objNinioDto.v_NombreCuidador = txtNombreMadrePadreResponsable.Text;
+                        objNinioDto.v_EdadCuidador = txtEdadMadrePadreResponsable.Text;
+                        objNinioDto.v_DniCuidador = txtDNIMadrePadreResponsable.Text;
+
+                        objNinioDto.v_NombrePadre = txtNombrePadreTutor.Text;
+                        objNinioDto.v_EdadPadre = txtEdadPadre.Text;
+                        objNinioDto.v_DniPadre = txtDNIPadre.Text;
+                        objNinioDto.i_TipoAfiliacionPadre = Convert.ToInt32(listTipoAfiliacionHombre.SelectedValue);
+                        objNinioDto.v_CodigoAfiliacionPadre = txtAfiliacionPadre.Text;
+                        objNinioDto.i_GradoInstruccionPadre = Convert.ToInt32(listaGradoInstruccionHombre.SelectedValue);
+                        objNinioDto.v_OcupacionPadre = txtOcupacionPadre.Text;
+                        objNinioDto.i_EstadoCivilIdPadre = Convert.ToInt32(listaEstadoCivilHombre.SelectedValue);
+                        objNinioDto.v_ReligionPadre = txtReligionPadre.Text;
+
+                        objNinioDto.v_NombreMadre = txtNombreMadreTutor.Text;
+                        objNinioDto.v_EdadMadre = txtEdadMadre.Text;
+                        objNinioDto.v_DniMadre = txtDNIMadre.Text;
+                        objNinioDto.i_TipoAfiliacionMadre = Convert.ToInt32(listTipoAfiliacionMujer.SelectedValue);
+                        objNinioDto.v_CodigoAfiliacionMadre = txtAfiliacionMadre.Text;
+                        objNinioDto.i_GradoInstruccionMadre = Convert.ToInt32(listaGradoInstruccionMujer.SelectedValue);
+                        objNinioDto.v_OcupacionMadre = txtOcupacionMadre.Text;
+                        objNinioDto.i_EstadoCivilIdMadre1 = Convert.ToInt32(listaEstadoCivilMujer.SelectedValue);
+                        objNinioDto.v_ReligionMadre = txtReligionMadre.Text;
+
+                        objNinioDto.v_PatologiasGestacion = textPatologiasGestacion.Text;
+                        objNinioDto.v_nEmbarazos = txtNEmbarazo.Text;
+                        objNinioDto.v_nAPN = txtAPN.Text;
+                        objNinioDto.v_LugarAPN = textLugarAPN.Text;
+                        objNinioDto.v_ComplicacionesParto = textComplicacionesParto.Text;
+                        objNinioDto.v_Atencion = textQuienAtendio.Text;
+
+                        objNinioDto.v_EdadGestacion = textEdadNacer.Text;
+                        objNinioDto.v_Peso = textPesoNacer.Text;
+                        objNinioDto.v_Talla = textTallaNacer.Text;
+                        objNinioDto.v_PerimetroCefalico = textPerimetroCefalico.Text;
+                        objNinioDto.v_TiempoHospitalizacion = textTiempoHospit.Text;
+                        objNinioDto.v_PerimetroToracico = textPerimetroToracico.Text;
+                        objNinioDto.v_EspecificacionesNac = textEspecificacionesNacer.Text;
+                        objNinioDto.v_InicioAlimentacionComp = txtInicioAlimentación.Text;
+                        objNinioDto.v_AlergiasMedicamentos = textAlergiaMedicamentos.Text;
+                        objNinioDto.v_OtrosAntecedentes = textOtrosAntecedentes.Text;
+
+                        objNinioDto.v_QuienTuberculosis = textQuienTuberculosis.Text;
+                        objNinioDto.i_QuienTuberculosis = rbSiTuberculosis.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAsma = textQuienASMA.Text;
+                        objNinioDto.i_QuienAsma = rbSiAsma.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienVIH = textQuienVIH.Text;
+                        objNinioDto.i_QuienVIH = rbSiVih.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienDiabetes = textQuienDiabetes.Text;
+                        objNinioDto.i_QuienDiabetes = rbSiDiabetes.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienEpilepsia = textQuienEpilepsia.Text;
+                        objNinioDto.i_QuienEpilepsia = rbSiEpilepsia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAlergias = textQuienAlergias.Text;
+                        objNinioDto.i_QuienAlergias = rbSiAlergia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienViolenciaFamiliar = textQuienViolenciaFamiliar.Text;
+                        objNinioDto.i_QuienViolenciaFamiliar = rbSiViolencia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAlcoholismo = textQuienAlcoholismo.Text;
+                        objNinioDto.i_QuienAlcoholismo = rbSiAlcoholismo.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienDrogadiccion = textQuienDrogadiccion.Text;
+                        objNinioDto.i_QuienDrogadiccion = rbSiDrogadiccion.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienHeptitisB = textQuienHepatitisB.Text;
+                        objNinioDto.i_QuienHeptitisB = rbSiHepatitis.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_EspecificacionesAgua = textAguaPotable.Text;
+                        objNinioDto.v_EspecificacionesDesague = textDesague.Text;
+
+                        ninioId = new AtencionesIntegralesBL().AddNinio(ref objOperationResult, objNinioDto, Globals.ClientSession.GetAsList());
+                    }
+                    else
+                    {
+                        objNinioDto.v_NombreCuidador = txtNombreMadrePadreResponsable.Text;
+                        objNinioDto.v_EdadCuidador = txtEdadMadrePadreResponsable.Text;
+                        objNinioDto.v_DniCuidador = txtDNIMadrePadreResponsable.Text;
+
+                        objNinioDto.v_NombrePadre = txtNombrePadreTutor.Text;
+                        objNinioDto.v_EdadPadre = txtEdadPadre.Text;
+                        objNinioDto.v_DniPadre = txtDNIPadre.Text;
+                        objNinioDto.i_TipoAfiliacionPadre = Convert.ToInt32(listTipoAfiliacionHombre.SelectedValue);
+                        objNinioDto.v_CodigoAfiliacionPadre = txtAfiliacionPadre.Text;
+                        objNinioDto.i_GradoInstruccionPadre = Convert.ToInt32(listaGradoInstruccionHombre.SelectedValue);
+                        objNinioDto.v_OcupacionPadre = txtOcupacionPadre.Text;
+                        objNinioDto.i_EstadoCivilIdPadre = Convert.ToInt32(listaEstadoCivilHombre.SelectedValue);
+                        objNinioDto.v_ReligionPadre = txtReligionPadre.Text;
+
+                        objNinioDto.v_NombreMadre = txtNombreMadreTutor.Text;
+                        objNinioDto.v_EdadMadre = txtEdadMadre.Text;
+                        objNinioDto.v_DniMadre = txtDNIMadre.Text;
+                        objNinioDto.i_TipoAfiliacionMadre = Convert.ToInt32(listTipoAfiliacionMujer.SelectedValue);
+                        objNinioDto.v_CodigoAfiliacionMadre = txtAfiliacionMadre.Text;
+                        objNinioDto.i_GradoInstruccionMadre = Convert.ToInt32(listaGradoInstruccionMujer.SelectedValue);
+                        objNinioDto.v_OcupacionMadre = txtOcupacionMadre.Text;
+                        objNinioDto.i_EstadoCivilIdMadre1 = Convert.ToInt32(listaEstadoCivilMujer.SelectedValue);
+                        objNinioDto.v_ReligionMadre = txtReligionMadre.Text;
+
+                        objNinioDto.v_PatologiasGestacion = textPatologiasGestacion.Text;
+                        objNinioDto.v_nEmbarazos = txtNEmbarazo.Text;
+                        objNinioDto.v_nAPN = txtAPN.Text;
+                        objNinioDto.v_LugarAPN = textLugarAPN.Text;
+                        objNinioDto.v_ComplicacionesParto = textComplicacionesParto.Text;
+                        objNinioDto.v_Atencion = textQuienAtendio.Text;
+
+                        objNinioDto.v_EdadGestacion = textEdadNacer.Text;
+                        objNinioDto.v_Peso = textPesoNacer.Text;
+                        objNinioDto.v_Talla = textTallaNacer.Text;
+                        objNinioDto.v_PerimetroCefalico = textPerimetroCefalico.Text;
+                        objNinioDto.v_TiempoHospitalizacion = textTiempoHospit.Text;
+                        objNinioDto.v_PerimetroToracico = textPerimetroToracico.Text;
+                        objNinioDto.v_EspecificacionesNac = textEspecificacionesNacer.Text;
+                        objNinioDto.v_InicioAlimentacionComp = txtInicioAlimentación.Text;
+                        objNinioDto.v_AlergiasMedicamentos = textAlergiaMedicamentos.Text;
+                        objNinioDto.v_OtrosAntecedentes = textOtrosAntecedentes.Text;
+
+                        objNinioDto.v_QuienTuberculosis = textQuienTuberculosis.Text;
+                        objNinioDto.i_QuienTuberculosis = rbSiTuberculosis.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAsma = textQuienASMA.Text;
+                        objNinioDto.i_QuienAsma = rbSiAsma.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienVIH = textQuienVIH.Text;
+                        objNinioDto.i_QuienVIH = rbSiVih.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienDiabetes = textQuienDiabetes.Text;
+                        objNinioDto.i_QuienDiabetes = rbSiDiabetes.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienEpilepsia = textQuienEpilepsia.Text;
+                        objNinioDto.i_QuienEpilepsia = rbSiEpilepsia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAlergias = textQuienAlergias.Text;
+                        objNinioDto.i_QuienAlergias = rbSiAlergia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienViolenciaFamiliar = textQuienViolenciaFamiliar.Text;
+                        objNinioDto.i_QuienViolenciaFamiliar = rbSiViolencia.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienAlcoholismo = textQuienAlcoholismo.Text;
+                        objNinioDto.i_QuienAlcoholismo = rbSiAlcoholismo.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienDrogadiccion = textQuienDrogadiccion.Text;
+                        objNinioDto.i_QuienDrogadiccion = rbSiDrogadiccion.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_QuienHeptitisB = textQuienHepatitisB.Text;
+                        objNinioDto.i_QuienHeptitisB = rbSiHepatitis.Checked ? (int)Enfermedad.Si : (int)Enfermedad.No;
+
+                        objNinioDto.v_EspecificacionesAgua = textAguaPotable.Text;
+                        objNinioDto.v_EspecificacionesDesague = textDesague.Text;
+
+                        new AtencionesIntegralesBL().UpdNinio(ref objOperationResult, objNinioDto, Globals.ClientSession.GetAsList());
+                    }
+                    Refresh();
+                }
+                else if (13 <= _age && _age <= 17)
+                {
+                    if (objAdolDto == null)
+                    {
+                        objAdolDto = new adolescenteDto();
+                    }
+
+                    if (objAdolDto.v_AdolescenteId == null)
+                    {
+                        objAdolDto.v_PersonId = idPerson.v_PersonId.ToString();
+                        objAdolDto.v_NombreCuidador = textNombreCuidadorAdol.Text;
+                        objAdolDto.v_DniCuidador = textDniCuidadorAdol.Text;
+                        objAdolDto.v_EdadCuidador = textEdadAdol.Text;
+                        objAdolDto.v_ViveCon = textViveConAdol.Text;
+                        objAdolDto.v_EdadInicioTrabajo = txtAdoEdadIniTrab.Text;
+                        objAdolDto.v_TipoTrabajo = txtAdoTipoTrab.Text;
+                        objAdolDto.v_NroHorasTv = txtAdoNroTv.Text;
+                        objAdolDto.v_NroHorasJuegos = txtAdoNroJuegos.Text;
+                        objAdolDto.v_MenarquiaEspermarquia = txtAdoMenarquia.Text;
+                        objAdolDto.v_EdadInicioRS = txtAdoEdadRS.Text;
+                        objAdolDto.v_Observaciones = textObservacionesSexualidadAdol.Text;
+
+                        adolId = new AtencionesIntegralesBL().AddAdolescente(ref objOperationResult, objAdolDto, Globals.ClientSession.GetAsList());
+                    }
+                    else
+                    {
+                        objAdolDto.v_NombreCuidador = textNombreCuidadorAdol.Text;
+                        objAdolDto.v_DniCuidador = textDniCuidadorAdol.Text;
+                        objAdolDto.v_EdadCuidador = textEdadAdol.Text;
+                        objAdolDto.v_ViveCon = textViveConAdol.Text;
+                        objAdolDto.v_EdadInicioTrabajo = txtAdoEdadIniTrab.Text;
+                        objAdolDto.v_TipoTrabajo = txtAdoTipoTrab.Text;
+                        objAdolDto.v_NroHorasTv = txtAdoNroTv.Text;
+                        objAdolDto.v_NroHorasJuegos = txtAdoNroJuegos.Text;
+                        objAdolDto.v_MenarquiaEspermarquia = txtAdoMenarquia.Text;
+                        objAdolDto.v_EdadInicioRS = txtAdoEdadRS.Text;
+                        objAdolDto.v_Observaciones = textObservacionesSexualidadAdol.Text;
+
+                        new AtencionesIntegralesBL().UpdAdolescente(ref objOperationResult, objAdolDto, Globals.ClientSession.GetAsList());
+                    }
+                }
+                else if (18 <= _age && _age <= 64)
+                {
+
+                    if (personData.i_SexTypeId == (int)Gender.MASCULINO)
+                    {
+                        if (objAdultoDto == null)
+                        {
+                            objAdultoDto = new adultoDto();
+                        }
+
+                        if (objAdultoDto.v_AdultoId == null)
+                        {
+                            objAdultoDto.v_PersonId = idPerson.v_PersonId.ToString();
+                            objAdultoDto.v_NombreCuidador = txtAmCuidador.Text;
+                            objAdultoDto.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                            objAdultoDto.v_DniCuidador = txtAmCuidadorDni.Text;
+                            objAdultoDto.v_OtrosAntecedentes = textOtroAntecedentesFamiliares.Text;
+                            objAdultoDto.v_FlujoVaginal = textFlujoVaginalPatológico.Text;
+                            objAdultoDto.v_MedicamentoFrecuente = textMedicamentoFrecuenteDosis.Text;
+                            objAdultoDto.v_ReaccionAlergica = textReaccionAlergicaMedicamentos.Text;
+                            objAdultoDto.v_InicioRS = txtAmInicioRs.Text;
+                            objAdultoDto.v_NroPs = txtAmNroPs.Text;
+
+                            adulId = new AtencionesIntegralesBL().AddAdulto(ref objOperationResult, objAdultoDto, Globals.ClientSession.GetAsList());
+                        }
+                        else
+                        {
+                            objAdultoDto.v_NombreCuidador = txtAmCuidador.Text;
+                            objAdultoDto.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                            objAdultoDto.v_DniCuidador = txtAmCuidadorDni.Text;
+                            objAdultoDto.v_OtrosAntecedentes = textOtroAntecedentesFamiliares.Text;
+                            objAdultoDto.v_FlujoVaginal = textFlujoVaginalPatológico.Text;
+                            objAdultoDto.v_MedicamentoFrecuente = textMedicamentoFrecuenteDosis.Text;
+                            objAdultoDto.v_ReaccionAlergica = textReaccionAlergicaMedicamentos.Text;
+                            objAdultoDto.v_InicioRS = txtAmInicioRs.Text;
+                            objAdultoDto.v_NroPs = txtAmNroPs.Text;
+                            objAdultoDto.v_FechaUR = txtAmFechaUR.Text;
+
+                            new AtencionesIntegralesBL().UpdAdulto(ref objOperationResult, objAdultoDto, Globals.ClientSession.GetAsList());
+                        }
+                    }
+                    else
+                    {
+                        if (objAdultoDto == null)
+                        {
+                            objAdultoDto = new adultoDto();
+                        }
+
+                        if (objAdultoDto.v_AdultoId == null)
+                        {
+                            objAdultoDto.v_PersonId = idPerson.v_PersonId.ToString();
+                            objAdultoDto.v_NombreCuidador = txtAmCuidador.Text;
+                            objAdultoDto.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                            objAdultoDto.v_DniCuidador = txtAmCuidadorDni.Text;
+                            objAdultoDto.v_OtrosAntecedentes = textOtroAntecedentesFamiliares.Text;
+                            objAdultoDto.v_FlujoVaginal = textFlujoVaginalPatológico.Text;
+                            objAdultoDto.v_MedicamentoFrecuente = textMedicamentoFrecuenteDosis.Text;
+                            objAdultoDto.v_ReaccionAlergica = textReaccionAlergicaMedicamentos.Text;
+                            objAdultoDto.v_InicioRS = txtAmInicioRs.Text;
+                            objAdultoDto.v_NroPs = txtAmNroPs.Text;
+                            objAdultoDto.v_FechaUR = txtAmFechaUR.Text;
+                            objAdultoDto.v_RC = txtAmRC.Text;
+                            objAdultoDto.v_Parto = txtAmNroParto.Text;
+                            objAdultoDto.v_Prematuro = txtAmPrematuro.Text;
+                            objAdultoDto.v_Aborto = txtAmAborto.Text;
+                            objAdultoDto.v_ObservacionesEmbarazo = textObservacionesEmbarazo.Text;
+
+                            adulId = new AtencionesIntegralesBL().AddAdulto(ref objOperationResult, objAdultoDto, Globals.ClientSession.GetAsList());
+                        }
+                        else
+                        {
+                            objAdultoDto.v_NombreCuidador = txtAmCuidador.Text;
+                            objAdultoDto.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                            objAdultoDto.v_DniCuidador = txtAmCuidadorDni.Text;
+                            objAdultoDto.v_OtrosAntecedentes = textOtroAntecedentesFamiliares.Text;
+                            objAdultoDto.v_FlujoVaginal = textFlujoVaginalPatológico.Text;
+                            objAdultoDto.v_MedicamentoFrecuente = textMedicamentoFrecuenteDosis.Text;
+                            objAdultoDto.v_ReaccionAlergica = textReaccionAlergicaMedicamentos.Text;
+                            objAdultoDto.v_InicioRS = txtAmInicioRs.Text;
+                            objAdultoDto.v_NroPs = txtAmNroPs.Text;
+                            objAdultoDto.v_FechaUR = txtAmFechaUR.Text;
+                            objAdultoDto.v_RC = txtAmRC.Text;
+                            objAdultoDto.v_Parto = txtAmNroParto.Text;
+                            objAdultoDto.v_Prematuro = txtAmPrematuro.Text;
+                            objAdultoDto.v_Aborto = txtAmAborto.Text;
+                            objAdultoDto.v_ObservacionesEmbarazo = textObservacionesEmbarazo.Text;
+
+                            new AtencionesIntegralesBL().UpdAdulto(ref objOperationResult, objAdultoDto, Globals.ClientSession.GetAsList());
+                        }
+
+                    }
+                }
+                else
+                {
+                    if (personData.i_SexTypeId == (int)Gender.MASCULINO)
+                    {
+                        if (objAdultoMAyorDto == null)
+                        {
+                            objAdultoMAyorDto = new adultomayorDto();
+                        }
+
+                        if (objAdultoMAyorDto.v_AdultoMayorId == null)
+                        {
+                            objAdultoMAyorDto.v_PersonId = idPerson.v_PersonId.ToString();
+                            objAdultoMAyorDto.v_NombreCuidador = txtAmCuidador.Text;
+                            objAdultoMAyorDto.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                            objAdultoMAyorDto.v_DniCuidador = txtAmCuidadorDni.Text;
+                            objAdultoMAyorDto.v_FlujoVaginal = textFlujoVaginalPatológico.Text;
+                            objAdultoMAyorDto.v_MedicamentoFrecuente = textMedicamentoFrecuenteDosis.Text;
+                            objAdultoMAyorDto.v_ReaccionAlergica = textReaccionAlergicaMedicamentos.Text;
+                            objAdultoMAyorDto.v_InicioRS = txtAmInicioRs.Text;
+                            objAdultoMAyorDto.v_NroPs = txtAmNroPs.Text;
+
+                            adulmayId = new AtencionesIntegralesBL().AddAdultoMayor(ref objOperationResult, objAdultoMAyorDto, Globals.ClientSession.GetAsList());
+                        }
+                        else
+                        {
+                            objAdultoMAyorDto.v_NombreCuidador = txtAmCuidador.Text;
+                            objAdultoMAyorDto.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                            objAdultoMAyorDto.v_DniCuidador = txtAmCuidadorDni.Text;
+                            objAdultoMAyorDto.v_FlujoVaginal = textFlujoVaginalPatológico.Text;
+                            objAdultoMAyorDto.v_MedicamentoFrecuente = textMedicamentoFrecuenteDosis.Text;
+                            objAdultoMAyorDto.v_ReaccionAlergica = textReaccionAlergicaMedicamentos.Text;
+                            objAdultoMAyorDto.v_InicioRS = txtAmInicioRs.Text;
+                            objAdultoMAyorDto.v_NroPs = txtAmNroPs.Text;
+                            objAdultoMAyorDto.v_FechaUR = txtAmFechaUR.Text;
+
+                            new AtencionesIntegralesBL().UpdAdultoMayor(ref objOperationResult, objAdultoMAyorDto, Globals.ClientSession.GetAsList());
+                        }
+                    }
+                    else
+                    {
+                        if (objAdultoMAyorDto == null)
+                        {
+                            objAdultoMAyorDto = new adultomayorDto();
+                        }
+
+                        if (objAdultoMAyorDto.v_AdultoMayorId == null)
+                        {
+                            objAdultoMAyorDto.v_PersonId = idPerson.v_PersonId.ToString();
+                            objAdultoMAyorDto.v_NombreCuidador = txtAmCuidador.Text;
+                            objAdultoMAyorDto.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                            objAdultoMAyorDto.v_DniCuidador = txtAmCuidadorDni.Text;
+                            objAdultoMAyorDto.v_FlujoVaginal = textFlujoVaginalPatológico.Text;
+                            objAdultoMAyorDto.v_MedicamentoFrecuente = textMedicamentoFrecuenteDosis.Text;
+                            objAdultoMAyorDto.v_ReaccionAlergica = textReaccionAlergicaMedicamentos.Text;
+                            objAdultoMAyorDto.v_InicioRS = txtAmInicioRs.Text;
+                            objAdultoMAyorDto.v_NroPs = txtAmNroPs.Text;
+                            objAdultoMAyorDto.v_FechaUR = txtAmFechaUR.Text;
+                            objAdultoMAyorDto.v_RC = txtAmRC.Text;
+                            objAdultoMAyorDto.v_Parto = txtAmNroParto.Text;
+                            objAdultoMAyorDto.v_Prematuro = txtAmPrematuro.Text;
+                            objAdultoMAyorDto.v_Aborto = txtAmAborto.Text;
+                            objAdultoMAyorDto.v_ObservacionesEmbarazo = textObservacionesEmbarazo.Text;
+
+                            adulmayId = new AtencionesIntegralesBL().AddAdultoMayor(ref objOperationResult, objAdultoMAyorDto, Globals.ClientSession.GetAsList());
+                        }
+                        else
+                        {
+                            objAdultoMAyorDto.v_NombreCuidador = txtAmCuidador.Text;
+                            objAdultoMAyorDto.v_EdadCuidador = txtAmCuidadorEdad.Text;
+                            objAdultoMAyorDto.v_DniCuidador = txtAmCuidadorDni.Text;
+                            objAdultoMAyorDto.v_FlujoVaginal = textFlujoVaginalPatológico.Text;
+                            objAdultoMAyorDto.v_MedicamentoFrecuente = textMedicamentoFrecuenteDosis.Text;
+                            objAdultoMAyorDto.v_ReaccionAlergica = textReaccionAlergicaMedicamentos.Text;
+                            objAdultoMAyorDto.v_InicioRS = txtAmInicioRs.Text;
+                            objAdultoMAyorDto.v_NroPs = txtAmNroPs.Text;
+                            objAdultoMAyorDto.v_FechaUR = txtAmFechaUR.Text;
+                            objAdultoMAyorDto.v_RC = txtAmRC.Text;
+                            objAdultoMAyorDto.v_Parto = txtAmNroParto.Text;
+                            objAdultoMAyorDto.v_Prematuro = txtAmPrematuro.Text;
+                            objAdultoMAyorDto.v_Aborto = txtAmAborto.Text;
+                            objAdultoMAyorDto.v_ObservacionesEmbarazo = textObservacionesEmbarazo.Text;
+
+                            new AtencionesIntegralesBL().UpdAdultoMayor(ref objOperationResult, objAdultoMAyorDto, Globals.ClientSession.GetAsList());
+                        }
+
+                    }
+                }
+
+
+                response = new ServiceBL().GuardarAntecedenteAsistencial(Listado, Globals.ClientSession.i_SystemUserId, _personId, GrupoEtario, Globals.ClientSession.i_CurrentExecutionNodeId);
+            }
+
+            if (response)
+            {
+                MessageBox.Show("Registro guardado satisfactoriamente!.", "CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnGuardarCuidadosPreventivos_Click(object sender, EventArgs e)
+        {
+            frmEsoCuidadosPreventivosFechas data = new frmEsoCuidadosPreventivosFechas();
+            data.FechaServicio = _FechaServico.Value;
+
+            List<frmEsoCuidadosPreventivos> Hijos = new List<frmEsoCuidadosPreventivos>();
+            List<frmEsoCuidadosPreventivosComentarios> Comentarios = new List<frmEsoCuidadosPreventivosComentarios>();
+
+            foreach (DataGridViewRow D in dataGridView1.Rows)
+            {
+                int CelIndex = D.Cells.Count - 2;
+
+                DataGridViewCheckBoxCell cell = D.Cells[CelIndex] as DataGridViewCheckBoxCell;
+
+                if (cell != null)
+                {
+                    frmEsoCuidadosPreventivos H = new frmEsoCuidadosPreventivos()
+                    {
+                        GrupoId = int.Parse(D.Cells["GrupoID"].Value.ToString()),
+                        ParameterId = int.Parse(D.Cells["ParameterId"].Value.ToString()),
+                        Valor = bool.Parse(cell.Value.ToString())
+                    };
+
+                    Hijos.Add(H);
+
+                    frmEsoCuidadosPreventivosComentarios C = new frmEsoCuidadosPreventivosComentarios()
+                    {
+                        GrupoId = int.Parse(D.Cells["GrupoID"].Value.ToString()),
+                        ParametroId = int.Parse(D.Cells["ParameterId"].Value.ToString()),
+                        Comentario = D.Cells["Comentarios"].Value.ToString()
+                    };
+
+                    Comentarios.Add(C);
+                }
+            }
+
+            data.Listado = Hijos;
+
+            bool response = false;
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                response = new ServiceBL().GuardarCuidadosPreventivos(data, _personId, Globals.ClientSession.i_SystemUserId, Globals.ClientSession.i_CurrentExecutionNodeId, Comentarios);
+            }
+
+            if (response)
+            {
+                MessageBox.Show("Registro guardado satisfactoriamente!.", "CORRECTO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            else
+            {
+                MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

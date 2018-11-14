@@ -13858,8 +13858,16 @@ namespace Sigesoft.Node.WinClient.BLL
 							 v_ServiceId = sc.v_ServiceId,
 							 CostoProtocolo = sc.r_Price.Value
 						 });
+            if (query.ToList().Count > 0)
+            {
+                return string.Format("{0:0,0.00}", query.Sum(o => o.CostoProtocolo));
+            }
+            else
+            {
+                return string.Format("{0:0,0.00}", 0);
+            }
 
-			return string.Format("{0:0,0.00}", query.Sum(o => o.CostoProtocolo));
+			
 
 		}
 
@@ -23702,6 +23710,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									join D in dbContext.organization on C.v_WorkingOrganizationId equals D.v_OrganizationId into D_join
 									from D in D_join.DefaultIfEmpty()
 
+                                    join D1 in dbContext.location on C.v_WorkingLocationId equals D1.v_LocationId into D1_join
+                                    from D1 in D1_join.DefaultIfEmpty()
+
 									join E in dbContext.servicecomponent on A.v_ServiceId equals E.v_ServiceId into E_join
 									from E in E_join.DefaultIfEmpty()
 
@@ -23715,12 +23726,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									join H in dbContext.systemuser on E.i_ApprovedUpdateUserId equals H.i_SystemUserId into H_join
 									from H in H_join.DefaultIfEmpty()
 
-
-
 									join lc in dbContext.location on new { a = C.v_CustomerOrganizationId, b = C.v_CustomerLocationId }
 									equals new { a = lc.v_OrganizationId, b = lc.v_LocationId } into lc_join
 									from lc in lc_join.DefaultIfEmpty()
-
 
 									join J1 in dbContext.systemparameter on new { a = B.i_Relationship.Value, b = 207 }
 											  equals new { a = J1.i_ParameterId, b = J1.i_GroupId } into J1_join
@@ -23742,11 +23750,19 @@ namespace Sigesoft.Node.WinClient.BLL
 										  equals new { a = J5.i_ParameterId, b = J5.i_GroupId } into J5_join
 									from J5 in J5_join.DefaultIfEmpty()
 
+                                    join B1 in dbContext.organization on C.v_EmployerOrganizationId equals B1.v_OrganizationId
+                                    join C1 in dbContext.location on C.v_EmployerLocationId equals C1.v_LocationId
+                          
 									where E.d_ApprovedUpdateDate >= FechaInicio && E.d_ApprovedUpdateDate <= FechaFin
 
 									select new ReportProduccionProfesional
 									{
-										v_CustomerOrganizationId = G.v_OrganizationId,
+                                        v_OrganizationId = B1.v_OrganizationId,
+                                        v_LocationId = C.v_EmployerLocationId,
+                                        v_WorkingOrganizationId = D.v_OrganizationId,
+                                        v_WorkingLocationId = C.v_WorkingLocationId,
+                                        v_OrganizationInvoiceId = G.v_OrganizationId,
+                                        v_CustomerLocationId = C.v_CustomerLocationId,
 										NroAtencion = A.v_ServiceId,
 										Fecha = A.d_ServiceDate.Value,
 										FechaNacimiento = B.d_Birthdate.Value,
@@ -23762,10 +23778,10 @@ namespace Sigesoft.Node.WinClient.BLL
 										FechaInicio = FechaInicio.Value,
 										FechaFin = FechaFin.Value,
 										Parentesco = J4.v_Value1,
-										v_CustomerLocationId = lc.v_LocationId,
 										NombreComponente = F.v_Name,
 										Consultorio = J5.v_Value1,
-										Usuario = H.v_UserName
+										Usuario = H.v_UserName,
+                                        i_EsoTypeId = C.i_EsoTypeId.Value,
 									};
 
 					if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -23776,8 +23792,8 @@ namespace Sigesoft.Node.WinClient.BLL
 					#endregion
 
 					var sql = (from a in objEntity.ToList()
-							   let age = GetAge(a.FechaNacimiento.Value)
-							   let CostoProtocolo = GetServiceCost(a.NroAtencion)
+                               let age = GetAge(a.FechaNacimiento.Value)
+                               let CostoProtocolo = GetServiceCost(a.NroAtencion)
 							   select new ReportProduccionProfesional
 							   {
 								   Usuario = a.Usuario,
@@ -23786,14 +23802,14 @@ namespace Sigesoft.Node.WinClient.BLL
 								   NroAtencion = a.NroAtencion,
 								   Fecha = a.Fecha,
 								   FechaNacimiento = a.FechaNacimiento,
-								   Edad = age,
+                                   Edad = age,
 								   Dni = a.Dni,
 								   Paciente = a.Paciente,
 								   Parentesco = a.Parentesco,
 								   Titular = a.Titular,
 								   EmpresaCliente = a.EmpresaCliente,
 								   EmpresaTrabajo = a.EmpresaTrabajo,
-								   CostoProtocolo = CostoProtocolo,
+                                   CostoProtocolo = CostoProtocolo,
 
 
 								   FechaInicio = a.FechaInicio,
@@ -23841,8 +23857,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								obj2.Fecha = item2.Fecha;
 								obj2.NroAtencion = item2.NroAtencion;
 								obj2.Paciente = item2.Paciente;
-								obj2.CostoProtocolo = item2.CostoProtocolo;
-								obj2.Edad = GetAge(item2.FechaNacimiento.Value);
+                                obj2.CostoProtocolo = item2.CostoProtocolo;
+                                obj2.Edad = GetAge(item2.FechaNacimiento.Value);
 
 								obj2.Parentesco = item2.Parentesco;
 								obj2.Titular = item2.Titular;
@@ -31497,6 +31513,92 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+       
+
+        public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa_Id(ref OperationResult pobjOperationResult, DateTime? pdatBeginDate, DateTime? pdatEndDate, string empresaId)
+        {
+            try
+            {
+
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.liquidacion
+                            //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
+                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate && F.v_Name == empresaId
+                            //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
+                            //ARNOLD , REPORTE JUAN LIZA
+                            select new LiquidacionEmpresa
+                            {
+                                v_OrganizationName = F.v_Name,
+                                v_LiquidacionId = A.v_LiquidacionId,
+                                v_NroLiquidacion = A.v_NroLiquidacion,
+                                v_Ruc = F.v_IdentificationNumber,
+                                v_AddressLocation = F.v_Address,
+                                v_TelephoneNumber = F.v_PhoneNumber,
+                                v_ContactName = F.v_ContacName,
+                                //v_ServiceId = A.v_ServiceId,
+                                v_OrganizationId = A.v_OrganizationId,
+                                d_Monto = A.d_Monto,
+                                d_FechaVencimiento = A.d_FechaVencimiento,
+                                v_NroFactura = A.v_NroFactura,
+                                Creacion_Liquidacion = A.d_InsertDate
+                            };
+
+                var result = query.ToList();
+                var empresas = result.ToList().GroupBy(g => g.v_OrganizationId).Select(p => p.FirstOrDefault());
+
+
+                List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
+
+                foreach (var item in empresas)
+                {
+                    var LiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                    var oLiquidacionEmpresa = new LiquidacionEmpresa();
+                    oLiquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                    oLiquidacionEmpresa.v_Ruc = item.v_Ruc;
+                    oLiquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                    oLiquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                    oLiquidacionEmpresa.v_ContactName = item.v_ContactName;
+                    var liquidaciones = result.FindAll(p => p.v_OrganizationId == item.v_OrganizationId);
+
+                    foreach (var liquidacion in liquidaciones)
+                    {
+                        var oLiquidacionDetalle = new LiquidacionEmpresaDetalle();
+                        oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
+                        oLiquidacionDetalle.v_NroLiquidacion = liquidacion.v_NroLiquidacion;
+                        oLiquidacionDetalle.v_NroFactura = liquidacion.v_NroFactura;
+                        if (oLiquidacionDetalle.v_NroFactura != "" && oLiquidacionDetalle.v_NroFactura != null)
+                        {
+                            var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
+                            var x = dbContext.obtenernetoporcobrar(arr[0].ToString(), arr[1].ToString()).ToList();
+                            oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                        }
+                        else
+                        {
+                            oLiquidacionDetalle.d_Debe = 0;
+                        }
+                        oLiquidacionDetalle.d_Pago = liquidacion.d_Monto - oLiquidacionDetalle.d_Debe;
+
+                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;
+
+                        LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
+                    }
+                    oLiquidacionEmpresa.detalle = LiquidacionEmpresaDetalle;
+
+                    ListaLiquidacion.Add(oLiquidacionEmpresa);
+                }
+
+                pobjOperationResult.Success = 1;
+                return ListaLiquidacion.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
         
 
         public List<Liquidacion> GetListaLiquidacion(ref OperationResult pobjOperationResult, string liquidacionId)
@@ -31767,6 +31869,61 @@ namespace Sigesoft.Node.WinClient.BLL
 
         }
 
+        public organizationDto GetOrganizationEmpresa(ref OperationResult pobjOperationResult, string v_organizationName)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                organizationDto objDtoEntity = null;
+
+                var objEntity = (from a in dbContext.organization
+                                 where a.v_Name == v_organizationName
+                                 select a).FirstOrDefault();
+
+                if (objEntity != null)
+                    objDtoEntity = organizationAssembler.ToDTO(objEntity);
+
+                pobjOperationResult.Success = 1;
+                return objDtoEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
+        public SystemUserList GetSystemUser(ref OperationResult pobjOperationResult, int systemUserId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from a in dbContext.systemuser 
+                                 join p in dbContext.person on a.v_PersonId equals p.v_PersonId
+                                 join prof in dbContext.professional on p.v_PersonId equals prof.v_PersonId
+                                 where a.i_SystemUserId == systemUserId
+                                 select new SystemUserList
+                                 {
+                                    MedicoTratante = p.v_FirstLastName + " " + p.v_SecondLastName + ", " + p.v_FirstName,
+                                    Direccion = p.v_AdressLocation,
+                                    CMP= prof.v_ProfessionalCode,
+                                    Telefono = p.v_TelephoneNumber
+                                 }).FirstOrDefault();
+
+                pobjOperationResult.Success = 1;
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
 
         public List<rolenodecomponentprofileDto> GetRoleNodeComponentProfileByRoleNodeId_(int pintNodeId, int pintRoleId)
         {
@@ -32320,6 +32477,48 @@ namespace Sigesoft.Node.WinClient.BLL
            
         }
         #endregion
+
+
+        public void GenerarLiquidacionHospitalizacion(ref OperationResult objOperationResult, string HopitalizacionId, List<string> ClientSession)
+        {
+            SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+            OperationResult objOperationResult1 = new OperationResult();
+            var oLiquidacionBL = new LiquidacionBL();
+
+            try
+            {
+                int intNodeId = int.Parse(ClientSession[0]);
+                var nroLiquidacion = ObtnerNroLiquidacion(intNodeId);
+                float monto = 0;
+               
+                var oliquidacionDto = new liquidacionDto();
+                oliquidacionDto.v_NroLiquidacion = nroLiquidacion;
+                oliquidacionDto.d_Monto = decimal.Parse(monto.ToString());
+                oliquidacionDto.d_FechaVencimiento = null;
+                oliquidacionDto.v_NroFactura = "";
+              var newId =  oLiquidacionBL.AddLiquidacion(ref objOperationResult1, oliquidacionDto, ClientSession);
+
+
+                var objEntitySource = (from a in dbContext.hospitalizacion
+                                       where a.v_HopitalizacionId == HopitalizacionId
+                                       select a).FirstOrDefault();
+
+                objEntitySource.v_NroLiquidacion = nroLiquidacion;
+
+                // Guardar los cambios
+                dbContext.SaveChanges();
+
+                objOperationResult.Success = 1;
+
+            }
+            catch (Exception ex)
+            {
+                objOperationResult.Success = 0;
+                objOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                throw;
+            }
+        }
+
 
 	}
 }

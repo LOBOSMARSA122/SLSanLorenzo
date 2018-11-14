@@ -112,6 +112,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.DatePicker dpFechaFin;
         
         /// <summary>
+        /// btnFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnFilter;
+        
+        /// <summary>
         /// ddlConsultorio control.
         /// </summary>
         /// <remarks>
@@ -128,15 +137,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.TextBox txtTrabajador;
-        
-        /// <summary>
-        /// btnFilter control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Button btnFilter;
         
         /// <summary>
         /// GroupPanel2 control.
@@ -724,6 +724,114 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Button btnReporteLab;
         
         /// <summary>
+        /// PanelCadmio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Panel PanelCadmio;
+        
+        /// <summary>
+        /// GrupoPanelCadmio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.GroupPanel GrupoPanelCadmio;
+        
+        /// <summary>
+        /// formCadmio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Form formCadmio;
+        
+        /// <summary>
+        /// FormRowCadmio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRowCadmio;
+        
+        /// <summary>
+        /// labelCadmio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label labelCadmio;
+        
+        /// <summary>
+        /// txtCadmio control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtCadmio;
+        
+        /// <summary>
+        /// label289 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label289;
+        
+        /// <summary>
+        /// label44 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label44;
+        
+        /// <summary>
+        /// label46 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label46;
+        
+        /// <summary>
+        /// labelCadmioDeseable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label labelCadmioDeseable;
+        
+        /// <summary>
+        /// txtCadmioDeseable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtCadmioDeseable;
+        
+        /// <summary>
+        /// label290 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label290;
+        
+        /// <summary>
         /// PanelGrupoyfactorsanguineo control.
         /// </summary>
         /// <remarks>
@@ -859,13 +967,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1310;
         
         /// <summary>
-        /// txtCOLOR_EX_ORINA control.
+        /// ddlCOLOR_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtCOLOR_EX_ORINA;
+        protected global::FineUI.DropDownList ddlCOLOR_EX_ORINA;
         
         /// <summary>
         /// label1311 control.
@@ -886,33 +994,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1314;
         
         /// <summary>
-        /// label2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label2;
-        
-        /// <summary>
-        /// txtCOLOR_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCOLOR_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label1312 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1312;
-        
-        /// <summary>
         /// FormRow1 control.
         /// </summary>
         /// <remarks>
@@ -931,13 +1012,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1;
         
         /// <summary>
-        /// txtASPECTO_EX_ORINA control.
+        /// ddlASPECTO_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtASPECTO_EX_ORINA;
+        protected global::FineUI.DropDownList ddlASPECTO_EX_ORINA;
         
         /// <summary>
         /// label1313 control.
@@ -956,33 +1037,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Label label3;
-        
-        /// <summary>
-        /// label6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label6;
-        
-        /// <summary>
-        /// txtASPECTO_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtASPECTO_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label5 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label5;
         
         /// <summary>
         /// FormRow702 control.
@@ -1030,33 +1084,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1320;
         
         /// <summary>
-        /// label7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label7;
-        
-        /// <summary>
-        /// txtDENSIDAD_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtDENSIDAD_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label12 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label12;
-        
-        /// <summary>
         /// FormRow2 control.
         /// </summary>
         /// <remarks>
@@ -1064,6 +1091,51 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.FormRow FormRow2;
+        
+        /// <summary>
+        /// label41 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label41;
+        
+        /// <summary>
+        /// txtDENSIDAD_EX_ORINA_DESEABLE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtDENSIDAD_EX_ORINA_DESEABLE;
+        
+        /// <summary>
+        /// label42 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label42;
+        
+        /// <summary>
+        /// label43 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label43;
+        
+        /// <summary>
+        /// FormRow703 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow703;
         
         /// <summary>
         /// label1318 control.
@@ -1102,6 +1174,33 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label8;
         
         /// <summary>
+        /// FormRow32 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow32;
+        
+        /// <summary>
+        /// label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label2;
+        
+        /// <summary>
+        /// txtPH_EX_ORINA_DESEABLE control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtPH_EX_ORINA_DESEABLE;
+        
+        /// <summary>
         /// label11 control.
         /// </summary>
         /// <remarks>
@@ -1111,22 +1210,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label11;
         
         /// <summary>
-        /// txtPH_EX_ORINA_Deseable control.
+        /// label15 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtPH_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label10;
+        protected global::FineUI.Label label15;
         
         /// <summary>
         /// GroupPanel62 control.
@@ -1147,78 +1237,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Form Form270;
         
         /// <summary>
-        /// FormRow709 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow709;
-        
-        /// <summary>
-        /// label1339 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1339;
-        
-        /// <summary>
-        /// txtCELULAS_EPITELIALES_EX_ORINA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCELULAS_EPITELIALES_EX_ORINA;
-        
-        /// <summary>
-        /// label1340 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1340;
-        
-        /// <summary>
-        /// label1343 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1343;
-        
-        /// <summary>
-        /// label9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label9;
-        
-        /// <summary>
-        /// txtCELULAS_EPITELIALES_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCELULAS_EPITELIALES_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label13 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label13;
-        
-        /// <summary>
         /// FormRow3 control.
         /// </summary>
         /// <remarks>
@@ -1228,13 +1246,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.FormRow FormRow3;
         
         /// <summary>
-        /// label1341 control.
+        /// label7 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1341;
+        protected global::FineUI.Label label7;
         
         /// <summary>
         /// txtLEUCOCITOS_EX_ORINA control.
@@ -1264,49 +1282,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label14;
         
         /// <summary>
-        /// label15 control.
+        /// FormRow4 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label15;
+        protected global::FineUI.FormRow FormRow4;
         
         /// <summary>
-        /// txtLEUCOCITOS_EX_ORINA_Deseable control.
+        /// label30 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtLEUCOCITOS_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label16 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label16;
-        
-        /// <summary>
-        /// FormRow711 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow711;
-        
-        /// <summary>
-        /// label1345 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1345;
+        protected global::FineUI.Label label30;
         
         /// <summary>
         /// txtHEMATIES_EX_ORINA control.
@@ -1336,130 +1327,31 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1349;
         
         /// <summary>
-        /// label17 control.
+        /// FormRow5 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label17;
+        protected global::FineUI.FormRow FormRow5;
         
         /// <summary>
-        /// txtHEMATIES_EX_ORINA_Deseable control.
+        /// label31 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtHEMATIES_EX_ORINA_Deseable;
+        protected global::FineUI.Label label31;
         
         /// <summary>
-        /// label18 control.
+        /// ddlGERMENES_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label18;
-        
-        /// <summary>
-        /// FormRow4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow4;
-        
-        /// <summary>
-        /// label1347 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1347;
-        
-        /// <summary>
-        /// txtCRISTALES_EX_ORINA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCRISTALES_EX_ORINA;
-        
-        /// <summary>
-        /// label1348 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1348;
-        
-        /// <summary>
-        /// label19 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label19;
-        
-        /// <summary>
-        /// label20 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label20;
-        
-        /// <summary>
-        /// txtCRISTALES_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtCRISTALES_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label21 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label21;
-        
-        /// <summary>
-        /// FormRow713 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow713;
-        
-        /// <summary>
-        /// label1351 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1351;
-        
-        /// <summary>
-        /// txtGERMENES_EX_ORINA control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtGERMENES_EX_ORINA;
+        protected global::FineUI.DropDownList ddlGERMENES_EX_ORINA;
         
         /// <summary>
         /// label1352 control.
@@ -1480,58 +1372,256 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1355;
         
         /// <summary>
-        /// label22 control.
+        /// FormRow25 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label22;
+        protected global::FineUI.FormRow FormRow25;
         
         /// <summary>
-        /// txtGERMENES_EX_ORINA_Deseable control.
+        /// label32 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtGERMENES_EX_ORINA_Deseable;
+        protected global::FineUI.Label label32;
         
         /// <summary>
-        /// label23 control.
+        /// ddlCRISTALES_DEOX_CALCIO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label23;
+        protected global::FineUI.DropDownList ddlCRISTALES_DEOX_CALCIO;
         
         /// <summary>
-        /// FormRow5 control.
+        /// label1348 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow5;
+        protected global::FineUI.Label label1348;
         
         /// <summary>
-        /// label1353 control.
+        /// label19 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1353;
+        protected global::FineUI.Label label19;
         
         /// <summary>
-        /// txtCILINDROS_EX_ORINA control.
+        /// FormRow26 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtCILINDROS_EX_ORINA;
+        protected global::FineUI.FormRow FormRow26;
+        
+        /// <summary>
+        /// label33 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label33;
+        
+        /// <summary>
+        /// ddlCRISTALES_DEUR_AMORFOS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.DropDownList ddlCRISTALES_DEUR_AMORFOS;
+        
+        /// <summary>
+        /// label5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label5;
+        
+        /// <summary>
+        /// label6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label6;
+        
+        /// <summary>
+        /// FormRow27 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow27;
+        
+        /// <summary>
+        /// label34 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label34;
+        
+        /// <summary>
+        /// ddlCRISTALES_FOSF_AMORFOS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.DropDownList ddlCRISTALES_FOSF_AMORFOS;
+        
+        /// <summary>
+        /// label9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label9;
+        
+        /// <summary>
+        /// label10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label10;
+        
+        /// <summary>
+        /// FormRow28 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow28;
+        
+        /// <summary>
+        /// label35 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label35;
+        
+        /// <summary>
+        /// ddlCRISTALES_FOSF_TRIPLES control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.DropDownList ddlCRISTALES_FOSF_TRIPLES;
+        
+        /// <summary>
+        /// label16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label16;
+        
+        /// <summary>
+        /// label17 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label17;
+        
+        /// <summary>
+        /// FormRow29 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow29;
+        
+        /// <summary>
+        /// label37 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label37;
+        
+        /// <summary>
+        /// txtCELULAS_EPITELIALES_EX_ORINA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtCELULAS_EPITELIALES_EX_ORINA;
+        
+        /// <summary>
+        /// label1340 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label1340;
+        
+        /// <summary>
+        /// label1343 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label1343;
+        
+        /// <summary>
+        /// FormRow30 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow30;
+        
+        /// <summary>
+        /// label38 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label38;
+        
+        /// <summary>
+        /// txtCILINDROS_HILAINOS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtCILINDROS_HILAINOS;
         
         /// <summary>
         /// label1354 control.
@@ -1552,6 +1642,132 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label24;
         
         /// <summary>
+        /// FormRow31 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow31;
+        
+        /// <summary>
+        /// label39 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label39;
+        
+        /// <summary>
+        /// txtCILINDROS_GRANULOSOS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtCILINDROS_GRANULOSOS;
+        
+        /// <summary>
+        /// label12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label12;
+        
+        /// <summary>
+        /// label13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label13;
+        
+        /// <summary>
+        /// FormRow59 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow59;
+        
+        /// <summary>
+        /// label40 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label40;
+        
+        /// <summary>
+        /// txtCILINDROS_LEUCOCITARIOS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtCILINDROS_LEUCOCITARIOS;
+        
+        /// <summary>
+        /// label20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label20;
+        
+        /// <summary>
+        /// label21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label21;
+        
+        /// <summary>
+        /// FormRow62 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow62;
+        
+        /// <summary>
+        /// label47 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label47;
+        
+        /// <summary>
+        /// txtCILINDROS_HEMATICOS control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.TextBox txtCILINDROS_HEMATICOS;
+        
+        /// <summary>
+        /// label23 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label23;
+        
+        /// <summary>
         /// label25 control.
         /// </summary>
         /// <remarks>
@@ -1561,49 +1777,76 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label25;
         
         /// <summary>
-        /// txtCILINDROS_EX_ORINA_Deseable control.
+        /// FormRow64 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtCILINDROS_EX_ORINA_Deseable;
+        protected global::FineUI.FormRow FormRow64;
         
         /// <summary>
-        /// label26 control.
+        /// label48 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label26;
+        protected global::FineUI.Label label48;
         
         /// <summary>
-        /// FormRow705 control.
+        /// txtPIOCITOS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow705;
+        protected global::FineUI.TextBox txtPIOCITOS;
         
         /// <summary>
-        /// label1323 control.
+        /// label27 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1323;
+        protected global::FineUI.Label label27;
         
         /// <summary>
-        /// txtFILAMENTO_MUCOIDE_EX_ORINA control.
+        /// label28 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtFILAMENTO_MUCOIDE_EX_ORINA;
+        protected global::FineUI.Label label28;
+        
+        /// <summary>
+        /// FormRow66 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow66;
+        
+        /// <summary>
+        /// label245 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label label245;
+        
+        /// <summary>
+        /// ddlFILAMENTO_MUCOIDE_EX_ORINA control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.DropDownList ddlFILAMENTO_MUCOIDE_EX_ORINA;
         
         /// <summary>
         /// label1324 control.
@@ -1624,33 +1867,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1327;
         
         /// <summary>
-        /// label32 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label32;
-        
-        /// <summary>
-        /// txtFILAMENTO_MUCOIDE_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtFILAMENTO_MUCOIDE_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label33 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label33;
-        
-        /// <summary>
         /// GroupPanel63 control.
         /// </summary>
         /// <remarks>
@@ -1660,175 +1876,121 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.GroupPanel GroupPanel63;
         
         /// <summary>
-        /// Form275 control.
+        /// Form1000 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Form Form275;
+        protected global::FineUI.Form Form1000;
         
         /// <summary>
-        /// FormRow714 control.
+        /// FormRow1000 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow714;
+        protected global::FineUI.FormRow FormRow1000;
         
         /// <summary>
-        /// label1356 control.
+        /// Label1000 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1356;
+        protected global::FineUI.Label Label1000;
         
         /// <summary>
-        /// txtSANGRE_EX_ORINA control.
+        /// ddlSANGRE_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtSANGRE_EX_ORINA;
+        protected global::FineUI.DropDownList ddlSANGRE_EX_ORINA;
         
         /// <summary>
-        /// label1357 control.
+        /// Label1001 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1357;
+        protected global::FineUI.Label Label1001;
         
         /// <summary>
-        /// label1360 control.
+        /// Label1002 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1360;
+        protected global::FineUI.Label Label1002;
         
         /// <summary>
-        /// label27 control.
+        /// FormRow1001 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label27;
+        protected global::FineUI.FormRow FormRow1001;
         
         /// <summary>
-        /// txtSANGRE_EX_ORINA_Deseable control.
+        /// Label1003 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtSANGRE_EX_ORINA_Deseable;
+        protected global::FineUI.Label Label1003;
         
         /// <summary>
-        /// label28 control.
+        /// ddlUROBILINOGENO_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label28;
+        protected global::FineUI.DropDownList ddlUROBILINOGENO_EX_ORINA;
         
         /// <summary>
-        /// FormRow6 control.
+        /// Label1004 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow6;
+        protected global::FineUI.Label Label1004;
         
         /// <summary>
-        /// label1358 control.
+        /// Label1005 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1358;
+        protected global::FineUI.Label Label1005;
         
         /// <summary>
-        /// txtUROBILINOGENO_EX_ORINA control.
+        /// FormRow1002 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtUROBILINOGENO_EX_ORINA;
+        protected global::FineUI.FormRow FormRow1002;
         
         /// <summary>
-        /// label1359 control.
+        /// Label1006 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1359;
-        
-        /// <summary>
-        /// label29 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label29;
-        
-        /// <summary>
-        /// label30 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label30;
-        
-        /// <summary>
-        /// txtUROBILINOGENO_EX_ORINA_Deseable control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtUROBILINOGENO_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label31 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label31;
-        
-        /// <summary>
-        /// FormRow716 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.FormRow FormRow716;
-        
-        /// <summary>
-        /// label1362 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label1362;
+        protected global::FineUI.Label Label1006;
         
         /// <summary>
         /// txtBILIRRUBINA_EX_ORINA control.
@@ -1840,409 +2002,400 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtBILIRRUBINA_EX_ORINA;
         
         /// <summary>
-        /// label1363 control.
+        /// Label1007 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1363;
+        protected global::FineUI.Label Label1007;
         
         /// <summary>
-        /// label1366 control.
+        /// Label1008 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1366;
+        protected global::FineUI.Label Label1008;
         
         /// <summary>
-        /// label34 control.
+        /// FormRow1003 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label34;
+        protected global::FineUI.FormRow FormRow1003;
         
         /// <summary>
-        /// txtBILIRRUBINA_EX_ORINA_Deseable control.
+        /// Label1009 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtBILIRRUBINA_EX_ORINA_Deseable;
+        protected global::FineUI.Label Label1009;
         
         /// <summary>
-        /// label35 control.
+        /// ddlPROTEINAS_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label35;
+        protected global::FineUI.DropDownList ddlPROTEINAS_EX_ORINA;
         
         /// <summary>
-        /// FormRow7 control.
+        /// Label1010 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow7;
+        protected global::FineUI.Label Label1010;
         
         /// <summary>
-        /// label1364 control.
+        /// Label1011 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1364;
+        protected global::FineUI.Label Label1011;
         
         /// <summary>
-        /// txtPROTEINAS_EX_ORINA control.
+        /// FormRow1004 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtPROTEINAS_EX_ORINA;
+        protected global::FineUI.FormRow FormRow1004;
         
         /// <summary>
-        /// label1365 control.
+        /// Label1012 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1365;
+        protected global::FineUI.Label Label1012;
         
         /// <summary>
-        /// label36 control.
+        /// ddlNITRITOS_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label36;
+        protected global::FineUI.DropDownList ddlNITRITOS_EX_ORINA;
         
         /// <summary>
-        /// label37 control.
+        /// Label1013 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label37;
+        protected global::FineUI.Label Label1013;
         
         /// <summary>
-        /// txtPROTEINAS_EX_ORINA_Deseable control.
+        /// Label1014 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtPROTEINAS_EX_ORINA_Deseable;
+        protected global::FineUI.Label Label1014;
         
         /// <summary>
-        /// label38 control.
+        /// FormRow1005 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label38;
+        protected global::FineUI.FormRow FormRow1005;
         
         /// <summary>
-        /// FormRow718 control.
+        /// Label1015 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow718;
+        protected global::FineUI.Label Label1015;
         
         /// <summary>
-        /// label1368 control.
+        /// ddlC_CETONICOS_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1368;
+        protected global::FineUI.DropDownList ddlC_CETONICOS_EX_ORINA;
         
         /// <summary>
-        /// txtNITRITOS_EX_ORINA control.
+        /// Label1016 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtNITRITOS_EX_ORINA;
+        protected global::FineUI.Label Label1016;
         
         /// <summary>
-        /// label1369 control.
+        /// Label1017 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1369;
+        protected global::FineUI.Label Label1017;
         
         /// <summary>
-        /// label1372 control.
+        /// FormRow1006 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1372;
+        protected global::FineUI.FormRow FormRow1006;
         
         /// <summary>
-        /// label39 control.
+        /// Label1018 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label39;
+        protected global::FineUI.Label Label1018;
         
         /// <summary>
-        /// txtNITRITOS_EX_ORINA_Deseable control.
+        /// ddlGLUCOSA_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtNITRITOS_EX_ORINA_Deseable;
+        protected global::FineUI.DropDownList ddlGLUCOSA_EX_ORINA;
         
         /// <summary>
-        /// label40 control.
+        /// Label1019 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label40;
+        protected global::FineUI.Label Label1019;
         
         /// <summary>
-        /// FormRow8 control.
+        /// Label1020 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow8;
+        protected global::FineUI.Label Label1020;
         
         /// <summary>
-        /// label1370 control.
+        /// FormRow1007 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1370;
+        protected global::FineUI.FormRow FormRow1007;
         
         /// <summary>
-        /// txtC_CETONICOS_EX_ORINA control.
+        /// Label1021 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtC_CETONICOS_EX_ORINA;
+        protected global::FineUI.Label Label1021;
         
         /// <summary>
-        /// label1371 control.
+        /// ddlPIGMENTOS_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1371;
+        protected global::FineUI.DropDownList ddlPIGMENTOS_EX_ORINA;
         
         /// <summary>
-        /// label41 control.
+        /// Label1022 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label41;
+        protected global::FineUI.Label Label1022;
         
         /// <summary>
-        /// label42 control.
+        /// Label1023 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label42;
+        protected global::FineUI.Label Label1023;
         
         /// <summary>
-        /// txtC_CETONICOS_EX_ORINA_Deseable control.
+        /// FormRow1008 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtC_CETONICOS_EX_ORINA_Deseable;
+        protected global::FineUI.FormRow FormRow1008;
         
         /// <summary>
-        /// label43 control.
+        /// Label1024 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label43;
+        protected global::FineUI.Label Label1024;
         
         /// <summary>
-        /// FormRow720 control.
+        /// ddlACIDO_ASCORBIC_EX_ORINA control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow720;
+        protected global::FineUI.DropDownList ddlACIDO_ASCORBIC_EX_ORINA;
         
         /// <summary>
-        /// label1374 control.
+        /// Label1025 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1374;
+        protected global::FineUI.Label Label1025;
         
         /// <summary>
-        /// txtGLUCOSA_EX_ORINA control.
+        /// Label1026 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtGLUCOSA_EX_ORINA;
+        protected global::FineUI.Label Label1026;
         
         /// <summary>
-        /// label1375 control.
+        /// FormRow1009 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1375;
+        protected global::FineUI.FormRow FormRow1009;
         
         /// <summary>
-        /// label1378 control.
+        /// Label1027 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1378;
+        protected global::FineUI.Label Label1027;
         
         /// <summary>
-        /// label44 control.
+        /// txtLEUCOCITOS_EX_ORINA_QUIMICO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label44;
+        protected global::FineUI.TextBox txtLEUCOCITOS_EX_ORINA_QUIMICO;
         
         /// <summary>
-        /// txtGLUCOSA_EX_ORINA_Deseable control.
+        /// Label1028 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtGLUCOSA_EX_ORINA_Deseable;
+        protected global::FineUI.Label Label1028;
         
         /// <summary>
-        /// label45 control.
+        /// Label1029 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label45;
+        protected global::FineUI.Label Label1029;
         
         /// <summary>
-        /// FormRow9 control.
+        /// GroupPanelResultado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.FormRow FormRow9;
+        protected global::FineUI.GroupPanel GroupPanelResultado;
         
         /// <summary>
-        /// label1376 control.
+        /// formResultado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1376;
+        protected global::FineUI.Form formResultado;
         
         /// <summary>
-        /// txtHEMOGLOBINA_EX_ORINA control.
+        /// FormRowResultado control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtHEMOGLOBINA_EX_ORINA;
+        protected global::FineUI.FormRow FormRowResultado;
         
         /// <summary>
-        /// label1377 control.
+        /// labelPatologico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label1377;
+        protected global::FineUI.Label labelPatologico;
         
         /// <summary>
-        /// label46 control.
+        /// rbPatologico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label46;
+        protected global::FineUI.RadioButton rbPatologico;
         
         /// <summary>
-        /// label47 control.
+        /// labelNoPatologico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label label47;
+        protected global::FineUI.Label labelNoPatologico;
         
         /// <summary>
-        /// txtHEMOGLOBINA_EX_ORINA_Deseable control.
+        /// rbNoPatologico control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtHEMOGLOBINA_EX_ORINA_Deseable;
-        
-        /// <summary>
-        /// label48 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label48;
+        protected global::FineUI.RadioButton rbNoPatologico;
         
         /// <summary>
         /// PanelHemograma control.
@@ -5215,51 +5368,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtTIFICO_O;
         
         /// <summary>
-        /// label745 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label745;
-        
-        /// <summary>
-        /// label748 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label748;
-        
-        /// <summary>
-        /// label746 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label746;
-        
-        /// <summary>
-        /// txtTIFICO_O_DESEABLE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtTIFICO_O_DESEABLE;
-        
-        /// <summary>
-        /// label747 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label747;
-        
-        /// <summary>
         /// FormRow547 control.
         /// </summary>
         /// <remarks>
@@ -5285,51 +5393,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.TextBox txtTIFICO_H;
-        
-        /// <summary>
-        /// label750 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label750;
-        
-        /// <summary>
-        /// label753 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label753;
-        
-        /// <summary>
-        /// label751 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label751;
-        
-        /// <summary>
-        /// txtTIFICO_H_DESEABLE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtTIFICO_H_DESEABLE;
-        
-        /// <summary>
-        /// label752 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label752;
         
         /// <summary>
         /// FormRow548 control.
@@ -5359,51 +5422,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtPARATIFICO_A;
         
         /// <summary>
-        /// label755 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label755;
-        
-        /// <summary>
-        /// label758 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label758;
-        
-        /// <summary>
-        /// label756 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label756;
-        
-        /// <summary>
-        /// txtPARATIFICO_A_DESEABLE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtPARATIFICO_A_DESEABLE;
-        
-        /// <summary>
-        /// label757 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label757;
-        
-        /// <summary>
         /// FormRow549 control.
         /// </summary>
         /// <remarks>
@@ -5431,51 +5449,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.TextBox txtPARATIFICO_B;
         
         /// <summary>
-        /// label760 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label760;
-        
-        /// <summary>
-        /// label763 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label763;
-        
-        /// <summary>
-        /// label761 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label761;
-        
-        /// <summary>
-        /// txtPARATIFICO_B_DESEABLE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtPARATIFICO_B_DESEABLE;
-        
-        /// <summary>
-        /// label762 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label762;
-        
-        /// <summary>
         /// FormRow550 control.
         /// </summary>
         /// <remarks>
@@ -5501,51 +5474,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.TextBox txtBRUCELLA;
-        
-        /// <summary>
-        /// label765 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label765;
-        
-        /// <summary>
-        /// label768 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label768;
-        
-        /// <summary>
-        /// label766 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label766;
-        
-        /// <summary>
-        /// txtBRUCELLA_DESEABLE control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.TextBox txtBRUCELLA_DESEABLE;
-        
-        /// <summary>
-        /// label767 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.Label label767;
         
         /// <summary>
         /// PanelToxiCocaMari control.
@@ -7159,13 +7087,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1285;
         
         /// <summary>
-        /// txt_VDRL control.
+        /// ddl_VDRL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txt_VDRL;
+        protected global::FineUI.DropDownList ddl_VDRL;
         
         /// <summary>
         /// label1286 control.
@@ -7195,13 +7123,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.Label label1287;
         
         /// <summary>
-        /// txtVDRL_DESEABLE control.
+        /// label291 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.TextBox txtVDRL_DESEABLE;
+        protected global::FineUI.Label label291;
         
         /// <summary>
         /// label1288 control.
