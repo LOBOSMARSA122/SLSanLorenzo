@@ -265,10 +265,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             MergeExPDF _mergeExPDF = new MergeExPDF();
             var x = ((List<string>)Session["filesNameToMerge"]).ToList();
             _mergeExPDF.FilesName = x;
-            //_mergeExPDF.DestinationFile = _ruta + Session["ServiceId"].ToString() + "-N002-ME000000033_MERGE.pdf";
+            _mergeExPDF.DestinationFile = _ruta + Session["ServiceId"].ToString() + "-N002-ME000000033_MERGE.pdf";
             objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf");
             _mergeExPDF.Execute();
-            
+
             System.IO.File.Copy(_ruta + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf"), true);
      
         }

@@ -20,8 +20,7 @@
                 </Items>
             </x:Toolbar>
         </Toolbars>
-        <Items>
-            
+        <Items>            
             <x:Panel ID="Panel2" Layout="Fit" runat="server" ShowBorder="false" ShowHeader="false" >
                 <Items>
                     <x:SimpleForm ID="SimpleForm1" ShowBorder="false" ShowHeader="false" EnableBackgroundColor="true" 
