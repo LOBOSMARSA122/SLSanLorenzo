@@ -491,8 +491,8 @@ namespace NetPdf
                     new PdfPCell(new Phrase("22. Me parece que los beneficiarios de mi trabajo me culpan de algunos problemas ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, Colspan=5, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
                     new PdfPCell(new Phrase(resultado22, fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
                      #region pregunta resultado
-                    new PdfPCell(new Phrase("Total :   ", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT,  VerticalAlignment=PdfPCell.ALIGN_MIDDLE, Colspan=6 },   
-                    new PdfPCell(new Phrase(resultadofinal.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
+                    new PdfPCell(new Phrase(" ", fontTitle1)){HorizontalAlignment = PdfPCell.ALIGN_RIGHT,  VerticalAlignment=PdfPCell.ALIGN_MIDDLE, Colspan=6 },   
+                    new PdfPCell(new Phrase(" ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_LEFT, VerticalAlignment=PdfPCell.ALIGN_MIDDLE },
                     #endregion
                    };
             #endregion
@@ -506,20 +506,48 @@ namespace NetPdf
             var ae = int.Parse(resultado.ToString()) + int.Parse(resultado2.ToString()) + int.Parse(resultado3.ToString()) + int.Parse(resultado6.ToString()) + int.Parse(resultado8.ToString()) + int.Parse(resultado13.ToString()) + int.Parse(resultado14.ToString()) + int.Parse(resultado16.ToString()) + int.Parse(resultado20.ToString());
             var d = int.Parse(resultado5.ToString()) + int.Parse(resultado10.ToString()) + int.Parse(resultado11.ToString()) + int.Parse(resultado15.ToString()) + int.Parse(resultado22.ToString());
             var rp = int.Parse(resultado4.ToString()) + int.Parse(resultado7.ToString()) + int.Parse(resultado9.ToString()) + int.Parse(resultado12.ToString()) + int.Parse(resultado17.ToString()) + int.Parse(resultado18.ToString()) + int.Parse(resultado19.ToString()) + int.Parse(resultado21.ToString());
+            var interpretacion = ""; var calculo = 0;
+            calculo = ae + d - rp + 50;
+            if (calculo < 31)
+            {
+                interpretacion = "ESTRÉS BAJO";
+            }
+            else if (calculo >= 31 && calculo <= 55)
+            {
+                interpretacion = "ESTRÉS MEDIO";
+            }
+            else if (calculo >= 56)
+            {
+                interpretacion = "ESTRÉS ALTO";
+            }
             cells = new List<PdfPCell>()
                    {      
                     //fila    
                     new PdfPCell(new Phrase(" ", fontTitle1)){Colspan = 4, HorizontalAlignment = PdfPCell.ALIGN_LEFT }, 
                     new PdfPCell(new Phrase("A. E.  AGOTAMIENTO EMOCIONAL: "+ae.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
                     new PdfPCell(new Phrase("D.      DESPERSONALIZAICÓN: "+d.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
-                    new PdfPCell(new Phrase("R. P.  REALIZACIÓN PERSONAL: "+rp.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
-                    
+                    new PdfPCell(new Phrase("L. P.  LOGROS PERSONALES: "+rp.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },
+                    new PdfPCell(new Phrase("  ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_JUSTIFIED },                   
                     
                    };
 
             columnWidths = new float[] { 100f };
 
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, PdfPCell.NO_BORDER, null, fontTitleTable);
+            document.Add(table);
+            cells = new List<PdfPCell>()
+                   {      
+                    //fila    
+                   
+                    new PdfPCell(new Phrase("INTERPRETACION: ", fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                    new PdfPCell(new Phrase(interpretacion.ToString(), fontTitle2)){HorizontalAlignment = PdfPCell.ALIGN_CENTER },
+                    
+                    
+                   };
+
+            columnWidths = new float[] { 100f };
+
+            table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, null, fontTitleTable);
             document.Add(table);
             #endregion
 
