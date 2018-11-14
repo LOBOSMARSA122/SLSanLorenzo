@@ -31442,11 +31442,9 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
                 var query = from A in dbContext.liquidacion
-                            //join B in dbContext.service on A.v_ServiceId equals B.v_ServiceId
                             join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
                             where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
-                            //&& B.d_ServiceDate > pdatBeginDate && B.d_ServiceDate < pdatEndDate
-                            //ARNOLD , REPORTE JUAN LIZA
+
                             select new LiquidacionEmpresa
                             {
                                 v_OrganizationName = F.v_Name,
@@ -31456,7 +31454,6 @@ namespace Sigesoft.Node.WinClient.BLL
                                 v_TelephoneNumber = F.v_PhoneNumber,
                                 v_ContactName = F.v_ContacName,
                                 v_NroLiquidacion = A.v_NroLiquidacion,
-                                //v_ServiceId = A.v_ServiceId,
                                 v_OrganizationId = A.v_OrganizationId,
                                 d_Monto = A.d_Monto,
                                 d_FechaVencimiento = A.d_FechaVencimiento,

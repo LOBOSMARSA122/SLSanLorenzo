@@ -92,7 +92,28 @@ namespace Sigesoft.Node.WinClient.UI
             }
             else if (rbResumenCuentasXCobrar.Checked)
             {
+                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+                {
+                    this.Enabled = false;
 
+                    var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+                    OperationResult objOperationResult = new OperationResult();
+
+                    DateTime? fechaInicio = _fInicio.Value.Date;
+                    DateTime? fechaFin = _fFin.Value.Date.AddDays(1);
+
+                    string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
+                    string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
+                    var lista = new ServiceBL().GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
+
+                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
+
+                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                    string nombre = "Cuentas X Cobrar - CSL";
+
+                    LiquidacionCuentasPorCobrar.CreateLiquidacionCuentasPorCobrar(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1);
+                    this.Enabled = true;
+                }
             }
             else if (rbLiqPendFacturar.Checked)
             {
