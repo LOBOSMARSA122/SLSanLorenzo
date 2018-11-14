@@ -31895,6 +31895,36 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public SystemUserList GetSystemUser(ref OperationResult pobjOperationResult, int systemUserId)
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from a in dbContext.systemuser 
+                                 join p in dbContext.person on a.v_PersonId equals p.v_PersonId
+                                 join prof in dbContext.professional on p.v_PersonId equals prof.v_PersonId
+                                 where a.i_SystemUserId == systemUserId
+                                 select new SystemUserList
+                                 {
+                                    MedicoTratante = p.v_FirstLastName + " " + p.v_SecondLastName + ", " + p.v_FirstName,
+                                    Direccion = p.v_AdressLocation,
+                                    CMP= prof.v_ProfessionalCode,
+                                    Telefono = p.v_TelephoneNumber
+                                 }).FirstOrDefault();
+
+                pobjOperationResult.Success = 1;
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
+
         public List<rolenodecomponentprofileDto> GetRoleNodeComponentProfileByRoleNodeId_(int pintNodeId, int pintRoleId)
         {
             //mon.IsActive = true;

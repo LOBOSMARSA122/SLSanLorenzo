@@ -855,6 +855,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             join A1 in dbContext.service on A.v_ServiceId equals  A1.v_ServiceId
                             join B in dbContext.systemuser on A.i_MedicoTratanteId equals B.i_SystemUserId
                             join C in dbContext.person on B.v_PersonId equals C.v_PersonId
+                            join BB in dbContext.professional on C.v_PersonId equals BB.v_PersonId
                             join D in dbContext.person on A1.v_PersonId equals D.v_PersonId
                             join E in dbContext.systemparameter on new { a = A1.i_MasterServiceId.Value, b = 119 } equals new { a = E.i_ParameterId, b = E.i_GroupId } into E_join
                             from E in E_join.DefaultIfEmpty()
@@ -866,6 +867,9 @@ namespace Sigesoft.Node.WinClient.BLL
                             {
                                 MedicoTratanteId = B.i_SystemUserId,
                                 MedicoTratante = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
+                                Direccion = C.v_AdressLocation,
+                                Telefono = C.v_TelephoneNumber,
+                                CMP= BB.v_ProfessionalCode,
                                 Paciente = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
                                 d_ServiceDate = A1.d_ServiceDate,
                                 v_ServiceId = A.v_ServiceId,
@@ -892,7 +896,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 {
                     oLiquidacionMedicoList = new LiquidacionMedicoList();
                     oLiquidacionMedicoList.MedicoTratante = medico.MedicoTratante;
-                    
+                    oLiquidacionMedicoList.MedicoTratanteId = medico.MedicoTratanteId;
                     var servicioMedico =
                         query.ToList().FindAll(p => p.MedicoTratanteId == medico.MedicoTratanteId).ToList();
                     var listaServicios = new List<LiquidacionServicios>();

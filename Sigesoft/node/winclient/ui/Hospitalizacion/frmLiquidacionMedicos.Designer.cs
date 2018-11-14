@@ -318,6 +318,7 @@
             this.grdData.Name = "grdData";
             this.grdData.Size = new System.Drawing.Size(778, 504);
             this.grdData.TabIndex = 115;
+            this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdData_AfterSelectChange);
             this.grdData.ClickCell += new Infragistics.Win.UltraWinGrid.ClickCellEventHandler(this.grdData_ClickCell);
             // 
             // btnExport

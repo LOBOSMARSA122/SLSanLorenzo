@@ -9,6 +9,9 @@ namespace Sigesoft.Node.WinClient.BE
     {
         public int? MedicoTratanteId { get; set; }
         public string MedicoTratante { get; set; }
+        public string Direccion { get; set; }
+        public string CMP { get; set; }
+        public string Telefono { get; set; }
         
         public string Paciente { get; set; }
         public DateTime? d_ServiceDate { get; set; }
