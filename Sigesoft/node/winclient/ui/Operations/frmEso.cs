@@ -172,9 +172,9 @@ namespace Sigesoft.Node.WinClient.UI.Operations
 
         private AtencionesIntegralesBL _objAtencionesIntegralesBl = new AtencionesIntegralesBL();
         private PacientBL _objPacienteBl = new PacientBL();
-
-        string adolId = string.Empty;
+        
         serviceDto idPerson = new serviceDto();
+        string adolId = string.Empty;
         private adolescenteDto objAdolDto = null;
 
         string adulId = string.Empty;
@@ -2663,11 +2663,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     || arrComponentId.Contains(Constants.CERTIFICADO_PSICOSENSOMETRICO_DATOS_ID)
                     || arrComponentId.Contains("N009-ME000000437")
 
-                    || arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
-                    || arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
-                    || arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
-                    || arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
-                    || arrComponentId.Contains(Constants.SOMNOLENCIA_ID)
+                    //|| arrComponentId.Contains(Constants.PSICOLOGIA_ID)//psicologia
+                    //|| arrComponentId.Contains(Constants.HISTORIA_CLINICA_PSICOLOGICA_ID)
+                    //|| arrComponentId.Contains(Constants.FICHA_PSICOLOGICA_OCUPACIONAL_GOLDFIELDS)
+                    //|| arrComponentId.Contains(Constants.INFORME_PSICOLOGICO_OCUPACIONAL_GOLDFIELDS)
+                    //|| arrComponentId.Contains(Constants.SOMNOLENCIA_ID)
 
                     || arrComponentId.Contains(Constants.OIT_ID)//rayos x
                     || arrComponentId.Contains(Constants.RX_TORAX_ID)

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
+            Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEsoV2));
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
@@ -348,6 +348,15 @@
             this.btnAgregarDxExamen = new System.Windows.Forms.Button();
             this.lblRecordCountDiagnosticoPorExamenCom = new System.Windows.Forms.Label();
             this.General = new System.Windows.Forms.TabPage();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.txtVidaSexual = new System.Windows.Forms.TextBox();
+            this.txtNroCausa = new System.Windows.Forms.TextBox();
+            this.label142 = new System.Windows.Forms.Label();
+            this.label143 = new System.Windows.Forms.Label();
+            this.label144 = new System.Windows.Forms.Label();
+            this.txtNroAbortos = new System.Windows.Forms.TextBox();
+            this.txtNroParejasActuales = new System.Windows.Forms.TextBox();
+            this.label145 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.gbAntecedentes = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -358,7 +367,11 @@
             this.grdServiciosAnteriores = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.btnVerServicioAnterior = new System.Windows.Forms.Button();
             this.gbAntGinecologicos = new System.Windows.Forms.GroupBox();
+            this.label146 = new System.Windows.Forms.Label();
+            this.label147 = new System.Windows.Forms.Label();
+            this.txtResultadoMamo = new System.Windows.Forms.TextBox();
             this.dtpMamografia = new System.Windows.Forms.DateTimePicker();
+            this.txtResultadoPAP = new System.Windows.Forms.TextBox();
             this.txtGestapara = new System.Windows.Forms.TextBox();
             this.txtMenarquia = new System.Windows.Forms.TextBox();
             this.dtpPAP = new System.Windows.Forms.DateTimePicker();
@@ -628,9 +641,6 @@
             this.label85 = new System.Windows.Forms.Label();
             this.textEspecificacionesNacer = new System.Windows.Forms.TextBox();
             this.label84 = new System.Windows.Forms.Label();
-            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.ultgrboxEmbarazo = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel1 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
             this.textQuienAtendio = new System.Windows.Forms.TextBox();
@@ -690,8 +700,6 @@
             this.label125 = new System.Windows.Forms.Label();
             this.label126 = new System.Windows.Forms.Label();
             this.txtNombreMadreTutor = new System.Windows.Forms.TextBox();
-            this.shapeContainer3 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape4 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.btnGuardarAntecedentes = new System.Windows.Forms.Button();
@@ -736,19 +744,11 @@
             this.btnPerson = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.ultraFlowLayoutManager2 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
-            this.label147 = new System.Windows.Forms.Label();
-            this.txtResultadoPAP = new System.Windows.Forms.TextBox();
-            this.label146 = new System.Windows.Forms.Label();
-            this.txtResultadoMamo = new System.Windows.Forms.TextBox();
-            this.groupBox15 = new System.Windows.Forms.GroupBox();
-            this.txtVidaSexual = new System.Windows.Forms.TextBox();
-            this.txtNroCausa = new System.Windows.Forms.TextBox();
-            this.label142 = new System.Windows.Forms.Label();
-            this.label143 = new System.Windows.Forms.Label();
-            this.label144 = new System.Windows.Forms.Label();
-            this.txtNroAbortos = new System.Windows.Forms.TextBox();
-            this.txtNroParejasActuales = new System.Windows.Forms.TextBox();
-            this.label145 = new System.Windows.Forms.Label();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -779,6 +779,7 @@
             this.gbDiagnosticoExamen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDiagnosticoPorExamenComponente)).BeginInit();
             this.General.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.panel1.SuspendLayout();
             this.gbAntecedentes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdAntecedentes)).BeginInit();
@@ -882,19 +883,18 @@
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager2)).BeginInit();
-            this.groupBox15.SuspendLayout();
             this.SuspendLayout();
             // 
             // uvExamen
             // 
-            appearance103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance103.BackColor2 = System.Drawing.Color.Transparent;
-            appearance103.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance103.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance103.BorderColor = System.Drawing.Color.Red;
-            appearance103.BorderColor2 = System.Drawing.Color.Red;
-            appearance103.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance103;
+            appearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance1.BackColor2 = System.Drawing.Color.Transparent;
+            appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance1.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance1.BorderColor = System.Drawing.Color.Red;
+            appearance1.BorderColor2 = System.Drawing.Color.Red;
+            appearance1.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance1;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -2865,6 +2865,103 @@
             this.General.Text = "ANAMNESIS - ANTECEDENTES";
             this.General.UseVisualStyleBackColor = true;
             // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.txtVidaSexual);
+            this.groupBox15.Controls.Add(this.txtNroCausa);
+            this.groupBox15.Controls.Add(this.label142);
+            this.groupBox15.Controls.Add(this.label143);
+            this.groupBox15.Controls.Add(this.label144);
+            this.groupBox15.Controls.Add(this.txtNroAbortos);
+            this.groupBox15.Controls.Add(this.txtNroParejasActuales);
+            this.groupBox15.Controls.Add(this.label145);
+            this.groupBox15.Location = new System.Drawing.Point(6, 253);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(1138, 51);
+            this.groupBox15.TabIndex = 72;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Antecedentes de Reproducción";
+            // 
+            // txtVidaSexual
+            // 
+            this.txtVidaSexual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVidaSexual.Location = new System.Drawing.Point(135, 18);
+            this.txtVidaSexual.MaxLength = 100;
+            this.txtVidaSexual.Name = "txtVidaSexual";
+            this.txtVidaSexual.Size = new System.Drawing.Size(88, 20);
+            this.txtVidaSexual.TabIndex = 62;
+            // 
+            // txtNroCausa
+            // 
+            this.txtNroCausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroCausa.Location = new System.Drawing.Point(823, 18);
+            this.txtNroCausa.MaxLength = 100;
+            this.txtNroCausa.Name = "txtNroCausa";
+            this.txtNroCausa.Size = new System.Drawing.Size(290, 20);
+            this.txtNroCausa.TabIndex = 69;
+            // 
+            // label142
+            // 
+            this.label142.AutoSize = true;
+            this.label142.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label142.ForeColor = System.Drawing.Color.Black;
+            this.label142.Location = new System.Drawing.Point(19, 21);
+            this.label142.Name = "label142";
+            this.label142.Size = new System.Drawing.Size(106, 13);
+            this.label142.TabIndex = 61;
+            this.label142.Text = "Inicio de Vida Sexual";
+            // 
+            // label143
+            // 
+            this.label143.AutoSize = true;
+            this.label143.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label143.ForeColor = System.Drawing.Color.Black;
+            this.label143.Location = new System.Drawing.Point(734, 21);
+            this.label143.Name = "label143";
+            this.label143.Size = new System.Drawing.Size(83, 13);
+            this.label143.TabIndex = 68;
+            this.label143.Text = "Precisar Causas";
+            // 
+            // label144
+            // 
+            this.label144.AutoSize = true;
+            this.label144.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label144.ForeColor = System.Drawing.Color.Black;
+            this.label144.Location = new System.Drawing.Point(248, 21);
+            this.label144.Name = "label144";
+            this.label144.Size = new System.Drawing.Size(109, 13);
+            this.label144.TabIndex = 64;
+            this.label144.Text = "Nro. Parejas Actuales";
+            // 
+            // txtNroAbortos
+            // 
+            this.txtNroAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroAbortos.Location = new System.Drawing.Point(563, 18);
+            this.txtNroAbortos.MaxLength = 100;
+            this.txtNroAbortos.Name = "txtNroAbortos";
+            this.txtNroAbortos.Size = new System.Drawing.Size(88, 20);
+            this.txtNroAbortos.TabIndex = 67;
+            // 
+            // txtNroParejasActuales
+            // 
+            this.txtNroParejasActuales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNroParejasActuales.Location = new System.Drawing.Point(364, 18);
+            this.txtNroParejasActuales.MaxLength = 100;
+            this.txtNroParejasActuales.Name = "txtNroParejasActuales";
+            this.txtNroParejasActuales.Size = new System.Drawing.Size(88, 20);
+            this.txtNroParejasActuales.TabIndex = 65;
+            // 
+            // label145
+            // 
+            this.label145.AutoSize = true;
+            this.label145.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label145.ForeColor = System.Drawing.Color.Black;
+            this.label145.Location = new System.Drawing.Point(476, 21);
+            this.label145.Name = "label145";
+            this.label145.Size = new System.Drawing.Size(81, 13);
+            this.label145.TabIndex = 66;
+            this.label145.Text = "Nro. de Abortos";
+            // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -3191,6 +3288,36 @@
             this.gbAntGinecologicos.TabStop = false;
             this.gbAntGinecologicos.Text = "Antecedentes Ginecológicos";
             // 
+            // label146
+            // 
+            this.label146.AutoSize = true;
+            this.label146.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label146.ForeColor = System.Drawing.Color.Black;
+            this.label146.Location = new System.Drawing.Point(931, 51);
+            this.label146.Name = "label146";
+            this.label146.Size = new System.Drawing.Size(130, 13);
+            this.label146.TabIndex = 65;
+            this.label146.Text = "Resultado de Mamografía";
+            // 
+            // label147
+            // 
+            this.label147.AutoSize = true;
+            this.label147.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label147.ForeColor = System.Drawing.Color.Black;
+            this.label147.Location = new System.Drawing.Point(654, 51);
+            this.label147.Name = "label147";
+            this.label147.Size = new System.Drawing.Size(96, 13);
+            this.label147.TabIndex = 65;
+            this.label147.Text = "Resultado del PAP";
+            // 
+            // txtResultadoMamo
+            // 
+            this.txtResultadoMamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResultadoMamo.Location = new System.Drawing.Point(1068, 48);
+            this.txtResultadoMamo.Name = "txtResultadoMamo";
+            this.txtResultadoMamo.Size = new System.Drawing.Size(194, 20);
+            this.txtResultadoMamo.TabIndex = 66;
+            // 
             // dtpMamografia
             // 
             this.dtpMamografia.Checked = false;
@@ -3204,6 +3331,14 @@
             this.dtpMamografia.ShowUpDown = true;
             this.dtpMamografia.Size = new System.Drawing.Size(86, 20);
             this.dtpMamografia.TabIndex = 32;
+            // 
+            // txtResultadoPAP
+            // 
+            this.txtResultadoPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtResultadoPAP.Location = new System.Drawing.Point(756, 48);
+            this.txtResultadoPAP.Name = "txtResultadoPAP";
+            this.txtResultadoPAP.Size = new System.Drawing.Size(162, 20);
+            this.txtResultadoPAP.TabIndex = 66;
             // 
             // txtGestapara
             // 
@@ -3964,7 +4099,7 @@
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(1274, 302);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
@@ -4986,6 +5121,7 @@
             this.btnEditarEmbarazo.TabIndex = 137;
             this.btnEditarEmbarazo.Text = "   Editar";
             this.btnEditarEmbarazo.UseVisualStyleBackColor = false;
+            this.btnEditarEmbarazo.Click += new System.EventHandler(this.btnEditarEmbarazo_Click);
             // 
             // grdEmbarazos
             // 
@@ -5125,6 +5261,7 @@
             this.btnNuevoEmbarazo.TabIndex = 130;
             this.btnNuevoEmbarazo.Text = "     Nuevo";
             this.btnNuevoEmbarazo.UseVisualStyleBackColor = false;
+            this.btnNuevoEmbarazo.Click += new System.EventHandler(this.btnNuevoEmbarazo_Click);
             // 
             // btnEliminarEmbarazo
             // 
@@ -5146,6 +5283,7 @@
             this.btnEliminarEmbarazo.Text = "Eliminar";
             this.btnEliminarEmbarazo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminarEmbarazo.UseVisualStyleBackColor = false;
+            this.btnEliminarEmbarazo.Click += new System.EventHandler(this.btnEliminarEmbarazo_Click);
             // 
             // txtAmAborto
             // 
@@ -5646,13 +5784,12 @@
             this.ultgrboxVivienda.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxVivienda.Controls.Add(this.ultraExpandableGroupBoxPanel5);
             this.ultgrboxVivienda.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxVivienda.Expanded = false;
-            this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(604, 172);
+            this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(587, 172);
             this.ultgrboxVivienda.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxVivienda.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 104);
+            this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 1062);
             this.ultgrboxVivienda.Name = "ultgrboxVivienda";
-            this.ultgrboxVivienda.Size = new System.Drawing.Size(604, 26);
+            this.ultgrboxVivienda.Size = new System.Drawing.Size(587, 172);
             this.ultgrboxVivienda.TabIndex = 158;
             this.ultgrboxVivienda.Text = "ANT. VIVIENDA / SANEAMIENTO BÁSICO";
             this.ultgrboxVivienda.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -5663,11 +5800,11 @@
             this.ultraExpandableGroupBoxPanel5.Controls.Add(this.label136);
             this.ultraExpandableGroupBoxPanel5.Controls.Add(this.textAguaPotable);
             this.ultraExpandableGroupBoxPanel5.Controls.Add(this.label135);
-            this.ultraExpandableGroupBoxPanel5.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraExpandableGroupBoxPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraExpandableGroupBoxPanel5.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel5.Name = "ultraExpandableGroupBoxPanel5";
-            this.ultraExpandableGroupBoxPanel5.Size = new System.Drawing.Size(522, 146);
+            this.ultraExpandableGroupBoxPanel5.Size = new System.Drawing.Size(583, 146);
             this.ultraExpandableGroupBoxPanel5.TabIndex = 0;
-            this.ultraExpandableGroupBoxPanel5.Visible = false;
             // 
             // textDesague
             // 
@@ -5708,13 +5845,12 @@
             this.ultgrboxFamiliares.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel4);
             this.ultgrboxFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxFamiliares.Expanded = false;
-            this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(604, 380);
+            this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(587, 380);
             this.ultgrboxFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxFamiliares.Location = new System.Drawing.Point(0, 78);
+            this.ultgrboxFamiliares.Location = new System.Drawing.Point(0, 682);
             this.ultgrboxFamiliares.Name = "ultgrboxFamiliares";
-            this.ultgrboxFamiliares.Size = new System.Drawing.Size(604, 26);
+            this.ultgrboxFamiliares.Size = new System.Drawing.Size(587, 380);
             this.ultgrboxFamiliares.TabIndex = 157;
             this.ultgrboxFamiliares.Text = "ANT. FAMILIARES";
             this.ultgrboxFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -5733,11 +5869,11 @@
             this.ultraExpandableGroupBoxPanel4.Controls.Add(this.groupBox6);
             this.ultraExpandableGroupBoxPanel4.Controls.Add(this.groupBox5);
             this.ultraExpandableGroupBoxPanel4.Controls.Add(this.label94);
-            this.ultraExpandableGroupBoxPanel4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraExpandableGroupBoxPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraExpandableGroupBoxPanel4.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel4.Name = "ultraExpandableGroupBoxPanel4";
-            this.ultraExpandableGroupBoxPanel4.Size = new System.Drawing.Size(522, 293);
+            this.ultraExpandableGroupBoxPanel4.Size = new System.Drawing.Size(583, 354);
             this.ultraExpandableGroupBoxPanel4.TabIndex = 0;
-            this.ultraExpandableGroupBoxPanel4.Visible = false;
             // 
             // label141
             // 
@@ -6272,13 +6408,12 @@
             this.ultgrboxNacimiento.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxNacimiento.Controls.Add(this.ultraExpandableGroupBoxPanel3);
             this.ultgrboxNacimiento.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxNacimiento.Expanded = false;
-            this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(604, 339);
+            this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(587, 339);
             this.ultgrboxNacimiento.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxNacimiento.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxNacimiento.Location = new System.Drawing.Point(0, 52);
+            this.ultgrboxNacimiento.Location = new System.Drawing.Point(0, 343);
             this.ultgrboxNacimiento.Name = "ultgrboxNacimiento";
-            this.ultgrboxNacimiento.Size = new System.Drawing.Size(604, 26);
+            this.ultgrboxNacimiento.Size = new System.Drawing.Size(587, 339);
             this.ultgrboxNacimiento.TabIndex = 156;
             this.ultgrboxNacimiento.Text = "ANT. PERSONALES - NACIMIENTO - ALIMENTACIÓN - PATOLOGÍAS ";
             this.ultgrboxNacimiento.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6306,11 +6441,11 @@
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.textEspecificacionesNacer);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.label84);
             this.ultraExpandableGroupBoxPanel3.Controls.Add(this.shapeContainer2);
-            this.ultraExpandableGroupBoxPanel3.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraExpandableGroupBoxPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraExpandableGroupBoxPanel3.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel3.Name = "ultraExpandableGroupBoxPanel3";
-            this.ultraExpandableGroupBoxPanel3.Size = new System.Drawing.Size(537, 186);
+            this.ultraExpandableGroupBoxPanel3.Size = new System.Drawing.Size(583, 313);
             this.ultraExpandableGroupBoxPanel3.TabIndex = 0;
-            this.ultraExpandableGroupBoxPanel3.Visible = false;
             // 
             // textOtrosAntecedentes
             // 
@@ -6436,7 +6571,7 @@
             // label86
             // 
             this.label86.AutoSize = true;
-            this.label86.Location = new System.Drawing.Point(3, 159);
+            this.label86.Location = new System.Drawing.Point(9, 162);
             this.label86.Name = "label86";
             this.label86.Size = new System.Drawing.Size(188, 13);
             this.label86.TabIndex = 156;
@@ -6475,52 +6610,18 @@
             this.label84.TabIndex = 151;
             this.label84.Text = "Especificación de Respiración al Nacer:";
             // 
-            // shapeContainer2
-            // 
-            this.shapeContainer2.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer2.Name = "shapeContainer2";
-            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape3,
-            this.lineShape2});
-            this.shapeContainer2.Size = new System.Drawing.Size(537, 186);
-            this.shapeContainer2.TabIndex = 155;
-            this.shapeContainer2.TabStop = false;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 5;
-            this.lineShape3.X2 = 565;
-            this.lineShape3.Y1 = 186;
-            this.lineShape3.Y2 = 186;
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 7;
-            this.lineShape2.X2 = 567;
-            this.lineShape2.Y1 = 151;
-            this.lineShape2.Y2 = 151;
-            // 
             // ultgrboxEmbarazo
             // 
             this.ultgrboxEmbarazo.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxEmbarazo.Controls.Add(this.ultraExpandableGroupBoxPanel1);
             this.ultgrboxEmbarazo.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxEmbarazo.Expanded = false;
-            this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(604, 214);
+            this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(587, 214);
             this.ultgrboxEmbarazo.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxEmbarazo.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxEmbarazo.Location = new System.Drawing.Point(0, 26);
+            this.ultgrboxEmbarazo.Location = new System.Drawing.Point(0, 317);
             this.ultgrboxEmbarazo.Name = "ultgrboxEmbarazo";
-            this.ultgrboxEmbarazo.Size = new System.Drawing.Size(604, 26);
+            this.ultgrboxEmbarazo.Size = new System.Drawing.Size(587, 26);
             this.ultgrboxEmbarazo.TabIndex = 155;
             this.ultgrboxEmbarazo.Text = "ANT. PERSONALES - EMBARAZO - PARTO";
             this.ultgrboxEmbarazo.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6648,13 +6749,12 @@
             this.ultgrboxDatosFamiliares.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxDatosFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel2);
             this.ultgrboxDatosFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxDatosFamiliares.Expanded = false;
-            this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(604, 317);
+            this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(587, 317);
             this.ultgrboxDatosFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxDatosFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxDatosFamiliares.Location = new System.Drawing.Point(0, 0);
             this.ultgrboxDatosFamiliares.Name = "ultgrboxDatosFamiliares";
-            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(604, 26);
+            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(587, 317);
             this.ultgrboxDatosFamiliares.TabIndex = 154;
             this.ultgrboxDatosFamiliares.Text = "DATOS GENERALES - FAMILIARES";
             this.ultgrboxDatosFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6704,12 +6804,12 @@
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.label125);
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.label126);
             this.ultraExpandableGroupBoxPanel2.Controls.Add(this.txtNombreMadreTutor);
-            this.ultraExpandableGroupBoxPanel2.Controls.Add(this.shapeContainer3);
-            this.ultraExpandableGroupBoxPanel2.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraExpandableGroupBoxPanel2.Controls.Add(this.shapeContainer1);
+            this.ultraExpandableGroupBoxPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraExpandableGroupBoxPanel2.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel2.Name = "ultraExpandableGroupBoxPanel2";
-            this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(522, 291);
+            this.ultraExpandableGroupBoxPanel2.Size = new System.Drawing.Size(583, 291);
             this.ultraExpandableGroupBoxPanel2.TabIndex = 0;
-            this.ultraExpandableGroupBoxPanel2.Visible = false;
             // 
             // label140
             // 
@@ -7086,28 +7186,6 @@
             this.txtNombreMadreTutor.Size = new System.Drawing.Size(243, 20);
             this.txtNombreMadreTutor.TabIndex = 134;
             // 
-            // shapeContainer3
-            // 
-            this.shapeContainer3.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer3.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer3.Name = "shapeContainer3";
-            this.shapeContainer3.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape4});
-            this.shapeContainer3.Size = new System.Drawing.Size(522, 291);
-            this.shapeContainer3.TabIndex = 185;
-            this.shapeContainer3.TabStop = false;
-            // 
-            // lineShape4
-            // 
-            this.lineShape4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lineShape4.Name = "lineShape4";
-            this.lineShape4.X1 = 2;
-            this.lineShape4.X2 = 598;
-            this.lineShape4.Y1 = 70;
-            this.lineShape4.Y2 = 70;
-            // 
             // tableLayoutPanel11
             // 
             this.tableLayoutPanel11.ColumnCount = 1;
@@ -7147,6 +7225,7 @@
             this.btnGuardarAntecedentes.TabIndex = 112;
             this.btnGuardarAntecedentes.Text = "   Guardar";
             this.btnGuardarAntecedentes.UseVisualStyleBackColor = true;
+            this.btnGuardarAntecedentes.Click += new System.EventHandler(this.btnGuardarAntecedentes_Click);
             // 
             // label60
             // 
@@ -7436,6 +7515,7 @@
             this.btnGuardarCuidadosPreventivos.TabIndex = 113;
             this.btnGuardarCuidadosPreventivos.Text = "   Guardar";
             this.btnGuardarCuidadosPreventivos.UseVisualStyleBackColor = true;
+            this.btnGuardarCuidadosPreventivos.Click += new System.EventHandler(this.btnGuardarCuidadosPreventivos_Click);
             // 
             // tableLayoutPanel6
             // 
@@ -7726,140 +7806,55 @@
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Visible = false;
             // 
-            // label147
+            // shapeContainer1
             // 
-            this.label147.AutoSize = true;
-            this.label147.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label147.ForeColor = System.Drawing.Color.Black;
-            this.label147.Location = new System.Drawing.Point(654, 51);
-            this.label147.Name = "label147";
-            this.label147.Size = new System.Drawing.Size(96, 13);
-            this.label147.TabIndex = 65;
-            this.label147.Text = "Resultado del PAP";
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(583, 291);
+            this.shapeContainer1.TabIndex = 193;
+            this.shapeContainer1.TabStop = false;
             // 
-            // txtResultadoPAP
+            // lineShape1
             // 
-            this.txtResultadoPAP.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultadoPAP.Location = new System.Drawing.Point(756, 48);
-            this.txtResultadoPAP.Name = "txtResultadoPAP";
-            this.txtResultadoPAP.Size = new System.Drawing.Size(162, 20);
-            this.txtResultadoPAP.TabIndex = 66;
+            this.lineShape1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 5;
+            this.lineShape1.X2 = 572;
+            this.lineShape1.Y1 = 73;
+            this.lineShape1.Y2 = 73;
             // 
-            // label146
+            // lineShape2
             // 
-            this.label146.AutoSize = true;
-            this.label146.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label146.ForeColor = System.Drawing.Color.Black;
-            this.label146.Location = new System.Drawing.Point(931, 51);
-            this.label146.Name = "label146";
-            this.label146.Size = new System.Drawing.Size(130, 13);
-            this.label146.TabIndex = 65;
-            this.label146.Text = "Resultado de Mamografía";
+            this.lineShape2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.X1 = 4;
+            this.lineShape2.X2 = 571;
+            this.lineShape2.Y1 = 152;
+            this.lineShape2.Y2 = 152;
             // 
-            // txtResultadoMamo
+            // shapeContainer2
             // 
-            this.txtResultadoMamo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtResultadoMamo.Location = new System.Drawing.Point(1068, 48);
-            this.txtResultadoMamo.Name = "txtResultadoMamo";
-            this.txtResultadoMamo.Size = new System.Drawing.Size(194, 20);
-            this.txtResultadoMamo.TabIndex = 66;
+            this.shapeContainer2.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer2.Name = "shapeContainer2";
+            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape3,
+            this.lineShape2});
+            this.shapeContainer2.Size = new System.Drawing.Size(583, 313);
+            this.shapeContainer2.TabIndex = 172;
+            this.shapeContainer2.TabStop = false;
             // 
-            // groupBox15
+            // lineShape3
             // 
-            this.groupBox15.Controls.Add(this.txtVidaSexual);
-            this.groupBox15.Controls.Add(this.txtNroCausa);
-            this.groupBox15.Controls.Add(this.label142);
-            this.groupBox15.Controls.Add(this.label143);
-            this.groupBox15.Controls.Add(this.label144);
-            this.groupBox15.Controls.Add(this.txtNroAbortos);
-            this.groupBox15.Controls.Add(this.txtNroParejasActuales);
-            this.groupBox15.Controls.Add(this.label145);
-            this.groupBox15.Location = new System.Drawing.Point(6, 253);
-            this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Size = new System.Drawing.Size(1138, 51);
-            this.groupBox15.TabIndex = 72;
-            this.groupBox15.TabStop = false;
-            this.groupBox15.Text = "Antecedentes de Reproducción";
-            // 
-            // txtVidaSexual
-            // 
-            this.txtVidaSexual.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVidaSexual.Location = new System.Drawing.Point(135, 18);
-            this.txtVidaSexual.MaxLength = 100;
-            this.txtVidaSexual.Name = "txtVidaSexual";
-            this.txtVidaSexual.Size = new System.Drawing.Size(88, 20);
-            this.txtVidaSexual.TabIndex = 62;
-            // 
-            // txtNroCausa
-            // 
-            this.txtNroCausa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroCausa.Location = new System.Drawing.Point(823, 18);
-            this.txtNroCausa.MaxLength = 100;
-            this.txtNroCausa.Name = "txtNroCausa";
-            this.txtNroCausa.Size = new System.Drawing.Size(290, 20);
-            this.txtNroCausa.TabIndex = 69;
-            // 
-            // label142
-            // 
-            this.label142.AutoSize = true;
-            this.label142.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label142.ForeColor = System.Drawing.Color.Black;
-            this.label142.Location = new System.Drawing.Point(19, 21);
-            this.label142.Name = "label142";
-            this.label142.Size = new System.Drawing.Size(106, 13);
-            this.label142.TabIndex = 61;
-            this.label142.Text = "Inicio de Vida Sexual";
-            // 
-            // label143
-            // 
-            this.label143.AutoSize = true;
-            this.label143.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label143.ForeColor = System.Drawing.Color.Black;
-            this.label143.Location = new System.Drawing.Point(734, 21);
-            this.label143.Name = "label143";
-            this.label143.Size = new System.Drawing.Size(83, 13);
-            this.label143.TabIndex = 68;
-            this.label143.Text = "Precisar Causas";
-            // 
-            // label144
-            // 
-            this.label144.AutoSize = true;
-            this.label144.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label144.ForeColor = System.Drawing.Color.Black;
-            this.label144.Location = new System.Drawing.Point(248, 21);
-            this.label144.Name = "label144";
-            this.label144.Size = new System.Drawing.Size(109, 13);
-            this.label144.TabIndex = 64;
-            this.label144.Text = "Nro. Parejas Actuales";
-            // 
-            // txtNroAbortos
-            // 
-            this.txtNroAbortos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroAbortos.Location = new System.Drawing.Point(563, 18);
-            this.txtNroAbortos.MaxLength = 100;
-            this.txtNroAbortos.Name = "txtNroAbortos";
-            this.txtNroAbortos.Size = new System.Drawing.Size(88, 20);
-            this.txtNroAbortos.TabIndex = 67;
-            // 
-            // txtNroParejasActuales
-            // 
-            this.txtNroParejasActuales.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNroParejasActuales.Location = new System.Drawing.Point(364, 18);
-            this.txtNroParejasActuales.MaxLength = 100;
-            this.txtNroParejasActuales.Name = "txtNroParejasActuales";
-            this.txtNroParejasActuales.Size = new System.Drawing.Size(88, 20);
-            this.txtNroParejasActuales.TabIndex = 65;
-            // 
-            // label145
-            // 
-            this.label145.AutoSize = true;
-            this.label145.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label145.ForeColor = System.Drawing.Color.Black;
-            this.label145.Location = new System.Drawing.Point(476, 21);
-            this.label145.Name = "label145";
-            this.label145.Size = new System.Drawing.Size(81, 13);
-            this.label145.TabIndex = 66;
-            this.label145.Text = "Nro. de Abortos";
+            this.lineShape3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.X1 = 3;
+            this.lineShape3.X2 = 570;
+            this.lineShape3.Y1 = 184;
+            this.lineShape3.Y2 = 184;
             // 
             // FrmEsoV2
             // 
@@ -7913,6 +7908,8 @@
             this.gbDiagnosticoExamen.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdDiagnosticoPorExamenComponente)).EndInit();
             this.General.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.gbAntecedentes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdAntecedentes)).EndInit();
@@ -8052,8 +8049,6 @@
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ultraFlowLayoutManager2)).EndInit();
-            this.groupBox15.ResumeLayout(false);
-            this.groupBox15.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -8473,9 +8468,6 @@
         private System.Windows.Forms.Label label85;
         private System.Windows.Forms.TextBox textEspecificacionesNacer;
         private System.Windows.Forms.Label label84;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
         private Infragistics.Win.Misc.UltraExpandableGroupBox ultgrboxEmbarazo;
         private Infragistics.Win.Misc.UltraExpandableGroupBoxPanel ultraExpandableGroupBoxPanel1;
         private System.Windows.Forms.TextBox textQuienAtendio;
@@ -8535,8 +8527,6 @@
         private System.Windows.Forms.Label label125;
         private System.Windows.Forms.Label label126;
         private System.Windows.Forms.TextBox txtNombreMadreTutor;
-        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer3;
-        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
         private Infragistics.Win.Misc.UltraPanel ultraPanel1;
         private System.Windows.Forms.Panel panel27;
@@ -8555,5 +8545,10 @@
         private System.Windows.Forms.TextBox txtNroAbortos;
         private System.Windows.Forms.TextBox txtNroParejasActuales;
         private System.Windows.Forms.Label label145;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer1;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape1;
+        private Microsoft.VisualBasic.PowerPacks.ShapeContainer shapeContainer2;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape3;
+        private Microsoft.VisualBasic.PowerPacks.LineShape lineShape2;
     }
 }

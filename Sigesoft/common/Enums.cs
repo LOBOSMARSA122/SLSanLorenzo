@@ -43,6 +43,11 @@ namespace Sigesoft.Common
         No = 0
     }
 
+    public enum Reportes_Empresas
+    {
+        Si = 1,
+        No = 0
+    }
 
     public enum TypePrinter
     {

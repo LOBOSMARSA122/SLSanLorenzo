@@ -32,6 +32,7 @@
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_HopitalizacionId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NroLiquidacion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn17 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_Paciente");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DocNumber");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("i_Years");
@@ -120,6 +121,7 @@
             this.btnEliminarTicket = new System.Windows.Forms.Button();
             this.btnEditarTicket = new System.Windows.Forms.Button();
             this.btnTicket = new System.Windows.Forms.Button();
+            this.btnGenerarLiq = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -246,7 +248,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox2.Size = new System.Drawing.Size(1128, 490);
+            this.groupBox2.Size = new System.Drawing.Size(1128, 438);
             this.groupBox2.TabIndex = 49;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lista de Hopitalizados";
@@ -277,24 +279,26 @@
             ultraGridColumn16.Header.Caption = "Nro. Hospitalización";
             ultraGridColumn16.Header.VisiblePosition = 0;
             ultraGridColumn16.Width = 177;
+            ultraGridColumn4.Header.VisiblePosition = 1;
             ultraGridColumn17.Header.Caption = "Nombre de Paciente";
-            ultraGridColumn17.Header.VisiblePosition = 1;
+            ultraGridColumn17.Header.VisiblePosition = 2;
             ultraGridColumn17.Width = 146;
             ultraGridColumn2.Header.Caption = "N° Doc";
-            ultraGridColumn2.Header.VisiblePosition = 2;
+            ultraGridColumn2.Header.VisiblePosition = 3;
             ultraGridColumn3.Header.Caption = "Edad";
-            ultraGridColumn3.Header.VisiblePosition = 3;
+            ultraGridColumn3.Header.VisiblePosition = 4;
             ultraGridColumn18.Header.Caption = "Fecha Ingreso";
-            ultraGridColumn18.Header.VisiblePosition = 4;
+            ultraGridColumn18.Header.VisiblePosition = 5;
             ultraGridColumn19.Header.Caption = "Fecha Alta";
-            ultraGridColumn19.Header.VisiblePosition = 5;
+            ultraGridColumn19.Header.VisiblePosition = 6;
             ultraGridColumn20.Header.Caption = "Precio Total";
-            ultraGridColumn20.Header.VisiblePosition = 6;
-            ultraGridColumn1.Header.VisiblePosition = 7;
-            ultraGridColumn21.Header.VisiblePosition = 8;
-            ultraGridColumn22.Header.VisiblePosition = 9;
+            ultraGridColumn20.Header.VisiblePosition = 7;
+            ultraGridColumn1.Header.VisiblePosition = 8;
+            ultraGridColumn21.Header.VisiblePosition = 9;
+            ultraGridColumn22.Header.VisiblePosition = 10;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn16,
+            ultraGridColumn4,
             ultraGridColumn17,
             ultraGridColumn2,
             ultraGridColumn3,
@@ -435,7 +439,7 @@
             this.grdData.Location = new System.Drawing.Point(14, 29);
             this.grdData.Margin = new System.Windows.Forms.Padding(2);
             this.grdData.Name = "grdData";
-            this.grdData.Size = new System.Drawing.Size(1103, 447);
+            this.grdData.Size = new System.Drawing.Size(1103, 395);
             this.grdData.TabIndex = 44;
             this.grdData.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdData_InitializeLayout);
             this.grdData.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdData_InitializeRow);
@@ -660,11 +664,34 @@
             this.btnTicket.UseVisualStyleBackColor = false;
             this.btnTicket.Click += new System.EventHandler(this.btnTicket_Click);
             // 
+            // btnGenerarLiq
+            // 
+            this.btnGenerarLiq.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnGenerarLiq.BackColor = System.Drawing.SystemColors.Control;
+            this.btnGenerarLiq.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnGenerarLiq.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnGenerarLiq.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnGenerarLiq.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarLiq.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarLiq.ForeColor = System.Drawing.Color.Black;
+            this.btnGenerarLiq.Image = global::Sigesoft.Node.WinClient.UI.Resources.application_osx_start;
+            this.btnGenerarLiq.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenerarLiq.Location = new System.Drawing.Point(1000, 522);
+            this.btnGenerarLiq.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarLiq.Name = "btnGenerarLiq";
+            this.btnGenerarLiq.Size = new System.Drawing.Size(134, 47);
+            this.btnGenerarLiq.TabIndex = 154;
+            this.btnGenerarLiq.Text = "Generar Liquidación Hospitalización";
+            this.btnGenerarLiq.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnGenerarLiq.UseVisualStyleBackColor = false;
+            this.btnGenerarLiq.Click += new System.EventHandler(this.btnGenerarLiq_Click);
+            // 
             // frmHospitalizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1238, 581);
+            this.Controls.Add(this.btnGenerarLiq);
             this.Controls.Add(this.btnDarAlta);
             this.Controls.Add(this.btnReportePDF);
             this.Controls.Add(this.btnEditarHabitacion);
@@ -718,5 +745,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Button btnReportePDF;
         private System.Windows.Forms.Button btnDarAlta;
+        private System.Windows.Forms.Button btnGenerarLiq;
     }
 }

@@ -19,7 +19,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string EXAMEN_OSTEOMUSCULAR_N002_ME_0000000046 { get; set; }	
         public string SINTOMATICO_RESPIRATORIO_N009_ME_0000000131 { get; set; }	
         public string TAMIZAJE_DERMATOLOGICO_N009_ME_0000000044 { get; set; }	
-
+        
         public string TEST_DE_VERTIGO_N009_ME_0000000090 { get; set; }	
         public string AUDIOMETRlA_N002_ME_0000000005 { get; set; }	
         public string ELECTROCARDIOGRAMA_N002_ME_0000000025 { get; set; }	
@@ -49,7 +49,7 @@ namespace Sigesoft.Node.WinClient.BE
         public string DENGUE_DUO_N009_ME_0000000304 { get; set; }	
         public string DEPUR_DE_CREATININA_N009_ME_0000000164 { get; set; }	
         public string DHL__1_N009_ME_0000000181 { get; set; }	
-        public string EXAMEN_COMPLETO_DE_ORINA_N009_ME_0000000046 { get; set; }	
+        public string EXAMEN_COMPLETO_DE_ORINA_N009_ME_0000000046 { get; set; }
         public string EXAMEN_DE_ELISA_M_IV_N009_ME_0000000030 { get; set; }	
         public string EXAMENKOH_N009_ME_0000000122 { get; set; }	
 

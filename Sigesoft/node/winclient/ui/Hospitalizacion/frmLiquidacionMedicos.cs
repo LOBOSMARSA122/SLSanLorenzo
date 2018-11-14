@@ -10,11 +10,16 @@ using Sigesoft.Common;
 using Sigesoft.Node.WinClient.BLL;
 using Infragistics.Win.UltraWinGrid;
 
+using Sigesoft.Node.Contasol.Integration;
+using Sigesoft.Node.WinClient.BE;
+using NetPdf;
+
 namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 {
     public partial class frmLiquidacionMedicos : Form
     {
         string strFilterExpression;
+        string idMedico = null;
         public frmLiquidacionMedicos()
         {
             InitializeComponent();
@@ -76,6 +81,36 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             }
 
             btnFilter_Click(sender, e);
+
+            using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
+            {
+                this.Enabled = false;
+
+                var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
+                OperationResult objOperationResult = new OperationResult();
+
+                DateTime? fechaInicio = dtpDateTimeStar.Value.Date;
+                DateTime? fechaFin = dptDateTimeEnd.Value.Date.AddDays(1);
+
+                string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
+                string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
+
+                string ruta = Common.Utils.GetApplicationConfigValue("rutaPagoMedicos").ToString();
+
+                string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
+                string nombre = "Pago Medico - CSL";
+
+                var listapagos = new HospitalizacionBL().LiquidacionMedicos(strFilterExpression, fechaInicio, fechaFin, chkPagados.Checked == true ? 1 : 0);
+                int idMedico = 0;
+                foreach (var item in listapagos)
+                {
+                    idMedico = item.MedicoTratanteId.Value;
+                }
+                var medico_info = new ServiceBL().GetSystemUser(ref objOperationResult, idMedico);
+
+                PagoMedicoAsitencial.CreatePagoMedicoAsitencial(ruta + nombre + ".pdf", MedicalCenter, listapagos, fechaInicio_1, fechaFin_1, medico_info);
+                this.Enabled = true;
+            }
         }
 
         private void grdData_ClickCell(object sender, ClickCellEventArgs e)
@@ -103,6 +138,18 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             {
                 this.ultraGridExcelExporter1.Export(this.grdData, saveFileDialog1.FileName);
                 MessageBox.Show("Se exportaron correctamente los datos.", " ¡ INFORMACIÓN !", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void grdData_AfterSelectChange(object sender, AfterSelectChangeEventArgs e)
+        {
+            foreach (UltraGridRow rowSelected in this.grdData.Selected.Rows)
+            {
+                if (rowSelected.Band.Index.ToString() == "0")
+                {
+                    idMedico = grdData.Selected.Rows[0].Cells["MedicoTratante"].Value.ToString();
+                    
+                }
             }
         }
     }

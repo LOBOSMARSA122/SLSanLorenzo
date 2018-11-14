@@ -227,8 +227,8 @@ namespace NetPdf
                 cells.Add(cell);
                 //decimal IGV = totalFinal * (decimal)0.18;
                 //decimal subTotalFinal = totalFinal - IGV;
-
-                totalFinal += (float)sumatipoExm;
+                sumatipoExm = 0;
+                totalFinal += (float)sumatipoExm_1;
             }
             totalFinal_1 = totalFinal;
             float IGV = totalFinal_1 * (float)0.18;
