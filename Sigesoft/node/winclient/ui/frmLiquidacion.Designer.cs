@@ -33,7 +33,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn3 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Esotype");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Detalle");
-            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Detalle", 0);
+            Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Detalle", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("b_Seleccionar");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NroLiquidacion");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Item");
@@ -62,26 +62,21 @@
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance11 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_OrganizationName");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("detalle");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn21 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_OrganizationId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn20 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_OrganizationName");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn22 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("detalle");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand4 = new Infragistics.Win.UltraWinGrid.UltraGridBand("detalle", 0);
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn25 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_LiquidacionId");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NroLiquidacion");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn26 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Debe");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Pago");
-            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Total");
-            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings4 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "d_Debe", 2, true, "detalle", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "d_Debe", 2, true);
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn23 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_LiquidacionId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn24 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NroLiquidacion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn29 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Debe");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn30 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Pago");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn31 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("d_Total");
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings5 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "d_Pago", 3, true, "detalle", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "d_Pago", 3, true);
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinGrid.SummarySettings summarySettings6 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "d_Total", 4, true, "detalle", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "d_Total", 4, true);
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance17 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance18 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance19 = new Infragistics.Win.Appearance();
-            Infragistics.Win.Appearance appearance20 = new Infragistics.Win.Appearance();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbbSubContratas = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -89,7 +84,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtCCosto = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.btnFilter = new System.Windows.Forms.Button();
             this.ddlCustomerOrganization = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNroLiquidacion = new System.Windows.Forms.TextBox();
@@ -101,13 +95,15 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tpESO = new System.Windows.Forms.TabPage();
-            this.btnExportAramark = new System.Windows.Forms.Button();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.tpEmpresa = new System.Windows.Forms.TabPage();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtPago = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtDebe = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.grdEmpresa = new Infragistics.Win.UltraWinGrid.UltraGrid();
-            this.btnExportclinico = new System.Windows.Forms.Button();
-            this.btnCarta = new System.Windows.Forms.Button();
-            this.btnLiqd1 = new System.Windows.Forms.Button();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.btnLiberarRegistro = new System.Windows.Forms.Button();
             this.btnGenerarLiq = new System.Windows.Forms.Button();
@@ -115,12 +111,12 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.txtDebe = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtPago = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtTotal = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
+            this.btnRepEmp = new System.Windows.Forms.Button();
+            this.btnExportAramark = new System.Windows.Forms.Button();
+            this.btnExportclinico = new System.Windows.Forms.Button();
+            this.btnCarta = new System.Windows.Forms.Button();
+            this.btnLiqd1 = new System.Windows.Forms.Button();
+            this.btnFilter = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -229,27 +225,6 @@
             this.label16.TabIndex = 137;
             this.label16.Text = "Centro de Costo";
             // 
-            // btnFilter
-            // 
-            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
-            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFilter.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFilter.ForeColor = System.Drawing.Color.Black;
-            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
-            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFilter.Location = new System.Drawing.Point(1141, 73);
-            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
-            this.btnFilter.Name = "btnFilter";
-            this.btnFilter.Size = new System.Drawing.Size(75, 24);
-            this.btnFilter.TabIndex = 106;
-            this.btnFilter.Text = "Filtrar";
-            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnFilter.UseVisualStyleBackColor = false;
-            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
-            // 
             // ddlCustomerOrganization
             // 
             this.ddlCustomerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
@@ -348,6 +323,7 @@
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.btnRepEmp);
             this.groupBox2.Controls.Add(this.tabControl1);
             this.groupBox2.Controls.Add(this.btnCarta);
             this.groupBox2.Controls.Add(this.btnLiqd1);
@@ -391,21 +367,6 @@
             this.tpESO.TabIndex = 0;
             this.tpESO.Text = "Agrupado por ESO";
             this.tpESO.UseVisualStyleBackColor = true;
-            // 
-            // btnExportAramark
-            // 
-            this.btnExportAramark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportAramark.Enabled = false;
-            this.btnExportAramark.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExportAramark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportAramark.Location = new System.Drawing.Point(6, 458);
-            this.btnExportAramark.Name = "btnExportAramark";
-            this.btnExportAramark.Size = new System.Drawing.Size(114, 24);
-            this.btnExportAramark.TabIndex = 49;
-            this.btnExportAramark.Text = "Exportar a Excel";
-            this.btnExportAramark.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportAramark.UseVisualStyleBackColor = true;
-            this.btnExportAramark.Click += new System.EventHandler(this.btnExportAramark_Click);
             // 
             // grdData
             // 
@@ -538,6 +499,81 @@
             this.tpEmpresa.Text = "Agrupado por Empresa";
             this.tpEmpresa.UseVisualStyleBackColor = true;
             // 
+            // txtTotal
+            // 
+            this.txtTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(923, 458);
+            this.txtTotal.Margin = new System.Windows.Forms.Padding(2);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(84, 21);
+            this.txtTotal.TabIndex = 159;
+            this.txtTotal.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(888, 462);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(30, 13);
+            this.label8.TabIndex = 158;
+            this.label8.Text = "Total";
+            // 
+            // txtPago
+            // 
+            this.txtPago.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPago.Enabled = false;
+            this.txtPago.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPago.Location = new System.Drawing.Point(781, 459);
+            this.txtPago.Margin = new System.Windows.Forms.Padding(2);
+            this.txtPago.Name = "txtPago";
+            this.txtPago.Size = new System.Drawing.Size(84, 21);
+            this.txtPago.TabIndex = 157;
+            this.txtPago.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(746, 463);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(30, 13);
+            this.label6.TabIndex = 156;
+            this.label6.Text = "Pago";
+            // 
+            // txtDebe
+            // 
+            this.txtDebe.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDebe.Enabled = false;
+            this.txtDebe.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDebe.Location = new System.Drawing.Point(642, 458);
+            this.txtDebe.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDebe.Name = "txtDebe";
+            this.txtDebe.Size = new System.Drawing.Size(84, 21);
+            this.txtDebe.TabIndex = 155;
+            this.txtDebe.Text = "0";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(607, 462);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(32, 13);
+            this.label4.TabIndex = 154;
+            this.label4.Text = "Debe";
+            // 
             // grdEmpresa
             // 
             this.grdEmpresa.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -548,34 +584,27 @@
             appearance11.BackColor2 = System.Drawing.Color.Silver;
             appearance11.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
             this.grdEmpresa.DisplayLayout.Appearance = appearance11;
-            ultraGridColumn1.ColSpan = ((short)(4));
-            ultraGridColumn1.Header.VisiblePosition = 0;
-            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn21.Header.VisiblePosition = 1;
+            ultraGridColumn21.Hidden = true;
+            ultraGridColumn20.ColSpan = ((short)(4));
+            ultraGridColumn20.Header.VisiblePosition = 0;
+            ultraGridColumn22.Header.VisiblePosition = 2;
             ultraGridBand3.Columns.AddRange(new object[] {
-            ultraGridColumn1,
-            ultraGridColumn2});
+            ultraGridColumn21,
+            ultraGridColumn20,
+            ultraGridColumn22});
             ultraGridBand3.SummaryFooterCaption = "";
-            ultraGridColumn25.Header.VisiblePosition = 0;
-            ultraGridColumn12.Header.VisiblePosition = 1;
-            ultraGridColumn26.Header.VisiblePosition = 2;
-            ultraGridColumn27.Header.VisiblePosition = 3;
-            ultraGridColumn28.Header.VisiblePosition = 4;
+            ultraGridColumn23.Header.VisiblePosition = 0;
+            ultraGridColumn24.Header.VisiblePosition = 1;
+            ultraGridColumn29.Header.VisiblePosition = 2;
+            ultraGridColumn30.Header.VisiblePosition = 3;
+            ultraGridColumn31.Header.VisiblePosition = 4;
             ultraGridBand4.Columns.AddRange(new object[] {
-            ultraGridColumn25,
-            ultraGridColumn12,
-            ultraGridColumn26,
-            ultraGridColumn27,
-            ultraGridColumn28});
-            summarySettings4.DisplayFormat = "Debe = {0}";
-            summarySettings4.GroupBySummaryValueAppearance = appearance12;
-            summarySettings5.DisplayFormat = "Pago= {0}";
-            summarySettings5.GroupBySummaryValueAppearance = appearance13;
-            summarySettings6.DisplayFormat = "Total = {0}";
-            summarySettings6.GroupBySummaryValueAppearance = appearance14;
-            ultraGridBand4.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
-            summarySettings4,
-            summarySettings5,
-            summarySettings6});
+            ultraGridColumn23,
+            ultraGridColumn24,
+            ultraGridColumn29,
+            ultraGridColumn30,
+            ultraGridColumn31});
             this.grdEmpresa.DisplayLayout.BandsSerializer.Add(ultraGridBand3);
             this.grdEmpresa.DisplayLayout.BandsSerializer.Add(ultraGridBand4);
             this.grdEmpresa.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
@@ -589,37 +618,37 @@
             this.grdEmpresa.DisplayLayout.Override.AllowRowSummaries = Infragistics.Win.UltraWinGrid.AllowRowSummaries.False;
             this.grdEmpresa.DisplayLayout.Override.AllowUpdate = Infragistics.Win.DefaultableBoolean.False;
             this.grdEmpresa.DisplayLayout.Override.BorderStyleHeader = Infragistics.Win.UIElementBorderStyle.Solid;
-            appearance15.BackColor = System.Drawing.Color.Transparent;
-            this.grdEmpresa.DisplayLayout.Override.CardAreaAppearance = appearance15;
-            appearance16.BackColor = System.Drawing.Color.White;
-            appearance16.BackColor2 = System.Drawing.Color.White;
-            appearance16.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            this.grdEmpresa.DisplayLayout.Override.CellAppearance = appearance16;
+            appearance12.BackColor = System.Drawing.Color.Transparent;
+            this.grdEmpresa.DisplayLayout.Override.CardAreaAppearance = appearance12;
+            appearance13.BackColor = System.Drawing.Color.White;
+            appearance13.BackColor2 = System.Drawing.Color.White;
+            appearance13.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            this.grdEmpresa.DisplayLayout.Override.CellAppearance = appearance13;
             this.grdEmpresa.DisplayLayout.Override.CellClickAction = Infragistics.Win.UltraWinGrid.CellClickAction.RowSelect;
-            appearance17.BackColor = System.Drawing.Color.White;
-            appearance17.BackColor2 = System.Drawing.Color.LightGray;
-            appearance17.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance17.BorderColor = System.Drawing.Color.DarkGray;
-            appearance17.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
-            this.grdEmpresa.DisplayLayout.Override.HeaderAppearance = appearance17;
+            appearance14.BackColor = System.Drawing.Color.White;
+            appearance14.BackColor2 = System.Drawing.Color.LightGray;
+            appearance14.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance14.BorderColor = System.Drawing.Color.DarkGray;
+            appearance14.ThemedElementAlpha = Infragistics.Win.Alpha.Transparent;
+            this.grdEmpresa.DisplayLayout.Override.HeaderAppearance = appearance14;
             this.grdEmpresa.DisplayLayout.Override.HeaderClickAction = Infragistics.Win.UltraWinGrid.HeaderClickAction.SortMulti;
-            appearance18.AlphaLevel = ((short)(187));
-            appearance18.BackColor = System.Drawing.Color.Gainsboro;
-            appearance18.BackColor2 = System.Drawing.Color.Gainsboro;
-            appearance18.ForeColor = System.Drawing.Color.Black;
-            appearance18.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
-            this.grdEmpresa.DisplayLayout.Override.RowAlternateAppearance = appearance18;
-            appearance19.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.grdEmpresa.DisplayLayout.Override.RowSelectorAppearance = appearance19;
+            appearance15.AlphaLevel = ((short)(187));
+            appearance15.BackColor = System.Drawing.Color.Gainsboro;
+            appearance15.BackColor2 = System.Drawing.Color.Gainsboro;
+            appearance15.ForeColor = System.Drawing.Color.Black;
+            appearance15.ForegroundAlpha = Infragistics.Win.Alpha.Opaque;
+            this.grdEmpresa.DisplayLayout.Override.RowAlternateAppearance = appearance15;
+            appearance16.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.grdEmpresa.DisplayLayout.Override.RowSelectorAppearance = appearance16;
             this.grdEmpresa.DisplayLayout.Override.RowSelectors = Infragistics.Win.DefaultableBoolean.True;
-            appearance20.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance20.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
-            appearance20.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
-            appearance20.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance20.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
-            appearance20.FontData.BoldAsString = "False";
-            appearance20.ForeColor = System.Drawing.Color.Black;
-            this.grdEmpresa.DisplayLayout.Override.SelectedRowAppearance = appearance20;
+            appearance17.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance17.BackColor2 = System.Drawing.SystemColors.GradientInactiveCaption;
+            appearance17.BackGradientStyle = Infragistics.Win.GradientStyle.VerticalBump;
+            appearance17.BorderColor = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance17.BorderColor2 = System.Drawing.SystemColors.GradientActiveCaption;
+            appearance17.FontData.BoldAsString = "False";
+            appearance17.ForeColor = System.Drawing.Color.Black;
+            this.grdEmpresa.DisplayLayout.Override.SelectedRowAppearance = appearance17;
             this.grdEmpresa.DisplayLayout.Override.SelectTypeRow = Infragistics.Win.UltraWinGrid.SelectType.Single;
             this.grdEmpresa.DisplayLayout.RowConnectorColor = System.Drawing.SystemColors.ControlDarkDark;
             this.grdEmpresa.DisplayLayout.RowConnectorStyle = Infragistics.Win.UltraWinGrid.RowConnectorStyle.Dashed;
@@ -634,65 +663,6 @@
             this.grdEmpresa.TabIndex = 153;
             this.grdEmpresa.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdEmpresa_InitializeLayout);
             this.grdEmpresa.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdEmpresa_AfterSelectChange);
-            // 
-            // btnExportclinico
-            // 
-            this.btnExportclinico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExportclinico.Enabled = false;
-            this.btnExportclinico.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
-            this.btnExportclinico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExportclinico.Location = new System.Drawing.Point(6, 459);
-            this.btnExportclinico.Name = "btnExportclinico";
-            this.btnExportclinico.Size = new System.Drawing.Size(114, 24);
-            this.btnExportclinico.TabIndex = 51;
-            this.btnExportclinico.Text = "Exportar a Excel";
-            this.btnExportclinico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnExportclinico.UseVisualStyleBackColor = true;
-            this.btnExportclinico.Click += new System.EventHandler(this.btnExportclinico_Click);
-            // 
-            // btnCarta
-            // 
-            this.btnCarta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCarta.BackColor = System.Drawing.SystemColors.Control;
-            this.btnCarta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnCarta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnCarta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnCarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCarta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCarta.ForeColor = System.Drawing.Color.Black;
-            this.btnCarta.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
-            this.btnCarta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCarta.Location = new System.Drawing.Point(1138, 499);
-            this.btnCarta.Margin = new System.Windows.Forms.Padding(2);
-            this.btnCarta.Name = "btnCarta";
-            this.btnCarta.Size = new System.Drawing.Size(85, 38);
-            this.btnCarta.TabIndex = 157;
-            this.btnCarta.Text = "Carta";
-            this.btnCarta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnCarta.UseVisualStyleBackColor = false;
-            this.btnCarta.Click += new System.EventHandler(this.btnCarta_Click);
-            // 
-            // btnLiqd1
-            // 
-            this.btnLiqd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLiqd1.BackColor = System.Drawing.SystemColors.Control;
-            this.btnLiqd1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnLiqd1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnLiqd1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnLiqd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLiqd1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLiqd1.ForeColor = System.Drawing.Color.Black;
-            this.btnLiqd1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
-            this.btnLiqd1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLiqd1.Location = new System.Drawing.Point(1138, 453);
-            this.btnLiqd1.Margin = new System.Windows.Forms.Padding(2);
-            this.btnLiqd1.Name = "btnLiqd1";
-            this.btnLiqd1.Size = new System.Drawing.Size(85, 41);
-            this.btnLiqd1.TabIndex = 156;
-            this.btnLiqd1.Text = "Liquidación";
-            this.btnLiqd1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
-            this.btnLiqd1.UseVisualStyleBackColor = false;
-            this.btnLiqd1.Click += new System.EventHandler(this.button1_Click);
             // 
             // btnExportarExcel
             // 
@@ -788,74 +758,122 @@
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
             // 
-            // txtDebe
+            // btnRepEmp
             // 
-            this.txtDebe.Enabled = false;
-            this.txtDebe.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDebe.Location = new System.Drawing.Point(642, 458);
-            this.txtDebe.Margin = new System.Windows.Forms.Padding(2);
-            this.txtDebe.Name = "txtDebe";
-            this.txtDebe.Size = new System.Drawing.Size(84, 21);
-            this.txtDebe.TabIndex = 155;
-            this.txtDebe.Text = "0";
+            this.btnRepEmp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRepEmp.BackColor = System.Drawing.SystemColors.Control;
+            this.btnRepEmp.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnRepEmp.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnRepEmp.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnRepEmp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRepEmp.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRepEmp.ForeColor = System.Drawing.Color.Black;
+            this.btnRepEmp.Image = global::Sigesoft.Node.WinClient.UI.Resources.repor_1;
+            this.btnRepEmp.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnRepEmp.Location = new System.Drawing.Point(1138, 487);
+            this.btnRepEmp.Margin = new System.Windows.Forms.Padding(2);
+            this.btnRepEmp.Name = "btnRepEmp";
+            this.btnRepEmp.Size = new System.Drawing.Size(85, 45);
+            this.btnRepEmp.TabIndex = 159;
+            this.btnRepEmp.Text = "Rep Empresas";
+            this.btnRepEmp.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnRepEmp.UseVisualStyleBackColor = false;
+            this.btnRepEmp.Click += new System.EventHandler(this.brnRepEmp_Click);
             // 
-            // label4
+            // btnExportAramark
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(607, 462);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(32, 13);
-            this.label4.TabIndex = 154;
-            this.label4.Text = "Debe";
+            this.btnExportAramark.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportAramark.Enabled = false;
+            this.btnExportAramark.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportAramark.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportAramark.Location = new System.Drawing.Point(6, 458);
+            this.btnExportAramark.Name = "btnExportAramark";
+            this.btnExportAramark.Size = new System.Drawing.Size(114, 24);
+            this.btnExportAramark.TabIndex = 49;
+            this.btnExportAramark.Text = "Exportar a Excel";
+            this.btnExportAramark.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportAramark.UseVisualStyleBackColor = true;
+            this.btnExportAramark.Click += new System.EventHandler(this.btnExportAramark_Click);
             // 
-            // txtPago
+            // btnExportclinico
             // 
-            this.txtPago.Enabled = false;
-            this.txtPago.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPago.Location = new System.Drawing.Point(781, 459);
-            this.txtPago.Margin = new System.Windows.Forms.Padding(2);
-            this.txtPago.Name = "txtPago";
-            this.txtPago.Size = new System.Drawing.Size(84, 21);
-            this.txtPago.TabIndex = 157;
-            this.txtPago.Text = "0";
+            this.btnExportclinico.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExportclinico.Enabled = false;
+            this.btnExportclinico.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_excel;
+            this.btnExportclinico.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExportclinico.Location = new System.Drawing.Point(6, 459);
+            this.btnExportclinico.Name = "btnExportclinico";
+            this.btnExportclinico.Size = new System.Drawing.Size(114, 24);
+            this.btnExportclinico.TabIndex = 51;
+            this.btnExportclinico.Text = "Exportar a Excel";
+            this.btnExportclinico.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExportclinico.UseVisualStyleBackColor = true;
+            this.btnExportclinico.Click += new System.EventHandler(this.btnExportclinico_Click);
             // 
-            // label6
+            // btnCarta
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(746, 463);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(30, 13);
-            this.label6.TabIndex = 156;
-            this.label6.Text = "Pago";
+            this.btnCarta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCarta.BackColor = System.Drawing.SystemColors.Control;
+            this.btnCarta.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnCarta.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnCarta.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnCarta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCarta.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCarta.ForeColor = System.Drawing.Color.Black;
+            this.btnCarta.Image = global::Sigesoft.Node.WinClient.UI.Resources.book_open;
+            this.btnCarta.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnCarta.Location = new System.Drawing.Point(1139, 433);
+            this.btnCarta.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCarta.Name = "btnCarta";
+            this.btnCarta.Size = new System.Drawing.Size(85, 38);
+            this.btnCarta.TabIndex = 157;
+            this.btnCarta.Text = "Carta";
+            this.btnCarta.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCarta.UseVisualStyleBackColor = false;
+            this.btnCarta.Click += new System.EventHandler(this.btnCarta_Click);
             // 
-            // txtTotal
+            // btnLiqd1
             // 
-            this.txtTotal.Enabled = false;
-            this.txtTotal.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotal.Location = new System.Drawing.Point(923, 458);
-            this.txtTotal.Margin = new System.Windows.Forms.Padding(2);
-            this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(84, 21);
-            this.txtTotal.TabIndex = 159;
-            this.txtTotal.Text = "0";
+            this.btnLiqd1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLiqd1.BackColor = System.Drawing.SystemColors.Control;
+            this.btnLiqd1.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnLiqd1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnLiqd1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnLiqd1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLiqd1.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLiqd1.ForeColor = System.Drawing.Color.Black;
+            this.btnLiqd1.Image = global::Sigesoft.Node.WinClient.UI.Resources.page_white_acrobat;
+            this.btnLiqd1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLiqd1.Location = new System.Drawing.Point(1138, 388);
+            this.btnLiqd1.Margin = new System.Windows.Forms.Padding(2);
+            this.btnLiqd1.Name = "btnLiqd1";
+            this.btnLiqd1.Size = new System.Drawing.Size(85, 41);
+            this.btnLiqd1.TabIndex = 156;
+            this.btnLiqd1.Text = "Liquidación";
+            this.btnLiqd1.TextAlign = System.Drawing.ContentAlignment.BottomRight;
+            this.btnLiqd1.UseVisualStyleBackColor = false;
+            this.btnLiqd1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label8
+            // btnFilter
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(888, 462);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(30, 13);
-            this.label8.TabIndex = 158;
-            this.label8.Text = "Total";
+            this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
+            this.btnFilter.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnFilter.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnFilter.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFilter.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFilter.ForeColor = System.Drawing.Color.Black;
+            this.btnFilter.Image = global::Sigesoft.Node.WinClient.UI.Resources.find;
+            this.btnFilter.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnFilter.Location = new System.Drawing.Point(1141, 73);
+            this.btnFilter.Margin = new System.Windows.Forms.Padding(2);
+            this.btnFilter.Name = "btnFilter";
+            this.btnFilter.Size = new System.Drawing.Size(75, 24);
+            this.btnFilter.TabIndex = 106;
+            this.btnFilter.Text = "Filtrar";
+            this.btnFilter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnFilter.UseVisualStyleBackColor = false;
+            this.btnFilter.Click += new System.EventHandler(this.btnFilter_Click);
             // 
             // frmLiquidacion
             // 
@@ -924,5 +942,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtDebe;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnRepEmp;
     }
 }

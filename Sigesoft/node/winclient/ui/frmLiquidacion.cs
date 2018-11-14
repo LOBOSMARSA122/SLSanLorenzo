@@ -27,6 +27,8 @@ namespace Sigesoft.Node.WinClient.UI
         ServiceBL _serviceBL = new ServiceBL();
         private OperationResult _objOperationResult = new OperationResult();
         private PacientBL _pacientBL = new PacientBL();
+
+        private string empresaId = null;
         public frmLiquidacion()
         {
             InitializeComponent();
@@ -99,10 +101,14 @@ namespace Sigesoft.Node.WinClient.UI
                 if (tabControl1.SelectedTab.Name == "tpESO")
                 {
                     BindGrid();
+                    btnLiqd1.Enabled = true;
+                    btnRepEmp.Enabled = false;
                 }
                 else if (tabControl1.SelectedTab.Name == "tpEmpresa")
                 {
                     BindGridEmpresa();
+                    btnLiqd1.Enabled = false;
+                    btnRepEmp.Enabled = true;
                 }
             };
         }
@@ -283,8 +289,8 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab.Name == "tpESO")
-            {
+            //if (tabControl1.SelectedTab.Name == "tpESO")
+            //{
                 var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
                 var serviceID = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
                 var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
@@ -308,34 +314,11 @@ namespace Sigesoft.Node.WinClient.UI
                     Liquidacion_EMO.CreateLiquidacion_EMO(ruta + nombre + ".pdf", MedicalCenter, lista, obtenerInformacionEmpresas);
                     this.Enabled = true;
                 }
-            }
-            else if (tabControl1.SelectedTab.Name == "tpEmpresa")
-            {
-                using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
-                {
-                    this.Enabled = false;
-
-                    var MedicalCenter = _serviceBL.GetInfoMedicalCenter();
-                    OperationResult objOperationResult = new OperationResult();
-
-                    DateTime? fechaInicio = dtpDateTimeStar.Value.Date;
-                    DateTime? fechaFin = dptDateTimeEnd.Value.Date.AddDays(1);
-
-                    string fechaInicio_1 = fechaInicio.ToString().Split(' ')[0];
-                    string fechaFin_1 = fechaFin.ToString().Split(' ')[0];
-                    var lista = _serviceBL.GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
-
-                    string ruta = Common.Utils.GetApplicationConfigValue("rutaLiquidacion").ToString();
-
-                    string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
-                    string nombre = "Liquidaciones de EMPRESA - CSL";
-
-                    //var obtenerInformacionEmpresas = new ServiceBL().ObtenerInformacionEmpresas(serviceID);
-
-                    Liquidacion_EMO_EMPRESAS.CreateLiquidacion_EMO_EMPRESAS(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1);
-                    this.Enabled = true;
-                }
-            }
+            //}
+            //else if (tabControl1.SelectedTab.Name == "tpEmpresa")
+            //{
+                
+            //}
             
         }
 
@@ -346,6 +329,7 @@ namespace Sigesoft.Node.WinClient.UI
                 if (rowSelected.Band.Index.ToString() == "0")
                 {
                     btnLiqd1.Enabled = false;
+                    btnRepEmp.Enabled = false;
                 }
                 else if (rowSelected.Band.Index.ToString() == "1")
                 {
@@ -354,14 +338,17 @@ namespace Sigesoft.Node.WinClient.UI
                     if (liquidacionID == null || liquidacionID =="")
                     {
                         btnLiqd1.Enabled = false;
+                        btnRepEmp.Enabled = false;
                     }
                     else {
                         btnLiqd1.Enabled = true;
+                        btnRepEmp.Enabled = false;
                     }
                 }
                 else
                 {
                     btnLiqd1.Enabled = false;
+                    btnRepEmp.Enabled = false;
                 }
 
             }
@@ -456,11 +443,37 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void grdEmpresa_AfterSelectChange(object sender, Infragistics.Win.UltraWinGrid.AfterSelectChangeEventArgs e)
         {
+            //var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
             foreach (UltraGridRow rowSelected in this.grdEmpresa.Selected.Rows)
             {
+                if (rowSelected.Band.Index.ToString() == "0")
+                {
+                    //empresaId = grdData.Selected.Rows[0].Cells["v_OrganizationId"].Value.ToString();
+                    empresaId = grdEmpresa.Selected.Rows[0].Cells["v_OrganizationName"].Value.ToString();
 
-                btnLiqd1.Enabled = true;
-
+                    btnLiqd1.Enabled = false;
+                    btnRepEmp.Enabled = true;
+                }
+                else if (rowSelected.Band.Index.ToString() == "1")
+                {
+                    if (grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value == null) return;
+                    var liquidacionID = grdData.Selected.Rows[0].Cells["v_NroLiquidacion"].Value.ToString();
+                    if (liquidacionID == null || liquidacionID == "")
+                    {
+                        btnLiqd1.Enabled = false;
+                        btnRepEmp.Enabled = false;
+                    }
+                    else
+                    {
+                        btnLiqd1.Enabled = true;
+                        btnRepEmp.Enabled = false;
+                    }
+                }
+                else
+                {
+                    btnLiqd1.Enabled = true;
+                    btnRepEmp.Enabled = false;
+                }
             }
         }
 
@@ -477,6 +490,17 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnExportAramark_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void brnRepEmp_Click(object sender, EventArgs e)
+        {
+            //var hospitId = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            //empresaId = grdEmpresa.Selected.Rows[0].Cells["v_OrganizationId"].Value.ToString();
+
+            frmLiquidacionEmpresas reportsEmpresas = new frmLiquidacionEmpresas(dtpDateTimeStar.Value.Date, dptDateTimeEnd.Value.Date, empresaId);
+            reportsEmpresas.ShowDialog();
+
+            
         }
     }
 }

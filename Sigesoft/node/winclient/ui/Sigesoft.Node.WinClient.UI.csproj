@@ -1176,6 +1176,12 @@
     <Compile Include="frmLiquidacion.Designer.cs">
       <DependentUpon>frmLiquidacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLiquidacionEmpresas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLiquidacionEmpresas.Designer.cs">
+      <DependentUpon>frmLiquidacionEmpresas.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmListaAtenciones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -3552,6 +3558,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLiquidacion.resx">
       <DependentUpon>frmLiquidacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLiquidacionEmpresas.resx">
+      <DependentUpon>frmLiquidacionEmpresas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmListaAtenciones.resx">
       <DependentUpon>frmListaAtenciones.cs</DependentUpon>
@@ -5964,6 +5973,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\historiaclinica.png" />
+    <None Include="Resources\repor_1.png" />
+    <None Include="Resources\repor_2.png" />
+    <None Include="Resources\repor_3.png" />
+    <None Include="Resources\repor_4.png" />
     <Content Include="Resources\triangulorojo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

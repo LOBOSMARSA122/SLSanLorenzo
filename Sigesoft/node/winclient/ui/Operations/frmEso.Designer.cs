@@ -253,13 +253,13 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
+            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -5323,12 +5323,12 @@
             this.ultgrboxVivienda.Controls.Add(this.ultraExpandableGroupBoxPanel5);
             this.ultgrboxVivienda.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxVivienda.Expanded = false;
-            this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(543, 172);
+            this.ultgrboxVivienda.ExpandedSize = new System.Drawing.Size(526, 172);
             this.ultgrboxVivienda.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxVivienda.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
-            this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 104);
+            this.ultgrboxVivienda.Location = new System.Drawing.Point(0, 458);
             this.ultgrboxVivienda.Name = "ultgrboxVivienda";
-            this.ultgrboxVivienda.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxVivienda.Size = new System.Drawing.Size(526, 26);
             this.ultgrboxVivienda.TabIndex = 158;
             this.ultgrboxVivienda.Text = "ANT. VIVIENDA / SANEAMIENTO BÁSICO";
             this.ultgrboxVivienda.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -5384,13 +5384,12 @@
             this.ultgrboxFamiliares.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
             this.ultgrboxFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel4);
             this.ultgrboxFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ultgrboxFamiliares.Expanded = false;
-            this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(543, 380);
+            this.ultgrboxFamiliares.ExpandedSize = new System.Drawing.Size(526, 380);
             this.ultgrboxFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxFamiliares.Location = new System.Drawing.Point(0, 78);
             this.ultgrboxFamiliares.Name = "ultgrboxFamiliares";
-            this.ultgrboxFamiliares.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxFamiliares.Size = new System.Drawing.Size(526, 380);
             this.ultgrboxFamiliares.TabIndex = 157;
             this.ultgrboxFamiliares.Text = "ANT. FAMILIARES";
             this.ultgrboxFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -5409,11 +5408,11 @@
             this.ultraExpandableGroupBoxPanel4.Controls.Add(this.groupBox6);
             this.ultraExpandableGroupBoxPanel4.Controls.Add(this.groupBox5);
             this.ultraExpandableGroupBoxPanel4.Controls.Add(this.label94);
-            this.ultraExpandableGroupBoxPanel4.Location = new System.Drawing.Point(-10000, -10000);
+            this.ultraExpandableGroupBoxPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ultraExpandableGroupBoxPanel4.Location = new System.Drawing.Point(2, 24);
             this.ultraExpandableGroupBoxPanel4.Name = "ultraExpandableGroupBoxPanel4";
-            this.ultraExpandableGroupBoxPanel4.Size = new System.Drawing.Size(522, 293);
+            this.ultraExpandableGroupBoxPanel4.Size = new System.Drawing.Size(522, 354);
             this.ultraExpandableGroupBoxPanel4.TabIndex = 0;
-            this.ultraExpandableGroupBoxPanel4.Visible = false;
             // 
             // label141
             // 
@@ -5970,12 +5969,12 @@
             this.ultgrboxNacimiento.Controls.Add(this.ultraExpandableGroupBoxPanel3);
             this.ultgrboxNacimiento.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxNacimiento.Expanded = false;
-            this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(543, 339);
+            this.ultgrboxNacimiento.ExpandedSize = new System.Drawing.Size(526, 339);
             this.ultgrboxNacimiento.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxNacimiento.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxNacimiento.Location = new System.Drawing.Point(0, 52);
             this.ultgrboxNacimiento.Name = "ultgrboxNacimiento";
-            this.ultgrboxNacimiento.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxNacimiento.Size = new System.Drawing.Size(526, 26);
             this.ultgrboxNacimiento.TabIndex = 156;
             this.ultgrboxNacimiento.Text = "ANT. PERSONALES - NACIMIENTO - ALIMENTACIÓN - PATOLOGÍAS ";
             this.ultgrboxNacimiento.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6206,12 +6205,12 @@
             this.ultgrboxEmbarazo.Controls.Add(this.ultraExpandableGroupBoxPanel1);
             this.ultgrboxEmbarazo.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxEmbarazo.Expanded = false;
-            this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(543, 214);
+            this.ultgrboxEmbarazo.ExpandedSize = new System.Drawing.Size(526, 214);
             this.ultgrboxEmbarazo.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxEmbarazo.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxEmbarazo.Location = new System.Drawing.Point(0, 26);
             this.ultgrboxEmbarazo.Name = "ultgrboxEmbarazo";
-            this.ultgrboxEmbarazo.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxEmbarazo.Size = new System.Drawing.Size(526, 26);
             this.ultgrboxEmbarazo.TabIndex = 155;
             this.ultgrboxEmbarazo.Text = "ANT. PERSONALES - EMBARAZO - PARTO";
             this.ultgrboxEmbarazo.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -6340,12 +6339,12 @@
             this.ultgrboxDatosFamiliares.Controls.Add(this.ultraExpandableGroupBoxPanel2);
             this.ultgrboxDatosFamiliares.Dock = System.Windows.Forms.DockStyle.Top;
             this.ultgrboxDatosFamiliares.Expanded = false;
-            this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(543, 317);
+            this.ultgrboxDatosFamiliares.ExpandedSize = new System.Drawing.Size(526, 317);
             this.ultgrboxDatosFamiliares.ExpansionIndicator = Infragistics.Win.Misc.GroupBoxExpansionIndicator.Far;
             this.ultgrboxDatosFamiliares.HeaderPosition = Infragistics.Win.Misc.GroupBoxHeaderPosition.TopInsideBorder;
             this.ultgrboxDatosFamiliares.Location = new System.Drawing.Point(0, 0);
             this.ultgrboxDatosFamiliares.Name = "ultgrboxDatosFamiliares";
-            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(543, 26);
+            this.ultgrboxDatosFamiliares.Size = new System.Drawing.Size(526, 26);
             this.ultgrboxDatosFamiliares.TabIndex = 154;
             this.ultgrboxDatosFamiliares.Text = "DATOS GENERALES - FAMILIARES";
             this.ultgrboxDatosFamiliares.ViewStyle = Infragistics.Win.Misc.GroupBoxViewStyle.Office2003;
@@ -7516,14 +7515,14 @@
             // 
             // uvExamen
             // 
-            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance15.BackColor2 = System.Drawing.Color.Transparent;
-            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance15.BorderColor = System.Drawing.Color.Red;
-            appearance15.BorderColor2 = System.Drawing.Color.Red;
-            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance15;
+            appearance103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance103.BackColor2 = System.Drawing.Color.Transparent;
+            appearance103.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance103.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance103.BorderColor = System.Drawing.Color.Red;
+            appearance103.BorderColor2 = System.Drawing.Color.Red;
+            appearance103.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance103;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -7558,12 +7557,12 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1,
-            ultraDataColumn2,
-            ultraDataColumn3,
-            ultraDataColumn4,
-            ultraDataColumn5,
-            ultraDataColumn6});
+            ultraDataColumn7,
+            ultraDataColumn8,
+            ultraDataColumn9,
+            ultraDataColumn10,
+            ultraDataColumn11,
+            ultraDataColumn12});
             // 
             // frmEso
             // 
