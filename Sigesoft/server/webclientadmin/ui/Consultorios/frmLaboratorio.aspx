@@ -1818,7 +1818,7 @@
                                             </x:Form>       
                                         </Items>
                                     </x:GroupPanel>
-                                    <x:GroupPanel runat="server" Title="2. ANTECEDENTES" ID="GroupPanel11" BoxFlex="1" Height="50" Width="960" >                
+                                    <x:GroupPanel runat="server" Title="2. ANTECEDENTES" ID="GroupPanel11" BoxFlex="1" Height="300" Width="960" >                
                                         <Items>
                                             <x:Form ID="Form19" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
                                                 <Rows>

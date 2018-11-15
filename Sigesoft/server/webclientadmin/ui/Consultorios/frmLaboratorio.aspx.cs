@@ -568,7 +568,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelToxiBenzodiacepinas.Hidden = true;
                 PanelToxiBenzodiacepinas.Attributes.Add("Tag", "N009-ME000000040");
-                ddlBENZODIACEPINAS.Attributes.Add("Tag", "N009-MF0000000395");
+                ddlBENZODIACEPINAS.Attributes.Add("Tag", "N009-MF000000395");
 
                 PanelToxiMetanfetaminas.Hidden = true;
                 PanelToxiMetanfetaminas.Attributes.Add("Tag", "N009-ME000000419");
