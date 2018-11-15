@@ -152,36 +152,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelHemograma.Hidden = true;
                 PanelHemograma.Attributes.Add("Tag", "N009-ME000000113");                 
-                //txtHEMOGLOBINA_CONST_CORP.Attributes.Add("Tag","N009-MF000001874");
-                //txtHEMOGLOBINA_DESEABLE_CONST_CORP.Attributes.Add("Tag","N009-MF000001875");
-                //txtHEMATOCRITO_CONST_CORP.Attributes.Add("Tag", "N009-MF000001876");
-                //txtHEMATOCRITO_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001877");
-                //txtHEMATIES_CONST_CORP.Attributes.Add("Tag", "N009-MF000001878");
-                //txtHEMATIES_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001879");
-                //txtVOLUMEN_CORPUSCULAR_MEDIO_CONST_CORP.Attributes.Add("Tag", "N009-MF000001880");
-                //txtVOL_CORP_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001881");
-                //txtHB_CORPUSCULAR_MEDIO_CONST_CORP.Attributes.Add("Tag", "N009-MF000001882");
-                //txtHB_CORP_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001883");
-                //txtCC_HB_CORPUSCULAR_CONST_CORP.Attributes.Add("Tag", "N009-MF000001884");
-                //txtCC_HB_CORP_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001885");
-                //txtPLAQUETAS_CONST_CORP.Attributes.Add("Tag", "N009-MF000001886");
-                //txtPLAQUETAS_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001887");
-                //txtVOL_PLAQUETARIO_MEDIO_CONST_CORP.Attributes.Add("Tag", "N009-MF000001888");
-                //txtVOL_PLAQUETARIO_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001889");
-                //txtLEUCOCITOS_TOTALES_CONST_CORP.Attributes.Add("Tag", "N009-MF000001890");
-                //txtLEUCOCITOS_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001891");
-                //txtLINFOCITOS_CONST_CORP.Attributes.Add("Tag", "N009-MF000001892");
-                //txtLINFOCITOS_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001893");
-                //txtMID_BAS_EOS_MON_CONST_CORP.Attributes.Add("Tag", "N009-MF000001894");
-                //txtMID_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001895");
-                //txtNEUTROFILOS_SEMENTADOS_CONST_CORP.Attributes.Add("Tag", "N009-MF000001896");
-                //txtNEUTROFILOS_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001897");
-                //txtLINFOCITOS_10_9_CONST_CORP.Attributes.Add("Tag", "N009-MF000001898");
-                //txtLINFOCITOS_10_9_DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001899");
-                //txtMID_BAS_EOS_MON_10_9_CONST_CORP.Attributes.Add("Tag", "N009-MF000001900");
-                //txtMID_B_E_M_10_9DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001901");
-                //txtNEUTROFILOS_10_9_CONST_CORP.Attributes.Add("Tag", "N009-MF000001902");
-                //txtNEUTROFILOS_10_9DESEABLE_CONST_CORP.Attributes.Add("Tag", "N009-MF000001903");
 
                 txtHEMOGLOBINA_HEM_COM.Attributes.Add("Tag", "N009-MF000001874");
                 txtHEMOGLOBINA_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000001875");
@@ -220,51 +190,55 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 ParasitoSeriado.Hidden = true;
                 ParasitoSeriado.Attributes.Add("Tag", "N009-ME000000049");
-                COLOR_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000000515");
-                CONSISTENCIA_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001329");
-                RESTOS_ALIMENTICIOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001330");
-                SANGRE_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001331");
-                MOCO_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001340");
-                HUEVOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001342");
-                QUISTES_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001343");
-                TROFOZOITOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001344");
-                HEMATIES_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001345");
-                LEUCOCITOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001346");
-                COLOR_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001347");
-                CONSISTENCIA_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001348");
-                RESTOS_ALIMENTICIOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001349");
-                SANGRE_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001350");
-                MOCO_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001351");
-                QUISTES_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001353");
-                HUEVOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001354");
-                TROFOZOITOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001355");
-                HEMATIES_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001356");
-                LEUCOCITOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001357");
-                COLOR_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001358");
-                CONSISTENCIA_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001359");
-                RESTOS_ALIMENTICIOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001360");
-                SANGRE_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001361");
-                MOCO_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001362");
-                QUISTES_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001364");
-                HUEVOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001365");
-                TROFOZOITOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001366");
-                HEMATIES_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001367");
-                LEUCOCITOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001368");
-                RESULTADOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001370");
+                ddlCOLOR_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000000515");
+                ddlCONSISTENCIA_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001329");
+                ddlRESTOS_ALIMENTICIOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001330");
+                txtHEMATIES_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001345");
+                txtLEUCOCITOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001346");
+                ddlMOCO_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001340");
+                txtLEVADURAS_SERIADO.Attributes.Add("Tag", "N009-MF000003259");
+                txtGRASAS_SERIADO.Attributes.Add("Tag", "N009-MF000003260");
+                //SANGRE_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001331");
+                
+                //HUEVOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001342");
+                //QUISTES_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001343");
+                //TROFOZOITOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001344");
+                
+                //COLOR_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001347");
+                //CONSISTENCIA_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001348");
+                //RESTOS_ALIMENTICIOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001349");
+                //SANGRE_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001350");
+                //MOCO_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001351");
+                //QUISTES_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001353");
+                //HUEVOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001354");
+                //TROFOZOITOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001355");
+                //HEMATIES_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001356");
+                //LEUCOCITOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001357");
+                //COLOR_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001358");
+                //CONSISTENCIA_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001359");
+                //RESTOS_ALIMENTICIOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001360");
+                //SANGRE_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001361");
+                //MOCO_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001362");
+                //QUISTES_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001364");
+                //HUEVOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001365");
+                //TROFOZOITOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001366");
+                //HEMATIES_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001367");
+                //LEUCOCITOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001368");
+                //RESULTADOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001370");
 
                 ParasitoSimple.Hidden = true;
                 ParasitoSimple.Attributes.Add("Tag", "N009-ME000000010");
-                txtCOLOR_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000000260");
+                ddlCOLOR_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000000260");
                 ddlCONSISTENCIA_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001325");
                 ddlRESTOS_ALIMENTICIOS_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001326");
-                ddlSANGRE_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001327");
                 ddlMOCO_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001328");
-                ddlQUISTES_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001333");
-                ddlHUEVOS_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001334");
-                ddlTROFOZOITOS_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001335");
-                ddlHEMATIES_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001336");
-                ddlLEUCOCITOS_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001337");
-                txtRESULTADOS_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001339");
+                txtHEMATIES_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001336");
+                txtLEUCOCITOS_PAR_SIMPLE.Attributes.Add("Tag", "N009-MF000001337");
+                txtMTDO_DIRECTO.Attributes.Add("Tag", "N009-MF000001339");
+                txtMTDO_SEDIMENDATCION.Attributes.Add("Tag", "N009-MF000003258");
+                txtLEVADURAS_SIMPLE.Attributes.Add("Tag", "N009-MF000003256");
+                txtGRASAS_SIMPLE.Attributes.Add("Tag", "N009-MF000003257");
+
 
                 PanelAglutinacionesenlamina.Hidden = true;
                 PanelAglutinacionesenlamina.Attributes.Add("Tag", "N009-ME000000025");
@@ -276,13 +250,24 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelToxiCocaMari.Hidden = true;
                 PanelToxiCocaMari.Attributes.Add("Tag", "N009-ME000000053");
-                MUESTRA_COC_MAR.Attributes.Add("Tag", "N009-MF000001374");
-                METODO_COC_MAR.Attributes.Add("Tag", "N009-MF000001375");
-                COCAINA_COC_MAR.Attributes.Add("Tag", "N009-MF000000705");
-                MARIHUANA_COC_MAR.Attributes.Add("Tag", "N009-MF000001294");
-                LOTE_COCAINA.Attributes.Add("Tag", "N009-MF000002799");
-                LOTE_MARIHUANA.Attributes.Add("Tag", "N009-MF000002814");
-                
+                txtFOTOCHECK.Attributes.Add("Tag", "N009-MF000001374");
+                dtFECH_EMPEZO_LABORAR.Attributes.Add("Tag", "N009-MF000001375");
+                txtPROCEDENTE_RESIDENTE.Attributes.Add("Tag", "N009-MF000002779");
+                ddlSUFRE_ENFERM.Attributes.Add("Tag", "N009-MF000001407");
+                txtDIGA_CUAL_ENFER.Attributes.Add("Tag", "N009-MF000001408");
+                ddlCONSUME_MEDICAMENTO.Attributes.Add("Tag", "N009-MF000001398");
+                txtDIGA_CUAL_MEDICAMENTO.Attributes.Add("Tag", "N009-MF000001399");
+                ddlCHACCHA_COCA.Attributes.Add("Tag", "N009-MF000001404");
+                txtULTIMO_DIA.Attributes.Add("Tag", "N009-MF000001405");
+                ddlHIZO_DECLARA_JURADA.Attributes.Add("Tag", "N009-MF000001409");
+                txtCUANDO_REALIZO.Attributes.Add("Tag", "N009-MF000001406");
+                ddlTOMA_MATE_COCA.Attributes.Add("Tag", "N009-MF000001400");
+                txtCUANTO_DIARIO.Attributes.Add("Tag", "N009-MF000001401");
+                ddlCUANDO_ULTIMA_VEZ.Attributes.Add("Tag", "N009-MF000001403");
+                txtHORA_LECTURA.Attributes.Add("Tag", "N009-MF000002814");
+                ddlCOCAINA.Attributes.Add("Tag", "N009-MF000000705");
+                ddlMARIHUANA.Attributes.Add("Tag", "N009-MF0000001294");
+
                 PerfilHepatico.Hidden = true;
                 PerfilHepatico.Attributes.Add("Tag", "N009-ME000000096");
                 PROTEINAS_TOTALES_PERF_HEP.Attributes.Add("Tag", "N009-MF000001792");
@@ -344,8 +329,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelExamendeelisahiv.Hidden = true;
                 PanelExamendeelisahiv.Attributes.Add("Tag", "N009-ME000000030");
-                txtEXAMEN_DE_ELISA.Attributes.Add("Tag", "N009-MF000000257");
-                txtELISA_DESEABLE.Attributes.Add("Tag", "N009-MF000001288");
+                ddlHIV_ANTICUERPO.Attributes.Add("Tag", "N009-MF000000257");
+
 
                 PanelAcidourico.Hidden = true;
                 PanelAcidourico.Attributes.Add("Tag", "N009-ME000000086");
@@ -453,11 +438,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelHisopadoNaso.Hidden = true;
                 PanelHisopadoNaso.Attributes.Add("Tag", "N009-ME000000118");
-                txtNasoFarTipoMuestra.Attributes.Add("Tag", "N009-MF000002029");
-                txtNasoFarLevadura.Attributes.Add("Tag", "N009-MF000002031");
-                txtNasoFarAntibiograma.Attributes.Add("Tag", "N009-MF000002032");
-                txtNasoFarFrotisGram.Attributes.Add("Tag", "N009-MF000002030");
-
+                txtHISOPADO_NASO.Attributes.Add("Tag", "N009-MF000002030");
 
                 PanelHisopadoFaringeo.Hidden = true;
                 PanelHisopadoFaringeo.Attributes.Add("Tag", "N009-ME000000095");
@@ -496,6 +477,131 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 PanelInformeLaboratorio.Attributes.Add("Tag", "N001-ME000000000");
                 txtOBSERVACIONES_LABORATORIO.Attributes.Add("Tag", "N009-MF000000272");
                 chkLABORATORIO_NORMAL.Attributes.Add("Tag", "N009-MF000002132");
+
+                PanelGlucosaGeneral.Hidden = true;
+                PanelGlucosaGeneral.Attributes.Add("Tag", "N009-ME000000008");
+                txtGLUCOSA_GENERAL.Attributes.Add("Tag", "N009-MF0000000261");
+                txtGLUCOSA_GENERAL_DESEABLE.Attributes.Add("Tag", "N009-MF000000418");
+
+                PanelProtombina.Hidden = true;
+                PanelProtombina.Attributes.Add("Tag", "N009-ME000000147");
+                txtTIPO_PROTOMBINA.Attributes.Add("Tag", "N009-MF0000002182");
+                txtTIPO_PROTOMBINA_DESEABLE.Attributes.Add("Tag", "N009-MF000002183");
+
+                PanelINR.Hidden = true;
+                PanelINR.Attributes.Add("Tag", "N009-ME000000431");
+                txtINR.Attributes.Add("Tag", "N009-MF0000003238");
+                txtINR_DESEABLE.Attributes.Add("Tag", "N009-MF000003239");
+
+                PanelLabExcepciones.Hidden = true;
+                PanelLabExcepciones.Attributes.Add("Tag", "N009-ME000000441");
+                rbEXONERACION_SI.Attributes.Add("Tag", "N009-MF0000003435");
+                rbEXONERACION_NO.Attributes.Add("Tag", "N009-MF000003436");
+
+                PanelVSG.Hidden = true;
+                PanelVSG.Attributes.Add("Tag", "N009-ME000000137");
+                txtVEL_SEDIMENTACION.Attributes.Add("Tag", "N009-MF0000002162");
+                txtVEL_SEDIMENTACION_DESEABLE.Attributes.Add("Tag", "N009-MF0000021263");
+
+                PanelRPR.Hidden = true;
+                PanelRPR.Attributes.Add("Tag", "N009-ME000000425");
+                ddlRPR.Attributes.Add("Tag", "N009-MF0000003221");
+
+                PanelHBSAG_A.Hidden = true;
+                PanelHBSAG_A.Attributes.Add("Tag", "N009-ME000000004");
+                ddlHEPATITIS_ANTIGENO_A.Attributes.Add("Tag", "N009-MF0000000264");
+
+                PanelHBSAG_B.Hidden = true;
+                PanelHBSAG_B.Attributes.Add("Tag", "N009-ME000000301");
+                ddlHEPATITIS_ANTIGENO_B.Attributes.Add("Tag", "N009-MF0000002498");
+
+                PanelPruebaEmbarazo.Hidden = true;
+                PanelPruebaEmbarazo.Attributes.Add("Tag", "N009-ME000000027");
+                ddlPRUEBA_EMBARAZO.Attributes.Add("Tag", "N009-MF0000000270");
+
+                PanelProteinaReactiva.Hidden = true;
+                PanelProteinaReactiva.Attributes.Add("Tag", "N009-ME000000433");
+                ddlPROTEINA_REACTIVA.Attributes.Add("Tag", "N009-MF0000003241");
+
+                PanelREACC_INFLA_HECES.Hidden = true;
+                PanelREACC_INFLA_HECES.Attributes.Add("Tag", "N009-ME000000119");
+                txtREACC_INFLA_HECES.Attributes.Add("Tag", "N009-MF0000002033");
+
+                PanelMicroCieloAzul.Hidden = true;
+                PanelMicroCieloAzul.Attributes.Add("Tag", "N009-ME000000097");
+                txtCOLOR_M1.Attributes.Add("Tag", "N009-MF0000001812");
+                txtCONSISTENCIA_M1.Attributes.Add("Tag", "N009-MF0000002069");
+                txtMOCO_M1.Attributes.Add("Tag", "N009-MF0000002070");
+                txtTHEVENON_M1.Attributes.Add("Tag", "N009-MF0000003662");
+                txtRESTOS_ALIMENTICIOS_M1.Attributes.Add("Tag", "N009-MF0000003251");
+                txtLEUCOCITOS_M1.Attributes.Add("Tag", "N009-MF0000003252");
+
+                PanelParasiSeriadoCA.Hidden = true;
+                PanelParasiSeriadoCA.Attributes.Add("Tag", "N009-ME000000452");
+                txtMETODO_DIR_PARASI.Attributes.Add("Tag", "N009-MF000003663");
+                txtMETODO_SEDIMEN_PARASI.Attributes.Add("Tag", "N009-MF000003664");
+
+                PanelInmunologia.Hidden = true;
+                PanelInmunologia.Attributes.Add("Tag", "N009-ME000000455");
+                txtANTIGENO_TYFICO_A.Attributes.Add("Tag", "N009-MF000003666");
+                txtANTIGENO_TYFICO_B.Attributes.Add("Tag", "N009-MF000003667");
+                txtANTIGENO_TYFICO_O.Attributes.Add("Tag", "N009-MF000003668");
+                txtANTIGENO_TYFICO_H.Attributes.Add("Tag", "N009-MF000003669");
+                txtBRUCELLA_ABORTUS.Attributes.Add("Tag", "N009-MF000003670");
+
+                PanelRaspadoUñas.Hidden = true;
+                PanelRaspadoUñas.Attributes.Add("Tag", "N009-ME000000451");
+                txtRASPADO_UÑAS.Attributes.Add("Tag", "N009-MF000003661");
+
+                PanelSecresionFaringea.Hidden = true;
+                PanelSecresionFaringea.Attributes.Add("Tag", "N009-ME000000456");
+                txtMUESTRA.Attributes.Add("Tag", "N009-MF000003671");
+                txtGERMEN_AISLADO.Attributes.Add("Tag", "N009-MF000003672");
+
+                PanelToxiAnfetaminas.Hidden = true;
+                PanelToxiAnfetaminas.Attributes.Add("Tag", "N009-ME000000043");
+                ddlANFETAMINAS.Attributes.Add("Tag", "N009-MF000000391");
+
+                PanelToxiBarbituricos.Hidden = true;
+                PanelToxiBarbituricos.Attributes.Add("Tag", "N009-ME000000417");
+                ddlBARBITURICOS.Attributes.Add("Tag", "N009-MF000003213");
+
+                PanelToxiBenzodiacepinas.Hidden = true;
+                PanelToxiBenzodiacepinas.Attributes.Add("Tag", "N009-ME000000040");
+                ddlBENZODIACEPINAS.Attributes.Add("Tag", "N009-MF000000395");
+
+                PanelToxiMetanfetaminas.Hidden = true;
+                PanelToxiMetanfetaminas.Attributes.Add("Tag", "N009-ME000000419");
+                ddlMETANFETAMINAS.Attributes.Add("Tag", "N009-MF000003215");
+
+                PanelToxiMorfina.Hidden = true;
+                PanelToxiMorfina.Attributes.Add("Tag", "N009-ME000000420");
+                ddlMORFINA.Attributes.Add("Tag", "N009-MF000003216");
+
+                PanelToxiOpiaceos.Hidden = true;
+                PanelToxiOpiaceos.Attributes.Add("Tag", "N009-ME000000421");
+                ddlOPIACEOS.Attributes.Add("Tag", "N009-MF000003217");
+
+                PanelToxiMetadona.Hidden = true;
+                PanelToxiMetadona.Attributes.Add("Tag", "N009-ME000000418");
+                ddlMETADONA.Attributes.Add("Tag", "N009-MF000003214");
+
+                PanelToxiFenciclidina.Hidden = true;
+                PanelToxiFenciclidina.Attributes.Add("Tag", "N009-ME000000423");
+                ddlFENCICLIDINA.Attributes.Add("Tag", "N009-MF000003219");
+
+                PanelToxiAlcoholSaliva.Hidden = true;
+                PanelToxiAlcoholSaliva.Attributes.Add("Tag", "N009-ME000000416");
+                ddlALCOHOL_SALIVA.Attributes.Add("Tag", "N009-000003212");
+
+                PanelToxiExtasis.Hidden = true;
+                PanelToxiExtasis.Attributes.Add("Tag", "N009-ME000000422");
+                ddlEXTASIS.Attributes.Add("Tag", "N009-MF000003218");
+
+                PanelPlomo.Hidden = true;
+                PanelPlomo.Attributes.Add("Tag", "N009-ME000000408");
+                txtPLOMO_ORINA.Attributes.Add("Tag", "N009-MF000003104");
+                txtPLOMO_ORINA_DESEABLE.Attributes.Add("Tag", "N009-MF000003105");
 
                 int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
                 OperationResult objOperationResult = new OperationResult();
@@ -637,7 +743,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 {
                     if (item == TabLaboratorio.Attributes.GetValue("Tag").ToString())
                     {
-                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.ESPIROMETRIA_ID);
+                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == Constants.INFORME_LABORATORIO_ID);
                         if (Resultado != null)
                         {
                             LoadCombosLaboratorio();
@@ -734,50 +840,62 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             var Combo263 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 263);
             var Combo266 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 266);
             var Combo279 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 279);
+            var Combo274 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 274);
+            var Combo276 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 276);
+            var Combo300 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 300);
+            var Combo203 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 203);
+            var Combo305 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 305);
 
-            Utils.LoadDropDownList(CONSISTENCIA_Heces_Primera_Muestra, "Value1", "Id", Combo232, DropDownListAction.Select);
-            Utils.LoadDropDownList(RESTOS_ALIMENTICIOS_Heces_Primera_Muestra, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(SANGRE_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(MOCO_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(HUEVOS_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(QUISTES_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(TROFOZOITOS_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(HEMATIES_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(LEUCOCITOS_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCONSISTENCIA_Heces_Primera_Muestra, "Value1", "Id", Combo276, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlRESTOS_ALIMENTICIOS_Heces_Primera_Muestra, "Value1", "Id", Combo300, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCOLOR_Heces_Primera_Muestra, "Value1", "Id", Combo274, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMOCO_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(SANGRE_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);           
+            //Utils.LoadDropDownList(HUEVOS_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(QUISTES_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(TROFOZOITOS_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(HEMATIES_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(LEUCOCITOS_Heces_Primera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);            
+            //Utils.LoadDropDownList(CONSISTENCIA_Heces_Segunda_Muestra, "Value1", "Id", Combo232, DropDownListAction.Select);
+            //Utils.LoadDropDownList(RESTOS_ALIMENTICIOS_Heces_Segunda_Muestra, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(SANGRE_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(MOCO_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(QUISTES_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(HUEVOS_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(TROFOZOITOS_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(HEMATIES_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(LEUCOCITOS_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(CONSISTENCIA_Heces_Tercera_Muestra, "Value1", "Id", Combo232, DropDownListAction.Select);
+            //Utils.LoadDropDownList(RESTOS_ALIMENTICIOS_Heces_Tercera_Muestra, "Value1", "Id", Combo111, DropDownListAction.Select);
+            //Utils.LoadDropDownList(SANGRE_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(MOCO_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(QUISTES_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(HUEVOS_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(TROFOZOITOS_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(HEMATIES_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            //Utils.LoadDropDownList(LEUCOCITOS_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
 
-            Utils.LoadDropDownList(CONSISTENCIA_Heces_Segunda_Muestra, "Value1", "Id", Combo232, DropDownListAction.Select);
-            Utils.LoadDropDownList(RESTOS_ALIMENTICIOS_Heces_Segunda_Muestra, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(SANGRE_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(MOCO_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(QUISTES_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(HUEVOS_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(TROFOZOITOS_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(HEMATIES_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(LEUCOCITOS_Heces_Segunda_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlSUFRE_ENFERM, "Value1", "Id", Combo111, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCONSUME_MEDICAMENTO, "Value1", "Id", Combo111, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCHACCHA_COCA, "Value1", "Id", Combo111, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlHIZO_DECLARA_JURADA, "Value1", "Id", Combo111, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlTOMA_MATE_COCA, "Value1", "Id", Combo111, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCOCAINA, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMARIHUANA, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlANFETAMINAS, "Value1", "Id", Combo305, DropDownListAction.Select);
 
-            Utils.LoadDropDownList(CONSISTENCIA_Heces_Tercera_Muestra, "Value1", "Id", Combo232, DropDownListAction.Select);
-            Utils.LoadDropDownList(RESTOS_ALIMENTICIOS_Heces_Tercera_Muestra, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(SANGRE_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(MOCO_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(QUISTES_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(HUEVOS_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(TROFOZOITOS_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(HEMATIES_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(LEUCOCITOS_Heces_Tercera_Muestra, "Value1", "Id", Combo233, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlBARBITURICOS, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlBENZODIACEPINAS, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMETANFETAMINAS, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMORFINA, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlOPIACEOS, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMETADONA, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlFENCICLIDINA, "Value1", "Id", Combo305, DropDownListAction.Select);
 
-            Utils.LoadDropDownList(ddlCONSISTENCIA_PAR_SIMPLE, "Value1", "Id", Combo232, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlRESTOS_ALIMENTICIOS_PAR_SIMPLE, "Value1", "Id", Combo111, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlSANGRE_PAR_SIMPLE, "Value1", "Id", Combo233, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlCONSISTENCIA_PAR_SIMPLE, "Value1", "Id", Combo276, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlRESTOS_ALIMENTICIOS_PAR_SIMPLE, "Value1", "Id", Combo300, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlMOCO_PAR_SIMPLE, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlQUISTES_PAR_SIMPLE, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlHUEVOS_PAR_SIMPLE, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlTROFOZOITOS_PAR_SIMPLE, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlHEMATIES_PAR_SIMPLE, "Value1", "Id", Combo233, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlLEUCOCITOS_PAR_SIMPLE, "Value1", "Id", Combo233, DropDownListAction.Select);
-
-            Utils.LoadDropDownList(COCAINA_COC_MAR, "Value1", "Id", Combo152, DropDownListAction.Select);
-            Utils.LoadDropDownList(MARIHUANA_COC_MAR, "Value1", "Id", Combo152, DropDownListAction.Select);
-
+            Utils.LoadDropDownList(ddlCOLOR_PAR_SIMPLE, "Value1", "Id", Combo274, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlGRUPO_SANGUINEO, "Value1", "Id", Combo154, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlFACTOR_RH, "Value1", "Id", Combo155, DropDownListAction.Select);
 
@@ -807,7 +925,17 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Utils.LoadDropDownList(ddlSALMONELA_TYPHI, "Value1", "Id", Combo155, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlREACCIONES_SEROLOGICAS, "Value1", "Id", Combo196, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlDOSAJE_ALCOHOL, "Value1", "Id", Combo279, DropDownListAction.Select);
+
+            Utils.LoadDropDownList(ddlRPR, "Value1", "Id", Combo196, DropDownListAction.Select);
+
+            Utils.LoadDropDownList(ddlHIV_ANTICUERPO, "Value1", "Id", Combo196, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlHEPATITIS_ANTIGENO_A, "Value1", "Id", Combo196, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlHEPATITIS_ANTIGENO_B, "Value1", "Id", Combo196, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlPRUEBA_EMBARAZO, "Value1", "Id", Combo203, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlPROTEINA_REACTIVA, "Value1", "Id", Combo196, DropDownListAction.Select);
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
+
+
 
             Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
              
@@ -1696,49 +1824,60 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
             }
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000265") != null && txtHEMOGLOBINA.Text !="")
+
+            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000265") != null)
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA.Text, "N009-MF000000265", "int");
-                if (DXAautomatico != null)
+                if (txtHEMOGLOBINA.Text != "")
                 {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
+                    var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA.Text, "N009-MF000000265", "int");
+                    if (DXAautomatico != null)
                     {
-                        l.Add(DXAautomatico);
+                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+                        if (Result1 == null)
+                        {
+                            l.Add(DXAautomatico);
+                        }
                     }
                 }
             }
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000261") != null && txtGLUCOSA.Text != "")
+            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000261") != null)
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtGLUCOSA.Text, "N009-MF000000261", "int");
-                if (DXAautomatico != null)
+                if (txtGLUCOSA.Text != "")
                 {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
+                    var DXAautomatico = SearchDxSugeridoOfSystem(txtGLUCOSA.Text, "N009-MF000000261", "double");
+                    if (DXAautomatico != null)
                     {
-                        l.Add(DXAautomatico);
+                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+                        if (Result1 == null)
+                        {
+                            l.Add(DXAautomatico);
+                        }
                     }
                 }
             }
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001086") != null && txtCOLESTEROL_TOTAL.Text != "")
+            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001086") != null)
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtCOLESTEROL_TOTAL.Text, "N009-MF000001086", "int");
-                if (DXAautomatico != null)
+                if (txtCOLESTEROL_TOTAL.Text != "")
                 {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
+                    var DXAautomatico = SearchDxSugeridoOfSystem(txtCOLESTEROL_TOTAL.Text, "N009-MF000001086", "double");
+                    if (DXAautomatico != null)
                     {
-                        l.Add(DXAautomatico);
+                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+                        if (Result1 == null)
+                        {
+                            l.Add(DXAautomatico);
+                        }
                     }
                 }
             }
+            
 
 
             if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001296") != null && txtTRIGLICERIDOS.Text != "")
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtTRIGLICERIDOS.Text, "N009-MF000001296", "int");
+                var DXAautomatico = SearchDxSugeridoOfSystem(txtTRIGLICERIDOS.Text, "N009-MF000001296", "double");
                 if (DXAautomatico != null)
                 {
                     var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
@@ -1854,7 +1993,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             serviceComponentDto.i_ExternalInternalId = 1;
             serviceComponentDto.i_IsApprovedId = 1;
 
-            serviceComponentDto.v_ComponentId = Session["ListaComponentesGrabar"].ToString();//"N009-ME000000002";
+            serviceComponentDto.v_ComponentId = Session["ListaComponentesGrabar"].ToString(); // "N009-ME000000002";
             serviceComponentDto.v_ServiceId = Session["ServiceId"].ToString();
             serviceComponentDto.d_UpdateDate = FechaUpdate;
             #endregion

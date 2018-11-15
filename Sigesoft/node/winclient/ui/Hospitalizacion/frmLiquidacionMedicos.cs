@@ -56,6 +56,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             };
         }
 
+        
         private void BindGrid()
         {
             OperationResult objOperationResult = new OperationResult();
@@ -63,7 +64,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
 
             HospitalizacionBL o = new HospitalizacionBL();
-            grdData.DataSource = o.LiquidacionMedicos(strFilterExpression, pdatBeginDate, pdatEndDate, chkPagados.Checked == true ? 1 : 0);
+              var data  =o.LiquidacionMedicos(strFilterExpression, pdatBeginDate, pdatEndDate, chkPagados.Checked == true ? 1 : 0);       
+              grdData.DataSource = data;
 
         }
 
@@ -71,15 +73,34 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             UltraGridBand band = this.grdData.DisplayLayout.Bands[1];
             HospitalizacionBL o = new HospitalizacionBL();
+            var listapagos = new List<LiquidacionMedicoList>();
+
+            List<LiquidacionServicios> _data = new List<LiquidacionServicios>();
+
             foreach (UltraGridRow row in band.GetRowEnumerator(GridRowType.DataRow))
             {
                 if ((bool)row.Cells["Select"].Value)
                 {
+                    var oLiquidacionMedicoList = new LiquidacionServicios();
+
                     string serviceId = row.Cells["v_ServiceId"].Value.ToString();
                     o.ActualizarPagoMedico(serviceId);
+
+                    oLiquidacionMedicoList.d_ServiceDate = DateTime.Parse(row.Cells["d_ServiceDate"].Value.ToString());
+                    oLiquidacionMedicoList.Paciente = row.Cells["Paciente"].Value.ToString();
+
+                    oLiquidacionMedicoList.Tipo = row.Cells["Tipo"].Value.ToString();
+                    oLiquidacionMedicoList.Aseguradora = row.Cells["Aseguradora"].Value == null  ? "" :row.Cells["Aseguradora"].Value.ToString();
+                    oLiquidacionMedicoList.v_ServiceId = row.Cells["v_ServiceId"].Value.ToString();
+                    oLiquidacionMedicoList.r_Comision = decimal.Parse(row.Cells["r_Comision"].Value.ToString());
+
+                    _data.Add(oLiquidacionMedicoList);
+                    
+                        
                 }
             }
 
+            
             btnFilter_Click(sender, e);
 
             using (new LoadingClass.PleaseWait(this.Location, "Generando..."))
@@ -100,15 +121,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                 string nombre = "Pago Medico - CSL";
 
-                var listapagos = new HospitalizacionBL().LiquidacionMedicos(strFilterExpression, fechaInicio, fechaFin, chkPagados.Checked == true ? 1 : 0);
-                int idMedico = 0;
-                foreach (var item in listapagos)
-                {
-                    idMedico = item.MedicoTratanteId.Value;
-                }
-                var medico_info = new ServiceBL().GetSystemUser(ref objOperationResult, idMedico);
+                var medico_info = new ServiceBL().GetSystemUser(ref objOperationResult, int.Parse(ddlUsuario.SelectedValue.ToString()));
 
-                PagoMedicoAsitencial.CreatePagoMedicoAsitencial(ruta + nombre + ".pdf", MedicalCenter, listapagos, fechaInicio_1, fechaFin_1, medico_info);
+                PagoMedicoAsitencial.CreatePagoMedicoAsitencial(ruta + nombre + ".pdf", MedicalCenter, _data, fechaInicio_1, fechaFin_1, medico_info);
                 this.Enabled = true;
             }
         }
