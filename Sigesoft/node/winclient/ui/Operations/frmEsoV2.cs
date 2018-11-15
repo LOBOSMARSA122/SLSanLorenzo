@@ -24,6 +24,7 @@ using System.Data;
 using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
 using Sigesoft.Node.Contasol.Integration;
+using System.Transactions;
 
 
 namespace Sigesoft.Node.WinClient.UI.Operations
@@ -4362,7 +4363,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 else
                 {
                     _chkApprovedEnabled = chkApproved.Enabled;
-                    SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+
+                    _chkApprovedEnabled = chkApproved.Enabled;
+
+                    var scope = new TransactionScope(
+                        TransactionScopeOption.RequiresNew,
+                                    new TransactionOptions()
+                                    {
+
+                                        IsolationLevel = System.Transactions.IsolationLevel.Snapshot
+                                    });
+
+                    using (scope)
+                    {
+                        SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+                    }             
                 }
             }
         }

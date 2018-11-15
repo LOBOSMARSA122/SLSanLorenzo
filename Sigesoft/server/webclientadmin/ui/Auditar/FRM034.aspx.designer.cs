@@ -310,6 +310,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar {
         protected global::FineUI.Button btnNewCertificados;
         
         /// <summary>
+        /// btnOrdenReportes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Button btnOrdenReportes;
+        
+        /// <summary>
         /// hfRefresh control.
         /// </summary>
         /// <remarks>
@@ -362,5 +371,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.Window Window1;
+        
+        /// <summary>
+        /// Window3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Window Window3;
     }
 }

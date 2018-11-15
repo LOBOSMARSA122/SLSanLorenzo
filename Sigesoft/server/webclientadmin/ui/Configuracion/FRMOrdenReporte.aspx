@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FRMOrdenReporte.aspx.cs" Inherits="Sigesoft.Server.WebClientAdmin.UI.Configuracion.FRMOrdenReporte" %>
+﻿º<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="FRMOrdenReporte.aspx.cs" Inherits="Sigesoft.Server.WebClientAdmin.UI.Configuracion.FRMOrdenReporte" %>
 <%@ Register assembly="FineUI" namespace="FineUI" tagprefix="x" %>
 <!DOCTYPE html>
 
@@ -26,7 +26,7 @@
                         <x:Grid ID="grdData" ShowBorder="true" ShowHeader="false"  runat="server"  DataKeyNames="" OnRowDataBound="grdData_RowDataBound"
                             AutoScroll="true" Height="350px" SortDirection="ASC" OnSort="grdData_Sort" AllowSorting="true" >                                         
                                 <Columns> 
-                                    <x:CheckBoxField ColumnID="b_Seleccionar" ID="b_Seleccionar" Width="30px" RenderAsStaticField="false"
+                                    <x:CheckBoxField  ColumnID="b_Seleccionar" ID="b_Seleccionar" Width="30px" RenderAsStaticField="false"
                                                 CommandName="CheckBox1" DataField="b_Seleccionar" HeaderText="" SortField="b_Seleccionar" />
                                     <x:boundfield Width="260" DataField="v_NombreReporte" ID="nombrereporte" DataFormatString="{0}" HeaderText="Nombre Reporte" />                                                                                                                                                            
                                     <x:boundfield Width="200" DataField="v_ComponenteId" ID="componenteid" DataFormatString="{0}" HeaderText="Componente Id" />     

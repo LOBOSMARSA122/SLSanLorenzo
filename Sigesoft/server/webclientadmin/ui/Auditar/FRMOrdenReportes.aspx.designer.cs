@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Sigesoft.Server.WebClientAdmin.UI.Configuracion {
+namespace Sigesoft.Server.WebClientAdmin.UI.Auditar {
     
     
-    public partial class FRMOrdenReporte {
+    public partial class FRMOrdenReportes {
         
         /// <summary>
         /// form1 control.
@@ -49,13 +49,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Configuracion {
         protected global::FineUI.Toolbar Toolbar1;
         
         /// <summary>
-        /// btnSaveRefresh control.
+        /// btnGenerarPDF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Button btnSaveRefresh;
+        protected global::FineUI.Button btnGenerarPDF;
         
         /// <summary>
         /// btnClose control.
@@ -76,66 +76,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Configuracion {
         protected global::FineUI.Panel Panel2;
         
         /// <summary>
-        /// grdData control.
+        /// chkregistros control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Grid grdData;
-        
-        /// <summary>
-        /// b_Seleccionar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.CheckBoxField b_Seleccionar;
-        
-        /// <summary>
-        /// nombrereporte control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.BoundField nombrereporte;
-        
-        /// <summary>
-        /// componenteid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.BoundField componenteid;
-        
-        /// <summary>
-        /// i_Orden control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox i_Orden;
-        
-        /// <summary>
-        /// nombrecrystal control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.BoundField nombrecrystal;
-        
-        /// <summary>
-        /// nombrecrystalid control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::FineUI.BoundField nombrecrystalid;
+        protected global::FineUI.CheckBoxList chkregistros;
     }
 }
