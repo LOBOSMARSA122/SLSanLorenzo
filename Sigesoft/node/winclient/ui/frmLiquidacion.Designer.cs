@@ -35,6 +35,19 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn4 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Detalle");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Detalle", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn1 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("b_Seleccionar");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_NroLiquidacion");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Item");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_ServiceId");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Trabajador");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Edad");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("FechaExamen");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroDocumento");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn11 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Cargo");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Perfil");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Precio");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("CCosto");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SubTotal");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn16 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Igv");
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance4 = new Infragistics.Win.Appearance();
@@ -423,8 +436,34 @@
             ultraGridColumn3,
             ultraGridColumn4});
             ultraGridColumn1.Header.VisiblePosition = 0;
+            ultraGridColumn2.Header.VisiblePosition = 1;
+            ultraGridColumn5.Header.VisiblePosition = 2;
+            ultraGridColumn6.Header.VisiblePosition = 3;
+            ultraGridColumn7.Header.VisiblePosition = 4;
+            ultraGridColumn8.Header.VisiblePosition = 5;
+            ultraGridColumn9.Header.VisiblePosition = 6;
+            ultraGridColumn10.Header.VisiblePosition = 7;
+            ultraGridColumn11.Header.VisiblePosition = 8;
+            ultraGridColumn12.Header.VisiblePosition = 9;
+            ultraGridColumn13.Header.VisiblePosition = 10;
+            ultraGridColumn14.Header.VisiblePosition = 11;
+            ultraGridColumn15.Header.VisiblePosition = 12;
+            ultraGridColumn16.Header.VisiblePosition = 13;
             ultraGridBand2.Columns.AddRange(new object[] {
-            ultraGridColumn1});
+            ultraGridColumn1,
+            ultraGridColumn2,
+            ultraGridColumn5,
+            ultraGridColumn6,
+            ultraGridColumn7,
+            ultraGridColumn8,
+            ultraGridColumn9,
+            ultraGridColumn10,
+            ultraGridColumn11,
+            ultraGridColumn12,
+            ultraGridColumn13,
+            ultraGridColumn14,
+            ultraGridColumn15,
+            ultraGridColumn16});
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand1);
             this.grdData.DisplayLayout.BandsSerializer.Add(ultraGridBand2);
             this.grdData.DisplayLayout.CaptionVisible = Infragistics.Win.DefaultableBoolean.False;
