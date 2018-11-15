@@ -25,7 +25,7 @@ namespace NetPdf
         }
 
         public static void CreateLiquidacion_EMO_EMPRESAS(string filePDF,
-            organizationDto infoEmpresaPropietaria, List<LiquidacionEmpresa> Listaliq, string fechaInicio, string fechaFin)
+            organizationDto infoEmpresaPropietaria, List<LiquidacionEmpresa> lista_1, string fechaInicio, string fechaFin)
         {
             Document document = new Document(PageSize.A4, 30f, 30f, 45f, 41f);
 
@@ -119,7 +119,7 @@ namespace NetPdf
             decimal debe_2 = 0;
             decimal debe_3 = 0;
 
-            foreach (var liq in Listaliq)
+            foreach (var liq in lista_1)
             {
                 List<double> enteros = new List<double>();
                 enteros.Add(0);
