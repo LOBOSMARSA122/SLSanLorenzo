@@ -687,6 +687,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             {
                                 v_MedicoId = A.v_MedicoId,
                                 Medico = C.v_FirstName + " " + C.v_FirstLastName + " " + C.v_SecondLastName,
+                                i_SystemUserId = B.i_SystemUserId,
                                 //i_GrupoId = A.i_GrupoId.Value,
                                 //Grupo = D.v_Value1,
                                 r_Clinica = A.r_Clinica.Value,
@@ -861,7 +862,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             from E in E_join.DefaultIfEmpty()
                             join F in dbContext.component on A.v_ComponentId equals F.v_ComponentId
 
-                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && ( A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados
+                            where A.i_IsDeleted == 0 && A1.i_MasterServiceId != 2 && (A.r_Price != 0.00 || A.r_Price != 0) && A1.i_MedicoPagado == pagados 
 
                             select new LiquidacionMedicoList
                             {
