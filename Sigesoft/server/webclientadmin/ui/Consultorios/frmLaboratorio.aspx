@@ -301,7 +301,7 @@
                                  <Toolbars>
                                 <x:Toolbar ID="Toolbar4" runat="server">
                                     <Items>
-                                        <x:Button ID="btnGrabarEspirometria" Text="Grabar Laboratorio" Icon="SystemSave" runat="server" OnClick="btnGrabarLaboratorio_Click" AjaxLoadingType="Mask"></x:Button>                                   
+                                        <x:Button ID="btnGrabarLaboratorio" Text="Grabar Laboratorio" Icon="SystemSave" runat="server" OnClick="btnGrabarLaboratorio_Click" AjaxLoadingType="Mask"></x:Button>                                   
                                      
                                         <x:Label ID="llll" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabar" runat="server"></x:DropDownList>
@@ -2029,74 +2029,48 @@
                                                     <x:FormRow ID="FormRow61" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                         <Items>
                                                         <x:Label ID="label54" runat="server" Text="COLESTEROL TOTAL"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="COLESTEROL_TOTAL_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label60" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-
                                                         <x:Label ID="label66" runat="server" Text=" " ShowLabel="false"></x:Label>
-
                                                         <x:Label ID="label72" runat="server" Text="Valor Deseable"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="COLESTEROL_TOTAL_DESEABLE_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label108" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-
                                                             </Items>
                                                     </x:FormRow>
-                                                 
+                                                
                                                     <x:FormRow ID="FormRow63" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                         <Items>
                                                         <x:Label ID="label110" runat="server" Text="COLESTEROL HDL"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="COLESTEROL_HDL_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label111" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-
                                                         <x:Label ID="label112" runat="server" Text=" " ShowLabel="false"></x:Label>
-
                                                         <x:Label ID="label113" runat="server" Text="Valor Deseable"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="COLESTEROL_HDL_DESEABLE_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
-                                                        <x:Label ID="label114" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                             
+                                                        <x:Label ID="label114" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>                                                           
                                                             </Items>
                                                     </x:FormRow>
-                                              
+                                            
                                                     <x:FormRow ID="FormRow65" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                         <Items>
                                                         <x:Label ID="label116" runat="server" Text="COLESTEROL LDL"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="COLESTEROL_LDL_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label117" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-
                                                         <x:Label ID="label118" runat="server" Text=" " ShowLabel="false"></x:Label>
-
                                                         <x:Label ID="label119" runat="server" Text="Valor Deseable"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="COLESTEROL_LDL_DESEABLE_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label120" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                              
+                                                             
                                                             </Items>
                                                     </x:FormRow>
                                                  
                                                     <x:FormRow ID="FormRow67" ColumnWidths="159px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                         <Items>
                                                         <x:Label ID="label122" runat="server" Text="COLESTEROL VLDL"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="COLESTEROL_VLDL_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label123" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-
                                                         <x:Label ID="label124" runat="server" Text=" " ShowLabel="false"></x:Label>
-
                                                         <x:Label ID="label125" runat="server" Text="Valor Deseable"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="COLESTEROL_VLDL_DESEABLE_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label126" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
                                                            
                                                             </Items>
@@ -2105,33 +2079,22 @@
                                                     <x:FormRow ID="FormRow69" ColumnWidths="160px 110px 60px 250px 160px 110px 60px" runat="server" >
                                                         <Items>
                                                         <x:Label ID="label128" runat="server" Text="TRIGLICÉRIDOS"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="TRIGLICERIDOS_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label129" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-
                                                         <x:Label ID="label130" runat="server" Text=" " ShowLabel="false"></x:Label>
-
                                                         <x:Label ID="label131" runat="server" Text="Valor Deseable"  ShowLabel="false"></x:Label>
-
                                                         <x:TextBox ID="TRIGLICERIDOS_DESEABLE_PERF_LIP" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
-
                                                         <x:Label ID="label132" runat="server" Text="" ShowLabel="false" CssClass="red"></x:Label>
-                                                            
+                                                           
                                                             </Items>
-                                
-
+                              
                                                     </x:FormRow>
-
                                            </Rows>
                                           </x:Form>        
                                         </Items>
                                     </x:GroupPanel>
                                 </Items>
                                 </x:Panel>
-
-
-
                                  <x:Panel ID="PanelHemoglobinaHematocrito" Title="HEMOGLOBINA Y HEMATOCRITO" EnableBackgroundColor="true" Height="70px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
                                 <Items>

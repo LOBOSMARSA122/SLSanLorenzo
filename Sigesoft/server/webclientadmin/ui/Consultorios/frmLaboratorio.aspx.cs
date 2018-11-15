@@ -1696,44 +1696,55 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
             }
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000265") != null && txtHEMOGLOBINA.Text !="")
+
+            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000265") != null)
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA.Text, "N009-MF000000265", "int");
-                if (DXAautomatico != null)
+                if (txtHEMOGLOBINA.Text != "")
                 {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
+                    var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA.Text, "N009-MF000000265", "int");
+                    if (DXAautomatico != null)
                     {
-                        l.Add(DXAautomatico);
+                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+                        if (Result1 == null)
+                        {
+                            l.Add(DXAautomatico);
+                        }
                     }
                 }
             }
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000261") != null && txtGLUCOSA.Text != "")
+            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000261") != null)
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtGLUCOSA.Text, "N009-MF000000261", "int");
-                if (DXAautomatico != null)
+                if (txtGLUCOSA.Text != "")
                 {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
+                    var DXAautomatico = SearchDxSugeridoOfSystem(txtGLUCOSA.Text, "N009-MF000000261", "int");
+                    if (DXAautomatico != null)
                     {
-                        l.Add(DXAautomatico);
+                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+                        if (Result1 == null)
+                        {
+                            l.Add(DXAautomatico);
+                        }
                     }
                 }
             }
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001086") != null && txtCOLESTEROL_TOTAL.Text != "")
+            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001086") != null)
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtCOLESTEROL_TOTAL.Text, "N009-MF000001086", "int");
-                if (DXAautomatico != null)
+                if (txtCOLESTEROL_TOTAL.Text != "")
                 {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
+                    var DXAautomatico = SearchDxSugeridoOfSystem(txtCOLESTEROL_TOTAL.Text, "N009-MF000001086", "int");
+                    if (DXAautomatico != null)
                     {
-                        l.Add(DXAautomatico);
+                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+                        if (Result1 == null)
+                        {
+                            l.Add(DXAautomatico);
+                        }
                     }
                 }
             }
+            
 
 
             if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001296") != null && txtTRIGLICERIDOS.Text != "")
