@@ -103,7 +103,7 @@
 
      <x:Window ID="winEditOrdenReporte" Title="Orden de Reporte" Popup="false" EnableIFrame="true" runat="server" Icon="UserBrown"
         CloseAction="HidePostBack" EnableConfirmOnClose="true" IFrameUrl="about:blank" EnableMaximize="false" EnableResize="false" 
-        Target="Top" OnClose="winEditOrdenReporte_Close" IsModal="True" Width="900px" Height="400px" >
+        Target="Top" OnClose="winEditOrdenReporte_Close" IsModal="True" Width="1000px" Height="400px" >
     </x:Window>
     </form>
 </body>

@@ -1260,6 +1260,7 @@
     <Content Include="Auditar\FRM033M.aspx" />
     <Content Include="Auditar\FRM034.aspx" />
     <Content Include="Auditar\FRM034A.aspx" />
+    <Content Include="Auditar\FRMOrdenReportes.aspx" />
     <Content Include="CargaData\FRM050.aspx" />
     <Content Include="CargaData\FRM050A.aspx" />
     <Content Include="CargaData\FRM050B.aspx" />
@@ -3530,6 +3531,13 @@
     </Compile>
     <Compile Include="Auditar\FRM034A.aspx.designer.cs">
       <DependentUpon>FRM034A.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auditar\FRMOrdenReportes.aspx.cs">
+      <DependentUpon>FRMOrdenReportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auditar\FRMOrdenReportes.aspx.designer.cs">
+      <DependentUpon>FRMOrdenReportes.aspx</DependentUpon>
     </Compile>
     <Compile Include="CargaData\FRM050.aspx.cs">
       <DependentUpon>FRM050.aspx</DependentUpon>
