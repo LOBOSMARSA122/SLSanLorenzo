@@ -1319,6 +1319,7 @@ namespace NetPdf
             columnWidths = new float[] { 20.6f, 40.6f };
             filiationWorker = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTableNegro, null);
             document.Add(filiationWorker);
+
             cells = new List<PdfPCell>();
 
             var filterDiagnosticRepository = Diagnosticos.FindAll(p => p.i_FinalQualificationId != (int)Sigesoft.Common.FinalQualification.Descartado);

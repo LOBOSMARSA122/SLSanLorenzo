@@ -31518,7 +31518,118 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
-       
+        public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa_detalles(ref OperationResult pobjOperationResult, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+        {
+            try
+            {
+
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                var query = from A in dbContext.liquidacion
+                            join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
+                            where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
+
+                            select new LiquidacionEmpresa
+                            {
+                                v_OrganizationName = F.v_Name,
+                                v_LiquidacionId = A.v_LiquidacionId,
+                                v_Ruc = F.v_IdentificationNumber,
+                                v_AddressLocation = F.v_Address,
+                                v_TelephoneNumber = F.v_PhoneNumber,
+                                v_ContactName = F.v_ContacName,
+                                v_NroLiquidacion = A.v_NroLiquidacion,
+                                v_OrganizationId = A.v_OrganizationId,
+                                d_Monto = A.d_Monto,
+                                d_FechaVencimiento = A.d_FechaVencimiento,
+                                v_NroFactura = A.v_NroFactura,
+                                Creacion_Liquidacion = A.d_InsertDate
+                            };
+
+                var result = query.ToList();
+                var empresas = result.ToList().GroupBy(g => g.v_OrganizationId).Select(p => p.FirstOrDefault());
+
+
+                var query_1 = from A in dbContext.liquidacion
+                              join F in dbContext.organization on A.v_OrganizationId equals F.v_OrganizationId
+                              where A.i_IsDeleted == 0 && A.d_InsertDate >= pdatBeginDate && A.d_InsertDate <= pdatEndDate
+
+                              select new LiquidacionEmpresa
+                              {
+                                  v_OrganizationName = F.v_Name,
+                                  v_LiquidacionId = A.v_LiquidacionId,
+                                  v_Ruc = F.v_IdentificationNumber,
+                                  v_AddressLocation = F.v_Address,
+                                  v_TelephoneNumber = F.v_PhoneNumber,
+                                  v_ContactName = F.v_ContacName,
+                                  v_NroLiquidacion = A.v_NroLiquidacion,
+                                  v_OrganizationId = A.v_OrganizationId,
+                                  d_Monto = A.d_Monto,
+                                  d_FechaVencimiento = A.d_FechaVencimiento,
+                                  v_NroFactura = A.v_NroFactura,
+                                  Creacion_Liquidacion = A.d_InsertDate
+                              };
+                var result_1 = query_1.ToList();
+                var empresas_1 = result_1.ToList().GroupBy(g => g.v_OrganizationId).Select(p => p.FirstOrDefault());
+
+                List<LiquidacionEmpresa> ListaLiquidacion = new List<LiquidacionEmpresa>();
+
+                foreach (var item in empresas)
+                {
+                    var LiquidacionEmpresaDetalle = new List<LiquidacionEmpresaDetalle>();
+                    var oLiquidacionEmpresa = new LiquidacionEmpresa();
+                    oLiquidacionEmpresa.v_OrganizationName = item.v_OrganizationName;
+                    oLiquidacionEmpresa.v_Ruc = item.v_Ruc;
+                    oLiquidacionEmpresa.v_AddressLocation = item.v_AddressLocation;
+                    oLiquidacionEmpresa.v_TelephoneNumber = item.v_TelephoneNumber;
+                    oLiquidacionEmpresa.v_ContactName = item.v_ContactName;
+
+                    var liquidaciones = result.FindAll(p => p.v_OrganizationId == item.v_OrganizationId);
+
+                    foreach (var liquidacion in liquidaciones)
+                    {
+                        var oLiquidacionDetalle = new LiquidacionEmpresaDetalle();
+                        oLiquidacionDetalle.v_LiquidacionId = liquidacion.v_LiquidacionId;
+                        oLiquidacionDetalle.v_NroLiquidacion = liquidacion.v_NroLiquidacion;
+                        oLiquidacionDetalle.v_NroFactura = liquidacion.v_NroFactura;
+                        if (oLiquidacionDetalle.v_NroFactura != "" && oLiquidacionDetalle.v_NroFactura != null)
+                        {
+                            var arr = oLiquidacionDetalle.v_NroFactura.Split('-').ToArray();
+                            var x = dbContext.obtenernetoporcobrar(arr[0].ToString(), arr[1].ToString()).ToList();
+                            oLiquidacionDetalle.d_Debe = x == null ? 0 : decimal.Parse(x[0].d_NetoXCobrar.ToString());
+                        }
+                        else
+                        {
+                            oLiquidacionDetalle.d_Debe = 0;
+                        }
+                        oLiquidacionDetalle.d_Pago = liquidacion.d_Monto - oLiquidacionDetalle.d_Debe;
+
+                        oLiquidacionDetalle.d_Total = liquidacion.d_Monto;
+
+                        LiquidacionEmpresaDetalle.Add(oLiquidacionDetalle);
+                    }
+                    oLiquidacionEmpresa.detalle = LiquidacionEmpresaDetalle;
+
+                    ListaLiquidacion.Add(oLiquidacionEmpresa);
+
+                    //foreach (var item_1 in empresas_1)
+                    //{
+                    //    var LiquidacionEmpresaDetalle_1 = new List<LiquidacionEmpresaDetalle>();
+                    //    var oLiquidacionEmpresa_1 = new LiquidacionEmpresa();
+                    //    var liquidaciones_1 = result.FindAll(p => p.v_OrganizationId == item.v_OrganizationId);
+                        
+                    //}
+                }
+
+                pobjOperationResult.Success = 1;
+                return ListaLiquidacion.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+                return null;
+            }
+        }
 
         public List<LiquidacionEmpresa> GetListaLiquidacionByEmpresa_Id(ref OperationResult pobjOperationResult, DateTime? pdatBeginDate, DateTime? pdatEndDate, string empresaId)
         {

@@ -641,6 +641,9 @@
             this.label85 = new System.Windows.Forms.Label();
             this.textEspecificacionesNacer = new System.Windows.Forms.TextBox();
             this.label84 = new System.Windows.Forms.Label();
+            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
+            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.ultgrboxEmbarazo = new Infragistics.Win.Misc.UltraExpandableGroupBox();
             this.ultraExpandableGroupBoxPanel1 = new Infragistics.Win.Misc.UltraExpandableGroupBoxPanel();
             this.textQuienAtendio = new System.Windows.Forms.TextBox();
@@ -700,6 +703,8 @@
             this.label125 = new System.Windows.Forms.Label();
             this.label126 = new System.Windows.Forms.Label();
             this.txtNombreMadreTutor = new System.Windows.Forms.TextBox();
+            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
+            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             this.tableLayoutPanel11 = new System.Windows.Forms.TableLayoutPanel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.btnGuardarAntecedentes = new System.Windows.Forms.Button();
@@ -744,11 +749,6 @@
             this.btnPerson = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.ultraFlowLayoutManager2 = new Infragistics.Win.Misc.UltraFlowLayoutManager(this.components);
-            this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.lineShape2 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.shapeContainer2 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
-            this.lineShape3 = new Microsoft.VisualBasic.PowerPacks.LineShape();
             ((System.ComponentModel.ISupportInitialize)(this.uvExamen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uvAnamnesis)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -2608,6 +2608,7 @@
             this.cbEstadoComponente.Name = "cbEstadoComponente";
             this.cbEstadoComponente.Size = new System.Drawing.Size(279, 21);
             this.cbEstadoComponente.TabIndex = 0;
+            this.cbEstadoComponente.SelectedIndexChanged += new System.EventHandler(this.cbEstadoComponente_SelectedIndexChanged);
             // 
             // EXAMENES_lblComentarios
             // 
@@ -6610,6 +6611,36 @@
             this.label84.TabIndex = 151;
             this.label84.Text = "Especificación de Respiración al Nacer:";
             // 
+            // shapeContainer2
+            // 
+            this.shapeContainer2.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer2.Name = "shapeContainer2";
+            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape3,
+            this.lineShape2});
+            this.shapeContainer2.Size = new System.Drawing.Size(583, 313);
+            this.shapeContainer2.TabIndex = 172;
+            this.shapeContainer2.TabStop = false;
+            // 
+            // lineShape3
+            // 
+            this.lineShape3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lineShape3.Name = "lineShape3";
+            this.lineShape3.X1 = 3;
+            this.lineShape3.X2 = 570;
+            this.lineShape3.Y1 = 184;
+            this.lineShape3.Y2 = 184;
+            // 
+            // lineShape2
+            // 
+            this.lineShape2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lineShape2.Name = "lineShape2";
+            this.lineShape2.X1 = 4;
+            this.lineShape2.X2 = 571;
+            this.lineShape2.Y1 = 152;
+            this.lineShape2.Y2 = 152;
+            // 
             // ultgrboxEmbarazo
             // 
             this.ultgrboxEmbarazo.CaptionAlignment = Infragistics.Win.Misc.GroupBoxCaptionAlignment.Near;
@@ -7185,6 +7216,26 @@
             this.txtNombreMadreTutor.Name = "txtNombreMadreTutor";
             this.txtNombreMadreTutor.Size = new System.Drawing.Size(243, 20);
             this.txtNombreMadreTutor.TabIndex = 134;
+            // 
+            // shapeContainer1
+            // 
+            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
+            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
+            this.shapeContainer1.Name = "shapeContainer1";
+            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
+            this.lineShape1});
+            this.shapeContainer1.Size = new System.Drawing.Size(583, 291);
+            this.shapeContainer1.TabIndex = 193;
+            this.shapeContainer1.TabStop = false;
+            // 
+            // lineShape1
+            // 
+            this.lineShape1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lineShape1.Name = "lineShape1";
+            this.lineShape1.X1 = 5;
+            this.lineShape1.X2 = 572;
+            this.lineShape1.Y1 = 73;
+            this.lineShape1.Y2 = 73;
             // 
             // tableLayoutPanel11
             // 
@@ -7805,56 +7856,6 @@
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalir.UseVisualStyleBackColor = false;
             this.btnSalir.Visible = false;
-            // 
-            // shapeContainer1
-            // 
-            this.shapeContainer1.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer1.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer1.Name = "shapeContainer1";
-            this.shapeContainer1.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape1});
-            this.shapeContainer1.Size = new System.Drawing.Size(583, 291);
-            this.shapeContainer1.TabIndex = 193;
-            this.shapeContainer1.TabStop = false;
-            // 
-            // lineShape1
-            // 
-            this.lineShape1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lineShape1.Name = "lineShape1";
-            this.lineShape1.X1 = 5;
-            this.lineShape1.X2 = 572;
-            this.lineShape1.Y1 = 73;
-            this.lineShape1.Y2 = 73;
-            // 
-            // lineShape2
-            // 
-            this.lineShape2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lineShape2.Name = "lineShape2";
-            this.lineShape2.X1 = 4;
-            this.lineShape2.X2 = 571;
-            this.lineShape2.Y1 = 152;
-            this.lineShape2.Y2 = 152;
-            // 
-            // shapeContainer2
-            // 
-            this.shapeContainer2.Location = new System.Drawing.Point(0, 0);
-            this.shapeContainer2.Margin = new System.Windows.Forms.Padding(0);
-            this.shapeContainer2.Name = "shapeContainer2";
-            this.shapeContainer2.Shapes.AddRange(new Microsoft.VisualBasic.PowerPacks.Shape[] {
-            this.lineShape3,
-            this.lineShape2});
-            this.shapeContainer2.Size = new System.Drawing.Size(583, 313);
-            this.shapeContainer2.TabIndex = 172;
-            this.shapeContainer2.TabStop = false;
-            // 
-            // lineShape3
-            // 
-            this.lineShape3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lineShape3.Name = "lineShape3";
-            this.lineShape3.X1 = 3;
-            this.lineShape3.X2 = 570;
-            this.lineShape3.Y1 = 184;
-            this.lineShape3.Y2 = 184;
             // 
             // FrmEsoV2
             // 

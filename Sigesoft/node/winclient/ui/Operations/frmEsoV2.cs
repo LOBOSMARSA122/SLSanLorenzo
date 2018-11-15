@@ -1103,6 +1103,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     var ucOdontograma = new ucOdontograma {Name = field.v_ComponentFieldId};
                     ctl = ucOdontograma;
                     break;
+                case ControlType.UcFototipo:
+                    var ucFotoTipo = new ucFotoTipo { Name = field.v_ComponentFieldId };
+                    ctl = ucFotoTipo;
+                    break;
                 case ControlType.UcAudiometria:
                     var ucAudiometria = new ucAudiometria
                     {
@@ -1439,11 +1443,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             _removerRestriccionAnalisis = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVERESTRIC", _formActions);
             btnAceptarDX.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_SAVE", _formActions);
 
-            btnAgregarRecomendaciones_Conclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_ADDRECOME", _formActions);
-            btnAgregarRestriccion_ConclusionesTratamiento.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_ADDRESTRIC", _formActions);
+            btnAgregarRecomendaciones_Conclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_ADDRECOME", _formActions);
+            btnAgregarRestriccion_ConclusionesTratamiento.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_ADDRESTRIC", _formActions);
 
-            _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERECOME", _formActions);
-            _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERESTRIC", _formActions);
+            _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_REMOVERECOME", _formActions);
+            _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_REMOVERESTRIC", _formActions);
 
             if (btnAceptarDX.Enabled) return;
             cbCalificacionFinal.Enabled = false;
@@ -2029,6 +2033,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 btnAceptarDX.Enabled = false;
                 cbAptitudEso.Enabled = false;
                 btnGuardarExamen.Enabled = false;
+                btnVisorReporteExamen.Enabled = false;
             }
 
             //if (mode == "View")
@@ -6694,6 +6699,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             else
             {
                 MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbEstadoComponente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbEstadoComponente.SelectedValue.ToString() == "2")
+            {
+                btnGuardarExamen.Enabled = false;
+                btnVisorReporteExamen.Enabled = false;
+            }
+            else
+            {
+                btnGuardarExamen.Enabled = true;
+                btnVisorReporteExamen.Enabled = true;
             }
         }
     }
