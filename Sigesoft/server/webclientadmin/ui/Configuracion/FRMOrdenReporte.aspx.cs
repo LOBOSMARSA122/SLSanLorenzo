@@ -46,8 +46,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Configuracion
                     ListaCompletaReportes.Sort((x, y) => x.i_Orden.Value.CompareTo(y.i_Orden.Value));
                     grdData.DataSource = ListaCompletaReportes;
                     grdData.DataBind();
-
                     btnClose.OnClientClick = ActiveWindow.GetConfirmHideReference();
+                    
                 }
                 else 
                 {
@@ -100,15 +100,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Configuracion
             n = 0;
             oOrganizationBL.AddOrdenReportes(ref objOperationResult, ListaOrdem, ((ClientSession)Session["objClientSession"]).GetAsList());
             ActiveWindow.GetConfirmHideReference();
-            if (objOperationResult.Success == 1)  // Operación sin error
-            {
-                     
-            }
-            else  // Operación con error
-            {
-                //MessageBox.Show("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                // Se queda en el formulario.
-            }
+            
         }
     }
 }

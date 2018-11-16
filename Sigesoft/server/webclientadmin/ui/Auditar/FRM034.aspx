@@ -116,6 +116,7 @@
                         <Items>     
                             <x:Button ID="btnNewExamenes" Text="Historia(s) Clínica(s)" Icon="PageWhiteStack" runat="server" Enabled="false"></x:Button>
                             <x:Button ID="btnNewCertificados" Text="Certificado(s)" Icon="ApplicationSideList" runat="server" Enabled="false"></x:Button>
+                            <x:Button ID="btnOrdenReportes" Text="Orden de Reporte(s)" Icon="Outline" runat="server" Enabled="false" ></x:Button>
                         </Items>
                     </x:Toolbar>
                 </Toolbars>
@@ -157,6 +158,12 @@
         IsModal="true" Target="Parent" EnableMaximize="false" EnableResize="false"
         Title="Ver Archivos Adjuntos" EnableConfirmOnClose="true" CloseAction="HidePostBack"
         EnableIFrame="true" IFrameUrl="about:blank" Height="210px" Width="300px"  OnClose="Window1_Close">
+    </x:Window>
+
+     <x:Window ID="Window3" IconUrl="~/images/16/11.png" runat="server" Popup="false"
+        IsModal="true" Target="Parent" EnableMaximize="false" EnableResize="false"
+        Title="Reportes" EnableConfirmOnClose="true" CloseAction="HidePostBack"
+        EnableIFrame="true" IFrameUrl="about:blank" Height="500px" Width="500px"  OnClose="winEdit3_Close">
     </x:Window>
     </form>
 </body>

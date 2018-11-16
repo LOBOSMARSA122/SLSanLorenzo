@@ -23,17 +23,16 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
             if (!IsPostBack)
             {
                 OperationResult objOperationResult = new OperationResult();
                 dpFechaInicio.SelectedDate = DateTime.Now.AddDays(-1); //DateTime.Parse("25/07/2014");
                 dpFechaFin.SelectedDate = DateTime.Now;// DateTime.Parse("25/07/2014");
                 LoadComboBox();
-             
                 //btnNewFichaOcupacional.OnClientClick = winEdit2.GetSaveStateReference(hfRefresh.ClientID) + winEdit2.GetShowReference("../ExternalUser/FRM031C.aspx");
                 btnNewExamenes.OnClientClick = winEdit3.GetSaveStateReference(hfRefresh.ClientID) + winEdit3.GetShowReference("../ExternalUser/FRM031Z.aspx");
                 btnNewCertificados.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("../ExternalUser/FRM031X.aspx");
+                btnOrdenReportes.OnClientClick = Window3.GetSaveStateReference(hfRefresh.ClientID) + Window3.GetShowReference("../Auditar/FRMOrdenReportes.aspx");
 
                 Session["Examenes"] = false;
                 Session["Certificados"] = false;
@@ -147,6 +146,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
                 //btnNewExamenes.Enabled = true;     
                 btnNewExamenes.Enabled = (bool)Session["Examenes"];
                 btnNewCertificados.Enabled = (bool)Session["Certificados"];
+                btnOrdenReportes.Enabled = (bool)Session["Certificados"];
                 if (selectedCount > 1)
                 {
                     //btnNewExamenes.Enabled = false;
@@ -155,6 +155,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
                 {
                     btnNewExamenes.Enabled = true;
                     btnNewCertificados.Enabled = true;
+                    btnOrdenReportes.Enabled = true;
                     Session["Examenes"] = true;
                     Session["Certificados"] = true;
                 }
@@ -166,6 +167,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
                 //btnNewFichaOcupacional.Enabled = false;
                 btnNewExamenes.Enabled = false;
                 btnNewCertificados.Enabled = false;
+                btnOrdenReportes.Enabled = false;
             }
 
             for (int i = 0; i < selectedCount; i++)

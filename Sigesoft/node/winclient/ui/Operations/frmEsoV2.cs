@@ -24,6 +24,7 @@ using System.Data;
 using CrystalDecisions.Shared;
 using CrystalDecisions.CrystalReports.Engine;
 using Sigesoft.Node.Contasol.Integration;
+using System.Transactions;
 
 
 namespace Sigesoft.Node.WinClient.UI.Operations
@@ -1103,6 +1104,10 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     var ucOdontograma = new ucOdontograma {Name = field.v_ComponentFieldId};
                     ctl = ucOdontograma;
                     break;
+                case ControlType.UcFototipo:
+                    var ucFotoTipo = new ucFotoTipo { Name = field.v_ComponentFieldId };
+                    ctl = ucFotoTipo;
+                    break;
                 case ControlType.UcAudiometria:
                     var ucAudiometria = new ucAudiometria
                     {
@@ -1439,11 +1444,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             _removerRestriccionAnalisis = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_REMOVERESTRIC", _formActions);
             btnAceptarDX.Enabled = BLL.Utils.IsActionEnabled("frmEsoV2_ANADX_SAVE", _formActions);
 
-            btnAgregarRecomendaciones_Conclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_ADDRECOME", _formActions);
-            btnAgregarRestriccion_ConclusionesTratamiento.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_ADDRESTRIC", _formActions);
+            btnAgregarRecomendaciones_Conclusiones.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_ADDRECOME", _formActions);
+            btnAgregarRestriccion_ConclusionesTratamiento.Enabled = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_ADDRESTRIC", _formActions);
 
-            _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERECOME", _formActions);
-            _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEso_CONCLUSIONES_REMOVERESTRIC", _formActions);
+            _removerRecomendaciones_Conclusiones = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_REMOVERECOME", _formActions);
+            _removerRestricciones_ConclusionesTratamiento = Sigesoft.Node.WinClient.BLL.Utils.IsActionEnabled("frmEsoV2_CONCLUSIONES_REMOVERESTRIC", _formActions);
 
             if (btnAceptarDX.Enabled) return;
             cbCalificacionFinal.Enabled = false;
@@ -1844,7 +1849,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             txtRegimenCatamenial.Text = dataAnamnesis.CatemenialRegime;
             txtCiruGine.Text = dataAnamnesis.CiruGine;
             txtFecVctoGlobal.Text = dataAnamnesis.GlobalExpirationDate == null ? "NO REQUIERE" : dataAnamnesis.GlobalExpirationDate.Value.ToShortDateString();
-            
+
+            txtVidaSexual.Text = dataAnamnesis.v_InicioVidaSexaul;
+            txtNroParejasActuales.Text = dataAnamnesis.v_NroParejasActuales;
+            txtNroAbortos.Text = dataAnamnesis.v_NroAbortos;
+            txtNroCausa.Text = dataAnamnesis.v_PrecisarCausas;
+
             
             if (dataAnamnesis.Pap != null) dtpPAP.Value = dataAnamnesis.Pap.Value;
             if (dataAnamnesis.Pap != null) dtpPAP.Checked = true;
@@ -2029,6 +2039,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 btnAceptarDX.Enabled = false;
                 cbAptitudEso.Enabled = false;
                 btnGuardarExamen.Enabled = false;
+                btnVisorReporteExamen.Enabled = false;
             }
 
             //if (mode == "View")
@@ -2788,7 +2799,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     v_Gestapara = txtGestapara.Text,
                     v_Menarquia = txtMenarquia.Text,
                     v_CiruGine = txtCiruGine.Text,
-                    i_AptitudeStatusId = int.Parse(cbAptitudEso.SelectedValue.ToString())
+                    i_AptitudeStatusId = int.Parse(cbAptitudEso.SelectedValue.ToString()),
+                    v_InicioVidaSexaul = txtVidaSexual.Text,
+                    v_NroParejasActuales = txtNroParejasActuales.Text,
+                    v_NroAbortos = txtNroAbortos.Text,
+                    v_PrecisarCausas = txtNroCausa.Text
+
                 };
                 #endregion
 
@@ -4357,7 +4373,21 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                 else
                 {
                     _chkApprovedEnabled = chkApproved.Enabled;
-                    SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+
+                    _chkApprovedEnabled = chkApproved.Enabled;
+
+                    var scope = new TransactionScope(
+                        TransactionScopeOption.RequiresNew,
+                                    new TransactionOptions()
+                                    {
+
+                                        IsolationLevel = System.Transactions.IsolationLevel.Snapshot
+                                    });
+
+                    using (scope)
+                    {
+                        SaveExamBySelectedTab(tcExamList.SelectedTab.TabPage);
+                    }             
                 }
             }
         }
@@ -6694,6 +6724,20 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             else
             {
                 MessageBox.Show("Sucedió un error al intentar guardar la información .... intente más tarde.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cbEstadoComponente_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbEstadoComponente.SelectedValue.ToString() == "2")
+            {
+                btnGuardarExamen.Enabled = false;
+                btnVisorReporteExamen.Enabled = false;
+            }
+            else
+            {
+                btnGuardarExamen.Enabled = true;
+                btnVisorReporteExamen.Enabled = true;
             }
         }
     }
