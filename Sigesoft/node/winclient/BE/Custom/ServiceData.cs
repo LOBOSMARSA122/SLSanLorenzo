@@ -35,5 +35,11 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? FechaNacimiento { get; set; }
         public DateTime? GlobalExpirationDate { get; set; }
         public int AptitudeStatusId { get; set; }
+
+        public string v_InicioVidaSexaul { get; set; }
+        public string v_NroParejasActuales { get; set; }
+        public string v_NroAbortos { get; set; }
+        public string v_PrecisarCausas { get; set; }
+
     }
 }
