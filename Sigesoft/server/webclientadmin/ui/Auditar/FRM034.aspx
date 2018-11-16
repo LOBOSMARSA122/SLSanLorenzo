@@ -116,7 +116,7 @@
                         <Items>     
                             <x:Button ID="btnNewExamenes" Text="Historia(s) Clínica(s)" Icon="PageWhiteStack" runat="server" Enabled="false"></x:Button>
                             <x:Button ID="btnNewCertificados" Text="Certificado(s)" Icon="ApplicationSideList" runat="server" Enabled="false"></x:Button>
-                            <x:Button ID="btnOrdenReportes" Text="Orden de Reporte(s)" Icon="Outline" runat="server" Enabled="false" ></x:Button>
+                            <x:Button ID="btnOrdenReportes" Text="Orden de Reporte(s)" Icon="Outline" runat="server" Enabled="false"  OnClick="btnOrdenReportes_Click"></x:Button>
                         </Items>
                     </x:Toolbar>
                 </Toolbars>
@@ -124,7 +124,11 @@
                     <x:boundfield Width="140px" DataField="v_ServiceId" DataFormatString="{0}" HeaderText="Id Atencion" />
                     <x:boundfield Width="270px" DataField="v_Pacient" DataFormatString="{0}" HeaderText="Trabajador" />
                     <x:boundfield Width="150px" DataField="d_ServiceDate" DataFormatString="{0:d}" HeaderText="Fecha" />
-                    <x:boundfield Width="250px" DataField="v_ProtocolName" DataFormatString="{0}" HeaderText="Protocolo" />                   
+                    <x:boundfield Width="250px" DataField="v_ProtocolName" DataFormatString="{0}" HeaderText="Protocolo" /> 
+                    <x:boundfield Width="100px" DataField="v_CustomerOrganizationId" DataFormatString="{0}" HeaderText="" Hidden="false"/> 
+                    <x:boundfield Width="100px" DataField="v_PersonId" DataFormatString="{0}" HeaderText="" Hidden="false"/>
+                    <x:boundfield Width="100px" DataField="v_OrganizationName" DataFormatString="{0}" HeaderText="" Hidden="false"/>
+                    <x:boundfield Width="100px" DataField="v_ProtocolId" DataFormatString="{0}" HeaderText="" Hidden="false"/>                                    
                 </Columns>
             </x:Grid>
         </Items>
