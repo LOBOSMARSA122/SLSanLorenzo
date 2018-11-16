@@ -1359,6 +1359,10 @@ namespace Sigesoft.Node.WinClient.UI
                     {
                         objFamilyMedicAntecedent.i_TypeFamilyId = 19;
                     }
+                    else if (int.Parse(treeViewFamilyMedicalAntecedents.SelectedNode.Name.ToString()) == 66)
+                    {
+                        objFamilyMedicAntecedent.i_TypeFamilyId = 67;
+                    }
 
                     //objFamilyMedicAntecedent.i_TypeFamilyId = int.Parse(treeViewFamilyMedicalAntecedents.SelectedNode.Name.ToString());
                     objFamilyMedicAntecedent.v_TypeFamilyName = _GroupPopupFamilyMedical;

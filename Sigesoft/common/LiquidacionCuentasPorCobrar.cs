@@ -15,6 +15,11 @@ using Font = iTextSharp.text.Font;
 
 namespace NetPdf
 {
+    class DatosDeuda {
+        public string NombreEmpresa { get; set; }
+        public decimal deuda1 { get; set; }
+        public decimal deuda2 { get; set; }
+    }
     public class LiquidacionCuentasPorCobrar
     {
         private static void RunFile(string filePDF)
@@ -75,12 +80,12 @@ namespace NetPdf
 
             #endregion
 
-            var estatico_1 = 15f;
-            var alto_Celda_1 = 15f;
-            var alto_Celda_2 = 30f;
-            var alto_Celda_3 = 45f;
-            var alto_Celda_4 = 60f;
-            var alto_Celda_6 = 90f;
+            //var estatico_1 = 15f;
+            //var alto_Celda_1 = 15f;
+            //var alto_Celda_2 = 30f;
+            //var alto_Celda_3 = 45f;
+            //var alto_Celda_4 = 60f;
+            //var alto_Celda_6 = 90f;
             #region TÍTULO
 
             cells = new List<PdfPCell>();
@@ -179,44 +184,77 @@ namespace NetPdf
             table = HandlingItextSharp.GenerateTableFromCells(cells, columnWidths, null, fontTitleTable);
             document.Add(table);
             #endregion
-
+            
             #region Parte Dinámica
-            cells = new List<PdfPCell>();
+            
             decimal debe = 0;
             decimal debe_1 = 0;
             decimal debe_2 = 0;
-            decimal debe_3 = 0;
+            decimal debe_ant1 = 0;
+            decimal debe_ant1_1 = 0;
+            decimal debe_ant1_2 = 0;
 
+            cells = new List<PdfPCell>();
             foreach (var liq in Lista_1)
             {
-                cell = new PdfPCell(new Phrase("", fontColumnValueBold)) {HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
                 cell = new PdfPCell(new Phrase(liq.v_OrganizationName, fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
                 cells.Add(cell);
-                
-                foreach (var item in liq.detalle)
-                {
-                    if (item.d_Debe != 0)
-                    {
+
+                foreach (var item in liq.detalle){
+                    if (item.d_Debe != 0){
                         debe += item.d_Debe.Value;
                     }
+
                 }
                 debe_1 = debe;
                 decimal _debe1 = decimal.Round(debe_1, 2);
 
-                cell = new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                cell = new PdfPCell(new Phrase(_debe1.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
                 cells.Add(cell);
-                cell = new PdfPCell(new Phrase("", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
-                cells.Add(cell);
-                cell = new PdfPCell(new Phrase(_debe1.ToString(), fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
-                cells.Add(cell);
-                cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
-                cells.Add(cell);
-
-
+                debe_2 = debe_1;
                 debe = 0;
                 debe_1 = 0;
 
+                if (Lista_2.Count != 0)
+                {
+                    foreach (var liq_1 in Lista_2)
+                    {
+                        foreach (var item_2 in liq_1.detalle)
+                        {
+                            if (item_2.d_Debe != 0)
+                            {
+                                debe_ant1 += item_2.d_Debe.Value;
+                            }
+                        }
+                        debe_ant1_1 = debe_ant1;
+                        decimal _debe1_ant = decimal.Round(debe_ant1_1, 2);
+                        cell = new PdfPCell(new Phrase(_debe1_ant.ToString(), fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                        cells.Add(cell);
+
+                        debe_ant1_2 = debe_ant1_1;
+                        debe_ant1 = 0;
+                        debe_ant1_1 = 0;
+                    }
+                    decimal deudaXempresa = debe_2 + debe_ant1_2;
+                    deudaXempresa = decimal.Round(deudaXempresa, 2);
+                    cell = new PdfPCell(new Phrase(deudaXempresa.ToString(), fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                    cells.Add(cell);
+                    cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                    cells.Add(cell);
+                }
+                else
+                {
+                        cell = new PdfPCell(new Phrase("0", fontColumnValue)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                        cells.Add(cell);
+                        decimal deudaXempresa = debe_2 + debe_ant1_2;
+                        deudaXempresa = decimal.Round(deudaXempresa, 2);
+                        cell = new PdfPCell(new Phrase(deudaXempresa.ToString(), fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_RIGHT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.BLACK, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
+                        cells.Add(cell);
+                        cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { HorizontalAlignment = PdfPCell.ALIGN_LEFT, UseVariableBorders = true, BorderColorLeft = BaseColor.BLACK, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
+                        cells.Add(cell);
+                }
             }
             columnWidths = new float[] { 5f, 45f, 15f, 15f, 15f, 5f };
 

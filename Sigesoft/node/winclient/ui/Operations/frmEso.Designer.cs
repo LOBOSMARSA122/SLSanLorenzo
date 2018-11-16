@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEso));
             Infragistics.Win.Appearance appearance1 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand1 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn40 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_AntecedentTypeName", -1, null, 0, Infragistics.Win.UltraWinGrid.SortIndicator.Ascending, false);
@@ -54,6 +53,7 @@
             Infragistics.Win.Appearance appearance12 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEso));
             Infragistics.Win.Appearance appearance16 = new Infragistics.Win.Appearance();
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand3 = new Infragistics.Win.UltraWinGrid.UltraGridBand("Band 0", -1);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn44 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("v_DiagnosticRepositoryId");
@@ -253,13 +253,13 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn19 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Nombre");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn27 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("SI");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn28 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NO");
-            Infragistics.Win.Appearance appearance15 = new Infragistics.Win.Appearance();
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn4 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn5 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
-            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn6 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
+            Infragistics.Win.Appearance appearance103 = new Infragistics.Win.Appearance();
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn7 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Anio");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn8 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Cpn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn9 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Complicacion");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn10 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Parto");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn11 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("PesoRn");
+            Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn12 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Puerperio");
             this.tcSubMain = new System.Windows.Forms.TabControl();
             this.tpAntecedentes = new System.Windows.Forms.TabPage();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -1820,8 +1820,10 @@
             // tpExam
             // 
             this.tpExam.Controls.Add(this.splitContainer2);
+            this.tpExam.Controls.Add(this.btnServiciosAnteriores);
             this.tpExam.Controls.Add(this.statusStrip1);
             this.tpExam.Controls.Add(this.lblFecVctoGlobal);
+            this.tpExam.Controls.Add(this.btnAntecedentes);
             this.tpExam.Location = new System.Drawing.Point(4, 22);
             this.tpExam.Name = "tpExam";
             this.tpExam.Padding = new System.Windows.Forms.Padding(3);
@@ -1880,11 +1882,9 @@
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox4.Controls.Add(this.btnPerson);
-            this.groupBox4.Controls.Add(this.btnServiciosAnteriores);
             this.groupBox4.Controls.Add(this.btnGuardarExamen);
             this.groupBox4.Controls.Add(this.btnAddListaNerga);
             this.groupBox4.Controls.Add(this.btnReceta);
-            this.groupBox4.Controls.Add(this.btnAntecedentes);
             this.groupBox4.Controls.Add(this.btnFichaMedica);
             this.groupBox4.Controls.Add(this.btnVisorReporteExamen);
             this.groupBox4.Controls.Add(this.BtnAnamnesis);
@@ -1927,7 +1927,7 @@
             this.btnServiciosAnteriores.ForeColor = System.Drawing.Color.Black;
             this.btnServiciosAnteriores.Image = ((System.Drawing.Image)(resources.GetObject("btnServiciosAnteriores.Image")));
             this.btnServiciosAnteriores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnServiciosAnteriores.Location = new System.Drawing.Point(349, 128);
+            this.btnServiciosAnteriores.Location = new System.Drawing.Point(1131, 589);
             this.btnServiciosAnteriores.Margin = new System.Windows.Forms.Padding(2);
             this.btnServiciosAnteriores.Name = "btnServiciosAnteriores";
             this.btnServiciosAnteriores.Size = new System.Drawing.Size(113, 24);
@@ -1970,7 +1970,7 @@
             this.btnAddListaNerga.ForeColor = System.Drawing.Color.Black;
             this.btnAddListaNerga.Image = ((System.Drawing.Image)(resources.GetObject("btnAddListaNerga.Image")));
             this.btnAddListaNerga.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAddListaNerga.Location = new System.Drawing.Point(359, 126);
+            this.btnAddListaNerga.Location = new System.Drawing.Point(14, 129);
             this.btnAddListaNerga.Margin = new System.Windows.Forms.Padding(2);
             this.btnAddListaNerga.Name = "btnAddListaNerga";
             this.btnAddListaNerga.Size = new System.Drawing.Size(146, 25);
@@ -2015,7 +2015,7 @@
             this.btnAntecedentes.ForeColor = System.Drawing.Color.Black;
             this.btnAntecedentes.Image = ((System.Drawing.Image)(resources.GetObject("btnAntecedentes.Image")));
             this.btnAntecedentes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAntecedentes.Location = new System.Drawing.Point(319, 122);
+            this.btnAntecedentes.Location = new System.Drawing.Point(1023, 589);
             this.btnAntecedentes.Margin = new System.Windows.Forms.Padding(2);
             this.btnAntecedentes.Name = "btnAntecedentes";
             this.btnAntecedentes.Size = new System.Drawing.Size(113, 24);
@@ -2082,7 +2082,7 @@
             this.BtnAnamnesis.ForeColor = System.Drawing.Color.Black;
             this.BtnAnamnesis.Image = ((System.Drawing.Image)(resources.GetObject("BtnAnamnesis.Image")));
             this.BtnAnamnesis.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BtnAnamnesis.Location = new System.Drawing.Point(319, 126);
+            this.BtnAnamnesis.Location = new System.Drawing.Point(189, 128);
             this.BtnAnamnesis.Margin = new System.Windows.Forms.Padding(2);
             this.BtnAnamnesis.Name = "BtnAnamnesis";
             this.BtnAnamnesis.Size = new System.Drawing.Size(113, 24);
@@ -2425,7 +2425,7 @@
             // 
             this.lblFecVctoGlobal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.lblFecVctoGlobal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblFecVctoGlobal.Location = new System.Drawing.Point(878, 579);
+            this.lblFecVctoGlobal.Location = new System.Drawing.Point(884, 582);
             this.lblFecVctoGlobal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFecVctoGlobal.Name = "lblFecVctoGlobal";
             this.lblFecVctoGlobal.Size = new System.Drawing.Size(89, 20);
@@ -7515,14 +7515,14 @@
             // 
             // uvExamen
             // 
-            appearance15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            appearance15.BackColor2 = System.Drawing.Color.Transparent;
-            appearance15.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
-            appearance15.BorderAlpha = Infragistics.Win.Alpha.Opaque;
-            appearance15.BorderColor = System.Drawing.Color.Red;
-            appearance15.BorderColor2 = System.Drawing.Color.Red;
-            appearance15.BorderColor3DBase = System.Drawing.Color.Red;
-            this.uvExamen.ErrorAppearance = appearance15;
+            appearance103.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            appearance103.BackColor2 = System.Drawing.Color.Transparent;
+            appearance103.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
+            appearance103.BorderAlpha = Infragistics.Win.Alpha.Opaque;
+            appearance103.BorderColor = System.Drawing.Color.Red;
+            appearance103.BorderColor2 = System.Drawing.Color.Red;
+            appearance103.BorderColor3DBase = System.Drawing.Color.Red;
+            this.uvExamen.ErrorAppearance = appearance103;
             this.uvExamen.ErrorImageAlignment = System.Windows.Forms.ErrorIconAlignment.TopLeft;
             this.uvExamen.ErrorImageTransparentColor = System.Drawing.Color.Transparent;
             this.uvExamen.MessageBoxIcon = System.Windows.Forms.MessageBoxIcon.None;
@@ -7557,12 +7557,12 @@
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
-            ultraDataColumn1,
-            ultraDataColumn2,
-            ultraDataColumn3,
-            ultraDataColumn4,
-            ultraDataColumn5,
-            ultraDataColumn6});
+            ultraDataColumn7,
+            ultraDataColumn8,
+            ultraDataColumn9,
+            ultraDataColumn10,
+            ultraDataColumn11,
+            ultraDataColumn12});
             // 
             // frmEso
             // 
