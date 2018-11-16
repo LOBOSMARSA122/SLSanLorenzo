@@ -212,8 +212,8 @@ namespace Sigesoft.Node.WinClient.UI
             if (ddlStatusAptitudId.SelectedValue.ToString() != "-1") Filters.Add("i_AptitudeStatusId==" + ddlStatusAptitudId.SelectedValue);
             if (cboUserMed.SelectedValue.ToString() != "-1") Filters.Add("i_ApprovedUpdateUserId==" + cboUserMed.SelectedValue);
 
-            
 
+            
             // Create the Filter Expression
             strFilterExpression = null;   
             if (Filters.Count > 0)
