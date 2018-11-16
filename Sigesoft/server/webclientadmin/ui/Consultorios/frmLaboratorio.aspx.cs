@@ -386,8 +386,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelBkDirecto.Hidden = true;
                 PanelBkDirecto.Attributes.Add("Tag", "N009-ME000000081");
-                MUESTRA_BK_DIRECTO.Attributes.Add("Tag", "N009-MF000001371");
-                COLORACION_BK_DIRECTO.Attributes.Add("Tag", "N009-MF000001372");
                 RESULTADOS_BK_DIRECTO.Attributes.Add("Tag", "N009-MF000001373");
 
                 PanelHepatitisC.Hidden = true;
@@ -500,46 +498,46 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelVSG.Hidden = true;
                 PanelVSG.Attributes.Add("Tag", "N009-ME000000137");
-                txtVEL_SEDIMENTACION.Attributes.Add("Tag", "N009-MF0000002162");
-                txtVEL_SEDIMENTACION_DESEABLE.Attributes.Add("Tag", "N009-MF0000021263");
+                txtVEL_SEDIMENTACION.Attributes.Add("Tag", "N009-MF000002162");
+                txtVEL_SEDIMENTACION_DESEABLE.Attributes.Add("Tag", "N009-MF000002163");
 
                 PanelRPR.Hidden = true;
                 PanelRPR.Attributes.Add("Tag", "N009-ME000000425");
-                ddlRPR.Attributes.Add("Tag", "N009-MF0000003221");
+                ddlRPR.Attributes.Add("Tag", "N009-MF000003221");
 
                 PanelHBSAG_A.Hidden = true;
                 PanelHBSAG_A.Attributes.Add("Tag", "N009-ME000000004");
-                ddlHEPATITIS_ANTIGENO_A.Attributes.Add("Tag", "N009-MF0000000264");
+                ddlHEPATITIS_ANTIGENO_A.Attributes.Add("Tag", "N009-MF000000264");
 
                 PanelHBSAG_B.Hidden = true;
                 PanelHBSAG_B.Attributes.Add("Tag", "N009-ME000000301");
-                ddlHEPATITIS_ANTIGENO_B.Attributes.Add("Tag", "N009-MF0000002498");
+                ddlHEPATITIS_ANTIGENO_B.Attributes.Add("Tag", "N009-MF000002498");
 
                 PanelPruebaEmbarazo.Hidden = true;
                 PanelPruebaEmbarazo.Attributes.Add("Tag", "N009-ME000000027");
-                ddlPRUEBA_EMBARAZO.Attributes.Add("Tag", "N009-MF0000000270");
+                ddlPRUEBA_EMBARAZO.Attributes.Add("Tag", "N009-MF000000270");
 
                 PanelProteinaReactiva.Hidden = true;
                 PanelProteinaReactiva.Attributes.Add("Tag", "N009-ME000000433");
-                ddlPROTEINA_REACTIVA.Attributes.Add("Tag", "N009-MF0000003241");
+                ddlPROTEINA_REACTIVA.Attributes.Add("Tag", "N009-MF000003241");
 
                 PanelREACC_INFLA_HECES.Hidden = true;
                 PanelREACC_INFLA_HECES.Attributes.Add("Tag", "N009-ME000000119");
-                txtREACC_INFLA_HECES.Attributes.Add("Tag", "N009-MF0000002033");
+                txtREACC_INFLA_HECES.Attributes.Add("Tag", "N009-MF000002033");
 
                 PanelMicroCieloAzul.Hidden = true;
                 PanelMicroCieloAzul.Attributes.Add("Tag", "N009-ME000000097");
-                txtCOLOR_M1.Attributes.Add("Tag", "N009-MF0000001812");
-                txtCONSISTENCIA_M1.Attributes.Add("Tag", "N009-MF0000002069");
-                txtMOCO_M1.Attributes.Add("Tag", "N009-MF0000002070");
-                txtTHEVENON_M1.Attributes.Add("Tag", "N009-MF0000003662");
-                txtRESTOS_ALIMENTICIOS_M1.Attributes.Add("Tag", "N009-MF0000003251");
-                txtLEUCOCITOS_M1.Attributes.Add("Tag", "N009-MF0000003252");
+                txtCOLOR_M1.Attributes.Add("Tag", "N009-MF000001812");
+                txtCONSISTENCIA_M1.Attributes.Add("Tag", "N009-MF000002069");
+                txtMOCO_M1.Attributes.Add("Tag", "N009-MF000002070");
+                txtTHEVENON_M1.Attributes.Add("Tag", "N009-MF000003662");
+                txtRESTOS_ALIMENTICIOS_M1.Attributes.Add("Tag", "N009-MF000003251");
+                txtLEUCOCITOS_M1.Attributes.Add("Tag", "N009-MF000003252");
 
-                PanelParasiSeriadoCA.Hidden = true;
-                PanelParasiSeriadoCA.Attributes.Add("Tag", "N009-ME000000452");
-                txtMETODO_DIR_PARASI.Attributes.Add("Tag", "N009-MF000003663");
-                txtMETODO_SEDIMEN_PARASI.Attributes.Add("Tag", "N009-MF000003664");
+                PanelParasitSeriadoCA.Hidden = true;
+                PanelParasitSeriadoCA.Attributes.Add("Tag", "N009-ME000000452");
+                txtMETODO_DIR_PARASIT.Attributes.Add("Tag", "N009-MF000003663");
+                txtMETODO_SEDIMEN_PARASIT.Attributes.Add("Tag", "N009-MF000003664");
 
                 PanelInmunologia.Hidden = true;
                 PanelInmunologia.Attributes.Add("Tag", "N009-ME000000455");
@@ -592,7 +590,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 PanelToxiAlcoholSaliva.Hidden = true;
                 PanelToxiAlcoholSaliva.Attributes.Add("Tag", "N009-ME000000416");
-                ddlALCOHOL_SALIVA.Attributes.Add("Tag", "N009-000003212");
+                ddlALCOHOL_SALIVA.Attributes.Add("Tag", "N009-ME000003212");
 
                 PanelToxiExtasis.Hidden = true;
                 PanelToxiExtasis.Attributes.Add("Tag", "N009-ME000000422");
@@ -602,6 +600,27 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 PanelPlomo.Attributes.Add("Tag", "N009-ME000000408");
                 txtPLOMO_ORINA.Attributes.Add("Tag", "N009-MF000003104");
                 txtPLOMO_ORINA_DESEABLE.Attributes.Add("Tag", "N009-MF000003105");
+
+                PanelMagnesioOrina.Hidden = true;
+                PanelMagnesioOrina.Attributes.Add("Tag", "N009-ME000000410");
+                txtMAGNESIO_ORINA.Attributes.Add("Tag", "N009-MF000003108");
+                txtMAGNESIO_ORINA_DESEABLE.Attributes.Add("Tag", "N009-MF000003109");
+
+                PanelPlomoSangre.Hidden = true;
+                PanelPlomoSangre.Attributes.Add("Tag", "N009-ME000000060");
+                txtPLOMO_EN_SANGRE.Attributes.Add("Tag", "N009-MF000001158");
+                txtPLOMO_EN_SANGRE_DESEABLE.Attributes.Add("Tag", "N009-MF000001291");
+
+                PanelMagnesioMetales.Hidden = true;
+                PanelMagnesioMetales.Attributes.Add("Tag", "N009-ME000000430");
+                txtMAGNESIO_M_PESADOS.Attributes.Add("Tag", "N009-MF000003230");
+                txtMAGNESIO_M_PESADOS_DESEABLE.Attributes.Add("Tag", "N009-MF000003231");
+
+                PanelMPesadosCobre.Hidden = true;
+                PanelMPesadosCobre.Attributes.Add("Tag", "N009-ME000000426");
+                txtMETAL_PES_COBRE.Attributes.Add("Tag", "N009-MF000003222");
+                txtMETAL_PES_COBRE_DESEABLE.Attributes.Add("Tag", "N009-MF000003223");
+
 
                 int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
                 OperationResult objOperationResult = new OperationResult();
@@ -891,6 +910,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Utils.LoadDropDownList(ddlOPIACEOS, "Value1", "Id", Combo305, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlMETADONA, "Value1", "Id", Combo305, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlFENCICLIDINA, "Value1", "Id", Combo305, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlALCOHOL_SALIVA, "Value1", "Id", Combo279, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlEXTASIS, "Value1", "Id", Combo305, DropDownListAction.Select);
 
             Utils.LoadDropDownList(ddlCONSISTENCIA_PAR_SIMPLE, "Value1", "Id", Combo276, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlRESTOS_ALIMENTICIOS_PAR_SIMPLE, "Value1", "Id", Combo300, DropDownListAction.Select);
@@ -933,6 +954,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Utils.LoadDropDownList(ddlHEPATITIS_ANTIGENO_B, "Value1", "Id", Combo196, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlPRUEBA_EMBARAZO, "Value1", "Id", Combo203, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlPROTEINA_REACTIVA, "Value1", "Id", Combo196, DropDownListAction.Select);
+            
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
 
