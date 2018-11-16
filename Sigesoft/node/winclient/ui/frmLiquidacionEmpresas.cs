@@ -30,6 +30,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
+            MedicamentoBl oMedicamentoBl = new MedicamentoBl();
             if (rbEstadoCuentaEmpresa.Checked)
             {
                 if (_empresa != null)
@@ -54,31 +55,38 @@ namespace Sigesoft.Node.WinClient.UI
                         string fecha = DateTime.Now.ToString().Split('/')[0] + "-" + DateTime.Now.ToString().Split('/')[1] + "-" + DateTime.Now.ToString().Split('/')[2];
                         string nombre = "Liquidaciones de EMPRESA - CSL";
 
-                        //MedicamentoBl oMedicamentoBl = new MedicamentoBl();
-                        //List<string> facturas = new List<string>();
-                        //foreach (var item in lista)
-                        //{
-                        //    var obj = item.detalle.FindAll(p => p.v_NroFactura != null || p.v_NroFactura != "").ToList();
-                        //    foreach (var item_1 in obj)
-                        //    {
-                        //        facturas.Add(item_1.v_NroFactura);
-                        //    }
-                        //}
-
-                        //var listFacturaCobranza = new List<FacturaCobranza>();
-                        //foreach (var nroFactura in facturas)
-                        //{
-                        //   var oFacturaCobranza = new FacturaCobranza();
-                        //    var obj = oMedicamentoBl.ObtnerNroFacturaCobranza(nroFactura);
-
-                        //    oFacturaCobranza.t_InsertaFecha  = obj.t_InsertaFecha;
-                        //    oFacturaCobranza.v_DocumentoRef = obj.v_DocumentoRef;
-                        //    oFacturaCobranza.v_IdCobranzaDetalle = obj.v_IdCobranzaDetalle;
-
-                        //    listFacturaCobranza.Add(oFacturaCobranza);
-
-                        //}listFacturaCobranza
+                        //query para validar si la empresa es deudora ARNOLD
+                        var test = oMedicamentoBl.EmpresaDeudora("20102078781");
                        
+
+                       
+                        List<string> facturas = new List<string>();
+                        foreach (var item in lista)
+                        {
+                            var obj = item.detalle.FindAll(p =>p.v_NroFactura != "").ToList();
+                            foreach (var item_1 in obj)
+                            {
+                                facturas.Add(item_1.v_NroFactura);
+                            }
+                        }
+
+                        var listFacturaCobranza = new List<FacturaCobranza>();
+                        foreach (var nroFactura in facturas)
+                        {
+                            var oFacturaCobranza = new FacturaCobranza();
+                            var obj = oMedicamentoBl.ObtnerNroFacturaCobranza(nroFactura);
+
+                            oFacturaCobranza.v_IdVenta = obj.v_IdVenta;
+                            oFacturaCobranza.FechaCreacion = obj.FechaCreacion;
+                            oFacturaCobranza.FechaVencimiento = obj.FechaVencimiento;
+                            oFacturaCobranza.NetoXCobrar = obj.NetoXCobrar;
+                            oFacturaCobranza.TotalPagado = obj.TotalPagado;
+                            oFacturaCobranza.DocuemtosReferencia = obj.DocuemtosReferencia;
+                            oFacturaCobranza.NroComprobante = obj.NroComprobante;       
+                            listFacturaCobranza.Add(oFacturaCobranza);
+                        }
+
+                      
                         var empresa_info = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, _empresa);
 
 

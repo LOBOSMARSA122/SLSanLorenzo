@@ -200,6 +200,8 @@
             // 
             // ddlUsuario
             // 
+            this.ddlUsuario.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ddlUsuario.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.ddlUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlUsuario.FormattingEnabled = true;
