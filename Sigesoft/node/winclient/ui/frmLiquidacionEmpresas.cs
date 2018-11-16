@@ -55,15 +55,30 @@ namespace Sigesoft.Node.WinClient.UI
                         string nombre = "Liquidaciones de EMPRESA - CSL";
 
                         //MedicamentoBl oMedicamentoBl = new MedicamentoBl();
-                        //string factura = "";
+                        //List<string> facturas = new List<string>();
                         //foreach (var item in lista)
                         //{
-                        //    foreach (var item_1 in item.detalle)
+                        //    var obj = item.detalle.FindAll(p => p.v_NroFactura != null || p.v_NroFactura != "").ToList();
+                        //    foreach (var item_1 in obj)
                         //    {
-                        //        factura = item_1.v_NroFactura;
+                        //        facturas.Add(item_1.v_NroFactura);
                         //    }
                         //}
-                        //var obj = oMedicamentoBl.ObtnerNroFacturaCobranza(factura);
+
+                        //var listFacturaCobranza = new List<FacturaCobranza>();
+                        //foreach (var nroFactura in facturas)
+                        //{
+                        //   var oFacturaCobranza = new FacturaCobranza();
+                        //    var obj = oMedicamentoBl.ObtnerNroFacturaCobranza(nroFactura);
+
+                        //    oFacturaCobranza.t_InsertaFecha  = obj.t_InsertaFecha;
+                        //    oFacturaCobranza.v_DocumentoRef = obj.v_DocumentoRef;
+                        //    oFacturaCobranza.v_IdCobranzaDetalle = obj.v_IdCobranzaDetalle;
+
+                        //    listFacturaCobranza.Add(oFacturaCobranza);
+
+                        //}listFacturaCobranza
+                       
                         var empresa_info = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, _empresa);
 
 
@@ -111,7 +126,7 @@ namespace Sigesoft.Node.WinClient.UI
                     var MedicalCenter = new ServiceBL().GetInfoMedicalCenter();
                     OperationResult objOperationResult = new OperationResult();
 
-                    
+
                     DateTime? fechaFin = DateTime.Now;
                     DateTime? fechaInicio = DateTime.Now.AddDays(-30);
                     var lista_1 = new ServiceBL().GetListaLiquidacionByEmpresa(ref objOperationResult, fechaInicio, fechaFin);
