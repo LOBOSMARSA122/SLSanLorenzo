@@ -17,6 +17,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
 {
     public partial class FRM044 : System.Web.UI.Page
     {
+        private string _serviceId;
+        private string _EmpresaClienteId;
+        private string _pacientId;
+        private string _protocolId;
+        private string _customerOrganizationName;
+        private string _personFullName;
+        private List<ServiceList> datasource; 
+
         SystemParameterBL _objSystemParameterBL = new SystemParameterBL();
         ProtocolBL _objProtocolBL = new ProtocolBL();
         ServiceBL _ServiceBL = new ServiceBL();
@@ -197,8 +205,10 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
         private void BindGrid()
         {
             string strFilterExpression = Convert.ToString(Session["strFilterExpression"]);
-            grdData.DataSource = GetData(grdData.PageIndex, grdData.PageSize, "v_ServiceId", strFilterExpression);
-            grdData.DataBind();
+            var x = GetData(grdData.PageIndex, grdData.PageSize, "v_ServiceId", strFilterExpression);
+            datasource = x;
+            grdData.DataSource = x;            
+            grdData.DataBind();          
         }
 
         private List<ServiceList> GetData(int pintPageIndex, int pintPageSize, string pstrSortExpression, string pstrFilterExpression)
@@ -210,13 +220,14 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
             {
                 Alert.ShowInTop("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage);
             }
-
             return _objData;
         }
 
         protected void grdData_RowClick(object sender, GridRowClickEventArgs e)
         {
+
             LlenarLista();
+             
         }
 
         protected void winEdit1_Close(object sender, EventArgs e)
@@ -245,5 +256,26 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
         {
 
         }
+
+        protected void btnOrdenReportes_Click(object sender, EventArgs e)
+        {
+            int index = grdData.SelectedRowIndex;
+            string strFilterExpression = Convert.ToString(Session["strFilterExpression"]);
+            List<ServiceList> data = GetData(grdData.PageIndex, grdData.PageSize, "v_ServiceId", strFilterExpression);
+            foreach (var row in grdData.Rows) {
+                if (row.RowIndex == index) {
+                    _serviceId = row.Values[0];
+                    _pacientId = row.Values[5];
+                    _customerOrganizationName = row.Values[6];
+                    _personFullName = row.Values[1];
+                    _EmpresaClienteId = row.Values[4];
+                }
+            }            
+            int eso = 1;
+            int flagPantalla = 2;    
+            var frm = new Auditar.FRMOrdenReportes(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, _EmpresaClienteId, eso);
+        }
+
+
     }
 }

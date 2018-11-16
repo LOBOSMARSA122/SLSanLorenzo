@@ -20,7 +20,7 @@
                 </Items>
             </x:Toolbar>
         </Toolbars>
-            <Items>  
+            <Items>
                <x:Panel ID="Panel2" Layout="Absolute" runat="server" ShowBorder="false" ShowHeader="false">
                     <Items>
                         <x:CheckBoxList ID="chkregistros" runat="server">

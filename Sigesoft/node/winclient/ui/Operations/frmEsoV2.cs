@@ -1849,7 +1849,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             txtRegimenCatamenial.Text = dataAnamnesis.CatemenialRegime;
             txtCiruGine.Text = dataAnamnesis.CiruGine;
             txtFecVctoGlobal.Text = dataAnamnesis.GlobalExpirationDate == null ? "NO REQUIERE" : dataAnamnesis.GlobalExpirationDate.Value.ToShortDateString();
-            
+
+            txtVidaSexual.Text = dataAnamnesis.v_InicioVidaSexaul;
+            txtNroParejasActuales.Text = dataAnamnesis.v_NroParejasActuales;
+            txtNroAbortos.Text = dataAnamnesis.v_NroAbortos;
+            txtNroCausa.Text = dataAnamnesis.v_PrecisarCausas;
+
             
             if (dataAnamnesis.Pap != null) dtpPAP.Value = dataAnamnesis.Pap.Value;
             if (dataAnamnesis.Pap != null) dtpPAP.Checked = true;
@@ -2794,7 +2799,12 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     v_Gestapara = txtGestapara.Text,
                     v_Menarquia = txtMenarquia.Text,
                     v_CiruGine = txtCiruGine.Text,
-                    i_AptitudeStatusId = int.Parse(cbAptitudEso.SelectedValue.ToString())
+                    i_AptitudeStatusId = int.Parse(cbAptitudEso.SelectedValue.ToString()),
+                    v_InicioVidaSexaul = txtVidaSexual.Text,
+                    v_NroParejasActuales = txtNroParejasActuales.Text,
+                    v_NroAbortos = txtNroAbortos.Text,
+                    v_PrecisarCausas = txtNroCausa.Text
+
                 };
                 #endregion
 
