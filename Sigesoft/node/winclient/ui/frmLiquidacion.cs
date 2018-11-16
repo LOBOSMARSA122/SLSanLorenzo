@@ -27,7 +27,7 @@ namespace Sigesoft.Node.WinClient.UI
         ServiceBL _serviceBL = new ServiceBL();
         private OperationResult _objOperationResult = new OperationResult();
         private PacientBL _pacientBL = new PacientBL();
-
+        private int seleccionado = -1;
         private string empresaId = null;
         public frmLiquidacion()
         {
@@ -38,6 +38,7 @@ namespace Sigesoft.Node.WinClient.UI
         {
             int nodeId = int.Parse(Common.Utils.GetApplicationConfigValue("NodeId"));
             OperationResult objOperationResult1 = new OperationResult();
+            OperationResult objOperationResult = new OperationResult();
 
             var clientOrganization = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
             var clientOrganization1 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult1, nodeId);
@@ -47,7 +48,7 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(ddlEmployerOrganization, "Value1", "Id", clientOrganization1, DropDownListAction.All);
             Utils.LoadDropDownList(cbbSubContratas, "Value1", "Id", clientOrganization2, DropDownListAction.All);
 
-            
+            Utils.LoadDropDownList(cbbEstadoLiq, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 327, null), DropDownListAction.Select);
             //
             btnLiqd1.Enabled = false;
             //
@@ -81,6 +82,9 @@ namespace Sigesoft.Node.WinClient.UI
                 Filters.Add("v_WorkingOrganizationId ==" + "\"" + id3[0] + "\"&&v_WorkingLocationId ==" + "\"" + id3[1] + "\"");
             }
 
+            //if (cbbEstadoLiq.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceStatusId==" + cbbEstadoLiq.SelectedValue);
+
+            int seleccionado = cbbEstadoLiq.SelectedIndex;
 
             btnLiqd1.Enabled = false;
             // Create the Filter Expression
@@ -168,8 +172,8 @@ namespace Sigesoft.Node.WinClient.UI
             OperationResult objOperationResult = new OperationResult();
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
-
-            var _objData = _serviceBL.ListaLiquidacion(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+            seleccionado = cbbEstadoLiq.SelectedIndex;
+            var _objData = _serviceBL.ListaLiquidacion(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, seleccionado);
 
             if (objOperationResult.Success != 1)
             {
@@ -501,6 +505,11 @@ namespace Sigesoft.Node.WinClient.UI
             reportsEmpresas.ShowDialog();
 
             
+        }
+
+        private void cbbEstadoLiq_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            seleccionado = cbbEstadoLiq.SelectedIndex;
         }
     }
 }

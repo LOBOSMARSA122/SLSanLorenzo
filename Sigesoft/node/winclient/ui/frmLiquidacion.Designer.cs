@@ -111,6 +111,8 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbbEstadoLiq = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -122,6 +124,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbbEstadoLiq);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cbbSubContratas);
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.ddlEmployerOrganization);
@@ -152,6 +156,7 @@
             // 
             this.cbbSubContratas.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cbbSubContratas.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbbSubContratas.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbSubContratas.FormattingEnabled = true;
             this.cbbSubContratas.Location = new System.Drawing.Point(96, 76);
             this.cbbSubContratas.Name = "cbbSubContratas";
@@ -175,6 +180,7 @@
             // 
             this.ddlEmployerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.ddlEmployerOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ddlEmployerOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlEmployerOrganization.DropDownWidth = 400;
             this.ddlEmployerOrganization.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlEmployerOrganization.FormattingEnabled = true;
@@ -244,6 +250,7 @@
             // 
             this.ddlCustomerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.ddlCustomerOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ddlCustomerOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlCustomerOrganization.DropDownWidth = 400;
             this.ddlCustomerOrganization.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlCustomerOrganization.FormattingEnabled = true;
@@ -859,6 +866,31 @@
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(628, 83);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 143;
+            this.label9.Text = "Estado";
+            // 
+            // cbbEstadoLiq
+            // 
+            this.cbbEstadoLiq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbEstadoLiq.DropDownWidth = 400;
+            this.cbbEstadoLiq.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbEstadoLiq.FormattingEnabled = true;
+            this.cbbEstadoLiq.Location = new System.Drawing.Point(735, 77);
+            this.cbbEstadoLiq.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbEstadoLiq.Name = "cbbEstadoLiq";
+            this.cbbEstadoLiq.Size = new System.Drawing.Size(173, 21);
+            this.cbbEstadoLiq.TabIndex = 144;
+            this.cbbEstadoLiq.SelectedIndexChanged += new System.EventHandler(this.cbbEstadoLiq_SelectedIndexChanged);
+            // 
             // frmLiquidacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -927,5 +959,7 @@
         private System.Windows.Forms.TextBox txtDebe;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnRepEmp;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cbbEstadoLiq;
     }
 }

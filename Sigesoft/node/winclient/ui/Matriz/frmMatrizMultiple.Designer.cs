@@ -1015,6 +1015,11 @@
             this.btnExportMiBanco = new System.Windows.Forms.Button();
             this.grdMiBanco = new Infragistics.Win.UltraWinGrid.UltraGrid();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ddlWorkingOrganization = new System.Windows.Forms.ComboBox();
+            this.ddlEmployerOrganization = new System.Windows.Forms.ComboBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.ddlProtocolId = new System.Windows.Forms.ComboBox();
@@ -1038,11 +1043,6 @@
             this.ugeSoluc = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.sfdMiBanco = new System.Windows.Forms.SaveFileDialog();
             this.ugeMiBanco = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.ddlEmployerOrganization = new System.Windows.Forms.ComboBox();
-            this.ddlWorkingOrganization = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tpShauindo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdShauindo)).BeginInit();
@@ -3277,6 +3277,61 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros de Búsqueda";
             // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(217, 48);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(108, 18);
+            this.label4.TabIndex = 112;
+            this.label4.Text = "Empresa de Trabajo";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(5, 56);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 13);
+            this.label2.TabIndex = 111;
+            this.label2.Text = "Fecha Fin";
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(727, 22);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(101, 18);
+            this.label3.TabIndex = 110;
+            this.label3.Text = "Empresa Contratista";
+            // 
+            // ddlWorkingOrganization
+            // 
+            this.ddlWorkingOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ddlWorkingOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ddlWorkingOrganization.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlWorkingOrganization.FormattingEnabled = true;
+            this.ddlWorkingOrganization.Location = new System.Drawing.Point(325, 48);
+            this.ddlWorkingOrganization.Name = "ddlWorkingOrganization";
+            this.ddlWorkingOrganization.Size = new System.Drawing.Size(396, 21);
+            this.ddlWorkingOrganization.TabIndex = 109;
+            // 
+            // ddlEmployerOrganization
+            // 
+            this.ddlEmployerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.ddlEmployerOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.ddlEmployerOrganization.FormattingEnabled = true;
+            this.ddlEmployerOrganization.Location = new System.Drawing.Point(830, 21);
+            this.ddlEmployerOrganization.Name = "ddlEmployerOrganization";
+            this.ddlEmployerOrganization.Size = new System.Drawing.Size(396, 21);
+            this.ddlEmployerOrganization.TabIndex = 108;
+            // 
             // btnFilter
             // 
             this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
@@ -3582,60 +3637,6 @@
             ultraDataColumn334,
             ultraDataColumn335,
             ultraDataColumn336});
-            // 
-            // ddlEmployerOrganization
-            // 
-            this.ddlEmployerOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.ddlEmployerOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ddlEmployerOrganization.FormattingEnabled = true;
-            this.ddlEmployerOrganization.Location = new System.Drawing.Point(830, 21);
-            this.ddlEmployerOrganization.Name = "ddlEmployerOrganization";
-            this.ddlEmployerOrganization.Size = new System.Drawing.Size(396, 21);
-            this.ddlEmployerOrganization.TabIndex = 108;
-            // 
-            // ddlWorkingOrganization
-            // 
-            this.ddlWorkingOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.ddlWorkingOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.ddlWorkingOrganization.FormattingEnabled = true;
-            this.ddlWorkingOrganization.Location = new System.Drawing.Point(325, 48);
-            this.ddlWorkingOrganization.Name = "ddlWorkingOrganization";
-            this.ddlWorkingOrganization.Size = new System.Drawing.Size(396, 21);
-            this.ddlWorkingOrganization.TabIndex = 109;
-            // 
-            // label3
-            // 
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(727, 22);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(101, 18);
-            this.label3.TabIndex = 110;
-            this.label3.Text = "Empresa Contratista";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(5, 56);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 13);
-            this.label2.TabIndex = 111;
-            this.label2.Text = "Fecha Fin";
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(217, 48);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 18);
-            this.label4.TabIndex = 112;
-            this.label4.Text = "Empresa de Trabajo";
             // 
             // frmMatrizMultiple
             // 
