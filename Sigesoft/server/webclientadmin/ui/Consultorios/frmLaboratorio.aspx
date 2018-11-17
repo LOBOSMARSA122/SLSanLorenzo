@@ -331,7 +331,7 @@
                                         </x:Form>
                                     </Items>
                                  </x:Panel>
-                                <x:Panel ID="PanelExamencompletodeorina" Title="EXAMEN COMPLETO DE ORINA" EnableBackgroundColor="true" Height="650" runat="server"
+                                <x:Panel ID="PanelExamencompletodeorina" Title="EXAMEN COMPLETO DE ORINA" EnableBackgroundColor="true" Height="720" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" TableConfigColumns="1" Layout="Table"  Visible ="true">
                                 <Items>
                                     <x:GroupPanel runat="server" Title="EXAMEN MACROSCÓPICO" ID="GroupPanel27" BoxFlex="1" Height="120" Width="960" >                
@@ -1935,7 +1935,7 @@
                                                             <x:Label ID="label264" runat="server" Text="FOTOCHECK N°"  ShowLabel="false"></x:Label>
                                                             <x:TextBox ID="txtFOTOCHECK" Label="" ShowLabel="false" CssClass="mright" runat="server" Width="100"></x:TextBox>
                                                             <x:Label ID="label266" runat="server" Text=" " ShowLabel="false"></x:Label>
-                                                            <x:DatePicker ID="dtFECH_EMPEZO_LABORAR" Label="F. INGRESO" runat="server" Width="140px" DateFormatString="dd/MM/yyyy"/>
+                                                            <x:DatePicker ID="dtFECH_EMPEZO_LABORAR" Label="F. INGRESO AL TRABAJO" runat="server" Width="140px" DateFormatString="dd/MM/yyyy"/>
                                                         </Items>
                                                     </x:FormRow>
                                                     <x:FormRow ID="FormRow119" ColumnWidths="160px 110px" runat="server" >
@@ -3606,7 +3606,7 @@
                                         </x:Form>
                                     </Items>
                                  </x:Panel>
-                                <x:Panel ID="Panel84" Title="AUDITORÍA" EnableBackgroundColor="true" Height="60px" runat="server"
+                                <x:Panel ID="Panel84" Title="AUDITORÍA" EnableBackgroundColor="true" Height="80px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true">
                                     <Items>
                                         <x:Form ID="Form213" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
