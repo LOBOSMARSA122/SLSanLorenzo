@@ -26,6 +26,7 @@ namespace Sigesoft.Node.WinClient.BE
       public string v_WorkingLocationId { get; set; }
       public string v_OrganizationInvoiceId { get; set; }
       public int i_EsoTypeId { get; set; }
+      public string EstoType { get; set; }
 
 
       public int i_ApprovedUpdateUserId { get; set; }
