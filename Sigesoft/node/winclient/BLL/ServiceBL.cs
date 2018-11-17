@@ -23691,7 +23691,7 @@ namespace Sigesoft.Node.WinClient.BLL
 		}
 
 		//Alberto
-		public List<ProduccionProfesional> ReporteProduccionProfesionalAMC(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        public List<ProduccionProfesional> ReporteProduccionProfesionalAMC(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression, string pstrInfAdicional)
 		{
 
 			try
@@ -23722,9 +23722,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									join G in dbContext.organization on C.v_CustomerOrganizationId equals G.v_OrganizationId into G_join
 									from G in G_join.DefaultIfEmpty()
 
-									// Usuario Medico Evaluador / Medico Aprobador ****************************
-									join H in dbContext.systemuser on E.i_ApprovedUpdateUserId equals H.i_SystemUserId into H_join
-									from H in H_join.DefaultIfEmpty()
+                                    // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                    join H in dbContext.systemuser on E.i_ApprovedUpdateUserId equals H.i_SystemUserId into H_join
+                                    from H in H_join.DefaultIfEmpty()
 
 									join lc in dbContext.location on new { a = C.v_CustomerOrganizationId, b = C.v_CustomerLocationId }
 									equals new { a = lc.v_OrganizationId, b = lc.v_LocationId } into lc_join
@@ -23752,7 +23752,11 @@ namespace Sigesoft.Node.WinClient.BLL
 
                                     join B1 in dbContext.organization on C.v_EmployerOrganizationId equals B1.v_OrganizationId
                                     join C1 in dbContext.location on C.v_EmployerLocationId equals C1.v_LocationId
-                          
+
+                                    join et in dbContext.systemparameter on new { a = C.i_EsoTypeId.Value, b = 118 }
+                                         equals new { a = et.i_ParameterId, b = et.i_GroupId } into et_join  // TIPO ESO [ESOA,ESOR,ETC]
+                                    from et in et_join.DefaultIfEmpty()
+
 									where E.d_ApprovedUpdateDate >= FechaInicio && E.d_ApprovedUpdateDate <= FechaFin
 
 									select new ReportProduccionProfesional
@@ -23771,8 +23775,8 @@ namespace Sigesoft.Node.WinClient.BLL
 										Titular = B.v_OwnerName,
 										EmpresaCliente = G.v_Name,
 										EmpresaTrabajo = D.v_Name,
-										i_ApprovedUpdateUserId = E.i_ApprovedUpdateUserId.Value,
-										i_CategoryId = F.i_CategoryId.Value,
+                                        i_ApprovedUpdateUserId = H.i_SystemUserId,
+                                        i_CategoryId = F.i_CategoryId.Value,
 										v_PersonId = B.v_PersonId,
 										v_ProtocoloId = A.v_ProtocolId,
 										FechaInicio = FechaInicio.Value,
@@ -23782,6 +23786,7 @@ namespace Sigesoft.Node.WinClient.BLL
 										Consultorio = J5.v_Value1,
 										Usuario = H.v_UserName,
                                         i_EsoTypeId = C.i_EsoTypeId.Value,
+                                        EstoType = et.v_Value1
 									};
 
 					if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -23816,8 +23821,8 @@ namespace Sigesoft.Node.WinClient.BLL
 								   FechaFin = a.FechaFin,
 								   i_CategoryId = a.i_CategoryId,
 								   v_PersonId = a.v_PersonId,
-								   NombreComponente = a.NombreComponente
-
+								   NombreComponente = a.NombreComponente,
+                                   EstoType = a.EstoType       
 
 							   }).ToList();
 
@@ -23864,12 +23869,14 @@ namespace Sigesoft.Node.WinClient.BLL
 								obj2.Titular = item2.Titular;
 								obj2.EmpresaCliente = item2.EmpresaCliente;
 								obj2.EmpresaTrabajo = item2.EmpresaTrabajo;
-
+                                obj2.EstoType = item2.EstoType;
 								Lista2.Add(obj2);
 
 							}
 						}
 						obj1.Total = ListaDetalle.Count();
+                        obj1.PrecioUnitario = double.Parse(pstrInfAdicional);
+                        obj1.Pagar = obj1.PrecioUnitario * obj1.Total;
 						obj1.ProduccionProfesionalDetalle = Lista2;
 
 						Lista1.Add(obj1);

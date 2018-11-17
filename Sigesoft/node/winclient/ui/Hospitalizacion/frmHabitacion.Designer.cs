@@ -38,6 +38,10 @@
             this.btnSalir = new System.Windows.Forms.Button();
             this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.rbPaciente = new System.Windows.Forms.RadioButton();
+            this.rbMedicoTratante = new System.Windows.Forms.RadioButton();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -100,7 +104,7 @@
             // 
             this.btnGuardarTicket.Image = global::Sigesoft.Node.WinClient.UI.Resources.system_save;
             this.btnGuardarTicket.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGuardarTicket.Location = new System.Drawing.Point(196, 178);
+            this.btnGuardarTicket.Location = new System.Drawing.Point(196, 205);
             this.btnGuardarTicket.Name = "btnGuardarTicket";
             this.btnGuardarTicket.Size = new System.Drawing.Size(76, 23);
             this.btnGuardarTicket.TabIndex = 34;
@@ -121,7 +125,7 @@
             this.btnSalir.ForeColor = System.Drawing.Color.Black;
             this.btnSalir.Image = global::Sigesoft.Node.WinClient.UI.Resources.bullet_cross;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSalir.Location = new System.Drawing.Point(16, 178);
+            this.btnSalir.Location = new System.Drawing.Point(12, 206);
             this.btnSalir.Margin = new System.Windows.Forms.Padding(2);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(76, 23);
@@ -151,11 +155,45 @@
             this.dtpFechaFin.Size = new System.Drawing.Size(122, 20);
             this.dtpFechaFin.TabIndex = 109;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.rbPaciente);
+            this.groupBox3.Controls.Add(this.rbMedicoTratante);
+            this.groupBox3.Location = new System.Drawing.Point(12, 150);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(260, 49);
+            this.groupBox3.TabIndex = 110;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Con Cargo a:";
+            // 
+            // rbPaciente
+            // 
+            this.rbPaciente.AutoSize = true;
+            this.rbPaciente.Location = new System.Drawing.Point(159, 22);
+            this.rbPaciente.Name = "rbPaciente";
+            this.rbPaciente.Size = new System.Drawing.Size(67, 17);
+            this.rbPaciente.TabIndex = 10;
+            this.rbPaciente.TabStop = true;
+            this.rbPaciente.Text = "Paciente";
+            this.rbPaciente.UseVisualStyleBackColor = true;
+            // 
+            // rbMedicoTratante
+            // 
+            this.rbMedicoTratante.AutoSize = true;
+            this.rbMedicoTratante.Location = new System.Drawing.Point(6, 22);
+            this.rbMedicoTratante.Name = "rbMedicoTratante";
+            this.rbMedicoTratante.Size = new System.Drawing.Size(103, 17);
+            this.rbMedicoTratante.TabIndex = 9;
+            this.rbMedicoTratante.TabStop = true;
+            this.rbMedicoTratante.Text = "Medico Tratante";
+            this.rbMedicoTratante.UseVisualStyleBackColor = true;
+            // 
             // frmHabitacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 208);
+            this.ClientSize = new System.Drawing.Size(284, 242);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.dtpFechaFin);
             this.Controls.Add(this.dtpFechaInicio);
             this.Controls.Add(this.btnSalir);
@@ -174,6 +212,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Habitación";
             this.Load += new System.EventHandler(this.frmHabitacion_Load);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,5 +231,8 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.DateTimePicker dtpFechaInicio;
         private System.Windows.Forms.DateTimePicker dtpFechaFin;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.RadioButton rbPaciente;
+        private System.Windows.Forms.RadioButton rbMedicoTratante;
     }
 }

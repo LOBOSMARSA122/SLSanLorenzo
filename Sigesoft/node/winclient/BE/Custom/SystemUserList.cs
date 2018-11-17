@@ -62,5 +62,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string Direccion { get; set; }
         public string CMP { get; set; }
         public string Telefono { get; set; }
+        public string InfAdicional { get; set; }
     }
 }

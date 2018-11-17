@@ -117,8 +117,8 @@ namespace Sigesoft.Node.WinClient.UI
 
             OperationResult objOperationResult = new OperationResult();
 
-            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult,Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult,Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlVipId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlNewContinuationId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 121, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlLineStatusId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 120, null), DropDownListAction.All);
@@ -139,9 +139,21 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            if (ddlServiceTypeId.SelectedValue.ToString() == "-1")
+            {
+                MessageBox.Show("Por favor seleccionar Tipo de Servicio", "Validación!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+
+            if (ddlMasterServiceId.SelectedValue.ToString() == "-1")
+            {
+                MessageBox.Show("Por favor seleccionar Servicio", "Validación!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             // Get the filters from the UI
             List<string> Filters = new List<string>();
-            if (ddlServiceTypeId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceTypeId==" + ddlServiceTypeId.SelectedValue);
+            //if (ddlServiceTypeId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceTypeId==" + ddlServiceTypeId.SelectedValue);
             if (ddlMasterServiceId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceId==" + ddlMasterServiceId.SelectedValue);
             if (!string.IsNullOrEmpty(txtPacient.Text)) Filters.Add("v_Pacient.Contains(\"" + txtPacient.Text.Trim() + "\")");
             if (!string.IsNullOrEmpty(txtNroDocument.Text)) Filters.Add("v_NumberDocument==" + "\"" + txtNroDocument.Text.Trim() + "\"");

@@ -101,6 +101,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
             oSystemUserList = oProfessionalBL.GetSystemUserName(ref objOperationResult, int.Parse(ddlUsuario.SelectedValue.ToString()));
 
             lblNombreProfesional.Text = oSystemUserList.v_PersonName;
+            txtInfAdicional.Text = oSystemUserList.InfAdicional == "" || oSystemUserList.InfAdicional == null ? "0" : oSystemUserList.InfAdicional;
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -150,7 +151,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
 
                     //var objData = _serviceBL.ReporteProduccionProfesional(pdatBeginDate, pdatEndDate, cbOrganizationInvoice.SelectedValue.ToString(), strFilterExpression, ddlUsuario.Text, lblNombreProfesional.Text, ddlComponentId.Text, int.Parse(ddlComponentId.SelectedValue.ToString()), cbOrganizationInvoice.Text);
-                    var objData = _serviceBL.ReporteProduccionProfesionalAMC(pdatBeginDate, pdatEndDate, cbOrganizationInvoice.SelectedValue.ToString(), strFilterExpression);
+                    var objData = _serviceBL.ReporteProduccionProfesionalAMC(pdatBeginDate, pdatEndDate, cbOrganizationInvoice.SelectedValue.ToString(), strFilterExpression, txtInfAdicional.Text);
                    
                     grdData.DataSource = objData;
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());
