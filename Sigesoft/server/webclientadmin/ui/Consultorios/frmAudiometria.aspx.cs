@@ -207,7 +207,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 #endregion
 
 
-                TabAudiometriaInternacional.Attributes.Add("Tag", "N005-ME000000005");
+                TabAudiometriaInternacional.Attributes.Add("Tag", "N002-ME000000005");
                 #region Ids Internacional
                 ddlAU_Condicion.Attributes.Add("Tag", "N005-MF000001378");
                 txtAU_Observaciones.Attributes.Add("Tag", "N005-MF000000178");
@@ -587,7 +587,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                     else if (item == TabAudiometriaInternacional.Attributes.GetValue("Tag").ToString())
                     {
-                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N005-ME000000005");
+                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N002-ME000000005");
                         if (Resultado != null)
                         {
                             LoadCombosAudiometriaInternacional();
@@ -651,7 +651,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             List<string> ComponentesId = new List<string>();
             ComponentesId.Add("N002-ME000000005");
-            ComponentesId.Add("N005-ME000000005");
+            ComponentesId.Add("N002-ME000000005");
             var _objData = _serviceBL.GetAllServices_Consultorio(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, dpFechaInicio.SelectedDate.Value, dpFechaFin.SelectedDate.Value.AddDays(1), ComponentesId.ToArray());
             if (_objData.Count == 0)
             {
@@ -2623,7 +2623,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             serviceComponentDto.i_ExternalInternalId = 1;
             serviceComponentDto.i_IsApprovedId = 1;
 
-            serviceComponentDto.v_ComponentId = "N005-ME000000005";
+            serviceComponentDto.v_ComponentId = "N002-ME000000005";
             serviceComponentDto.v_ServiceId = Session["ServiceId"].ToString();
             serviceComponentDto.d_UpdateDate = FechaUpdate;
             #endregion
@@ -2645,7 +2645,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             ShowGraphicOI();
 
             //Obtener scId
-            var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), "N005-ME000000005");
+            var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), "N002-ME000000005");
             //Mostrar Auditoria
             var datosAuditoria = HistoryBL.CamposAuditoria(scId);
             if (datosAuditoria != null)
@@ -3433,18 +3433,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             _ruta = WebConfigurationManager.AppSettings["rutaReportes"];
             MergeExPDF _mergeExPDF = new MergeExPDF();
             string path;
-            path = _ruta + Session["ServiceId"].ToString() + "-" + "N005-ME000000005";
+            path = _ruta + Session["ServiceId"].ToString() + "-" + "N002-ME000000005";
 
             GenerateAudimetriaCI(_ruta, Session["ServiceId"].ToString());
 
-            Download(Session["ServiceId"].ToString() + "-N005-ME000000005.pdf", path + ".pdf");
+            Download(Session["ServiceId"].ToString() + "-N002-ME000000005.pdf", path + ".pdf");
         }
 
         private void GenerateAudimetriaCI(string _ruta, string p)
         {
             var serviceBL = new ServiceBL();
             var dsAudiometria = new DataSet();
-            var dxList_CI = serviceBL.GetDiagnosticRepositoryByComponent(p, "N005-ME000000005");
+            var dxList_CI = serviceBL.GetDiagnosticRepositoryByComponent(p, "N002-ME000000005");
             if (dxList_CI.Count == 0)
             {
                 DiagnosticRepositoryList oDiagnosticRepositoryList = new DiagnosticRepositoryList();
@@ -3503,8 +3503,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             //-------******************************************************************************************
 
-            var audioUserControlList_CI = serviceBL.ReportAudiometriaUserControl(p, "N005-ME000000005");
-            var audioCabeceraList_CI = serviceBL.ReportAudiometria_CI(p, "N005-ME000000005");
+            var audioUserControlList_CI = serviceBL.ReportAudiometriaUserControl(p, "N002-ME000000005");
+            var audioCabeceraList_CI = serviceBL.ReportAudiometria_CI(p, "N002-ME000000005");
             var dtAudiometriaUserControl_CI = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(audioUserControlList_CI);
             var dtCabecera_CI = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(audioCabeceraList_CI);
 
@@ -3520,7 +3520,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
             rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
             objDiskOpt = new DiskFileDestinationOptions();
-            objDiskOpt.DiskFileName = _ruta + p + "-" + "N005-ME000000005" + ".pdf";
+            objDiskOpt.DiskFileName = _ruta + p + "-" + "N002-ME000000005" + ".pdf";
             _filesNameToMerge.Add(objDiskOpt.DiskFileName);
             Session["filesNameToMerge"] = _filesNameToMerge;
             rp.ExportOptions.DestinationOptions = objDiskOpt;
