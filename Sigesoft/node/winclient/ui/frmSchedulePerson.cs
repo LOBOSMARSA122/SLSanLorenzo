@@ -34,16 +34,20 @@ namespace Sigesoft.Node.WinClient.UI
         string _AuthorizedPersonId = null;
         DateTime? _EntryToMedicalCenter;
         string _occupation;
+        string _nroHospitalizacion;
+        string _dni;
 
         #endregion
 
-        public frmSchedulePerson(string strCalendarId, string pstrModeAgenda, string pstrProtocolId)
+        public frmSchedulePerson(string strCalendarId, string pstrModeAgenda, string pstrProtocolId, string nroHospitalizacion, string dni)
         {
             InitializeComponent();
             _CalendarId = strCalendarId;
             ModeAgenda = pstrModeAgenda;
             _ProtocolId = pstrProtocolId;
-           
+            _nroHospitalizacion = nroHospitalizacion;
+            _dni = dni;
+            txtSearchNroDocument.Text = dni;
         }
         private void SearchControlAndSetEvents(Control ctrlContainer)
         {
@@ -767,6 +771,13 @@ namespace Sigesoft.Node.WinClient.UI
                             {
                                 CalendarId = _objCalendarBL.AddShedule(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), _ProtocolId, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion);
                             }
+
+                            var  oHospitalizacionserviceDto = new hospitalizacionserviceDto();
+
+                            oHospitalizacionserviceDto.v_HopitalizacionId = _nroHospitalizacion;
+                            oHospitalizacionserviceDto.v_ServiceId = _ServiceId;
+
+                            new HospitalizacionBL().AddHospitalizacionService(ref objOperationResult, oHospitalizacionserviceDto, Globals.ClientSession.GetAsList());
 
                         }
                     }

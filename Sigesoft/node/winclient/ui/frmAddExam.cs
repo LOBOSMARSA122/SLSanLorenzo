@@ -22,7 +22,8 @@ namespace Sigesoft.Node.WinClient.UI
         private string _modo;
         private string _protocolId;
         private string _type;
-
+        private string _nroHospitalizacion;
+        private string _dni;
         List<string> _ListaComponentes = null;
         #endregion
 
@@ -35,9 +36,11 @@ namespace Sigesoft.Node.WinClient.UI
 
         #endregion
 
-        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId, string type)
+        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId, string type, string nroHospitalizacion, string dni)
         {
             _ListaComponentes = ListaComponentes;
+            _dni = dni;
+            _nroHospitalizacion = nroHospitalizacion;
             _modo = modo;
             _protocolId = protocolId;
             _type = type;
@@ -57,8 +60,14 @@ namespace Sigesoft.Node.WinClient.UI
             var res = _ListaComponentes.Find(p => p == MedicalExamId);
             if (res != null)
             {
-                MessageBox.Show("Este examen ya se encuentra agregado", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
+                this.DialogResult = MessageBox.Show("Este examen ya se encuentra agregado, ¿Desea crear nuevo servicio?", "Error de validación", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                               
+                if (DialogResult == System.Windows.Forms.DialogResult.Yes)
+                {
+                    var frm = new frmCalendar(_nroHospitalizacion, _dni);
+                    frm.ShowDialog();
+                }
+                
             }
             // El examen ya esta agregado
             if (findResult != null)
