@@ -1972,11 +1972,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(ddlUsuarioGrabar.SelectedValue.ToString());
 
 
-            //_serviceBL.AddDiagnosticRepository(ref objOperationResult,
-            //                                       l,
-            //                                       serviceComponentDto,
-            //                                       ((ClientSession)Session["objClientSession"]).GetAsList(),
-            //                                       true);
+            _serviceBL.AddDiagnosticRepository(ref objOperationResult,
+                                                   l,
+                                                   serviceComponentDto,
+                                                   ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                   true);
             //Obtener scId
             var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), Session["ComponentIdESO"].ToString());
 
