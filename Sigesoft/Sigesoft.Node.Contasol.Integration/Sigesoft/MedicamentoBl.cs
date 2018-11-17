@@ -203,17 +203,87 @@ namespace Sigesoft.Node.Contasol.Integration
             {
                 if (cnx.State != ConnectionState.Open) cnx.Open();
 
-                var query = "select cd.v_DocumentoRef , cd.v_IdCobranzaDetalle, cd.t_InsertaFecha " +
-                   " from venta vt " +
-                   " inner join cobranzadetalle cd on cd.v_IdVenta = vt.v_IdVenta " +
-                   " where vt.v_SerieDocumento='" + serie + "' and vt.v_CorrelativoDocumento='" + correlativo + "'";
+                //var query = "select cd.v_DocumentoRef , cd.v_IdCobranzaDetalle, cd.t_InsertaFecha " +
+                //   " from venta vt " +
+                //   " inner join cobranzadetalle cd on cd.v_IdVenta = vt.v_IdVenta " +
+                //   " where vt.v_SerieDocumento='" + serie + "' and vt.v_CorrelativoDocumento='" + correlativo + "'";
 
-                var result = cnx.Query<FacturaCobranza>(query).FirstOrDefault();
-                return result;
+                var query = "select " +
+                            " v.t_InsertaFecha AS FechaCreacion, " +
+                            " v.t_FechaVencimiento AS FechaVencimiento, " +
+                            " v.v_IdVenta, " +
+                            " v.d_Total AS NetoXCobrar, " +
+                            "  v.v_SerieDocumento + '-' + v.v_CorrelativoDocumento AS NroComprobante, " +
+                            "  Sum(cd.d_ImporteSoles) AS TotalPagado, " +
+                            "  STUFF((    SELECT ',' + SUB.v_DocumentoRef AS [text()] " +
+                            "                         FROM cobranzadetalle SUB " +
+                            "                      WHERE SUB.v_IdVenta = v.v_IdVenta " +
+                            "                    FOR XML PATH('') " +
+                            "              ), 1, 1, '' ) AS DocuemtosReferencia " +
+                            " from venta v " +
+                            " inner join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
+                            " where cd.i_Eliminado = 0 and  v.v_SerieDocumento='" + serie + "' and v.v_CorrelativoDocumento='" + correlativo + "'" +
+                            " group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
+
+                var result = cnx.Query<FacturaCobranza>(query).FirstOrDefault();                             
+
+                if (result != null)
+                {
+                    return result;
+                }
+
+                else
+                {
+                    var query1 = "select v.v_IdVenta,  " +
+                           " v.t_InsertaFecha AS FechaCreacion, " +
+                           " v.t_FechaVencimiento AS FechaVencimiento,  " +
+                           " v.d_Total AS NetoXCobrar,  " +
+                           " 0 AS TotalPagado,  " +
+                           " '---' AS DocuemtosReferencia, " +
+                           "  v.v_SerieDocumento + '-' + v.v_CorrelativoDocumento AS NroComprobante " +
+                           " from venta v  " +
+                           " where v.v_SerieDocumento='" + serie + "' and v.v_CorrelativoDocumento='" + correlativo + "'";
+
+                    var result2 = cnx.Query<FacturaCobranza>(query1).FirstOrDefault();
+                    return result2;
+                }
+                
             }
 
             //return null;
            
         }
+
+        public List<FacturaCobranza> EmpresaDeudora(string rucEmpresa)
+        {
+
+            using (var cnx = ConnectionHelper.GetConnection)
+            {
+                if (cnx.State != ConnectionState.Open) cnx.Open();
+
+                var query = "select " +
+                 " v.t_InsertaFecha AS FechaCreacion, " +
+                 " v.t_FechaVencimiento AS FechaVencimiento, " +
+                 " v.v_IdVenta, " +
+                "  Sum(d_Total) / (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta) AS NetoXCobrar, " +
+                "  v.v_SerieDocumento + '-' + v.v_CorrelativoDocumento AS NroComprobante, " +
+                 " Sum(cd.d_ImporteSoles) AS TotalPagado, " +
+                "  CASE WHEN Sum(d_Total)/ (select count(*) from cobranzadetalle where v_IdVenta = v.v_IdVenta) -  Sum(cd.d_ImporteSoles)  = 0 THEN 'NO DEBE' ELSE 'DEBE' END AS Condicion " +
+                " from venta v " +
+                " inner join cliente c on c.v_IdCliente =  v.v_IdCliente " +
+                " inner join cobranzadetalle cd on v.v_IdVenta = cd.v_IdVenta " +
+                " where c.v_NroDocIdentificacion = '" + rucEmpresa + "' " +
+                " group by v.v_IdVenta, v.d_Total,v.t_InsertaFecha, v.t_FechaVencimiento,v.v_SerieDocumento,v.v_CorrelativoDocumento";
+
+                var result = cnx.Query<FacturaCobranza>(query).ToList();
+
+                return result;
+        }
+        
+    
+
+
+        }
+
     }
 }
