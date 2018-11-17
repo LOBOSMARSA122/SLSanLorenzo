@@ -1828,167 +1828,167 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                                                       Session["ServicioComponentIdLab"].ToString());
 
 
-            #region Dx Automaticos Laboratorio Internacional
-            var Componentes = (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"];
+            //#region Dx Automaticos Laboratorio Internacional
+            //var Componentes = (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"];
 
-            var GrillaDx = (List<DiagnosticRepositoryList>)Session["GrillaDx"];
+            //var GrillaDx = (List<DiagnosticRepositoryList>)Session["GrillaDx"];
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000002132") != null)
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(chkLABORATORIO_NORMAL.Checked ? "1" : "0", "N009-MF000002132", "int");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000002132") != null)
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(chkLABORATORIO_NORMAL.Checked ? "1" : "0", "N009-MF000002132", "int");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000265") != null)
-            {
-                if (txtHEMOGLOBINA.Text != "")
-                {
-                    var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA.Text, "N009-MF000000265", "int");
-                    if (DXAautomatico != null)
-                    {
-                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                        if (Result1 == null)
-                        {
-                            l.Add(DXAautomatico);
-                        }
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000265") != null)
+            //{
+            //    if (txtHEMOGLOBINA.Text != "")
+            //    {
+            //        var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA.Text, "N009-MF000000265", "int");
+            //        if (DXAautomatico != null)
+            //        {
+            //            var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //            if (Result1 == null)
+            //            {
+            //                l.Add(DXAautomatico);
+            //            }
+            //        }
+            //    }
+            //}
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000261") != null)
-            {
-                if (txtGLUCOSA.Text != "")
-                {
-                    var DXAautomatico = SearchDxSugeridoOfSystem(txtGLUCOSA.Text, "N009-MF000000261", "double");
-                    if (DXAautomatico != null)
-                    {
-                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                        if (Result1 == null)
-                        {
-                            l.Add(DXAautomatico);
-                        }
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000000261") != null)
+            //{
+            //    if (txtGLUCOSA.Text != "")
+            //    {
+            //        var DXAautomatico = SearchDxSugeridoOfSystem(txtGLUCOSA.Text, "N009-MF000000261", "double");
+            //        if (DXAautomatico != null)
+            //        {
+            //            var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //            if (Result1 == null)
+            //            {
+            //                l.Add(DXAautomatico);
+            //            }
+            //        }
+            //    }
+            //}
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001086") != null)
-            {
-                if (txtCOLESTEROL_TOTAL.Text != "")
-                {
-                    var DXAautomatico = SearchDxSugeridoOfSystem(txtCOLESTEROL_TOTAL.Text, "N009-MF000001086", "double");
-                    if (DXAautomatico != null)
-                    {
-                        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                        if (Result1 == null)
-                        {
-                            l.Add(DXAautomatico);
-                        }
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001086") != null)
+            //{
+            //    if (txtCOLESTEROL_TOTAL.Text != "")
+            //    {
+            //        var DXAautomatico = SearchDxSugeridoOfSystem(txtCOLESTEROL_TOTAL.Text, "N009-MF000001086", "double");
+            //        if (DXAautomatico != null)
+            //        {
+            //            var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //            if (Result1 == null)
+            //            {
+            //                l.Add(DXAautomatico);
+            //            }
+            //        }
+            //    }
+            //}
             
 
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001296") != null && txtTRIGLICERIDOS.Text != "")
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtTRIGLICERIDOS.Text, "N009-MF000001296", "double");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001296") != null && txtTRIGLICERIDOS.Text != "")
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(txtTRIGLICERIDOS.Text, "N009-MF000001296", "double");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001282") != null && txtHEMOGLOBINA_HEM_COM.Text != "")
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA_HEM_COM.Text, "N009-MF000001282", "double");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001282") != null && txtHEMOGLOBINA_HEM_COM.Text != "")
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA_HEM_COM.Text, "N009-MF000001282", "double");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001061") != null && txtLEUCOCITOS_EX_ORINA.Text != "")
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtLEUCOCITOS_EX_ORINA.Text, "N009-MF000001061", "int");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001061") != null && txtLEUCOCITOS_EX_ORINA.Text != "")
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(txtLEUCOCITOS_EX_ORINA.Text, "N009-MF000001061", "int");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001063") != null && txtHEMATIES_EX_ORINA.Text != "")
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMATIES_EX_ORINA.Text, "N009-MF000001063", "int");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001063") != null && txtHEMATIES_EX_ORINA.Text != "")
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMATIES_EX_ORINA.Text, "N009-MF000001063", "int");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001874") != null && txtHEMOGLOBINA_HEM_COM.Text != "")
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA_HEM_COM.Text, "N009-MF000001874", "int");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001874") != null && txtHEMOGLOBINA_HEM_COM.Text != "")
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA_HEM_COM.Text, "N009-MF000001874", "int");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001904") != null && COLESTEROL_TOTAL_PERF_LIP.Text != "")
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(COLESTEROL_TOTAL_PERF_LIP.Text, "N009-MF000001904", "int");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001904") != null && COLESTEROL_TOTAL_PERF_LIP.Text != "")
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(COLESTEROL_TOTAL_PERF_LIP.Text, "N009-MF000001904", "int");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001906") != null && TRIGLICERIDOS_PERF_LIP.Text != "")
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(TRIGLICERIDOS_PERF_LIP.Text, "N009-MF000001906", "int");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001906") != null && TRIGLICERIDOS_PERF_LIP.Text != "")
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(TRIGLICERIDOS_PERF_LIP.Text, "N009-MF000001906", "int");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
-            #endregion
+            //#endregion
             //Gabar Dx
             #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
 
@@ -2028,11 +2028,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(ddlUsuarioGrabar.SelectedValue.ToString());
 
 
-            _serviceBL.AddDiagnosticRepository(ref objOperationResult,
-                                                   l,
-                                                   serviceComponentDto,
-                                                   ((ClientSession)Session["objClientSession"]).GetAsList(),
-                                                   true);
+            //_serviceBL.AddDiagnosticRepository(ref objOperationResult,
+            //                                       l,
+            //                                       serviceComponentDto,
+            //                                       ((ClientSession)Session["objClientSession"]).GetAsList(),
+            //                                       true);
             //Obtener scId
             var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), Session["ComponentIdESO"].ToString());
 
