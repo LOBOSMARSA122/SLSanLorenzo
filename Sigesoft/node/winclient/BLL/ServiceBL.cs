@@ -23722,9 +23722,9 @@ namespace Sigesoft.Node.WinClient.BLL
 									join G in dbContext.organization on C.v_CustomerOrganizationId equals G.v_OrganizationId into G_join
 									from G in G_join.DefaultIfEmpty()
 
-									// Usuario Medico Evaluador / Medico Aprobador ****************************
-									join H in dbContext.systemuser on E.i_ApprovedUpdateUserId equals H.i_SystemUserId into H_join
-									from H in H_join.DefaultIfEmpty()
+                                    // Usuario Medico Evaluador / Medico Aprobador ****************************
+                                    join H in dbContext.systemuser on E.i_ApprovedUpdateUserId equals H.i_SystemUserId into H_join
+                                    from H in H_join.DefaultIfEmpty()
 
 									join lc in dbContext.location on new { a = C.v_CustomerOrganizationId, b = C.v_CustomerLocationId }
 									equals new { a = lc.v_OrganizationId, b = lc.v_LocationId } into lc_join
@@ -23775,7 +23775,7 @@ namespace Sigesoft.Node.WinClient.BLL
 										Titular = B.v_OwnerName,
 										EmpresaCliente = G.v_Name,
 										EmpresaTrabajo = D.v_Name,
-                                        //i_ApprovedUpdateUserId = E.i_ApprovedUpdateUserId.Value,
+                                        i_ApprovedUpdateUserId = H.i_SystemUserId,
                                         i_CategoryId = F.i_CategoryId.Value,
 										v_PersonId = B.v_PersonId,
 										v_ProtocoloId = A.v_ProtocolId,
