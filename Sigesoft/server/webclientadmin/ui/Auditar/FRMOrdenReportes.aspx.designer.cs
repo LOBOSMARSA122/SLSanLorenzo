@@ -67,13 +67,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar {
         protected global::FineUI.Button btnClose;
         
         /// <summary>
-        /// Panel2 control.
+        /// Panel3 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Panel Panel2;
+        protected global::FineUI.Panel Panel3;
+        
+        /// <summary>
+        /// GroupPanel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.GroupPanel GroupPanel1;
         
         /// <summary>
         /// chkregistros control.

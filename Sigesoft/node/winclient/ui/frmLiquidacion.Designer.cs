@@ -72,6 +72,8 @@
             Infragistics.Win.Appearance appearance13 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance14 = new Infragistics.Win.Appearance();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbbEstadoLiq = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.cbbSubContratas = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.ddlEmployerOrganization = new System.Windows.Forms.ComboBox();
@@ -111,8 +113,6 @@
             this.btnEditarServicio = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.label9 = new System.Windows.Forms.Label();
-            this.cbbEstadoLiq = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -151,6 +151,31 @@
             this.groupBox1.TabIndex = 47;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
+            // 
+            // cbbEstadoLiq
+            // 
+            this.cbbEstadoLiq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbEstadoLiq.DropDownWidth = 400;
+            this.cbbEstadoLiq.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbbEstadoLiq.FormattingEnabled = true;
+            this.cbbEstadoLiq.Location = new System.Drawing.Point(735, 77);
+            this.cbbEstadoLiq.Margin = new System.Windows.Forms.Padding(2);
+            this.cbbEstadoLiq.Name = "cbbEstadoLiq";
+            this.cbbEstadoLiq.Size = new System.Drawing.Size(173, 21);
+            this.cbbEstadoLiq.TabIndex = 144;
+            this.cbbEstadoLiq.SelectedIndexChanged += new System.EventHandler(this.cbbEstadoLiq_SelectedIndexChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(628, 83);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.TabIndex = 143;
+            this.label9.Text = "Estado";
             // 
             // cbbSubContratas
             // 
@@ -442,6 +467,7 @@
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn3,
             ultraGridColumn4});
+            ultraGridColumn1.Header.CheckBoxVisibility = Infragistics.Win.UltraWinGrid.HeaderCheckBoxVisibility.Always;
             ultraGridColumn1.Header.VisiblePosition = 0;
             ultraGridColumn2.Header.VisiblePosition = 1;
             ultraGridColumn5.Header.VisiblePosition = 2;
@@ -865,31 +891,6 @@
             this.btnEditarServicio.Text = "Editar Servicio";
             this.btnEditarServicio.UseVisualStyleBackColor = false;
             this.btnEditarServicio.Click += new System.EventHandler(this.btnEditarServicio_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(628, 83);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 13);
-            this.label9.TabIndex = 143;
-            this.label9.Text = "Estado";
-            // 
-            // cbbEstadoLiq
-            // 
-            this.cbbEstadoLiq.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbEstadoLiq.DropDownWidth = 400;
-            this.cbbEstadoLiq.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbbEstadoLiq.FormattingEnabled = true;
-            this.cbbEstadoLiq.Location = new System.Drawing.Point(735, 77);
-            this.cbbEstadoLiq.Margin = new System.Windows.Forms.Padding(2);
-            this.cbbEstadoLiq.Name = "cbbEstadoLiq";
-            this.cbbEstadoLiq.Size = new System.Drawing.Size(173, 21);
-            this.cbbEstadoLiq.TabIndex = 144;
-            this.cbbEstadoLiq.SelectedIndexChanged += new System.EventHandler(this.cbbEstadoLiq_SelectedIndexChanged);
             // 
             // frmLiquidacion
             // 

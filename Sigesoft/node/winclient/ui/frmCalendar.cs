@@ -52,10 +52,20 @@ namespace Sigesoft.Node.WinClient.UI
         private bool _sendEmailEnabled;
         List<string> ListaComponentes = new List<string>();
 
+        private string _NroHospitalizacion;
+        private string _dni;
         public frmCalendar()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
+
+        public frmCalendar(string NroHospitalizacion, string dni)
+        {
+            InitializeComponent();
+            _NroHospitalizacion = NroHospitalizacion;
+            _dni = dni;
+        }
+
         private void SearchControlAndSetEvents(Control ctrlContainer)
         {
             foreach (Control ctrl in ctrlContainer.Controls)
@@ -212,7 +222,7 @@ namespace Sigesoft.Node.WinClient.UI
         
         private void btnPerson_Click(object sender, EventArgs e)
         {
-            frmSchedulePerson frm = new frmSchedulePerson("","New","");
+            frmSchedulePerson frm = new frmSchedulePerson("","New","", _NroHospitalizacion, _dni);
             frm.ShowDialog();
             if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
@@ -380,7 +390,7 @@ namespace Sigesoft.Node.WinClient.UI
 
               if (Result == System.Windows.Forms.DialogResult.Yes)
               {
-                  frmSchedulePerson frm = new frmSchedulePerson(strCalendarId, "Reschedule", strProtocolId);
+                  frmSchedulePerson frm = new frmSchedulePerson(strCalendarId, "Reschedule", strProtocolId,"","");
                   frm.ShowDialog();
                   if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
                   {
@@ -1248,7 +1258,7 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnAgregarExamen_Click(object sender, EventArgs e)
         {
             ServiceBL oServiceBL = new ServiceBL();
-            var frm = new frmAddExam(ListaComponentes,"",_ProtocolId,"");
+            var frm = new frmAddExam(ListaComponentes,"",_ProtocolId,"","","");
             frm._serviceId = _serviceId;
             frm.ShowDialog();
 
