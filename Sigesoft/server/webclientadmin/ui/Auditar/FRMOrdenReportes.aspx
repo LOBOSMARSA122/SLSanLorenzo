@@ -29,13 +29,19 @@
             </x:Toolbar>
         </Toolbars>
             <Items>
-               <x:Panel ID="Panel2" CssClass="panel2" Layout="Absolute" runat="server" ShowBorder="false" ShowHeader="false">
-                    <Items>
-                                <x:CheckBoxList ID="chkregistros" Label="" ShowLabel="false" ColumnNumber="1" ColumnVertical="true"
-                                    runat="server" AutoPostBack="true" OnSelectedIndexChanged="chkregistros_SelectedIndexChanged">
-                                </x:CheckBoxList>                         
+                <x:Panel ID="Panel3" EnableBackgroundColor="true"
+                    runat="server" BodyPadding="5px" ShowBorder="False" ShowHeader="False" AutoScroll="true">
+                    <Items>                  
+                        <x:GroupPanel runat="server" Title="Seleccionar Ficha(s)" ID="GroupPanel1" EnableBackgroundColor="True" AutoWidth="true">
+                            <Items>
+                                <x:CheckBoxList ID="chkregistros" Label="" ShowLabel="false" ColumnNumber="1" ColumnVertical="true" 
+                                    runat="server"  AutoPostBack="true" OnSelectedIndexChanged="chkregistros_SelectedIndexChanged">
+                                </x:CheckBoxList>
+                            </Items>
+                        </x:GroupPanel>
                     </Items>
                 </x:Panel>
+
             </Items>
         </x:Panel>
     </form>
