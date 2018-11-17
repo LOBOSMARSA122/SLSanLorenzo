@@ -10,6 +10,8 @@ namespace Sigesoft.Node.WinClient.BE
         public string Usuario { get; set; }
         public string Consultorio { get; set; }
         public int Total { get; set; }
+        public double PrecioUnitario { get; set; }
+        public double Pagar { get; set; }
         public List<ProduccionProfesionalDetalle> ProduccionProfesionalDetalle { get; set; }
     }
 }

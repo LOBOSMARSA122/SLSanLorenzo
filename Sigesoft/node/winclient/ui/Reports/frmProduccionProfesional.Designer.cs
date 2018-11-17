@@ -34,6 +34,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Usuario");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Consultorio");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PrecioUnitario");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Pagar");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ProduccionProfesionalDetalle");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("ProduccionProfesionalDetalle", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroAtencion");
@@ -82,6 +84,7 @@
             this.uvReporte = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
+            this.txtInfAdicional = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -92,6 +95,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtInfAdicional);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cbEsoType);
             this.groupBox1.Controls.Add(this.cbOrganizationInvoice);
@@ -141,7 +145,7 @@
             this.cbEsoType.FormattingEnabled = true;
             this.cbEsoType.Location = new System.Drawing.Point(653, 74);
             this.cbEsoType.Name = "cbEsoType";
-            this.cbEsoType.Size = new System.Drawing.Size(174, 21);
+            this.cbEsoType.Size = new System.Drawing.Size(116, 21);
             this.cbEsoType.TabIndex = 113;
             // 
             // cbOrganizationInvoice
@@ -230,7 +234,7 @@
             this.ddlComponentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlComponentId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlComponentId.FormattingEnabled = true;
-            this.ddlComponentId.Location = new System.Drawing.Point(919, 19);
+            this.ddlComponentId.Location = new System.Drawing.Point(840, 75);
             this.ddlComponentId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlComponentId.Name = "ddlComponentId";
             this.ddlComponentId.Size = new System.Drawing.Size(117, 21);
@@ -242,7 +246,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(856, 22);
+            this.label4.Location = new System.Drawing.Point(777, 78);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
@@ -425,11 +429,15 @@
             ultraGridColumn12.Header.VisiblePosition = 0;
             ultraGridColumn12.Width = 156;
             ultraGridColumn2.Header.VisiblePosition = 2;
-            ultraGridColumn14.Header.VisiblePosition = 3;
+            ultraGridColumn9.Header.VisiblePosition = 3;
+            ultraGridColumn10.Header.VisiblePosition = 4;
+            ultraGridColumn14.Header.VisiblePosition = 5;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn13,
             ultraGridColumn12,
             ultraGridColumn2,
+            ultraGridColumn9,
+            ultraGridColumn10,
             ultraGridColumn14});
             ultraGridColumn15.Header.Caption = "Nro. Atención";
             ultraGridColumn15.Header.VisiblePosition = 0;
@@ -520,6 +528,15 @@
             this.grdData.TabIndex = 44;
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdData_AfterSelectChange);
             // 
+            // txtInfAdicional
+            // 
+            this.txtInfAdicional.Enabled = false;
+            this.txtInfAdicional.Location = new System.Drawing.Point(977, 17);
+            this.txtInfAdicional.Name = "txtInfAdicional";
+            this.txtInfAdicional.Size = new System.Drawing.Size(58, 20);
+            this.txtInfAdicional.TabIndex = 114;
+            this.txtInfAdicional.Text = "0";
+            // 
             // frmProduccionProfesional
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -572,6 +589,7 @@
         private System.Windows.Forms.ComboBox cbOrganizationInvoice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbEsoType;
+        private System.Windows.Forms.TextBox txtInfAdicional;
 
     }
 }

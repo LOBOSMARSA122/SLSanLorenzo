@@ -23691,7 +23691,7 @@ namespace Sigesoft.Node.WinClient.BLL
 		}
 
 		//Alberto
-		public List<ProduccionProfesional> ReporteProduccionProfesionalAMC(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression)
+        public List<ProduccionProfesional> ReporteProduccionProfesionalAMC(DateTime? FechaInicio, DateTime? FechaFin, string pstrCustomerOrganizationId, string pstrFilterExpression, string pstrInfAdicional)
 		{
 
 			try
@@ -23822,8 +23822,7 @@ namespace Sigesoft.Node.WinClient.BLL
 								   i_CategoryId = a.i_CategoryId,
 								   v_PersonId = a.v_PersonId,
 								   NombreComponente = a.NombreComponente,
-                                   EstoType = a.EstoType
-
+                                   EstoType = a.EstoType       
 
 							   }).ToList();
 
@@ -23876,6 +23875,8 @@ namespace Sigesoft.Node.WinClient.BLL
 							}
 						}
 						obj1.Total = ListaDetalle.Count();
+                        obj1.PrecioUnitario = double.Parse(pstrInfAdicional);
+                        obj1.Pagar = obj1.PrecioUnitario * obj1.Total;
 						obj1.ProduccionProfesionalDetalle = Lista2;
 
 						Lista1.Add(obj1);

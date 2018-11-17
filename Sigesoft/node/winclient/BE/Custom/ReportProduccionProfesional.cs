@@ -45,6 +45,8 @@ namespace Sigesoft.Node.WinClient.BE
       public string EmpresaClienteCabecera { get; set; }
 
       public string NombreComponente { get; set; }
+      public double PrecioUnitario { get; set; }
+      public double Pagar { get; set; }
 
       public List<ReportProduccionProfesional> ProduccionProfesionalDetalle { get; set; }
 
