@@ -2556,7 +2556,7 @@
                                         </x:Form>
                                     </Items>
                                  </x:Panel>
-                                <x:Panel ID="PanelVdrl" Title="VDRL" EnableBackgroundColor="true" Height="40px" runat="server"
+                                <%--<x:Panel ID="PanelVdrl" Title="VDRL" EnableBackgroundColor="true" Height="40px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
                                 <Items>
                                     <x:Form ID="Form256" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="40px" LabelAlign="Left" >
@@ -2575,7 +2575,7 @@
                                             </Rows>
                                         </x:Form>
                                     </Items>
-                                 </x:Panel>
+                                 </x:Panel>--%>
                                 <x:Panel ID="PanelHavigmhepatitisa" Title="HAV (IGM)" EnableBackgroundColor="true" Height="40px" runat="server"
                                 BodyPadding="5px" ShowBorder="true" ShowHeader="true" Visible ="true">
                                 <Items>

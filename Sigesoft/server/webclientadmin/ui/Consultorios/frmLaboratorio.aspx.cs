@@ -93,7 +93,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 txtPIOCITOS.Attributes.Add("Tag", "N009-MF000001047");
 
-                ddlFILAMENTO_MUCOIDE_EX_ORINA.Attributes.Add("Tag", "N009-MF000001071");
+                ddlFILAMENTO_MUCOIDE_EX_ORINA.Attributes.Add("Tag", "N009-MF000003440");
                 ddlLEVADURAS.Attributes.Add("Tag", "N009-MF000003437");
                 ddlSANGRE_EX_ORINA.Attributes.Add("Tag", "N009-MF000001315");
                 ddlUROBILINOGENO_EX_ORINA.Attributes.Add("Tag", "N009-MF000001049");
@@ -175,12 +175,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtMONOCITOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000001903");
                 txtLINFOCITOS_HEM_COM.Attributes.Add("Tag", "N009-MF000001892");
                 txtLINFOCITOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000001893");
-                txtNEUTROFILOS.Attributes.Add("Tag", "N009-MF000001903");
-                txtNEUTROFILOS_DESEABLE.Attributes.Add("Tag", "N009-MF000001892");
-                txtMIELOCITOS.Attributes.Add("Tag", "N009-MF000001893");
-                txtMIELOCITOS_DESEABLE.Attributes.Add("Tag", "N009-MF000001903");
-                txtJUVENILES.Attributes.Add("Tag", "N009-MF000001892");
-                txtJUVENILES_DESEABLE.Attributes.Add("Tag", "N009-MF000001893");
+                txtNEUTROFILOS.Attributes.Add("Tag", "N009-MF000001896");
+                txtNEUTROFILOS_DESEABLE.Attributes.Add("Tag", "N009-MF000001897");
+                txtMIELOCITOS.Attributes.Add("Tag", "N009-MF000001888");
+                txtMIELOCITOS_DESEABLE.Attributes.Add("Tag", "N009-MF000001889");
+                txtJUVENILES.Attributes.Add("Tag", "N009-MF000003205");
+                txtJUVENILES_DESEABLE.Attributes.Add("Tag", "N009-MF000003206");
                 txtVOL_CORPUSCULAR.Attributes.Add("Tag", "N009-MF000001880");
                 txtVOL_CORPUSCULAR_DESEABLE.Attributes.Add("Tag", "N009-MF000001881");
                 txtHB_CORPPUSCULAR_MEDIO.Attributes.Add("Tag", "N009-MF000001882");
@@ -198,33 +198,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 ddlMOCO_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001340");
                 txtLEVADURAS_SERIADO.Attributes.Add("Tag", "N009-MF000003259");
                 txtGRASAS_SERIADO.Attributes.Add("Tag", "N009-MF000003260");
-                //SANGRE_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001331");
-                
-                //HUEVOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001342");
-                //QUISTES_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001343");
-                //TROFOZOITOS_Heces_Primera_Muestra.Attributes.Add("Tag", "N009-MF000001344");
-                
-                //COLOR_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001347");
-                //CONSISTENCIA_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001348");
-                //RESTOS_ALIMENTICIOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001349");
-                //SANGRE_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001350");
-                //MOCO_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001351");
-                //QUISTES_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001353");
-                //HUEVOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001354");
-                //TROFOZOITOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001355");
-                //HEMATIES_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001356");
-                //LEUCOCITOS_Heces_Segunda_Muestra.Attributes.Add("Tag", "N009-MF000001357");
-                //COLOR_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001358");
-                //CONSISTENCIA_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001359");
-                //RESTOS_ALIMENTICIOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001360");
-                //SANGRE_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001361");
-                //MOCO_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001362");
-                //QUISTES_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001364");
-                //HUEVOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001365");
-                //TROFOZOITOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001366");
-                //HEMATIES_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001367");
-                //LEUCOCITOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001368");
-                //RESULTADOS_Heces_Tercera_Muestra.Attributes.Add("Tag", "N009-MF000001370");
 
                 ParasitoSimple.Hidden = true;
                 ParasitoSimple.Attributes.Add("Tag", "N009-ME000000010");
@@ -317,11 +290,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtHEMATOCRITO.Attributes.Add("Tag", "N009-MF000000266");
                 txtHEMATOCRITO_DESEABLE.Attributes.Add("Tag", "N009-MF000000421");
 
-                PanelVdrl.Hidden = true;
-                PanelVdrl.Attributes.Add("Tag", "N009-ME000000003");
-                ddl_VDRL.Attributes.Add("Tag", "N009-MF000000269");
-
-
                 PanelHavigmhepatitisa.Hidden = true;
                 PanelHavigmhepatitisa.Attributes.Add("Tag", "N009-ME000000004");
                 txtHAV_IGM_HEPATITIS_A.Attributes.Add("Tag", "N009-MF000000264");
@@ -392,7 +360,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 PanelHepatitisC.Attributes.Add("Tag", "N009-ME000000005");
                 txtINMUNO_ENZIMA_HEPATITIS_C.Attributes.Add("Tag", "N009-MF000000267");
                 txtINMUNO_ENZIMA_DESEABLE.Attributes.Add("Tag", "N009-MF000001290");
-                //txtOBSERVACION_HEPATITIS_C.Attributes.Add("Tag", "N009-MF000001435");
 
                 PanelBenzeno.Hidden = true;
                 PanelBenzeno.Attributes.Add("Tag", "N009-ME000000087");
@@ -446,30 +413,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 txtHEMATIES_HISOP_FAR.Attributes.Add("Tag", "N009-MF000002050");
                 txtCELULAS_EPITELIALES_HISOP_FAR.Attributes.Add("Tag", "N009-MF000002051");
                 txtBACTERIAS_GRAM_HISOP_FAR.Attributes.Add("Tag", "N009-MF000002052");
-
-                //PanelHemogramaCompleto.Hidden = true;
-                //PanelHemogramaCompleto.Attributes.Add("Tag", "N009-ME000000045");
-                //txtHEMOGLOBINA_HEM_COM.Attributes.Add("Tag", "N009-MF000001282");
-                //txtHEMOGLOBINA_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000001283");
-                //txtHEMATIES_HEM_COM.Attributes.Add("Tag", "N009-MF000000422");
-                //txtHEMATIES_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000000423");
-                //txtLEUCOCITOS_HEM_COM.Attributes.Add("Tag", "N009-MF000000424");
-                //txtLEUCOCITOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000000425");
-                //txtRECUENTO_DE_PLAQUETAS_HEM_COM.Attributes.Add("Tag", "N009-MF000001284");
-                //txtPLAQUETAS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000001285");
-                //txtABASTONADO_HEM_COM.Attributes.Add("Tag", "N009-MF000000426");
-                //txtABASTONADOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000000427");
-                //txtSEGMENTADOS_HEM_COM.Attributes.Add("Tag", "N009-MF000000428");
-                //txtSEGMENTADOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000000429");
-                //txtEOSINOFILOS_HEM_COM.Attributes.Add("Tag", "N009-MF000000430");
-                //txtEOSINOFILOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000000431");
-                //txtBASOFILOS_HEM_COM.Attributes.Add("Tag", "N009-MF000000432");
-                //txtBASOFILOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000000433");
-                //txtMONOCITOS_HEM_COM.Attributes.Add("Tag", "N009-MF000000434");
-                //txtMONOCITOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000000435");
-                //txtLINFOCITOS_HEM_COM.Attributes.Add("Tag", "N009-MF000000436");
-                //txtLINFOCITOS_DESEABLE_HEM_COM.Attributes.Add("Tag", "N009-MF000000437");
-                //txtCONCLUCIONES_HEM_COM.Attributes.Add("Tag", "N009-MF000000516");
 
                 PanelInformeLaboratorio.Hidden = true;
                 PanelInformeLaboratorio.Attributes.Add("Tag", "N001-ME000000000");
@@ -934,7 +877,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Utils.LoadDropDownList(ddlSANGRE_EX_ORINA, "Value1", "Id", Combo259, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlUROBILINOGENO_EX_ORINA, "Value1", "Id", Combo264, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlPROTEINAS_EX_ORINA, "Value1", "Id", Combo261, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddl_VDRL, "Value1", "Id", Combo196, DropDownListAction.Select);
+            //Utils.LoadDropDownList(ddl_VDRL, "Value1", "Id", Combo196, DropDownListAction.Select);
 
             Utils.LoadDropDownList(ddlNITRITOS_EX_ORINA, "Value1", "Id", Combo260, DropDownListAction.Select);
             Utils.LoadDropDownList(ddlC_CETONICOS_EX_ORINA, "Value1", "Id", Combo265, DropDownListAction.Select);
@@ -1821,11 +1764,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             SearchControlAndSetValues(TabLaboratorio, Session["ServicioComponentIdLab"].ToString());
 
-            var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
-                                                       (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
-                                                      ((ClientSession)Session["objClientSession"]).GetAsList(),
-                                                       Session["PersonId"].ToString(),
-                                                      Session["ServicioComponentIdLab"].ToString());
+            //var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
+            //                                           (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
+            //                                          ((ClientSession)Session["objClientSession"]).GetAsList(),
+            //                                           Session["PersonId"].ToString(),
+            //                                          Session["ServicioComponentIdLab"].ToString());
 
 
             #region Dx Automaticos Laboratorio Internacional
@@ -1910,18 +1853,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
             }
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001282") != null && txtHEMOGLOBINA_HEM_COM.Text != "")
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA_HEM_COM.Text, "N009-MF000001282", "double");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001282") != null && txtHEMOGLOBINA_HEM_COM.Text != "")
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA_HEM_COM.Text, "N009-MF000001282", "double");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
             if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001061") != null && txtLEUCOCITOS_EX_ORINA.Text != "")
             {
@@ -1951,7 +1894,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000001874") != null && txtHEMOGLOBINA_HEM_COM.Text != "")
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA_HEM_COM.Text, "N009-MF000001874", "int");
+                var DXAautomatico = SearchDxSugeridoOfSystem(txtHEMOGLOBINA_HEM_COM.Text, "N009-MF000001874", "double");
                 if (DXAautomatico != null)
                 {
                     var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
