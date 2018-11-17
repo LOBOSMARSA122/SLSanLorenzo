@@ -90,7 +90,7 @@ namespace Sigesoft.Node.WinClient.UI
                         var empresa_info = new ServiceBL().GetOrganizationEmpresa(ref objOperationResult, _empresa);
 
 
-                        Liquidacion_EMPRESA_DETALLE.CreateLiquidacion_EMPRESAS_DETALLE(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1, empresa_info);
+                        Liquidacion_EMPRESA_DETALLE.CreateLiquidacion_EMPRESAS_DETALLE(ruta + nombre + ".pdf", MedicalCenter, lista, fechaInicio_1, fechaFin_1, empresa_info, listFacturaCobranza);
                         this.Enabled = true;
                     }
                 }
