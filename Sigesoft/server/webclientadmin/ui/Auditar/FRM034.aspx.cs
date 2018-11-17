@@ -17,6 +17,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
 {
     public partial class FRM044 : System.Web.UI.Page
     {
+        string managementReports="";
         private string _serviceId;
         private string _EmpresaClienteId;
         private string _pacientId;
@@ -40,7 +41,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
                 //btnNewFichaOcupacional.OnClientClick = winEdit2.GetSaveStateReference(hfRefresh.ClientID) + winEdit2.GetShowReference("../ExternalUser/FRM031C.aspx");
                 btnNewExamenes.OnClientClick = winEdit3.GetSaveStateReference(hfRefresh.ClientID) + winEdit3.GetShowReference("../ExternalUser/FRM031Z.aspx");
                 btnNewCertificados.OnClientClick = Window2.GetSaveStateReference(hfRefresh.ClientID) + Window2.GetShowReference("../ExternalUser/FRM031X.aspx");
-                btnOrdenReportes.OnClientClick = Window3.GetSaveStateReference(hfRefresh.ClientID) + Window3.GetShowReference("../Auditar/FRMOrdenReportes.aspx");
+                btnOrdenReportes.OnClientClick = Window3.GetSaveStateReference(hfRefresh.ClientID) + Window3.GetShowReference(managementReports);
 
                 Session["Examenes"] = false;
                 Session["Certificados"] = false;
@@ -225,9 +226,26 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
 
         protected void grdData_RowClick(object sender, GridRowClickEventArgs e)
         {
-
             LlenarLista();
-             
+            int index = grdData.SelectedRowIndex;
+            string strFilterExpression = Convert.ToString(Session["strFilterExpression"]);
+            List<ServiceList> data = GetData(grdData.PageIndex, grdData.PageSize, "v_ServiceId", strFilterExpression);
+            foreach (var row in grdData.Rows)
+            {
+                if (row.RowIndex == index)
+                {
+                    _serviceId = row.Values[0];
+                    _pacientId = row.Values[5];
+                    _customerOrganizationName = row.Values[6];
+                    _personFullName = row.Values[1];
+                    _EmpresaClienteId = row.Values[4];
+                }
+            }
+            int eso = 1;
+            int flagPantalla = 2;
+            managementReports = "../Auditar/FRMOrdenReportes.aspx?_serviceId=" + _serviceId + "&_pacientId=" + _pacientId + "&_customerOrganizationName=" + _customerOrganizationName + "&_personFullName=" + _personFullName + "&flagPantalla=" + flagPantalla + "&_EmpresaClienteId=" + _EmpresaClienteId + "&eso=" + eso + "";
+            btnOrdenReportes.OnClientClick = Window3.GetSaveStateReference(hfRefresh.ClientID) + Window3.GetShowReference(managementReports);
+            
         }
 
         protected void winEdit1_Close(object sender, EventArgs e)
@@ -256,26 +274,5 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
         {
 
         }
-
-        protected void btnOrdenReportes_Click(object sender, EventArgs e)
-        {
-            int index = grdData.SelectedRowIndex;
-            string strFilterExpression = Convert.ToString(Session["strFilterExpression"]);
-            List<ServiceList> data = GetData(grdData.PageIndex, grdData.PageSize, "v_ServiceId", strFilterExpression);
-            foreach (var row in grdData.Rows) {
-                if (row.RowIndex == index) {
-                    _serviceId = row.Values[0];
-                    _pacientId = row.Values[5];
-                    _customerOrganizationName = row.Values[6];
-                    _personFullName = row.Values[1];
-                    _EmpresaClienteId = row.Values[4];
-                }
-            }            
-            int eso = 1;
-            int flagPantalla = 2;    
-            var frm = new Auditar.FRMOrdenReportes(_serviceId, _pacientId, _customerOrganizationName, _personFullName, flagPantalla, _EmpresaClienteId, eso);
-        }
-
-
     }
 }
