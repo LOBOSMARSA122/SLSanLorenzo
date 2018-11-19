@@ -113,12 +113,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnCargoFactura = new System.Windows.Forms.Button();
             this.btnCargoHistorias = new System.Windows.Forms.Button();
-            this.btnActualizarCulminado = new System.Windows.Forms.Button();
-            this.btnActualizarAptitud = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnQuitarChek = new System.Windows.Forms.Button();
+            this.btnActualizarCulminado = new System.Windows.Forms.Button();
             this.btnActualizarPerson = new System.Windows.Forms.Button();
             this.lblRecordCountCalendar = new System.Windows.Forms.Label();
+            this.btnActualizarAptitud = new System.Windows.Forms.Button();
             this.btnGeneracionMasivaReportes = new System.Windows.Forms.Button();
             this.btnImprimirExamenes = new System.Windows.Forms.Button();
             this.btnTiempos = new System.Windows.Forms.Button();
@@ -161,6 +161,7 @@
             this.btnInformeAlturaEstructural = new System.Windows.Forms.Button();
             this.btnImprimirInformeMedicoEPS = new System.Windows.Forms.Button();
             this.btnImprimirCertificadoAptitud = new System.Windows.Forms.Button();
+            this.btnReportAsync = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataService)).BeginInit();
@@ -658,7 +659,10 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.btnReportAsync);
+            this.groupBox2.Controls.Add(this.btnServicios);
             this.groupBox2.Controls.Add(this.btnHistoriaCl);
+            this.groupBox2.Controls.Add(this.btnPErson);
             this.groupBox2.Controls.Add(this.grdDataService);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.btnCargoFactura);
@@ -896,7 +900,7 @@
             this.grdDataService.Location = new System.Drawing.Point(6, 29);
             this.grdDataService.Margin = new System.Windows.Forms.Padding(2);
             this.grdDataService.Name = "grdDataService";
-            this.grdDataService.Size = new System.Drawing.Size(1120, 467);
+            this.grdDataService.Size = new System.Drawing.Size(1120, 453);
             this.grdDataService.TabIndex = 152;
             this.grdDataService.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdDataService_InitializeLayout);
             this.grdDataService.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdDataService_InitializeRow);
@@ -974,54 +978,6 @@
             this.btnCargoHistorias.UseVisualStyleBackColor = false;
             this.btnCargoHistorias.Click += new System.EventHandler(this.btnCargoHistorias_Click);
             // 
-            // btnActualizarCulminado
-            // 
-            this.btnActualizarCulminado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizarCulminado.BackColor = System.Drawing.SystemColors.Control;
-            this.btnActualizarCulminado.Enabled = false;
-            this.btnActualizarCulminado.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnActualizarCulminado.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnActualizarCulminado.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnActualizarCulminado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarCulminado.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarCulminado.ForeColor = System.Drawing.Color.Black;
-            this.btnActualizarCulminado.Image = global::Sigesoft.Node.WinClient.UI.Resources.eject_green;
-            this.btnActualizarCulminado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarCulminado.Location = new System.Drawing.Point(1136, 455);
-            this.btnActualizarCulminado.Margin = new System.Windows.Forms.Padding(2);
-            this.btnActualizarCulminado.Name = "btnActualizarCulminado";
-            this.btnActualizarCulminado.Size = new System.Drawing.Size(85, 36);
-            this.btnActualizarCulminado.TabIndex = 148;
-            this.btnActualizarCulminado.Text = "Actualizar Culminado";
-            this.btnActualizarCulminado.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnActualizarCulminado.UseVisualStyleBackColor = false;
-            this.btnActualizarCulminado.Visible = false;
-            this.btnActualizarCulminado.Click += new System.EventHandler(this.btnActualizarCulminado_Click);
-            // 
-            // btnActualizarAptitud
-            // 
-            this.btnActualizarAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizarAptitud.BackColor = System.Drawing.SystemColors.Control;
-            this.btnActualizarAptitud.Enabled = false;
-            this.btnActualizarAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnActualizarAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnActualizarAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnActualizarAptitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarAptitud.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarAptitud.ForeColor = System.Drawing.Color.Black;
-            this.btnActualizarAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_earth;
-            this.btnActualizarAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarAptitud.Location = new System.Drawing.Point(1137, 415);
-            this.btnActualizarAptitud.Margin = new System.Windows.Forms.Padding(2);
-            this.btnActualizarAptitud.Name = "btnActualizarAptitud";
-            this.btnActualizarAptitud.Size = new System.Drawing.Size(85, 36);
-            this.btnActualizarAptitud.TabIndex = 147;
-            this.btnActualizarAptitud.Text = "Actualizar Aptitud";
-            this.btnActualizarAptitud.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnActualizarAptitud.UseVisualStyleBackColor = false;
-            this.btnActualizarAptitud.Visible = false;
-            this.btnActualizarAptitud.Click += new System.EventHandler(this.btnActualizarAptitud_Click);
-            // 
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1060,6 +1016,30 @@
             this.btnQuitarChek.UseVisualStyleBackColor = false;
             this.btnQuitarChek.Click += new System.EventHandler(this.btnQuitarChek_Click);
             // 
+            // btnActualizarCulminado
+            // 
+            this.btnActualizarCulminado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizarCulminado.BackColor = System.Drawing.SystemColors.Control;
+            this.btnActualizarCulminado.Enabled = false;
+            this.btnActualizarCulminado.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnActualizarCulminado.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnActualizarCulminado.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnActualizarCulminado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarCulminado.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarCulminado.ForeColor = System.Drawing.Color.Black;
+            this.btnActualizarCulminado.Image = global::Sigesoft.Node.WinClient.UI.Resources.eject_green;
+            this.btnActualizarCulminado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizarCulminado.Location = new System.Drawing.Point(1136, 455);
+            this.btnActualizarCulminado.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActualizarCulminado.Name = "btnActualizarCulminado";
+            this.btnActualizarCulminado.Size = new System.Drawing.Size(85, 36);
+            this.btnActualizarCulminado.TabIndex = 148;
+            this.btnActualizarCulminado.Text = "Actualizar Culminado";
+            this.btnActualizarCulminado.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnActualizarCulminado.UseVisualStyleBackColor = false;
+            this.btnActualizarCulminado.Visible = false;
+            this.btnActualizarCulminado.Click += new System.EventHandler(this.btnActualizarCulminado_Click);
+            // 
             // btnActualizarPerson
             // 
             this.btnActualizarPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1095,6 +1075,30 @@
             this.lblRecordCountCalendar.TabIndex = 52;
             this.lblRecordCountCalendar.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountCalendar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnActualizarAptitud
+            // 
+            this.btnActualizarAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizarAptitud.BackColor = System.Drawing.SystemColors.Control;
+            this.btnActualizarAptitud.Enabled = false;
+            this.btnActualizarAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnActualizarAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnActualizarAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnActualizarAptitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarAptitud.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarAptitud.ForeColor = System.Drawing.Color.Black;
+            this.btnActualizarAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_earth;
+            this.btnActualizarAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizarAptitud.Location = new System.Drawing.Point(1137, 415);
+            this.btnActualizarAptitud.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActualizarAptitud.Name = "btnActualizarAptitud";
+            this.btnActualizarAptitud.Size = new System.Drawing.Size(85, 36);
+            this.btnActualizarAptitud.TabIndex = 147;
+            this.btnActualizarAptitud.Text = "Actualizar Aptitud";
+            this.btnActualizarAptitud.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnActualizarAptitud.UseVisualStyleBackColor = false;
+            this.btnActualizarAptitud.Visible = false;
+            this.btnActualizarAptitud.Click += new System.EventHandler(this.btnActualizarAptitud_Click);
             // 
             // btnGeneracionMasivaReportes
             // 
@@ -1449,7 +1453,7 @@
             // 
             this.btnServicios.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnServicios.ForeColor = System.Drawing.Color.Black;
-            this.btnServicios.Location = new System.Drawing.Point(1082, 637);
+            this.btnServicios.Location = new System.Drawing.Point(855, 495);
             this.btnServicios.Margin = new System.Windows.Forms.Padding(2);
             this.btnServicios.Name = "btnServicios";
             this.btnServicios.Size = new System.Drawing.Size(103, 24);
@@ -1463,7 +1467,7 @@
             // 
             this.btnPErson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnPErson.ForeColor = System.Drawing.Color.Black;
-            this.btnPErson.Location = new System.Drawing.Point(973, 637);
+            this.btnPErson.Location = new System.Drawing.Point(870, 497);
             this.btnPErson.Margin = new System.Windows.Forms.Padding(2);
             this.btnPErson.Name = "btnPErson";
             this.btnPErson.Size = new System.Drawing.Size(103, 24);
@@ -1942,6 +1946,29 @@
             this.btnImprimirCertificadoAptitud.Visible = false;
             this.btnImprimirCertificadoAptitud.Click += new System.EventHandler(this.btnImprimirCertificadoAptitud_Click);
             // 
+            // btnReportAsync
+            // 
+            this.btnReportAsync.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReportAsync.BackColor = System.Drawing.SystemColors.Control;
+            this.btnReportAsync.Enabled = false;
+            this.btnReportAsync.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnReportAsync.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnReportAsync.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnReportAsync.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportAsync.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportAsync.ForeColor = System.Drawing.Color.Black;
+            this.btnReportAsync.Image = global::Sigesoft.Node.WinClient.UI.Resources.color_swatch;
+            this.btnReportAsync.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportAsync.Location = new System.Drawing.Point(1041, 486);
+            this.btnReportAsync.Margin = new System.Windows.Forms.Padding(2);
+            this.btnReportAsync.Name = "btnReportAsync";
+            this.btnReportAsync.Size = new System.Drawing.Size(85, 36);
+            this.btnReportAsync.TabIndex = 154;
+            this.btnReportAsync.Text = "&Compagina  Exámenes Asíncrono";
+            this.btnReportAsync.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnReportAsync.UseVisualStyleBackColor = false;
+            this.btnReportAsync.Click += new System.EventHandler(this.btnReportAsync_Click);
+            // 
             // frmService
             // 
             this.AcceptButton = this.btnFilter;
@@ -1951,8 +1978,6 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.ClientSize = new System.Drawing.Size(1238, 670);
-            this.Controls.Add(this.btnServicios);
-            this.Controls.Add(this.btnPErson);
             this.Controls.Add(this.btnMigrarEmpresa);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label15);
@@ -2089,5 +2114,6 @@
         private System.Windows.Forms.ComboBox cboUserMed;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Button btnHistoriaCl;
+        private System.Windows.Forms.Button btnReportAsync;
     }
 }
