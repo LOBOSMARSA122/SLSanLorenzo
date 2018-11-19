@@ -98,6 +98,7 @@
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Moneda");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Valor");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diagnosticos");
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHospitalizados));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.txtPacient = new System.Windows.Forms.TextBox();
@@ -122,10 +123,13 @@
             this.btnEditarTicket = new System.Windows.Forms.Button();
             this.btnTicket = new System.Windows.Forms.Button();
             this.btnGenerarLiq = new System.Windows.Forms.Button();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
+            this.contextMenuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -272,6 +276,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grdData.CausesValidation = false;
+            this.grdData.ContextMenuStrip = this.contextMenuStrip2;
             appearance1.BackColor = System.Drawing.Color.White;
             appearance1.BackColor2 = System.Drawing.Color.Silver;
             appearance1.BackGradientStyle = Infragistics.Win.GradientStyle.Vertical;
@@ -444,6 +449,7 @@
             this.grdData.InitializeLayout += new Infragistics.Win.UltraWinGrid.InitializeLayoutEventHandler(this.grdData_InitializeLayout);
             this.grdData.InitializeRow += new Infragistics.Win.UltraWinGrid.InitializeRowEventHandler(this.grdData_InitializeRow);
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grd_AfterSelectChange);
+            this.grdData.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdData_MouseDown);
             // 
             // ultraDataSource1
             // 
@@ -686,6 +692,22 @@
             this.btnGenerarLiq.UseVisualStyleBackColor = false;
             this.btnGenerarLiq.Click += new System.EventHandler(this.btnGenerarLiq_Click);
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnRemoverEsamen});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(166, 48);
+            // 
+            // btnRemoverEsamen
+            // 
+            this.btnRemoverEsamen.Enabled = false;
+            this.btnRemoverEsamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverEsamen.Image")));
+            this.btnRemoverEsamen.Name = "btnRemoverEsamen";
+            this.btnRemoverEsamen.Size = new System.Drawing.Size(165, 22);
+            this.btnRemoverEsamen.Text = "Remover Examen";
+            this.btnRemoverEsamen.Click += new System.EventHandler(this.btnRemoverEsamen_Click);
+            // 
             // frmHospitalizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -715,6 +737,7 @@
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
+            this.contextMenuStrip2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -746,5 +769,7 @@
         private System.Windows.Forms.Button btnReportePDF;
         private System.Windows.Forms.Button btnDarAlta;
         private System.Windows.Forms.Button btnGenerarLiq;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem btnRemoverEsamen;
     }
 }

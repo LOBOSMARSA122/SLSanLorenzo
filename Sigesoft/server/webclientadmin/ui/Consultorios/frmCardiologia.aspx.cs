@@ -63,51 +63,57 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 {
                     ListaComponentesPermisoLectura.Add(item.v_ComponentId);
                 }
-                Session["ComponentesPermisoLectura"] = ListaComponentesPermisoLectura;
-
-                TabElectrocardiograma.Hidden = true;
-                TabElectrocardiograma.Attributes.Add("Tag", "N002-ME000000025");
-                TabElectroYanacocha.Attributes.Add("Tag", "N009-ME000000413");
+                Session["ComponentesPermisoLectura"] = ListaComponentesPermisoLectura;              
 
                 dpFechaInicio.SelectedDate = DateTime.Now.AddDays(-1);  //  DateTime.Parse("12/11/2016");
                 dpFechaFin.SelectedDate = DateTime.Now; //  DateTime.Parse("12/11/2016"); 
                 LoadCombos();
 
-                //#region Electro
-                //chkObesidad.Attributes.Add("Tag", "N009-MF000000130");
-                //chkDiabetes.Attributes.Add("Tag", "N009-MF000000132");
-                //chkTabaco.Attributes.Add("Tag", "N009-MF000000131");
-                //txtDisplidemia.Attributes.Add("Tag", "N009-MF000000133");
-                //txtInfarto.Attributes.Add("Tag", "N009-MF000000128");
-                //chkHipertension.Attributes.Add("Tag", "N009-MF000000124");
-                //chkAlcoholismo.Attributes.Add("Tag", "N009-MF000000122");
-                //chkIsquemia.Attributes.Add("Tag", "N009-MF000000126");
-                //chkAnemia.Attributes.Add("Tag", "N009-MF000000123");
-                //chkDrogas.Attributes.Add("Tag", "N009-MF000000125");
-                //chkArritmias.Attributes.Add("Tag", "N009-MF000000127");
-                //chkTto.Attributes.Add("Tag", "N009-MF000000129");
-                //txtFrecuenciaCardiaca.Attributes.Add("Tag", "N002-MF000000186");
-                //ddlRitmo.Attributes.Add("Tag", "N002-MF000000190");
-                //txtIntervPR.Attributes.Add("Tag", "N002-MF000000187");
-                //txtInterQRS.Attributes.Add("Tag", "N009-MF000000225");
-                //txtInterQT.Attributes.Add("Tag", "N002-MF000000189");
-                //txtEjeST.Attributes.Add("Tag", "N009-MF000001006");
-                //txtEjeQRS.Attributes.Add("Tag", "N009-MF000000143");
-                //ddlConclusiones.Attributes.Add("Tag", "N002-MF000000194");
-                //txtDescripcionLectNormal.Attributes.Add("Tag", "N009-MF000000227");
-                //chkLecturaNormal.Attributes.Add("Tag", "N009-MF000002133");
-                //#endregion
+                #region INFORME ELECTRO-CARDIO
+                TabInformeElecCardio.Hidden = true;
+                TabInformeElecCardio.Attributes.Add("Tag", "N009-ME000000412");
+                txtFRECU_ELEC_CARDIO.Attributes.Add("Tag", "N009-MF000003119");
+                ddlRITMO_ELEC_CARDIO.Attributes.Add("Tag", "N009-MF000003120");
+                txtINTERVALO_ELEC_CARDIO.Attributes.Add("Tag", "N009-MF000003121");
+                txtCOMPLEJO_QRS_ELEC_CARDIO.Attributes.Add("Tag", "N009-MF000003122");
+                txtINTERVALO_QTC_ELEC_CARDIO.Attributes.Add("Tag", "N009-MF000003123");
+                txtEJE_ELEC_CARDIO.Attributes.Add("Tag", "N009-MF000003124");
+                txtHALLAZGO_ELEC_CARDIO.Attributes.Add("Tag", "N009-MF000003125");
+                txtOBSERVACIONES_ELEC_CARDIO.Attributes.Add("Tag", "N009-MF000003126");
+                #endregion
 
-                #region Electro Yanacocha
-                txtYanacocha_Frecuencia.Attributes.Add("Tag", "N002-MF000000186");
-                ddlYanacocha_Ritmo.Attributes.Add("Tag", "N002-MF000000190");
-                txtYanacocha_PR.Attributes.Add("Tag", "N002-MF000000187");
-                txtYanacocha_QT.Attributes.Add("Tag", "N002-MF000000189");
-                txtYanacocha_Eje.Attributes.Add("Tag", "N009-MF000000143");
-                txtYanacocha_ST.Attributes.Add("Tag", "N009-MF000001006");
-                txtYanacocha_OtrasAlter.Attributes.Add("Tag", "N009-MF000000227");
-                txtYanacocha_Hallazgos.Attributes.Add("Tag", "N009-MF000002133");
-                ddlYanacocha_Conclusiones.Attributes.Add("Tag", "N002-MF000000194");
+                #region Apendice n°5 EKG
+                TabApendiceEKG.Hidden = true;
+                TabApendiceEKG.Attributes.Add("Tag", "N009-ME000000413");
+                txtFRECUENCIA_PR_APENDICE_EKG.Attributes.Add("Tag", "N009-MF000003128");
+                ddlRITMO_APENDICE_EKG.Attributes.Add("Tag", "N009-MF000003129");
+                txtINTERVALO_PR_APENDICE_EKG.Attributes.Add("Tag", "N009-MF000003130");
+                txtINTERVALO_QT_APENDICE_EKG.Attributes.Add("Tag", "N009-MF000003131");
+                txtEJE_CARDIACO_APENDICE_EKG.Attributes.Add("Tag", "N009-MF000003132");
+                txtSEGMENTO_ST_APENDICE_EKG.Attributes.Add("Tag", "N009-MF000003133");
+                txtOTRAS_ALTER_APENDICE_EKG.Attributes.Add("Tag", "N009-MF000003134");
+                ddlCONCLUSIONES_APENDICE_EKG.Attributes.Add("Tag", "N009-MF000003263");
+
+                PanelPruebaEsfuerzo.Hidden = true;
+                PanelPruebaEsfuerzo.Attributes.Add("Tag", "N002-ME000000029");
+                ddlEXAMEN_NORMAL.Attributes.Add("Tag", "N009-MF000002481");
+                #endregion
+
+
+
+                #region Electrocardiograma
+                TabElectrocardiograma.Hidden = true;
+                TabElectrocardiograma.Attributes.Add("Tag", "N002-ME000000025");
+                txtECG_Frecuencia.Attributes.Add("Tag", "N002-MF000000186");
+                ddlECG_Ritmo.Attributes.Add("Tag", "N002-MF000000190");
+                txtECG_PR.Attributes.Add("Tag", "N002-MF000000187");
+                txtECG_QT.Attributes.Add("Tag", "N002-MF000000189");
+                txtECG_Eje.Attributes.Add("Tag", "N009-MF000000143");
+                txtECG_ST.Attributes.Add("Tag", "N009-MF000001006");
+                txtECG_OtrasAlter.Attributes.Add("Tag", "N009-MF000000227");
+                txtECG_QRS.Attributes.Add("Tag", "N009-MF000000225");
+                ddlECG_CONCLUSIONES_GEN.Attributes.Add("Tag", "N002-MF000000194");
+                ddlECG_Conclusiones.Attributes.Add("Tag", "N002-MF000002133");
                 #endregion
 
                 int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
@@ -187,7 +193,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         {
             OperationResult objOperationResult = new OperationResult();
             TabElectrocardiograma.Hidden = true;
-            TabElectroYanacocha.Hidden = true;
+            TabApendiceEKG.Hidden = true;
+            TabInformeElecCardio.Hidden = true;
             int index = e.RowIndex;
             var dataKeys = grdData.DataKeys[index];
             Session["ServiceId"] = dataKeys[0] == null ? "" : dataKeys[0].ToString();
@@ -232,13 +239,22 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         ObtenerDatosElctro(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
                         TabElectrocardiograma.Hidden = false;
                     }
-                     if (item.ComponentId == TabElectroYanacocha.Attributes.GetValue("Tag").ToString())
+                    if (item.ComponentId == TabApendiceEKG.Attributes.GetValue("Tag").ToString())
                     {
                         LoadCombosElectroYana();
-                        ddlUsuarioGrabarYanacocha.SelectedValue = ((ClientSession) Session["objClientSession"]).i_SystemUserId.ToString();
-                        ddlUsuarioGrabarYanacocha.Enabled = false;
+                        ddlUsuarioGrabarApendice.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                        ddlUsuarioGrabarApendice.Enabled = false;
                         ObtenerDatosElctroYanacocha(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                        TabElectroYanacocha.Hidden = false;
+                        TabApendiceEKG.Hidden = false;
+                        PanelPruebaEsfuerzo.Hidden = false;
+                    }
+                    if (item.ComponentId == TabInformeElecCardio.Attributes.GetValue("Tag").ToString())
+                    {
+                        LoadCombosInformeElectroCardio();
+                        ddlUsuarioGrabarInfElecCardio.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                        ddlUsuarioGrabarInfElecCardio.Enabled = false;
+                        ObtenerDatosInformeElectroCardio(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                        TabInformeElecCardio.Hidden = false;
                     }
                 }
             }
@@ -261,16 +277,30 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                         }
 
                     }
-                    else if (item == TabElectroYanacocha.Attributes.GetValue("Tag").ToString())
+                    else if (item == TabApendiceEKG.Attributes.GetValue("Tag").ToString())
                     {
                         var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N009-ME000000413");
                         if (Resultado != null)
                         {
                             LoadCombosElectroYana();
-                            ddlUsuarioGrabarYanacocha.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
-                            ddlUsuarioGrabarYanacocha.Enabled = false;
+                            ddlUsuarioGrabarApendice.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                            ddlUsuarioGrabarApendice.Enabled = false;
                             ObtenerDatosElctroYanacocha(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
-                            TabElectroYanacocha.Hidden = false;
+                            TabApendiceEKG.Hidden = false;
+                            PanelPruebaEsfuerzo.Hidden = false;
+                        }
+
+                    }
+                    else if (item == TabInformeElecCardio.Attributes.GetValue("Tag").ToString())
+                    {
+                        var Resultado = ListaComponenentesConPermiso.Find(p => p.ToString() == "N009-ME000000412");
+                        if (Resultado != null)
+                        {
+                            LoadCombosInformeElectroCardio();
+                            ddlUsuarioGrabarInfElecCardio.SelectedValue = ((ClientSession)Session["objClientSession"]).i_SystemUserId.ToString();
+                            ddlUsuarioGrabarInfElecCardio.Enabled = false;
+                            ObtenerDatosInformeElectroCardio(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                            TabInformeElecCardio.Hidden = false;
                         }
 
                     }
@@ -1121,7 +1151,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             if (Componentes.Find(p => p.v_ComponentFieldsId == "N002-MF000000186") != null)
             {
-                var DXAautomatico = SearchDxSugeridoOfSystem(txtFrecuenciaCardiaca.Text, "N002-MF000000186", "int");
+                var DXAautomatico = SearchDxSugeridoOfSystem(txtECG_Frecuencia.Text, "N002-MF000000186", "int");
                 if (DXAautomatico != null)
                 {
                     var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
@@ -1132,18 +1162,18 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
             }
 
-            if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000002133") != null)
-            {
-                var DXAautomatico = SearchDxSugeridoOfSystem(chkLecturaNormal.Checked ? "1" :"0", "N009-MF000002133", "int");
-                if (DXAautomatico != null)
-                {
-                    var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
-                    if (Result1 == null)
-                    {
-                        l.Add(DXAautomatico);
-                    }
-                }
-            }
+            //if (Componentes.Find(p => p.v_ComponentFieldsId == "N009-MF000002133") != null)
+            //{
+            //    var DXAautomatico = SearchDxSugeridoOfSystem(chkLecturaNormal.Checked ? "1" :"0", "N009-MF000002133", "int");
+            //    if (DXAautomatico != null)
+            //    {
+            //        var Result1 = GrillaDx.Find(p => p.v_DiseasesName == DXAautomatico.v_DiseasesName);
+            //        if (Result1 == null)
+            //        {
+            //            l.Add(DXAautomatico);
+            //        }
+            //    }
+            //}
 
             #endregion
             //Gabar Dx
@@ -1233,24 +1263,43 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             OperationResult objOperationResult = new OperationResult();
             var Combo197 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);
             var Combo291 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 291);
-            Utils.LoadDropDownList(ddlYanacocha_Conclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
-            //Utils.LoadDropDownList(ddlRitmo, "Value1", "Id", Combo197, DropDownListAction.Select);
-            //Utils.LoadDropDownList(ddlConclusiones, "Value1", "Id", Combo197, DropDownListAction.Select);
-            Utils.LoadDropDownList(ddlYanacocha_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
+            var Combo304 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 304);
+
+            Utils.LoadDropDownList(ddlECG_CONCLUSIONES_GEN, "Value1", "Id", Combo197, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlECG_Conclusiones, "Value1", "Id", Combo304, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlECG_Ritmo, "Value1", "Id", Combo291, DropDownListAction.Select);
+
+            
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
 
-            Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabar, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
               
         }
 
         private void LoadCombosElectroYana()
         {
             OperationResult objOperationResult = new OperationResult();
-            var Combo197 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 197);         
-            
+            var Combo291 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 291);
+            var Combo304 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 304);
+            Utils.LoadDropDownList(ddlCONCLUSIONES_APENDICE_EKG, "Value1", "Id", Combo304, DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlRITMO_APENDICE_EKG, "Value1", "Id", Combo291, DropDownListAction.Select);
+
+            Utils.LoadDropDownList(ddlEXAMEN_NORMAL, "Value1", "Id", Combo304, DropDownListAction.Select);
             
             SystemParameterBL oSystemParameterBL = new SystemParameterBL();
-            Utils.LoadDropDownList(ddlUsuarioGrabarYanacocha, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlUsuarioGrabarApendice, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
+
+        }
+
+        private void LoadCombosInformeElectroCardio()
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var Combo291 = _objSystemParameterBL.GetSystemParameterForCombo(ref objOperationResult, 291);
+  
+            Utils.LoadDropDownList(ddlRITMO_ELEC_CARDIO, "Value1", "Id", Combo291, DropDownListAction.Select);
+
+            SystemParameterBL oSystemParameterBL = new SystemParameterBL();
+            Utils.LoadDropDownList(ddlUsuarioGrabarInfElecCardio, "Value1", "Id", oSystemParameterBL.GetProfessional(ref objOperationResult, ""), DropDownListAction.Select);
 
         }
 
@@ -1306,6 +1355,55 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
            
         }
 
+        private void ObtenerDatosInformeElectroCardio(string pServiceId, string pPersonId) 
+        {
+            OperationResult objOperationResult = new OperationResult();
+            var oExamenInformeElectroCardio = _serviceBL.ObtenerIdsParaImportacionExcel(new List<string> { pServiceId }, 5);
+            Session["ServicioComponentIdInformeElectroCardio"] = oExamenInformeElectroCardio[0].ServicioComponentId;
+            var objExamenInformeElectroCardio = _serviceBL.GetServiceComponentFields(oExamenInformeElectroCardio == null ? "" : oExamenInformeElectroCardio[0].ServicioComponentId, pServiceId);
+            Session["ComponentesInformeElectroCardio"] = objExamenInformeElectroCardio;
+            if (objExamenInformeElectroCardio.ToList().Count != 0)
+            {
+                SearchControlAndLoadData(TabInformeElecCardio, Session["ServicioComponentIdInformeElectroCardio"].ToString(), (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["ComponentesInformeElectroCardio"]);
+                #region Campos de Auditoria
+
+                var datosAuditoria = HistoryBL.CamposAuditoria(oExamenInformeElectroCardio[0].ServicioComponentId);
+                if (datosAuditoria != null)
+                {
+                    txtCardiologiaAuditor.Text = datosAuditoria.UserNameAuditoriaInsert;
+                    txtCardiologiaAuditorInsercion.Text = datosAuditoria.FechaHoraAuditoriaInsert;
+                    txtCardiologiaAuditorModificacion.Text = datosAuditoria.FechaHoraAuditoriaEdit;
+
+                    txtCardiologiaEvaluador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                    txtCardiologiaEvaluadorInsercion.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                    txtCardiologiaEvaluadorModificacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+
+                    txtCardiologiaInformador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                    txtCardiologiaInformadorInserta.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                    txtCardiologiaInformadorActualizacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+                }
+
+                #endregion
+            }
+            else
+            {
+                var _tmpServiceComponentsForBuildMenuList = new ServiceBL().ObtenerValoresPorDefecto(ref objOperationResult, pServiceId);
+                SearchControlAndClean(TabInformeElecCardio, _tmpServiceComponentsForBuildMenuList);
+
+                txtCardiologiaAuditor.Text = "";
+                txtCardiologiaAuditorInsercion.Text = "";
+                txtCardiologiaAuditorModificacion.Text = "";
+
+                txtCardiologiaEvaluador.Text = "";
+                txtCardiologiaEvaluadorInsercion.Text = "";
+                txtCardiologiaEvaluadorModificacion.Text = "";
+
+                txtCardiologiaInformador.Text = "";
+                txtCardiologiaInformadorInserta.Text = "";
+                txtCardiologiaInformadorActualizacion.Text = "";
+            }
+        }
+
         private void ObtenerDatosElctroYanacocha(string pServiceId, string pPersonId)
         {
             OperationResult objOperationResult = new OperationResult();
@@ -1315,7 +1413,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["ComponentesElectroYanacocha"] = objExamenElectroYanacocha;
             if (objExamenElectroYanacocha.ToList().Count != 0)
             {
-                SearchControlAndLoadData(TabElectroYanacocha, Session["ServicioComponentIdElectroYanacocha"].ToString(), (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["ComponentesElectroYanacocha"]);
+                SearchControlAndLoadData(TabApendiceEKG, Session["ServicioComponentIdElectroYanacocha"].ToString(), (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["ComponentesElectroYanacocha"]);
                 #region Campos de Auditoria
 
                 var datosAuditoria = HistoryBL.CamposAuditoria(oExamenElectroYanacocha[0].ServicioComponentId);
@@ -1339,7 +1437,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             else
             {
                 var _tmpServiceComponentsForBuildMenuList = new ServiceBL().ObtenerValoresPorDefecto(ref objOperationResult, pServiceId);
-                SearchControlAndClean(TabElectroYanacocha, _tmpServiceComponentsForBuildMenuList);
+                SearchControlAndClean(TabApendiceEKG, _tmpServiceComponentsForBuildMenuList);
 
                 txtCardiologiaAuditor.Text = "";
                 txtCardiologiaAuditorInsercion.Text = "";
@@ -1404,9 +1502,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
         }
 
 
-        protected void btnGrabaYanacocha_OnClick(object sender, EventArgs e)
+        protected void btnGrabarApendiceN5_Click(object sender, EventArgs e)
         {
-            if (ddlUsuarioGrabarYanacocha.SelectedValue == "-1")
+            if (ddlUsuarioGrabarApendice.SelectedValue == "-1")
             {
                 Alert.ShowInTop("Seleccionar Firma de usuario", MessageBoxIcon.Information);
                 return;
@@ -1414,7 +1512,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             List<Sigesoft.Node.WinClient.BE.DiagnosticRepositoryList> l = new List<Sigesoft.Node.WinClient.BE.DiagnosticRepositoryList>();
 
             OperationResult objOperationResult = new OperationResult();
-            SearchControlAndSetValues(TabElectroYanacocha, Session["ServicioComponentIdElectroYanacocha"].ToString());
+            SearchControlAndSetValues(TabApendiceEKG, Session["ServicioComponentIdElectroYanacocha"].ToString());
 
             var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
                                                        (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
@@ -1458,7 +1556,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             Session["UsuarioLogueado"] = ((ClientSession)Session["objClientSession"]).i_SystemUserId;
             // Grabar Dx por examen componente mas sus restricciones
 
-            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(ddlUsuarioGrabarYanacocha.SelectedValue.ToString());
+            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(ddlUsuarioGrabarApendice.SelectedValue.ToString());
 
 
             _serviceBL.AddDiagnosticRepository(ref objOperationResult,
@@ -1468,6 +1566,106 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                                                    true);
 
             var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), "N009-ME000000413");
+
+            //Mostrar Auditoria
+            var datosAuditoria = HistoryBL.CamposAuditoria(scId);
+            if (datosAuditoria != null)
+            {
+                txtCardiologiaAuditor.Text = datosAuditoria.UserNameAuditoriaInsert;
+                txtCardiologiaAuditorInsercion.Text = datosAuditoria.FechaHoraAuditoriaInsert;
+                txtCardiologiaAuditorModificacion.Text = datosAuditoria.FechaHoraAuditoriaEdit;
+
+                txtCardiologiaEvaluador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                txtCardiologiaEvaluadorInsercion.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                txtCardiologiaEvaluadorModificacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+
+                txtCardiologiaInformador.Text = datosAuditoria.UserNameEvaluadorInsert;
+                txtCardiologiaInformadorInserta.Text = datosAuditoria.FechaHoraEvaluadorInsert;
+                txtCardiologiaInformadorActualizacion.Text = datosAuditoria.FechaHoraEvaluadorEdit;
+            }
+
+            //Analizar el resultado de la operación
+            if (objOperationResult.Success == 1)  // Operación sin error
+            {
+                ActualizaGrillasDx(Session["ServiceId"].ToString(), Session["PersonId"].ToString());
+                //Mostrar
+                grdComponentes.DataSource = _serviceBL.GetServiceComponentByCategoryId(ref objOperationResult, int.Parse(ddlConsultorio.SelectedValue.ToString()), Session["ServiceId"].ToString());
+                grdComponentes.DataBind();
+                Session["_serviceComponentFieldsList"] = null;
+                Alert.ShowInTop("Se grabó correctamente", MessageBoxIcon.Information);
+            }
+            else  // Operación con error
+            {
+                Alert.ShowInTop("Error en operación:" + System.Environment.NewLine + objOperationResult.ExceptionMessage);
+                // Se queda en el formulario.
+            }
+            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(Session["UsuarioLogueado"].ToString());
+        }
+
+        protected void btnGuardarInfElecCardio_Click(object sender, EventArgs e)
+        {
+            if (ddlUsuarioGrabarApendice.SelectedValue == "-1")
+            {
+                Alert.ShowInTop("Seleccionar Firma de usuario", MessageBoxIcon.Information);
+                return;
+            }
+            List<Sigesoft.Node.WinClient.BE.DiagnosticRepositoryList> l = new List<Sigesoft.Node.WinClient.BE.DiagnosticRepositoryList>();
+
+            OperationResult objOperationResult = new OperationResult();
+            SearchControlAndSetValues(TabInformeElecCardio, Session["ServicioComponentIdInformeElectroCardio"].ToString());
+
+            var result = _serviceBL.AddServiceComponentValues_(ref objOperationResult,
+                                                       (List<Sigesoft.Node.WinClient.BE.ServiceComponentFieldsList>)Session["_serviceComponentFieldsList"],
+                                                      ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                       Session["PersonId"].ToString(),
+                                                      Session["ServicioComponentIdInformeElectroCardio"].ToString());
+
+
+            //Gabar Dx
+            #region Capturar [Comentarios, estado, procedencia de un exmanen componente]
+
+            var serviceComponentDto = new servicecomponentDto();
+            serviceComponentDto.v_ServiceComponentId = Session["ServicioComponentIdInformeElectroCardio"].ToString();
+            //Obtener fecha de Actualizacion
+            var FechaUpdate = _serviceBL.GetServiceComponent(ref objOperationResult, Session["ServicioComponentIdInformeElectroCardio"].ToString()).d_UpdateDate;
+            serviceComponentDto.v_Comment = "";
+            //grabar estado del examen según profesión del usuario
+            int ProfesionId = int.Parse(((ClientSession)Session["objClientSession"]).i_ProfesionId.Value.ToString());
+
+            if (ProfesionId == 30) // evaluador
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Evaluado;
+
+            }
+            else if (ProfesionId == 31)//auditor
+            {
+                serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceComponentStatus.Auditado;
+
+            }
+            //serviceComponentDto.i_ServiceComponentStatusId = (int)ServiceStatus.Culminado;
+
+            serviceComponentDto.i_ExternalInternalId = 1;
+            serviceComponentDto.i_IsApprovedId = 1;
+
+            serviceComponentDto.v_ComponentId = "N009-ME000000412";
+            serviceComponentDto.v_ServiceId = Session["ServiceId"].ToString();
+            serviceComponentDto.d_UpdateDate = FechaUpdate;
+            #endregion
+
+            //obtener el usuario antiguo
+            Session["UsuarioLogueado"] = ((ClientSession)Session["objClientSession"]).i_SystemUserId;
+            // Grabar Dx por examen componente mas sus restricciones
+
+            ((ClientSession)Session["objClientSession"]).i_SystemUserId = int.Parse(ddlUsuarioGrabarApendice.SelectedValue.ToString());
+
+
+            _serviceBL.AddDiagnosticRepository(ref objOperationResult,
+                                                   l,
+                                                   serviceComponentDto,
+                                                   ((ClientSession)Session["objClientSession"]).GetAsList(),
+                                                   true);
+
+            var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), "N009-ME000000412");
 
             //Mostrar Auditoria
             var datosAuditoria = HistoryBL.CamposAuditoria(scId);
