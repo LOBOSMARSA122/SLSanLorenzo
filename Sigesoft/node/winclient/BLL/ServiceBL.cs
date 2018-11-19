@@ -2045,7 +2045,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                  v_ComponentName = B.v_Name,
                                  v_CategoryName = F.v_Value1,
                                  MedicoTratante = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
-                                 d_InsertDate = A.d_InsertDate
+                                 d_InsertDate = A.d_InsertDate,
+                                 v_ServiceId = A.v_ServiceId
 							 }).ToList();
 
 

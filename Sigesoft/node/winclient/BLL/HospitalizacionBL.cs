@@ -443,6 +443,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var componente in componentes)
                 {
                     oComponentesHospitalizacion = new ComponentesHospitalizacion();
+                    oComponentesHospitalizacion.v_ServiceId = componente.v_ServiceId;
                     oComponentesHospitalizacion.ServiceComponentId = componente.v_ServiceComponentId;
                     oComponentesHospitalizacion.Categoria = componente.v_CategoryName;
                     oComponentesHospitalizacion.Componente = componente.v_ComponentName;
