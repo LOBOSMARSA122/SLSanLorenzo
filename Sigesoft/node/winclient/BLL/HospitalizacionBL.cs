@@ -117,9 +117,11 @@ namespace Sigesoft.Node.WinClient.BLL
                             oHospitalizacionServiceList.v_HopitalizacionId = servicio.v_HopitalizacionId;
                             oHospitalizacionServiceList.v_ServiceId = servicio.v_ServiceId;
                             oHospitalizacionServiceList.v_HospitalizacionServiceId = servicio.v_HospitalizacionServiceId;
+                            oHospitalizacionServiceList.v_NroHospitalizacion = servicio.v_NroHospitalizacion;
                             oHospitalizacionServiceList.d_ServiceDate = servicio.d_ServiceDate;
                             oHospitalizacionServiceList.v_ProtocolName = servicio.v_ProtocolName;
                             oHospitalizacionServiceList.v_ProtocolId = servicio.v_ProtocolId;
+                            oHospitalizacionServiceList.v_DocNumber = servicio.v_DocNumber;
                             // acá estoy agregando a las lista
                             HospitalizacionServicios.Add(servicio);
                         }
@@ -363,6 +365,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         join C in dbContext.hospitalizacionservice on A.v_HopitalizacionId equals C.v_HopitalizacionId
                         join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
                         join E in dbContext.protocol on D.v_ProtocolId equals E.v_ProtocolId
+                        join F in dbContext.person on D.v_PersonId equals F.v_PersonId
                         where A.v_HopitalizacionId == hospitalizacionId
 
                         select new HospitalizacionServiceList
@@ -372,8 +375,8 @@ namespace Sigesoft.Node.WinClient.BLL
                            v_ServiceId = C.v_ServiceId,
                            d_ServiceDate = D.d_ServiceDate.Value,
                            v_ProtocolName = E.v_Name,
-                           v_ProtocolId = E.v_ProtocolId
-
+                           v_ProtocolId = E.v_ProtocolId,
+                           v_DocNumber = F.v_DocNumber
                         };
             List<HospitalizacionServiceList> objData = queryservice.ToList();
             var hospitalizacionesservicios = (from a in objData
@@ -384,7 +387,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                         v_ServiceId = a.v_ServiceId,
                                         d_ServiceDate = a.d_ServiceDate,
                                         v_ProtocolName = a.v_ProtocolName,
-                                        v_ProtocolId = a.v_ProtocolId
+                                        v_ProtocolId = a.v_ProtocolId,
+                                        v_DocNumber = a.v_DocNumber
                                      }).ToList();
 
             List<HospitalizacionServiceList> obj = hospitalizacionesservicios;
@@ -403,6 +407,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 tickets.d_ServiceDate = item.d_ServiceDate;
                 tickets.v_ProtocolName = item.v_ProtocolName;
                 tickets.v_ProtocolId = item.v_ProtocolId;
+                tickets.v_DocNumber = item.v_DocNumber;
                 #region Tickets
 
                 // estos son los hijos de 1 hopitalización
@@ -438,6 +443,7 @@ namespace Sigesoft.Node.WinClient.BLL
                 foreach (var componente in componentes)
                 {
                     oComponentesHospitalizacion = new ComponentesHospitalizacion();
+                    oComponentesHospitalizacion.v_ServiceId = componente.v_ServiceId;
                     oComponentesHospitalizacion.ServiceComponentId = componente.v_ServiceComponentId;
                     oComponentesHospitalizacion.Categoria = componente.v_CategoryName;
                     oComponentesHospitalizacion.Componente = componente.v_ComponentName;
@@ -571,6 +577,38 @@ namespace Sigesoft.Node.WinClient.BLL
                 pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
             }
         }
+
+
+        public void AddHospitalizacionService(ref OperationResult pobjOperationResult, hospitalizacionserviceDto pobjDtoEntity, List<string> ClientSession)
+        {
+            //mon.IsActive = true;
+            string NewId = "(No generado)";
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+                hospitalizacionservice objEntity = hospitalizacionserviceAssembler.ToEntity(pobjDtoEntity);
+
+                objEntity.d_InsertDate = DateTime.Now;
+                objEntity.i_InsertUserId = Int32.Parse(ClientSession[2]);
+                objEntity.i_IsDeleted = 0;
+
+                // Autogeneramos el Pk de la tabla                 
+                int intNodeId = int.Parse(ClientSession[0]);
+                NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 351), "HS"); ;
+                objEntity.v_HopitalizacionId = NewId;
+
+                dbContext.AddTohospitalizacionservice(objEntity);
+                dbContext.SaveChanges();
+
+                pobjOperationResult.Success = 1;
+            }
+            catch (Exception ex)
+            {
+                pobjOperationResult.Success = 0;
+                pobjOperationResult.ExceptionMessage = Common.Utils.ExceptionFormatter(ex);
+            }
+        }
+
 
         public void UpdateHospitalizacion(ref OperationResult pobjOperationResult, hospitalizacionDto pobjDtoEntity, List<string> ClientSession)
         {

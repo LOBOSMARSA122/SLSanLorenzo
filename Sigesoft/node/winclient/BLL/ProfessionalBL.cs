@@ -20,7 +20,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 var query = (from su1 in dbContext.systemuser
                              join A in dbContext.person on su1.v_PersonId equals A.v_PersonId
-                        
+                             join B in dbContext.professional on A.v_PersonId equals B.v_PersonId
                              join J1 in dbContext.datahierarchy on new { a = 121, b = su1.i_RolVentaId.Value }
                                                                  equals new { a = J1.i_GroupId, b = J1.i_ItemId } into J1_join
                              from J1 in J1_join.DefaultIfEmpty()
@@ -31,7 +31,8 @@ namespace Sigesoft.Node.WinClient.BLL
                              {
                                  v_PersonName = A.v_FirstName + " " + A.v_FirstLastName + " " + A.v_SecondLastName,
                                  v_RolVenta = J1.v_Value1,
-                                 i_RolVenta = su1.i_RolVentaId
+                                 i_RolVenta = su1.i_RolVentaId,
+                                 InfAdicional = B.v_ProfessionalInformation
                              }
                             ).FirstOrDefault();
 

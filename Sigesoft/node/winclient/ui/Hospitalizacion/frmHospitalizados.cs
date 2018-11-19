@@ -282,7 +282,9 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
         {
             var serviceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
             var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
-            var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId,"Hospi") { _serviceId = serviceId };
+            var NroHospitalizacion = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
+            var dni = grdData.Selected.Rows[0].Cells["v_DocNumber"].Value.ToString();
+            var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId, "Hospi", NroHospitalizacion, dni) { _serviceId = serviceId };
             frm.ShowDialog();
 
             if (frm.DialogResult == DialogResult.Cancel)
@@ -362,6 +364,53 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
             btnFilter_Click(sender, e);
 
+        }
+
+        private void grdData_MouseDown(object sender, MouseEventArgs e)
+        {
+            Point point = new System.Drawing.Point(e.X, e.Y);
+            Infragistics.Win.UIElement uiElement = ((Infragistics.Win.UltraWinGrid.UltraGridBase)sender).DisplayLayout.UIElement.ElementFromPoint(point);
+
+            if (uiElement == null || uiElement.Parent == null)
+                return;
+
+            Infragistics.Win.UltraWinGrid.UltraGridRow row = (Infragistics.Win.UltraWinGrid.UltraGridRow)uiElement.GetContext(typeof(Infragistics.Win.UltraWinGrid.UltraGridRow));
+
+            if (row != null)
+            {
+                contextMenuStrip2.Items["btnRemoverEsamen"].Enabled = true;
+            }
+            else
+            {
+                contextMenuStrip2.Items["btnRemoverEsamen"].Enabled = false;
+            }
+        }
+
+        private void btnRemoverEsamen_Click(object sender, EventArgs e)
+        {
+            CalendarBL _objCalendarBL = new CalendarBL();
+             if (grdData.Selected.Rows.Count == 0)
+                return;
+
+            ServiceBL oServiceBL = new ServiceBL();
+            DialogResult Result = MessageBox.Show("¿Está seguro de eliminar este registro?", "ADVERTENCIA!", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (Result == System.Windows.Forms.DialogResult.OK)
+            {
+                var _auxiliaryExams = new List<ServiceComponentList>();
+                OperationResult objOperationResult = new OperationResult();
+
+                string v_ServiceComponentId = grdData.Selected.Rows[0].Cells["ServiceComponentId"].Value.ToString();
+                string v_ServiceId = grdData.Selected.Rows[0].Cells["v_ServiceId"].Value.ToString();
+
+
+                ServiceComponentList auxiliaryExam = new ServiceComponentList();
+                auxiliaryExam.v_ServiceComponentId = v_ServiceComponentId;
+                _auxiliaryExams.Add(auxiliaryExam);
+
+                _objCalendarBL.UpdateAdditionalExam(_auxiliaryExams, v_ServiceId, (int?)SiNo.NO, Globals.ClientSession.GetAsList());
+                btnFilter_Click(sender, e);
+            }
         }           
 
     }

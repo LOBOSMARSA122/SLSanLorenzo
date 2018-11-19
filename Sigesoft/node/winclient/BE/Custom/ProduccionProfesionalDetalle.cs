@@ -17,5 +17,6 @@ namespace Sigesoft.Node.WinClient.BE
         public string EmpresaCliente { get; set; }
         public string EmpresaTrabajo { get; set; }
         public string CostoProtocolo { get; set; }
+        public string EstoType { get; set; }
     }
 }

@@ -47,6 +47,10 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
 
                 cboHabitación.SelectedValue = _hospitalizacionHabitaciónDto.i_HabitacionId.ToString();
                 dtpFechaInicio.Value = _hospitalizacionHabitaciónDto.d_StartDate.Value;
+                if (_hospitalizacionHabitaciónDto.i_ConCargoA == (int)CargoHospitalizacion.Paciente)
+                    rbPaciente.Checked = true;
+                else
+                    rbMedicoTratante.Checked = true;
                 if (_hospitalizacionHabitaciónDto.d_EndDate != null)
                 {
                     dtpFechaFin.Value = _hospitalizacionHabitaciónDto.d_EndDate.Value;
@@ -71,7 +75,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 _hospitalizacionHabitaciónDto.i_HabitacionId = int.Parse(cboHabitación.SelectedValue.ToString());
                 _hospitalizacionHabitaciónDto.d_StartDate = dtpFechaInicio.Value;
                 _hospitalizacionHabitaciónDto.d_EndDate = (DateTime?) (dtpFechaFin.Checked == false ?  (ValueType) null : dtpFechaFin.Value);
-
+                _hospitalizacionHabitaciónDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante : (int)CargoHospitalizacion.Paciente;
+          
                 decimal d;
                 _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null; 
 
@@ -95,7 +100,8 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
                 _hospitalizacionHabitaciónDto.i_HabitacionId = int.Parse(cboHabitación.SelectedValue.ToString());
                 _hospitalizacionHabitaciónDto.d_StartDate = dtpFechaInicio.Value;
                 _hospitalizacionHabitaciónDto.d_EndDate = dtpFechaFin.Value;
-
+                _hospitalizacionHabitaciónDto.i_ConCargoA = rbMedicoTratante.Checked ? (int)CargoHospitalizacion.MedicoTratante : (int)CargoHospitalizacion.Paciente;
+          
                 decimal d;
                 _hospitalizacionHabitaciónDto.d_Precio = txtPrecio.Text != string.Empty ? decimal.TryParse(txtPrecio.Text, out d) ? d : 0 : (decimal?)null; 
 

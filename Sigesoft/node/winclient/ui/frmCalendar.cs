@@ -28,10 +28,12 @@ namespace Sigesoft.Node.WinClient.UI
     {
         string strFilterExpression;
         string _PacientId;
+        List<string> _componentIds;
         private string _ProtocolId;
         List<string> _ListaCalendar;
         string _v_OrganizationLocationProtocol;
-
+        List<KeyValueDTO> _componentListTemp = new List<KeyValueDTO>();
+      
         string _v_CustomerOrganizationId;
         string _v_CustomerLocationId;
 
@@ -52,10 +54,20 @@ namespace Sigesoft.Node.WinClient.UI
         private bool _sendEmailEnabled;
         List<string> ListaComponentes = new List<string>();
 
+        private string _NroHospitalizacion;
+        private string _dni;
         public frmCalendar()
         {
-            InitializeComponent();
+            InitializeComponent();          
         }
+
+        public frmCalendar(string NroHospitalizacion, string dni)
+        {
+            InitializeComponent();
+            _NroHospitalizacion = NroHospitalizacion;
+            _dni = dni;
+        }
+
         private void SearchControlAndSetEvents(Control ctrlContainer)
         {
             foreach (Control ctrl in ctrlContainer.Controls)
@@ -104,15 +116,24 @@ namespace Sigesoft.Node.WinClient.UI
             c.CellClickAction = CellClickAction.Edit;
 
             _customizedToolTip = new Sigesoft.Node.WinClient.UI.Utils.CustomizedToolTip(ugComponentes);
+            ddlConsultorio.SelectedValueChanged -= ddlConsultorio_SelectedValueChanged;
 
             OperationResult objOperationResult = new OperationResult();
 
-            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult,Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
-            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.All);
+            Utils.LoadDropDownList(ddlServiceTypeId, "Value1", "Id", BLL.Utils.GetServiceType(ref objOperationResult,Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
+            Utils.LoadDropDownList(ddlMasterServiceId, "Value1", "Id", BLL.Utils.GetMasterService(ref objOperationResult, -1, Globals.ClientSession.i_CurrentExecutionNodeId), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlVipId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 111, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlNewContinuationId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 121, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlLineStatusId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 120, null), DropDownListAction.All);
             Utils.LoadDropDownList(ddlCalendarStatusId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 122, null), DropDownListAction.All);
+
+            var componentProfile = _objServiceBL.GetRoleNodeComponentProfileByRoleNodeId(Globals.ClientSession.i_CurrentExecutionNodeId, Globals.ClientSession.i_RoleId.Value);           
+            _componentListTemp = BLL.Utils.GetAllComponents(ref objOperationResult);
+            var xxx = _componentListTemp.FindAll(p => p.Value4 != -1);
+            List<KeyValueDTO> groupComponentList = xxx.GroupBy(x => x.Value4).Select(group => group.First()).ToList();
+            groupComponentList.AddRange(_componentListTemp.ToList().FindAll(p => p.Value4 == -1));           
+            var results = groupComponentList.FindAll(f => componentProfile.Any(t => t.v_ComponentId == f.Value2));
+            Utils.LoadDropDownList(ddlConsultorio, "Value1", "Id", results, DropDownListAction.Select);
             int nodeId = int.Parse(Common.Utils.GetApplicationConfigValue("NodeId"));
             var dataListOrganization1 = BLL.Utils.GetJoinOrganizationAndLocation(ref objOperationResult, nodeId);
             Utils.LoadDropDownList(cbCustomerOrganization,
@@ -124,14 +145,55 @@ namespace Sigesoft.Node.WinClient.UI
             dptDateTimeEnd.CustomFormat = "dd/MM/yyyy";
             // Establecer el filtro inicial para los datos
             strFilterExpression = null;
+            ddlConsultorio.SelectedValueChanged += ddlConsultorio_SelectedValueChanged;
+
+            ddlServiceTypeId.SelectedValue= "1";
+            ddlMasterServiceId.SelectedValue= "2";
             btnFilter_Click(sender, e);
         }
 
+        private void ddlConsultorio_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (ddlConsultorio.SelectedIndex == 0)
+            {
+                _componentIds = null;
+                return;
+            }
+
+            _componentIds = new List<string>();
+            var eee = (KeyValueDTO)ddlConsultorio.SelectedItem;
+
+            if (eee.Value4.ToString() == "-1")
+            {
+                _componentIds.Add(eee.Value2);
+            }
+            else
+            {
+                _componentIds = _componentListTemp.FindAll(p => p.Value4 == eee.Value4)
+
+                                                .Select(s => s.Value2)
+                                                .OrderBy(p => p).ToList();
+            }
+        }
+
+
         private void btnFilter_Click(object sender, EventArgs e)
         {
+            if (ddlServiceTypeId.SelectedValue.ToString() == "-1")
+            {
+                MessageBox.Show("Por favor seleccionar Tipo de Servicio", "Validación!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+
+            if (ddlMasterServiceId.SelectedValue.ToString() == "-1")
+            {
+                MessageBox.Show("Por favor seleccionar Servicio", "Validación!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             // Get the filters from the UI
             List<string> Filters = new List<string>();
-            if (ddlServiceTypeId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceTypeId==" + ddlServiceTypeId.SelectedValue);
+            //if (ddlServiceTypeId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceTypeId==" + ddlServiceTypeId.SelectedValue);
             if (ddlMasterServiceId.SelectedValue.ToString() != "-1") Filters.Add("i_ServiceId==" + ddlMasterServiceId.SelectedValue);
             if (!string.IsNullOrEmpty(txtPacient.Text)) Filters.Add("v_Pacient.Contains(\"" + txtPacient.Text.Trim() + "\")");
             if (!string.IsNullOrEmpty(txtNroDocument.Text)) Filters.Add("v_NumberDocument==" + "\"" + txtNroDocument.Text.Trim() + "\"");
@@ -199,8 +261,8 @@ namespace Sigesoft.Node.WinClient.UI
             OperationResult objOperationResult = new OperationResult();
             DateTime? pdatBeginDate = dtpDateTimeStar.Value.Date;
             DateTime? pdatEndDate = dptDateTimeEnd.Value.Date.AddDays(1);
-            
-             _objData = _objCalendarBL.GetCalendarsPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate);
+
+            _objData = _objCalendarBL.GetCalendarsPagedAndFiltered(ref objOperationResult, pintPageIndex, pintPageSize, pstrSortExpression, pstrFilterExpression, pdatBeginDate, pdatEndDate, _componentIds);
 
             if (objOperationResult.Success != 1)
             {
@@ -212,7 +274,7 @@ namespace Sigesoft.Node.WinClient.UI
         
         private void btnPerson_Click(object sender, EventArgs e)
         {
-            frmSchedulePerson frm = new frmSchedulePerson("","New","");
+            frmSchedulePerson frm = new frmSchedulePerson("","New","", _NroHospitalizacion, _dni);
             frm.ShowDialog();
             if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
@@ -380,7 +442,7 @@ namespace Sigesoft.Node.WinClient.UI
 
               if (Result == System.Windows.Forms.DialogResult.Yes)
               {
-                  frmSchedulePerson frm = new frmSchedulePerson(strCalendarId, "Reschedule", strProtocolId);
+                  frmSchedulePerson frm = new frmSchedulePerson(strCalendarId, "Reschedule", strProtocolId,"","");
                   frm.ShowDialog();
                   if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
                   {
@@ -1248,7 +1310,7 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnAgregarExamen_Click(object sender, EventArgs e)
         {
             ServiceBL oServiceBL = new ServiceBL();
-            var frm = new frmAddExam(ListaComponentes,"",_ProtocolId,"");
+            var frm = new frmAddExam(ListaComponentes,"",_ProtocolId,"","","");
             frm._serviceId = _serviceId;
             frm.ShowDialog();
 

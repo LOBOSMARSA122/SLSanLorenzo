@@ -26,6 +26,7 @@ namespace Sigesoft.Node.WinClient.BE
       public string v_WorkingLocationId { get; set; }
       public string v_OrganizationInvoiceId { get; set; }
       public int i_EsoTypeId { get; set; }
+      public string EstoType { get; set; }
 
 
       public int i_ApprovedUpdateUserId { get; set; }
@@ -44,6 +45,8 @@ namespace Sigesoft.Node.WinClient.BE
       public string EmpresaClienteCabecera { get; set; }
 
       public string NombreComponente { get; set; }
+      public double PrecioUnitario { get; set; }
+      public double Pagar { get; set; }
 
       public List<ReportProduccionProfesional> ProduccionProfesionalDetalle { get; set; }
 

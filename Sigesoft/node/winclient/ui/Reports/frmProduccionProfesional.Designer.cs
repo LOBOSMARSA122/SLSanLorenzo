@@ -34,6 +34,8 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn13 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Usuario");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn12 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Consultorio");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn2 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Total");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn9 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("PrecioUnitario");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn10 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Pagar");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn14 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("ProduccionProfesionalDetalle");
             Infragistics.Win.UltraWinGrid.UltraGridBand ultraGridBand2 = new Infragistics.Win.UltraWinGrid.UltraGridBand("ProduccionProfesionalDetalle", 0);
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn15 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("NroAtencion");
@@ -46,6 +48,7 @@
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn5 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("Titular");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn6 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EmpresaCliente");
             Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn7 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EmpresaTrabajo");
+            Infragistics.Win.UltraWinGrid.UltraGridColumn ultraGridColumn8 = new Infragistics.Win.UltraWinGrid.UltraGridColumn("EstoType");
             Infragistics.Win.UltraWinGrid.SummarySettings summarySettings1 = new Infragistics.Win.UltraWinGrid.SummarySettings("", Infragistics.Win.UltraWinGrid.SummaryType.Sum, null, "CostoProtocolo", 4, true, "ProduccionProfesionalDetalle", 1, Infragistics.Win.UltraWinGrid.SummaryPosition.Right, "CostoProtocolo", 4, true);
             Infragistics.Win.Appearance appearance2 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance3 = new Infragistics.Win.Appearance();
@@ -55,6 +58,13 @@
             Infragistics.Win.Appearance appearance7 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cbEsoType = new System.Windows.Forms.ComboBox();
+            this.cbOrganizationInvoice = new System.Windows.Forms.ComboBox();
+            this.cbIntermediaryOrganization = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbOrganization = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.btnFilter = new System.Windows.Forms.Button();
             this.ddlComponentId = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -74,13 +84,7 @@
             this.uvReporte = new Infragistics.Win.Misc.UltraValidator(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
-            this.cbIntermediaryOrganization = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbOrganization = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cbOrganizationInvoice = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.cbEsoType = new System.Windows.Forms.ComboBox();
+            this.txtInfAdicional = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
@@ -91,6 +95,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtInfAdicional);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.cbEsoType);
             this.groupBox1.Controls.Add(this.cbOrganizationInvoice);
@@ -120,6 +125,89 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtro";
             // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(589, 73);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 23);
+            this.label6.TabIndex = 112;
+            this.label6.Text = "Tipo Eso";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cbEsoType
+            // 
+            this.cbEsoType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbEsoType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbEsoType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbEsoType.FormattingEnabled = true;
+            this.cbEsoType.Location = new System.Drawing.Point(653, 74);
+            this.cbEsoType.Name = "cbEsoType";
+            this.cbEsoType.Size = new System.Drawing.Size(116, 21);
+            this.cbEsoType.TabIndex = 113;
+            // 
+            // cbOrganizationInvoice
+            // 
+            this.cbOrganizationInvoice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbOrganizationInvoice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbOrganizationInvoice.DropDownWidth = 500;
+            this.cbOrganizationInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbOrganizationInvoice.FormattingEnabled = true;
+            this.cbOrganizationInvoice.Location = new System.Drawing.Point(96, 43);
+            this.cbOrganizationInvoice.Name = "cbOrganizationInvoice";
+            this.cbOrganizationInvoice.Size = new System.Drawing.Size(437, 21);
+            this.cbOrganizationInvoice.TabIndex = 111;
+            // 
+            // cbIntermediaryOrganization
+            // 
+            this.cbIntermediaryOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbIntermediaryOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbIntermediaryOrganization.DropDownWidth = 500;
+            this.cbIntermediaryOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbIntermediaryOrganization.FormattingEnabled = true;
+            this.cbIntermediaryOrganization.Location = new System.Drawing.Point(96, 74);
+            this.cbIntermediaryOrganization.Name = "cbIntermediaryOrganization";
+            this.cbIntermediaryOrganization.Size = new System.Drawing.Size(437, 21);
+            this.cbIntermediaryOrganization.TabIndex = 110;
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(11, 73);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 21);
+            this.label7.TabIndex = 109;
+            this.label7.Text = "Emp. de Trabajo";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cbOrganization
+            // 
+            this.cbOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbOrganization.DropDownWidth = 500;
+            this.cbOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbOrganization.FormattingEnabled = true;
+            this.cbOrganization.Location = new System.Drawing.Point(653, 43);
+            this.cbOrganization.Name = "cbOrganization";
+            this.cbOrganization.Size = new System.Drawing.Size(383, 21);
+            this.cbOrganization.TabIndex = 108;
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(550, 44);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(98, 27);
+            this.label11.TabIndex = 107;
+            this.label11.Text = "Emp. Empleadora (Contratista)";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // btnFilter
             // 
             this.btnFilter.BackColor = System.Drawing.SystemColors.Control;
@@ -146,7 +234,7 @@
             this.ddlComponentId.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ddlComponentId.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlComponentId.FormattingEnabled = true;
-            this.ddlComponentId.Location = new System.Drawing.Point(919, 19);
+            this.ddlComponentId.Location = new System.Drawing.Point(840, 75);
             this.ddlComponentId.Margin = new System.Windows.Forms.Padding(2);
             this.ddlComponentId.Name = "ddlComponentId";
             this.ddlComponentId.Size = new System.Drawing.Size(117, 21);
@@ -158,7 +246,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(856, 22);
+            this.label4.Location = new System.Drawing.Point(777, 78);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 13);
@@ -341,11 +429,15 @@
             ultraGridColumn12.Header.VisiblePosition = 0;
             ultraGridColumn12.Width = 156;
             ultraGridColumn2.Header.VisiblePosition = 2;
-            ultraGridColumn14.Header.VisiblePosition = 3;
+            ultraGridColumn9.Header.VisiblePosition = 3;
+            ultraGridColumn10.Header.VisiblePosition = 4;
+            ultraGridColumn14.Header.VisiblePosition = 5;
             ultraGridBand1.Columns.AddRange(new object[] {
             ultraGridColumn13,
             ultraGridColumn12,
             ultraGridColumn2,
+            ultraGridColumn9,
+            ultraGridColumn10,
             ultraGridColumn14});
             ultraGridColumn15.Header.Caption = "Nro. Atención";
             ultraGridColumn15.Header.VisiblePosition = 0;
@@ -362,6 +454,7 @@
             ultraGridColumn6.Header.VisiblePosition = 7;
             ultraGridColumn7.Header.Caption = "Empresa Trabajo";
             ultraGridColumn7.Header.VisiblePosition = 8;
+            ultraGridColumn8.Header.VisiblePosition = 10;
             ultraGridBand2.Columns.AddRange(new object[] {
             ultraGridColumn15,
             ultraGridColumn16,
@@ -372,7 +465,8 @@
             ultraGridColumn4,
             ultraGridColumn5,
             ultraGridColumn6,
-            ultraGridColumn7});
+            ultraGridColumn7,
+            ultraGridColumn8});
             summarySettings1.DisplayFormat = "Total = {0}";
             summarySettings1.GroupBySummaryValueAppearance = appearance2;
             ultraGridBand2.Summaries.AddRange(new Infragistics.Win.UltraWinGrid.SummarySettings[] {
@@ -434,88 +528,14 @@
             this.grdData.TabIndex = 44;
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grdData_AfterSelectChange);
             // 
-            // cbIntermediaryOrganization
+            // txtInfAdicional
             // 
-            this.cbIntermediaryOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbIntermediaryOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbIntermediaryOrganization.DropDownWidth = 500;
-            this.cbIntermediaryOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbIntermediaryOrganization.FormattingEnabled = true;
-            this.cbIntermediaryOrganization.Location = new System.Drawing.Point(96, 74);
-            this.cbIntermediaryOrganization.Name = "cbIntermediaryOrganization";
-            this.cbIntermediaryOrganization.Size = new System.Drawing.Size(437, 21);
-            this.cbIntermediaryOrganization.TabIndex = 110;
-            // 
-            // label7
-            // 
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(11, 73);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 21);
-            this.label7.TabIndex = 109;
-            this.label7.Text = "Emp. de Trabajo";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbOrganization
-            // 
-            this.cbOrganization.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbOrganization.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbOrganization.DropDownWidth = 500;
-            this.cbOrganization.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbOrganization.FormattingEnabled = true;
-            this.cbOrganization.Location = new System.Drawing.Point(653, 43);
-            this.cbOrganization.Name = "cbOrganization";
-            this.cbOrganization.Size = new System.Drawing.Size(383, 21);
-            this.cbOrganization.TabIndex = 108;
-            // 
-            // label11
-            // 
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(550, 44);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 27);
-            this.label11.TabIndex = 107;
-            this.label11.Text = "Emp. Empleadora (Contratista)";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbOrganizationInvoice
-            // 
-            this.cbOrganizationInvoice.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbOrganizationInvoice.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbOrganizationInvoice.DropDownWidth = 500;
-            this.cbOrganizationInvoice.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbOrganizationInvoice.FormattingEnabled = true;
-            this.cbOrganizationInvoice.Location = new System.Drawing.Point(96, 43);
-            this.cbOrganizationInvoice.Name = "cbOrganizationInvoice";
-            this.cbOrganizationInvoice.Size = new System.Drawing.Size(437, 21);
-            this.cbOrganizationInvoice.TabIndex = 111;
-            // 
-            // label6
-            // 
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(589, 73);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 23);
-            this.label6.TabIndex = 112;
-            this.label6.Text = "Tipo Eso";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // cbEsoType
-            // 
-            this.cbEsoType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.cbEsoType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.cbEsoType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbEsoType.FormattingEnabled = true;
-            this.cbEsoType.Location = new System.Drawing.Point(653, 74);
-            this.cbEsoType.Name = "cbEsoType";
-            this.cbEsoType.Size = new System.Drawing.Size(174, 21);
-            this.cbEsoType.TabIndex = 113;
+            this.txtInfAdicional.Enabled = false;
+            this.txtInfAdicional.Location = new System.Drawing.Point(977, 17);
+            this.txtInfAdicional.Name = "txtInfAdicional";
+            this.txtInfAdicional.Size = new System.Drawing.Size(58, 20);
+            this.txtInfAdicional.TabIndex = 114;
+            this.txtInfAdicional.Text = "0";
             // 
             // frmProduccionProfesional
             // 
@@ -569,6 +589,7 @@
         private System.Windows.Forms.ComboBox cbOrganizationInvoice;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbEsoType;
+        private System.Windows.Forms.TextBox txtInfAdicional;
 
     }
 }

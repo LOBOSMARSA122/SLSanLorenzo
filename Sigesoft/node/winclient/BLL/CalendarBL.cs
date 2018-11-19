@@ -16,10 +16,8 @@ namespace Sigesoft.Node.WinClient.BLL
 
        #region "Calendar"
 
-       public List<CalendarList> GetCalendarsPagedAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate)
+       public List<CalendarList> GetCalendarsPagedAndFiltered(ref OperationResult pobjOperationResult, int? pintPageIndex, int? pintResultsPerPage, string pstrSortExpression, string pstrFilterExpression, DateTime? pdatBeginDate, DateTime? pdatEndDate, List<string> componentIds)
        {
-       
-
            try
            {
                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
@@ -27,6 +25,7 @@ namespace Sigesoft.Node.WinClient.BLL
                            join B in dbContext.person on A.v_PersonId equals B.v_PersonId
                            join C in dbContext.systemparameter on new { a = A.i_LineStatusId.Value, b = 120 } equals new { a = C.i_ParameterId, b = C.i_GroupId }
                            join D in dbContext.service on A.v_ServiceId equals D.v_ServiceId
+                           join D1 in dbContext.servicecomponent on A.v_ServiceId equals D1.v_ServiceId
                            join E in dbContext.systemparameter on new { a = A.i_ServiceTypeId.Value, b = 119 } equals new { a = E.i_ParameterId, b = E.i_GroupId }
                            join F in dbContext.systemparameter on new { a = A.i_ServiceId.Value, b = 119 } equals new { a = F.i_ParameterId, b = F.i_GroupId }
                            join G in dbContext.systemparameter on new { a = A.i_NewContinuationId.Value, b = 121 } equals new { a = G.i_ParameterId, b = G.i_GroupId }
@@ -99,8 +98,9 @@ namespace Sigesoft.Node.WinClient.BLL
                            from J2 in J2_join.DefaultIfEmpty()
 
                            join F1 in dbContext.groupoccupation on J.v_GroupOccupationId equals F1.v_GroupOccupationId
-                   
-                           where A.i_IsDeleted == 0
+
+                           where A.i_IsDeleted == 0 
+                           //&& componentIds.Contains(D1.v_ComponentId)
                            //let a = new ServiceBL().GetRestrictionByServiceId(A.v_ServiceId)
                            select new CalendarList
                            {
@@ -165,7 +165,8 @@ namespace Sigesoft.Node.WinClient.BLL
                                GESO = F1.v_Name,
                                Puesto = B.v_CurrentOccupation,
                                CompMinera = oc.v_Name,
-                               Tercero = ow.v_Name
+                               Tercero = ow.v_Name,
+                               v_ComponentId = D1.v_ComponentId
                            };
 
                if (!string.IsNullOrEmpty(pstrFilterExpression))
@@ -191,6 +192,11 @@ namespace Sigesoft.Node.WinClient.BLL
                }
 
                List<CalendarList> objData = query.ToList();
+               if (componentIds != null )
+               {
+                   objData = objData.FindAll(p => componentIds.Contains(p.v_ComponentId));
+               }
+               
 
                var q = (from a in objData
                         select new CalendarList
@@ -262,7 +268,7 @@ namespace Sigesoft.Node.WinClient.BLL
                             Tercero = a.Tercero,
                         }).ToList();
 
-
+               q = q.GroupBy(g => g.v_ServiceId).Select(s => s.First()).ToList();
                pobjOperationResult.Success = 1;
                return q;
 

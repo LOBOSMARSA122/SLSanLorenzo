@@ -203,11 +203,6 @@ namespace Sigesoft.Node.Contasol.Integration
             {
                 if (cnx.State != ConnectionState.Open) cnx.Open();
 
-                //var query = "select cd.v_DocumentoRef , cd.v_IdCobranzaDetalle, cd.t_InsertaFecha " +
-                //   " from venta vt " +
-                //   " inner join cobranzadetalle cd on cd.v_IdVenta = vt.v_IdVenta " +
-                //   " where vt.v_SerieDocumento='" + serie + "' and vt.v_CorrelativoDocumento='" + correlativo + "'";
-
                 var query = "select " +
                             " v.t_InsertaFecha AS FechaCreacion, " +
                             " v.t_FechaVencimiento AS FechaVencimiento, " +

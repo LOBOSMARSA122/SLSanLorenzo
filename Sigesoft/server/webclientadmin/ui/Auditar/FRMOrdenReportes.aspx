@@ -20,11 +20,26 @@
                 </Items>
             </x:Toolbar>
         </Toolbars>
-            <Items>
-               <x:Panel ID="Panel2" Layout="Absolute" runat="server" ShowBorder="false" ShowHeader="false">
-                    <Items>
-                        <x:CheckBoxList ID="chkregistros" runat="server">
-                        </x:CheckBoxList>
+            <Items>               
+                <x:Panel ID="Panel3" EnableBackgroundColor="true" runat="server" BodyPadding="5px" ShowBorder="False" ShowHeader="False" AutoScroll="true">
+                    <Items>   
+                        <x:Form ID="Form2" runat="server"  ShowBorder="False" ShowHeader="False" LabelWidth="1px" LabelAlign="Left">
+                            <Rows>
+                                <x:FormRow ID="FormRow1" ColumnWidths="20px 200px" runat="server">
+                                    <Items>
+                                        <x:CheckBox ID="chktodos" runat="server" OnCheckedChanged="chktodos_CheckedChanged" AutoPostBack="true"></x:CheckBox>
+                                        <x:Label ID="lbltodos"  Text="Seleccionar Todos" runat="server" />
+                                    </Items>                                     
+                            </x:FormRow>
+                            </Rows>                           
+                        </x:Form>                                                                                
+                        <x:GroupPanel  runat="server" Title="Seleccionar Reportes" ID="GroupPanel1" EnableBackgroundColor="True" AutoWidth="true">
+                            <Items>
+                                <x:CheckBoxList ID="chkregistros" Label="" ShowLabel="false" ColumnNumber="1" ColumnVertical="true" 
+                                    runat="server" OnSelectedIndexChanged="chkregistros_SelectedIndexChanged" >
+                                </x:CheckBoxList>
+                            </Items>
+                        </x:GroupPanel>
                     </Items>
                 </x:Panel>
             </Items>
