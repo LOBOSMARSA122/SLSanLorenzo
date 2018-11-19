@@ -167,7 +167,7 @@
      <x:Window ID="Window3" IconUrl="~/images/16/11.png" runat="server" Popup="false"
         IsModal="true" Target="Parent" EnableMaximize="false" EnableResize="false"
         Title="Reportes" EnableConfirmOnClose="true" CloseAction="HidePostBack"
-        EnableIFrame="true" IFrameUrl="about:blank" Height="500px" Width="500px"  OnClose="winEdit3_Close">
+        EnableIFrame="true" IFrameUrl="about:blank" Height="400px" Width="500px"  OnClose="winEdit3_Close">
     </x:Window>
     </form>
 </body>

@@ -1,4 +1,5 @@
-﻿using NetPdf;
+﻿using FineUI;
+using NetPdf;
 using Sigesoft.Common;
 using Sigesoft.Server.WebClientAdmin.BE;
 using Sigesoft.Server.WebClientAdmin.BLL;
@@ -8,7 +9,7 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+//using System.Web.UI.WebControls;
 
 namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
 {
@@ -34,6 +35,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
         
         protected void Page_Load(object sender, EventArgs e)
         {
+            lbltodos.Text = "Seleccionar Todos";
             List<ServiceComponentList> serviceComponents = new List<ServiceComponentList>();
             OrganizationBL oOrganizationBL = new OrganizationBL();
             OperationResult objOperationResult = new OperationResult();
@@ -149,6 +151,27 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar
         protected void chkregistros_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        protected void chktodos_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox chk = (CheckBox)sender;
+            if (chk.Checked == true)
+            {
+                lbltodos.Text = "Deseleccionar Todos";
+                for(int i = 0; i < chkregistros.Items.Count; i++){
+                    chkregistros.Items[i].Selected = true;
+                }
+            }
+            else
+            {
+                lbltodos.Text = "Seleccionar Todos";
+                for (int i = 0; i < chkregistros.Items.Count; i++)
+                {
+                    chkregistros.Items[i].Selected = false;
+                }
+            }    
+              
         }
     }
 }
