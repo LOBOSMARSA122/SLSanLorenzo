@@ -76,6 +76,42 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Auditar {
         protected global::FineUI.Panel Panel3;
         
         /// <summary>
+        /// Form2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Form Form2;
+        
+        /// <summary>
+        /// FormRow1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.FormRow FormRow1;
+        
+        /// <summary>
+        /// chktodos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.CheckBox chktodos;
+        
+        /// <summary>
+        /// lbltodos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label lbltodos;
+        
+        /// <summary>
         /// GroupPanel1 control.
         /// </summary>
         /// <remarks>
