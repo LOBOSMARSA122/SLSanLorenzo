@@ -231,8 +231,9 @@ namespace NetPdf
                 totalFinal += (float)sumatipoExm_1;
             }
             totalFinal_1 = totalFinal;
-            float IGV = totalFinal_1 * (float)0.18;
-            float subTotalFinal = totalFinal_1 - IGV;
+            float subTotalFinal = totalFinal_1 / (float)1.18;
+            float IGV = subTotalFinal * (float)0.18;
+            
 
             cell = new PdfPCell(new Phrase("", fontColumnValueBold)) { Colspan = 3, HorizontalAlignment = PdfPCell.ALIGN_CENTER, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.WHITE, BorderColorTop = BaseColor.BLACK, MinimumHeight = 15f };
             cells.Add(cell);
