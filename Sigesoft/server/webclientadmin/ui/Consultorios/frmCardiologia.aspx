@@ -285,225 +285,214 @@
                                 <x:Toolbar ID="Toolbar1" runat="server">
 
                                     <Items>
-                                        <x:Button ID="btnGrabaYanacocha" Text="Grabar Electrocardiograma" Icon="SystemSave" runat="server" OnClick="btnGrabaYanacocha_OnClick" AjaxLoadingType="Mask"></x:Button>                                   
+                                        <x:Button ID="btnGrabarElectroCardiograma" Text="Grabar Electrocardiograma" Icon="SystemSave" runat="server" OnClick="btnGrabarElectrocardiograma_Click" AjaxLoadingType="Mask"></x:Button>                                   
                                           <x:FileUpload runat="server" ID="FileUpload1" EmptyText="Por favor seleccione un archivo" Width="300" Height="25"
                                         Label="Seleccionar Excel" ButtonIcon="SystemSearch" OnFileSelected="fileDoc_FileSelected" AutoPostBack="true" ButtonText="Subir Adjunto" Readonly="False">
                                         </x:FileUpload>
                                          <x:Button ID="btnDescarga_Yana" runat="server" Text="Descargar Adjuntos" Icon="ArrowDown"></x:Button>
                                         <x:Label ID="Label20" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="Label21" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
-                                        <x:DropDownList ID="ddlUsuarioGrabarYanacocha" runat="server"></x:DropDownList>
+                                        <x:DropDownList ID="ddlUsuarioGrabar" runat="server"></x:DropDownList>
                                         <x:Button ID="Button3" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
                                     </Items>
                                 </x:Toolbar>
                                 </Toolbars>
                              <Items>
-                               <x:Panel ID="panel7" Title="INTERPRETACIÓN DEL ELECTROCARDIOGRAMA" EnableBackgroundColor="true" Height="80px" runat="server"
+                               <x:Panel ID="panel3" Title="ELECTROCARDIOGRAMA" EnableBackgroundColor="true" Height="320px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
                                     <Items>
-                                        <x:Form ID="Form4" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
-                                            <Rows>
-                                                 <x:FormRow ID="FormRow6" ColumnWidths="180px 60px  180px 180px  180px 60px  " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label201" runat="server" Text="FRECUENCIA CARDIACA:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtYanacocha_Frecuencia" runat="server" Text="" ShowLabel="false" ></x:TextBox>  
+                                        <x:GroupPanel runat="server" Title="INFORME DESCRIPTIVO" ID="GroupPanel7" AutoWidth="true" BoxFlex="1" Height="110">
+                                            <Items>
+                                                <x:Form ID="Form4" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow1" ColumnWidths="160px 60px  160px 110px  160px 60px" runat="server" >
+                                                        <Items>
+                                                            <x:Label ID="label201" runat="server" Text="FRECUENCIA CARDIACA:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtECG_Frecuencia" runat="server" Text="" ShowLabel="false" ></x:TextBox>  
 
-                                                         <x:Label ID="label211" runat="server" Text="RITMO CARDIACO:" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="ddlYanacocha_Ritmo" runat="server" Text="" ShowLabel="false" Width="180"></x:DropDownList>  
+                                                            <x:Label ID="label211" runat="server" Text="RITMO CARDIACO:" ShowLabel="false"></x:Label>
+                                                            <x:DropDownList ID="ddlECG_Ritmo" runat="server" Text="" ShowLabel="false" Width="100px"></x:DropDownList>  
 
-                                                         <x:Label ID="label221" runat="server" Text="INTERVALO PR:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtYanacocha_PR" runat="server" Text="" ShowLabel="false" ></x:TextBox> 
-                                                    </Items>
-                                                </x:FormRow>
-                                                 <x:FormRow ID="FormRow7" ColumnWidths="200px 80px  200px 80px  200px 80px  " runat="server" >
-                                                    <Items>
-                                                       <x:Label ID="label231" runat="server" Text="INTERVALO QT:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtYanacocha_QT" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+                                                            <x:Label ID="label221" runat="server" Text="INTERVALO PR:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtECG_PR" runat="server" Text="" ShowLabel="false" ></x:TextBox> 
+                                                    
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow3" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label5" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow4" ColumnWidths="160px 60px  160px 110px  160px 60px" runat="server" >
+                                                        <Items>
+                                                            <x:Label ID="label231" runat="server" Text="INTERVALO QT:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtECG_QT" runat="server" Text="" ShowLabel="false"></x:TextBox>  
 
-                                                         <x:Label ID="label241" runat="server" Text="EJE CARDIACO:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtYanacocha_Eje" runat="server" Text="" ShowLabel="false"></x:TextBox>  
+                                                            <x:Label ID="label241" runat="server" Text="EJE CARDIACO:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtECG_Eje" runat="server" Text="" Width="50" ShowLabel="false"></x:TextBox>  
 
-                                                         <x:Label ID="label251" runat="server" Text="SEGMENTO ST:" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtYanacocha_ST" runat="server" Text="" ShowLabel="false"></x:TextBox>                                                                                          
-                                                    </Items>
-                                                </x:FormRow>
-                                             </Rows>
-                                        </x:Form>
-                                    </Items>
-                                </x:Panel>
-                               <x:Panel ID="panel8" Title="OTRAS ALTERACIONES ELECTROCARDIOGRAFICAS" EnableBackgroundColor="true" Height="80px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
-                                    <Items>
-                                        <x:Form ID="Form5" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left" >
-                                            <Rows>
-                                                 <x:FormRow ID="FormRow8" ColumnWidths="100px 480px  " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label26" runat="server" Text="DESCRIPCION:" ShowLabel="false"></x:Label>
-                                                        <x:TextArea ID="txtYanacocha_OtrasAlter" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>
-                                                        <x:Label ID="label22" runat="server" Text="CONCLUSIONES:" ShowLabel="false"></x:Label>  
-                                                        <x:DropDownList ID="ddlYanacocha_Conclusiones" runat="server" ShowLabel="true" ></x:DropDownList>  
-                                                    </Items>
-                                                </x:FormRow>
-                                             </Rows>
-                                        </x:Form>
-                                    </Items>
-                                </x:Panel>
-                               <x:Panel ID="panel9" Title="HALLAZGOS" EnableBackgroundColor="true" Height="80px" runat="server" visible="false"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true" >
-                                    <Items>
-                                        <x:Form ID="Form6" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left" >
-                                            <Rows>
-                                                 <x:FormRow ID="FormRow9" ColumnWidths="100px 480px  " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label27" runat="server" Text="DESCRIPCION:" ShowLabel="false"></x:Label>
-                                                        <x:TextArea ID="txtYanacocha_Hallazgos" runat="server" Text="" Label="" ShowLabel="true" Height="50"></x:TextArea>  
-                                                    </Items>
-                                                </x:FormRow>
-                                             </Rows>
-                                        </x:Form>
+                                                            <x:Label ID="label251" runat="server" Text="SEGMENTO ST:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtECG_ST" runat="server" Text="" ShowLabel="false"></x:TextBox>          
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow12" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label1" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow13" ColumnWidths="160px 60px  " runat="server" >
+                                                        <Items>
+                                                            <x:Label ID="label2" runat="server" Text="INTERVALO QRS:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtECG_QRS" runat="server" Text="" ShowLabel="false"></x:TextBox>                                                                                                                                                               
+                                                        </Items>
+                                                    </x:FormRow>                          
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                        <x:GroupPanel runat="server" Title="OTRAS ALTERACIONES ELECTROCARDIOGRÁFICAS" ID="GroupPanel8" AutoWidth="true" BoxFlex="1" Height="90">
+                                            <Items>
+                                                <x:Form ID="Form5" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="100px" LabelAlign="Left" >
+                                                    <Rows>
+                                                         <x:FormRow ID="FormRow8" ColumnWidths="100px 300px 100px 310px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label26" runat="server" Text="DESCRIPCION:" ShowLabel="false"></x:Label>
+                                                                <x:TextArea ID="txtECG_OtrasAlter" runat="server" Text="" Label="" ShowLabel="false" Width="200" Height="60"></x:TextArea>
+                                                                <x:Label ID="label22" runat="server" Text="CONCLUSIONES:" ShowLabel="false"></x:Label>  
+                                                                <x:DropDownList ID="ddlECG_Conclusiones" runat="server" ShowLabel="false" Width="300px" ></x:DropDownList>  
+                                                            </Items>
+                                                        </x:FormRow>
+                                                     </Rows>
+                                                </x:Form>                                 
+                                            </Items>
+                                        </x:GroupPanel>
+                                        <x:GroupPanel runat="server" Title="CONCLUSIONES" ID="GroupPanel9" AutoWidth="true" BoxFlex="1" Height="50">
+                                            <Items>
+                                                <x:Form ID="Form13" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow6" ColumnWidths="100px 160px" runat="server" >
+                                                            <Items>
+                                                                <x:Label ID="label4" runat="server" Text="CONCLUSIONES:" ShowLabel="false"></x:Label>  
+                                                                <x:DropDownList ID="ddlECG_CONCLUSIONES_GEN" runat="server" ShowLabel="false" Width="150px" ></x:DropDownList>  
+                                                            </Items>
+                                                        </x:FormRow>
+                                                    </Rows>
+                                                </x:Form>                                         
+                                            </Items>
+                                        </x:GroupPanel>
+                                        
                                     </Items>
                                 </x:Panel>
                             </Items>
                         </x:Tab>
-                        <x:Tab ID="TabElectroYanacocha" BodyPadding="5px" Title="Electrocardiograma" runat="server">
+                        <x:Tab ID="TabApendiceEKG" BodyPadding="5px" Title="Apéndice N°5 - EKG" runat="server">
                             <Toolbars>
                                 <x:Toolbar ID="Toolbar4" runat="server">
                                     <Items>
-                                        <x:Button ID="btnGrabarElectrocardiograma" Text="Grabar Electrocardiograma" Icon="SystemSave" runat="server" OnClick="btnGrabarElectrocardiograma_Click" AjaxLoadingType="Mask"></x:Button>                                   
+                                        <x:Button ID="btnGrabarApendiceN5" Text="Grabar Apendice N°5 - EKG" Icon="SystemSave" runat="server" OnClick="btnGrabarApendiceN5_Click" AjaxLoadingType="Mask"></x:Button>                                   
                                           <x:FileUpload runat="server" ID="fileDoc" EmptyText="Por favor seleccione un archivo" Width="300" Height="25"
                                         Label="Seleccionar Excel" ButtonIcon="SystemSearch" OnFileSelected="fileDoc_FileSelected" AutoPostBack="true" ButtonText="Subir Adjunto" Readonly="False">
                                         </x:FileUpload>
                                          <x:Button ID="btnDescargar" runat="server" Text="Descargar Adjuntos" Icon="ArrowDown"></x:Button>
                                         <x:Label ID="Label746" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="llll" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
-                                        <x:DropDownList ID="ddlUsuarioGrabar" runat="server"></x:DropDownList>
+                                        <x:DropDownList ID="ddlUsuarioGrabarApendice" runat="server"></x:DropDownList>
                                         <x:Button ID="btnReporteCardio" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
-                            <Items>
-                                <x:Panel ID="panel1" Title="ANTECEDENTES" EnableBackgroundColor="true" Height="80px" runat="server"
+                            <Items> 
+                                <x:Panel ID="panel4" Title="INFORME DESCRIPTIVO" EnableBackgroundColor="true" Height="320px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
                                     <Items>
-                                        <x:Form ID="Form11" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
-                                            <Rows>
-                                                 <x:FormRow ID="FormRow22" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label30" runat="server" Text="DIABETES" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkDiabetes" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
+                                        <x:GroupPanel runat="server" Title="1.- INTERPRETACIÓN DEL ELECTROCARDIOGRAMA" ID="GroupPanel10000" AutoWidth="true" BoxFlex="1" Height="100">
+                                            <Items>
+                                                <x:Form ID="Form2" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow91" ColumnWidths="160px 60px  160px 110px  160px 60px" runat="server" >
+                                                        <Items>
+                                                            <x:Label ID="lblFC" runat="server" Text="FRECUENCIA CARDIACA:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtFRECUENCIA_PR_APENDICE_EKG" runat="server" Text="" ShowLabel="false" ></x:TextBox>  
 
-                                                         <x:Label ID="label1" runat="server" Text="TABAQUISMO" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkTabaco" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
+                                                            <x:Label ID="lblRC" runat="server" Text="RITMO CARDIACO:" ShowLabel="false"></x:Label>
+                                                            <x:DropDownList ID="ddlRITMO_APENDICE_EKG" runat="server" ShowLabel="false"  Width="100px"></x:DropDownList>
 
-                                                         <x:Label ID="label2" runat="server" Text="DISLIPIDEMIA" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="txtDisplidemia" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
+                                                            <x:Label ID="lblPR" runat="server" Text="INTERVALO PR:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtINTERVALO_PR_APENDICE_EKG" runat="server" Text="" ShowLabel="false" ></x:TextBox>                                                            
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow94" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label41" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow96" ColumnWidths="160px 60px  160px 110px  160px 60px" runat="server" >
+                                                        <Items>
+                                                            <x:Label ID="label6" runat="server" Text="INTERVALO QT:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtINTERVALO_QT_APENDICE_EKG" runat="server" Text="" ShowLabel="false" ></x:TextBox>  
 
-                                                         <x:Label ID="label3" runat="server" Text="INFARTO PREVIO" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="txtInfarto" runat="server" Text="" ShowLabel="false"></x:CheckBox>                                                                                          
-                                                    </Items>
-                                                </x:FormRow>
-                                                 <x:FormRow ID="FormRow1" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label4" runat="server" Text="HIPERTENSIÓN" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkHipertension" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
+                                                            <x:Label ID="label7" runat="server" Text="EJE CARDIACO:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtEJE_CARDIACO_APENDICE_EKG" runat="server" Text="" Width="50" ShowLabel="false" ></x:TextBox>  
 
-                                                         <x:Label ID="label5" runat="server" Text="ALCOHOLISMO" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkAlcoholismo" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
-
-                                                         <x:Label ID="label6" runat="server" Text="OBESIDAD" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkObesidad" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
-
-                                                         <x:Label ID="label7" runat="server" Text="ISQUEMIA PREVIA" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkIsquemia" runat="server" Text="" ShowLabel="false"></x:CheckBox>                                                                                          
-                                                    </Items>
-                                                </x:FormRow>
-                                                 <x:FormRow ID="FormRow2" ColumnWidths="150px 50px  150px 50px  150px 50px  150px 50px " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label8" runat="server" Text="ANEMIA" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkAnemia" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
-
-                                                         <x:Label ID="label9" runat="server" Text="USO DE DROGAS " ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkDrogas" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
-
-                                                         <x:Label ID="label10" runat="server" Text="ARRITMIAS" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkArritmias" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
-
-                                                         <x:Label ID="label11" runat="server" Text="TTO CARDIOVASC." ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkTto" runat="server" Text="" ShowLabel="false"></x:CheckBox>                                                                                          
-                                                    </Items>
-                                                </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
+                                                            <x:Label ID="label8" runat="server" Text="SEGMENTO ST:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtSEGMENTO_ST_APENDICE_EKG" runat="server" Text="" ShowLabel="false" ></x:TextBox>
+                                                                   
+                                                        </Items>
+                                                    </x:FormRow>                        
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                        <x:GroupPanel runat="server" Title="2.- OTRAS ALTERACIONES ELECTROCARDIOGRÁFICAS" ID="GroupPanel4" AutoWidth="true" BoxFlex="1" Height="90">
+                                            <Items>
+                                                <x:Form ID="Form11" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow11" ColumnWidths="160px 210px " runat="server">
+                                                            <Items>
+                                                                <x:Label ID="Label13" runat="server" Text="OTRAS ALTERACIONES" ShowLabel="false"></x:Label>
+                                                                <x:TextArea ID="txtOTRAS_ALTER_APENDICE_EKG" runat="server" Text="" ShowLabel="false" Width="200" Height="60"></x:TextArea>
+                                                            </Items>
+                                                        </x:FormRow>                            
+                                                    </Rows>
+                                                </x:Form>
+                                                
+                                            </Items>
+                                        </x:GroupPanel>
+                                        <x:GroupPanel runat="server" Title="3.- CONCLUSIONES" ID="GroupPanel5" AutoWidth="true" BoxFlex="1" Height="50">
+                                            <Items>
+                                                <x:Form ID="Form10" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow10" ColumnWidths="160px 310px " runat="server">
+                                                            <Items>
+                                                                <x:Label ID="Label14" runat="server" Text="CONCLUSIONES" ShowLabel="false"></x:Label>
+                                                                <x:DropDownList ID="ddlCONCLUSIONES_APENDICE_EKG" runat="server" ShowLabel="false" Width="300px"></x:DropDownList>
+                                                            </Items>
+                                                        </x:FormRow>                            
+                                                    </Rows>
+                                                </x:Form>
+                                                
+                                            </Items>
+                                        </x:GroupPanel>
+                                        
                                     </Items>
                                 </x:Panel>
-                                <x:Panel ID="panel3" Title="FRECUENCIA CARDIACA" EnableBackgroundColor="true" Height="40px" runat="server"
+                                <x:Panel ID="PanelPruebaEsfuerzo" Title="PRUEBA DE ESFUERZO" EnableBackgroundColor="true" Height="75px" runat="server"
                                     BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
                                     <Items>
-                                        <x:TextBox ID="txtFrecuenciaCardiaca" runat="server" ShowLabel="false"></x:TextBox>
-                                    </Items>
-                                </x:Panel>
-                                <x:Panel ID="panel4" Title="INFORME DESCRIPTIVO" EnableBackgroundColor="true" Height="60px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
-                                    <Items>
-                                        <x:Form ID="Form2" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
-                                            <Rows>
-                                                 <x:FormRow ID="FormRow3" ColumnWidths="150px 80px  150px 80px  150px 80px  " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label12" runat="server" Text="INTERVALO PR (seg)" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtIntervPR" runat="server" Text="" ShowLabel="false"></x:TextBox>  
-
-                                                         <x:Label ID="label13" runat="server" Text="INTERVALO QRS (seg)" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtInterQRS" runat="server" Text="" ShowLabel="false"></x:TextBox>  
-
-                                                         <x:Label ID="label14" runat="server" Text="INTERVALO QT (seg)" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtInterQT" runat="server" Text="" ShowLabel="false"></x:TextBox>  
-                                                                                                                                                                                                 
-                                                    </Items>
-                                                </x:FormRow>
-                                                  <x:FormRow ID="FormRow4" ColumnWidths="150px 80px  150px 80px  150px 160px  " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label15" runat="server" Text="SEGMENTO ST (seg)" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtEjeST" runat="server" Text="" ShowLabel="false"></x:TextBox>  
-
-                                                         <x:Label ID="label16" runat="server" Text="EJE QRS (seg)" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtEjeQRS" runat="server" Text="" ShowLabel="false"></x:TextBox>  
-
-                                                         <x:Label ID="label17" runat="server" Text="RITMO (seg)" ShowLabel="false"></x:Label>
-                                                        <x:DropDownList ID="ddlRitmo" runat="server" Text="" ShowLabel="false"></x:DropDownList>  
-                                                                                                                                                                                                 
-                                                    </Items>
-                                                </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                                    </Items>
-                                </x:Panel>
-                                <x:Panel ID="panel5" Title="CONCLUSIONES" EnableBackgroundColor="true" Height="40px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
-                                    <Items>
-                                        <x:DropDownList ID="ddlConclusiones" runat="server" ShowLabel="false" Width="960"></x:DropDownList>
-                                    </Items>
-                                </x:Panel>
-                                <x:Panel ID="panel6" Title="DESCRIPCIÓN" EnableBackgroundColor="true" Height="40px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
-                                    <Items>
-                                        <x:Form ID="Form3" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelWidth="120px" LabelAlign="Left" >
-                                            <Rows>
-                                                <x:FormRow ID="FormRow5" ColumnWidths="150px 50px  150px 600px  " runat="server" >
-                                                    <Items>
-                                                        <x:Label ID="label18" runat="server" Text="LECTURA NORMAL" ShowLabel="false"></x:Label>
-                                                        <x:CheckBox ID="chkLecturaNormal" runat="server" Text="" ShowLabel="false"></x:CheckBox>  
-
-                                                        <x:Label ID="label19" runat="server" Text="DESCRIPCIÓN" ShowLabel="false"></x:Label>
-                                                        <x:TextBox ID="txtDescripcionLectNormal" runat="server" Text="" ShowLabel="false" Width="600"></x:TextBox>                                                                                          
-                                                    </Items>
-                                                </x:FormRow>
-                                            </Rows>
-                                        </x:Form>
-                                    </Items>
-                                </x:Panel>
-                                <x:Panel ID="panel71" Title="SUBIR/DESCARGAR ARCHIVO" EnableBackgroundColor="true" Height="40px" runat="server"
-                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
-                                    <Items>
+                                        <x:GroupPanel runat="server" Title="PRUEBA DE ESFUERZO" ID="GroupPanel6" AutoWidth="true" BoxFlex="1" Height="50">
+                                            <Items>
+                                                <x:Form ID="Form3" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow5" ColumnWidths="160px 210px " runat="server">
+                                                            <Items>
+                                                                <x:Label ID="Label15" runat="server" Text="EXAMEN NORMAL" ShowLabel="false"></x:Label>
+                                                                <x:DropDownList ID="ddlEXAMEN_NORMAL" runat="server" ShowLabel="false" Width="200px"></x:DropDownList>
+                                                            </Items>
+                                                        </x:FormRow>                            
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>                                       
                                     </Items>
                                 </x:Panel>
                                 <x:Panel ID="Panel366" Title="AUDITORÍA" EnableBackgroundColor="true" Height="90px" runat="server"
@@ -541,7 +530,85 @@
 
                             </Items>
                         </x:Tab>
-                         
+                        <x:Tab ID="TabInformeElecCardio" BodyPadding="5px" Title="Inf. Electrocardio" runat="server">
+                            <Toolbars>
+                                <x:Toolbar ID="Toolbar2" runat="server">
+                                    <Items>
+                                        <x:Button ID="btnGuardarInfElecCardio" Text="Grabar Informe" Icon="SystemSave" runat="server" OnClick="btnGuardarInfElecCardio_Click" AjaxLoadingType="Mask"></x:Button>                                   
+                                          <x:FileUpload runat="server" ID="FileUpload2" EmptyText="Por favor seleccione un archivo" Width="300" Height="25"
+                                        Label="Seleccionar Excel" ButtonIcon="SystemSearch" OnFileSelected="fileDoc_FileSelected" AutoPostBack="true" ButtonText="Subir Adjunto" Readonly="False">
+                                        </x:FileUpload>
+                                         <x:Button ID="Button2" runat="server" Text="Descargar Adjuntos" Icon="ArrowDown"></x:Button>
+                                        <x:Label ID="Label3" runat="server" Text="....." ShowLabel="false"></x:Label>
+                                        <x:Label ID="Label9" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
+                                        <x:DropDownList ID="ddlUsuarioGrabarInfElecCardio" runat="server"></x:DropDownList>
+                                        <x:Button ID="Button4" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" ></x:Button>
+                                    </Items>
+                                </x:Toolbar>
+                            </Toolbars>
+                            <Items> 
+                                <x:Panel ID="panel1" Title="INFORME ELECTRO-CARDIO" EnableBackgroundColor="true" Height="270px" runat="server"
+                                    BodyPadding="5px" ShowBorder="true" ShowHeader="true" Enabled="true">
+                                    <Items>
+                                        <x:GroupPanel runat="server" Title="1.- INFORME ELECTRO-CARDIOGRÁFICO" ID="GroupPanel10" AutoWidth="true" BoxFlex="1" Height="100">
+                                            <Items>
+                                                <x:Form ID="Form6" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow2" ColumnWidths="160px 60px  160px 110px  160px 60px" runat="server" >
+                                                        <Items>
+                                                            <x:Label ID="Label10" runat="server" Text="FRECUENCIA CARDIACA:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtFRECU_ELEC_CARDIO" runat="server" Text="" ShowLabel="false" ></x:TextBox>  
+
+                                                            <x:Label ID="Label11" runat="server" Text="RITMO CARDIACO:" ShowLabel="false"></x:Label>
+                                                            <x:DropDownList ID="ddlRITMO_ELEC_CARDIO" runat="server" ShowLabel="false"  Width="100px"></x:DropDownList>
+
+                                                            <x:Label ID="Label12" runat="server" Text="INTERVALO PR:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtINTERVALO_ELEC_CARDIO" runat="server" Text="" ShowLabel="false" ></x:TextBox>                                                            
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow7" ColumnWidths="110px" runat="server" Hidden="false" >
+                                                        <Items>
+                                                            <x:Label ID="label16" runat="server" Text="" ShowLabel="false" Hidden="false"></x:Label>
+                                                        </Items>
+                                                    </x:FormRow>
+                                                    <x:FormRow ID="FormRow9" ColumnWidths="160px 60px  160px 110px  160px 60px" runat="server" >
+                                                        <Items>
+                                                            <x:Label ID="label17" runat="server" Text="COMPLE QRS:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtCOMPLEJO_QRS_ELEC_CARDIO" runat="server" Text="" ShowLabel="false" ></x:TextBox>  
+
+                                                            <x:Label ID="label18" runat="server" Text="INTERVALO QTC:" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtINTERVALO_QTC_ELEC_CARDIO" runat="server" Text="" Width="50" ShowLabel="false" ></x:TextBox>  
+
+                                                            <x:Label ID="label19" runat="server" Text="EJE CARDIO" ShowLabel="false"></x:Label>
+                                                            <x:TextBox ID="txtEJE_ELEC_CARDIO" runat="server" Text="" ShowLabel="false" ></x:TextBox>
+                                                                   
+                                                        </Items>
+                                                    </x:FormRow>                        
+                                                    </Rows>
+                                                </x:Form>
+                                            </Items>
+                                        </x:GroupPanel>
+                                        <x:GroupPanel runat="server" Title="2.- CONCLUSIONES" ID="GroupPanel11" AutoWidth="true" BoxFlex="1" Height="90">
+                                            <Items>
+                                                <x:Form ID="Form7" runat="server" EnableBackgroundColor="true" ShowBorder="False" ShowHeader="False" LabelAlign="Left">
+                                                    <Rows>
+                                                        <x:FormRow ID="FormRow14" ColumnWidths="160px 310px 160px 210px" runat="server">
+                                                            <Items>
+                                                                <x:Label ID="Label23" runat="server" Text="HALLAZGO" ShowLabel="false"></x:Label>
+                                                                <x:TextArea ID="txtHALLAZGO_ELEC_CARDIO" runat="server" Text="" ShowLabel="false" Width="200" Height="60"></x:TextArea>
+                                                                <x:Label ID="Label27" runat="server" Text="OBSERVACIONES" ShowLabel="false"></x:Label>
+                                                                <x:TextArea ID="txtOBSERVACIONES_ELEC_CARDIO" runat="server" Text="" ShowLabel="false" Width="200" Height="60"></x:TextArea>
+                                                            </Items>
+                                                        </x:FormRow>                            
+                                                    </Rows>
+                                                </x:Form>
+                                                
+                                            </Items>
+                                        </x:GroupPanel>                                       
+                                    </Items>
+                                </x:Panel>
+                            </Items>
+                        </x:Tab>                             
                     </Tabs>
                 </x:TabStrip>
             </Items>

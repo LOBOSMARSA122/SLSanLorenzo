@@ -797,6 +797,15 @@ namespace Sigesoft.Node.WinClient.UI
 
         private void btnConsolidadoReportes_Click(object sender, EventArgs e)
         {
+
+            var StatusLiquidation = grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value == null ? 1 : int.Parse(grdDataService.Selected.Rows[0].Cells["i_StatusLiquidation"].Value.ToString());
+
+            if (StatusLiquidation == 2)
+            {
+                var DialogResult = MessageBox.Show("Este servicio ya tiene, reportes generados, ¿Desea volver a generar?", "INFORMACIÓN!", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (DialogResult == DialogResult.No) return;
+            }
+
             int flagPantalla = int.Parse(grdDataService.Selected.Rows[0].Cells["i_MasterServiceId"].Value.ToString()); // int.Parse(ddlServiceTypeId.SelectedValue.ToString());
             int eso = 1;
             if (flagPantalla == 2)

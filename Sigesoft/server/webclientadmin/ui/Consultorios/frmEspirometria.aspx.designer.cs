@@ -850,13 +850,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.CheckBox chkPre1;
         
         /// <summary>
-        /// Label4 control.
+        /// Label62 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label Label4;
+        protected global::FineUI.Label Label62;
         
         /// <summary>
         /// chkPre2 control.
@@ -868,13 +868,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.CheckBox chkPre2;
         
         /// <summary>
-        /// Label5 control.
+        /// Label63 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label Label5;
+        protected global::FineUI.Label Label63;
         
         /// <summary>
         /// chkPre3 control.
@@ -886,13 +886,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.CheckBox chkPre3;
         
         /// <summary>
-        /// Label6 control.
+        /// Label64 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label Label6;
+        protected global::FineUI.Label Label64;
         
         /// <summary>
         /// chkPre4 control.
@@ -904,13 +904,13 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         protected global::FineUI.CheckBox chkPre4;
         
         /// <summary>
-        /// Label41 control.
+        /// Label65 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::FineUI.Label Label41;
+        protected global::FineUI.Label Label65;
         
         /// <summary>
         /// chkPre5 control.
@@ -920,6 +920,15 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::FineUI.CheckBox chkPre5;
+        
+        /// <summary>
+        /// Label4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::FineUI.Label Label4;
         
         /// <summary>
         /// Panel1 control.

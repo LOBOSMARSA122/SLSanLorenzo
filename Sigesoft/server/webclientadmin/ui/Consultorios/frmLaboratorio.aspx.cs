@@ -1960,10 +1960,11 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             serviceComponentDto.i_IsApprovedId = 1;
 
             serviceComponentDto.v_ComponentId = Session["ListaComponentesGrabar"].ToString(); // "N009-ME000000002";
+            //serviceComponentDto.v_ComponentId = "N001-ME000000000";
             serviceComponentDto.v_ServiceId = Session["ServiceId"].ToString();
             serviceComponentDto.d_UpdateDate = FechaUpdate;
             #endregion
-
+            
 
             //obtener el usuario antiguo
             Session["UsuarioLogueado"] = ((ClientSession)Session["objClientSession"]).i_SystemUserId;
@@ -1979,6 +1980,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                                                    true);
             //Obtener scId
             var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), Session["ComponentIdESO"].ToString());
+            //var scId = _serviceBL.ObtenerScId(Session["ServiceId"].ToString(), "N001-ME000000000");
 
             //Mostrar Auditoria
             var datosAuditoria = HistoryBL.CamposAuditoria(scId);
