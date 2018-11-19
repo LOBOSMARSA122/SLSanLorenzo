@@ -504,7 +504,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             LaboratorioReport.CreateLaboratorioReport(filiationData, serviceComponents, MedicalCenter, pathFile);
             //System.IO.File.Copy(_ruta + Session["ServiceId"].ToString() + "-" + Constants.INFORME_LABORATORIO_CLINICO + ".pdf", Server.MapPath("files/" + Session["ServiceId"].ToString() + "-" + Constants.INFORME_LABORATORIO_CLINICO + ".pdf"), true);
-            System.IO.File.Copy(_ruta + Session["NombreTrabajador"].ToString() + "-" + "INFORME_LABORATORIO_CLINICO" + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "INFORME_LABORATORIO_CLINICO" + ".pdf"), true);
+            System.IO.File.Copy(pathFile, Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "INFORME_LABORATORIO_CLINICO" + ".pdf"), true);
         }
 
         private void GenerateElectro(string _ruta, string p)
