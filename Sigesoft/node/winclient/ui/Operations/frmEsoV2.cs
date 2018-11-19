@@ -1090,7 +1090,11 @@ namespace Sigesoft.Node.WinClient.UI.Operations
                     var ucFileUpload = new ucFileUpload
                     {
                         PersonId = _personId,
-                        Name = field.v_ComponentFieldId
+                        Name = field.v_ComponentFieldId,
+                        Dni = _Dni,
+                        Fecha  = _FechaServico.Value.ToString("ddMMyyyy"),
+                        Consultorio = component.v_CategoryName,
+                        ServiceComponentId = component.v_ServiceComponentId
                     };
                     //ucFileUpload.Dni = _Dni;
                     //ucFileUpload.Fecha = lblFecInicio.Text;
@@ -1474,6 +1478,7 @@ namespace Sigesoft.Node.WinClient.UI.Operations
             _ProtocolId = personData.v_ProtocolId;
             _personName = string.Format("{0} {1} {2}", personData.v_FirstLastName, personData.v_SecondLastName, personData.v_FirstName);
             _personId = personData.v_PersonId;
+            _Dni = personData.v_DocNumber;
             _masterServiceId = personData.i_MasterServiceId.Value;
             if (_masterServiceId == 2) btnReceta.Enabled = false;
             else btnReceta.Enabled = true;
