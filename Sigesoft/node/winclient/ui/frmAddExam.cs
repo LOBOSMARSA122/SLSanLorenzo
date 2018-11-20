@@ -36,7 +36,7 @@ namespace Sigesoft.Node.WinClient.UI
 
         #endregion
 
-        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId, string type, string nroHospitalizacion, string dni)
+        public frmAddExam(List<string> ListaComponentes, string modo, string protocolId, string type, string nroHospitalizacion, string dni, string serviceId)
         {
             _ListaComponentes = ListaComponentes;
             _dni = dni;
@@ -44,6 +44,7 @@ namespace Sigesoft.Node.WinClient.UI
             _modo = modo;
             _protocolId = protocolId;
             _type = type;
+            _serviceId = serviceId;
             InitializeComponent();
 
         }
@@ -64,7 +65,7 @@ namespace Sigesoft.Node.WinClient.UI
                                
                 if (DialogResult == System.Windows.Forms.DialogResult.Yes)
                 {
-                    var frm = new frmCalendar(_nroHospitalizacion, _dni);
+                    var frm = new frmCalendar(_nroHospitalizacion, _dni, _serviceId);
                     frm.ShowDialog();
                 }
                 

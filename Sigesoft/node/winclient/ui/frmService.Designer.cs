@@ -1190,6 +1190,7 @@
             this.btnEditarESO.Text = "    &Ver / Editar Servicio";
             this.btnEditarESO.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnEditarESO.UseVisualStyleBackColor = false;
+            this.btnEditarESO.Visible = false;
             this.btnEditarESO.Click += new System.EventHandler(this.btnEditarESO_Click);
             // 
             // btnFechaEntrega

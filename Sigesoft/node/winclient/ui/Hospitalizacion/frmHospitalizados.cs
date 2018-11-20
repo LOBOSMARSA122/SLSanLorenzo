@@ -284,7 +284,7 @@ namespace Sigesoft.Node.WinClient.UI.Hospitalizacion
             var protocolId = grdData.Selected.Rows[0].Cells["v_ProtocolId"].Value.ToString();
             var NroHospitalizacion = grdData.Selected.Rows[0].Cells["v_HopitalizacionId"].Value.ToString();
             var dni = grdData.Selected.Rows[0].Cells["v_DocNumber"].Value.ToString();
-            var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId, "Hospi", NroHospitalizacion, dni) { _serviceId = serviceId };
+            var frm = new frmAddExam(ListaComponentes, "HOSPI", protocolId, "Hospi", NroHospitalizacion, dni, serviceId) { _serviceId = serviceId };
             frm.ShowDialog();
 
             if (frm.DialogResult == DialogResult.Cancel)
