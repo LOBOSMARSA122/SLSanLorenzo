@@ -113,12 +113,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnCargoFactura = new System.Windows.Forms.Button();
             this.btnCargoHistorias = new System.Windows.Forms.Button();
-            this.btnActualizarCulminado = new System.Windows.Forms.Button();
-            this.btnActualizarAptitud = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.btnQuitarChek = new System.Windows.Forms.Button();
+            this.btnActualizarCulminado = new System.Windows.Forms.Button();
             this.btnActualizarPerson = new System.Windows.Forms.Button();
             this.lblRecordCountCalendar = new System.Windows.Forms.Label();
+            this.btnActualizarAptitud = new System.Windows.Forms.Button();
             this.btnGeneracionMasivaReportes = new System.Windows.Forms.Button();
             this.btnImprimirExamenes = new System.Windows.Forms.Button();
             this.btnTiempos = new System.Windows.Forms.Button();
@@ -974,54 +974,6 @@
             this.btnCargoHistorias.UseVisualStyleBackColor = false;
             this.btnCargoHistorias.Click += new System.EventHandler(this.btnCargoHistorias_Click);
             // 
-            // btnActualizarCulminado
-            // 
-            this.btnActualizarCulminado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizarCulminado.BackColor = System.Drawing.SystemColors.Control;
-            this.btnActualizarCulminado.Enabled = false;
-            this.btnActualizarCulminado.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnActualizarCulminado.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnActualizarCulminado.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnActualizarCulminado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarCulminado.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarCulminado.ForeColor = System.Drawing.Color.Black;
-            this.btnActualizarCulminado.Image = global::Sigesoft.Node.WinClient.UI.Resources.eject_green;
-            this.btnActualizarCulminado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarCulminado.Location = new System.Drawing.Point(1136, 455);
-            this.btnActualizarCulminado.Margin = new System.Windows.Forms.Padding(2);
-            this.btnActualizarCulminado.Name = "btnActualizarCulminado";
-            this.btnActualizarCulminado.Size = new System.Drawing.Size(85, 36);
-            this.btnActualizarCulminado.TabIndex = 148;
-            this.btnActualizarCulminado.Text = "Actualizar Culminado";
-            this.btnActualizarCulminado.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnActualizarCulminado.UseVisualStyleBackColor = false;
-            this.btnActualizarCulminado.Visible = false;
-            this.btnActualizarCulminado.Click += new System.EventHandler(this.btnActualizarCulminado_Click);
-            // 
-            // btnActualizarAptitud
-            // 
-            this.btnActualizarAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnActualizarAptitud.BackColor = System.Drawing.SystemColors.Control;
-            this.btnActualizarAptitud.Enabled = false;
-            this.btnActualizarAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
-            this.btnActualizarAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.btnActualizarAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnActualizarAptitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnActualizarAptitud.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnActualizarAptitud.ForeColor = System.Drawing.Color.Black;
-            this.btnActualizarAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_earth;
-            this.btnActualizarAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnActualizarAptitud.Location = new System.Drawing.Point(1137, 415);
-            this.btnActualizarAptitud.Margin = new System.Windows.Forms.Padding(2);
-            this.btnActualizarAptitud.Name = "btnActualizarAptitud";
-            this.btnActualizarAptitud.Size = new System.Drawing.Size(85, 36);
-            this.btnActualizarAptitud.TabIndex = 147;
-            this.btnActualizarAptitud.Text = "Actualizar Aptitud";
-            this.btnActualizarAptitud.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.btnActualizarAptitud.UseVisualStyleBackColor = false;
-            this.btnActualizarAptitud.Visible = false;
-            this.btnActualizarAptitud.Click += new System.EventHandler(this.btnActualizarAptitud_Click);
-            // 
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -1060,6 +1012,30 @@
             this.btnQuitarChek.UseVisualStyleBackColor = false;
             this.btnQuitarChek.Click += new System.EventHandler(this.btnQuitarChek_Click);
             // 
+            // btnActualizarCulminado
+            // 
+            this.btnActualizarCulminado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizarCulminado.BackColor = System.Drawing.SystemColors.Control;
+            this.btnActualizarCulminado.Enabled = false;
+            this.btnActualizarCulminado.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnActualizarCulminado.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnActualizarCulminado.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnActualizarCulminado.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarCulminado.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarCulminado.ForeColor = System.Drawing.Color.Black;
+            this.btnActualizarCulminado.Image = global::Sigesoft.Node.WinClient.UI.Resources.eject_green;
+            this.btnActualizarCulminado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizarCulminado.Location = new System.Drawing.Point(1136, 455);
+            this.btnActualizarCulminado.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActualizarCulminado.Name = "btnActualizarCulminado";
+            this.btnActualizarCulminado.Size = new System.Drawing.Size(85, 36);
+            this.btnActualizarCulminado.TabIndex = 148;
+            this.btnActualizarCulminado.Text = "Actualizar Culminado";
+            this.btnActualizarCulminado.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnActualizarCulminado.UseVisualStyleBackColor = false;
+            this.btnActualizarCulminado.Visible = false;
+            this.btnActualizarCulminado.Click += new System.EventHandler(this.btnActualizarCulminado_Click);
+            // 
             // btnActualizarPerson
             // 
             this.btnActualizarPerson.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -1095,6 +1071,30 @@
             this.lblRecordCountCalendar.TabIndex = 52;
             this.lblRecordCountCalendar.Text = "No se ha realizado la búsqueda aún.";
             this.lblRecordCountCalendar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnActualizarAptitud
+            // 
+            this.btnActualizarAptitud.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnActualizarAptitud.BackColor = System.Drawing.SystemColors.Control;
+            this.btnActualizarAptitud.Enabled = false;
+            this.btnActualizarAptitud.FlatAppearance.BorderColor = System.Drawing.Color.Gray;
+            this.btnActualizarAptitud.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.btnActualizarAptitud.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.btnActualizarAptitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnActualizarAptitud.Font = new System.Drawing.Font("Calibri", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarAptitud.ForeColor = System.Drawing.Color.Black;
+            this.btnActualizarAptitud.Image = global::Sigesoft.Node.WinClient.UI.Resources.user_earth;
+            this.btnActualizarAptitud.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnActualizarAptitud.Location = new System.Drawing.Point(1137, 415);
+            this.btnActualizarAptitud.Margin = new System.Windows.Forms.Padding(2);
+            this.btnActualizarAptitud.Name = "btnActualizarAptitud";
+            this.btnActualizarAptitud.Size = new System.Drawing.Size(85, 36);
+            this.btnActualizarAptitud.TabIndex = 147;
+            this.btnActualizarAptitud.Text = "Actualizar Aptitud";
+            this.btnActualizarAptitud.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnActualizarAptitud.UseVisualStyleBackColor = false;
+            this.btnActualizarAptitud.Visible = false;
+            this.btnActualizarAptitud.Click += new System.EventHandler(this.btnActualizarAptitud_Click);
             // 
             // btnGeneracionMasivaReportes
             // 
@@ -1186,6 +1186,7 @@
             this.btnEditarESO.Text = "    &Ver / Editar Servicio";
             this.btnEditarESO.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnEditarESO.UseVisualStyleBackColor = false;
+            this.btnEditarESO.Visible = false;
             this.btnEditarESO.Click += new System.EventHandler(this.btnEditarESO_Click);
             // 
             // btnFechaEntrega

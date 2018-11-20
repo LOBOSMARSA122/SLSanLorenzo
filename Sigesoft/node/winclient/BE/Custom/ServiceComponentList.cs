@@ -22,6 +22,7 @@ namespace Sigesoft.Node.WinClient.BE
         public DateTime? d_EndDate { get; set; }
         public int? i_index { get; set; }
         public Single? r_Price { get; set; }
+        //public decimal r_Price { get; set; }
         public int? i_IsInvoicedId { get; set; }
         public int? i_IsRequiredId { get; set; }
         public int? i_IsManuallyAddedId { get; set; }

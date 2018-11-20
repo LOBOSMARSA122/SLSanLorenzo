@@ -151,7 +151,7 @@ namespace Sigesoft.Node.WinClient.UI.Reports
                     }
 
                     //var objData = _serviceBL.ReporteProduccionProfesional(pdatBeginDate, pdatEndDate, cbOrganizationInvoice.SelectedValue.ToString(), strFilterExpression, ddlUsuario.Text, lblNombreProfesional.Text, ddlComponentId.Text, int.Parse(ddlComponentId.SelectedValue.ToString()), cbOrganizationInvoice.Text);
-                    var objData = _serviceBL.ReporteProduccionProfesionalAMC(pdatBeginDate, pdatEndDate, cbOrganizationInvoice.SelectedValue.ToString(), strFilterExpression, txtInfAdicional.Text);
+                    var objData = _serviceBL.ReporteProduccionProfesionalAMC(pdatBeginDate, pdatEndDate, cbOrganizationInvoice.SelectedValue.ToString(), strFilterExpression);
                    
                     grdData.DataSource = objData;
                     lblRecordCount.Text = string.Format("Se encontraron {0} registros.", objData.Count());

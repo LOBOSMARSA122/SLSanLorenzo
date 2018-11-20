@@ -76,7 +76,7 @@ namespace Sigesoft.Node.WinClient.BLL
                               {
                                   v_IdProductoDetalle = A.v_IdProductoDetalle,
                                   v_TicketId = A.v_TicketId,
-                                  d_Cantidad = A.d_Cantidad.Value,
+                                  d_Cantidad = (int)A.d_Cantidad,
                                   i_EsDespachado = A.i_EsDespachado.Value
                               }).ToList();
 
@@ -88,7 +88,7 @@ namespace Sigesoft.Node.WinClient.BLL
                               {
                                   v_IdProductoDetalle = A.v_IdProductoDetalle,
                                   v_TicketId = A.v_TicketId,
-                                  d_Cantidad = A.d_Cantidad.Value,
+                                  d_Cantidad = (int)A.d_Cantidad,
                                   i_EsDespachado = A.i_EsDespachado.Value
                               }).ToList();
 

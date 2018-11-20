@@ -81,6 +81,7 @@
             Infragistics.Win.Appearance appearance8 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance9 = new Infragistics.Win.Appearance();
             Infragistics.Win.Appearance appearance10 = new Infragistics.Win.Appearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHospitalizados));
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn1 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_CreationDate");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn2 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("d_ServiceDate");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn3 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("v_UpdateUser");
@@ -98,7 +99,6 @@
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn15 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Moneda");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn16 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Valor");
             Infragistics.Win.UltraWinDataSource.UltraDataColumn ultraDataColumn17 = new Infragistics.Win.UltraWinDataSource.UltraDataColumn("Diagnosticos");
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmHospitalizados));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnFilter = new System.Windows.Forms.Button();
             this.txtPacient = new System.Windows.Forms.TextBox();
@@ -110,6 +110,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblRecordCount = new System.Windows.Forms.Label();
             this.grdData = new Infragistics.Win.UltraWinGrid.UltraGrid();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
             this.ultraDataSource1 = new Infragistics.Win.UltraWinDataSource.UltraDataSource(this.components);
             this.ultraGridExcelExporter1 = new Infragistics.Win.UltraWinGrid.ExcelExport.UltraGridExcelExporter(this.components);
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
@@ -123,13 +125,11 @@
             this.btnEditarTicket = new System.Windows.Forms.Button();
             this.btnTicket = new System.Windows.Forms.Button();
             this.btnGenerarLiq = new System.Windows.Forms.Button();
-            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnRemoverEsamen = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
             this.contextMenuStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -451,6 +451,22 @@
             this.grdData.AfterSelectChange += new Infragistics.Win.UltraWinGrid.AfterSelectChangeEventHandler(this.grd_AfterSelectChange);
             this.grdData.MouseDown += new System.Windows.Forms.MouseEventHandler(this.grdData_MouseDown);
             // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnRemoverEsamen});
+            this.contextMenuStrip2.Name = "contextMenuStrip1";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(166, 26);
+            // 
+            // btnRemoverEsamen
+            // 
+            this.btnRemoverEsamen.Enabled = false;
+            this.btnRemoverEsamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverEsamen.Image")));
+            this.btnRemoverEsamen.Name = "btnRemoverEsamen";
+            this.btnRemoverEsamen.Size = new System.Drawing.Size(165, 22);
+            this.btnRemoverEsamen.Text = "Remover Examen";
+            this.btnRemoverEsamen.Click += new System.EventHandler(this.btnRemoverEsamen_Click);
+            // 
             // ultraDataSource1
             // 
             this.ultraDataSource1.Band.Columns.AddRange(new object[] {
@@ -692,22 +708,6 @@
             this.btnGenerarLiq.UseVisualStyleBackColor = false;
             this.btnGenerarLiq.Click += new System.EventHandler(this.btnGenerarLiq_Click);
             // 
-            // contextMenuStrip2
-            // 
-            this.contextMenuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRemoverEsamen});
-            this.contextMenuStrip2.Name = "contextMenuStrip1";
-            this.contextMenuStrip2.Size = new System.Drawing.Size(166, 48);
-            // 
-            // btnRemoverEsamen
-            // 
-            this.btnRemoverEsamen.Enabled = false;
-            this.btnRemoverEsamen.Image = ((System.Drawing.Image)(resources.GetObject("btnRemoverEsamen.Image")));
-            this.btnRemoverEsamen.Name = "btnRemoverEsamen";
-            this.btnRemoverEsamen.Size = new System.Drawing.Size(165, 22);
-            this.btnRemoverEsamen.Text = "Remover Examen";
-            this.btnRemoverEsamen.Click += new System.EventHandler(this.btnRemoverEsamen_Click);
-            // 
             // frmHospitalizados
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -736,8 +736,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdData)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
             this.contextMenuStrip2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ultraDataSource1)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -111,6 +111,9 @@ namespace Sigesoft.Node.WinClient.UI
             Utils.LoadDropDownList(ddlBloodFactorId, "Value1", "Id", BLL.Utils.GetSystemParameterForCombo(ref objOperationResult, 155, null), DropDownListAction.Select);
             Utils.LoadDropDownList(ddlDistricId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDistrito_(ref objOperationResult, 113), DropDownListAction.Select);
 
+            Utils.LoadDropDownList(cboMedicoTratante, "Value1", "IdI", new ServiceBL().ListGetSystemUser(), DropDownListAction.Select);
+
+            
 
             //Utils.LoadDropDownList(ddlDepartamentId, "Value1", "Id", BLL.Utils.GetDataHierarchyForComboDepartamento(ref objOperationResult, 113, null), DropDownListAction.Select);
 
@@ -130,7 +133,7 @@ namespace Sigesoft.Node.WinClient.UI
             objListaAuthorizedPerson = objAuthorizedPersonBL.GetAuthorizedPersonPagedAndFilteredNOTNULL(ref objOperationResult, 0, null, "", "");
             grdDataPeopleAuthoritation.DataSource = objListaAuthorizedPerson;
 
-       
+           
 
             if (ModeAgenda == "New")
             {
@@ -226,6 +229,7 @@ namespace Sigesoft.Node.WinClient.UI
             ddlServiceTypeId.SelectedValue = ((int)ServiceType.Empresarial).ToString();
             ddlMasterServiceId.SelectedValue = ((int)MasterService.Eso).ToString();
             ddlVipId.SelectedValue = "0";
+            cboMedicoTratante.SelectedValue = 0;
         }
 
         private void btnFilter_Click(object sender, EventArgs e)
@@ -704,7 +708,7 @@ namespace Sigesoft.Node.WinClient.UI
 
                 string NuevoContinuacion;
 
-                string CalendarId;
+                string serviceId;
 
                 if (dtpDateTimeCalendar.Value < DateTime.Now.Date)
                 {
@@ -712,6 +716,11 @@ namespace Sigesoft.Node.WinClient.UI
                     return;
                 }
 
+                if (cboMedicoTratante.SelectedValue.ToString() == "0")
+                {
+                    MessageBox.Show("Por favor seleccione médico tratante.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 if (uvschedule.Validate(true, false).IsValid)
                 {
                     if (PacientId == null)
@@ -765,17 +774,17 @@ namespace Sigesoft.Node.WinClient.UI
 
                             if (ddlMasterServiceId.SelectedValue.ToString() == ((int)MasterService.AtxMedicaParticular).ToString())
                             {
-                                CalendarId = _objCalendarBL.AddShedule_Atx(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), Constants.CONSULTAMEDICA, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion);
+                                serviceId = _objCalendarBL.AddShedule_Atx(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), Constants.CONSULTAMEDICA, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion, Int32.Parse(cboMedicoTratante.SelectedValue.ToString()));
                             }
                             else
                             {
-                                CalendarId = _objCalendarBL.AddShedule(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), _ProtocolId, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion);
+                                serviceId = _objCalendarBL.AddShedule(ref objOperationResult, objCalendarDto, Globals.ClientSession.GetAsList(), _ProtocolId, PacientId, Int32.Parse(ddlMasterServiceId.SelectedValue.ToString()), NuevoContinuacion);
                             }
 
                             var  oHospitalizacionserviceDto = new hospitalizacionserviceDto();
 
                             oHospitalizacionserviceDto.v_HopitalizacionId = _nroHospitalizacion;
-                            oHospitalizacionserviceDto.v_ServiceId = _ServiceId;
+                            oHospitalizacionserviceDto.v_ServiceId = serviceId;
 
                             new HospitalizacionBL().AddHospitalizacionService(ref objOperationResult, oHospitalizacionserviceDto, Globals.ClientSession.GetAsList());
 
@@ -1383,6 +1392,25 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnCancel_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ddlServiceTypeId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlServiceTypeId.SelectedIndex == 0 || ddlServiceTypeId.SelectedIndex == -1)
+            { 
+            }
+            else
+            {
+                if (int.Parse(ddlServiceTypeId.SelectedValue.ToString()) == 9)
+                {
+                    cboMedicoTratante.Enabled = true;
+                }
+                else
+                {
+                    cboMedicoTratante.Enabled = false;
+                    cboMedicoTratante.SelectedValue = 0;
+                }
+            }
         }
     
     }

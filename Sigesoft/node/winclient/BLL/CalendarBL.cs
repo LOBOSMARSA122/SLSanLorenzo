@@ -1374,7 +1374,7 @@ namespace Sigesoft.Node.WinClient.BLL
                pobjOperationResult.Success = 1;
                // Llenar entidad Log
                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "AGENDA", "v_CalendarId=" + NewId.ToString(), Success.Ok, null);
-               return NewId;
+               return ServiceId;
            }
            catch (Exception ex)
            {
@@ -1386,7 +1386,7 @@ namespace Sigesoft.Node.WinClient.BLL
            }
        }
 
-       public string AddShedule_Atx(ref OperationResult pobjOperationResult, calendarDto pobjDtoEntity, List<string> ClientSession, string pstrProtocolId, string pstrPacientId, int pstrMasterServiceId, string pstrNuevoContinuacion)
+       public string AddShedule_Atx(ref OperationResult pobjOperationResult, calendarDto pobjDtoEntity, List<string> ClientSession, string pstrProtocolId, string pstrPacientId, int pstrMasterServiceId, string pstrNuevoContinuacion, int pstrMedicoTratanteId)
        {
            //mon.IsActive = true;
            string NewId = "(No generado)";
@@ -1467,6 +1467,7 @@ namespace Sigesoft.Node.WinClient.BLL
                        objServiceComponentDto.d_StartDate = null;
                        objServiceComponentDto.d_EndDate = null;
                        objServiceComponentDto.i_index = objComponentDto.i_UIIndex;
+                       objServiceComponentDto.i_MedicoTratanteId = pstrMedicoTratanteId;
                        //Lógica de Aumento de Precio Base
 
                        var porcentajes = objProtocolComponentList[i].v_Porcentajes.Split('-');
@@ -1702,7 +1703,7 @@ namespace Sigesoft.Node.WinClient.BLL
                pobjOperationResult.Success = 1;
                // Llenar entidad Log
                LogBL.SaveLog(ClientSession[0], ClientSession[1], ClientSession[2], LogEventType.CREACION, "AGENDA", "v_CalendarId=" + NewId.ToString(), Success.Ok, null);
-               return NewId;
+               return ServiceId;
            }
            catch (Exception ex)
            {
