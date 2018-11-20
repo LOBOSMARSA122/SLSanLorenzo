@@ -298,7 +298,7 @@
                                         <x:Label ID="Label746" runat="server" Text="....." ShowLabel="false" Visible="False"></x:Label>
                                         <x:Label ID="llll" runat="server" Text="Firma Usuario" ShowLabel="false" Visible="False"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabar" runat="server" Visible="true"></x:DropDownList>
-                                        <x:Button ID="btnReporteRX" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" Visible="False"></x:Button>
+                                        <x:Button ID="btnReporteRX" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" Visible="true"></x:Button>
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
@@ -447,7 +447,7 @@
                                         <x:Label ID="Label13" runat="server" Text="....." ShowLabel="false"></x:Label>
                                         <x:Label ID="Label14" runat="server" Text="Firma Usuario" ShowLabel="false"></x:Label>
                                         <x:DropDownList ID="ddlUsuarioGrabaOIT" runat="server"></x:DropDownList>       
-                                        <x:Button ID="btnReporteOIT" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" Visible="false"></x:Button>              
+                                        <x:Button ID="btnReporteOIT" Text="Ver Reporte" Icon="PageWhiteText" runat="server" Enabled="true" Visible="true"></x:Button>              
                                     </Items>
                                 </x:Toolbar>
                             </Toolbars>
