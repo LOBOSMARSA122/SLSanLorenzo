@@ -112,22 +112,29 @@ namespace Sigesoft.Node.WinClient.UI
                     foreach (var item in deudoras)
                     {
                         var empDeud = oMedicamentoBl.EmpresaDeudora(item.v_Ruc);
+                        string ruc = "";
                         foreach (var item_1 in empDeud)
                         {
-                            if (item_1.NetoXCobrar - item_1.TotalPagado != 0)
+                            if (item_1.NetoXCobrar != 0)
 	                        {
-		                        deudores.Add(item.v_Ruc);
+                                if (item.v_Ruc != ruc)
+                                {
+                                    deudores.Add(item.v_Ruc);
+                                }
+		                        ruc = item.v_Ruc;
 	                        }
                         }
                     }
 
                     var listaLiquidacionEmpresa = new List<LiquidacionEmpresa>();
+
                     var listFacturaCobranza = new List<FacturaCobranza>();
                     foreach (var ruc in deudores)
                     {
                         var obj = new ServiceBL().GetListaLiquidacionByEmpresa_Id(ref objOperationResult, fechaInicio, fechaFin, ruc);
 
                         List<string> facturas = new List<string>();
+
                         foreach (var item in obj)
                         {
                             var obj_1 = item.detalle.FindAll(p => p.v_NroFactura != "").ToList();
