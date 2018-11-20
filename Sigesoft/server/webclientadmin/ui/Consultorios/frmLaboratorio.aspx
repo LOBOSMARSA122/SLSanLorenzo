@@ -268,7 +268,7 @@
                                                         <x:TextArea ID="txtComentarioAptitud" runat="server" Text="" Label="Comentario" ShowLabel="true" Height="50"></x:TextArea>
                                                     </Items>
                                                 </x:FormRow>                                          
-                                            </Rows>
+                                            </Rows> 
                                         </x:Form>
                                     </Items>
                                 </x:Panel>

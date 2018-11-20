@@ -595,13 +595,14 @@ namespace Sigesoft.Node.WinClient.BLL
                 // Autogeneramos el Pk de la tabla                 
                 int intNodeId = int.Parse(ClientSession[0]);
                 NewId = Common.Utils.GetNewId(intNodeId, Utils.GetNextSecuentialId(intNodeId, 351), "HS"); ;
-                objEntity.v_HopitalizacionId = NewId;
+                objEntity.v_HospitalizacionServiceId = NewId;
 
                 dbContext.AddTohospitalizacionservice(objEntity);
                 dbContext.SaveChanges();
 
                 pobjOperationResult.Success = 1;
             }
+            
             catch (Exception ex)
             {
                 pobjOperationResult.Success = 0;

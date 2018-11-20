@@ -2154,16 +2154,19 @@ namespace Sigesoft.Node.WinClient.BLL
 							 });
 
 				var objData = query.AsEnumerable()
-							 .Where(s => s.i_CategoryId != -1)
+                             .Where(s => s.i_CategoryId != -1 && s.i_CategoryId != 1 && s.i_CategoryId != 6 && s.i_CategoryId != 14 && s.i_CategoryId != 7 && s.i_CategoryId != 11 && s.i_CategoryId != 22)
 							 .GroupBy(x => x.i_CategoryId)
 							 .Select(group => group.First());
 
 				List<ServiceComponentList> obj = objData.ToList();
 
-				obj.AddRange(query.Where(p => p.i_CategoryId == -1));
-                //obj.AddRange(query.Where(p => p.i_CategoryId == 1));
-                //obj.AddRange(query.Where(p => p.i_CategoryId == 6));
-                //obj.AddRange(query.Where(p => p.i_CategoryId == 14));
+                obj.AddRange(query.Where(p => p.i_CategoryId == -1));
+                obj.AddRange(query.Where(p => p.i_CategoryId == 1));
+                obj.AddRange(query.Where(p => p.i_CategoryId == 6));
+                obj.AddRange(query.Where(p => p.i_CategoryId == 14));
+                obj.AddRange(query.Where(p => p.i_CategoryId == 7));
+                obj.AddRange(query.Where(p => p.i_CategoryId == 11));
+                obj.AddRange(query.Where(p => p.i_CategoryId == 22));
 				pobjOperationResult.Success = 1;
 				var orden = obj.OrderBy(o => o.i_CategoryId).ToList();
 				return orden.FindAll(p => p.i_CategoryId != 10);
@@ -32304,6 +32307,32 @@ namespace Sigesoft.Node.WinClient.BLL
                 return null;
             }
         }
+
+        public List<KeyValueDTO> ListGetSystemUser()
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from a in dbContext.systemuser
+                                 join p in dbContext.person on a.v_PersonId equals p.v_PersonId
+                                 join prof in dbContext.professional on p.v_PersonId equals prof.v_PersonId
+                                 where a.i_IsDeleted == 0
+                                 select new KeyValueDTO
+                                 {
+                                     IdI = a.i_SystemUserId,
+                                     Value1 = p.v_FirstLastName + " " + p.v_SecondLastName + ", " + p.v_FirstName                                   
+                                 }).ToList();
+
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
 
         public List<rolenodecomponentprofileDto> GetRoleNodeComponentProfileByRoleNodeId_(int pintNodeId, int pintRoleId)
         {

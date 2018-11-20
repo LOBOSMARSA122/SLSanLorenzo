@@ -2720,6 +2720,7 @@ namespace Sigesoft.Node.WinClient.UI
                     button1.Enabled = false;
                     button1.Enabled = false;
                     btnAdminReportes.Enabled = false;
+                    btnReportAsync.Enabled = false;
                     btnGenerarLiquidacion.Enabled = false;
                     btnInterconsulta.Enabled = false;
                     btnTiempos.Enabled = false;
@@ -2751,6 +2752,7 @@ namespace Sigesoft.Node.WinClient.UI
             btnInformeMedicoTrabajador.Enabled =
             btnImprimirInformeMedicoEPS.Enabled =
             btnAdminReportes.Enabled =
+            btnReportAsync.Enabled = 
             btnInforme312.Enabled =
             btnInformeMusculoEsqueletico.Enabled =
             btnInformeAlturaEstructural.Enabled =
@@ -2883,6 +2885,12 @@ namespace Sigesoft.Node.WinClient.UI
                 Historia_Clinica.CreateHistoria_Clinica(ruta + nombre + ".pdf", MedicalCenter, datosP, _DataService, exams);
                 this.Enabled = true;
             }
+        }
+
+        private void btnReportAsync_Click(object sender, EventArgs e)
+        {
+            var frm = new Reports.frmManagementReportAsync(_EmpresaClienteId, _serviceId,_pacientId);
+            frm.ShowDialog();
         }
         
         //void ProcesoSErvicio()

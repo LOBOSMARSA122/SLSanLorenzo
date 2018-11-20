@@ -241,7 +241,7 @@
                                             </Items>
                                         </x:Panel>
 
-                                    </Items>ffffffffffff
+                                    </Items>
                                 </x:Panel>
                             </Items>
                         </x:AccordionPane>

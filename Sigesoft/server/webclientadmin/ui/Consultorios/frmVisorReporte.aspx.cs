@@ -826,7 +826,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             ds1.Tables.Add(dtINFORME_CERTIFICADO_APTITUD);
 
             var TipoServicio = INFORME_CERTIFICADO_APTITUD[0].i_EsoTypeId;
-            Session["NombreTrabajador"] = INFORME_CERTIFICADO_APTITUD[0].v_FirstName + "_" + INFORME_CERTIFICADO_APTITUD[0].v_FirstLastName + "-" + INFORME_CERTIFICADO_APTITUD[0].v_SecondLastName;
+            //Session["NombreTrabajador"] = INFORME_CERTIFICADO_APTITUD[0].v_FirstName + "_" + INFORME_CERTIFICADO_APTITUD[0].v_FirstLastName + "-" + INFORME_CERTIFICADO_APTITUD[0].v_SecondLastName;
+            Session["NombreTrabajador"] = INFORME_CERTIFICADO_APTITUD[0].v_FirstLastName + "-" + INFORME_CERTIFICADO_APTITUD[0].v_SecondLastName;            
+            
             if (TipoServicio == ((int)TypeESO.Retiro).ToString())
             {
                 rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crOccupationalMedicalAptitudeCertificateRetiros();
@@ -874,27 +876,25 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
                 }
                 else
-                {
-                    //QUITAR
-                    //rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crOccupationalMedicalAptitudeCertificate();
-                    //rp.SetDataSource(ds1);
+                {     
+                    rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crOccupationalMedicalAptitudeCertificate();
+                    rp.SetDataSource(ds1);
+                    rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
+                    rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
+                    objDiskOpt = new DiskFileDestinationOptions();
+                    objDiskOpt.DiskFileName = _ruta + p + "-" + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf";
+                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    Session["filesNameToMerge"] = _filesNameToMerge;
+                    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                    rp.Export();
 
-                    //rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
-                    //rp.ExportOptions.ExportDestinationType = ExportDestinationType.DiskFile;
-                    //objDiskOpt = new DiskFileDestinationOptions();
-                    //objDiskOpt.DiskFileName = _ruta + p + "-" + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf";
-                    //_filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    //Session["filesNameToMerge"] = _filesNameToMerge;
-                    //rp.ExportOptions.DestinationOptions = objDiskOpt;
-                    //rp.Export();
-
-                    //objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Certificado_Aptitud" + ".pdf");
-                    ////objDiskOpt.DiskFileName = Server.MapPath("files/" + p + "-" + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf");
-                    //_filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    //rp.ExportOptions.DestinationOptions = objDiskOpt;
-                    //rp.Export();
-
-                    //rp.Close();
+                    objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Certificado_Aptitud" + ".pdf");
+                    //objDiskOpt.DiskFileName = Server.MapPath("files/" + p + "-" + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf");
+                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                    rp.Export();
+                    //System.IO.File.Copy(_ruta + p + "-" + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Certificado_Aptitud.pdf"), true);
+                    rp.Close();
                 }
             }
         }
