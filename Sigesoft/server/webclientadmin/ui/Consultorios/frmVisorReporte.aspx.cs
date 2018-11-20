@@ -235,6 +235,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             DataTable dt_HISTORIA_CLINICA_PSICOLOGICA_ID = Sigesoft.Node.WinClient.BLL.Utils.ConvertToDatatable(HISTORIA_CLINICA_PSICOLOGICA_ID);
             dt_HISTORIA_CLINICA_PSICOLOGICA_ID.TableName = "dtHistoriaClinicaPsicologica";
             dsGetRepo.Tables.Add(dt_HISTORIA_CLINICA_PSICOLOGICA_ID);
+
             rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crHistoriaClinicaPsicologica();
             rp.SetDataSource(dsGetRepo);
             rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -269,8 +270,8 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf");
             _mergeExPDF.Execute();
 
-            System.IO.File.Copy(_ruta + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf"), true);
-     
+            //System.IO.File.Copy(_ruta + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf"), true);
+            System.IO.File.Copy(_ruta + Session["ServiceId"].ToString() + "-N002-ME000000033_MERGE.pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf"), true);
         }
 
         private void GenerateAudimetriaCI(string _ruta, string p)
@@ -503,7 +504,7 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
 
             LaboratorioReport.CreateLaboratorioReport(filiationData, serviceComponents, MedicalCenter, pathFile);
             //System.IO.File.Copy(_ruta + Session["ServiceId"].ToString() + "-" + Constants.INFORME_LABORATORIO_CLINICO + ".pdf", Server.MapPath("files/" + Session["ServiceId"].ToString() + "-" + Constants.INFORME_LABORATORIO_CLINICO + ".pdf"), true);
-            System.IO.File.Copy(_ruta + Session["NombreTrabajador"].ToString() + "-" + "INFORME_LABORATORIO_CLINICO" + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "INFORME_LABORATORIO_CLINICO" + ".pdf"), true);
+            System.IO.File.Copy(pathFile, Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "INFORME_LABORATORIO_CLINICO" + ".pdf"), true);
         }
 
         private void GenerateElectro(string _ruta, string p)

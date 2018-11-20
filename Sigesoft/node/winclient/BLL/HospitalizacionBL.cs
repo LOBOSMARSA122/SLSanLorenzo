@@ -141,7 +141,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         oHospitalizacionHabitacionList.NroHabitacion = habitacion.NroHabitacion;
                         oHospitalizacionHabitacionList.d_StartDate = habitacion.d_StartDate;
                         oHospitalizacionHabitacionList.d_EndDate = habitacion.d_EndDate;
-                        oHospitalizacionHabitacionList.d_Precio = habitacion.d_Precio;
+                        oHospitalizacionHabitacionList.d_Precio = decimal.Round((decimal)habitacion.d_Precio, 2);
                         if (habitacion.d_Precio != null)
                             oHospitalizacionHabitacionList.Total =
                                 CalcularCostoHabitacion(habitacion.d_Precio.ToString(), habitacion.d_StartDate,
@@ -332,7 +332,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     //cantidadDias = int.Parse((DateTime.Today.AddTicks(-fechaIni.Value.Ticks).Day + 1).ToString());
             }
 
-            return precioHabitacion * (cantidadDias);
+            return decimal.Round((decimal)precioHabitacion * (cantidadDias),2);
         }
 
         private List<HospitalizacionHabitacionList> BuscarHospitalizacionHabitaciones(string hospitalizacionId)
@@ -366,7 +366,7 @@ namespace Sigesoft.Node.WinClient.BLL
                         join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
                         join E in dbContext.protocol on D.v_ProtocolId equals E.v_ProtocolId
                         join F in dbContext.person on D.v_PersonId equals F.v_PersonId
-                        where A.v_HopitalizacionId == hospitalizacionId
+                        where A.v_HopitalizacionId == hospitalizacionId && A.i_IsDeleted == 0
 
                         select new HospitalizacionServiceList
                         {
@@ -436,7 +436,7 @@ namespace Sigesoft.Node.WinClient.BLL
 
                 OperationResult pobjOperationResult = new OperationResult();
                 ServiceBL oServiceBL = new ServiceBL();
-                var componentes = oServiceBL.GetServiceComponents_(ref pobjOperationResult, item.v_ServiceId).FindAll(p => p.r_Price != 0 || p.r_Price != 0.00);
+                var componentes = oServiceBL.GetServiceComponents_(ref pobjOperationResult, item.v_ServiceId).FindAll(p => p.r_Price != 0);
                 ComponentesHospitalizacion oComponentesHospitalizacion;
 
                 List<ComponentesHospitalizacion> listaComponentes = new List<ComponentesHospitalizacion>();
@@ -447,7 +447,7 @@ namespace Sigesoft.Node.WinClient.BLL
                     oComponentesHospitalizacion.ServiceComponentId = componente.v_ServiceComponentId;
                     oComponentesHospitalizacion.Categoria = componente.v_CategoryName;
                     oComponentesHospitalizacion.Componente = componente.v_ComponentName;
-                    oComponentesHospitalizacion.Precio = float.Parse(componente.r_Price.ToString());
+                    oComponentesHospitalizacion.Precio = decimal.Round((decimal)componente.r_Price, 2);
                     oComponentesHospitalizacion.MedicoTratante = componente.MedicoTratante;
                     oComponentesHospitalizacion.Ingreso = componente.d_InsertDate.Value;
                     listaComponentes.Add(oComponentesHospitalizacion);
@@ -474,7 +474,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                join D in dbContext.service on C.v_ServiceId equals D.v_ServiceId
                                join E in dbContext.ticket on D.v_ServiceId equals E.v_ServiceId
 
-                               where E.v_ServiceId == v_ServiceId
+                               where E.v_ServiceId == v_ServiceId && E.i_IsDeleted == 0
 
                                select new TicketList
                                {
@@ -533,9 +533,9 @@ namespace Sigesoft.Node.WinClient.BLL
                         ticketsdetallelist.v_IdProductoDetalle = tickdetalle.v_IdProductoDetalle;
                         ticketsdetallelist.v_Descripcion = tickdetalle.v_Descripcion;
                         ticketsdetallelist.EsDespachado = tickdetalle.EsDespachado;
-                        ticketsdetallelist.d_Cantidad = tickdetalle.d_Cantidad;
-                        ticketsdetallelist.d_PrecioVenta = tickdetalle.d_PrecioVenta;
-                        ticketsdetallelist.Total = tickdetalle.d_Cantidad * tickdetalle.d_PrecioVenta;
+                        ticketsdetallelist.d_Cantidad = decimal.Round(tickdetalle.d_Cantidad,0);
+                        ticketsdetallelist.d_PrecioVenta = decimal.Round(tickdetalle.d_PrecioVenta,2);
+                        ticketsdetallelist.Total = decimal.Round(tickdetalle.d_Cantidad * tickdetalle.d_PrecioVenta,2);
                         // acá estoy agregando a las lista
                         Ticketsdetalle.Add(ticketsdetallelist);
                     }

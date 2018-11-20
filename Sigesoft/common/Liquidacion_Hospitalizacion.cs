@@ -260,6 +260,7 @@ namespace NetPdf
                             {
                                 foreach (var tickets in ListaTickets)
                                 {
+                                    
                                     var detalletickets = tickets.Productos.FindAll(p => p.d_Cantidad != 0);
                                     tamañoTickets = detalletickets.Count();
                                     cell = new PdfPCell(new Phrase(tickets.d_Fecha.ToString().Split(' ')[0], fontColumnValue)) { Rowspan = tamañoTickets, HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };
@@ -297,7 +298,7 @@ namespace NetPdf
                     {
                         if (servicios.Componentes != null)
                         {
-                            var ListaComponentes = servicios.Componentes.FindAll(p => p.Precio != 0.00);
+                            var ListaComponentes = servicios.Componentes.FindAll(p => p.Precio != 0);
                             foreach (var compo in ListaComponentes)
                             {
                                 cell = new PdfPCell(new Phrase(compo.Ingreso.ToString().Split(' ')[0], fontColumnValue)) { HorizontalAlignment = iTextSharp.text.Element.ALIGN_CENTER, VerticalAlignment = iTextSharp.text.Element.ALIGN_MIDDLE, UseVariableBorders = true, BorderColorLeft = BaseColor.WHITE, BorderColorRight = BaseColor.WHITE, BorderColorBottom = BaseColor.BLACK, BorderColorTop = BaseColor.WHITE, MinimumHeight = 15f };

@@ -599,7 +599,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                      FirmaTrabajador = pe.b_RubricImage,
                                      HuellaTrabajador = pe.b_FingerPrintImage,
                                      v_BloodGroupName = gs.v_Value1,
-                                     v_BloodFactorName = fs.v_Value1
+                                     v_BloodFactorName = fs.v_Value1,
+                                     Trabajador=pe.v_FirstLastName + "_" + pe.v_SecondLastName +"_"+pe.v_FirstName
                                  });
 
                 // Medico Examen fisico
@@ -641,6 +642,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                                                            where (sc.v_ServiceId == serviceId) &&
                                                                  (sc.v_ComponentId == Constants.EXAMEN_FISICO_ID)
                                                            select pe.v_FirstName + " " + pe.v_FirstLastName).SingleOrDefault<string>(),
+                               Trabajador = a.Trabajador,
                                FirmaTrabajador = a.FirmaTrabajador,
                                HuellaTrabajador = a.HuellaTrabajador,
                                v_BloodGroupName = a.v_BloodGroupName,
