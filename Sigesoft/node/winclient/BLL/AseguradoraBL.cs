@@ -173,7 +173,7 @@ namespace Sigesoft.Node.WinClient.BLL
                                  i_EsCoaseguro = G.i_EsCoaseguro.Value,
                                  d_Importe = G.d_Importe,
                                  d_Cantidad = B.d_Cantidad.Value,
-                                 d_PrecioVenta = B.d_PrecioVenta
+                                 d_PrecioVenta = (decimal)B.d_PrecioVenta
                              }).ToList();
 
                 return query;
@@ -212,7 +212,7 @@ namespace Sigesoft.Node.WinClient.BLL
                              {
                                  v_ServiceComponentId = A.v_ServiceComponentId,
                                  v_ComponentId = A.v_ComponentId,
-                                 r_Price = A.r_Price,
+                                 r_Price = A.r_Price.Value,
                                  v_ComponentName = B.v_Name,
                                  v_CategoryName = F.v_Value1,
                                  MedicoTratante = D.v_FirstName + " " + D.v_FirstLastName + " " + D.v_SecondLastName,
