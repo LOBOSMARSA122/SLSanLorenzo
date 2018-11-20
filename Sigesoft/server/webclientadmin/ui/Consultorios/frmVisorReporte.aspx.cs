@@ -826,7 +826,9 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
             ds1.Tables.Add(dtINFORME_CERTIFICADO_APTITUD);
 
             var TipoServicio = INFORME_CERTIFICADO_APTITUD[0].i_EsoTypeId;
-            Session["NombreTrabajador"] = INFORME_CERTIFICADO_APTITUD[0].v_FirstName + "_" + INFORME_CERTIFICADO_APTITUD[0].v_FirstLastName + "-" + INFORME_CERTIFICADO_APTITUD[0].v_SecondLastName;
+            //Session["NombreTrabajador"] = INFORME_CERTIFICADO_APTITUD[0].v_FirstName + "_" + INFORME_CERTIFICADO_APTITUD[0].v_FirstLastName + "-" + INFORME_CERTIFICADO_APTITUD[0].v_SecondLastName;
+            Session["NombreTrabajador"] = INFORME_CERTIFICADO_APTITUD[0].v_FirstLastName + "-" + INFORME_CERTIFICADO_APTITUD[0].v_SecondLastName;            
+            
             if (TipoServicio == ((int)TypeESO.Retiro).ToString())
             {
                 rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crOccupationalMedicalAptitudeCertificateRetiros();
@@ -875,20 +877,6 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                 }
                 else
                 {     
-
-
-                    //Session["NombreTrabajador"] = PSICOLOGIA_ID[0].v_Pacient.Replace(" ", "_");
-                    //MergeExPDF _mergeExPDF = new MergeExPDF();
-                    //var x = ((List<string>)Session["filesNameToMerge"]).ToList();
-                    //_mergeExPDF.FilesName = x;
-                    //_mergeExPDF.DestinationFile = _ruta + Session["ServiceId"].ToString() + "-N002-ME000000033_MERGE.pdf";
-                    //objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf");
-                    //_mergeExPDF.Execute();
-
-                    ////System.IO.File.Copy(_ruta + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf"), true);
-                    //System.IO.File.Copy(_ruta + Session["ServiceId"].ToString() + "-N002-ME000000033_MERGE.pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Psicología" + ".pdf"), true);
-
-
                     rp = new Sigesoft.Server.WebClientAdmin.UI.AdministradorServicios.crOccupationalMedicalAptitudeCertificate();
                     rp.SetDataSource(ds1);
                     rp.ExportOptions.ExportFormatType = ExportFormatType.PortableDocFormat;
@@ -900,22 +888,12 @@ namespace Sigesoft.Server.WebClientAdmin.UI.Consultorios
                     rp.ExportOptions.DestinationOptions = objDiskOpt;
                     rp.Export();
 
-                    //objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Certificado_Aptitud" + ".pdf");
-                    ////objDiskOpt.DiskFileName = Server.MapPath("files/" + p + "-" + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf");
-                    //_filesNameToMerge.Add(objDiskOpt.DiskFileName);
-                    //rp.ExportOptions.DestinationOptions = objDiskOpt;
-                    //rp.Export();
-
-                    MergeExPDF _mergeExPDF = new MergeExPDF();
-                    var x = ((List<string>)Session["filesNameToMerge"]).ToList();
-                    _mergeExPDF.FilesName = x;
-                    _mergeExPDF.DestinationFile = _ruta + Session["ServiceId"].ToString() + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf";
-                    objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Certificado de Aptitud" + ".pdf");
-                    _mergeExPDF.Execute();
-
-                    System.IO.File.Copy(_ruta + Session["ServiceId"].ToString() + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Certificado de Aptitud" + ".pdf"), true);
-
-
+                    objDiskOpt.DiskFileName = Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Certificado_Aptitud" + ".pdf");
+                    //objDiskOpt.DiskFileName = Server.MapPath("files/" + p + "-" + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf");
+                    _filesNameToMerge.Add(objDiskOpt.DiskFileName);
+                    rp.ExportOptions.DestinationOptions = objDiskOpt;
+                    rp.Export();
+                    //System.IO.File.Copy(_ruta + p + "-" + Constants.INFORME_CERTIFICADO_APTITUD + ".pdf", Server.MapPath("files/" + Session["NombreTrabajador"].ToString() + "-" + "Certificado_Aptitud.pdf"), true);
                     rp.Close();
                 }
             }
