@@ -2154,13 +2154,13 @@ namespace Sigesoft.Node.WinClient.BLL
 							 });
 
 				var objData = query.AsEnumerable()
-							 .Where(s => s.i_CategoryId != -1)
+                             .Where(s => s.i_CategoryId != -1 && s.i_CategoryId != 1 && s.i_CategoryId != 6 && s.i_CategoryId != 14 && s.i_CategoryId != 7 && s.i_CategoryId != 11 && s.i_CategoryId != 22)
 							 .GroupBy(x => x.i_CategoryId)
 							 .Select(group => group.First());
 
 				List<ServiceComponentList> obj = objData.ToList();
 
-				obj.AddRange(query.Where(p => p.i_CategoryId == -1));
+                obj.AddRange(query.Where(p => p.i_CategoryId == -1));
                 obj.AddRange(query.Where(p => p.i_CategoryId == 1));
                 obj.AddRange(query.Where(p => p.i_CategoryId == 6));
                 obj.AddRange(query.Where(p => p.i_CategoryId == 14));
