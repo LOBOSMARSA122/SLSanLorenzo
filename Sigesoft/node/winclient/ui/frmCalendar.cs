@@ -61,11 +61,12 @@ namespace Sigesoft.Node.WinClient.UI
             InitializeComponent();          
         }
 
-        public frmCalendar(string NroHospitalizacion, string dni)
+        public frmCalendar(string NroHospitalizacion, string dni, string serviceId)
         {
             InitializeComponent();
             _NroHospitalizacion = NroHospitalizacion;
             _dni = dni;
+            _serviceId = serviceId;
         }
 
         private void SearchControlAndSetEvents(Control ctrlContainer)
@@ -442,7 +443,7 @@ namespace Sigesoft.Node.WinClient.UI
 
               if (Result == System.Windows.Forms.DialogResult.Yes)
               {
-                  frmSchedulePerson frm = new frmSchedulePerson(strCalendarId, "Reschedule", strProtocolId,"","");
+                  frmSchedulePerson frm = new frmSchedulePerson(strCalendarId, "Reschedule", strProtocolId, "", "");
                   frm.ShowDialog();
                   if (frm.DialogResult == System.Windows.Forms.DialogResult.OK)
                   {
@@ -1310,7 +1311,7 @@ namespace Sigesoft.Node.WinClient.UI
         private void btnAgregarExamen_Click(object sender, EventArgs e)
         {
             ServiceBL oServiceBL = new ServiceBL();
-            var frm = new frmAddExam(ListaComponentes,"",_ProtocolId,"","","");
+            var frm = new frmAddExam(ListaComponentes,"",_ProtocolId,"","","","");
             frm._serviceId = _serviceId;
             frm.ShowDialog();
 

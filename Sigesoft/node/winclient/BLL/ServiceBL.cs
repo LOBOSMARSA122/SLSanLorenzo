@@ -32308,6 +32308,32 @@ namespace Sigesoft.Node.WinClient.BLL
             }
         }
 
+        public List<KeyValueDTO> ListGetSystemUser()
+        {
+            //mon.IsActive = true;
+            try
+            {
+                SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
+
+                var objEntity = (from a in dbContext.systemuser
+                                 join p in dbContext.person on a.v_PersonId equals p.v_PersonId
+                                 join prof in dbContext.professional on p.v_PersonId equals prof.v_PersonId
+                                 where a.i_IsDeleted == 0
+                                 select new KeyValueDTO
+                                 {
+                                     IdI = a.i_SystemUserId,
+                                     Value1 = p.v_FirstLastName + " " + p.v_SecondLastName + ", " + p.v_FirstName                                   
+                                 }).ToList();
+
+                return objEntity;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
         public List<rolenodecomponentprofileDto> GetRoleNodeComponentProfileByRoleNodeId_(int pintNodeId, int pintRoleId)
         {
             //mon.IsActive = true;
