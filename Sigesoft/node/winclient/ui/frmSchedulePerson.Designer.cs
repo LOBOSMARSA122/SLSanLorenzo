@@ -76,6 +76,8 @@
             Infragistics.Win.Appearance appearance26 = new Infragistics.Win.Appearance();
             this.lblRecordCountService = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cboMedicoTratante = new System.Windows.Forms.ComboBox();
+            this.label55 = new System.Windows.Forms.Label();
             this.btnSearchProtocol = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -88,13 +90,13 @@
             this.txtViewOrganization = new System.Windows.Forms.TextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.txtViewGroupOccupation = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.txtViewOccupation = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.txtViewGes = new System.Windows.Forms.TextBox();
             this.label25 = new System.Windows.Forms.Label();
-            this.txtViewGroupOccupation = new System.Windows.Forms.TextBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
             this.ddlLineStatusId = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.ddlVipId = new System.Windows.Forms.ComboBox();
@@ -237,6 +239,8 @@
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox2.Controls.Add(this.cboMedicoTratante);
+            this.groupBox2.Controls.Add(this.label55);
             this.groupBox2.Controls.Add(this.btnSearchProtocol);
             this.groupBox2.Controls.Add(this.label33);
             this.groupBox2.Controls.Add(this.label30);
@@ -249,10 +253,6 @@
             this.groupBox2.Controls.Add(this.txtViewOrganization);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.label24);
-            this.groupBox2.Controls.Add(this.txtViewOccupation);
-            this.groupBox2.Controls.Add(this.label27);
-            this.groupBox2.Controls.Add(this.txtViewGes);
-            this.groupBox2.Controls.Add(this.label25);
             this.groupBox2.Controls.Add(this.txtViewGroupOccupation);
             this.groupBox2.Controls.Add(this.label23);
             this.groupBox2.Controls.Add(this.label20);
@@ -266,6 +266,31 @@
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Datos Protocolo";
+            // 
+            // cboMedicoTratante
+            // 
+            this.cboMedicoTratante.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cboMedicoTratante.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cboMedicoTratante.Enabled = false;
+            this.cboMedicoTratante.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboMedicoTratante.FormattingEnabled = true;
+            this.cboMedicoTratante.Location = new System.Drawing.Point(75, 36);
+            this.cboMedicoTratante.Margin = new System.Windows.Forms.Padding(2);
+            this.cboMedicoTratante.Name = "cboMedicoTratante";
+            this.cboMedicoTratante.Size = new System.Drawing.Size(137, 21);
+            this.cboMedicoTratante.TabIndex = 46;
+            this.uvschedule.GetValidationSettings(this.cboMedicoTratante).DataType = typeof(string);
+            // 
+            // label55
+            // 
+            this.label55.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label55.ForeColor = System.Drawing.Color.Black;
+            this.label55.Location = new System.Drawing.Point(15, 42);
+            this.label55.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(56, 33);
+            this.label55.TabIndex = 47;
+            this.label55.Text = "Medico Tratante";
             // 
             // btnSearchProtocol
             // 
@@ -416,56 +441,6 @@
             this.label24.TabIndex = 29;
             this.label24.Text = "Tipo ESO";
             // 
-            // txtViewOccupation
-            // 
-            this.txtViewOccupation.Enabled = false;
-            this.txtViewOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtViewOccupation.Location = new System.Drawing.Point(0, 36);
-            this.txtViewOccupation.Margin = new System.Windows.Forms.Padding(2);
-            this.txtViewOccupation.Name = "txtViewOccupation";
-            this.txtViewOccupation.ReadOnly = true;
-            this.txtViewOccupation.Size = new System.Drawing.Size(137, 20);
-            this.txtViewOccupation.TabIndex = 36;
-            this.txtViewOccupation.Visible = false;
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(24, 40);
-            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(40, 13);
-            this.label27.TabIndex = 35;
-            this.label27.Text = "Puesto";
-            this.label27.Visible = false;
-            // 
-            // txtViewGes
-            // 
-            this.txtViewGes.Enabled = false;
-            this.txtViewGes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtViewGes.Location = new System.Drawing.Point(-55, 37);
-            this.txtViewGes.Margin = new System.Windows.Forms.Padding(2);
-            this.txtViewGes.Name = "txtViewGes";
-            this.txtViewGes.ReadOnly = true;
-            this.txtViewGes.Size = new System.Drawing.Size(198, 20);
-            this.txtViewGes.TabIndex = 34;
-            this.txtViewGes.Visible = false;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(30, 40);
-            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(29, 13);
-            this.label25.TabIndex = 33;
-            this.label25.Text = "GES";
-            this.label25.Visible = false;
-            // 
             // txtViewGroupOccupation
             // 
             this.txtViewGroupOccupation.Enabled = false;
@@ -500,6 +475,56 @@
             this.label20.Size = new System.Drawing.Size(52, 13);
             this.label20.TabIndex = 23;
             this.label20.Text = "Protocolo";
+            // 
+            // txtViewOccupation
+            // 
+            this.txtViewOccupation.Enabled = false;
+            this.txtViewOccupation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtViewOccupation.Location = new System.Drawing.Point(952, 640);
+            this.txtViewOccupation.Margin = new System.Windows.Forms.Padding(2);
+            this.txtViewOccupation.Name = "txtViewOccupation";
+            this.txtViewOccupation.ReadOnly = true;
+            this.txtViewOccupation.Size = new System.Drawing.Size(137, 20);
+            this.txtViewOccupation.TabIndex = 36;
+            this.txtViewOccupation.Visible = false;
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label27.ForeColor = System.Drawing.Color.Black;
+            this.label27.Location = new System.Drawing.Point(1023, 643);
+            this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(40, 13);
+            this.label27.TabIndex = 35;
+            this.label27.Text = "Puesto";
+            this.label27.Visible = false;
+            // 
+            // txtViewGes
+            // 
+            this.txtViewGes.Enabled = false;
+            this.txtViewGes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtViewGes.Location = new System.Drawing.Point(999, 637);
+            this.txtViewGes.Margin = new System.Windows.Forms.Padding(2);
+            this.txtViewGes.Name = "txtViewGes";
+            this.txtViewGes.ReadOnly = true;
+            this.txtViewGes.Size = new System.Drawing.Size(102, 20);
+            this.txtViewGes.TabIndex = 34;
+            this.txtViewGes.Visible = false;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(996, 643);
+            this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(29, 13);
+            this.label25.TabIndex = 33;
+            this.label25.Text = "GES";
+            this.label25.Visible = false;
             // 
             // ddlLineStatusId
             // 
@@ -597,6 +622,7 @@
             this.uvschedule.GetValidationSettings(this.ddlServiceTypeId).Condition = new Infragistics.Win.OperatorCondition(Infragistics.Win.ConditionOperator.NotEquals, "--Seleccionar--", true, typeof(string));
             this.uvschedule.GetValidationSettings(this.ddlServiceTypeId).DataType = typeof(string);
             this.uvschedule.GetValidationSettings(this.ddlServiceTypeId).IsRequired = true;
+            this.ddlServiceTypeId.SelectedIndexChanged += new System.EventHandler(this.ddlServiceTypeId_SelectedIndexChanged);
             this.ddlServiceTypeId.TextChanged += new System.EventHandler(this.ddlServiceTypeId_TextChanged);
             // 
             // label17
@@ -2164,6 +2190,10 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox6);
+            this.Controls.Add(this.txtViewOccupation);
+            this.Controls.Add(this.txtViewGes);
+            this.Controls.Add(this.label27);
+            this.Controls.Add(this.label25);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -2198,6 +2228,7 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdDataPeopleAuthoritation)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -2332,5 +2363,7 @@
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.TextBox txtReligion;
         private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.ComboBox cboMedicoTratante;
+        private System.Windows.Forms.Label label55;
     }
 }
