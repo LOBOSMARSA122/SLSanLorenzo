@@ -10421,6 +10421,7 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                 SigesoftEntitiesModel dbContext = new SigesoftEntitiesModel();
 
                 var query = (from sss in dbContext.service
+
                              join ccc in dbContext.diagnosticrepository on sss.v_ServiceId equals ccc.v_ServiceId into ccc_join
                              from ccc in ccc_join.DefaultIfEmpty()  // ESO
 
@@ -10434,7 +10435,8 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
 
                              join E in dbContext.protocol on sss.v_ProtocolId equals E.v_ProtocolId
 
-                             join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId
+                             join F in dbContext.groupoccupation on E.v_GroupOccupationId equals F.v_GroupOccupationId into F_join
+                             from F in F_join.DefaultIfEmpty() 
 
                              join ooo in dbContext.organization on E.v_EmployerOrganizationId equals ooo.v_OrganizationId
 
@@ -10538,6 +10540,9 @@ namespace Sigesoft.Server.WebClientAdmin.BLL
                              i_IsDeleted = a.i_IsDeleted,
                              i_EsoTypeId = a.i_EsoTypeId_Old.ToString(),
                              v_EsoTypeName = a.v_EsoTypeName,
+                             v_FirstName = a.v_FirstName,
+                             v_FirstLastName = a.v_FirstLastName,
+                             v_SecondLastName = a.v_SecondLastName,
                              v_OrganizationName = string.Format("{0}", a.v_OrganizationPartialName),
                              v_PersonName = string.Format("{0} {1}, {2}", a.v_FirstLastName, a.v_SecondLastName, a.v_FirstName),
                              v_DocNumber = a.v_DocNumber,
